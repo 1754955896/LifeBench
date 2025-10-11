@@ -1,0 +1,634 @@
+[
+    [
+        {
+            "name": "张明",
+            "relation": "丈夫",
+            "social_circle": "家庭圈",
+            "gender": "男",
+            "age": 35,
+            "birth_date": "1989-03-15",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区",
+                "street_name": "科华北路",
+                "street_number": "128号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "锦江区"
+            },
+            "personality": "ISTJ",
+            "economic_level": "小康",
+            "occupation": "汽车维修技师",
+            "organization": "成都明达汽车维修中心",
+            "nickname": "明明",
+            "relation_description": "张明是司马燕的现任丈夫，两人于2015年5月20日结婚。他目前在成都从事汽车维修工作，性格沉稳务实。夫妻二人共同抚养两个孩子，平时下班后一起做饭、照顾孩子，周末偶尔会带孩子去公园游玩。张明工作稳定，是家庭的经济支柱之一，两人感情和睦，共同规划未来生活。"
+        },
+        {
+            "name": "张浩",
+            "relation": "长子",
+            "social_circle": "家庭圈",
+            "gender": "男",
+            "age": 5,
+            "birth_date": "2018-12-25",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区",
+                "street_name": "科华北路",
+                "street_number": "128号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区"
+            },
+            "personality": "待定",
+            "economic_level": "无收入",
+            "occupation": "幼儿园学生",
+            "organization": "武侯区实验幼儿园",
+            "nickname": "浩浩",
+            "relation_description": "张浩是司马燕的长子，2018年12月25日出生，目前在武侯区实验幼儿园上学。他是个活泼好动的男孩，喜欢玩具汽车和积木。每天由父母接送上下学，周末经常和父母一起去商场或公园。作为家中的长子，他受到全家人的疼爱，与妹妹关系亲密，经常一起玩耍。"
+        },
+        {
+            "name": "张婷",
+            "relation": "次女",
+            "social_circle": "家庭圈",
+            "gender": "女",
+            "age": 3,
+            "birth_date": "2020-08-10",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区",
+                "street_name": "科华北路",
+                "street_number": "128号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区"
+            },
+            "personality": "待定",
+            "economic_level": "无收入",
+            "occupation": "学前儿童",
+            "organization": "无",
+            "nickname": "婷婷",
+            "relation_description": "张婷是司马燕的次女，2020年8月10日出生，目前在家由父母照顾。她是个文静可爱的小女孩，喜欢洋娃娃和听妈妈讲故事。由于年龄较小，大部分时间都在家中活动，偶尔会跟着妈妈去服装店。与哥哥关系很好，经常模仿哥哥的行为，是全家人宠爱的小公主。"
+        },
+        {
+            "name": "王秀英",
+            "relation": "母亲",
+            "social_circle": "家庭圈",
+            "gender": "女",
+            "age": 58,
+            "birth_date": "1965-02-18",
+            "home_address": {
+                "province": "四川省",
+                "city": "南充市",
+                "district": "顺庆区",
+                "street_name": "文化路",
+                "street_number": "56号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "南充市",
+                "district": "顺庆区"
+            },
+            "personality": "ISFJ",
+            "economic_level": "温饱",
+            "occupation": "退休",
+            "organization": "无",
+            "nickname": "妈",
+            "relation_description": "王秀英是司马燕的母亲，现居住在老家南充市。她退休前在当地纺织厂工作，现在主要在家休息，偶尔帮忙照顾亲戚的孩子。每月会与女儿通电话2-3次，了解外孙们的情况。逢年过节时，司马燕会带着孩子回南充看望母亲，平时主要通过微信视频联系。老人性格温和，很关心女儿一家的生活。"
+        },
+        {
+            "name": "司马强",
+            "relation": "父亲",
+            "social_circle": "家庭圈",
+            "gender": "男",
+            "age": 60,
+            "birth_date": "1963-07-22",
+            "home_address": {
+                "province": "四川省",
+                "city": "南充市",
+                "district": "顺庆区",
+                "street_name": "人民中路",
+                "street_number": "33号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "南充市",
+                "district": "高坪区"
+            },
+            "personality": "ISTP",
+            "economic_level": "温饱",
+            "occupation": "个体经营",
+            "organization": "强记杂货店",
+            "nickname": "老爸",
+            "relation_description": "司马强是司马燕的父亲，现在南充经营一家小杂货店。他性格内向务实，年轻时做过多种小生意。虽然与女儿不住在同一城市，但每月都会通电话，关心女儿一家的情况。过年时司马燕会带着丈夫和孩子回南充团聚，平时父亲也会通过微信给外孙发红包。老人身体健康，仍在继续经营小店补贴家用。"
+        }
+    ],
+    [
+        {
+            "name": "李娟",
+            "relation": "姐姐",
+            "social circle": "亲戚圈",
+            "gender": "女",
+            "age": 35,
+            "birth_date": "1988-03-15",
+            "home_address": {
+                "province": "四川省",
+                "city": "南充市",
+                "district": "顺庆区",
+                "street_name": "人民中路",
+                "street_number": "56号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "南充市",
+                "district": "顺庆区"
+            },
+            "personality": "ISFJ",
+            "economic_level": "温饱",
+            "occupation": "超市收银员",
+            "organization": "南充市好又多超市",
+            "nickname": "娟姐",
+            "relation_description": "李娟是司马燕同母异父的姐姐，两人从小一起在南充长大。李娟性格内向稳重，目前在老家南充生活，担任超市收银员。姐妹俩每月通过微信视频联系2-3次，主要聊家常和孩子教育问题。每年春节司马燕会带孩子回南充探亲，姐妹俩会一起逛街购物、吃火锅。李娟虽然收入不高，但经常给外甥们寄送家乡特产和手工编织的衣物。"
+        },
+        {
+            "name": "王建国",
+            "relation": "姐夫",
+            "social circle": "亲戚圈",
+            "gender": "男",
+            "age": 38,
+            "birth_date": "1985-08-22",
+            "home_address": {
+                "province": "四川省",
+                "city": "南充市",
+                "district": "顺庆区",
+                "street_name": "人民中路",
+                "street_number": "56号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "绵阳市",
+                "district": "涪城区"
+            },
+            "personality": "ISTP",
+            "economic_level": "温饱",
+            "occupation": "货车司机",
+            "organization": "南充市顺达物流公司",
+            "nickname": "建国哥",
+            "relation_description": "王建国是李娟的丈夫，司马燕的姐夫。他性格沉稳务实，是一名长途货车司机，经常往返于成都和南充之间。王建国偶尔会帮司马燕从南充带些家乡特产到成都，两人见面机会不多但关系融洽。他擅长修理电器和汽车，司马燕家的电器出现问题时常会通过视频向他请教。每年春节家庭聚会时，王建国会下厨做拿手的川菜，与司马燕一家团聚聊天。"
+        }
+    ],
+    [
+        {
+            "name": "张红",
+            "relation": "闺蜜",
+            "social circle": "发小圈",
+            "gender": "女",
+            "age": 32,
+            "birth_date": "1989-07-15",
+            "home_address": {
+                "province": "四川省",
+                "city": "南充市",
+                "district": "顺庆区",
+                "street_name": "文化路",
+                "street_number": "56号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "南充市",
+                "district": "顺庆区"
+            },
+            "personality": "ESFP",
+            "economic_level": "中等",
+            "occupation": "美容师",
+            "organization": "美丽人生美容院",
+            "nickname": "小红",
+            "relation_description": "张红是司马燕从小一起长大的发小，两人在南充读初中时就是同班同学。现在虽然都在四川但不同城市生活，张红留在南充发展。她们主要通过微信视频保持联系，每月通话2-3次，聊家庭生活和工作近况。每年春节司马燕回南充探亲时都会约张红见面，一起逛街吃饭，回忆童年趣事。"
+        },
+        {
+            "name": "刘芳",
+            "relation": "闺蜜",
+            "social circle": "发小圈",
+            "gender": "女",
+            "age": 31,
+            "birth_date": "1990-03-22",
+            "home_address": {
+                "province": "广东省",
+                "city": "深圳市",
+                "district": "南山区",
+                "street_name": "科技园路",
+                "street_number": "88号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "南充市",
+                "district": "顺庆区"
+            },
+            "personality": "ENFJ",
+            "economic_level": "中上",
+            "occupation": "服装设计师",
+            "organization": "深圳时尚设计工作室",
+            "nickname": "芳芳",
+            "relation_description": "刘芳是司马燕初中时期的另一位好友，三人组成了发小闺蜜圈。刘芳大学毕业后前往深圳发展，现在是一名服装设计师。她们主要通过微信群保持联系，每周都会在群里分享生活点滴。虽然相隔千里，但每年刘芳回四川探亲时都会特意来成都与司马燕、张红聚会，三人一起逛街购物、吃火锅，重温少女时光。"
+        }
+    ],
+    [
+        {
+            "name": "陈丽",
+            "relation": "同事",
+            "social_circle": "工作圈",
+            "gender": "女",
+            "age": 29,
+            "birth_date": "1995-03-15",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区",
+                "street_name": "科华中路",
+                "street_number": "56号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "绵阳市"
+            },
+            "personality": "ISFJ",
+            "economic_level": "中等",
+            "occupation": "服装销售员",
+            "organization": "时尚服饰零售有限公司",
+            "nickname": "丽丽",
+            "relation_description": "陈丽是司马燕的同事，两人在同一家服装店工作，2019年相识于工作岗位。平时工作中互相配合，休息时会一起聊天讨论时尚潮流和家庭生活。两人都在成都生活，每周工作日内会见面5-6次，周末偶尔会相约逛街购物。主要通过微信保持日常联系，分享工作心得和生活琐事。"
+        },
+        {
+            "name": "赵敏",
+            "relation": "同事",
+            "social_circle": "工作圈",
+            "gender": "女",
+            "age": 33,
+            "birth_date": "1991-08-22",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "锦江区",
+                "street_name": "春熙路",
+                "street_number": "88号"
+            },
+            "birth_place": {
+                "province": "重庆市"
+            },
+            "personality": "ENFP",
+            "economic_level": "中等",
+            "occupation": "资深销售顾问",
+            "organization": "时尚服饰零售有限公司",
+            "nickname": "敏姐",
+            "relation_description": "赵敏是店里的资深销售，比司马燕早入职两年，2020年成为同事。她性格开朗热情，经常指导新员工销售技巧。两人在工作中配合默契，赵敏会分享客户服务经验。同住成都市，工作日每天见面，下班后偶尔会一起吃饭。主要通过工作群和私下微信联系，每月会有1-2次聚餐活动，讨论工作和生活近况。"
+        },
+        {
+            "name": "孙店长",
+            "relation": "上司",
+            "social_circle": "工作圈",
+            "gender": "女",
+            "age": 38,
+            "birth_date": "1986-12-10",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "高新区",
+                "street_name": "天府大道",
+                "street_number": "1666号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "成都市"
+            },
+            "personality": "ENTJ",
+            "economic_level": "中高",
+            "occupation": "店长",
+            "organization": "时尚服饰零售有限公司",
+            "nickname": "孙姐",
+            "relation_description": "孙店长是司马燕的直属上司，2018年开始共事。她工作认真严谨，对员工要求严格但也很关心下属成长。定期组织员工培训，指导销售技巧和店铺管理。居住在成都同一城市，工作日每天见面沟通工作安排。主要通过工作会议和微信工作群联系，每月会进行1次绩效面谈，偶尔组织团队聚餐加强凝聚力。"
+        }
+    ],
+    [
+        {
+            "name": "王秀英",
+            "relation": "邻居",
+            "social_circle": "社区圈",
+            "gender": "女",
+            "age": 58,
+            "birth_date": "1966-03-15",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区",
+                "street_name": "科华北路",
+                "street_number": "130号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区"
+            },
+            "personality": "ISFJ",
+            "economic_level": "中等",
+            "occupation": "退休教师",
+            "organization": "成都市武侯区教育局",
+            "nickname": "王阿姨",
+            "relation_description": "王阿姨是司马燕的隔壁邻居，两人相识于2018年。平时主要在小区楼道或楼下花园见面聊天，王阿姨经常帮忙照看司马燕的孩子。见面时会交流育儿经验和社区新闻，偶尔会互相送些自制小吃。两人住在同一栋楼，每周会见面3-4次，主要通过面对面交流保持联系。"
+        },
+        {
+            "name": "李红梅",
+            "relation": "邻居",
+            "social_circle": "社区圈",
+            "gender": "女",
+            "age": 45,
+            "birth_date": "1979-08-22",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区",
+                "street_name": "科华北路",
+                "street_number": "125号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "绵阳市",
+                "district": "涪城区"
+            },
+            "personality": "ESFP",
+            "economic_level": "中等",
+            "occupation": "超市收银员",
+            "organization": "永辉超市科华店",
+            "nickname": "李大姐",
+            "relation_description": "李大姐住在司马燕对面楼栋，两人2019年在小区业主群认识。经常一起在小区散步聊天，交流购物心得和打折信息。李大姐性格开朗热情，有时会邀请司马燕一起去附近商场逛街。两人每月见面2-3次，主要通过微信联系，偶尔会相约逛菜市场或参加社区活动。"
+        }
+    ],
+    [
+        {
+            "name": "刘明华",
+            "relation": "儿子班主任",
+            "social_circle": "家长圈",
+            "gender": "女",
+            "age": 35,
+            "birth_date": "1989-03-15",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区",
+                "street_name": "科华中路",
+                "street_number": "56号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "绵阳市"
+            },
+            "personality": "ENFJ",
+            "economic_level": "中产",
+            "occupation": "小学教师",
+            "organization": "成都市武侯实验小学",
+            "nickname": "刘老师",
+            "relation_description": "刘明华是司马燕长子的班主任，两人通过家长会相识。作为班主任，她定期与司马燕沟通孩子的学习情况，每学期会安排1-2次家访。两人主要在微信群里交流，讨论孩子的教育问题。见面时通常在学校或附近的咖啡馆，讨论孩子的学业表现和行为习惯。刘老师教学经验丰富，对每个学生都很关心。"
+        },
+        {
+            "name": "张丽",
+            "relation": "家长朋友",
+            "social_circle": "家长圈",
+            "gender": "女",
+            "age": 32,
+            "birth_date": "1992-08-22",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区",
+                "street_name": "科华北路",
+                "street_number": "112号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "成都市"
+            },
+            "personality": "ISFJ",
+            "economic_level": "小康",
+            "occupation": "家庭主妇",
+            "organization": "无",
+            "nickname": "张妈妈",
+            "relation_description": "张丽是司马燕在家长群里认识的朋友，两人的孩子在同一个班级。她们经常一起接送孩子上下学，周末偶尔会带孩子一起玩耍。张丽性格温和，擅长手工制作，经常与司马燕交流育儿经验和手工编织技巧。两人每月会见2-3次，主要在小区附近的公园或各自家中聚会。通过微信群保持日常联系，分享育儿心得和生活琐事。"
+        }
+    ],
+    [
+        {
+            "name": "陈秀英",
+            "relation": "编织爱好者",
+            "social_circle": "手工圈",
+            "gender": "女",
+            "age": 58,
+            "birth_date": "1966-03-15",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "锦江区",
+                "street_name": "春熙路",
+                "street_number": "56号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "成都市"
+            },
+            "personality": "ISFJ",
+            "economic_level": "中等",
+            "occupation": "退休教师",
+            "organization": "成都市锦江区实验小学",
+            "nickname": "陈姐",
+            "relation_description": "司马燕在社区手工编织班认识的编织爱好者，两人因共同爱好结缘。陈秀英是退休教师，擅长各种编织技法，经常指导司马燕编织技巧。她们每月会在社区活动中心见面1-2次，一起编织交流，偶尔会相约逛毛线市场。虽然年龄相差较大，但因共同的兴趣爱好成为忘年交，平时主要通过微信分享编织作品和心得。"
+        }
+    ],
+    [
+        {
+            "name": "赵丽华",
+            "relation": "常客",
+            "social_circle": "客户圈",
+            "gender": "女",
+            "age": 35,
+            "birth_date": "1989-03-15",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区",
+                "street_name": "锦绣路",
+                "street_number": "56号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "锦江区"
+            },
+            "personality": "ENFP",
+            "economic_level": "中产",
+            "occupation": "企业行政主管",
+            "organization": "成都科技发展有限公司",
+            "nickname": "赵姐",
+            "relation_description": "赵丽华是司马燕服装店的常客，因经常购买职业装而相识。两人关系友好，赵丽华欣赏司马燕的细心服务和穿搭建议。通常每月会到店购物1-2次，见面时会交流时尚资讯和生活近况。虽然同住成都但各自忙碌，主要通过微信保持联系，偶尔会相约喝下午茶。"
+        },
+        {
+            "name": "钱晓雯",
+            "relation": "常客",
+            "social_circle": "客户圈",
+            "gender": "女",
+            "age": 28,
+            "birth_date": "1996-08-22",
+            "home_address": {
+                "province": "重庆市",
+                "city": "重庆市",
+                "district": "渝北区",
+                "street_name": "金开大道",
+                "street_number": "188号"
+            },
+            "birth_place": {
+                "province": "重庆市",
+                "city": "重庆市",
+                "district": "渝中区"
+            },
+            "personality": "ISFJ",
+            "economic_level": "小康",
+            "occupation": "幼儿园教师",
+            "organization": "渝北区实验幼儿园",
+            "nickname": "雯雯",
+            "relation_description": "钱晓雯是重庆来的常客，每次到成都出差都会光顾司马燕的服装店。两人因购物结识，钱晓雯喜欢司马燕推荐的淑女风格服饰。现在主要通过微信联系，钱晓雯来成都时会提前告知，平均每季度见面一次。见面时除了购物还会一起吃饭聊天，交流育儿经验和生活趣事。"
+        }
+    ],
+    [
+        {
+            "name": "周明",
+            "relation": "房东",
+            "social_circle": "服务圈",
+            "gender": "男",
+            "age": 45,
+            "birth_date": "1978-03-15",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区",
+                "street_name": "科华北路",
+                "street_number": "98号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "成都市"
+            },
+            "personality": "ISTJ",
+            "economic_level": "富裕",
+            "occupation": "房产投资",
+            "organization": "自主经营",
+            "nickname": "周老板",
+            "relation_description": "周明是司马燕的房东，两人通过租房相识已有3年。他拥有多套房产出租，为人低调务实。每月固定通过微信联系收取房租，偶尔会因房屋维修事宜见面。司马燕租住他的房子位于同一条街道，距离很近但平时很少社交往来，保持纯粹的租赁关系。"
+        },
+        {
+            "name": "吴建国",
+            "relation": "汽车维修",
+            "social_circle": "服务圈",
+            "gender": "男",
+            "age": 38,
+            "birth_date": "1985-08-22",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "金牛区",
+                "street_name": "蜀汉路",
+                "street_number": "256号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "绵阳市"
+            },
+            "personality": "ISTP",
+            "economic_level": "中等",
+            "occupation": "汽车维修技师",
+            "organization": "成都快修汽车服务有限公司",
+            "nickname": "吴师傅",
+            "relation_description": "吴建国是司马燕的汽车维修师傅，经营一家汽车修理店。两人因车辆保养维修结识已有2年，司马燕每半年会去他店里做一次汽车保养。吴师傅技术娴熟，收费合理，为人诚恳。主要通过微信预约服务，见面时主要讨论车辆状况和维修方案，保持专业的服务关系。"
+        },
+        {
+            "name": "王丽",
+            "relation": "房产中介",
+            "social_circle": "服务圈",
+            "gender": "女",
+            "age": 32,
+            "birth_date": "1991-12-08",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "锦江区",
+                "street_name": "春熙路",
+                "street_number": "88号"
+            },
+            "birth_place": {
+                "province": "重庆市",
+                "city": "渝中区"
+            },
+            "personality": "ENFJ",
+            "economic_level": "中等偏上",
+            "occupation": "房产经纪人",
+            "organization": "链家地产成都分公司",
+            "nickname": "王经理",
+            "relation_description": "王丽是司马燕的房产中介，帮助她处理过房产交易事宜。两人通过朋友介绍相识，王丽专业能力强，为人热情周到。平时主要通过微信联系，当有合适的房源信息时会主动推荐给司马燕。见面频率较低，主要在需要看房或办理手续时约见，保持着专业的客户服务关系。"
+        },
+        {
+            "name": "杨晓婷",
+            "relation": "美容师",
+            "social_circle": "服务圈",
+            "gender": "女",
+            "age": 28,
+            "birth_date": "1995-05-20",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区",
+                "street_name": "科华中路",
+                "street_number": "153号"
+            },
+            "birth_place": {
+                "province": "四川省",
+                "city": "乐山市"
+            },
+            "personality": "ESFP",
+            "economic_level": "中等",
+            "occupation": "美容师",
+            "organization": "美丽人生美容会所",
+            "nickname": "杨小姐",
+            "relation_description": "杨晓婷是司马燕的美容师，在附近的美容院工作。司马燕每月会去她那里做一次面部护理，两人因此建立了稳定的服务关系。杨晓婷技术专业，性格开朗，经常向司马燕推荐适合的护肤产品。主要通过微信预约服务时间，见面时除了美容服务外也会闲聊一些生活琐事，关系较为融洽。"
+        }
+    ],
+    [
+        {
+            "name": "郑明远",
+            "relation": "家庭医生",
+            "social circle": "医疗圈",
+            "gender": "男",
+            "age": 38,
+            "birth_date": "1986-03-15",
+            "home_address": {
+                "province": "四川省",
+                "city": "成都市",
+                "district": "武侯区",
+                "street_name": "人民南路",
+                "street_number": "256号"
+            },
+            "birth_place": {
+                "province": "重庆市",
+                "city": "渝中区"
+            },
+            "personality": "ISTJ",
+            "economic_level": "中产",
+            "occupation": "全科医生",
+            "organization": "成都市武侯区社区卫生服务中心",
+            "nickname": "郑医生",
+            "relation_description": "郑医生是司马燕的家庭医生，2019年通过社区健康档案建立联系。主要负责司马燕及其家人的日常健康咨询和常见病诊疗，平时主要通过电话和微信进行医疗咨询，每半年会安排一次家庭健康随访。因居住在同一城区，就医和咨询都比较方便，建立了良好的医患信任关系。"
+        }
+    ]
+]
