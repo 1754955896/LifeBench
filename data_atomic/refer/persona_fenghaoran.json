@@ -1,0 +1,716 @@
+{
+        "name": "冯浩然",
+        "birth": "1994-10-29",
+        "age": 27,
+        "nationality": "汉",
+        "home_address": {
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "岳麓区",
+            "street_name": "麓山南路",
+            "street_number": "156号"
+        },
+        "birth_place": {
+                "province": "湖北省",
+            "city": "武汉市",
+            "district": "江岸区"
+        },
+        "gender": "男",
+        "education": "大学本科",
+        "job": "金融投资顾问",
+        "occupation": "华泰证券股份有限公司",
+        "workplace": {
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "开福区",
+            "street_name": "芙蓉中路",
+            "street_number": "88号"
+        },
+        "belief": "不信仰宗教",
+        "salary": 200000.0,
+        "body": {
+            "height": 189,
+            "weight": 75.0,
+            "BMI": 20.9960527421
+        },
+        "family": "未婚",
+        "personality": {
+            "mbti": "ENTJ",
+            "traits": [
+                "成就",
+                "权力",
+                "社会责任导向"
+            ]
+        },
+        "hobbies": [
+            "摄影（街拍）",
+            "跑步（晨跑）",
+            "露营（野外）",
+            "收藏邮票"
+        ],
+        "favorite_foods": [
+            "湘菜",
+            "日式拉面",
+            "手冲咖啡"
+        ],
+        "memory_date": [
+            "2018-07-01（首次入职金融行业）",
+            "2020-05-20（购置首套房产）"
+        ],
+        "aim": [
+            "3年内晋升为投资总监",
+            "每年完成一次深度自驾游",
+            "建立个人投资组合达到100万规模"
+        ],
+        "healthy_desc": "身体健康状况良好，无慢性病史，保持每日体育锻炼习惯，定期进行年度健康体检，就医频率较低。",
+        "lifestyle_desc": "生活规律，每日坚持晨跑和听音乐，休闲时间以互联网为主要信息来源，经常与朋友聚会和社交活动，每年有21-30个晚上外出度假，喜欢户外活动但频率适中。",
+        "economic_desc": "年收入20万元，家庭总收入20万元，拥有2处房产和家用汽车，收支状况良好，经常使用信用消费但无其他投资活动，消费习惯偏稳健。",
+        "work_desc": "在民营证券公司担任投资顾问，每周工作40小时，主要从事重脑力劳动，通勤时间45分钟，工作满意度较高，职业发展稳定。",
+        "experience_desc": "出生于湖北武汉，2018年大学毕业后迁居长沙并进入金融行业，从商业服务人员起步，现已在长沙定居工作四年，职业发展稳步上升，期间通过自学提升了投资分析技能。",
+        "description": "冯浩然是一名27岁的金融投资顾问，身高189cm，体型匀称，ENTJ型人格的他具有强烈的成就导向和社会责任感。出生于武汉的他于2018年来到长沙发展，目前就职于华泰证券，擅长资产配置和投资分析。日常生活中他坚持晨跑和音乐欣赏，爱好摄影和户外露营，与朋友保持频繁社交。未来他计划在职业上晋升为投资总监，同时希望通过自驾游探索各地风土人情，并建立个人投资组合。作为家中的独子，他虽未婚但已购置房产，生活独立且规划清晰。",
+        "relation": [
+            [
+                {
+                    "name": "冯建国",
+                    "relation": "父亲",
+                    "social circle": "家庭圈",
+                    "gender": "男",
+                    "age": 58,
+                    "birth_date": "1965-03-12",
+                    "home_address": {
+                        "province": "湖北省",
+                        "city": "武汉市",
+                        "district": "江岸区",
+                        "street_name": "解放大道",
+                        "street_number": "368号"
+                    },
+                    "birth_place": {
+                        "province": "湖北省",
+                        "city": "武汉市",
+                        "district": "江岸区"
+                    },
+                    "personality": "ISTJ",
+                    "economic_level": "小康",
+                    "occupation": "高级工程师",
+                    "organization": "武汉铁路局",
+                    "nickname": "老冯",
+                    "relation_description": "冯浩然的父亲，退休铁路工程师，现与妻子居住在武汉老家。每月通过视频通话联系2-3次，节假日冯浩然会回武汉探望。父子关系融洽，经常交流投资理财话题，父亲会以过来人身份给予职业发展建议。"
+                },
+                {
+                    "name": "李秀英",
+                    "relation": "母亲",
+                    "social circle": "家庭圈",
+                    "gender": "女",
+                    "age": 56,
+                    "birth_date": "1967-08-25",
+                    "home_address": {
+                        "province": "湖北省",
+                        "city": "武汉市",
+                        "district": "江岸区",
+                        "street_name": "解放大道",
+                        "street_number": "368号"
+                    },
+                    "birth_place": {
+                        "province": "湖北省",
+                        "city": "黄石市"
+                    },
+                    "personality": "ISFJ",
+                    "economic_level": "小康",
+                    "occupation": "退休教师",
+                    "organization": "武汉市江岸区实验小学",
+                    "nickname": "妈妈",
+                    "relation_description": "冯浩然的母亲，原小学语文教师，现已退休。与丈夫同住武汉，每周与儿子视频通话一次，关心其生活起居和婚姻大事。擅长烹饪湖北家常菜，每次冯浩然回家都会准备他爱吃的排骨藕汤。"
+                },
+                {
+                    "name": "冯欣然",
+                    "relation": "妹妹",
+                    "social circle": "家庭圈",
+                    "gender": "女",
+                    "age": 24,
+                    "birth_date": "1999-05-18",
+                    "home_address": {
+                        "province": "上海市",
+                        "city": "浦东新区",
+                        "district": "陆家嘴街道",
+                        "street_name": "世纪大道",
+                        "street_number": "100号"
+                    },
+                    "birth_place": {
+                        "province": "湖北省",
+                        "city": "武汉市",
+                        "district": "江岸区"
+                    },
+                    "personality": "ENFP",
+                    "economic_level": "中产",
+                    "occupation": "市场营销专员",
+                    "organization": "上海某互联网公司",
+                    "nickname": "小然",
+                    "relation_description": "冯浩然的妹妹，现居上海从事互联网营销工作。兄妹俩关系亲密，每周通过微信保持联系，经常分享工作生活见闻。每年春节和国庆假期会一起回武汉团聚，平时会互寄当地特产，冯浩然会指导妹妹进行理财规划。"
+                }
+            ],
+            [
+                {
+                    "name": "张明轩",
+                    "relation": "发小",
+                    "social circle": "童年玩伴圈",
+                    "gender": "男",
+                    "age": 28,
+                    "birth_date": "1995-03-12",
+                    "home_address": {
+                        "province": "广东省",
+                        "city": "深圳市",
+                        "district": "南山区",
+                        "street_name": "科技园路",
+                        "street_number": "36号"
+                    },
+                    "birth_place": {
+                        "province": "湖北省",
+                        "city": "武汉市",
+                        "district": "江岸区"
+                    },
+                    "personality": "ENFP",
+                    "economic_level": "中产",
+                    "occupation": "互联网产品经理",
+                    "organization": "腾讯科技（深圳）有限公司",
+                    "nickname": "轩子",
+                    "relation_description": "张明轩与冯浩然是武汉江岸区同一小区的童年玩伴，从小一起上学玩耍。2018年后两人分别前往长沙和深圳发展，现在主要通过微信保持联系，每月视频通话2-3次。见面时会一起重温家乡美食，讨论职业发展和投资理财。虽然分隔两地，但每年春节回武汉探亲时都会相约聚会，保持着深厚的发小情谊。"
+                }
+            ],
+            [
+                {
+                    "name": "陈志远",
+                    "relation": "小学同学",
+                    "social circle": "小学同学圈",
+                    "gender": "男",
+                    "age": 28,
+                    "birth_date": "1995-03-12",
+                    "home_address": {
+                        "province": "广东省",
+                        "city": "深圳市",
+                        "district": "南山区",
+                        "street_name": "科技园南区",
+                        "street_number": "科技南八道18号"
+                    },
+                    "birth_place": {
+                        "province": "湖北省",
+                        "city": "武汉市",
+                        "district": "洪山区"
+                    },
+                    "personality": "ISTP",
+                    "economic_level": "中产",
+                    "occupation": "软件工程师",
+                    "organization": "腾讯科技（深圳）有限公司",
+                    "nickname": "阿远",
+                    "relation_description": "陈志远是冯浩然在武汉读小学时的同班同学，两人曾一起参加校篮球队。2014年陈志远考入华南理工大学计算机专业，毕业后留在深圳发展，现为腾讯后端开发工程师。虽然分隔两地，但两人保持每季度视频通话一次，聊工作近况和投资理财话题。每年春节回武汉探亲时会约见面，通常一起品尝家乡美食，回忆童年趣事。"
+                }
+            ],
+            [
+                {
+                    "name": "王丽娜",
+                    "relation": "初中同学",
+                    "social circle": "初中同学圈",
+                    "gender": "女",
+                    "age": 28,
+                    "birth_date": "1995-03-15",
+                    "home_address": {
+                        "province": "广东省",
+                        "city": "深圳市",
+                        "district": "南山区",
+                        "street_name": "科技园路",
+                        "street_number": "36号"
+                    },
+                    "birth_place": {
+                        "province": "湖北省",
+                        "city": "武汉市",
+                        "district": "江汉区"
+                    },
+                    "personality": "ENFP",
+                    "economic_level": "中产",
+                    "occupation": "互联网产品经理",
+                    "organization": "腾讯科技（深圳）有限公司",
+                    "nickname": "娜娜",
+                    "relation_description": "王丽娜与冯浩然是武汉某中学初中同学，初中时期因共同参加数学竞赛而熟识。毕业后两人分别前往不同城市读高中，但通过社交平台保持联系。目前王丽娜在深圳从事互联网行业，两人主要通过微信朋友圈互动和每年春节返乡时的同学聚会见面，见面时会交流职业发展和投资理财话题。由于分居两地，平时每季度会视频通话一次，关系保持融洽但不算密切。"
+                }
+            ],
+            [
+                {
+                    "name": "刘浩然",
+                    "relation": "高中同学",
+                    "social circle": "高中同学圈",
+                    "gender": "男",
+                    "age": 28,
+                    "birth_date": "1995-03-12",
+                    "home_address": {
+                        "province": "广东省",
+                        "city": "深圳市",
+                        "district": "南山区",
+                        "street_name": "科技园路",
+                        "street_number": "36号"
+                    },
+                    "birth_place": {
+                        "province": "湖北省",
+                        "city": "武汉市",
+                        "district": "洪山区"
+                    },
+                    "personality": "ENFP",
+                    "economic_level": "中产",
+                    "occupation": "互联网产品经理",
+                    "organization": "腾讯科技（深圳）有限公司",
+                    "nickname": "浩子",
+                    "relation_description": "两人是武汉某重点高中同班同学，高三时因共同参加数学竞赛集训而熟络。毕业后刘浩然考入深圳大学计算机专业，现定居深圳从事互联网行业。虽然分隔两地，但每月会通过视频通话交流投资和科技趋势，偶尔分享各自城市的特色美食照片。每年春节回武汉探亲时会相约聚餐，讨论职业发展并回忆高中趣事。"
+                }
+            ],
+            [
+                {
+                    "name": "赵天宇",
+                    "relation": "大学室友",
+                    "social circle": "大学同学圈",
+                    "gender": "男",
+                    "age": 28,
+                    "birth_date": "1995-03-12",
+                    "home_address": {
+                        "province": "广东省",
+                        "city": "深圳市",
+                        "district": "南山区",
+                        "street_name": "科技园路",
+                        "street_number": "36号"
+                    },
+                    "birth_place": {
+                        "province": "湖南省",
+                        "city": "长沙市"
+                    },
+                    "personality": "ENFP",
+                    "economic_level": "中产",
+                    "occupation": "互联网产品经理",
+                    "organization": "腾讯科技（深圳）有限公司",
+                    "nickname": "天宇",
+                    "relation_description": "赵天宇是冯浩然的大学室友，两人在大学期间同住四年，经常一起参加社团活动和学术竞赛。毕业后赵天宇选择南下深圳发展，现为腾讯产品经理，主要负责社交产品线。虽然分隔两地，但每月会通过视频通话保持联系，偶尔会相约在长沙或深圳聚会，见面时主要讨论职业发展和投资理财话题。"
+                },
+                {
+                    "name": "周雨薇",
+                    "relation": "大学同学",
+                    "social circle": "大学同学圈",
+                    "gender": "女",
+                    "age": 27,
+                    "birth_date": "1996-08-25",
+                    "home_address": {
+                        "province": "上海市",
+                        "city": "上海市",
+                        "district": "浦东新区",
+                        "street_name": "陆家嘴环路",
+                        "street_number": "188号"
+                    },
+                    "birth_place": {
+                        "province": "江苏省",
+                        "city": "南京市"
+                    },
+                    "personality": "INFJ",
+                    "economic_level": "中产",
+                    "occupation": "金融分析师",
+                    "organization": "汇丰银行（中国）有限公司",
+                    "nickname": "薇薇",
+                    "relation_description": "周雨薇是冯浩然的大学同班同学，两人曾共同参与金融建模比赛并获得奖项。现居上海从事外资银行分析工作，与冯浩然保持专业领域的交流。每季度会通过线上会议讨论市场趋势，每年同学聚会时见面，相处时习惯分享行业动态和职业成长经历。"
+                },
+                {
+                    "name": "吴俊杰",
+                    "relation": "大学同学",
+                    "social circle": "大学同学圈",
+                    "gender": "男",
+                    "age": 28,
+                    "birth_date": "1995-11-03",
+                    "home_address": {
+                        "province": "湖南省",
+                        "city": "长沙市",
+                        "district": "雨花区",
+                        "street_name": "韶山南路",
+                        "street_number": "215号"
+                    },
+                    "birth_place": {
+                        "province": "湖北省",
+                        "city": "武汉市"
+                    },
+                    "personality": "ISTP",
+                    "economic_level": "小康",
+                    "occupation": "IT工程师",
+                    "organization": "湖南移动通信有限公司",
+                    "nickname": "阿杰",
+                    "relation_description": "吴俊杰与冯浩然是大学同窗，因同属湖北老乡而关系密切。现定居长沙从事通信技术工作，与冯浩然保持每月一次的线下聚会，常相约跑步或品尝湘菜。两人会互相推荐投资机会，吴俊杰偶尔会向冯浩然咨询理财建议，形成互补型友谊关系。"
+                }
+            ],
+            [
+                {
+                    "name": "郑文博",
+                    "relation": "同事",
+                    "social circle": "华泰证券同事圈",
+                    "gender": "男",
+                    "age": 28,
+                    "birth_date": "1995-03-15",
+                    "home_address": {
+                        "province": "湖南省",
+                        "city": "长沙市",
+                        "district": "雨花区",
+                        "street_name": "韶山南路",
+                        "street_number": "233号"
+                    },
+                    "birth_place": {
+                        "province": "广东省",
+                        "city": "广州市"
+                    },
+                    "personality": "ESTP",
+                    "economic_level": "中产",
+                    "occupation": "证券分析师",
+                    "organization": "华泰证券股份有限公司",
+                    "nickname": "博哥",
+                    "relation_description": "郑文博与冯浩然同在华泰证券投资顾问部工作，两人因业务合作相识。作为同龄人，他们经常一起讨论市场动态和投资策略，午休时常结伴去公司附近的湘菜馆用餐。虽然住在同一城市，但因工作繁忙主要靠企业微信沟通，每周会有一两次工作聚餐，周末偶尔会相约打篮球或参加行业沙龙活动。"
+                },
+                {
+                    "name": "孙晓雅",
+                    "relation": "同事",
+                    "social circle": "华泰证券同事圈",
+                    "gender": "女",
+                    "age": 26,
+                    "birth_date": "1997-08-22",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "杭州市",
+                        "district": "西湖区",
+                        "street_name": "文三路",
+                        "street_number": "456号"
+                    },
+                    "birth_place": {
+                        "province": "江苏省",
+                        "city": "南京市"
+                    },
+                    "personality": "INFJ",
+                    "economic_level": "中产",
+                    "occupation": "客户经理",
+                    "organization": "华泰证券股份有限公司",
+                    "nickname": "晓雅",
+                    "relation_description": "孙晓雅是冯浩然团队中的客户经理，负责高净值客户维护。两人在工作中配合默契，经常共同为客户制定资产配置方案。她虽在杭州远程办公，但每月会来长沙总部述职，这时三人小组总会组织团建活动。平时通过视频会议保持工作沟通，偶尔会分享各自城市的特色咖啡馆和摄影作品，保持着专业的同事友谊。"
+                },
+                {
+                    "name": "钱永强",
+                    "relation": "直属上司",
+                    "social circle": "华泰证券同事圈",
+                    "gender": "男",
+                    "age": 35,
+                    "birth_date": "1988-12-05",
+                    "home_address": {
+                        "province": "湖南省",
+                        "city": "长沙市",
+                        "district": "开福区",
+                        "street_name": "湘江中路",
+                        "street_number": "168号"
+                    },
+                    "birth_place": {
+                        "province": "湖北省",
+                        "city": "武汉市"
+                    },
+                    "personality": "ENTJ",
+                    "economic_level": "富裕",
+                    "occupation": "投资总监",
+                    "organization": "华泰证券股份有限公司",
+                    "nickname": "钱总",
+                    "relation_description": "作为部门负责人，钱永强是冯浩然的职业引路人，两人同是武汉老乡且性格相似。他经常组织团队进行投资案例复盘，周末时会带着团队成员参加高端金融论坛。住在公司附近的他，下班后常与冯浩然讨论职业规划，每年会组织两次团队户外拓展活动，在工作和生活上都给予下属很多指导。"
+                }
+            ],
+            [
+                {
+                    "name": "黄思琪",
+                    "relation": "客户",
+                    "social circle": "工作客户圈",
+                    "gender": "女",
+                    "age": 35,
+                    "birth_date": "1988-03-15",
+                    "home_address": {
+                        "province": "广东省",
+                        "city": "深圳市",
+                        "district": "南山区",
+                        "street_name": "科技园路",
+                        "street_number": "36号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "杭州市"
+                    },
+                    "personality": "INTJ",
+                    "economic_level": "富裕",
+                    "occupation": "科技公司创始人",
+                    "organization": "深圳创新科技有限公司",
+                    "nickname": "思思",
+                    "relation_description": "黄思琪是冯浩然服务的高净值客户，两人通过华泰证券的业务合作相识。作为科技公司创始人，她经常就资产配置和投资策略向冯浩然咨询。虽然分居深圳和长沙两地，但每月会通过视频会议进行1-2次专业交流，偶尔冯浩然会专程飞往深圳当面汇报投资方案。两人关系专业而互信，偶尔会就行业趋势进行深入讨论。"
+                },
+                {
+                    "name": "林志豪",
+                    "relation": "客户",
+                    "social circle": "工作客户圈",
+                    "gender": "男",
+                    "age": 42,
+                    "birth_date": "1981-08-22",
+                    "home_address": {
+                        "province": "上海市",
+                        "city": "上海市",
+                        "district": "浦东新区",
+                        "street_name": "陆家嘴环路",
+                        "street_number": "188号"
+                    },
+                    "birth_place": {
+                        "province": "江苏省",
+                        "city": "苏州市"
+                    },
+                    "personality": "ESTJ",
+                    "economic_level": "富裕",
+                    "occupation": "房地产企业高管",
+                    "organization": "上海金茂集团",
+                    "nickname": "林总",
+                    "relation_description": "林志豪是冯浩然服务的另一位重要客户，从事房地产行业多年。两人通过朋友介绍建立业务关系，主要就大宗资产管理和投资组合优化进行合作。虽然居住在上海，但林志豪经常因业务需要往返长沙，每次到访都会与冯浩然面谈2-3小时。平时通过微信保持每周一次的联系，偶尔会相约打高尔夫球交流投资心得。"
+                }
+            ],
+            [
+                {
+                    "name": "徐佳宁",
+                    "relation": "摄影伙伴",
+                    "social circle": "街拍摄影圈",
+                    "gender": "女",
+                    "age": 26,
+                    "birth_date": "1996-08-15",
+                    "home_address": {
+                        "province": "广东省",
+                        "city": "深圳市",
+                        "district": "南山区",
+                        "street_name": "科技园路",
+                        "street_number": "32号"
+                    },
+                    "birth_place": {
+                        "province": "湖南省",
+                        "city": "长沙市",
+                        "district": "雨花区"
+                    },
+                    "personality": "ISFP",
+                    "economic_level": "中产",
+                    "occupation": "视觉设计师",
+                    "organization": "腾讯科技（深圳）有限公司",
+                    "nickname": "佳宁",
+                    "relation_description": "徐佳宁是冯浩然在长沙读大学时通过摄影社团认识的伙伴，两人因对街头摄影的共同热爱成为好友。毕业后徐佳宁前往深圳发展，现为腾讯视觉设计师，但仍保持每月线上交流摄影技巧的习惯。他们主要通过微信分享最新作品，每年冯浩然去深圳出差时会相约进行城市街拍，最近一次见面是半年前在深圳华侨城创意园拍摄夜景。"
+                }
+            ],
+            [
+                {
+                    "name": "高云飞",
+                    "relation": "跑友",
+                    "social circle": "晨跑圈",
+                    "gender": "男",
+                    "age": 28,
+                    "birth_date": "1995-03-12",
+                    "home_address": {
+                        "province": "湖南省",
+                        "city": "长沙市",
+                        "district": "雨花区",
+                        "street_name": "韶山南路",
+                        "street_number": "233号"
+                    },
+                    "birth_place": {
+                        "province": "广东省",
+                        "city": "深圳市",
+                        "district": "福田区"
+                    },
+                    "personality": "ISTJ",
+                    "economic_level": "中产",
+                    "occupation": "IT项目经理",
+                    "organization": "腾讯科技（长沙）分公司",
+                    "nickname": "云飞",
+                    "relation_description": "高云飞是冯浩然在岳麓山晨跑时认识的跑友，两人因坚持清晨锻炼而结缘。作为IT项目经理的他工作节奏规律，每周三和周六早晨都会与冯浩然相约麓山南路慢跑，途中常交流投资理财和科技行业动态。虽然高云飞出生于深圳，但因工作调动已在长沙定居三年，两人居住地相距约6公里，除晨跑外每月还会约一次湘菜馆聚餐。"
+                }
+            ],
+            [
+                {
+                    "name": "谢雨桐",
+                    "relation": "露营伙伴",
+                    "social circle": "户外露营圈",
+                    "gender": "女",
+                    "age": 26,
+                    "birth_date": "1997-03-15",
+                    "home_address": {
+                        "province": "广东省",
+                        "city": "深圳市",
+                        "district": "南山区",
+                        "street_name": "科技园路",
+                        "street_number": "36号"
+                    },
+                    "birth_place": {
+                        "province": "四川省",
+                        "city": "成都市",
+                        "district": "武侯区"
+                    },
+                    "personality": "ISFP",
+                    "economic_level": "中产",
+                    "occupation": "用户体验设计师",
+                    "organization": "腾讯科技（深圳）有限公司",
+                    "nickname": "小雨",
+                    "relation_description": "谢雨桐是冯浩然在2021年参加湖南户外露营协会活动时认识的伙伴，两人因对野外露营的共同热爱而结缘。虽然分居长沙和深圳两地，但每月会通过视频通话分享露营见闻，每季度相约在湖南或广东的露营地见面。相处时主要交流装备使用心得和拍摄技巧，谢雨桐经常为冯浩然的摄影作品提供构图建议。两人保持着适度而稳定的户外活动联系频率。"
+                }
+            ],
+            [
+                {
+                    "name": "罗振宇",
+                    "relation": "邮票藏友",
+                    "social circle": "邮票收藏圈",
+                    "gender": "男",
+                    "age": 45,
+                    "birth_date": "1979-03-12",
+                    "home_address": {
+                        "province": "广东省",
+                        "city": "深圳市",
+                        "district": "南山区",
+                        "street_name": "科技园路",
+                        "street_number": "36号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "杭州市"
+                    },
+                    "personality": "ISTJ",
+                    "economic_level": "中产",
+                    "occupation": "互联网产品经理",
+                    "organization": "腾讯科技（深圳）有限公司",
+                    "nickname": "老罗",
+                    "relation_description": "两人通过线上邮票收藏论坛相识已有五年，因共同对特殊邮票的鉴赏兴趣建立深厚友谊。罗振宇常驻深圳工作，冯浩然在长沙发展，主要通过微信群和视频通话保持联系，每月交流2-3次邮票市场动态和收藏心得。每年会在全国邮票展览会上见面一次，共同参观展品并分享最新收藏。两人虽异地但默契十足，偶尔会互寄特色邮票作为礼物。"
+                }
+            ],
+            [
+                {
+                    "name": "彭雨晴",
+                    "relation": "好友",
+                    "social circle": "密友圈",
+                    "gender": "女",
+                    "age": 26,
+                    "birth_date": "1995-08-14",
+                    "home_address": {
+                        "province": "湖南省",
+                        "city": "长沙市",
+                        "district": "雨花区",
+                        "street_name": "韶山南路",
+                        "street_number": "233号"
+                    },
+                    "birth_place": {
+                        "province": "湖北省",
+                        "city": "武汉市",
+                        "district": "洪山区"
+                    },
+                    "personality": "ENFP",
+                    "economic_level": "中产",
+                    "occupation": "新媒体运营经理",
+                    "organization": "湖南日报新媒体中心",
+                    "nickname": "小雨",
+                    "relation_description": "冯浩然的大学校友，两人在武汉读本科时因社团活动相识。毕业后都选择到长沙发展，经常周末一起聚餐或户外活动。彭雨晴性格开朗活泼，常组织朋友聚会，与冯浩然保持每周2-3次的联系频率，主要通过微信交流投资心得和生活趣事。"
+                },
+                {
+                    "name": "董浩然",
+                    "relation": "好友",
+                    "social circle": "密友圈",
+                    "gender": "男",
+                    "age": 28,
+                    "birth_date": "1994-03-22",
+                    "home_address": {
+                        "province": "广东省",
+                        "city": "深圳市",
+                        "district": "南山区",
+                        "street_name": "科技园路",
+                        "street_number": "18号"
+                    },
+                    "birth_place": {
+                        "province": "湖北省",
+                        "city": "武汉市",
+                        "district": "武昌区"
+                    },
+                    "personality": "INTJ",
+                    "economic_level": "富裕",
+                    "occupation": "科技公司产品总监",
+                    "organization": "腾讯科技",
+                    "nickname": "浩子",
+                    "relation_description": "冯浩然的高中同学，两人从小在武汉一起长大。董浩然大学毕业后前往深圳发展，虽分隔两地但保持密切联络。每月视频通话2-3次，主要讨论职业发展和投资机会。冯浩然去广东出差时会特意见面，董浩然回武汉探亲时也会约冯浩然相聚。"
+                },
+                {
+                    "name": "蔡文静",
+                    "relation": "好友",
+                    "social circle": "密友圈",
+                    "gender": "女",
+                    "age": 27,
+                    "birth_date": "1994-12-05",
+                    "home_address": {
+                        "province": "上海市",
+                        "city": "浦东新区",
+                        "district": "陆家嘴",
+                        "street_name": "世纪大道",
+                        "street_number": "100号"
+                    },
+                    "birth_place": {
+                        "province": "湖南省",
+                        "city": "长沙市",
+                        "district": "芙蓉区"
+                    },
+                    "personality": "ISFJ",
+                    "economic_level": "中产",
+                    "occupation": "银行理财经理",
+                    "organization": "招商银行上海分行",
+                    "nickname": "文静",
+                    "relation_description": "通过彭雨晴介绍认识的闺蜜圈好友，三人经常一起组织活动。蔡文静原籍长沙，现居上海发展，与冯浩然主要通过微信群保持联系。每年春节回长沙时必会聚会，平时每月视频聊天1-2次，交流金融行业动态和理财经验。冯浩然去上海出差时也会相约品尝美食。"
+                }
+            ],
+            [
+                {
+                    "name": "陆家明",
+                    "relation": "房产中介",
+                    "social circle": "房产服务圈",
+                    "gender": "男",
+                    "age": 35,
+                    "birth_date": "1989-03-18",
+                    "home_address": {
+                        "province": "湖南省",
+                        "city": "长沙市",
+                        "district": "雨花区",
+                        "street_name": "韶山南路",
+                        "street_number": "233号"
+                    },
+                    "birth_place": {
+                        "province": "广东省",
+                        "city": "广州市",
+                        "district": "天河区"
+                    },
+                    "personality": "ESFJ",
+                    "economic_level": "中产",
+                    "occupation": "高级房产经纪人",
+                    "organization": "链家地产长沙分公司",
+                    "nickname": "阿明",
+                    "relation_description": "陆家明是冯浩然2020年购房时认识的房产中介，为人热情周到，熟悉长沙各区域房产市场。两人因房产交易建立信任关系，后续保持不定期联系，逢年过节会互发问候。陆家明会主动分享楼市最新动态，冯浩然有朋友需要房产服务时也会推荐给他。目前两人同在长沙但见面频率不高，主要通过微信沟通，平均每季度会约一次咖啡厅交流投资和房产信息。"
+                }
+            ],
+            [
+                {
+                    "name": "沈心怡",
+                    "relation": "咖啡店老板",
+                    "social circle": "手冲咖啡圈",
+                    "gender": "女",
+                    "age": 32,
+                    "birth_date": "1992-05-18",
+                    "home_address": {
+                        "province": "湖南省",
+                        "city": "长沙市",
+                        "district": "芙蓉区",
+                        "street_name": "解放西路",
+                        "street_number": "233号"
+                    },
+                    "birth_place": {
+                        "province": "云南省",
+                        "city": "普洱市"
+                    },
+                    "personality": "ISFP",
+                    "economic_level": "中产",
+                    "occupation": "独立咖啡店主",
+                    "organization": "心怡手冲咖啡馆",
+                    "nickname": "沈老板",
+                    "relation_description": "冯浩然是沈心怡咖啡馆的常客，因对手冲咖啡的共同爱好相识。沈心怡的咖啡馆位于冯浩然公司附近，他每周会光顾2-3次品尝新品咖啡。两人经常交流咖啡豆产地和冲泡技巧，偶尔会一起参加本地咖啡品鉴活动。沈心怡会为冯浩然预留限量咖啡豆，而冯浩然也会推荐客户到她的咖啡馆洽谈业务。"
+                }
+            ]
+        ]
+    }

@@ -6,17 +6,17 @@ from event.templates import *
 
 def gen_event1(persona):
 
-    prompt = template11.format(persona=persona)
+    prompt = template1_1.format(persona=persona)
     res = llm_call_reason(prompt, context, record=1)
     print(res)
     data = json.loads(res)
 
-    prompt = template22
+    prompt = template1_2
     res2 = llm_call(prompt,context,record=1)
     print(res2)
     data2 = json.loads(res2)
 
-    prompt = template33
+    prompt = template1_3
     res3 = llm_call(prompt, context, record=0)
     print(res3)
     data3 = json.loads(res3)
