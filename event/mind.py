@@ -32,9 +32,9 @@ class Mind:
             self.calendar_atomic = calendar
             return False
     def save_json(self):
-        with open("../data_atomic/atomic_7_1.json", "w", encoding="utf-8") as json_f:
+        with open("../data_atomic/generate/atomic_7_1.json", "w", encoding="utf-8") as json_f:
             json.dump(self.calendar_atomic, json_f, ensure_ascii=False, indent=4)
-        with open("../data_atomic/life_7.json", "w", encoding="utf-8") as json_f:
+        with open("../data_atomic/generate/life_7.json", "w", encoding="utf-8") as json_f:
             json.dump(self.daily_life, json_f, ensure_ascii=False, indent=4)
 
     def llm_call_sr(self,prompt,record=0):
@@ -502,7 +502,7 @@ class Mind:
             current_date += timedelta(days=1)
             print(self.calendar_atomic)
         current_date = start_date
-        with open("../data_atomic/atomic_7.json", "w", encoding="utf-8") as json_f:
+        with open("../data_atomic/generate/atomic_7.json", "w", encoding="utf-8") as json_f:
             json.dump(self.calendar_atomic, json_f, ensure_ascii=False, indent=4)
         # 遍历日期范围
         while current_date <= end_date:
