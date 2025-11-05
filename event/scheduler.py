@@ -5,6 +5,9 @@ from utils.IO import *
 from datetime import datetime, timedelta
 from utils.llm_call import *
 from event.templates import *
+import re
+from datetime import datetime, timedelta
+import holidays  # 需安装：pip install holidays
 
 class Scheduler:
     def __init__(self):
@@ -14,8 +17,8 @@ class Scheduler:
         self.raw_events = []
         self.habit_events = []
         self.long_events = []
-        self.persona = """
-        {
+        self.persona = '''
+ {
         "name": "徐静",
         "birth": "1993-07-10",
         "age": 28,
@@ -53,16 +56,11 @@ class Scheduler:
         "family": "未婚",
         "personality": {
             "mbti": "ESFJ",
-            "traits": [
-                "家庭导向",
-                "安全",
-                "普世主义"
-            ]
         },
         "hobbies": [
             "逛街购物",
             "听音乐",
-            "参加体育锻炼",
+            "羽毛球",
             “收藏纪念币”
         ],
         "favorite_foods": [
@@ -73,11 +71,6 @@ class Scheduler:
         "memory_date": [
             "2012-06-15：第一份工作入职纪念日",
             "2020-08-20：晋升销售主管日"
-        ],
-        "aim": [
-            "三年内开设自己的服装店",
-            "每年带父母旅行一次",
-            "每周坚持三次瑜伽锻炼"
         ],
         "healthy_desc": "个人整体健康状况良好，无慢性病史，不定期进行健康体检，每年就医几次主要是常规检查。保持每周三次的体育锻炼习惯，注重个人护理和作息规律。",
         "lifestyle_desc": "日常生活高度依赖互联网，尤其喜欢使用社交媒体和购物APP获取信息。休闲活动包括每周两到三次逛街购物、在家听流行音乐、以及参加瑜伽锻炼。每月与朋友聚餐或看电影一次，每年会有一到两次短途旅行探亲或度假，生活风格偏向现代都市休闲型。",
@@ -722,7 +715,7 @@ class Scheduler:
             ]
         ]
     }
-        """
+'''
         self.persona_without = """
         {
         "name": "徐静",
@@ -836,6 +829,7 @@ class Scheduler:
                 """
         self.final_schedule = {}
         self.refine_schedule = {}
+        self.name = "xujing"
     def load_from_json(self, json_data1,json_data2,json_data3):
         """
         从JSON数据加载日程，支持起止时间为数组的格式
@@ -939,9 +933,9 @@ class Scheduler:
         res = llm_call_reason(prompt,context2,record=record)
         return res
 
-    def llm_call_s(self,prompt):
+    def llm_call_s(self,prompt,record=0):
         """调用大模型的函数"""
-        res = llm_call(prompt,context2,record=0)
+        res = llm_call(prompt,context2,record=record)
         return res
 
 
@@ -1077,49 +1071,287 @@ class Scheduler:
 
         self.schedule = dict(sorted(self.schedule.items()))
 
+    def split_and_convert_events(self,events):
+        """
+        将包含多日期的事件拆分为独立事件，并转换date字段为start_time和end_time
+        处理逻辑：
+        - 若date是数组（如["2025-01-01", "2025-01-05至2025-01-06"]），每个元素对应一个独立事件
+        - 单个日期（无"至"）：start_time = end_time
+        - 日期范围（有"至"）：分割为start_time和end_time
+        :param events: 原始事件列表（date为数组，元素为单日期或日期范围）
+        :return: 拆分并转换后的事件列表（每个事件对应一次发生）
+        """
+        processed_events = []
+        for event in events:
+            # 遍历date数组中的每个发生日期/范围
+            for date_item in event["date"]:
+                # 复制原事件基础信息（避免修改原始数据）
+                new_event = event.copy()
+                # 移除原date字段（后续替换为start/end）
+                del new_event["date"]
+                # 处理当前日期项
+                date_str = date_item.strip()
+                # 单日期（无"至"）
+                if "至" not in date_str:
+                    new_event["start_time"] = date_str
+                    new_event["end_time"] = date_str
+                # 日期范围（有"至"）
+                else:
+                    parts = date_str.split("至")
+                    new_event["start_time"] = parts[0].strip()
+                    new_event["end_time"] = parts[1].strip() if len(parts) > 1 else parts[0].strip()
+                # 添加到结果列表
+                processed_events.append(new_event)
+        return processed_events
 
+    def sort_and_add_event_id(self,events):
+        import re
+
+        def get_start_time(text):
+            """
+            从文本中提取XX-XX-XX格式的日期（支持年-月-日，年可2位或4位）
+            匹配规则：
+            - 月：01-12，日：01-31
+            - 年：2位（如25-01-08）或4位（如2025-01-08）
+            示例：从"时间：2025-01-08 会议"中提取"2025-01-08"
+            :param text: 可能包含日期的文本字符串
+            :return: 提取到的XX-XX-XX格式日期字符串；若无则返回空字符串
+            """
+            # 正则匹配XX-XX-XX：年（2或4位数字）-月（2位）-日（2位）
+            date_pattern = r"\b(\d{2}|\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])\b"
+            match = re.search(date_pattern, text)
+            return match.group(0) if match else ""
+        """
+        按start_time（"YYYY-MM-DD"格式）升序排序，为每个事件添加event_id
+        :param events: 经split_and_extract_events处理后的事件列表
+        :return: 带event_id的排序后事件列表
+        """
+        # "YYYY-MM-DD"格式可直接按字符串排序（无需转datetime），效率高且结果准确
+        sorted_events = sorted(events, key=lambda x: get_start_time(x["start_time"]))
+
+        # 分配event_id（从1开始递增）
+        for idx, event in enumerate(sorted_events, start=1):
+            event["event_id"] = idx
+
+        return sorted_events
+    def filter_events_by_date(self,processed_events, target_date):
+        """
+        从拆分后的事件列表中，抽取时间范围包含目标日期的事件
+        :param processed_events: 经split_and_convert_events处理后的事件列表
+        :param target_date: 目标日期，格式为"YYYY-MM-DD"
+        :return: 符合条件的事件列表
+        """
+        try:
+            target = datetime.strptime(target_date, "%Y-%m-%d")
+        except ValueError:
+            raise ValueError("目标日期格式错误，请使用'YYYY-MM-DD'")
+
+        filtered = []
+        for event in processed_events:
+            start = datetime.strptime(event["start_time"], "%Y-%m-%d")
+            end = datetime.strptime(event["end_time"], "%Y-%m-%d")
+            if start <= target <= end:
+                filtered.append(event)
+        return filtered
+
+    def get_events_by_month(self,events, target_year, target_month):
+        def extract_date(date_str):
+            """从start_time/end_time中提取YYYY-MM-DD格式日期（兼容含文本描述的情况）"""
+            # 正则匹配YYYY-MM-DD格式（优先提取完整日期）
+            pattern = r"\b20\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])\b"
+            match = re.search(pattern, date_str)
+            if match:
+                return match.group(0)
+            # 若未找到完整日期，返回空（后续视为单日期事件处理）
+            return ""
+        """
+        提取与目标月份（target_year年target_month月）有时间重叠的所有事件
+        :param events: 事件列表（含start_time和end_time字段）
+        :param target_year: 目标年份（如2025）
+        :param target_month: 目标月份（如1表示1月，6表示6月）
+        :return: 符合条件的事件列表
+        """
+        # 计算目标月份的第一天和最后一天（用于判断时间重叠）
+        # 月份最后一天：若为12月则次年1月1日减1天，否则当月+1月的1日减1天
+        if target_month == 12:
+            next_month_first_day = datetime(target_year + 1, 1, 1)
+        else:
+            next_month_first_day = datetime(target_year, target_month + 1, 1)
+        target_month_start = datetime(target_year, target_month, 1)
+        target_month_end = next_month_first_day - timedelta(days=1)
+
+        result = []
+        for event in events:
+            # 提取事件的起止日期（处理含文本的情况）
+            start_str = extract_date(event["start_time"])
+            end_str = extract_date(event["end_time"])
+
+            # 处理无法提取日期的情况（默认视为单日期事件，取文本中的年份和月份）
+            if not start_str:
+                start_str = event["start_time"]  # 保留原始文本用于提取年份
+            if not end_str:
+                end_str = start_str  # 无结束日期则默认与开始日期相同
+
+            # 尝试解析事件的起止日期（兼容纯文本，提取年份和月份）
+            try:
+                # 优先按YYYY-MM-DD解析
+                event_start = datetime.strptime(start_str, "%Y-%m-%d")
+                event_end = datetime.strptime(end_str, "%Y-%m-%d")
+            except:
+                # 若解析失败，提取年份和月份（默认当月1日至当月最后一天）
+                # 从文本中提取年份（优先20xx）
+                year_match = re.search(r"20\d{2}", start_str)
+                event_year = int(year_match.group()) if year_match else target_year
+                # 从文本中提取月份（若未找到则默认事件在目标月份）
+                month_match = re.search(r"(0?[1-9]|1[0-2])", start_str)
+                event_month = int(month_match.group()) if month_match else target_month
+                # 构造事件的起止日期（当月1日至当月最后一天）
+                event_start = datetime(event_year, event_month, 1)
+                if event_month == 12:
+                    event_end = datetime(event_year, 12, 31)
+                else:
+                    event_end = datetime(event_year, event_month + 1, 1) - timedelta(days=1)
+
+            # 判断事件时间范围与目标月份是否有重叠
+            # 重叠条件：事件开始时间 <= 目标月份结束 且 事件结束时间 >= 目标月份开始
+            if event_start <= target_month_end and event_end >= target_month_start:
+                result.append(event)
+
+        return result
+
+    def get_month_calendar(self,year, month):
+        """
+        生成指定年月的每日星期几和节日对照表
+        :param year: 年份（如2025）
+        :param month: 月份（如1-12）
+        :return: 列表，每个元素为{"date": "YYYY-MM-DD", "weekday": "星期X", "holiday": "节日名称或空"}
+        """
+        # 初始化中国节假日数据集
+        cn_holidays = holidays.China(years=year)
+
+        # 获取当月第一天和最后一天
+        first_day = datetime(year, month, 1)
+        # 计算当月最后一天（下个月第一天减1天）
+        if month == 12:
+            next_month_first = datetime(year + 1, 1, 1)
+        else:
+            next_month_first = datetime(year, month + 1, 1)
+        last_day = (next_month_first - timedelta(days=1)).day
+
+        calendar = []
+        for day in range(1, last_day + 1):
+            current_date = datetime(year, month, day)
+            date_str = current_date.strftime("%Y-%m-%d")
+
+            # 转换星期几（0=周一，6=周日 → 调整为"星期一"至"星期日"）
+            weekday_map = {0: "星期一", 1: "星期二", 2: "星期三", 3: "星期四",
+                           4: "星期五", 5: "星期六", 6: "星期日"}
+            weekday = weekday_map[current_date.weekday()]
+
+            # 获取节日（优先法定节假日，再传统节日）
+            holiday = cn_holidays.get(current_date, "")
+
+            calendar.append({
+                "date": date_str,
+                "weekday": weekday,
+                "holiday": holiday
+            })
+
+        return calendar
+
+    def event_decomposer(self,events):
+        def split_array(arr, chunk_size=30):
+            # 列表推导式：从0开始，每30个元素取一次
+            return [arr[i:i + chunk_size] for i in range(0, len(arr), chunk_size)]
+        t = 0
+        ans = []
+        for i in split_array(events,5):
+            prompt = template_event_decomposer.format(content=i, persona=self.persona)
+            res = self.llm_call_s(prompt,1)
+            print(res)
+            prompt = template_process_3.format()
+            res = self.llm_call_sr(prompt)
+            print(res)
+            data = json.loads(res)
+            ans += data
+            with open("event_decompose.json", "w", encoding="utf-8") as f:
+                json.dump(ans, f, ensure_ascii=False, indent=2)
+
+    def event_schedule(self,data,month):
+        prompt = template_process_4.format(content=data, persona='''
+1.信息提炼：
+徐静，28岁女性，上海浦东新区籍贯，高中学历，未婚。生活习惯规律，偏好上海小笼包等本地美食，每周三次体育锻炼（瑜伽/健身），爱好逛街购物、听音乐、羽毛球及收藏纪念币。社交圈以家庭、高中同学、同事为主，每月1-2次聚餐/电影。职业为家族服装零售企业销售主管，年收入10万元，拥有房产汽车，消费谨慎。与父母同住，家庭关系紧密。ESFJ人格，重视家庭和谐，目标开设分店。重要日期包括7月10日生日、6月15日入职纪念日、8月20日晋升日。
+
+2.深度分析：
+2.1：居住情况：
+同住家庭成员：父亲徐明（58岁，企业主）、母亲李芳（56岁，财务主管）。住房类型为自有房产，位于上海浦东新区张杨路，偏好都市便利环境，居家活动重点在客厅（家庭聚餐）和卧室（休息）。
+2.2：工作情况：
+核心关联人物：上级-父亲徐明（企业主）；下属-陈丽、赵敏（销售员）；合作对象-孙老板（供应商）、周经理（商场经理）。工作节奏稳定，每周48小时，核心职责为店面管理与客户服务，办公模式为线下实体店，职业处于成熟期向创业过渡阶段。
+2.3：生活情况：
+常用联系人：王丽（闺蜜）、李娜（瑜伽伙伴）、孙阿姨（邻居）。生活节奏规律，工作日非工作时间以健身/瑜伽、听音乐为主；非工作日常见逛街购物、朋友聚餐、短途旅行，处于事业稳定、注重生活品质阶段。
+2.4：工作日轨迹：
+起床→晨间锻炼→通勤→工作（店面运营）→午休→工作（客户服务）→通勤→晚餐→休闲（听音乐/购物）→睡眠。
+2.5: 休息日会灵活安排自己的生活。
+        ''',calendar=self.get_month_calendar(2025,month))
+        res = self.llm_call_sr(prompt,1)
+        print(res)
+        data = json.loads(res)
+        return data
+
+    def merge_events_events(self,events_data):
+        """
+        处理事件数据，保留event_id小于500且首次出现的事件
+
+        参数:
+            events_data (list): 原始事件列表，每个元素为包含event_id的字典
+
+        返回:
+            list: 处理后的事件列表（去重且event_id < 500）
+        """
+        seen_ids = set()  # 记录已出现的event_id
+        processed_events = []
+
+        for event in events_data:
+            # 提取event_id，若不存在则跳过（容错处理）
+            event_id = event.get("event_id")
+            if event_id is None:
+                continue
+
+            # 筛选条件：event_id < 500 且 未出现过
+            if event_id < 500 and event_id not in seen_ids:
+                seen_ids.add(event_id)
+                processed_events.append(event)
+
+        return processed_events
+
+    def main(self,data,file):
+        data = self.split_and_convert_events(data)
+        data = self.sort_and_add_event_id(data)
+        res = []
+        for i in range(1,13):
+            rest = scheduler.event_schedule(scheduler.get_events_by_month(data,2025,i),i)
+            res+=rest
+            with open(file+"event.json", "w", encoding="utf-8") as f:
+                json.dump(res, f, ensure_ascii=False, indent=2)
+        res = read_json_file(file+"event.json")
+        res = scheduler.merge_events_events(res)
+        res = scheduler.split_and_convert_events(res)
+        res = scheduler.sort_and_add_event_id(res)
+        #分解事件
+        scheduler.event_decomposer(res)
 # 使用示例
 if __name__ == "__main__":
     # 创建调度器实例
     scheduler = Scheduler()
-    json_data1 = read_json_file("../data_event/event1.json")
-    json_data2 = read_json_file("../data_event/event2.json")
-    json_data3 = read_json_file("../data_event/event3.json")
-    #从JSON加载日程
-    scheduler.load_from_json(json_data1,json_data2,json_data3)
-    print("初始日程:")
-    for date, events in scheduler.schedule.items():
-            print(f"{date}: {events}")
-    #scheduler.events_refine(1)
-    for i in range(1,13):
-        print("初始日程:")
-        for date, events in scheduler.extract_events_by_month(i)[0].items():
-            print(f"{date}: {events}")
-        scheduler.event_gen(i)
-        print(scheduler.final_schedule)
-
-        with open("../data_event/event_final_all.json", "w", encoding="utf-8") as json_f:
-            json.dump(scheduler.final_schedule, json_f, ensure_ascii=False, indent=4)
-        print("所有数据处理完成，JSON文件已生成")
+    json_data = read_json_file('event_final.json')
+    print(len(json_data))
+    scheduler.event_decomposer(json_data)
 
 
 
 
 
 
-
-
-
-
-
-
-
-    # for i in range(1, 13):
-    #     scheduler.events_refine(i)
-    #     print(scheduler.refine_schedule)
-    #     with open("../data_event/event_refine.json", "w", encoding="utf-8") as json_f:
-    #         json.dump(scheduler.refine_schedule, json_f, ensure_ascii=False, indent=4)
-    #     print("所有数据处理完成，JSON文件已生成")
 
 
 

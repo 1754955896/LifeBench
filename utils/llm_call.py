@@ -1,4 +1,5 @@
 # Please install OpenAI SDK first: `pip3 install openai`
+import copy
 
 from openai import OpenAI
 
@@ -7,9 +8,10 @@ messages = [{"role": "system", "content": "你是一个人物分析师、故事�
 
 def llm_call(prompt,context="你是一个人物分析师、故事创作者、数据补全与清洗专家。",record=0):
     global messages
-    print(messages)
+
     messages[0]["content"]=context
     messages.append({"role": "user", "content": prompt})
+    #print(messages)
     response = client.chat.completions.create(
         model="deepseek-chat",
         messages=messages,
@@ -22,10 +24,22 @@ def llm_call(prompt,context="你是一个人物分析师、故事创作者、数
         messages=[{"role": "system", "content": context}]
     return response.choices[0].message.content
 
+def llm_call_skip(prompt,context="你是一个人物分析师、故事创作者、数据补全与清洗专家。"):
+    global messages
+    # print(messages)
+    copy_messages = copy.deepcopy(messages)
+    copy_messages[0]["content"] = context
+    copy_messages.append({"role": "user", "content": prompt})
+    response = client.chat.completions.create(
+        model="deepseek-chat",
+        messages=copy_messages,
+        stream=False
+    )
+    return response.choices[0].message.content
 
 def llm_call_reason(prompt,context="你是一个人物分析师、故事创作者、数据补全与清洗专家。",record=0):
     global messages
-    print(messages)
+    #print(messages)
     messages[0]["content"] = context
     messages.append({"role": "user", "content": prompt})
     response = client.chat.completions.create(
@@ -33,7 +47,7 @@ def llm_call_reason(prompt,context="你是一个人物分析师、故事创作�
         messages=messages,
         stream=False
     )
-    print(response.choices[0].message.reasoning_content)
+    #print(response.choices[0].message.reasoning_content)
     if record == 1:
         messages.append({'role': 'assistant', 'content': response.choices[0].message.content})
     if record == 0:

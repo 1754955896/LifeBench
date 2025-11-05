@@ -68,6 +68,6 @@ if __name__ == "__main__":
     # 转换并打印结果
     converted = convert_schedule(schedule_json)
     print(json.dumps(converted, ensure_ascii=False, indent=4))
-    with open("../data_event/event_fenghaoran.json", "w", encoding="utf-8") as json_f:
+    with open("../data_event/history/event_fenghaoran.json", "w", encoding="utf-8") as json_f:
         json.dump(converted, json_f, ensure_ascii=False, indent=4)
     print("所有数据处理完成，JSON文件已生成")

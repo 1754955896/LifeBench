@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import ast
 import json
 import re
@@ -9,40 +8,15 @@ from pyarrow import string
 from utils.IO import *
 from datetime import datetime, timedelta
 from utils.llm_call import *
-from utils.maptool import *
-from event.templates import *
 from event.memory import *
 from typing import List, Dict, Optional
 class Mind:
     def __init__(self):
-        self.calendar = {}  # 存储日程数据，格式如{"2025-01-01":["event1","event2"],...}
         self.events = []
         self.persona = ""
         self.persona_withoutrl = ""
-        self.mem_moudle = PersonalMemoryManager()
         self.context = ""
-        self.cognition = ""#主要存储对自我的认知，包括画像信息。
-        self.long_memory = ""#主要存储对近期事件感知，印象深刻印象感知以及长期主要事件感知，近期想法，并推理思考（动机），当深化到一定程度可以加入自我感知。
-        self.short_memory = ""#主要存储近期所有详细事件和相关检索事件。
-        self.reflection = ""#主要存储对现在和未来的思考
-        self.thought = ""#记录个人的感受，想法。包括情绪，想法，需求。以及思考过程中的打算。
         self.atomic_events : Optional[List[Dict]] = None
-        self.maptools = MapMaintenanceTool("e8f87eef67cfe6f83e68e7a65b9b848b")
-        self.env = ""
-
-    def save_to_json(self):
-        data = {}
-        data["persona"] =  self.persona
-        data["context"] = self.context
-        data["cognition"] = self.cognition
-        data["long_memory"] = self.long_memory
-        data["short_memory"] = self.short_memory
-        data["reflection"] = self.reflection
-        data["thought"] = self.thought
-        data['env'] = self.env
-        with open("record.json", "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-
 
     def _get_bottom_level_events(self) -> List[Dict]:
         """
@@ -179,593 +153,253 @@ class Mind:
                     break # 避免同一事件因多个日期重复加入
 
         return matched
-    def load_from_json(self,event,persona,record=1):
+    def load_from_json(self,event,persona):
 
             self.persona = persona
             self.events = event
-            #生成context和自我认知
-            self.cognition = '''
-            我叫徐静，28 岁，1993 年 7 月 10 日出生在上海浦东，如今仍住在浦东张杨路 123 号，和父母同住，目前未婚。作为汉族人，我高中毕业后就进入家族经营的明芳服饰工作，2012 年 6 月 15 日是我第一份工作的入职日，从基层销售员一步步做到 2020 年 8 月 20 日晋升为销售主管，现在在浦东世纪大道 88 号的店面上班，每周工作 48 小时，负责店面管理、客户服务和团队协调，同事里和陈丽、赵敏搭档最默契，也常与供应商孙老板、商场周经理对接业务，工作稳定且和家庭事业深度绑定，未来还想拥有自己的服装店。我家经济状况还算稳定，我年收入约 10 万元，有一处房产和家用汽车，没做股票基金这类投资，消费偏谨慎，更看重基本生活保障。父母都在家族企业做事，父亲徐明是企业主，半退休后仍每周到店指导，我们每周至少三次家庭聚餐；母亲李芳是财务主管，每天会给我准备午餐便当，母女俩常一起逛街选新款；哥哥徐强在杭州做电商运营，每月回上海探亲，还会帮我出线上销售的主意。我身高 158cm、体重 62.5kg，BMI25.04，整体健康状况良好，没有慢性病，有家庭医生吴明远，不定期做体检，每周会跟着郑教练练三次健身，还会去周老师的瑜伽工作室上课，和瑜伽伙伴李娜课后常一起喝下午茶，高中的时候喜欢上打羽毛，偶尔和赵小美一起打。日常生活里我很依赖互联网，爱用社交和购物 APP，休闲时喜欢逛街购物、在家听流行音乐、打羽毛球，还有个收藏纪念币的爱好，北京的藏友王明远会和我偶尔交流藏品；最爱吃上海小笼包、抹茶拿铁和草莓蛋糕，每月会和上海的高中闺蜜王丽逛一次街、喝下午茶，和杭州的闺蜜张婷每月视频聊天，每年还会安排一两次短途旅行探亲或度假。作为 ESFJ 人格，我性格热情也负责任，在生活上关心家庭，在工作中擅长和客户、同事沟通，生活里常和高中同学赵小美、钱多多保持联系，也会跟杭州的同行李雪梅交流行业动态，连杭州的熟客张总每季度来上海出差都会到店里看看，现在的生活平淡却充实，既希望能实现开分店的目标。
-            '''
-            self.context = "你是一位 28 岁上海浦东未婚女徐静，高中学历，健康偏胖有房有车，服饰销售主管，ESFJ。"
-            self.long_memory = ""
-            self.short_memory = ""
-            if record==1:
-                d = read_json_file('record.json')
-                self.long_memory = d['long_memory']
-                self.short_memory = d['short_memory']
-                self.thought = d['thought']
-                self.env = d['env']
             del persona["relation"]
             self.persona_withoutrl = persona
-
-
             return False
 
-    def get_date_string(self,date_str, country="CN"):
-        """
-        生成包含日期、周几和节日（如有）的字符串
-        :param date_str: 公历日期字符串，格式"YYYY-MM-DD"
-        :param country: 国家/地区代码（默认中国"CN"）
-        :return: 格式化字符串，例："2025-10-01，星期三，国庆节" 或 "2025-05-15，星期四"
-        """
+
+
+phone_event_MSM_template = '''
+请基于用户提供的事件列表和联系人列表和个人画像，分析事件列表中可能产生的手机短信类操作事件，并生成结构化的 “手机事件（Phone Event MSM）”。生成需严格遵循以下要求：
+一、Phone Event MSM 字段规则
+需包含且仅包含以下 6 个字段，字段内容需与原始事件、联系人信息强关联：
+来源事件 ID（event_id）：填写原始事件列表中对应事件的唯一标识字符串，需直接复用，不可自定义。
+短信内容（message_content）：需符合实际场景逻辑，如：
+个人联系人短信：贴近日常沟通语气（例：“明天的会议提前到 9 点，记得带资料～”）；
+机构 / APP / 运营商短信：包含固定格式（例：【XX 银行】您尾号 1234 的卡于 10:00 支出 500 元，余额 12345 元）；
+无明确内容时：基于事件场景合理推测（例：事件为 “预约医院挂号”，可推测短信为【XX 医院】您已成功预约 10 月 5 日内科门诊，就诊号 005，请提前 30 分钟到院）。
+联系人姓名（contact_name）：优先使用联系人列表中已有的姓名；无对应联系人时，填写机构 / APP / 运营商名称（例：“中国移动”“支付宝”）。
+联系人电话号码（contact_phone_number）：优先使用联系人列表中对应的号码；机构类短信可填写常见官方号段（例：1069XXXXXXX）或标注 “官方专用号”（若无法推测具体号码）。
+时间戳（timestamp）：需与原始事件的发生时间一致或相近，格式强制为 “YYYY-MM-DD HH:MM:SS”，不可省略或修改格式。
+收发类型（message_type）：仅可填写 “发送” 或 “接收”；用户主动发起的为 “发送”，他人 / 机构推送的为 “接收”。
+二、生成核心原则
+仅保留与 “短信操作” 直接相关的事件，无短信交互的事件需排除。
+原始信息不明确时（如无短信内容、无联系人电话），需基于事件场景（如 “快递取件”“订单提醒”）进行合理推测，推测内容需符合常识。可合理地基于画像推测，增加事件场景之外的短信，如广告、提醒、交流回复，充实事件描述没涉及的生活细节。同时以一定概率生成短信的交流（如回复对方或被回复）
+需关联联系人列表：若事件中的对象在联系人列表中存在，需直接使用列表中的姓名和电话；若为机构（如银行、运营商），则按实际场景补充名称和常见号码。
+三、输出格式要求
+需以 JSON 数组格式返回，示例如下（需替换为实际分析结果）：[{{"event_id": "evt_001","message_content": "【顺丰速运】您的快递（运单号 SF123456789）已到 XX 驿站，取件码 1234，24 小时内取件","contact_name": "顺丰速运","contact_phone_number": "10690000000","timestamp": "2023-10-01 09:15:00","message_type": "接收"}},{{"event_id": "evt_002","message_content": "我今天临时有事，明天的聚餐改到周日晚上 6 点可以吗？","contact_name": "李四","contact_phone_number": "+8613887654321","timestamp": "2023-10-01 14:20:00","message_type": "发送"}}]
+请基于用户提供的事件列表：{event}和联系人列表：{contacts}具体内容，按上述要求生成 Phone Event MSM。
+个人画像{persona}
+'''
+
+phone_event_Callrecord_template = '''
+请基于用户提供的事件列表、联系人列表和个人画像，分析事件列表中可能产生的手机通信类操作事件（包含通话和短信），生成结构化的 “手机通信事件（Phone Communication Events）”。生成需严格遵循以下要求：
+一、核心规则：避免重复冲突
+同一原始事件（同一 event_id）仅可生成通话或短信中的一种通信记录，不可同时生成两种，确保事件交互方式唯一。
+通信方式概率分布：根据事件场景合理性分配（例：紧急事项更可能通话，通知类更可能短信；日常沟通类事件按 3:7 概率随机生成通话 / 短信）。
+可基于同一事件的延伸场景生成配套交互（例：用户先发短信咨询（事件 A），对方回电解答（可作为事件 A 的关联补充，复用 event_id 并标注 “关联交互”）），但需保证主事件仅一种核心通信方式。
+二、字段规则（通话 / 短信分类型定义）
+（一）通话类事件（Phone Call）
+包含且仅包含以下 6 个字段：
+来源事件 ID（event_id）：复用原始事件唯一标识，关联补充交互需标注 “原 ID+_related”（例：“evt001_related”）。
+电话号码（phoneNumber）：优先使用联系人列表号码；机构类可填 400/010 等官方号段或 “官方服务号”。
+联系人姓名（contactName）：优先用联系人列表姓名；无对应联系人时填机构名称（例：“京东客服”）。
+通话开始时间（start_time）：与原始事件时间一致或相近，格式 “YYYY-MM-DD HH:MM:SS”。
+通话结束时间（end_time）：基于场景设定合理时长（日常 1-5 分钟，业务 3-10 分钟），晚于开始时间，格式同上。
+通话方向（direction）：0 代表呼入（他人拨打），1 代表呼出（用户拨打）。
+（二）短信类事件（Phone SMS）
+包含且仅包含以下 6 个字段：
+来源事件 ID（event_id）：复用原始事件唯一标识，关联补充交互需标注 “原 ID+_related”（例：“evt002_related”）。
+短信内容（message_content）：个人联系人贴近日常语气；机构类含固定格式（例：【XX 银行】...）；无明确内容时基于场景推测。
+联系人姓名（contactName）：优先用联系人列表姓名；机构类填官方名称（例：“中国移动”）。
+联系人电话号码（contact_phone_number）：优先用联系人列表号码；机构类可填 1069 等号段或 “官方专用号”。
+时间戳（timestamp）：与原始事件时间一致或相近，格式 “YYYY-MM-DD HH:MM:SS”。
+收发类型（message_type）：“发送”（用户主动）或 “接收”（他人 / 机构推送）。
+三、生成原则
+仅保留与 “通话” 或 “短信” 直接相关的事件，无通信交互的事件需排除。
+原始信息不明确时，基于事件场景（如 “快递咨询”“预约确认”）合理推测，符合常识；可结合个人画像推理更多场景，补充更多生活细节类通信（如家人问候、朋友事项沟通，广告，提醒等）。
+必须关联联系人列表：事件对象在列表中时，直接使用姓名和电话；机构类按场景补充名称和常见号码。
+关联交互生成逻辑：同一事件主通信方式生成后，可按 30% 概率生成反向交互（如回复对方，或被对方回复），但需保证时间线连贯（关联交互时间晚于主事件）。
+四、输出格式要求
+以 JSON 数组格式返回，同时包含通话和短信事件，仅输出JSON格式内容，直接以[]作为开头结尾，不添加任何额外文本、注释或代码块标记。不要输出```json等无关字段，示例如下：[{{"type": "call","event_id": "evt001","phoneNumber": "+8613912345678","contactName": "张三","start_time": "2023-10-01 09:30:00","end_time": "2023-10-01 09:35:20","direction": 1}},{{"type": "sms","event_id": "evt002","message_content": "【美团外卖】您的订单 #12345 已接单，预计 30 分钟送达","contactName": "美团外卖","contact_phone_number": "10690000123","timestamp": "2023-10-01 12:10:15","message_type": "接收"}},{{"type": "call","event_id": "evt001_related","phoneNumber": "+8613912345678","contactName": "张三","start_time": "2023-10-01 10:05:10","end_time": "2023-10-01 10:08:33","direction": 0}}]
+请基于用户提供的事件列表：{event}、联系人列表：{contacts} 和个人画像 {persona}，按上述要求生成手机通信事件。
+'''
+
+phone_event_Gallery_template = '''
+请基于用户提供的事件列表、联系人列表和个人画像，分析事件列表中可能产生图片 / 拍照行为的场景，生成结构化的 “手机图片 / 拍照数据（Phone Photo Data）”。生成需严格遵循以下要求：
+一、核心规则：贴合场景与真实行为
+仅提取或生成与 “图片拍摄” 直接相关的记录，无拍照行为的事件（如纯文字沟通、后台操作）需排除。
+拍照场景需符合事件逻辑，例如文化展览事件可生成展品 / 互动拍照记录，户外活动可生成场景 / 人物拍照记录，避免无关联的拍照数据。
+需严格基于事件生成。
+二、字段规则（严格匹配示例格式）
+需包含且仅包含以下字段，内容需与原始事件、联系人信息及场景强关联：
+来源事件 ID（event_id）：填写原始事件列表中对应事件的唯一标识字符串，直接复用，不可自定义。
+类型（type）：固定填写 “photo”，不可修改。
+图片描述（caption）：需详细描述图片内容，包含主体、动作、背景元素，符合拍照场景（例：“李华在西湖断桥边打卡，身后可见西湖湖面与游船”）。
+图片标题（title）：采用 “IMG_年月日_时分秒” 格式命名，其中 “年月日”“时分秒” 需与 “datetime” 字段一致（例：“IMG_20231001_143025”）。
+拍摄时间（datetime）：需与原始事件的发生时间一致或相近，格式强制为 “YYYY-MM-DD HH:MM:SS”，不可省略或修改格式。
+拍摄地点（location）：为嵌套对象，需包含以下子字段，内容基于事件场景合理推测或复用原始事件地点信息：
+province：省份（例：“浙江省”）
+city：城市（例：“杭州市”）
+district：区县（例：“西湖区”）
+streetName：街道名称（例：“北山街”）
+streetNumber：门牌号（无明确信息时可填 “无”）
+poi：具体地点（例：“西湖断桥景区”，需精准到场景级）
+人脸识别（faceRecognition）：列出图片中可识别的人物姓名，优先使用联系人列表中的姓名；无明确人物时可填 “无”，或标注群体（例：“游客若干”“参会人员”）。
+图片标签（imageTag）：列出 5-15 个描述图片元素的关键词，需包含主体、背景、动作、场景等维度（例：“西湖”“断桥”“打卡”“游船”“秋日”“蓝天”）。
+OCR 文本（ocrText）：提取图片中可识别的文字内容（如导视牌、海报、展品说明）；无文字时填 “无”，有文字时需准确贴合场景（例：“西湖景区导览图”“2023 秋季艺术展”）。
+三、生成原则
+信息缺失补充：原始事件无明确地点、人物时，需结合个人画像（如用户常去地、社交关系）和场景常识推测，人物为联系人列表中的家人姓名。
+标签精准性：“imageTag” 需避免泛泛关键词，需贴合具体图片包含的内容，例如拍摄展品时，标签需包含 “青花瓷展品”“文物展柜” 而非仅 “展品”。
+人脸识别合理性：仅标注事件中明确出现的人物，无具体姓名的群体标注为 “XX 若干”（例：“会议参会者若干”），不虚构无关联人物。
+四、输出格式要求
+需以 JSON 数组格式返回，仅输出JSON格式内容，直接以[]作为开头结尾，不添加任何额外文本、注释或代码块标记。不要输出```json等无关字段，示例如下（需替换为实际分析结果）：[{{"event_id": "evt_003","type": "photo","caption": "王芳在杭州西湖断桥边拍摄风景，湖面游船与远处雷峰塔清晰可见","title": "IMG_20231001_143025","datetime": "2023-10-01 14:30:25","location": {{"province": "浙江省","city": "杭州市","district": "西湖区","streetName": "北山街","streetNumber": "无","poi": "西湖断桥景区"}},"faceRecognition": ["王芳"],"imageTag": ["西湖","断桥","游船","雷峰塔","秋日","湖面","打卡","户外","风景","游客"],"ocrText": "西湖断桥 - 国家 5A 级旅游景区"}},{{"event_id": "evt_003","type": "photo","caption": "西湖景区导视牌特写，标注各景点位置与距离信息","title": "IMG_20231001_143210","datetime": "2023-10-01 14:32:10","location": {{"province": "浙江省","city": "杭州市","district": "西湖区","streetName": "北山街","streetNumber": "无","poi": "西湖断桥景区导视处"}},"faceRecognition": ["无"],"imageTag": ["导视牌","景区地图","景点标注","文字","户外标识","指示牌"],"ocrText": "西湖景区导览：断桥→白堤（800 米），断桥→孤山（1.2 公里），咨询电话：0571-87969691"}}]
+请基于用户提供的事件列表：{event} 和个人画像 {persona}，按上述要求生成手机图片 / 拍照数据。
+'''
+
+phone_event_Calendar_template = '''
+请基于用户提供的事件列表、相关事件安排列表和个人画像，分析事件中可能产生的日历日程（calendar）与笔记（note）行为，按概率生成结构化的 “手机日历与笔记数据（Phone Calendar & Note Data）”。生成需严格遵循以下要求：
+一、核心规则：概率分配与场景匹配
+概率生成逻辑：此类事件的发生频率并不高，根据事件类型合理分配生成概率，避免过度生成。
+只有需固定时间的事务（如会议、预约、活动）生成日历；需记录细节 / 待办的事务（如清单、方案、总结）；重要事务（如出行、旅游）；需记录提醒后续的事务；这类场景去以概率生成。不重要的事件无需生成，若没有重要事件，输出空数组[]。
+数据唯一性：同一事件可同时生成日历和笔记（如 “会议” 既存日历记录时间，又存笔记记录议题），但需保证两者内容不重复冲突，日历侧重时间与核心事项，笔记侧重细节与待办。
+事件背景：关于一些事件的后续安排再背景里，你在生成笔记和日程文本时需参考。
+笔记：笔记可以是总结类内容，整合很多事件生成，也可针对一个事件扩展信息生成。一般起记录作用。
+日程：一般是极重要事件，需要后续提醒，提前规划。日程一般要参考事件背景，明确未来安排。
+
+二、字段规则（分类型定义）
+（一）日历日程（Calendar）
+需包含且仅包含以下 5 个字段，内容与原始事件强关联：
+生成来源（generation_source）：复用原始事件列表中的唯一标识字符串，不可自定义。
+日程标题（title）：简洁概括日程核心内容，包含事件类型与关键对象（例：“项目组周会”“与李总客户洽谈”）。
+日程描述（description）：补充日程细节，包括来源（如 “收到邮件邀请”“同事告知”）、时间地点、参与人、核心议题、需准备物品等（例：“收到张经理微信：周三 14:00 在公司 3 楼会议室开项目复盘会，需带进度报表，参会人：我、张经理、技术组王工”）。
+开始时间（start_time）：与事件约定时间一致或相近，格式强制为 “YYYY-MM-DD HH:MM:SS”，不可省略。
+结束时间（end_time）：基于场景设定合理时长（会议 30-90 分钟，预约 1-2 小时），需晚于开始时间，格式与 start_time 一致。
+（二）笔记（Note）
+需包含且仅包含以下 4 个字段，内容侧重细节记录与待办跟踪：
+生成来源（generation_source）：复用原始事件列表中的唯一标识字符串，不可自定义。
+笔记标题（title）：包含事件主题与记录类型，体现核心用途（例：“项目复盘会待办清单”“客户需求整理与跟进计划”）。
+笔记内容（content）：采用结构化表述（分点、分段），包含具体细节，如待办事项、分工、时间节点、数据清单、补充说明等；语言需贴合日常记录习惯，可包含符号（如 “待办”“已完成”）或括号备注（例：“一、待办事项：1. 整理会议纪要（今天 18:00 前发群）；2. 对接王工要技术方案（周四前）”）。
+记录时间（datetime）：与事件发生时间一致或相近（通常为事件中或事件后 1 小时内），格式强制为 “YYYY-MM-DD HH:MM:SS”，不可省略。
+三、生成原则
+关联信息复用：优先使用联系人列表中的姓名、电话（如笔记中记录 “联系李总：138XXXX1234”）；事件中的地点、时间等信息需直接复用或合理延伸。
+细节合理性：笔记内容需符合场景逻辑，避免虚构无关信息（如 “会议笔记” 需包含议题、结论、待办，而非无关琐事）；日历描述需简洁，不堆砌冗余细节。
+画像结合：参考个人画像补充个性化内容（如用户为职场人士，笔记可侧重工作分工；用户为学生，笔记可侧重作业清单）。
+数量约束：总共输出不超过4个，优先选择重要事件。
+四、输出格式要求
+以 JSON 数组格式返回，同时包含日历和笔记数据（无符合场景的可仅返回一类），仅输出JSON格式内容，直接以[]作为开头结尾，不添加任何额外文本、注释或代码块标记。不要输出```json等无关字段，示例如下：[{{"data_type": "calendar","generation_source": "evt_004","title": "项目组周会","description": "收到项目经理邮件邀请：本周三 14:00-15:00 在公司 3 楼 302 会议室开周会，议题包括上周进度复盘、本周任务分配、客户需求调整。需带项目进度表（Excel 版），参会人：我、张经理、技术组王工、产品组刘姐。邮件标注需提前 10 分钟到场。","start_time": "2023-10-04 14:00:00","end_time": "2023-10-04 15:00:00"}},{{"data_type": "note","generation_source": "evt_004","title": "项目周会待办与分工记录","content": "一、上周进度复盘结论 \n1. 前端开发已完成 80%，剩余登录页优化（王工负责，周五前完成）\n2. 客户新增需求：需添加数据导出功能（刘姐整理需求文档，周四同步给我）\n\n 二、本周待办（本人负责）\n1. 整理周会纪要：今天 18:00 前发至项目群（抄送张经理）\n2. 对接刘姐要需求文档：周四上午 10 点前 \n3. 与测试组沟通新增功能测试计划：周五下午 \n\n 三、其他事项 \n- 下次周会时间：10 月 11 日 14:00（提前在日历标注）\n- 张经理强调：下周三前需提交本周进度预估表 \n\n 备注：王工电话 139XXXX4567，需协助时可联系；刘姐微信同手机号，优先微信沟通需求。","datetime": "2023-10-04 15:10:22"}}]
+请基于用户提供的事件列表：{event}、事件背景列表：{back} 和个人画像 {persona}，按上述要求生成手机日历与笔记数据。
+'''
+
+phone_event_Push_template = '''
+请基于用户提供的事件列表、联系人列表和个人画像，分析事件中可能触发的手机推送场景（含 APP 推送与系统提醒），结合 5 大类推送来源，生成结构化的 “手机推送数据（Phone Push Data）”。生成需严格遵循以下要求：
+一、核心规则：来源分类与概率匹配
+1. 推送来源分类（明确 APP / 模块名称）
+所有推送需对应真实且常用的 APP 或系统模块，禁止虚构，具体分类及包含项如下：
+社交类	微信、QQ	 
+工作类	腾讯会议、企业邮箱、钉钉	
+生活类	美团、淘宝、京东、银行、运营商	
+娱乐类	抖音、小红书、网易云音乐	
+个人类	基于个人画像的特色 APP	如健身类 “Keep” 的训练计划提醒、学习类 “雪球” 的行情推送、育儿类 “宝宝树” 的成长记录提醒，可合理推测生成
+系统类	系统自带模块	电量低警告、存储空间不足提示、运动健康监测等（去除系统日历推送）
+2. 生成逻辑
+事件直接关联的推送（如工作事件→工作类推送、社交互动→社交类推送）、关键节点提醒（如会议前 30 分钟→系统日历推送）。
+事件延伸服务（如活动后订外卖→生活类推送、工作间隙收到音乐推荐→娱乐类推送）。
+个性化推荐推送（如基于个人画像的健身提醒，基于画像的商品/服务推送、广告）、系统常规通知（如每日固定时段的电量提醒，需匹配事件日期）。
+二、字段规则（严格匹配格式）
+需包含且仅包含以下 4 个字段，内容与原始事件、联系人及来源分类强关联：
+生成来源（generation_source）：复用原始事件列表的唯一标识字符串，不可自定义。
+推送标题（title）：简洁概括核心内容，需包含事件关键信息（如对象、类型），符合对应 APP 风格（例：微信推送含 “群名称”，企业邮箱推送含 “发件方 + 邮件主题”）。
+推送内容（content）：贴合 APP 真实表述习惯。如邮箱信息一般是邮件格式，广告推荐类信息一般会有吸人眼球的文本。通知类信息往往简短明确。
+社交类：群聊创建标注 “XX 建立”，@消息含 “@你”，如 “产品讨论群：张姐 @你 确认需求截止时间”。
+工作类：会议推送含时间地点，邮件推送含核心事由，如 “腾讯会议：项目复盘会（14:00-15:00，3 楼会议室），会议号 123456”。
+生活类：订单推送含进度与关键信息，如 “美团外卖：订单 #12345 已送达公司前台，及时取餐～”。
+娱乐类：推荐内容含亮点，如 “抖音：你关注的‘美食小厨’更新了《红烧肉做法》视频”。
+个人类：基于画像个性化和生活，如 “Keep：今日‘30 分钟有氧训练’计划待完成，点击开始”。
+
+推送时间（datetime）：格式强制为 “YYYY-MM-DD HH:MM:SS”。
+推送来源 APP（source）：直接填写对应 APP 或系统模块名称（如 “微信”“系统日历”“Keep”），无需包名。
+三、生成原则
+信息强关联：优先复用事件中的时间、地点、联系人（如用联系人列表姓名标注 “XX 建立群聊”），不虚构与事件无关的内容。
+风格一致性：同分类推送保持统一表述（如微信推送标题简洁，无多余符号；系统推送语言正式、直接）。
+画像适配：个人类推送需完全匹配用户画像（如用户画像为 “职场妈妈”，则个人类推送优先选 “宝宝树”，而非游戏类 APP）。
+四、输出格式要求
+以 JSON 数组格式返回，仅输出JSON格式内容，直接以[]作为开头结尾，不添加任何额外文本、注释或代码块标记。不要输出```json等无关字段，示例如下：[{{"generation_source": "evt_008","title": "腾讯会议：项目复盘会提醒","content": "您预约的‘项目复盘会’将于 30 分钟后（14:00）开始，会议号：123456789，参会人：张经理、王工。请提前 5 分钟入会。","datetime": "2023-10-09 13:30:00","source": "腾讯会议"}},{{"generation_source": "evt_009","title": "美团外卖：订单取餐提醒","content": "您的外卖订单 #8765（炸鸡套餐）已送达公司前台，请及时取餐，超时可能影响口感～","datetime": "2023-10-09 12:15:20","source": "美团"}},{{"generation_source": "evt_010","title": "系统日历：周会提醒","content": "您设置的‘部门周会’将于 10 分钟后（15:00）开始，地点：2 楼 202 会议室。","datetime": "2023-10-09 14:50:00","source": "系统日历"}}]
+请基于用户提供的事件列表：{event}、联系人列表：{contacts} 和个人画像 {persona}，按上述要求生成手机推送数据。同时对比短信数据，短信数据已有的交流不要重复生成{msm}
+'''
+
+
+def get_daily_events_with_subevent(events, target_date_str):
+    """
+    仅按日级别匹配，获取起始日期在目标日期且包含子事件（subevent非空）的事件
+
+    参数:
+    events (list): 原始事件列表，每个事件为字典格式
+    target_date_str (str): 目标日期字符串，支持三种输入格式：
+                          1. "%Y-%m-%d %H:%M:%S"（如"2025-03-04 14:00:00"）
+                          2. "%Y-%m-%d %H:%M"（如"2025-03-04 14:00"）
+                          3. "%Y-%m-%d"（如"2025-03-04"）
+                          最终均按日级别（年月日）匹配
+
+    返回:
+    list: 符合条件的事件列表
+    """
+    # 存储符合条件的事件
+    result_events = []
+
+    # 步骤1：解析目标日期，提取年月日（统一转为日级别）
+    # 定义支持的输入格式，确保能解析三种类型的目标时间
+    supported_input_formats = [
+        "%Y-%m-%d %H:%M:%S",
+        "%Y-%m-%d %H:%M",
+        "%Y-%m-%d"
+    ]
+    target_date = None
+    for fmt in supported_input_formats:
         try:
-            # 解析日期
-            date_obj = datetime.strptime(date_str, "%Y-%m-%d")
-
-            # 获取星期几
-            weekday_map = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
-            weekday = weekday_map[date_obj.weekday()]
-
-            # 获取节日（多个节日用顿号分隔）
-            country_holidays = holidays.CountryHoliday(country)
-            holidays_list = []
-            if date_obj in country_holidays:
-                raw_holidays = country_holidays.get(date_obj)
-                holidays_list = raw_holidays if isinstance(raw_holidays, list) else [raw_holidays]
-            festival_str = "，".join(holidays_list) if holidays_list else ""
-
-            # 拼接结果（无节日则省略最后一个逗号）
-            parts = [date_str, weekday]
-            if festival_str:
-                parts.append(festival_str)
-            return "，".join(parts)
-
+            # 解析目标时间
+            parsed_datetime = datetime.strptime(target_date_str, fmt)
+            # 提取日级别日期（转为"YYYY-MM-DD"字符串）
+            target_date = parsed_datetime.strftime("%Y-%m-%d")
+            break
         except ValueError:
-            return "日期格式错误，请使用'YYYY-MM-DD'格式"
+            continue
 
-    def parse_date(self,date_str):
-        """解析日期字符串，返回(开始日期, 结束日期)的datetime元组"""
-        date_format = "%Y-%m-%d"
-        if "至" in date_str:
-            start_str, end_str = date_str.split("至")
-            start_date = datetime.strptime(start_str.strip(), date_format)
-            end_date = datetime.strptime(end_str.strip(), date_format)
-        else:
-            single_date = datetime.strptime(date_str.strip(), date_format)
-            start_date = single_date
-            end_date = single_date
-        return (start_date, end_date)
+    # 若目标日期解析失败，抛出异常
+    if target_date is None:
+        raise ValueError(
+            f"目标日期格式错误！仅支持以下三种格式：\n1. %Y-%m-%d %H:%M:%S（如2025-03-04 14:00:00）\n2. %Y-%m-%d %H:%M（如2025-03-04 14:00）\n3. %Y-%m-%d（如2025-03-04）")
 
-    def filter_events_by_start_range(self,events_data, start_range_str, end_range_str):
-        """
-        筛选事件开始时间在[start_range, end_range]范围内的最上层事件
-        :param events_data: 最上层事件列表
-        :param start_range_str: 筛选的开始时间（格式"YYYY-MM-DD"）
-        :param end_range_str: 筛选的结束时间（格式"YYYY-MM-DD"）
-        :return: 符合条件的事件列表
-        """
-        def extract_start_date(date_str: str) -> str:
-            """
-            从时间字符串中提取起始日期，兼容两种格式：
-            1. 时间区间（如"2025-01-01 07:30:00至2025-01-01 08:45:00"）
-            2. 单个时间（如"2025-01-01 07:30:00"或"2025-01-01"）
+    # 步骤2：遍历事件，筛选符合条件的记录
+    for event in events:
+        # 条件1：事件必须包含子事件（subevent非空列表）
+        if not event.get("subevent"):
+            continue
+        if event.get("subevent") == []:
+            continue
+        # 条件2：解析事件起始时间，判断是否与目标日期匹配（日级别）
+        date_str_list = event.get("date", [])
+        if not date_str_list:  # 无日期信息的事件跳过
+            continue
 
-            参数:
-                date_str: 输入的时间字符串（支持含"至"的区间和不含"至"的单个时间）
+        # 取第一个时间段作为事件主起始时间（默认date列表首个为核心时间）
+        main_time_range = date_str_list[0]
+        event_start_str = main_time_range.split("至")[0].strip()  # 分割"至"，取起始时间部分
 
-            返回:
-                str: 提取的起始日期，格式固定为"YYYY-MM-DD"
-
-            异常:
-                ValueError: 输入字符串不符合支持的时间格式时抛出
-            """
-            # 步骤1：分割字符串，提取起始时间部分（含"至"则取左边，不含则取全部）
-            if "至" in date_str:
-                # 分割"至"，取左侧的起始时间（如"2025-01-01 07:30:00"）
-                start_time_part = date_str.split("至")[0].strip()
-            else:
-                # 无"至"，整个字符串即为起始时间（如"2025-01-01 07:30:00"或"2025-01-01"）
-                start_time_part = date_str.strip()
-
-            # 步骤2：解析起始时间部分，提取纯日期（支持两种子格式）
-            supported_formats = [
-                "%Y-%m-%d %H:%M:%S",  # 带秒级时间的格式（如"2025-01-01 07:30:00"）
-                "%Y-%m-%d"  # 纯日期格式（如"2025-01-01"）
-            ]
-
-            for fmt in supported_formats:
-                try:
-                    # 解析时间后，按"YYYY-MM-DD"格式返回起始日期
-                    start_datetime = datetime.strptime(start_time_part, fmt)
-                    return start_datetime.strftime("%Y-%m-%d")
-                except ValueError:
-                    # 一种格式解析失败，尝试下一种
-                    continue
-
-            # 所有格式都解析失败时，抛出明确错误
-            raise ValueError(
-                f"时间格式不支持！请输入以下格式之一：\n"
-                f"1. 时间区间（如'2025-01-01 07:30:00至2025-01-01 08:45:00'）\n"
-                f"2. 单个时间（如'2025-01-01 07:30:00'或'2025-01-01'）\n"
-                f"当前输入：{date_str}"
-            )
-        date_format = "%Y-%m-%d"
-        try:
-            # 解析用户输入的时间范围
-            start_range = datetime.strptime(start_range_str, date_format)
-            end_range = datetime.strptime(end_range_str, date_format)
-        except ValueError:
-            raise ValueError("日期格式错误，请使用'YYYY-MM-DD'格式")
-
-        if start_range > end_range:
-            raise ValueError("开始时间不能晚于结束时间")
-
-        matched_events = []
-        for event in events_data:
-            event_dates = event.get("date", [])
-            for date_str in event_dates:
-                date_str = extract_start_date(date_str)
-                event_start, _ = self.parse_date(date_str)  # 只关注事件的开始时间
-                # 检查事件开始时间是否在用户指定的范围内
-                if start_range <= event_start <= end_range:
-                    matched_events.append(event)
-                    break  # 一个事件只要有一个日期项符合就保留
-        return matched_events
-
-    def get_event_by_id(self, target_event_id: str) -> List[Dict]:
-        """
-        【新增方法】递归遍历所有层级事件，提取匹配目标ID的事件
-        :param target_event_id: 目标事件ID（如"1-1"、"1-1-3"）
-        :return: 匹配ID的事件列表（理论上ID唯一时返回单个元素，兼容重复ID）
-        """
-        matched_events = []
-
-        def recursive_search(events: List[Dict]):
-            """内部递归函数：遍历事件及子事件，匹配ID"""
-            for event in events:
-                # 1. 检查当前事件的ID是否匹配
-                current_event_id = event.get("event_id")
-                if current_event_id == target_event_id:
-                    matched_events.append(event)
-                # 2. 递归遍历当前事件的子事件（即使当前ID匹配，也继续找子事件中的潜在匹配）
-                subevents = event.get("subevent", [])
-                if subevents:
-                    recursive_search(subevents)
-
-        # 从原始数据的根节点开始递归搜索
-        recursive_search(self.events)
-        return matched_events
-    def llm_call_sr(self,prompt,record=0):
-        """调用大模型的函数"""
-        res = llm_call_reason(prompt,self.context,record=record)
-        return res
-
-    def llm_call_s(self,prompt,record=0):
-        """调用大模型的函数"""
-        res = llm_call(prompt,self.context,record=record)
-        return res
-
-    def get_next_n_day(self,date_str: str,n) -> str:
-        """
-        获取字符串日期的一天后日期（格式保持一致：YYYY-MM-DD）
-        :param date_str: 输入日期字符串（格式必须为YYYY-MM-DD）
-        :return: 一天后日期的字符串（格式YYYY-MM-DD）
-        """
-        try:
-            # 1. 将字符串转换为datetime日期对象
-            date_obj = datetime.strptime(date_str, "%Y-%m-%d")
-            # 2. 加一天（timedelta(days=1)表示1天的时间间隔）
-            next_day_obj = date_obj + timedelta(days=n)
-            # 3. 将日期对象转回字符串（保持YYYY-MM-DD格式）
-            return next_day_obj.strftime("%Y-%m-%d")
-        except ValueError:
-            raise ValueError(f"日期格式错误：{date_str}，请使用YYYY-MM-DD格式（例如'2025-01-01'）")
-
-    def get_plan(self,date):#今日行动的详细信息+未来行动的粗略信息
-        res = {"今日事件":"","未来一周背景":""}
-        id_set = set()
-
-        def getdata(date):
-            data1 = {"事件序列":[],"事件背景":[]}
-            arr = self.filter_by_date(date)
-            arr1 = []
-            for item in arr:
-                id = item['event_id']
-                if id in id_set:
-                    continue
-                else:
-                    id_set.add(id)
-                    parts = id.split('-', 1)[0]
-                    e = self.get_event_by_id(parts)
-                    arr1.append(e)
-            data1["事件序列"] = arr
-            data1["事件背景"] = arr1
-            return data1
-        res["今日事件"] = getdata(date)
-        r = []
-        for event in self.filter_events_by_start_range(self.events, date, self.get_next_n_day(date, 7)):
-            # 深拷贝每个事件字典，创建独立副本
-            event_copy = copy.deepcopy(event)
-            r.append(event_copy)
-
-        # 2. 此时修改 r 中的事件，不会影响原始 self.events
-        for i in r:
-            i['subevent'] = []
-
-        # 3. 赋值给 res，完全不关联原始数据
-        res["未来一周背景"] = r
-
-        # 生成事件副本，避免修改原始数据
-        print(res)
-        return res
-
-    def delete_top_event(self,events, target_id):
-        """
-        删除最上层事件（仅删除顶级事件，不处理子事件）
-
-        :param events: 事件列表（顶层事件数组）
-        :param target_id: 要删除的事件ID
-        :return: 删除后的事件列表
-        """
-        return [event for event in events if event.get("event_id") != target_id]
-
-    def add_top_event(self,events, new_event):
-        """
-        添加新的顶层事件，若event_id为0则自动分配不冲突的ID
-
-        :param events: 原事件列表（顶层事件数组）
-        :param new_event: 待添加的事件字典
-        :return: 添加后的事件列表
-        """
-        # 复制新事件避免修改原对象
-        new_event['event_id'] = "0"
-        event_to_add = new_event.copy()
-
-        # 处理ID为0的情况
-        if event_to_add.get("event_id") in ("0", 0):
-            # 提取现有顶层事件的ID并转换为整数
-            existing_ids = []
-            for event in events:
-                try:
-                    # 尝试将ID转换为整数（兼容数字型ID）
-                    existing_ids.append(int(event.get("event_id", "")))
-                except (ValueError, TypeError):
-                    # 非数字ID不参与自动分配逻辑
-                    pass
-
-            # 计算新ID（最大ID+1，若没有则从1开始）
-            new_id = max(existing_ids) + 1 if existing_ids else 1
-            event_to_add["event_id"] = str(new_id)
-
-        # 确保subevent字段存在（默认空列表）
-        if "subevent" not in event_to_add:
-            event_to_add["subevent"] = []
-
-        # 添加到事件列表并返回
-        return events + [event_to_add]
-
-    def event_schedule(self,event,date):
-        def modify_event_data(original_data, operations):
-            """
-            根据操作序列修改原始事件数据，删除操作仅删除目标ID事件本身，保留上层结构
-            :param original_data: 原始事件数据列表
-            :param operations: 操作序列列表
-            :return: 改动后的事件数据列表
-            """
-            # 深拷贝原始数据，避免修改原数据
-            modified_data = json.loads(json.dumps(original_data))
-            for op in operations:
-                op_type = op["type"]
-                event_info = op["event"]
-                target_event_id = event_info["event_id"]
-
-                # 1. 执行删除操作：仅删除目标ID事件本身，保留上层事件结构
-                if op_type == "delete":
-                    # 递归函数：查找并删除目标事件，保留上层结构
-                    def delete_target_event(event_list, target_id):
-                        deleted = False
-                        for i in range(len(event_list)):
-                            current_event = event_list[i]
-                            # 匹配当前事件ID，直接删除该事件
-                            if current_event["event_id"] == target_id:
-                                del event_list[i]
-                                deleted = True
-                                break
-                            # 递归检查子事件，删除子事件中的目标事件
-                            if current_event.get("subevent") and len(current_event["subevent"]) > 0:
-                                deleted = delete_target_event(current_event["subevent"], target_id)
-                                if deleted:
-                                    break
-                        return deleted
-
-                    # 遍历所有顶层事件，触发递归删除
-                    for top_event in modified_data:
-                        if delete_target_event([top_event], target_event_id):
-                            break
-
-                # 2. 执行更新操作：找到目标事件并更新（支持多层级）
-                elif op_type == "update":
-                    # 递归函数：查找并更新目标事件
-                    def update_subevent(event_list, target_id, new_event):
-                        updated = False
-                        for i in range(len(event_list)):
-                            current_event = event_list[i]
-                            # 匹配当前事件ID
-                            if current_event["event_id"] == target_id:
-                                event_list[i] = new_event
-                                updated = True
-                                break
-                            # 递归检查子事件
-                            if current_event.get("subevent") and len(current_event["subevent"]) > 0:
-                                updated = update_subevent(current_event["subevent"], target_id, new_event)
-                                if updated:
-                                    break
-                        return updated
-
-                    # 遍历最上层事件，触发递归更新
-                    for top_event in modified_data:
-                        if update_subevent([top_event], target_event_id, event_info):
-                            break
-
-            return modified_data
-
-        for i in event:
-            self.events = modify_event_data(self.events,event)
-
-        self.update_bottom_level_events()
-        print("[【【【【【【【【【【【【【【【【【【更新事件】】】】】】】】】】】】】】】】】】】]")
-        return
-
-    def event_add(self,data):
-        for i in data:
-            self.events = self.add_top_event(self.events,i)
-        self.update_bottom_level_events()
-        return
-    def update_short_memory(self,dailyevent,date):
-        #插入今天事件
-        self.mem_moudle.add_memory(dailyevent)
-        #检索明天事件
-        def get_target_dates(date_str: str, date_format: str = "%Y-%m-%d") -> List[str]:
-            """
-            根据输入的字符串日期，获取「前两天日期」和「本日日期」的字符串数组（按时间升序排列）
-
-            参数:
-                date_str: 输入的日期字符串，默认格式为"YYYY-MM-DD"（如"2025-01-01"）
-                date_format: 日期字符串的格式，默认是"%Y-%m-%d"，可根据实际需求修改
-
-            返回:
-                List[str]: 按时间升序排列的日期数组，格式为[前两天日期, 本日日期]
-
-            异常:
-                ValueError: 若输入的日期字符串格式与指定格式不匹配，会抛出该异常
-            """
-            # 1. 将字符串日期转为datetime对象
+        # 解析事件起始时间（支持三种格式）
+        event_start_date = None
+        for fmt in supported_input_formats:
             try:
-                target_date = datetime.strptime(date_str, date_format)
-            except ValueError as e:
-                raise ValueError(f"日期格式错误！请确保输入符合'{date_format}'格式（如'2025-01-01'），错误信息：{str(e)}")
-
-            # 2. 计算前两天的日期（本日日期 - 2天）
-            two_days_ago = target_date - timedelta(days=2)
-            one_days_ago = target_date - timedelta(days=1)
-            three_days_ago = target_date - timedelta(days=3)
-            f = target_date - timedelta(days=4)
-            # 3. 将两个日期转回原格式的字符串
-            two_days_ago_str = two_days_ago.strftime(date_format)
-            target_date_str = target_date.strftime(date_format)
-            one_days_ago_str = one_days_ago.strftime(date_format)
-            three_days_ago_str = three_days_ago.strftime(date_format)
-            f_str = f.strftime(date_format)
-            # 4. 返回按时间升序排列的数组（前两天在前，本日在后）
-            return [target_date_str,one_days_ago_str,two_days_ago_str,three_days_ago_str,f_str]
-
-        def get_next_day(date_str: str, date_format: str = "%Y-%m-%d") -> str:
-            """
-            输入字符串日期，返回其「后一天」的日期（同格式字符串）
-
-            参数:
-                date_str: 输入日期字符串，默认格式"YYYY-MM-DD"（如"2025-02-28"）
-                date_format: 日期格式，默认"%Y-%m-%d"，可自定义（如"%Y/%m/%d"）
-
-            返回:
-                str: 后一天的日期字符串（与输入格式一致）
-
-            异常:
-                ValueError: 输入日期格式错误或日期无效（如"2025-02-30"）时抛出
-            """
-            # 1. 将字符串转为datetime对象（自动校验日期有效性）
-            try:
-                current_date = datetime.strptime(date_str, date_format)
-            except ValueError as e:
-                raise ValueError(f"日期错误！需符合'{date_format}'格式且为有效日期（如'2025-02-28'），错误：{str(e)}")
-
-            # 2. 加1天（自动处理月份/年份交替，如2025-02-28→2025-03-01、2025-12-31→2026-01-01）
-            next_day_date = current_date + timedelta(days=1)
-
-            # 3. 转回原格式字符串并返回
-            return next_day_date.strftime(date_format)
-
-        def get_cycle_dates_array(date_str: str, date_format: str = "%Y-%m-%d") -> List[str]:
-            """
-            根据输入字符串日期，返回「上个月同日、上周同星期」的日期数组（按固定顺序排列）
-
-            参数:
-                date_str: 输入日期字符串，默认格式"YYYY-MM-DD"（如"2025-03-15"）
-                date_format: 日期格式，默认"%Y-%m-%d"，可自定义（如"%Y/%m/%d"）
-
-            返回:
-                List[str]: 日期数组，顺序为 [上个月同日, 上周同星期]
-
-            异常:
-                ValueError: 输入日期格式不匹配时抛出
-            """
-            # 1. 解析输入日期
-            try:
-                current_date = datetime.strptime(date_str, date_format)
-            except ValueError as e:
-                raise ValueError(f"日期格式错误！需符合'{date_format}'（如'2025-03-15'），错误：{str(e)}")
-
-            # 2. 计算上个月同日（处理当月无同日场景）
-            def _get_last_month_same_day(date: datetime) -> datetime:
-                try:
-                    return date.replace(month=date.month - 1)
-                except ValueError:
-                    # 当月无该日期（如3月31日），返回上月最后一天
-                    return date.replace(day=1) - timedelta(days=1)
-
-            last_month_day = _get_last_month_same_day(current_date).strftime(date_format)
-
-            # 3. 计算上周同星期（固定减7天）
-            last_week_weekday = (current_date - timedelta(days=7)).strftime(date_format)
-
-            # 4. 直接返回数组（顺序：上个月同日 → 上周同星期）
-            return [last_month_day, last_week_weekday]
-        date_set = set()
-        mem = ""
-        for i in get_target_dates(date):
-            res = self.mem_moudle.search_by_date(start_time=i)
-            for j in res:
-                mem += j['events']
-                date_set.add(j['date'])
-        for i in get_cycle_dates_array(get_next_day(date)):
-            res = self.mem_moudle.search_by_date(start_time=i)
-            for j in res:
-                mem += j['events']
-                date_set.add(j['date'])
-        arr = self.filter_by_date(get_next_day(date))
-        res = ""
-        for item in arr:
-            name = item['name']
-            res += name
-        res = self.mem_moudle.search_by_topic_embedding(res,2)
-        for i in res:
-            if i['date'] in date_set:
+                parsed_event_start = datetime.strptime(event_start_str, fmt)
+                event_start_date = parsed_event_start.strftime("%Y-%m-%d")  # 转为日级别
+                break
+            except ValueError:
                 continue
-            mem += i['events']
-        self.short_memory = mem
-        return
 
-    def map(self,pt):
-        prompt = template_get_poi.format(persona = self.persona)
-        res = llm_call_skip(prompt,self.context)
-        print("poi分析-----------------------------------------------------------------------")
-        print(res)
-        data = json.loads(res)
-        pois, durations = self.maptools.process_route(
-            keywords=data['poi'],
-            cities=data['city'],
-            transports=data['transport']
-        )
-        cities = data['city']
-        transports = data['transport']
-        res = ""
-        res+="POI列表："
-        for i, (poi, city) in enumerate(zip(pois, cities)):
-            res+=f"{i + 1}. {poi['name']}（{city}）- 类型：{poi['type']} - 详细地址：{poi['address']}"
-        res+="\n各POI间通行时长（分钟）："
-        for i, (dur, transport) in enumerate(zip(durations, transports)):
-            res+=f"路段 {i + 1} {data['poi'][i]}至{data['poi'][i+1]}（{transport}）：{dur // 60 if dur else '未知'}"
-        print(res)
-        return res
+        # 若事件起始时间解析失败，打印警告并跳过
+        if event_start_date is None:
+            print(f"警告：事件{event.get('event_id')}的起始时间格式异常（{event_start_str}），跳过处理")
+            continue
 
+        # 日级别匹配：事件起始日期 == 目标日期
+        if event_start_date == target_date:
+            result_events.append(event)
 
-    def remove_json_wrapper(self,s: str) -> str:
-        """
-        去除字符串前后可能存在的```json  ```标记（包含可能的空格）
-
-        参数:
-            s: 输入字符串
-
-        返回:
-            处理后的字符串，若不存在标记则返回原字符串
-        """
-        # 正则模式：匹配开头的```json及可能的空格，和结尾的```及可能的空格
-        pattern = r'^\s*```json\s*\n?|\s*```\s*$'
-        # 替换匹配到的内容为空字符串
-        result = re.sub(pattern, '', s, flags=re.MULTILINE)
-        return result
-
-    def daily_event_gen(self,date):
-        #基于认知、检索更新后的短期记忆、长期记忆，昨日想法，推理规划反思+信息明确+需求情感推理
-        plan = self.get_plan(date)
-        prompt = template_plan_2.format(cognition=self.cognition, memory=self.long_memory + self.short_memory,thought=self.thought,plan = plan['今日事件'],date = self.get_date_string(date) ,persona=self.persona_withoutrl)
-        res = self.llm_call_s(prompt,1)
-        print("思考-----------------------------------------------------------------------")
-        print(res)
-        tt = res
-        poidata = self.map(res)
-        prompt = template_plan_1.format(plan=plan,poi=poidata)
-        res1 = self.llm_call_s(prompt,1)
-        print("生成-----------------------------------------------------------------------")
-        print(res1)
-        #随机细节事件引入+反应
-        prompt = template_plan_3.format(memory = self.short_memory)
-        res2 = self.llm_call_s(prompt,1)
-        print("丰富-----------------------------------------------------------------------")
-        print(res2)
-        #事件生成
-        print("test-----------------------------------------------------------------------")
-        print(plan['今日事件']["事件序列"])
-        prompt = template_get_event_1.format(content = res2 ,plan=plan['今日事件']["事件序列"],thought = tt)
-        res = self.llm_call_s(prompt,0)
-        print("提取1-----------------------------------------------------------------------")
-        print(res)
-        res = self.remove_json_wrapper(res)
-        data = json.loads(res)
-        self.event_schedule(data,date)
-        prompt = template_get_event_3.format(content=res2, plan=plan['今日事件']["事件序列"],poi = poidata+"家庭住址：上海市浦东新区张杨路123号，工作地点：上海市浦东新区世纪大道88号",date = self.get_date_string(date))
-        res = self.llm_call_s(prompt,1)
-        print("提取2-----------------------------------------------------------------------")
-        print(res)
-        res = self.remove_json_wrapper(res)
-        data = json.loads(res)
-        # 事件更新
-        self.event_add(data)
-        prompt = template_get_event_2.format(date=self.get_date_string(date),plan=plan['今日事件'])
-        res = mind.llm_call_s(prompt)
-        print("提取3-----------------------------------------------------------------------")
-        print(res)
-        res = self.remove_json_wrapper(res)
-        data = json.loads(res)
-        # 事件更新
-        self.event_add(data)
-        #记忆更新(检索系统)+短期记忆更新+想法生成
-        prompt = template_reflection.format(cognition=self.cognition, memory=self.long_memory + self.short_memory,content = res2,plan = plan,date = self.get_date_string(date) )
-        res = self.llm_call_s(prompt,1)
-        print("反思-----------------------------------------------------------------------")
-        print(res)
-        res = self.remove_json_wrapper(res)
-        data=json.loads(res)
-        self.thought = data["thought"]
-        m = json.loads(res)
-        mm = [m]
-        for i in range(1,8):
-            mm+=self.mem_moudle.search_by_date(self.get_next_n_day(date,-i))
-        #总结：基于最新一天的记忆和思考想法，更新认知，长期记忆
-        prompt = template_update_cog.format(cognition=self.cognition,memory=self.long_memory,plan=plan,history=mm)
-        res = self.llm_call_s(prompt)
-        res = self.remove_json_wrapper(res)
-        data = json.loads(res)
-        self.long_memory = data['long_term_memory']
-        print("更新-----------------------------------------------------------------------")
-        print(res)
-        self.update_short_memory(m,date)
-        self.save_to_json()
-        with open("event_update.json", "w", encoding="utf-8") as f:
-            json.dump(self.events, f, ensure_ascii=False, indent=2)
-        return
-
+    return result_events
 
 def iterate_dates(start_date: str, end_date: str) -> List[str]:
     """
@@ -803,9 +437,56 @@ def iterate_dates(start_date: str, end_date: str) -> List[str]:
 
     return date_list
 
-if __name__ == "__main__":
-    mind = Mind()
-    persona = '''
+mind = Mind()
+# a = []
+# b = []
+# c = []
+# d = []
+# a = read_json_file('event_gallery.json')
+# b = read_json_file('event_push.json')
+# c = read_json_file('event_call.json')
+# d = read_json_file('event_note.json')
+def phone_gen(date):
+    global a,b,c,d
+    res = mind.filter_by_date(date)
+    # for i in res:
+    #     print(i['date'],' : ',i['description'])
+    #
+    # print(get_daily_events_with_subevent(mind.events,'2025-02-10'))
+    prompt = phone_event_Callrecord_template.format(event=res, contacts=contact, persona=mind.persona_withoutrl)
+    res = llm_call(prompt, mind.context)
+    print(res)
+    data = json.loads(res)
+    c += data
+    with open("event_call.json", "w", encoding="utf-8") as f:
+        json.dump(c, f, ensure_ascii=False, indent=2)
+    prompt = phone_event_Gallery_template.format(event=res, persona=mind.persona)
+    resx = llm_call(prompt, mind.context)
+    print(resx)
+    data = json.loads(resx)
+    a+=data
+    with open("event_gallery.json", "w", encoding="utf-8") as f:
+        json.dump(a, f, ensure_ascii=False, indent=2)
+    prompt = phone_event_Push_template.format(event=res,contacts=contact,persona=mind.persona_withoutrl,msm=resx)
+    res = llm_call(prompt, mind.context)
+    print(res)
+    data = json.loads(res)
+    b += data
+    with open("event_push.json", "w", encoding="utf-8") as f:
+        json.dump(b, f, ensure_ascii=False, indent=2)
+    prompt = phone_event_Calendar_template.format(event=res,back = get_daily_events_with_subevent(mind.events,'2025-02-10'),persona=mind.persona_withoutrl)
+    res = llm_call(prompt,mind.context)
+    print(res)
+    data =json.loads(res)
+    d += data
+    with open("event_note.json", "w", encoding="utf-8") as f:
+        json.dump(d, f, ensure_ascii=False, indent=2)
+    return
+
+
+data = read_json_file('event_update.json')
+contact = read_json_file('contact.json')
+persona = '''
      {
             "name": "徐静",
             "birth": "1993-07-10",
@@ -1504,48 +1185,13 @@ if __name__ == "__main__":
             ]
         }
     '''
-    json_data_p = json.loads(persona)
-    json_data_e = read_json_file("event_update.json")
-    mind.load_from_json(json_data_e,json_data_p,1)
-    #print(mind.get_plan('2025-01-02'))
-    #mind.save_to_json()
-    for date in iterate_dates('2025-02-25','2025-07-30'):
-        mind.daily_event_gen(date)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # start_date = datetime.strptime("2025-01-01", "%Y-%m-%d")
-    # end_date = datetime.strptime("2025-01-07", "%Y-%m-%d")
-    # current_date = start_date
-    # while current_date <= end_date:
-    #     print(current_date)
-    #     mind.AtomicEventGen(mind.get_atomiccal_in_range(current_date.strftime("%Y-%m-%d"),current_date.strftime("%Y-%m-%d")),current_date.strftime("%Y-%m-%d"))
-    #     #mind.save_json()
-    #     current_date += timedelta(days=1)
-    #     break
-    # print(mind.get_events_in_range("2025-01-13","2025-01-13"))
-    # print(mind.EventDecomposer(mind.get_events_in_range("2025-01-13","2025-01-13")))
-    #print(mind.AtomicEventGen(mind.get_calendar_in_range("2025-01-13", "2025-01-13")))
-
+mind.load_from_json(data,json.loads(persona))
+date = '2025-02-15'
+for i in mind.filter_by_date(date):
+    print(i)
+print('----------------------------------------------')
+for i in get_daily_events_with_subevent(mind.events,date):
+    print(i)
+# for i in iterate_dates('2025-01-23','2025-03-01'):
+#     phone_gen(i)\
+# 16
