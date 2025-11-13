@@ -553,6 +553,7 @@ d = []
 # c = read_json_file('event_call.json')
 # d = read_json_file('event_note.json')
 
+
 def phone_gen(date):
     global a,b,c,d
     #获取今日daily_event
