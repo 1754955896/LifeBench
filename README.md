@@ -1,8 +1,10 @@
 使用之前，现根据utils/llm_call文件修改openai api
 
+请先删除personal_memories.json 和 record.json!!!!
+
 使用流程：
 
-请先在event_gen.py、simulator.py 、phone_gen.py指定存储目录。
+请先在event_gen.py、simulator.py 、phone_gen.py指定存储目录。运行日期。
 
 然后把persona.json文件存在指定目录。
 

@@ -3,7 +3,7 @@ from utils import IO
 
 file_path = 'data/'
 persona = read_json_file(file_path+'persona.json')
-start_date = '2025-01-29'
+start_date = '2025-02-01'
 end_date = '2025-03-30'
 control = 1 #控制是否执行原子事件调整，若调整过可以跳过。（1代表完整执行，2代表中断后继续执行）
 
