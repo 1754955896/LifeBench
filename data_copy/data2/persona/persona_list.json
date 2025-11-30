@@ -1,0 +1,723 @@
+[
+  {
+    "name": "郭雨晴",
+    "birth": "1985-11-01",
+    "age": 36,
+    "nationality": "汉",
+    "home_address": {
+      "province": "重庆市",
+      "city": "重庆市",
+      "district": "渝北区",
+      "street_name": "金开大道",
+      "street_number": "123号"
+    },
+    "birth_place": {
+      "province": "四川省",
+      "city": "成都市",
+      "district": "锦江区"
+    },
+    "gender": "女",
+    "education": "大学本科（成人高等教育）",
+    "job": "出纳员",
+    "occupation": "重庆某商贸有限公司",
+    "workplace": {
+      "province": "重庆市",
+      "city": "重庆市",
+      "district": "渝北区",
+      "street_name": "金渝大道",
+      "street_number": "88号"
+    },
+    "belief": "不信仰宗教",
+    "salary": 60000.0,
+    "body": {
+      "height": 172,
+      "weight": 61.0,
+      "BMI": 20.62
+    },
+    "family": "初婚有配偶,育有1个孩子",
+    "personality": {
+      "mbti": "ISFJ",
+      "traits": [
+        "家庭导向",
+        "仁慈",
+        "自主独立"
+      ]
+    },
+    "hobbies": [
+      "种花种草（月季/多肉）",
+      "瑜伽（初级）",
+      "做泡菜（中式）",
+      "读书/报纸/杂志",
+      "与朋友聚会",
+      "户外徒步"
+    ],
+    "favorite_foods": [
+      "火锅",
+      "川菜",
+      "泡菜",
+      "水果沙拉"
+    ],
+    "memory_date": [
+      "2012-05-20 结婚纪念日",
+      "2018-09-01 孩子入学日"
+    ],
+    "aim": [
+      "2年内考取中级会计师证书",
+      "每周坚持3次瑜伽锻炼",
+      "每年带孩子外出旅行2次"
+    ],
+    "healthy_desc": "个人整体健康状况良好，自我感觉比较健康。无慢性病史，保持规律的体检习惯。运动频率为一月数次，主要以瑜伽和户外徒步为主，注重日常个人护理和健康管理。",
+    "lifestyle_desc": "生活习惯较为规律，日常主要通过互联网获取信息。休闲活动以在家听音乐、读书为主，每周数次看电视。社交活动频率适中，每月与朋友聚会一次，每年有6-10个晚上外出度假。热爱户外活动，每周进行几次户外休闲运动，但乘飞机旅行次数较少。",
+    "economic_desc": "家庭年收入约20万元（包括配偶收入），拥有1处房产和家用小汽车。投资偏好相对稳健，主要进行股票和基金投资，无其他高风险投资活动。消费习惯较为理性，注重家庭财务规划。",
+    "work_desc": "在商贸公司担任出纳员，主要负责日常资金管理、账务核对等工作。工作地点位于渝北区，通勤时间适中。工作内容以常规财务操作为主，不需要进行重体力或重脑力劳动。",
+    "experience_desc": "出生于四川成都，2004年在成都从事零售服务工作，获得第一份商业服务业经验。2014年因职业发展机会迁居重庆，并在当地通过业余时间完成成人本科会计学专业深造。职业生涯从基础服务岗位起步，通过不断学习提升专业技能，现已在财务领域稳定发展。期间结婚生子，在重庆建立家庭，生活重心逐渐转向职业发展与家庭平衡。",
+    "description": "郭雨晴是一位36岁的女性出纳员，拥有成人本科学历，目前在重庆某商贸有限公司任职。她性格温和细致，属于ISFJ人格类型，重视家庭关系，具有仁慈和独立自主的价值观。日常生活中，她喜欢种植花草、练习瑜伽和制作泡菜，注重健康管理。家庭经济状况稳定，拥有房产和汽车，投资偏好稳健。工作之余，她经常与朋友聚会，热爱户外活动，每周都会进行徒步运动。未来计划考取专业资格证书，同时兼顾家庭生活品质提升，希望在工作与生活间找到更好的平衡点。她的人生经历体现了从四川到重庆的迁徙发展，通过持续学习实现了职业转型，现在正致力于为家人创造更优质的生活环境。",
+    "relation": [
+      [
+        {
+          "name": "张明",
+          "relation": "丈夫",
+          "social_circle": "家庭圈",
+          "gender": "男",
+          "age": 38,
+          "birth_date": "1986-03-15",
+          "home_address": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "渝北区",
+            "street_name": "金开大道",
+            "street_number": "123号"
+          },
+          "birth_place": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "渝中区"
+          },
+          "personality": "ISTJ",
+          "economic_level": "小康",
+          "occupation": "销售经理",
+          "organization": "重庆某科技公司",
+          "nickname": "明明",
+          "relation_description": "张明是郭雨晴的丈夫，两人于2012年结婚。相识于朋友介绍，婚后育有一子。张明性格稳重务实，在科技公司担任销售经理，工作繁忙但注重家庭。夫妻二人共同居住在重庆渝北区，日常相处融洽，周末常一起带孩子外出游玩或在家打理花草。两人经济状况稳定，共同规划家庭财务，每月会有1-2次家庭聚餐或短途旅行。"
+        },
+        {
+          "name": "郭小宇",
+          "relation": "儿子",
+          "social_circle": "家庭圈",
+          "gender": "男",
+          "age": 8,
+          "birth_date": "2016-09-10",
+          "home_address": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "渝北区",
+            "street_name": "金开大道",
+            "street_number": "123号"
+          },
+          "birth_place": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "渝北区"
+          },
+          "personality": "ENFP",
+          "economic_level": "未成年",
+          "occupation": "学生",
+          "organization": "重庆某实验小学",
+          "nickname": "小宇",
+          "relation_description": "郭小宇是郭雨晴的儿子，目前在读小学二年级。性格活泼开朗，喜欢运动和科学实验。母子关系亲密，郭雨晴每天接送孩子上下学，周末常陪孩子参加户外活动或参观科技馆。小宇学习成绩良好，特别喜欢数学和自然课，放学后经常和妈妈一起照料家里的花草。"
+        },
+        {
+          "name": "郭建国",
+          "relation": "父亲",
+          "social_circle": "家庭圈",
+          "gender": "男",
+          "age": 68,
+          "birth_date": "1956-08-20",
+          "home_address": {
+            "province": "四川省",
+            "city": "成都市",
+            "district": "锦江区",
+            "street_name": "春熙路",
+            "street_number": "56号"
+          },
+          "birth_place": {
+            "province": "四川省",
+            "city": "成都市",
+            "district": "锦江区"
+          },
+          "personality": "ESTJ",
+          "economic_level": "小康",
+          "occupation": "退休教师",
+          "organization": "成都某中学",
+          "nickname": "老爸",
+          "relation_description": "郭建国是郭雨晴的父亲，退休前在成都某中学任教。现居住在成都老家，与女儿分隔两地但保持密切联系。父女关系融洽，郭雨晴每月会带着孩子回成都探望一次，平时每周通过视频通话2-3次。郭建国关心女儿的工作和生活，经常给予职业发展建议，特别喜欢和外孙小宇视频聊天。"
+        },
+        {
+          "name": "李秀英",
+          "relation": "母亲",
+          "social_circle": "家庭圈",
+          "gender": "女",
+          "age": 65,
+          "birth_date": "1959-12-05",
+          "home_address": {
+            "province": "四川省",
+            "city": "成都市",
+            "district": "锦江区",
+            "street_name": "春熙路",
+            "street_number": "56号"
+          },
+          "birth_place": {
+            "province": "四川省",
+            "city": "成都市",
+            "district": "武侯区"
+          },
+          "personality": "ESFJ",
+          "economic_level": "小康",
+          "occupation": "退休护士",
+          "organization": "成都某医院",
+          "nickname": "老妈",
+          "relation_description": "李秀英是郭雨晴的母亲，退休前在医院工作。现与丈夫郭建国一起居住在成都，母女关系亲密。李秀英擅长制作各种泡菜，经常通过视频指导女儿制作传统川式泡菜。母女俩每周通话3-4次，分享生活琐事和育儿经验。郭雨晴每次回成都，李秀英都会准备女儿爱吃的川菜，祖孙三代其乐融融。"
+        }
+      ],
+      [
+        {
+          "name": "张丽",
+          "relation": "闺蜜",
+          "social_circle": "发小圈",
+          "gender": "女",
+          "age": 36,
+          "birth_date": "1985-08-15",
+          "home_address": {
+            "province": "四川省",
+            "city": "成都市",
+            "district": "武侯区",
+            "street_name": "人民南路",
+            "street_number": "456号"
+          },
+          "birth_place": {
+            "province": "四川省",
+            "city": "成都市",
+            "district": "武侯区"
+          },
+          "personality": "ENFP",
+          "economic_level": "中产",
+          "occupation": "小学教师",
+          "organization": "成都市实验小学",
+          "nickname": "丽丽",
+          "relation_description": "张丽是郭雨晴的发小闺蜜，两人从小在成都一起长大。高中毕业后张丽留在成都读师范院校，现在是一名小学语文教师。虽然分隔两地，但两人每月都会视频通话2-3次，分享生活中的喜怒哀乐。每年春节张丽都会回成都老家，郭雨晴也会带孩子回成都探亲，这时两人必定会约出来吃饭逛街，重温儿时回忆。她们经常在微信上交流育儿经验和生活趣事，是彼此最信任的倾诉对象。"
+        },
+        {
+          "name": "王芳",
+          "relation": "闺蜜",
+          "social_circle": "发小圈",
+          "gender": "女",
+          "age": 37,
+          "birth_date": "1984-03-22",
+          "home_address": {
+            "province": "广东省",
+            "city": "深圳市",
+            "district": "南山区",
+            "street_name": "科技园路",
+            "street_number": "789号"
+          },
+          "birth_place": {
+            "province": "四川省",
+            "city": "成都市",
+            "district": "金牛区"
+          },
+          "personality": "ESFJ",
+          "economic_level": "中高收入",
+          "occupation": "市场营销经理",
+          "organization": "某互联网科技公司",
+          "nickname": "芳芳",
+          "relation_description": "王芳是郭雨晴的另一个发小闺蜜，三人从小就是形影不离的好朋友。大学毕业后王芳前往深圳发展，现在在一家互联网公司担任市场营销经理。虽然距离遥远，但三人保持着紧密的微信群联系，每周都会在群里分享生活点滴。王芳工作繁忙，但每年都会抽空回成都探亲，这时三人必定会聚在一起。她们经常互相寄送特产礼物，王芳会给郭雨晴寄深圳的海鲜干货，郭雨晴则会寄重庆的火锅底料。这种跨越千里的友谊已经持续了三十多年。"
+        }
+      ],
+      [
+        {
+          "name": "陈静",
+          "relation": "同事",
+          "social_circle": "工作圈",
+          "gender": "女",
+          "age": 34,
+          "birth_date": "1989-08-15",
+          "home_address": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "江北区",
+            "street_name": "观音桥步行街",
+            "street_number": "56号"
+          },
+          "birth_place": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "渝中区"
+          },
+          "personality": "ESFJ",
+          "economic_level": "小康",
+          "occupation": "会计助理",
+          "organization": "重庆某商贸有限公司",
+          "nickname": "静静",
+          "relation_description": "陈静是郭雨晴在同一家商贸公司的同事，两人因工作相识已有3年。作为财务部门的搭档，日常工作中经常需要协作处理账务核对和资金管理工作。两人相处融洽，工作之余会一起在员工食堂用餐，讨论育儿经验和生活琐事。由于同住重庆，每月会相约一次逛街购物或喝下午茶，平时主要通过微信保持联系，分享工作心得和生活趣事。"
+        },
+        {
+          "name": "刘伟",
+          "relation": "同事",
+          "social_circle": "工作圈",
+          "gender": "男",
+          "age": 38,
+          "birth_date": "1985-03-22",
+          "home_address": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "南岸区",
+            "street_name": "南滨路",
+            "street_number": "189号"
+          },
+          "birth_place": {
+            "province": "四川省",
+            "city": "绵阳市",
+            "district": "涪城区"
+          },
+          "personality": "ISTJ",
+          "economic_level": "中产",
+          "occupation": "财务主管",
+          "organization": "重庆某商贸有限公司",
+          "nickname": "伟哥",
+          "relation_description": "刘伟是公司财务部门的主管，与郭雨晴共事4年。他来自四川绵阳，大学毕业后到重庆发展。作为直接工作对接的同事，两人在日常资金管理和账务处理方面配合默契。刘伟性格严谨认真，在工作中给予郭雨晴很多专业指导。他们每周都会因工作需要开会讨论，偶尔部门团建时会一起聚餐。由于工作关系密切，平时主要通过企业微信和电话沟通业务事宜。"
+        },
+        {
+          "name": "赵经理",
+          "relation": "上司",
+          "social_circle": "工作圈",
+          "gender": "男",
+          "age": 45,
+          "birth_date": "1978-12-10",
+          "home_address": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "渝北区",
+            "street_name": "新牌坊",
+            "street_number": "66号"
+          },
+          "birth_place": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "沙坪坝区"
+          },
+          "personality": "ENTJ",
+          "economic_level": "富裕",
+          "occupation": "财务总监",
+          "organization": "重庆某商贸有限公司",
+          "nickname": "赵总",
+          "relation_description": "赵经理是公司的财务总监，郭雨晴的直属上司。他是重庆本地人，在公司工作超过10年，具有丰富的财务管理经验。作为上司，他定期听取郭雨晴的工作汇报，审核财务单据，并在职业发展上给予指导。两人保持着专业的工作关系，每月进行一次正式的工作汇报，平时通过邮件和公司内部通讯工具联系。赵经理欣赏郭雨晴的细致认真，支持她考取中级会计师证书的计划。"
+        }
+      ],
+      [
+        {
+          "name": "李娜",
+          "relation": "大学同学",
+          "social_circle": "大学同学圈",
+          "gender": "女",
+          "age": 37,
+          "birth_date": "1986-03-15",
+          "home_address": {
+            "province": "四川省",
+            "city": "成都市",
+            "district": "武侯区",
+            "street_name": "天府大道",
+            "street_number": "456号"
+          },
+          "birth_place": {
+            "province": "四川省",
+            "city": "绵阳市"
+          },
+          "personality": "ENFP",
+          "economic_level": "中产",
+          "occupation": "人力资源经理",
+          "organization": "成都某科技公司",
+          "nickname": "娜娜",
+          "relation_description": "李娜是郭雨晴大学时期的同班同学，两人在成人本科会计学专业学习期间相识。毕业后李娜回到成都发展，现在某科技公司担任人力资源经理。两人虽然分隔两地，但经常通过微信保持联系，每月会视频通话1-2次，分享工作和生活近况。每年会相约在成都或重庆见面1-2次，一起品尝火锅、逛街购物，回忆大学时光。李娜性格开朗热情，经常给郭雨晴分享育儿经验和职场心得。"
+        },
+        {
+          "name": "王强",
+          "relation": "大学同学",
+          "social_circle": "大学同学圈",
+          "gender": "男",
+          "age": 38,
+          "birth_date": "1985-08-22",
+          "home_address": {
+            "province": "广东省",
+            "city": "深圳市",
+            "district": "南山区",
+            "street_name": "科技园路",
+            "street_number": "789号"
+          },
+          "birth_place": {
+            "province": "湖北省",
+            "city": "武汉市"
+          },
+          "personality": "ISTJ",
+          "economic_level": "中产",
+          "occupation": "财务分析师",
+          "organization": "深圳某投资公司",
+          "nickname": "强子",
+          "relation_description": "王强是郭雨晴大学时期的同班同学，三人经常一起上课、完成小组作业。毕业后王强前往深圳发展，现为某投资公司财务分析师。虽然距离较远，但三人仍保持着密切联系，王强经常在专业领域给予郭雨晴建议，帮助她准备中级会计师考试。他们通过微信群保持日常交流，每季度会视频通话一次，讨论职业发展和行业动态。王强偶尔回重庆出差时会约郭雨晴和李娜聚会，三人一起回忆大学生活，交流各自城市的发展见闻。"
+        }
+      ],
+      [
+        {
+          "name": "周敏",
+          "relation": "瑜伽伙伴",
+          "social circle": "瑜伽圈",
+          "gender": "女",
+          "age": 34,
+          "birth_date": "1989-03-15",
+          "home_address": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "江北区",
+            "street_name": "观音桥步行街",
+            "street_number": "45号"
+          },
+          "birth_place": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "南岸区"
+          },
+          "personality": "ENFP",
+          "economic_level": "中等",
+          "occupation": "小学语文教师",
+          "organization": "重庆市江北区实验小学",
+          "nickname": "敏敏",
+          "relation_description": "周敏是郭雨晴在瑜伽馆认识的伙伴，两人因共同的瑜伽爱好相识已有两年。她们每周三晚上一起参加瑜伽课程，课后经常相约喝茶聊天。周敏性格开朗热情，经常分享教学趣事和生活见闻。两人都在重庆生活，除了瑜伽课程外，每月还会约一次逛街或聚餐，保持着稳定的朋友关系。"
+        },
+        {
+          "name": "吴婷",
+          "relation": "瑜伽伙伴",
+          "social circle": "瑜伽圈",
+          "gender": "女",
+          "age": 38,
+          "birth_date": "1985-08-22",
+          "home_address": {
+            "province": "四川省",
+            "city": "成都市",
+            "district": "武侯区",
+            "street_name": "人民南路",
+            "street_number": "368号"
+          },
+          "birth_place": {
+            "province": "四川省",
+            "city": "绵阳市",
+            "district": "涪城区"
+          },
+          "personality": "ISFJ",
+          "economic_level": "中等偏上",
+          "occupation": "人力资源专员",
+          "organization": "成都某科技公司",
+          "nickname": "婷婷",
+          "relation_description": "吴婷是郭雨晴在瑜伽馆认识的另一位伙伴，虽然现在在成都工作生活，但两人因共同的瑜伽爱好保持着联系。她们最初在重庆的瑜伽馆相识，后来吴婷因工作调动迁往成都。现在主要通过微信保持联系，分享瑜伽练习心得和生活近况，偶尔吴婷回重庆时会相约见面。两人性格相近，都喜欢安静的活动，经常交流种植花草的经验。"
+        }
+      ],
+      [
+        {
+          "name": "郑华",
+          "relation": "徒步伙伴",
+          "social circle": "户外徒步圈",
+          "gender": "女",
+          "age": 34,
+          "birth_date": "1989-03-15",
+          "home_address": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "江北区",
+            "street_name": "观音桥步行街",
+            "street_number": "45号"
+          },
+          "birth_place": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "南岸区"
+          },
+          "personality": "ENFP",
+          "economic_level": "中等",
+          "occupation": "小学教师",
+          "organization": "重庆市江北区实验小学",
+          "nickname": "华华",
+          "relation_description": "郑华是郭雨晴在户外徒步活动中认识的伙伴，两人因共同的徒步爱好而结缘。她们通常每两周相约一次，前往重庆周边的山区进行一日徒步活动。见面时会分享各自的生活近况，讨论徒步路线和装备心得。郑华性格开朗热情，经常组织小型徒步活动，是户外徒步圈里的活跃分子。两人虽然不在同一家公司工作，但因居住在同一城市，见面较为方便，平时也会通过微信分享徒步照片和生活趣事。"
+        },
+        {
+          "name": "孙磊",
+          "relation": "徒步伙伴",
+          "social circle": "户外徒步圈",
+          "gender": "男",
+          "age": 38,
+          "birth_date": "1985-08-22",
+          "home_address": {
+            "province": "四川省",
+            "city": "成都市",
+            "district": "武侯区",
+            "street_name": "天府大道",
+            "street_number": "366号"
+          },
+          "birth_place": {
+            "province": "四川省",
+            "city": "绵阳市",
+            "district": "涪城区"
+          },
+          "personality": "ISTP",
+          "economic_level": "中等偏上",
+          "occupation": "软件工程师",
+          "organization": "成都某科技公司",
+          "nickname": "磊哥",
+          "relation_description": "孙磊是郭雨晴通过郑华介绍认识的徒步伙伴，目前在成都工作生活。他经常利用周末时间到重庆参加徒步活动，是户外徒步圈的核心成员之一。三人经常一起规划长途徒步路线，孙磊负责路线规划和装备建议。由于分隔两地，他们主要通过微信群保持联系，每月会安排一次跨省徒步活动。见面时除了徒步，还会一起品尝当地美食，孙磊对川渝地区的徒步路线十分熟悉，经常为圈内朋友提供专业的徒步建议。"
+        }
+      ],
+      [
+        {
+          "name": "林秀英",
+          "relation": "邻居",
+          "social_circle": "邻里圈",
+          "gender": "女",
+          "age": 58,
+          "birth_date": "1966-03-15",
+          "home_address": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "渝北区",
+            "street_name": "金开大道",
+            "street_number": "125号"
+          },
+          "birth_place": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "渝中区"
+          },
+          "personality": "ESFJ",
+          "economic_level": "小康",
+          "occupation": "退休教师",
+          "organization": "重庆市渝北区实验小学",
+          "nickname": "林阿姨",
+          "relation_description": "林阿姨是郭雨晴的隔壁邻居，两人因住在同一小区而相识。林阿姨退休前是小学教师，性格热情开朗，经常在小区里帮忙照看花草。郭雨晴下班后经常与林阿姨在小区散步聊天，交流种植经验，林阿姨会分享自己种植的蔬菜给郭雨晴。两人保持着良好的邻里关系，每周会见面2-3次，偶尔一起在小区健身区锻炼，节假日还会互相赠送自制食品。"
+        }
+      ],
+      [
+        {
+          "name": "黄文彬",
+          "relation": "会计培训老师",
+          "social_circle": "学习圈",
+          "gender": "男",
+          "age": 42,
+          "birth_date": "1982-03-15",
+          "home_address": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "江北区",
+            "street_name": "观音桥步行街",
+            "street_number": "56号"
+          },
+          "birth_place": {
+            "province": "湖北省",
+            "city": "武汉市",
+            "district": "江岸区"
+          },
+          "personality": "ENTJ",
+          "economic_level": "中产",
+          "occupation": "会计培训讲师",
+          "organization": "重庆财经职业培训学校",
+          "nickname": "黄老师",
+          "relation_description": "黄文彬是郭雨晴参加会计培训课程时的授课老师，拥有丰富的财务教学经验。两人相识于2021年的中级会计师考前培训班，黄老师以其严谨的教学风格和生动的案例分析深受学员好评。现在主要通过微信偶尔联系，主要讨论会计专业问题和考试备考建议，每月联系1-2次。由于都在重庆，偶尔会在培训学校组织的校友活动中见面交流。"
+        },
+        {
+          "name": "马晓芸",
+          "relation": "会计培训同学",
+          "social_circle": "学习圈",
+          "gender": "女",
+          "age": 34,
+          "birth_date": "1990-08-22",
+          "home_address": {
+            "province": "四川省",
+            "city": "成都市",
+            "district": "武侯区",
+            "street_name": "人民南路",
+            "street_number": "288号"
+          },
+          "birth_place": {
+            "province": "四川省",
+            "city": "绵阳市",
+            "district": "涪城区"
+          },
+          "personality": "ESFJ",
+          "economic_level": "小康",
+          "occupation": "财务助理",
+          "organization": "成都某科技公司",
+          "nickname": "小马",
+          "relation_description": "马晓芸是郭雨晴在会计培训班的同学，两人在2021年的培训课程中结识。由于都从事财务工作且年龄相仿，很快成为学习伙伴，经常一起讨论课程难点和备考经验。培训结束后，马晓芸回到成都发展，现在主要通过微信保持联系，每月通话1-2次交流工作近况和考试信息。虽然分隔两地，但两人仍会相约在重要考试前后互相鼓励，偶尔马晓芸来重庆出差时也会约见面吃饭。"
+        }
+      ],
+      [
+        {
+          "name": "刘明远",
+          "relation": "家庭医生",
+          "social circle": "医疗圈",
+          "gender": "男",
+          "age": 42,
+          "birth_date": "1983-05-15",
+          "home_address": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "渝北区",
+            "street_name": "星光大道",
+            "street_number": "56号"
+          },
+          "birth_place": {
+            "province": "湖北省",
+            "city": "武汉市",
+            "district": "江岸区"
+          },
+          "personality": "ENFJ",
+          "economic_level": "中产",
+          "occupation": "全科医生",
+          "organization": "渝北区人民医院",
+          "nickname": "刘医生",
+          "relation_description": "刘明远是郭雨晴的家庭医生，两人相识于2019年郭雨晴在渝北区人民医院体检时。作为全科医生，刘明远负责郭雨晴及其家人的日常健康咨询和年度体检安排。他们通常每半年联系一次，主要通过微信进行健康咨询，偶尔在体检时见面交流。刘明远对郭雨晴的健康状况很了解，会定期提醒她进行必要的健康检查，并提供专业的健康管理建议。"
+        }
+      ],
+      [
+        {
+          "name": "王明",
+          "relation": "理财顾问",
+          "social_circle": "理财圈",
+          "gender": "男",
+          "age": 42,
+          "birth_date": "1981-08-15",
+          "home_address": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "江北区",
+            "street_name": "观音桥步行街",
+            "street_number": "66号"
+          },
+          "birth_place": {
+            "province": "湖北省",
+            "city": "武汉市",
+            "district": "江岸区"
+          },
+          "personality": "ENTJ",
+          "economic_level": "中产",
+          "occupation": "理财规划师",
+          "organization": "招商银行重庆分行",
+          "nickname": "王经理",
+          "relation_description": "王明是郭雨晴在招商银行办理业务时认识的理财顾问，已有三年合作关系。他专业能力强，擅长为客户制定稳健的理财方案。两人主要通过微信和电话沟通，每季度会面一次讨论投资情况。见面通常选择银行贵宾室或附近咖啡馆，交流内容包括基金收益评估、新理财产品介绍等。虽然同住重庆，但因工作繁忙多以线上联系为主。"
+        }
+      ],
+      [
+        {
+          "name": "陈晓梅",
+          "relation": "花友",
+          "social circle": "种植圈",
+          "gender": "女",
+          "age": 42,
+          "birth_date": "1981-03-15",
+          "home_address": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "江北区",
+            "street_name": "观音桥步行街",
+            "street_number": "45号"
+          },
+          "birth_place": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "渝中区"
+          },
+          "personality": "ESFJ",
+          "economic_level": "中产",
+          "occupation": "园艺设计师",
+          "organization": "重庆绿意园林设计公司",
+          "nickname": "陈姐",
+          "relation_description": "陈晓梅是郭雨晴在社区花友群认识的花友，两人因共同爱好种植月季而结缘。相识三年来，她们经常交流种植经验，互相分享花苗和养护技巧。每月会相约在周末逛花市或到对方家中赏花，偶尔一起参加本地园艺讲座。陈晓梅性格热情开朗，在园艺设计方面经验丰富，经常给郭雨晴提供专业的种植建议。两人除了讨论花草，也会聊聊家庭生活，关系融洽而轻松。"
+        }
+      ],
+      [
+        {
+          "name": "张秀英",
+          "relation": "泡菜制作伙伴",
+          "social_circle": "美食圈",
+          "gender": "女",
+          "age": 48,
+          "birth_date": "1976-03-15",
+          "home_address": {
+            "province": "重庆市",
+            "city": "重庆市",
+            "district": "江北区",
+            "street_name": "观音桥步行街",
+            "street_number": "45号"
+          },
+          "birth_place": {
+            "province": "四川省",
+            "city": "绵阳市"
+          },
+          "personality": "ESFJ",
+          "economic_level": "小康",
+          "occupation": "餐饮店长",
+          "organization": "川味坊餐饮连锁",
+          "nickname": "张姐",
+          "relation_description": "张秀英是郭雨晴在社区美食活动中认识的泡菜制作伙伴，两人因共同的泡菜制作爱好结缘。相识三年来，她们每月会在周末相聚一次，在张秀英的餐饮店里交流泡菜制作心得，互相品尝新研发的泡菜配方。见面时除了制作泡菜，还会一起品尝各种川菜，讨论食材搭配技巧。虽然同住重庆市，但因工作繁忙，平时主要通过微信分享制作经验和生活趣事，保持着密切的美食交流。"
+        }
+      ],
+      [
+        {
+          "name": "李建国",
+          "relation": "父亲朋友",
+          "social_circle": "长辈社交圈",
+          "gender": "男",
+          "age": 62,
+          "birth_date": "1962-03-15",
+          "home_address": {
+            "province": "四川省",
+            "city": "成都市",
+            "district": "青羊区",
+            "street_name": "人民中路",
+            "street_number": "45号"
+          },
+          "birth_place": {
+            "province": "四川省",
+            "city": "成都市"
+          },
+          "personality": "ISTJ",
+          "economic_level": "小康",
+          "occupation": "退休教师",
+          "organization": "成都市青羊区实验中学",
+          "nickname": "李叔",
+          "relation_description": "李建国是郭雨晴父亲的多年好友，两人年轻时在成都同一家工厂工作。现在虽然分隔两地，但每年春节郭雨晴都会代父亲前去拜访。李叔叔退休后喜欢养花下棋，经常通过微信与郭父分享种植经验，偶尔会寄送成都特产给郭家。"
+        },
+        {
+          "name": "赵美玲",
+          "relation": "母亲朋友",
+          "social_circle": "长辈社交圈",
+          "gender": "女",
+          "age": 58,
+          "birth_date": "1966-08-22",
+          "home_address": {
+            "province": "四川省",
+            "city": "绵阳市",
+            "district": "涪城区",
+            "street_name": "长虹大道",
+            "street_number": "89号"
+          },
+          "birth_place": {
+            "province": "四川省",
+            "city": "绵阳市"
+          },
+          "personality": "ESFJ",
+          "economic_level": "小康",
+          "occupation": "退休护士",
+          "organization": "绵阳市中心医院",
+          "nickname": "赵阿姨",
+          "relation_description": "赵美玲是郭雨晴母亲的闺蜜，两人年轻时在成都同一家医院工作相识。现在虽然生活在不同城市，但每月都会视频通话聊聊家常。赵阿姨擅长制作泡菜，经常通过微信向郭母传授制作技巧，偶尔会来重庆小住几日，与郭母一起逛菜市场、喝茶聊天。"
+        }
+      ]
+    ]
+  }
+]

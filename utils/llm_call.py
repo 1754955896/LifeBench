@@ -25,9 +25,8 @@ def llm_call(prompt,context="你是一个人物分析师、故事创作者、数
     return response.choices[0].message.content
 
 def llm_call_skip(prompt,context="你是一个人物分析师、故事创作者、数据补全与清洗专家。"):
-    global messages
     # print(messages)
-    copy_messages = copy.deepcopy(messages)
+    copy_messages = [{"role": "system", "content": "你是一个人物分析师、故事创作者、数据补全与清洗专家。"}]
     copy_messages[0]["content"] = context
     copy_messages.append({"role": "user", "content": prompt})
     response = client.chat.completions.create(

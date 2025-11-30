@@ -1,0 +1,712 @@
+{
+        "name": "潘志强",
+        "birth": "1978-02-01",
+        "age": 43,
+        "nationality": "汉",
+        "home_address": {
+            "province": "浙江省",
+            "city": "宁波市",
+            "district": "鄞州区",
+            "street_name": "中山东路",
+            "street_number": "256号"
+        },
+        "birth_place": {
+            "province": "浙江省",
+            "city": "宁波市",
+            "district": "鄞州区"
+        },
+        "gender": "男",
+        "education": "初中",
+        "job": "货车司机",
+        "occupation": "宁波顺达物流有限公司",
+        "workplace": {
+            "province": "浙江省",
+            "city": "宁波市",
+            "district": "北仑区",
+            "street_name": "港城路",
+            "street_number": "88号"
+        },
+        "belief": "不信仰宗教",
+        "salary": 80000.0,
+        "body": {
+            "height": 172,
+            "weight": 76.0,
+            "BMI": 25.69
+        },
+        "family": "初婚有配偶,育有3个孩子",
+        "personality": {
+            "mbti": "ISTJ",
+            "traits": [
+                "事业导向",
+                "自主独立"
+            ]
+        },
+        "hobbies": [
+            "听音乐（流行音乐）",
+            "参加体育锻炼（晨跑）",
+            "上网（浏览新闻）",
+            "做手工皂（业余喜欢DIY天然香皂）"
+        ],
+        "favorite_foods": [
+            "宁波汤圆",
+            "红烧带鱼",
+            "葱油拌面"
+        ],
+        "memory_date": [
+            "2002-05-01（结婚纪念日）",
+            "2010-08-15（长子出生日）"
+        ],
+        "aim": [
+            "三年内还清房贷",
+            "每年带家人短途旅行一次",
+            "五年内考取危险品运输资格证"
+        ],
+        "healthy_desc": "潘志强自认为身体状况良好，无慢性病史，保持每天晨跑的习惯，偶尔因长时间驾驶导致肩颈疲劳，但定期通过按摩缓解。",
+        "lifestyle_desc": "他生活规律，每天坚持晨跑和听音乐，主要通过互联网获取新闻信息，闲暇时喜欢与邻居串门聊天，每月会进行几次户外活动，但很少参与文化娱乐活动。",
+        "economic_desc": "家庭年收入8万元，主要依靠潘志强的工资收入，妻子负责家务和照顾孩子无固定工作，拥有1处房产和1辆家用汽车，收支平衡略有结余，不参与任何投资活动，消费习惯较为保守。",
+        "work_desc": "作为货车司机，他每周工作56小时，受雇于民营物流公司，工作内容以体力劳动为主，通勤时间短，对当前工作非常满意。",
+        "experience_desc": "潘志强出生于宁波鄞州区，初中毕业后于1996年进入当地一家工厂担任技术工人，积累了机械操作经验。2005年转行物流运输，加入宁波顺达物流有限公司，从事货车驾驶工作至今。他一直在宁波生活，2002年与妻子结婚，育有三名子女，家庭生活稳定。",
+        "description": "潘志强是一名43岁的货车司机，性格严谨务实（ISTJ），重视事业和独立，每天坚持晨跑和听音乐，生活规律。他出生于宁波，初中毕业后从事物流运输工作，与妻子育有三名子女。工作中他经常驾驶货车往返于宁波港区，闲暇时喜欢与邻居交流，偶尔带家人短途旅行。未来他希望还清房贷、考取专业资格证，并保持家庭生活的稳定幸福。",
+        "relation": [
+            [
+                {
+                    "name": "潘建国",
+                    "relation": "父亲",
+                    "social_circle": "家庭圈",
+                    "gender": "男",
+                    "age": 72,
+                    "birth_date": "1952-08-15",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区",
+                        "street_name": "中山东路",
+                        "street_number": "256号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区"
+                    },
+                    "personality": "ISTJ",
+                    "economic_level": "温饱",
+                    "occupation": "退休工人",
+                    "organization": "原宁波市鄞州机械厂",
+                    "nickname": "老潘",
+                    "relation_description": "潘建国是潘志强的父亲，现与儿子同住。父子关系亲密，每天一起晨跑时交流生活近况。潘建国退休前在机械厂工作30年，现在主要在家照看孙子孙女，周末常与儿子下象棋。"
+                },
+                {
+                    "name": "李秀英",
+                    "relation": "母亲",
+                    "social_circle": "家庭圈",
+                    "gender": "女",
+                    "age": 70,
+                    "birth_date": "1954-03-22",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区",
+                        "street_name": "中山东路",
+                        "street_number": "256号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区"
+                    },
+                    "personality": "ISFJ",
+                    "economic_level": "温饱",
+                    "occupation": "退休纺织工",
+                    "organization": "原宁波纺织厂",
+                    "nickname": "阿英",
+                    "relation_description": "李秀英是潘志强的母亲，与丈夫一起帮忙照顾三个孙子。她擅长制作宁波传统小吃，经常教儿媳张美丽做汤圆和红烧带鱼。婆媳关系融洽，每周会一起去菜市场采购。"
+                },
+                {
+                    "name": "张美丽",
+                    "relation": "妻子",
+                    "social_circle": "家庭圈",
+                    "gender": "女",
+                    "age": 42,
+                    "birth_date": "1982-09-10",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区",
+                        "street_name": "中山东路",
+                        "street_number": "256号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "江北区"
+                    },
+                    "personality": "ESFJ",
+                    "economic_level": "温饱",
+                    "occupation": "家庭主妇",
+                    "organization": "无",
+                    "nickname": "美丽",
+                    "relation_description": "张美丽是潘志强的妻子，全职照顾家庭和三个孩子。她与潘志强相识于2001年，经亲戚介绍结婚。夫妻感情稳定，她支持丈夫的工作，经常为他准备便当。周末会一起带孩子去公园玩耍。"
+                },
+                {
+                    "name": "潘明轩",
+                    "relation": "儿子",
+                    "social_circle": "家庭圈",
+                    "gender": "男",
+                    "age": 13,
+                    "birth_date": "2010-08-15",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区",
+                        "street_name": "中山东路",
+                        "street_number": "256号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区"
+                    },
+                    "personality": "ENFP",
+                    "economic_level": "无收入",
+                    "occupation": "初中生",
+                    "organization": "宁波市鄞州实验中学",
+                    "nickname": "轩轩",
+                    "relation_description": "潘明轩是潘志强的长子，现就读初中。他性格活泼，喜欢运动，经常和父亲一起晨跑。学习成绩中等，对机械感兴趣，有时会跟着父亲去物流公司看货车。"
+                },
+                {
+                    "name": "潘雨婷",
+                    "relation": "女儿",
+                    "social_circle": "家庭圈",
+                    "gender": "女",
+                    "age": 10,
+                    "birth_date": "2013-11-05",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区",
+                        "street_name": "中山东路",
+                        "street_number": "256号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区"
+                    },
+                    "personality": "INFJ",
+                    "economic_level": "无收入",
+                    "occupation": "小学生",
+                    "organization": "宁波市鄞州区中心小学",
+                    "nickname": "婷婷",
+                    "relation_description": "潘雨婷是潘志强的女儿，性格文静喜欢读书。她经常帮母亲做家务，擅长手工制作，受父亲影响也喜欢做手工皂。周末常和爷爷奶奶一起去公园散步。"
+                },
+                {
+                    "name": "潘浩然",
+                    "relation": "儿子",
+                    "social_circle": "家庭圈",
+                    "gender": "男",
+                    "age": 7,
+                    "birth_date": "2016-06-20",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区",
+                        "street_name": "中山东路",
+                        "street_number": "256号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区"
+                    },
+                    "personality": "ESTP",
+                    "economic_level": "无收入",
+                    "occupation": "学前儿童",
+                    "organization": "宁波市鄞州区幼儿园",
+                    "nickname": "浩浩",
+                    "relation_description": "潘浩然是潘志强的小儿子，活泼好动。他最喜欢坐在父亲腿上听卡车故事，经常模仿父亲开车的动作。全家出游时总是最兴奋的一个，深受爷爷奶奶宠爱。"
+                }
+            ],
+            [
+                {
+                    "name": "潘志刚",
+                    "relation": "哥哥",
+                    "social circle": "亲戚圈",
+                    "gender": "男",
+                    "age": 47,
+                    "birth_date": "1976-08-12",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "海曙区",
+                        "street_name": "解放南路",
+                        "street_number": "365号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区"
+                    },
+                    "personality": "ESTJ",
+                    "economic_level": "小康",
+                    "occupation": "物流调度主管",
+                    "organization": "宁波港务集团",
+                    "nickname": "刚哥",
+                    "relation_description": "潘志刚是潘志强的哥哥，两人从小在宁波鄞州区一起长大。潘志刚中专毕业后进入物流行业，现为宁波港务集团调度主管，经常在工作中为弟弟介绍运输业务。兄弟俩每月会家庭聚餐2-3次，周末常相约钓鱼或带孩子去公园。虽然住在不同城区，但保持每周电话联系，逢年过节都会一起回父母家团聚。"
+                },
+                {
+                    "name": "潘晓梅",
+                    "relation": "妹妹",
+                    "social circle": "亲戚圈",
+                    "gender": "女",
+                    "age": 39,
+                    "birth_date": "1984-12-03",
+                    "home_address": {
+                        "province": "上海市",
+                        "city": "上海市",
+                        "district": "浦东新区",
+                        "street_name": "张杨路",
+                        "street_number": "1888号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区"
+                    },
+                    "personality": "ESFJ",
+                    "economic_level": "中产",
+                    "occupation": "小学教师",
+                    "organization": "上海市浦东新区第二实验小学",
+                    "nickname": "梅子",
+                    "relation_description": "潘晓梅是潘志强最小的妹妹，大学考入上海师范大学后留在当地工作，现为浦东新区小学语文教师。她每年春节会带家人回宁波探亲，平时主要通过微信家庭群与哥哥们保持联系，每周视频通话1-2次。兄妹三人感情深厚，潘晓梅经常给侄子侄女寄送上海特产和教育用品，潘志强去上海送货时也会顺道探望妹妹一家。"
+                }
+            ],
+            [
+                {
+                    "name": "李伟",
+                    "relation": "发小",
+                    "social circle": "童年玩伴圈",
+                    "gender": "男",
+                    "age": 43,
+                    "birth_date": "1978-05-12",
+                    "home_address": {
+                        "province": "江苏省",
+                        "city": "苏州市",
+                        "district": "姑苏区",
+                        "street_name": "人民路",
+                        "street_number": "368号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区"
+                    },
+                    "personality": "ESFP",
+                    "economic_level": "小康",
+                    "occupation": "餐饮店长",
+                    "organization": "苏州老味道餐饮连锁",
+                    "nickname": "阿伟",
+                    "relation_description": "李伟与潘志强是鄞州区同村长大的发小，从小一起爬树摸鱼。2000年李伟随家人迁往苏州发展，现在经营一家中式快餐店。两人主要通过微信视频每月联系2-3次，聊家乡变化和子女教育。每年春节李伟回宁波探亲时会约潘志强吃海鲜大排档，最近一次见面是半年前在宁波老码头餐馆聚餐。"
+                },
+                {
+                    "name": "张强",
+                    "relation": "发小",
+                    "social circle": "童年玩伴圈",
+                    "gender": "男",
+                    "age": 44,
+                    "birth_date": "1977-11-03",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "海曙区",
+                        "street_name": "解放南路",
+                        "street_number": "159号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区"
+                    },
+                    "personality": "ISFJ",
+                    "economic_level": "中等",
+                    "occupation": "汽车维修技师",
+                    "organization": "宁波海达汽车服务中心",
+                    "nickname": "强子",
+                    "relation_description": "张强与潘志强是小学同桌，三人发小圈中性格最温和的成员。他在海曙区开了家汽车维修店，经常帮潘志强检查货车车况。两人保持每周通电话的习惯，周末常约在鄞州公园晨跑，妻子们也会带着孩子一起野餐。去年张强还帮潘志强的长子解决了升学择校问题，这种互帮互助的关系已持续三十余年。"
+                }
+            ],
+            [
+                {
+                    "name": "陈建军",
+                    "relation": "初中同学",
+                    "social circle": "初中同学圈",
+                    "gender": "男",
+                    "age": 44,
+                    "birth_date": "1979-05-12",
+                    "home_address": {
+                        "province": "广东省",
+                        "city": "深圳市",
+                        "district": "南山区",
+                        "street_name": "科技园路",
+                        "street_number": "36号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区"
+                    },
+                    "personality": "ESFJ",
+                    "economic_level": "中产",
+                    "occupation": "物流调度主管",
+                    "organization": "深圳华运国际物流有限公司",
+                    "nickname": "建军",
+                    "relation_description": "陈建军是潘志强的初中同学，两人曾在鄞州同一所中学就读。毕业后陈建军前往深圳发展，现为物流公司调度主管，与潘志强保持线上联系。他们每年春节通过微信问候，偶尔讨论行业动态，最近一次见面是五年前的同学聚会。"
+                },
+                {
+                    "name": "王海",
+                    "relation": "初中同学",
+                    "social circle": "初中同学圈",
+                    "gender": "男",
+                    "age": 43,
+                    "birth_date": "1980-08-23",
+                    "home_address": {
+                        "province": "江苏省",
+                        "city": "南京市",
+                        "district": "鼓楼区",
+                        "street_name": "中山北路",
+                        "street_number": "201号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "江北区"
+                    },
+                    "personality": "ISFP",
+                    "economic_level": "小康",
+                    "occupation": "汽车维修技师",
+                    "organization": "南京快修汽车服务连锁",
+                    "nickname": "大海",
+                    "relation_description": "王海与潘志强、陈建军均为初中同学，现定居南京从事汽车维修工作。三人通过微信群保持联系，王海偶尔会分享汽车保养知识帮助潘志强维护货车。他们平均每季度视频通话一次，上次见面是2018年陈建军组织的同学聚餐。"
+                }
+            ],
+            [
+                {
+                    "name": "刘建军",
+                    "relation": "驾校教练",
+                    "social circle": "职业培训圈",
+                    "gender": "男",
+                    "age": 58,
+                    "birth_date": "1966-05-12",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "海曙区",
+                        "street_name": "解放南路",
+                        "street_number": "365号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "镇海区"
+                    },
+                    "personality": "ESTJ",
+                    "economic_level": "小康",
+                    "occupation": "驾校教练",
+                    "organization": "宁波市机动车驾驶员培训中心",
+                    "nickname": "刘师傅",
+                    "relation_description": "刘建军是潘志强2005年考取货车驾照时的驾校教练，教学风格严谨认真，注重安全驾驶细节。两人因职业培训相识，潘志强通过他的严格指导顺利考取驾照。现在虽然不在同一单位工作，但潘志强每年春节会通过微信问候，偶尔在宁波遇到交通法规更新时会电话咨询。刘师傅目前仍在驾校任教，居住在宁波市区，两人保持着师生间的专业联系。"
+                }
+            ],
+            [
+                {
+                    "name": "赵明",
+                    "relation": "直属领导",
+                    "social circle": "工作圈",
+                    "gender": "男",
+                    "age": 48,
+                    "birth_date": "1975-08-12",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "海曙区",
+                        "street_name": "灵桥路",
+                        "street_number": "156号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "温州市"
+                    },
+                    "personality": "ESTJ",
+                    "economic_level": "中产",
+                    "occupation": "运营经理",
+                    "organization": "宁波顺达物流有限公司",
+                    "nickname": "赵经理",
+                    "relation_description": "赵明是潘志强在物流公司的直属领导，两人相识于2005年潘志强入职时。赵明做事雷厉风行，每月会组织部门例会讨论运输安排，平时通过微信工作群保持日常沟通。他们偶尔会在公司食堂一起吃午饭，讨论路线优化和客户反馈，周末偶尔会一起参加公司组织的团建活动。"
+                },
+                {
+                    "name": "周建军",
+                    "relation": "同事",
+                    "social circle": "工作圈",
+                    "gender": "男",
+                    "age": 45,
+                    "birth_date": "1978-11-03",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "镇海区",
+                        "street_name": "蛟川街道",
+                        "street_number": "89号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市"
+                    },
+                    "personality": "ISFJ",
+                    "economic_level": "小康",
+                    "occupation": "货车司机",
+                    "organization": "宁波顺达物流有限公司",
+                    "nickname": "周师傅",
+                    "relation_description": "周建军与潘志强是同车队的资深司机，两人经常搭档跑长三角地区的长途线路。他们相识十年，习惯在出车前一起检查车辆状况，途中通过对讲机互相提醒路况。休息时会在高速服务区一起吃饭，聊家庭和孩子教育话题，每月至少有两三次共同出车任务。"
+                },
+                {
+                    "name": "钱卫东",
+                    "relation": "同事",
+                    "social circle": "工作圈",
+                    "gender": "男",
+                    "age": 50,
+                    "birth_date": "1973-05-22",
+                    "home_address": {
+                        "province": "江苏省",
+                        "city": "苏州市",
+                        "district": "姑苏区",
+                        "street_name": "观前街",
+                        "street_number": "203号"
+                    },
+                    "birth_place": {
+                        "province": "安徽省",
+                        "city": "合肥市"
+                    },
+                    "personality": "ISTP",
+                    "economic_level": "小康",
+                    "occupation": "货车司机",
+                    "organization": "宁波顺达物流有限公司",
+                    "nickname": "钱师傅",
+                    "relation_description": "钱卫东是公司里经验最丰富的老师傅，虽然常驻苏州分公司，但每月会来宁波总部参加安全培训。他与潘志强因共同参加危险品运输培训而熟悉，两人经常通过电话交流特殊货物运输经验，每年春节前后会在公司年会上见面聚餐。"
+                },
+                {
+                    "name": "孙志伟",
+                    "relation": "同事",
+                    "social circle": "工作圈",
+                    "gender": "男",
+                    "age": 41,
+                    "birth_date": "1982-09-18",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "北仑区",
+                        "street_name": "新碶街道",
+                        "street_number": "367号"
+                    },
+                    "birth_place": {
+                        "province": "江西省",
+                        "city": "南昌市"
+                    },
+                    "personality": "ESFP",
+                    "economic_level": "小康",
+                    "occupation": "货车司机",
+                    "organization": "宁波顺达物流有限公司",
+                    "nickname": "孙师傅",
+                    "relation_description": "孙志伟是车队里最年轻的司机，与潘志强同住北仑区，经常拼车上下班。他们相识五年，周末偶尔会带着家人一起去东钱湖烧烤，平时在微信群里分享路况信息和育儿经验。孙志伟性格开朗，常组织同事聚餐，潘志强每月会参加一两次这样的聚会。"
+                }
+            ],
+            [
+                {
+                    "name": "李建国",
+                    "relation": "邻居",
+                    "social circle": "社区圈",
+                    "gender": "男",
+                    "age": 48,
+                    "birth_date": "1975-08-12",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区",
+                        "street_name": "中山东路",
+                        "street_number": "258号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "海曙区"
+                    },
+                    "personality": "ESFJ",
+                    "economic_level": "小康",
+                    "occupation": "水电维修工",
+                    "organization": "宁波市鄞州区物业服务中心",
+                    "nickname": "老李",
+                    "relation_description": "李建国是潘志强对门邻居，两人因经常在小区晨跑结识。作为社区水电维修工，他经常帮潘家处理家电问题，周末常在小区凉亭下棋聊天。两家孩子年龄相仿，经常一起玩耍，妻子们也会结伴买菜。每月会有2-3次共同聚餐，逢年过节互相赠送自制食品。"
+                },
+                {
+                    "name": "王建军",
+                    "relation": "邻居",
+                    "social circle": "社区圈",
+                    "gender": "男",
+                    "age": 51,
+                    "birth_date": "1972-03-25",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区",
+                        "street_name": "中山东路",
+                        "street_number": "254号"
+                    },
+                    "birth_place": {
+                        "province": "安徽省",
+                        "city": "合肥市",
+                        "district": "瑶海区"
+                    },
+                    "personality": "ISTP",
+                    "economic_level": "小康",
+                    "occupation": "货车司机",
+                    "organization": "宁波港通运输公司",
+                    "nickname": "老王",
+                    "relation_description": "王建军是潘志强同楼层的邻居，两人因职业相同经常交流运输路线和行业动态。作为安徽来甬务工人员，他在宁波生活15年，与潘志强每周会相约晨跑2-3次，下班后常在小区门口大排档小酌。两家经常互换老家特产，王建军妻子做的安徽臭鳜鱼是潘家最喜爱的特色菜。每月末两家人会组织一次户外烧烤活动。"
+                }
+            ],
+            [
+                {
+                    "name": "张建军",
+                    "relation": "晨跑伙伴",
+                    "social_circle": "晨跑圈",
+                    "gender": "男",
+                    "age": 45,
+                    "birth_date": "1979-03-15",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区",
+                        "street_name": "天童北路",
+                        "street_number": "89号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "鄞州区"
+                    },
+                    "personality": "ESTP",
+                    "economic_level": "小康",
+                    "occupation": "货运调度员",
+                    "organization": "宁波顺达物流有限公司",
+                    "nickname": "老张",
+                    "relation_description": "张建军是潘志强在物流公司的同事兼晨跑伙伴，两人每天清晨6点准时在鄞州公园碰面跑步。相识于五年前公司组织的体能训练活动，因共同爱好结为跑友。跑步结束后常一起在早餐摊讨论工作路线安排，周末偶尔相约带家人去东钱湖郊游。两人居住在同一城区，保持每周4-5次晨跑频率，节假日会互赠家乡特产。"
+                }
+            ],
+            [
+                {
+                    "name": "陈明华",
+                    "relation": "手工皂材料供应商",
+                    "social circle": "手工DIY圈",
+                    "gender": "男",
+                    "age": 48,
+                    "birth_date": "1976-08-12",
+                    "home_address": {
+                        "province": "广东省",
+                        "city": "广州市",
+                        "district": "白云区",
+                        "street_name": "机场路",
+                        "street_number": "365号"
+                    },
+                    "birth_place": {
+                        "province": "广东省",
+                        "city": "潮州市"
+                    },
+                    "personality": "ENFP",
+                    "economic_level": "中产",
+                    "occupation": "化工原料贸易商",
+                    "organization": "广州天然原料有限公司",
+                    "nickname": "老陈",
+                    "relation_description": "陈明华是潘志强通过手工皂DIY论坛认识的供应商，主要提供天然植物油脂和香精原料。两人通过微信沟通订单需求，每月会有2-3次业务联系，偶尔交流手工皂制作心得。虽然分处广州和宁波，但通过快递物流保持合作，潘志强制作的香皂有时会寄给陈明华进行原料测试。每年潘志强到广州出差时会约茶叙旧。"
+                }
+            ],
+            [
+                {
+                    "name": "刘明远",
+                    "relation": "家庭医生",
+                    "social circle": "医疗圈",
+                    "gender": "男",
+                    "age": 48,
+                    "birth_date": "1975-08-12",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "海曙区",
+                        "street_name": "柳汀街",
+                        "street_number": "365号"
+                    },
+                    "birth_place": {
+                        "province": "江苏省",
+                        "city": "南京市"
+                    },
+                    "personality": "ISFJ",
+                    "economic_level": "中产",
+                    "occupation": "全科医生",
+                    "organization": "宁波市第一医院社区医疗中心",
+                    "nickname": "刘医生",
+                    "relation_description": "刘医生是潘志强一家的家庭医生，五年前通过社区健康档案系统建立联系。他每月会通过电话询问潘志强的肩颈疲劳情况，偶尔上门为全家人进行基础健康检查。两人见面多在潘志强家中，交流内容以健康管理和日常保健为主，逢年过节潘志强会赠送手工皂表达感谢。虽然生活在同一城市，但因工作繁忙主要靠预约制联系，平均每季度见面一次。"
+                }
+            ],
+            [
+                {
+                    "name": "马明辉",
+                    "relation": "汽车维修工",
+                    "social_circle": "服务圈",
+                    "gender": "男",
+                    "age": 38,
+                    "birth_date": "1985-08-12",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "北仑区",
+                        "street_name": "霞浦街道",
+                        "street_number": "36号"
+                    },
+                    "birth_place": {
+                        "province": "浙江省",
+                        "city": "台州市"
+                    },
+                    "personality": "ESTP",
+                    "economic_level": "中等",
+                    "occupation": "汽车维修技师",
+                    "organization": "宁波港区汽车服务中心",
+                    "nickname": "马师傅",
+                    "relation_description": "马师傅是潘志强经常光顾的汽车维修店技师，因潘志强的货车需要定期保养而相识。两人见面时主要讨论车辆维护问题，马师傅会提供专业的维修建议。他们每月因车辆保养见面1-2次，平时通过微信联系维修事宜，关系建立在专业服务基础上。"
+                }
+            ],
+            [
+                {
+                    "name": "吴明华",
+                    "relation": "银行理财经理",
+                    "social circle": "金融服务圈",
+                    "gender": "女",
+                    "age": 38,
+                    "birth_date": "1986-05-12",
+                    "home_address": {
+                        "province": "浙江省",
+                        "city": "宁波市",
+                        "district": "海曙区",
+                        "street_name": "灵桥路",
+                        "street_number": "365号"
+                    },
+                    "birth_place": {
+                        "province": "江苏省",
+                        "city": "苏州市"
+                    },
+                    "personality": "ESFJ",
+                    "economic_level": "中产",
+                    "occupation": "理财经理",
+                    "organization": "中国工商银行宁波分行",
+                    "nickname": "吴会计",
+                    "relation_description": "吴明华是潘志强在工商银行办理业务时认识的理财经理，相识已有五年。她为人热情周到，经常主动提醒潘志强理财到期信息，两人主要通过电话和微信联系，平均每月沟通1-2次。见面多在银行网点，潘志强办理转账或咨询理财产品时会找她帮忙，偶尔逢年过节会互发祝福信息。虽然生活在同一城市，但因工作性质差异较大，除了金融业务外较少有其他交集。"
+                }
+            ]
+        ]
+    }

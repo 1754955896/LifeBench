@@ -28,6 +28,7 @@ class Mind:
         self.maptools = MapMaintenanceTool("e8f87eef67cfe6f83e68e7a65b9b848b")
         self.env = ""
         self.file_path = file_path
+        self.txt_file_path = file_path+'log.txt'
 
     def save_to_json(self):
         data = {}
@@ -721,42 +722,118 @@ class Mind:
 
     def map(self,pt):
         #获取真实poi数据和通行信息
-        prompt = template_get_poi.format(persona = self.persona)
+        prompt = template_get_poi3.format(persona = self.persona,data = pt)
         res = llm_call_skip(prompt,self.context)
         print("poi分析-----------------------------------------------------------------------")
         print(res)
         data = json.loads(res)
-        pois, durations = self.maptools.process_route(
-            keywords=data['poi'],
-            cities=data['city'],
-            transports=data['transport']
-        )
-        cities = data['city']
-        transports = data['transport']
-        res = ""
-        res+="POI列表："
-        for i, (poi, city) in enumerate(zip(pois, cities)):
-            res+=f"{i + 1}. {poi['name']}（{city}）- 类型：{poi['type']} - 详细地址：{poi['address']}"
-        res+="\n各POI间通行时长（分钟）："
-        for i, (dur, transport) in enumerate(zip(durations, transports)):
-            res+=f"路段 {i + 1} {data['poi'][i]}至{data['poi'][i+1]}（{transport}）：{dur // 60 if dur else '未知'}"
+        result, error_summary = self.maptools.process_instruction_route(data)
+        instr = ""
+        instr += self.maptools.extract_route_summary(result)
+        print(instr)
+        prompt = template_get_poi2.format(persona=self.persona_withoutrl, data=pt ,first_round_instruction=res,api_feedback=instr)
+        res = llm_call_skip(prompt, self.context)
+        print("poi分析2-----------------------------------------------------------------------")
         print(res)
-        return res
+        data = json.loads(res)
+        resultx, error_summary = self.maptools.process_instruction_route(data)
+        instr = self.maptools.extract_poi_route_simplified(resultx)
+        print(instr)
+        # with open(self.txt_file_path, "a", encoding="utf-8") as file:  # 记录，防止丢失
+        #         file.write("-----------------------poi\n"+instr + "\n")  # 每个字符串后加换行符，实现分行存储
+        return instr
 
-    def remove_json_wrapper(self,s: str) -> str:
+
+
+        #
+        # pois, durations = self.maptools.process_route(
+        #     keywords=data['poi'],
+        #     cities=data['city'],
+        #     transports=data['transport']
+        # )
+        # cities = data['city']
+        # transports = data['transport']
+        # res = ""
+        # res+="POI列表 检索方式1："
+        # for i, (poi, city) in enumerate(zip(pois, cities)):
+        #     res+=f"{i + 1}. {poi['name']}（{city}）- 类型：{poi['type']} - 详细地址：{poi['address']}"
+        # res+="\n各POI间通行时长（分钟） 检索方式1："
+        # for i, (dur, transport,poi) in enumerate(zip(durations, transports,pois)):
+        #     res+=f"路段 {i + 1} {poi['pname']+poi['address']+poi['name']}至{pois[i+1]['pname']+pois[i+1]['address']+pois[i+1]['name']}（使用{transport}方式通行）：{dur // 60 if dur else '未知'}"
+        # res += '\n---------------------------------------------------\n'
+        # pois, durations = self.maptools.process_route_bycode(
+        #     keywords=data['poi'],
+        #     cities=data['city'],
+        #     transports=data['transport']
+        # )
+        # print(pois)
+        # print(durations)
+        # res += "\nPOI列表 检索方式2："
+        # for i, (poi, city) in enumerate(zip(pois, cities)):
+        #
+        #     res += f"{i + 1}. {poi['formatted_address']}（{city}）;"
+        # res += "\n各POI间通行时长（分钟） 检索方式2："
+        # for i, (dur, transport, poi) in enumerate(zip(durations, transports, pois)):
+        #     res += f"路段 {i + 1} {poi['formatted_address']}至{pois[i + 1]['formatted_address']}（使用{transport}方式通行）：{dur // 60 if dur else '未知'}"
+        # res += "\n以上是通过工具调用获得的与今日地点可能的相关真实地点，他们可能是同类型地点或者位置相近地点，由于搜索工具的问题，可能搜出来的不是同一个地点，但位置相近，请你参考他们替换目前事件中的地点使其真实并调整通行时间。"
+        # print(res)
+        # prompt = template_get_poi3.format(data = pt,poi = res)
+        # res = llm_call_skip(prompt)
+        # print("poi分析-----------------------------------------------------------------------")
+        # print(res)
+        # data = json.loads(res)
+        # pois, durations = self.maptools.process_route_bycode(
+        #     keywords=data['poi'],
+        #     cities=data['city'],
+        #     transports=data['transport']
+        # )
+        # print(pois)
+        # print(durations)
+        # res = ""
+        # res += "\nPOI列表："
+        # for i, (poi, city) in enumerate(zip(pois, cities)):
+        #     res += f"{i + 1}. {poi['formatted_address']}（{city}）;"
+        # res += "\n各POI间通行时长（分钟）："
+        # for i, (dur, transport, poi) in enumerate(zip(durations, transports, pois)):
+        #     res += f"路段 {i + 1} {poi['formatted_address']}至{pois[i + 1]['formatted_address']}（使用{transport}方式通行）：{dur // 60 if dur else '未知'}"
+        # print(res)
+        # return res
+        # with open(self.txt_file_path, "a", encoding="utf-8") as file:  # 记录，防止丢失
+        #         file.write("-----------------------poi\n"+res + "\n")  # 每个字符串后加换行符，实现分行存储
+
+
+
+    def remove_json_wrapper(self, s: str) -> str:
         """
-        去除字符串前后可能存在的```json  ```标记（包含可能的空格）
+        去除字符串前后可能存在的```json  ```标记（包含可能的空格），并清理 JSON 非法字符
+        解决 JSONDecodeError: Invalid control character 问题
 
         参数:
             s: 输入字符串
 
         返回:
-            处理后的字符串，若不存在标记则返回原字符串
+            处理后的字符串（可直接用于 json.loads 解析），若不存在标记则返回清理后的原字符串
         """
-        # 正则模式：匹配开头的```json及可能的空格，和结尾的```及可能的空格
+        # 步骤1：去除开头的```json（含空格/换行）和结尾的```（含空格）
         pattern = r'^\s*```json\s*\n?|\s*```\s*$'
-        # 替换匹配到的内容为空字符串
         result = re.sub(pattern, '', s, flags=re.MULTILINE)
+
+        # 步骤2：清理 JSON 非法控制字符（核心解决报错的步骤）
+        # 保留：JSON 允许的控制字符（\n换行、\r回车、\t制表符、\b退格、\f换页）+ 可见ASCII字符（0x20-0x7E）+ 中文/全角字符（0x4E00-0x9FFF等）
+        # 移除：零宽度空格、特殊控制符、不可见字符等
+        # 正则说明：
+        # [^\x20-\x7E]：排除可见ASCII字符
+        # [^\n\r\t\b\f]：排除JSON允许的控制字符
+        # [^\u4E00-\u9FFF\u3000-\u303F\uFF00-\uFFEF]：排除中文、全角符号（避免误删中文内容）
+        valid_pattern = r'[^\x20-\x7E\n\r\t\b\f\u4E00-\u9FFF\u3000-\u303F\uFF00-\uFFEF\u2000-\u206F\u2E80-\u2EFF]'
+        result = re.sub(valid_pattern, '', result)
+
+        # 步骤3：规范空格和换行（进一步避免解析错误）
+        result = result.strip()  # 去除首尾多余空格/换行
+        result = result.replace('\u3000', ' ')  # 全角空格转半角空格（JSON不支持全角空格作为分隔符）
+        result = re.sub(r'\r\n?', '\n', result)  # 统一换行符为 \n（兼容Windows/Mac格式）
+        result = re.sub(r'\n+', '\n', result)  # 多个连续换行合并为一个（可选，优化可读性）
+
         return result
 
     def daily_event_gen(self,date):
@@ -871,12 +948,16 @@ class Mind:
         res = self.llm_call_s(prompt, 1)
         print("主观思考（计划如何执行、想安排什么活动）-----------------------------------------------------------------------")
         print(res)
+        with open(self.txt_file_path, "a", encoding="utf-8") as file:  # 记录，防止丢失
+                file.write("date:"+date+"\n-----------------------t1\n"+res + "\n")  # 每个字符串后加换行符，实现分行存储
         #获取未来规划
         plan = self.get_plan2(date)
         prompt = template_plan_11.format(plan=plan)
         res1 = self.llm_call_s(prompt, 1)
         print("客观生成-----------------------------------------------------------------------")
         print(res1)
+        with open(self.txt_file_path, "a", encoding="utf-8") as file:  # 记录，防止丢失
+                file.write("-----------------------t2\n"+res1 + "\n")  # 每个字符串后加换行符，实现分行存储
         tt = res1
         #获取poi数据
         poidata = self.map(tt)
@@ -884,18 +965,23 @@ class Mind:
         res1 = self.llm_call_s(prompt, 0)
         print("轨迹调整-----------------------------------------------------------------------")
         print(res1)
+        with open(self.txt_file_path, "a", encoding="utf-8") as file:  # 记录，防止丢失
+                file.write("-----------------------t3\n"+res1 + "\n")  # 每个字符串后加换行符，实现分行存储
         # 随机细节事件引入+反应
-        prompt = template_plan_31.format(memory=self.short_memory,life=res1,cognition=self.cognition)
+        prompt = template_plan_31.format(memory=self.short_memory,life=res1,cognition=self.cognition,poi=poidata)
         res2 = self.llm_call_s(prompt, 0)
         print("丰富（细节事件+多场景+描述润色）-----------------------------------------------------------------------")
         print(res2)
+        with open(self.txt_file_path, "a", encoding="utf-8") as file:  # 记录，防止丢失
+                file.write("-----------------------t4\n"+res1 + "\n")  # 每个字符串后加换行符，实现分行存储
         prompt = template_get_event_31.format(content=res2,
                                              poi=poidata + "家庭住址：上海市浦东新区张杨路123号，工作地点：上海市浦东新区世纪大道88号",
                                              date=self.get_date_string(date))
         res = self.llm_call_s(prompt, 0)
         print("提取-----------------------------------------------------------------------")
-        print(res)
+        record = res
         res = self.remove_json_wrapper(res)
+        print(res)
         data = json.loads(res)
         # 事件更新
         self.event_add(data)
@@ -904,8 +990,8 @@ class Mind:
                                             content=res2, plan=plan, date=self.get_date_string(date))
         res = self.llm_call_s(prompt, 0)
         print("反思（真实情绪，自我洞察，事件记忆，总结反思，未来期望）-----------------------------------------------------------------------")
-        print(res)
         res = self.remove_json_wrapper(res)
+        print(res)
         data = json.loads(res)
         #想法更新
         self.thought = data["thought"]
@@ -914,14 +1000,16 @@ class Mind:
         for i in range(1, 3):
             mm += self.mem_moudle.search_by_date(self.get_next_n_day(date, -i))
         # 总结：基于最新一天的记忆和思考想法，更新长期记忆
-        prompt = template_update_cog.format(cognition=self.cognition, memory=self.long_memory, plan=plan, history=mm,now=res)
+        prompt = template_update_cog.format(cognition=self.cognition, memory=self.long_memory, plan=plan, history=mm,now=record,thought = self.thought,date=self.get_date_string(date))
         res = self.llm_call_s(prompt)
         res = self.remove_json_wrapper(res)
+        print("更新（客观事实与固定偏好，印象深刻的关键事件，重复多次进行的事件，对过去总结）-----------------------------------------------------------------------")
+        print(res)
         data = json.loads(res)
         #长期记忆更新
         self.long_memory = data['long_term_memory']
-        print("更新（客观事实与固定偏好，印象深刻的关键事件，重复多次进行的事件，对过去总结）-----------------------------------------------------------------------")
-        print(res)
+        with open(self.txt_file_path, "a", encoding="utf-8") as file:  # 记录，防止丢失
+                file.write("-----------------------t2\n"+res + "\n")  # 每个字符串后加换行符，实现分行存储
         #短期记忆更新
         self.update_short_memory(m, date)
         self.save_to_json()
@@ -968,7 +1056,7 @@ def iterate_dates(start_date: str, end_date: str) -> List[str]:
     return date_list
 
 if __name__ == "__main__":
-    mind = Mind()
+    mind = Mind(file_path='')
     persona = '''
      {
             "name": "徐静",
@@ -1671,10 +1759,77 @@ if __name__ == "__main__":
     json_data_p = json.loads(persona)
     json_data_e = read_json_file("event_data/life_event/event_update2.json")
     mind.load_from_json(json_data_e,json_data_p,1)
+    #
+    # print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+    # for date in iterate_dates('2025-01-01','2025-03-30'):
+    #     mind.daily_event_gen1(date)
+    d = '''
+    ### 2025年7月30日全天事件安排
 
-    print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-    for date in iterate_dates('2025-01-01','2025-03-30'):
-        mind.daily_event_gen1(date)
+**06:30-07:00、晨间健康监测与瑜伽练习、上海市浦东新区张杨路123号家中卧室、徐静**
+完成晨间健康监测，体重连续146日稳定在60.5kg，使用新购买的深蓝色迪卡侬瑜伽垫完成25分钟流瑜伽练习，重点练习平衡体式和脊柱扭转。同时收听《零售心理学》音频课程复习客户投诉处理章节，记录2个实用沟通技巧。发现新瑜伽垫防滑效果明显优于旧款，决定将旧瑜伽垫清洗后作为备用。
+
+**07:00-07:25、早餐准备与家庭交流、上海市浦东新区张杨路123号家中厨房、徐静、李芳、徐明**
+协助母亲准备全麦三明治配豆浆早餐，讨论今日报告定稿事宜。母亲准备午餐便当（红烧鸡块配西兰花）时发现保鲜盒数量不足，临时调整菜品搭配。父亲提醒报告装订注意事项，确认下午需要使用的打印设备。
+
+**07:25-08:00、通勤与晨会准备、上海市浦东新区世纪大道88号明芳服饰店面、徐静**
+自驾前往店铺用时10分钟，途中整理晨会要点，确认今日重点工作顺序。收听交通广播了解实时路况，发现世纪大道部分路段施工，及时调整行车路线。到店后检查收银系统运行状态，准备晨会投影资料，确认七夕促销物料充足。
+
+**08:00-08:30、每日晨会布置工作、上海市浦东新区世纪大道88号明芳服饰店面、徐静、陈丽、刘伟**
+召开简短晨会强调七夕促销服务重点，分配陈丽负责VIP客户接待、刘伟负责库存调配。检查昨日销售数据发现情侣装销量增长明显，调整今日主推款式。演示新款到货的搭配技巧，强调服务细节要求，解答员工关于促销政策的疑问。
+
+**08:30-09:30、报告最终定稿、上海市浦东新区世纪大道88号公司会议室、徐静、李芳**
+与母亲共同完成分店开设可行性研究报告的最后修订，仔细核对市场数据、投资预算和风险评估部分。使用专业装订机将报告打印装订成册，检查页码顺序和印刷质量。讨论报告提交后的后续工作安排，确认需要补充的附件材料。
+
+**09:30-10:00、通勤前往培训中心、上海市徐汇区客服培训中心、徐静**
+自驾前往徐汇区客服培训中心用时25分钟，途中复习培训总结要点。等红灯时回复工作群消息，确认下午陈列调整时间。使用导航规划最优路线，避开早高峰拥堵路段。
+
+**10:00-11:30、培训总结分享、上海市徐汇区客服培训中心、徐静、陈丽**
+与陈丽轮流进行学习成果总结和经验分享，重点展示客户心理分析和投诉处理技巧的实际应用案例。获得培训师专业点评，记录改进建议。与其他学员交流实战经验，收集3个可借鉴的客户服务方法，完成培训反馈问卷。
+
+**11:30-12:00、通勤返回店铺、上海市浦东新区世纪大道88号明芳服饰店面、徐静**
+自驾返回店铺用时25分钟，途中整理培训收获，构思店铺服务改进方案。等红灯时确认下午工作安排，回复供应商关于面料样品的咨询。
+
+**12:00-13:00、午餐与工作整理、上海市浦东新区世纪大道88号明芳服饰店面休息区、徐静**
+在店铺休息区用餐，同时整理上午工作记录。分析培训中学到的客户服务技巧如何应用到实际工作中，更新员工服务手册。处理积压邮件，回复2个VIP客户的商品咨询。
+
+**13:00-14:00、根据销售情况调整陈列、上海市浦东新区世纪大道88号明芳服饰店面展示区、徐静、赵敏**
+与赵敏根据前几日销售数据分析热销款位置，将销量突出的情侣装调整至店铺入口显眼位置。重新布置七夕主题陈列区，补充心形装饰和灯光效果。测试新的陈列方案视觉效果，记录需要补充的展示物料。
+
+**14:00-14:30、课程安排协调、上海市浦东新区世纪大道88号上海世纪商场办公室、徐静、陈丽**
+与陈丽讨论服装搭配专业课程的上课时间安排，对比各自的工作日程，确定每周三晚上的上课时间最为合适。确认课程材料准备情况，讨论如何将学到的知识应用到店铺运营中。
+
+**14:30-15:30、仓库突发事件处理、上海市浦东新区明芳服饰仓库、徐静、李芳**
+到仓库例行检查时发现停电异常，恒温系统失效。立即与母亲共同检查真丝、羊绒制品受潮情况，初步统计受损商品数量。联系电力公司确认停电原因及恢复时间，得知因片区电网升级工程失误导致持续8小时停电。
+
+**15:30-16:30、损失评估与应急处理、上海市浦东新区明芳服饰仓库、徐静、李芳、孙老板**
+详细统计受损商品数量和价值，初步估算损失约15万元。联系供应商孙老板通报损失情况，商讨后续处理方案。同时向保险公司电话报案，获取理赔指引，记录需要准备的证明材料清单。
+
+**16:30-17:00、通勤返回店铺、上海市浦东新区世纪大道88号明芳服饰店面、徐静**
+自驾返回店铺用时18分钟，途中整理损失评估数据，构思应急预案。等红灯时回复工作群关于晚间营业的安排，调整员工排班。
+
+**17:00-17:30、晚间工作安排、上海市浦东新区世纪大道88号明芳服饰店面、徐静**
+检查店铺晚间营业准备情况，更新今日销售数据。指导员工处理突发客诉，演示学到的客户服务技巧。整理明日工作重点，确认需要跟进的订单状态。
+
+**17:30-18:00、通勤回家、上海市浦东新区张杨路123号家中、徐静**
+自驾回家用时12分钟，途中与母亲确认晚餐准备情况。等红灯时在线购买《星空之约》电影票，选择8月2日晚间合适场次，使用会员积分抵扣部分费用。
+
+**18:00-19:00、晚餐与家庭交流、上海市浦东新区张杨路123号家中餐厅、徐静、李芳、徐明**
+与父母共进晚餐（清蒸鲈鱼、蒜蓉西兰花、番茄蛋汤），详细汇报今日仓库损失情况及处理进展。讨论保险理赔后续工作，父亲提供风险管理建议，母亲关心工作压力，建议适当放松。
+
+**19:00-20:00、个人学习与色彩练习、上海市浦东新区张杨路123号家中书房、徐静**
+阅读《服装搭配艺术》教材色彩搭配章节，使用新购买的色卡进行实践练习。将今日培训所学客户服务知识与色彩心理学结合，设计3套适合不同客户类型的搭配方案，记录学习心得。
+
+**20:00-20:30、线上事务处理、上海市浦东新区张杨路123号家中客厅、徐静**
+在线查看保险理赔所需材料清单，开始整理购买凭证和库存记录。同时确认电影票购票成功，将电子票转发给闺蜜群。回复工作邮件，安排明日晨会内容。
+
+**20:30-21:00、晚间放松与护理、上海市浦东新区张杨路123号家中卧室、徐静**
+使用新瑜伽垫进行15分钟舒缓拉伸，重点放松肩颈部位。进行面部清洁和基础护肤，整理明日工作物品，记录感恩日记包括顺利完成报告定稿和培训总结。
+
+**21:00-21:30、睡前准备、上海市浦东新区张杨路123号家中卧室、徐静**
+整理今日工作笔记，确认明日重点工作清单。进行深呼吸放松练习，设定手机闹钟，检查门窗安全后准备休息。
+    '''
+    mind.map(d)
 
 
 
