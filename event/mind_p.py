@@ -1080,7 +1080,6 @@ template_get_event_31 = ""
 template_reflection = ""
 template_update_cog = ""
 
-
 # ------------------------------ 使用示例 ------------------------------
 if __name__ == "__main__":
     # 1. 初始化控制器
