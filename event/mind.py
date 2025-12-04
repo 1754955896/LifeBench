@@ -801,8 +801,6 @@ class Mind:
         # with open(self.txt_file_path, "a", encoding="utf-8") as file:  # 记录，防止丢失
         #         file.write("-----------------------poi\n"+res + "\n")  # 每个字符串后加换行符，实现分行存储
 
-
-
     def remove_json_wrapper(self, s: str) -> str:
         """
         去除字符串前后可能存在的```json  ```标记（包含可能的空格），并清理 JSON 非法字符
@@ -836,75 +834,6 @@ class Mind:
 
         return result
 
-    def daily_event_gen(self,date):
-        #基于认知、检索更新后的短期记忆、长期记忆，昨日想法，推理规划反思+信息明确+需求情感推理
-        plan = self.get_plan(date)
-        prompt = template_plan_2.format(cognition=self.cognition, memory=self.long_memory + self.short_memory,thought=self.thought,plan = plan['今日事件'],date = self.get_date_string(date) ,persona=self.persona_withoutrl)
-        res = self.llm_call_s(prompt,1)
-        print("思考-----------------------------------------------------------------------")
-        print(res)
-        tt = res
-        poidata = self.map(res)
-        prompt = template_plan_1.format(plan=plan,poi=poidata)
-        res1 = self.llm_call_s(prompt,1)
-        print("生成-----------------------------------------------------------------------")
-        print(res1)
-        #随机细节事件引入+反应
-        prompt = template_plan_3.format(memory = self.short_memory)
-        res2 = self.llm_call_s(prompt,1)
-        print("丰富-----------------------------------------------------------------------")
-        print(res2)
-        #事件生成
-        print("test-----------------------------------------------------------------------")
-        print(plan['今日事件']["事件序列"])
-        prompt = template_get_event_1.format(content = res2 ,plan=plan['今日事件']["事件序列"],thought = tt)
-        res = self.llm_call_s(prompt,0)
-        print("提取1-----------------------------------------------------------------------")
-        print(res)
-        res = self.remove_json_wrapper(res)
-        data = json.loads(res)
-        self.event_schedule(data,date)
-        prompt = template_get_event_3.format(content=res2, plan=plan['今日事件']["事件序列"],poi = poidata+"家庭住址：上海市浦东新区张杨路123号，工作地点：上海市浦东新区世纪大道88号",date = self.get_date_string(date))
-        res = self.llm_call_s(prompt,1)
-        print("提取2-----------------------------------------------------------------------")
-        print(res)
-        res = self.remove_json_wrapper(res)
-        data = json.loads(res)
-        # 事件更新
-        self.event_add(data)
-        prompt = template_get_event_2.format(date=self.get_date_string(date),plan=plan['今日事件'])
-        res = mind.llm_call_s(prompt)
-        print("提取3-----------------------------------------------------------------------")
-        print(res)
-        res = self.remove_json_wrapper(res)
-        data = json.loads(res)
-        # 事件更新
-        self.event_add(data)
-        #记忆更新(检索系统)+短期记忆更新+想法生成
-        prompt = template_reflection.format(cognition=self.cognition, memory=self.long_memory + self.short_memory,content = res2,plan = plan,date = self.get_date_string(date) )
-        res = self.llm_call_s(prompt,1)
-        print("反思-----------------------------------------------------------------------")
-        print(res)
-        res = self.remove_json_wrapper(res)
-        data=json.loads(res)
-        self.thought = data["thought"]
-        m = json.loads(res)
-        mm = [m]
-        for i in range(1,8):
-            mm+=self.mem_moudle.search_by_date(self.get_next_n_day(date,-i))
-        #总结：基于最新一天的记忆和思考想法，更新认知，长期记忆
-        prompt = template_update_cog.format(cognition=self.cognition,memory=self.long_memory,plan=plan,history=mm)
-        res = self.llm_call_s(prompt)
-        res = self.remove_json_wrapper(res)
-        data = json.loads(res)
-        self.long_memory = data['long_term_memory']
-        print("更新-----------------------------------------------------------------------")
-        print(res)
-        self.update_short_memory(m,date)
-        self.save_to_json()
-        with open("event_data/life_event/event_update.json", "w", encoding="utf-8") as f:
-            json.dump(self.events, f, ensure_ascii=False, indent=2)
-        return
     def event_refine(self,date):
         #调整上层事件
         plan = self.get_plan2(date)
