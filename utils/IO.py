@@ -26,3 +26,35 @@ def read_json_file(file_path):
         print(f"读取文件时发生错误: {str(e)}")
 
     return None
+
+
+def write_json_file(file_path, data):
+    """
+    将数据写入JSON文件
+
+    参数:
+        file_path (str): JSON文件的路径
+        data (dict/list): 要写入的数据
+
+    返回:
+        bool: 如果写入成功则返回True，否则返回False
+    """
+    try:
+        # 创建文件所在目录（如果不存在）
+        import os
+        directory = os.path.dirname(file_path)
+        if directory and not os.path.exists(directory):
+            os.makedirs(directory, exist_ok=True)
+            
+        # 打开并写入JSON文件
+        with open(file_path, 'w', encoding='utf-8') as file:
+            # 将数据写入文件，使用indent=2增加可读性，ensure_ascii=False保留中文字符
+            json.dump(data, file, ensure_ascii=False, indent=2)
+        return True
+
+    except PermissionError:
+        print(f"错误: 没有写入文件 '{file_path}' 的权限")
+    except Exception as e:
+        print(f"写入文件时发生错误: {str(e)}")
+
+    return False

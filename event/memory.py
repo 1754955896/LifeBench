@@ -1,5 +1,6 @@
 import json
 import os
+import threading
 from datetime import datetime
 from collections import defaultdict
 import numpy as np
@@ -8,9 +9,47 @@ from typing import List, Dict, Any, Optional
 from sentence_transformers import SentenceTransformer
 
 
+class MemoryModule:
+    """记忆模块（全局单例/多例可选，统一管理记忆操作）"""
+    _instances: Dict[str, "MemoryModule"] = {}
+    _lock = threading.Lock()
+
+    @classmethod
+    def get_instance(cls, instance_id: str = "default") -> "MemoryModule":
+        """获取实例（支持多实例，默认单例）"""
+        with cls._lock:
+            if instance_id not in cls._instances:
+                cls._instances[instance_id] = cls()
+                cls._instances[instance_id]._init_memory_manager()
+            return cls._instances[instance_id]
+
+    def _init_memory_manager(self):
+        """初始化记忆管理器"""
+        self.mem_mgr = PersonalMemoryManager()
+
+    def add_memory(self, data: Any):
+        """添加记忆"""
+        return self.mem_mgr.add_memory(data)
+
+    def search_by_date(self, start_time: str) -> List[Dict]:
+        """按日期检索记忆"""
+        return self.mem_mgr.search_by_date(start_time)
+
+    def search_by_topic_embedding(self, topic: str, top_k: int) -> List[Dict]:
+        """按主题向量检索记忆"""
+        return self.mem_mgr.search_by_topic_embedding(topic, top_k)
+
+    @classmethod
+    def destroy_instance(cls, instance_id: str = "default"):
+        """销毁指定实例"""
+        with cls._lock:
+            if instance_id in cls._instances:
+                del cls._instances[instance_id]
+
+
 class PersonalMemoryManager:
     def __init__(self,
-                 memory_file: str = "personal_memories.json",
+                 memory_file: str = os.path.join("memory_file", "personal_memories.json"),
                  model_path: str = "event/local_models/all-MiniLM-L6-v2"):
         os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
 
@@ -20,6 +59,7 @@ class PersonalMemoryManager:
         self.embeddings = {}  # {事件ID: 向量}
         self.event_id_counter = 0
         self.event_id_map = {}  # {事件ID: (日期(XX-XX-XX), 记忆索引)}
+        self._lock = threading.RLock()  # 使用可重入锁，避免递归锁请求导致的死锁
 
         self._ensure_directory_exists()
         self.embedding_model = self._load_local_model()
@@ -91,18 +131,19 @@ class PersonalMemoryManager:
         date = self._extract_date(raw_time)
         memory["date"] = date  # 覆盖为纯日期存储
 
-        self.event_id_counter += 1
-        event_id = f"event_{self.event_id_counter}"
+        with self._lock:  # 线程安全保护
+            self.event_id_counter += 1
+            event_id = f"event_{self.event_id_counter}"
 
-        if date not in self.memories:
-            self.memories[date] = []
-        memory_index = len(self.memories[date])
-        self.memories[date].append(memory)
+            if date not in self.memories:
+                self.memories[date] = []
+            memory_index = len(self.memories[date])
+            self.memories[date].append(memory)
 
-        self.event_id_map[event_id] = (date, memory_index)
-        self._generate_topic_embedding(event_id, memory["topic"])
+            self.event_id_map[event_id] = (date, memory_index)
+            self._generate_topic_embedding(event_id, memory["topic"])
 
-        self.save_to_file()
+            self.save_to_file()
         return event_id
 
     def _generate_topic_embedding(self, event_id: str, topic: str) -> None:
@@ -212,68 +253,71 @@ class PersonalMemoryManager:
         if not isinstance(target_month, int) or not (1 <= target_month <= 12):
             raise ValueError(f"月份必须1-12，当前输入：{target_month}")
 
-        delete_threshold = datetime(target_year, target_month, 1)
-        retained_memories = {}
-        deleted_count = 0
+        with self._lock:  # 线程安全保护
+            delete_threshold = datetime(target_year, target_month, 1)
+            retained_memories = {}
+            deleted_count = 0
 
-        for date_str, mem_list in self.memories.items():
-            date_dt = datetime.strptime(date_str, "%Y-%m-%d")
-            if date_dt < delete_threshold:
-                deleted_count += len(mem_list)
-            else:
-                retained_memories[date_str] = mem_list
+            for date_str, mem_list in self.memories.items():
+                date_dt = datetime.strptime(date_str, "%Y-%m-%d")
+                if date_dt < delete_threshold:
+                    deleted_count += len(mem_list)
+                else:
+                    retained_memories[date_str] = mem_list
 
-        # 同步更新关联数据
-        self.memories = retained_memories
-        retained_eids = set()
-        for date_str, mem_list in self.memories.items():
-            for idx in range(len(mem_list)):
-                for eid, (d, i) in self.event_id_map.items():
-                    if d == date_str and i == idx:
-                        retained_eids.add(eid)
-                        break
+            # 同步更新关联数据
+            self.memories = retained_memories
+            retained_eids = set()
+            for date_str, mem_list in self.memories.items():
+                for idx in range(len(mem_list)):
+                    for eid, (d, i) in self.event_id_map.items():
+                        if d == date_str and i == idx:
+                            retained_eids.add(eid)
+                            break
 
-        # 删除无效ID和嵌入向量
-        for eid in list(self.event_id_map.keys()):
-            if eid not in retained_eids:
-                del self.event_id_map[eid]
-                if eid in self.embeddings:
-                    del self.embeddings[eid]
+            # 删除无效ID和嵌入向量
+            for eid in list(self.event_id_map.keys()):
+                if eid not in retained_eids:
+                    del self.event_id_map[eid]
+                    if eid in self.embeddings:
+                        del self.embeddings[eid]
 
-        self.save_to_file()
-        return {
-            "deleted_memory_count": deleted_count,
-            "deleted_date_count": len(self.memories) - len(retained_memories)
-        }
+            self.save_to_file()
+            return {
+                "deleted_memory_count": deleted_count,
+                "deleted_date_count": len(self.memories) - len(retained_memories)
+            }
 
     # ------------------------------
     # 数据持久化
     # ------------------------------
     def save_to_file(self) -> None:
-        serializable_embeddings = {k: v.tolist() for k, v in self.embeddings.items()}
-        data = {
-            "memories": self.memories,
-            "embeddings": serializable_embeddings,
-            "event_id_counter": self.event_id_counter,
-            "event_id_map": self.event_id_map
-        }
-        with open(self.memory_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
+        with self._lock:  # 线程安全保护
+            serializable_embeddings = {k: v.tolist() for k, v in self.embeddings.items()}
+            data = {
+                "memories": self.memories,
+                "embeddings": serializable_embeddings,
+                "event_id_counter": self.event_id_counter,
+                "event_id_map": self.event_id_map
+            }
+            with open(self.memory_file, 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
 
     def load_from_file(self) -> None:
-        with open(self.memory_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        self.memories = data.get("memories", {})
-        self.embeddings = {k: np.array(v) for k, v in data.get("embeddings", {}).items()}
-        self.event_id_counter = data.get("event_id_counter", 0)
-        self.event_id_map = data.get("event_id_map", {})
+        with self._lock:  # 线程安全保护
+            with open(self.memory_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            self.memories = data.get("memories", {})
+            self.embeddings = {k: np.array(v) for k, v in data.get("embeddings", {}).items()}
+            self.event_id_counter = data.get("event_id_counter", 0)
+            self.event_id_map = data.get("event_id_map", {})
 
 
 # ------------------------------
 # 使用示例（验证所有检索功能）
 # ------------------------------
 if __name__ == "__main__":
-    memory_manager = PersonalMemoryManager(memory_file="../memory/all_search_memories.json")
+    memory_manager = PersonalMemoryManager(memory_file=os.path.join("memory_file", "all_search_memories.json"))
 
     # 1. 添加测试记忆（含秒级时间输入）
     test_memories = [

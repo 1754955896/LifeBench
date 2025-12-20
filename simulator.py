@@ -1,797 +1,191 @@
+import json
+import os
+import time
+import argparse
+from datetime import datetime, timedelta
 from event.mind import *
-from utils import IO
+from event.event_refiner import EventRefiner
+from event.event_formatter import EventFormatter
+from utils.IO import *
 
-# file_path = 'data/'
-# persona = read_json_file(file_path+'persona.json')
-# start_date = '2025-11-20'
-# end_date = '2025-12-31'
-# control = 1 #控制是否执行原子事件调整，若调整过可以跳过。（1代表完整执行，2代表中断后继续执行）
-#
-#
-# mind = Mind(file_path)
-# json_data_p = persona
-#
-# if control==1:
-#         json_data_e = read_json_file(file_path + "event_decompose.json")
-#         mind.load_from_json(json_data_e, json_data_p, 0)
-#         print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-#         for date in iterate_dates(start_date,end_date):
-#                 mind.event_refine(date)
-#         with open(file_path+"process/event_decompose_1.json", "w", encoding="utf-8") as f:
-#                 json.dump(mind.events, f, ensure_ascii=False, indent=2)
-#         #输出存在data文件里的event_decompose1
-# elif control==0:
-#         json_data_e = read_json_file(file_path + "process/event_decompose_1.json")
-#         mind.load_from_json(json_data_e, json_data_p, 0)
-# else:
-#         json_data_e = read_json_file(file_path + "event_update.json")
-#         mind.load_from_json(json_data_e, json_data_p, 1)
-# #请在模拟之前删除记忆库文件personal_memories
-# print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-# for date in iterate_dates(start_date,end_date):
-#         mind.daily_event_gen1(date)
+# 命令行参数解析
+parser = argparse.ArgumentParser(description='模拟生成模块')
+parser.add_argument('--file-path', type=str, default='output/', help='数据文件路径')
+parser.add_argument('--start-date', type=str, default='2025-01-01', help='开始日期')
+parser.add_argument('--end-date', type=str, default='2025-12-31', help='结束日期')
+parser.add_argument('--max-workers', type=int, default=30, help='最大并行线程数')
+parser.add_argument('--interval-days', type=int, default=16, help='每个线程处理的天数')
+parser.add_argument('--refine-events', type=int, default=1, help='是否执行事件精炼')
+parser.add_argument('--generate-data', type=int, default=1, help='是否生成数据')
+parser.add_argument('--format-events', type=int, default=1, help='是否格式化事件')
+args = parser.parse_args()
 
-#输出存在data文件里的event_update
+# 配置参数
+file_path = args.file_path
+start_date = args.start_date
+end_date = args.end_date
 
+# 执行时间记录
+execution_times = {}
+start_time_total = time.time()
 
-mind = Mind(file_path='')
-persona = '''
-     {
-            "name": "徐静",
-            "birth": "1993-07-10",
-            "age": 28,
-            "nationality": "汉",
-            "home_address": {
-                "province": "上海市",
-                "city": "上海市",
-                "district": "浦东新区",
-                "street_name": "张杨路",
-                "street_number": "123号"
-            },
-            "birth_place": {
-                "province": "上海市",
-                "city": "上海市",
-                "district": "浦东新区"
-            },
-            "gender": "女",
-            "education": "普通高中",
-            "job": "服装店销售主管",
-            "occupation": "时尚服饰零售企业",
-            "workplace": {
-                "province": "上海市",
-                "city": "上海市",
-                "district": "浦东新区",
-                "street_name": "世纪大道",
-                "street_number": "88号"
-            },
-            "belief": "不信仰宗教",
-            "salary": 100000.0,
-            "body": {
-                "height": 158,
-                "weight": 62.5,
-                "BMI": 25.04
-            },
-            "family": "未婚",
-            "personality": {
-                "mbti": "ESFJ"
-            },
-            "hobbies": [
-                "逛街购物",
-                "听音乐",
-                "羽毛球",
-                "收藏纪念币"
-            ],
-            "favorite_foods": [
-                "上海小笼包",
-                "抹茶拿铁",
-                "草莓蛋糕"
-            ],
-            "memory_date": [
-                "2012-06-15：第一份工作入职纪念日",
-                "2020-08-20：晋升销售主管日"
-            ],
-            "healthy_desc": "个人整体健康状况良好，无慢性病史，不定期进行健康体检，每年就医几次主要是常规检查。保持每周三次的体育锻炼习惯，注重个人护理和作息规律。",
-            "lifestyle_desc": "日常生活高度依赖互联网，尤其喜欢使用社交媒体和购物APP获取信息。休闲活动包括每周两到三次逛街购物、在家听流行音乐、以及参加瑜伽锻炼。每月与朋友聚餐或看电影一次，每年会有一到两次短途旅行探亲或度假，生活风格偏向现代都市休闲型。",
-            "economic_desc": "家庭年收入约10万元，拥有1处房产和家用汽车，目前没有股票、基金等投资活动，消费习惯偏谨慎，注重基本生活保障。",
-            "work_desc": "在家族经营的服装零售企业工作，每周工作48小时，担任销售主管职务，负责店面管理和客户服务工作，工作稳定且与家庭生活紧密结合。",
-            "experience_desc": "徐静自出生起便生活在上海浦东新区，2012年高中毕业后加入家族经营的服装零售企业，从基层销售员做起，通过努力逐步晋升为销售主管，负责店面运营和团队管理。她的工作经历稳定，与家庭事业深度绑定，积累了丰富的客户服务经验。",
-            "description": "徐静是一位28岁的上海本地女性，高中毕业后在家族服装零售企业工作，现任销售主管。作为ESFJ人格类型，性格热情负责。日常生活中，她喜欢逛街购物、听音乐和体育锻炼，收藏纪念币是她的独特爱好。健康状况良好。经济状况稳定，拥有房产和汽车，消费观念务实。工作与家庭生活紧密结合，未来计划开设自己的服装店并保持家庭旅行传统。",
-            "relation": [
-                [
-                    {
-                        "name": "徐明",
-                        "relation": "父亲",
-                        "social circle": "家庭圈",
-                        "gender": "男",
-                        "age": 58,
-                        "birth_date": "1965-03-12",
-                        "home_address": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "浦东新区",
-                            "street_name": "张杨路",
-                            "street_number": "123号"
-                        },
-                        "birth_place": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "黄浦区"
-                        },
-                        "personality": "ISTJ",
-                        "economic_level": "中产",
-                        "occupation": "服装零售企业主",
-                        "organization": "明芳服饰有限公司",
-                        "nickname": "老爸",
-                        "relation_description": "徐静的父亲，与妻子共同经营家族服装企业。年轻时从裁缝学徒做起，1990年创办服装店并逐步发展成连锁企业。现在虽已半退休，仍会每周到店里巡视指导。与女儿关系亲密，每周至少三次家庭聚餐，经常一起讨论店铺经营。支持女儿开设分店的计划，时常传授商业经验。"
-                    },
-                    {
-                        "name": "李芳",
-                        "relation": "母亲",
-                        "social circle": "家庭圈",
-                        "gender": "女",
-                        "age": 56,
-                        "birth_date": "1967-08-25",
-                        "home_address": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "浦东新区",
-                            "street_name": "张杨路",
-                            "street_number": "123号"
-                        },
-                        "birth_place": {
-                            "province": "江苏省",
-                            "city": "苏州市",
-                            "district": "姑苏区"
-                        },
-                        "personality": "ISFJ",
-                        "economic_level": "中产",
-                        "occupation": "服装企业财务主管",
-                        "organization": "明芳服饰有限公司",
-                        "nickname": "妈妈",
-                        "relation_description": "徐静的母亲，负责家族企业的财务管理工作。原籍苏州，年轻时来上海打工认识徐明后结婚。性格温柔细心，不仅管理公司账务，还包办全家饮食起居。每天都会为女儿准备午餐便当，周末常一起逛街选购新款服装。母女关系融洽，经常交流生活琐事和情感问题。"
-                    },
-                    {
-                        "name": "徐强",
-                        "relation": "哥哥",
-                        "social circle": "家庭圈",
-                        "gender": "男",
-                        "age": 32,
-                        "birth_date": "1991-11-03",
-                        "home_address": {
-                            "province": "浙江省",
-                            "city": "杭州市",
-                            "district": "西湖区",
-                            "street_name": "文三路",
-                            "street_number": "456号"
-                        },
-                        "birth_place": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "浦东新区"
-                        },
-                        "personality": "ENTJ",
-                        "economic_level": "中产",
-                        "occupation": "电商运营总监",
-                        "organization": "杭州某电商平台",
-                        "nickname": "强哥",
-                        "relation_description": "徐静的哥哥，大学毕业后选择在杭州发展电商事业。虽然不在家族企业工作，但经常为妹妹提供线上销售建议。每月会回上海探望父母，与妹妹见面聚餐。兄妹关系良好，通过微信保持日常联系，主要讨论工作发展和家庭事务。徐静计划开设分店时也会征求哥哥的意见。"
-                    }
-                ],
-                [
-                    {
-                        "name": "王丽",
-                        "relation": "闺蜜",
-                        "social circle": "高中同学圈",
-                        "gender": "女",
-                        "age": 28,
-                        "birth_date": "1993-03-15",
-                        "home_address": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "徐汇区",
-                            "street_name": "淮海中路",
-                            "street_number": "456号"
-                        },
-                        "birth_place": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "徐汇区"
-                        },
-                        "personality": "ENFP",
-                        "economic_level": "中产",
-                        "occupation": "市场专员",
-                        "organization": "上海某广告公司",
-                        "nickname": "丽丽",
-                        "relation_description": "王丽是徐静高中时期的同桌，两人从学生时代就建立了深厚的友谊。现在同在上海工作，每周会约一次逛街或下午茶，经常分享工作和生活琐事。她们保持着密切的微信联系，节假日会一起聚餐或看电影，偶尔还会约上其他高中同学聚会。"
-                    },
-                    {
-                        "name": "张婷",
-                        "relation": "闺蜜",
-                        "social circle": "高中同学圈",
-                        "gender": "女",
-                        "age": 29,
-                        "birth_date": "1992-11-22",
-                        "home_address": {
-                            "province": "浙江省",
-                            "city": "杭州市",
-                            "district": "西湖区",
-                            "street_name": "文三路",
-                            "street_number": "789号"
-                        },
-                        "birth_place": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "静安区"
-                        },
-                        "personality": "ISFJ",
-                        "economic_level": "中产",
-                        "occupation": "小学教师",
-                        "organization": "杭州市某实验小学",
-                        "nickname": "婷婷",
-                        "relation_description": "张婷是徐静高中时期的好友，大学毕业后选择到杭州发展。虽然分隔两地，但她们每月都会视频通话两到三次，分享各自的生活近况。每年春节张婷回上海探亲时，她们必定会见面聚餐，平时通过微信保持密切联系，互相支持对方的事业发展。"
-                    },
-                    {
-                        "name": "赵小美",
-                        "relation": "高中同学",
-                        "social circle": "高中同学圈",
-                        "gender": "女",
-                        "age": 28,
-                        "birth_date": "1993-09-08",
-                        "home_address": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "闵行区",
-                            "street_name": "虹梅路",
-                            "street_number": "321号"
-                        },
-                        "birth_place": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "闵行区"
-                        },
-                        "personality": "ISTJ",
-                        "economic_level": "小康",
-                        "occupation": "会计",
-                        "organization": "上海某会计师事务所",
-                        "nickname": "小美",
-                        "relation_description": "赵小美是徐静高中同学，现在同在上海工作。她们保持着每月一次的聚会频率，通常是在周末一起吃饭或逛街。作为高中同学圈的核心成员，赵小美经常组织同学聚会，与徐静及其他同学保持着稳定的联系，彼此在工作中也会互相提供建议和支持。"
-                    },
-                    {
-                        "name": "钱多多",
-                        "relation": "高中同学",
-                        "social circle": "高中同学圈",
-                        "gender": "女",
-                        "age": 28,
-                        "birth_date": "1993-12-03",
-                        "home_address": {
-                            "province": "广东省",
-                            "city": "深圳市",
-                            "district": "南山区",
-                            "street_name": "科技园路",
-                            "street_number": "654号"
-                        },
-                        "birth_place": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "黄浦区"
-                        },
-                        "personality": "ENTP",
-                        "economic_level": "中产",
-                        "occupation": "互联网产品经理",
-                        "organization": "深圳某科技公司",
-                        "nickname": "多多",
-                        "relation_description": "钱多多是徐静的高中同学，大学毕业后选择到深圳发展。她们主要通过微信保持联系，每季度会视频通话一次。钱多多每年回上海探亲时会与徐静见面，平时在同学群里活跃互动。虽然距离较远，但她们仍保持着深厚的同学情谊，经常分享职场经验和生活趣事。"
-                    }
-                ],
-                [
-                    {
-                        "name": "陈丽",
-                        "relation": "同事",
-                        "social circle": "工作圈",
-                        "gender": "女",
-                        "age": 26,
-                        "birth_date": "1997-03-15",
-                        "home_address": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "浦东新区",
-                            "street_name": "金桥路",
-                            "street_number": "456号"
-                        },
-                        "birth_place": {
-                            "province": "江苏省",
-                            "city": "南京市"
-                        },
-                        "personality": "ENFP",
-                        "economic_level": "中等",
-                        "occupation": "服装销售员",
-                        "organization": "时尚服饰零售企业",
-                        "nickname": "丽丽",
-                        "relation_description": "陈丽是徐静在服装店的同事，两人相识于2019年工作期间。作为销售团队的核心成员，她们每天共同处理店面事务，配合默契。工作之余会一起在商场餐厅吃午餐，周末偶尔相约逛街淘货。两人居住在同一城区，保持每周5天的工作接触和每月1-2次的私人聚会。"
-                    },
-                    {
-                        "name": "刘伟",
-                        "relation": "同事",
-                        "social circle": "工作圈",
-                        "gender": "男",
-                        "age": 30,
-                        "birth_date": "1993-11-22",
-                        "home_address": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "闵行区",
-                            "street_name": "虹梅路",
-                            "street_number": "789号"
-                        },
-                        "birth_place": {
-                            "province": "浙江省",
-                            "city": "杭州市"
-                        },
-                        "personality": "ISTJ",
-                        "economic_level": "中等",
-                        "occupation": "仓储管理员",
-                        "organization": "时尚服饰零售企业",
-                        "nickname": "伟哥",
-                        "relation_description": "刘伟负责店铺的仓储管理工作，与徐静在工作中密切配合已有3年。他做事严谨认真，经常协助徐静处理货品调配和库存盘点。两人主要在工作场合交流，偶尔参加公司组织的团建活动。虽然私下交往不多，但工作关系稳定可靠，保持每天工作时间的常规互动。"
-                    },
-                    {
-                        "name": "赵敏",
-                        "relation": "同事",
-                        "social circle": "工作圈",
-                        "gender": "女",
-                        "age": 29,
-                        "birth_date": "1994-05-08",
-                        "home_address": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "徐汇区",
-                            "street_name": "淮海中路",
-                            "street_number": "321号"
-                        },
-                        "birth_place": {
-                            "province": "上海市",
-                            "city": "上海市"
-                        },
-                        "personality": "ESFP",
-                        "economic_level": "中等",
-                        "occupation": "销售助理",
-                        "organization": "时尚服饰零售企业",
-                        "nickname": "敏敏",
-                        "relation_description": "赵敏是徐静最亲密的同事之一，两人既是工作搭档也是朋友。她们经常一起讨论销售策略，下班后偶尔相约喝咖啡聊天。赵敏性格活泼开朗，与徐静在工作上形成良好互补。两人保持每周工作日的密切合作，每月会有2-3次私人聚会，关系融洽而稳定。"
-                    },
-                    {
-                        "name": "孙老板",
-                        "relation": "供应商",
-                        "social circle": "工作圈",
-                        "gender": "男",
-                        "age": 45,
-                        "birth_date": "1978-09-12",
-                        "home_address": {
-                            "province": "广东省",
-                            "city": "广州市",
-                            "district": "天河区",
-                            "street_name": "体育西路",
-                            "street_number": "668号"
-                        },
-                        "birth_place": {
-                            "province": "广东省",
-                            "city": "潮州市"
-                        },
-                        "personality": "ENTJ",
-                        "economic_level": "富裕",
-                        "occupation": "服装厂老板",
-                        "organization": "广州时尚制衣厂",
-                        "nickname": "孙总",
-                        "relation_description": "孙老板是服装店的主要供应商，与徐静保持业务往来已有5年。他每季度会来上海考察市场，徐静负责接待和洽谈订单。两人主要通过电话和微信沟通业务，见面频率较低但合作稳定。孙老板注重产品质量和商业信誉，与徐静建立了相互信任的工作关系。"
-                    },
-                    {
-                        "name": "周经理",
-                        "relation": "商场经理",
-                        "social circle": "工作圈",
-                        "gender": "男",
-                        "age": 38,
-                        "birth_date": "1985-12-03",
-                        "home_address": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "静安区",
-                            "street_name": "南京西路",
-                            "street_number": "1000号"
-                        },
-                        "birth_place": {
-                            "province": "上海市",
-                            "city": "上海市"
-                        },
-                        "personality": "ESTJ",
-                        "economic_level": "中高",
-                        "occupation": "商场运营经理",
-                        "organization": "世纪商场管理公司",
-                        "nickname": "周经理",
-                        "relation_description": "周经理是店铺所在商场的运营负责人，与徐静在工作上有频繁的业务往来。他负责商场的日常管理和商户协调，徐静经常需要与他沟通店铺运营事宜。两人每月会有1-2次正式会议，平时通过商场内部系统保持联系。周经理处事专业严谨，与徐静保持着良好的工作关系。"
-                    }
-                ],
-                [
-                    {
-                        "name": "孙秀英",
-                        "relation": "邻居",
-                        "social circle": "社区圈",
-                        "gender": "女",
-                        "age": 65,
-                        "birth_date": "1959-03-22",
-                        "home_address": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "浦东新区",
-                            "street_name": "张杨路",
-                            "street_number": "121号"
-                        },
-                        "birth_place": {
-                            "province": "江苏省",
-                            "city": "南通市"
-                        },
-                        "personality": "ISFJ",
-                        "economic_level": "中等",
-                        "occupation": "退休教师",
-                        "organization": "浦东新区实验小学（已退休）",
-                        "nickname": "孙阿姨",
-                        "relation_description": "孙阿姨是徐静家对门的老邻居，退休前在附近小学任教。两人因社区活动相识，孙阿姨经常关心徐静的工作生活，会分享自己做的家常菜。现在主要通过微信保持联系，每周会碰面两三次，一起在小区散步或喝茶聊天。孙阿姨把徐静当作自家晚辈般照顾，逢年过节会互相赠送小礼物。"
-                    }
-                ],
-                [
-                    {
-                        "name": "周晓雯",
-                        "relation": "瑜伽教练",
-                        "social circle": "瑜伽圈",
-                        "gender": "女",
-                        "age": 32,
-                        "birth_date": "1991-03-15",
-                        "home_address": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "徐汇区",
-                            "street_name": "淮海中路",
-                            "street_number": "356号"
-                        },
-                        "birth_place": {
-                            "province": "浙江省",
-                            "city": "杭州市"
-                        },
-                        "personality": "ENFJ",
-                        "economic_level": "中产",
-                        "occupation": "瑜伽馆",
-                        "organization": "静心瑜伽工作室",
-                        "nickname": "周老师",
-                        "relation_description": "周晓雯是徐静在静心瑜伽工作室的专职教练，拥有8年瑜伽教学经验。两人通过2019年的团体课程相识，现在保持每周三次的私教课联系。上课时周教练会针对徐静的身体状况设计个性化训练方案，课后偶尔会交流健康饮食心得。虽然周教练住在徐汇区，但工作室距离徐静工作地点仅15分钟车程，教学关系稳定持续。"
-                    },
-                    {
-                        "name": "李娜",
-                        "relation": "瑜伽伙伴",
-                        "social circle": "瑜伽圈",
-                        "gender": "女",
-                        "age": 29,
-                        "birth_date": "1994-09-22",
-                        "home_address": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "浦东新区",
-                            "street_name": "陆家嘴环路",
-                            "street_number": "188号"
-                        },
-                        "birth_place": {
-                            "province": "江苏省",
-                            "city": "苏州市"
-                        },
-                        "personality": "ISFP",
-                        "economic_level": "中产",
-                        "occupation": "银行职员",
-                        "organization": "浦东发展银行",
-                        "nickname": "娜娜",
-                        "relation_description": "李娜是徐静在瑜伽课上认识的固定练习伙伴，同在周教练的早课班练习两年。作为银行柜员，李娜下班后常与徐静结伴练习瑜伽，周末偶尔一起逛商场喝下午茶。两人住在同一行政区，每月会约两三次课后聚餐，交流工作和生活近况。李娜性格内向但体贴，经常与徐静分享护肤心得，是瑜伽圈里最亲近的练习搭档。"
-                    },
-                    {
-                        "name": "王芳",
-                        "relation": "瑜伽伙伴",
-                        "social circle": "瑜伽圈",
-                        "gender": "女",
-                        "age": 31,
-                        "birth_date": "1992-12-05",
-                        "home_address": {
-                            "province": "江苏省",
-                            "city": "南京市",
-                            "district": "鼓楼区",
-                            "street_name": "北京西路",
-                            "street_number": "72号"
-                        },
-                        "birth_place": {
-                            "province": "安徽省",
-                            "city": "合肥市"
-                        },
-                        "personality": "ENTP",
-                        "economic_level": "小康",
-                        "occupation": "自由职业者",
-                        "organization": "自媒体工作室",
-                        "nickname": "芳芳",
-                        "relation_description": "王芳原是上海工作的瑜伽同伴，2021年移居南京发展自媒体事业，但仍通过线上群组与徐静保持联系。两人在2018年瑜伽进修班相识，曾经常结伴参加周末瑜伽工作坊。现在主要通过微信群分享瑜伽视频和健康资讯，每年王芳回沪探亲时会与徐静、李娜小聚。虽然异地发展，但三人仍维持着瑜伽圈的友谊，经常互相关注彼此的生活动态。"
-                    }
-                ],
-                [
-                    {
-                        "name": "张秀英",
-                        "relation": "姨妈",
-                        "social circle": "亲戚圈",
-                        "gender": "女",
-                        "age": 58,
-                        "birth_date": "1965-03-22",
-                        "home_address": {
-                            "province": "江苏省",
-                            "city": "南京市",
-                            "district": "鼓楼区",
-                            "street_name": "中山北路",
-                            "street_number": "256号"
-                        },
-                        "birth_place": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "黄浦区"
-                        },
-                        "personality": "ISFJ",
-                        "economic_level": "小康",
-                        "occupation": "退休教师",
-                        "organization": "南京市鼓楼区实验小学",
-                        "nickname": "张阿姨",
-                        "relation_description": "张秀英是徐静母亲的姐姐，退休前在南京担任小学教师。两人虽然分居上海和南京，但每月会通过视频通话联系两到三次，主要聊家常和健康话题。每年春节和国庆节徐静会去南京探望，一起逛夫子庙、品尝南京小吃。张秀英经常关心徐静的婚姻和工作情况，是徐静重要的长辈倾诉对象。"
-                    },
-                    {
-                        "name": "刘建国",
-                        "relation": "舅舅",
-                        "social circle": "亲戚圈",
-                        "gender": "男",
-                        "age": 55,
-                        "birth_date": "1968-09-15",
-                        "home_address": {
-                            "province": "浙江省",
-                            "city": "杭州市",
-                            "district": "西湖区",
-                            "street_name": "文三路",
-                            "street_number": "189号"
-                        },
-                        "birth_place": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "静安区"
-                        },
-                        "personality": "ESTP",
-                        "economic_level": "富裕",
-                        "occupation": "餐饮企业主",
-                        "organization": "杭帮菜餐饮连锁集团",
-                        "nickname": "刘叔叔",
-                        "relation_description": "刘建国是徐静的舅舅，在杭州经营连锁餐饮企业。他性格开朗，经常给徐静提供创业建议。两人每季度通一次电话，主要讨论商业经营和市场趋势。每年徐静会专程到杭州品尝舅舅的新菜品，同时考察当地服装市场。刘建国曾资助徐静参加商业管理培训，是她在事业上的重要支持者。"
-                    },
-                    {
-                        "name": "陈明",
-                        "relation": "表弟",
-                        "social circle": "亲戚圈",
-                        "gender": "男",
-                        "age": 25,
-                        "birth_date": "1998-12-03",
-                        "home_address": {
-                            "province": "广东省",
-                            "city": "深圳市",
-                            "district": "南山区",
-                            "street_name": "科技园路",
-                            "street_number": "66号"
-                        },
-                        "birth_place": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "浦东新区"
-                        },
-                        "personality": "ENTJ",
-                        "economic_level": "中产",
-                        "occupation": "互联网产品经理",
-                        "organization": "深圳某科技公司",
-                        "nickname": "小明",
-                        "relation_description": "陈明是徐静姑姑的儿子，目前在深圳从事互联网行业。两人从小一起在上海长大，现在主要通过微信保持联系，每周会分享生活趣事和工作心得。陈明经常给徐静推荐新的购物APP和时尚资讯，徐静则向他请教数字化营销知识。每年春节家庭聚会时见面，会一起逛商场、讨论最新的科技产品。"
-                    }
-                ],
-                [
-                    {
-                        "name": "吴明远",
-                        "relation": "家庭医生",
-                        "social circle": "医疗圈",
-                        "gender": "男",
-                        "age": 45,
-                        "birth_date": "1978-03-22",
-                        "home_address": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "徐汇区",
-                            "street_name": "淮海中路",
-                            "street_number": "568号"
-                        },
-                        "birth_place": {
-                            "province": "江苏省",
-                            "city": "南京市",
-                            "district": "鼓楼区"
-                        },
-                        "personality": "ISTJ",
-                        "economic_level": "中产",
-                        "occupation": "全科医生",
-                        "organization": "浦东新区社区卫生服务中心",
-                        "nickname": "吴医生",
-                        "relation_description": "吴医生是徐静的家庭医生，五年前通过社区健康管理项目相识。他每月为徐静提供一次健康咨询，主要通过微信进行线上沟通，偶尔在社区卫生服务中心面诊。吴医生性格严谨负责，擅长慢性病管理和健康指导，与徐静保持着专业而友好的医患关系。"
-                    }
-                ],
-                [
-                    {
-                        "name": "郑明辉",
-                        "relation": "健身教练",
-                        "social circle": "健身圈",
-                        "gender": "男",
-                        "age": 32,
-                        "birth_date": "1992-03-15",
-                        "home_address": {
-                            "province": "上海市",
-                            "city": "上海市",
-                            "district": "徐汇区",
-                            "street_name": "漕溪北路",
-                            "street_number": "258号"
-                        },
-                        "birth_place": {
-                            "province": "江苏省",
-                            "city": "南京市",
-                            "district": "鼓楼区"
-                        },
-                        "personality": "ESTP",
-                        "economic_level": "中产",
-                        "occupation": "健身教练",
-                        "organization": "力健健身俱乐部",
-                        "nickname": "郑教练",
-                        "relation_description": "郑明辉是徐静在力健健身俱乐部的私人教练，两人通过健身课程相识已有两年。他擅长制定个性化训练计划，每周指导徐静进行三次力量训练和有氧运动。平时主要通过微信沟通训练安排和饮食建议，每月会组织会员户外拓展活动。郑教练性格开朗务实，注重训练效果的同时也会关心会员的生活状态。"
-                    }
-                ],
-                [
-                    {
-                        "name": "王明远",
-                        "relation": "纪念币藏友",
-                        "social circle": "收藏圈",
-                        "gender": "男",
-                        "age": 45,
-                        "birth_date": "1978-03-15",
-                        "home_address": {
-                            "province": "北京市",
-                            "city": "北京市",
-                            "district": "朝阳区",
-                            "street_name": "建国门外大街",
-                            "street_number": "88号"
-                        },
-                        "birth_place": {
-                            "province": "北京市",
-                            "city": "北京市"
-                        },
-                        "personality": "ISTJ",
-                        "economic_level": "中产",
-                        "occupation": "金融投资顾问",
-                        "organization": "北京金融投资有限公司",
-                        "nickname": "老王",
-                        "relation_description": "王明远是徐静在纪念币收藏展会上认识的藏友，两人因共同爱好结缘。他目前在北京市从事金融投资工作，虽然分隔两地，但每月会通过线上交流收藏心得，偶尔会互相邮寄稀有纪念币。每年徐静去北京出差时会约见面，一起参观钱币博物馆或古玩市场。"
-                    }
-                ],
-                [
-                    {
-                        "name": "李雪梅",
-                        "relation": "同行朋友",
-                        "social circle": "行业圈",
-                        "gender": "女",
-                        "age": 32,
-                        "birth_date": "1991-03-15",
-                        "home_address": {
-                            "province": "浙江省",
-                            "city": "杭州市",
-                            "district": "西湖区",
-                            "street_name": "文三路",
-                            "street_number": "456号"
-                        },
-                        "birth_place": {
-                            "province": "浙江省",
-                            "city": "杭州市"
-                        },
-                        "personality": "ENTJ",
-                        "economic_level": "中产",
-                        "occupation": "区域运营经理",
-                        "organization": "江南时尚集团",
-                        "nickname": "雪梅姐",
-                        "relation_description": "李雪梅是徐静在行业交流会上认识的同行朋友，两人因对服装零售业的共同兴趣而结缘。她们平时主要通过微信交流行业动态，每季度会在上海或杭州见面一次，通常选择在商圈咖啡馆讨论市场趋势和经营管理经验。虽然分处两地，但会互相推荐优质供应商和客户资源，去年还合作举办过跨区域促销活动。"
-                    }
-                ],
-                [
-                    {
-                        "name": "张明远",
-                        "relation": "熟客",
-                        "social circle": "客户圈",
-                        "gender": "男",
-                        "age": 35,
-                        "birth_date": "1988-03-15",
-                        "home_address": {
-                            "province": "浙江省",
-                            "city": "杭州市",
-                            "district": "西湖区",
-                            "street_name": "文三路",
-                            "street_number": "456号"
-                        },
-                        "birth_place": {
-                            "province": "浙江省",
-                            "city": "宁波市"
-                        },
-                        "personality": "ENTJ",
-                        "economic_level": "中产",
-                        "occupation": "互联网公司市场总监",
-                        "organization": "杭州某科技股份有限公司",
-                        "nickname": "张总",
-                        "relation_description": "张明远是徐静服装店的长期客户，五年前因工作需要购买商务服装而结识。他每季度会从杭州来上海出差时到店选购，偏好简约商务风格。两人保持着专业的客户关系，主要通过微信沟通新款到货信息，平均每两月联系一次。见面时徐静会为他提供专业的穿搭建议，偶尔会聊及各自的工作近况。"
-                    }
-                ]
-            ]
-        }
-    '''
-json_data_p = json.loads(persona)
-json_data_e = []
-mind.load_from_json(json_data_e,json_data_p,0)
-    #
-    # print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-    # for date in iterate_dates('2025-01-01','2025-03-30'):
-    #     mind.daily_event_gen1(date)
-d = '''
-### 2025年7月29日（星期二）全天事件安排
+# 控制参数：设置为1执行，0跳过
+refine_events = args.refine_events  # 是否执行事件精炼
+generate_data = args.generate_data  # 是否生成数据
+format_events = args.format_events  # 是否格式化事件
 
-**06:30-07:00、晨间健康监测与瑜伽练习、上海市浦东新区张杨路123号家中卧室、徐静**  
-完成晨间健康监测，体重连续145日稳定在60.5kg，使用浅紫色迪卡侬瑜伽垫完成拜日式和平衡体式练习，同时收听《零售心理学》音频课程复习客户服务章节，发现瑜伽垫边缘磨损加重，计划今日下班后去迪卡侬更换。
+# 处理参数
+max_workers = args.max_workers  # 最大并行线程数
+interval_days = args.interval_days  # 每个线程处理的天数
 
-**07:00-07:25、早餐购买与家庭交流、上海市浦东新区张杨路早餐店、徐静、李芳、徐明**  
-在黄浦区鸡鸣汤包店购买小笼包,协助母亲准备全麦吐司配豆浆早餐，讨论昨日购买的包包保养事项，父亲提醒注意今日工作安排，母亲准备午餐便当（红烧排骨配时蔬），提到今日需要补充家中生活用品。
+# 中断保存文件路径
+INTERRUPT_FILE = file_path + "process/interrupt_state.json"
 
-**07:25-08:00、通勤与工作准备、上海市浦东新区世纪大道88号明芳服饰店面、徐静**  
-自驾前往店铺，途中整理晨会要点，收听交通广播了解实时路况，确认今日书店营业时间，回复工作群消息关于七夕促销的咨询。
+# 日志函数
+def log(message):
+    log_line = f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {message}"
+    print(log_line.strip())
 
-**08:00-08:30、每日晨会布置工作、上海市浦东新区世纪大道88号明芳服饰店面、徐静、陈丽、刘伟**  
-召开简短晨会强调暑期旺季服务质量，重点布置今日七夕主题陈列维护工作，分配陈丽负责客户接待、刘伟负责库存调配，检查昨日销售数据并调整今日促销策略。
+# 确保必要的目录存在
+os.makedirs(os.path.join(file_path, "process"), exist_ok=True)
 
-**08:30-09:00、日常陈列检查维护、上海市浦东新区世纪大道88号明芳服饰店面展示区、徐静**  
-仔细检查七夕主题陈列区，调整心形装饰位置，补充玫瑰花装饰，检查灯光效果，记录需要补充的物料，擦拭展示架灰尘，确保浪漫购物氛围完整。
+# 1. 读取基础数据
+persona = read_json_file(file_path + 'persona.json')
+log(f"成功读取人物画像数据")
 
-**09:00-10:30、店铺运营管理、上海市浦东新区世纪大道88号明芳服饰店面、徐静、陈丽、刘伟**  
-处理VIP客户预约，更新会员档案，验收新到货的秋季针织衫，指导陈丽学习面料知识，接听供应商孙老板电话确认下周新品到货时间，整理销售报表。
+# 读取每日状态数据
+daily_state = None
+try:
+    daily_state = read_json_file(file_path + 'daily_state.json')
+    log("成功读取每日状态数据")
+except FileNotFoundError:
+    log("未找到每日状态数据文件")
+except Exception as e:
+    log(f"读取每日状态数据失败: {str(e)}")
 
-**10:30-12:00、学习材料准备、上海市黄浦区福州路465号上海书城、徐静**  
-自驾前往上海书城，途中确认课程教材清单。在书城三楼艺术设计区仔细挑选《服装搭配艺术》《色彩心理学》教材，对比不同版本的色卡，最终选择专业级120色色卡套装，使用会员卡享受折扣。
+# 2. 事件精炼
+if refine_events:
+    log("=== 开始事件精炼流程 ===")
+    start_time_refine = time.time()
+    # 2.1 读取原始事件文件
+    json_data_e = read_json_file(file_path + "event_decompose_dfs.json")
+    log(f"成功读取原始事件文件，共{len(json_data_e)}个事件")
+    
+    # 2.2 使用Mind初始化上下文
+    mind = Mind(file_path, persona=persona, event=json_data_e, daily_state=daily_state)
+    mind.initialize(json_data_e, persona, start_date, daily_state=daily_state)
+    log("Mind初始化完成")
+    
+    # 2.3 使用EventRefiner进行事件调整
+    log("开始事件调整...")
+    refiner = EventRefiner(persona=persona, events=mind.events)
+    
+    # 调用event_refiner的annual_event_refine方法处理全年事件调整
+    log(f"开始处理{start_date}至{end_date}的事件调整...")
+    mind.events = refiner.annual_event_refine(
+        mind.events, 
+        start_date, 
+        end_date, 
+        mind.context, 
+        max_workers
+    )
+    log(f"所有区间调整完成")
+    
+    # 2.4 保存调整后的事件
+    adjusted_events_path = file_path + "process/event_decompose_1.json"
+    with open(adjusted_events_path, "w", encoding="utf-8") as f:
+        json.dump(mind.events, f, ensure_ascii=False, indent=2)
+    log(f"\n调整后的事件已保存到: {adjusted_events_path}")
+    log(f"事件精炼完成，共调整{len(mind.events)}个事件")
+    
+    end_time_refine = time.time()
+    execution_times['event_refine'] = end_time_refine - start_time_refine
+    log(f"事件精炼流程耗时: {execution_times['event_refine']:.2f}秒")
+    log("=== 事件精炼流程完成 ===")
+else:
+    log("跳过事件精炼流程")
 
-**12:00-13:00、午餐与商圈考察、上海市黄浦区南京东路299号宏伊国际广场B1层美食广场、徐静**  
-在美食广场选择新开的日式定食套餐，用餐同时观察商圈客流情况，拍摄竞争对手促销活动照片，整理考察笔记，通过餐饮APP预订明日午餐。
+# 3. 数据生成
+if generate_data:
+    log("\n=== 开始数据生成流程 ===")
+    start_time_generate = time.time()
+    log(f"参数设置: 开始日期={start_date}, 结束日期={end_date}, 并行线程数={max_workers}, 区间大小={interval_days}天")
+    monthly_file = os.path.join(file_path, "monthly_summaries.json")
+    cumulative_file = os.path.join(file_path, "cumulative_summaries.json")
+    year = int(start_date[:4])
+    if not (os.path.exists(monthly_file) and os.path.exists(cumulative_file)):
+        print(f"未找到fuzzymemory文件，开始生成该年的月度总结和累积总结...")
+        event = read_json_file(file_path + "process/event_decompose_1.json")
+        fuzzy_memory_builder = FuzzyMemoryBuilder.get_instance(event, persona, file_path)
+        fuzzy_memory_builder.build_all_summaries(year)
+        print("fuzzymemory生成完成！")
+    # 3.1 创建MindController实例
+    adjusted_events_path = file_path + "process/event_decompose_1.json"
+    controller = MindController(
+        data_dir=file_path,
+        persona_file=file_path + 'persona.json',
+        event_file=adjusted_events_path,
+        daily_state_file=file_path + 'daily_state.json'
+    )
+    
+    # 3.2 执行多线程并行处理
+    results = controller.run_daily_event_with_threading(
+        start_date=start_date,
+        end_date=end_date,
+        max_workers=max_workers,
+        interval_days=interval_days
+    )
+    
+    # 3.3 统计结果
+    total_days = len(results)
+    success_count = sum(1 for result in results if result[1])
+    failed_count = total_days - success_count
+    
+    log(f"\n=== 数据生成结果 ===")
+    log(f"总天数: {total_days}")
+    log(f"成功天数: {success_count}")
+    log(f"失败天数: {failed_count}")
+    log(f"成功率: {(success_count / total_days * 100):.1f}%")
+    
+    # 3.4 检查是否有失败的日期
+    failed_dates = [result[0] for result in results if not result[1]]
+    if failed_dates:
+        log(f"\n失败的日期: {', '.join(failed_dates)}")
+    
+    end_time_generate = time.time()
+    execution_times['data_generate'] = end_time_generate - start_time_generate
+    log(f"数据生成流程耗时: {execution_times['data_generate']:.2f}秒")
+    log("=== 数据生成流程完成 ===")
+else:
+    log("跳过数据生成流程")
 
-**13:00-14:30、返回店铺工作、上海市浦东新区世纪大道88号明芳服饰店面、徐静、赵敏**  
-自驾返回店铺，与赵敏共同分析上午销售数据，调整热销款陈列位置，处理客户退换货需求，更新线上商城库存，准备明日培训材料。
+# 4. 事件格式化
+if format_events:
+    log("\n=== 开始事件格式化流程 ===")
+    start_time_format = time.time()
+    
+    # 4.1 创建EventFormatter实例
+    formatter = EventFormatter(data_dir=file_path)
+    
+    # 4.2 执行格式化
+    formatter.run(max_workers=max_workers)
+    
+    end_time_format = time.time()
+    execution_times['event_format'] = end_time_format - start_time_format
+    log(f"事件格式化流程耗时: {execution_times['event_format']:.2f}秒")
+    log("=== 事件格式化流程完成 ===")
+else:
+    log("跳过事件格式化流程")
 
-**14:30-15:30、美容院预约、线上微信平台、徐静**  
-通过微信预约浦东新区专业美容院的七夕特别护理服务，仔细比较不同护理套餐内容，选择包含深层清洁和补水保湿的套餐，确认8月2日下午3点的预约时间，保存预约凭证。
+# 计算并显示总执行时间
+end_time_total = time.time()
+execution_times['total'] = end_time_total - start_time_total
 
-**15:30-17:00、客户服务与店铺管理、上海市浦东新区世纪大道88号明芳服饰店面、徐静、陈丽**  
-进行客户满意度随机抽查，收集5份有效问卷，处理一起尺码咨询，指导新员工熟悉收银系统，更新七夕促销宣传物料，与陈丽茶歇交流工作心得。
+log("\n=== 执行时间统计 ===")
+for process, duration in execution_times.items():
+    if process == 'total':
+        log(f"总执行时间: {duration:.2f}秒 ({duration/60:.2f}分钟)")
+    else:
+        log(f"{process.replace('_', ' ').title()}耗时: {duration:.2f}秒")
 
-**17:00-18:00、下班通勤与采购、上海市浦东新区张杨路1515号迪卡侬金桥店、徐静**  
-自驾前往迪卡侬，购买替换瑜伽垫（选择深蓝色防滑款），顺便选购运动内衣，使用会员卡积分抵扣，在店内试用区测试瑜伽垫舒适度。
-
-**18:00-19:00、晚餐准备与家庭交流、上海市浦东新区张杨路123号家中厨房、徐静、李芳、徐明**  
-协助母亲准备晚餐（清蒸鲈鱼、炒时蔬、紫菜蛋花汤），讨论今日工作进展，父亲提供销售数据分析建议，母亲询问课程准备情况。
-
-**19:00-20:30、后续完善家庭相册、上海市浦东新区张杨路123号家中书房、徐静**  
-根据父母昨日补充的信息进一步完善电子相册内容，添加家族故事文字说明，调整照片排序，修复几张模糊的老照片，备份至云端存储，整理相册目录。
-
-**20:30-21:30、个人学习与放松、上海市浦东新区张杨路123号家中客厅、徐静**  
-阅读新购的《服装搭配艺术》教材前两章，在笔记本记录重点知识点，试用新色卡进行色彩搭配练习，同时收听轻音乐放松，与闺蜜王丽微信视频聊天分享今日见闻。
-
-**21:30-22:30、晚间护理与睡前准备、上海市浦东新区张杨路123号家中卧室、徐静**  
-进行面部清洁和基础护肤，使用新购的补水面膜，整理明日工作物品，记录感恩日记（包括顺利完成相册完善和购买学习材料），设定手机闹钟，进行简单拉伸运动后准备休息。
-
-**今日生活轨迹**：家→早餐店->家->服装零售店面→上海书城→宏伊国际广场→服装零售店面→迪卡侬金桥店→家
-'''
-mind.map(d)
+log("\n✅ 所有流程执行完成！")

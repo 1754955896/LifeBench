@@ -156,8 +156,10 @@ class Data_extract:
 
             self.persona = persona
             self.events = event
-            del persona["relation"]
-            self.persona_withoutrl = persona
+            # 创建副本以避免修改原始persona
+            persona_copy = persona.copy()
+            del persona_copy["relation"]
+            self.persona_withoutrl = persona_copy
             return False
 
 phone_event_MSM_template = '''
@@ -1510,6 +1512,360 @@ class GalleryOperationGenerator:
         data = json.loads(res)
         c += data
         print(c)
+        return c
+
+
+class FitnessHealthOperationGenerator:
+    def __init__(self, random_seed: int = 42):
+        """初始化运动健康数据生成器"""
+        random.seed(random_seed)
+
+    def parse_llm_prob_json(self, llm_json_str: str) -> List[Dict]:
+        """
+        解析LLM返回的JSON数据
+        """
+        try:
+            # 提取[]之间的核心JSON内容
+            start_idx = llm_json_str.find('[')
+            end_idx = llm_json_str.rfind(']')
+            if start_idx == -1 or end_idx == -1 or start_idx >= end_idx:
+                print("错误：未找到有效的JSON数组（缺少[]包裹）")
+                return []
+
+            core_json_str = llm_json_str[start_idx:end_idx + 1].strip()
+            return json.loads(core_json_str)
+        except json.JSONDecodeError as e:
+            print(f"JSON解析失败：位置{e.pos}，原因{e.msg}")
+            return []
+        except Exception as e:
+            print(f"解析异常：{str(e)}")
+            return []
+
+    def phone_gen_fitness_health(self, date, contact, file_path, c):
+        """
+        生成指定日期的运动健康数据
+        """
+        # 获取当日事件
+        daily_events = extool.filter_by_date(date)
+
+        # 运动健康数据生成模板
+        template = '''
+        请基于用户提供的{{当日事件}}和{{个人画像}}，生成完整的一天运动健康数据。生成需严格遵循以下格式和要求：
+        
+        ## 输出格式要求
+        输出严格为以下JSON格式，包含所有字段，字段值符合数据类型和范围要求，逻辑自洽。
+        
+        {{
+          "日期": "YYYY-MM-DD",
+          "城市": "北京/上海/深圳",
+          "日常活动": {{
+            "步数": ">=0步",
+            "距离": ">=0公里",
+            "热量": ">=0千卡",
+            "锻炼时长": ">=0分钟",
+            "活动小时数": ">=0小时"
+          }},
+          "跑步": {{
+            "运动类型": "户外跑步/室内跑步/越野跑",
+            "运动时间": "YYYY/MM/DD/HH:mm:ss-YYYY/MM/DD/HH:mm:ss",
+            "天气": "晴/雨/阴/雪/多云/雾/霾",
+            "距离统计": ">=0公里",
+            "平均心率": "30-220次/分钟",
+            "平均步频": "0-240步/分钟",
+            "累计爬升": ">=0米",
+            "累计下降": ">=0米",
+            "平均配速": "MM分SS秒/公里",
+            "最佳配速": "MM分SS秒/公里",
+            "总步数": ">=0步",
+            "消耗热量": ">=0千卡"
+          }},
+          "骑行": {{
+            "运动类型": "户外骑行/室内骑行",
+            "运动时间": "YYYY/MM/DD/HH:mm:ss-YYYY/MM/DD/HH:mm:ss",
+            "天气": "晴/雨/阴/雪/多云/雾/霾",
+            "距离统计": ">=0公里",
+            "平均速度": "0-60公里/小时",
+            "平均心率": "30-220次/分钟",
+            "平均踏频": "0-200转/分钟",
+            "平均功率": ">=0瓦",
+            "最佳速度": "0-60公里/小时",
+            "最大踏频": "0-200转/分钟",
+            "消耗热量": ">=0千卡"
+          }},
+          "步行": {{
+            "运动类型": "户外步行/室内步行/徒步",
+            "运动时间": "YYYY/MM/DD/HH:mm:ss-YYYY/MM/DD/HH:mm:ss",
+            "天气": "晴/雨/阴/雪/多云/雾/霾",
+            "距离统计": ">=0公里",
+            "平均心率": "30-220次/分钟",
+            "平均步频": "0-200步/分钟",
+            "步数统计": ">=0步",
+            "平均配速": "MM分SS秒/公里",
+            "最佳配速": "MM分SS秒/公里",
+            "消耗热量": ">=0千卡"
+          }},
+          "睡眠": {{
+            "入睡时间": "HH:mm:ss (昨日)/HH:mm:ss",
+            "出睡时间": "HH:mm:ss",
+            "全部睡眠时长": ">=0分钟",
+            "浅睡时长": ">=0分钟",
+            "深睡时长": ">=0分钟",
+            "快速眼动时长": ">=0分钟",
+            "清醒时长": ">=0分钟",
+            "清醒次数": ">=0次",
+            "深睡连续性得分": "0-100分",
+            "睡眠得分": "0-100分",
+            "零星小睡时长": ">=0分钟"
+          }},
+          "心率统计": {{
+            "平均心率": "30-220次/分钟",
+            "平均静息心率": "30-120次/分钟",
+            "心率变异性": "0-200毫秒"
+          }},
+          "体温统计": {{
+            "平均体温": "34.0-42.0摄氏度"
+          }},
+          "血氧饱和度统计": {{
+            "平均血氧饱和度": "0-100%"
+          }},
+          "血糖统计": {{
+            "平均血糖水平": "1.0-33.0mmol/L"
+          }},
+          "体重": {{
+            "体重": "10.0-250.0千克",
+            "BMI": "1.0-200.0",
+            "体脂率": "1.0-49.0%"
+          }},
+          "压力": {{
+            "压力得分": "1-99分"
+          }},
+          "饮食记录": {{
+            "摄入热量": "1-9999千卡"
+          }},
+          "用户交互事件": [
+            {{
+              "时间": "YYYY/MM/DD HH:mm",
+              "描述": "事件概述"
+            }}
+          ],
+          "异常指标": {{
+            "心率过高次数": ">=0次",
+            "心率过低次数": ">=0次",
+            "疑似房颤次数": ">=0次",
+            "疑似早搏次数": ">=0次"
+          }}
+        }}
+        
+        ## 生成要求
+        1. 所有字段必须填充符合范围要求的具体数值，不能保留模板中的">=0步"等占位符
+        2. 数据必须与当日事件和个人画像相符（例如，如果当日有跑步事件，跑步数据应反映该活动）
+        3. 时间字段必须与指定日期一致
+        4. 各指标之间需逻辑自洽（例如：步数与距离成正比，消耗热量与活动量成正比）
+        5. 运动数据（跑步、骑行、步行）如果当天没有对应活动，可以设置为合理的基础值
+        6. 城市字段应与个人画像中的常居地一致
+        7. 用户交互事件应包含与运动健康相关的操作（如查看运动数据、设置目标等）
+        
+        ## 输入数据
+        <当日事件>: {daily_events}
+        <个人画像>: {persona}
+        
+        请直接输出符合要求的JSON数据，不要添加任何额外文本、注释或说明。
+        '''
+        
+        # 格式化prompt
+        prompt = template.format(daily_events=daily_events, persona=extool.persona)
+        print("运动健康数据生成prompt:", prompt)
+        
+        # 调用LLM生成数据
+        response = llm_call(prompt)
+        print("LLM响应:", response)
+        
+        # 解析响应
+        response = remove_json_wrapper(response)
+        try:
+            fitness_data = json.loads(response)
+            # 将生成的数据添加到结果列表
+            c.append(fitness_data)
+        except json.JSONDecodeError as e:
+            print(f"运动健康数据解析失败：{str(e)}")
+        
+        return c
+
+class ChatOperationGenerator:
+    def __init__(self, random_seed: int = 42):
+        """初始化智能体对话生成器"""
+        random.seed(random_seed)
+
+    def parse_llm_prob_json(self, llm_json_str: str) -> List[Dict]:
+        """
+        解析LLM返回的JSON数据
+        """
+        try:
+            # 提取[]之间的核心JSON内容
+            start_idx = llm_json_str.find('[')
+            end_idx = llm_json_str.rfind(']')
+            if start_idx == -1 or end_idx == -1 or start_idx >= end_idx:
+                print("错误：未找到有效的JSON数组（缺少[]包裹）")
+                return []
+
+            core_json_str = llm_json_str[start_idx:end_idx + 1].strip()
+            return json.loads(core_json_str)
+        except json.JSONDecodeError as e:
+            print(f"JSON解析失败：位置{e.pos}，原因{e.msg}")
+            return []
+        except Exception as e:
+            print(f"解析异常：{str(e)}")
+            return []
+
+    def phone_gen_agent_chat(self, date, contact, file_path, c):
+        """
+        生成指定日期的智能体对话数据
+        """
+        # 获取当日事件
+        daily_events = extool.filter_by_date(date)
+        
+        # 第一步：分析对话需求和概率
+        prob_template = '''
+        请基于用户提供的{{当日事件}}和{{个人画像}}，分析该用户在当天可能与智能体对话的原因或需求，并为每个需求单独分配概率。
+        
+        ## 分析规则
+        1. 从当日事件中提取可能需要智能体帮助的所有潜在场景
+        2. 每个场景需要包含：需求描述、对话意图、发生概率（0-100%）
+        3. 每个需求的概率独立分析，总和不必等于100%
+        4. 只生成合理的、与用户当日活动相关的对话场景
+        5. 每个场景应反映用户可能需要智能体协助的具体情境
+        
+        ## 输出格式
+        请输出JSON数组，每个元素包含：
+        - requirement: 对话需求描述
+        - intention: 对话意图和目标
+        - probability: 发生概率（百分比字符串，如"60%"）
+        - context: 对话的上下文背景信息
+        
+        ## 输入数据
+        <当日事件>: {daily_events}
+        <个人画像>: {persona}
+        
+        请直接输出符合要求的JSON数据，不要添加任何额外文本、注释或说明。
+        '''
+        
+        # 格式化概率分析prompt
+        prob_prompt = prob_template.format(daily_events=daily_events, persona=extool.persona)
+        print("对话需求概率分析prompt:", prob_prompt)
+        
+        # 调用LLM分析概率
+        prob_response = llm_call(prob_prompt)
+        print("概率分析响应:", prob_response)
+        
+        # 解析概率分析结果
+        prob_data = self.parse_llm_prob_json(prob_response)
+        
+        # 第二步：为每个需求生成对话
+        chat_template = '''
+        请基于以下上下文信息，生成一段个人与智能体的对话。
+        
+        ## 对话角色
+        - 用户：一位有特定需求的个人
+        - 智能体：一位能够理解用户需求并提供帮助的AI助手
+        
+        ## 对话要求
+        1. 对话需自然流畅，符合真实场景
+        2. 对话应围绕用户的需求展开
+        3. 对话轮数应在2-5轮之间
+        4. 当用户或智能体认为对话可以结束时，在最后一句后添加<END_OF_DIALOG>标志
+        5. 每轮对话需包含明确的动作(action)和参考(reference)
+        
+        ## 动作类型
+        用户动作：
+        - topic query: 提出话题或问题
+        - need confirmation: 确认需求
+        - solution feedback: 对解决方案的反馈
+        - information request: 请求信息
+        - clarification: 请求澄清
+        
+        智能体动作：
+        - need inference: 推断用户需求
+        - solution proposal: 提出解决方案
+        - solution discussion: 讨论解决方案
+        - information provision: 提供信息
+        - confirmation: 确认信息
+        
+        ## 上下文信息
+        {context}
+        
+        ## 输出格式
+        请输出JSON格式，包含turn 1到turn n的对话轮次，每个轮次包含user和assistant的内容。
+        示例格式：
+        {{
+          "turn 1": {{
+            "user": {{
+              "action": "topic query",
+              "reference": "T1 Q",
+              "content": "有没有办法让我出差时也能高效完成工作？"
+            }},
+            "assistant": {{
+              "action": "need inference",
+              "reference": "T1 N1",
+              "content": "你是不是想找适配频繁出差、操作简单的时间管理方法，同时不影响客户沟通？"
+            }}
+          }},
+          "turn 2": {{
+            "user": {{
+              "action": "need confirmation",
+              "reference": "T1 N1",
+              "content": "对，主要是出差时经常被客户电话打断，没法专注处理核心工作。"
+            }},
+            "assistant": {{
+              "action": "solution proposal",
+              "reference": "T1 S1",
+              "content": "你可以试试每天早上划分1个3小时的‘核心工作块’，这段时间关闭非紧急通知，专注处理关键任务，客户紧急需求可集中在下午回复。"
+            }}
+          }}
+        }}
+        
+        请直接输出符合要求的JSON数据，不要添加任何额外文本、注释或说明。
+        '''
+        
+        # 为每个需求单独检查是否生成对话
+        generated_count = 0
+        for item in prob_data:
+            prob = int(item['probability'].strip('%'))
+            if random.random() < prob / 100:
+                selected_context = item
+                print(f"{date}：生成智能体对话，场景：{selected_context['requirement']}")
+                
+                # 格式化对话生成prompt
+                chat_prompt = chat_template.format(context=selected_context)
+                print("对话生成prompt:", chat_prompt)
+                
+                # 调用LLM生成对话
+                chat_response = llm_call(chat_prompt)
+                print("对话生成响应:", chat_response)
+                
+                # 检查并移除结束标志
+                if "<END_OF_DIALOG>" in chat_response:
+                    chat_response = chat_response.replace("<END_OF_DIALOG>", "")
+                
+                # 解析对话结果
+                chat_response = remove_json_wrapper(chat_response)
+                try:
+                    chat_data = json.loads(chat_response)
+                    # 将对话数据添加到结果列表
+                    c.append({
+                        "date": date,
+                        "type": "agent_chat",
+                        "context": selected_context,
+                        "conversation": chat_data
+                    })
+                    generated_count += 1
+                except json.JSONDecodeError as e:
+                    print(f"对话数据解析失败：{str(e)}")
+        
+        if generated_count == 0:
+            print(f"{date}：未生成智能体对话")
+        else:
+            print(f"{date}：共生成 {generated_count} 次智能体对话")
+        
         return c
 
 

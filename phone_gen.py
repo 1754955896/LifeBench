@@ -29,8 +29,14 @@ def run_push_task(date, contact, file_path, initial_data):
     return g4.phone_gen_push(date, contact, file_path, initial_data)
 
 
+def run_fitness_health_task(date, contact, file_path, initial_data):
+    """执行运动健康数据生成任务"""
+    g5 = FitnessHealthOperationGenerator(random_seed=42)
+    return g5.phone_gen_fitness_health(date, contact, file_path, initial_data)
+
+
 # 单个日期的完整处理任务
-def process_single_date(date, contact, file_path, initial_a, initial_b, initial_c, initial_d):
+def process_single_date(date, contact, file_path, initial_a, initial_b, initial_c, initial_d, initial_e):
     """
     处理单个日期的所有数据生成和文件写入
     :param date: 要处理的日期
@@ -40,22 +46,25 @@ def process_single_date(date, contact, file_path, initial_a, initial_b, initial_
     :param initial_b: note&calendar操作的初始数据
     :param initial_c: gallery操作的初始数据
     :param initial_d: push操作的初始数据
+    :param initial_e: fitness_health操作的初始数据
     :return: 处理结果（成功/失败，日期）
     """
     try:
-        # 内部并行执行4个生成器任务
-        with ThreadPoolExecutor(max_workers=4) as inner_executor:
+        # 内部并行执行5个生成器任务
+        with ThreadPoolExecutor(max_workers=5) as inner_executor:
             # 提交所有内部任务
             future_a = inner_executor.submit(run_communication_task, date, contact, file_path, initial_a)
             future_b = inner_executor.submit(run_notecalendar_task, date, contact, file_path, initial_b)
             future_c = inner_executor.submit(run_gallery_task, date, contact, file_path, initial_c)
             future_d = inner_executor.submit(run_push_task, date, contact, file_path, initial_d)
+            future_e = inner_executor.submit(run_fitness_health_task, date, contact, file_path, initial_e)
 
             # 获取执行结果
             a_result = future_a.result()
             b_result = future_b.result()
             c_result = future_c.result()
             d_result = future_d.result()
+            e_result = future_e.result()
 
         # 文件写入（使用锁确保线程安全，避免多个线程同时写同一文件）
         file_lock = threading.Lock()
@@ -75,6 +84,9 @@ def process_single_date(date, contact, file_path, initial_a, initial_b, initial_
             with open(f"{file_path}phone_data/event_push.json", "w", encoding="utf-8") as f:
                 json.dump(d_result, f, ensure_ascii=False, indent=2)
 
+            with open(f"{file_path}phone_data/event_fitness_health.json", "w", encoding="utf-8") as f:
+                json.dump(e_result, f, ensure_ascii=False, indent=2)
+
         print(f"成功处理日期：{date}")
         return (True, date)
 
@@ -84,7 +96,7 @@ def process_single_date(date, contact, file_path, initial_a, initial_b, initial_
 
 
 # 主函数：多线程并行处理所有日期
-def parallel_process_dates(start_time, end_time, contact, file_path, initial_a, initial_b, initial_c, initial_d,
+def parallel_process_dates(start_time, end_time, contact, file_path, initial_a, initial_b, initial_c, initial_d, initial_e,
                            max_workers=8):
     """
     多线程并行处理所有日期
@@ -96,6 +108,7 @@ def parallel_process_dates(start_time, end_time, contact, file_path, initial_a, 
     :param initial_b: note&calendar操作的初始数据
     :param initial_c: gallery操作的初始数据
     :param initial_d: push操作的初始数据
+    :param initial_e: fitness_health操作的初始数据
     :param max_workers: 最大并行线程数
     :return: 处理统计结果
     """
@@ -116,7 +129,8 @@ def parallel_process_dates(start_time, end_time, contact, file_path, initial_a, 
                 initial_a=initial_a,
                 initial_b=initial_b,
                 initial_c=initial_c,
-                initial_d=initial_d
+                initial_d=initial_d,
+                initial_e=initial_e
             )
             futures.append(future)
 
@@ -146,10 +160,19 @@ def parallel_process_dates(start_time, end_time, contact, file_path, initial_a, 
 
 
 if __name__ == "__main__":
+    import argparse
+    
+    # 命令行参数解析
+    parser = argparse.ArgumentParser(description='手机操作生成模块')
+    parser.add_argument('--file-path', type=str, default='output/', help='数据文件路径')
+    parser.add_argument('--start-time', type=str, default='2025-01-01', help='开始日期')
+    parser.add_argument('--end-time', type=str, default='2025-12-31', help='结束日期')
+    parser.add_argument('--max-workers', type=int, default=32, help='最大并行线程数')
+    args = parser.parse_args()
 
-    file_path = 'data/'
-    start_time = '2025-01-01'
-    end_time = '2025-12-31'
+    file_path = args.file_path
+    start_time = args.start_time
+    end_time = args.end_time
     persona = read_json_file(file_path + 'persona.json')
 
     contact = {}
@@ -166,17 +189,20 @@ if __name__ == "__main__":
     b = []
     c = []
     d = []
-    # if os.path.exists(file_path + "phone_data/event_gallery.json"):
-    #     a = read_json_file(file_path + "phone_data/event_gallery.json")
-    # if os.path.exists(file_path + "phone_data/event_push.json"):
-    #     b = read_json_file(file_path + "phone_data/event_push.json")
-    # if os.path.exists(file_path + "phone_data/event_call.json"):
-    #     c = read_json_file(file_path + "phone_data/event_call.json")
-    # if os.path.exists(file_path + "phone_data/event_note.json"):
-    #     d = read_json_file(file_path + "phone_data/event_note.json")
-    extool.load_from_json(read_json_file(file_path + 'event_update.json'), persona)
+    e = []
+    if os.path.exists(file_path + "phone_data/event_gallery.json"):
+        a = read_json_file(file_path + "phone_data/event_gallery.json")
+    if os.path.exists(file_path + "phone_data/event_push.json"):
+        b = read_json_file(file_path + "phone_data/event_push.json")
+    if os.path.exists(file_path + "phone_data/event_call.json"):
+        c = read_json_file(file_path + "phone_data/event_call.json")
+    if os.path.exists(file_path + "phone_data/event_note.json"):
+        d = read_json_file(file_path + "phone_data/event_note.json")
+    if os.path.exists(file_path + "phone_data/event_fitness_health.json"):
+        e = read_json_file(file_path + "phone_data/event_fitness_health.json")
+    extool.load_from_json(read_json_file(file_path + 'output.json'), persona)
     # for i in iterate_dates(start_time,end_time):
-    #     phone_gen(i,contact,file_path,a,b,c,d)
+    #     phone_gen(i,contact,file_path,a,b,c,d,e)
     #
     # for i in iterate_dates(start_time,end_time):
     #
@@ -222,5 +248,6 @@ if __name__ == "__main__":
         initial_b=b,
         initial_c=c,
         initial_d=d,
+        initial_e=e,
         max_workers=32  # 可根据实际情况调整
     )

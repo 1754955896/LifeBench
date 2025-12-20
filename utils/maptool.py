@@ -1,4 +1,5 @@
 import random
+import threading
 
 import requests
 import time
@@ -18,9 +19,15 @@ class MapMaintenanceTool:
             "transit": "https://restapi.amap.com/v3/direction/transit/integrated",
             "bicycling": "https://restapi.amap.com/v4/direction/bicycling"
         }
-        self.poi_cache: Dict[str, Tuple[float, Dict]] = {}  # {关键词+城市: (缓存时间, POI数据)}
-        self.duration_cache: Dict[str, Tuple[float, int]] = {}  # {起点+终点+交通方式: (缓存时间, 耗时秒数)}
-        self.geocode_cache: Dict[str, Tuple[float, Dict]] = {}  # {地址+城市: (缓存时间, 地理编码数据)}
+        # 初始化缓存
+        self.poi_cache: Dict[str, Tuple[float, Dict]] = {}
+        self.duration_cache: Dict[str, Tuple[float, int]] = {}
+        self.geocode_cache: Dict[str, Tuple[float, Dict]] = {}
+        # 新增：全局锁（保护所有共享状态操作）
+        self._lock = threading.Lock()
+        # 线程安全的随机数实例（替代全局random）
+        self._random = random.Random()
+        self._random.seed(time.time())
 
     def _is_cache_valid(self, cache_time: float) -> bool:
         """检查缓存是否有效，出错时返回False"""
@@ -481,288 +488,289 @@ class MapMaintenanceTool:
     # 最终优化：类型1指令通过POI获取精准Location，地理编码降级
     # ------------------------------
     def process_instruction_route(self, instruction_data: Dict[str, Any]) -> Tuple[Dict[str, Any], str]:
-        """
-        解析用户POI查询指令，生成POI列表并计算通行时间（最终优化版）
-        核心优化：
-        1. 类型1（画像地址）：优先通过POI查询获取精准Location，地理编码仅作为降级
-        2. 类型3（附近POI）：失败降级为类型2（baseKeyword+poiType）
-        3. 单个指令失败不终止，记录失败信息
-        4. 通行时间计算仅使用有效经纬度，确保准确性
-        Args:
-            instruction_data: 用户指令字典（格式不变）
-        Returns:
-            Tuple[结构化结果, 错误汇总信息]
-        """
-        # 初始化结果容器
-        success_poi_list = []  # 成功执行的POI数据（均含有效location）
-        failed_instructions = []  # 失败的指令记录
-        route_details = []  # 成功的路段详细信息
-        total_duration_seconds = 0
-        actual_cities = set()
+        with self._lock:
+            """
+            解析用户POI查询指令，生成POI列表并计算通行时间（最终优化版）
+            核心优化：
+            1. 类型1（画像地址）：优先通过POI查询获取精准Location，地理编码仅作为降级
+            2. 类型3（附近POI）：失败降级为类型2（baseKeyword+poiType）
+            3. 单个指令失败不终止，记录失败信息
+            4. 通行时间计算仅使用有效经纬度，确保准确性
+            Args:
+                instruction_data: 用户指令字典（格式不变）
+            Returns:
+                Tuple[结构化结果, 错误汇总信息]
+            """
+            # 初始化结果容器
+            success_poi_list = []  # 成功执行的POI数据（均含有效location）
+            failed_instructions = []  # 失败的指令记录
+            route_details = []  # 成功的路段详细信息
+            total_duration_seconds = 0
+            actual_cities = set()
 
-        try:
-            # 1. 解析输入参数
-            instructions = instruction_data.get("instruction", [])
-            input_cities = instruction_data.get("city", [])
-            transports = instruction_data.get("transport", [])
+            try:
+                # 1. 解析输入参数
+                instructions = instruction_data.get("instruction", [])
+                input_cities = instruction_data.get("city", [])
+                transports = instruction_data.get("transport", [])
 
-            # 2. 基础参数校验（仅记录，不终止）
-            global_errors = []
-            if not instructions:
-                global_errors.append("instruction数组不能为空")
-            if len(transports) != len(instructions) - 1:
-                global_errors.append(f"transport数组长度需为instruction长度-1（实际{len(transports)}个）")
-            for idx, transport in enumerate(transports):
-                if transport not in self.transport_apis:
-                    global_errors.append(
-                        f"第{idx + 1}个交通方式{transport}不支持（仅支持driving, walking, transit, bicycling）")
+                # 2. 基础参数校验（仅记录，不终止）
+                global_errors = []
+                if not instructions:
+                    global_errors.append("instruction数组不能为空")
+                if len(transports) != len(instructions) - 1:
+                    global_errors.append(f"transport数组长度需为instruction长度-1（实际{len(transports)}个）")
+                for idx, transport in enumerate(transports):
+                    if transport not in self.transport_apis:
+                        global_errors.append(
+                            f"第{idx + 1}个交通方式{transport}不支持（仅支持driving, walking, transit, bicycling）")
 
-            # 3. 处理每个指令（核心优化：类型1优先POI）
-            for idx, instr in enumerate(instructions):
-                instr_type = instr.get("type")
-                city = instr.get("city") or (input_cities[idx] if idx < len(input_cities) else None)
-                instr_desc = f"第{idx + 1}个指令（类型{instr_type}）"
-                try:
-                    # 3.1 类型1：画像地址（优先POI查询，地理编码降级）
-                    if instr_type == "1":
-                        location = instr.get("location", "").strip()
-                        c = instr.get("city",city).strip()
-                        if not location:
-                            raise ValueError("缺少location字段")
-                        print(f"\n{instr_desc}：画像地址处理 -> 优先POI搜索：{location}@{city}")
+                # 3. 处理每个指令（核心优化：类型1优先POI）
+                for idx, instr in enumerate(instructions):
+                    instr_type = instr.get("type")
+                    city = instr.get("city") or (input_cities[idx] if idx < len(input_cities) else None)
+                    instr_desc = f"第{idx + 1}个指令（类型{instr_type}）"
+                    try:
+                        # 3.1 类型1：画像地址（优先POI查询，地理编码降级）
+                        if instr_type == "1":
+                            location = instr.get("location", "").strip()
+                            c = instr.get("city",city).strip()
+                            if not location:
+                                raise ValueError("缺少location字段")
+                            print(f"\n{instr_desc}：画像地址处理 -> 优先POI搜索：{location}@{city}")
 
-                        # 第一步：尝试以画像地址为关键词查询POI（获取精准Location）
-                        poi_data = self.get_poi(keyword=location, city=c)
-                        if poi_data and poi_data.get("location"):
-                            # POI搜索成功，补充元信息
-                            poi_data["instruction_type"] = "1"
-                            poi_data["original_location"] = location
-                            poi_data["is_poi_fallback"] = False  # 未降级
-                            poi_data["instruction_index"] = idx
-                            success_poi_list.append(poi_data)
-                            print(f"{instr_desc}：POI搜索成功，Location：{poi_data['location']}")
-                        else:
-                            # 第二步：POI搜索失败，降级为地理编码
-                            print(f"{instr_desc}：POI搜索失败，降级为地理编码")
-                            geocode_data = self.amap_geocode(address=location, city=c)
-                            if not geocode_data or not geocode_data.get("location"):
-                                raise ValueError("地理编码也失败，无有效Location")
-                            # 地理编码成功，包装为POI格式（统一数据结构）
-                            enhanced_geocode = {
-                                "name": location,
-                                "location": geocode_data["location"],
-                                "structured_address": geocode_data["formatted_address"],
-                                "geocode": geocode_data,
-                                "instruction_type": "1",
-                                "original_location": location,
-                                "is_poi_fallback": True,  # 已降级为地理编码
-                                "instruction_index": idx
-                            }
-                            success_poi_list.append(enhanced_geocode)
-                            print(f"{instr_desc}：地理编码成功，Location：{geocode_data['location']}")
+                            # 第一步：尝试以画像地址为关键词查询POI（获取精准Location）
+                            poi_data = self.get_poi(keyword=location, city=c)
+                            if poi_data and poi_data.get("location"):
+                                # POI搜索成功，补充元信息
+                                poi_data["instruction_type"] = "1"
+                                poi_data["original_location"] = location
+                                poi_data["is_poi_fallback"] = False  # 未降级
+                                poi_data["instruction_index"] = idx
+                                success_poi_list.append(poi_data)
+                                print(f"{instr_desc}：POI搜索成功，Location：{poi_data['location']}")
+                            else:
+                                # 第二步：POI搜索失败，降级为地理编码
+                                print(f"{instr_desc}：POI搜索失败，降级为地理编码")
+                                geocode_data = self.amap_geocode(address=location, city=c)
+                                if not geocode_data or not geocode_data.get("location"):
+                                    raise ValueError("地理编码也失败，无有效Location")
+                                # 地理编码成功，包装为POI格式（统一数据结构）
+                                enhanced_geocode = {
+                                    "name": location,
+                                    "location": geocode_data["location"],
+                                    "structured_address": geocode_data["formatted_address"],
+                                    "geocode": geocode_data,
+                                    "instruction_type": "1",
+                                    "original_location": location,
+                                    "is_poi_fallback": True,  # 已降级为地理编码
+                                    "instruction_index": idx
+                                }
+                                success_poi_list.append(enhanced_geocode)
+                                print(f"{instr_desc}：地理编码成功，Location：{geocode_data['location']}")
 
-                        # 添加城市信息
-                        current_poi = success_poi_list[-1]
-                        city_val = city or current_poi.get("geocode", {}).get("city") or current_poi.get("city")
-                        if city_val:
-                            actual_cities.add(city_val)
+                            # 添加城市信息
+                            current_poi = success_poi_list[-1]
+                            city_val = city or current_poi.get("geocode", {}).get("city") or current_poi.get("city")
+                            if city_val:
+                                actual_cities.add(city_val)
 
-                    # 3.2 类型2：直接POI搜索（逻辑不变，确保Location有效）
-                    elif instr_type == "2":
-                        keyword = instr.get("keyword", "").strip()
-                        if not keyword:
-                            raise ValueError("缺少keyword字段")
-                        print(f"\n{instr_desc}：直接POI搜索 -> {keyword}@{city}")
-                        poi_data = self.get_poi(keyword=keyword, city=city)
-                        if not poi_data or not poi_data.get("location"):
-                            raise ValueError("POI搜索失败或无有效Location")
-                        poi_data["instruction_type"] = "2"
-                        poi_data["original_keyword"] = keyword
-                        poi_data["instruction_index"] = idx
-                        success_poi_list.append(poi_data)
-                        # 添加城市信息
-                        city_val = city or poi_data.get("geocode", {}).get("city") or poi_data.get("city")
-                        if city_val:
-                            actual_cities.add(city_val)
-
-                    # 3.3 类型3：附近POI搜索（降级逻辑不变，确保Location有效）
-                    elif instr_type == "3":
-                        base_keyword = instr.get("baseKeyword", "").strip()
-                        poi_type = instr.get("poiType", "").strip()
-                        keyw = instr.get("Keyword", "").strip()
-                        if not base_keyword or not poi_type:
-                            raise ValueError("缺少baseKeyword或poiType字段")
-                        print(f"\n{instr_desc}：附近POI搜索 -> 基础地址={base_keyword}，POI类型={poi_type}@{city}")
-
-                        # 第一步：尝试周边POI搜索
-                        base_geocode = self.amap_geocode(address=base_keyword, city=city)
-                        around_poi = None
-                        if base_geocode and base_geocode.get("location"):
-                            around_poi = self.search_around_poi_random(
-                                location=base_geocode["location"],
-                                types=poi_type,
-                                city=city,
-                                radius=3000
-                            )
-
-                        if around_poi and around_poi.get("location"):
-                            # 周边POI成功
-                            around_poi["instruction_type"] = "3"
-                            around_poi["original_baseKeyword"] = base_keyword
-                            around_poi["original_poiType"] = poi_type
-                            around_poi["base_location"] = base_geocode["location"]
-                            around_poi["is_fallback"] = False
-                            around_poi["instruction_index"] = idx
-                            success_poi_list.append(around_poi)
-                            print(f"{instr_desc}：周边POI成功，Location：{around_poi['location']}")
-                        else:
-                            # 降级为类型2：拼接关键词搜索
-                            fallback_keyword = f"{keyw}"
-                            print(f"{instr_desc}：周边POI失败，降级为直接POI搜索（关键词：{fallback_keyword}）")
-                            poi_data = self.get_poi(keyword=fallback_keyword, city=city)
+                        # 3.2 类型2：直接POI搜索（逻辑不变，确保Location有效）
+                        elif instr_type == "2":
+                            keyword = instr.get("keyword", "").strip()
+                            if not keyword:
+                                raise ValueError("缺少keyword字段")
+                            print(f"\n{instr_desc}：直接POI搜索 -> {keyword}@{city}")
+                            poi_data = self.get_poi(keyword=keyword, city=city)
                             if not poi_data or not poi_data.get("location"):
-                                raise ValueError(f"降级搜索失败，无有效Location")
-                            poi_data["instruction_type"] = "3"
-                            poi_data["original_baseKeyword"] = base_keyword
-                            poi_data["original_poiType"] = poi_type
-                            poi_data["fallback_keyword"] = fallback_keyword
-                            poi_data["is_fallback"] = True
+                                raise ValueError("POI搜索失败或无有效Location")
+                            poi_data["instruction_type"] = "2"
+                            poi_data["original_keyword"] = keyword
                             poi_data["instruction_index"] = idx
                             success_poi_list.append(poi_data)
-                            print(f"{instr_desc}：降级POI成功，Location：{poi_data['location']}")
+                            # 添加城市信息
+                            city_val = city or poi_data.get("geocode", {}).get("city") or poi_data.get("city")
+                            if city_val:
+                                actual_cities.add(city_val)
 
-                        # 添加城市信息
+                        # 3.3 类型3：附近POI搜索（降级逻辑不变，确保Location有效）
+                        elif instr_type == "3":
+                            base_keyword = instr.get("baseKeyword", "").strip()
+                            poi_type = instr.get("poiType", "").strip()
+                            keyw = instr.get("Keyword", "").strip()
+                            if not base_keyword or not poi_type:
+                                raise ValueError("缺少baseKeyword或poiType字段")
+                            print(f"\n{instr_desc}：附近POI搜索 -> 基础地址={base_keyword}，POI类型={poi_type}@{city}")
+
+                            # 第一步：尝试周边POI搜索
+                            base_geocode = self.amap_geocode(address=base_keyword, city=city)
+                            around_poi = None
+                            if base_geocode and base_geocode.get("location"):
+                                around_poi = self.search_around_poi_random(
+                                    location=base_geocode["location"],
+                                    types=poi_type,
+                                    city=city,
+                                    radius=3000
+                                )
+
+                            if around_poi and around_poi.get("location"):
+                                # 周边POI成功
+                                around_poi["instruction_type"] = "3"
+                                around_poi["original_baseKeyword"] = base_keyword
+                                around_poi["original_poiType"] = poi_type
+                                around_poi["base_location"] = base_geocode["location"]
+                                around_poi["is_fallback"] = False
+                                around_poi["instruction_index"] = idx
+                                success_poi_list.append(around_poi)
+                                print(f"{instr_desc}：周边POI成功，Location：{around_poi['location']}")
+                            else:
+                                # 降级为类型2：拼接关键词搜索
+                                fallback_keyword = f"{keyw}"
+                                print(f"{instr_desc}：周边POI失败，降级为直接POI搜索（关键词：{fallback_keyword}）")
+                                poi_data = self.get_poi(keyword=fallback_keyword, city=city)
+                                if not poi_data or not poi_data.get("location"):
+                                    raise ValueError(f"降级搜索失败，无有效Location")
+                                poi_data["instruction_type"] = "3"
+                                poi_data["original_baseKeyword"] = base_keyword
+                                poi_data["original_poiType"] = poi_type
+                                poi_data["fallback_keyword"] = fallback_keyword
+                                poi_data["is_fallback"] = True
+                                poi_data["instruction_index"] = idx
+                                success_poi_list.append(poi_data)
+                                print(f"{instr_desc}：降级POI成功，Location：{poi_data['location']}")
+
+                            # 添加城市信息
+                            current_poi = success_poi_list[-1]
+                            city_val = city or current_poi.get("geocode", {}).get("city") or current_poi.get("city")
+                            if city_val:
+                                actual_cities.add(city_val)
+
+
+                        # 未知类型
+                        else:
+                            raise ValueError(f"类型无效（{instr_type}），仅支持1/2/3")
+                        #print(success_poi_list)
+                        # 最终校验：确保添加的POI有有效Location
                         current_poi = success_poi_list[-1]
-                        city_val = city or current_poi.get("geocode", {}).get("city") or current_poi.get("city")
-                        if city_val:
-                            actual_cities.add(city_val)
+                        if not current_poi.get("location") or len(current_poi["location"].split(',')) != 2:
+                            raise ValueError(f"Location无效：{current_poi.get('location')}")
 
-
-                    # 未知类型
-                    else:
-                        raise ValueError(f"类型无效（{instr_type}），仅支持1/2/3")
-                    #print(success_poi_list)
-                    # 最终校验：确保添加的POI有有效Location
-                    current_poi = success_poi_list[-1]
-                    if not current_poi.get("location") or len(current_poi["location"].split(',')) != 2:
-                        raise ValueError(f"Location无效：{current_poi.get('location')}")
-
-                except Exception as e:
-                    # 记录失败指令
-                    failed_instructions.append({
-                        "instruction_index": idx,
-                        "type": instr_type,
-                        "original_instruction": instr,
-                        "error": str(e),
-                        "description": instr_desc
-                    })
-                    print(f"{instr_desc}执行失败：{str(e)}（已记录，继续处理后续指令）")
-                    continue
-
-            # 4. 计算通行时间（仅对连续成功且有有效Location的POI）
-            print(f"\n=== 开始计算通行时间（成功获取{len(success_poi_list)}个有效地址）===")
-            if len(success_poi_list) >= 2:
-                # 遍历所有原始路段（i→i+1）
-                for i in range(len(success_poi_list) - 1):
-
-                    origin_poi = success_poi_list[i]
-                    dest_poi = success_poi_list[i + 1]
-                    transport = transports[i]
-                    origin_city = origin_poi.get("geocode", {}).get("city") or origin_poi.get("city")
-                    dest_city = dest_poi.get("geocode", {}).get("city") or dest_poi.get("city")
-
-                    print(f"\n计算路段{i + 1}：{origin_poi['name']} -> {dest_poi['name']}（{transport}）")
-                    print(f"  起点Location：{origin_poi['location']} | 终点Location：{dest_poi['location']}")
-                    duration = self.get_duration_between_pois(
-                        origin_poi=origin_poi,
-                        dest_poi=dest_poi,
-                        transport=transport,
-                        origin_city=origin_city,
-                        dest_city=dest_city
-                    )
-                    if duration is not None:
-                        route_details.append({
-                            "segment": i + 1,
-                            "original_instruction_segment": f"{i + 1}→{i + 2}",
-                            "origin": {
-                                "name": origin_poi["name"],
-                                "structured_address": origin_poi.get("structured_address", ""),
-                                "location": origin_poi["location"],
-                                "instruction_type": origin_poi["instruction_type"],
-                                "instruction_index": origin_poi["instruction_index"]
-                            },
-                            "destination": {
-                                "name": dest_poi["name"],
-                                "structured_address": dest_poi.get("structured_address", ""),
-                                "location": dest_poi["location"],
-                                "instruction_type": dest_poi["instruction_type"],
-                                "instruction_index": dest_poi["instruction_index"]
-                            },
-                            "transport": transport,
-                            "duration_seconds": duration,
-                            "duration_minutes": round(duration / 60, 1)
+                    except Exception as e:
+                        # 记录失败指令
+                        failed_instructions.append({
+                            "instruction_index": idx,
+                            "type": instr_type,
+                            "original_instruction": instr,
+                            "error": str(e),
+                            "description": instr_desc
                         })
-                        total_duration_seconds += duration
-                        print(f"路段{i + 1}：计算成功，耗时{round(duration / 60, 1)}分钟")
-                    else:
-                        print(f"路段{i + 1}：计算失败，跳过")
+                        print(f"{instr_desc}执行失败：{str(e)}（已记录，继续处理后续指令）")
+                        continue
 
-            # 5. 构建最终结果
-            final_result = {
-                "input_instruction": instruction_data,
-                "global_errors": global_errors,
-                "success_summary": {
-                    "total_input_instructions": len(instructions),
-                    "success_instructions_count": len(success_poi_list),
-                    "failed_instructions_count": len(failed_instructions),
-                    "total_segments": len(route_details),
-                    "total_duration_seconds": total_duration_seconds,
-                    "total_duration_minutes": round(total_duration_seconds / 60, 1),
-                    "actual_cities": list(actual_cities)
-                },
-                "route_details": route_details,
-                "success_poi_list": success_poi_list,  # 所有成功的POI（含类型1降级的地理编码包装）
-                "failed_instructions": failed_instructions
-            }
+                # 4. 计算通行时间（仅对连续成功且有有效Location的POI）
+                print(f"\n=== 开始计算通行时间（成功获取{len(success_poi_list)}个有效地址）===")
+                if len(success_poi_list) >= 2:
+                    # 遍历所有原始路段（i→i+1）
+                    for i in range(len(success_poi_list) - 1):
 
-            # 生成错误汇总
-            error_summary = ""
-            if global_errors:
-                error_summary += "全局错误：" + "；".join(global_errors) + "；"
-            if failed_instructions:
-                error_summary += f"失败指令数：{len(failed_instructions)}（详情见failed_instructions字段）"
+                        origin_poi = success_poi_list[i]
+                        dest_poi = success_poi_list[i + 1]
+                        transport = transports[i]
+                        origin_city = origin_poi.get("geocode", {}).get("city") or origin_poi.get("city")
+                        dest_city = dest_poi.get("geocode", {}).get("city") or dest_poi.get("city")
 
-            print(f"\n=== 指令处理完成 ===")
-            print(
-                f"输入指令数：{len(instructions)} | 成功数：{len(success_poi_list)} | 失败数：{len(failed_instructions)}")
-            print(
-                f"成功路段数：{len(route_details)} | 总通行时间：{final_result['success_summary']['total_duration_minutes']}分钟")
-            return final_result, error_summary
+                        print(f"\n计算路段{i + 1}：{origin_poi['name']} -> {dest_poi['name']}（{transport}）")
+                        print(f"  起点Location：{origin_poi['location']} | 终点Location：{dest_poi['location']}")
+                        duration = self.get_duration_between_pois(
+                            origin_poi=origin_poi,
+                            dest_poi=dest_poi,
+                            transport=transport,
+                            origin_city=origin_city,
+                            dest_city=dest_city
+                        )
+                        if duration is not None:
+                            route_details.append({
+                                "segment": i + 1,
+                                "original_instruction_segment": f"{i + 1}→{i + 2}",
+                                "origin": {
+                                    "name": origin_poi["name"],
+                                    "structured_address": origin_poi.get("structured_address", ""),
+                                    "location": origin_poi["location"],
+                                    "instruction_type": origin_poi["instruction_type"],
+                                    "instruction_index": origin_poi["instruction_index"]
+                                },
+                                "destination": {
+                                    "name": dest_poi["name"],
+                                    "structured_address": dest_poi.get("structured_address", ""),
+                                    "location": dest_poi["location"],
+                                    "instruction_type": dest_poi["instruction_type"],
+                                    "instruction_index": dest_poi["instruction_index"]
+                                },
+                                "transport": transport,
+                                "duration_seconds": duration,
+                                "duration_minutes": round(duration / 60, 1)
+                            })
+                            total_duration_seconds += duration
+                            print(f"路段{i + 1}：计算成功，耗时{round(duration / 60, 1)}分钟")
+                        else:
+                            print(f"路段{i + 1}：计算失败，跳过")
 
-        except Exception as e:
-            # 全局异常捕获（确保返回结构化结果）
-            global_error = f"整体处理异常：{str(e)}"
-            failed_instructions.append(
-                {"instruction_index": -1, "type": "global", "error": global_error, "description": "全局异常"})
-            final_result = {
-                "input_instruction": instruction_data,
-                "global_errors": [global_error],
-                "success_summary": {
-                    "total_input_instructions": len(instructions) if 'instructions' in locals() else 0,
-                    "success_instructions_count": len(success_poi_list),
-                    "failed_instructions_count": len(failed_instructions),
-                    "total_segments": len(route_details),
-                    "total_duration_seconds": total_duration_seconds,
-                    "total_duration_minutes": round(total_duration_seconds / 60, 1),
-                    "actual_cities": list(actual_cities)
-                },
-                "route_details": route_details,
-                "success_poi_list": success_poi_list,
-                "failed_instructions": failed_instructions
-            }
-            print(f"\n=== 处理异常终止 ===")
-            print(f"全局错误：{global_error}")
-            return final_result, global_error
+                # 5. 构建最终结果
+                final_result = {
+                    "input_instruction": instruction_data,
+                    "global_errors": global_errors,
+                    "success_summary": {
+                        "total_input_instructions": len(instructions),
+                        "success_instructions_count": len(success_poi_list),
+                        "failed_instructions_count": len(failed_instructions),
+                        "total_segments": len(route_details),
+                        "total_duration_seconds": total_duration_seconds,
+                        "total_duration_minutes": round(total_duration_seconds / 60, 1),
+                        "actual_cities": list(actual_cities)
+                    },
+                    "route_details": route_details,
+                    "success_poi_list": success_poi_list,  # 所有成功的POI（含类型1降级的地理编码包装）
+                    "failed_instructions": failed_instructions
+                }
+
+                # 生成错误汇总
+                error_summary = ""
+                if global_errors:
+                    error_summary += "全局错误：" + "；".join(global_errors) + "；"
+                if failed_instructions:
+                    error_summary += f"失败指令数：{len(failed_instructions)}（详情见failed_instructions字段）"
+
+                print(f"\n=== 指令处理完成 ===")
+                print(
+                    f"输入指令数：{len(instructions)} | 成功数：{len(success_poi_list)} | 失败数：{len(failed_instructions)}")
+                print(
+                    f"成功路段数：{len(route_details)} | 总通行时间：{final_result['success_summary']['total_duration_minutes']}分钟")
+                return final_result, error_summary
+
+            except Exception as e:
+                # 全局异常捕获（确保返回结构化结果）
+                global_error = f"整体处理异常：{str(e)}"
+                failed_instructions.append(
+                    {"instruction_index": -1, "type": "global", "error": global_error, "description": "全局异常"})
+                final_result = {
+                    "input_instruction": instruction_data,
+                    "global_errors": [global_error],
+                    "success_summary": {
+                        "total_input_instructions": len(instructions) if 'instructions' in locals() else 0,
+                        "success_instructions_count": len(success_poi_list),
+                        "failed_instructions_count": len(failed_instructions),
+                        "total_segments": len(route_details),
+                        "total_duration_seconds": total_duration_seconds,
+                        "total_duration_minutes": round(total_duration_seconds / 60, 1),
+                        "actual_cities": list(actual_cities)
+                    },
+                    "route_details": route_details,
+                    "success_poi_list": success_poi_list,
+                    "failed_instructions": failed_instructions
+                }
+                print(f"\n=== 处理异常终止 ===")
+                print(f"全局错误：{global_error}")
+                return final_result, global_error
 
 
     def extract_route_summary(self,route_result: Dict[str, Any]) -> str:

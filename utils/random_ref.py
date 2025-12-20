@@ -1,5 +1,6 @@
 import json
 import random
+import threading
 from typing import List, Union
 
 
@@ -12,6 +13,9 @@ class JSONRandomSelector:
             file_path: JSON文件的路径
         """
         self.data = self._load_json(file_path)
+        # 创建线程安全的随机数生成器
+        self._random = random.Random()
+        self._random.seed()  # 使用系统时间作为种子
 
     def _load_json(self, file_path: str) -> dict:
         """加载JSON文件内容"""
@@ -60,10 +64,10 @@ class JSONRandomSelector:
         # 执行随机抽取
         if unique:
             # 不允许重复，使用sample
-            selected = random.sample(items, count)
+            selected = self._random.sample(items, count)
         else:
             # 允许重复，使用choices
-            selected = random.choices(items, k=count)
+            selected = self._random.choices(items, k=count)
 
         # 如果只抽取一个，返回单个元素
         return selected[0] if count == 1 else selected
