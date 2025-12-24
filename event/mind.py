@@ -22,6 +22,7 @@ class Mind:
         self.persona = persona if persona is not None else ""
         self.persona_withoutrl = ""
         # 创建独立的记忆模块实例，使用基于人物标识的记忆文件
+        # 使用instance_id作为人物唯一标识，确保每个人只有一个memory文件
         memory_file_name = f"personal_memories_{instance_id}.json"
         memory_file_path = os.path.join("memory_file", memory_file_name)
         self.mem_module = MemoryModule.get_instance(str(instance_id), memory_file=memory_file_path)
@@ -1433,7 +1434,7 @@ class MindController:
     Mind类的并行化控制器，用于管理多个Mind实例的并行执行
     """
         
-    def __init__(self, event_file='event.json', persona_file='persona.json', data_dir='data/2025-12-07', daily_state_file='daily_state.json'):
+    def __init__(self, event_file='event.json', persona_file='persona.json', data_dir='data/2025-12-07', daily_state_file='daily_state.json', instance_id=0):
         """
         初始化MindController实例
         
@@ -1442,8 +1443,10 @@ class MindController:
             persona_file: 人物画像数据文件路径
             data_dir: 数据存储目录
             daily_state_file: 每日状态数据文件路径
+            instance_id: 人物实例ID，用于确保每个人只有一个memory文件
         """
         self.data_dir = data_dir
+        self.instance_id = instance_id
         # 从文件加载初始数据
         from utils.IO import read_json_file
         try:
@@ -1475,10 +1478,9 @@ class MindController:
         返回:
             Mind: 创建的Mind实例
         """
-        # 生成与线程相关的instance_id
-        thread_id = threading.get_ident()
-        # 确保线程ID是唯一的，并将其作为instance_id传递
-        return Mind(file_path=self.data_dir, instance_id=thread_id, persona=self.persona, event=self.events, daily_state=self.daily_state)
+        # 使用人物的instance_id作为标识，确保每个人只有一个memory文件
+        # 不再使用thread_id，避免每个线程创建一个独立的memory文件
+        return Mind(file_path=self.data_dir, instance_id=self.instance_id, persona=self.persona, event=self.events, daily_state=self.daily_state)
     
     def run_daily_event_with_threading(self, start_date, end_date, max_workers=5, interval_days=2):
         """

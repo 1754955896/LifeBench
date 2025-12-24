@@ -127,7 +127,8 @@ if generate_data:
         data_dir=file_path,
         persona_file=file_path + 'persona.json',
         event_file=adjusted_events_path,
-        daily_state_file=file_path + 'daily_state.json'
+        daily_state_file=file_path + 'daily_state.json',
+        instance_id=args.instance_id
     )
     
     # 3.2 执行多线程并行处理
