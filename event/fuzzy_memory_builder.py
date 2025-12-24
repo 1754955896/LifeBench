@@ -358,7 +358,7 @@ class FuzzyMemoryBuilder:
         print("累积总结生成完成！")
     
     @staticmethod
-    def get_instance(event_data: List[Dict], persona: Dict, output_dir: str = "D:\\pyCharmProjects\\pythonProject4\\data\\"):
+    def get_instance(event_data: List[Dict], persona: Dict, output_dir: str = "data/"):
         """
         创建或获取FuzzyMemoryBuilder实例（单例模式）
         

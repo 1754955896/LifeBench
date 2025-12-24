@@ -368,7 +368,7 @@ class EventRefiner:
         print(f"共更新了 {updated_count} 个事件")
         return events
     
-    def save_dailylife_to_json(self, dailylife_data: List[Dict], output_path: str = "D:\\pyCharmProjects\\pythonProject4\\output\\daily_state.json"):
+    def save_dailylife_to_json(self, dailylife_data: List[Dict], output_path: str = "output/daily_state.json"):
         """
         将每日生活数据保存到JSON文件
         
@@ -392,7 +392,7 @@ class EventRefiner:
         
         print(f"每日生活数据已保存到: {output_path}")
 
-    def annual_event_refine(self, events: List[Dict], start_date: str, end_date: str, context: str = "", max_workers: int = 5) -> List[Dict]:
+    def annual_event_refine(self, events: List[Dict], start_date: str, end_date: str, context: str = "", max_workers: int = 5, output_path: str = "output/daily_state.json") -> List[Dict]:
         """
         处理整个年度的事件调整，内部使用多线程并统一合并结果
         
@@ -482,7 +482,7 @@ class EventRefiner:
             
             # 保存每日生活数据到JSON文件
             if all_dailylife:
-                self.save_dailylife_to_json(all_dailylife)
+                self.save_dailylife_to_json(all_dailylife, output_path)
 
             return updated_events
         except Exception as e:
@@ -498,8 +498,8 @@ if __name__ == "__main__":
     print("\n=== 开始测试两周事件调整功能 ===")
     
     # 读取画像数据
-    persona_path = "D:\pyCharmProjects\pythonProject4\output\persona.json"
-    event_decompose_path = "D:\pyCharmProjects\pythonProject4\output\event_decompose_dfs.json"
+    persona_path = "output/persona.json"
+    event_decompose_path = "output/event_decompose_dfs.json"
     
     try:
         # 加载画像数据
@@ -543,7 +543,7 @@ if __name__ == "__main__":
 
             # 保存每日生活数据到测试文件
         if results['dailylife']:
-                refiner.save_dailylife_to_json(results['dailylife'], "D:\\pyCharmProjects\\pythonProject4\\output\\test_daily_state.json")
+                refiner.save_dailylife_to_json(results['dailylife'], "output/test_daily_state.json")
 
     except Exception as e:
         print(f"测试过程中出错: {type(e).__name__}: {e}")

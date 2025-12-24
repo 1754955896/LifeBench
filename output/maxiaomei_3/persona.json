@@ -1,0 +1,707 @@
+{
+  "name": "马晓梅",
+  "birth": "1980-09-12",
+  "age": 41,
+  "nationality": "汉",
+  "home_address": {
+    "province": "天津市",
+    "city": "天津市",
+    "district": "西青区",
+    "street_name": "杨柳青镇",
+    "street_number": "古运河路15号"
+  },
+  "birth_place": {
+    "province": "天津市",
+    "city": "天津市",
+    "district": "西青区"
+  },
+  "gender": "女",
+  "education": "初中",
+  "job": "家庭主妇",
+  "occupation": "无",
+  "workplace": {
+    "province": "",
+    "city": "",
+    "district": "",
+    "street_name": "",
+    "street_number": ""
+  },
+  "belief": "不信仰宗教",
+  "salary": 0.0,
+  "body": {
+    "height": 165,
+    "weight": 55.0,
+    "BMI": 20.2
+  },
+  "family": "初婚有配偶,育有3个孩子",
+  "personality": {
+    "mbti": "ISFJ",
+    "traits": [
+      "家庭导向",
+      "保守稳定",
+      "安全"
+    ]
+  },
+  "hobbies": [
+    "做手工（刺绣，擅长传统京津绣法）",
+    "与朋友聚会",
+    "在家听音乐",
+    "看电视"
+  ],
+  "favorite_foods": [
+    "天津包子",
+    "糖醋里脊",
+    "家常豆腐"
+  ],
+  "memory_date": [
+    "2005-08-20 结婚纪念日",
+    "2010-06-01 第一个孩子出生日"
+  ],
+  "aim": [
+    "每月组织一次家庭聚餐",
+    "三年内帮孩子完成学业规划",
+    "五年内学会种植家庭菜园"
+  ],
+  "healthy_desc": "个人整体健康状况良好，无慢性病史，过去三年未进行系统体检，但日常会关注身体基本状况。没有规律运动习惯，主要以家务活动维持日常体能，个人护理习惯简单务实。",
+  "lifestyle_desc": "日常生活以家庭为中心，每天固定看电视获取信息，每月数次与朋友聚会和做手工刺绣，偶尔上网浏览。休闲活动偏好室内，几乎不参与体育锻炼和户外活动，生活风格偏向传统保守，注重家庭互动。",
+  "economic_desc": "家庭年收入约4万元，拥有一处房产，无家用汽车。消费习惯节俭，无任何投资活动，经济状况稳定但较为紧张，主要支出用于子女教育和家庭日常开销。",
+  "work_desc": "目前全职照顾家庭，无固定工作安排。早年曾从事农业劳动，现已将重心完全转向家庭事务管理。",
+  "experience_desc": "出生于天津西青区并始终在当地生活，青少年时期协助家庭从事蔬菜种植和家禽养殖等农活，培养了勤劳节俭的习惯。20岁与同乡结婚后，逐步从农业劳动转型为全职家庭主妇，先后生育三个孩子，长期专注于子女照料和家务管理，积累了丰富的家庭经营经验。人生经历以家庭为核心，形成了稳定务实的生活模式。",
+  "description": "马晓梅是一位41岁的天津女性，初中文化程度，现为全职家庭主妇，育有三个孩子。作为ISFJ人格类型，她重视家庭稳定和安全，价值观偏向保守和家庭导向。日常以家务管理和子女照料为主，爱好手工刺绣和亲友聚会，生活节奏规律且注重传统。她长期扎根天津西青区，早年有过务农经历，如今将全部精力投入家庭建设，经常组织家庭活动并关注子女教育发展。未来希望继续深化家庭凝聚力，并通过种植菜园等生活化方式提升家庭生活质量。",
+  "relation": [
+    [
+      {
+        "name": "马建国",
+        "relation": "丈夫",
+        "social circle": "家庭圈",
+        "gender": "男",
+        "age": 43,
+        "birth_date": "1978-05-23",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "杨柳青镇",
+          "street_number": "古运河路15号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ISTJ",
+        "economic_level": "小康",
+        "occupation": "货车司机",
+        "organization": "天津物流运输公司",
+        "nickname": "老马",
+        "relation_description": "马晓梅的丈夫，两人于2005年结婚。马建国长期从事物流运输工作，经常往返于京津冀地区。夫妻二人共同抚养三个孩子，平时主要通过电话联系，周末马建国回家后一起吃饭、看电视。马建国性格稳重务实，负责家庭主要经济来源，马晓梅则负责家务和子女教育。"
+      },
+      {
+        "name": "马小芳",
+        "relation": "女儿",
+        "social circle": "家庭圈",
+        "gender": "女",
+        "age": 14,
+        "birth_date": "2007-11-18",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "杨柳青镇",
+          "street_number": "古运河路15号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ENFP",
+        "economic_level": "学生",
+        "occupation": "初中生",
+        "organization": "西青区实验中学",
+        "nickname": "芳芳",
+        "relation_description": "马晓梅的大女儿，现就读初中二年级。性格活泼开朗，喜欢绘画和音乐。每天放学回家后与母亲一起做家务，周末常陪母亲去菜市场。马晓梅经常辅导她的作业，母女关系亲密。马小芳与弟弟妹妹相处融洽，经常帮助照顾弟弟妹妹的学习。"
+      },
+      {
+        "name": "马小刚",
+        "relation": "儿子",
+        "social circle": "家庭圈",
+        "gender": "男",
+        "age": 12,
+        "birth_date": "2009-08-03",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "杨柳青镇",
+          "street_number": "古运河路15号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ISTP",
+        "economic_level": "学生",
+        "occupation": "小学生",
+        "organization": "杨柳青第一小学",
+        "nickname": "刚子",
+        "relation_description": "马晓梅的独子，小学六年级学生。性格内向但动手能力强，喜欢拼装模型。马晓梅每天接送他上下学，周末带他去公园玩耍。马小刚与两个姐姐关系很好，经常一起做作业。马晓梅注重培养他的独立性，让他参与简单的家务劳动。"
+      },
+      {
+        "name": "马小丽",
+        "relation": "女儿",
+        "social circle": "家庭圈",
+        "gender": "女",
+        "age": 9,
+        "birth_date": "2012-12-25",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "杨柳青镇",
+          "street_number": "古运河路15号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ISFP",
+        "economic_level": "学生",
+        "occupation": "小学生",
+        "organization": "杨柳青第一小学",
+        "nickname": "丽丽",
+        "relation_description": "马晓梅的小女儿，小学三年级学生。性格温柔乖巧，喜欢跟着母亲学习刺绣。马晓梅每天接送她上下学，晚上陪她写作业。马小丽与哥哥姐姐关系亲密，经常一起玩耍。马晓梅特别关注她的成长，经常带她参加社区儿童活动。"
+      },
+      {
+        "name": "张秀英",
+        "relation": "母亲",
+        "social circle": "家庭圈",
+        "gender": "女",
+        "age": 68,
+        "birth_date": "1953-03-15",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "李七庄街道",
+          "street_number": "津涞公路28号"
+        },
+        "birth_place": {
+          "province": "河北省",
+          "city": "沧州市"
+        },
+        "personality": "ESFJ",
+        "economic_level": "退休",
+        "occupation": "退休工人",
+        "organization": "原天津纺织厂",
+        "nickname": "妈",
+        "relation_description": "马晓梅的母亲，现居住在距离女儿家3公里处。张秀英退休前是纺织厂工人，现在独居生活。马晓梅每周探望母亲2-3次，帮忙采购生活用品和打扫卫生。母女二人经常电话联系，周末有时一起包饺子。张秀英偶尔来女儿家帮忙照看孙子孙女，传授马晓梅传统刺绣技艺。"
+      },
+      {
+        "name": "马志强",
+        "relation": "父亲",
+        "social circle": "家庭圈",
+        "gender": "男",
+        "age": 70,
+        "birth_date": "1951-07-08",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "李七庄街道",
+          "street_number": "津涞公路28号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ISTJ",
+        "economic_level": "退休",
+        "occupation": "退休农民",
+        "organization": "无",
+        "nickname": "爸",
+        "relation_description": "马晓梅的父亲，与妻子张秀英同住。马志强年轻时务农，现在退休在家养花种草。马晓梅每周探望父母时都会与父亲聊天，听取生活建议。马志强偶尔来女儿家帮忙修理家具，教授外孙们种植技巧。父女关系融洽，马晓梅遇到重大事情时会征求父亲意见。"
+      }
+    ],
+    [
+      {
+        "name": "王美玲",
+        "relation": "闺蜜",
+        "social circle": "发小圈",
+        "gender": "女",
+        "age": 41,
+        "birth_date": "1980-03-15",
+        "home_address": {
+          "province": "北京市",
+          "city": "北京市",
+          "district": "朝阳区",
+          "street_name": "望京街道",
+          "street_number": "阜通东大街6号院"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ESFJ",
+        "economic_level": "中产",
+        "occupation": "幼儿园教师",
+        "organization": "北京市朝阳区实验幼儿园",
+        "nickname": "玲玲",
+        "relation_description": "王美玲与马晓梅是自幼一起长大的发小，两人在西青区同一所小学和初中就读。王美玲大学毕业后到北京发展，现为幼儿园教师。她们每月通过视频通话联系2-3次，聊家庭生活和子女教育话题，每年春节王美玲回天津时会与马晓梅见面聚餐，一起回忆童年趣事。"
+      },
+      {
+        "name": "李红梅",
+        "relation": "闺蜜",
+        "social circle": "发小圈",
+        "gender": "女",
+        "age": 42,
+        "birth_date": "1979-12-08",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "中北镇",
+          "street_number": "星光路88号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ISFP",
+        "economic_level": "小康",
+        "occupation": "超市收银员",
+        "organization": "永辉超市西青店",
+        "nickname": "红姐",
+        "relation_description": "李红梅与马晓梅、王美玲是初中同学，三人组成发小闺蜜圈。李红梅一直在西青区生活，目前在超市工作。她与马晓梅保持密切往来，每周会相约一起做手工刺绣或看电视，周末经常带着孩子互相串门。三人每年会在马晓梅家组织一次发小聚会，分享生活近况。"
+      }
+    ],
+    [
+      {
+        "name": "赵秀英",
+        "relation": "邻居",
+        "social circle": "社区圈",
+        "gender": "女",
+        "age": 58,
+        "birth_date": "1966-03-15",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "杨柳青镇古运河路",
+          "street_number": "12号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ESFJ",
+        "economic_level": "小康",
+        "occupation": "退休教师",
+        "organization": "西青区实验小学",
+        "nickname": "赵阿姨",
+        "relation_description": "赵阿姨是住在隔壁单元的退休教师，与马晓梅相识已有十年。两人经常在小区花园偶遇聊天，每周会相约一起买菜或做手工刺绣。赵阿姨擅长北方剪纸，经常指导马晓梅传统手工艺，逢年过节会互相赠送自制点心。虽然年龄相差较大，但两人因共同爱好成为忘年交，保持着每周见面2-3次的亲密邻里关系。"
+      },
+      {
+        "name": "刘美兰",
+        "relation": "邻居",
+        "social circle": "社区圈",
+        "gender": "女",
+        "age": 49,
+        "birth_date": "1975-08-22",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "杨柳青镇古运河路",
+          "street_number": "18号"
+        },
+        "birth_place": {
+          "province": "河北省",
+          "city": "沧州市",
+          "district": "运河区"
+        },
+        "personality": "ISFP",
+        "economic_level": "中等",
+        "occupation": "超市收银员",
+        "organization": "物美超市西青店",
+        "nickname": "刘大妈",
+        "relation_description": "刘大妈是五年前搬来的邻居，在附近超市工作。两人因孩子在同一所小学读书而熟识，经常一起接送孩子上下学。周末时常相约在小区凉亭喝茶聊天，分享育儿经验和家常菜做法。刘大妈性格温和内向，但和马晓梅很投缘，每月会组织一次小型邻里聚餐。虽然刘大妈原籍河北，但已在天津生活多年，两人保持着每周见面1-2次的稳定邻里交往。"
+      },
+      {
+        "name": "高玉珍",
+        "relation": "邻居",
+        "social circle": "社区圈",
+        "gender": "女",
+        "age": 62,
+        "birth_date": "1962-11-30",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "杨柳青镇古运河路",
+          "street_number": "9号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "南开区"
+        },
+        "personality": "ENFJ",
+        "economic_level": "小康",
+        "occupation": "退休护士",
+        "organization": "天津市第一中心医院",
+        "nickname": "高阿姨",
+        "relation_description": "高阿姨是社区里的热心人，退休前在医院工作。她与马晓梅通过社区活动相识，经常组织邻里健康知识分享会。高阿姨精通养生之道，常教马晓梅一些简单的保健方法，两人还一起参加社区的刺绣兴趣小组。作为社区圈的活跃分子，高阿姨经常协调赵阿姨、刘大妈等邻居聚会，每月固定组织一次手工活动。三人虽然年龄不同，但因住在同一条街上，形成了密切的邻里互助网络。"
+      }
+    ],
+    [
+      {
+        "name": "陈晓红",
+        "relation": "家长",
+        "social_circle": "子女教育圈",
+        "gender": "女",
+        "age": 39,
+        "birth_date": "1984-05-18",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "张家窝镇",
+          "street_number": "学府花园12号楼3单元"
+        },
+        "birth_place": {
+          "province": "河北省",
+          "city": "沧州市"
+        },
+        "personality": "ESFJ",
+        "economic_level": "中等",
+        "occupation": "超市收银员",
+        "organization": "永旺超市西青店",
+        "nickname": "陈姐",
+        "relation_description": "陈晓红是马晓梅大儿子同班同学的母亲，两人通过家长会相识已有三年。由于同住西青区，她们每月会相约在学校门口接送孩子时聊天，偶尔周末带孩子一起逛公园。陈晓红性格热情外向，经常分享育儿经验，两人主要通过微信和家长群保持联系，每周会有2-3次互动。"
+      },
+      {
+        "name": "张丽华",
+        "relation": "家长",
+        "social_circle": "子女教育圈",
+        "gender": "女",
+        "age": 42,
+        "birth_date": "1981-12-03",
+        "home_address": {
+          "province": "北京市",
+          "city": "北京市",
+          "district": "海淀区",
+          "street_name": "中关村大街",
+          "street_number": "甲68号院5号楼"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市"
+        },
+        "personality": "ISTJ",
+        "economic_level": "中上",
+        "occupation": "小学教师",
+        "organization": "北京市海淀区实验小学",
+        "nickname": "张老师",
+        "relation_description": "张丽华是马晓梅二女儿的班主任，原籍天津后来到北京发展。两人通过家长微信群建立联系，每学期家长会时见面交流。张老师做事严谨认真，经常通过电话和微信向马晓梅反馈孩子在校情况。由于异地原因，她们主要通过线上方式联系，每月沟通1-2次，寒暑假张老师回天津时会相约喝茶。"
+      },
+      {
+        "name": "杨美玲",
+        "relation": "家长",
+        "social_circle": "子女教育圈",
+        "gender": "女",
+        "age": 38,
+        "birth_date": "1985-08-22",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "李七庄街道",
+          "street_number": "津涞花园8号楼2单元"
+        },
+        "birth_place": {
+          "province": "山东省",
+          "city": "德州市"
+        },
+        "personality": "ISFP",
+        "economic_level": "中等",
+        "occupation": "家政服务员",
+        "organization": "天津好阿姨家政公司",
+        "nickname": "小杨",
+        "relation_description": "杨美玲是马晓梅小儿子幼儿园同学的母亲，两人在幼儿园接送时结识。同住西青区的她们经常相约带孩子去社区游乐场玩耍，杨美玲性格温和内向，擅长手工制作，与马晓梅有共同的刺绣爱好。她们每周见面2-3次，平时通过微信分享育儿心得和手工技巧，形成了稳定的家长互助关系。"
+      }
+    ],
+    [
+      {
+        "name": "周秀英",
+        "relation": "亲戚",
+        "social circle": "亲戚圈",
+        "gender": "女",
+        "age": 58,
+        "birth_date": "1966-03-15",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "杨柳青镇",
+          "street_number": "古运河路28号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ESFJ",
+        "economic_level": "温饱",
+        "occupation": "退休工人",
+        "organization": "原天津纺织厂",
+        "nickname": "周大姐",
+        "relation_description": "周秀英是马晓梅的堂姐，两人从小在同一个胡同长大。现在住在同一条街上，每周会相约一起买菜、做手工刺绣。周末经常带着自己做的点心去马晓梅家串门，帮忙照看孩子。两人保持着密切的亲戚往来，逢年过节都会互相走动。"
+      },
+      {
+        "name": "马建军",
+        "relation": "兄弟",
+        "social circle": "亲戚圈",
+        "gender": "男",
+        "age": 45,
+        "birth_date": "1979-12-08",
+        "home_address": {
+          "province": "北京市",
+          "city": "北京市",
+          "district": "朝阳区",
+          "street_name": "望京街道",
+          "street_number": "阜通东大街6号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ISTJ",
+        "economic_level": "小康",
+        "occupation": "出租车司机",
+        "organization": "北京出租汽车公司",
+        "nickname": "建军",
+        "relation_description": "马建军是马晓梅的弟弟，年轻时到北京打工定居。每月会通过视频通话联系两三次，过年时一定会回天津团聚。虽然分隔两地，但姐弟感情深厚，马建军经常给姐姐寄北京特产，马晓梅也会托人带天津小吃给弟弟。"
+      },
+      {
+        "name": "王淑芬",
+        "relation": "亲戚",
+        "social circle": "亲戚圈",
+        "gender": "女",
+        "age": 62,
+        "birth_date": "1962-07-22",
+        "home_address": {
+          "province": "河北省",
+          "city": "石家庄市",
+          "district": "长安区",
+          "street_name": "建北街道",
+          "street_number": "和平东路32号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ISFJ",
+        "economic_level": "温饱",
+        "occupation": "退休教师",
+        "organization": "原石家庄市第二中学",
+        "nickname": "王阿姨",
+        "relation_description": "王淑芬是马晓梅的远房姑姑，年轻时嫁到石家庄。两人主要通过微信保持联系，每逢重要节日会互致问候。王阿姨退休后经常回天津探亲，每次回来都会给马晓梅的孩子带礼物，两人见面时会一起回忆家乡往事。"
+      },
+      {
+        "name": "林美华",
+        "relation": "亲戚",
+        "social circle": "亲戚圈",
+        "gender": "女",
+        "age": 49,
+        "birth_date": "1975-05-18",
+        "home_address": {
+          "province": "山东省",
+          "city": "青岛市",
+          "district": "市南区",
+          "street_name": "香港中路",
+          "street_number": "86号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ENFP",
+        "economic_level": "小康",
+        "occupation": "海鲜批发商",
+        "organization": "青岛海鲜批发市场",
+        "nickname": "林大姐",
+        "relation_description": "林美华是马晓梅的表姐，在青岛经营海鲜生意。虽然距离较远，但两人感情很好，每年夏天林美华都会寄新鲜海产给马晓梅一家。通过微信群与周秀英等亲戚保持联系，经常在群里分享生活趣事，形成了活跃的亲戚社交圈。"
+      }
+    ],
+    [
+      {
+        "name": "孙小妹",
+        "relation": "手工友",
+        "social circle": "刺绣圈",
+        "gender": "女",
+        "age": 38,
+        "birth_date": "1985-03-15",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "杨柳青镇",
+          "street_number": "运河东路32号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ESFJ",
+        "economic_level": "中等",
+        "occupation": "手工艺品店店员",
+        "organization": "杨柳青手工艺坊",
+        "nickname": "小妹",
+        "relation_description": "孙小妹是马晓梅在社区刺绣班认识的同好，两人因对传统刺绣的共同热爱成为好友。她们每周三下午固定参加刺绣班活动，经常交流京津绣法的技巧心得。孙小妹性格开朗热情，经常组织小型手工艺聚会，马晓梅是她最固定的参与伙伴。两人居住在同一社区，除了刺绣活动外，偶尔会相约逛集市购买布料，平时通过微信分享刺绣作品照片。"
+      },
+      {
+        "name": "钱大姐",
+        "relation": "手工友",
+        "social circle": "刺绣圈",
+        "gender": "女",
+        "age": 52,
+        "birth_date": "1971-08-22",
+        "home_address": {
+          "province": "河北省",
+          "city": "沧州市",
+          "district": "运河区",
+          "street_name": "解放西路",
+          "street_number": "88号"
+        },
+        "birth_place": {
+          "province": "河北省",
+          "city": "沧州市",
+          "district": "运河区"
+        },
+        "personality": "ISFP",
+        "economic_level": "中等",
+        "occupation": "退休教师",
+        "organization": "沧州实验小学（已退休）",
+        "nickname": "钱姐",
+        "relation_description": "钱大姐是马晓梅通过孙小妹介绍认识的资深刺绣爱好者，退休前是美术教师，精通多种刺绣技法。虽然住在沧州，但每月会来天津参加一次刺绣交流活动，与马晓梅等人聚会。钱大姐性格温和耐心，经常指导马晓梅改进刺绣技巧，两人通过微信视频定期交流创作心得。她们三人组成的刺绣小团体每年会合作完成一幅大型刺绣作品，钱大姐负责设计构图，马晓梅和孙小妹负责具体制作。"
+      },
+      {
+        "name": "黄阿姨",
+        "relation": "手工友",
+        "social circle": "刺绣圈",
+        "gender": "女",
+        "age": 58,
+        "birth_date": "1965-12-03",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "杨柳青镇",
+          "street_number": "古运河路8号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "INFJ",
+        "economic_level": "小康",
+        "occupation": "传统刺绣传承人",
+        "organization": "西青区非物质文化遗产保护中心",
+        "nickname": "黄老师",
+        "relation_description": "黄阿姨是社区刺绣班的指导老师，与马晓梅相识多年。作为非物质文化遗产传承人，她不仅教授刺绣技艺，还经常组织学员参加文化展览活动。黄阿姨住在马晓梅同一条街上，两人经常在买菜途中相遇闲聊。她欣赏马晓梅对传统刺绣的坚持，经常邀请她参与社区文化活动的筹备工作。这个刺绣圈的三位成员虽然年龄、背景不同，但都因对传统手工艺的热爱而紧密联系，黄阿姨作为长辈和导师，为这个小团体提供艺术指导和精神支持。"
+      }
+    ],
+    [
+      {
+        "name": "吴秀英",
+        "relation": "聚会友",
+        "social circle": "亲友聚会圈",
+        "gender": "女",
+        "age": 58,
+        "birth_date": "1966-03-15",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区",
+          "street_name": "杨柳青镇",
+          "street_number": "运河东路28号"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "西青区"
+        },
+        "personality": "ESFJ",
+        "economic_level": "小康",
+        "occupation": "退休教师",
+        "organization": "西青区实验小学",
+        "nickname": "吴姐",
+        "relation_description": "吴秀英是马晓梅在社区活动中认识的聚会好友，两人因共同的刺绣爱好结缘。作为退休教师，她经常组织社区手工活动，每月会邀请马晓梅和其他朋友到家中喝茶刺绣。她们见面时主要交流育儿经验和手工技巧，偶尔会一起逛菜市场。虽然同住西青区，但因各自家庭事务繁忙，主要通过微信保持联系，每周会视频通话一次讨论手工花样。"
+      },
+      {
+        "name": "郑玉华",
+        "relation": "聚会友",
+        "social circle": "亲友聚会圈",
+        "gender": "女",
+        "age": 49,
+        "birth_date": "1975-08-22",
+        "home_address": {
+          "province": "河北省",
+          "city": "唐山市",
+          "district": "路北区",
+          "street_name": "建设大街",
+          "street_number": "幸福小区6栋302"
+        },
+        "birth_place": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "河西区"
+        },
+        "personality": "ISFP",
+        "economic_level": "中等",
+        "occupation": "服装店店主",
+        "organization": "华美服装店",
+        "nickname": "华姐",
+        "relation_description": "郑玉华是马晓梅通过吴秀英介绍认识的聚会朋友，原籍天津后嫁到唐山经营服装店。她每季度回天津探亲时会组织小型聚会，三人常一起品尝天津小吃并交流刺绣心得。因异地居住，她们主要通过微信群保持联系，郑玉华经常寄送布料样品供马晓梅参考。见面时喜欢逛古文化街挑选刺绣材料，平均两三个月能聚一次，平时每周在群里分享生活趣事。"
+      },
+      {
+        "name": "徐美玲",
+        "relation": "聚会友",
+        "social circle": "亲友聚会圈",
+        "gender": "女",
+        "age": 53,
+        "birth_date": "1971-12-05",
+        "home_address": {
+          "province": "天津市",
+          "city": "天津市",
+          "district": "南开区",
+          "street_name": "水上公园西路",
+          "street_number": "学府花园12号楼"
+        },
+        "birth_place": {
+          "province": "山东省",
+          "city": "德州市",
+          "district": "德城区"
+        },
+        "personality": "ENFP",
+        "economic_level": "小康",
+        "occupation": "社区工作者",
+        "organization": "南开区社区服务中心",
+        "nickname": "玲子",
+        "relation_description": "徐美玲是社区文艺活动的积极分子，与马晓梅在传统手工艺展演中相识。作为社区工作者，她经常组织邻里活动，每月末会召集聚会圈的朋友开展手工沙龙。三人中最擅长京津绣法的徐美玲常指导马晓梅新的刺绣技法，聚会时喜欢研究传统纹样并记录整理。同城居住让她们可以随时相约，平均每月见面2-3次，平时通过电话交流社区新鲜事，形成了稳定的闺蜜圈子。"
+      }
+    ]
+  ]
+}

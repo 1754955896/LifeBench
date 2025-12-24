@@ -77,7 +77,7 @@ class EventTree:
             1. 原子事件要求：粒度≤1天，具体可执行，decompose=0（无需继续分解）。
             2. 粒度与阶段分解规则：
                - 当前为第二层分解（current_depth≥1），必须分解为原子事件（粒度为天）。
-               - 原子事件时间跨度不超过1天，多次发生需拆分为多个日期（如["2025-01-01","2025-02-01"]而非["2025-01-01至2025-02-01"]）。
+               - **原子事件时间跨度不超过1天，多次发生需拆分为多个日期（如["2025-01-01","2025-02-01"]而非["2025-01-01至2025-02-01"]）。**
             3. 递归分解约束：
                - 每一层分解的子事件数量**严格控制在10个以内**（建议3-8个，避免过度拆分）。
                - 事件ID中的'-'代表层级，每多一个'-'表示多一层分解。
@@ -96,7 +96,7 @@ class EventTree:
             2. 每个子事件必须包含以下字段（缺一不可，语法严格正确）：
                - event_id：格式为「父事件ID-序号」（如父ID=1-1，子事件ID=1-1-1、1-1-2），确保层级关联。
                - name：事件名称（简洁明了）。
-               - date：时间数组（单个日期/多个日期，粒度≤1天），不允许使用跨天区间格式。
+               - **date：时间数组（单个日期/多个日期，粒度≤1天，日期格式为XXXX-XX-XX,如["2025-01-01"]，不允许使用跨天区间格式（如["2025-01-01至2025-02-01"]）。**
                - type：取值范围（必选其一）：Career、Education、Relationships、Family&Living Situation、Personal Life、Finance、Health、Unexpected Events、Other。
                - description：事件详细描述（包含执行动作、目的、场景）。
                - participant：参与者数组，格式：[{{"name":"姓名","relation":"关系"}}]，优先从用户画像选择；无合适关系可合理编造，自己参与则为[{{"name":"自己名字","relation":"自己"}}]。
@@ -1196,7 +1196,7 @@ class Scheduler:
             # 从 event_schema.csv 提取当前类型的阶段事件
             def get_stage_events(category):
                 """从 event_schema.csv 提取指定类别的阶段事件"""
-                schema_path = "D:\\pyCharmProjects\\pythonProject4\\event\\event_schema.csv"
+                schema_path = "event/event_schema.csv"
                 stage_events = []
                 current_theme = ""
 
@@ -2100,7 +2100,7 @@ if __name__ == "__main__":
     import os
     
     # 加载persona文件
-    persona_path = "D:\pyCharmProjects\pythonProject4\output\persona.json"
+    persona_path = "output/persona.json"
     if os.path.exists(persona_path):
         with open(persona_path, "r", encoding="utf-8") as f:
             persona_data = json.load(f)
@@ -2110,11 +2110,11 @@ if __name__ == "__main__":
         persona_data = {}
     
     # 创建调度器实例
-    file_path = "D:\pyCharmProjects\pythonProject4\output\\"
+    file_path = "output/"
     scheduler = Scheduler(persona=persona_data, file_path=file_path)
     
     # 从output\process\event_1.json读取测试数据
-    event_file_path = "D:\pyCharmProjects\pythonProject4\output\process\event_1.json"
+    event_file_path = "output/process/event_1.json"
     if os.path.exists(event_file_path):
         with open(event_file_path, "r", encoding="utf-8") as f:
             test_data = json.load(f)

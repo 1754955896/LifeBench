@@ -76,13 +76,13 @@ def save_events_to_json(events, output_file):
 if __name__ == "__main__":
     # 创建命令行参数解析器
     parser = argparse.ArgumentParser(description='统计并抽取指定日期范围内的事件')
-    parser.add_argument('--json_file', type=str, default='D:\\pyCharmProjects\\pythonProject4\\output\\outputs.json',
+    parser.add_argument('--json_file', type=str, default='data/xujing/event_update.json',
                         help='JSON文件路径')
-    parser.add_argument('--start_date', type=str, required=True,
+    parser.add_argument('--start_date', type=str,default='2025-10-01',
                         help='起始日期，格式为"YYYY-MM-DD"')
-    parser.add_argument('--end_date', type=str, required=True,
+    parser.add_argument('--end_date', type=str, default='2025-10-15',
                         help='结束日期，格式为"YYYY-MM-DD"')
-    parser.add_argument('--output_file', type=str, default=None,
+    parser.add_argument('--output_file', type=str, default='ct.json',
                         help='输出JSON文件路径，用于保存抽取的事件')
     
     # 解析命令行参数

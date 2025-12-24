@@ -1,0 +1,712 @@
+{
+  "name": "卢志强",
+  "birth": "1987-07-27",
+  "age": 34,
+  "nationality": "汉",
+  "home_address": {
+    "province": "广东省",
+    "city": "深圳市",
+    "district": "龙岗区",
+    "street_name": "龙城街道",
+    "street_number": "101号"
+  },
+  "birth_place": {
+    "province": "广东省",
+    "city": "梅州市",
+    "district": "梅县区"
+  },
+  "gender": "男",
+  "education": "普通高中",
+  "job": "个体便利店经营者",
+  "occupation": "个体经营便利店",
+  "workplace": {
+    "province": "广东省",
+    "city": "深圳市",
+    "district": "龙岗区",
+    "street_name": "龙城街道",
+    "street_number": "101号"
+  },
+  "belief": "不信仰宗教",
+  "salary": 150000.0,
+  "body": {
+    "height": 182,
+    "weight": 80.0,
+    "BMI": 24.15
+  },
+  "family": "初婚有配偶,育有3个孩子",
+  "personality": {
+    "mbti": "ISFJ",
+    "traits": [
+      "家庭导向",
+      "责任感",
+      "务实"
+    ]
+  },
+  "hobbies": [
+    "徒步登山",
+    "在家听音乐",
+    "与朋友聚会",
+    "做手工皂"
+  ],
+  "favorite_foods": [
+    "梅州腌面",
+    "客家酿豆腐",
+    "广式烧腊"
+  ],
+  "memory_date": [
+    "2010-05-20 结婚纪念日",
+    "2015-08-15 第一家便利店开业"
+  ],
+  "aim": [
+    "两年内扩大店面规模",
+    "每年带家人外出旅行一次",
+    "坚持每周锻炼三次改善体质"
+  ],
+  "healthy_desc": "个人整体健康状况良好，无慢性病史，偶尔因长时间站立工作感到腰背疲劳。保持每年一次基础体检的习惯，就医频率较低，主要依靠日常休息调节身体。运动频率较低但有意增加锻炼，个人护理习惯简单务实。",
+  "lifestyle_desc": "日常生活以家庭和工作为中心，休闲时主要通过互联网获取信息，每周多次在家听音乐、看电视。社交活动频率适中，每月与朋友聚会1-2次，喜欢大自然，每月至少一次户外徒步活动。生活风格务实节俭，注重家庭时光，偶尔参与亲戚聚会。",
+  "economic_desc": "家庭经济状况稳定，拥有3处房产和家用汽车，无负债情况。消费习惯保守，不参与股票、基金等投资活动，收入主要用于家庭开支和储蓄。经营个体便利店为主要收入来源，对财务规划持谨慎态度。",
+  "work_desc": "经营个体便利店，每周工作时间约70小时，工作内容以商品管理、收银和客户服务为主。对当前工作满意度较高，享受自主经营带来的灵活性，通勤时间短且工作节奏自主安排。",
+  "experience_desc": "出生于广东梅州，高中毕业后于2008年入伍担任军人，退役后于2010年结婚并迁至深圳发展。2015年在龙岗区开设第一家便利店，凭借勤奋经营逐步扩大规模，养育三个孩子。人生经历体现从军人到个体经营者的转型，注重家庭责任与事业平衡。",
+  "description": "卢志强是一名34岁的个体便利店经营者，高中毕业后曾服役两年，退役后选择自主创业。作为ISFJ人格类型，他重视家庭责任与稳定生活，经营便利店的同时精心照顾妻子和三个孩子。生活中喜欢徒步登山和手工皂制作，保持着客家人传统的饮食偏好。他每周工作70小时但注重工作与家庭平衡，未来计划扩大店面并定期带家人旅行。凭借稳定收入和房产，他对生活充满务实乐观的态度。",
+  "relation": [
+    [
+      {
+        "name": "卢建国",
+        "relation": "父亲",
+        "social_circle": "家庭圈",
+        "gender": "男",
+        "age": 62,
+        "birth_date": "1962-03-15",
+        "home_address": {
+          "province": "广东省",
+          "city": "梅州市",
+          "district": "梅县区",
+          "street_name": "程江镇",
+          "street_number": "45号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "梅州市",
+          "district": "梅县区"
+        },
+        "personality": "ISTJ",
+        "economic_level": "温饱",
+        "occupation": "退休工人",
+        "organization": "梅县区农机厂",
+        "nickname": "老爸",
+        "relation_description": "卢建国的父亲，退休后与老伴在梅州老家生活。卢志强每月会带孩子回梅州探望父母一次，平时每周通电话两次。父亲性格严谨务实，经常关心便利店的经营状况，偶尔会传授一些经商经验。父子关系融洽，见面时主要聊家庭近况和子女教育话题。"
+      },
+      {
+        "name": "陈秀英",
+        "relation": "母亲",
+        "social_circle": "家庭圈",
+        "gender": "女",
+        "age": 60,
+        "birth_date": "1964-08-22",
+        "home_address": {
+          "province": "广东省",
+          "city": "梅州市",
+          "district": "梅县区",
+          "street_name": "程江镇",
+          "street_number": "45号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "梅州市",
+          "district": "梅县区"
+        },
+        "personality": "ISFJ",
+        "economic_level": "温饱",
+        "occupation": "家庭主妇",
+        "organization": "无",
+        "nickname": "老妈",
+        "relation_description": "卢志强的母亲，一直在家操持家务。擅长制作客家传统美食，每次卢志强带孩子回老家都会准备腌面、酿豆腐等家乡菜。母子感情深厚，经常通过视频通话关心孙辈的成长。母亲性格温和细心，是卢志强重要的情感支持者，遇到困难时总会第一时间向母亲倾诉。"
+      },
+      {
+        "name": "王美玲",
+        "relation": "妻子",
+        "social_circle": "家庭圈",
+        "gender": "女",
+        "age": 33,
+        "birth_date": "1991-05-18",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "龙岗区",
+          "street_name": "龙城街道",
+          "street_number": "101号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "梅州市",
+          "district": "梅县区"
+        },
+        "personality": "ESFJ",
+        "economic_level": "小康",
+        "occupation": "全职主妇",
+        "organization": "无",
+        "nickname": "美玲",
+        "relation_description": "卢志强的妻子，同为梅州客家人。两人经亲戚介绍相识，2010年结婚后共同来深圳打拼。王美玲主要负责照顾三个孩子和家务，每天会到便利店帮忙2-3小时。夫妻感情稳定，周末常一起带孩子户外活动。她支持丈夫的事业发展，是便利店经营的重要帮手，两人共同规划家庭未来。"
+      },
+      {
+        "name": "卢小婷",
+        "relation": "女儿",
+        "social_circle": "家庭圈",
+        "gender": "女",
+        "age": 10,
+        "birth_date": "2014-02-10",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "龙岗区",
+          "street_name": "龙城街道",
+          "street_number": "101号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "龙岗区"
+        },
+        "personality": "ENFP",
+        "economic_level": "依赖父母",
+        "occupation": "小学生",
+        "organization": "龙岗区实验学校",
+        "nickname": "婷婷",
+        "relation_description": "卢志强的大女儿，就读小学四年级。性格活泼开朗，喜欢画画和跳舞。卢志强每天会抽时间检查她的作业，周末常带她去书店或公园。父女关系亲密，卢小婷经常到便利店帮父亲整理货架，是父亲的小助手。卢志强很重视女儿的教育，计划将来送她读更好的中学。"
+      },
+      {
+        "name": "卢小杰",
+        "relation": "儿子",
+        "social_circle": "家庭圈",
+        "gender": "男",
+        "age": 7,
+        "birth_date": "2017-09-05",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "龙岗区",
+          "street_name": "龙城街道",
+          "street_number": "101号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "龙岗区"
+        },
+        "personality": "ISTP",
+        "economic_level": "依赖父母",
+        "occupation": "小学生",
+        "organization": "龙岗区第一小学",
+        "nickname": "小杰",
+        "relation_description": "卢志强的长子，就读小学二年级。性格内向但动手能力强，喜欢拼积木和看科普书籍。卢志强经常带他到便利店认识各类商品，培养他的观察能力。父子每周会一起做手工皂，这是他们的特殊亲子活动。卢小杰虽然话不多，但很依赖父亲，晚上总要等父亲回家才肯睡觉。"
+      },
+      {
+        "name": "卢小宝",
+        "relation": "儿子",
+        "social_circle": "家庭圈",
+        "gender": "男",
+        "age": 4,
+        "birth_date": "2020-12-20",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "龙岗区",
+          "street_name": "龙城街道",
+          "street_number": "101号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "龙岗区"
+        },
+        "personality": "ESFP",
+        "economic_level": "依赖父母",
+        "occupation": "幼儿园",
+        "organization": "龙城街道幼儿园",
+        "nickname": "小宝",
+        "relation_description": "卢志强的小儿子，正在上幼儿园。性格外向可爱，是家里的开心果。卢志强下班后经常陪他玩游戏、读绘本，周末带他去爬山。虽然年纪小，但已经会帮父亲拿一些小商品，深受便利店常客的喜爱。卢志强特别疼爱这个小儿子，计划等他上小学后带他回梅州认祖归宗。"
+      }
+    ],
+    [
+      {
+        "name": "卢建军",
+        "relation": "哥哥",
+        "social circle": "亲戚圈",
+        "gender": "男",
+        "age": 38,
+        "birth_date": "1985-03-15",
+        "home_address": {
+          "province": "广东省",
+          "city": "广州市",
+          "district": "天河区",
+          "street_name": "体育东路",
+          "street_number": "88号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "梅州市",
+          "district": "梅县区"
+        },
+        "personality": "ESTJ",
+        "economic_level": "中产",
+        "occupation": "物流公司区域经理",
+        "organization": "顺丰速运有限公司",
+        "nickname": "大哥",
+        "relation_description": "卢建军是卢志强的哥哥，两人从小在梅州一起长大。卢建军高中毕业后到广州发展，目前在物流行业工作。兄弟俩每月通过视频通话联系2-3次，逢年过节会互相拜访。卢建军经常给弟弟提供经营建议，两人见面时喜欢一起品尝客家菜，回忆童年时光。虽然分居两地，但兄弟感情深厚。"
+      },
+      {
+        "name": "卢秀芳",
+        "relation": "姐姐",
+        "social circle": "亲戚圈",
+        "gender": "女",
+        "age": 36,
+        "birth_date": "1987-09-10",
+        "home_address": {
+          "province": "广东省",
+          "city": "东莞市",
+          "district": "南城区",
+          "street_name": "鸿福路",
+          "street_number": "56号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "梅州市",
+          "district": "梅县区"
+        },
+        "personality": "ESFJ",
+        "economic_level": "小康",
+        "occupation": "小学教师",
+        "organization": "东莞实验小学",
+        "nickname": "芳姐",
+        "relation_description": "卢秀芳是卢志强的姐姐，目前在东莞担任小学教师。姐弟俩关系亲密，卢秀芳经常关心弟弟的家庭生活，特别是三个侄子的成长教育。每月通过微信保持联系，节假日经常带着自己的孩子来深圳与弟弟一家团聚。卢秀芳性格温和，是家庭中的调和者，经常组织家庭聚会。"
+      },
+      {
+        "name": "王建国",
+        "relation": "岳父",
+        "social circle": "亲戚圈",
+        "gender": "男",
+        "age": 62,
+        "birth_date": "1961-12-25",
+        "home_address": {
+          "province": "广东省",
+          "city": "梅州市",
+          "district": "梅江区",
+          "street_name": "江南街道",
+          "street_number": "23号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "梅州市",
+          "district": "梅江区"
+        },
+        "personality": "ISTJ",
+        "economic_level": "退休",
+        "occupation": "退休教师",
+        "organization": "梅州市第一中学（退休）",
+        "nickname": "王老师",
+        "relation_description": "王建国是卢志强的岳父，退休前是中学教师。老人独居在梅州老家，卢志强每月会带着家人回去探望一次。王建国很欣赏女婿的踏实肯干，经常传授人生经验。翁婿关系融洽，见面时喜欢一起喝茶聊天，讨论孩子的教育问题。卢志强经常通过电话关心岳父的身体状况。"
+      }
+    ],
+    [
+      {
+        "name": "李志明",
+        "relation": "发小",
+        "social_circle": "梅州发小圈",
+        "gender": "男",
+        "age": 35,
+        "birth_date": "1986-03-15",
+        "home_address": {
+          "province": "广东省",
+          "city": "广州市",
+          "district": "天河区",
+          "street_name": "体育西路",
+          "street_number": "88号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "梅州市",
+          "district": "梅县区"
+        },
+        "personality": "ESFP",
+        "economic_level": "中产",
+        "occupation": "餐饮连锁店经理",
+        "organization": "广州粤味餐饮集团",
+        "nickname": "阿明",
+        "relation_description": "李志明与卢志强是梅州同乡发小，从小一起在梅县长大，初中毕业后分别发展。李志明在广州从事餐饮行业，两人保持每月1-2次视频通话联系，逢年过节会互相问候。见面时通常一起品尝客家菜、回忆童年趣事，偶尔相约回梅州探亲。虽然分居深广两地，但通过微信群与梅州发小圈其他成员保持互动。"
+      }
+    ],
+    [
+      {
+        "name": "黄文辉",
+        "relation": "高中同学",
+        "social circle": "高中同学圈",
+        "gender": "男",
+        "age": 35,
+        "birth_date": "1988-03-12",
+        "home_address": {
+          "province": "浙江省",
+          "city": "杭州市",
+          "district": "西湖区",
+          "street_name": "文三路",
+          "street_number": "258号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "梅州市",
+          "district": "梅县区"
+        },
+        "personality": "ESTP",
+        "economic_level": "中产",
+        "occupation": "电商运营经理",
+        "organization": "杭州某电商公司",
+        "nickname": "阿辉",
+        "relation_description": "黄文辉与卢志强是梅县一中高中同班同学，毕业后因工作发展分隔两地。黄文辉在杭州从事电商行业，两人主要通过微信保持联系，每年春节回梅州时会组织同学聚会。平时会分享创业经验和家庭生活，偶尔通过视频通话讨论生意经。见面时喜欢一起品尝客家菜，回忆学生时代的趣事。"
+      }
+    ],
+    [
+      {
+        "name": "陈志勇",
+        "relation": "战友",
+        "social circle": "战友圈",
+        "gender": "男",
+        "age": 35,
+        "birth_date": "1986-03-15",
+        "home_address": {
+          "province": "湖南省",
+          "city": "长沙市",
+          "district": "岳麓区",
+          "street_name": "橘子洲街道",
+          "street_number": "58号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "广州市"
+        },
+        "personality": "ESTP",
+        "economic_level": "小康",
+        "occupation": "健身教练",
+        "organization": "长沙力美健身俱乐部",
+        "nickname": "阿勇",
+        "relation_description": "陈志勇与卢志强于2008年同期入伍，在部队共同训练生活两年。退役后陈志勇回到家乡湖南发展，现为专业健身教练，两人虽分隔两地但保持每月1-2次视频通话。每次联系主要分享工作近况和家庭生活，见面时喜欢一起登山锻炼，偶尔会相约回部队驻地怀旧。"
+      },
+      {
+        "name": "刘志强",
+        "relation": "战友",
+        "social circle": "战友圈",
+        "gender": "男",
+        "age": 36,
+        "birth_date": "1985-11-22",
+        "home_address": {
+          "province": "四川省",
+          "city": "成都市",
+          "district": "锦江区",
+          "street_name": "春熙路街道",
+          "street_number": "213号"
+        },
+        "birth_place": {
+          "province": "重庆市",
+          "city": "渝中区"
+        },
+        "personality": "ISTJ",
+        "economic_level": "小康",
+        "occupation": "保安队长",
+        "organization": "成都天府国际金融中心",
+        "nickname": "强子",
+        "relation_description": "刘志强是卢志强部队时期的班长，退役后在成都从事安保工作。两人通过战友微信群保持联系，每季度会组织一次多人视频聚会。刘志强经常向卢志强分享管理经验，去年还专门到深圳考察便利店安防系统。见面时喜欢品尝各地特色美食，尤其关注卢志强店里的广式烧腊。"
+      }
+    ],
+    [
+      {
+        "name": "张伟",
+        "relation": "供应商",
+        "social circle": "商业合作圈",
+        "gender": "男",
+        "age": 42,
+        "birth_date": "1982-03-15",
+        "home_address": {
+          "province": "广东省",
+          "city": "广州市",
+          "district": "天河区",
+          "street_name": "体育东路",
+          "street_number": "88号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "广州市"
+        },
+        "personality": "ESTJ",
+        "economic_level": "富裕",
+        "occupation": "食品批发公司总经理",
+        "organization": "华南食品批发有限公司",
+        "nickname": "张总",
+        "relation_description": "张伟是卢志强便利店的主要食品供应商，两人通过2016年行业展会相识。作为批发公司总经理，他每月会来深圳考察市场并到店拜访，平时主要通过微信沟通补货事宜。见面时多在店内讨论新品引进和促销方案，偶尔会一起用餐交流行业动态。虽然分居广深两地，但保持每周2-3次的业务联系频率。"
+      },
+      {
+        "name": "李美玲",
+        "relation": "批发商",
+        "social circle": "商业合作圈",
+        "gender": "女",
+        "age": 38,
+        "birth_date": "1986-09-22",
+        "home_address": {
+          "province": "浙江省",
+          "city": "温州市",
+          "district": "鹿城区",
+          "street_name": "人民路",
+          "street_number": "256号"
+        },
+        "birth_place": {
+          "province": "浙江省",
+          "city": "温州市"
+        },
+        "personality": "ENTP",
+        "economic_level": "中产",
+        "occupation": "日用品批发公司区域经理",
+        "organization": "华东日用品批发集团",
+        "nickname": "李经理",
+        "relation_description": "李美玲负责向卢志强便利店供应日用品，两人经张伟介绍于2018年建立合作。作为区域经理，她每季度会来深圳巡店，平时通过电话和微信处理订单问题。见面时主要检查货品陈列和库存情况，偶尔会交流经营心得。虽然长期在温州工作，但通过线上渠道保持每周1-2次的工作联系，遇到促销季时会增加沟通频率。"
+      }
+    ],
+    [
+      {
+        "name": "王秀英",
+        "relation": "邻居",
+        "social circle": "社区圈",
+        "gender": "女",
+        "age": 58,
+        "birth_date": "1966-03-12",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "龙岗区",
+          "street_name": "龙城街道",
+          "street_number": "99号"
+        },
+        "birth_place": {
+          "province": "湖南省",
+          "city": "邵阳市"
+        },
+        "personality": "ESFJ",
+        "economic_level": "小康",
+        "occupation": "退休教师",
+        "organization": "深圳市龙岗区实验小学",
+        "nickname": "王阿姨",
+        "relation_description": "王阿姨是卢志强家对门的老邻居，退休前在小学任教。两人因经常在楼道相遇而熟识，王阿姨时常帮忙照看卢志强家的孩子。现在主要通过社区微信群联系，每周会在小区花园散步时碰面聊天，逢年过节会互相赠送自制点心。"
+      },
+      {
+        "name": "陈建国",
+        "relation": "邻居",
+        "social circle": "社区圈",
+        "gender": "男",
+        "age": 62,
+        "birth_date": "1962-08-25",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "龙岗区",
+          "street_name": "龙城街道",
+          "street_number": "105号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "潮州市"
+        },
+        "personality": "ISTJ",
+        "economic_level": "小康",
+        "occupation": "退休电工",
+        "organization": "深圳市供电局",
+        "nickname": "陈大叔",
+        "relation_description": "陈大叔是住在隔壁单元的退休电工，与卢志强因维修便利店电路相识。他经常到卢志强的便利店买烟，两人会站在店门口闲聊社区新闻。每月会相约在小区棋牌室下象棋，遇到家电故障时卢志强会请陈大叔帮忙检修。"
+      }
+    ],
+    [
+      {
+        "name": "林志远",
+        "relation": "徒步友",
+        "social circle": "徒步登山圈",
+        "gender": "男",
+        "age": 36,
+        "birth_date": "1989-03-15",
+        "home_address": {
+          "province": "广东省",
+          "city": "惠州市",
+          "district": "惠阳区",
+          "street_name": "淡水街道",
+          "street_number": "88号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "惠州市",
+          "district": "惠东县"
+        },
+        "personality": "ISTP",
+        "economic_level": "中产",
+        "occupation": "户外装备店经理",
+        "organization": "惠州户外之家连锁店",
+        "nickname": "远哥",
+        "relation_description": "两人通过深圳徒步协会组织的梧桐山登山活动相识，因共同热爱户外运动成为固定徒步搭档。每月会相约1-2次在深圳周边进行一日徒步，经常交流户外装备使用心得。林志远在惠州经营户外用品店，卢志强偶尔会通过微信咨询装备选购建议。虽然分居深惠两地，但通过微信群保持每周联系，节假日时常互赠客家特产。"
+      }
+    ],
+    [
+      {
+        "name": "黄美华",
+        "relation": "手工皂友",
+        "social circle": "手工皂圈",
+        "gender": "女",
+        "age": 32,
+        "birth_date": "1991-03-15",
+        "home_address": {
+          "province": "浙江省",
+          "city": "杭州市",
+          "district": "西湖区",
+          "street_name": "文三路",
+          "street_number": "258号"
+        },
+        "birth_place": {
+          "province": "浙江省",
+          "city": "温州市"
+        },
+        "personality": "INFP",
+        "economic_level": "中产",
+        "occupation": "文创产品设计师",
+        "organization": "杭州匠心文创工作室",
+        "nickname": "美美",
+        "relation_description": "通过线上手工皂兴趣群相识，因共同爱好手工皂制作成为好友。两人主要通过微信群交流制作心得，每月视频通话1-2次讨论新配方。黄美华在杭州从事文创设计工作，虽然分隔两地但经常互寄手工皂样品。见面时通常会一起参观手工艺展或体验新工作室，现在主要通过线上保持联系，每年会趁卢志强带家人旅行时相约见面。"
+      }
+    ],
+    [
+      {
+        "name": "刘志鹏",
+        "relation": "聚会友",
+        "social_circle": "朋友聚会圈",
+        "gender": "男",
+        "age": 36,
+        "birth_date": "1989-03-15",
+        "home_address": {
+          "province": "广东省",
+          "city": "广州市",
+          "district": "天河区",
+          "street_name": "体育西路",
+          "street_number": "88号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "梅州市",
+          "district": "梅县区"
+        },
+        "personality": "ESFP",
+        "economic_level": "中产",
+        "occupation": "餐饮连锁店经理",
+        "organization": "广州粤味餐饮管理有限公司",
+        "nickname": "大鹏",
+        "relation_description": "刘志鹏与卢志强是高中同学，两人在梅州读书时相识。因同在广东发展，每月会通过微信群约饭聚会一次，通常选择周末在深圳或广州的客家菜馆见面。刘志鹏目前在广州经营餐饮连锁店，虽然分隔两地但经常通过视频分享经营心得。聚会时主要聊家庭近况、生意经和徒步路线，偶尔会组织共同的朋友一起爬山。"
+      }
+    ],
+    [
+      {
+        "name": "陈小芳",
+        "relation": "顾客",
+        "social circle": "便利店常客圈",
+        "gender": "女",
+        "age": 28,
+        "birth_date": "1996-03-15",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "龙岗区",
+          "street_name": "龙城街道",
+          "street_number": "88号"
+        },
+        "birth_place": {
+          "province": "湖南省",
+          "city": "长沙市"
+        },
+        "personality": "ESFJ",
+        "economic_level": "中等",
+        "occupation": "幼儿园教师",
+        "organization": "龙岗区实验幼儿园",
+        "nickname": "小芳",
+        "relation_description": "陈小芳是卢志强便利店的常客，住在同一条街道，每天下班后会顺路来购买日用品。两人相识三年多，主要通过购物时的简短交流维持联系，偶尔会讨论育儿话题。现在保持每周见面3-4次的频率，见面时除了购物还会闲聊社区新闻和天气变化。"
+      },
+      {
+        "name": "李大妈",
+        "relation": "顾客",
+        "social circle": "便利店常客圈",
+        "gender": "女",
+        "age": 65,
+        "birth_date": "1959-08-22",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "龙岗区",
+          "street_name": "龙城街道",
+          "street_number": "56号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "梅州市"
+        },
+        "personality": "ISFJ",
+        "economic_level": "退休",
+        "occupation": "退休人员",
+        "organization": "无",
+        "nickname": "李阿姨",
+        "relation_description": "李大妈是便利店里最年长的常客，与卢志强同是梅州老乡，经常来店里购买生活用品和聊天。两人因同乡情谊而熟悉，李大妈会把自家种的蔬菜带给卢志强，卢志强则会在结账时给老人优惠。现在保持每天见面的频率，见面时主要交流家乡新闻和养生话题，关系如同邻里亲人。"
+      }
+    ],
+    [
+      {
+        "name": "张明华",
+        "relation": "家长",
+        "social circle": "家长圈",
+        "gender": "女",
+        "age": 36,
+        "birth_date": "1989-03-12",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "龙岗区",
+          "street_name": "龙城街道",
+          "street_number": "88号"
+        },
+        "birth_place": {
+          "province": "湖南省",
+          "city": "长沙市"
+        },
+        "personality": "ESFJ",
+        "economic_level": "中产",
+        "occupation": "小学教师",
+        "organization": "龙岗区实验小学",
+        "nickname": "张老师",
+        "relation_description": "张明华是卢志强大儿子的班主任，两人通过家长会相识。她性格热情负责，经常通过微信群与家长沟通学生情况。每月会组织一次家长沙龙讨论教育问题，周末偶尔会带着自己的孩子与卢志强一家在社区公园相遇聊天。两人保持着适度的职业交往，主要围绕孩子的学习成长展开交流。"
+      }
+    ],
+    [
+      {
+        "name": "王明远",
+        "relation": "家庭医生",
+        "social circle": "医疗圈",
+        "gender": "男",
+        "age": 42,
+        "birth_date": "1982-03-15",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "福田区",
+          "street_name": "华强北街道",
+          "street_number": "88号"
+        },
+        "birth_place": {
+          "province": "湖南省",
+          "city": "长沙市"
+        },
+        "personality": "ISTJ",
+        "economic_level": "中产",
+        "occupation": "全科医生",
+        "organization": "深圳市福田区人民医院",
+        "nickname": "王医生",
+        "relation_description": "王明远是卢志强的家庭医生，两人通过社区医疗服务认识已有五年。卢志强每年会带全家到王医生所在医院进行体检，平时主要通过微信咨询健康问题。王医生了解卢志强长期站立工作的特点，经常提醒他注意腰椎保养。两人见面频率约为每季度一次，主要在医院进行常规检查时交流，偶尔会在社区活动中相遇闲聊家庭近况。"
+      }
+    ]
+  ]
+}

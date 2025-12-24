@@ -531,43 +531,32 @@ class MapMaintenanceTool:
                     city = instr.get("city") or (input_cities[idx] if idx < len(input_cities) else None)
                     instr_desc = f"第{idx + 1}个指令（类型{instr_type}）"
                     try:
-                        # 3.1 类型1：画像地址（优先POI查询，地理编码降级）
+                        # 3.1 类型1：画像地址（直接进行地理编码搜索）
                         if instr_type == "1":
                             location = instr.get("location", "").strip()
-                            c = instr.get("city",city).strip()
+                            c = instr.get("city", city).strip()
                             if not location:
                                 raise ValueError("缺少location字段")
-                            print(f"\n{instr_desc}：画像地址处理 -> 优先POI搜索：{location}@{city}")
+                            print(f"\n{instr_desc}：画像地址处理 -> 直接地理编码搜索：{location}@{city}")
 
-                            # 第一步：尝试以画像地址为关键词查询POI（获取精准Location）
-                            poi_data = self.get_poi(keyword=location, city=c)
-                            if poi_data and poi_data.get("location"):
-                                # POI搜索成功，补充元信息
-                                poi_data["instruction_type"] = "1"
-                                poi_data["original_location"] = location
-                                poi_data["is_poi_fallback"] = False  # 未降级
-                                poi_data["instruction_index"] = idx
-                                success_poi_list.append(poi_data)
-                                print(f"{instr_desc}：POI搜索成功，Location：{poi_data['location']}")
-                            else:
-                                # 第二步：POI搜索失败，降级为地理编码
-                                print(f"{instr_desc}：POI搜索失败，降级为地理编码")
-                                geocode_data = self.amap_geocode(address=location, city=c)
-                                if not geocode_data or not geocode_data.get("location"):
-                                    raise ValueError("地理编码也失败，无有效Location")
-                                # 地理编码成功，包装为POI格式（统一数据结构）
-                                enhanced_geocode = {
-                                    "name": location,
-                                    "location": geocode_data["location"],
-                                    "structured_address": geocode_data["formatted_address"],
-                                    "geocode": geocode_data,
-                                    "instruction_type": "1",
-                                    "original_location": location,
-                                    "is_poi_fallback": True,  # 已降级为地理编码
-                                    "instruction_index": idx
-                                }
-                                success_poi_list.append(enhanced_geocode)
-                                print(f"{instr_desc}：地理编码成功，Location：{geocode_data['location']}")
+                            # 直接调用地理编码API
+                            geocode_data = self.amap_geocode(address=location, city=c)
+                            if not geocode_data or not geocode_data.get("location"):
+                                raise ValueError("地理编码失败，无有效Location")
+                                
+                            # 地理编码成功，包装为POI格式（统一数据结构）
+                            enhanced_geocode = {
+                                "name": location,
+                                "location": geocode_data["location"],
+                                "structured_address": geocode_data["formatted_address"],
+                                "geocode": geocode_data,
+                                "instruction_type": "1",
+                                "original_location": location,
+                                "is_poi_fallback": False,  # 直接使用地理编码，无降级
+                                "instruction_index": idx
+                            }
+                            success_poi_list.append(enhanced_geocode)
+                            print(f"{instr_desc}：地理编码成功，Location：{geocode_data['location']}")
 
                             # 添加城市信息
                             current_poi = success_poi_list[-1]
@@ -924,7 +913,13 @@ class MapMaintenanceTool:
 # 使用示例（需替换有效API_KEY）
 # ------------------------------
 if __name__ == "__main__":
-    API_KEY = "e8f87eef67cfe6f83e68e7a65b9b848b"  # 从https://lbs.amap.com/申请
+    # 从配置文件读取API密钥
+    import json
+    with open('config.json', 'r', encoding='utf-8') as f:
+        config = json.load(f)
+    # 获取地图工具配置
+    map_config = config.get('map_tool', {})
+    API_KEY = map_config.get('api_key', '')  # 从https://lbs.amap.com/申请
     map_tool = MapMaintenanceTool(api_key=API_KEY)
     # 用户输入指令（与用户提供的格式一致）
     # 用户输入指令（包含一个故意失败的指令3，测试降级机制）

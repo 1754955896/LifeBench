@@ -18,6 +18,7 @@ parser.add_argument('--interval-days', type=int, default=16, help='每个线程�
 parser.add_argument('--refine-events', type=int, default=1, help='是否执行事件精炼')
 parser.add_argument('--generate-data', type=int, default=1, help='是否生成数据')
 parser.add_argument('--format-events', type=int, default=1, help='是否格式化事件')
+parser.add_argument('--instance-id', type=int, default=0, help='人物实例ID')
 args = parser.parse_args()
 
 # 配置参数
@@ -72,7 +73,7 @@ if refine_events:
     log(f"成功读取原始事件文件，共{len(json_data_e)}个事件")
     
     # 2.2 使用Mind初始化上下文
-    mind = Mind(file_path, persona=persona, event=json_data_e, daily_state=daily_state)
+    mind = Mind(file_path, instance_id=args.instance_id, persona=persona, event=json_data_e, daily_state=daily_state)
     mind.initialize(json_data_e, persona, start_date, daily_state=daily_state)
     log("Mind初始化完成")
     
@@ -87,7 +88,8 @@ if refine_events:
         start_date, 
         end_date, 
         mind.context, 
-        max_workers
+        max_workers,
+        file_path+'daily_state.json'
     )
     log(f"所有区间调整完成")
     

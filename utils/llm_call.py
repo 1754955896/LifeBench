@@ -2,9 +2,19 @@
 import copy
 import threading
 import os
+import json
 from datetime import datetime
 
 from openai import OpenAI
+
+# 读取配置文件
+with open('config.json', 'r', encoding='utf-8') as f:
+    config = json.load(f)
+
+# 获取LLM配置
+llm_config = config.get('llm', {})
+API_KEY = llm_config.get('api_key', '')
+BASE_URL = llm_config.get('base_url', 'https://api.deepseek.com')
 
 # 创建线程本地存储，用于保存每个线程的OpenAI客户端实例
 thread_local = threading.local()
@@ -13,7 +23,7 @@ thread_local = threading.local()
 def _get_thread_client():
     """获取当前线程的OpenAI客户端实例，如果不存在则创建"""
     if not hasattr(thread_local, "client"):
-        thread_local.client = OpenAI(api_key="sk-e90f17355573420597c914ef38a58239", base_url="https://api.deepseek.com")
+        thread_local.client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
     return thread_local.client
 
 # 用于保存每个线程的对话历史（已在上文定义）
@@ -25,10 +35,12 @@ def _get_thread_client():
 DEFAULT_CONTEXT = "你是一个人物分析师、故事创作者、数据补全与清洗专家。"
 
 # 日志文件路径
-LOG_FILE_PATH = "D:\pyCharmProjects\pythonProject4\llm_call_log.txt"
+LOG_FILE_PATH = "llm_call_log.txt"
 
 # 确保日志文件目录存在
-os.makedirs(os.path.dirname(LOG_FILE_PATH), exist_ok=True)
+log_dir = os.path.dirname(LOG_FILE_PATH)
+if log_dir:  # 只有当目录名不为空时才创建目录
+    os.makedirs(log_dir, exist_ok=True)
 
 
 def _get_thread_history():

@@ -72,19 +72,23 @@ def process_single_date(date, contact, file_path, initial_a, initial_b, initial_
         # 注意：原代码中文件命名和数据的对应关系看起来可能有误（a→gallery.json, b→push.json等）
         # 这里保持原有的映射关系不变
         with file_lock:
-            with open(f"{file_path}phone_data/event_note.json", "w", encoding="utf-8") as f:
+            # 创建phone_data文件夹（如果不存在）
+            phone_data_dir = os.path.join(file_path, "phone_data")
+            os.makedirs(phone_data_dir, exist_ok=True)
+            
+            with open(os.path.join(phone_data_dir, "event_note.json"), "w", encoding="utf-8") as f:
                 json.dump(b_result, f, ensure_ascii=False, indent=2)
 
-            with open(f"{file_path}phone_data/event_call.json", "w", encoding="utf-8") as f:
+            with open(os.path.join(phone_data_dir, "event_call.json"), "w", encoding="utf-8") as f:
                 json.dump(a_result, f, ensure_ascii=False, indent=2)
 
-            with open(f"{file_path}phone_data/event_gallery.json", "w", encoding="utf-8") as f:
+            with open(os.path.join(phone_data_dir, "event_gallery.json"), "w", encoding="utf-8") as f:
                 json.dump(c_result, f, ensure_ascii=False, indent=2)
 
-            with open(f"{file_path}phone_data/event_push.json", "w", encoding="utf-8") as f:
+            with open(os.path.join(phone_data_dir, "event_push.json"), "w", encoding="utf-8") as f:
                 json.dump(d_result, f, ensure_ascii=False, indent=2)
 
-            with open(f"{file_path}phone_data/event_fitness_health.json", "w", encoding="utf-8") as f:
+            with open(os.path.join(phone_data_dir, "event_fitness_health.json"), "w", encoding="utf-8") as f:
                 json.dump(e_result, f, ensure_ascii=False, indent=2)
 
         print(f"成功处理日期：{date}")
@@ -182,7 +186,10 @@ if __name__ == "__main__":
         contact = contact_gen(persona)
         contact = remove_json_wrapper(contact)
         contact = json.loads(contact)
-        with open(file_path + "phone_data/contact.json", "w", encoding="utf-8") as f:
+        # 创建phone_data文件夹（如果不存在）
+        phone_data_dir = os.path.join(file_path, "phone_data")
+        os.makedirs(phone_data_dir, exist_ok=True)
+        with open(os.path.join(phone_data_dir, "contact.json"), "w", encoding="utf-8") as f:
             json.dump(contact, f, ensure_ascii=False, indent=2)
 
     a = []
@@ -200,7 +207,7 @@ if __name__ == "__main__":
         d = read_json_file(file_path + "phone_data/event_note.json")
     if os.path.exists(file_path + "phone_data/event_fitness_health.json"):
         e = read_json_file(file_path + "phone_data/event_fitness_health.json")
-    extool.load_from_json(read_json_file(file_path + 'output.json'), persona)
+    extool.load_from_json(read_json_file(file_path + 'output/outputs.json'), persona)
     # for i in iterate_dates(start_time,end_time):
     #     phone_gen(i,contact,file_path,a,b,c,d,e)
     #

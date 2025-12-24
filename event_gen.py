@@ -36,6 +36,8 @@ def parse_args():
                         help='基础数据路径')
     parser.add_argument('--process-path', type=str, default='process/',
                         help='处理文件路径（相对于base-path）')
+    parser.add_argument('--instance-id', type=int, default=0,
+                        help='人物实例ID')
     
     # 线程/进程参数
     parser.add_argument('--max-workers', type=int, default=None,

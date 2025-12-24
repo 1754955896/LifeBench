@@ -15,17 +15,16 @@ class MemoryModule:
     _lock = threading.Lock()
 
     @classmethod
-    def get_instance(cls, instance_id: str = "default") -> "MemoryModule":
-        """获取实例（支持多实例，默认单例）"""
+    def get_instance(cls, instance_id: str = "default", memory_file: Optional[str] = None) -> "MemoryModule":
         with cls._lock:
             if instance_id not in cls._instances:
                 cls._instances[instance_id] = cls()
-                cls._instances[instance_id]._init_memory_manager()
+                cls._instances[instance_id]._init_memory_manager(memory_file)
             return cls._instances[instance_id]
 
-    def _init_memory_manager(self):
+    def _init_memory_manager(self, memory_file: Optional[str] = None):
         """初始化记忆管理器"""
-        self.mem_mgr = PersonalMemoryManager()
+        self.mem_mgr = PersonalMemoryManager(memory_file=memory_file)
 
     def add_memory(self, data: Any):
         """添加记忆"""

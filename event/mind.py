@@ -21,8 +21,10 @@ class Mind:
         self.events = event if event is not None else []
         self.persona = persona if persona is not None else ""
         self.persona_withoutrl = ""
-        # 创建独立的记忆模块实例
-        self.mem_module = MemoryModule.get_instance(str(instance_id))
+        # 创建独立的记忆模块实例，使用基于人物标识的记忆文件
+        memory_file_name = f"personal_memories_{instance_id}.json"
+        memory_file_path = os.path.join("memory_file", memory_file_name)
+        self.mem_module = MemoryModule.get_instance(str(instance_id), memory_file=memory_file_path)
         self.context = ""
         self.cognition = ""  # 主要存储对自我的认知，包括画像信息
         self.long_memory = ""  # 主要存储近期事件感知、印象深刻的关键事件、长期主要事件感知、近期想法及推理思考（动机）
@@ -30,7 +32,13 @@ class Mind:
         self.reflection = ""  # 主要存储对现在和未来的思考
         self.thought = ""  # 记录个人的感受、想法，包括情绪、想法、需求及思考过程中的打算
         self.bottom_events : Optional[List[Dict]] = None
-        self.maptools = MapMaintenanceTool("f6fa3480d4a0e08cd1243f311fa03582")
+        # 读取配置文件
+        with open('config.json', 'r', encoding='utf-8') as f:
+            config = json.load(f)
+        # 获取地图工具配置
+        map_config = config.get('map_tool', {})
+        map_api_key = map_config.get('api_key', 'f6fa3480d4a0e08cd1243f311fa03582')
+        self.maptools = MapMaintenanceTool(map_api_key)
         self.env = ""
         self.file_path = file_path
         self.instance_id = instance_id
@@ -153,6 +161,7 @@ class Mind:
             return event_date == target_date
 
     def filter_by_date(self, target_date: str) -> List[Dict]:
+
         """
         筛选指定日期的最底层事件
         
@@ -171,18 +180,16 @@ class Mind:
             1. 时间区间（如"2025-01-01 07:30:00至2025-01-01 08:45:00"）
             2. 单个时间（如"2025-01-01 07:30:00"或"2025-01-01"）
             3. 带中文时段的时间（如"2025-01-01 上午"或"2025-01-01 下午"）
+            4. 短年份格式（如"5-03-23" → "2025-03-23"）
 
             参数:
                 date_str: 输入的时间字符串（支持含"至"的区间和不含"至"的单个时间）
 
             返回:
-                str: 提取的起始日期，格式固定为"YYYY-MM-DD"
-
-            异常:
-                ValueError: 输入字符串不符合支持的时间格式时抛出
+                str: 提取的起始日期，格式固定为"YYYY-MM-DD"；提取失败时返回默认日期"2026-01-01"
             """
             import re
-            
+            #print("date_str:", date_str)
             # 步骤1：分割字符串，提取起始时间部分（含"至"则取左边，不含则取全部）
             if "至" in date_str:
                 # 分割"至"，取左侧的起始时间（如"2025-01-01 07:30:00"）
@@ -196,6 +203,30 @@ class Mind:
             start_time_part = re.sub(r'[^0-9a-zA-Z\s\-:\.]', '', start_time_part)
             # 去除多余空格
             start_time_part = ' '.join(start_time_part.split())
+            
+            # 特殊处理：检查是否为短年份格式（如"5-03-23" → "2025-03-23"）
+            date_part = start_time_part.split()[0] if ' ' in start_time_part else start_time_part
+            if '-' in date_part:
+                parts = date_part.split('-')
+                if len(parts) == 3:
+                    # 检查是否为短年份格式（如"5-03-23"）
+                    if len(parts[0]) <= 2 and len(parts[1]) <= 2 and len(parts[2]) <= 2:
+                        # 假设格式为 YYYY-MM-DD 但年份只有1-2位
+                        # 补全年份为4位（20xx）
+                        year = parts[0].zfill(2)
+                        if len(year) == 2:
+                            year = "20" + year
+                        month = parts[1].zfill(2)
+                        day = parts[2].zfill(2)
+                        
+                        # 重新组合日期部分
+                        new_date_part = f"{year}-{month}-{day}"
+                        
+                        # 替换原始日期部分
+                        if ' ' in start_time_part:
+                            start_time_part = new_date_part + start_time_part[len(date_part):]
+                        else:
+                            start_time_part = new_date_part
 
             # 步骤2：解析起始时间部分，提取纯日期（支持多种子格式）
             supported_formats = [
@@ -214,13 +245,8 @@ class Mind:
                     # 一种格式解析失败，尝试下一种
                     continue
 
-            # 所有格式都解析失败时，抛出明确错误
-            raise ValueError(
-                f"时间格式不支持！请输入以下格式之一：\n"
-                f"1. 时间区间（如'2025-01-01 07:30:00至2025-01-01 08:45:00'）\n"
-                f"2. 单个时间（如'2025-01-01 07:30:00'或'2025-01-01'）\n"
-                f"当前输入：{date_str}"
-            )
+            # 所有格式都解析失败时，返回默认日期"2026-01-01"
+            return "2026-01-01"
         # 步骤2：筛选匹配日期的事件
         matched = []
         for event in bottom_events:
@@ -251,7 +277,8 @@ class Mind:
         self.current_date = date
         # 初始化daily_state
         self.daily_state = daily_state if daily_state is not None else []
-        
+        if daily_state is None:
+            print("未提供daily_state，将使用默认值。")
         # 初始化FuzzyMemoryBuilder
         self.fuzzy_memory_builder = FuzzyMemoryBuilder.get_instance(event, persona, self.file_path)
         
@@ -1079,7 +1106,7 @@ class Mind:
             poi_data = self.map(objective_events)
             # 从plan2中获取当日事件参考数据
             daily_event_reference = plan2["今日事件"] if plan2 and "今日事件" in plan2 else ""
-            adjusted_events = self._adjust_event_trajectory(poi_data, objective_events, daily_event_reference,plan2['前一日事件'])
+            adjusted_events = self._adjust_event_trajectory(poi_data, objective_events, daily_event_reference,plan2['前一天事件'])
             
             # 4. 生成反思和更新想法
             reflection = self._generate_reflection(adjusted_events, plan, date)
@@ -1259,7 +1286,7 @@ class Mind:
             str: 调整后的事件内容
         """
         #print(event)
-        prompt = template_event_traffic_adjust.format(poi=poi_data, event=event, daily_event_reference=daily_event_reference,history=history)
+        prompt = template_event_traffic_adjust.format(poi=poi_data, event=event, daily_event_reference=daily_event_reference,history=history,persona=self.cognition)
         #print(prompt)
         adjusted_events = self.llm_call_s(prompt, 0)
         self._log_event("轨迹调整-----------------------------------------------------------------------")
@@ -1582,8 +1609,8 @@ if __name__ == "__main__":
     print("=" * 50)
     
     # 设置文件路径（根据用户要求：persona数据在output里，event数据在event_decompose_1）
-    persona_path = "D:\pyCharmProjects\pythonProject4\output\persona.json"
-    event_path = "D:\pyCharmProjects\pythonProject4\data_copy\data2\event_update.json"
+    persona_path = "output/persona.json"
+    event_path = "data_copy/data2/event_update.json"
     
     # 设置日期范围
     start_date = "2025-10-01"

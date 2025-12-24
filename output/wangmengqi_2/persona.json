@@ -1,0 +1,673 @@
+{
+  "name": "王梦琪",
+  "birth": "1997-12-02",
+  "age": 27,
+  "nationality": "汉",
+  "home_address": {
+    "province": "安徽省",
+    "city": "合肥市",
+    "district": "包河区",
+    "street_name": "芜湖路",
+    "street_number": "156号"
+  },
+  "birth_place": {
+    "province": "安徽省",
+    "city": "合肥市",
+    "district": "瑶海区"
+  },
+  "gender": "女",
+  "education": "初中",
+  "job": "五金工具装配工",
+  "occupation": "安徽金工制造有限公司",
+  "workplace": {
+    "province": "安徽省",
+    "city": "合肥市",
+    "district": "经开区",
+    "street_name": "芙蓉路",
+    "street_number": "89号"
+  },
+  "belief": "不信仰宗教",
+  "salary": 80000,
+  "body": {
+    "height": 165,
+    "weight": 57.5,
+    "BMI": 21.12
+  },
+  "family": "初婚有配偶,育有1个孩子",
+  "personality": {
+    "mbti": "ISFJ",
+    "traits": [
+      "安全",
+      "仁慈",
+      "个人成长导向"
+    ]
+  },
+  "hobbies": [
+    "手工刺绣（专注安徽传统图案）",
+    "在家听音乐",
+    "与朋友聚会",
+    "周末带孩子逛公园"
+  ],
+  "favorite_foods": [
+    "红烧排骨",
+    "西红柿鸡蛋面",
+    "合肥小龙虾"
+  ],
+  "memory_date": [
+    "2019-05-20 结婚纪念日",
+    "2021-08-15 孩子出生日"
+  ],
+  "aim": [
+    "两年内考取钳工中级证书",
+    "每年带孩子短途旅行一次",
+    "坚持每周三次散步锻炼"
+  ],
+  "healthy_desc": "个人整体健康状况良好，无慢性病史，偶尔因工作疲劳出现肩颈不适。保持每年一次基础体检习惯，日常通过散步缓解压力，注重饮食均衡，较少就医。",
+  "lifestyle_desc": "生活规律且注重家庭互动，工作日下班后主要在家陪伴孩子，周末常与朋友聚会或带孩子外出。休闲时以看电视和听音乐为主，每月参与1-2次手工刺绣活动，偶尔逛街购物，但几乎不参与体育锻炼或长途旅行。",
+  "economic_desc": "家庭年收入约14万元（个人收入8万元，配偶收入约6万元），拥有1套自住房产，无汽车代步。消费以日常开支和孩子教育为主，无任何投资活动，经济状况稳定但较为保守，注重储蓄和风险规避。",
+  "work_desc": "在制造企业从事五金工具装配工作，每日工作8小时，通勤单程约30分钟。工作内容以体力劳动为主，需专注操作机械和质检流程，对工作环境和收入较为满意。",
+  "experience_desc": "出生于合肥市瑶海区，初中毕业后进入本地五金厂担任学徒，逐步成长为熟练工具装配工，目前主要负责精密部件组装。2019年与同乡结婚后定居包河区，2021年育有一子，生活重心逐渐转向家庭与工作平衡，业余时间学习技能提升。",
+  "description": "王梦琪是一名24岁的五金工具装配工，性格温和细致（ISFJ型），注重家庭安全与孩子成长。她在合肥本地制造业工作多年，擅长手工操作且对工作流程严谨，业余喜欢刺绣和音乐创作，常组织家庭聚会增进亲友关系。未来计划通过技能提升实现职业发展，同时希望多陪伴孩子探索城市周边自然风光，追求平稳而充实的生活。",
+  "relation": [
+    [
+      {
+        "name": "王建国",
+        "relation": "父亲",
+        "social circle": "家庭圈",
+        "gender": "男",
+        "age": 58,
+        "birth_date": "1966-03-15",
+        "home_address": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "瑶海区",
+          "street_name": "长江东路",
+          "street_number": "235号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "瑶海区"
+        },
+        "personality": "ISTJ",
+        "economic_level": "小康",
+        "occupation": "退休五金厂技工",
+        "organization": "原合肥五金器械厂",
+        "nickname": "老爸",
+        "relation_description": "王梦琪的父亲，原合肥五金器械厂资深技工，现已退休。父女关系亲密，每周通电话2-3次，主要关心孙女成长和家庭近况。每月会来包河区看望女儿一家，带孙子去公园玩耍，偶尔指导女儿工作中的技术问题。退休后喜欢养花和下棋，经常与女婿张伟交流育儿经验。"
+      },
+      {
+        "name": "李秀英",
+        "relation": "母亲",
+        "social circle": "家庭圈",
+        "gender": "女",
+        "age": 56,
+        "birth_date": "1968-07-22",
+        "home_address": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "瑶海区",
+          "street_name": "长江东路",
+          "street_number": "235号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "六安市"
+        },
+        "personality": "ESFJ",
+        "economic_level": "小康",
+        "occupation": "退休纺织女工",
+        "organization": "原合肥纺织厂",
+        "nickname": "老妈",
+        "relation_description": "王梦琪的母亲，退休前在纺织厂工作，擅长刺绣和缝纫。母女每周视频通话多次，经常传授传统刺绣技艺给女儿。每月会来女儿家小住2-3天，帮忙照看外孙，教女儿做拿手菜。与亲家关系融洽，经常一起带孩子，是女儿家庭生活的重要支持者。"
+      },
+      {
+        "name": "张伟",
+        "relation": "丈夫",
+        "social circle": "家庭圈",
+        "gender": "男",
+        "age": 28,
+        "birth_date": "1996-05-18",
+        "home_address": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "包河区",
+          "street_name": "芜湖路",
+          "street_number": "156号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "肥西县"
+        },
+        "personality": "ISTP",
+        "economic_level": "小康",
+        "occupation": "汽车维修技师",
+        "organization": "合肥大众汽车4S店",
+        "nickname": "伟哥",
+        "relation_description": "王梦琪的丈夫，在汽车4S店担任维修技师。夫妻相识于朋友介绍，2019年结婚后感情稳定。日常分工明确，丈夫负责接送孩子上学，妻子准备晚餐。周末常一起带孩子逛公园或与朋友聚会，偶尔会因工作忙碌产生小争执但很快和好，经济上共同规划储蓄。"
+      },
+      {
+        "name": "张子轩",
+        "relation": "儿子",
+        "social circle": "家庭圈",
+        "gender": "男",
+        "age": 3,
+        "birth_date": "2021-08-15",
+        "home_address": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "包河区",
+          "street_name": "芜湖路",
+          "street_number": "156号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "包河区"
+        },
+        "personality": "待观察",
+        "economic_level": "依赖父母",
+        "occupation": "学龄前儿童",
+        "organization": "合肥市包河区幼儿园",
+        "nickname": "轩轩",
+        "relation_description": "王梦琪的独生子，目前就读幼儿园小班。母子关系亲密，每天由父母接送上下学。王梦琪下班后主要时间都陪伴儿子，教他认字、画画，周末常带他去公园玩耍。孩子性格活泼，是全家人的中心，外公外婆经常前来探望，家庭氛围温馨有爱。"
+      },
+      {
+        "name": "王梦瑶",
+        "relation": "妹妹",
+        "social circle": "家庭圈",
+        "gender": "女",
+        "age": 22,
+        "birth_date": "2002-11-30",
+        "home_address": {
+          "province": "江苏省",
+          "city": "南京市",
+          "district": "鼓楼区",
+          "street_name": "中山北路",
+          "street_number": "289号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "瑶海区"
+        },
+        "personality": "ENFP",
+        "economic_level": "中等",
+        "occupation": "商场销售员",
+        "organization": "南京金鹰国际购物中心",
+        "nickname": "瑶瑶",
+        "relation_description": "王梦琪的妹妹，目前在南京从事销售工作。姐妹俩从小感情深厚，现在主要通过微信视频保持联系，每周通话1-2次。妹妹每逢节假日会回合肥探亲，给外甥带礼物，姐妹俩会一起逛街、做美甲。王梦琪经常向妹妹倾诉工作烦恼，妹妹则会给姐姐生活建议，关系如同闺蜜。"
+      }
+    ],
+    [
+      {
+        "name": "李红",
+        "relation": "闺蜜",
+        "social circle": "发小圈",
+        "gender": "女",
+        "age": 25,
+        "birth_date": "1996-08-15",
+        "home_address": {
+          "province": "江苏省",
+          "city": "南京市",
+          "district": "鼓楼区",
+          "street_name": "中山北路",
+          "street_number": "203号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "瑶海区"
+        },
+        "personality": "ESFJ",
+        "economic_level": "小康",
+        "occupation": "幼儿园教师",
+        "organization": "南京市鼓楼区实验幼儿园",
+        "nickname": "小红",
+        "relation_description": "李红是王梦琪从小一起长大的发小，两人在瑶海区同一所小学和初中就读。初中毕业后李红考入师范学校，现为南京幼儿园教师。她们每月通过视频通话2-3次，聊育儿心得和工作趣事，每年春节李红回合肥探亲时会与王梦琪、刘婷婷三人聚餐逛街，平时主要通过微信群分享生活点滴。"
+      },
+      {
+        "name": "刘婷婷",
+        "relation": "闺蜜",
+        "social circle": "发小圈",
+        "gender": "女",
+        "age": 24,
+        "birth_date": "1997-03-22",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "南山区",
+          "street_name": "科技园路",
+          "street_number": "46号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "瑶海区"
+        },
+        "personality": "ENFP",
+        "economic_level": "中产",
+        "occupation": "电商运营专员",
+        "organization": "深圳某跨境电商公司",
+        "nickname": "婷婷",
+        "relation_description": "刘婷婷与王梦琪、李红是初中同学，三人组成闺蜜圈。刘婷婷高中后到深圳发展，现从事电商运营工作。她性格活泼，常在工作间隙通过微信与王梦琪分享深圳见闻，偶尔寄送儿童玩具给王梦琪的孩子。三人每年在王梦琪生日时视频连线，刘婷婷每两年回合肥一次时会特意组织闺蜜聚会，平时主要靠社交软件维持联系。"
+      }
+    ],
+    [
+      {
+        "name": "陈小雨",
+        "relation": "初中同学",
+        "social circle": "初中同学圈",
+        "gender": "女",
+        "age": 25,
+        "birth_date": "1998-03-15",
+        "home_address": {
+          "province": "江苏省",
+          "city": "南京市",
+          "district": "鼓楼区",
+          "street_name": "中山北路",
+          "street_number": "203号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "合肥市"
+        },
+        "personality": "ESFJ",
+        "economic_level": "中等",
+        "occupation": "幼儿园教师",
+        "organization": "南京市鼓楼区实验幼儿园",
+        "nickname": "小雨",
+        "relation_description": "陈小雨是王梦琪初中时期的同桌，两人因共同参加手工课而熟络。毕业后陈小雨考入师范学校，现于南京从事幼教工作。她们每月通过视频通话联系2-3次，聊育儿心得和工作趣事，偶尔会分享手工刺绣图案。每年春节陈小雨回合肥探亲时，会与王梦琪约饭叙旧，最近一次见面是半年前在合肥罍街聚餐。"
+      },
+      {
+        "name": "赵琳",
+        "relation": "初中同学",
+        "social circle": "初中同学圈",
+        "gender": "女",
+        "age": 24,
+        "birth_date": "1999-07-22",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "南山区",
+          "street_name": "科技园路",
+          "street_number": "46号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "合肥市"
+        },
+        "personality": "ENTP",
+        "economic_level": "中高",
+        "occupation": "电子产品质量检测员",
+        "organization": "深圳华强电子科技有限公司",
+        "nickname": "琳琳",
+        "relation_description": "赵琳初中时坐在王梦琪后座，经常一起放学回家。中专毕业后她前往深圳打工，从流水线工人成长为质检员。两人主要通过微信朋友圈互动，偶尔深夜语音吐槽工作压力，赵琳会寄送广东特产给王梦琪的孩子。去年同学聚会时赵琳因加班未能参加，但她们约定明年五一假期在合肥重聚。"
+      },
+      {
+        "name": "孙大明",
+        "relation": "初中同学",
+        "social circle": "初中同学圈",
+        "gender": "男",
+        "age": 26,
+        "birth_date": "1997-08-30",
+        "home_address": {
+          "province": "浙江省",
+          "city": "杭州市",
+          "district": "萧山区",
+          "street_name": "市心北路",
+          "street_number": "318号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "合肥市"
+        },
+        "personality": "ISTP",
+        "economic_level": "中等",
+        "occupation": "汽车维修技师",
+        "organization": "杭州速达汽车服务中心",
+        "nickname": "大明",
+        "relation_description": "孙大明是初中班级的劳动委员，曾与王梦琪共同负责教室器械维护。他职高学习汽修后到杭州发展，现已成为资深技师。两人联系较少但保持同学情谊，每年春节在班级微信群互发祝福，王梦琪咨询汽车保养问题时他会耐心解答。去年孙大明回合肥结婚时，王梦琪因孩子发烧未能参加婚礼，但托同学带了份子钱。"
+      }
+    ],
+    [
+      {
+        "name": "周建国",
+        "relation": "师傅",
+        "social circle": "工作圈",
+        "gender": "男",
+        "age": 48,
+        "birth_date": "1976-03-15",
+        "home_address": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "蜀山区",
+          "street_name": "长江西路",
+          "street_number": "235号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "芜湖市"
+        },
+        "personality": "ISTJ",
+        "economic_level": "小康",
+        "occupation": "高级装配技师",
+        "organization": "安徽金工制造有限公司",
+        "nickname": "周师傅",
+        "relation_description": "周建国是王梦琪入行时的指导师傅，2015年起在装配车间带教新人。他技术精湛且教学耐心，经常在工作间隙指导王梦琪掌握精密工具装配技巧。两人现在虽不在同一班组，但每周会在食堂共进午餐2-3次，节假日会互赠家乡特产。周师傅把王梦琪当作得意弟子，偶尔会关心她的职业发展情况。"
+      },
+      {
+        "name": "吴建军",
+        "relation": "班组长",
+        "social circle": "工作圈",
+        "gender": "男",
+        "age": 36,
+        "birth_date": "1988-08-22",
+        "home_address": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "瑶海区",
+          "street_name": "长江东路",
+          "street_number": "178号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "合肥市"
+        },
+        "personality": "ESTJ",
+        "economic_level": "小康",
+        "occupation": "生产班组长",
+        "organization": "安徽金工制造有限公司",
+        "nickname": "吴班",
+        "relation_description": "吴建军是王梦琪所在班组的直接管理者，负责日常生产任务分配和质量监督。他注重团队协作，经常组织班组团建活动。王梦琪与他保持每日工作汇报关系，每月参与他主持的生产例会。周末偶尔会与其他同事一起在吴建军家聚餐，讨论工作改进方案。"
+      },
+      {
+        "name": "郑小芳",
+        "relation": "同事",
+        "social circle": "工作圈",
+        "gender": "女",
+        "age": 26,
+        "birth_date": "1998-05-30",
+        "home_address": {
+          "province": "江苏省",
+          "city": "南京市",
+          "district": "鼓楼区",
+          "street_name": "北京西路",
+          "street_number": "63号"
+        },
+        "birth_place": {
+          "province": "江苏省",
+          "city": "南京市"
+        },
+        "personality": "ESFJ",
+        "economic_level": "温饱",
+        "occupation": "五金工具装配工",
+        "organization": "安徽金工制造有限公司",
+        "nickname": "小芳",
+        "relation_description": "郑小芳是王梦琪的工位邻座同事，两人同期入职成为好友。虽然郑小芳半年前调往南京分厂，但她们保持每周视频通话2-3次，分享育儿经验和工作趣事。节假日郑小芳回合肥探亲时必会与王梦琪聚会，一起带孩子逛商场或做手工刺绣。她们通过微信群与周师傅、吴班长保持工作圈联系。"
+      },
+      {
+        "name": "钱卫华",
+        "relation": "同事",
+        "social circle": "工作圈",
+        "gender": "男",
+        "age": 29,
+        "birth_date": "1995-11-18",
+        "home_address": {
+          "province": "浙江省",
+          "city": "杭州市",
+          "district": "西湖区",
+          "street_name": "文三路",
+          "street_number": "409号"
+        },
+        "birth_place": {
+          "province": "浙江省",
+          "city": "温州市"
+        },
+        "personality": "ENTP",
+        "economic_level": "小康",
+        "occupation": "质检员",
+        "organization": "安徽金工制造有限公司",
+        "nickname": "钱工",
+        "relation_description": "钱卫华是生产线质检员，负责检查王梦琪班组的成品质量。他工作严谨且善于创新，经常与王梦琪讨论装配工艺改进。去年调往杭州研发中心后，仍通过工作系统与王梦琪保持业务联系，每月会返合肥总部开会时相约聚餐。他和小芳、周师傅同在公司的技术交流群，偶尔会分享各地分厂的最新工艺。"
+      }
+    ],
+    [
+      {
+        "name": "冯玉兰",
+        "relation": "邻居",
+        "social circle": "社区圈",
+        "gender": "女",
+        "age": 58,
+        "birth_date": "1966-03-15",
+        "home_address": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "包河区",
+          "street_name": "芜湖路",
+          "street_number": "158号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "安庆市"
+        },
+        "personality": "ESFJ",
+        "economic_level": "小康",
+        "occupation": "退休教师",
+        "organization": "合肥市包河区实验小学",
+        "nickname": "冯阿姨",
+        "relation_description": "冯阿姨是王梦琪对门的邻居，退休前在小学任教。两人因社区活动相识，冯阿姨经常帮忙照看王梦琪的孩子，周末常一起在小区散步聊天。王梦琪遇到育儿问题时也会向冯阿姨请教，每月会互相赠送自制食品，关系亲密如家人。"
+      },
+      {
+        "name": "徐美玲",
+        "relation": "邻居",
+        "social circle": "社区圈",
+        "gender": "女",
+        "age": 45,
+        "birth_date": "1979-08-22",
+        "home_address": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "包河区",
+          "street_name": "芜湖路",
+          "street_number": "154号"
+        },
+        "birth_place": {
+          "province": "江苏省",
+          "city": "南京市"
+        },
+        "personality": "ENFP",
+        "economic_level": "中等",
+        "occupation": "超市收银员",
+        "organization": "合肥华联超市",
+        "nickname": "徐大姐",
+        "relation_description": "徐大姐住在王梦琪隔壁单元，性格开朗热情。两人常在小区菜鸟驿站取快递时相遇，周末经常相约带孩子去社区公园玩耍。徐大姐擅长烹饪，常与王梦琪分享南京特色小吃做法，两家人逢年过节会互相串门，每周至少见面2-3次。"
+      }
+    ],
+    [
+      {
+        "name": "张秀英",
+        "relation": "老师",
+        "social circle": "手工刺绣圈",
+        "gender": "女",
+        "age": 58,
+        "birth_date": "1966-03-15",
+        "home_address": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "蜀山区",
+          "street_name": "长江西路",
+          "street_number": "368号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "黄山市"
+        },
+        "personality": "ENFJ",
+        "economic_level": "小康",
+        "occupation": "非遗传承人",
+        "organization": "合肥市非物质文化遗产保护中心",
+        "nickname": "张老师",
+        "relation_description": "张秀英是王梦琪的刺绣启蒙老师，2018年在社区文化站相识。她擅长安徽传统刺绣技艺，每月组织一次刺绣交流活动。王梦琪每周通过微信向她请教技法，逢年过节会带孩子登门拜访。两人虽同住合肥但因距离较远见面不多，主要通过视频教学保持联系。"
+      },
+      {
+        "name": "林梅",
+        "relation": "绣友",
+        "social circle": "手工刺绣圈",
+        "gender": "女",
+        "age": 26,
+        "birth_date": "1998-08-22",
+        "home_address": {
+          "province": "江苏省",
+          "city": "南京市",
+          "鼓楼区": "",
+          "street_name": "汉口路",
+          "street_number": "75号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "芜湖市"
+        },
+        "personality": "ESFP",
+        "economic_level": "中等",
+        "occupation": "服装设计师",
+        "organization": "南京云锦服饰有限公司",
+        "nickname": "梅子",
+        "relation_description": "林梅与王梦琪在2019年张老师的刺绣班上相识，现定居南京从事服装设计。两人虽分隔两地但每周通过抖音分享刺绣作品，每年春节林梅回芜湖老家时会专程到合肥与王梦琪聚会。她们常在线上讨论将传统刺绣与现代服饰结合的创新设计，偶尔会合作完成定制作品。"
+      },
+      {
+        "name": "黄美玲",
+        "relation": "绣友",
+        "social circle": "手工刺绣圈",
+        "gender": "女",
+        "age": 62,
+        "birth_date": "1962-12-08",
+        "home_address": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "瑶海区",
+          "street_name": "长江东路",
+          "street_number": "215号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "合肥市"
+        },
+        "personality": "ISFP",
+        "economic_level": "中等",
+        "occupation": "退休教师",
+        "organization": "合肥市第三中学（已退休）",
+        "nickname": "黄阿姨",
+        "relation_description": "黄美玲是王梦琪在社区刺绣班认识的忘年交，退休前担任美术教师。她与王梦琪同住瑶海区，每周三固定相约在社区活动室刺绣。黄阿姨常指导王梦琪的传统纹样技法，偶尔帮照看孩子。两人保持着亦师亦友的关系，逢传统节日会互赠手作刺绣礼品。"
+      }
+    ],
+    [
+      {
+        "name": "李美华",
+        "relation": "老师",
+        "social circle": "育儿圈",
+        "gender": "女",
+        "age": 38,
+        "birth_date": "1986-03-15",
+        "home_address": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "蜀山区",
+          "street_name": "长江西路",
+          "street_number": "368号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "芜湖市"
+        },
+        "personality": "ENFJ",
+        "economic_level": "中产",
+        "occupation": "幼儿园教师",
+        "organization": "合肥市阳光幼儿园",
+        "nickname": "李老师",
+        "relation_description": "李美华是王梦琪孩子所在幼儿园的班主任，两人通过家长会相识。李老师性格热情负责，经常与家长沟通孩子成长情况。王梦琪每月接送孩子时会与李老师交流育儿心得，偶尔在周末带孩子参加幼儿园组织的亲子活动。两人主要通过微信联系，平均每周沟通1-2次孩子近况。"
+      },
+      {
+        "name": "刘雪梅",
+        "relation": "朋友",
+        "social circle": "育儿圈",
+        "gender": "女",
+        "age": 26,
+        "birth_date": "1998-08-22",
+        "home_address": {
+          "province": "江苏省",
+          "city": "南京市",
+          "district": "鼓楼区",
+          "street_name": "北京西路",
+          "street_number": "75号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "合肥市"
+        },
+        "personality": "ESFP",
+        "economic_level": "小康",
+        "occupation": "幼儿用品销售",
+        "organization": "南京宝贝王国母婴连锁",
+        "nickname": "刘姐",
+        "relation_description": "刘雪梅是王梦琪在母婴论坛认识的宝妈朋友，两人孩子年龄相仿。虽然刘雪梅现居南京，但经常通过微信分享育儿经验和商品优惠信息。王梦琪每年带孩子去南京游玩时会与刘雪梅见面聚餐，平时每周通过视频通话2-3次交流育儿趣事。两人还经常互相邮寄家乡特产，保持着跨省的友情联系。"
+      }
+    ],
+    [
+      {
+        "name": "王晓峰",
+        "relation": "医生",
+        "social circle": "医疗圈",
+        "gender": "男",
+        "age": 38,
+        "birth_date": "1986-03-15",
+        "home_address": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "包河区",
+          "street_name": "芜湖路",
+          "street_number": "社区卫生服务站"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "庐阳区"
+        },
+        "personality": "ENFJ",
+        "economic_level": "中产",
+        "occupation": "全科医生",
+        "organization": "包河区社区卫生服务中心",
+        "nickname": "王医生",
+        "relation_description": "王晓峰是王梦琪所在社区的签约家庭医生，因孩子疫苗接种和日常健康咨询相识。他性格温和耐心，擅长与居民沟通，每月会定期上门为老人和孩子做基础检查。王梦琪一家遇到感冒发烧等常见病都会先咨询他，平时通过微信联系医疗问题，每年体检时见面一次。"
+      }
+    ],
+    [
+      {
+        "name": "陈建军",
+        "relation": "教练",
+        "social circle": "技能培训圈",
+        "gender": "男",
+        "age": 42,
+        "birth_date": "1982-03-15",
+        "home_address": {
+          "province": "安徽省",
+          "city": "合肥市",
+          "district": "蜀山区",
+          "street_name": "长江西路",
+          "street_number": "368号"
+        },
+        "birth_place": {
+          "province": "安徽省",
+          "city": "芜湖市"
+        },
+        "personality": "ISTJ",
+        "economic_level": "小康",
+        "occupation": "职业技能培训师",
+        "organization": "合肥市职业技能培训中心",
+        "nickname": "陈教练",
+        "relation_description": "陈建军是王梦琪在职业技能培训中心认识的钳工培训教练，拥有15年五金行业经验。两人通过2023年企业组织的技能提升课程相识，陈教练注重实操教学，经常在课后额外指导学员技术细节。现在每月通过微信进行1-2次技术交流，偶尔在培训中心组织的学员聚会上见面，主要讨论钳工考证要点和行业最新标准。"
+      }
+    ]
+  ]
+}

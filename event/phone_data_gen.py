@@ -659,13 +659,17 @@ def phone_gen(date,contact,file_path,a,b,c,d):
     res = clean_json_string(res)
     data =json.loads(res)
     d += data
-    with open(file_path+"phone_data/event_note.json", "w", encoding="utf-8") as f:
+    # 创建phone_data文件夹（如果不存在）
+    phone_data_dir = os.path.join(file_path, "phone_data")
+    os.makedirs(phone_data_dir, exist_ok=True)
+    
+    with open(os.path.join(phone_data_dir, "event_note.json"), "w", encoding="utf-8") as f:
         json.dump(d, f, ensure_ascii=False, indent=2)
-    with open(file_path+"phone_data/event_call.json", "w", encoding="utf-8") as f:
+    with open(os.path.join(phone_data_dir, "event_call.json"), "w", encoding="utf-8") as f:
         json.dump(c, f, ensure_ascii=False, indent=2)
-    with open(file_path+"phone_data/event_gallery.json", "w", encoding="utf-8") as f:
+    with open(os.path.join(phone_data_dir, "event_gallery.json"), "w", encoding="utf-8") as f:
         json.dump(a, f, ensure_ascii=False, indent=2)
-    with open(file_path+"phone_data/event_push.json", "w", encoding="utf-8") as f:
+    with open(os.path.join(phone_data_dir, "event_push.json"), "w", encoding="utf-8") as f:
         json.dump(b, f, ensure_ascii=False, indent=2)
 
     return
