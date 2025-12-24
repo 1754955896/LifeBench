@@ -150,7 +150,7 @@ python phone_gen.py [参数]
   - 默认时间范围：2025-01-01 至 2025-12-31
   - 默认最大并行线程数：30
   - 默认每个线程处理天数：16
-  - 默认执行事件格式化，不执行事件精炼和数据生成
+  - 默认执行事件格式化，事件精炼和数据生成
 
 - **phone_gen.py**：
   - 默认文件路径：`output/`
@@ -158,10 +158,8 @@ python phone_gen.py [参数]
   - 默认最大并行线程数：32
   - 默认生成数据类型：通话、相册、笔记、推送、运动健康
 
-### 事件模板
-- 事件模板定义在 `event/templates.py` 中
-- 默认包含日常活动、交通、工作等多种事件类型
-- 支持根据用户画像个性化生成事件
+### prompt模板
+- prompt模板定义在 `event/templates.py` 中
 
 ## 输出文件说明
 
@@ -174,10 +172,12 @@ python phone_gen.py [参数]
 - **process/event_decompose_1.json**：进一步优化后的事件树（仅当执行事件精炼时生成）
 - **monthly_summaries.json**：月度总结数据（仅当生成数据时创建）
 - **cumulative_summaries.json**：累积总结数据（仅当生成数据时创建）
-
+- **output/outputs.json**:每日模拟的最终输出
+- **XXXX-XX-XX/* **:每日模拟的中间文件
+  
 ### 手机数据模块
 - **phone_data/contact.json**：联系人数据
-- **phone_data/event_call.json**：通话记录
+- **phone_data/event_call.json**：通话和短信记录
 - **phone_data/event_gallery.json**：相册记录
 - **phone_data/event_note.json**：笔记和日历记录
 - **phone_data/event_push.json**：推送通知记录
