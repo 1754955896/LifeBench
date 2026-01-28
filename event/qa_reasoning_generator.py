@@ -1257,9 +1257,9 @@ class QAReasoningGenerator:
             if not event_id:
                 print("事件数据中没有event_id或id字段")
                 return []
-            
+            from event.template3 import PHONE_OPERATIONS_REGENERATION_TEMPLATE1
             # 使用模板构建重新生成提示
-            prompt = PHONE_OPERATIONS_REGENERATION_TEMPLATE.format(
+            prompt = PHONE_OPERATIONS_REGENERATION_TEMPLATE1.format(
                 event_info=json.dumps(event, ensure_ascii=False, indent=2),
                 question=question,
                 missing_info=json.dumps(judge_result.get("missing_info", []), ensure_ascii=False, indent=2),
