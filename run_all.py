@@ -75,46 +75,26 @@ def run_for_persona(persona_data, persona_folder, instance_id):
         print(f"人物 {persona_data.get('name', '未知')} 的文件夹已存在: {persona_folder}")
         print(f"跳过保存persona.json文件")
     
-    # 检查是否需要运行event_gen.py
-    event_decompose_path = os.path.join(persona_folder, "event_decompose_dfs.json")
-    need_run_event_gen = not os.path.exists(event_decompose_path)
+    # 检查是否需要运行run.py（基于关键输出文件的存在性）
+    # run.py会自动检查其内部各个模块是否需要运行
+    # 这里我们可以基于最终合并的QA文件来判断是否需要运行整个流程
+    merged_qa_path = os.path.join(persona_folder, "QA", "QA.json")
+    need_run = not os.path.exists(merged_qa_path)
     
-    # 定义脚本路径和描述
-    scripts = []
-    
-    # 如果需要运行event_gen.py，则添加到脚本列表
-    if need_run_event_gen:
-        scripts.append({
-            "path": "event_gen.py",
-            "description": "人物生成模块",
-            "args": ["--base-path", persona_folder+'/', "--instance-id", str(instance_id)]
-        })
+    if need_run:
+        # 调用集成好的run.py
+        scripts = [{
+            "path": "run.py",
+            "description": "集成生成模块",
+            "args": ["--base-path", persona_folder+'/', "--instance-id", str(instance_id), "--generate-phone-data", "True", "--year", "2025"]
+        }]
     else:
-        print(f"检测到event_decompose_dfs.json文件，跳过运行人物生成模块")
-    
-    # 添加其他脚本
-    # 检查是否需要运行simulator.py
-    simulator_output_path = os.path.join(persona_folder, 'output', 'outputs.json')
-    if not os.path.exists(simulator_output_path):
-        scripts.append({
-            "path": "simulator.py",
-            "description": "模拟生成模块",
-            "args": ["--file-path", persona_folder+'/', "--instance-id", str(instance_id)]
-        })
-    else:
-        print(f"检测到output/outputs.json文件，跳过运行模拟生成模块")
-    phone_output_path = os.path.join(persona_folder, 'phone_data')
-    if not os.path.exists(phone_output_path):
-        scripts.append({
-            "path": "phone_gen.py",
-            "description": "手机操作生成模块",
-            "args": ["--file-path", persona_folder+'/']
-        })
-    else:
-        print(f"检测到phone_data目录，跳过运行手机操作生成模块")
+        print(f"检测到合并后的QA文件: {merged_qa_path}")
+        print(f"跳过运行集成生成模块")
+        scripts = []
 
     
-    # 按顺序运行每个脚本
+    # 按顺序运行每个脚本（现在只有run.py一个脚本）
     all_success = True
     for script in scripts:
         if not run_script(script["path"], script["description"], script["args"]):
@@ -146,7 +126,7 @@ def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     
     # 读取person.json文件
-    person_json_path = "output/person.json"
+    person_json_path = "data/person.json"
     if not os.path.exists(person_json_path):
         print(f"❌ 错误: {person_json_path} 文件不存在")
         return 1

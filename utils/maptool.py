@@ -10,7 +10,7 @@ from xml.etree import ElementTree
 class MapMaintenanceTool:
     """地图维护工具类，支持POI查询、地理编码、跨城市路线查询，确保所有函数出错时有明确输出"""
 
-    def __init__(self, api_key: str, cache_expire_seconds: int = 3600):
+    def __init__(self, api_key: str, cache_expire_seconds: int = 3600, persona_address_data: Optional[List[Dict]] = None):
         self.api_key = api_key
         self.cache_expire_seconds = cache_expire_seconds  # 缓存有效期
         self.transport_apis = {
@@ -23,6 +23,28 @@ class MapMaintenanceTool:
         self.poi_cache: Dict[str, Tuple[float, Dict]] = {}
         self.duration_cache: Dict[str, Tuple[float, int]] = {}
         self.geocode_cache: Dict[str, Tuple[float, Dict]] = {}
+        # 新增：已有真实地点数据（用于快速匹配type为1的指令）
+        self.persona_address_data = persona_address_data or []
+        # 构建已有真实地点索引，提高匹配效率
+        self._persona_address_index = {}
+        for idx, address in enumerate(self.persona_address_data):
+            if isinstance(address, dict):
+                # 1. 按name字段匹配
+                name_key = address.get('name', '').strip()
+                if name_key:
+                    self._persona_address_index[name_key] = address
+                    
+                # 2. 按location字段匹配
+                location_val = address.get('location', '')
+                if isinstance(location_val, dict):
+                    # 处理字典类型的location（旧格式支持）
+                    pass
+                elif isinstance(location_val, str):
+                    # 处理字符串类型的location（如"121.513638,31.237805"）
+                    location_key = location_val.strip()
+                    if location_key:
+                        self._persona_address_index[location_key] = address
+
         # 新增：全局锁（保护所有共享状态操作）
         self._lock = threading.Lock()
         # 线程安全的随机数实例（替代全局random）
@@ -531,32 +553,65 @@ class MapMaintenanceTool:
                     city = instr.get("city") or (input_cities[idx] if idx < len(input_cities) else None)
                     instr_desc = f"第{idx + 1}个指令（类型{instr_type}）"
                     try:
-                        # 3.1 类型1：画像地址（直接进行地理编码搜索）
+                        # 3.1 类型1：画像地址（优先从画像地址数据中匹配，失败后降级到地理编码）
                         if instr_type == "1":
                             location = instr.get("location", "").strip()
+                            name = instr.get("name", "").strip()
                             c = instr.get("city", city).strip()
-                            if not location:
-                                raise ValueError("缺少location字段")
-                            print(f"\n{instr_desc}：画像地址处理 -> 直接地理编码搜索：{location}@{city}")
+                            # 检查location或name是否存在
+                            if not location and not name:
+                                raise ValueError("缺少location或name字段")
+                            
+                            print(f"\n{instr_desc}：画像地址处理 -> 尝试从画像数据匹配：location={location}, name={name}@{city}")
 
-                            # 直接调用地理编码API
-                            geocode_data = self.amap_geocode(address=location, city=c)
-                            if not geocode_data or not geocode_data.get("location"):
-                                raise ValueError("地理编码失败，无有效Location")
-                                
-                            # 地理编码成功，包装为POI格式（统一数据结构）
-                            enhanced_geocode = {
-                                "name": location,
-                                "location": geocode_data["location"],
-                                "structured_address": geocode_data["formatted_address"],
-                                "geocode": geocode_data,
-                                "instruction_type": "1",
-                                "original_location": location,
-                                "is_poi_fallback": False,  # 直接使用地理编码，无降级
-                                "instruction_index": idx
-                            }
-                            success_poi_list.append(enhanced_geocode)
-                            print(f"{instr_desc}：地理编码成功，Location：{geocode_data['location']}")
+                            # 优先从画像地址数据中匹配
+                            matched_address = None
+                            
+                            # 尝试根据location匹配
+                            if location:
+                                if location in self._persona_address_index:
+                                    matched_address = self._persona_address_index[location]
+                                    print(f"{instr_desc}：通过location字段匹配到画像地址数据")
+                            
+                            # 如果location匹配失败，尝试根据name匹配
+                            if not matched_address and name:
+                                if name in self._persona_address_index:
+                                    matched_address = self._persona_address_index[name]
+                                    print(f"{instr_desc}：通过name字段匹配到画像地址数据")
+
+                            if matched_address:
+                                # 直接使用画像数据中的字段，不再调用AMap API（画像数据包含AMap返回格式的所有字段）
+                                enhanced_geocode = {
+                                    "name": matched_address.get("name", matched_address.get('poi', name or location)),
+                                    "location": matched_address.get("location", ""),  # 画像数据中的经纬度
+                                    "structured_address": matched_address.get("formatted_address", ""),
+                                    "city": matched_address.get("city", ""),
+                                    "instruction_type": "1",
+                                    "instruction_index": idx,
+                                    "is_poi_fallback": False
+                                }
+                                success_poi_list.append(enhanced_geocode)
+                                print(f"{instr_desc}：成功从画像数据匹配地址，Location：{enhanced_geocode.get('location', '')}")
+                            else:
+                                # 画像数据匹配失败，降级到直接地理编码搜索
+                                search_address = location or name
+                                print(f"{instr_desc}：画像数据匹配失败，降级到地理编码搜索：{search_address}@{city}")
+                                geocode_data = self.amap_geocode(address=search_address, city=c)
+                                if not geocode_data or not geocode_data.get("location"):
+                                    raise ValueError("地理编码失败，无有效Location")
+                                    
+                                # 地理编码成功，包装为POI格式（统一数据结构）
+                                enhanced_geocode = {
+                                    "name": name or location,
+                                    "location": geocode_data["location"],
+                                    "structured_address": geocode_data["formatted_address"],
+                                    "city": geocode_data.get("city", ""),  # 直接保留city信息
+                                    "instruction_type": "1",
+                                    "instruction_index": idx,
+                                    "is_poi_fallback": False  # 直接使用地理编码，无降级
+                                }
+                                success_poi_list.append(enhanced_geocode)
+                                print(f"{instr_desc}：地理编码成功，Location：{geocode_data['location']}")
 
                             # 添加城市信息
                             current_poi = success_poi_list[-1]
@@ -915,7 +970,7 @@ class MapMaintenanceTool:
 if __name__ == "__main__":
     # 从配置文件读取API密钥
     import json
-    with open('config.json', 'r', encoding='utf-8') as f:
+    with open('../config.json', 'r', encoding='utf-8') as f:
         config = json.load(f)
     # 获取地图工具配置
     map_config = config.get('map_tool', {})

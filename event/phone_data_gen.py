@@ -16,6 +16,7 @@ class Data_extract:
         self.persona_withoutrl = ""
         self.context = "你是一位手机数据专家和深度用户"
         self.atomic_events : Optional[List[Dict]] = None
+        self.daily_draft = {}
 
     def _get_bottom_level_events(self) -> List[Dict]:
         """
@@ -152,7 +153,7 @@ class Data_extract:
                     break # 避免同一事件因多个日期重复加入
 
         return matched
-    def load_from_json(self,event,persona):
+    def load_from_json(self,event,persona,daily_draft={}):
 
             self.persona = persona
             self.events = event
@@ -160,7 +161,47 @@ class Data_extract:
             persona_copy = persona.copy()
             del persona_copy["relation"]
             self.persona_withoutrl = persona_copy
+            self.daily_draft = daily_draft
             return False
+
+    def getstatus(self,date):
+        import json
+        import os
+        from datetime import datetime, timedelta
+        print('here')
+        # 计算目标日期
+        base_date = datetime.strptime(date, "%Y-%m-%d")
+        target_date = base_date
+        target_date_str = target_date.strftime("%Y-%m-%d")
+
+        # 直接从self.daily_draft获取数据
+        try:
+            data = self.daily_draft
+            # 从目标日期中提取年月，例如 "2025-01-05" -> "2025-01"
+            year_month = "-".join(target_date_str.split("-")[:2])
+
+            # 检查年月数据是否存在
+            if year_month not in data:
+                print(f"警告: 年月 {year_month} 的数据在文件中不存在")
+                return {}
+
+            # 在对应的月份数据中查找指定日期
+            month_data = data[year_month]
+
+            for day_data in month_data:
+                # print(day_data)
+                if day_data.get("date") == target_date_str:
+                    return day_data
+
+                # 如果指定日期不存在，返回空字典
+            print(f"警告: 日期 {target_date_str} 的数据在文件中不存在")
+            return {}
+        except json.JSONDecodeError:
+            print(f"错误: daily_draft 不是有效的JSON格式")
+            return {}
+        except Exception as e:
+            print(f"读取daily_draft时发生错误: {str(e)}")
+            return {}
 
 phone_event_MSM_template = '''
 请基于用户提供的事件列表、联系人列表和个人画像，统一分析生成手机通信事件（通话+短信），确保数据唯一不重复。生成需严格遵循以下要求：
@@ -532,20 +573,37 @@ def iterate_dates(start_date: str, end_date: str) -> List[str]:
 
     return date_list
 
-def remove_json_wrapper(s: str) -> str:
+def remove_json_wrapper(s: str, json_type: str = 'array') -> str:
         """
-        去除字符串前后可能存在的```json  ```标记（包含可能的空格）
+        处理字符串，移除JSON包装：
+        1. 去除字符串前后可能存在的```json  ```标记（包含可能的空格）
+        2. 根据json_type参数提取对应的JSON内容：
+           - json_type='object'：提取第一个{到最后一个}之间的内容
+           - json_type='array'：提取第一个[到最后一个]之间的内容
 
         参数:
             s: 输入字符串
+            json_type: JSON类型，'object'对应{}，'array'对应[]，默认为'object'
 
         返回:
-            处理后的字符串，若不存在标记则返回原字符串
+            处理后的字符串，若不存在有效JSON则返回原字符串
         """
-        # 正则模式：匹配开头的```json及可能的空格，和结尾的```及可能的空格
+        # 1. 先移除开头的```json和结尾的```标记
         pattern = r'^\s*```json\s*\n?|\s*```\s*$'
-        # 替换匹配到的内容为空字符串
         result = re.sub(pattern, '', s, flags=re.MULTILINE)
+        
+        # 2. 根据json_type提取对应的括号内容
+        if json_type == 'array':
+            first_bracket = result.find('[')
+            last_bracket = result.rfind(']')
+            if first_bracket != -1 and last_bracket != -1 and first_bracket < last_bracket:
+                result = result[first_bracket:last_bracket + 1]
+        else:  # 默认处理JSON对象
+            first_brace = result.find('{')
+            last_brace = result.rfind('}')
+            if first_brace != -1 and last_brace != -1 and first_brace < last_brace:
+                result = result[first_brace:last_brace + 1]
+            
         return result
 
 def contact_gen(persona):
@@ -674,6 +732,151 @@ def phone_gen(date,contact,file_path,a,b,c,d):
 
     return
 
+class PerceptionDataGenerator:
+    def __init__(self, schema: List[str] = None):
+        """
+        初始化感知数据生成器
+        
+        参数:
+            schema: 事件类别列表，用于判断事件类型。如果不提供，将使用默认的事件类型列表。
+        """
+        # 默认事件类型列表
+        default_schema = [
+            
+            "景点浏览", "购物", "逛街", "城市漫游", "出海游船", "露营", "度假村放松", "酒店休息", "就餐", "出差", "上班通勤", "下班通勤", "办公", "会议研讨", "请假", "加班",
+            "工作总结", "工作交流", "培训", "报销", "与某人通话", "与某人视频通话",
+            "向某人发送即时消息", "接收某人发送的即时消息", "向某人发送邮件", "接收某人发送的工作邮件",
+            "邀请某人参加日历事件", "接受某人发起的日历邀请",  "与某人参加同一会议",
+            "与某人参加同一培训/讲座", "在通讯录中新增联系人", "更新某人联系信息", "删除/屏蔽某人",
+            "参加聚餐", "参加婚礼", "参加生日派对", "参加公司团建", "参加社区活动", "拜访他人住所",
+            "探望住院人员", "参加节日庆典", "参加宗教仪式", "参加慈善活动", "参加政治集会", "参加亲子活动",
+            "陪同前往学校/培训机构", "组织活动", "预订餐厅/场地", "宠物照料", "作业", "课程",
+            "背单词", "预约考试", "参加考试", "成绩查询", "家政", "政务和公共服务", "生活缴费",
+            "跑腿代办", "3C数码维修", "行李寄存", "银行入账", "银行出账", "金融app入账", "金融app出账",
+            "记账", "理财", "保险", "支付订单", "房产装修", "房产交易", "汽车交易", "运动记录",
+            "体检", "挂号", "查看电子病历或检查报告", "服药", "心理咨询", "睡眠管理", "饮食管理",
+            "精神健康管理", "旅游", "行走", "跑", "骑车", "乘飞机", "乘火车", "乘地铁", "开车",
+            "乘车", "乘交通工具", "行程规划", "购票", "检票", "退票", "改签", "出发",
+            "城市切换", "达到", "城市旅游", "旅程", "游玩主题乐园", "参观动物园", "参观博物馆",
+            "参观美术馆", "参观海洋馆", "节假日回乡", "居家拜访", "扫墓", "探亲", "看演唱会", "看话剧",
+            "看音乐剧", "看展览", "看脱口秀", "看相声", "看音乐会", "看音乐节", "看戏曲", "看电竞赛事",
+            "看舞蹈", "看体育赛事", "看魔术", "看电影", "看亲子演出", "划船", "射击射箭", "溜冰",
+            "马术", "钓鱼", "按摩足疗", "洗浴汗蒸", "密室逃脱", "游戏厅", "网吧", "采摘农家乐",
+            "撸宠", "K歌", "酒吧", "轰趴", "剧本杀", "电子游戏", "做SPA", "桌游", "茶馆棋牌",
+            "DIY手工", "广义静止", "绝对静止", "相对静止", "停留", "游泳", "健身锻炼", "跑步",
+            "骑行", "户外步行", "武术", "舞蹈", "羽毛球", "棒球", "滑雪", "足球", "篮球",
+            "轮滑", "户外探险", "健美操", "漫步机", "射箭", "芭蕾舞", "沙滩足球", "沙滩排球",
+            "肚皮舞", "冬季两项", "BMX自行车", "搏击操", "保龄球", "拳击", "闭气测试", "闭气训练",
+            "蹦极", "皮划艇", "核心训练", "板球", "越野滑雪", "Crossfit", "冰壶", "飞镖",
+            "自由潜水", "躲避球", "龙舟", "漂流", "椭圆机", "电子竞技", "击剑", "自由搏击",
+            "自由训练", "飞盘", "功能性训练", "门球", "打高尔夫", "高尔夫场地模式", "高尔夫练习场模式",
+            "手球", "HIIT", "徒步", "曲棍球", "骑马", "呼啦圈", "对战游戏", "冰球", "室内骑行",
+            "室内跑步", "室内步行", "爵士舞", "跳绳", "空手道", "剑道", "放风筝", "拉丁舞",
+            "摩托艇", "登山", "障碍赛", "开放水域游泳", "定向越野", "笼式网球", "跳伞", "双杠",
+            "跑酷", "体能训练", "普拉提", "操场赛跑", "广场舞", "台球", "泳池游泳", "赛车",
+            "攀岩", "划船机", "赛艇", "橄榄球", "帆船", "水肺潜水", "体感运动", "藤球",
+            "毽球", "单杠", "滑板", "滑冰", "滑雪橇", "单板滑雪", "雪地摩托", "垒球",
+            "动感单车", "壁球", "爬楼", "踏步机", "街舞", "力量训练", "桨板冲浪", "冲浪",
+            "秋千", "乒乓球", "跆拳道", "太极拳", "网球", "越野跑", "铁人三项", "拔河", "排球", "瑜伽"
+        ]
+        
+        # 如果用户提供了schema，则使用用户提供的，否则使用默认的
+        self.schema = schema if schema is not None else default_schema
+    
+    def generate_perception_data(self, date: str,g) -> List[Dict]:
+        """
+        生成感知数据
+        
+        参数:
+            date: 日期，格式为YYYY-MM-DD
+        
+        返回:
+            感知数据列表，每个条目包含type, event_id, date, time字段
+        """
+        # 获取当日事件
+        daily_events = extool.filter_by_date(date)
+        
+        # 过滤出有必要信息的事件
+        valid_events = []
+        for event in daily_events:
+            event_id = event.get('event_id', '')
+            event_date = event.get('date', '')
+            event_name = event.get('name', '')
+            event_description = event.get('description', '')
+            
+            if event_id and event_date and (event_name or event_description):
+                # 处理日期格式
+                if isinstance(event_date, list):
+                    time_str = event_date[0]
+                else:
+                    time_str = event_date
+                
+                valid_events.append({
+                    'event_id': event_id,
+                    'name': event_name,
+                    'description': event_description,
+                    'time': time_str
+                })
+        
+        if not valid_events:
+            return []
+        
+        # 构建prompt让LLM从事件列表中提取属于schema类别的事件
+        prompt = f"""
+        你是一位事件分类专家，请根据以下事件信息和事件类别列表，提取出属于这些类别的事件为感知数据，你可以从事件中合理推断用户的行动，此外再进行出行数据提取，若某天的事件涉及到出行更换城市（如出差，旅游，搬家，开学）那么提取的事件类别新增Departure（出发）事件， CitySwitch(城市切换)事件，ReturnDeparture（达到）事件：
+        
+        事件类别列表：{json.dumps(self.schema, ensure_ascii=False)}
+        出行数据事件类别提取：出行场景：
+            Departure（出发）：从常驻城市到非常驻城市
+            CitySwitch(城市切换)：从非常驻城市切换到非常驻城市
+            ReturnDeparture（达到）：从非常驻城市返回常驻城市
+        
+        输出要求：
+        1. 仅输出一个JSON数组，包含所有符合条件的事件
+        2. 每个事件必须包含以下字段：
+           - type: 事件类型，必须从给定的事件类别列表中选择
+           - event_id: 事件ID，与输入保持一致
+           - date: 事件日期，格式为YYYY-MM-DD
+           - time: 事件时间区间，格式为["开始时间", "结束时间"]，时间格式为HH:MM:SS
+        3. 只返回JSON数据，不要包含任何解释或其他文本
+        4. 确保每个事件的type字段都是事件类别列表中的有效类别
+        5. 仅包含那些确实属于指定类别的事件，不要为每个事件都分配类别
+        6. 如果某个事件不属于任何指定类别，请不要将其包含在输出中
+        7. 如果类别为与某人做什么可以明确这个某人是谁(示例：明确为和张三一起开会)。
+        
+        输出示例：
+        [{{"type": "办公", "event_id": "1", "date": "2025-01-01", "time": ["09:00:00", "10:30:00"]}}, {{"type": "会议研讨", "event_id": "2", "date": "2025-01-01", "time": ["14:00:00", "15:30:00"]}}]
+        
+        事件信息：
+        {json.dumps(valid_events, ensure_ascii=False, indent=2)}
+        """
+        
+        try:
+            # 使用llm_call_skip避免影响共享对话历史
+            response = llm_call_skip(prompt).strip()
+            print(f"LLM返回的响应: {response}")
+            response = remove_json_wrapper( response,'array')
+            # 解析JSON响应
+            perception_data = json.loads(response)
+            
+            # 验证返回的数据格式和内容
+            if not isinstance(perception_data, list):
+                print("LLM返回的不是JSON数组，返回空列表")
+                return []
+            
+            # 过滤确保所有事件类型都在schema中且包含必要字段
+            filtered_data = []
+            for item in perception_data:
+                if isinstance(item, dict) and 'type' in item and 'event_id' in item and 'date' in item and 'time' in item and isinstance(item['time'], list) and len(item['time']) == 2 and item['type'] in self.schema:
+                    filtered_data.append(item)
+
+            return filtered_data
+            
+        except Exception as e:
+            print(f"生成感知数据时出错: {str(e)}")
+            return []
+
+
 class CommunicationOperationGenerator:
     def __init__(self, random_seed: int = 42):
         random.seed(random_seed)
@@ -788,14 +991,14 @@ class CommunicationOperationGenerator:
                 for i in range(1, sms_count + 1):
                     topic_note = f"（主题{i}/{sms_count}，对应事件子主题）" if is_multi_topic else ""
                     instr = (
-                        f"【事件相关通信】event_id：{event_id}_sms{i}，事件名称：{event_name}，"
+                        f"【事件相关通信】event_id：{event_id}，事件名称：{event_name}，"
                         f"场景：{scene}，通信类型：短信{topic_note}"
                     )
                     operations.append(instr)
             # 若为通话
             else:
                 instr = (
-                    f"【事件相关通信】event_id：{event_id}_call，事件名称：{event_name}，"
+                    f"【事件相关通信】event_id：{event_id}，事件名称：{event_name}，"
                     f"场景：{scene}，通信类型：通话，"
                 )
                 operations.append(instr)
@@ -806,13 +1009,13 @@ class CommunicationOperationGenerator:
             comm_type = self._sample_type(event["type_probability"]["unrelated"])
             if comm_type == "sms":
                 instr = (
-                    f"【事件无关通信】event_id：{event_id}_unrelated_sms，事件名称：{event_name}，"
+                    f"【事件无关通信】event_id：{event_id}，事件名称：{event_name}，"
                     f"场景：事项提醒/亲友问候/生活咨询，通信类型：短信，时间：{event_time}当日8-21点，"
                 )
                 operations.append(instr)
             else:
                 instr = (
-                    f"【事件无关通信】event_id：{event_id}_unrelated_call，事件名称：{event_name}，"
+                    f"【事件无关通信】event_id：{event_id}，事件名称：{event_name}，"
                     f"场景：亲友问候，通信类型：通话，时间：{event_time}当日8-21点，"
                 )
                 operations.append(instr)
@@ -842,6 +1045,7 @@ class CommunicationOperationGenerator:
 
         return final_instr
     def phone_gen_callandmsm(self,date, contact, file_path, c):
+            c=[]
             event_classify = '''
                请基于用户提供的{{当日事件}}和{{个人画像}}，逐一对每个事件进行独立分析，输出精简后的核心属性及通信概率（无需方向字段），按真实场景常识判断多短信个数概率。分析需严格遵循以下要求，可结合事件细节灵活微调概率（±5%内），确保概率逻辑自洽、贴合现实生活规律：
 
@@ -966,81 +1170,79 @@ class CommunicationOperationGenerator:
             print(resx1)
             print(resx2)
             template = '''
-请基于用户提供的{{当日事件}}、{{联系人列表}}和{{操作指令}}，生成具体的手机通信操作（通话/短信），严格遵循以下字段规则、生成原则和输出格式，确保数据真实、唯一、无重复，优化时间逻辑和收发方向推断：
+请基于用户提供的{{当日事件}}、{{联系人列表}}和{{操作指令}}，生成具体的手机通信操作（包括短信和通话），严格遵循以下字段规则、生成原则和输出格式，确保数据真实、唯一、无重复，优化时间逻辑和收发方向推断：
 
 ### 一、核心遵循原则（优先级：指令要求 > 场景逻辑 > 个人画像适配）
-1. 指令强绑定：每个核心通信操作必须严格对应一条操作指令，完全遵守「event_id、通信场景、通信类型、时间范围、内容要求」，不得偏离核心诉求；关联交互需基于指令衍生，标注清晰关联关系。
+1. 指令强绑定：每个核心通信操作必须严格对应一条操作指令，完全遵守「event_id、通信场景、通信类型、时间范围、内容要求」，不得偏离核心诉求。
 2. 联系人优先规则：所有个人通信优先从联系人列表匹配`contactName`和`phoneNumber`；无联系人列表时，按场景合理虚构真实关系的联系人（如商务场景→“王经理”“李同事”，社交场景→“张朋友”“妈妈”）及11位有效手机号（格式`+861xxxxxxxxx`）。
 3. 个人画像深度适配：通信内容、沟通语气、联系人选择、交互频率需贴合用户画像（如社交型人格倾向主动问候、多轮互动；职场人多商务沟通，语气专业简洁；内向型人格以被动接收为主，沟通内容简短）；事件无关通信需基于联系人关系设计合理场景（家人→生活关心、同事→工作寒暄、朋友→约饭/闲聊、客户→节日问候）。
-4. 额外信息补充规则：
-   - 关联交互：按20%概率生成核心通信的反向交互（如短信回复、通话后短信补充），`event_id`格式为“原ID_related_序号”（如`5903_sms1_related_1`）；
-   - 广告/通知类短信：在指令生成短信基础上，额外增加10%的随机信息（占总短信数），类型含电商广告、服务营销、公益通知、运营商提醒，需贴合个人画像（如宝妈→母婴用品广告，职场人→办公设备/培训广告）；
-   - 未接后续：未接通通话后5分钟内生成短信提醒（如“刚才给你打电话没通，有急事请回电”）。
-### 二、字段规则（通话/短信严格按以下格式生成）
-#### （一）通话类事件（type固定为"call"）
-需包含7个字段，缺一不可：
-- event_id：直接使用指令中的event_id（如"5904_call"）；关联交互（30%概率生成）填“原ID_related_序号”（如"5904_call_related_1"）
-- type：固定值"call"
-- phoneNumber：个人联系人填11位手机号（如"+86138xxxx7890"）；机构类填400/010号段或“官方服务号”
-- contactName：个人通信填联系人列表中的真实姓名；机构类填官方名称（如"XX保险公司"）
-- start_time：按指令时间范围+场景逻辑生成，格式"YYYY-MM-DD HH:MM:SS"：
-  - 事件相关：
-    - 提前通知类（如会议、活动协调）：事件发生前30分钟-24小时；
-    - 同步/核对类（如数据、工作对接）：事件发生中或结束后10分钟内；
-    - 紧急事务：事件发生时±5分钟；
-  - 事件无关：指令指定时段内（如"2025-12-01 15:20当日8-21点"）随机生成合理时间
-- end_time：按场景设定时长（±波动），晚于start_time：
-  - 商务交互（工作对接/数据核对）：5-8分钟±30秒
-  - 日常社交（亲友问候/约饭）：2-5分钟±30秒
-  - 服务通知（机构确认/业务办理）：3-5分钟±30秒
-- direction：0=呼入，1=呼出（按场景+关系合理推断，规则见“生成原则2”）
-- call_result：固定"接通"（按指令要求）
 
-#### （二）短信类事件（type固定为"sms"）
-需包含7个字段，缺一不可：
-- event_id：直接使用指令中的event_id（如"5903_sms1"）；关联交互（30%概率生成）填“原ID_related_序号”（如"5903_sms1_related_1"）；非事件关联填指令中的event_id（如"5901_unrelated_sms"）
+### 二、字段规则
+
+#### （一）短信类事件（type固定为"sms"）
+需包含以下字段，缺一不可：
+- event_id：直接使用指令中的event_id（如"5903"），仅保留原事件id，不要添加任何后缀
 - type：固定值"sms"
 - message_content：符合场景逻辑、指令要求及联系人关系：
   - 事件关联（个人）：
     - 提前通知：明确时间、事项、要求（如“明天10点销售会议，记得带数据报表”）；
     - 同步/核对：简洁传递核心信息（如“商圈考察已完成，核心竞品活动总结已发你邮箱”）；
     - 服务通知：机构官方格式+脱敏信息（如【XX保险】您的保单已归档，保单号XXX，如需预约可回复“预约”）；
-  - 事件无关（个人）：基于联系人关系设计场景（如家人→“最近降温，记得添衣”、同事→“上次你要的报表已整理好，需要发你吗”、朋友→“周末去新开的甜品店，一起吗”）
-- message_category：事件关联通信填"事件关联"；事件无关通信填"非事件关联"；随机信息填"随机信息"（无需生成）
-- random_type：固定填"无"（无需生成随机信息）
+  - 事件无关（个人）：基于联系人关系设计聊天/谈论场景（如家人→“最近降温，记得添衣”、同事→“上次你要的报表已整理好，需要发你吗”、朋友→“我考上研究生了，请你吃顿饭！”）
 - contactName：优先联系人列表；个人通信填真实姓名；机构类填官方名称（如"XX电商"“XX保险公司”）
-- contact_phone_number：个人填11位手机号；机构类填1069/400号段（如服务通知填10690000XXXX）
-- timestamp：按指令时间范围+场景逻辑生成，格式"YYYY-MM-DD HH:MM:SS"（规则同通话类start_time）
-- message_type：“发送”或“接收”（按场景+关系推断，规则见“生成原则2”）
+- phoneNumber：个人填11位手机号；机构类填1069/400号段（如服务通知填10690000XXXX）
+- datetime：按指令时间范围+场景逻辑生成，格式"YYYY-MM-DD HH:MM:SS"：
+  - 事件相关：
+    - 提前通知类（如会议、活动协调）：事件发生前30分钟-24小时；
+    - 同步/核对类（如数据、工作对接）：事件发生中或结束后10分钟内；
+    - 紧急事务：事件发生时±5分钟；
+  - 事件无关：指令指定时段内（如"2025-12-01 15:20当日8-21点"）随机生成合理时间
+- message_type：“发送”或“接收”（按场景+关系推断）
+
+#### （二）通话类事件（type固定为"call"）
+需包含以下字段，缺一不可：
+- event_id：直接使用指令中的event_id（如"2_unrelated_call"），仅保留原事件id，不要添加任何后缀
+- type：固定值"call"
+- phoneNumber：个人填11位手机号；机构类填1069/400/010号段（如服务通知填010-12345678）
+- contactName：优先联系人列表；个人通信填真实姓名；机构类填官方名称（如"XX银行"“XX快递”）
+- datetime：通话开始时间，按指令时间范围+场景逻辑生成，格式"YYYY-MM-DD HH:MM:SS"：
+  - 事件相关：
+    - 提前通知类（如会议、活动协调）：事件发生前30分钟-24小时；
+    - 同步/核对类（如数据、工作对接）：事件发生中或结束后10分钟内；
+    - 紧急事务：事件发生时±5分钟；
+  - 事件无关：指令指定时段内（如"2025-01-01 08:50当日8-21点"）随机生成合理时间
+- datetime_end：通话结束时间，格式"YYYY-MM-DD HH:MM:SS"，需在datetime之后，合理设置通话时长（如30秒-10分钟）
+- direction：通话方向，1表示呼出（用户主动拨打），0表示呼入（用户被动接听）
+- call_result：通话结果，可取值："接通"、"未接通"、"已挂断"、"拒接"
 
 ### 三、生成原则
 1. 时间逻辑优化：
    - 事件相关通信不再局限于“与事件时间接近”，而是按“通知/同步/紧急”三类场景分配时间（如“会议通知”提前1小时，“数据核对”事件中，“紧急协调”即时）；
-   - 所有通信时间需在当日8:00-21:00，避免凌晨/深夜；关联交互时间晚于主事件1-5分钟，内容呼应主操作（如主短信“明天开会”→关联回复“收到，准时参加”）。
-2. 收发方向推断（核心优化）：
-   - 呼出/发送（主动）：
+   - 所有通信时间需在当日8:00-21:00，避免凌晨/深夜。
+2. 收发方向推断：
+   - 发送/呼出（主动）：
      - 事件相关：用户发起的通知、核对、协调（如“同步销售数据”“预约服务”）；
      - 事件无关：用户主动联系亲友/同事（如社交型人格问候家人、主动约朋友聚餐）；
      - 关系场景：用户对长辈、上级的问候/汇报，对平级的协调/约见。
-   - 呼入/接收（被动）：
+   - 接收/呼入（被动）：
      - 事件相关：他人发起的与事件相关的沟通（如同事核对数据、机构通知保单归档）；
      - 事件无关：亲友/同事主动联系用户（如朋友约饭、家人关心生活）；
      - 关系场景：用户接收长辈的叮嘱、上级的安排、机构的服务通知。
 3. 联系人与场景匹配：
    - 事件相关：优先选择与事件目的相关的联系人（如“销售数据核对”→同事/上级，“保险办理”→保险公司专员）；
    - 事件无关：基于联系人关系生成合理交流场景（如家人→生活关心、同事→工作寒暄、朋友→娱乐约见、客户→节日问候），避免无意义的泛泛沟通。
-4. 合理优化，避免生成的短信同质，短信与短信之间也要协调连贯。
+4. 合理优化，避免生成的通信数据同质，通信记录之间也要协调连贯。
 5. 去重与真实性：
-   - 同一核心event_id仅生成1个核心操作，关联交互不视为重复；
-   - 手机号格式规范（个人11位，机构1069/400/010号段），短信内容自然（个人口语化，机构官方化），无虚构格式。
+   - 同一核心event_id仅生成1个核心操作；
+   - 手机号格式规范（个人11位，机构1069/400/010号段），短信内容自然（个人口语化，机构官方化），通话记录符合真实通话场景；
+   - 通话时长合理，根据场景设置（如紧急事务通话较短，社交聊天通话较长）。
+
 ### 四、输出格式要求
-仅输出JSON数组内容，不添加任何额外文本、注释或代码块标记。每个元素对应1个通信操作，核心操作和关联交互按时间顺序排列。示例：
+仅输出JSON数组内容，不添加任何额外文本、注释或代码块标记。每个元素对应1个通信操作（短信或通话），按时间顺序排列。示例：
 [
-{{"type":"sms","event_id":"5901_unrelated_sms","message_content":"妈妈：宝贝，今天降温记得穿厚点，晚上回家给你炖了汤","message_category":"非事件关联","random_type":"无","contactName":"妈妈","contact_phone_number":"+86135xxxx2345","timestamp":"2025-12-01 09:15:30","message_type":"接收"}},
-{{"type":"sms","event_id":"5903_sms1","message_content":"我：王总，明天10点销售会议，记得带最新数据报表，地点在3楼会议室","message_category":"事件关联","random_type":"无","contactName":"王总","contact_phone_number":"+86139xxxx6789","timestamp":"2025-12-01 09:00:10","message_type":"发送"}},
-{{"type":"sms","event_id":"5903_sms1_related_1","message_content":"王总：收到，数据已整理好，准时参加","message_category":"事件关联","random_type":"无","contactName":"王总","contact_phone_number":"+86139xxxx6789","timestamp":"2025-12-01 09:02:20","message_type":"接收"}},
-{{"type":"call","event_id":"5904_call","phoneNumber":"+86136xxxx8901","contactName":"李同事","start_time":"2025-12-01 08:10:00","end_time":"2025-12-01 08:16:30","direction":1,"call_result":"接通","type":"call"}},
-{{"type":"sms","event_id":"5904_call_related_1","message_content":"李同事：数据核对无误，已同步给财务部门","message_category":"事件关联","random_type":"无","contactName":"李同事","contact_phone_number":"+86136xxxx8901","timestamp":"2025-12-01 08:20:15","message_type":"接收"}}
+{{"type":"sms","event_id":"5901","message_content":"妈妈：宝贝，今天降温记得穿厚点，晚上回家给你炖了汤","contactName":"妈妈","phoneNumber":"+86135xxxx2345","datetime":"2025-12-01 09:15:30","message_type":"接收"}},
+{{"type":"sms","event_id":"5903","message_content":"我：王总，明天10点销售会议，记得带最新数据报表，地点在3楼会议室","contactName":"王总","phoneNumber":"+86139xxxx6789","datetime":"2025-12-01 09:00:10","message_type":"发送"}},
+{{"type":"call","event_id":"2_unrelated_call","phoneNumber":"+8613807123456","contactName":"冯建国","datetime":"2025-01-01 08:50:00","datetime_end":"2025-01-01 08:55:30","direction":1,"call_result":"接通"}}
 ]
 
 请基于{{操作指令}}：{instructions}、{{联系人列表}}：{contacts}、{{当日事件}}：{daily_events}生成具体通信操作。
@@ -1048,13 +1250,13 @@ class CommunicationOperationGenerator:
             prompt = template.format(daily_events=res1, contacts=contact, instructions=resx1)
             res = llm_call(prompt, extool.context)
             print(res)
-            res = remove_json_wrapper(res)
+            res = remove_json_wrapper(res, "array")
             data = json.loads(res)
             c += data
             prompt = template.format(daily_events=res2, contacts=contact, instructions=resx2)
             res = llm_call(prompt, extool.context)
             print(res)
-            res = remove_json_wrapper(res)
+            res = remove_json_wrapper(res, "array")
             data = json.loads(res)
             c += data
             print(c)
@@ -1118,23 +1320,25 @@ class NoteCalendarOperationGenerator:
         """
         return f'''
 请基于用户提供的当日事件和个人画像，逐事件分析生成概率，仅输出事件ID和各类操作的生成概率，不涉及具体内容。
-核心规则：日历和笔记是不常用操作，仅极重要事件才生成，总数一天不超过4个。
+核心规则：日历和笔记是不常用操作，仅重要事件才生成，总数一天不超过6个。
 
 ### 一、概率定义与约束
 #### 1. 事件分类（严格对应）
-- 极重要事件：出行预定、重要会议、医疗预约、旅行计划
-- 较重要事件: 重要聚会，重要节点（婚礼、考试）等
+- 重要事件：出行预定、极度重要会议、医疗预约、旅行计划、极度重要聚会，重要节点（婚礼、考试）
+- 独特事件：一次考试，一次会议，一次航班等
+- 信息事件: 涉及复杂信息/步骤的各类事件，涉及较多知识点的事件，会议/课程要点记录，攻略想法等
 - 日常事件：普通社交、购物、休闲等非重要场景
-- 非事件相关：与当日事件无关，基于个人兴趣的记录（如诗词、知识点）
+- 非事件相关：与当日事件无关，基于个人兴趣的记录或个人事务的记录（如诗词、知识点）
 
 #### 2. 各类生成概率规则（必须严格遵循）
 - 日历（calendar）：
-  - 极重要事件：80%-90%（按重要度微调，出行预定/核心会议最高）
-  - 较重要事件: 60%-80%
+  - 重要事件：80%-90%（按重要度微调，出行预定/核心会议最高）
+  - 独特事件：30%-60%
   - 日常事件/非事件相关：0%（强制不生成）
 - 事件相关笔记（note_related）：
-  - 极重要事件：60%-80%（记录待办/要点/注意事项）
-  - 较重要事件：20%-40%
+  - 重要事件：60%-80%（记录待办/要点/注意事项）
+  - 信息事件：30%-60%
+  - 独特事件：0%-10%
   - 日常事件：0%-5%（概率极低，几乎不生成）
 - 非事件相关笔记（note_unrelated）：
   - 定义：与当日事件无关，基于用户兴趣的记录（如读到的诗词、咖啡知识点）
@@ -1150,7 +1354,7 @@ class NoteCalendarOperationGenerator:
 
 ### 二、输出字段要求（仅保留以下6个字段，无额外内容）
 每个事件必须包含：
-- event_id：沿用原事件ID；非事件相关填"theme_序号"（如theme_001）
+- event_id：沿用原事件ID；非事件相关填"0"
 - event_name：事件名称；非事件相关填兴趣主题（如"古典诗词记录"）
 - event_type：分类格式「类型-子类型」（如"重要事件-出行预定"、"非事件相关-兴趣爱好"）
 - calendar_prob：日历生成概率（百分比字符串，如"80%"）
@@ -1161,7 +1365,7 @@ class NoteCalendarOperationGenerator:
 仅输出JSON数组，无任何注释、额外文本或代码块。示例：
 [
   {{
-    "event_id": "evt001",
+    "event_id": "1",
     "event_name": "G1234次列车北京→上海",
     "event_type": "重要事件-出行预定",
     "calendar_prob": "85%",
@@ -1169,7 +1373,7 @@ class NoteCalendarOperationGenerator:
     "note_unrelated_prob": "0%"
   }},
   {{
-    "event_id": "theme_001",
+    "event_id": "0",
     "event_name": "古典诗词记录",
     "event_type": "非事件相关-兴趣爱好",
     "calendar_prob": "0%",
@@ -1182,6 +1386,7 @@ class NoteCalendarOperationGenerator:
 '''
 
     def phone_gen_noteandcalendar(self,date, contact, file_path, c):
+        c=[]
         res1 = extool.filter_by_date(date)
         res = []
         for i in range(len(res1)):
@@ -1229,7 +1434,7 @@ class NoteCalendarOperationGenerator:
                 f = False
 
             template = '''
-请基于用户提供的{{生成项清单}}、{{当日事件}}和{{个人画像}}，生成具体的手机日历与笔记数据，数据总条目不超过4个，严格按照**{{生成项清单}}**提供的指令生成，若其为空则不生成，输出空数组。
+请基于用户提供的{{生成项清单}}、{{当日事件}}和{{个人画像}}，生成具体的手机日历与笔记数据，数据总条目不超过3个，严格按照**{{生成项清单}}**提供的指令生成，若其为空则不生成，输出空数组。
 核心约束：1. 仅生成清单中的项目，不额外新增,若清单中数目超过4则挑选最重要的4个生成；2. 若清单为空则直接输出空数组[]；3. 内容高保真、结构化；4. 无任何双引号。
 
 ### 一、个人画像适配（确保内容贴合用户习惯）
@@ -1240,37 +1445,40 @@ class NoteCalendarOperationGenerator:
 
 ### 二、字段规则（严格遵循，缺一不可）
 #### （一）日历日程（item_type=calendar）
-- event_id：复用生成项中的event_id
+- event_id：**必须来自生成项清单中的event_id**，不得自行生成
 - type：固定"calendar"
 - title：简洁（场景+核心信息），例："G1234次列车（北京-上海）"
 - description：包含"时间+核心要素+来源"，例："G1234次列车（北京南站→上海虹桥站），2023-10-05 08:00发车，预定码E12345，凭身份证检票，来源：12306"
 - start_time：事件时间（格式YYYY-MM-DD HH:MM:SS）
 - end_time：出行类=start_time；会议/预约类=合理时长后（如1.5小时）
+- datetime：创建该日程数据的时间，格式YYYY-MM-DD HH:MM:SS，合理确定
+- summarized_info：**必须包含**，操作核心信息和动作总结，如"XX设定了一个日程，为G1234次列车（北京南站→上海虹桥站），2023-10-05 08:00发车，预定码E12345，凭身份证检票，来源：12306"
 
 #### （二）事件相关笔记（item_type=note_related）
-- event_id：复用生成项中的event_id
+- event_id：**必须来自生成项清单中的event_id**，不得自行生成
 - type：固定"note"
 - title：事件名称+记录类型，例："Q4项目会议待办清单"
 - content：结构化分点，例："一、会议前准备：1. 预算报表；2. PPT优化；二、核心议题：1. 资源调配；2. 节点确认"
-- datetime：事件发生前30分钟内或发生后1小时内（格式YYYY-MM-DD HH:MM:SS）
-- related_event_ids：原事件ID（如"evt002"）
+- datetime：创建该笔记的时间，合理确定（格式YYYY-MM-DD HH:MM:SS）
+- summarized_info：**必须包含**，操作核心信息和动作总结，如"XX记录了Q4项目会议待办清单，内容包括一、会议前准备：1. 预算报表；2. PPT优化；二、核心议题：1. 资源调配；2. 节点确认"
 
 #### （三）非事件相关笔记（item_type=note_unrelated）
-- event_id：none
+- event_id：固定为0
 - type：固定"note"
 - title：兴趣主题+记录类型，例："喜爱诗词记录"、"手冲咖啡知识点"
 - content：结构化分点，例："一、诗句：人生若只如初见；二、作者：纳兰性德；三、赏析：情感细腻，适合文案灵感"
 - datetime：当日合理时间（8:00-21:00，格式YYYY-MM-DD HH:MM:SS）
-- related_event_ids：固定"无"
+- summarized_info：**必须包含**，操作核心信息和动作总结，如"XX记录了喜爱的诗词，内容包括一、诗句：人生若只如初见；二、作者：纳兰性德；三、赏析：情感细腻，适合文案灵感"
+
 
 ### 三、生成项清单（**仅生成以下项目，不新增**）
 {instruct}
 
 ### 四、输出格式要求
-仅输出JSON数组，严格遵循下面的格式，不添加任何额外文本/注释/代码块。示例：
+仅输出JSON数组，严格遵循下面的格式，不添加任何额外文本/注释/代码块。每个条目**必须包含summarized_info字段**，event_id必须来自生成项清单。示例：
 [
-{{"type":"calendar","event_id":"evt001","title":"G1234次列车（北京-上海）","description":"G1234次列车（北京南站→上海虹桥站），2023-10-05 08:00发车，预定码E12345，凭身份证检票，来源：12306","start_time":"2023-10-05 08:00:00","end_time":"2023-10-05 08:00:00"}},
-{{"type":"note","event_id":"evt002_note","title":"Q4项目会议待办清单","content":"一、会议前准备：1. 整理Q4预算明细；2. 优化项目进度PPT；3. 预约会议室设备；二、核心议题：1. 预算审批；2. 资源调配；3. 里程碑节点确认","datetime":"2023-10-08 13:45:00","related_event_ids":"evt002"}}
+{{"type":"calendar","event_id":"1","title":"G1234次列车（北京-上海）","description":"G1234次列车（北京南站→上海虹桥站），2023-10-05 08:00发车，预定码E12345，凭身份证检票，来源：12306","start_time":"2023-10-05 08:00:00","end_time":"2023-10-05 08:00:00","datetime":"2023-10-04 15:30:00","summarized_info":"XX设定了一个日程，为G1234次列车（北京南站→上海虹桥站），2023-10-05 08:00发车，预定码E12345，凭身份证检票，来源：12306"}},
+{{"type":"note","event_id":"2","title":"Q4项目会议待办清单","content":"一、会议前准备：1. 整理Q4预算明细；2. 优化项目进度PPT；3. 预约会议室设备；二、核心议题：1. 预算审批；2. 资源调配；3. 里程碑节点确认","datetime":"2023-10-08 13:45:00","summarized_info":"XX记录了Q4项目会议待办清单，内容包括一、会议前准备：1. 整理Q4预算明细；2. 优化项目进度PPT；3. 预约会议室设备；二、核心议题：1. 预算审批；2. 资源调配；3. 里程碑节点确认"}}
 ]
 
 ### 五、今日事件背景参考
@@ -1282,7 +1490,7 @@ class NoteCalendarOperationGenerator:
             prompt = template.format(instruct=instruction,event=res,persona=extool.persona)
             res = llm_call(prompt)
             print(res)
-            res = remove_json_wrapper(res)
+            res = remove_json_wrapper(res,"array")
             data = json.loads(res)
             c += data
             print(c)
@@ -1322,6 +1530,7 @@ class GalleryOperationGenerator:
 
 
     def phone_gen_gallery(self, date, contact, file_path, c):
+        c = []
         res1 = extool.filter_by_date(date)
         res = []
         for i in range(len(res1)):
@@ -1334,18 +1543,20 @@ class GalleryOperationGenerator:
         请基于用户提供的{{当日事件}}和{{个人画像}}，逐事件分析拍照行为的生成概率、场景细分及图片数量，仅输出概率建模结果，不涉及任何具体内容生成。核心规则：拍照场景与概率严格匹配事件类型，单个事件生成1-3张图片，避免过度生成。
 
 ### 一、概率建模核心规则
-#### 1. 事件类型与拍照场景映射（基础概率固定，可按画像微调±5%）
+#### 1. 事件类型与拍照场景映射（基础概率作参考，可随时调整，可按画像微调±5%）
 | 事件类型 | 拍照场景（含基础概率） |
 |----------|------------------------|
-| 旅行事件 | 风景打卡30%、人物合影20%、美食记录20%、导视牌/门票15%、细节特写15% |
+| 旅行事件 | 风景打卡80%、人物合影60%、美食记录30%、导视牌/门票15%、细节特写20% |
 | 会议事件 | PPT截图40%、参会人员20%、会议纪要手写板20%、会场环境20% |
 | 日常事件 | 美食25%、宠物20%、物品收纳15%、街头风景15%、文档扫描25% |
+其他类型可自行分配合理概率和场景
 
-#### 2. 图片数量概率分配（单个事件必选其一）
-- 1张图片：60%（默认优先，避免过度生成）
-- 2张图片：30%（事件场景丰富时）
-- 3张图片：10%（仅旅行/重要会议等复杂事件）
-
+#### 2. 针对事件的图片可能数量概率进行分配，对于一些场景适应性调整：
+- 0张图片：当事件无视觉价值或用户可能不想拍照的事件100%，一般日常场景可以为50%-60%，动态调整。
+- 1张图片：用户有可能拍照时可以为50%
+- 2张图片：事件场景丰富时，增加概率
+- 3张图片：仅旅行/重要会议等复杂事件增加对应概率
+概率之和为1
 #### 3. 个人画像微调规则
 - 兴趣适配：用户兴趣（如“美食爱好者”）对应场景概率+5%（如日常事件“美食”场景从25%→30%）
 - 行为习惯：“不爱拍照”人格所有场景概率-10%；“摄影爱好者”所有场景概率+10%（但不超过基础概率+5%上限）
@@ -1354,7 +1565,7 @@ class GalleryOperationGenerator:
 #### 4. 生成约束
 - 非外出类事件（如“居家办公”“独自学习”）：仅保留“文档扫描”“物品收纳”场景，其他场景概率强制0%
 - 无视觉价值事件（如“电话沟通”“线上会议”）：所有场景概率0%，图片数量0张
-- 单个事件最多生成3张图片，不可超额
+- 单个事件场景最多生成3张图片，不可超额
 
 ### 二、输出字段要求（仅保留以下6个字段，无额外内容）
 每个事件必须包含：
@@ -1362,15 +1573,15 @@ class GalleryOperationGenerator:
 - event_name：完整保留原事件名称
 - event_type：分类为“旅行事件”“会议事件”“日常事件”“无视觉价值事件”
 - photo_scene_prob：字典格式，key=场景名称，value=百分比字符串（如{{"风景打卡":"35%","人物合影":"20%"}}）
-- photo_count_prob：字典格式，key=图片数量（1/2/3），value=百分比字符串（如{{"1":"60%","2":"30%","3":"10%"}}）
+- photo_count_prob：字典格式，key=图片数量（0/1/2/3），value=百分比字符串（如{{"0":"10%","1":"50%","2":"30%","3":"10%"}}）
 - reasoning：简洁说明（含2点：1. 场景概率分配依据；2. 数量概率分配依据）
 
 ### 三、输出格式要求
 仅输出JSON数组，无任何注释、额外文本或代码块标记。示例：
 [
   {{
-    "event_id": "evt001",
-    "event_name": "杭州西湖一日游",
+    "event_id": "1",
+    "event_name": "西湖游览",
     "event_type": "旅行事件",
     "photo_scene_prob": {{
       "风景打卡": "35%",
@@ -1380,18 +1591,18 @@ class GalleryOperationGenerator:
       "细节特写": "10%"
     }},
     "photo_count_prob": {{
-      "1": "40%",
+      "1": "30%",
       "2": "40%",
-      "3": "20%"
+      "3": "30%"
     }},
     "reasoning": "1. 场景概率：用户兴趣为旅行摄影，风景打卡+5%；2. 数量概率：旅行事件场景丰富，3张图片概率提升至20%"
   }},
   {{
-    "event_id": "evt002",
+    "event_id": "2",
     "event_name": "线上项目沟通会",
     "event_type": "无视觉价值事件",
     "photo_scene_prob": {{}},
-    "photo_count_prob": {{"1":"0%","2":"0%","3":"0%"}},
+    "photo_count_prob": {{"0":"100%","1":"0%","2":"0%","3":"0%"}},
     "reasoning": "1. 场景概率：线上会议无视觉价值，所有场景概率0%；2. 数量概率：无拍照行为，图片数量0张"
   }}
 ]
@@ -1404,25 +1615,57 @@ class GalleryOperationGenerator:
         print(a)
         a = self.parse_llm_prob_json(a)
 
-        def sample(p1):
-            prob = int(p1.strip('%'))
-            return random.random() < max(0, min(100, prob)) / 100
+        def sample_from_distribution(distribution):
+            """根据概率分布选择一个结果"""
+            # 将百分比转换为实际概率
+            total = 0
+            items = []
+            cumulative = []
+            
+            for k, v in distribution.items():
+                prob = int(v.strip('%')) / 100
+                total += prob
+                items.append(k)
+                cumulative.append(total)
+            
+            # 归一化概率（处理可能的计算误差）
+            if total > 0:
+                for i in range(len(cumulative)):
+                    cumulative[i] /= total
+            
+            # 随机选择一个结果
+            r = random.random()
+            for i, c in enumerate(cumulative):
+                if r <= c:
+                    return items[i]
+            
+            # 如果发生异常，返回第一个结果
+            return items[0] if items else None
 
         instruction = ""
 
         for item in a:
             event_id = item['event_id']
             event_name = item['event_name']
-            instruction += f'''\n--------------------------------------------------\n
+            p1 = item['photo_count_prob']  # 先定义p1
+            
+            # 根据概率分布选择图片数量
+            selected_count = sample_from_distribution(p1)
+            has_photo = selected_count != '0'
+            
+            # 只有当采样到非0张图片时，才添加事件信息到指令中
+            if has_photo:
+                instruction += f'''
+--------------------------------------------------
+
                                                 'event_id':'{event_id}',
                                                 'event_name':'{event_name}',
                                             '''
-            p1 = item['photo_scene_prob']
-            for k in p1:
-                if sample(p1[k]):
-                    instruction+=f''' 'photo_scene':'{k}',
+                instruction+=f''' 'photo_num':'{selected_count}',
                                 '''
-
+                instruction+=f'''
+                                photo_scene_prob':{item['photo_scene_prob']}
+                                '''
 
         print(instruction)
         template = '''
@@ -1434,7 +1677,7 @@ class GalleryOperationGenerator:
 3. 字段强约束：
    - caption：需包含“主体+动作+背景”，描述具体且生动
    - title：严格遵循“IMG_年月日_时分秒”格式（与datetime一致）
-   - imageTag：5-15个关键词，精准贴合内容（场景+主体+动作+属性），不泛化
+   - imageTag：2-8个关键词，精准贴合内容（场景+主体+动作+属性），不泛化
    - ocrText：仅导视牌/门票/海报/文档场景填写真实文字（含名称+时间/价格），其他场景填“无”
    - shoot_mode：人像模式必须关联faceRecognition（非“无”），夜景/微距需贴合场景（如夜景→暗光环境）
    - image_size：仅支持“4032×3024”“3024×4032”“2048×1536”“1536×2048”四种格式
@@ -1454,19 +1697,19 @@ class GalleryOperationGenerator:
   - streetNumber：门牌号（如“10号”，无则填“XX号”）
   - poi：真实POI名称（如“西湖断桥景区”“三里屯太古里”）
 - faceRecognition：联系人列表姓名数组/“无”/“XX若干”（例：["李华","张明"]、“无”、“游客若干”）
-- imageTag：5-15个关键词（场景+主体+动作+属性），例：“拿铁咖啡、玻璃吸管、木质桌面、下午茶”
+- imageTag：2-8个关键词（场景+主体+动作+属性），例：“拿铁咖啡、玻璃吸管、木质桌面、下午茶”
 - ocrText：图片中真实文字（门票/海报/导视牌含“名称+时间+价格”），无则填“无”
 - shoot_mode：正常拍照/夜景/人像/微距（人像模式必须对应faceRecognition非“无”）
 - image_size：四种格式之一（“4032×3024”“3024×4032”“2048×1536”“1536×2048”）
-
+- summarized_info：对操作的简要描述，例：“XX拍摄了一张西湖照片，里面的主要内容为西湖断桥景区、湖面游船、雷峰塔”
 ### 三、待生成清单（事件生成指令，仅生成以下内容）
 {instruct}
 
 ### 四、输出格式要求
 仅输出JSON数组，无任何额外文本、注释或代码块标记。每个元素对应1张图片，按datetime升序排列。示例：
 [
-  {{
-    "event_id": "evt001",
+  {{ 
+    "event_id": "1",
     "type": "photo",
     "caption": "李华在杭州西湖断桥边拍摄风景，湖面游船与雷峰塔清晰可见",
     "title": "IMG_20231001_143025",
@@ -1483,10 +1726,11 @@ class GalleryOperationGenerator:
     "imageTag": ["西湖", "断桥", "游船", "雷峰塔", "秋日", "湖面"],
     "ocrText": "西湖断桥 - 国家5A级旅游景区",
     "shoot_mode": "正常拍照",
-    "image_size": "4032×3024"
+    "image_size": "4032×3024",
+    "summarized_info": "李华拍摄了一张西湖照片，里面的主要内容为西湖断桥景区、湖面游船、雷峰塔"
   }},
-  {{
-    "event_id": "evt001",
+  {{ 
+    "event_id": "1",
     "type": "photo",
     "caption": "李华与张明在西湖边品尝东坡肉，餐具为青花瓷碗，背景是木质餐桌",
     "title": "IMG_20231001_181540",
@@ -1503,7 +1747,8 @@ class GalleryOperationGenerator:
     "imageTag": ["东坡肉", "青花瓷碗", "木质餐桌", "杭州美食", "聚餐"],
     "ocrText": "楼外楼 - 东坡肉 68元/份 2023-10-01",
     "shoot_mode": "人像",
-    "image_size": "3024×4032"
+    "image_size": "3024×4032",
+    "summarized_info": "李华与张明拍摄了一张聚餐照片，里面的主要内容为西湖孤山路楼外楼餐厅、青花瓷碗中的东坡肉、木质餐桌"
   }}
 ]
 
@@ -1512,7 +1757,7 @@ class GalleryOperationGenerator:
         prompt = template.format(instruct=instruction, event=res, persona=extool.persona)
         res = llm_call(prompt)
         print(res)
-        res = remove_json_wrapper(res)
+        res = remove_json_wrapper(res, "array")
         data = json.loads(res)
         c += data
         print(c)
@@ -1546,15 +1791,17 @@ class FitnessHealthOperationGenerator:
             return []
 
     def phone_gen_fitness_health(self, date, contact, file_path, c):
+        c=[]
         """
         生成指定日期的运动健康数据
         """
         # 获取当日事件
         daily_events = extool.filter_by_date(date)
-
+        status = extool.getstatus(date)
+        status['event'] = {}
         # 运动健康数据生成模板
         template = '''
-        请基于用户提供的{{当日事件}}和{{个人画像}}，生成完整的一天运动健康数据。生成需严格遵循以下格式和要求：
+        请基于用户提供的{{当日事件}}和{{当日状态数据}}{{个人画像}}，生成完整的一天运动健康数据。生成需严格遵循以下格式和要求：
         
         ## 输出格式要求
         输出严格为以下JSON格式，包含所有字段，字段值符合数据类型和范围要求，逻辑自洽。
@@ -1629,16 +1876,11 @@ class FitnessHealthOperationGenerator:
           "体温统计": {{
             "平均体温": "34.0-42.0摄氏度"
           }},
-          "血氧饱和度统计": {{
-            "平均血氧饱和度": "0-100%"
-          }},
           "血糖统计": {{
             "平均血糖水平": "1.0-33.0mmol/L"
           }},
           "体重": {{
             "体重": "10.0-250.0千克",
-            "BMI": "1.0-200.0",
-            "体脂率": "1.0-49.0%"
           }},
           "压力": {{
             "压力得分": "1-99分"
@@ -1652,12 +1894,7 @@ class FitnessHealthOperationGenerator:
               "描述": "事件概述"
             }}
           ],
-          "异常指标": {{
-            "心率过高次数": ">=0次",
-            "心率过低次数": ">=0次",
-            "疑似房颤次数": ">=0次",
-            "疑似早搏次数": ">=0次"
-          }}
+          "summarized_info":"对今日运动健康数据的描述，包括起床时间，睡觉时间，体重和当日运动量"
         }}
         
         ## 生成要求
@@ -1670,6 +1907,7 @@ class FitnessHealthOperationGenerator:
         7. 用户交互事件应包含与运动健康相关的操作（如查看运动数据、设置目标等）
         
         ## 输入数据
+        <当日状态数据>: {status}
         <当日事件>: {daily_events}
         <个人画像>: {persona}
         
@@ -1677,7 +1915,7 @@ class FitnessHealthOperationGenerator:
         '''
         
         # 格式化prompt
-        prompt = template.format(daily_events=daily_events, persona=extool.persona)
+        prompt = template.format(daily_events=daily_events, persona=extool.persona, status=status)
         print("运动健康数据生成prompt:", prompt)
         
         # 调用LLM生成数据
@@ -1685,7 +1923,7 @@ class FitnessHealthOperationGenerator:
         print("LLM响应:", response)
         
         # 解析响应
-        response = remove_json_wrapper(response)
+        response = remove_json_wrapper(response,'object')
         try:
             fitness_data = json.loads(response)
             # 将生成的数据添加到结果列表
@@ -1722,6 +1960,7 @@ class ChatOperationGenerator:
             return []
 
     def phone_gen_agent_chat(self, date, contact, file_path, c):
+        c=[]
         """
         生成指定日期的智能体对话数据
         """
@@ -1730,21 +1969,61 @@ class ChatOperationGenerator:
         
         # 第一步：分析对话需求和概率
         prob_template = '''
-        请基于用户提供的{{当日事件}}和{{个人画像}}，分析该用户在当天可能与智能体对话的原因或需求，并为每个需求单独分配概率。
+        请基于用户提供的{{当日事件}}和{{个人画像}}，全面分析该用户在当天可能与智能体对话的所有潜在需求，并为每个需求单独分配概率。需特别关注两类核心需求：
+        1. 目的性/功能性需求：如询问、求解、搜索、日程管理等具体任务需求
+        2. 心理性需求：如交谈分享信息、情感支持、压力缓解等情绪和心理层面的需求
         
         ## 分析规则
-        1. 从当日事件中提取可能需要智能体帮助的所有潜在场景
-        2. 每个场景需要包含：需求描述、对话意图、发生概率（0-100%）
-        3. 每个需求的概率独立分析，总和不必等于100%
-        4. 只生成合理的、与用户当日活动相关的对话场景
-        5. 每个场景应反映用户可能需要智能体协助的具体情境
-        
+        1. **需求提取全面性**：从当日事件中提取所有可能的对话场景，包括但不限于：
+           - 与当日事件直接相关的任务需求（如活动准备、信息查询）
+           - 与当日事件间接相关的延伸需求（如经验分享、后续规划）
+           - 基于当日经历/或个人兴趣产生的其他需求（如压力倾诉、成就分享、爱好话题询问等）
+           - **每天的需求不得超过4个，可以为空数组，合理选择生成。**
+           
+        2. **概率分配合理性**：
+           - 基于用户画像的行为习惯和当日事件的紧急重要程度分配概率
+           - 每个需求的概率独立分析，总和不必等于100%
+           - 概率范围为0-100%，使用百分比字符串格式（如"60%"）
+           
+        3. **场景描述具体性**：
+           - 每个需求应与用户当日具体活动紧密相关
+           - 需体现用户可能的真实对话动机和情境
+           - 避免泛泛而谈，要有明确的上下文背景
+           
+        4. **上下文信息丰富性**：
+           - **context字段必须包含以下信息**：
+             1. 用户信息总结：基于个人画像的关键特征（如职业、兴趣爱好、性格特点等）
+             2. 对话完整上下文：当日事件的详细背景、时间顺序和相关细节
+             3. 用户对话需求点：用户的具体问题或诉求，为什么会产生这个需求
+             4. 对话可能涉及的内容：围绕需求可能展开的话题、需要的信息或支持类型
+             5. 通过对话应可以透露一些事件相关信息。供智能体分析。
+           - context应足够详细，后续将仅基于此信息生成对话，无需再参考原始事件和画像
+           
         ## 输出格式
         请输出JSON数组，每个元素包含：
-        - requirement: 对话需求描述
-        - intention: 对话意图和目标
+        - event_id: 需求基于的event_id,若没有则填0
+        - requirement: 对话需求的详细描述
+        - intention: 对话的核心意图和目标
         - probability: 发生概率（百分比字符串，如"60%"）
-        - context: 对话的上下文背景信息
+        - context: 对话的详细上下文背景，包含用户信息总结、完整上下文、需求点和可能涉及的内容
+        
+        ## 输出示例
+        [
+            {{
+                "event_id": "1",
+                "requirement": "询问如何准备明天的马拉松比赛",
+                "intention": "获取马拉松比赛前的准备建议，确保比赛顺利进行",
+                "probability": "75%",
+                "context": "用户信息总结：张明，35岁，IT工程师，爱好跑步，有2年跑步经验，首次参加全程马拉松。\n对话完整上下文：今天是2025年1月1日，用户刚完成了马拉松前的最后一次长距离训练（25公里），感觉膝盖有些不适，同时担心明天比赛的天气和补给安排。\n用户对话需求点：用户担心膝盖疼痛影响明天的比赛，需要了解如何缓解膝盖不适，同时希望获取比赛当天的饮食、装备和节奏控制建议。\n对话可能涉及的内容：膝盖疼痛的临时缓解方法、比赛前一晚的准备工作、比赛当天的饮食安排、装备检查清单、跑步节奏控制策略、补给站使用建议。"
+            }},
+            {{
+                "event_id": "0",
+                "requirement": "分享今天完成项目的成就感",
+                "intention": "表达完成重要项目的喜悦，获得情感上的肯定和共鸣",
+                "probability": "45%",
+                "context": "用户信息总结：李华，28岁，市场营销专员，性格开朗，喜欢分享工作成就，重视他人的认可。\n对话完整上下文：今天是2025年1月1日，用户耗时3个月的市场推广项目终于成功上线，获得了领导和同事的好评，项目初期遇到了很多困难，但最终都一一克服。\n用户对话需求点：用户希望分享项目成功的喜悦，回顾项目过程中的挑战和收获，获得智能体的积极回应和肯定。\n对话可能涉及的内容：项目的具体成果、遇到的主要困难、解决问题的方法、团队合作的体验、对未来工作的影响和期望。"
+            }}
+        ]
         
         ## 输入数据
         <当日事件>: {daily_events}
@@ -1766,26 +2045,31 @@ class ChatOperationGenerator:
         
         # 第二步：为每个需求生成对话
         chat_template = '''
-        请基于以下上下文信息，生成一段个人与智能体的对话。
+        请基于以下提供的完整上下文信息，生成一段个人与智能体的对话。后续将仅基于此上下文信息生成对话，无需参考其他任何信息。
         
         ## 对话角色
-        - 用户：一位有特定需求的个人
-        - 智能体：一位能够理解用户需求并提供帮助的AI助手
+        - 用户：根据上下文信息中的用户信息总结确定其身份和特征
+        - 智能体：一位能够理解用户需求并提供帮助的AI助手，既能解决实际问题，也能提供情感支持
         
         ## 对话要求
         1. 对话需自然流畅，符合真实场景
-        2. 对话应围绕用户的需求展开
-        3. 对话轮数应在2-5轮之间
-        4. 当用户或智能体认为对话可以结束时，在最后一句后添加<END_OF_DIALOG>标志
-        5. 每轮对话需包含明确的动作(action)和参考(reference)
+        2. 对话应严格围绕上下文信息中的用户需求点展开
+        3. 对话轮数应在2-7轮之间
+        4. 根据需求类型调整对话风格：
+           - 功能性需求：对话应直接、高效，聚焦于问题解决
+           - 心理性需求：对话应温暖、共情，聚焦于情感表达和支持
+        5. 当用户或智能体认为对话可以结束时，在最后一句后添加<END_OF_DIALOG>标志
+        6. 每轮对话需包含明确的动作(action)和参考(reference)
+        7. 对话内容应充分利用上下文信息中的用户信息总结、完整上下文和可能涉及的内容
         
         ## 动作类型
         用户动作：
         - topic query: 提出话题或问题
+        - information request: 请求信息
         - need confirmation: 确认需求
         - solution feedback: 对解决方案的反馈
-        - information request: 请求信息
         - clarification: 请求澄清
+
         
         智能体动作：
         - need inference: 推断用户需求
@@ -1793,6 +2077,8 @@ class ChatOperationGenerator:
         - solution discussion: 讨论解决方案
         - information provision: 提供信息
         - confirmation: 确认信息
+        - talk: 共情讨论
+
         
         ## 上下文信息
         {context}
@@ -1804,24 +2090,20 @@ class ChatOperationGenerator:
           "turn 1": {{
             "user": {{
               "action": "topic query",
-              "reference": "T1 Q",
               "content": "有没有办法让我出差时也能高效完成工作？"
             }},
             "assistant": {{
               "action": "need inference",
-              "reference": "T1 N1",
               "content": "你是不是想找适配频繁出差、操作简单的时间管理方法，同时不影响客户沟通？"
             }}
           }},
           "turn 2": {{
             "user": {{
               "action": "need confirmation",
-              "reference": "T1 N1",
               "content": "对，主要是出差时经常被客户电话打断，没法专注处理核心工作。"
             }},
             "assistant": {{
               "action": "solution proposal",
-              "reference": "T1 S1",
               "content": "你可以试试每天早上划分1个3小时的‘核心工作块’，这段时间关闭非紧急通知，专注处理关键任务，客户紧急需求可集中在下午回复。"
             }}
           }}
@@ -1833,6 +2115,8 @@ class ChatOperationGenerator:
         # 为每个需求单独检查是否生成对话
         generated_count = 0
         for item in prob_data:
+            if generated_count >= 4:
+                break
             prob = int(item['probability'].strip('%'))
             if random.random() < prob / 100:
                 selected_context = item
@@ -1851,14 +2135,14 @@ class ChatOperationGenerator:
                     chat_response = chat_response.replace("<END_OF_DIALOG>", "")
                 
                 # 解析对话结果
-                chat_response = remove_json_wrapper(chat_response)
+                chat_response = remove_json_wrapper(chat_response,'object')
                 try:
                     chat_data = json.loads(chat_response)
                     # 将对话数据添加到结果列表
                     c.append({
+                        "event_id":selected_context['event_id'],
                         "date": date,
                         "type": "agent_chat",
-                        "context": selected_context,
                         "conversation": chat_data
                     })
                     generated_count += 1
@@ -1906,6 +2190,7 @@ class PushOperationGenerator:
             return []
 
     def phone_gen_push(self, date, contact, file_path,  c):
+        c=[]
         res1 = extool.filter_by_date(date)
         res = []
         for i in range(len(res1)):
@@ -1933,7 +2218,7 @@ class PushOperationGenerator:
 #### 2. 推送场景概率分配（总和100%，按优先级排序）
 - 事件动作关联场景：80%（优先匹配动作对应的核心场景）
 - 关键节点提醒场景：15%（仅事件含明确时间时生成，如会议前30分钟）
-- 个性化推荐场景：20%（基于个人画像行为偏好，如股民→雪球）
+- 个性化推荐场景：25%（基于个人画像行为偏好/爱好/信息/人群，如股民→雪球）
 - 系统常规通知场景：5%（仅电量/存储/健康等系统触发）
 
 #### 3. 生成约束规则
@@ -1944,7 +2229,7 @@ class PushOperationGenerator:
 
 ### 二、输出字段要求（仅保留以下7个字段，无额外内容）
 每个事件必须包含：
-- event_id：严格沿用原事件唯一标识，系统通知填“system”
+- event_id：严格沿用原事件唯一标识，系统通知填“0”
 - event_name：完整保留原事件名称
 - core_action：提取的核心动作（多个用“/”分隔，无则填“无核心动作”）
 - push_scene_prob：字典格式，key=场景名称，value=百分比字符串（如{{"支付成功提醒":"60%","个性化推荐":"20%"}}）
@@ -1956,7 +2241,7 @@ class PushOperationGenerator:
 仅输出JSON数组，无任何注释、额外文本或代码块标记。 **格式强约束**："reasoning"的内容中不要生成任何引号，名称强调使用【】来进行。示例：
 [
   {{
-    "event_id": "evt001",
+    "event_id": "1",
     "event_name": "美团外卖下单支付（订单#8765）",
     "core_action": "下单/支付",
     "push_scene_prob": {{
@@ -1970,7 +2255,7 @@ class PushOperationGenerator:
     "reasoning": "1. 动作提取：事件含“下单”“支付”行为；2. 概率分配：动作关联场景60%、关键节点15%、个性化20%、系统5%；3. 约束应用：无短信重复，美团外卖在生活类时间窗口内"
   }},
   {{
-    "event_id": "evt002",
+    "event_id": "2",
     "event_name": "微信好友聊天",
     "core_action": "无核心动作",
     "push_scene_prob": {{}},
@@ -2024,7 +2309,7 @@ class PushOperationGenerator:
 
 ### 二、字段规则（含约束说明，缺一不可）
 需包含且仅包含以下字段：
-- event_id：复用概率建模结果中的event_id，系统通知填“system”
+- event_id：复用概率建模结果中的event_id，系统通知填“0”
 - type：固定“push”
 - title：含“来源APP+动作/场景+关键对象”，例：“支付宝：外卖支付成功提醒”“美团：餐厅预定成功通知”
 - content：贴合APP话术，含动作结果+核心信息（格式参考示例），双引号需转义
@@ -2036,7 +2321,7 @@ class PushOperationGenerator:
 - source：具体来源APP/系统模块（从建模结果source_app_candidate中选择）
 - push_status：已读/未读/已删除（未读占比≤40%，随机分配）
 - jump_path：APP内跳转路径，例：“支付宝→我的账单→订单#8765”“美团→我的→预定订单”
-
+- summarized_info：操作核心描述摘要，例：“XX收到来自XX的通知，内容为：美团订单#8765金额58元”“预定码123456”
 ### 三、待生成清单（基于概率建模筛选，仅生成以下内容）
 {instruct}
 
@@ -2045,33 +2330,36 @@ class PushOperationGenerator:
 [
   {{
     "type": "push",
-    "event_id": "evt001",
+    "event_id": "1",
     "title": "支付宝：外卖支付成功提醒",
     "content": "【支付宝】您已成功支付美团外卖订单#8765，金额58元，账单已同步至“我的账单”",
     "datetime": "2023-10-01 12:03:00",
     "source": "支付宝",
     "push_status": "未读",
-    "jump_path": "支付宝→我的账单→订单#8765"
+    "jump_path": "支付宝→我的账单→订单#8765",
+    "summarized_info": "我收到支付宝支付美团外卖订单#8765，金额58元"
   }},
   {{
     "type": "push",
-    "event_id": "evt001",
+    "event_id": "1",
     "title": "美团外卖：订单备餐提醒",
     "content": "【美团外卖】您的订单#8765正在备餐中，预计12:30送达，骑手已接单（姓名：张师傅，电话：138****1234）",
     "datetime": "2023-10-01 12:10:00",
     "source": "美团外卖",
     "push_status": "未读",
-    "jump_path": "美团外卖→我的订单→订单#8765"
+    "jump_path": "美团外卖→我的订单→订单#8765",
+    "summarized_info": "我到美团外卖订单#8765正在备餐，预计12:30送达"
   }},
   {{
     "type": "push",
-    "event_id": "system",
+    "event_id": "0",
     "title": "系统：电量低提醒",
     "content": "【系统通知】当前手机电量已低于20%，请及时充电，避免影响使用",
     "datetime": "2023-10-01 16:45:00",
     "source": "系统电池管理",
     "push_status": "已读",
-    "jump_path": "设置→电池"
+    "jump_path": "设置→电池",
+    "summarized_info": "系统电池管理提醒电量低于20%"
   }}
 ]
 
@@ -2080,7 +2368,7 @@ class PushOperationGenerator:
         prompt = template.format(instruct=instruction, event=res, persona=extool.persona,sms_data = '')
         res = llm_call(prompt)
         print(res)
-        res = remove_json_wrapper(res)
+        res = remove_json_wrapper(res,'array')
         data = json.loads(res)
         c += data
         print(c)

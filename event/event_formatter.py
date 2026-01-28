@@ -78,12 +78,16 @@ class EventFormatter:
             print(f"读取文件 {file_path} 时出错: {str(e)}")
             return []
     
-    def remove_json_wrapper(self, input_str: str) -> str:
+    def remove_json_wrapper(self, input_str: str, json_type: str = 'object') -> str:
         """
         移除JSON字符串的前后包装（如```json ```标签、非法转义字符等）
+        并根据json_type参数提取对应的JSON内容：
+        - json_type='object'：提取第一个{到最后一个}之间的内容
+        - json_type='array'：提取第一个[到最后一个]之间的内容
         
         参数:
             input_str: 输入字符串
+            json_type: JSON类型，'object'对应{}，'array'对应[]，默认为'object'
         
         返回:
             str: 清理后的字符串
@@ -92,12 +96,24 @@ class EventFormatter:
         pattern = r'^\s*```json\s*\n?|\s*```\s*$'
         result = re.sub(pattern, '', input_str, flags=re.MULTILINE)
 
-        # 步骤2：清理 JSON 非法控制字符
+        # 步骤2：根据json_type提取对应的括号内容
+        if json_type == 'array':
+            first_bracket = result.find('[')
+            last_bracket = result.rfind(']')
+            if first_bracket != -1 and last_bracket != -1 and first_bracket < last_bracket:
+                result = result[first_bracket:last_bracket + 1]
+        else:  # 默认处理JSON对象
+            first_brace = result.find('{')
+            last_brace = result.rfind('}')
+            if first_brace != -1 and last_brace != -1 and first_brace < last_brace:
+                result = result[first_brace:last_brace + 1]
+
+        # 步骤3：清理 JSON 非法控制字符
         # 保留：JSON 允许的控制字符（\n换行、\r回车、\t制表符、\b退格、\f换页）+ 可见ASCII字符（0x20-0x7E）+ 中文/全角字符
         valid_pattern = r'[^\x20-\x7E\n\r\t\b\f\u4E00-\u9FFF\u3000-\u303F\uFF00-\uFFEF\u2000-\u206F\u2E80-\u2EFF]'
         result = re.sub(valid_pattern, '', result)
 
-        # 步骤3：规范空格和换行
+        # 步骤4：规范空格和换行
         result = result.strip()  # 去除首尾多余空格/换行
         result = result.replace('\u3000', ' ')  # 全角空格转半角空格
         result = re.sub(r'\r\n?', '\n', result)  # 统一换行符为 \n
@@ -120,15 +136,15 @@ class EventFormatter:
             # 使用template_event_format_sequence生成提示
             prompt = template_event_format_sequence.format(
                 content=events,
-                poi=poi_data + "家庭住址：上海市浦东新区张杨路123号，工作地点：上海市浦东新区世纪大道88号",
+                poi=poi_data,
                 date=date
             )
-            
+            from utils.llm_call import llm_call_reason
             # 调用LLM获取格式化后的事件
-            formatted_content = llm_call(prompt, "你是一位事件格式化专家", 0)
-            print(formatted_content)
+            formatted_content = llm_call_reason(prompt, "你是一位事件格式化专家", 0)
+            #print(formatted_content)
             # 清理JSON格式
-            cleaned_content = self.remove_json_wrapper(formatted_content)
+            cleaned_content = self.remove_json_wrapper(formatted_content, json_type='array')
             
             # 解析JSON
             formatted_events = json.loads(cleaned_content)
@@ -178,7 +194,7 @@ class EventFormatter:
         
         return formatted_events
     
-    def process_all_files(self, max_workers: int = 5):
+    def process_all_files(self, max_workers: int = 30):
         """
         处理所有中间输出文件
         
@@ -217,6 +233,7 @@ class EventFormatter:
         
         # 使用线程池并行处理所有任务
         formatted_events_list = []
+        failed_count = 0  # 失败计数
         
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             # 提交所有任务
@@ -236,6 +253,7 @@ class EventFormatter:
                     print(f"任务 {task['task_id']} - 日期 {task['date']} 处理完成")
                 except Exception as e:
                     print(f"任务 {task['task_id']} 处理失败: {str(e)}")
+                    failed_count += 1
         
         # 收集所有格式化后的事件
         all_events = []
@@ -269,6 +287,8 @@ class EventFormatter:
             self.formatted_events.append(event)
         
         print(f"共格式化了 {len(self.formatted_events)} 个事件")
+        print(f"处理完成的任务数: {len(tasks) - failed_count}")
+        print(f"处理失败的任务数: {failed_count}")
     
     def save_to_event_json(self, output_path: str = None):
         """
@@ -304,7 +324,7 @@ class EventFormatter:
         self.process_all_files(max_workers=max_workers)
         
         # 保存结果
-        self.save_to_event_json(self.data_dir+'output/outputs.json')
+        self.save_to_event_json(self.data_dir+'daily_event.json')
         
         print("=== 事件格式化流程完成 ===")
 

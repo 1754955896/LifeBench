@@ -5,7 +5,7 @@ import os
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # 定义Excel文件路径
-xlsx_file = os.path.join(script_dir, 'event schema.xlsx')
+xlsx_file = os.path.join(script_dir, 'schema.xlsx')
 
 # 定义输出CSV文件路径
 csv_file = os.path.join(script_dir, 'event_schema.csv')

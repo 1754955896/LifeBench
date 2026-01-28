@@ -16,7 +16,7 @@ from event.memory import *
 from event.fuzzy_memory_builder import FuzzyMemoryBuilder
 from typing import List, Dict, Optional
 class Mind:
-    def __init__(self,file_path, instance_id=0, persona=None, event=None, daily_state=None):
+    def __init__(self,file_path, instance_id=0, persona=None, event=None, daily_state=None, persona_address_data=None, daily_draft=None):
         self.calendar = {}  # 存储日程数据，格式如{"2025-01-01":["event1","event2"],...}
         self.events = event if event is not None else []
         self.persona = persona if persona is not None else ""
@@ -39,7 +39,7 @@ class Mind:
         # 获取地图工具配置
         map_config = config.get('map_tool', {})
         map_api_key = map_config.get('api_key', 'f6fa3480d4a0e08cd1243f311fa03582')
-        self.maptools = MapMaintenanceTool(map_api_key)
+        self.maptools = MapMaintenanceTool(map_api_key, persona_address_data=persona_address_data)
         self.env = ""
         self.file_path = file_path
         self.instance_id = instance_id
@@ -49,7 +49,10 @@ class Mind:
         self.fuzzy_memory_builder = None
         # 新增daily_state属性
         self.daily_state = daily_state if daily_state is not None else []
-
+        # 新增daily_draft属性
+        self.daily_draft = daily_draft if daily_draft is not None else []
+        self.persona_address_data = persona_address_data if persona_address_data is not None else []
+        
     def save_to_json(self):
         data = {}
         data["persona"] =  self.persona
@@ -263,7 +266,7 @@ class Mind:
                     break # 避免同一事件因多个日期重复加入
 
         return matched
-    def initialize(self, event, persona, date, daily_state=None):
+    def initialize(self, event, persona, date, daily_state=None, daily_draft=None):
         """
         初始化Mind对象
         
@@ -272,6 +275,7 @@ class Mind:
             persona: 人物画像数据
             date: 模拟开始日期，格式为"YYYY-MM-DD"
             daily_state: 每日状态数据，格式与test_daily_state.json相同
+            daily_draft: 每日草稿数据
         """
         self.persona = copy.deepcopy(persona)
         self.events = event
@@ -280,6 +284,10 @@ class Mind:
         self.daily_state = daily_state if daily_state is not None else []
         if daily_state is None:
             print("未提供daily_state，将使用默认值。")
+        # 初始化daily_draft
+        self.daily_draft = daily_draft if daily_draft is not None else []
+        if daily_draft is None:
+            print("未提供daily_draft，将使用默认值。")
         # 初始化FuzzyMemoryBuilder
         self.fuzzy_memory_builder = FuzzyMemoryBuilder.get_instance(event, persona, self.file_path)
         
@@ -295,15 +303,17 @@ class Mind:
         else:
             print("fuzzymemory文件已存在，直接加载...")
             self.fuzzy_memory_builder.load_summaries()
-        
+
+        self.update_bottom_level_events()
+
         # 初始化长期记忆和短期记忆
         self.long_memory = self.get_fuzzy_long_memory(date)
         mem = ""
         self.update_short_memory("",self.get_next_n_day(date,-1))
-        
+
         # 生成cognition和context
         t1 = '''
-        请你基于下面的个人画像，以第一人称视角描述你对自己的自我认知，包括1）个人基本信息。2）工作的主要特征、内容、方式、习惯、主要人物。3）家庭的主要特征、内容、方式、习惯、主要人物。4）其他生活的主要特征、内容、方式、习惯、主要人物。5）平常工作日的常见安排，目前的主要每天安排。
+        请你基于下面的个人画像，以第一人称视角描述你对自己的自我认知，包括1）个人基本信息。2）工作的主要特征、内容、方式、习惯、主要人物。3）家庭的主要特征、内容、方式、习惯、主要人物。4）其他生活的主要特征、内容、方式、习惯、主要人物。5）平常工作日的常见安排，目前的主要每天安排。描述简洁明确又要全面覆盖个人信息。
         个人画像：{persona}
         '''
 
@@ -314,18 +324,18 @@ class Mind:
 
         prompt = t1.format(persona=self.persona)
         res = self.llm_call_s(prompt)
-        print(res)
+        #print(res)
         self.cognition = res
-        
+
         prompt = t2.format(persona=self.persona)
         res = self.llm_call_s(prompt)
-        print(res)
+        #print(res)
         self.context = res
         
         # 初始化persona_withoutrl
         self.persona_withoutrl = persona.copy()  # 创建副本以避免修改原始persona
         del self.persona_withoutrl["relation"]  # 在副本上删除relation键
-        self.update_bottom_level_events()
+
     def load_from_json(self, event, persona):
         """
         从record.json加载记忆数据（仅当record=1时使用）
@@ -554,6 +564,7 @@ class Mind:
             # 2. 加一天（timedelta(days=1)表示1天的时间间隔）
             next_day_obj = date_obj + timedelta(days=n)
             # 3. 将日期对象转回字符串（保持YYYY-MM-DD格式）
+            #print("下一天日期：", next_day_obj)
             return next_day_obj.strftime("%Y-%m-%d")
         except ValueError:
             raise ValueError(f"日期格式错误：{date_str}，请使用YYYY-MM-DD格式（例如'2025-01-01'）")
@@ -644,6 +655,46 @@ class Mind:
             # 生成事件副本，避免修改原始数据
             # print(res)
             return res
+
+    def get_plan4(self,date,i=0):
+
+        import json
+        import os
+        from datetime import datetime, timedelta
+        #print('here')
+        # 计算目标日期
+        base_date = datetime.strptime(date, "%Y-%m-%d")
+        target_date = base_date + timedelta(days=i)
+        target_date_str = target_date.strftime("%Y-%m-%d")
+
+        # 直接从self.daily_draft获取数据
+        try:
+            data = self.daily_draft
+            # 从目标日期中提取年月，例如 "2025-01-05" -> "2025-01"
+            year_month = "-".join(target_date_str.split("-")[:2])
+
+            # 检查年月数据是否存在
+            if year_month not in data:
+                print(f"警告: 年月 {year_month} 的数据在文件中不存在")
+                return {}
+
+            # 在对应的月份数据中查找指定日期
+            month_data = data[year_month]
+
+            for day_data in month_data:
+                # print(day_data)
+                if day_data.get("date") == target_date_str:
+                        return day_data
+
+                # 如果指定日期不存在，返回空字典
+            print(f"警告: 日期 {target_date_str} 的数据在文件中不存在")
+            return {}
+        except json.JSONDecodeError:
+            print(f"错误: daily_draft 不是有效的JSON格式")
+            return {}
+        except Exception as e:
+            print(f"读取daily_draft时发生错误: {str(e)}")
+            return {}
 
     def delete_top_event(self,events, target_id):
         """
@@ -917,8 +968,161 @@ class Mind:
         self.short_memory = mem
         return
     def get_fuzzy_short_memory(self,date):
-        date_events = self.filter_by_date(date)
+        date_events = self.get_plan4(date)
+        #print('here')
+        #print(date_events)
         res = "我在"+date+"做了下面这些事："
+        for item in date_events['events']:
+            #print(item)
+            name = item['name']
+            res += name
+            res += "，"
+        return res
+
+    def update_short_memory2(self, dailyevent, date):
+        """
+        更新短期记忆，插入今日事件并检索相关历史事件
+
+        参数:
+            dailyevent: 今日事件内容
+            date: 当前日期字符串（格式：YYYY-MM-DD）
+
+        返回:
+            None: 直接更新实例的short_memory属性
+        """
+        # 记忆库插入今天事件
+        if dailyevent != "":
+            self.mem_module.add_memory(dailyevent)
+
+        # 检索明天相关事件
+        def get_target_dates(date_str: str, date_format: str = "%Y-%m-%d") -> List[str]:
+            """
+            根据输入的字符串日期，获取「前两天日期」和「本日日期」的字符串数组（按时间升序排列）
+
+            参数:
+                date_str: 输入的日期字符串，默认格式为"YYYY-MM-DD"（如"2025-01-01"）
+                date_format: 日期字符串的格式，默认是"%Y-%m-%d"，可根据实际需求修改
+
+            返回:
+                List[str]: 按时间升序排列的日期数组，格式为[前两天日期, 本日日期]
+
+            异常:
+                ValueError: 若输入的日期字符串格式与指定格式不匹配，会抛出该异常
+            """
+            # 1. 将字符串日期转为datetime对象
+            try:
+                target_date = datetime.strptime(date_str, date_format)
+            except ValueError as e:
+                raise ValueError(f"日期格式错误！请确保输入符合'{date_format}'格式（如'2025-01-01'），错误信息：{str(e)}")
+
+            # 2. 计算前四天的日期（本日日期 - 4天）
+            two_days_ago = target_date - timedelta(days=2)
+            one_days_ago = target_date - timedelta(days=1)
+            three_days_ago = target_date - timedelta(days=3)
+            f = target_date - timedelta(days=4)
+            # 3. 将两个日期转回原格式的字符串
+            two_days_ago_str = two_days_ago.strftime(date_format)
+            target_date_str = target_date.strftime(date_format)
+            one_days_ago_str = one_days_ago.strftime(date_format)
+            three_days_ago_str = three_days_ago.strftime(date_format)
+            f_str = f.strftime(date_format)
+            # 4. 返回按时间升序排列的数组（前两天在前，本日在后）
+            return [target_date_str, one_days_ago_str, two_days_ago_str, f_str]
+
+        def get_next_day(date_str: str, date_format: str = "%Y-%m-%d") -> str:
+            """
+            输入字符串日期，返回其「后一天」的日期（同格式字符串）
+
+            参数:
+                date_str: 输入日期字符串，默认格式"YYYY-MM-DD"（如"2025-02-28"）
+                date_format: 日期格式，默认"%Y-%m-%d"，可自定义（如"%Y/%m/%d"）
+
+            返回:
+                str: 后一天的日期字符串（与输入格式一致）
+
+            异常:
+                ValueError: 输入日期格式错误或日期无效（如"2025-02-30"）时抛出
+            """
+            # 1. 将字符串转为datetime对象（自动校验日期有效性）
+            try:
+                current_date = datetime.strptime(date_str, date_format)
+            except ValueError as e:
+                raise ValueError(f"日期错误！需符合'{date_format}'格式且为有效日期（如'2025-02-28'），错误：{str(e)}")
+
+            # 2. 加1天（自动处理月份/年份交替，如2025-02-28→2025-03-01、2025-12-31→2026-01-01）
+            next_day_date = current_date + timedelta(days=1)
+
+            # 3. 转回原格式字符串并返回
+            return next_day_date.strftime(date_format)
+
+        def get_cycle_dates_array(date_str: str, date_format: str = "%Y-%m-%d") -> List[str]:
+            """
+            根据输入字符串日期，返回「上个月同日、上周同星期」的日期数组（按固定顺序排列）
+
+            参数:
+                date_str: 输入日期字符串，默认格式"YYYY-MM-DD"（如"2025-03-15"）
+                date_format: 日期格式，默认"%Y-%m-%d"，可自定义（如"%Y/%m/%d"）
+
+            返回:
+                List[str]: 日期数组，顺序为 [上个月同日, 上周同星期]
+
+            异常:
+                ValueError: 输入日期格式不匹配时抛出
+            """
+            # 1. 解析输入日期
+            try:
+                current_date = datetime.strptime(date_str, date_format)
+            except ValueError as e:
+                raise ValueError(f"日期格式错误！需符合'{date_format}'（如'2025-03-15'），错误：{str(e)}")
+
+            # 2. 计算上个月同日（处理当月无同日场景）
+            def _get_last_month_same_day(date: datetime) -> datetime:
+                try:
+                    return date.replace(month=date.month - 1)
+                except ValueError:
+                    # 当月无该日期（如3月31日），返回上月最后一天
+                    return date.replace(day=1) - timedelta(days=1)
+
+            last_month_day = _get_last_month_same_day(current_date).strftime(date_format)
+
+            # 3. 计算上周同星期（固定减7天）
+            last_week_weekday = (current_date - timedelta(days=7)).strftime(date_format)
+
+            # 4. 直接返回数组（顺序：上个月同日 → 上周同星期）
+            return [last_month_day, last_week_weekday]
+
+        # 最终增加前五天事件、上周同日事件、上月同日事件、检索最相似2日事件
+        date_set = set()
+        mem = ""
+        for i in get_target_dates(date):
+            res = self.mem_module.search_by_date(start_time=i)
+            for j in res:
+                mem += j['events']
+                date_set.add(j['date'])
+            if res == []:
+                mem += self.get_fuzzy_short_memory(i)
+
+        for i in get_cycle_dates_array(get_next_day(date)):
+            res = self.mem_module.search_by_date(start_time=i)
+            for j in res:
+                mem += j['events']
+                date_set.add(j['date'])
+        arr = self.filter_by_date(get_next_day(date))
+        res = ""
+        for item in arr:
+            name = item['name']
+            res += name
+        res = self.mem_module.search_by_topic_embedding(res, 2)
+        for i in res:
+            if i['date'] in date_set:
+                continue
+            mem += i['events']
+        self.short_memory = mem
+        return
+
+    def get_fuzzy_short_memory(self, date):
+        date_events = self.get_plan3(date)
+        res = "我在" + date + "做了下面这些事："
         for item in date_events:
             name = item['name']
             res += name
@@ -941,6 +1145,20 @@ class Mind:
             year = target_date.year
             month = target_date.month
             day = target_date.day
+            
+            # 如果是当月一号，直接返回累积记忆
+            if day == 1:
+                if self.fuzzy_memory_builder is None:
+                    # 如果没有初始化FuzzyMemoryBuilder，尝试创建一个
+                    self.fuzzy_memory_builder = FuzzyMemoryBuilder.get_instance(self.events, self.persona,self.file_path)
+                
+                # 加载已保存的总结（如果有）
+                self.fuzzy_memory_builder.load_summaries()
+                
+                # 获取累积记忆
+                cumulative_memory = self.fuzzy_memory_builder.get_memory_up_to_month(date)
+                
+                return cumulative_memory
             
             # 1. 获取从1月到目标月份的累积记忆
             if self.fuzzy_memory_builder is None:
@@ -1010,25 +1228,20 @@ class Mind:
 
     def map(self,pt):
         #获取真实poi数据和通行信息
-        prompt = template_poi_real_location_assign.format(persona = self.persona,data = pt)
+        prompt = template_poi_real_location_assign.format(persona = self.persona, data = pt, persona_address_data=self.maptools.persona_address_data)
         res = llm_call_skip(prompt,self.context)
         print("poi分析-----------------------------------------------------------------------")
-        print(res)
+        #print(res)
         res = self.remove_json_wrapper(res)
+        first_bracket = res.find('{')
+        last_bracket = res.rfind('}')
+        if first_bracket != -1 and last_bracket != -1 and first_bracket < last_bracket:
+            res = res[first_bracket:last_bracket + 1]
         data = json.loads(res)
         result, error_summary = self.maptools.process_instruction_route(data)
         instr = ""
-        instr += self.maptools.extract_route_summary(result)
-        print(instr)
-        prompt = template_poi_search_optimize.format(persona=self.persona_withoutrl, data=pt ,first_round_instruction=res,api_feedback=instr)
-        res = llm_call_skip(prompt, self.context)
-        print("poi分析2-----------------------------------------------------------------------")
-        print(res)
-        res = self.remove_json_wrapper(res)
-        data = json.loads(res)
-        resultx, error_summary = self.maptools.process_instruction_route(data)
-        instr = self.maptools.extract_poi_route_simplified(resultx)
-        print(instr)
+        instr += self.maptools.extract_poi_route_simplified(result)
+        #print(instr)
         # with open(self.txt_file_path, "a", encoding="utf-8") as file:  # 记录，防止丢失
         #         file.write("-----------------------poi\n"+instr + "\n")  # 每个字符串后加换行符，实现分行存储
         return instr
@@ -1084,7 +1297,7 @@ class Mind:
 
 
 
-    def daily_event_gen1(self, date):
+    def daily_event_gen0(self, date):
         """
         生成单日事件的核心方法
         
@@ -1143,6 +1356,65 @@ class Mind:
             traceback.print_exc()
             return False
     
+    def get_plan3(self, date,i=0):
+        return ""
+    
+    def daily_event_gen1(self, date):
+        """
+        生成单日事件的核心方法
+
+        参数:
+            date: 目标日期（格式：YYYY-MM-DD）
+
+        返回:
+            bool: 执行是否成功的标志
+        """
+        try:
+            self._log_event(f"\n=== 开始生成 {date} 的事件 ===")
+            # 1. 生成主观思考
+            plan = self.get_plan4(date)
+            subjective_thought = self._generate_subjective_thought(plan, date)
+
+            # 2. 生成客观事件
+            objective_events = self._generate_objective_events(plan, date, subjective_thought)
+            # 3. 获取POI数据并调整轨迹
+            poi_data = self.map(objective_events)
+            # 从plan2中获取当日事件参考数据
+            adjusted_events = self._adjust_event_trajectory(poi_data, objective_events, plan,
+                                                            self.get_plan4(date,-1))
+
+            # 4. 生成反思和更新想法
+            reflection = self._generate_reflection(adjusted_events, plan, date)
+            self.thought = reflection["thought"]
+
+            # 5. 更新长期记忆
+            self._update_long_term_memory(plan, reflection, date)
+
+            # 6. 更新短期记忆并保存数据
+            self.update_short_memory(reflection, date)
+
+            # 7. 保存每日中间输出到实例变量
+            self.daily_intermediate_outputs[date] = {
+                "plan": plan,
+                "subjective_thought": subjective_thought,
+                "objective_events": objective_events,
+                "poi_data": poi_data,
+                "adjusted_events": adjusted_events,
+                "reflection": reflection
+            }
+
+            # 8. 保存当前状态
+            self.save_to_json()
+            self.save_intermediate_outputs()
+            # self._save_events_to_file()
+
+            self._log_event(f"\n=== {date} 的事件生成完成 ===")
+            return True
+        except Exception as e:
+            self._log_event(f"\n=== {date} 的事件生成出现错误: {str(e)} ===")
+            import traceback
+            traceback.print_exc()
+            return False
     def save_intermediate_outputs(self):
         """
         保存所有每日中间输出到JSON文件
@@ -1200,7 +1472,7 @@ class Mind:
         参数:
             message: 要记录的消息
         """
-        print(message)
+        #print(message)
     
     def _save_log(self, date, log_type, content):
         """
@@ -1241,10 +1513,11 @@ class Mind:
             cognition=self.cognition,
             memory='这是长期记忆:'+self.long_memory + '这是短期记忆:'+self.short_memory,
             thought=self.thought,
-            plan=plan['今日事件'],
+            plan=plan,
             date=self.get_date_string(date),
             persona=self.persona
         )
+        #print( prompt)
         thought = self.llm_call_s(prompt, 0)
         self._log_event("主观思考（计划如何执行、想安排什么活动）-----------------------------------------------------------------------")
         self._log_event(thought)
@@ -1287,7 +1560,18 @@ class Mind:
             str: 调整后的事件内容
         """
         #print(event)
-        prompt = template_event_traffic_adjust.format(poi=poi_data, event=event, daily_event_reference=daily_event_reference,history=history,persona=self.cognition)
+        # 简化persona_address_data，只保留name、formatted_address和description字段
+        simplified_address_data = []
+        if self.persona_address_data and isinstance(self.persona_address_data, list):
+            for address in self.persona_address_data:
+                simplified_address = {
+                    "name": address.get("name", ""),
+                    "formatted_address": address.get("formatted_address", ""),
+                    "description": address.get("description", "")
+                }
+                simplified_address_data.append(simplified_address)
+        
+        prompt = template_event_traffic_adjust.format(poi=poi_data, event=event, daily_event_reference=daily_event_reference,history=history,persona=self.cognition,persona_address_data=simplified_address_data)
         #print(prompt)
         adjusted_events = self.llm_call_s(prompt, 0)
         self._log_event("轨迹调整-----------------------------------------------------------------------")
@@ -1434,7 +1718,7 @@ class MindController:
     Mind类的并行化控制器，用于管理多个Mind实例的并行执行
     """
         
-    def __init__(self, event_file='event.json', persona_file='persona.json', data_dir='data/2025-12-07', daily_state_file='daily_state.json', instance_id=0):
+    def __init__(self, event_file='event.json', persona_file='persona.json', data_dir='data/2025-12-07', daily_state_file='daily_state.json', instance_id=0, loc_data='location.json'):
         """
         初始化MindController实例
         
@@ -1454,7 +1738,8 @@ class MindController:
             self.events = read_json_file(event_file)
             # 加载人物画像数据
             self.persona = read_json_file(persona_file)
-            
+            # 加载位置数据
+            self.loc_data = read_json_file(loc_data)
             # 加载每日状态数据
             self.daily_state = None
             try:
@@ -1480,7 +1765,7 @@ class MindController:
         """
         # 使用人物的instance_id作为标识，确保每个人只有一个memory文件
         # 不再使用thread_id，避免每个线程创建一个独立的memory文件
-        return Mind(file_path=self.data_dir, instance_id=self.instance_id, persona=self.persona, event=self.events, daily_state=self.daily_state)
+        return Mind(file_path=self.data_dir, instance_id=self.instance_id, persona=self.persona, event=self.events, daily_state={},persona_address_data=self.loc_data,daily_draft=self.daily_state)
     
     def run_daily_event_with_threading(self, start_date, end_date, max_workers=5, interval_days=2):
         """
@@ -1515,7 +1800,7 @@ class MindController:
             # 为每个区间创建独立的Mind实例，避免共享状态
             mind_instance = self.create_mind_instance()
             # 正确初始化Mind实例，传入事件数据、人物画像和起始日期
-            mind_instance.initialize(self.events, self.persona, interval_dates[0], self.daily_state)
+            mind_instance.initialize(self.events, self.persona, interval_dates[0], None,self.daily_state)
             interval_results = []
             
             print(f"  开始处理区间：{interval_dates[0]} 到 {interval_dates[-1]}")
@@ -1612,11 +1897,17 @@ if __name__ == "__main__":
     
     # 设置文件路径（根据用户要求：persona数据在output里，event数据在event_decompose_1）
     persona_path = "output/persona.json"
-    event_path = "data_copy/data2/event_update.json"
-    
+    event_path = "output/consolidated_events.json"
+
+    with open(persona_path, 'r', encoding='utf-8') as f:
+        persona = json.load(f)
+    with open(event_path, 'r', encoding='utf-8') as f:
+        event = json.load(f)
     # 设置日期范围
     start_date = "2025-10-01"
     end_date = "2025-10-15"
-    
+
+
     # 调用测试方法
-    test_event_count_by_date_range(start_date, end_date, persona_path, event_path)
+    mind = Mind("output/maxiaomei")
+    mind.initialize(event, persona, start_date)
