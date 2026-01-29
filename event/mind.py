@@ -1633,7 +1633,11 @@ class Mind:
         cleaned_reflection = self.remove_json_wrapper(reflection)
         self._log_event(cleaned_reflection)
         self._save_log("", "t4", cleaned_reflection)
-        return json.loads(cleaned_reflection)
+        try:
+            return json.loads(cleaned_reflection)
+        except json.JSONDecodeError:
+            # JSON加载失败，返回空的thought字典
+            return {"thought": ""}
     
     def _update_long_term_memory(self, plan, reflection, date):
         """
@@ -1665,8 +1669,12 @@ class Mind:
         self._log_event("更新（客观事实与固定偏好，IMO记忆的关键事件，重复多次进行的事件，对过去总结）-----------------------------------------------------------------------")
         self._log_event(cleaned_memory)
         
-        memory_data = json.loads(cleaned_memory)
-        self.long_memory = memory_data['long_term_memory']
+        try:
+            memory_data = json.loads(cleaned_memory)
+            self.long_memory = memory_data['long_term_memory']
+        except json.JSONDecodeError:
+            # JSON加载失败，保留原来的long_memory值，不报错继续运行
+            pass
         self._save_log("", "t5", cleaned_memory)
     
     def _save_events_to_file(self):
