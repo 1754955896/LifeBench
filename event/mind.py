@@ -324,7 +324,7 @@ class Mind:
         个人画像：{persona}
         '''
 
-        prompt = t1.format(persona=self.persona)
+        prompt = t1.format(persona=self.persona, persona_address_data=self.persona_address_data)
         res = self.llm_call_s(prompt)
         #print(res)
         self.cognition = res
