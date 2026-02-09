@@ -1,88 +1,5 @@
 [
   {
-    "question": "叶明轩在协助父亲修理水龙头时感到腰部不适，其直接的身体原因是什么？",
-    "answer": "由于修理水龙头时，他需要长时间保持半弯腰姿势固定水管，导致腰部受力不当。",
-    "score_points": [
-      {
-        "description": "指出了腰部不适发生的直接情境（半弯腰姿势）。",
-        "score": 5
-      },
-      {
-        "description": "指出了导致该姿势的根本原因是修理操作的客观条件限制（空间狭小）。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "61"
-    ],
-    "question_type": "mutihop",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "127"
-      },
-      {
-        "type": "push",
-        "id": 91
-      },
-      {
-        "type": "sms",
-        "id": 25
-      },
-      {
-        "type": "sms",
-        "id": "2165"
-      }
-    ],
-    "ask_time": "2025-01"
-  },
-  {
-    "question": "2025年1月，叶明轩在与同事周涛讨论近期观看的综艺节目时，表达了自己对哪一类竞技综艺选手的偏好？",
-    "options": [
-      {
-        "option": "A",
-        "content": "偏好那些天赋异禀、表现极具观赏性的“天才型”选手"
-      },
-      {
-        "option": "B",
-        "content": "偏好那些依靠团队协作和策略取胜的“智谋型”选手"
-      },
-      {
-        "option": "C",
-        "content": "偏好那些基础扎实、发挥稳定、失误率低的“稳健型”选手"
-      },
-      {
-        "option": "D",
-        "content": "偏好那些性格鲜明、有话题性、能带动节目气氛的“综艺感强”的选手"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "1915"
-      },
-      {
-        "type": "sms",
-        "id": "1916"
-      },
-      {
-        "type": "sms",
-        "id": "1917"
-      },
-      {
-        "type": "sms",
-        "id": "1918"
-      },
-      {
-        "type": "sms",
-        "id": "1919"
-      }
-    ],
-    "ask_time": "2025-01",
-    "question_type": "single_hop"
-  },
-  {
     "question": "1月份，叶明轩通过线上购物平台为康复采购了哪些物品？",
     "options": [
       {
@@ -128,7 +45,7 @@
       }
     ],
     "ask_time": "2025-02",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "叶明轩在2月份完成的个人健康数据分析Python项目，其成果是如何被应用的？",
@@ -148,7 +65,7 @@
       "806",
       "810"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -214,7 +131,7 @@
       "527",
       "552"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -273,7 +190,7 @@
       "2025-01-09"
     ],
     "ask_time": "2025-03",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -329,7 +246,7 @@
       "2025-01-06"
     ],
     "ask_time": "2025-03",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -374,77 +291,6 @@
     ]
   },
   {
-    "question": "在2025年2月25日家庭网络故障维修过程中，叶明轩通过哪些具体步骤跟进和协调维修事宜？",
-    "answer": "叶明轩在工作间隙查看家庭网络报修工单状态；下午查看报修状态更新为工程师预计18:00-20:00上门，并回复确认短信；晚餐时告知父母维修师傅晚上上门；维修师傅上门后，他描述故障现象（间歇性断连），并在师傅检查修复后签字确认。",
-    "score_points": [
-      {
-        "description": "描述了在工作时间查看报修工单状态的行为",
-        "score": 5
-      },
-      {
-        "description": "指出了查看状态更新、回复确认短信、告知家人及配合维修的协调步骤",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "765",
-      "767",
-      "769",
-      "770"
-    ],
-    "required_events_date": [
-      "2025-02-25"
-    ],
-    "ask_time": "2025-03",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 127
-      },
-      {
-        "type": "sms",
-        "id": 279
-      },
-      {
-        "type": "call",
-        "id": 195
-      },
-      {
-        "type": "push",
-        "id": 460
-      },
-      {
-        "type": "photo",
-        "id": 270
-      },
-      {
-        "type": "push",
-        "id": 462
-      },
-      {
-        "type": "sms",
-        "id": 282
-      },
-      {
-        "type": "push",
-        "id": "2894"
-      },
-      {
-        "type": "sms",
-        "id": "2328"
-      },
-      {
-        "type": "call",
-        "id": "1347"
-      },
-      {
-        "type": "note",
-        "id": "337"
-      }
-    ]
-  },
-  {
     "question": "叶明轩在2月25日家庭网络维修完成后，到第二天晨间检查确认网络恢复，大约间隔了多长时间？",
     "options": [
       {
@@ -474,7 +320,7 @@
       "2025-02-26"
     ],
     "ask_time": "2025-03",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "call",
@@ -556,7 +402,7 @@
       }
     ],
     "ask_time": "2025-03",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "叶明轩在2月份某次通勤途中，用手机浏览了什么内容？",
@@ -588,144 +434,7 @@
       }
     ],
     "ask_time": "2025-03",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年4月，叶明轩在与同事周涛讨论周末娱乐活动时，提到自己最近在追看一部什么类型的网络综艺节目？",
-    "options": [
-      {
-        "option": "A",
-        "content": "一部关于户外生存挑战的真人秀"
-      },
-      {
-        "option": "B",
-        "content": "一部聚焦传统手工艺人传承的纪录片式综艺"
-      },
-      {
-        "option": "C",
-        "content": "一部程序员和工程师参与的逻辑解谜竞技综艺"
-      },
-      {
-        "option": "D",
-        "content": "一部美食探店与厨艺比拼相结合的综艺"
-      }
-    ],
-    "answer": "C",
-    "ask_time": "2025-03",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2160"
-      },
-      {
-        "type": "sms",
-        "id": "2161"
-      },
-      {
-        "type": "sms",
-        "id": "2162"
-      },
-      {
-        "type": "sms",
-        "id": "2163"
-      },
-      {
-        "type": "sms",
-        "id": "2164"
-      }
-    ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "根据叶明轩在1月4日晚间整理收藏品时的具体行为，可以推断他可能对以下哪个领域有较为浓厚的兴趣？",
-    "options": [
-      {
-        "option": "A",
-        "content": "当代艺术投资"
-      },
-      {
-        "option": "B",
-        "content": "前沿数码科技"
-      },
-      {
-        "option": "C",
-        "content": "中国近代历史"
-      },
-      {
-        "option": "D",
-        "content": "古典音乐鉴赏"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "54"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 47
-      },
-      {
-        "type": "push",
-        "id": 85
-      },
-      {
-        "type": "sms",
-        "id": 20
-      },
-      {
-        "type": "sms",
-        "id": 21
-      }
-    ],
-    "ask_time": "2025-03"
-  },
-  {
-    "question": "在2月份的家庭影院活动中，我和家人观看的电视节目类型是什么？",
-    "answer": "竞技类综艺节目和科学竞技类电视综艺。",
-    "score_points": [
-      {
-        "description": "从2月8日事件ID 544中提取出观看了《机器人争霸》（竞技类综艺节目）。",
-        "score": 5
-      },
-      {
-        "description": "从2月15日事件ID 625中提取出观看了“一档流行的科学竞技类电视综艺”。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "544",
-      "625"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "76"
-      },
-      {
-        "type": "note",
-        "id": "124"
-      },
-      {
-        "type": "photo",
-        "id": "1609"
-      },
-      {
-        "type": "calendar",
-        "id": "114"
-      },
-      {
-        "type": "note",
-        "id": "176"
-      },
-      {
-        "type": "sms",
-        "id": "2177"
-      }
-    ],
-    "ask_time": "2025-03"
+    "question_type": "Information Extraction"
   },
   {
     "question": "叶明轩在2月份进行的腰椎康复，其过程大致可以划分为哪几个主要阶段？",
@@ -751,7 +460,7 @@
       "703",
       "810"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "photo",
@@ -813,135 +522,6 @@
     "ask_time": "2025-04"
   },
   {
-    "question": "从叶明轩在1月5日下午协助父亲修理水龙头时感到不适，到1月14日清晨因急性腰痛被送往医院确诊，这期间大约经历了多少天？",
-    "answer": "9天。",
-    "score_points": [
-      {
-        "description": "准确计算并给出从1月5日到1月14日的时间间隔天数：9天。",
-        "score": 10
-      }
-    ],
-    "required_events_id": [
-      "61",
-      "184",
-      "188"
-    ],
-    "question_type": "temporal",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "127"
-      },
-      {
-        "type": "push",
-        "id": 91
-      },
-      {
-        "type": "sms",
-        "id": 25
-      },
-      {
-        "type": "sms",
-        "id": "2165"
-      },
-      {
-        "type": "call",
-        "id": 49
-      },
-      {
-        "type": "photo",
-        "id": 84
-      },
-      {
-        "type": "push",
-        "id": 153
-      },
-      {
-        "type": "sms",
-        "id": 78
-      },
-      {
-        "type": "sms",
-        "id": 79
-      },
-      {
-        "type": "agent_chat",
-        "id": 30
-      },
-      {
-        "type": "photo",
-        "id": 88
-      },
-      {
-        "type": "photo",
-        "id": 89
-      }
-    ],
-    "ask_time": "2025-04"
-  },
-  {
-    "question": "叶明轩在设置基金定投计划后，如何与家人沟通这一决策？",
-    "answer": "他在家庭晚餐中系统汇报了近况，包括基金定投决策，父母倾听并给予认可和关心。",
-    "score_points": [
-      {
-        "description": "汇报了基金定投决策",
-        "score": 5
-      },
-      {
-        "description": "父母给予认可和关心",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "885",
-      "915"
-    ],
-    "required_events_date": [
-      "2025-03-08",
-      "2025-03-08"
-    ],
-    "ask_time": "2025-04",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "171"
-      },
-      {
-        "type": "note",
-        "id": "190"
-      },
-      {
-        "type": "push",
-        "id": "2864"
-      },
-      {
-        "type": "sms",
-        "id": "2181"
-      },
-      {
-        "type": "agent_chat",
-        "id": 150
-      },
-      {
-        "type": "calendar",
-        "id": "220"
-      },
-      {
-        "type": "push",
-        "id": "2886"
-      },
-      {
-        "type": "sms",
-        "id": "2320"
-      },
-      {
-        "type": "note",
-        "id": "325"
-      }
-    ]
-  },
-  {
     "question": "在2025年3月23日进行木工工具保养和研究图纸之前，叶明轩为重启木工实践所做的直接准备步骤是什么？",
     "options": [
       {
@@ -971,7 +551,7 @@
       "2025-03-21"
     ],
     "ask_time": "2025-04",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "calendar",
@@ -1033,47 +613,7 @@
       }
     ],
     "ask_time": "2025-04",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "3月份，叶明轩在静心回顾全天信息后，最终向理财经理确认了何种基金投资方案？",
-    "options": [
-      {
-        "option": "A",
-        "content": "一次性大额申购"
-      },
-      {
-        "option": "B",
-        "content": "为期一年、每月定投500元"
-      },
-      {
-        "option": "C",
-        "content": "为期半年、每月定投1000元"
-      },
-      {
-        "option": "D",
-        "content": "暂不投资，继续观察"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "870",
-        "event_name": "最终确认基金投资方案"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "push",
-        "id": 518
-      },
-      {
-        "type": "sms",
-        "id": 315
-      }
-    ],
-    "ask_time": "2025-04",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在3月份的一次康复训练小结后，叶明轩主动向教练咨询了恢复哪项个人爱好的安全性？",
@@ -1117,7 +657,7 @@
       }
     ],
     "ask_time": "2025-04",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年4月，叶明轩在与大学同学孙静的微信聊天中，得知了另一位大学同学刘洋最近遇到了什么个人生活上的困扰？",
@@ -1155,7 +695,7 @@
         "id": "2072"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "4月份，叶明轩在绩效面谈后整理行动项时，计划联系哪位经理以跟进职业发展建议？",
@@ -1203,43 +743,7 @@
       }
     ],
     "ask_time": "2025-04",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2月份，叶明轩在通勤途中收听音频报告时，重点关注了什么主题？",
-    "answer": "高端轴承国产化进展",
-    "score_points": [
-      {
-        "description": "答案中包含音频报告的核心主题“高端轴承国产化进展”。",
-        "score": 10
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "676",
-        "event_name": "通勤上班"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "74"
-      },
-      {
-        "type": "push",
-        "id": "2815"
-      },
-      {
-        "type": "note",
-        "id": "122"
-      },
-      {
-        "type": "sms",
-        "id": "2121"
-      }
-    ],
-    "ask_time": "2025-04",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "你最近一次协助导师评审青少年科技创新大赛是在哪一天？",
@@ -1259,7 +763,7 @@
       "2025-04-20"
     ],
     "ask_time": "2025-04",
-    "question_type": "updating",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "call",
@@ -1299,7 +803,7 @@
       "2025-03-15"
     ],
     "ask_time": "2025-04",
-    "question_type": "updating",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "call",
@@ -1332,180 +836,6 @@
     ]
   },
   {
-    "question": "1月初，我在协助家人修理厨房设施后感到腰部不适，结合我的工作和生活习惯，可能是什么原因诱发了这一问题？",
-    "answer": "长时间保持不当姿势（如半弯腰）进行修理操作，加之本身可能存在因久坐办公导致的腰部劳损和核心力量不足。",
-    "score_points": [
-      {
-        "description": "识别事件中的直接诱因：修理时长时间保持半弯腰姿势（1月5日）。",
-        "score": 4
-      },
-      {
-        "description": "结合工作性质（机械工程师）推断久坐习惯是潜在风险因素。",
-        "score": 3
-      },
-      {
-        "description": "结合后续诊断（腰椎间盘突出）和医生分析（核心肌群力量薄弱、BMI偏高），推断身体基础条件也是原因之一。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "61",
-      "215"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 91
-      },
-      {
-        "type": "sms",
-        "id": 25
-      },
-      {
-        "type": "agent_chat",
-        "id": 34
-      },
-      {
-        "type": "photo",
-        "id": 100
-      },
-      {
-        "type": "push",
-        "id": 169
-      },
-      {
-        "type": "sms",
-        "id": 89
-      },
-      {
-        "type": "note",
-        "id": "127"
-      },
-      {
-        "type": "sms",
-        "id": "2165"
-      },
-      {
-        "type": "note",
-        "id": "146"
-      },
-      {
-        "type": "calendar",
-        "id": "94"
-      }
-    ],
-    "ask_time": "2025-04"
-  },
-  {
-    "question": "在四月中旬，叶明轩与一位名叫赵建国的朋友进行了线上交流，探讨了关于收藏品数据整理和特定古币的知识。请问赵建国与叶明轩是什么关系？",
-    "options": [
-      {
-        "option": "A",
-        "content": "发小"
-      },
-      {
-        "option": "B",
-        "content": "同事"
-      },
-      {
-        "option": "C",
-        "content": "古币藏友"
-      },
-      {
-        "option": "D",
-        "content": "家庭医生"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "1362",
-      "1468",
-      "1480"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 361
-      },
-      {
-        "type": "call",
-        "id": 383
-      },
-      {
-        "type": "push",
-        "id": 819
-      },
-      {
-        "type": "sms",
-        "id": 514
-      },
-      {
-        "type": "note",
-        "id": "130"
-      },
-      {
-        "type": "sms",
-        "id": "2167"
-      },
-      {
-        "type": "note",
-        "id": "143"
-      },
-      {
-        "type": "note",
-        "id": "179"
-      }
-    ],
-    "ask_time": "2025-04"
-  },
-  {
-    "question": "4月11日晚，叶明轩临时取消了一项原定的晚间活动，其最直接的原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "因项目设计修改获得认可，心情好转计划周末放松。"
-      },
-      {
-        "option": "B",
-        "content": "因工作繁忙，需要在家处理紧急邮件。"
-      },
-      {
-        "option": "C",
-        "content": "因与同事李想约好讨论Python数据分析合作项目。"
-      },
-      {
-        "option": "D",
-        "content": "因前日熬夜导致身体疲劳，需要休息调整。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "1378"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 363
-      },
-      {
-        "type": "call",
-        "id": 364
-      },
-      {
-        "type": "calendar",
-        "id": "148"
-      },
-      {
-        "type": "note",
-        "id": "225"
-      }
-    ],
-    "ask_time": "2025-05"
-  },
-  {
     "question": "叶明轩在本月是如何从线上请教木工技巧过渡到线下实践操作的？",
     "answer": "他先在4月3日午休时通过微信向木工师傅钱建国请教手工锯下料控制锯路垂直度的实操诀窍，然后在4月26日周末前往钱师傅位于杨柳青镇的工作坊，在师傅指导下亲手完成了燕尾榫的制作。",
     "score_points": [
@@ -1523,7 +853,7 @@
       "1591",
       "1593"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -1573,7 +903,7 @@
       "39",
       "48"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -1611,56 +941,6 @@
     "ask_time": "2025-05"
   },
   {
-    "question": "在2025年4月2日早晨通过手机APP查看了年度电子体检报告后，叶明轩紧接着在通勤途中针对体检结果采取的第一个具体行动是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "仔细阅读电子体检报告的详细内容"
-      },
-      {
-        "option": "B",
-        "content": "通过微信联系家庭医生刘文涛预约健康咨询"
-      },
-      {
-        "option": "C",
-        "content": "与健身教练王健沟通调整训练计划"
-      },
-      {
-        "option": "D",
-        "content": "开始制定个人体重和体脂率目标"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "1251",
-      "1252"
-    ],
-    "required_events_date": [
-      "2025-04-02",
-      "2025-04-02"
-    ],
-    "ask_time": "2025-05",
-    "question_type": "temporal",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 208
-      },
-      {
-        "type": "push",
-        "id": 727
-      },
-      {
-        "type": "photo",
-        "id": 412
-      },
-      {
-        "type": "sms",
-        "id": 440
-      }
-    ]
-  },
-  {
     "question": "2025年1月，叶明轩构思的Python康复辅助小程序包含哪些核心功能模块？",
     "answer": "康复动作计时提醒、每日疼痛与活动记录、康复知识库链接。",
     "score_points": [
@@ -1694,7 +974,7 @@
       }
     ],
     "ask_time": "2025-05",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "5月份，叶明轩在通勤途中与谁约定了周末聚会，并提议了哪个餐馆？",
@@ -1730,107 +1010,7 @@
       }
     ],
     "ask_time": "2025-05",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年5月，叶明轩在与同事周涛讨论电影时，明确表示自己最不喜欢以下哪种类型的电影？",
-    "options": [
-      {
-        "option": "A",
-        "content": "科幻大片，尤其是涉及星际旅行和硬核物理设定的"
-      },
-      {
-        "option": "B",
-        "content": "文艺爱情片，节奏缓慢、情感表达细腻的"
-      },
-      {
-        "option": "C",
-        "content": "悬疑推理片，情节复杂、需要高度集中注意力的"
-      },
-      {
-        "option": "D",
-        "content": "无厘头喜剧片，纯粹为了搞笑而缺乏逻辑的"
-      }
-    ],
-    "answer": "B",
-    "ask_time": "2025-05",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "1999"
-      },
-      {
-        "type": "sms",
-        "id": "2000"
-      },
-      {
-        "type": "sms",
-        "id": "2001"
-      },
-      {
-        "type": "sms",
-        "id": "2002"
-      },
-      {
-        "type": "sms",
-        "id": "2003"
-      },
-      {
-        "type": "sms",
-        "id": "2004"
-      }
-    ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年6月，叶明轩在与大学同学孙静的聊天中，得知了另一位大学同学刘洋最近在深圳经历了什么让他感到“哭笑不得”的事情？",
-    "answer": "刘洋在深圳租住的公寓因为楼上邻居装修，水管意外破裂，导致他家天花板漏水，把他刚买的一台新游戏主机给泡坏了。",
-    "score_points": [
-      {
-        "description": "事件发生地点是刘洋在深圳租住的公寓",
-        "score": 2
-      },
-      {
-        "description": "事件的起因是楼上邻居装修导致水管破裂漏水",
-        "score": 3
-      },
-      {
-        "description": "事件造成的具体损失是刘洋刚买的一台新游戏主机被泡坏了",
-        "score": 3
-      },
-      {
-        "description": "刘洋对此事的感受是“哭笑不得”",
-        "score": 2
-      }
-    ],
-    "ask_time": "2025-05",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2005"
-      },
-      {
-        "type": "sms",
-        "id": "2006"
-      },
-      {
-        "type": "sms",
-        "id": "2007"
-      },
-      {
-        "type": "sms",
-        "id": "2008"
-      },
-      {
-        "type": "sms",
-        "id": "2009"
-      },
-      {
-        "type": "sms",
-        "id": "2010"
-      }
-    ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年8月，叶明轩在与古币藏友赵建国的交流中，提到自己近期在古币收藏方面的一个具体品味偏好是什么？",
@@ -1876,91 +1056,7 @@
         "id": "2015"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "3月份，叶明轩在哪个在线学习平台预约了《Python数据分析进阶》课程？",
-    "options": [
-      {
-        "option": "A",
-        "content": "Coursera"
-      },
-      {
-        "option": "B",
-        "content": "edX"
-      },
-      {
-        "option": "C",
-        "content": "Udemy"
-      },
-      {
-        "option": "D",
-        "content": "学堂在线"
-      }
-    ],
-    "answer": "A",
-    "required_events": [
-      {
-        "event_id": "900",
-        "event_name": "晚间学习规划与社交联系"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "note",
-        "id": "96"
-      },
-      {
-        "type": "push",
-        "id": "2796"
-      },
-      {
-        "type": "calendar",
-        "id": "52"
-      }
-    ],
-    "ask_time": "2025-05",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在3月份的一次线上项目技术评审会议上，上级高志远提出了哪两项指导性意见？",
-    "answer": "关于公差收紧和补充振动分析。",
-    "score_points": [
-      {
-        "description": "准确答出第一项指导性意见“公差收紧”。",
-        "score": 5
-      },
-      {
-        "description": "准确答出第二项指导性意见“补充振动分析”。",
-        "score": 5
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "984",
-        "event_name": "主讲线上项目技术评审会议"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "push",
-        "id": "2800"
-      },
-      {
-        "type": "sms",
-        "id": "1967"
-      },
-      {
-        "type": "note",
-        "id": "102"
-      },
-      {
-        "type": "calendar",
-        "id": "57"
-      }
-    ],
-    "ask_time": "2025-05",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在你协助导师参与青少年科技创新大赛的评审工作时，除了你自己，该评审事件中最核心的参与人物是谁？",
@@ -1985,7 +1081,7 @@
       "2025-04-20"
     ],
     "ask_time": "2025-05",
-    "question_type": "updating",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "calendar",
@@ -2074,460 +1170,6 @@
     ]
   },
   {
-    "question": "在1月14日因病申请居家办公后，叶明轩在1月下旬（1月20日和21日）主要在哪里完成日常工作？",
-    "answer": "主要在家中书房通过远程办公方式完成日常工作。",
-    "score_points": [
-      {
-        "description": "指出1月下旬的主要工作地点：家中书房。",
-        "score": 5
-      },
-      {
-        "description": "指出工作方式：远程办公/居家办公。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "190",
-      "203",
-      "275",
-      "285",
-      "293",
-      "298"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 31
-      },
-      {
-        "type": "call",
-        "id": 47
-      },
-      {
-        "type": "photo",
-        "id": 90
-      },
-      {
-        "type": "push",
-        "id": 154
-      },
-      {
-        "type": "photo",
-        "id": 94
-      },
-      {
-        "type": "push",
-        "id": 160
-      },
-      {
-        "type": "push",
-        "id": 161
-      },
-      {
-        "type": "sms",
-        "id": 85
-      },
-      {
-        "type": "sms",
-        "id": 86
-      },
-      {
-        "type": "sms",
-        "id": 87
-      },
-      {
-        "type": "call",
-        "id": 69
-      },
-      {
-        "type": "push",
-        "id": 193
-      },
-      {
-        "type": "sms",
-        "id": 114
-      },
-      {
-        "type": "push",
-        "id": 203
-      },
-      {
-        "type": "call",
-        "id": 76
-      },
-      {
-        "type": "photo",
-        "id": 128
-      },
-      {
-        "type": "push",
-        "id": 211
-      },
-      {
-        "type": "push",
-        "id": 212
-      },
-      {
-        "type": "sms",
-        "id": 123
-      },
-      {
-        "type": "agent_chat",
-        "id": 46
-      },
-      {
-        "type": "call",
-        "id": 78
-      },
-      {
-        "type": "photo",
-        "id": 129
-      },
-      {
-        "type": "push",
-        "id": 214
-      },
-      {
-        "type": "push",
-        "id": 215
-      },
-      {
-        "type": "sms",
-        "id": 127
-      },
-      {
-        "type": "note",
-        "id": "151"
-      },
-      {
-        "type": "photo",
-        "id": "1612"
-      },
-      {
-        "type": "note",
-        "id": "152"
-      },
-      {
-        "type": "photo",
-        "id": "1616"
-      },
-      {
-        "type": "note",
-        "id": "174"
-      }
-    ],
-    "ask_time": "2025-05"
-  },
-  {
-    "question": "叶明轩在3月学习Python并将其应用于工作数据分析，其主要动机是什么？",
-    "answer": "为了工作应用（或提升工作效率/职业发展）",
-    "score_points": [
-      {
-        "description": "指出学习Python的主要动机与工作相关，例如“为了工作应用”、“提升工作效率”或“职业发展”。",
-        "score": 10
-      }
-    ],
-    "required_events_id": [
-      "819",
-      "1042",
-      "1057"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 136
-      },
-      {
-        "type": "push",
-        "id": 489
-      },
-      {
-        "type": "call",
-        "id": 273
-      },
-      {
-        "type": "push",
-        "id": 599
-      },
-      {
-        "type": "agent_chat",
-        "id": 168
-      },
-      {
-        "type": "call",
-        "id": 279
-      },
-      {
-        "type": "push",
-        "id": 614
-      },
-      {
-        "type": "note",
-        "id": "193"
-      },
-      {
-        "type": "sms",
-        "id": "2183"
-      }
-    ],
-    "ask_time": "2025-05"
-  },
-  {
-    "question": "根据叶明轩在3月初关于高端制造基金的投资决策过程，可以推断他最可能基于以下哪项原则？",
-    "options": [
-      {
-        "option": "A",
-        "content": "追涨杀跌"
-      },
-      {
-        "option": "B",
-        "content": "分散投资"
-      },
-      {
-        "option": "C",
-        "content": "投资自己熟悉的领域"
-      },
-      {
-        "option": "D",
-        "content": "听从朋友建议"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "824",
-      "860",
-      "861",
-      "863",
-      "870"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 209
-      },
-      {
-        "type": "push",
-        "id": 491
-      },
-      {
-        "type": "push",
-        "id": 508
-      },
-      {
-        "type": "sms",
-        "id": 308
-      },
-      {
-        "type": "push",
-        "id": 509
-      },
-      {
-        "type": "photo",
-        "id": 300
-      },
-      {
-        "type": "photo",
-        "id": 301
-      },
-      {
-        "type": "push",
-        "id": 511
-      },
-      {
-        "type": "push",
-        "id": 518
-      },
-      {
-        "type": "sms",
-        "id": 315
-      },
-      {
-        "type": "note",
-        "id": "205"
-      },
-      {
-        "type": "calendar",
-        "id": "136"
-      },
-      {
-        "type": "note",
-        "id": "210"
-      },
-      {
-        "type": "calendar",
-        "id": "138"
-      },
-      {
-        "type": "note",
-        "id": "212"
-      },
-      {
-        "type": "calendar",
-        "id": "140"
-      },
-      {
-        "type": "sms",
-        "id": "2190"
-      },
-      {
-        "type": "note",
-        "id": "216"
-      }
-    ],
-    "ask_time": "2025-05"
-  },
-  {
-    "question": "叶明轩在办理放弃继承权声明公证后，大约过了多少天才领取到公证书正本？",
-    "answer": "大约7天。",
-    "score_points": [
-      {
-        "description": "从6月5日提交材料办理公证，到6月12日领取公证书正本，间隔约7天。",
-        "score": 10
-      }
-    ],
-    "required_events_id": [
-      "2173",
-      "2278"
-    ],
-    "question_type": "temporal",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 351
-      },
-      {
-        "type": "call",
-        "id": 572
-      },
-      {
-        "type": "agent_chat",
-        "id": 368
-      },
-      {
-        "type": "push",
-        "id": 1230
-      }
-    ],
-    "ask_time": "2025-06"
-  },
-  {
-    "question": "叶明轩在六月初因哪项紧急工作熬夜，导致他在接下来的一周初感到疲惫并影响了学习计划？",
-    "options": [
-      {
-        "option": "A",
-        "content": "为古币课程收集作业资料"
-      },
-      {
-        "option": "B",
-        "content": "优化项目评审会后的传动部件设计"
-      },
-      {
-        "option": "C",
-        "content": "准备与理财经理会面的材料"
-      },
-      {
-        "option": "D",
-        "content": "撰写廊坊出差的技术报告"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "2145",
-      "2154",
-      "2236",
-      "2242",
-      "2243"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 345
-      },
-      {
-        "type": "push",
-        "id": 1183
-      },
-      {
-        "type": "sms",
-        "id": 771
-      },
-      {
-        "type": "sms",
-        "id": 772
-      },
-      {
-        "type": "agent_chat",
-        "id": 363
-      },
-      {
-        "type": "call",
-        "id": 583
-      },
-      {
-        "type": "photo",
-        "id": 676
-      },
-      {
-        "type": "push",
-        "id": 1216
-      },
-      {
-        "type": "push",
-        "id": "2859"
-      },
-      {
-        "type": "note",
-        "id": "247"
-      },
-      {
-        "type": "calendar",
-        "id": "163"
-      }
-    ],
-    "ask_time": "2025-06"
-  },
-  {
-    "question": "在因轻微感冒而提前休息的当晚，叶明轩暂停了哪个日常学习计划？",
-    "answer": "德语学习",
-    "score_points": [
-      {
-        "description": "暂停了德语学习计划",
-        "score": 10
-      }
-    ],
-    "required_events_id": [
-      "2271"
-    ],
-    "question_type": "mutihop",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 1226
-      },
-      {
-        "type": "sms",
-        "id": 801
-      },
-      {
-        "type": "sms",
-        "id": 802
-      },
-      {
-        "type": "push",
-        "id": "2862"
-      },
-      {
-        "type": "calendar",
-        "id": "168"
-      }
-    ],
-    "ask_time": "2025-06"
-  },
-  {
     "question": "叶明轩在6月的哪两个周六早晨，于青云桥小游园公园进行了跑步训练？其中哪一次训练因天气原因缩短了时间？",
     "answer": "6月7日和6月14日。其中6月14日的跑步训练因天气炎热缩短了时间。",
     "score_points": [
@@ -2544,7 +1186,7 @@
       "2207",
       "2301"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "call",
@@ -2590,60 +1232,6 @@
     "ask_time": "2025-06"
   },
   {
-    "question": "叶明轩在4月通过学习和实践，最终在哪个具体的编程技能领域获得了课程结业认证？",
-    "answer": "Python数据科学",
-    "score_points": [
-      {
-        "description": "具体技能领域：Python数据科学",
-        "score": 10
-      }
-    ],
-    "required_events_id": [
-      "1263",
-      "1552"
-    ],
-    "question_type": "mutihop",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "109"
-      },
-      {
-        "type": "note",
-        "id": "168"
-      },
-      {
-        "type": "push",
-        "id": "2831"
-      },
-      {
-        "type": "agent_chat",
-        "id": 249
-      },
-      {
-        "type": "push",
-        "id": 855
-      },
-      {
-        "type": "push",
-        "id": 856
-      },
-      {
-        "type": "sms",
-        "id": 550
-      },
-      {
-        "type": "note",
-        "id": "234"
-      },
-      {
-        "type": "push",
-        "id": "2854"
-      }
-    ],
-    "ask_time": "2025-06"
-  },
-  {
     "question": "叶明轩在2月7日与教练沟通后，决定调整饮食结构，其最直接的原因是什么？",
     "options": [
       {
@@ -2667,7 +1255,7 @@
     "required_events_id": [
       "527"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -2680,64 +1268,6 @@
       {
         "type": "note",
         "id": "258"
-      }
-    ],
-    "ask_time": "2025-06"
-  },
-  {
-    "question": "叶明轩在3月7日设置了一项基金定投计划，该计划首次由系统自动执行扣款是在几天之后？",
-    "answer": "3天之后。",
-    "score_points": [
-      {
-        "description": "答案必须明确时间间隔为“3天之后”或等价表述（如“3天后”）。",
-        "score": 10
-      }
-    ],
-    "required_events_id": [
-      "885",
-      "933"
-    ],
-    "question_type": "temporal",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "190"
-      },
-      {
-        "type": "sms",
-        "id": "2181"
-      },
-      {
-        "type": "agent_chat",
-        "id": 155
-      },
-      {
-        "type": "call",
-        "id": 230
-      },
-      {
-        "type": "photo",
-        "id": 324
-      },
-      {
-        "type": "push",
-        "id": 538
-      },
-      {
-        "type": "push",
-        "id": "2864"
-      },
-      {
-        "type": "calendar",
-        "id": "171"
-      },
-      {
-        "type": "note",
-        "id": "285"
-      },
-      {
-        "type": "sms",
-        "id": "2221"
       }
     ],
     "ask_time": "2025-06"
@@ -2772,7 +1302,7 @@
       "2025-05-11"
     ],
     "ask_time": "2025-06",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -2793,52 +1323,6 @@
       {
         "type": "sms",
         "id": 650
-      }
-    ]
-  },
-  {
-    "question": "叶明轩在4月初调整健康管理方案时，涉及了与哪些专业人士的沟通？",
-    "answer": "与家庭医生刘文涛和健身教练王健进行了沟通。",
-    "score_points": [
-      {
-        "description": "指出调整方案涉及与家庭医生刘文涛的沟通（行为主体与行为）。",
-        "score": 5
-      },
-      {
-        "description": "指出调整方案涉及与健身教练王健的沟通（行为主体与行为）。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "1288",
-      "1292"
-    ],
-    "required_events_date": [
-      "2025-04-04",
-      "2025-04-05"
-    ],
-    "ask_time": "2025-06",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 212
-      },
-      {
-        "type": "sms",
-        "id": 448
-      },
-      {
-        "type": "calendar",
-        "id": "156"
-      },
-      {
-        "type": "note",
-        "id": "235"
-      },
-      {
-        "type": "sms",
-        "id": "2197"
       }
     ]
   },
@@ -2869,7 +1353,7 @@
       "2025-05-12"
     ],
     "ask_time": "2025-06",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -2927,7 +1411,7 @@
       "2025-05-16"
     ],
     "ask_time": "2025-06",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -2989,7 +1473,7 @@
       "2025-03-10"
     ],
     "ask_time": "2025-06",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "calendar",
@@ -3055,7 +1539,7 @@
       "2025-04-15"
     ],
     "ask_time": "2025-06",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -3113,7 +1597,7 @@
       "2025-05-31"
     ],
     "ask_time": "2025-06",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "photo",
@@ -3159,7 +1643,7 @@
       "2025-05-30"
     ],
     "ask_time": "2025-06",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -3203,7 +1687,7 @@
       "2025-02-03"
     ],
     "ask_time": "2025-06",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -3283,7 +1767,7 @@
       "2025-04-06"
     ],
     "ask_time": "2025-06",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -3312,72 +1796,6 @@
     ]
   },
   {
-    "question": "父亲后来能向老同事展示智能家居功能，最直接的前提是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "叶明轩为父亲购买了带屏幕的智能音箱。"
-      },
-      {
-        "option": "B",
-        "content": "叶明轩耐心教会了父母使用手机APP控制灯光。"
-      },
-      {
-        "option": "C",
-        "content": "父亲在指导下成功独立使用语音指令播放相声，并对新科技产生浓厚兴趣。"
-      },
-      {
-        "option": "D",
-        "content": "智能家居改造工程优化了居住便利性与安全性。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "1789",
-      "2132"
-    ],
-    "required_events_date": [
-      "2025-05-08",
-      "2025-06-01"
-    ],
-    "ask_time": "2025-06",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "154"
-      },
-      {
-        "type": "call",
-        "id": 471
-      },
-      {
-        "type": "note",
-        "id": "231"
-      },
-      {
-        "type": "calendar",
-        "id": "167"
-      },
-      {
-        "type": "note",
-        "id": "249"
-      },
-      {
-        "type": "photo",
-        "id": "1624"
-      },
-      {
-        "type": "push",
-        "id": 1170
-      },
-      {
-        "type": "push",
-        "id": "2861"
-      }
-    ]
-  },
-  {
     "question": "我在1月25日制定春节假期学习计划后，隔了多少天，我进行了古币课程的学习？",
     "answer": "21天",
     "score_points": [
@@ -3395,7 +1813,7 @@
       "2025-02-15"
     ],
     "ask_time": "2025-06",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -3455,7 +1873,7 @@
         "id": "1914"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "6月份，叶明轩在社区垃圾分类志愿服务中，重点指导了一对年轻租户如何区分哪两类垃圾？",
@@ -3495,7 +1913,7 @@
       }
     ],
     "ask_time": "2025-06",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "6月份，叶明轩在晨跑后回家途中，从便利店购买了哪些食材用于准备早餐？",
@@ -3535,51 +1953,7 @@
       }
     ],
     "ask_time": "2025-06",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "3月份，叶明轩在家中书房系统学习古币知识时，重点学习了哪个特定品种银元的基础版别知识？",
-    "answer": "袁大头（袁世凯像银元）。",
-    "score_points": [
-      {
-        "description": "准确回答出学习的银元品种为“袁大头”或“袁世凯像银元”。",
-        "score": 10
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "832",
-        "event_name": "系统学习袁大头基础版别知识"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 286
-      },
-      {
-        "type": "photo",
-        "id": 287
-      },
-      {
-        "type": "push",
-        "id": 493
-      },
-      {
-        "type": "sms",
-        "id": 302
-      },
-      {
-        "type": "sms",
-        "id": 303
-      },
-      {
-        "type": "sms",
-        "id": 304
-      }
-    ],
-    "ask_time": "2025-06",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年4月，叶明轩在与大学同学孙静聊天时，分享了自己最近在追看的一档综艺节目，并提到了最喜欢其中哪位常驻嘉宾？",
@@ -3629,7 +2003,7 @@
         "id": "2067"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年4月，叶明轩在与发小张伟的短信聊天中，谈论到张伟的哪位同事最近发生了什么事情？这件事对叶明轩本人的生活有直接影响吗？",
@@ -3671,389 +2045,7 @@
         "id": "2082"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年4月，叶明轩在与大学同学孙静的短信聊天中，分享了自己最近在观看竞技类综艺时的一个具体品味偏好变化。以下哪一项最准确地描述了他的这一偏好变化？",
-    "options": [
-      {
-        "option": "A",
-        "content": "从偏好个人竞技类节目（如《最强大脑》）转向偏好团队协作类节目（如《奔跑吧》）"
-      },
-      {
-        "option": "B",
-        "content": "从偏好纯体力对抗类节目（如《拳击比赛》）转向偏好脑力策略与体力结合类节目（如《密室大逃脱》大神版）"
-      },
-      {
-        "option": "C",
-        "content": "从偏好室内演播厅录制的节目转向偏好户外实景拍摄的生存挑战类节目（如《荒野求生》）"
-      },
-      {
-        "option": "D",
-        "content": "从偏好明星参与的娱乐性竞技转向偏好素人参与的、规则更复杂严谨的工程制造类挑战节目（如《制造的原理》竞技版）"
-      }
-    ],
-    "answer": "D",
-    "ask_time": "2025-06",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2083"
-      },
-      {
-        "type": "sms",
-        "id": "2084"
-      },
-      {
-        "type": "sms",
-        "id": "2085"
-      },
-      {
-        "type": "sms",
-        "id": "2086"
-      },
-      {
-        "type": "sms",
-        "id": "2087"
-      }
-    ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "我学习Python编程的主要目的是什么？",
-    "answer": "主要目的是提升工作效率，将数据分析技能应用于工作项目，例如优化机械设备监测流程或构思生产线数据预测性维护方案。此外，也可能用于整理个人兴趣（如古币）数据。",
-    "score_points": [
-      {
-        "description": "答出主要目的与提升工作效率相关",
-        "score": 4
-      },
-      {
-        "description": "答出应用于工作项目（如设备监测、数据分析、预测性维护等具体方向之一）",
-        "score": 3
-      },
-      {
-        "description": "答出可能用于个人兴趣（如整理古币数据）",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "1263",
-      "1537",
-      "1559",
-      "1362"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 361
-      },
-      {
-        "type": "note",
-        "id": "168"
-      },
-      {
-        "type": "push",
-        "id": "2831"
-      },
-      {
-        "type": "calendar",
-        "id": "109"
-      },
-      {
-        "type": "note",
-        "id": "194"
-      },
-      {
-        "type": "push",
-        "id": "2841"
-      },
-      {
-        "type": "calendar",
-        "id": "127"
-      },
-      {
-        "type": "sms",
-        "id": "2185"
-      },
-      {
-        "type": "note",
-        "id": "200"
-      },
-      {
-        "type": "note",
-        "id": "201"
-      },
-      {
-        "type": "note",
-        "id": "208"
-      },
-      {
-        "type": "note",
-        "id": "209"
-      }
-    ],
-    "ask_time": "2025-06"
-  },
-  {
-    "question": "我5月份主要在哪里工作？",
-    "answer": "在位于天津市西青区海泰发展六道的公司（天津海泰精密机械有限公司）工作。",
-    "score_points": [
-      {
-        "description": "从事件描述中识别出“公司”是其主要工作场所（如工作日通勤前往公司、在工位工作、参加公司会议）",
-        "score": 6
-      },
-      {
-        "description": "能从事件或用户画像中提取或推断出公司所在的具体区域（西青区海泰发展六道）",
-        "score": 4
-      }
-    ],
-    "required_events_id": [
-      "1748",
-      "1749",
-      "1751",
-      "1752",
-      "1779",
-      "1780",
-      "1781",
-      "1783",
-      "1785",
-      "1786",
-      "1897",
-      "1898",
-      "1899",
-      "1900",
-      "1902",
-      "1903"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 959
-      },
-      {
-        "type": "push",
-        "id": 960
-      },
-      {
-        "type": "agent_chat",
-        "id": 278
-      },
-      {
-        "type": "call",
-        "id": 460
-      },
-      {
-        "type": "photo",
-        "id": 559
-      },
-      {
-        "type": "push",
-        "id": 961
-      },
-      {
-        "type": "push",
-        "id": 962
-      },
-      {
-        "type": "call",
-        "id": 461
-      },
-      {
-        "type": "push",
-        "id": 978
-      },
-      {
-        "type": "push",
-        "id": 979
-      },
-      {
-        "type": "sms",
-        "id": 635
-      },
-      {
-        "type": "sms",
-        "id": 636
-      },
-      {
-        "type": "call",
-        "id": 468
-      },
-      {
-        "type": "photo",
-        "id": 565
-      },
-      {
-        "type": "push",
-        "id": 981
-      },
-      {
-        "type": "call",
-        "id": 470
-      },
-      {
-        "type": "photo",
-        "id": 566
-      },
-      {
-        "type": "push",
-        "id": 982
-      },
-      {
-        "type": "push",
-        "id": 983
-      },
-      {
-        "type": "push",
-        "id": 984
-      },
-      {
-        "type": "sms",
-        "id": 637
-      },
-      {
-        "type": "photo",
-        "id": 596
-      },
-      {
-        "type": "photo",
-        "id": 597
-      },
-      {
-        "type": "call",
-        "id": 503
-      },
-      {
-        "type": "photo",
-        "id": 598
-      },
-      {
-        "type": "photo",
-        "id": 599
-      },
-      {
-        "type": "push",
-        "id": 1035
-      },
-      {
-        "type": "call",
-        "id": 504
-      },
-      {
-        "type": "call",
-        "id": 505
-      },
-      {
-        "type": "push",
-        "id": 1037
-      },
-      {
-        "type": "agent_chat",
-        "id": 304
-      },
-      {
-        "type": "push",
-        "id": "2822"
-      },
-      {
-        "type": "calendar",
-        "id": "91"
-      },
-      {
-        "type": "note",
-        "id": "172"
-      },
-      {
-        "type": "calendar",
-        "id": "112"
-      },
-      {
-        "type": "push",
-        "id": "2839"
-      },
-      {
-        "type": "note",
-        "id": "189"
-      },
-      {
-        "type": "push",
-        "id": "2842"
-      },
-      {
-        "type": "note",
-        "id": "197"
-      },
-      {
-        "type": "calendar",
-        "id": "130"
-      },
-      {
-        "type": "push",
-        "id": "2848"
-      },
-      {
-        "type": "note",
-        "id": "215"
-      },
-      {
-        "type": "calendar",
-        "id": "144"
-      },
-      {
-        "type": "push",
-        "id": "2849"
-      },
-      {
-        "type": "note",
-        "id": "218"
-      },
-      {
-        "type": "calendar",
-        "id": "145"
-      },
-      {
-        "type": "note",
-        "id": "219"
-      },
-      {
-        "type": "push",
-        "id": "2850"
-      },
-      {
-        "type": "photo",
-        "id": "1621"
-      },
-      {
-        "type": "note",
-        "id": "220"
-      },
-      {
-        "type": "push",
-        "id": "2851"
-      },
-      {
-        "type": "note",
-        "id": "221"
-      },
-      {
-        "type": "push",
-        "id": "2852"
-      },
-      {
-        "type": "sms",
-        "id": "2191"
-      },
-      {
-        "type": "calendar",
-        "id": "146"
-      },
-      {
-        "type": "note",
-        "id": "222"
-      }
-    ],
-    "ask_time": "2025-06"
+    "question_type": "Information Extraction"
   },
   {
     "question": "叶明轩在6月通过哪项个人财务管理任务获得了小额退税？这笔退税到账时，他刚因哪项工作成果而感到自信？",
@@ -4073,7 +2065,7 @@
       "2281",
       "2545"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -4137,7 +2129,7 @@
       "1406",
       "1408"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -4191,7 +2183,7 @@
       "1819",
       "1827"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -4215,298 +2207,6 @@
       }
     ],
     "ask_time": "2025-07"
-  },
-  {
-    "question": "叶明轩在5月启动减脂计划后，首次执行该计划中的有氧运动是在进行首次力量训练之后还是之前？",
-    "answer": "之后。",
-    "score_points": [
-      {
-        "description": "首次力量训练（游泳训练执行）发生在5月3日傍晚（16:35-18:30）。",
-        "score": 5
-      },
-      {
-        "description": "首次有氧运动（周末清晨慢跑）发生在5月4日早上（09:00-09:45）。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "1717",
-      "1723"
-    ],
-    "question_type": "temporal",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 273
-      },
-      {
-        "type": "call",
-        "id": 451
-      },
-      {
-        "type": "push",
-        "id": 943
-      },
-      {
-        "type": "push",
-        "id": 948
-      },
-      {
-        "type": "note",
-        "id": "233"
-      },
-      {
-        "type": "push",
-        "id": "2853"
-      },
-      {
-        "type": "note",
-        "id": "265"
-      },
-      {
-        "type": "calendar",
-        "id": "179"
-      }
-    ],
-    "ask_time": "2025-07"
-  },
-  {
-    "question": "7月5日当天，叶明轩为保障家中空调清洗顺利进行，做了哪些具体准备和监督工作？",
-    "answer": "为了保障空调清洗顺利进行，叶明轩在前一晚（7月4日）挪移沙发、清理杂物、擦拭空调外壳，做好了前期准备。在7月5日当天早晨，他再次协助收拾碗筷并挪动客厅家具。当清洗师傅上门后，他负责引导并监督师傅对家中两台空调进行深度清洗，关注清洗流程和细节。清洗完毕后，他检查了效果并通过手机支付了费用。",
-    "score_points": [
-      {
-        "description": "指出前期准备工作（挪移家具、清理杂物、擦拭外壳）",
-        "score": 4
-      },
-      {
-        "description": "指出当天现场准备工作（挪动客厅家具）",
-        "score": 3
-      },
-      {
-        "description": "指出监督与检查工作（引导监督、关注细节、检查效果、支付费用）",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "2611",
-      "2614",
-      "2615"
-    ],
-    "required_events_date": [
-      "2025-07-04",
-      "2025-07-05"
-    ],
-    "ask_time": "2025-07",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 692
-      },
-      {
-        "type": "photo",
-        "id": 788
-      },
-      {
-        "type": "push",
-        "id": 1395
-      },
-      {
-        "type": "push",
-        "id": 1396
-      },
-      {
-        "type": "call",
-        "id": 693
-      },
-      {
-        "type": "photo",
-        "id": 789
-      },
-      {
-        "type": "photo",
-        "id": 790
-      },
-      {
-        "type": "push",
-        "id": 1398
-      },
-      {
-        "type": "sms",
-        "id": 925
-      },
-      {
-        "type": "note",
-        "id": "319"
-      },
-      {
-        "type": "sms",
-        "id": "2315"
-      },
-      {
-        "type": "photo",
-        "id": "1635"
-      },
-      {
-        "type": "push",
-        "id": "2883"
-      }
-    ]
-  },
-  {
-    "question": "为何我在7月初对第二季度项目奖金的规划处理方式，与6月底收到奖金时的处理方式有明显不同？",
-    "options": [
-      {
-        "option": "A",
-        "content": "因为7月初才制定了年度财务规划，6月底时还没有明确的规划蓝图。"
-      },
-      {
-        "option": "B",
-        "content": "因为7月初规划时，预见到未来几个月有环青海湖自驾游等大额支出，需要保持资金的高流动性。"
-      },
-      {
-        "option": "C",
-        "content": "因为理财经理张伟在7月给出了与6月不同的投资建议，建议暂停长期定投。"
-      },
-      {
-        "option": "D",
-        "content": "因为6月底的奖金是廊坊项目的奖励，而7月初的奖金是其他项目的，性质不同。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "2503",
-      "2565",
-      "2583"
-    ],
-    "required_events_date": [
-      "2025-06-27",
-      "2025-07-01"
-    ],
-    "ask_time": "2025-07",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 400
-      },
-      {
-        "type": "call",
-        "id": 653
-      },
-      {
-        "type": "photo",
-        "id": 753
-      },
-      {
-        "type": "push",
-        "id": 1338
-      },
-      {
-        "type": "push",
-        "id": 1339
-      },
-      {
-        "type": "calendar",
-        "id": "93"
-      },
-      {
-        "type": "note",
-        "id": "144"
-      },
-      {
-        "type": "push",
-        "id": "2823"
-      },
-      {
-        "type": "sms",
-        "id": 909
-      },
-      {
-        "type": "calendar",
-        "id": 9
-      },
-      {
-        "type": "note",
-        "id": 19
-      },
-      {
-        "type": "push",
-        "id": 1378
-      },
-      {
-        "type": "push",
-        "id": 1379
-      },
-      {
-        "type": "push",
-        "id": 1380
-      },
-      {
-        "type": "sms",
-        "id": 917
-      }
-    ]
-  },
-  {
-    "question": "叶明轩在6月8日使用个人所得税APP完成年度汇算清缴时，系统显示的结果是什么？为什么会出现这个结果？",
-    "answer": "系统显示的结果是叶明轩有一笔小额退税，预计3个工作日内到账。出现这个结果是因为他在提交申请前，已核对并享受了租房和继续教育等专项附加扣除，这通常也意味着公司此前的预扣预缴是准确的，综合计算后出现了应退税额。",
-    "score_points": [
-      {
-        "description": "答出系统显示有退税这一直接结果。",
-        "score": 3
-      },
-      {
-        "description": "答出享受了租房、继续教育等专项附加扣除这一关键原因。",
-        "score": 4
-      },
-      {
-        "description": "结合退税结果，合理推断出公司预扣预缴准确这一隐含前提。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "2226"
-    ],
-    "required_events_date": [
-      "2025-06-08"
-    ],
-    "ask_time": "2025-07",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 359
-      },
-      {
-        "type": "note",
-        "id": "224"
-      },
-      {
-        "type": "push",
-        "id": 1207
-      },
-      {
-        "type": "sms",
-        "id": 791
-      },
-      {
-        "type": "push",
-        "id": "2882"
-      },
-      {
-        "type": "note",
-        "id": "318"
-      },
-      {
-        "type": "photo",
-        "id": "1634"
-      },
-      {
-        "type": "sms",
-        "id": "2314"
-      }
-    ]
   },
   {
     "question": "7月份，叶明轩在京东上购买了什么物品，并备注了什么要求？",
@@ -4554,7 +2254,7 @@
       }
     ],
     "ask_time": "2025-07",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "7月8日午休时，叶明轩在家庭群中看到谁报平安的消息？",
@@ -4590,7 +2290,7 @@
       }
     ],
     "ask_time": "2025-07",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年8月，叶明轩在与他人的短信交流中，谈论了哪位朋友最近在职业发展上遇到了什么具体的事情？",
@@ -4628,7 +2328,7 @@
         "id": "2041"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "叶明轩在3月份进行年度体检时，是在哪家医院完成的？",
@@ -4672,7 +2372,7 @@
       }
     ],
     "ask_time": "2025-07",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年4月，叶明轩在与发小张伟的聊天中，得知张伟的哪位亲戚最近发生了一件值得庆祝的事情？具体是什么事情？",
@@ -4710,579 +2410,7 @@
         "id": "2061"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年4月，叶明轩在与大学同学孙静聊天时，分享了自己目前对哪种类型的电影或剧集最感兴趣？",
-    "options": [
-      {
-        "option": "A",
-        "content": "科幻大片，尤其是关于太空探索和未来科技的。"
-      },
-      {
-        "option": "B",
-        "content": "历史纪录片，特别是讲述古代工艺和机械发明的。"
-      },
-      {
-        "option": "C",
-        "content": "悬疑推理剧，喜欢跟着剧情一起烧脑解谜。"
-      },
-      {
-        "option": "D",
-        "content": "竞技类真人秀或纪录片，比如关于工程师竞赛或手工制作的。"
-      }
-    ],
-    "answer": "D",
-    "ask_time": "2025-07",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2150"
-      },
-      {
-        "type": "sms",
-        "id": "2151"
-      },
-      {
-        "type": "sms",
-        "id": "2152"
-      },
-      {
-        "type": "sms",
-        "id": "2153"
-      },
-      {
-        "type": "sms",
-        "id": "2154"
-      }
-    ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在7月，我在所居住的社区主要承担了什么公共角色？",
-    "answer": "垃圾分类督导志愿者。",
-    "score_points": [
-      {
-        "description": "识别出与“社区”相关的公共活动。",
-        "score": 4
-      },
-      {
-        "description": "具体指出该活动是“垃圾分类”相关。",
-        "score": 3
-      },
-      {
-        "description": "明确指出角色是“志愿者”（或督导员）。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "2574",
-      "2666",
-      "2767",
-      "2864",
-      "2952"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 411
-      },
-      {
-        "type": "push",
-        "id": 1371
-      },
-      {
-        "type": "photo",
-        "id": 802
-      },
-      {
-        "type": "agent_chat",
-        "id": 433
-      },
-      {
-        "type": "call",
-        "id": 736
-      },
-      {
-        "type": "sms",
-        "id": 982
-      },
-      {
-        "type": "photo",
-        "id": 881
-      },
-      {
-        "type": "sms",
-        "id": 1050
-      },
-      {
-        "type": "sms",
-        "id": 1051
-      },
-      {
-        "type": "note",
-        "id": "137"
-      },
-      {
-        "type": "calendar",
-        "id": "87"
-      },
-      {
-        "type": "push",
-        "id": "2821"
-      }
-    ],
-    "ask_time": "2025-07"
-  },
-  {
-    "question": "根据7月初的记录，我在收到一笔项目奖金后，对该笔资金的主要处置方式是：",
-    "options": [
-      {
-        "option": "A",
-        "content": "全部用于追加长期基金定投"
-      },
-      {
-        "option": "B",
-        "content": "大部分存入货币基金和余额宝保持高流动性"
-      },
-      {
-        "option": "C",
-        "content": "立即用于购买大件商品（如电脑）"
-      },
-      {
-        "option": "D",
-        "content": "平均分配于日常消费和短期理财"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "2565",
-      "2583",
-      "2589",
-      "2621"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": 909
-      },
-      {
-        "type": "calendar",
-        "id": 9
-      },
-      {
-        "type": "note",
-        "id": 19
-      },
-      {
-        "type": "push",
-        "id": 1378
-      },
-      {
-        "type": "push",
-        "id": 1379
-      },
-      {
-        "type": "push",
-        "id": 1380
-      },
-      {
-        "type": "sms",
-        "id": 917
-      },
-      {
-        "type": "agent_chat",
-        "id": 412
-      },
-      {
-        "type": "call",
-        "id": 685
-      },
-      {
-        "type": "push",
-        "id": 1385
-      },
-      {
-        "type": "push",
-        "id": 1400
-      },
-      {
-        "type": "push",
-        "id": 1401
-      },
-      {
-        "type": "push",
-        "id": 1402
-      },
-      {
-        "type": "push",
-        "id": "2823"
-      },
-      {
-        "type": "note",
-        "id": "144"
-      },
-      {
-        "type": "calendar",
-        "id": "93"
-      }
-    ],
-    "ask_time": "2025-07"
-  },
-  {
-    "question": "在7月15日拜访钱师傅时，钱师傅对叶明轩完成的木工作品有何具体评价？",
-    "options": [
-      {
-        "option": "A",
-        "content": "仅是一件普通的练习作品，还有很大提升空间"
-      },
-      {
-        "option": "B",
-        "content": "达到了可以用于实际收纳的水平，但工艺粗糙"
-      },
-      {
-        "option": "C",
-        "content": "是一件榫接严密、工艺到位的成功作品"
-      },
-      {
-        "option": "D",
-        "content": "因设计过于简单，缺乏收藏和展示价值"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "2712",
-      "2752"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 814
-      },
-      {
-        "type": "agent_chat",
-        "id": 432
-      },
-      {
-        "type": "calendar",
-        "id": "83"
-      },
-      {
-        "type": "sms",
-        "id": "2168"
-      },
-      {
-        "type": "note",
-        "id": "134"
-      },
-      {
-        "type": "photo",
-        "id": "1613"
-      },
-      {
-        "type": "note",
-        "id": "154"
-      }
-    ],
-    "ask_time": "2025-07"
-  },
-  {
-    "question": "6月7日上午与我讨论基金表现和资产配置的人，最可能是我的什么人？",
-    "options": [
-      {
-        "option": "A",
-        "content": "发小"
-      },
-      {
-        "option": "B",
-        "content": "理财经理"
-      },
-      {
-        "option": "C",
-        "content": "同事"
-      },
-      {
-        "option": "D",
-        "content": "亲戚"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "2121",
-      "2209"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 341
-      },
-      {
-        "type": "call",
-        "id": 555
-      },
-      {
-        "type": "push",
-        "id": 1160
-      },
-      {
-        "type": "agent_chat",
-        "id": 355
-      },
-      {
-        "type": "push",
-        "id": 1197
-      },
-      {
-        "type": "sms",
-        "id": 783
-      }
-    ],
-    "ask_time": "2025-07"
-  },
-  {
-    "question": "在6月，我通常在哪一天进行社区志愿服务？",
-    "options": [
-      {
-        "option": "A",
-        "content": "周一"
-      },
-      {
-        "option": "B",
-        "content": "周二"
-      },
-      {
-        "option": "C",
-        "content": "周三"
-      },
-      {
-        "option": "D",
-        "content": "周四"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "2164",
-      "2265",
-      "2379"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 349
-      },
-      {
-        "type": "push",
-        "id": 1187
-      },
-      {
-        "type": "photo",
-        "id": 682
-      },
-      {
-        "type": "sms",
-        "id": 800
-      },
-      {
-        "type": "sms",
-        "id": 843
-      },
-      {
-        "type": "sms",
-        "id": 844
-      }
-    ],
-    "ask_time": "2025-07"
-  },
-  {
-    "question": "根据我6月开始并坚持学习德语的行为，结合我的职业，可以推断我对什么领域可能有潜在兴趣？",
-    "answer": "德国机械工程或汽车制造技术（或相关领域）。",
-    "score_points": [
-      {
-        "description": "正确识别出我在6月开始并坚持学习德语的事件（如6月8日、15日、16日、30日）。",
-        "score": 4
-      },
-      {
-        "description": "结合我的职业是“机械工程师”这一基本信息。",
-        "score": 3
-      },
-      {
-        "description": "基于常识进行推理：德国在机械工程、精密制造和汽车工业领域处于世界领先地位，学习德语常与对相关领域的技术、文化或职业发展兴趣有关。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "2234",
-      "2335",
-      "2353",
-      "2557"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 1259
-      },
-      {
-        "type": "push",
-        "id": 1265
-      },
-      {
-        "type": "agent_chat",
-        "id": 408
-      },
-      {
-        "type": "push",
-        "id": "2827"
-      },
-      {
-        "type": "note",
-        "id": "155"
-      },
-      {
-        "type": "calendar",
-        "id": "101"
-      },
-      {
-        "type": "sms",
-        "id": "2175"
-      },
-      {
-        "type": "note",
-        "id": "173"
-      },
-      {
-        "type": "calendar",
-        "id": "113"
-      }
-    ],
-    "ask_time": "2025-07"
-  },
-  {
-    "question": "我3月初开始研究并最终决定定投的基金，主要投资于哪个行业领域？",
-    "options": [
-      {
-        "option": "A",
-        "content": "消费类基金"
-      },
-      {
-        "option": "B",
-        "content": "医药类基金"
-      },
-      {
-        "option": "C",
-        "content": "高端制造类基金"
-      },
-      {
-        "option": "D",
-        "content": "科技类基金"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "824",
-      "861",
-      "870",
-      "885"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 209
-      },
-      {
-        "type": "push",
-        "id": 491
-      },
-      {
-        "type": "push",
-        "id": 509
-      },
-      {
-        "type": "push",
-        "id": 518
-      },
-      {
-        "type": "sms",
-        "id": 315
-      },
-      {
-        "type": "note",
-        "id": "190"
-      },
-      {
-        "type": "sms",
-        "id": "2181"
-      }
-    ],
-    "ask_time": "2025-07"
-  },
-  {
-    "question": "我在三月下旬（3月24日和31日）进行康复训练时，通常选择在什么时间段？",
-    "answer": "下午下班后（17:30-19:30）和上午上班前（07:40-08:58）",
-    "score_points": [
-      {
-        "description": "指出3月24日（最后一次正式康复训练）在“下午下班后”或“傍晚”进行。",
-        "score": 5
-      },
-      {
-        "description": "指出3月31日（首次独立完成完整康复训练）在“上午上班前”或“早晨”进行。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "1134",
-      "1226"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 182
-      },
-      {
-        "type": "call",
-        "id": 296
-      },
-      {
-        "type": "push",
-        "id": 661
-      },
-      {
-        "type": "agent_chat",
-        "id": 201
-      },
-      {
-        "type": "push",
-        "id": 709
-      },
-      {
-        "type": "sms",
-        "id": 431
-      },
-      {
-        "type": "calendar",
-        "id": "126"
-      },
-      {
-        "type": "note",
-        "id": "192"
-      },
-      {
-        "type": "note",
-        "id": "199"
-      },
-      {
-        "type": "calendar",
-        "id": "132"
-      }
-    ],
-    "ask_time": "2025-07"
+    "question_type": "Information Extraction"
   },
   {
     "question": "根据5月份的事件记录，王健是我的什么人？",
@@ -5310,7 +2438,7 @@
       "1718",
       "1765"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -5361,7 +2489,7 @@
       "2210",
       "2226"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -5419,7 +2547,7 @@
       "2132",
       "2248"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -5461,164 +2589,6 @@
     "ask_time": "2025-08"
   },
   {
-    "question": "在8月12日的自驾途中，车辆底盘突发异响，叶明轩判断并成功排除了故障。导致这一故障的最可能原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "车辆在沙岛景区游玩时陷入沙地，导致底盘变形。"
-      },
-      {
-        "option": "B",
-        "content": "租车时检查疏忽，未能发现底盘护板的固有缺陷。"
-      },
-      {
-        "option": "C",
-        "content": "行驶非铺装路面时剧烈颠簸，导致底盘护板固定螺丝松脱。"
-      },
-      {
-        "option": "D",
-        "content": "高原低温导致金属部件收缩，产生摩擦异响。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "3092",
-      "3123",
-      "3124"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 490
-      },
-      {
-        "type": "photo",
-        "id": 922
-      },
-      {
-        "type": "push",
-        "id": 1657
-      },
-      {
-        "type": "photo",
-        "id": 955
-      },
-      {
-        "type": "photo",
-        "id": 956
-      },
-      {
-        "type": "photo",
-        "id": 957
-      },
-      {
-        "type": "push",
-        "id": 1683
-      },
-      {
-        "type": "note",
-        "id": "92"
-      },
-      {
-        "type": "photo",
-        "id": "1596"
-      },
-      {
-        "type": "sms",
-        "id": "1899"
-      },
-      {
-        "type": "photo",
-        "id": "1628"
-      },
-      {
-        "type": "sms",
-        "id": "2212"
-      },
-      {
-        "type": "note",
-        "id": "266"
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
-    "question": "叶明轩在8月初暂停了社区志愿服务后，他如何重新规划了原本用于服务的时间，并在何时向家人说明了这一情况？",
-    "answer": "他将原服务时间重新分配用于健身和旅行准备，并在8月2日的家庭晚餐时向父母说明了此事。",
-    "score_points": [
-      {
-        "description": "回答出时间安排的直接影响是重新分配原服务时间用于健身和旅行准备",
-        "score": 5
-      },
-      {
-        "description": "回答出家庭沟通的直接影响是在8月2日的家庭晚餐时向父母说明了此事",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "2977",
-      "2991",
-      "3001"
-    ],
-    "question_type": "mutihop",
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 888
-      },
-      {
-        "type": "sms",
-        "id": 1062
-      },
-      {
-        "type": "photo",
-        "id": 894
-      },
-      {
-        "type": "sms",
-        "id": 1069
-      },
-      {
-        "type": "sms",
-        "id": 1070
-      },
-      {
-        "type": "sms",
-        "id": 1077
-      },
-      {
-        "type": "sms",
-        "id": 1078
-      },
-      {
-        "type": "calendar",
-        "id": "181"
-      },
-      {
-        "type": "call",
-        "id": "1340"
-      },
-      {
-        "type": "calendar",
-        "id": "187"
-      },
-      {
-        "type": "sms",
-        "id": "2216"
-      },
-      {
-        "type": "calendar",
-        "id": "195"
-      },
-      {
-        "type": "note",
-        "id": "287"
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
     "question": "在2月20日进行月度康复复查时，叶明轩的古币鉴定课程学习进度如何？",
     "answer": "他已经开始了课程学习，完成了第一周资料的学习并做了笔记，但尚未通过单元测验。",
     "score_points": [
@@ -5637,7 +2607,7 @@
       "708",
       "753"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -5687,160 +2657,6 @@
     "ask_time": "2025-08"
   },
   {
-    "question": "叶明轩在7月2日晚上制定奖金分配方案时，决定将奖金主体存入货币基金而非追加定投，最核心的考虑因素是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "项目奖金金额未达预期，因此降低投资额度。"
-      },
-      {
-        "option": "B",
-        "content": "理财经理张伟建议改变投资策略。"
-      },
-      {
-        "option": "C",
-        "content": "预见到未来几个月有多笔大额支出（如自驾游、母亲生日）需要支付，必须保持资金高流动性。"
-      },
-      {
-        "option": "D",
-        "content": "股市近期表现不佳，考虑避险。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "2565",
-      "2571",
-      "2583"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "93"
-      },
-      {
-        "type": "note",
-        "id": "144"
-      },
-      {
-        "type": "push",
-        "id": "2823"
-      },
-      {
-        "type": "sms",
-        "id": 909
-      },
-      {
-        "type": "sms",
-        "id": 912
-      },
-      {
-        "type": "sms",
-        "id": 913
-      },
-      {
-        "type": "sms",
-        "id": 914
-      },
-      {
-        "type": "calendar",
-        "id": 9
-      },
-      {
-        "type": "note",
-        "id": 19
-      },
-      {
-        "type": "push",
-        "id": 1378
-      },
-      {
-        "type": "push",
-        "id": 1379
-      },
-      {
-        "type": "push",
-        "id": 1380
-      },
-      {
-        "type": "sms",
-        "id": 917
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
-    "question": "叶明轩在7月4日下单购置的高性能工作站，对后续哪项个人事务的效率提升产生了最直接的影响？",
-    "options": [
-      {
-        "option": "A",
-        "content": "整理并分析健身数据。"
-      },
-      {
-        "option": "B",
-        "content": "处理自驾游行程规划。"
-      },
-      {
-        "option": "C",
-        "content": "进行大型CAD设计和仿真分析。"
-      },
-      {
-        "option": "D",
-        "content": "学习视频剪辑制作木工视频。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "2603",
-      "2672",
-      "2697"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 414
-      },
-      {
-        "type": "photo",
-        "id": 784
-      },
-      {
-        "type": "push",
-        "id": 1389
-      },
-      {
-        "type": "sms",
-        "id": 920
-      },
-      {
-        "type": "call",
-        "id": 712
-      },
-      {
-        "type": "photo",
-        "id": 811
-      },
-      {
-        "type": "push",
-        "id": 1445
-      },
-      {
-        "type": "calendar",
-        "id": "177"
-      },
-      {
-        "type": "photo",
-        "id": "1627"
-      },
-      {
-        "type": "note",
-        "id": "261"
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
     "question": "叶明轩在七月的第一个完整周内，为八月青海湖自驾游做了哪些具体的准备工作？",
     "answer": "与驴友沟通并草拟初步行程；进行财务规划并分配奖金以预留旅行资金；与驴友细化自驾行程框架；完成奖金最终配置，将一部分资金转入余额宝作为旅行备用金；预订了天津飞西宁的机票和一辆丰田普拉多租车。",
     "score_points": [
@@ -5873,7 +2689,7 @@
       "2621",
       "2694"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "sms",
@@ -6009,7 +2825,7 @@
       "2629",
       "2631"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -6093,7 +2909,7 @@
   {
     "question": "在2025年12月31日中午与叶明轩一同在四季餐厅用餐的同事周涛，其最高学历是什么？",
     "type": "question_answer",
-    "question_type": "unanswerable",
+    "question_type": "Unanswerable",
     "answer": "无法回答",
     "score_points": [],
     "required_events": [],
@@ -6102,7 +2918,7 @@
   {
     "question": "2025年2月4日，导致叶明轩需要进行腰部康复训练的最初受伤原因是什么？",
     "type": "question_answer",
-    "question_type": "unanswerable",
+    "question_type": "Unanswerable",
     "answer": "无法回答",
     "score_points": [],
     "required_events": [],
@@ -6111,7 +2927,7 @@
   {
     "question": "2025年1月15日上午10点15分，当叶明轩正在闭目养神时，他的父亲叶建国独自一人在客厅具体正在做什么？",
     "type": "question_answer",
-    "question_type": "unanswerable",
+    "question_type": "Unanswerable",
     "answer": "无法回答",
     "score_points": [],
     "required_events": [],
@@ -6147,7 +2963,7 @@
       "2025-07-24"
     ],
     "ask_time": "2025-08",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -6213,7 +3029,7 @@
       "2025-07-05"
     ],
     "ask_time": "2025-08",
-    "question_type": "temporal",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -6303,7 +3119,7 @@
       "2025-07-31"
     ],
     "ask_time": "2025-08",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "push",
@@ -6362,7 +3178,7 @@
       "2025-07-13"
     ],
     "ask_time": "2025-08",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -6420,7 +3236,7 @@
       "2025-06-16"
     ],
     "ask_time": "2025-08",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "push",
@@ -6486,7 +3302,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年7月，叶明轩在与大学同学孙静的聊天中，得知了另一位大学同学刘洋最近遇到了什么个人生活上的困扰？",
@@ -6524,7 +3340,7 @@
         "id": "1987"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年6月，叶明轩在与同事周涛讨论周末计划时，提到自己最近在挑选一款新的电动螺丝刀。他最看重这款工具的哪个核心性能指标？",
@@ -6570,7 +3386,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在8月份的一次自助洗车过程中，我具体检查了车辆的哪些项目？",
@@ -6614,7 +3430,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "2月份，叶明轩在社区卫生服务站复诊时，医生对他的腰椎恢复情况给出了什么结论和建议？",
@@ -6654,7 +3470,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在2月份，我进行康复训练的典型频率是怎样的？（例如：每周几次）",
@@ -6674,7 +3490,7 @@
       "590",
       "619"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -6751,7 +3567,7 @@
       "3011",
       "2988"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "photo",
@@ -6829,72 +3645,6 @@
     "ask_time": "2025-08"
   },
   {
-    "question": "根据我为父亲选购并设置智能音箱时的行为，可以推断我父亲在休闲时可能更喜欢什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "看竞技类综艺"
-      },
-      {
-        "option": "B",
-        "content": "打电子游戏"
-      },
-      {
-        "option": "C",
-        "content": "听戏曲"
-      },
-      {
-        "option": "D",
-        "content": "进行户外骑行"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "1355",
-      "1451"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 358
-      },
-      {
-        "type": "push",
-        "id": 767
-      },
-      {
-        "type": "push",
-        "id": 768
-      },
-      {
-        "type": "sms",
-        "id": 468
-      },
-      {
-        "type": "call",
-        "id": 379
-      },
-      {
-        "type": "calendar",
-        "id": "78"
-      },
-      {
-        "type": "note",
-        "id": "126"
-      },
-      {
-        "type": "note",
-        "id": "165"
-      },
-      {
-        "type": "sms",
-        "id": "2173"
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
     "question": "我3月进行康复训练的周平均频率大约是几次？",
     "options": [
       {
@@ -6925,7 +3675,7 @@
       "1134",
       "1226"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -7029,7 +3779,7 @@
       "3823",
       "3820"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -7079,76 +3829,6 @@
     "ask_time": "2025-09"
   },
   {
-    "question": "9月17日下午，叶明轩在医院探视期间临时选择高热量包子充饥，其核心原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "医院附近没有健康的餐饮选择。"
-      },
-      {
-        "option": "B",
-        "content": "他当时正在进行德语学习，无暇顾及饮食。"
-      },
-      {
-        "option": "C",
-        "content": "因在医院陪护导致时间紧张，压力下饮食不规律。"
-      },
-      {
-        "option": "D",
-        "content": "他计划晚上进行大运动量训练，需要提前补充能量。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "3615",
-      "3616"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 1955
-      },
-      {
-        "type": "agent_chat",
-        "id": 588
-      },
-      {
-        "type": "sms",
-        "id": 1328
-      },
-      {
-        "type": "sms",
-        "id": 1329
-      },
-      {
-        "type": "sms",
-        "id": "2195"
-      },
-      {
-        "type": "calendar",
-        "id": "153"
-      },
-      {
-        "type": "note",
-        "id": "230"
-      },
-      {
-        "type": "calendar",
-        "id": "176"
-      },
-      {
-        "type": "note",
-        "id": "260"
-      },
-      {
-        "type": "sms",
-        "id": "2209"
-      }
-    ],
-    "ask_time": "2025-09"
-  },
-  {
     "question": "叶明轩在8月份参与并通过了哪两次重要的项目评审会议，它们分别发生在哪一天？",
     "answer": "8月6日，AGV项目优化方案部门内部评审会通过；8月29日，AGV底盘优化方案设计评审会通过。",
     "score_points": [
@@ -7161,7 +3841,7 @@
       "3049",
       "3345"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -7219,7 +3899,7 @@
       "3011",
       "3037"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "photo",
@@ -7333,7 +4013,7 @@
       "2680",
       "2731"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -7387,7 +4067,7 @@
       "2754",
       "2779"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "calendar",
@@ -7444,7 +4124,7 @@
     "required_events_id": [
       "910"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -7475,7 +4155,7 @@
       "2025-08-02"
     ],
     "ask_time": "2025-09",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "calendar",
@@ -7553,7 +4233,7 @@
       "2025-08-12"
     ],
     "ask_time": "2025-09",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -7619,7 +4299,7 @@
       "2025-08-03"
     ],
     "ask_time": "2025-09",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "sms",
@@ -7669,7 +4349,7 @@
       "2025-08-20"
     ],
     "ask_time": "2025-09",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "call",
@@ -7731,7 +4411,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "叶明轩在6月8日晨练时，从哪些角度观察了公园内的凉亭和桥梁结构？",
@@ -7775,7 +4455,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年4月，叶明轩在与大学同学孙静聊天时，分享了自己近期在观看竞技类综艺节目时，对节目中哪一类挑战环节的偏好发生了改变？",
@@ -7825,89 +4505,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年9月，叶明轩在与同事周涛讨论近期上映的电影时，明确表示自己对哪一类电影题材最不感兴趣？",
-    "options": [
-      {
-        "option": "A",
-        "content": "科幻特效大片"
-      },
-      {
-        "option": "B",
-        "content": "文艺爱情片"
-      },
-      {
-        "option": "C",
-        "content": "悬疑推理片"
-      },
-      {
-        "option": "D",
-        "content": "历史战争片"
-      }
-    ],
-    "answer": "B",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "1988"
-      },
-      {
-        "type": "sms",
-        "id": "1989"
-      },
-      {
-        "type": "sms",
-        "id": "1990"
-      },
-      {
-        "type": "sms",
-        "id": "1991"
-      },
-      {
-        "type": "sms",
-        "id": "1992"
-      }
-    ],
-    "ask_time": "2025-09",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "5月14日午餐时，叶明轩向同事提及了晚上的什么活动？",
-    "answer": "垃圾分类志愿服务",
-    "score_points": [
-      {
-        "description": "答案中必须包含“垃圾分类志愿服务”。",
-        "score": 10
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "1868",
-        "event_name": "午餐与同事交流及午休"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "1897"
-      },
-      {
-        "type": "note",
-        "id": "90"
-      },
-      {
-        "type": "calendar",
-        "id": "48"
-      },
-      {
-        "type": "push",
-        "id": "2792"
-      }
-    ],
-    "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "5月份，叶明轩在社区垃圾分类志愿服务中，主要解答了居民关于哪一类垃圾投放的疑问？",
@@ -7951,39 +4549,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "4月份，叶明轩在通勤途中通过微信联系了哪位医生，目的是什么？",
-    "answer": "联系了家庭医生刘文涛，目的是预约健康咨询，了解针对BMI指标偏高的运动和饮食调整建议。",
-    "score_points": [
-      {
-        "description": "准确回答联系对象：家庭医生刘文涛。",
-        "score": 5
-      },
-      {
-        "description": "准确回答联系目的：预约健康咨询，了解针对BMI指标偏高的运动和饮食调整建议。",
-        "score": 5
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "1252",
-        "event_name": "通勤前往公司并联系家庭医生"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 412
-      },
-      {
-        "type": "sms",
-        "id": 440
-      }
-    ],
-    "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在4月份，叶明轩在水畔花园健身房执行的首次抗阻训练计划中，其核心训练内容不包括以下哪一项？",
@@ -8027,7 +4593,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "9月下旬，叶明轩在整理家庭医疗与康复财务数据时，查询了哪项具体的报销政策？",
@@ -8059,7 +4625,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "9月下旬，叶明轩在家中通过微信语音联系理财经理张伟时，具体在哪个房间？",
@@ -8107,49 +4673,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在2025年1月，我的大学同学孙静告诉我，她的一位同事最近遇到了什么与工作相关的具体困扰？",
-    "answer": "孙静的同事最近在负责一个海外智慧城市项目时，因为对当地文化习俗和建筑规范理解不够深入，导致设计方案在初期评审时被客户否决，项目进度因此被拖延了一个月。",
-    "score_points": [
-      {
-        "description": "明确指出孙静同事遇到的困扰是工作相关的，且与海外项目有关。",
-        "score": 3
-      },
-      {
-        "description": "准确说明困扰的具体原因是对当地文化习俗和建筑规范理解不足。",
-        "score": 4
-      },
-      {
-        "description": "准确说明该困扰导致的具体后果是设计方案被客户否决，项目进度拖延一个月。",
-        "score": 3
-      }
-    ],
-    "ask_time": "2025-09",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2111"
-      },
-      {
-        "type": "sms",
-        "id": "2112"
-      },
-      {
-        "type": "sms",
-        "id": "2113"
-      },
-      {
-        "type": "sms",
-        "id": "2114"
-      },
-      {
-        "type": "sms",
-        "id": "2115"
-      }
-    ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，叶明轩在与大学同学孙静的聊天中，得知了另一位大学同学刘洋最近在深圳经历了什么让他感到“哭笑不得”的事情？",
@@ -8207,136 +4731,7 @@
         "id": "2137"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在决定让父亲居家康复后，我联系了哪位医生来获取支持？",
-    "answer": "社区家庭医生刘文涛。",
-    "score_points": [
-      {
-        "description": "事件ID 3516显示，在决定居家护理后，我联系了社区家庭医生刘文涛。",
-        "score": 5
-      },
-      {
-        "description": "用户画像中明确刘文涛医生的身份是“家庭医生”。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "3516"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 1901
-      },
-      {
-        "type": "sms",
-        "id": 1284
-      },
-      {
-        "type": "sms",
-        "id": 1285
-      }
-    ],
-    "ask_time": "2025-09"
-  },
-  {
-    "question": "根据叶明轩在6月3日、8日和14日围绕“袁大头”进行的课程作业活动，可以推断他的古币收藏爱好主要反映了他对什么领域的兴趣？",
-    "options": [
-      {
-        "option": "A",
-        "content": "现代艺术"
-      },
-      {
-        "option": "B",
-        "content": "近代历史"
-      },
-      {
-        "option": "C",
-        "content": "当代科技"
-      },
-      {
-        "option": "D",
-        "content": "未来趋势"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "2148",
-      "2231",
-      "2304"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 346
-      },
-      {
-        "type": "agent_chat",
-        "id": 360
-      },
-      {
-        "type": "push",
-        "id": 1211
-      },
-      {
-        "type": "photo",
-        "id": 692
-      },
-      {
-        "type": "photo",
-        "id": 693
-      },
-      {
-        "type": "push",
-        "id": 1247
-      }
-    ],
-    "ask_time": "2025-09"
-  },
-  {
-    "question": "在青海湖旅行的星空夜谈中，基于双方的专业背景，他们探讨了未来在哪个具体产品方向进行合作？",
-    "answer": "设计一款颠覆性多功能户外工具钳。",
-    "score_points": [
-      {
-        "description": "事件ID 3155（星空下的深度夜谈与合作规划）中明确记录了双方探讨合作的具体产品方向。",
-        "score": 5
-      },
-      {
-        "description": "事件ID 3155中提及吴斌（户外装备产品经理）提出了合作构想。",
-        "score": 3
-      },
-      {
-        "description": "事件ID 3155中提及叶明轩（机械工程师）从专业角度回应了构想。",
-        "score": 2
-      }
-    ],
-    "required_events_id": [
-      "3155"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 500
-      },
-      {
-        "type": "push",
-        "id": 1706
-      },
-      {
-        "type": "sms",
-        "id": 1142
-      },
-      {
-        "type": "sms",
-        "id": 1143
-      }
-    ],
-    "ask_time": "2025-09"
+    "question_type": "Information Extraction"
   },
   {
     "question": "基于我五月份学习ROS和机械臂仿真的活动，可以推断我对哪个前沿技术领域产生了浓厚兴趣？",
@@ -8361,7 +4756,7 @@
       "1745",
       "1875"
     ],
-    "question_type": "open_domain",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -8434,7 +4829,7 @@
     "required_events_id": [
       "1361"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "call",
@@ -8456,64 +4851,6 @@
     "ask_time": "2025-10"
   },
   {
-    "question": "叶明轩在4月中旬体重出现反弹后，与教练复盘时分析出的一个主要原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "参加青少年科技创新大赛评审工作，精神紧张消耗大。"
-      },
-      {
-        "option": "B",
-        "content": "周末与发小进行烧烤聚会，摄入了烤肉和啤酒等高热量食物。"
-      },
-      {
-        "option": "C",
-        "content": "因工作项目紧急修改需求，连续熬夜加班。"
-      },
-      {
-        "option": "D",
-        "content": "陪同母亲体检，在外用餐未能严格执行饮食控制。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "1423",
-      "new_event_20250412"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 235
-      },
-      {
-        "type": "sms",
-        "id": "2193"
-      },
-      {
-        "type": "note",
-        "id": "226"
-      },
-      {
-        "type": "calendar",
-        "id": "149"
-      },
-      {
-        "type": "note",
-        "id": "262"
-      },
-      {
-        "type": "calendar",
-        "id": "178"
-      },
-      {
-        "type": "sms",
-        "id": "2210"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
     "question": "叶明轩在8月围绕青海湖旅行进行的专项体能训练，其最终成果如何？",
     "answer": "体测显示体重72.0公斤，体脂率18%，达到个人年度最佳；旅行归来后恢复评估显示体重71.5公斤，体脂率19%。",
     "score_points": [
@@ -8530,7 +4867,7 @@
       "3037",
       "3214"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -8600,7 +4937,7 @@
       "1693",
       "1789"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -8626,160 +4963,6 @@
     "ask_time": "2025-10"
   },
   {
-    "question": "叶明轩在5月14日晚间因何原因未能进行原计划的运动？",
-    "options": [
-      {
-        "option": "A",
-        "content": "需要熬夜准备新员工培训材料"
-      },
-      {
-        "option": "B",
-        "content": "根据排班进行首次社区志愿服务"
-      },
-      {
-        "option": "C",
-        "content": "调试机械臂仿真代码遇到技术问题"
-      },
-      {
-        "option": "D",
-        "content": "身体感到轻微感冒症状需要休息"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "1873",
-      "1876"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 299
-      },
-      {
-        "type": "call",
-        "id": 494
-      },
-      {
-        "type": "photo",
-        "id": 588
-      },
-      {
-        "type": "push",
-        "id": 1021
-      },
-      {
-        "type": "sms",
-        "id": 670
-      },
-      {
-        "type": "calendar",
-        "id": "180"
-      },
-      {
-        "type": "note",
-        "id": "267"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "叶明轩在5月4日晚上提前休息，最可能的原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "前一日编程学习投入过度导致晚睡"
-      },
-      {
-        "option": "B",
-        "content": "当日清晨慢跑运动强度过大"
-      },
-      {
-        "option": "C",
-        "content": "前一日首次系统力量训练后的肌肉酸痛影响睡眠"
-      },
-      {
-        "option": "D",
-        "content": "当日学习ROS基础过于投入导致用脑过度"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "1717",
-      "1720",
-      "1723",
-      "1730"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 273
-      },
-      {
-        "type": "call",
-        "id": 451
-      },
-      {
-        "type": "push",
-        "id": 943
-      },
-      {
-        "type": "photo",
-        "id": 553
-      },
-      {
-        "type": "push",
-        "id": 946
-      },
-      {
-        "type": "sms",
-        "id": 622
-      },
-      {
-        "type": "sms",
-        "id": 623
-      },
-      {
-        "type": "push",
-        "id": 948
-      },
-      {
-        "type": "sms",
-        "id": "2207"
-      },
-      {
-        "type": "note",
-        "id": "256"
-      },
-      {
-        "type": "calendar",
-        "id": "182"
-      },
-      {
-        "type": "note",
-        "id": "268"
-      },
-      {
-        "type": "calendar",
-        "id": "198"
-      },
-      {
-        "type": "note",
-        "id": "290"
-      },
-      {
-        "type": "push",
-        "id": "2878"
-      },
-      {
-        "type": "note",
-        "id": "304"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
     "question": "叶明轩在完成车辆接收与整备的当天，还是之后，才发布了首支木工视频？",
     "answer": "之后。",
     "score_points": [
@@ -8794,7 +4977,7 @@
       "2710",
       "2920"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -8852,207 +5035,6 @@
     "ask_time": "2025-10"
   },
   {
-    "question": "叶明轩在1月中旬被确诊为腰椎间盘突出，其最直接的诱因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "他在1月2日开始的健身房力量训练动作不当，长期累积了腰部损伤。"
-      },
-      {
-        "option": "B",
-        "content": "他在1月5日修理水龙头时长时间保持不当姿势，引发了急性损伤。"
-      },
-      {
-        "option": "C",
-        "content": "他在1月10日为了准备项目评审，经历了连续超过12小时的高强度久坐和精神紧张。"
-      },
-      {
-        "option": "D",
-        "content": "他在1月11日周六紧急返岗加班，与同事调试仿真参数时再次长时间劳累。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "139",
-      "141",
-      "142",
-      "143",
-      "144"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 30
-      },
-      {
-        "type": "push",
-        "id": 125
-      },
-      {
-        "type": "push",
-        "id": 127
-      },
-      {
-        "type": "call",
-        "id": 31
-      },
-      {
-        "type": "push",
-        "id": 128
-      },
-      {
-        "type": "call",
-        "id": 32
-      },
-      {
-        "type": "push",
-        "id": 129
-      },
-      {
-        "type": "push",
-        "id": 130
-      },
-      {
-        "type": "push",
-        "id": "2871"
-      },
-      {
-        "type": "sms",
-        "id": "2215"
-      },
-      {
-        "type": "note",
-        "id": "275"
-      },
-      {
-        "type": "push",
-        "id": "2877"
-      },
-      {
-        "type": "note",
-        "id": "301"
-      },
-      {
-        "type": "push",
-        "id": "2879"
-      },
-      {
-        "type": "note",
-        "id": "308"
-      },
-      {
-        "type": "push",
-        "id": "2880"
-      },
-      {
-        "type": "note",
-        "id": "309"
-      },
-      {
-        "type": "note",
-        "id": "310"
-      },
-      {
-        "type": "calendar",
-        "id": "209"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "叶明轩在3月5日最终确定的关于高端制造基金的投资方案具体是什么？这个方案是如何综合了当天及前几天不同来源的信息后形成的？",
-    "answer": "方案是：每月定投500元，为期一年。该方案的形成过程是：3月5日上午，叶明轩在理财电话会议中与理财经理张伟讨论了高端制造主题基金（事件ID：860）；随后他回到工位，基于会议笔记在专业平台深度查阅了基金资料（事件ID：861）；午休时，他与同事周涛、李想用餐，并就高端制造行业风险进行了探讨（事件ID：863）；经过全天的信息整合与思考，他在当晚20:00至20:30最终做出决定，并通过微信向理财经理确认了该定投方案（事件ID：870）。",
-    "score_points": [
-      {
-        "description": "答案必须包含投资方案的核心参数：每月500元、定投、为期一年。",
-        "score": 6
-      },
-      {
-        "description": "答案必须说明方案的决策过程整合了理财经理建议（事件ID：860）、自主研究（事件ID：861）和同事讨论（事件ID：863）等多个环节的信息，并最终在事件ID：870中确认。",
-        "score": 4
-      }
-    ],
-    "required_events_id": [
-      "860",
-      "861",
-      "863",
-      "870"
-    ],
-    "question_type": "mutihop",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "138"
-      },
-      {
-        "type": "note",
-        "id": "210"
-      },
-      {
-        "type": "push",
-        "id": 508
-      },
-      {
-        "type": "sms",
-        "id": 308
-      },
-      {
-        "type": "calendar",
-        "id": "140"
-      },
-      {
-        "type": "note",
-        "id": "212"
-      },
-      {
-        "type": "push",
-        "id": 509
-      },
-      {
-        "type": "note",
-        "id": "216"
-      },
-      {
-        "type": "photo",
-        "id": 300
-      },
-      {
-        "type": "photo",
-        "id": 301
-      },
-      {
-        "type": "push",
-        "id": 511
-      },
-      {
-        "type": "sms",
-        "id": "2190"
-      },
-      {
-        "type": "push",
-        "id": 518
-      },
-      {
-        "type": "sms",
-        "id": 315
-      },
-      {
-        "type": "note",
-        "id": "272"
-      },
-      {
-        "type": "note",
-        "id": "273"
-      },
-      {
-        "type": "sms",
-        "id": "2214"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
     "question": "叶明轩在十月中旬调整其个人健身计划的直接原因是什么？",
     "options": [
       {
@@ -9079,7 +5061,7 @@
       "3967",
       "3992"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -9148,7 +5130,7 @@
       "3986",
       "3992"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "photo",
@@ -9225,7 +5207,7 @@
       "3933",
       "3960"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -9299,7 +5281,7 @@
       "4156",
       "4177"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -9327,124 +5309,11 @@
   {
     "question": "2025年9月24日白天，叶明轩的母亲王秀兰是否离开了西青道小区？",
     "type": "question_answer",
-    "question_type": "unanswerable",
+    "question_type": "Unanswerable",
     "answer": "无法回答",
     "score_points": [],
     "required_events": [],
     "ask_time": "2025-10"
-  },
-  {
-    "question": "叶明轩在8月初暂停了每周一次的社区志愿服务，他当时在电话中向社区说明的最直接原因是什么？",
-    "answer": "因为即将进行长途旅行。",
-    "score_points": [
-      {
-        "description": "答案明确指出暂停行为的直接原因是为了准备旅行",
-        "score": 5
-      },
-      {
-        "description": "答案基于事件描述中的电话说明内容",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "2977"
-    ],
-    "required_events_date": [
-      "2025-08-01"
-    ],
-    "ask_time": "2025-10",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "181"
-      },
-      {
-        "type": "call",
-        "id": "1340"
-      },
-      {
-        "type": "photo",
-        "id": 888
-      },
-      {
-        "type": "sms",
-        "id": 1062
-      }
-    ]
-  },
-  {
-    "question": "在2025年8月25日的一次财务沟通中，个体基于哪些具体因素的评估，最终做出了婉拒对方提议的决定？",
-    "answer": "个体（叶明轩）在电话中，基于对年费、自身出差频率以及现有支付配置的理性分析，认为该高端信用卡的权益与自己的消费模式不匹配，因此婉言谢绝了理财经理张伟的推销。在当天晚些时候的家庭交流中，他的父母也赞同其理性消费观，这表明家庭环境也支持其决定。",
-    "score_points": [
-      {
-        "description": "提及出差频率低/不高作为评估因素",
-        "score": 3
-      },
-      {
-        "description": "提及消费偏好务实或认为权益与消费模式不匹配",
-        "score": 3
-      },
-      {
-        "description": "提及现有支付方式/配置满足需求，或提及家庭赞同理性消费观",
-        "score": 4
-      }
-    ],
-    "required_events_id": [
-      "3291",
-      "3294"
-    ],
-    "required_events_date": [
-      "2025-08-25"
-    ],
-    "ask_time": "2025-10",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "95"
-      },
-      {
-        "type": "call",
-        "id": 855
-      },
-      {
-        "type": "note",
-        "id": "147"
-      },
-      {
-        "type": "push",
-        "id": 1786
-      },
-      {
-        "type": "sms",
-        "id": "2171"
-      },
-      {
-        "type": "agent_chat",
-        "id": 530
-      },
-      {
-        "type": "photo",
-        "id": 1038
-      },
-      {
-        "type": "push",
-        "id": 1789
-      },
-      {
-        "type": "push",
-        "id": 1790
-      },
-      {
-        "type": "sms",
-        "id": 1199
-      },
-      {
-        "type": "sms",
-        "id": 1200
-      }
-    ]
   },
   {
     "question": "叶明轩在2025年9月3日成功设计并打印了多肉花架连接件，这直接归因于什么？",
@@ -9468,7 +5337,7 @@
       "2025-09-03"
     ],
     "ask_time": "2025-10",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -9528,7 +5397,7 @@
       "2025-09-03"
     ],
     "ask_time": "2025-10",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -9545,201 +5414,6 @@
       {
         "type": "push",
         "id": 1849
-      }
-    ]
-  },
-  {
-    "question": "叶明轩的B站账号更新计划（涉及自驾路书和Vlog脚本）从2025年9月开始被无限期搁置，其最直接的原因是什么？",
-    "answer": "父亲叶建国突发脑梗住院，导致叶明轩需要投入全部精力进行照料和工作调整，从而在2025年9月10日仪式性搁置了个人计划包括Vlog脚本。",
-    "score_points": [
-      {
-        "description": "明确说明直接原因是父亲突发脑梗入院这一事件（对应事件ID 3462）。",
-        "score": 5
-      },
-      {
-        "description": "点出该事件导致个体在2025年9月10日搁置个人计划（对应事件ID 3499），从而无法顾及B站更新涉及的Vlog脚本。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "3462",
-      "3499"
-    ],
-    "required_events_date": [
-      "2025-09-08",
-      "2025-09-10"
-    ],
-    "ask_time": "2025-10",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 561
-      },
-      {
-        "type": "call",
-        "id": 894
-      },
-      {
-        "type": "agent_chat",
-        "id": 570
-      },
-      {
-        "type": "calendar",
-        "id": "151"
-      },
-      {
-        "type": "note",
-        "id": "228"
-      },
-      {
-        "type": "push",
-        "id": 1894
-      },
-      {
-        "type": "push",
-        "id": 1895
-      },
-      {
-        "type": "sms",
-        "id": 1277
-      },
-      {
-        "type": "sms",
-        "id": 1278
-      }
-    ]
-  },
-  {
-    "question": "在2025年9月7日叶明轩的父亲突发脑梗后，除了紧急的医疗处置外，叶明轩首先处理的、与个人社交网络及工作安排直接相关的事务是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "签署静脉溶栓治疗知情同意书，承担医疗决策责任。"
-      },
-      {
-        "option": "B",
-        "content": "通知亲属父亲的病情并调整自己的工作安排。"
-      },
-      {
-        "option": "C",
-        "content": "正式向公司请假并详细交接AGV项目的工作。"
-      },
-      {
-        "option": "D",
-        "content": "前往康复科门诊咨询并学习早期康复方法。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "3462",
-      "3465"
-    ],
-    "required_events_date": [
-      "2025-09-07"
-    ],
-    "ask_time": "2025-10",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 561
-      },
-      {
-        "type": "call",
-        "id": 894
-      },
-      {
-        "type": "agent_chat",
-        "id": 562
-      },
-      {
-        "type": "call",
-        "id": 896
-      },
-      {
-        "type": "call",
-        "id": 897
-      },
-      {
-        "type": "photo",
-        "id": 1107
-      },
-      {
-        "type": "photo",
-        "id": 1108
-      },
-      {
-        "type": "push",
-        "id": 1876
-      },
-      {
-        "type": "push",
-        "id": 1877
-      },
-      {
-        "type": "sms",
-        "id": 1262
-      }
-    ]
-  },
-  {
-    "question": "叶明轩在9月9日中午向大学同学群通报父亲病情时，是基于什么背景做出的这一举动？",
-    "answer": "基于其父亲叶建国因突发脑梗住院，叶明轩本人正在医院陪护，无法参与正常社交活动，为回应此前同学的关心（如孙静）并告知近况。",
-    "score_points": [
-      {
-        "description": "准确指出行为背景是其父亲因脑梗住院及本人陪护",
-        "score": 5
-      },
-      {
-        "description": "明确行为目的是回应关心并告知近况",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "3471",
-      "3477",
-      "3486"
-    ],
-    "required_events_date": [
-      "2025-09-08",
-      "2025-09-08",
-      "2025-09-09"
-    ],
-    "ask_time": "2025-10",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 1885
-      },
-      {
-        "type": "sms",
-        "id": 1269
-      },
-      {
-        "type": "photo",
-        "id": 1111
-      },
-      {
-        "type": "push",
-        "id": 1887
-      },
-      {
-        "type": "push",
-        "id": "2891"
-      },
-      {
-        "type": "sms",
-        "id": "2326"
-      },
-      {
-        "type": "calendar",
-        "id": "229"
-      },
-      {
-        "type": "photo",
-        "id": "1641"
       }
     ]
   },
@@ -9764,7 +5438,7 @@
       "2025-09-08"
     ],
     "ask_time": "2025-10",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "push",
@@ -9810,7 +5484,7 @@
       "2025-05-25"
     ],
     "ask_time": "2025-10",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -9880,7 +5554,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，叶明轩在与同事周涛讨论近期上映的电影时，明确表示了自己对哪一类电影题材最不感兴趣？",
@@ -9926,7 +5600,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "10月8日早餐时，叶明轩向母亲展示了什么方案，并解释了哪种工作模式？",
@@ -9962,7 +5636,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "叶明轩在10月份一次通勤途中收听了关于什么主题的技术播客？",
@@ -10002,7 +5676,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "10月份，叶明轩与理财经理预约会议，主要沟通哪方面的家庭支出结构调整？",
@@ -10050,7 +5724,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "叶明轩在6月份进行了一次居家力量训练，其训练目的是什么？训练内容包括哪些动作？",
@@ -10082,7 +5756,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "2025年3月，叶明轩在与发小张伟的聊天中，得知张伟的一位同事最近遇到了什么与职业发展相关的困境？",
@@ -10128,59 +5802,7 @@
         "id": "1976"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "5月中旬，叶明轩与发小聚餐时，主要围绕哪项个人事务进行了初步讨论？",
-    "options": [
-      {
-        "option": "A",
-        "content": "环青海湖自驾游行程"
-      },
-      {
-        "option": "B",
-        "content": "Python数据可视化学习"
-      },
-      {
-        "option": "C",
-        "content": "软考复习计划"
-      },
-      {
-        "option": "D",
-        "content": "购车意向"
-      }
-    ],
-    "answer": "D",
-    "required_events": [
-      {
-        "event_id": "1919",
-        "event_name": "与发小聚餐并初步讨论购车意向"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 306
-      },
-      {
-        "type": "photo",
-        "id": 603
-      },
-      {
-        "type": "photo",
-        "id": 604
-      },
-      {
-        "type": "sms",
-        "id": 682
-      },
-      {
-        "type": "sms",
-        "id": 683
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年7月，叶明轩在与发小张伟的聊天中，得知了张伟的哪位亲戚最近发生了什么事情？",
@@ -10222,53 +5844,7 @@
         "id": "2050"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年7月，叶明轩在与同事周涛讨论周末聚餐时，明确表示了自己对哪种菜系的口味偏好？",
-    "options": [
-      {
-        "option": "A",
-        "content": "偏好清淡、注重食材原味的粤菜"
-      },
-      {
-        "option": "B",
-        "content": "偏好麻辣鲜香、口味浓重的川菜"
-      },
-      {
-        "option": "C",
-        "content": "偏好酸甜适中、讲究刀工的淮扬菜"
-      },
-      {
-        "option": "D",
-        "content": "偏好咸鲜醇厚、擅长爆炒的鲁菜"
-      }
-    ],
-    "answer": "B",
-    "ask_time": "2025-10",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2051"
-      },
-      {
-        "type": "sms",
-        "id": "2052"
-      },
-      {
-        "type": "sms",
-        "id": "2053"
-      },
-      {
-        "type": "sms",
-        "id": "2054"
-      },
-      {
-        "type": "sms",
-        "id": "2055"
-      }
-    ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "4月15日，叶明轩在居家办公期间，为个人爱好开始着手建立什么电子目录？",
@@ -10320,7 +5896,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，叶明轩在与发小张伟的聊天中，得知了张伟的哪位朋友最近发生了什么事情？",
@@ -10362,79 +5938,7 @@
         "id": "2092"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "9月份，我在家中向父亲讲解3D打印技术时，使用了哪种粘合剂将打印好的路由器支架固定在书桌侧板上？",
-    "options": [
-      {
-        "option": "A",
-        "content": "502胶水"
-      },
-      {
-        "option": "B",
-        "content": "3M VHB双面胶"
-      },
-      {
-        "option": "C",
-        "content": "AB结构胶"
-      },
-      {
-        "option": "D",
-        "content": "热熔胶"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "3444",
-        "event_name": "家庭活动：安装支架、技术讲解与闲聊"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 1101
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在9月份，叶明轩为了缓解压力，与朋友郑凯和刘洋一起玩了什么游戏？",
-    "answer": "《英雄联盟》",
-    "score_points": [
-      {
-        "description": "准确回答出游戏名称《英雄联盟》",
-        "score": 10
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "3492",
-        "event_name": "线上游戏短暂放松"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "43"
-      },
-      {
-        "type": "note",
-        "id": "84"
-      },
-      {
-        "type": "push",
-        "id": "2788"
-      },
-      {
-        "type": "photo",
-        "id": "1593"
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "叶明轩在9月份外出采购康复用品时，在哪里通过线上比价并下单购买了气垫床和助行器？",
@@ -10482,7 +5986,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "为了应对父亲的医疗开销，我在9月份的家庭财务规划中具体采取了哪两项核心措施？",
@@ -10522,57 +6026,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年1月，我在和同事周涛聊天时，表达了自己对近期上映的哪部科幻电影的看法？",
-    "options": [
-      {
-        "option": "A",
-        "content": "《流浪地球3》"
-      },
-      {
-        "option": "B",
-        "content": "《沙丘：第二部》"
-      },
-      {
-        "option": "C",
-        "content": "《异形：夺命舰》"
-      },
-      {
-        "option": "D",
-        "content": "《降临2》"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2105"
-      },
-      {
-        "type": "sms",
-        "id": "2106"
-      },
-      {
-        "type": "sms",
-        "id": "2107"
-      },
-      {
-        "type": "sms",
-        "id": "2108"
-      },
-      {
-        "type": "sms",
-        "id": "2109"
-      },
-      {
-        "type": "sms",
-        "id": "2110"
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "在2025年1月，我向朋友分享了自己最近在挑选家用路由器时，最看重哪个具体的性能指标？",
@@ -10618,7 +6072,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在8月7日的家庭早餐中，叶明轩的母亲为他准备了什么食物？",
@@ -10666,7 +6120,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在8月份青海湖旅行期间，我与朋友在民宿庭院进行深度夜谈时，他提出了一个什么样的合作构想？",
@@ -10702,59 +6156,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "8月份，叶明轩在构思阳台多肉花架设计时，产生了哪些初步想法？",
-    "options": [
-      {
-        "option": "A",
-        "content": "模块化、可折叠"
-      },
-      {
-        "option": "B",
-        "content": "模块化、易清洗"
-      },
-      {
-        "option": "C",
-        "content": "可移动、防水"
-      },
-      {
-        "option": "D",
-        "content": "多层、自动浇水"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "3219",
-        "event_name": "午餐、工作交流与个人灵感激发"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "73"
-      },
-      {
-        "type": "photo",
-        "id": "1608"
-      },
-      {
-        "type": "push",
-        "id": "2814"
-      },
-      {
-        "type": "sms",
-        "id": "2098"
-      },
-      {
-        "type": "note",
-        "id": "121"
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在2025年3月，叶明轩与大学同学赵晓峰聊天时，得知了另一位大学同学刘洋最近遇到了什么个人生活上的具体困难？",
@@ -10792,7 +6194,7 @@
         "id": "2126"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，叶明轩在与堂哥叶明远聊天时，得知叶明远最近在深圳因为什么事情而情绪低落？",
@@ -10830,134 +6232,7 @@
         "id": "2159"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在1月期间，我的健身活动发生了何种模式变化？",
-    "answer": "从定期前往健身房进行力量训练，转变为因腰部受伤后取消健身房训练，并在家进行低强度的康复训练（如拉伸、核心激活）。",
-    "score_points": [
-      {
-        "description": "指出变化前的模式：定期去健身房进行力量训练（如1月2日、1月3日）。",
-        "score": 3
-      },
-      {
-        "description": "指出变化的直接原因：腰部受伤（1月14日确诊腰椎间盘突出）。",
-        "score": 2
-      },
-      {
-        "description": "指出变化后的新行为模式：取消健身房训练（如1月6日取消原计划）。",
-        "score": 2
-      },
-      {
-        "description": "指出变化后的替代活动：在家进行低强度康复训练（如1月6日瑜伽拉伸，1月17日及之后的床上康复动作）。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "26",
-      "26",
-      "78",
-      "188",
-      "192"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": 36
-      },
-      {
-        "type": "agent_chat",
-        "id": 30
-      },
-      {
-        "type": "photo",
-        "id": 88
-      },
-      {
-        "type": "photo",
-        "id": 89
-      },
-      {
-        "type": "photo",
-        "id": 92
-      },
-      {
-        "type": "calendar",
-        "id": "86"
-      },
-      {
-        "type": "sms",
-        "id": "2169"
-      },
-      {
-        "type": "sms",
-        "id": "2170"
-      },
-      {
-        "type": "note",
-        "id": "136"
-      },
-      {
-        "type": "push",
-        "id": "2820"
-      },
-      {
-        "type": "push",
-        "id": "2830"
-      },
-      {
-        "type": "note",
-        "id": "162"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "基于叶明轩的职业背景和2月下旬的一次爱好活动，可以推断他可能擅长将哪两种能力相结合？",
-    "options": [
-      {
-        "option": "A",
-        "content": "文学创作与音乐表演"
-      },
-      {
-        "option": "B",
-        "content": "金融投资与市场分析"
-      },
-      {
-        "option": "C",
-        "content": "工程设计与动手制作"
-      },
-      {
-        "option": "D",
-        "content": "医学诊断与体育训练"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "730",
-      "743"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 120
-      },
-      {
-        "type": "photo",
-        "id": 256
-      },
-      {
-        "type": "photo",
-        "id": 257
-      },
-      {
-        "type": "photo",
-        "id": 263
-      }
-    ],
-    "ask_time": "2025-10"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "在父亲突发脑梗后，叶明轩是如何系统性地应对这场家庭健康危机的？请概括其核心步骤。",
@@ -10995,7 +6270,7 @@
       "3676",
       "3696"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -11134,7 +6409,7 @@
       "2779",
       "2571"
     ],
-    "question_type": "open_domain",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "call",
@@ -11217,7 +6492,7 @@
       "4139",
       "4197"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -11283,282 +6558,6 @@
     "ask_time": "2025-10"
   },
   {
-    "question": "在6月，我通常在一周中的哪几天进行健身活动？具体在什么时间？",
-    "answer": "通常在周二和周四的下班后（晚间），以及周六的清晨。",
-    "score_points": [
-      {
-        "description": "正确识别出每周二有力量训练（如6月3日、6月10日、6月17日）。",
-        "score": 3
-      },
-      {
-        "description": "正确识别出每周四有力量训练（如6月5日、6月12日）。",
-        "score": 3
-      },
-      {
-        "description": "正确识别出每周六清晨有户外有氧跑或变速跑（如6月7日、6月14日）。",
-        "score": 3
-      },
-      {
-        "description": "明确说明这些活动分别发生在“下班后/晚间”和“清晨”。",
-        "score": 1
-      }
-    ],
-    "required_events_id": [
-      "2151",
-      "2181",
-      "2207",
-      "2367",
-      "2301"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 347
-      },
-      {
-        "type": "sms",
-        "id": 769
-      },
-      {
-        "type": "sms",
-        "id": 770
-      },
-      {
-        "type": "agent_chat",
-        "id": 353
-      },
-      {
-        "type": "call",
-        "id": 577
-      },
-      {
-        "type": "photo",
-        "id": 664
-      },
-      {
-        "type": "photo",
-        "id": 665
-      },
-      {
-        "type": "sms",
-        "id": 781
-      },
-      {
-        "type": "sms",
-        "id": 782
-      },
-      {
-        "type": "calendar",
-        "id": "124"
-      },
-      {
-        "type": "sms",
-        "id": "2180"
-      },
-      {
-        "type": "note",
-        "id": "188"
-      },
-      {
-        "type": "photo",
-        "id": "1618"
-      },
-      {
-        "type": "calendar",
-        "id": "128"
-      },
-      {
-        "type": "note",
-        "id": "195"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "叶明轩在8月11日下午游览的‘天空之镜’景区，位于哪个省级行政区？",
-    "options": [
-      {
-        "option": "A",
-        "content": "四川省"
-      },
-      {
-        "option": "B",
-        "content": "甘肃省"
-      },
-      {
-        "option": "C",
-        "content": "青海省"
-      },
-      {
-        "option": "D",
-        "content": "西藏自治区"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "3118"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 821
-      },
-      {
-        "type": "note",
-        "id": 37
-      },
-      {
-        "type": "photo",
-        "id": 949
-      },
-      {
-        "type": "photo",
-        "id": 950
-      },
-      {
-        "type": "photo",
-        "id": 951
-      },
-      {
-        "type": "push",
-        "id": 1677
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "我在8月下旬婉拒了一项金融产品推销，这主要体现了我的哪种消费观念？",
-    "answer": "理性、稳健、注重财务自律的消费观念。",
-    "score_points": [
-      {
-        "description": "在接到高端信用卡推销电话时，详细询问了年费、取现手续费等细节。",
-        "score": 3
-      },
-      {
-        "description": "结合自身出差频率低、消费务实的实际情况进行评估。",
-        "score": 3
-      },
-      {
-        "description": "认为办理该卡不符合其理性消费和稳健储蓄的原则，因此礼貌而明确地婉拒。",
-        "score": 4
-      }
-    ],
-    "required_events_id": [
-      "3291"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 855
-      },
-      {
-        "type": "push",
-        "id": 1786
-      },
-      {
-        "type": "note",
-        "id": "147"
-      },
-      {
-        "type": "calendar",
-        "id": "95"
-      },
-      {
-        "type": "sms",
-        "id": "2171"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "我5月份启动的减脂计划，在执行过程中呈现出怎样的总体状态？",
-    "options": [
-      {
-        "option": "A",
-        "content": "严格完美执行，无任何偏离"
-      },
-      {
-        "option": "B",
-        "content": "完全放弃，没有坚持"
-      },
-      {
-        "option": "C",
-        "content": "总体按计划执行，但中途有根据情况微调和遇到小挫折"
-      },
-      {
-        "option": "D",
-        "content": "计划过于激进，完全无法执行"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "1675",
-      "1696",
-      "1760",
-      "1765",
-      "1878"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 267
-      },
-      {
-        "type": "push",
-        "id": 922
-      },
-      {
-        "type": "photo",
-        "id": 549
-      },
-      {
-        "type": "push",
-        "id": 967
-      },
-      {
-        "type": "sms",
-        "id": 628
-      },
-      {
-        "type": "sms",
-        "id": 629
-      },
-      {
-        "type": "agent_chat",
-        "id": 282
-      },
-      {
-        "type": "photo",
-        "id": 562
-      },
-      {
-        "type": "push",
-        "id": 970
-      },
-      {
-        "type": "sms",
-        "id": 674
-      },
-      {
-        "type": "sms",
-        "id": 675
-      },
-      {
-        "type": "note",
-        "id": "156"
-      },
-      {
-        "type": "calendar",
-        "id": "102"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
     "question": "叶明轩在2025年9月11日决定对父亲采取居家护理结合社区支持模式，是基于哪些主要考量？",
     "answer": "主要考量是康复机构费用高昂、需要动用家庭存款，同时结合了主治医生的专业建议和父亲的实际情况。",
     "score_points": [
@@ -11574,7 +6573,7 @@
     "required_events_id": [
       "3515"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "calendar",
@@ -11620,7 +6619,7 @@
       "4521",
       "4531"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -11642,137 +6641,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "叶明轩在11月10日与发小张伟聚餐时，提出了一个关于未来聚会的请求或决定，这个决定是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "提议将下次聚会改到一家新开的餐厅。"
-      },
-      {
-        "option": "B",
-        "content": "因需要参加大学同学的线上聚会，请求调整聚会时间。"
-      },
-      {
-        "option": "C",
-        "content": "因家庭改造进入关键期，需要取消本月底的月度聚会。"
-      },
-      {
-        "option": "D",
-        "content": "因临时有紧急出差任务，请求将聚会延期。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "4435"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 1156
-      },
-      {
-        "type": "push",
-        "id": 2371
-      },
-      {
-        "type": "calendar",
-        "id": "158"
-      },
-      {
-        "type": "note",
-        "id": "238"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
-    "question": "叶明轩在11月中旬暂停了部分指数基金定投，最核心的原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "因为他对当前市场行情持悲观态度，决定暂时观望。"
-      },
-      {
-        "option": "B",
-        "content": "因为他收到了一笔项目奖金，需要用这笔钱进行其他高风险投资。"
-      },
-      {
-        "option": "C",
-        "content": "因为他近期为家庭改造和父亲医疗有大额支出，需要优先补充家庭应急储备金。"
-      },
-      {
-        "option": "D",
-        "content": "因为他听从了同事的建议，将资金转向了更热门的科技股基金。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "4544",
-      "4664"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 1175
-      },
-      {
-        "type": "call",
-        "id": 1177
-      },
-      {
-        "type": "push",
-        "id": 2432
-      },
-      {
-        "type": "photo",
-        "id": 1438
-      },
-      {
-        "type": "push",
-        "id": 2483
-      },
-      {
-        "type": "push",
-        "id": 2484
-      },
-      {
-        "type": "sms",
-        "id": 1693
-      },
-      {
-        "type": "sms",
-        "id": 1694
-      },
-      {
-        "type": "sms",
-        "id": 1695
-      },
-      {
-        "type": "note",
-        "id": "248"
-      },
-      {
-        "type": "calendar",
-        "id": "166"
-      },
-      {
-        "type": "call",
-        "id": "1341"
-      },
-      {
-        "type": "note",
-        "id": "274"
-      },
-      {
-        "type": "calendar",
-        "id": "186"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "叶明轩在8月为准备青海湖旅行，通过哪些渠道支付了相关款项？",
     "answer": "通过余额宝转账支付租车尾款，通过信用卡在线支付民宿订金。",
     "score_points": [
@@ -11789,7 +6657,7 @@
       "2984",
       "2992"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -11863,7 +6731,7 @@
       "2977",
       "2991"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "photo",
@@ -11909,7 +6777,7 @@
       "569",
       "590"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -11959,7 +6827,7 @@
       "1671",
       "2104"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "photo",
@@ -12005,7 +6873,7 @@
       "2589",
       "2621"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -12067,7 +6935,7 @@
       "103",
       "139"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -12097,68 +6965,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "叶明轩一家在1月24日晚调整家庭预算，削减了外出就餐和娱乐购物的开支，最直接的原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "为了节省资金，为叶明轩计划的环青海湖自驾游做准备。"
-      },
-      {
-        "option": "B",
-        "content": "应对叶明轩因腰椎间盘突出而产生的物理治疗等医疗康复支出。"
-      },
-      {
-        "option": "C",
-        "content": "响应理财经理张伟在季度财务回顾中提出的增强流动性的建议。"
-      },
-      {
-        "option": "D",
-        "content": "因叶明轩转为居家办公，家庭日常水电和网络开销预计会增加。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "338",
-      "340"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 154
-      },
-      {
-        "type": "agent_chat",
-        "id": 51
-      },
-      {
-        "type": "photo",
-        "id": 155
-      },
-      {
-        "type": "push",
-        "id": 230
-      },
-      {
-        "type": "push",
-        "id": 231
-      },
-      {
-        "type": "sms",
-        "id": 141
-      },
-      {
-        "type": "sms",
-        "id": "2202"
-      },
-      {
-        "type": "note",
-        "id": "246"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "叶明轩的腰部康复训练计划在三月经历了从评估、调整到最终能独立完成的完整过程，这一过程跨越了哪些标志性事件？",
     "answer": "3月1日，教练根据评估将训练计划从“提升性训练”调整为“增肌与体能强化并行”，引入了壶铃摇摆和TRX划船等新动作；3月3日，在教练指导下开始执行新的康复训练计划，并接受了姿势指导；3月31日，首次在没有教练现场指导的情况下，独立完成了完整的康复训练，并进行了月度总结。",
     "score_points": [
@@ -12180,7 +6986,7 @@
       "new_event_20250303",
       "1226"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -12246,7 +7052,7 @@
       "3975",
       "3980"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -12296,64 +7102,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "9月，我未能按时完成工作或需要紧急调整工作安排的核心原因是什么？",
-    "answer": "父亲叶建国突发脑梗（急性缺血性脑卒中），需要立即送医和陪护。",
-    "score_points": [
-      {
-        "description": "指出直接触发因素为父亲突发急病（脑梗）",
-        "score": 5
-      },
-      {
-        "description": "说明该事件导致需要送医和陪护的紧急状态，从而打乱工作安排",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "3462",
-      "3960"
-    ],
-    "required_events_date": [
-      "2025-09-07",
-      "2025-10-10"
-    ],
-    "ask_time": "2025-11",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 561
-      },
-      {
-        "type": "call",
-        "id": 894
-      },
-      {
-        "type": "agent_chat",
-        "id": 646
-      },
-      {
-        "type": "call",
-        "id": 1014
-      },
-      {
-        "type": "calendar",
-        "id": "218"
-      },
-      {
-        "type": "call",
-        "id": "1343"
-      },
-      {
-        "type": "sms",
-        "id": "2318"
-      },
-      {
-        "type": "note",
-        "id": "323"
-      }
-    ]
-  },
-  {
     "question": "在叶明轩的弹性工作制申请正式会议获批的当天，他是否预约了社区医生为父亲进行康复检查？",
     "options": [
       {
@@ -12383,7 +7131,7 @@
       "2025-10-10"
     ],
     "ask_time": "2025-11",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "calendar",
@@ -12447,7 +7195,7 @@
       "2025-10-10"
     ],
     "ask_time": "2025-11",
-    "question_type": "question_answer",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "calendar",
@@ -12482,90 +7230,6 @@
         "id": "1640"
       }
     ]
-  },
-  {
-    "question": "叶明轩在10月份陪同母亲逛古物市场时，以低价购入并鉴定为稀少版式的铜元是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "大清铜币"
-      },
-      {
-        "option": "B",
-        "content": "民国铜元"
-      },
-      {
-        "option": "C",
-        "content": "湖北省造光绪元宝当十铜元"
-      },
-      {
-        "option": "D",
-        "content": "江南省造光绪元宝"
-      }
-    ],
-    "answer": "C",
-    "required_events": [
-      {
-        "event_id": "3975",
-        "event_name": "陪母亲逛沈阳道古物市场并慧眼识珠"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 648
-      },
-      {
-        "type": "photo",
-        "id": 1226
-      },
-      {
-        "type": "push",
-        "id": 2116
-      },
-      {
-        "type": "sms",
-        "id": 1458
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在10月份，叶明轩通过线上拍卖成功竞拍了一枚古币，具体是哪一天？",
-    "options": [
-      {
-        "option": "A",
-        "content": "10月20日"
-      },
-      {
-        "option": "B",
-        "content": "10月21日"
-      },
-      {
-        "option": "C",
-        "content": "10月22日"
-      },
-      {
-        "option": "D",
-        "content": "10月23日"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "4133",
-        "event_name": "线上古币竞拍"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 673
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
   },
   {
     "question": "2025年1月，叶明轩在与大学同学孙静的聊天中，谈论了另一位大学同学刘洋最近遇到的什么事情？这件事对叶明轩自己的生活有直接影响吗？",
@@ -12603,7 +7267,7 @@
         "id": "1930"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年2月，叶明轩在与同事周涛的聊天中，得知了他们的共同好友、大学同学刘洋最近遇到了什么个人生活上的新情况？",
@@ -12641,93 +7305,7 @@
         "id": "1940"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年4月，叶明轩在与古币藏友赵建国交流时，提到自己最近在收藏方面的一个具体品味偏好是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "偏好收藏品相完美、未经流通的“原光”银元。"
-      },
-      {
-        "option": "B",
-        "content": "偏好收藏带有特定历史事件纪念意义的纪念币。"
-      },
-      {
-        "option": "C",
-        "content": "偏好收藏带有清晰、独特戳记或墨批的近代铜元。"
-      },
-      {
-        "option": "D",
-        "content": "偏好收藏外国流入中国的早期贸易银元。"
-      }
-    ],
-    "answer": "C",
-    "ask_time": "2025-11",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "1941"
-      },
-      {
-        "type": "sms",
-        "id": "1942"
-      },
-      {
-        "type": "sms",
-        "id": "1943"
-      },
-      {
-        "type": "sms",
-        "id": "1944"
-      },
-      {
-        "type": "sms",
-        "id": "1945"
-      }
-    ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "11月份，叶明轩在陪伴母亲早餐和散步时，注意到公园的什么特点适合父亲康复？",
-    "answer": "公园步道平整适合父亲康复。",
-    "score_points": [
-      {
-        "description": "答案需明确指出公园步道平整这一特点。",
-        "score": 5
-      },
-      {
-        "description": "答案需明确指出该特点与父亲康复的关联性。",
-        "score": 5
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "4393",
-        "event_name": "陪伴母亲早餐与清晨散步"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "photo",
-        "id": "1598"
-      },
-      {
-        "type": "note",
-        "id": "97"
-      },
-      {
-        "type": "sms",
-        "id": "1923"
-      },
-      {
-        "type": "calendar",
-        "id": "53"
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "11月，叶明轩与赵教授在茶馆会面时，赵教授在赠书上题写了什么字？",
@@ -12767,7 +7345,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "11月，叶明轩与同事周涛、李想共进午餐，庆祝了什么？",
@@ -12795,49 +7373,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年1月，叶明轩在与堂哥叶明远聊天时，得知堂哥在深圳的哪位朋友最近遇到了什么具体的工作变动？",
-    "answer": "堂哥叶明远在深圳的朋友，一位做游戏策划的，最近从一家小游戏公司跳槽到了腾讯的天美工作室。",
-    "score_points": [
-      {
-        "description": "明确指出堂哥叶明远的朋友的职业是游戏策划。",
-        "score": 3
-      },
-      {
-        "description": "明确指出这位朋友是从一家小游戏公司跳槽的。",
-        "score": 3
-      },
-      {
-        "description": "明确指出这位朋友跳槽后的新公司是腾讯的天美工作室。",
-        "score": 4
-      }
-    ],
-    "ask_time": "2025-11",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2017"
-      },
-      {
-        "type": "sms",
-        "id": "2018"
-      },
-      {
-        "type": "sms",
-        "id": "2019"
-      },
-      {
-        "type": "sms",
-        "id": "2020"
-      },
-      {
-        "type": "sms",
-        "id": "2021"
-      }
-    ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，叶明轩在与同事周涛讨论近期观看的竞技类综艺时，表示自己最喜欢节目中哪一类具体的挑战环节？",
@@ -12883,7 +7419,7 @@
         "id": "2026"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年2月，叶明轩在与古币藏友赵建国教授的交流中，得知赵教授最近在学术研究上遇到了什么具体困难？",
@@ -12925,7 +7461,7 @@
         "id": "2031"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年4月，叶明轩在与同事周涛讨论个人品味偏好时，提到自己目前在选购家用无线蓝牙音箱时，最看重哪两个核心性能指标？",
@@ -12971,43 +7507,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "7月份，叶明轩在参与社区志愿服务时，因天气原因采取了哪些具体行动？",
-    "answer": "遇雨时，他协助将物品移至雨棚并提醒居民注意安全，导致衣物被淋湿。",
-    "score_points": [
-      {
-        "description": "准确描述遇雨时的具体行动：协助将物品移至雨棚",
-        "score": 5
-      },
-      {
-        "description": "准确描述遇雨时的另一具体行动：提醒居民注意安全",
-        "score": 3
-      },
-      {
-        "description": "准确描述该行动导致的结果：衣物被淋湿",
-        "score": 2
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "2574",
-        "event_name": "参与社区垃圾分类志愿服务"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 411
-      },
-      {
-        "type": "push",
-        "id": 1371
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "7月14日上午，叶明轩在工作间隙去咖啡厅休息时购买了哪种饮品？",
@@ -13043,7 +7543,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在9月份，我通过电话从主治医生处确认了关于父亲出院安排的哪两个关键信息？",
@@ -13087,7 +7587,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，我听说大学同学刘洋在深圳遇到了一件挺有意思的事，具体是什么事？",
@@ -13137,7 +7637,7 @@
         "id": "2104"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在8月份的一个工作日上午，叶明轩因故暂停了哪项长期志愿服务，并向哪位社区工作人员说明了情况？",
@@ -13169,7 +7669,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在8月份的青海湖旅行中，叶明轩和吴斌驾车时遇到车辆异响，他们是在哪个具体地点停车并进行故障排查与修复的？",
@@ -13213,7 +7713,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "8月19日早晨，叶明轩在通勤途中通过微信与健身教练确认了什么？",
@@ -13249,61 +7749,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年4月，叶明轩在与同事周涛讨论最近上映的科幻电影时，明确表示自己最看重科幻电影的哪个方面？",
-    "options": [
-      {
-        "option": "A",
-        "content": "视觉特效的震撼程度和想象力"
-      },
-      {
-        "option": "B",
-        "content": "故事情节的逻辑严谨性和自洽性"
-      },
-      {
-        "option": "C",
-        "content": "对未来科技设定的合理性和细节呈现"
-      },
-      {
-        "option": "D",
-        "content": "角色塑造的深度和情感共鸣"
-      }
-    ],
-    "answer": "C",
-    "ask_time": "2025-11",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2138"
-      },
-      {
-        "type": "sms",
-        "id": "2139"
-      },
-      {
-        "type": "sms",
-        "id": "2140"
-      },
-      {
-        "type": "sms",
-        "id": "2141"
-      },
-      {
-        "type": "sms",
-        "id": "2142"
-      },
-      {
-        "type": "sms",
-        "id": "2143"
-      },
-      {
-        "type": "sms",
-        "id": "2144"
-      }
-    ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2月份，叶明轩在社区医院复诊时，刘文涛医生为他制定了一份什么书面文件？",
@@ -13331,185 +7777,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在2月底时，叶明轩的身体恢复情况最可能处于以下哪个阶段？",
-    "options": [
-      {
-        "option": "A",
-        "content": "急性疼痛期，需要卧床休养"
-      },
-      {
-        "option": "B",
-        "content": "恢复期，疼痛受控，可以逐步复工和进行康复训练"
-      },
-      {
-        "option": "C",
-        "content": "完全康复，已恢复所有运动和工作强度"
-      },
-      {
-        "option": "D",
-        "content": "恶化期，需要进一步治疗或手术"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "792",
-      "806",
-      "810"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 130
-      },
-      {
-        "type": "call",
-        "id": 204
-      },
-      {
-        "type": "push",
-        "id": 475
-      },
-      {
-        "type": "push",
-        "id": 476
-      },
-      {
-        "type": "agent_chat",
-        "id": 133
-      },
-      {
-        "type": "push",
-        "id": 483
-      },
-      {
-        "type": "push",
-        "id": 484
-      },
-      {
-        "type": "sms",
-        "id": 292
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
-    "question": "我九月份大部分时间在从事什么类型的专业技术工作？",
-    "options": [
-      {
-        "option": "A",
-        "content": "电气工程设计"
-      },
-      {
-        "option": "B",
-        "content": "机械设计与仿真分析"
-      },
-      {
-        "option": "C",
-        "content": "软件开发与测试"
-      },
-      {
-        "option": "D",
-        "content": "建筑结构设计"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "3385",
-      "3387",
-      "3409",
-      "3413",
-      "3423",
-      "3641",
-      "3723"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 547
-      },
-      {
-        "type": "sms",
-        "id": 1238
-      },
-      {
-        "type": "photo",
-        "id": 1079
-      },
-      {
-        "type": "photo",
-        "id": 1080
-      },
-      {
-        "type": "call",
-        "id": 878
-      },
-      {
-        "type": "photo",
-        "id": 1089
-      },
-      {
-        "type": "calendar",
-        "id": 23
-      },
-      {
-        "type": "call",
-        "id": 880
-      },
-      {
-        "type": "sms",
-        "id": 1249
-      },
-      {
-        "type": "agent_chat",
-        "id": 553
-      },
-      {
-        "type": "call",
-        "id": 882
-      },
-      {
-        "type": "photo",
-        "id": 1091
-      },
-      {
-        "type": "photo",
-        "id": 1092
-      },
-      {
-        "type": "push",
-        "id": 1851
-      },
-      {
-        "type": "calendar",
-        "id": 26
-      },
-      {
-        "type": "call",
-        "id": 933
-      },
-      {
-        "type": "agent_chat",
-        "id": 607
-      },
-      {
-        "type": "call",
-        "id": 955
-      },
-      {
-        "type": "push",
-        "id": 2002
-      },
-      {
-        "type": "sms",
-        "id": 1370
-      }
-    ],
-    "ask_time": "2025-11"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在九月份，我投入时间较多的一项长期爱好是什么？",
@@ -13541,7 +7809,7 @@
       "3459",
       "3765"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "photo",
@@ -13603,153 +7871,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "根据叶明轩在九月份学习德语和Python的行为，结合他的职业背景，可以推断他学习这些新技能的主要动机最可能是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "纯粹的个人兴趣和消遣"
-      },
-      {
-        "option": "B",
-        "content": "为了移民或出国生活做准备"
-      },
-      {
-        "option": "C",
-        "content": "辅助当前的职业工作与未来发展"
-      },
-      {
-        "option": "D",
-        "content": "为了通过某项特定的资格考试"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "3445",
-      "3450",
-      "3397",
-      "3431",
-      "3748"
-    ],
-    "question_type": "multiple_choice",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 558
-      },
-      {
-        "type": "push",
-        "id": 1864
-      },
-      {
-        "type": "note",
-        "id": 44
-      },
-      {
-        "type": "agent_chat",
-        "id": 555
-      },
-      {
-        "type": "call",
-        "id": 963
-      },
-      {
-        "type": "push",
-        "id": 2011
-      },
-      {
-        "type": "note",
-        "id": "149"
-      },
-      {
-        "type": "calendar",
-        "id": "97"
-      },
-      {
-        "type": "push",
-        "id": "2824"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
-    "question": "在7月的工作日，我通常在下班后什么时间段进行健身活动？",
-    "answer": "晚上18:00至19:45之间。",
-    "score_points": [
-      {
-        "description": "识别出健身活动发生在工作日（非周末）。",
-        "score": 5
-      },
-      {
-        "description": "识别出健身活动通常发生在“下班后”或“晚上”这个时间段，并能从事件中提取具体的时间范围（如18:00-19:45）。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "2566",
-      "2567",
-      "2590",
-      "2591",
-      "2656",
-      "2657"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": 910
-      },
-      {
-        "type": "agent_chat",
-        "id": 410
-      },
-      {
-        "type": "sms",
-        "id": 943
-      },
-      {
-        "type": "calendar",
-        "id": "98"
-      },
-      {
-        "type": "push",
-        "id": "2825"
-      },
-      {
-        "type": "note",
-        "id": "150"
-      },
-      {
-        "type": "calendar",
-        "id": "99"
-      },
-      {
-        "type": "photo",
-        "id": "1611"
-      },
-      {
-        "type": "calendar",
-        "id": "110"
-      },
-      {
-        "type": "note",
-        "id": "169"
-      },
-      {
-        "type": "calendar",
-        "id": "118"
-      },
-      {
-        "type": "push",
-        "id": "2837"
-      },
-      {
-        "type": "note",
-        "id": "181"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "在8月下旬，我投入最多时间和精力的一项个人活动是什么？",
     "options": [
       {
@@ -13778,7 +7899,7 @@
       "3379",
       "3380"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "photo",
@@ -13866,7 +7987,7 @@
       "1344",
       "1345"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "push",
@@ -13941,7 +8062,7 @@
       "4402",
       "4403"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "photo",
@@ -13979,213 +8100,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "在11月的一个周末，我通常如何平衡家庭事务、个人学习与社交活动？",
-    "options": [
-      {
-        "option": "A",
-        "content": "以个人学习和技能提升为主，不安排社交活动"
-      },
-      {
-        "option": "B",
-        "content": "完全用于陪伴家人和处理家庭事务"
-      },
-      {
-        "option": "C",
-        "content": "家庭事务、个人学习/爱好与社交活动交织进行"
-      },
-      {
-        "option": "D",
-        "content": "主要用于休息和娱乐，如打游戏、看电影"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "4288",
-      "4300",
-      "4403",
-      "4408",
-      "4520",
-      "4574"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 698
-      },
-      {
-        "type": "call",
-        "id": 1124
-      },
-      {
-        "type": "push",
-        "id": 2284
-      },
-      {
-        "type": "push",
-        "id": 2285
-      },
-      {
-        "type": "push",
-        "id": 2292
-      },
-      {
-        "type": "push",
-        "id": 2293
-      },
-      {
-        "type": "sms",
-        "id": 1573
-      },
-      {
-        "type": "sms",
-        "id": 1601
-      },
-      {
-        "type": "sms",
-        "id": 1602
-      },
-      {
-        "type": "photo",
-        "id": 1364
-      },
-      {
-        "type": "sms",
-        "id": 1604
-      },
-      {
-        "type": "sms",
-        "id": 1605
-      },
-      {
-        "type": "agent_chat",
-        "id": 735
-      },
-      {
-        "type": "agent_chat",
-        "id": 741
-      },
-      {
-        "type": "photo",
-        "id": 1413
-      },
-      {
-        "type": "photo",
-        "id": 1414
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
-    "question": "根据11月2日、4日和13日这三天与ANSYS软件相关的学习与工作内容，可以推断我最可能从事哪个工程领域的分析工作？",
-    "answer": "结构力学与复合材料仿真分析领域。",
-    "score_points": [
-      {
-        "description": "11月2日（事件ID：4301）学习并使用了ANSYS ACP模块，该模块专用于复合材料（如碳纤维）的铺层设计和力学性能分析。",
-        "score": 4
-      },
-      {
-        "description": "11月4日（事件ID：4333）学习内容包括静力学分析、网格划分、边界条件设置，并计算了结构失稳的临界载荷（屈曲分析）。",
-        "score": 3
-      },
-      {
-        "description": "11月13日（事件ID：4479, 4483, 4484）实际工作项目涉及精密传动部件的设计优化，并尝试采用复合材料减重方案，面临应力集中等典型结构力学问题。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "4301",
-      "4333",
-      "4479",
-      "4483",
-      "4484"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 2294
-      },
-      {
-        "type": "agent_chat",
-        "id": 704
-      },
-      {
-        "type": "photo",
-        "id": 1347
-      },
-      {
-        "type": "agent_chat",
-        "id": 725
-      },
-      {
-        "type": "push",
-        "id": 2390
-      },
-      {
-        "type": "sms",
-        "id": 1631
-      },
-      {
-        "type": "sms",
-        "id": 1632
-      },
-      {
-        "type": "photo",
-        "id": 1388
-      },
-      {
-        "type": "photo",
-        "id": 1389
-      },
-      {
-        "type": "push",
-        "id": 2394
-      },
-      {
-        "type": "sms",
-        "id": 1636
-      },
-      {
-        "type": "sms",
-        "id": 1637
-      },
-      {
-        "type": "photo",
-        "id": 1390
-      },
-      {
-        "type": "photo",
-        "id": 1391
-      },
-      {
-        "type": "push",
-        "id": 2395
-      },
-      {
-        "type": "sms",
-        "id": 1638
-      },
-      {
-        "type": "note",
-        "id": "139"
-      },
-      {
-        "type": "calendar",
-        "id": "90"
-      },
-      {
-        "type": "note",
-        "id": "140"
-      },
-      {
-        "type": "note",
-        "id": "141"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "叶明轩在父亲住院期间，第一次尝试用新学的沟通技巧与父亲互动，是在得知父亲可能出院日期的之前还是之后？",
     "answer": "之前。",
     "score_points": [
@@ -14198,7 +8112,7 @@
       "3633",
       "3646"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -14243,7 +8157,7 @@
       "3674",
       "3681"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "push",
@@ -14300,7 +8214,7 @@
       "3575",
       "3760"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -14370,7 +8284,7 @@
       "3383",
       "3385"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "photo",
@@ -14416,102 +8330,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "叶明轩在6月15日进行了一项与家庭保障相关的个人事务研究，其直接动因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "理财经理张伟在会面中给出的资产配置建议"
-      },
-      {
-        "option": "B",
-        "content": "6月家庭日聚餐时父母主动提出的健康担忧"
-      },
-      {
-        "option": "C",
-        "content": "为父母咨询保险事宜后做出的家庭保障规划"
-      },
-      {
-        "option": "D",
-        "content": "收到第二季度项目奖金后进行的家庭开支分配"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "2328"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 375
-      },
-      {
-        "type": "sms",
-        "id": 829
-      },
-      {
-        "type": "sms",
-        "id": 830
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "叶明轩在11月10日的工作中，首次主动运用德语并获得了正反馈，这增强了他持续学习德语的信心。请问他学习德语的核心工作驱动力是什么？",
-    "answer": "为了在工作中与德国供应商进行更精准的技术沟通，提升专业能力。",
-    "score_points": [
-      {
-        "description": "答案需明确指出学习德语是为了与德国供应商进行技术沟通的工作目的。",
-        "score": 5
-      },
-      {
-        "description": "答案需提及11月10日首次主动运用德语并获得正反馈，增强了信心。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "4288",
-      "4430",
-      "4432"
-    ],
-    "question_type": "mutihop",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 698
-      },
-      {
-        "type": "call",
-        "id": 1124
-      },
-      {
-        "type": "push",
-        "id": 2284
-      },
-      {
-        "type": "push",
-        "id": 2285
-      },
-      {
-        "type": "agent_chat",
-        "id": 718
-      },
-      {
-        "type": "call",
-        "id": 1155
-      },
-      {
-        "type": "photo",
-        "id": 1371
-      },
-      {
-        "type": "push",
-        "id": 2370
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "叶明轩在11月通过哪些多轮实践与反馈循环，最终确定了为父亲设计的康复训练勺的具体方案？",
     "answer": "通过11月20日观察父亲用餐困难并记录需求，11月21日至26日期间进行多轮草图设计与CAD建模，结合3D打印原型让父亲反复试用并提供反馈，于11月29日最终确定了勺柄弧度、粗细和防滑纹理的方案。",
     "score_points": [
@@ -14536,7 +8354,7 @@
       "4682",
       "4710"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "call",
@@ -14598,43 +8416,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "在11月17日的季度财务回顾后，叶明轩暂停了指数基金定投，其直接的触发因素是什么？",
-    "answer": "直接的触发因素是11月因父亲医疗费用和家庭适老化改造产生大额支出，消耗了家庭应急金，因此在11月17日的财务回顾后，为优先补充应急储备金而暂停了非必要的基金定投。",
-    "score_points": [
-      {
-        "description": "答案需提及因父亲医疗和家庭改造产生大额支出，消耗应急金。",
-        "score": 6
-      },
-      {
-        "description": "答案需提及为补充应急储备金而暂停基金定投。",
-        "score": 4
-      }
-    ],
-    "required_events_id": [
-      "4544"
-    ],
-    "question_type": "mutihop",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 1175
-      },
-      {
-        "type": "call",
-        "id": 1177
-      },
-      {
-        "type": "push",
-        "id": 2432
-      },
-      {
-        "type": "note",
-        "id": "253"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "叶明轩在咨询木工师傅后，为家庭适老化改造最终选定了哪支施工队？",
     "answer": "安居乐改造工作室",
     "score_points": [
@@ -14647,7 +8428,7 @@
       "4300",
       "4352"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -14681,55 +8462,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "在与理财经理进行年度财务回顾后，叶明轩决定将购房计划调整为长期目标，其最直接的决策依据是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "他获得了软考中级资格证书，希望将精力转向技术深造。"
-      },
-      {
-        "option": "B",
-        "content": "基于精细化测算，他认为当前应重点积累首付，增强家庭应急储备。"
-      },
-      {
-        "option": "C",
-        "content": "父亲叶建国明确表示不希望他因购房背负过大压力。"
-      },
-      {
-        "option": "D",
-        "content": "他与发小张伟聚会后，认为租房是更灵活的选择。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "4799"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 779
-      },
-      {
-        "type": "note",
-        "id": 68
-      },
-      {
-        "type": "photo",
-        "id": 1486
-      },
-      {
-        "type": "push",
-        "id": 2551
-      },
-      {
-        "type": "sms",
-        "id": 1745
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "叶明轩在社区展示康复训练勺后，根据父亲当晚的试用反馈，计划对勺子的哪个部件进行材质优化？",
     "answer": "腕带",
     "score_points": [
@@ -14742,7 +8474,7 @@
       "4939",
       "4940"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -14784,7 +8516,7 @@
       "4882",
       "4895"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -14830,7 +8562,7 @@
       "4744",
       "4739"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "photo",
@@ -14884,7 +8616,7 @@
       "4878",
       "4886"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -14938,64 +8670,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "叶明轩在项目获得表彰后，与团队进行了两次庆祝聚餐。第二次团队聚餐是在他收到奖金到账短信的前一天还是后一天？",
-    "answer": "后一天。",
-    "score_points": [
-      {
-        "description": "明确指出第二次团队聚餐在奖金到账短信的后一天。",
-        "score": 10
-      }
-    ],
-    "required_events_id": [
-      "4886",
-      "4923"
-    ],
-    "question_type": "temporal",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 2604
-      },
-      {
-        "type": "push",
-        "id": 2605
-      },
-      {
-        "type": "sms",
-        "id": 1783
-      },
-      {
-        "type": "sms",
-        "id": 1784
-      },
-      {
-        "type": "sms",
-        "id": 1785
-      },
-      {
-        "type": "agent_chat",
-        "id": 797
-      },
-      {
-        "type": "call",
-        "id": 1272
-      },
-      {
-        "type": "calendar",
-        "id": "165"
-      },
-      {
-        "type": "sms",
-        "id": "2204"
-      },
-      {
-        "type": "photo",
-        "id": "1623"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "叶明轩在12月上旬为父亲在线购买补充医疗保险后，下一次陪同父亲进行医疗相关的活动是在几天后？",
     "answer": "3天后（12月6日）。",
     "score_points": [
@@ -15008,7 +8682,7 @@
       "4771",
       "4811"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "push",
@@ -15046,52 +8720,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "叶明轩在12月12日晚约发小吃饭倾诉，导致他产生这一情感需求和行为的最主要原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "他因工作压力导致食欲不振，想和朋友改善饮食。"
-      },
-      {
-        "option": "B",
-        "content": "他需要就新启动的复健器项目向朋友咨询市场意见。"
-      },
-      {
-        "option": "C",
-        "content": "他因晋升受挫感到失落，希望从朋友处获得理解与鼓励。"
-      },
-      {
-        "option": "D",
-        "content": "他刚完成项目复盘报告，想放松庆祝一下。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "4903",
-      "4907"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 795
-      },
-      {
-        "type": "sms",
-        "id": 1790
-      },
-      {
-        "type": "note",
-        "id": "291"
-      },
-      {
-        "type": "calendar",
-        "id": "199"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "叶明轩在4月首次执行包含抗阻和游泳的综合训练计划是在哪一天？",
     "answer": "2025年4月5日。",
     "score_points": [
@@ -15104,7 +8732,7 @@
       "1292",
       "1304"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -15157,7 +8785,7 @@
       "1412",
       "1413"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -15235,7 +8863,7 @@
       "1693",
       "1743"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -15257,47 +8885,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "叶明轩在三月下旬能够重启木工实践，其最直接的先决条件或触发因素是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "他收到了木工师傅钱建国发来的简单项目图纸，激发了他的兴趣。"
-      },
-      {
-        "option": "B",
-        "content": "他在3月20日的康复训练阶段小结后，主动咨询教练并获得专业许可，确认了身体条件允许。"
-      },
-      {
-        "option": "C",
-        "content": "他网购的木工材料已经到货，具备了动手的物质条件。"
-      },
-      {
-        "option": "D",
-        "content": "他完成了Python课程的学习，有了更多的业余时间可以分配给兴趣爱好。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "1080"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "68"
-      },
-      {
-        "type": "call",
-        "id": "1334"
-      },
-      {
-        "type": "note",
-        "id": "115"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "叶明轩在3月发现并初步鉴定了一枚稀有袁大头版别，这个发现的过程与结果分别涉及了哪两个关键事件？",
     "answer": "过程是3月9日晚，他在书房运用古币知识和放大镜检视藏品时，发现一枚袁大头银元的“圆”字写法特异，疑似“三角圆”版别，并拍照请教藏友。结果是3月11日中午，他在午餐时收到西安藏友赵建国的正式确认，该枚银元确实是存世量较少的“三角圆”版别。",
     "score_points": [
@@ -15314,7 +8901,7 @@
       "931",
       "955"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -15375,7 +8962,7 @@
       "870",
       "880"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -15463,7 +9050,7 @@
       "943",
       "968"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "push",
@@ -15580,241 +9167,11 @@
     "required_events_id": [
       "3878"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
         "id": 634
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在10月26日，叶明轩因何原因搁置了其规律运动习惯？",
-    "options": [
-      {
-        "option": "A",
-        "content": "他因参与古币线上竞拍并支付大额尾款，产生了消费压力和心理波动。"
-      },
-      {
-        "option": "B",
-        "content": "他全天投入家庭事务与项目审核，身体和精神极度疲劳，优先级发生变化。"
-      },
-      {
-        "option": "C",
-        "content": "他制定的新“微运动”计划效果不佳，导致他失去了锻炼的动力。"
-      },
-      {
-        "option": "D",
-        "content": "天气转冷且阴雨增多，不适合进行户外或前往健身房的运动。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "4195",
-      "4196",
-      "4197",
-      "4198",
-      "4199",
-      "4200",
-      "4201",
-      "4202",
-      "4203",
-      "4204",
-      "4205",
-      "4206",
-      "4207",
-      "4208"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 1088
-      },
-      {
-        "type": "push",
-        "id": 2231
-      },
-      {
-        "type": "call",
-        "id": 1089
-      },
-      {
-        "type": "photo",
-        "id": 1306
-      },
-      {
-        "type": "push",
-        "id": 2232
-      },
-      {
-        "type": "call",
-        "id": 1090
-      },
-      {
-        "type": "push",
-        "id": 2233
-      },
-      {
-        "type": "photo",
-        "id": 1307
-      },
-      {
-        "type": "push",
-        "id": 2234
-      },
-      {
-        "type": "sms",
-        "id": 1539
-      },
-      {
-        "type": "sms",
-        "id": 1540
-      },
-      {
-        "type": "sms",
-        "id": 1541
-      },
-      {
-        "type": "sms",
-        "id": 1542
-      },
-      {
-        "type": "call",
-        "id": 1091
-      },
-      {
-        "type": "agent_chat",
-        "id": 686
-      },
-      {
-        "type": "push",
-        "id": 2235
-      },
-      {
-        "type": "push",
-        "id": 2236
-      },
-      {
-        "type": "call",
-        "id": 1092
-      },
-      {
-        "type": "push",
-        "id": 2237
-      },
-      {
-        "type": "call",
-        "id": 1093
-      },
-      {
-        "type": "call",
-        "id": 1094
-      },
-      {
-        "type": "agent_chat",
-        "id": 685
-      },
-      {
-        "type": "call",
-        "id": 1095
-      },
-      {
-        "type": "push",
-        "id": 2239
-      },
-      {
-        "type": "sms",
-        "id": "2213"
-      },
-      {
-        "type": "note",
-        "id": "269"
-      },
-      {
-        "type": "sms",
-        "id": "2219"
-      },
-      {
-        "type": "note",
-        "id": "280"
-      },
-      {
-        "type": "note",
-        "id": "297"
-      },
-      {
-        "type": "calendar",
-        "id": "203"
-      },
-      {
-        "type": "note",
-        "id": "307"
-      },
-      {
-        "type": "calendar",
-        "id": "208"
-      },
-      {
-        "type": "note",
-        "id": "311"
-      },
-      {
-        "type": "push",
-        "id": "2881"
-      },
-      {
-        "type": "note",
-        "id": "312"
-      },
-      {
-        "type": "calendar",
-        "id": "211"
-      },
-      {
-        "type": "sms",
-        "id": "2227"
-      },
-      {
-        "type": "sms",
-        "id": "2228"
-      },
-      {
-        "type": "calendar",
-        "id": "212"
-      },
-      {
-        "type": "note",
-        "id": "313"
-      },
-      {
-        "type": "calendar",
-        "id": "213"
-      },
-      {
-        "type": "note",
-        "id": "314"
-      },
-      {
-        "type": "note",
-        "id": "315"
-      },
-      {
-        "type": "sms",
-        "id": "2229"
-      },
-      {
-        "type": "note",
-        "id": "316"
-      },
-      {
-        "type": "calendar",
-        "id": "214"
-      },
-      {
-        "type": "sms",
-        "id": "2230"
       }
     ],
     "ask_time": "2025-12"
@@ -15839,7 +9196,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "叶明轩的高中同学陈浩在2025年4月28日提到的“回家第二天”具体是哪一天？",
@@ -15861,7 +9218,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "叶明轩的木工师傅钱建国在2025年3月和4月总共向他推荐了几种不同的木料？",
@@ -15883,7 +9240,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "叶明轩的母亲王秀兰在2025年6月和7月短信中提到打算给儿子做的不同家乡菜分别是什么？",
@@ -15905,7 +9262,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "叶明轩的大学同学孙静在2025年9月初提到的“那家公司”具体是指深圳的哪家企业？",
@@ -15927,7 +9284,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "叶明轩的父亲叶建国在2025年7月10日短信中提到的“那天”具体指的是哪一天？",
@@ -15949,7 +9306,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "李娜（小学同学）在2025年深圳买房的具体小区名称是什么？",
@@ -15975,7 +9332,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "高中同学陈浩在2025年春节回津的高中同学聚会时，送给王磊（初中同学）的具体是什么古币？",
@@ -16009,7 +9366,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "赵晓峰（大学同学）在2025年3月电话里提到的“那个小技巧”，具体指的是解决哪个机械设计软件（具体软件名）卡顿问题的技巧？",
@@ -16035,7 +9392,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "周涛（同事）在2025年5月聊天中提到，最近哪个知名互联网公司（具体公司名）发布的重磅新闻，让编程学友徐明特别激动？",
@@ -16065,7 +9422,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "叶明轩在2025年6月向木工师傅钱建国展示的自己近期完成的榫卯作品图片，使用的是哪种木料？",
@@ -16095,7 +9452,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "叶明轩在2025年3月委托木工师傅制作的工作台，最终选用的主要木材是什么材质？",
@@ -16125,7 +9482,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "叶明轩的大学室友刘洋在2025年7月提到为了一套游戏皮肤很拼，具体是哪款游戏的哪个系列皮肤？",
@@ -16155,7 +9512,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "叶明轩2025年初为处理一个紧急技术问题而出差前往的城市，当地一家科技公司后来发布的招聘信息中，哪个岗位与他处理的问题领域直接相关？",
@@ -16185,7 +9542,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "叶明轩的健身教练王健在2025年9月某次称赞他突破极限，具体是指叶明轩在哪一天的单次训练中完成了多少标准俯卧撑？",
@@ -16215,7 +9572,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "叶明轩母亲提到2025年中秋节家庭聚会时，叶明轩负责准备的几样菜品具体是什么？",
@@ -16245,7 +9602,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "同事李想在2025年5月出差前，托叶明轩帮忙照顾的多肉植物的浇水频率是多少？",
@@ -16275,7 +9632,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "叶明轩的母亲王秀兰在2025年1月找到的那枚光绪元宝是在家里的哪个具体位置发现的？",
@@ -16309,7 +9666,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "2025年3月，叶明轩向同事周涛推荐用于学Python的在线平台具体叫什么名字？",
@@ -16339,7 +9696,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "叶明轩的父亲叶建国在2025年4月提到他原单位老厂区的重大消息，具体是在该月的哪一天正式对外公布的？",
@@ -16365,7 +9722,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "2025年5月，驴友吴斌建议叶明轩若计划西北自驾应避开哪个节假日的高峰期，以及建议具体避开该节假日的哪几天？",
@@ -16395,7 +9752,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "2025年6月，叶明轩咨询木工师傅钱建国推荐买黄花梨木料的去处，钱师傅提到的那个老市场具体位于哪个区域？",
@@ -16425,7 +9782,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "叶明轩的同事李想在2025年7月提到的健身教练推荐的蛋白粉品牌是什么？",
@@ -16455,7 +9812,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "在父亲突发疾病入院后，直到我将资金转入与理财经理共同设立的家庭医疗账户，中间间隔了多少天？",
@@ -16475,7 +9832,7 @@
       "2025-12-11"
     ],
     "ask_time": "2025-12",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -16508,64 +9865,6 @@
       {
         "type": "note",
         "id": "321"
-      }
-    ]
-  },
-  {
-    "question": "在2025年12月10日的公司项目总结暨表彰会后，叶明轩和项目团队如何庆祝所获得的荣誉？",
-    "answer": "叶明轩和项目团队在津味楼餐厅举行了庆祝聚餐，以感谢团队付出并享受美食和放松时光。",
-    "score_points": [
-      {
-        "description": "指出团队通过聚餐庆祝",
-        "score": 5
-      },
-      {
-        "description": "具体说明聚餐地点为津味楼餐厅",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "4878",
-      "4880"
-    ],
-    "required_events_date": [
-      "2025-12-10",
-      "2025-12-10"
-    ],
-    "ask_time": "2025-12",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 788
-      },
-      {
-        "type": "calendar",
-        "id": "142"
-      },
-      {
-        "type": "call",
-        "id": 1257
-      },
-      {
-        "type": "note",
-        "id": "214"
-      },
-      {
-        "type": "call",
-        "id": 1259
-      },
-      {
-        "type": "photo",
-        "id": 1497
-      },
-      {
-        "type": "push",
-        "id": 2602
-      },
-      {
-        "type": "sms",
-        "id": 1782
       }
     ]
   },
@@ -16614,7 +9913,7 @@
       "2025-11-05"
     ],
     "ask_time": "2025-12",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "push",
@@ -16789,7 +10088,7 @@
       "2025-11-10"
     ],
     "ask_time": "2025-12",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -16857,7 +10156,7 @@
       "2025-11-05"
     ],
     "ask_time": "2025-12",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -16923,7 +10222,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在10月2日，叶明轩与母亲外出采购了哪些食材？",
@@ -16951,7 +10250,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在10月2日至7日期间，叶明轩在哪一天处理了同事周涛关于传动部件设计参数确认的工作邮件？",
@@ -16995,7 +10294,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "10月份，叶明轩在家中通过手机APP为父亲预约了哪个医院的专家门诊，具体是哪个科室？",
@@ -17027,53 +10326,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年1月，叶明轩在与同事周涛的聊天中，分享了自己目前在观看竞技类综艺时，最看重节目的哪个方面或特质？",
-    "options": [
-      {
-        "option": "A",
-        "content": "参赛选手的颜值和明星效应"
-      },
-      {
-        "option": "B",
-        "content": "节目环节的戏剧冲突和情感故事"
-      },
-      {
-        "option": "C",
-        "content": "竞技过程展现的策略、逻辑与硬核技能"
-      },
-      {
-        "option": "D",
-        "content": "主持人的幽默感和现场互动"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "1931"
-      },
-      {
-        "type": "sms",
-        "id": "1932"
-      },
-      {
-        "type": "sms",
-        "id": "1933"
-      },
-      {
-        "type": "sms",
-        "id": "1934"
-      },
-      {
-        "type": "sms",
-        "id": "1935"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "12月，叶明轩与理财经理进行年度财务回顾时，双方共同确定的长期财务目标是什么？",
@@ -17125,7 +10378,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "12月9日，叶明轩参与的自动化产线满载压力测试，在下午的哪个时间点圆满结束？",
@@ -17157,47 +10410,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在12月份的公司项目总结暨表彰会上，叶明轩负责的项目获得了什么荣誉？",
-    "options": [
-      {
-        "option": "A",
-        "content": "季度优秀项目"
-      },
-      {
-        "option": "B",
-        "content": "年度明星项目"
-      },
-      {
-        "option": "C",
-        "content": "技术创新奖"
-      },
-      {
-        "option": "D",
-        "content": "最佳团队协作奖"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "4878",
-        "event_name": "会议准备与参加重要会议"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 788
-      },
-      {
-        "type": "call",
-        "id": 1257
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "叶明轩在12月份与同事午餐后制定职业提升计划时，计划未来半年要深入学习哪项技术？",
@@ -17241,75 +10454,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "12月20日，叶明轩陪同父亲在天津市人民医院进行康复评估时，医生主要评估了父亲哪个部位的功能？",
-    "answer": "手部功能",
-    "score_points": [
-      {
-        "description": "答案明确指出评估的具体功能部位为“手部”。",
-        "score": 10
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "5023",
-        "event_name": "陪同父亲进行康复评估与取药"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 1542
-      },
-      {
-        "type": "photo",
-        "id": 1543
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "12月份，叶明轩在家中组装康复训练辅具时，其弹簧机构中使用的关键弹簧是什么材质？",
-    "options": [
-      {
-        "option": "A",
-        "content": "碳钢"
-      },
-      {
-        "option": "B",
-        "content": "不锈钢"
-      },
-      {
-        "option": "C",
-        "content": "合金钢"
-      },
-      {
-        "option": "D",
-        "content": "铜合金"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "5081",
-        "event_name": "组装康复训练勺弹簧机构（核心事件3）"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 1564
-      },
-      {
-        "type": "push",
-        "id": 2722
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "2025年1月，叶明轩在与大学同学赵晓峰的聊天中，得知了另一位大学同学刘洋最近在工作上遇到了什么具体的技术难题？",
@@ -17347,53 +10492,7 @@
         "id": "1950"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年1月，叶明轩在与古币藏友赵建国的交流中，分享了自己近期在古币收藏品味上的一个具体偏好变化。根据对话，他目前更倾向于收藏哪个特定时期的中国古币？",
-    "options": [
-      {
-        "option": "A",
-        "content": "清代中晚期各省铸造的龙洋"
-      },
-      {
-        "option": "B",
-        "content": "民国时期中央造币厂铸造的孙中山像银币"
-      },
-      {
-        "option": "C",
-        "content": "清末各省试铸的机制铜元"
-      },
-      {
-        "option": "D",
-        "content": "北洋政府时期铸造的袁世凯像银币"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "1951"
-      },
-      {
-        "type": "sms",
-        "id": "1952"
-      },
-      {
-        "type": "sms",
-        "id": "1953"
-      },
-      {
-        "type": "sms",
-        "id": "1954"
-      },
-      {
-        "type": "sms",
-        "id": "1955"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，叶明轩在与大学同学孙静聊天时，得知他们共同认识的一位大学同学最近在职业发展上做出了什么重要决定？请具体说明这位同学是谁，以及他/她做出了什么决定。",
@@ -17431,7 +10530,7 @@
         "id": "1960"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，叶明轩在与同事周涛讨论近期观看的综艺节目时，明确表示了自己对某类竞技综艺中特定环节的偏好。根据对话，叶明轩最喜欢以下哪种类型的综艺节目环节？",
@@ -17477,51 +10576,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "6月份，叶明轩一家在水西公园散步时，父亲对什么结构产生了兴趣，叶明轩从力学角度进行了简要解释？",
-    "options": [
-      {
-        "option": "A",
-        "content": "凉亭的飞檐"
-      },
-      {
-        "option": "B",
-        "content": "拱桥的承重"
-      },
-      {
-        "option": "C",
-        "content": "假山的堆叠"
-      },
-      {
-        "option": "D",
-        "content": "长廊的梁柱"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "2323",
-        "event_name": "家庭日：水西公园散步与休闲"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "photo",
-        "id": "1601"
-      },
-      {
-        "type": "note",
-        "id": "103"
-      },
-      {
-        "type": "sms",
-        "id": "1968"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年5月，叶明轩在与发小张伟的聊天中，得知张伟的一位大学同学最近在事业上取得了什么具体成就？",
@@ -17567,7 +10622,7 @@
         "id": "1998"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "11月初，叶明轩在哪个地点通过微信语音联系了木工师傅钱建国，沟通了卫生间定制安装的需求？",
@@ -17615,51 +10670,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在11月份的家庭观影夜中，叶明轩提议观看的节目是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "《这！就是街舞》"
-      },
-      {
-        "option": "B",
-        "content": "《新闻联播》"
-      },
-      {
-        "option": "C",
-        "content": "《天气预报》"
-      },
-      {
-        "option": "D",
-        "content": "《动物世界》"
-      }
-    ],
-    "answer": "A",
-    "required_events": [
-      {
-        "event_id": "4417",
-        "event_name": "提议并筹备家庭观影夜"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "call",
-        "id": 1149
-      },
-      {
-        "type": "sms",
-        "id": 1610
-      },
-      {
-        "type": "sms",
-        "id": 1611
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "11月份，叶明轩在家庭适老化改造工程验收后，是如何与施工队长远程核对并完成尾款支付的？",
@@ -17699,55 +10710,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "11月份，叶明轩在哪个地点完成了为父亲投保医疗险的操作？",
-    "options": [
-      {
-        "option": "A",
-        "content": "家中书房"
-      },
-      {
-        "option": "B",
-        "content": "公司工位"
-      },
-      {
-        "option": "C",
-        "content": "健身房休息区"
-      },
-      {
-        "option": "D",
-        "content": "社会山购物广场"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "4606",
-        "event_name": "完成父亲医疗险的最终评估与在线投保"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "63"
-      },
-      {
-        "type": "note",
-        "id": "110"
-      },
-      {
-        "type": "sms",
-        "id": "1993"
-      },
-      {
-        "type": "push",
-        "id": "2805"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "7月21日，叶明轩在驾车通勤上班途中收听了什么内容？",
@@ -17795,49 +10758,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年10月，叶明轩在与理财经理张伟的短信交流中，透露了自己对哪种类型的基金产品当前持有什么样的具体看法？",
-    "answer": "C",
-    "options": [
-      {
-        "option": "A",
-        "content": "对新能源主题类基金持乐观态度，认为其是长期布局的好时机。"
-      },
-      {
-        "option": "B",
-        "content": "对医药健康主题类基金持积极看法，认为其防御性较强。"
-      },
-      {
-        "option": "C",
-        "content": "对消费主题类基金持谨慎观望态度，认为其估值偏高，风险收益比不理想。"
-      },
-      {
-        "option": "D",
-        "content": "对科技成长类基金持否定态度，认为其波动太大，不适合自己。"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2042"
-      },
-      {
-        "type": "sms",
-        "id": "2043"
-      },
-      {
-        "type": "sms",
-        "id": "2044"
-      },
-      {
-        "type": "sms",
-        "id": "2045"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "4月份，叶明轩与同事周涛在食堂午餐时，讨论了什么具体的户外活动计划？",
@@ -17869,7 +10790,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "4月份，叶明轩在线上咨询家庭医生后，医生针对其体检报告中的某项指标风险，建议他增加何种运动？",
@@ -17917,97 +10838,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年5月，叶明轩在与大学同学孙静聊天时，分享了自己最近在选购家用智能音箱时，最看重哪个方面的功能或特性？",
-    "options": [
-      {
-        "option": "A",
-        "content": "音质效果和品牌知名度"
-      },
-      {
-        "option": "B",
-        "content": "与家中现有小米生态链设备的兼容性和联动能力"
-      },
-      {
-        "option": "C",
-        "content": "内置AI助手的反应速度和知识库丰富程度"
-      },
-      {
-        "option": "D",
-        "content": "外观设计和摆放的便捷性"
-      }
-    ],
-    "answer": "B",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2093"
-      },
-      {
-        "type": "sms",
-        "id": "2094"
-      },
-      {
-        "type": "sms",
-        "id": "2095"
-      },
-      {
-        "type": "sms",
-        "id": "2096"
-      },
-      {
-        "type": "sms",
-        "id": "2097"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "叶明轩在8月份的一次古玩市场之行中，购买了什么物品作为旅行纪念品？",
-    "options": [
-      {
-        "option": "A",
-        "content": "一枚“民国开国纪念币”铜元"
-      },
-      {
-        "option": "B",
-        "content": "一枚“大清铜币”"
-      },
-      {
-        "option": "C",
-        "content": "一个古钱币收藏册"
-      },
-      {
-        "option": "D",
-        "content": "一枚“光绪元宝”"
-      }
-    ],
-    "answer": "A",
-    "required_events": [
-      {
-        "event_id": "2996",
-        "event_name": "逛古玩市场并返回家中"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 473
-      },
-      {
-        "type": "push",
-        "id": 1605
-      },
-      {
-        "type": "push",
-        "id": 1606
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "在2025年5月，叶明轩在与理财经理张伟沟通时，明确表示了自己对哪种类型的基金产品现阶段完全不考虑投资？",
@@ -18049,7 +10880,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，叶明轩在与发小张伟的聊天中，提到了另一位小学同学李娜最近遇到了什么事情？这件事对叶明轩本人的生活有直接影响吗？",
@@ -18087,276 +10918,7 @@
         "id": "2149"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在1月2日至4日期间，叶明轩处理个人财务相关事务（如投资回顾、调整操作）的常用方式是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "前往银行网点办理"
-      },
-      {
-        "option": "B",
-        "content": "通过电话联系客服"
-      },
-      {
-        "option": "C",
-        "content": "通过线上方式（如APP、视频）联系和操作"
-      },
-      {
-        "option": "D",
-        "content": "委托家人代办"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "18",
-      "39",
-      "48"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 4
-      },
-      {
-        "type": "push",
-        "id": 71
-      },
-      {
-        "type": "sms",
-        "id": 6
-      },
-      {
-        "type": "sms",
-        "id": 7
-      },
-      {
-        "type": "note",
-        "id": "80"
-      },
-      {
-        "type": "sms",
-        "id": "1891"
-      },
-      {
-        "type": "push",
-        "id": 81
-      },
-      {
-        "type": "push",
-        "id": 82
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在2月8日和9日这两天，叶明轩的周末活动主要围绕哪些方面展开？",
-    "options": [
-      {
-        "option": "A",
-        "content": "远程工作会议和外出应酬"
-      },
-      {
-        "option": "B",
-        "content": "家庭活动、兴趣养护和康复训练"
-      },
-      {
-        "option": "C",
-        "content": "长途旅行和户外探险"
-      },
-      {
-        "option": "D",
-        "content": "全天卧床休息和线上游戏"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "540",
-      "544",
-      "549",
-      "552"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 85
-      },
-      {
-        "type": "call",
-        "id": 129
-      },
-      {
-        "type": "photo",
-        "id": 200
-      },
-      {
-        "type": "push",
-        "id": 345
-      },
-      {
-        "type": "agent_chat",
-        "id": 87
-      },
-      {
-        "type": "push",
-        "id": 349
-      },
-      {
-        "type": "photo",
-        "id": 204
-      },
-      {
-        "type": "push",
-        "id": 351
-      },
-      {
-        "type": "sms",
-        "id": 206
-      },
-      {
-        "type": "calendar",
-        "id": "82"
-      },
-      {
-        "type": "photo",
-        "id": "1610"
-      },
-      {
-        "type": "note",
-        "id": "133"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在10月13日团队周会上宣布的工作模式调整中，我每周的哪几天需要到公司坐班？",
-    "answer": "周二和周四",
-    "score_points": [
-      {
-        "description": "识别出10月13日团队周会（事件ID：4003）中宣布了弹性工作制申请获批",
-        "score": 3
-      },
-      {
-        "description": "从事件ID：4003的描述中提取出获批的弹性工作制为“每周一、三、五远程办公”",
-        "score": 3
-      },
-      {
-        "description": "基于“每周一、三、五远程办公”的已知信息，推理出剩余工作日（周二、周四）为到公司坐班日",
-        "score": 4
-      }
-    ],
-    "required_events_id": [
-      "4003"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 654
-      },
-      {
-        "type": "call",
-        "id": 1029
-      },
-      {
-        "type": "photo",
-        "id": 1245
-      },
-      {
-        "type": "push",
-        "id": 2126
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "为了应对父亲出院后的家庭照护需求，叶明轩在10月上旬向公司申请并最终获批了哪种具体的工作模式调整方案？",
-    "options": [
-      {
-        "option": "A",
-        "content": "调整工作内容"
-      },
-      {
-        "option": "B",
-        "content": "申请远程办公"
-      },
-      {
-        "option": "C",
-        "content": "减少工作时间"
-      },
-      {
-        "option": "D",
-        "content": "寻求同事帮助"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "3860",
-      "3886",
-      "3933",
-      "3960",
-      "3965"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 986
-      },
-      {
-        "type": "note",
-        "id": 52
-      },
-      {
-        "type": "push",
-        "id": 2062
-      },
-      {
-        "type": "agent_chat",
-        "id": 635
-      },
-      {
-        "type": "call",
-        "id": 993
-      },
-      {
-        "type": "push",
-        "id": 2073
-      },
-      {
-        "type": "agent_chat",
-        "id": 641
-      },
-      {
-        "type": "push",
-        "id": 2099
-      },
-      {
-        "type": "agent_chat",
-        "id": 646
-      },
-      {
-        "type": "call",
-        "id": 1014
-      },
-      {
-        "type": "call",
-        "id": 1017
-      },
-      {
-        "type": "photo",
-        "id": 1221
-      },
-      {
-        "type": "sms",
-        "id": 1452
-      }
-    ],
-    "ask_time": "2025-12"
+    "question_type": "Information Extraction"
   },
   {
     "question": "叶明轩在沈阳道古物市场成功“捡漏”一枚稀有铜元，主要得益于哪些因素？",
@@ -18378,7 +10940,7 @@
     "required_events_id": [
       "3975"
     ],
-    "question_type": "open_domain",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -18412,525 +10974,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "在父亲出院当天感到疲惫需要减压后，叶明轩决定周末去徒步。根据他这次徒步活动的相关描述，可以推断他参加这次活动的主要目的是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "锻炼身体"
-      },
-      {
-        "option": "B",
-        "content": "社交需要"
-      },
-      {
-        "option": "C",
-        "content": "缓解压力，亲近自然"
-      },
-      {
-        "option": "D",
-        "content": "为未来的自驾游考察路线"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "4048",
-      "4090",
-      "4096"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 2147
-      },
-      {
-        "type": "sms",
-        "id": 1480
-      },
-      {
-        "type": "sms",
-        "id": 1481
-      },
-      {
-        "type": "agent_chat",
-        "id": 666
-      },
-      {
-        "type": "photo",
-        "id": 1276
-      },
-      {
-        "type": "push",
-        "id": 2170
-      },
-      {
-        "type": "note",
-        "id": "164"
-      },
-      {
-        "type": "calendar",
-        "id": "123"
-      },
-      {
-        "type": "sms",
-        "id": "2179"
-      },
-      {
-        "type": "note",
-        "id": "187"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "叶建国在12月进行了哪些与健康相关的活动？",
-    "options": [
-      {
-        "option": "A",
-        "content": "突发重病，需要住院治疗"
-      },
-      {
-        "option": "B",
-        "content": "完全康复，已恢复正常工作"
-      },
-      {
-        "option": "C",
-        "content": "处于中风后康复期，需定期复查和训练"
-      },
-      {
-        "option": "D",
-        "content": "患有慢性疼痛，但无需特殊护理"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "4811",
-      "4827",
-      "5023"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 1489
-      },
-      {
-        "type": "sms",
-        "id": 1754
-      },
-      {
-        "type": "sms",
-        "id": 1755
-      },
-      {
-        "type": "sms",
-        "id": 1756
-      },
-      {
-        "type": "agent_chat",
-        "id": 782
-      },
-      {
-        "type": "push",
-        "id": 2567
-      },
-      {
-        "type": "photo",
-        "id": 1542
-      },
-      {
-        "type": "photo",
-        "id": 1543
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "根据12月6日和14日的事件，可以推断叶明轩对哪个历史时期的钱币收藏最感兴趣？",
-    "answer": "民国时期（特别是袁世凯统治时期）。",
-    "score_points": [
-      {
-        "description": "从事件ID 4816中识别出叶明轩在规划古玩市场之行时，重温了“民国三年袁大头-开口贝版别鉴别要点”。",
-        "score": 5
-      },
-      {
-        "description": "从事件ID 4930中识别出叶明轩在古玩市场用放大镜查看“袁大头”，并与摊主交流银元行情。结合常识，“袁大头”是民国时期（1912-1949年）袁世凯担任大总统时期铸造的主要流通银元。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "4816",
-      "4930"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 781
-      },
-      {
-        "type": "push",
-        "id": 2560
-      },
-      {
-        "type": "sms",
-        "id": 1758
-      },
-      {
-        "type": "calendar",
-        "id": "51"
-      },
-      {
-        "type": "note",
-        "id": "95"
-      },
-      {
-        "type": "sms",
-        "id": "1922"
-      },
-      {
-        "type": "note",
-        "id": "128"
-      },
-      {
-        "type": "sms",
-        "id": "2166"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在12月的工作日，我通常在什么时间进行健康管理活动？",
-    "answer": "主要在工间（午休时间）进行简单的拉伸活动，以及每周二下班后进行私教健身课。",
-    "score_points": [
-      {
-        "description": "识别出在工作日的工间/午休时间进行健康管理（如拉伸）的行为模式。",
-        "score": 5
-      },
-      {
-        "description": "识别出每周二固定在下班后进行私教健身课的习惯。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "4735",
-      "4737",
-      "4740",
-      "4844",
-      "4968",
-      "5066"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 2518
-      },
-      {
-        "type": "agent_chat",
-        "id": 770
-      },
-      {
-        "type": "agent_chat",
-        "id": 784
-      },
-      {
-        "type": "calendar",
-        "id": 38
-      },
-      {
-        "type": "push",
-        "id": 2581
-      },
-      {
-        "type": "push",
-        "id": 2582
-      },
-      {
-        "type": "agent_chat",
-        "id": 803
-      },
-      {
-        "type": "push",
-        "id": 2652
-      },
-      {
-        "type": "push",
-        "id": 2713
-      },
-      {
-        "type": "note",
-        "id": "138"
-      },
-      {
-        "type": "calendar",
-        "id": "88"
-      },
-      {
-        "type": "calendar",
-        "id": "89"
-      },
-      {
-        "type": "push",
-        "id": "2828"
-      },
-      {
-        "type": "note",
-        "id": "159"
-      },
-      {
-        "type": "calendar",
-        "id": "116"
-      },
-      {
-        "type": "push",
-        "id": "2836"
-      },
-      {
-        "type": "calendar",
-        "id": "122"
-      },
-      {
-        "type": "note",
-        "id": "186"
-      },
-      {
-        "type": "push",
-        "id": "2838"
-      },
-      {
-        "type": "calendar",
-        "id": "125"
-      },
-      {
-        "type": "note",
-        "id": "191"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在12月上旬，我主要在哪里工作，负责什么项目？",
-    "answer": "在天津海泰精密机械有限公司的车间和办公室，负责自动化产线智能升级项目的调试、测试和验收工作。",
-    "score_points": [
-      {
-        "description": "确认主要工作地点为公司车间和办公室。",
-        "score": 4
-      },
-      {
-        "description": "识别出核心工作项目为自动化产线相关项目。",
-        "score": 3
-      },
-      {
-        "description": "明确项目阶段包含调试、测试和验收。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "4767",
-      "4768",
-      "4769",
-      "4772",
-      "4843",
-      "4845",
-      "4847",
-      "4848",
-      "4858",
-      "4861",
-      "4862",
-      "4863",
-      "4878"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 2535
-      },
-      {
-        "type": "call",
-        "id": 1234
-      },
-      {
-        "type": "photo",
-        "id": 1472
-      },
-      {
-        "type": "agent_chat",
-        "id": 774
-      },
-      {
-        "type": "call",
-        "id": 1235
-      },
-      {
-        "type": "photo",
-        "id": 1473
-      },
-      {
-        "type": "photo",
-        "id": 1474
-      },
-      {
-        "type": "push",
-        "id": 2538
-      },
-      {
-        "type": "agent_chat",
-        "id": 785
-      },
-      {
-        "type": "push",
-        "id": 2580
-      },
-      {
-        "type": "sms",
-        "id": 1765
-      },
-      {
-        "type": "sms",
-        "id": 1766
-      },
-      {
-        "type": "sms",
-        "id": 1767
-      },
-      {
-        "type": "call",
-        "id": 1247
-      },
-      {
-        "type": "note",
-        "id": 70
-      },
-      {
-        "type": "push",
-        "id": 2583
-      },
-      {
-        "type": "call",
-        "id": 1248
-      },
-      {
-        "type": "push",
-        "id": 2585
-      },
-      {
-        "type": "call",
-        "id": 1249
-      },
-      {
-        "type": "push",
-        "id": 2586
-      },
-      {
-        "type": "calendar",
-        "id": "42"
-      },
-      {
-        "type": "note",
-        "id": "83"
-      },
-      {
-        "type": "sms",
-        "id": "1892"
-      },
-      {
-        "type": "photo",
-        "id": 1495
-      },
-      {
-        "type": "sms",
-        "id": 1772
-      },
-      {
-        "type": "sms",
-        "id": 1773
-      },
-      {
-        "type": "sms",
-        "id": 1774
-      },
-      {
-        "type": "sms",
-        "id": 1775
-      },
-      {
-        "type": "agent_chat",
-        "id": 788
-      },
-      {
-        "type": "call",
-        "id": 1257
-      },
-      {
-        "type": "sms",
-        "id": "2176"
-      },
-      {
-        "type": "note",
-        "id": "175"
-      },
-      {
-        "type": "note",
-        "id": "184"
-      },
-      {
-        "type": "calendar",
-        "id": "120"
-      },
-      {
-        "type": "calendar",
-        "id": "129"
-      },
-      {
-        "type": "sms",
-        "id": "2184"
-      },
-      {
-        "type": "note",
-        "id": "196"
-      },
-      {
-        "type": "calendar",
-        "id": "134"
-      },
-      {
-        "type": "note",
-        "id": "203"
-      },
-      {
-        "type": "calendar",
-        "id": "137"
-      },
-      {
-        "type": "sms",
-        "id": "2188"
-      },
-      {
-        "type": "note",
-        "id": "206"
-      },
-      {
-        "type": "note",
-        "id": "213"
-      },
-      {
-        "type": "calendar",
-        "id": "141"
-      },
-      {
-        "type": "calendar",
-        "id": "142"
-      },
-      {
-        "type": "note",
-        "id": "214"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "叶明轩在11月初收到一份高薪异地工作机会，但最终婉拒了。结合他在这两天处理的其他事务，可以推断他做出这个决定时最优先考虑的是什么？",
     "options": [
       {
@@ -18956,7 +10999,7 @@
       "4349",
       "4355"
     ],
-    "question_type": "multiple_choice",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -19019,7 +11062,7 @@
       "4697",
       "4725"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "push",

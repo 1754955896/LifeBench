@@ -17,7 +17,7 @@
       "207",
       "210"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -86,7 +86,7 @@
         "id": "846"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "雷明轩在一月底进行月度体重复盘时，他的体重相较于1月初设定的目标发生了怎样的具体变化？",
@@ -114,7 +114,7 @@
       "45",
       "418"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -185,7 +185,7 @@
       "2025-01-18"
     ],
     "ask_time": "2025-02",
-    "question_type": "question_answer",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -200,52 +200,6 @@
         "id": "1154"
       }
     ]
-  },
-  {
-    "question": "2025年3月，雷明轩在与潮玩藏友林静的交流中，分享了自己近期在收藏泡泡玛特系列时，对哪个特定系列或IP的哪类款式产生了特别的偏好？",
-    "options": [
-      {
-        "option": "A",
-        "content": "对“DIMOO”系列中，所有带有透明材质或荧光效果的隐藏款特别偏爱"
-      },
-      {
-        "option": "B",
-        "content": "对“SKULLPANDA”系列中，所有以“校园”或“职业”为主题的基础款特别偏爱"
-      },
-      {
-        "option": "C",
-        "content": "对“MOLLY”系列中，所有“中国风”或“传统节日”主题的款式特别偏爱"
-      },
-      {
-        "option": "D",
-        "content": "对“LABUBU”系列中，所有“精灵”或“森林”主题的异色款特别偏爱"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "847"
-      },
-      {
-        "type": "sms",
-        "id": "848"
-      },
-      {
-        "type": "sms",
-        "id": "849"
-      },
-      {
-        "type": "sms",
-        "id": "850"
-      },
-      {
-        "type": "sms",
-        "id": "851"
-      }
-    ],
-    "ask_time": "2025-02",
-    "question_type": "single_hop"
   },
   {
     "question": "雷明轩在二月除了《大明权臣》外，下单的第二本历史相关书籍是什么？他是在哪一天决定并下单购买这本书的？",
@@ -264,7 +218,7 @@
       "746",
       "457"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "sms",
@@ -315,7 +269,7 @@
       "61",
       "83"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -394,7 +348,7 @@
       "2025-02-23"
     ],
     "ask_time": "2025-03",
-    "question_type": "temporal",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -450,7 +404,7 @@
         "id": "880"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "你参观过几次“山系之间”展览？",
@@ -470,7 +424,7 @@
       "2025-02-08"
     ],
     "ask_time": "2025-03",
-    "question_type": "updating",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -538,7 +492,7 @@
       "2025-02-08"
     ],
     "ask_time": "2025-03",
-    "question_type": "updating",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -617,7 +571,7 @@
       "142",
       "147"
     ],
-    "question_type": "open_domain",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -708,7 +662,7 @@
       "549",
       "551"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "call",
@@ -779,7 +733,7 @@
       "1082",
       "1097"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -825,7 +779,7 @@
       "1323",
       "1347"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -882,7 +836,7 @@
         "id": "836"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "雷明轩在2月份练习手冲咖啡时，使用了哪种咖啡豆？",
@@ -922,7 +876,7 @@
       }
     ],
     "ask_time": "2025-04",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "到目前为止，你一共进行过几次独立咖啡馆探店之旅？",
@@ -944,7 +898,7 @@
       "2025-03-30"
     ],
     "ask_time": "2025-04",
-    "question_type": "updating",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "calendar",
@@ -986,7 +940,7 @@
       "552",
       "567"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -1051,7 +1005,7 @@
       "36",
       "267"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "call",
@@ -1132,7 +1086,7 @@
     "required_events_id": [
       "852"
     ],
-    "question_type": "open_domain",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "sms",
@@ -1141,60 +1095,6 @@
       {
         "type": "note",
         "id": "152"
-      }
-    ],
-    "ask_time": "2025-04"
-  },
-  {
-    "question": "在父亲住院期间，雷明轩在病房学习心肺复苏等急救知识。这一行为最直接反映了他当时产生了什么意识？",
-    "options": [
-      {
-        "option": "A",
-        "content": "法律风险意识"
-      },
-      {
-        "option": "B",
-        "content": "健康危机与家庭应急意识"
-      },
-      {
-        "option": "C",
-        "content": "职业资格考试准备意识"
-      },
-      {
-        "option": "D",
-        "content": "个人兴趣爱好拓展意识"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "945",
-      "950"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "114"
-      },
-      {
-        "type": "push",
-        "id": "917"
-      },
-      {
-        "type": "note",
-        "id": "172"
-      },
-      {
-        "type": "note",
-        "id": "195"
-      },
-      {
-        "type": "push",
-        "id": "936"
-      },
-      {
-        "type": "calendar",
-        "id": "131"
       }
     ],
     "ask_time": "2025-04"
@@ -1223,7 +1123,7 @@
       "970",
       "972"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -1314,7 +1214,7 @@
       "1755",
       "1757"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -1369,7 +1269,7 @@
       "1716",
       "1969"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "photo",
@@ -1411,50 +1311,6 @@
     "ask_time": "2025-05"
   },
   {
-    "question": "5月，雷明轩与理财顾问徐峰在哪个地点进行了深度财务面谈？",
-    "options": [
-      {
-        "option": "A",
-        "content": "上海市徐汇区南昌路509号Tims咖啡"
-      },
-      {
-        "option": "B",
-        "content": "上海市浦东新区航头镇石辰商场二楼“XX服装店”"
-      },
-      {
-        "option": "C",
-        "content": "上海市浦东新区成山路云川台球厅"
-      },
-      {
-        "option": "D",
-        "content": "上海市松江区影视路97号哈皮熊精酿啤酒屋"
-      }
-    ],
-    "answer": "A",
-    "required_events": [
-      {
-        "event_id": "1916",
-        "event_name": "深度财务面谈"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "685"
-      },
-      {
-        "type": "calendar",
-        "id": "84"
-      },
-      {
-        "type": "note",
-        "id": "133"
-      }
-    ],
-    "ask_time": "2025-05",
-    "question_type": "single_hop"
-  },
-  {
     "question": "4月份，雷明轩在店铺空闲时研究了哪两种适合60岁以上老人的保险？",
     "answer": "医疗险和防癌险。",
     "score_points": [
@@ -1488,7 +1344,7 @@
       }
     ],
     "ask_time": "2025-05",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "4月份，雷明轩通过哪个平台将钟点工李阿姨的试工订单转为长期雇佣并签署了电子合同？",
@@ -1536,7 +1392,7 @@
       }
     ],
     "ask_time": "2025-05",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "3月初，雷明轩在店铺运营时，通过微信视频与哪里的供应商沟通了春季新品订单？",
@@ -1568,7 +1424,7 @@
       }
     ],
     "ask_time": "2025-05",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "3月份，雷明轩在店铺长时间工作后，身体哪个部位感到了不适？",
@@ -1612,7 +1468,7 @@
       }
     ],
     "ask_time": "2025-05",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，雷明轩在与表妹沈洁的聊天中，分享了自己最近在收藏潮玩盲盒方面的一个具体品味变化。他提到自己现在更偏爱哪个系列或哪种风格？",
@@ -1658,104 +1514,7 @@
         "id": "841"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年3月，雷明轩在与发小李娜的聊天中，得知了他们的另一位共同好友张伟最近在家庭生活方面遇到了什么具体事情？",
-    "answer": "张伟的妻子（小雅）在3月初被公司裁员了，目前正在积极找工作，但暂时还没找到合适的。",
-    "score_points": [
-      {
-        "description": "明确指出张伟的妻子（小雅）被裁员了。",
-        "score": 5
-      },
-      {
-        "description": "明确指出她目前正在找工作但尚未找到合适的。",
-        "score": 5
-      }
-    ],
-    "ask_time": "2025-05",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "886"
-      },
-      {
-        "type": "sms",
-        "id": "887"
-      },
-      {
-        "type": "sms",
-        "id": "888"
-      },
-      {
-        "type": "sms",
-        "id": "889"
-      },
-      {
-        "type": "sms",
-        "id": "890"
-      }
-    ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在四月下旬，我体验了一次日式SPA并随后与朋友分享。结合我的性格和生活方式，体验这种新型休闲活动可能反映了什么？",
-    "answer": "反映了我（ESTP性格，热爱新鲜刺激）在探索和尝试新的压力管理及放松方式，以应对店铺运营和家庭照护的双重压力，并乐于与朋友分享生活体验。",
-    "score_points": [
-      {
-        "description": "关联用户画像中的ESTP人格特质（如追求新鲜刺激）。",
-        "score": 3
-      },
-      {
-        "description": "结合事件数据，指出体验SPA是一种应对近期多重压力的新方式。",
-        "score": 4
-      },
-      {
-        "description": "指出事后与朋友分享的行为符合其活跃社交、乐于分享的生活方式。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "1592",
-      "1603",
-      "1456"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "120"
-      },
-      {
-        "type": "calendar",
-        "id": "74"
-      },
-      {
-        "type": "photo",
-        "id": "547"
-      },
-      {
-        "type": "calendar",
-        "id": "100"
-      },
-      {
-        "type": "note",
-        "id": "153"
-      },
-      {
-        "type": "sms",
-        "id": "917"
-      },
-      {
-        "type": "push",
-        "id": "955"
-      },
-      {
-        "type": "note",
-        "id": "217"
-      }
-    ],
-    "ask_time": "2025-05"
+    "question_type": "Information Extraction"
   },
   {
     "question": "根据雷明轩在1月25日首次接触手冲咖啡后的几天内的行为，可以推断他未来对这一新爱好最可能采取什么态度？",
@@ -1787,7 +1546,7 @@
       "402",
       "428"
     ],
-    "question_type": "multiple_choice",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "photo",
@@ -1873,105 +1632,6 @@
     "ask_time": "2025-05"
   },
   {
-    "question": "雷明轩在2月3日晚间健身时特意“增加组间休息确保安全”，其最直接的可能考虑是基于前一天哪次活动后的身体感受？",
-    "options": [
-      {
-        "option": "A",
-        "content": "因2月2日家庭聚餐食物较油腻，晚上感到轻微腹胀不适。"
-      },
-      {
-        "option": "B",
-        "content": "因2月2日陪同母亲采购年货搬运重物导致肌肉疲劳。"
-      },
-      {
-        "option": "C",
-        "content": "因2月2日阅读明朝小说至深夜导致精神不济。"
-      },
-      {
-        "option": "D",
-        "content": "因2月2日处理店铺春季新品讨论耗费了大量脑力。"
-      }
-    ],
-    "answer": "A",
-    "required_events_id": [
-      "447",
-      "455"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "169"
-      },
-      {
-        "type": "call",
-        "id": "402"
-      },
-      {
-        "type": "push",
-        "id": "915"
-      },
-      {
-        "type": "calendar",
-        "id": "112"
-      },
-      {
-        "type": "note",
-        "id": "400"
-      },
-      {
-        "type": "push",
-        "id": "1068"
-      },
-      {
-        "type": "sms",
-        "id": "1003"
-      },
-      {
-        "type": "note",
-        "id": "461"
-      }
-    ],
-    "ask_time": "2025-06"
-  },
-  {
-    "question": "雷明轩在1月20日制定“每周至少安排两次健康餐”的饮食计划，其最直接的触发因素是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "他在1月16日中午尝试了一家沙拉店的健康轻食，获得了积极的肠胃感受和精神状态反馈。"
-      },
-      {
-        "option": "B",
-        "content": "他在1月14日晚参加的纺织行业讲座中，学到了新型功能性面料对健康有益的知识。"
-      },
-      {
-        "option": "C",
-        "content": "他在1月18日体验真枪射击后，感到需要提升体能以应对更多刺激活动。"
-      },
-      {
-        "option": "D",
-        "content": "他在1月31日月度体测发现体重下降后，为了巩固成果而制定计划。"
-      }
-    ],
-    "answer": "A",
-    "required_events_id": [
-      "219"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "push",
-        "id": "1078"
-      },
-      {
-        "type": "note",
-        "id": "414"
-      }
-    ],
-    "ask_time": "2025-06"
-  },
-  {
     "question": "在4月，雷明轩陪同父亲进行了多少次与听力康复相关的活动？",
     "answer": "7次。",
     "score_points": [
@@ -1989,7 +1649,7 @@
       "1581",
       "1320"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "photo",
@@ -2086,7 +1746,7 @@
       "2262",
       "2346"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -2152,168 +1812,6 @@
     "ask_time": "2025-06"
   },
   {
-    "question": "雷明轩决定开始规划私域客户运营，最根本的驱动力是什么？",
-    "answer": "五五购物节促销活动成功验证了‘城市户外’主题的市场潜力，并吸引了一批有价值的25-35岁男性新客，为他差异化运营和沉淀客户资产提供了直接依据。",
-    "score_points": [
-      {
-        "description": "活动验证了‘城市户外’主题的市场潜力",
-        "score": 5
-      },
-      {
-        "description": "活动吸引了25-35岁男性新客，为私域运营提供了目标客群",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "1766",
-      "1634"
-    ],
-    "required_events_date": [
-      "2025-05-11",
-      "2025-05-01"
-    ],
-    "ask_time": "2025-06",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "337"
-      },
-      {
-        "type": "calendar",
-        "id": "236"
-      },
-      {
-        "type": "note",
-        "id": "201"
-      },
-      {
-        "type": "sms",
-        "id": "907"
-      },
-      {
-        "type": "photo",
-        "id": "575"
-      },
-      {
-        "type": "note",
-        "id": "550"
-      },
-      {
-        "type": "calendar",
-        "id": "371"
-      },
-      {
-        "type": "sms",
-        "id": "1119"
-      }
-    ]
-  },
-  {
-    "question": "父亲突发严重健康问题后，我的生活和工作模式在短期内发生了哪些具体变化？",
-    "answer": "紧急调整店铺运营模式（包括联系物业临时关闭店铺、安排朋友和店员代为看店、推迟订货选款计划）；取消了原定的川西自驾游计划；建立了医院（陪护父亲、处理医疗事宜）、店铺（远程或短暂到店处理运营、补货、客服）、家庭（照顾母亲、处理家务）三点一线的奔波日常。",
-    "score_points": [
-      {
-        "description": "明确写出紧急调整店铺运营模式的具体内容",
-        "score": 3
-      },
-      {
-        "description": "明确写出取消了原定的自驾游计划",
-        "score": 3
-      },
-      {
-        "description": "明确写出建立了医院-店铺-家庭三点一线的奔波日常",
-        "score": 4
-      }
-    ],
-    "required_events_id": [
-      "863",
-      "875",
-      "876",
-      "883",
-      "884",
-      "885",
-      "886"
-    ],
-    "required_events_date": [
-      "2025-03-08",
-      "2025-03-09",
-      "2025-03-10"
-    ],
-    "ask_time": "2025-06",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "330"
-      },
-      {
-        "type": "call",
-        "id": "417"
-      },
-      {
-        "type": "push",
-        "id": "1035"
-      },
-      {
-        "type": "photo",
-        "id": "611"
-      },
-      {
-        "type": "note",
-        "id": "356"
-      },
-      {
-        "type": "call",
-        "id": "420"
-      },
-      {
-        "type": "sms",
-        "id": "970"
-      },
-      {
-        "type": "note",
-        "id": "357"
-      },
-      {
-        "type": "call",
-        "id": "421"
-      },
-      {
-        "type": "push",
-        "id": "1049"
-      },
-      {
-        "type": "note",
-        "id": "110"
-      },
-      {
-        "type": "sms",
-        "id": "633"
-      },
-      {
-        "type": "calendar",
-        "id": "65"
-      },
-      {
-        "type": "sms",
-        "id": "1121"
-      },
-      {
-        "type": "call",
-        "id": "442"
-      },
-      {
-        "type": "note",
-        "id": "553"
-      },
-      {
-        "type": "push",
-        "id": "1151"
-      }
-    ]
-  },
-  {
     "question": "在聘请钟点工以缓解母亲的家务压力之后，发生的第一个与改善家庭居住条件相关的重大事件是什么？",
     "options": [
       {
@@ -2343,7 +1841,7 @@
       "2025-04-14"
     ],
     "ask_time": "2025-06",
-    "question_type": "multiple_choice",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -2376,56 +1874,6 @@
     ]
   },
   {
-    "question": "雷明轩因何事件而觉醒健康意识，并向母亲提出了哪些具体的健康行动计划？",
-    "answer": "雷明轩在仁济医院为父亲办理出院手续时，主治医生李医生叮嘱他要注重健康，这触发了他对自身健康的觉醒。随后，他在家中厨房与母亲准备午餐时，坦承了这一觉醒，并提出了包括减肥、锻炼、体检和学习急救在内的具体健康计划。",
-    "score_points": [
-      {
-        "description": "识别出雷明轩在父亲出院时因医生叮嘱而触发健康觉醒（事件ID 945）",
-        "score": 5
-      },
-      {
-        "description": "指出雷明轩向母亲提出的具体健康行动计划：减肥、锻炼、体检、学急救（事件ID 948）",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "945",
-      "948"
-    ],
-    "required_events_date": [
-      "2025-03-15",
-      "2025-03-15"
-    ],
-    "ask_time": "2025-06",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "172"
-      },
-      {
-        "type": "push",
-        "id": "917"
-      },
-      {
-        "type": "calendar",
-        "id": "114"
-      },
-      {
-        "type": "note",
-        "id": "566"
-      },
-      {
-        "type": "sms",
-        "id": "1130"
-      },
-      {
-        "type": "calendar",
-        "id": "384"
-      }
-    ]
-  },
-  {
     "question": "在3月15日，雷明轩是如何逐步推进他报名正式急救员培训的计划的？",
     "answer": "首先，在办理父亲出院手续时，李医生的叮嘱触发了他的健康觉醒，使他意识到需要注重健康和学习急救（事件945）。接着，在与母亲交流健康计划时，他明确提出学习急救的计划（事件948）。然后，在午休时间，他搜索并观看心肺复苏复习视频，启动急救知识学习（事件950）。下午，他在滨江快走时回顾急救知识，假想紧急情况应对，将运动与学习结合（事件954）。晚上，他系统查询红十字会培训报名方式，并草拟家庭健康应急预案，深化报名准备（事件958）。",
     "score_points": [
@@ -2449,7 +1897,7 @@
       "2025-03-15"
     ],
     "ask_time": "2025-06",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -2542,56 +1990,6 @@
     ]
   },
   {
-    "question": "在2025年5月13日最终审阅续租合同时，雷明轩结合了哪些关键因素来修改条款？",
-    "answer": "结合了女友林薇对商场改造补偿条款的建议，以及五一促销活动的数据分析结果。",
-    "score_points": [
-      {
-        "description": "提及女友林薇对商场改造补偿条款的建议",
-        "score": 5
-      },
-      {
-        "description": "提及五一促销活动的数据分析",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "1797",
-      "1766"
-    ],
-    "required_events_date": [
-      "2025-05-13",
-      "2025-05-11"
-    ],
-    "ask_time": "2025-06",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "337"
-      },
-      {
-        "type": "calendar",
-        "id": "236"
-      },
-      {
-        "type": "calendar",
-        "id": "380"
-      },
-      {
-        "type": "sms",
-        "id": "1126"
-      },
-      {
-        "type": "push",
-        "id": "1158"
-      },
-      {
-        "type": "note",
-        "id": "562"
-      }
-    ]
-  },
-  {
     "question": "在5月10日与表妹沈洁进行店铺升级头脑风暴后，雷明轩在当天晚餐时与父亲讨论了什么内容？",
     "answer": "分享了下午从沈洁那里获得的店铺升级灵感收获和‘都市逃离计划’构想，并讨论了预算规划。",
     "score_points": [
@@ -2613,7 +2011,7 @@
       "2025-05-10"
     ],
     "ask_time": "2025-06",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -2636,54 +2034,6 @@
         "id": "393"
       }
     ]
-  },
-  {
-    "question": "在6月17日的月度账目核对中，我发现哪项成本支出明显高于上月，并将其圈出作为重点关注对象？",
-    "options": [
-      {
-        "option": "A",
-        "content": "快递费"
-      },
-      {
-        "option": "B",
-        "content": "采购费"
-      },
-      {
-        "option": "C",
-        "content": "水电费"
-      },
-      {
-        "option": "D",
-        "content": "物业费"
-      }
-    ],
-    "answer": "C",
-    "required_events": [
-      {
-        "event_id": "2297",
-        "event_name": "月度账目核对与运营规划"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "70"
-      },
-      {
-        "type": "sms",
-        "id": "635"
-      },
-      {
-        "type": "photo",
-        "id": "545"
-      },
-      {
-        "type": "note",
-        "id": "116"
-      }
-    ],
-    "ask_time": "2025-06",
-    "question_type": "single_hop"
   },
   {
     "question": "5月初，雷明轩在整理并分享新入手的潮玩收藏时，主要涉及了哪两个系列？",
@@ -2731,7 +2081,7 @@
       }
     ],
     "ask_time": "2025-06",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "5月份，雷明轩在家中的书房为续约谈判准备材料时，系统整理了什么报告？",
@@ -2763,7 +2113,7 @@
       }
     ],
     "ask_time": "2025-06",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在4月份的一次深度交流中，林薇针对雷明轩店铺的转型，提出了哪两项具体的市场策划建议？",
@@ -2803,7 +2153,7 @@
       }
     ],
     "ask_time": "2025-06",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "3月份，我在药店咨询了关于什么物品的建议，并为此做了记录？",
@@ -2835,51 +2185,7 @@
       }
     ],
     "ask_time": "2025-06",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "3月份，雷明轩驾车回家途中，顺路在哪个批发部购买了水果？",
-    "options": [
-      {
-        "option": "A",
-        "content": "国大药房(临沂店)"
-      },
-      {
-        "option": "B",
-        "content": "如海批发部(崂山路店)"
-      },
-      {
-        "option": "C",
-        "content": "老盛昌汤包馆（分店）"
-      },
-      {
-        "option": "D",
-        "content": "苏航生活广场B1层老乡鸡快餐店"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "967",
-        "event_name": "驾车回家并顺路购物"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "note",
-        "id": "126"
-      },
-      {
-        "type": "push",
-        "id": "888"
-      },
-      {
-        "type": "calendar",
-        "id": "79"
-      }
-    ],
-    "ask_time": "2025-06",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，雷明轩在与发小李娜的聊天中，得知了他们的另一位共同朋友张伟最近遇到了什么与家庭相关的、不影响雷明轩自身生活的事情？",
@@ -2921,51 +2227,7 @@
         "id": "824"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2月份，雷明轩在滨江轮滑道运动时，遇到了哪位轮滑爱好者？",
-    "options": [
-      {
-        "option": "A",
-        "content": "宋佳"
-      },
-      {
-        "option": "B",
-        "content": "韩东"
-      },
-      {
-        "option": "C",
-        "content": "林静"
-      },
-      {
-        "option": "D",
-        "content": "张伟"
-      }
-    ],
-    "answer": "A",
-    "required_events": [
-      {
-        "event_id": "577",
-        "event_name": "滨江轮滑运动与社交偶遇"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "96"
-      },
-      {
-        "type": "photo",
-        "id": "555"
-      },
-      {
-        "type": "note",
-        "id": "146"
-      }
-    ],
-    "ask_time": "2025-06",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，雷明轩向台球球友韩东分享了自己最近在挑选店铺背景音乐时的一个具体品味偏好，他目前最喜欢播放哪种风格的音乐？",
@@ -3011,147 +2273,7 @@
       }
     ],
     "ask_time": "2025-06",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2月8日，我为了获取店铺升级灵感，前往浦西参观了一场艺术展览。这场展览位于上海的哪个区？",
-    "answer": "徐汇区",
-    "score_points": [
-      {
-        "description": "正确指出艺术展览的举办区域为徐汇区。",
-        "score": 10
-      }
-    ],
-    "required_events_id": [
-      "497",
-      "498",
-      "500"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "125"
-      },
-      {
-        "type": "push",
-        "id": "887"
-      },
-      {
-        "type": "calendar",
-        "id": "78"
-      },
-      {
-        "type": "photo",
-        "id": "548"
-      },
-      {
-        "type": "push",
-        "id": "930"
-      },
-      {
-        "type": "calendar",
-        "id": "126"
-      },
-      {
-        "type": "note",
-        "id": "190"
-      },
-      {
-        "type": "push",
-        "id": "989"
-      },
-      {
-        "type": "calendar",
-        "id": "183"
-      },
-      {
-        "type": "note",
-        "id": "263"
-      }
-    ],
-    "ask_time": "2025-06"
-  },
-  {
-    "question": "5月份，我处理了多项与家庭财务规划相关的事务。综合来看，这些事务主要服务于哪一个核心的短期家庭目标？",
-    "answer": "为家庭置换一套位于浦东新区、带有电梯的改善型住房（即“换房计划”）。",
-    "score_points": [
-      {
-        "description": "能够识别出5月份进行的多项财务活动，如咨询理财顾问、研究保险、赎回基金等。",
-        "score": 3
-      },
-      {
-        "description": "能够从事件中提取出与“换房”相关的直接信息，例如“咨询换房财务问题”、“初步筛选浦东二手房源”。",
-        "score": 3
-      },
-      {
-        "description": "能够综合家庭会议（5月26日）内容，将多项财务活动与“换房”这一核心目标关联起来，并概括出目标的关键要素（浦东、电梯、改善）。",
-        "score": 4
-      }
-    ],
-    "required_events_id": [
-      "1670",
-      "1884",
-      "1916",
-      "1985",
-      "2030"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "133"
-      },
-      {
-        "type": "sms",
-        "id": "685"
-      },
-      {
-        "type": "calendar",
-        "id": "84"
-      },
-      {
-        "type": "note",
-        "id": "184"
-      },
-      {
-        "type": "calendar",
-        "id": "123"
-      },
-      {
-        "type": "call",
-        "id": "405"
-      },
-      {
-        "type": "note",
-        "id": "210"
-      },
-      {
-        "type": "sms",
-        "id": "911"
-      },
-      {
-        "type": "calendar",
-        "id": "158"
-      },
-      {
-        "type": "note",
-        "id": "232"
-      },
-      {
-        "type": "note",
-        "id": "286"
-      },
-      {
-        "type": "sms",
-        "id": "938"
-      },
-      {
-        "type": "calendar",
-        "id": "200"
-      }
-    ],
-    "ask_time": "2025-06"
+    "question_type": "Information Extraction"
   },
   {
     "question": "我6月的职业状态是？",
@@ -3185,7 +2307,7 @@
       "2194",
       "2197"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "photo",
@@ -3322,7 +2444,7 @@
     "required_events_id": [
       "755"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -3352,7 +2474,7 @@
       "440",
       "513"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "sms",
@@ -3369,65 +2491,6 @@
       {
         "type": "photo",
         "id": "644"
-      }
-    ],
-    "ask_time": "2025-07"
-  },
-  {
-    "question": "雷明轩在7月27日与园区管理方正式签约前，必须完成哪项关键的前置工作？",
-    "options": [
-      {
-        "option": "A",
-        "content": "他完成了所有货品的筛选并发运，确保开业时有充足库存。"
-      },
-      {
-        "option": "B",
-        "content": "他成功招聘并完成了对杭州本地店员的全部培训。"
-      },
-      {
-        "option": "C",
-        "content": "他亲自赴杭州与周涛实地勘察了场地，确认了空间尺寸和位置。"
-      },
-      {
-        "option": "D",
-        "content": "他通过了短视频运营课程的结业，认为可以利用此技能为项目宣传。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "2660",
-      "2893",
-      "2894"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "102"
-      },
-      {
-        "type": "sms",
-        "id": "626"
-      },
-      {
-        "type": "calendar",
-        "id": "58"
-      },
-      {
-        "type": "photo",
-        "id": "538"
-      },
-      {
-        "type": "calendar",
-        "id": "273"
-      },
-      {
-        "type": "photo",
-        "id": "621"
-      },
-      {
-        "type": "note",
-        "id": "387"
       }
     ],
     "ask_time": "2025-07"
@@ -3450,7 +2513,7 @@
       "2585",
       "2829"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -3513,7 +2576,7 @@
       "958",
       "969"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -3551,43 +2614,6 @@
     "ask_time": "2025-07"
   },
   {
-    "question": "雷明轩在4月28日体验的SPA，主要是基于谁的推荐？",
-    "options": [
-      {
-        "option": "A",
-        "content": "他的女友林薇。"
-      },
-      {
-        "option": "B",
-        "content": "他的发小张伟。"
-      },
-      {
-        "option": "C",
-        "content": "他的供应商周涛。"
-      },
-      {
-        "option": "D",
-        "content": "他的理财经理徐峰。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "1552"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "331"
-      },
-      {
-        "type": "sms",
-        "id": "1013"
-      }
-    ],
-    "ask_time": "2025-07"
-  },
-  {
     "question": "在六月，雷明轩实际参加了多少次轮滑活动？",
     "answer": "5次。",
     "score_points": [
@@ -3603,7 +2629,7 @@
       "2314",
       "2476"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -3713,7 +2739,7 @@
       "2025-06-10"
     ],
     "ask_time": "2025-07",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "calendar",
@@ -3765,7 +2791,7 @@
       "2025-06-16"
     ],
     "ask_time": "2025-07",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -3796,54 +2822,6 @@
         "id": "366"
       }
     ]
-  },
-  {
-    "question": "6月下旬，雷明轩与表弟杨帆在天目里园区会面时，主要进行了哪些活动？",
-    "answer": "他们在园区内一家创意西餐厅共进午餐，期间雷明轩详细阐述了‘城市轻户外’主题快闪店的构想，杨帆则从消费群体、客流、成本等方面给出了具体建议，并答应帮忙留意招商信息。",
-    "score_points": [
-      {
-        "description": "准确描述活动地点与形式：在天目里园区内一家创意西餐厅共进午餐。",
-        "score": 3
-      },
-      {
-        "description": "准确描述雷明轩的核心行为：详细阐述了‘城市轻户外’主题快闪店的构想。",
-        "score": 3
-      },
-      {
-        "description": "准确描述杨帆的回应：从消费群体、客流、成本等方面给出具体建议，并答应帮忙留意招商信息。",
-        "score": 4
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "2357",
-        "event_name": "午餐并深入交流快闪店构想"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "77"
-      },
-      {
-        "type": "note",
-        "id": "123"
-      },
-      {
-        "type": "call",
-        "id": "395"
-      },
-      {
-        "type": "sms",
-        "id": "657"
-      },
-      {
-        "type": "push",
-        "id": "885"
-      }
-    ],
-    "ask_time": "2025-07",
-    "question_type": "single_hop"
   },
   {
     "question": "在2025年7月，雷明轩在与发小李娜的聊天中，得知了他们的另一位共同好友张伟最近遇到了什么家庭生活上的变化？",
@@ -3881,7 +2859,7 @@
         "id": "700"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在5月份的一次烧烤聚餐中，雷明轩为了控制饮食，主要选择了哪些类型的食物？",
@@ -3917,7 +2895,7 @@
       }
     ],
     "ask_time": "2025-07",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "5月份，雷明轩在哪个地点与供应商周涛进行了视频会议，讨论'城市户外'系列新品与补货事宜？",
@@ -3965,7 +2943,7 @@
       }
     ],
     "ask_time": "2025-07",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年6月，雷明轩在微信上与表妹沈洁聊天时，提到他最近在看一本历史小说，并对书中某个虚构的古代商业家族产生了浓厚兴趣。他认为这个家族的经营理念与自己的店铺运营有哪些相似之处？",
@@ -4011,53 +2989,7 @@
         "id": "711"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年4月，雷明轩在与潮玩藏友林静的聊天中，表达了自己对于收藏哪一类潮玩设计师的作品最感兴趣？",
-    "options": [
-      {
-        "option": "A",
-        "content": "擅长制作大型树脂雕塑，风格华丽夸张的欧美设计师"
-      },
-      {
-        "option": "B",
-        "content": "专注于复古未来主义风格，作品带有机械感的日本设计师"
-      },
-      {
-        "option": "C",
-        "content": "作品融合中国传统文化元素与现代街头感的国内新锐设计师"
-      },
-      {
-        "option": "D",
-        "content": "以可爱治愈系动物形象为主，色彩明亮的韩国设计师"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "743"
-      },
-      {
-        "type": "sms",
-        "id": "744"
-      },
-      {
-        "type": "sms",
-        "id": "745"
-      },
-      {
-        "type": "sms",
-        "id": "746"
-      },
-      {
-        "type": "sms",
-        "id": "747"
-      }
-    ],
-    "ask_time": "2025-07",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，雷明轩在与发小李娜的聊天中，得知了另一位发小张伟最近遇到了什么家庭方面的喜事？",
@@ -4095,197 +3027,7 @@
         "id": "782"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在5月，我的店铺围绕哪个核心风格进行了一系列经营和升级活动？",
-    "options": [
-      {
-        "option": "A",
-        "content": "经典商务正装"
-      },
-      {
-        "option": "B",
-        "content": "韩系潮流穿搭"
-      },
-      {
-        "option": "C",
-        "content": "城市户外风格"
-      },
-      {
-        "option": "D",
-        "content": "复古民族风"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "1634",
-      "1646",
-      "1648",
-      "1649",
-      "1658",
-      "1660",
-      "1662",
-      "1755",
-      "1757",
-      "1766",
-      "1769",
-      "1772",
-      "1773",
-      "1909"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "201"
-      },
-      {
-        "type": "sms",
-        "id": "907"
-      },
-      {
-        "type": "photo",
-        "id": "575"
-      },
-      {
-        "type": "note",
-        "id": "225"
-      },
-      {
-        "type": "calendar",
-        "id": "154"
-      },
-      {
-        "type": "sms",
-        "id": "920"
-      },
-      {
-        "type": "note",
-        "id": "290"
-      },
-      {
-        "type": "sms",
-        "id": "940"
-      },
-      {
-        "type": "calendar",
-        "id": "205"
-      },
-      {
-        "type": "photo",
-        "id": "603"
-      },
-      {
-        "type": "note",
-        "id": "301"
-      },
-      {
-        "type": "note",
-        "id": "308"
-      },
-      {
-        "type": "push",
-        "id": "1019"
-      },
-      {
-        "type": "calendar",
-        "id": "220"
-      },
-      {
-        "type": "sms",
-        "id": "953"
-      },
-      {
-        "type": "push",
-        "id": "1031"
-      },
-      {
-        "type": "note",
-        "id": "325"
-      },
-      {
-        "type": "sms",
-        "id": "954"
-      },
-      {
-        "type": "note",
-        "id": "328"
-      },
-      {
-        "type": "calendar",
-        "id": "234"
-      },
-      {
-        "type": "photo",
-        "id": "612"
-      },
-      {
-        "type": "note",
-        "id": "332"
-      },
-      {
-        "type": "note",
-        "id": "334"
-      },
-      {
-        "type": "sms",
-        "id": "958"
-      },
-      {
-        "type": "calendar",
-        "id": "236"
-      },
-      {
-        "type": "note",
-        "id": "337"
-      },
-      {
-        "type": "note",
-        "id": "339"
-      },
-      {
-        "type": "sms",
-        "id": "961"
-      },
-      {
-        "type": "note",
-        "id": "343"
-      },
-      {
-        "type": "sms",
-        "id": "964"
-      },
-      {
-        "type": "push",
-        "id": "1039"
-      },
-      {
-        "type": "note",
-        "id": "346"
-      },
-      {
-        "type": "calendar",
-        "id": "242"
-      },
-      {
-        "type": "photo",
-        "id": "615"
-      },
-      {
-        "type": "photo",
-        "id": "617"
-      },
-      {
-        "type": "note",
-        "id": "351"
-      },
-      {
-        "type": "sms",
-        "id": "967"
-      }
-    ],
-    "ask_time": "2025-07"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在三月第一周，我有哪些固定时间进行的社交活动？",
@@ -4304,7 +3046,7 @@
       "780",
       "819"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "calendar",
@@ -4330,343 +3072,6 @@
     "ask_time": "2025-07"
   },
   {
-    "question": "在父亲突发重病住院后的一周内，我主要处理了哪两方面的事务？",
-    "options": [
-      {
-        "option": "A",
-        "content": "店铺春季上新与线上推广"
-      },
-      {
-        "option": "B",
-        "content": "个人健康管理与旅行计划"
-      },
-      {
-        "option": "C",
-        "content": "家庭照护（父亲生病）与店铺生存运营"
-      },
-      {
-        "option": "D",
-        "content": "行业社群活动与朋友聚会"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "857",
-      "858",
-      "859",
-      "860",
-      "861",
-      "862",
-      "863",
-      "864",
-      "865",
-      "866",
-      "867",
-      "868",
-      "869",
-      "870",
-      "871",
-      "872",
-      "873",
-      "874",
-      "875",
-      "876",
-      "877",
-      "878",
-      "879",
-      "880",
-      "1069"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "call",
-        "id": "407"
-      },
-      {
-        "type": "sms",
-        "id": "919"
-      },
-      {
-        "type": "calendar",
-        "id": "151"
-      },
-      {
-        "type": "note",
-        "id": "242"
-      },
-      {
-        "type": "calendar",
-        "id": "166"
-      },
-      {
-        "type": "calendar",
-        "id": "186"
-      },
-      {
-        "type": "note",
-        "id": "267"
-      },
-      {
-        "type": "push",
-        "id": "993"
-      },
-      {
-        "type": "push",
-        "id": "1002"
-      },
-      {
-        "type": "note",
-        "id": "280"
-      },
-      {
-        "type": "note",
-        "id": "296"
-      },
-      {
-        "type": "sms",
-        "id": "942"
-      },
-      {
-        "type": "push",
-        "id": "1012"
-      },
-      {
-        "type": "push",
-        "id": "1028"
-      },
-      {
-        "type": "sms",
-        "id": "950"
-      },
-      {
-        "type": "note",
-        "id": "321"
-      },
-      {
-        "type": "call",
-        "id": "417"
-      },
-      {
-        "type": "push",
-        "id": "1035"
-      },
-      {
-        "type": "note",
-        "id": "330"
-      },
-      {
-        "type": "photo",
-        "id": "611"
-      },
-      {
-        "type": "note",
-        "id": "331"
-      },
-      {
-        "type": "sms",
-        "id": "957"
-      },
-      {
-        "type": "calendar",
-        "id": "233"
-      },
-      {
-        "type": "call",
-        "id": "418"
-      },
-      {
-        "type": "note",
-        "id": "333"
-      },
-      {
-        "type": "push",
-        "id": "1036"
-      },
-      {
-        "type": "push",
-        "id": "1038"
-      },
-      {
-        "type": "note",
-        "id": "336"
-      },
-      {
-        "type": "sms",
-        "id": "959"
-      },
-      {
-        "type": "note",
-        "id": "338"
-      },
-      {
-        "type": "sms",
-        "id": "960"
-      },
-      {
-        "type": "sms",
-        "id": "963"
-      },
-      {
-        "type": "calendar",
-        "id": "238"
-      },
-      {
-        "type": "note",
-        "id": "341"
-      },
-      {
-        "type": "push",
-        "id": "1041"
-      },
-      {
-        "type": "note",
-        "id": "345"
-      },
-      {
-        "type": "calendar",
-        "id": "241"
-      },
-      {
-        "type": "note",
-        "id": "347"
-      },
-      {
-        "type": "push",
-        "id": "1042"
-      },
-      {
-        "type": "calendar",
-        "id": "243"
-      },
-      {
-        "type": "calendar",
-        "id": "246"
-      },
-      {
-        "type": "push",
-        "id": "1045"
-      },
-      {
-        "type": "sms",
-        "id": "966"
-      },
-      {
-        "type": "note",
-        "id": "349"
-      },
-      {
-        "type": "calendar",
-        "id": "247"
-      },
-      {
-        "type": "push",
-        "id": "1046"
-      },
-      {
-        "type": "photo",
-        "id": "618"
-      },
-      {
-        "type": "note",
-        "id": "353"
-      },
-      {
-        "type": "calendar",
-        "id": "250"
-      },
-      {
-        "type": "calendar",
-        "id": "251"
-      },
-      {
-        "type": "note",
-        "id": "354"
-      },
-      {
-        "type": "call",
-        "id": "419"
-      },
-      {
-        "type": "call",
-        "id": "420"
-      },
-      {
-        "type": "sms",
-        "id": "970"
-      },
-      {
-        "type": "note",
-        "id": "356"
-      },
-      {
-        "type": "call",
-        "id": "421"
-      },
-      {
-        "type": "note",
-        "id": "357"
-      },
-      {
-        "type": "push",
-        "id": "1049"
-      },
-      {
-        "type": "push",
-        "id": "1050"
-      },
-      {
-        "type": "sms",
-        "id": "971"
-      },
-      {
-        "type": "note",
-        "id": "358"
-      },
-      {
-        "type": "note",
-        "id": "359"
-      },
-      {
-        "type": "calendar",
-        "id": "253"
-      },
-      {
-        "type": "push",
-        "id": "1051"
-      },
-      {
-        "type": "call",
-        "id": "422"
-      },
-      {
-        "type": "calendar",
-        "id": "254"
-      },
-      {
-        "type": "note",
-        "id": "360"
-      },
-      {
-        "type": "push",
-        "id": "1052"
-      },
-      {
-        "type": "calendar",
-        "id": "255"
-      },
-      {
-        "type": "calendar",
-        "id": "256"
-      },
-      {
-        "type": "note",
-        "id": "361"
-      }
-    ],
-    "ask_time": "2025-07"
-  },
-  {
     "question": "雷明轩在脚伤期间与好友们讨论的川西自驾游，最终确定了哪些具体安排？",
     "answer": "最终确定了从成都出发的10日行程，出行日期为9月25日至10月4日，明确了路线、预算分工，并由张伟预订好了酒店和特色民宿。",
     "score_points": [
@@ -4684,7 +3089,7 @@
       "3270",
       "3325"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -4783,7 +3188,7 @@
       "2626",
       "2745"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -4903,7 +3308,7 @@
       "2535",
       "2545"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -4953,56 +3358,6 @@
     "ask_time": "2025-08"
   },
   {
-    "question": "3月19日雷明轩晚餐热量摄入略超，最直接的原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "为庆祝自己首次在行业群发言获得反馈"
-      },
-      {
-        "option": "B",
-        "content": "为庆祝父亲病情好转，近期可能出院"
-      },
-      {
-        "option": "C",
-        "content": "因前一日熬夜处理店铺订单感到饥饿"
-      },
-      {
-        "option": "D",
-        "content": "母亲准备了丰盛的晚餐以慰劳他的辛苦"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "event_20250319_001",
-      "event_20250319_002"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "call",
-        "id": "423"
-      },
-      {
-        "type": "sms",
-        "id": "977"
-      },
-      {
-        "type": "note",
-        "id": "374"
-      },
-      {
-        "type": "sms",
-        "id": "983"
-      },
-      {
-        "type": "note",
-        "id": "397"
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
     "question": "6月22日，雷明轩原定的轮滑活动因何取消？",
     "options": [
       {
@@ -5026,7 +3381,7 @@
     "required_events_id": [
       "2370"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -5054,7 +3409,7 @@
   {
     "question": "在2025年5月8日，雷明轩是否购买过体育彩票？",
     "type": "question_answer",
-    "question_type": "unanswerable",
+    "question_type": "Unanswerable",
     "answer": "无法回答",
     "score_points": [],
     "required_events": [],
@@ -5063,7 +3418,7 @@
   {
     "question": "2025年2月9日雷明轩在鲜丰水果店购买砂糖橘时，挑选的那箱橘子具体重量是多少斤？",
     "type": "question_answer",
-    "question_type": "unanswerable",
+    "question_type": "Unanswerable",
     "answer": "无法回答",
     "score_points": [],
     "required_events": [],
@@ -5072,61 +3427,11 @@
   {
     "question": "2025年1月24日，雷明轩是否有女性朋友或潜在约会对象在社交媒体上发布与他相关的动态？",
     "type": "question_answer",
-    "question_type": "unanswerable",
+    "question_type": "Unanswerable",
     "answer": "无法回答",
     "score_points": [],
     "required_events": [],
     "ask_time": "2025-08"
-  },
-  {
-    "question": "7月19日，雷明轩在剪辑视频时因商场停电而中断。这次事件让他对店铺运营有了什么新的具体认识？",
-    "options": [
-      {
-        "option": "A",
-        "content": "需要购买更专业的拍摄设备。"
-      },
-      {
-        "option": "B",
-        "content": "意识到应急电源对店铺运营的重要性。"
-      },
-      {
-        "option": "C",
-        "content": "决定放弃短视频创作。"
-      },
-      {
-        "option": "D",
-        "content": "考虑将所有拍摄工作外包。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "2782",
-      "2788"
-    ],
-    "required_events_date": [
-      "2025-07-19",
-      "2025-07-19"
-    ],
-    "ask_time": "2025-08",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "push",
-        "id": "1155"
-      },
-      {
-        "type": "push",
-        "id": "1156"
-      },
-      {
-        "type": "note",
-        "id": "561"
-      },
-      {
-        "type": "push",
-        "id": "1157"
-      }
-    ]
   },
   {
     "question": "雷明轩在经历商场停电后，采取了哪些关键步骤来应对并预防未来的电力中断风险？",
@@ -5161,7 +3466,7 @@
       "2025-07-20"
     ],
     "ask_time": "2025-08",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -5207,7 +3512,7 @@
       "2025-07-22"
     ],
     "ask_time": "2025-08",
-    "question_type": "temporal",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -5269,7 +3574,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在6月份的一次看房过程中，雷明轩基于哪些具体原因向中介提出了还价？",
@@ -5313,51 +3618,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在6月份的一次家庭聚餐中，表弟杨帆针对雷明轩的店铺运营提出了什么建议？",
-    "options": [
-      {
-        "option": "A",
-        "content": "建议增加线上直播带货"
-      },
-      {
-        "option": "B",
-        "content": "建议与更多设计师联名"
-      },
-      {
-        "option": "C",
-        "content": "建议优化库存管理系统"
-      },
-      {
-        "option": "D",
-        "content": "建议引入会员积分体系"
-      }
-    ],
-    "answer": "C",
-    "required_events": [
-      {
-        "event_id": "2264",
-        "event_name": "家庭聚餐"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "49"
-      },
-      {
-        "type": "note",
-        "id": "92"
-      },
-      {
-        "type": "push",
-        "id": "865"
-      }
-    ],
-    "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年4月，雷明轩在与发小张伟的聊天中，谈论到另一位发小李娜最近遇到的一件让她感到困扰但并未向雷明轩直接提及的事情是什么？",
@@ -5395,55 +3656,7 @@
         "id": "742"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "7月份，我送车去何师傅汽车养护中心进行保养时，何师傅除了建议常规保养，还建议了哪两项具体项目？",
-    "options": [
-      {
-        "option": "A",
-        "content": "更换刹车片和清洗节气门"
-      },
-      {
-        "option": "B",
-        "content": "更换磨损轮胎和加装胎压监测"
-      },
-      {
-        "option": "C",
-        "content": "更换机油和更换空调滤芯"
-      },
-      {
-        "option": "D",
-        "content": "四轮定位和更换雨刮器"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "2719",
-        "event_name": "送车进行保养与安全升级"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "note",
-        "id": "127"
-      },
-      {
-        "type": "sms",
-        "id": "659"
-      },
-      {
-        "type": "push",
-        "id": "889"
-      },
-      {
-        "type": "photo",
-        "id": "549"
-      }
-    ],
-    "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "7月份，我在家中研究如何突破减肥平台期时，主要了解了哪些核心概念并记录了哪些具体方法？",
@@ -5479,7 +3692,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "2025年8月，雷明轩在和张伟聊天时，得知了他们的发小李娜最近在杭州遇到了一件什么让她特别开心的事情？",
@@ -5517,7 +3730,7 @@
         "id": "772"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年8月，雷明轩与理财经理徐峰视频会议后，决定用多少闲置资金尝试性投资国潮概念股？",
@@ -5549,7 +3762,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "8月份，我首次进行股票投资时，买入的股票主要涉及哪两个领域？",
@@ -5593,159 +3806,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "根据雷明轩在8月与朋友的两次聚会和一次居家约会中的餐饮选择，可以推断他可能对哪个国家的文化有明显兴趣？",
-    "options": [
-      {
-        "option": "A",
-        "content": "法国"
-      },
-      {
-        "option": "B",
-        "content": "日本"
-      },
-      {
-        "option": "C",
-        "content": "意大利"
-      },
-      {
-        "option": "D",
-        "content": "美国"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "2972",
-      "3150",
-      "3071"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "photo",
-        "id": "562"
-      },
-      {
-        "type": "calendar",
-        "id": "109"
-      },
-      {
-        "type": "sms",
-        "id": "904"
-      },
-      {
-        "type": "push",
-        "id": "929"
-      },
-      {
-        "type": "note",
-        "id": "189"
-      },
-      {
-        "type": "note",
-        "id": "219"
-      },
-      {
-        "type": "calendar",
-        "id": "149"
-      },
-      {
-        "type": "push",
-        "id": "957"
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
-    "question": "在四月的傍晚，我通常会有哪些固定的家庭活动？",
-    "answer": "每天晚饭后陪父亲在小区花园或小区内进行15-30分钟的慢速康复散步，期间闲聊日常，以增进亲子关系并辅助父亲康复。",
-    "score_points": [
-      {
-        "description": "识别出活动发生在每天或几乎每天的晚饭后（傍晚时段）。",
-        "score": 4
-      },
-      {
-        "description": "准确描述活动内容是陪父亲进行慢速散步。",
-        "score": 3
-      },
-      {
-        "description": "指出活动地点通常在小区花园或小区内。",
-        "score": 2
-      },
-      {
-        "description": "明确活动目的包括父亲康复训练和增进亲子交流。",
-        "score": 1
-      }
-    ],
-    "required_events_id": [
-      "1202",
-      "1327",
-      "1397",
-      "1441",
-      "1597"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "106"
-      },
-      {
-        "type": "note",
-        "id": "158"
-      },
-      {
-        "type": "push",
-        "id": "909"
-      },
-      {
-        "type": "push",
-        "id": "920"
-      },
-      {
-        "type": "calendar",
-        "id": "118"
-      },
-      {
-        "type": "calendar",
-        "id": "139"
-      },
-      {
-        "type": "push",
-        "id": "946"
-      },
-      {
-        "type": "sms",
-        "id": "910"
-      },
-      {
-        "type": "calendar",
-        "id": "164"
-      },
-      {
-        "type": "push",
-        "id": "969"
-      },
-      {
-        "type": "note",
-        "id": "237"
-      },
-      {
-        "type": "calendar",
-        "id": "204"
-      },
-      {
-        "type": "sms",
-        "id": "939"
-      },
-      {
-        "type": "photo",
-        "id": "599"
-      }
-    ],
-    "ask_time": "2025-08"
+    "question_type": "Information Extraction"
   },
   {
     "question": "雷明轩在1月3日和1月5日进行店铺深度复盘和战略规划时，分别是在什么时间段？",
@@ -5772,7 +3833,7 @@
       "36",
       "61"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -5806,445 +3867,6 @@
     "ask_time": "2025-08"
   },
   {
-    "question": "结合雷明轩的中期商业目标，他在7月初系统学习短视频运营最可能的内在动机是什么？",
-    "answer": "最可能的内在动机是为其“三年内将现有店铺升级为小型品牌集合店，并开设线上分店”的中期目标做准备，通过学习线上运营技能，为未来的品牌拓展和线上业务布局打下基础。",
-    "score_points": [
-      {
-        "description": "能从用户画像中准确识别“三年内将现有店铺升级为小型品牌集合店，并开设线上分店”这一中期目标。",
-        "score": 4
-      },
-      {
-        "description": "能识别7月2日事件（ID: 2527）中“系统学习账号定位和内容策划理论，分析竞品账号，规划首期视频主题”等与线上营销技能相关的具体行为。",
-        "score": 3
-      },
-      {
-        "description": "能将学习新技能的行为与长期商业目标（品牌升级、开设线上分店）进行合理的动机关联推理。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "2527"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "161"
-      },
-      {
-        "type": "push",
-        "id": "911"
-      },
-      {
-        "type": "photo",
-        "id": "561"
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
-    "question": "在7月初的一次重要家庭聚会中，谁是我最核心的童年朋友？",
-    "options": [
-      {
-        "option": "A",
-        "content": "周涛"
-      },
-      {
-        "option": "B",
-        "content": "张伟"
-      },
-      {
-        "option": "C",
-        "content": "王磊"
-      },
-      {
-        "option": "D",
-        "content": "宋佳"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "2542",
-      "2573"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "155"
-      },
-      {
-        "type": "calendar",
-        "id": "103"
-      },
-      {
-        "type": "photo",
-        "id": "577"
-      },
-      {
-        "type": "note",
-        "id": "209"
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
-    "question": "7月份，我工作与生活的核心焦点主要集中在哪件事上？",
-    "options": [
-      {
-        "option": "A",
-        "content": "筹备并推进杭州快闪店项目"
-      },
-      {
-        "option": "B",
-        "content": "学习短视频运营与内容创作"
-      },
-      {
-        "option": "C",
-        "content": "管理上海主店的日常运营与促销"
-      },
-      {
-        "option": "D",
-        "content": "规划国庆家庭自驾游行程"
-      }
-    ],
-    "answer": "A",
-    "required_events_id": [
-      "2505",
-      "2545",
-      "2596",
-      "2599",
-      "2624",
-      "2626",
-      "2695"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "push",
-        "id": "956"
-      },
-      {
-        "type": "note",
-        "id": "218"
-      },
-      {
-        "type": "calendar",
-        "id": "148"
-      },
-      {
-        "type": "call",
-        "id": "410"
-      },
-      {
-        "type": "note",
-        "id": "238"
-      },
-      {
-        "type": "calendar",
-        "id": "213"
-      },
-      {
-        "type": "push",
-        "id": "1016"
-      },
-      {
-        "type": "note",
-        "id": "300"
-      },
-      {
-        "type": "call",
-        "id": "414"
-      },
-      {
-        "type": "note",
-        "id": "307"
-      },
-      {
-        "type": "calendar",
-        "id": "219"
-      },
-      {
-        "type": "calendar",
-        "id": "226"
-      },
-      {
-        "type": "photo",
-        "id": "607"
-      },
-      {
-        "type": "note",
-        "id": "315"
-      },
-      {
-        "type": "calendar",
-        "id": "228"
-      },
-      {
-        "type": "call",
-        "id": "415"
-      },
-      {
-        "type": "push",
-        "id": "1025"
-      },
-      {
-        "type": "push",
-        "id": "1032"
-      },
-      {
-        "type": "push",
-        "id": "1033"
-      },
-      {
-        "type": "note",
-        "id": "326"
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
-    "question": "在六月的周末，我主要参与了哪些类型的社交休闲活动？",
-    "answer": "在六月的周末，我主要参与了三种类型的社交休闲活动：1. 与朋友进行篮球、轮滑等集体运动；2. 与家人聚餐、散步；3. 与恋人林薇约会，如听音乐会、规划旅行。",
-    "score_points": [
-      {
-        "description": "准确概括与朋友进行的运动类社交活动（篮球、轮滑）",
-        "score": 4
-      },
-      {
-        "description": "准确概括与家人进行的互动活动（聚餐、散步）",
-        "score": 3
-      },
-      {
-        "description": "准确概括与恋人（林薇）的约会活动（听音乐会、规划旅行）",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "2093",
-      "2095",
-      "2097",
-      "2133",
-      "2167",
-      "2169",
-      "2170",
-      "2171",
-      "2259",
-      "2260",
-      "2261",
-      "2262",
-      "2275",
-      "2278",
-      "2434",
-      "2494",
-      "2495"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "143"
-      },
-      {
-        "type": "push",
-        "id": "951"
-      },
-      {
-        "type": "sms",
-        "id": "913"
-      },
-      {
-        "type": "photo",
-        "id": "578"
-      },
-      {
-        "type": "calendar",
-        "id": "190"
-      },
-      {
-        "type": "sms",
-        "id": "934"
-      },
-      {
-        "type": "photo",
-        "id": "593"
-      },
-      {
-        "type": "calendar",
-        "id": "202"
-      },
-      {
-        "type": "photo",
-        "id": "598"
-      },
-      {
-        "type": "note",
-        "id": "288"
-      },
-      {
-        "type": "sms",
-        "id": "949"
-      },
-      {
-        "type": "push",
-        "id": "1027"
-      },
-      {
-        "type": "note",
-        "id": "320"
-      },
-      {
-        "type": "calendar",
-        "id": "231"
-      },
-      {
-        "type": "sms",
-        "id": "955"
-      },
-      {
-        "type": "photo",
-        "id": "610"
-      },
-      {
-        "type": "calendar",
-        "id": "232"
-      },
-      {
-        "type": "sms",
-        "id": "956"
-      },
-      {
-        "type": "note",
-        "id": "329"
-      },
-      {
-        "type": "push",
-        "id": "1037"
-      },
-      {
-        "type": "note",
-        "id": "335"
-      },
-      {
-        "type": "calendar",
-        "id": "235"
-      },
-      {
-        "type": "calendar",
-        "id": "237"
-      },
-      {
-        "type": "sms",
-        "id": "962"
-      },
-      {
-        "type": "note",
-        "id": "340"
-      },
-      {
-        "type": "calendar",
-        "id": "239"
-      },
-      {
-        "type": "photo",
-        "id": "613"
-      },
-      {
-        "type": "note",
-        "id": "342"
-      },
-      {
-        "type": "calendar",
-        "id": "240"
-      },
-      {
-        "type": "note",
-        "id": "344"
-      },
-      {
-        "type": "photo",
-        "id": "614"
-      },
-      {
-        "type": "push",
-        "id": "1040"
-      },
-      {
-        "type": "calendar",
-        "id": "244"
-      },
-      {
-        "type": "push",
-        "id": "1043"
-      },
-      {
-        "type": "sms",
-        "id": "965"
-      },
-      {
-        "type": "calendar",
-        "id": "245"
-      },
-      {
-        "type": "push",
-        "id": "1044"
-      },
-      {
-        "type": "note",
-        "id": "348"
-      },
-      {
-        "type": "calendar",
-        "id": "248"
-      },
-      {
-        "type": "photo",
-        "id": "616"
-      },
-      {
-        "type": "note",
-        "id": "350"
-      },
-      {
-        "type": "note",
-        "id": "352"
-      },
-      {
-        "type": "calendar",
-        "id": "249"
-      },
-      {
-        "type": "push",
-        "id": "1047"
-      },
-      {
-        "type": "calendar",
-        "id": "252"
-      },
-      {
-        "type": "sms",
-        "id": "968"
-      },
-      {
-        "type": "photo",
-        "id": "619"
-      },
-      {
-        "type": "sms",
-        "id": "969"
-      },
-      {
-        "type": "push",
-        "id": "1048"
-      },
-      {
-        "type": "note",
-        "id": "355"
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
     "question": "在3月份，当我尝试进行晨间锻炼时，通常选择在什么时间开始？",
     "answer": "早晨7点左右。",
     "score_points": [
@@ -6261,7 +3883,7 @@
       "768",
       "838"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "push",
@@ -6287,84 +3909,6 @@
     "ask_time": "2025-08"
   },
   {
-    "question": "雷明轩在2月13日与供应商周涛沟通时，提出春季面料应注重轻量化、功能性纹理的需求。提出这一具体需求最主要基于他在之前哪次活动中的收获？",
-    "options": [
-      {
-        "option": "A",
-        "content": "2月8日参观‘山系之间’艺术展，被城市户外美学吸引并获得灵感。"
-      },
-      {
-        "option": "B",
-        "content": "2月12日参加商场物业分享的零售数字化转型线上讲座。"
-      },
-      {
-        "option": "C",
-        "content": "2月6日店铺深度清洁与安全检查时对货品摆放的思考。"
-      },
-      {
-        "option": "D",
-        "content": "2月4日熬夜处理紧急财务问题后对成本控制的反思。"
-      }
-    ],
-    "answer": "A",
-    "required_events_id": [
-      "500",
-      "560"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "125"
-      },
-      {
-        "type": "push",
-        "id": "887"
-      },
-      {
-        "type": "calendar",
-        "id": "78"
-      },
-      {
-        "type": "photo",
-        "id": "548"
-      },
-      {
-        "type": "note",
-        "id": "140"
-      },
-      {
-        "type": "push",
-        "id": "898"
-      },
-      {
-        "type": "sms",
-        "id": "727"
-      },
-      {
-        "type": "calendar",
-        "id": "91"
-      },
-      {
-        "type": "note",
-        "id": "386"
-      },
-      {
-        "type": "calendar",
-        "id": "272"
-      },
-      {
-        "type": "sms",
-        "id": "1000"
-      },
-      {
-        "type": "note",
-        "id": "454"
-      }
-    ],
-    "ask_time": "2025-09"
-  },
-  {
     "question": "雷明轩在确认杭州快闪店首周分红到账并转入储备金账户后，为这笔资金标记了哪些具体用途？",
     "answer": "这笔分红被标记为用于店铺升级资金和未来业务扩张计划。",
     "score_points": [
@@ -6380,7 +3924,7 @@
     "required_events_id": [
       "3051"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -6393,68 +3937,6 @@
       {
         "type": "calendar",
         "id": "311"
-      }
-    ],
-    "ask_time": "2025-09"
-  },
-  {
-    "question": "雷明轩在9月11日进行系统性训练后，临时决定打乱康复饮食计划的最核心原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "当天健身房训练强度大，需要补充能量。"
-      },
-      {
-        "option": "B",
-        "content": "家人准备了丰盛的晚餐，盛情难却。"
-      },
-      {
-        "option": "C",
-        "content": "与女友约会时情绪高涨，饮食上有所放纵。"
-      },
-      {
-        "option": "D",
-        "content": "训练后被球友韩东临时拉去火锅店聚餐，美食诱惑。"
-      }
-    ],
-    "answer": "D",
-    "required_events_id": [
-      "3485",
-      "3486"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 118
-      },
-      {
-        "type": "push",
-        "id": 119
-      },
-      {
-        "type": "push",
-        "id": 121
-      },
-      {
-        "type": "push",
-        "id": "1086"
-      },
-      {
-        "type": "sms",
-        "id": "989"
-      },
-      {
-        "type": "call",
-        "id": "433"
-      },
-      {
-        "type": "sms",
-        "id": "1005"
-      },
-      {
-        "type": "note",
-        "id": "466"
       }
     ],
     "ask_time": "2025-09"
@@ -6474,7 +3956,7 @@
       "2689",
       "2690"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -6540,7 +4022,7 @@
       "1241",
       "1247"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -6584,7 +4066,7 @@
       "1250",
       "1326"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "calendar",
@@ -6647,7 +4129,7 @@
       "1773",
       "1795"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -6701,7 +4183,7 @@
       "2025-08-22"
     ],
     "ask_time": "2025-09",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "calendar",
@@ -6718,60 +4200,6 @@
       {
         "type": "sms",
         "id": "1117"
-      }
-    ]
-  },
-  {
-    "question": "基于2025年8月10日的事件，雷明轩决定尝试股票投资的主要考虑因素有哪些？",
-    "answer": "雷明轩对国潮品牌动态有个人兴趣和行业认知（通过浏览财经新闻并记录问题），理财经理提供了市场分析和投资建议，促使他决定使用1万元闲置资金小额度尝试投资国潮概念股。",
-    "score_points": [
-      {
-        "description": "明确提及雷明轩对国潮品牌的个人兴趣和行业认知（结合事件ID 3071和3076的信息）。",
-        "score": 4
-      },
-      {
-        "description": "明确提及理财经理提供的市场分析和投资建议（来自事件ID 3076）。",
-        "score": 3
-      },
-      {
-        "description": "明确提及使用闲置资金进行小额度尝试的决定（来自事件ID 3076）。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "3071",
-      "3076"
-    ],
-    "required_events_date": [
-      "2025-08-10",
-      "2025-08-10"
-    ],
-    "ask_time": "2025-09",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "219"
-      },
-      {
-        "type": "push",
-        "id": "957"
-      },
-      {
-        "type": "calendar",
-        "id": "149"
-      },
-      {
-        "type": "note",
-        "id": "98"
-      },
-      {
-        "type": "push",
-        "id": "868"
-      },
-      {
-        "type": "calendar",
-        "id": "54"
       }
     ]
   },
@@ -6805,7 +4233,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在9月份，我因脚踝不适预约并前往了哪家康复门诊进行评估？",
@@ -6849,43 +4277,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "9月14日，雷明轩与球友们步行前往用餐的本帮菜馆是哪家？",
-    "answer": "曹家庄(杨高南路店)",
-    "score_points": [
-      {
-        "description": "准确回答出餐厅名称“曹家庄”。",
-        "score": 6
-      },
-      {
-        "description": "准确回答出分店信息“杨高南路店”。",
-        "score": 4
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "3520",
-        "event_name": "与球友步行至餐厅午餐"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "push",
-        "id": 137
-      },
-      {
-        "type": "photo",
-        "id": 69
-      },
-      {
-        "type": "photo",
-        "id": 70
-      }
-    ],
-    "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在甲居藏寨拜访手工艺人时，我购买了一件带有特定图案的羊毛制品打算送给女友，请问这件物品是什么？",
@@ -6929,43 +4321,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在6月份的店铺运营数据整理中，雷明轩对“城市户外”角落的销售情况得出了什么初步结论？",
-    "answer": "该角落显著提升了区域客流和试穿率，但客单价提升不明显，需考虑增加高单价配饰或推出组合优惠。",
-    "score_points": [
-      {
-        "description": "准确指出“城市户外”角落带来的积极效果：显著提升了区域客流和试穿率。",
-        "score": 5
-      },
-      {
-        "description": "准确指出存在的问题及相应建议：客单价提升不明显，需考虑增加高单价配饰或推出组合优惠。",
-        "score": 5
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "2177",
-        "event_name": "店铺月度运营数据整理"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "42"
-      },
-      {
-        "type": "note",
-        "id": "84"
-      },
-      {
-        "type": "push",
-        "id": "860"
-      }
-    ],
-    "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "4月份，雷明轩在哪个地点与发小进行了深夜交谈，倾诉了关于母亲健康、家庭负担等压力？",
@@ -7009,7 +4365,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "2025年4月，雷明轩在与潮玩藏友林静的聊天中，表达了自己对哪种类型的潮玩设计风格最不感冒？",
@@ -7055,55 +4411,7 @@
         "id": "737"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "3月份，雷明轩与理财顾问徐峰进行线上会议，主要调整了哪方面的策略？",
-    "options": [
-      {
-        "option": "A",
-        "content": "店铺促销策略"
-      },
-      {
-        "option": "B",
-        "content": "家庭适老化改造策略"
-      },
-      {
-        "option": "C",
-        "content": "个人健康管理策略"
-      },
-      {
-        "option": "D",
-        "content": "家庭投资策略"
-      }
-    ],
-    "answer": "D",
-    "required_events": [
-      {
-        "event_id": "1086",
-        "event_name": "与理财顾问徐峰进行线上视频会议，调整投资策略"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "call",
-        "id": "397"
-      },
-      {
-        "type": "calendar",
-        "id": "94"
-      },
-      {
-        "type": "note",
-        "id": "144"
-      },
-      {
-        "type": "push",
-        "id": "900"
-      }
-    ],
-    "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，雷明轩在与发小李娜的聊天中，得知了另一位发小张伟最近遇到了什么工作上的具体变动？",
@@ -7141,7 +4449,7 @@
         "id": "814"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，雷明轩在与潮玩藏友林静的交流中，分享了自己最近在收藏泡泡玛特系列时，对哪个特定系列的设计风格产生了特别的偏好？",
@@ -7187,7 +4495,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "1月份，雷明轩与物业经理在商场内哪家餐厅共进午餐，并讨论了什么活动计划？",
@@ -7227,51 +4535,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "8月份，我在主店接待了哪位熟客，并向她推荐了哪种风格的服饰？",
-    "options": [
-      {
-        "option": "A",
-        "content": "李娜；推荐了户外休闲系列"
-      },
-      {
-        "option": "B",
-        "content": "冯小雨；推荐了轻机能风格日常穿搭"
-      },
-      {
-        "option": "C",
-        "content": "小陈；推荐了多功能马甲和工装裤"
-      },
-      {
-        "option": "D",
-        "content": "郑凯；推荐了机能风单品"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "3007",
-        "event_name": "主店午前营业接待顾客，包括熟客冯小雨"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "48"
-      },
-      {
-        "type": "note",
-        "id": "91"
-      },
-      {
-        "type": "sms",
-        "id": "619"
-      }
-    ],
-    "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年8月，雷明轩在微信群里和发小李娜、张伟聊起另一位发小陈浩的近况，陈浩最近在杭州因为什么事情被大家调侃？",
@@ -7317,7 +4581,7 @@
         "id": "859"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在2月份处理客户关于卫衣褪色的投诉时，雷明轩为王女士提供了哪两种解决方案？",
@@ -7357,7 +4621,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在2月练习手冲咖啡时，我通常会如何记录和调整我的操作？",
@@ -7386,7 +4650,7 @@
       "747",
       "752"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -7460,7 +4724,7 @@
       "2226",
       "2229"
     ],
-    "question_type": "open_domain",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -7554,7 +4818,7 @@
       "3039",
       "3040"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "calendar",
@@ -7596,7 +4860,7 @@
       "3351",
       "3519"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -7646,7 +4910,7 @@
       "4009",
       "4012"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "push",
@@ -7692,7 +4956,7 @@
       "4009",
       "4012"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -7722,68 +4986,6 @@
     "ask_time": "2025-10"
   },
   {
-    "question": "雷明轩在10月14日主动联系理财经理徐峰咨询经营贷款，其最直接的诱因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "为了支付店铺“川西主题”布置的供应商货款"
-      },
-      {
-        "option": "B",
-        "content": "因股市持续调整导致账户浮亏，同时面临店铺升级和新房首付的资金压力"
-      },
-      {
-        "option": "C",
-        "content": "为了凑足购买游戏主机和预购3A游戏所需的个人娱乐消费"
-      },
-      {
-        "option": "D",
-        "content": "为了偿还之前为父亲购买助听器所欠下的短期借款"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "3915",
-      "3917"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 237
-      },
-      {
-        "type": "agent_chat",
-        "id": 66
-      },
-      {
-        "type": "note",
-        "id": 16
-      },
-      {
-        "type": "call",
-        "id": 104
-      },
-      {
-        "type": "note",
-        "id": "384"
-      },
-      {
-        "type": "calendar",
-        "id": "271"
-      },
-      {
-        "type": "note",
-        "id": "425"
-      },
-      {
-        "type": "calendar",
-        "id": "298"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
     "question": "雷明轩在10月初线上筛选的车型范围，与10月中旬陪同父母试驾后家庭会议初步确定的购车倾向，具体经历了怎样的调整过程？",
     "answer": "10月初线上筛选主要关注新能源SUV（如比亚迪唐、问界M5、小鹏G6）。经10月中旬与父母试驾合资品牌SUV和国产品牌MPV，并综合家人意见后，购车倾向调整为倾向于购买SUV（具体品牌未定），并计划下周再看其他品牌进行最终对比。",
     "score_points": [
@@ -7806,7 +5008,7 @@
       "3985",
       "3988"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -7852,56 +5054,6 @@
     "ask_time": "2025-10"
   },
   {
-    "question": "雷明轩在10月7日恢复晨跑习惯，这主要是由之前哪两个相继发生的事件所促成的？",
-    "answer": "主要是由于国庆假期期间（10月2日、4日）因聚餐饮食过量导致体重增加，以及10月6日中秋家宴后体重再次增加，促使他决定加强运动来控制体重。",
-    "score_points": [
-      {
-        "description": "准确回答第一个促成事件是国庆假期期间（10月2日、4日）因聚餐饮食过量导致体重增加",
-        "score": 5
-      },
-      {
-        "description": "准确回答第二个促成事件是10月6日中秋家宴后体重再次增加，他决定加强运动",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "3781",
-      "3812"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "990"
-      },
-      {
-        "type": "note",
-        "id": "430"
-      },
-      {
-        "type": "push",
-        "id": "1087"
-      },
-      {
-        "type": "push",
-        "id": "1113"
-      },
-      {
-        "type": "note",
-        "id": "475"
-      },
-      {
-        "type": "note",
-        "id": "501"
-      },
-      {
-        "type": "calendar",
-        "id": "336"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
     "question": "雷明轩为了解决父母家中网络信号弱的问题，从发现问题到最终解决，他依次采取了哪些具体行动？",
     "answer": "他首先在1月8日早晨听父亲唠叨网络问题并承诺解决；接着在1月9日凌晨回家后，用手机测速软件测试Wi-Fi信号，确认卧室和阳台信号弱，并承诺周末购买Mesh路由器解决；然后在1月9日午休时，深入研究并下单购买了双支装Mesh路由器；随后在1月10日晚回家后，为父母安装调试好Mesh路由器，实现全屋Wi-Fi信号满格；最后在1月11日上午，指导父母使用路由器管理APP、测试网速，并一起用新网络流畅观看电视剧。",
     "score_points": [
@@ -7933,7 +5085,7 @@
       "142",
       "147"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -8023,72 +5175,6 @@
     "ask_time": "2025-10"
   },
   {
-    "question": "雷明轩在1月17日决定亲自开车将企业订单货物送往苏州交付，而非使用普通物流，最直接的原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "前一天收货分装时对货品质量有信心，为确保万无一失并提升客户体验，决定亲自交付。"
-      },
-      {
-        "option": "B",
-        "content": "当日店铺工作不忙，他有充足的空闲时间可以自驾往返苏沪。"
-      },
-      {
-        "option": "C",
-        "content": "客户冯小雨在合同中明确要求必须由店主本人亲自送货上门。"
-      },
-      {
-        "option": "D",
-        "content": "普通的物流公司因春节临近已停止接收送往苏州的货物。"
-      }
-    ],
-    "answer": "A",
-    "required_events_id": [
-      "217",
-      "228"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "175"
-      },
-      {
-        "type": "call",
-        "id": "403"
-      },
-      {
-        "type": "push",
-        "id": "918"
-      },
-      {
-        "type": "note",
-        "id": "426"
-      },
-      {
-        "type": "push",
-        "id": "1082"
-      },
-      {
-        "type": "calendar",
-        "id": "299"
-      },
-      {
-        "type": "calendar",
-        "id": "314"
-      },
-      {
-        "type": "push",
-        "id": "1106"
-      },
-      {
-        "type": "note",
-        "id": "458"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
     "question": "雷明轩在7月20日发现体重进入平台期后，到7月22日为止，他采取了哪些具体行动来试图突破？",
     "answer": "他主动搜索并研究了平台期突破方法；通过微信语音咨询了健身球友谢飞，获得了变速跑和增加力量训练等专业建议；前往迪卡侬采购了新的运动装备（包括综合训练鞋、速干毛巾和运动水壶）；在7月21日于滨江跑道首次尝试了变速跑（简易HIIT）；并在7月22日晚上在家中客厅跟随Keep APP进行了首次完整的HIIT核心训练。",
     "score_points": [
@@ -8120,7 +5206,7 @@
       "2812",
       "2827"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -8200,7 +5286,7 @@
       "872",
       "873"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "call",
@@ -8278,156 +5364,6 @@
     "ask_time": "2025-10"
   },
   {
-    "question": "雷明轩在4月15日晚上开始系统学习线上运营课程，其最直接的前提事件是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "他完成了春季促销活动的数据复盘，发现线上引流效果超预期。"
-      },
-      {
-        "option": "B",
-        "content": "他与供应商周涛进行了深度视频会议，获得了对线上转型的具体建议和鼓励。"
-      },
-      {
-        "option": "C",
-        "content": "他报名了线上运营课程并完成了支付。"
-      },
-      {
-        "option": "D",
-        "content": "他开始具体规划线上店铺，并筛选了首批试水商品。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "1347",
-      "1412"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "206"
-      },
-      {
-        "type": "push",
-        "id": "944"
-      },
-      {
-        "type": "calendar",
-        "id": "137"
-      },
-      {
-        "type": "sms",
-        "id": "984"
-      },
-      {
-        "type": "push",
-        "id": "1073"
-      },
-      {
-        "type": "calendar",
-        "id": "285"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "雷明轩在5月17日晚未能按计划进行HIIT训练，最直接的原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "因为他下午参加了社区篮球活动，身体已经疲劳，不适合再进行高强度训练。"
-      },
-      {
-        "option": "B",
-        "content": "当晚他与女友有重要的深度晚餐约会，需要提前结束工作并精心准备，占用了原定训练时间。"
-      },
-      {
-        "option": "C",
-        "content": "前一天熬夜研究新品资料导致白天精力不足，加之晚上需要处理突发的客户投诉，导致计划搁置。"
-      },
-      {
-        "option": "D",
-        "content": "他刚刚制定了健康计划，但执行初期因压力感而选择临时放松，用散步代替了高强度训练。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "1839",
-      "1849"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "push",
-        "id": "1072"
-      },
-      {
-        "type": "note",
-        "id": "407"
-      },
-      {
-        "type": "sms",
-        "id": "992"
-      },
-      {
-        "type": "note",
-        "id": "432"
-      },
-      {
-        "type": "push",
-        "id": "1089"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "雷明轩在报名参加台球业余公开赛的当天，其决策过程主要受到了哪两个关键因素的影响？",
-    "options": [
-      {
-        "option": "A",
-        "content": "A. 长期规律练习与公众号信息获取，以及当天下午与球友切磋时获得的直接激励。"
-      },
-      {
-        "option": "B",
-        "content": "B. 续约谈判后的放松心情与女友讨论合同细节，以及店铺业绩出色带来的闲暇与预算。"
-      },
-      {
-        "option": "C",
-        "content": "C. 当天下午与球友切磋时获得的直接激励，以及午餐时自主搜索并完成报名。"
-      },
-      {
-        "option": "D",
-        "content": "D. 与父母早餐时获得的支持，以及通勤时浏览行业资讯带来的启发。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "1744",
-      "1742"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "367"
-      },
-      {
-        "type": "calendar",
-        "id": "260"
-      },
-      {
-        "type": "note",
-        "id": "486"
-      },
-      {
-        "type": "push",
-        "id": "1119"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
     "question": "雷明轩在6月15日达成体重目标77.5公斤，这个目标最初是在哪一天设定的？",
     "answer": "2025年6月1日。",
     "score_points": [
@@ -8440,7 +5376,7 @@
       "2268",
       "2083"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -8510,7 +5446,7 @@
       "2389",
       "2417"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "push",
@@ -8613,7 +5549,7 @@
       "2025-09-12"
     ],
     "ask_time": "2025-10",
-    "question_type": "temporal",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -8650,72 +5586,6 @@
     ]
   },
   {
-    "question": "雷明轩从川西旅行归来后构思秋季店铺陈列，最直接的灵感来源是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "在成都太古里商圈看到的买手店新品陈列方式。"
-      },
-      {
-        "option": "B",
-        "content": "甲居藏寨的建筑色彩、结构与手工艺品。"
-      },
-      {
-        "option": "C",
-        "content": "旅行途中拍摄的大量自然风光照片。"
-      },
-      {
-        "option": "D",
-        "content": "与民宿主人卓玛关于当地文化经营的交流。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "3603",
-      "3633"
-    ],
-    "required_events_date": [
-      "2025-09-20",
-      "2025-09-22"
-    ],
-    "ask_time": "2025-10",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "101"
-      },
-      {
-        "type": "push",
-        "id": "871"
-      },
-      {
-        "type": "sms",
-        "id": "625"
-      },
-      {
-        "type": "calendar",
-        "id": "57"
-      },
-      {
-        "type": "photo",
-        "id": "537"
-      },
-      {
-        "type": "agent_chat",
-        "id": 53
-      },
-      {
-        "type": "call",
-        "id": 82
-      },
-      {
-        "type": "push",
-        "id": 200
-      }
-    ]
-  },
-  {
     "question": "雷明轩在2025年9月5日进行了哪些关键的健康管理活动？这些活动如何体现他对身体恢复和健身的重视？",
     "answer": "他在早晨进行了约15分钟的脚踝稳定性练习和单脚站立平衡测试，感觉脚踝稳定性比前几天更稳；午间在健身房进行了侧重腿部的力量训练，包括杠铃深蹲、腿举等，并与球友交流健身心得；睡前回想一天时，对完成健身、数据分析等多项计划感到充实有效率，并设定次日闹钟继续坚持。这些活动表明他通过日常康复练习和规律锻炼来管理健康，尤其在脚踝受伤后注重恢复，并将健身融入日常生活以保持活力。",
     "score_points": [
@@ -8743,7 +5613,7 @@
       "2025-09-05"
     ],
     "ask_time": "2025-10",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "push",
@@ -8776,83 +5646,6 @@
     ]
   },
   {
-    "question": "为筹备8月开业的异地店铺，我在7月进行的直接准备工作是以下哪一项？",
-    "options": [
-      {
-        "option": "A",
-        "content": "学习并策划‘城市角落’主题陈列"
-      },
-      {
-        "option": "B",
-        "content": "赴杭州考察快闪店场地并建立本地支持网络"
-      },
-      {
-        "option": "C",
-        "content": "整合资金需求，正式提交贷款申请"
-      },
-      {
-        "option": "D",
-        "content": "参加商业数据分析沙龙"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "2577",
-      "2660",
-      "2669",
-      "2964"
-    ],
-    "required_events_date": [
-      "2025-07-05",
-      "2025-07-11",
-      "2025-08-01"
-    ],
-    "ask_time": "2025-10",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "102"
-      },
-      {
-        "type": "sms",
-        "id": "626"
-      },
-      {
-        "type": "calendar",
-        "id": "58"
-      },
-      {
-        "type": "photo",
-        "id": "538"
-      },
-      {
-        "type": "note",
-        "id": "428"
-      },
-      {
-        "type": "push",
-        "id": "1084"
-      },
-      {
-        "type": "photo",
-        "id": "628"
-      },
-      {
-        "type": "note",
-        "id": "203"
-      },
-      {
-        "type": "push",
-        "id": "942"
-      },
-      {
-        "type": "calendar",
-        "id": "134"
-      }
-    ]
-  },
-  {
     "question": "雷明轩在2025年9月5日因股票浮盈规划将部分盈利用于川西自驾游专项资金，当天他与发小张伟共有几次互动？",
     "options": [
       {
@@ -8881,7 +5674,7 @@
       "2025-09-05"
     ],
     "ask_time": "2025-10",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "push",
@@ -8943,7 +5736,7 @@
       "2025-09-06"
     ],
     "ask_time": "2025-10",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -9003,7 +5796,7 @@
       "2025-10-01"
     ],
     "ask_time": "2025-10",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -9115,59 +5908,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "6月22日，雷明轩因天气原因取消了哪项户外活动，并改为室内健身？",
-    "options": [
-      {
-        "option": "A",
-        "content": "与发小张伟的聚餐"
-      },
-      {
-        "option": "B",
-        "content": "与女友林薇的视频通话"
-      },
-      {
-        "option": "C",
-        "content": "与轮滑伙伴宋佳的轮滑活动"
-      },
-      {
-        "option": "D",
-        "content": "与大学同学赵敏的午餐"
-      }
-    ],
-    "answer": "C",
-    "required_events": [
-      {
-        "event_id": "2370",
-        "event_name": "休息并取消轮滑活动"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "push",
-        "id": "894"
-      },
-      {
-        "type": "sms",
-        "id": "682"
-      },
-      {
-        "type": "sms",
-        "id": "683"
-      },
-      {
-        "type": "calendar",
-        "id": "82"
-      },
-      {
-        "type": "note",
-        "id": "131"
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在2025年9月，雷明轩在与表妹沈洁的聊天中，表达了自己近期在挑选历史小说时最看重哪个方面的偏好？",
@@ -9213,53 +5954,7 @@
         "id": "705"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年8月，雷明轩在微信上向理财顾问徐峰咨询时，表达了自己对当前一项主流投资产品（非基金）的看法。他认为这项投资产品的主要缺点是什么？",
-    "answer": "C",
-    "options": [
-      {
-        "option": "A",
-        "content": "风险过高，波动太大，不适合他这种稳健型投资者。"
-      },
-      {
-        "option": "B",
-        "content": "门槛太高，起投金额超出了他目前的流动资金范围。"
-      },
-      {
-        "option": "C",
-        "content": "收益率偏低，跑不赢通胀，且资金灵活性较差。"
-      },
-      {
-        "option": "D",
-        "content": "投资期限太长，无法匹配他中期开设品牌集合店的资金需求。"
-      }
-    ],
-    "ask_time": "2025-10",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "712"
-      },
-      {
-        "type": "sms",
-        "id": "713"
-      },
-      {
-        "type": "sms",
-        "id": "714"
-      },
-      {
-        "type": "sms",
-        "id": "715"
-      },
-      {
-        "type": "sms",
-        "id": "716"
-      }
-    ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "10月份，雷明轩与表妹在咖啡馆会面时，表妹从时尚角度推荐了哪些新能源SUV车型？",
@@ -9295,53 +5990,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年12月，雷明轩在与他的基金理财经理徐峰喝咖啡聊天时，分享了自己最近在挑选咖啡豆时的一个具体口味偏好。他目前最喜欢哪种处理法的咖啡豆？",
-    "options": [
-      {
-        "option": "A",
-        "content": "日晒处理法"
-      },
-      {
-        "option": "B",
-        "content": "水洗处理法"
-      },
-      {
-        "option": "C",
-        "content": "蜜处理法"
-      },
-      {
-        "option": "D",
-        "content": "厌氧发酵处理法"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "763"
-      },
-      {
-        "type": "sms",
-        "id": "764"
-      },
-      {
-        "type": "sms",
-        "id": "765"
-      },
-      {
-        "type": "sms",
-        "id": "766"
-      },
-      {
-        "type": "sms",
-        "id": "767"
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，雷明轩在与潮玩藏友林静交流时，表达了自己对当前泡泡玛特新系列中哪一类设计风格的偏好？",
@@ -9387,7 +6036,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在1月份整理年度账目期间，雷明轩在接待顾客时成功售出了什么商品？",
@@ -9423,7 +6072,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在1月9日午休期间，雷明轩在日式拉面店与谁拼桌并讨论了商场近况？",
@@ -9459,51 +6108,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在1月份的一次线上讲座中，雷明轩学习了什么主题的知识，并同时分屏处理了什么工作事务？",
-    "options": [
-      {
-        "option": "A",
-        "content": "学习了‘吸湿速干’面料知识，同时分屏处理了店铺账目"
-      },
-      {
-        "option": "B",
-        "content": "学习了‘2025春夏功能性面料深度解析’，同时分屏处理了店铺账目"
-      },
-      {
-        "option": "C",
-        "content": "学习了‘明朝那些事儿’历史知识，同时分屏处理了供应商订单"
-      },
-      {
-        "option": "D",
-        "content": "学习了‘春节营销方案’设计，同时分屏处理了物流确认"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "197",
-        "event_name": "线上讲座学习与工作处理"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "photo",
-        "id": "554"
-      },
-      {
-        "type": "sms",
-        "id": "788"
-      },
-      {
-        "type": "note",
-        "id": "142"
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，雷明轩在店铺阅读时，从哪位历史人物的改革中获得了会员系统改革的灵感，并记录了哪些具体思路到备忘录？",
@@ -9539,7 +6144,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2月份，雷明轩与物业经理凯哥在石辰商场共进午餐，他们去了哪家餐厅？",
@@ -9583,53 +6188,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年4月，雷明轩在与表妹沈洁讨论近期潮流趋势时，表达了自己店铺在夏季T恤选品上最看重面料的哪种特性？",
-    "options": [
-      {
-        "option": "A",
-        "content": "色彩鲜艳度和印花牢固度"
-      },
-      {
-        "option": "B",
-        "content": "面料的挺括感和版型保持能力"
-      },
-      {
-        "option": "C",
-        "content": "吸湿排汗和速干性能"
-      },
-      {
-        "option": "D",
-        "content": "面料的克重和厚度带来的质感"
-      }
-    ],
-    "answer": "C",
-    "ask_time": "2025-10",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "891"
-      },
-      {
-        "type": "sms",
-        "id": "892"
-      },
-      {
-        "type": "sms",
-        "id": "893"
-      },
-      {
-        "type": "sms",
-        "id": "894"
-      },
-      {
-        "type": "sms",
-        "id": "895"
-      }
-    ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "雷明轩在2025年10月8日进行SPA体验的主要目的是什么？",
@@ -9649,7 +6208,7 @@
       "2025-10-08"
     ],
     "ask_time": "2025-10",
-    "question_type": "updating",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "calendar",
@@ -9686,7 +6245,7 @@
       "3784",
       "3940"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -9753,7 +6312,7 @@
       "3589",
       "3592"
     ],
-    "question_type": "open_domain",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "push",
@@ -9913,7 +6472,7 @@
       "3430",
       "3488"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -10039,7 +6598,7 @@
       "3278",
       "3339"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -10133,204 +6692,6 @@
     "ask_time": "2025-10"
   },
   {
-    "question": "在4月，雷明轩的潮玩盲盒收藏爱好是如何与他的店铺运营和客户互动相结合的？",
-    "answer": "他将泡泡玛特等潮玩盲盒作为店铺五五购物节促销活动的满额赠品，并在与熟客钱多多的日常互动中，将预定的盲盒交付给她，同时交流了相关话题。",
-    "score_points": [
-      {
-        "description": "明确指出潮玩盲盒被用作店铺促销活动的赠品，并关联到具体活动（五五购物节）。",
-        "score": 6
-      },
-      {
-        "description": "提及与熟客钱多多的互动，包括交付预定的盲盒并进行交流。",
-        "score": 4
-      }
-    ],
-    "required_events_id": [
-      "1538",
-      "1420"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "call",
-        "id": "401"
-      },
-      {
-        "type": "note",
-        "id": "164"
-      },
-      {
-        "type": "note",
-        "id": "165"
-      },
-      {
-        "type": "sms",
-        "id": "922"
-      },
-      {
-        "type": "note",
-        "id": "234"
-      },
-      {
-        "type": "calendar",
-        "id": "160"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "根据我4月中旬系统学习线上运营课程的行为，可以推断我学习的主要目的是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "为寻找一份互联网运营的新工作"
-      },
-      {
-        "option": "B",
-        "content": "为自己经营的服装店进行线上转型和拓展"
-      },
-      {
-        "option": "C",
-        "content": "纯粹出于个人兴趣，丰富业余生活"
-      },
-      {
-        "option": "D",
-        "content": "帮助朋友管理其社交媒体账号"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "1412",
-      "1333",
-      "1602"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "206"
-      },
-      {
-        "type": "push",
-        "id": "944"
-      },
-      {
-        "type": "calendar",
-        "id": "137"
-      },
-      {
-        "type": "note",
-        "id": "233"
-      },
-      {
-        "type": "calendar",
-        "id": "159"
-      },
-      {
-        "type": "push",
-        "id": "964"
-      },
-      {
-        "type": "note",
-        "id": "279"
-      },
-      {
-        "type": "push",
-        "id": "1001"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "在7月，雷明轩因为哪些具体原因调整或取消了他原定的晚间运动计划？请列举并简要说明。",
-    "answer": "在7月，雷明轩因以下五种原因调整或取消了他的晚间运动计划：1. 工作压力（如处理快闪店合同导致晚睡，无暇运动）；2. 社交活动（如与发小家庭聚餐，占用晚间时间）；3. 新项目兴奋（如思考杭州项目，将运动改为小区散步）；4. 身体不适（如脚踝旧伤复发，需要休养）；5. 天气原因（如阴天凉风，将户外跳绳改为室内拉伸）。",
-    "score_points": [
-      {
-        "description": "能识别因工作压力（如处理快闪店合同）导致取消运动或晚睡。",
-        "score": 2
-      },
-      {
-        "description": "能识别因社交活动（如家庭聚餐、朋友聚会）导致取消运动。",
-        "score": 2
-      },
-      {
-        "description": "能识别因新项目兴奋（如思考杭州项目）导致调整运动（如改散步）或晚睡。",
-        "score": 2
-      },
-      {
-        "description": "能识别因身体不适（如脚踝旧伤）导致取消运动并进行休养。",
-        "score": 2
-      },
-      {
-        "description": "能识别因天气原因（如阴天凉风）导致调整运动方式（如改为室内拉伸）。",
-        "score": 2
-      }
-    ],
-    "required_events_id": [
-      "2606",
-      "2579",
-      "2509",
-      "2647",
-      "2620"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "171"
-      },
-      {
-        "type": "calendar",
-        "id": "113"
-      },
-      {
-        "type": "calendar",
-        "id": "135"
-      },
-      {
-        "type": "push",
-        "id": "943"
-      },
-      {
-        "type": "note",
-        "id": "204"
-      },
-      {
-        "type": "calendar",
-        "id": "182"
-      },
-      {
-        "type": "push",
-        "id": "985"
-      },
-      {
-        "type": "note",
-        "id": "259"
-      },
-      {
-        "type": "note",
-        "id": "273"
-      },
-      {
-        "type": "push",
-        "id": "997"
-      },
-      {
-        "type": "note",
-        "id": "294"
-      },
-      {
-        "type": "calendar",
-        "id": "209"
-      },
-      {
-        "type": "push",
-        "id": "1009"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
     "question": "雷明轩在脚踝扭伤后，决定前往专业运动康复中心进行系统评估和理疗的核心原因是什么？",
     "options": [
       {
@@ -10355,7 +6716,7 @@
       "3163",
       "3243"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -10432,7 +6793,7 @@
     "required_events_id": [
       "3708"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "push",
@@ -10474,7 +6835,7 @@
       "3363",
       "3458"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "sms",
@@ -10536,7 +6897,7 @@
       "3817",
       "3818"
     ],
-    "question_type": "temporal",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "calendar",
@@ -10562,68 +6923,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "雷明轩在双十一成功下单新手机，他最核心的决策依据主要来自于哪段时间的详细准备？",
-    "options": [
-      {
-        "option": "A",
-        "content": "11月初温泉旅行期间与表弟探讨科技行业趋势后。"
-      },
-      {
-        "option": "B",
-        "content": "11月上旬多次查看预售政策并详细对比后。"
-      },
-      {
-        "option": "C",
-        "content": "11月中旬收到体检报告关注健康数据后。"
-      },
-      {
-        "option": "D",
-        "content": "11月下旬通过咖啡师考核获得新技能证书后。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "4194",
-      "4284"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 110
-      },
-      {
-        "type": "call",
-        "id": 184
-      },
-      {
-        "type": "push",
-        "id": 406
-      },
-      {
-        "type": "push",
-        "id": 407
-      },
-      {
-        "type": "photo",
-        "id": 234
-      },
-      {
-        "type": "call",
-        "id": 210
-      },
-      {
-        "type": "push",
-        "id": 453
-      },
-      {
-        "type": "push",
-        "id": 454
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "雷明轩在通过SCA咖啡师考核的两天后，收到了关于店铺升级谈判的哪项积极进展？",
     "answer": "物业经理郑凯告知其升级申请获得支持，并与他进一步商讨了新租赁合同的框架细节。",
     "score_points": [
@@ -10640,7 +6939,7 @@
       "4478",
       "4509"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -10682,7 +6981,7 @@
       "4219",
       "4252"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -10725,7 +7024,7 @@
       "4262",
       "4598"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -10812,7 +7111,7 @@
       "4356",
       "4431"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "call",
@@ -10895,7 +7194,7 @@
       "4404",
       "4517"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "photo",
@@ -10957,78 +7256,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "3月12日，雷明轩在行业群分享经验并获得积极反馈后，他的情绪状态与此前相比有何变化？",
-    "options": [
-      {
-        "option": "A",
-        "content": "感到专业认同，舒缓了因家庭和店铺压力带来的低落情绪"
-      },
-      {
-        "option": "B",
-        "content": "决定立即加大线上广告投入以复制成功经验"
-      },
-      {
-        "option": "C",
-        "content": "激发了他退出实体零售、全面转向线上的念头"
-      },
-      {
-        "option": "D",
-        "content": "导致他因兴奋而失眠，影响了第二天的店铺运营"
-      }
-    ],
-    "answer": "A",
-    "required_events_id": [
-      "901",
-      "907",
-      "897",
-      "900"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "push",
-        "id": "1074"
-      },
-      {
-        "type": "photo",
-        "id": "625"
-      },
-      {
-        "type": "push",
-        "id": "1075"
-      },
-      {
-        "type": "note",
-        "id": "408"
-      },
-      {
-        "type": "push",
-        "id": "1096"
-      },
-      {
-        "type": "push",
-        "id": "1097"
-      },
-      {
-        "type": "note",
-        "id": "442"
-      },
-      {
-        "type": "call",
-        "id": "436"
-      },
-      {
-        "type": "note",
-        "id": "492"
-      },
-      {
-        "type": "note",
-        "id": "509"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "雷明轩在察觉到父亲听力问题后，采取了哪些具体的行动来帮助父亲？",
     "answer": "他在3月2日与父母共进晚餐时，一起用平板电脑研究助听器信息，筛选了上海浦东三家专业体验中心，并计划周六上午带父亲进行听力测试。随后，在3月5日，他请假陪同父亲前往海之声助听器验配中心，经过听力评估、试戴体验和最终调试，为父亲选定并购买了一款德国品牌的耳内式助听器，并学习了使用方法。",
     "score_points": [
@@ -11049,7 +7276,7 @@
       "827",
       "829"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -11170,7 +7397,7 @@
       "2143",
       "2158"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -11284,61 +7511,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "2025年7月12日14:00至16:00，雷明轩的合伙人周涛在收到雷明轩的行动清单初稿后，具体做了哪些工作？",
-    "type": "question_answer",
-    "question_type": "unanswerable",
-    "answer": "无法回答",
-    "score_points": [],
-    "required_events": [],
-    "ask_time": "2025-11"
-  },
-  {
-    "question": "雷明轩在10月参加完商场消防演习后，回到店铺立即做了什么？",
-    "answer": "演习结束后，雷明轩返回店铺，首先向店员小陈简述了演习要点，随后两人一同检查了店内的灭火器、安全出口标识和应急灯，以确保所有设备符合安全要求。",
-    "score_points": [
-      {
-        "description": "直接行动：返回店铺后，向店员小陈简述了消防演习的要点。",
-        "score": 5
-      },
-      {
-        "description": "具体措施：与小陈一起对店内的灭火器、安全出口标识和应急灯进行了安全检查。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "3936",
-      "3937"
-    ],
-    "required_events_date": [
-      "2025-10-15",
-      "2025-10-15"
-    ],
-    "ask_time": "2025-11",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": 142
-      },
-      {
-        "type": "sms",
-        "id": 143
-      },
-      {
-        "type": "sms",
-        "id": "1115"
-      },
-      {
-        "type": "photo",
-        "id": "648"
-      },
-      {
-        "type": "note",
-        "id": "540"
-      }
-    ]
-  },
-  {
     "question": "在2025年10月15日的商场消防演习中，雷明轩参加完演习（包括知识讲解、灭火器实操和模拟疏散）后，紧接着进行了哪项活动？",
     "options": [
       {
@@ -11368,7 +7540,7 @@
       "2025-10-15"
     ],
     "ask_time": "2025-11",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "sms",
@@ -11422,7 +7594,7 @@
       "2025-10-26"
     ],
     "ask_time": "2025-11",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -11502,7 +7674,7 @@
         "id": "640"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年9月，在与潮玩藏友林静交流时，我向她分享了我目前收藏泡泡玛特系列时最看重的一个核心偏好或原则是什么？",
@@ -11548,7 +7720,7 @@
         "id": "655"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "11月初，雷明轩与家人及女友在武义县某度假村后山散步时，主动承担了什么任务？",
@@ -11580,7 +7752,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在11月份的一次营业高峰中，雷明轩成功化解了哪两位顾客因一件新款联名卫衣产生的争执？",
@@ -11628,7 +7800,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在11月参加的一次红十字会急救培训中，我主要学习了哪些具体的急救技能？（请列举至少两项）",
@@ -11668,51 +7840,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年11月，雷明轩在店铺为熟客钱多多准备的生日礼物是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "设计感丝巾"
-      },
-      {
-        "option": "B",
-        "content": "潮玩"
-      },
-      {
-        "option": "C",
-        "content": "时尚配饰"
-      },
-      {
-        "option": "D",
-        "content": "羊绒围巾"
-      }
-    ],
-    "answer": "D",
-    "required_events": [
-      {
-        "event_id": "4399",
-        "event_name": "店铺营业与客户互动"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "push",
-        "id": 499
-      },
-      {
-        "type": "photo",
-        "id": 310
-      },
-      {
-        "type": "photo",
-        "id": 311
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "2025年11月，雷明轩在与发小张伟的聊天中，得知了另一位发小李娜最近遇到了什么让她感到困扰但又不影响雷明轩自己生活的事情？",
@@ -11750,7 +7878,7 @@
         "id": "664"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "2025年11月，雷明轩在和表妹沈洁聊天时，提到了另一位亲戚杨帆最近遇到的一件让他有点烦恼但最终解决的事情是什么？",
@@ -11796,7 +7924,7 @@
         "id": "674"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在2025年7月，雷明轩与发小李娜聊天时，得知了另一位发小张伟最近在工作上遇到了什么具体问题？",
@@ -11838,53 +7966,7 @@
         "id": "690"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在2025年9月，雷明轩向潮玩藏友林静分享了自己近期在收藏泡泡玛特系列时，一个具体的品味偏好变化是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "从偏好收集热门IP的常规款，转向专门收集冷门设计师的限定款。"
-      },
-      {
-        "option": "B",
-        "content": "从偏好收集大尺寸的展示款，转向专门收集迷你便携的盲盒款。"
-      },
-      {
-        "option": "C",
-        "content": "从偏好收集色彩鲜艳、造型夸张的款式，转向专门收集色调柔和、造型简约的款式。"
-      },
-      {
-        "option": "D",
-        "content": "从偏好收集现代科幻主题的款式，转向专门收集复古怀旧主题的款式。"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "691"
-      },
-      {
-        "type": "sms",
-        "id": "692"
-      },
-      {
-        "type": "sms",
-        "id": "693"
-      },
-      {
-        "type": "sms",
-        "id": "694"
-      },
-      {
-        "type": "sms",
-        "id": "695"
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在4月份的一次店铺营业期间，雷明轩通过微信联系了哪位供应商沟通补货事宜？",
@@ -11928,7 +8010,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "4月份，雷明轩为母亲王秀英准备的生日惊喜晚餐，是在哪家餐厅的包间进行的？",
@@ -11972,125 +8054,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年4月，雷明轩在微信聊天中，得知他的发小李娜最近遇到了什么让她感到困扰的职场问题？",
-    "answer": "李娜最近被公司要求从她擅长的产品运营岗，转去做她不太感兴趣且不擅长的直播带货工作，这让她感到非常困扰和焦虑。",
-    "score_points": [
-      {
-        "description": "准确描述李娜遇到的职场问题：被要求转岗。",
-        "score": 5
-      },
-      {
-        "description": "准确说明转岗的具体方向：从产品运营转到直播带货。",
-        "score": 5
-      }
-    ],
-    "ask_time": "2025-11",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "728"
-      },
-      {
-        "type": "sms",
-        "id": "729"
-      },
-      {
-        "type": "sms",
-        "id": "730"
-      },
-      {
-        "type": "sms",
-        "id": "731"
-      },
-      {
-        "type": "sms",
-        "id": "732"
-      }
-    ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "雷明轩在10月份的一次探店考察中，为了获取店铺设计灵感，在南京老门东历史文化街区具体考察了哪家店铺？",
-    "answer": "拾光书局咖啡",
-    "score_points": [
-      {
-        "description": "答案需精确指出店铺名称“拾光书局咖啡”。",
-        "score": 10
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "3997",
-        "event_name": "南京老门东探店考察"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "call",
-        "id": 123
-      },
-      {
-        "type": "push",
-        "id": 276
-      },
-      {
-        "type": "photo",
-        "id": 162
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年10月，雷明轩在家中庆祝“双喜临门”时，与谁共进晚餐？",
-    "options": [
-      {
-        "option": "A",
-        "content": "女友林薇和发小张伟"
-      },
-      {
-        "option": "B",
-        "content": "父亲雷建国和母亲王秀英"
-      },
-      {
-        "option": "C",
-        "content": "店员小陈和健身教练阿杰"
-      },
-      {
-        "option": "D",
-        "content": "朋友刘洋和秦朗"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "4015",
-        "event_name": "回家与家庭庆祝晚餐"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "88"
-      },
-      {
-        "type": "sms",
-        "id": "706"
-      },
-      {
-        "type": "photo",
-        "id": "552"
-      },
-      {
-        "type": "note",
-        "id": "137"
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "7月份，我为国庆家庭自驾游预约了什么服务？",
@@ -12126,101 +8090,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "7月份，我与合伙人周涛在杭州考察快闪店场地时，就装修方案讨论了哪些具体内容？",
-    "options": [
-      {
-        "option": "A",
-        "content": "货架选择、灯光布局、收银台位置"
-      },
-      {
-        "option": "B",
-        "content": "霓虹灯标识、镜面墙、货架选择"
-      },
-      {
-        "option": "C",
-        "content": "地板材质、试衣间设计、背景音乐"
-      },
-      {
-        "option": "D",
-        "content": "门头设计、橱窗展示、绿植装饰"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "2660",
-        "event_name": "场地实地勘查与装修方案讨论"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "58"
-      },
-      {
-        "type": "note",
-        "id": "102"
-      },
-      {
-        "type": "sms",
-        "id": "626"
-      },
-      {
-        "type": "photo",
-        "id": "538"
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年3月，雷明轩在与潮玩藏友林静交流时，分享了自己近期在收藏泡泡玛特系列时的一个具体偏好变化。这个变化是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "从收集常规款转向只收集隐藏款和限量款"
-      },
-      {
-        "option": "B",
-        "content": "从盲目端盒转向更倾向于在二手平台收自己喜欢的特定角色"
-      },
-      {
-        "option": "C",
-        "content": "从收集现代潮流系列转向开始收集复古怀旧系列"
-      },
-      {
-        "option": "D",
-        "content": "从收集大尺寸手办转向只收集迷你盲盒款式"
-      }
-    ],
-    "answer": "B",
-    "ask_time": "2025-11",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "825"
-      },
-      {
-        "type": "sms",
-        "id": "826"
-      },
-      {
-        "type": "sms",
-        "id": "827"
-      },
-      {
-        "type": "sms",
-        "id": "828"
-      },
-      {
-        "type": "sms",
-        "id": "829"
-      }
-    ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "8月12日，雷明轩在店铺完成首次股票建仓时，将启动资金平分买入了哪两家公司的股票？",
@@ -12272,7 +8142,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年8月，雷明轩在与发小李娜的聊天中，得知了另一位发小张伟最近在忙什么重要事情？",
@@ -12306,7 +8176,7 @@
         "id": "870"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年8月，雷明轩在与潮玩藏友林静的交流中，表达了自己近期对哪一类潮玩系列最感兴趣，并认为其有投资潜力？",
@@ -12352,100 +8222,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "雷明轩在2月份因轮滑受伤就医，医生给出的诊断是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "脚踝骨折"
-      },
-      {
-        "option": "B",
-        "content": "肌肉拉伤"
-      },
-      {
-        "option": "C",
-        "content": "轻度踝关节扭伤"
-      },
-      {
-        "option": "D",
-        "content": "韧带撕裂"
-      }
-    ],
-    "answer": "C",
-    "required_events": [
-      {
-        "event_id": "693",
-        "event_name": "轮滑受伤、就医与返家处理"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "99"
-      },
-      {
-        "type": "sms",
-        "id": "853"
-      },
-      {
-        "type": "note",
-        "id": "151"
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "我10月参观的‘山系之间’展览，其组织者最可能是？",
-    "answer": "策展人或艺术机构。",
-    "score_points": [
-      {
-        "description": "能够从事件描述中识别出展览举办地点为“西岸艺术中心N馆”。",
-        "score": 4
-      },
-      {
-        "description": "能够结合常识（西岸艺术中心是专业艺术展览场馆，通常由策展人或艺术机构组织展览）进行推理。",
-        "score": 3
-      },
-      {
-        "description": "能够给出正确的推断结论：组织者是策展人或艺术机构（而不是商场、个人或政府部门）。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "4149"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 101
-      },
-      {
-        "type": "push",
-        "id": 380
-      },
-      {
-        "type": "photo",
-        "id": 212
-      },
-      {
-        "type": "photo",
-        "id": 213
-      },
-      {
-        "type": "photo",
-        "id": "558"
-      },
-      {
-        "type": "push",
-        "id": "906"
-      }
-    ],
-    "ask_time": "2025-11"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在10月处理多项重要事务时，雷明轩展现出的典型工作方式是？",
@@ -12476,7 +8253,7 @@
       "4160",
       "4165"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -12578,108 +8355,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "在10月份，雷明轩进行晨跑锻炼时，通常选择的具体地点是哪里？",
-    "answer": "浦东滨江道（具体为其昌栈码头/轮渡站附近的滨江跑道）。",
-    "score_points": [
-      {
-        "description": "能够从多个事件中识别出10月份雷明轩进行了多次晨跑/滨江晨跑活动。",
-        "score": 5
-      },
-      {
-        "description": "能够归纳总结出这些晨跑活动均发生在“浦东滨江道”这一具体地点，并能进一步指出其昌栈码头/轮渡站附近这一更精确的位置。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "3747",
-      "3904",
-      "3931",
-      "4007",
-      "4096",
-      "4126"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 221
-      },
-      {
-        "type": "push",
-        "id": 230
-      },
-      {
-        "type": "photo",
-        "id": 136
-      },
-      {
-        "type": "push",
-        "id": 284
-      },
-      {
-        "type": "push",
-        "id": 352
-      },
-      {
-        "type": "photo",
-        "id": 197
-      },
-      {
-        "type": "photo",
-        "id": 198
-      },
-      {
-        "type": "photo",
-        "id": "565"
-      },
-      {
-        "type": "note",
-        "id": "168"
-      },
-      {
-        "type": "sms",
-        "id": "899"
-      },
-      {
-        "type": "push",
-        "id": "928"
-      },
-      {
-        "type": "photo",
-        "id": "569"
-      },
-      {
-        "type": "note",
-        "id": "187"
-      },
-      {
-        "type": "note",
-        "id": "215"
-      },
-      {
-        "type": "calendar",
-        "id": "147"
-      },
-      {
-        "type": "photo",
-        "id": "579"
-      },
-      {
-        "type": "push",
-        "id": "986"
-      },
-      {
-        "type": "photo",
-        "id": "590"
-      },
-      {
-        "type": "note",
-        "id": "260"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "在9月初的某两天里，雷明轩是如何在一天内同时处理来自不同生活领域的事务的？请总结他的典型行为模式。",
     "answer": "雷明轩在一天内会同时处理并推进多个来自不同生活领域的事务。例如，在9月1日，他在处理店铺运营（工作）的同时，穿插进行了脚踝复诊（健康）、接受台球裁判邀请（兴趣/社交）、处理理财报告（财务）、准备并召开家庭会议商议换房（家庭），以及晚上学习咖啡课程（学习）。在9月2日，他在通勤途中启动换车调研（家庭/个人生活），上午处理店铺和供应商事务（工作），午间进行健身（健康），下午返回店铺后同时处理理财沟通（财务）和川西自驾游行程准备（兴趣/社交），晚上加班后还进行了线上房源筛选（家庭）。这显示了他习惯于在单日内并行推进健康、工作、学习、家庭、兴趣、社交、财务等多个领域的事务。",
     "score_points": [
@@ -12710,7 +8385,7 @@
       "3363",
       "3369"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -12828,100 +8503,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "在9月份，我通常将健身活动安排在什么时间段？",
-    "options": [
-      {
-        "option": "A",
-        "content": "清晨"
-      },
-      {
-        "option": "B",
-        "content": "工作日白天（午间或下午）"
-      },
-      {
-        "option": "C",
-        "content": "工作日晚上"
-      },
-      {
-        "option": "D",
-        "content": "周末"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "3362",
-      "3399",
-      "3470",
-      "3485",
-      "3646",
-      "3660"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 5
-      },
-      {
-        "type": "push",
-        "id": 36
-      },
-      {
-        "type": "agent_chat",
-        "id": 12
-      },
-      {
-        "type": "push",
-        "id": 68
-      },
-      {
-        "type": "call",
-        "id": 42
-      },
-      {
-        "type": "push",
-        "id": 118
-      },
-      {
-        "type": "push",
-        "id": 206
-      },
-      {
-        "type": "push",
-        "id": "913"
-      },
-      {
-        "type": "calendar",
-        "id": "110"
-      },
-      {
-        "type": "note",
-        "id": "166"
-      },
-      {
-        "type": "calendar",
-        "id": "170"
-      },
-      {
-        "type": "push",
-        "id": "976"
-      },
-      {
-        "type": "note",
-        "id": "247"
-      },
-      {
-        "type": "calendar",
-        "id": "185"
-      },
-      {
-        "type": "push",
-        "id": "992"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "我在11月为店铺发展筹划并推进了哪项核心工作？",
     "options": [
       {
@@ -12947,7 +8528,7 @@
       "4365",
       "4435"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -12997,7 +8578,7 @@
       "4216",
       "4478"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -13091,315 +8672,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "根据雷明轩11月初的家庭旅行和周末规划，他最可能偏好哪种旅行方式？",
-    "options": [
-      {
-        "option": "A",
-        "content": "独自背包探险旅行"
-      },
-      {
-        "option": "B",
-        "content": "以家庭为核心的自驾短途游"
-      },
-      {
-        "option": "C",
-        "content": "豪华邮轮观光旅行"
-      },
-      {
-        "option": "D",
-        "content": "跟随大型旅行团的经典线路游"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "4186",
-      "4187",
-      "4188",
-      "4189",
-      "4190",
-      "4191",
-      "4192",
-      "4193",
-      "4194",
-      "4195",
-      "4196",
-      "4197",
-      "4198",
-      "4199",
-      "4200",
-      "4201",
-      "4202",
-      "4203",
-      "4204",
-      "4205",
-      "4206",
-      "4207",
-      "4208",
-      "4209",
-      "4269"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 107
-      },
-      {
-        "type": "push",
-        "id": 400
-      },
-      {
-        "type": "push",
-        "id": 401
-      },
-      {
-        "type": "calendar",
-        "id": 16
-      },
-      {
-        "type": "agent_chat",
-        "id": 108
-      },
-      {
-        "type": "call",
-        "id": 181
-      },
-      {
-        "type": "call",
-        "id": 182
-      },
-      {
-        "type": "push",
-        "id": 402
-      },
-      {
-        "type": "push",
-        "id": 403
-      },
-      {
-        "type": "photo",
-        "id": 229
-      },
-      {
-        "type": "photo",
-        "id": 230
-      },
-      {
-        "type": "call",
-        "id": 183
-      },
-      {
-        "type": "photo",
-        "id": 231
-      },
-      {
-        "type": "agent_chat",
-        "id": 109
-      },
-      {
-        "type": "push",
-        "id": 404
-      },
-      {
-        "type": "sms",
-        "id": 245
-      },
-      {
-        "type": "push",
-        "id": 405
-      },
-      {
-        "type": "sms",
-        "id": 246
-      },
-      {
-        "type": "photo",
-        "id": 232
-      },
-      {
-        "type": "photo",
-        "id": 233
-      },
-      {
-        "type": "agent_chat",
-        "id": 110
-      },
-      {
-        "type": "call",
-        "id": 184
-      },
-      {
-        "type": "push",
-        "id": 406
-      },
-      {
-        "type": "push",
-        "id": 407
-      },
-      {
-        "type": "photo",
-        "id": 234
-      },
-      {
-        "type": "call",
-        "id": 185
-      },
-      {
-        "type": "push",
-        "id": 408
-      },
-      {
-        "type": "sms",
-        "id": 247
-      },
-      {
-        "type": "sms",
-        "id": 248
-      },
-      {
-        "type": "photo",
-        "id": 235
-      },
-      {
-        "type": "sms",
-        "id": 249
-      },
-      {
-        "type": "note",
-        "id": "72"
-      },
-      {
-        "type": "sms",
-        "id": "608"
-      },
-      {
-        "type": "photo",
-        "id": "528"
-      },
-      {
-        "type": "push",
-        "id": 409
-      },
-      {
-        "type": "sms",
-        "id": 250
-      },
-      {
-        "type": "sms",
-        "id": 251
-      },
-      {
-        "type": "sms",
-        "id": 252
-      },
-      {
-        "type": "push",
-        "id": 410
-      },
-      {
-        "type": "call",
-        "id": 187
-      },
-      {
-        "type": "sms",
-        "id": 253
-      },
-      {
-        "type": "push",
-        "id": 411
-      },
-      {
-        "type": "agent_chat",
-        "id": 111
-      },
-      {
-        "type": "push",
-        "id": 412
-      },
-      {
-        "type": "sms",
-        "id": 254
-      },
-      {
-        "type": "push",
-        "id": 447
-      },
-      {
-        "type": "push",
-        "id": "947"
-      },
-      {
-        "type": "push",
-        "id": "948"
-      },
-      {
-        "type": "calendar",
-        "id": "140"
-      },
-      {
-        "type": "calendar",
-        "id": "157"
-      },
-      {
-        "type": "push",
-        "id": "963"
-      },
-      {
-        "type": "note",
-        "id": "230"
-      },
-      {
-        "type": "note",
-        "id": "264"
-      },
-      {
-        "type": "calendar",
-        "id": "184"
-      },
-      {
-        "type": "sms",
-        "id": "933"
-      },
-      {
-        "type": "photo",
-        "id": "591"
-      },
-      {
-        "type": "push",
-        "id": "990"
-      },
-      {
-        "type": "sms",
-        "id": "937"
-      },
-      {
-        "type": "note",
-        "id": "284"
-      },
-      {
-        "type": "push",
-        "id": "1014"
-      },
-      {
-        "type": "photo",
-        "id": "602"
-      },
-      {
-        "type": "sms",
-        "id": "944"
-      },
-      {
-        "type": "calendar",
-        "id": "218"
-      },
-      {
-        "type": "note",
-        "id": "306"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "雷明轩在11月因身体不适调整了哪些运动计划？他在月末对健康管理做了怎样的总结与规划？",
     "answer": "雷明轩在11月因身体不适调整了运动计划，具体表现为：11月4日因轻微头痛取消了晨跑并比平时早睡；11月6日因感到疲劳取消了运动计划；11月22日因手腕扭伤在考核中小心控制手腕，并在晚间因手腕疼痛和饮食放纵感到不适。在11月30日，他系统回顾了全年健康数据（包括晨跑总里程破800公里、体重降至75.5公斤、BMI进入25以下区间），并制定了2026年的健康目标：每周至少去一次银城路健身中心进行力量训练，挑战一次半程马拉松，并保持现有有氧运动频率。",
     "score_points": [
@@ -13433,7 +8705,7 @@
       "4485",
       "4593"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -13567,272 +8839,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "根据雷明轩8月份的行为事件，以下哪一项最准确地描述了他当前的身体状况？",
-    "options": [
-      {
-        "option": "A",
-        "content": "体型偏瘦，有慢性疾病，需要频繁就医"
-      },
-      {
-        "option": "B",
-        "content": "体型微胖但精力充沛，无慢性病，注重通过日常运动和健康饮食进行管理"
-      },
-      {
-        "option": "C",
-        "content": "体型标准，但身体虚弱，缺乏锻炼"
-      },
-      {
-        "option": "D",
-        "content": "体型肥胖，患有严重疾病，完全无法进行体育锻炼"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "3087",
-      "3091",
-      "3100",
-      "3128",
-      "3243"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "146"
-      },
-      {
-        "type": "note",
-        "id": "214"
-      },
-      {
-        "type": "sms",
-        "id": "916"
-      },
-      {
-        "type": "push",
-        "id": "966"
-      },
-      {
-        "type": "sms",
-        "id": "924"
-      },
-      {
-        "type": "push",
-        "id": "967"
-      },
-      {
-        "type": "photo",
-        "id": "596"
-      },
-      {
-        "type": "sms",
-        "id": "936"
-      },
-      {
-        "type": "note",
-        "id": "282"
-      },
-      {
-        "type": "push",
-        "id": "1013"
-      },
-      {
-        "type": "photo",
-        "id": "601"
-      },
-      {
-        "type": "note",
-        "id": "297"
-      },
-      {
-        "type": "calendar",
-        "id": "222"
-      },
-      {
-        "type": "note",
-        "id": "310"
-      },
-      {
-        "type": "push",
-        "id": "1021"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
-    "question": "根据雷明轩4月份的运动记录，以下哪一项最能描述他的运动习惯？",
-    "options": [
-      {
-        "option": "A",
-        "content": "严格遵循固定健身房计划"
-      },
-      {
-        "option": "B",
-        "content": "主要通过户外轮滑进行高强度有氧运动"
-      },
-      {
-        "option": "C",
-        "content": "在受伤后完全停止所有运动"
-      },
-      {
-        "option": "D",
-        "content": "结合居家APP训练、户外运动和康复散步，并根据情况（如受伤）灵活调整"
-      }
-    ],
-    "answer": "D",
-    "required_events_id": [
-      "1231",
-      "1269",
-      "1353",
-      "1362",
-      "1441",
-      "1515",
-      "1547"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "push",
-        "id": "925"
-      },
-      {
-        "type": "calendar",
-        "id": "122"
-      },
-      {
-        "type": "note",
-        "id": "183"
-      },
-      {
-        "type": "push",
-        "id": "926"
-      },
-      {
-        "type": "calendar",
-        "id": "145"
-      },
-      {
-        "type": "push",
-        "id": "953"
-      },
-      {
-        "type": "note",
-        "id": "213"
-      },
-      {
-        "type": "sms",
-        "id": "915"
-      },
-      {
-        "type": "call",
-        "id": "406"
-      },
-      {
-        "type": "push",
-        "id": "978"
-      },
-      {
-        "type": "note",
-        "id": "249"
-      },
-      {
-        "type": "calendar",
-        "id": "172"
-      },
-      {
-        "type": "note",
-        "id": "268"
-      },
-      {
-        "type": "calendar",
-        "id": "187"
-      },
-      {
-        "type": "push",
-        "id": "994"
-      },
-      {
-        "type": "note",
-        "id": "289"
-      },
-      {
-        "type": "calendar",
-        "id": "203"
-      },
-      {
-        "type": "push",
-        "id": "1006"
-      },
-      {
-        "type": "calendar",
-        "id": "223"
-      },
-      {
-        "type": "push",
-        "id": "1022"
-      },
-      {
-        "type": "note",
-        "id": "311"
-      },
-      {
-        "type": "push",
-        "id": "1026"
-      },
-      {
-        "type": "note",
-        "id": "319"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
-    "question": "我六月中旬在健身房体测时，达成了月初设定的哪个具体健康目标？",
-    "answer": "体重降至77.5公斤。",
-    "score_points": [
-      {
-        "description": "准确指出目标达成的内容是体重降至77.5公斤",
-        "score": 5
-      },
-      {
-        "description": "明确说明该目标是在六月中旬的体测中达成的",
-        "score": 3
-      },
-      {
-        "description": "指出该目标是在月初设定的",
-        "score": 2
-      }
-    ],
-    "required_events_id": [
-      "2083",
-      "2268"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "170"
-      },
-      {
-        "type": "push",
-        "id": "916"
-      },
-      {
-        "type": "calendar",
-        "id": "128"
-      },
-      {
-        "type": "note",
-        "id": "192"
-      },
-      {
-        "type": "push",
-        "id": "932"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "在2025年6月，雷明轩主要参与了哪几种类型的体育锻炼活动？",
     "answer": "晨跑、篮球、轮滑、健身房力量训练、健身房有氧训练。",
     "score_points": [
@@ -13864,7 +8870,7 @@
       "2150",
       "2226"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -13937,7 +8943,7 @@
     "required_events_id": [
       "4607"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -13968,7 +8974,7 @@
       "5006",
       "5009"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "call",
@@ -14014,7 +9020,7 @@
       "4728",
       "4739"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -14060,7 +9066,7 @@
       "4606",
       "4805"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -14127,7 +9133,7 @@
       "4921",
       "4929"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -14185,7 +9191,7 @@
       "4701",
       "4777"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -14251,7 +9257,7 @@
       "4821",
       "4743"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "call",
@@ -14304,7 +9310,7 @@
     "required_events_id": [
       "3060"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -14334,7 +9340,7 @@
       "3500",
       "3667"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -14347,60 +9353,6 @@
       {
         "type": "agent_chat",
         "id": 58
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "雷明轩在9月14日晚间查看基金账户时，面对市场波动选择冷静观察而未操作，他当时脑海中浮现的最直接原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "理财顾问徐峰主动致电要求他保持观望。"
-      },
-      {
-        "option": "B",
-        "content": "他刚完成一笔基金调整，不想频繁交易增加手续费。"
-      },
-      {
-        "option": "C",
-        "content": "他的投资组合在8月份已经调整过，抗风险能力增强。"
-      },
-      {
-        "option": "D",
-        "content": "他想起了理财顾问“不要追涨杀跌，看长期趋势”的近期建议。"
-      }
-    ],
-    "answer": "D",
-    "required_events_id": [
-      "3384",
-      "3526"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 22
-      },
-      {
-        "type": "push",
-        "id": 48
-      },
-      {
-        "type": "agent_chat",
-        "id": 38
-      },
-      {
-        "type": "push",
-        "id": 141
-      },
-      {
-        "type": "note",
-        "id": "439"
-      },
-      {
-        "type": "calendar",
-        "id": "307"
       }
     ],
     "ask_time": "2025-12"
@@ -14427,7 +9379,7 @@
       "3829",
       "3833"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -14498,7 +9450,7 @@
       "3829",
       "4137"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -14560,7 +9512,7 @@
       "4539",
       "4541"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -14689,7 +9641,7 @@
       "1788",
       "1899"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -14765,7 +9717,7 @@
       "2455",
       "2456"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -14846,7 +9798,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "雷明轩的店铺在5月与物业经理沟通中提到的租金续约，具体是在2025年几月到期？",
@@ -14876,7 +9828,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "雷明轩在6月对赵敏说的新抽中的泡泡玛特隐藏款，属于哪个系列？",
@@ -14906,7 +9858,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "雷明轩在4月与母亲聊天时，医生建议他调整的健身目标具体原因是什么？",
@@ -14936,7 +9888,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "供应商周涛在7月提到因天气原因要延迟发货的批次，比原定计划晚了多少天？",
@@ -14966,7 +9918,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "雷明轩的父亲在9月提及要去杭州参加的同学会，具体是在2025年哪一天？",
@@ -14992,7 +9944,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "雷明轩在2025年7月15日推荐朋友购买的台球杆是什么品牌？",
@@ -15026,7 +9978,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "周涛在2025年9月初给雷明轩提供的2025年秋冬季最新款面料型号叫什么？",
@@ -15060,7 +10012,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "高远和雷明轩在2025年10月讨论的，关于某部动漫限定手办隐藏版的具体名称是什么？",
@@ -15090,7 +10042,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "徐峰在2025年6月向雷明轩推荐的那只侧重消费和科技板块的混合型基金全称是什么？",
@@ -15120,7 +10072,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "沈洁在2025年8月向雷明轩极力推荐的，那家需要提前很久预约的私房菜馆具体在哪个位置？",
@@ -15150,7 +10102,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "雷建国在2025年5月请何师傅上门维修的那台出了故障的家电是什么品牌？",
@@ -15180,7 +10132,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "雷明轩在7月短信中想买来送给朋友的“那个二次元的宝贝”具体是什么？",
@@ -15210,7 +10162,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "雷明轩在8月短信里提到“比赛结束后第二天”和韩东去打球，具体是哪一天？",
@@ -15240,7 +10192,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "雷明轩在9月和10月总共向李娜推荐了几部动漫？分别是哪几部？",
@@ -15270,7 +10222,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "雷明轩在10月短信中说要按“之前说的地方”给表弟寄东西，这个地址具体是什么？",
@@ -15304,7 +10256,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "雷明轩的店铺在制作秋冬季新品时，总共用到了几种不同名字的面料？",
@@ -15334,7 +10286,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "雷明轩在短信中提到的“体检报告出来第二天”和谢飞去打球，具体是哪一天？",
@@ -15364,7 +10316,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "沈洁在5月和8月总共推荐了哪几个服装品牌给雷明轩参考？",
@@ -15386,7 +10338,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "周涛在6月提到的具体面料叫什么名字，以及他9月补货的面料是否就是这个？",
@@ -15412,7 +10364,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "韩东在8月30日提到的‘上次那家’台球厅具体是哪一家？",
@@ -15438,48 +10390,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
-  },
-  {
-    "question": "在2025年11月25日晚，雷明轩同时推进了家庭照片扫描和新家装修确认两件事，这反映了他对家庭生活的什么共同态度？",
-    "answer": "重视家庭记忆的保存传承与未来生活空间的品质规划，体现了他对家庭生活情感联结与品质细节的关注。",
-    "score_points": [
-      {
-        "description": "从家庭照片扫描事件中，准确提取雷明轩对“家庭记忆”的具体行动（扫描、归档、与母亲共同回忆）及背后态度（保存、传承、情感联结）。",
-        "score": 5
-      },
-      {
-        "description": "从新家装修确认事件中，准确提取雷明轩对“未来生活空间”的具体行动（展示效果图、讨论细节、记录要点）及背后态度（规划、注重品质、家人共商）。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "4528",
-      "4529"
-    ],
-    "required_events_date": [
-      "2025-11-25"
-    ],
-    "ask_time": "2025-12",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 356
-      },
-      {
-        "type": "agent_chat",
-        "id": 160
-      },
-      {
-        "type": "push",
-        "id": 574
-      },
-      {
-        "type": "push",
-        "id": 575
-      }
-    ]
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "在所有扫描、修复、整理工作完成后，我是在哪一天最终完成所有老照片数字化整合工作的？",
@@ -15512,7 +10423,7 @@
       "2025-12-10"
     ],
     "ask_time": "2025-12",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "push",
@@ -15590,7 +10501,7 @@
       "2025-11-05"
     ],
     "ask_time": "2025-12",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -15644,7 +10555,7 @@
       "2025-11-06"
     ],
     "ask_time": "2025-12",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -15704,7 +10615,7 @@
       "2025-11-10"
     ],
     "ask_time": "2025-12",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -15850,7 +10761,7 @@
       "2025-12-04"
     ],
     "ask_time": "2025-12",
-    "question_type": "multiple_choice",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -15921,7 +10832,7 @@
       "2025-11-18"
     ],
     "ask_time": "2025-12",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -15992,7 +10903,7 @@
       "2025-11-15"
     ],
     "ask_time": "2025-12",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -16069,64 +10980,6 @@
     ]
   },
   {
-    "question": "雷明轩在2025年末完成的店铺年度财务汇总计算，主要基于以下哪项前期完成的具体工作？",
-    "options": [
-      {
-        "option": "A",
-        "content": "整理全年销售数据图表"
-      },
-      {
-        "option": "B",
-        "content": "完成库存盘点并录入数据"
-      },
-      {
-        "option": "C",
-        "content": "分析线上直播渠道增长"
-      },
-      {
-        "option": "D",
-        "content": "准备店铺续约谈判材料"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "4972",
-      "4987"
-    ],
-    "required_events_date": [
-      "2025-12-27",
-      "2025-12-28"
-    ],
-    "ask_time": "2025-12",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": 585
-      },
-      {
-        "type": "photo",
-        "id": 503
-      },
-      {
-        "type": "call",
-        "id": 375
-      },
-      {
-        "type": "photo",
-        "id": "652"
-      },
-      {
-        "type": "note",
-        "id": "565"
-      },
-      {
-        "type": "calendar",
-        "id": "383"
-      }
-    ]
-  },
-  {
     "question": "在照顾豆豆期间，雷明轩在哪一天为了陪伴豆豆而调整了自己的社交安排？",
     "options": [
       {
@@ -16154,7 +11007,7 @@
       "2025-12-16"
     ],
     "ask_time": "2025-12",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -16167,60 +11020,6 @@
       {
         "type": "sms",
         "id": "997"
-      }
-    ]
-  },
-  {
-    "question": "根据事件记录，雷明轩在双十一期间购买新手机的主要驱动因素是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "工作设备出现突发故障，必须立即更换"
-      },
-      {
-        "option": "B",
-        "content": "为了参与年度最大的线上促销活动以获取优惠"
-      },
-      {
-        "option": "C",
-        "content": "完成了对所有心仪机型的线下实体店体验"
-      },
-      {
-        "option": "D",
-        "content": "收到了家人要求尽快更新电子产品的建议"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "4331",
-      "4333"
-    ],
-    "required_events_date": [
-      "2025-11-10",
-      "2025-11-11"
-    ],
-    "ask_time": "2025-12",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "564"
-      },
-      {
-        "type": "push",
-        "id": "1161"
-      },
-      {
-        "type": "sms",
-        "id": "1129"
-      },
-      {
-        "type": "calendar",
-        "id": "385"
-      },
-      {
-        "type": "note",
-        "id": "569"
       }
     ]
   },
@@ -16254,7 +11053,7 @@
       "2025-11-16"
     ],
     "ask_time": "2025-12",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -16340,7 +11139,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年10月，我在和发小李娜聊天时，她提到我们共同的朋友陈浩最近在杭州遇到了一件挺有意思的事情，让他对某个行业有了新的看法。请问陈浩具体遇到了什么事？",
@@ -16386,7 +11185,7 @@
         "id": "650"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "11月份，雷明轩与商场推广经理苏晴在咖啡厅会面，主要讨论了一个什么样的合作构想？",
@@ -16418,7 +11217,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年11月，雷明轩在早餐店等餐时，通过微信群发起了什么活动？",
@@ -16450,7 +11249,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年11月，雷明轩在与潮玩藏友林静交流时，提到自己最近在收藏泡泡玛特系列时，对哪种特定风格或主题的款式产生了特别的偏好？",
@@ -16496,53 +11295,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年11月，雷明轩在和女友林薇讨论近期想看的电影时，明确表示自己对以下哪种类型的电影最不感兴趣，认为其“节奏太慢，容易走神”？",
-    "options": [
-      {
-        "option": "A",
-        "content": "科幻特效大片"
-      },
-      {
-        "option": "B",
-        "content": "文艺爱情片"
-      },
-      {
-        "option": "C",
-        "content": "历史传记片"
-      },
-      {
-        "option": "D",
-        "content": "悬疑犯罪片"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "675"
-      },
-      {
-        "type": "sms",
-        "id": "676"
-      },
-      {
-        "type": "sms",
-        "id": "677"
-      },
-      {
-        "type": "sms",
-        "id": "678"
-      },
-      {
-        "type": "sms",
-        "id": "679"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "6月中旬，我与表弟共进午餐时，正式向他提出了什么想法？",
@@ -16578,7 +11331,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在5月份的一次关于续约的午餐会谈中，雷明轩与物业经理郑凯在哪个地点会面？",
@@ -16630,43 +11383,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "5月份，雷明轩与家人在小区周边散步时，父亲针对社群提出了什么建议？",
-    "answer": "在社群内组织小型线下户外活动。",
-    "score_points": [
-      {
-        "description": "准确回答出建议的核心内容：在社群内组织小型线下户外活动。",
-        "score": 10
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "1801",
-        "event_name": "家庭晚餐与傍晚散步"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "64"
-      },
-      {
-        "type": "note",
-        "id": "108"
-      },
-      {
-        "type": "sms",
-        "id": "631"
-      },
-      {
-        "type": "photo",
-        "id": "540"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，雷明轩在与表妹沈洁的聊天中，提到了他们共同认识的哪位朋友最近在事业上遇到了什么具体挑战？",
@@ -16700,53 +11417,7 @@
         "id": "720"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年5月，雷明轩在向台球球友韩东推荐一款他最近常喝的、有助于运动后恢复的功能性饮料时，主要提到了该饮料的哪两个核心特点？",
-    "options": [
-      {
-        "option": "A",
-        "content": "含有高浓度电解质和维生素C，口感清爽"
-      },
-      {
-        "option": "B",
-        "content": "添加了BCAA和胶原蛋白，甜度低"
-      },
-      {
-        "option": "C",
-        "content": "富含电解质和BCAA（支链氨基酸），不含糖"
-      },
-      {
-        "option": "D",
-        "content": "含有胶原蛋白和多种维生素，果味浓郁"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "721"
-      },
-      {
-        "type": "sms",
-        "id": "722"
-      },
-      {
-        "type": "sms",
-        "id": "723"
-      },
-      {
-        "type": "sms",
-        "id": "724"
-      },
-      {
-        "type": "sms",
-        "id": "725"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "10月份，雷明轩与发小视频通话，主要咨询了哪方面的问题？",
@@ -16778,7 +11449,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在10月份，雷明轩收到了商场推广经理关于参与哪项活动的邀请？",
@@ -16830,7 +11501,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "10月份，雷明轩在证券营业部与客户经理面谈，计划申请贷款用于店铺升级。这笔贷款的金额是多少？",
@@ -16878,7 +11549,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年10月，雷明轩在与发小张伟的聊天中，得知了另一位发小李娜最近在杭州遇到了什么让她感到困扰但又不直接影响雷明轩生活的事情？",
@@ -16916,53 +11587,7 @@
         "id": "752"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年10月，雷明轩在与潮玩藏友林静的聊天中，分享了自己近期在收藏泡泡玛特系列时，口味发生的一个具体变化是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "从主要收藏Dimoo系列转向了Skullpanda系列。"
-      },
-      {
-        "option": "B",
-        "content": "开始偏爱带有中国传统文化元素的联名款，比如故宫合作款。"
-      },
-      {
-        "option": "C",
-        "content": "不再追求隐藏款，转而专注于收集某个特定IP的所有基础款。"
-      },
-      {
-        "option": "D",
-        "content": "从喜欢色彩鲜艳、造型夸张的款式，转向更喜欢设计简约、色调柔和（莫兰迪色系）的款式。"
-      }
-    ],
-    "answer": "D",
-    "ask_time": "2025-12",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "753"
-      },
-      {
-        "type": "sms",
-        "id": "754"
-      },
-      {
-        "type": "sms",
-        "id": "755"
-      },
-      {
-        "type": "sms",
-        "id": "756"
-      },
-      {
-        "type": "sms",
-        "id": "757"
-      }
-    ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年9月，雷明轩在和高远讨论最近看的动漫时，提到自己最近特别偏爱哪种类型的动漫主角设定？",
@@ -17008,7 +11633,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "12月份，我在东京的哪个区域的中古店里淘到了品相极佳的《新世纪福音战士》初号机早期版模型？",
@@ -17048,7 +11673,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "12月，我和高远在北外滩来福士广场及周边潮玩店淘宝时，他发现了什么稀有物品？",
@@ -17092,7 +11717,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "12月，雷明轩在店铺通过微信与银行客户经理最终确认了哪项金融事务的哪些细节，并完成了什么后续操作？",
@@ -17140,7 +11765,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "12月，雷明轩与女友为父亲购买的助听器属于哪种类型？",
@@ -17192,7 +11817,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "雷明轩在12月份驾车前往店铺的途中，主要播放了什么类型的音乐？",
@@ -17236,7 +11861,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在12月份的家庭会议中，全家经过讨论，决定将购置新能源汽车的计划推迟到什么时候再观望？",
@@ -17268,7 +11893,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在12月与商场物业经理会面商讨续约时，雷明轩提出的店铺升级构想是什么？",
@@ -17304,7 +11929,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年12月，雷明轩在微信聊天中得知，他的发小李娜最近因为什么事情而情绪低落，需要朋友安慰？",
@@ -17342,7 +11967,7 @@
         "id": "794"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "2025年12月，雷明轩在与潮玩藏友林静的聊天中，表达了自己目前对收藏哪一类潮玩衍生品最感兴趣？",
@@ -17388,7 +12013,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，雷明轩在与发小李娜的聊天中，得知了另一位发小张伟的家里发生了什么事情？这件事对张伟的家庭生活产生了什么具体影响？",
@@ -17426,107 +12051,7 @@
         "id": "804"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年1月，雷明轩在与大学同学赵敏讨论近期消费偏好时，明确表示自己目前在购买服装时，最看重以下哪个因素？",
-    "options": [
-      {
-        "option": "A",
-        "content": "品牌知名度与Logo辨识度"
-      },
-      {
-        "option": "B",
-        "content": "面料的独特质感与舒适度"
-      },
-      {
-        "option": "C",
-        "content": "款式的潮流前沿性与话题性"
-      },
-      {
-        "option": "D",
-        "content": "服装背后蕴含的故事或设计理念"
-      }
-    ],
-    "answer": "D",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "805"
-      },
-      {
-        "type": "sms",
-        "id": "806"
-      },
-      {
-        "type": "sms",
-        "id": "807"
-      },
-      {
-        "type": "sms",
-        "id": "808"
-      },
-      {
-        "type": "sms",
-        "id": "809"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在3月份与球友的赛后夜宵中，雷明轩主动提出了什么饮食建议？",
-    "options": [
-      {
-        "option": "A",
-        "content": "多盐多辣"
-      },
-      {
-        "option": "B",
-        "content": "少盐少辣"
-      },
-      {
-        "option": "C",
-        "content": "高糖高脂"
-      },
-      {
-        "option": "D",
-        "content": "素食主义"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "820",
-        "event_name": "赛后社交夜宵"
-      }
-    ],
-    "score_points": [
-      {
-        "description": "答案中包含“主动提议健康饮食”或类似表述。",
-        "score": 5
-      },
-      {
-        "description": "答案中包含“少盐少辣”或类似表述。",
-        "score": 5
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "45"
-      },
-      {
-        "type": "sms",
-        "id": "616"
-      },
-      {
-        "type": "note",
-        "id": "87"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在3月份，雷明轩陪同父亲完成最后一次高压氧治疗并办理出院手续的是哪家医院？",
@@ -17558,7 +12083,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "1月份，雷明轩在参加一场关于面料趋势的线上讲座时，同时完成了哪项店铺管理工作？",
@@ -17602,7 +12127,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "8月3日，我因天气原因改为室内运动，具体进行了哪项运动？",
@@ -17646,7 +12171,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "8月15日，我在店铺营业期间，为准备母亲的生日派对，在手机上搜索并收藏了哪些类型的装饰灵感？",
@@ -17690,7 +12215,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "2025年8月，雷明轩在和潮玩藏友林静交流时，提到自己最近在收藏泡泡玛特系列时，口味发生了一个具体变化，这个变化是什么？",
@@ -17740,7 +12265,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2月份，雷明轩在店铺处理熟客的紧急订单时，具体完成了哪些步骤？",
@@ -17784,270 +12309,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在12月的事件中，多次与“我”一同进行动漫或潮玩相关活动，并就此进行深入交流的“高远”，最可能是我的什么人？",
-    "options": [
-      {
-        "option": "A",
-        "content": "店铺供应商"
-      },
-      {
-        "option": "B",
-        "content": "商场物业经理"
-      },
-      {
-        "option": "C",
-        "content": "动漫同好"
-      },
-      {
-        "option": "D",
-        "content": "理财顾问"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "4623",
-      "4638",
-      "4639",
-      "4647",
-      "4648",
-      "4649",
-      "4650",
-      "5006"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 175
-      },
-      {
-        "type": "calendar",
-        "id": 24
-      },
-      {
-        "type": "push",
-        "id": 627
-      },
-      {
-        "type": "note",
-        "id": "94"
-      },
-      {
-        "type": "sms",
-        "id": "620"
-      },
-      {
-        "type": "photo",
-        "id": "535"
-      },
-      {
-        "type": "sms",
-        "id": 420
-      },
-      {
-        "type": "photo",
-        "id": 396
-      },
-      {
-        "type": "photo",
-        "id": 397
-      },
-      {
-        "type": "agent_chat",
-        "id": 176
-      },
-      {
-        "type": "push",
-        "id": 629
-      },
-      {
-        "type": "sms",
-        "id": 421
-      },
-      {
-        "type": "sms",
-        "id": 422
-      },
-      {
-        "type": "sms",
-        "id": 423
-      },
-      {
-        "type": "agent_chat",
-        "id": 237
-      },
-      {
-        "type": "note",
-        "id": 67
-      },
-      {
-        "type": "sms",
-        "id": 596
-      },
-      {
-        "type": "sms",
-        "id": "900"
-      },
-      {
-        "type": "note",
-        "id": "173"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "12月，雷明轩花费大量时间将家庭老照片转化为电子版。根据这一行为和我使用的工具，最可能用到的核心设备是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "专业单反相机"
-      },
-      {
-        "option": "B",
-        "content": "高清平板扫描仪"
-      },
-      {
-        "option": "C",
-        "content": "智能手机"
-      },
-      {
-        "option": "D",
-        "content": "数码录像机"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "4614",
-      "4618",
-      "4703"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 174
-      },
-      {
-        "type": "sms",
-        "id": 413
-      },
-      {
-        "type": "photo",
-        "id": 383
-      },
-      {
-        "type": "photo",
-        "id": 384
-      },
-      {
-        "type": "push",
-        "id": 665
-      },
-      {
-        "type": "photo",
-        "id": 421
-      },
-      {
-        "type": "note",
-        "id": "207"
-      },
-      {
-        "type": "photo",
-        "id": "576"
-      },
-      {
-        "type": "push",
-        "id": "945"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "雷明轩在12月初的日本旅行中，于秋叶原进行了大量购物。根据他当天的购物行为和地点，可以推断他的主要兴趣爱好是什么？",
-    "answer": "动漫和二次元文化（包括收藏动漫周边、潮玩手办）。",
-    "score_points": [
-      {
-        "description": "指出购物地点秋叶原是著名的动漫圣地，且雷明轩当天在秋叶原核心商圈活动。",
-        "score": 4
-      },
-      {
-        "description": "指出购物内容主要为动漫周边和潮玩手办，如《海贼王》、《咒术回战》、《新世纪福音战士》模型等。",
-        "score": 3
-      },
-      {
-        "description": "指出行为包括在Animate、Radio会馆等动漫周边店扫货，并在《鬼灭之刃》主题餐厅体验二次元文化。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "4629",
-      "4631",
-      "4633",
-      "4634"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "80"
-      },
-      {
-        "type": "sms",
-        "id": "612"
-      },
-      {
-        "type": "calendar",
-        "id": "39"
-      },
-      {
-        "type": "photo",
-        "id": "531"
-      },
-      {
-        "type": "photo",
-        "id": "566"
-      },
-      {
-        "type": "sms",
-        "id": "901"
-      },
-      {
-        "type": "note",
-        "id": "174"
-      },
-      {
-        "type": "calendar",
-        "id": "115"
-      },
-      {
-        "type": "photo",
-        "id": "573"
-      },
-      {
-        "type": "note",
-        "id": "199"
-      },
-      {
-        "type": "calendar",
-        "id": "132"
-      },
-      {
-        "type": "note",
-        "id": "229"
-      },
-      {
-        "type": "photo",
-        "id": "582"
-      },
-      {
-        "type": "push",
-        "id": "962"
-      }
-    ],
-    "ask_time": "2025-12"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "根据雷明轩在12月21日和12月23日关于店铺升级构想的讨论与规划，他的店铺未来主要希望转型为哪种类型？",
@@ -18077,7 +12339,7 @@
       "4921",
       "5021"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -18159,7 +12421,7 @@
       "4014",
       "4016"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -18213,7 +12475,7 @@
       "549",
       "694"
     ],
-    "question_type": "open_domain",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "call",
@@ -18234,74 +12496,6 @@
       {
         "type": "calendar",
         "id": "119"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "我在9月底获得了一项与咖啡相关的专业认证。结合常识，这最可能说明我对咖啡的兴趣处于什么阶段？",
-    "options": [
-      {
-        "option": "A",
-        "content": "只是偶尔喝咖啡的消费者"
-      },
-      {
-        "option": "B",
-        "content": "对咖啡文化有初步了解的爱好者"
-      },
-      {
-        "option": "C",
-        "content": "知识达到了专业入门水平的学习者"
-      },
-      {
-        "option": "D",
-        "content": "准备开咖啡店的创业者"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "3357",
-      "3450",
-      "3476",
-      "3708"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 32
-      },
-      {
-        "type": "push",
-        "id": 33
-      },
-      {
-        "type": "agent_chat",
-        "id": 23
-      },
-      {
-        "type": "push",
-        "id": 98
-      },
-      {
-        "type": "photo",
-        "id": 52
-      },
-      {
-        "type": "agent_chat",
-        "id": 29
-      },
-      {
-        "type": "calendar",
-        "id": "111"
-      },
-      {
-        "type": "push",
-        "id": "914"
-      },
-      {
-        "type": "photo",
-        "id": "563"
       }
     ],
     "ask_time": "2025-12"
@@ -18330,7 +12524,7 @@
       "3196",
       "3271"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "calendar",
@@ -18395,265 +12589,6 @@
       {
         "type": "note",
         "id": "276"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在8月份，除了上海的主店，我的工作重心还涉及哪个城市的项目？我主要通过什么方式管理该项目？",
-    "answer": "在8月份，工作重心还涉及浙江省杭州市的快闪店项目。他主要通过远程方式进行管理，包括通过微信工作群跟进销售数据、召开线上复盘会议、远程指示调整促销和陈列、以及处理线上营销活动等。",
-    "score_points": [
-      {
-        "description": "准确指出另一个涉及工作重心的城市是浙江省杭州市。",
-        "score": 4
-      },
-      {
-        "description": "指出管理杭州项目的主要方式是“远程管理”。",
-        "score": 3
-      },
-      {
-        "description": "列举至少两种远程管理的具体形式，如线上会议、微信工作群沟通、远程指示等。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "2962",
-      "2964",
-      "2977",
-      "2982",
-      "3018",
-      "3184"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "120"
-      },
-      {
-        "type": "note",
-        "id": "180"
-      },
-      {
-        "type": "push",
-        "id": "922"
-      },
-      {
-        "type": "calendar",
-        "id": "134"
-      },
-      {
-        "type": "note",
-        "id": "203"
-      },
-      {
-        "type": "push",
-        "id": "942"
-      },
-      {
-        "type": "call",
-        "id": "409"
-      },
-      {
-        "type": "sms",
-        "id": "923"
-      },
-      {
-        "type": "note",
-        "id": "236"
-      },
-      {
-        "type": "calendar",
-        "id": "162"
-      },
-      {
-        "type": "push",
-        "id": "965"
-      },
-      {
-        "type": "push",
-        "id": "983"
-      },
-      {
-        "type": "note",
-        "id": "258"
-      },
-      {
-        "type": "calendar",
-        "id": "188"
-      },
-      {
-        "type": "note",
-        "id": "269"
-      },
-      {
-        "type": "calendar",
-        "id": "197"
-      },
-      {
-        "type": "push",
-        "id": "1003"
-      },
-      {
-        "type": "note",
-        "id": "281"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在7月，我面对体重平台期和社交活动时，分别采取了哪些行动？这些行动反映了我健康管理上的什么特点？",
-    "answer": "面对体重平台期，我主动研究突破方法、咨询球友并制定了新的运动调整计划；但在社交聚餐和轮滑活动中，出现了饮食失控和饮食随意的行为。这些行动反映出我在健康管理上具有“目标明确、有主动性，但执行力受社交和工作压力干扰而不稳定”的矛盾特点。",
-    "score_points": [
-      {
-        "description": "能准确识别7月20日主动应对体重平台期的系列行为（研究、咨询、制定计划）。",
-        "score": 3
-      },
-      {
-        "description": "能准确识别7月5日、7月7日、7月13日因社交聚餐、工作压力、休闲活动导致的饮食失控或计划打乱行为。",
-        "score": 3
-      },
-      {
-        "description": "能综合主动应对与被动失控两类行为，推理出“目标明确、有主动性，但执行力不稳定、易受干扰”的矛盾特点。",
-        "score": 4
-      }
-    ],
-    "required_events_id": [
-      "2789",
-      "2790",
-      "2792",
-      "2573",
-      "2603",
-      "2689"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "135"
-      },
-      {
-        "type": "push",
-        "id": "896"
-      },
-      {
-        "type": "calendar",
-        "id": "86"
-      },
-      {
-        "type": "push",
-        "id": "933"
-      },
-      {
-        "type": "note",
-        "id": "193"
-      },
-      {
-        "type": "sms",
-        "id": "905"
-      },
-      {
-        "type": "push",
-        "id": "987"
-      },
-      {
-        "type": "sms",
-        "id": "932"
-      },
-      {
-        "type": "note",
-        "id": "261"
-      },
-      {
-        "type": "note",
-        "id": "278"
-      },
-      {
-        "type": "photo",
-        "id": "595"
-      },
-      {
-        "type": "calendar",
-        "id": "196"
-      },
-      {
-        "type": "note",
-        "id": "287"
-      },
-      {
-        "type": "calendar",
-        "id": "201"
-      },
-      {
-        "type": "push",
-        "id": "1011"
-      },
-      {
-        "type": "note",
-        "id": "295"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在5月份，雷明轩晚上进行康复性散步时，最常去的地点和一起散步的人是谁？",
-    "options": [
-      {
-        "option": "A",
-        "content": "在滨江轮滑道，与轮滑伙伴宋佳"
-      },
-      {
-        "option": "B",
-        "content": "在小区花园，与父亲雷建国"
-      },
-      {
-        "option": "C",
-        "content": "在源深体育中心，与篮球球友谢飞"
-      },
-      {
-        "option": "D",
-        "content": "在张杨路附近，独自一人"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "1640",
-      "1821",
-      "2065"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "154"
-      },
-      {
-        "type": "calendar",
-        "id": "102"
-      },
-      {
-        "type": "call",
-        "id": "408"
-      },
-      {
-        "type": "push",
-        "id": "961"
-      },
-      {
-        "type": "note",
-        "id": "227"
-      },
-      {
-        "type": "calendar",
-        "id": "173"
-      },
-      {
-        "type": "sms",
-        "id": "928"
-      },
-      {
-        "type": "photo",
-        "id": "587"
       }
     ],
     "ask_time": "2025-12"

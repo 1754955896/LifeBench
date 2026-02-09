@@ -41,7 +41,7 @@
       }
     ],
     "ask_time": "2025-01",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2月份，于晓薇与同事在祥发茶餐厅用餐时，通过WhatsApp与闺蜜确认了什么安排？",
@@ -93,196 +93,7 @@
       }
     ],
     "ask_time": "2025-02",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "于晓薇在2月频繁练习普通话，结合她与内地同事沟通的工作场景，其主要原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "为移民国外做准备"
-      },
-      {
-        "option": "B",
-        "content": "为与内地客户更有效沟通"
-      },
-      {
-        "option": "C",
-        "content": "为参加普通话等级考试"
-      },
-      {
-        "option": "D",
-        "content": "为教子女学习普通话"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "537",
-      "569",
-      "645"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 85
-      },
-      {
-        "type": "agent_chat",
-        "id": 97
-      },
-      {
-        "type": "photo",
-        "id": 264
-      },
-      {
-        "type": "sms",
-        "id": 233
-      },
-      {
-        "type": "sms",
-        "id": 234
-      },
-      {
-        "type": "calendar",
-        "id": "70"
-      },
-      {
-        "type": "sms",
-        "id": "2441"
-      },
-      {
-        "type": "note",
-        "id": "95"
-      }
-    ],
-    "ask_time": "2025-02"
-  },
-  {
-    "question": "在1月份，我通常利用什么时间段进行普通话学习？",
-    "answer": "上下班通勤时间（或早晚高峰地铁上）。",
-    "score_points": [
-      {
-        "description": "识别出学习普通话的行为习惯与通勤时间的关联。",
-        "score": 5
-      },
-      {
-        "description": "具体指出是上下班/早晚高峰时段的地铁上。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "75",
-      "87",
-      "169",
-      "271"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 23
-      },
-      {
-        "type": "push",
-        "id": 97
-      },
-      {
-        "type": "push",
-        "id": 98
-      },
-      {
-        "type": "calendar",
-        "id": "37"
-      },
-      {
-        "type": "note",
-        "id": "56"
-      },
-      {
-        "type": "push",
-        "id": "2633"
-      },
-      {
-        "type": "push",
-        "id": 180
-      },
-      {
-        "type": "push",
-        "id": "2663"
-      },
-      {
-        "type": "note",
-        "id": "109"
-      }
-    ],
-    "ask_time": "2025-02"
-  },
-  {
-    "question": "于晓薇在母亲突发疾病入院后，与丈夫召开家庭财务会议，决定首先动用家庭应急储蓄。导致这一决策的直接原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "为了支付于晓薇参加半程马拉松的报名费和装备费用。"
-      },
-      {
-        "option": "B",
-        "content": "由于春节前聚会和年货置办导致1月家庭开支严重超支，需要填补预算缺口。"
-      },
-      {
-        "option": "C",
-        "content": "为了支付母亲陈美玲因突发中风而产生的治疗和康复费用。"
-      },
-      {
-        "option": "D",
-        "content": "为了投资新发现的低风险债券基金产品，以优化家庭资产配置。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "710",
-      "711"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "90"
-      },
-      {
-        "type": "call",
-        "id": 195
-      },
-      {
-        "type": "call",
-        "id": "1469"
-      },
-      {
-        "type": "note",
-        "id": "120"
-      },
-      {
-        "type": "sms",
-        "id": 267
-      },
-      {
-        "type": "sms",
-        "id": 268
-      },
-      {
-        "type": "sms",
-        "id": 269
-      },
-      {
-        "type": "sms",
-        "id": "2490"
-      },
-      {
-        "type": "note",
-        "id": "249"
-      }
-    ],
-    "ask_time": "2025-03"
+    "question_type": "Information Extraction"
   },
   {
     "question": "于晓薇在2月初和2月下旬分别执行了哪些与家庭财务管理相关的具体行动？",
@@ -313,7 +124,7 @@
       "492",
       "751"
     ],
-    "question_type": "mutihop",
+    "question_type": "Information Extraction",
     "evidence": [
       {
         "type": "push",
@@ -399,34 +210,6 @@
     "ask_time": "2025-03"
   },
   {
-    "question": "3月份，于晓薇和女儿协助母亲在哪个公园进行了康复散步？",
-    "answer": "摩士公园三号公园",
-    "score_points": [
-      {
-        "description": "准确回答出公园名称“摩士公园三号公园”。",
-        "score": 10
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "967",
-        "event_name": "午间康复散步于公园"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "call",
-        "id": 274
-      },
-      {
-        "type": "photo",
-        "id": 402
-      }
-    ],
-    "ask_time": "2025-03",
-    "question_type": "single_hop"
-  },
-  {
     "question": "3月份，于晓薇全家在九龙寨城公园野餐时，她特意为母亲准备了什么易于吞咽的食物？",
     "answer": "香蕉泥和温热豆浆",
     "score_points": [
@@ -460,7 +243,7 @@
       }
     ],
     "ask_time": "2025-03",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，于晓薇在短信中与闺蜜林嘉欣谈论了另一位闺蜜黄文慧最近发生的一件趣事，这件事与黄文慧的工作和家庭都无关，且不影响于晓薇自己的生活。请问黄文慧最近发生了什么事？",
@@ -510,7 +293,7 @@
         "id": "2385"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "于晓薇在母亲生病后，与弟弟一家的家庭聚餐中主要吃了什么？",
@@ -534,7 +317,7 @@
       "2025-02-11"
     ],
     "ask_time": "2025-03",
-    "question_type": "updating",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "note",
@@ -588,7 +371,7 @@
       "1224",
       "1227"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "call",
@@ -645,7 +428,7 @@
     "required_events_id": [
       "445"
     ],
-    "question_type": "temporal",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "push",
@@ -679,7 +462,7 @@
       "126",
       "174"
     ],
-    "question_type": "mutihop",
+    "question_type": "Information Extraction",
     "evidence": [
       {
         "type": "agent_chat",
@@ -746,7 +529,7 @@
       "1370",
       "1371"
     ],
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -823,7 +606,7 @@
         "id": "2257"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在4月份，于晓薇陪同母亲前往进行物理治疗评估的睦邻社区服务中心位于哪个地址？",
@@ -875,7 +658,7 @@
       }
     ],
     "ask_time": "2025-04",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2月初，于晓薇在家庭早餐时提议召开简短家庭会议的目的是什么？",
@@ -915,7 +698,7 @@
       }
     ],
     "ask_time": "2025-04",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "你开始尝试基金定投了吗？如果开始了，到现在一共投了几次？",
@@ -933,7 +716,7 @@
     "required_events_id": [],
     "required_events_date": [],
     "ask_time": "2025-04",
-    "question_type": "updating",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": []
   },
   {
@@ -958,7 +741,7 @@
       "1345",
       "1383"
     ],
-    "question_type": "open_domain",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -1024,7 +807,7 @@
       "1779",
       "1791"
     ],
-    "question_type": "temporal",
+    "question_type": "Information Extraction",
     "evidence": [
       {
         "type": "push",
@@ -1079,7 +862,7 @@
       "2025-04-26"
     ],
     "ask_time": "2025-05",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -1141,7 +924,7 @@
       }
     ],
     "ask_time": "2025-05",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "你第一次进行医疗基金定投是在哪一天？",
@@ -1161,7 +944,7 @@
       "2025-04-11"
     ],
     "ask_time": "2025-05",
-    "question_type": "updating",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -1195,7 +978,7 @@
       "125",
       "126"
     ],
-    "question_type": "open_domain",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -1262,7 +1045,7 @@
       "1410",
       "1631"
     ],
-    "question_type": "open_domain",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "photo",
@@ -1360,7 +1143,7 @@
       "2310",
       "2378"
     ],
-    "question_type": "temporal",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -1402,77 +1185,6 @@
     "ask_time": "2025-06"
   },
   {
-    "question": "于晓薇在2月22日提交退赛申请时，填写的原因是什么？",
-    "answer": "母亲突发中风需陪护。",
-    "score_points": [
-      {
-        "description": "答案明确指出退赛原因是“母亲突发中风”。",
-        "score": 5
-      },
-      {
-        "description": "答案说明此事件导致“需陪护”，从而无法参赛。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "765",
-      "710",
-      "759"
-    ],
-    "question_type": "mutihop",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 121
-      },
-      {
-        "type": "call",
-        "id": 211
-      },
-      {
-        "type": "push",
-        "id": 434
-      },
-      {
-        "type": "calendar",
-        "id": "90"
-      },
-      {
-        "type": "call",
-        "id": 195
-      },
-      {
-        "type": "call",
-        "id": "1469"
-      },
-      {
-        "type": "note",
-        "id": "120"
-      },
-      {
-        "type": "agent_chat",
-        "id": 119
-      },
-      {
-        "type": "photo",
-        "id": 304
-      },
-      {
-        "type": "sms",
-        "id": 295
-      },
-      {
-        "type": "note",
-        "id": "198"
-      },
-      {
-        "type": "calendar",
-        "id": "135"
-      }
-    ],
-    "ask_time": "2025-06"
-  },
-  {
     "question": "3月23日上午，于晓薇婉拒闺蜜逛街邀请的最直接原因是什么？",
     "options": [
       {
@@ -1498,7 +1210,7 @@
       "1184",
       "1188"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "calendar",
@@ -1540,76 +1252,6 @@
     "ask_time": "2025-06"
   },
   {
-    "question": "结合用户于晓薇探望婆婆的具体行为以及同日稍晚的深度倾诉，推断她在探望婆婆时可能背负着哪些个人压力？",
-    "answer": "在探望婆婆时，于晓薇可能正背负着以下个人压力：1）对母亲（陈美玲）未来长期照护的担忧与隐忧；2）对家庭财务状况及未来规划的焦虑；3）因近期将较多精力用于照顾母亲而忽略了几子感受，由此产生的愧疚感。",
-    "score_points": [
-      {
-        "description": "准确指出压力一：对母亲长期照护的担忧（源自与闺蜜的倾诉）",
-        "score": 4
-      },
-      {
-        "description": "准确指出压力二：对家庭财务规划的焦虑（源自与闺蜜的倾诉）",
-        "score": 3
-      },
-      {
-        "description": "准确指出压力三：因忽略儿子感受而产生的愧疚感（源自与闺蜜的倾诉）",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "1585",
-      "1589"
-    ],
-    "required_events_date": [
-      "2025-04-20",
-      "2025-04-20"
-    ],
-    "ask_time": "2025-06",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 452
-      },
-      {
-        "type": "photo",
-        "id": 603
-      },
-      {
-        "type": "photo",
-        "id": 604
-      },
-      {
-        "type": "push",
-        "id": 802
-      },
-      {
-        "type": "agent_chat",
-        "id": 250
-      },
-      {
-        "type": "call",
-        "id": 453
-      },
-      {
-        "type": "note",
-        "id": "265"
-      },
-      {
-        "type": "push",
-        "id": "2727"
-      },
-      {
-        "type": "calendar",
-        "id": "172"
-      },
-      {
-        "type": "sms",
-        "id": "2584"
-      }
-    ]
-  },
-  {
     "question": "在4月20日探望长辈的整个过程中，以下哪个活动发生在享用长辈准备的家常菜并闲谈之后？",
     "options": [
       {
@@ -1639,7 +1281,7 @@
       "2025-04-20"
     ],
     "ask_time": "2025-06",
-    "question_type": "temporal",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "call",
@@ -1672,247 +1314,6 @@
     ]
   },
   {
-    "question": "基于2025年5月20日的晚餐对话和夫妻共识，为什么于晓薇和张伟明决定简化今年的结婚纪念日庆祝？",
-    "answer": "因为他们一致同意当前以母亲陈美玲的康复为重，以她的身体健康为优先考虑。",
-    "score_points": [
-      {
-        "description": "从晚餐对话中推断出对家庭健康和平安的重视，暗示庆祝从简的背景。",
-        "score": 5
-      },
-      {
-        "description": "明确指出夫妻共识中以母亲康复为重作为简化庆祝的直接原因。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "2043",
-      "2044"
-    ],
-    "required_events_date": [
-      "2025-05-20"
-    ],
-    "ask_time": "2025-06",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 321
-      },
-      {
-        "type": "sms",
-        "id": 811
-      },
-      {
-        "type": "sms",
-        "id": 812
-      },
-      {
-        "type": "call",
-        "id": 587
-      },
-      {
-        "type": "push",
-        "id": 1007
-      },
-      {
-        "type": "sms",
-        "id": "2591"
-      },
-      {
-        "type": "call",
-        "id": "1478"
-      },
-      {
-        "type": "note",
-        "id": "278"
-      },
-      {
-        "type": "calendar",
-        "id": "181"
-      }
-    ]
-  },
-  {
-    "question": "在3月下旬，于晓薇家中空调制冷问题能够被高效、经济地解决，主要归功于哪些具体因素？",
-    "answer": "丈夫张伟明从公司申请了空调冷媒，并利用自己的维修技能在晚上进行了维修，从而避免了外部服务费用，降低了成本。",
-    "score_points": [
-      {
-        "description": "正确指出关键因素之一：丈夫从公司申请了空调冷媒（或等价表述）。",
-        "score": 5
-      },
-      {
-        "description": "正确指出关键因素之二：丈夫利用自己的维修技能进行了维修（或等价表述）。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "1143",
-      "1146"
-    ],
-    "required_events_date": [
-      "2025-03-20",
-      "2025-03-20"
-    ],
-    "ask_time": "2025-06",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": 443
-      },
-      {
-        "type": "push",
-        "id": 616
-      },
-      {
-        "type": "sms",
-        "id": 445
-      },
-      {
-        "type": "sms",
-        "id": "2585"
-      },
-      {
-        "type": "push",
-        "id": "2729"
-      },
-      {
-        "type": "note",
-        "id": "267"
-      }
-    ]
-  },
-  {
-    "question": "在解决家中空调制冷异常的过程中，以下哪个环节的发生时间最晚？",
-    "options": [
-      {
-        "option": "A",
-        "content": "察觉制冷效果下降"
-      },
-      {
-        "option": "B",
-        "content": "确诊过滤网积尘和冷媒泄漏"
-      },
-      {
-        "option": "C",
-        "content": "协助清洗空调过滤网"
-      },
-      {
-        "option": "D",
-        "content": "使用专业工具补充冷媒并测试"
-      }
-    ],
-    "answer": "D",
-    "required_events_id": [
-      "1132",
-      "1146",
-      "1155"
-    ],
-    "required_events_date": [
-      "2025-03-20",
-      "2025-03-20",
-      "2025-03-21"
-    ],
-    "ask_time": "2025-06",
-    "question_type": "temporal",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "267"
-      },
-      {
-        "type": "push",
-        "id": "2729"
-      },
-      {
-        "type": "sms",
-        "id": "2585"
-      },
-      {
-        "type": "photo",
-        "id": 470
-      },
-      {
-        "type": "photo",
-        "id": 471
-      },
-      {
-        "type": "note",
-        "id": "279"
-      },
-      {
-        "type": "push",
-        "id": "2732"
-      },
-      {
-        "type": "photo",
-        "id": "1882"
-      }
-    ]
-  },
-  {
-    "question": "根据事件记录，于晓薇决定暂停跑步训练并退出马拉松赛事，这个决定与她母亲2025年2月的健康状况以及后续家庭安排有直接关系。具体来说，导致她做出这一决定的事件原因是什么？",
-    "answer": "母亲陈美玲突发中风住院（2025-02-20），随后家庭会议（2025-02-21）确认母亲需要长期康复照护，于晓薇因此需要投入大量时间和精力，导致她明确表示必须暂停个人跑步训练和赛事计划。",
-    "score_points": [
-      {
-        "description": "答案明确提及‘母亲突发中风’这一核心家庭变故（对应事件740描述）",
-        "score": 5
-      },
-      {
-        "description": "答案明确提及‘需要长期康复照护’及因此‘需暂停个人跑步训练和赛事计划’（对应事件759描述）",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "740",
-      "759"
-    ],
-    "required_events_date": [
-      "2025-02-20",
-      "2025-02-21"
-    ],
-    "ask_time": "2025-06",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 116
-      },
-      {
-        "type": "push",
-        "id": 423
-      },
-      {
-        "type": "agent_chat",
-        "id": 119
-      },
-      {
-        "type": "photo",
-        "id": 304
-      },
-      {
-        "type": "sms",
-        "id": 295
-      },
-      {
-        "type": "call",
-        "id": "1476"
-      },
-      {
-        "type": "push",
-        "id": "2730"
-      },
-      {
-        "type": "calendar",
-        "id": "176"
-      },
-      {
-        "type": "note",
-        "id": "272"
-      }
-    ]
-  },
-  {
     "question": "今年我为这位教师朋友庆生的方式与往年不同的直接原因是什么？",
     "answer": "因为于晓薇近期因长期照护母亲而感到身心俱疲，同时家庭财务也因某些原因开始紧缩，导致她缺乏精力和预算组织或参与正式聚会。",
     "score_points": [
@@ -1936,7 +1337,7 @@
       "2025-05-19"
     ],
     "ask_time": "2025-06",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -1998,7 +1399,7 @@
       "2025-06-02"
     ],
     "ask_time": "2025-06",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -2048,7 +1449,7 @@
       }
     ],
     "ask_time": "2025-06",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "1月份，于晓薇与闺蜜在咖啡厅下午茶时点了什么？",
@@ -2084,51 +1485,7 @@
       }
     ],
     "ask_time": "2025-06",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "5月份，于晓薇与闺蜜视频通话时，她们共同购买了哪场演出的门票？",
-    "options": [
-      {
-        "option": "A",
-        "content": "话剧《茶馆》"
-      },
-      {
-        "option": "B",
-        "content": "音乐剧《猫》"
-      },
-      {
-        "option": "C",
-        "content": "芭蕾舞剧《天鹅湖》"
-      },
-      {
-        "option": "D",
-        "content": "交响乐《黄河》"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "1780",
-        "event_name": "与闺蜜视频订音乐剧票"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 278
-      },
-      {
-        "type": "push",
-        "id": 885
-      },
-      {
-        "type": "push",
-        "id": 886
-      }
-    ],
-    "ask_time": "2025-06",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "2025年4月，于晓薇在与闺蜜林嘉欣的聊天中，得知了另一位闺蜜黄文慧最近在工作上遇到了什么具体的不顺利？",
@@ -2166,57 +1523,7 @@
         "id": "2348"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年4月，于晓薇在与跑友沈佩雯聊天时，分享了她最近在考虑为家里添置一台新家电。她最看重这台家电的哪个功能或特性？",
-    "options": [
-      {
-        "option": "A",
-        "content": "强大的冷冻能力和快速制冷"
-      },
-      {
-        "option": "B",
-        "content": "智能联网和语音控制功能"
-      },
-      {
-        "option": "C",
-        "content": "超静音运行，不影响家人休息"
-      },
-      {
-        "option": "D",
-        "content": "分区精细存储，特别是独立的蔬果保鲜区"
-      }
-    ],
-    "answer": "D",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2374"
-      },
-      {
-        "type": "sms",
-        "id": "2375"
-      },
-      {
-        "type": "sms",
-        "id": "2376"
-      },
-      {
-        "type": "sms",
-        "id": "2377"
-      },
-      {
-        "type": "sms",
-        "id": "2378"
-      },
-      {
-        "type": "sms",
-        "id": "2379"
-      }
-    ],
-    "ask_time": "2025-06",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "今年到目前为止，你和弟弟一家总共聚过几次？",
@@ -2248,7 +1555,7 @@
       "2025-05-03"
     ],
     "ask_time": "2025-06",
-    "question_type": "updating",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "photo",
@@ -2433,60 +1740,6 @@
     ]
   },
   {
-    "question": "于晓薇在1月初决定系统学习普通话，其最根本的驱动力是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "为了能够更好地辅导儿子张子轩的功课，尤其是数学方面。"
-      },
-      {
-        "option": "B",
-        "content": "为了实现三年内晋升区域经理的职业目标，并为了更好地服务内地客户。"
-      },
-      {
-        "option": "C",
-        "content": "因为她在1月6日的团队例会上感受到了新销售指标带来的巨大压力，急需拓展新技能。"
-      },
-      {
-        "option": "D",
-        "content": "因为她在1月11日与闺蜜林嘉欣的下午茶中，倾诉了学习普通话的挫败感，并得到了对方的鼓励。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "34",
-      "40"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "83"
-      },
-      {
-        "type": "photo",
-        "id": 53
-      },
-      {
-        "type": "sms",
-        "id": "2434"
-      },
-      {
-        "type": "agent_chat",
-        "id": 4
-      },
-      {
-        "type": "photo",
-        "id": 59
-      },
-      {
-        "type": "push",
-        "id": 76
-      }
-    ],
-    "ask_time": "2025-07"
-  },
-  {
     "question": "于晓薇在九龙塘区域（包括九龙寨城公园、九龙仔公园等）进行或计划了哪些活动？请列举所有活动。",
     "answer": "计划周末闺蜜聚会（4月11日安排），与闺蜜林嘉欣下午茶倾谈（4月13日），带儿子在九龙寨城公园进行亲子慢跑（4月13日），与跑友沈佩雯在九龙寨城公园及乐富公园周边慢跑及随后在乐富广场茶歇谈心（4月19日）。",
     "score_points": [
@@ -2513,7 +1766,7 @@
       "1566",
       "1567"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "call",
@@ -2588,7 +1841,7 @@
       "2398",
       "2402"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "call",
@@ -2656,7 +1909,7 @@
       "798",
       "827"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "call",
@@ -2713,7 +1966,7 @@
     "required_events_id": [
       "943"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "push",
@@ -2729,108 +1982,6 @@
       }
     ],
     "ask_time": "2025-07"
-  },
-  {
-    "question": "在6月为女儿毕业典礼做准备期间，全家人（包括外婆、丈夫、儿子）一起参与的毕业典礼前最后一次彩排或练习活动发生在哪一天？",
-    "options": [
-      {
-        "option": "A",
-        "content": "2025-06-22"
-      },
-      {
-        "option": "B",
-        "content": "2025-06-25"
-      },
-      {
-        "option": "C",
-        "content": "2025-06-28"
-      },
-      {
-        "option": "D",
-        "content": "2025-06-29"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "2580"
-    ],
-    "required_events_date": [
-      "2025-06-28"
-    ],
-    "ask_time": "2025-07",
-    "question_type": "temporal",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 409
-      },
-      {
-        "type": "sms",
-        "id": 1078
-      }
-    ]
-  },
-  {
-    "question": "在2025年6月15日的家庭视频会议上，于晓薇提出预算调整方案的依据是什么？",
-    "answer": "依据是母亲陈美玲近三个月的医疗、药费、护工开支数据，以及她整理的优化汽车保费案例要点，这些数据帮助她展示家庭财务状况并作为讨论财务优化的具体案例和切入点。",
-    "score_points": [
-      {
-        "description": "基于母亲近三个月的医疗、药费、护工开支数据",
-        "score": 5
-      },
-      {
-        "description": "参考优化汽车保费案例要点作为讨论家庭财务优化的具体案例和切入点",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "2396",
-      "2398",
-      "2402"
-    ],
-    "required_events_date": [
-      "2025-06-15"
-    ],
-    "ask_time": "2025-07",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 1182
-      },
-      {
-        "type": "calendar",
-        "id": "130"
-      },
-      {
-        "type": "note",
-        "id": "185"
-      },
-      {
-        "type": "photo",
-        "id": 877
-      },
-      {
-        "type": "push",
-        "id": 1183
-      },
-      {
-        "type": "sms",
-        "id": 983
-      },
-      {
-        "type": "calendar",
-        "id": "156"
-      },
-      {
-        "type": "call",
-        "id": 675
-      },
-      {
-        "type": "note",
-        "id": "238"
-      }
-    ]
   },
   {
     "question": "于晓薇与徐家明在6月18日和6月19日的两次会议中，合作讨论分别取得了哪些关键进展？",
@@ -2854,7 +2005,7 @@
       "2025-06-19"
     ],
     "ask_time": "2025-07",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -2908,7 +2059,7 @@
       "2025-06-27"
     ],
     "ask_time": "2025-07",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -2996,7 +2147,7 @@
         "id": "2225"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "2025年7月，于晓薇在与闺蜜林嘉欣聊天时，提到她们共同的发小黄文慧最近在深圳遇到了一件让她很困扰的私人事情。请问黄文慧遇到了什么事情？",
@@ -3034,7 +2185,7 @@
         "id": "2235"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "1月份，于晓薇与同事苏丽珊在华星冰室用午餐时，她们的主要活动是什么？",
@@ -3078,7 +2229,7 @@
       }
     ],
     "ask_time": "2025-07",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "7月份，于晓薇在驾车回家途中，于便利店为家人购买了哪些食品？",
@@ -3106,7 +2257,7 @@
       }
     ],
     "ask_time": "2025-07",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "2025年7月，于晓薇在与跑友沈佩雯的聊天中，分享了她最近在挑选运动耳机时最看重哪个特性？",
@@ -3152,7 +2303,7 @@
         "id": "2274"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "2025年4月，于晓薇在粤绣兴趣圈的微信群里，与绣友何美玲讨论了一位共同认识的朋友最近遇到的困难。这位朋友是谁？遇到了什么困难？",
@@ -3190,7 +2341,7 @@
         "id": "2308"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年4月，于晓薇在与闺蜜林嘉欣的聊天中，得知林嘉欣的丈夫最近在工作中遇到了什么具体困难？",
@@ -3228,103 +2379,7 @@
         "id": "2318"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年5月，于晓薇在与同事苏丽珊的聊天中，分享了自己最近在追看一部电视剧，并提到了她最喜欢剧中哪个角色以及原因。根据对话，于晓薇最喜欢的是哪个角色？",
-    "options": [
-      {
-        "option": "A",
-        "content": "剧中那位精明能干、为家庭牺牲事业的女主角"
-      },
-      {
-        "option": "B",
-        "content": "剧中那位性格乐观、总是用美食治愈他人的邻居阿姨"
-      },
-      {
-        "option": "C",
-        "content": "剧中那位坚持传统手艺、默默守护家族店铺的老师傅"
-      },
-      {
-        "option": "D",
-        "content": "剧中那位独立自信、在职场打拼的单身女律师"
-      }
-    ],
-    "answer": "C",
-    "ask_time": "2025-07",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2329"
-      },
-      {
-        "type": "sms",
-        "id": "2330"
-      },
-      {
-        "type": "sms",
-        "id": "2331"
-      },
-      {
-        "type": "sms",
-        "id": "2332"
-      },
-      {
-        "type": "sms",
-        "id": "2333"
-      }
-    ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年4月，于晓薇在与同事苏丽珊讨论最近上映的电影时，明确表示自己对以下哪类电影题材最不感兴趣？",
-    "options": [
-      {
-        "option": "A",
-        "content": "科幻特效大片"
-      },
-      {
-        "option": "B",
-        "content": "悬疑烧脑推理片"
-      },
-      {
-        "option": "C",
-        "content": "温馨家庭喜剧片"
-      },
-      {
-        "option": "D",
-        "content": "青春爱情成长片"
-      }
-    ],
-    "answer": "B",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2349"
-      },
-      {
-        "type": "sms",
-        "id": "2350"
-      },
-      {
-        "type": "sms",
-        "id": "2351"
-      },
-      {
-        "type": "sms",
-        "id": "2352"
-      },
-      {
-        "type": "sms",
-        "id": "2353"
-      },
-      {
-        "type": "sms",
-        "id": "2354"
-      }
-    ],
-    "ask_time": "2025-07",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2月份，于晓薇在汇丰银行办理业务时，客户经理李国栋提供了什么建议？",
@@ -3372,53 +2427,7 @@
       }
     ],
     "ask_time": "2025-07",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "根据7月1日于晓薇对儿子的叮嘱和7月26日全家出游的活动，结合香港7月的气候，可以推断她安排这些活动的一个主要目的是什么？",
-    "answer": "为了消暑降温，让孩子们在炎热的暑假有安全的娱乐和运动方式。",
-    "score_points": [
-      {
-        "description": "7月1日事件（ID: 2609）中，于晓薇在早餐时叮嘱孩子们注意防暑，并安排暑期活动，这暗示了天气炎热和暑假的开始。",
-        "score": 4
-      },
-      {
-        "description": "7月26日事件（ID: 2986）中，全家前往浅水湾海滩游玩，孩子们玩沙戏水，这是一项典型的消暑活动。",
-        "score": 3
-      },
-      {
-        "description": "结合常识，香港7月为盛夏，气候炎热潮湿，水上活动是常见的消暑方式。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "2609",
-      "2986"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 945
-      },
-      {
-        "type": "agent_chat",
-        "id": 475
-      },
-      {
-        "type": "photo",
-        "id": 1043
-      },
-      {
-        "type": "sms",
-        "id": "2443"
-      },
-      {
-        "type": "calendar",
-        "id": "73"
-      }
-    ],
-    "ask_time": "2025-07"
+    "question_type": "Information Extraction"
   },
   {
     "question": "于晓薇在八月外出参与社交或工作活动时，她的环保习惯具体体现在哪些场合？",
@@ -3442,7 +2451,7 @@
       "3247",
       "3414"
     ],
-    "question_type": "mutihop",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -3504,7 +2513,7 @@
       "43",
       "356"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -3538,367 +2547,13 @@
     "ask_time": "2025-08"
   },
   {
-    "question": "在6月16日与深圳理财规划师徐家明的视频通话中，于晓薇展现了一项近期通过个人投入获得的关键能力，这项能力直接提升了沟通的专业度，并成为推动合作进入实质阶段的重要因素。这项能力具体指什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "她提前准备了详尽的香港保险市场分析报告。"
-      },
-      {
-        "option": "B",
-        "content": "她运用新提升的流利普通话进行沟通和总结。"
-      },
-      {
-        "option": "C",
-        "content": "她承诺了非常有竞争力的佣金分成方案。"
-      },
-      {
-        "option": "D",
-        "content": "她向对方展示了近期签署的一份重要客户续约合同。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "2210",
-      "2237",
-      "2323",
-      "2409"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": 899
-      },
-      {
-        "type": "sms",
-        "id": 912
-      },
-      {
-        "type": "sms",
-        "id": 913
-      },
-      {
-        "type": "sms",
-        "id": 914
-      },
-      {
-        "type": "agent_chat",
-        "id": 373
-      },
-      {
-        "type": "sms",
-        "id": 959
-      },
-      {
-        "type": "agent_chat",
-        "id": 386
-      },
-      {
-        "type": "call",
-        "id": 678
-      },
-      {
-        "type": "push",
-        "id": 1187
-      },
-      {
-        "type": "calendar",
-        "id": "125"
-      },
-      {
-        "type": "push",
-        "id": "2692"
-      },
-      {
-        "type": "note",
-        "id": "254"
-      },
-      {
-        "type": "sms",
-        "id": "2491"
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
-    "question": "于晓薇在厨房失手打碎瓷碗并情绪崩溃，导致这一情绪爆发的直接原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "因为工作压力过大，季度销售目标难以完成。"
-      },
-      {
-        "option": "B",
-        "content": "因为连续多日高压陪护母亲和处理医疗、财务等事务，导致身心极度疲惫。"
-      },
-      {
-        "option": "C",
-        "content": "因为与丈夫在家庭财务安排上产生了严重分歧。"
-      },
-      {
-        "option": "D",
-        "content": "因为跑友沈佩雯对她放弃马拉松表示不理解，导致友谊出现裂痕。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "779",
-      "715",
-      "717",
-      "718",
-      "719",
-      "720",
-      "721",
-      "722",
-      "723",
-      "724",
-      "725",
-      "726",
-      "727",
-      "728",
-      "729",
-      "730",
-      "731",
-      "783"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 444
-      },
-      {
-        "type": "agent_chat",
-        "id": 111
-      },
-      {
-        "type": "sms",
-        "id": 276
-      },
-      {
-        "type": "call",
-        "id": 197
-      },
-      {
-        "type": "push",
-        "id": 414
-      },
-      {
-        "type": "photo",
-        "id": 293
-      },
-      {
-        "type": "photo",
-        "id": 294
-      },
-      {
-        "type": "push",
-        "id": 415
-      },
-      {
-        "type": "call",
-        "id": 198
-      },
-      {
-        "type": "push",
-        "id": 416
-      },
-      {
-        "type": "photo",
-        "id": 295
-      },
-      {
-        "type": "photo",
-        "id": 296
-      },
-      {
-        "type": "push",
-        "id": 417
-      },
-      {
-        "type": "photo",
-        "id": 297
-      },
-      {
-        "type": "agent_chat",
-        "id": 112
-      },
-      {
-        "type": "call",
-        "id": 199
-      },
-      {
-        "type": "call",
-        "id": 200
-      },
-      {
-        "type": "push",
-        "id": 418
-      },
-      {
-        "type": "photo",
-        "id": 298
-      },
-      {
-        "type": "sms",
-        "id": 277
-      },
-      {
-        "type": "call",
-        "id": 201
-      },
-      {
-        "type": "photo",
-        "id": 299
-      },
-      {
-        "type": "sms",
-        "id": 278
-      },
-      {
-        "type": "sms",
-        "id": 279
-      },
-      {
-        "type": "sms",
-        "id": 280
-      },
-      {
-        "type": "sms",
-        "id": 281
-      },
-      {
-        "type": "push",
-        "id": 420
-      },
-      {
-        "type": "agent_chat",
-        "id": 123
-      },
-      {
-        "type": "calendar",
-        "id": "164"
-      },
-      {
-        "type": "note",
-        "id": "253"
-      },
-      {
-        "type": "note",
-        "id": "258"
-      },
-      {
-        "type": "sms",
-        "id": "2493"
-      },
-      {
-        "type": "note",
-        "id": "260"
-      },
-      {
-        "type": "calendar",
-        "id": "169"
-      },
-      {
-        "type": "note",
-        "id": "261"
-      },
-      {
-        "type": "calendar",
-        "id": "170"
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
-    "question": "2025年6月28日，于晓薇的丈夫张伟明在工作时段（例如上午9点至下午5点）具体参加了什么活动或会议？",
-    "type": "question_answer",
-    "question_type": "unanswerable",
-    "answer": "无法回答",
-    "score_points": [],
-    "required_events": [],
-    "ask_time": "2025-08"
-  },
-  {
-    "question": "在2025-02-05的家庭晚餐中，于晓薇的丈夫张伟明具体分享了什么工作趣事？",
-    "type": "question_answer",
-    "question_type": "unanswerable",
-    "answer": "无法回答",
-    "score_points": [],
-    "required_events": [],
-    "ask_time": "2025-08"
-  },
-  {
     "question": "在2025年4月5日晚上设置定投之前，于晓薇研究过的全球医疗健康行业基金的具体名称是什么？",
     "type": "question_answer",
-    "question_type": "unanswerable",
+    "question_type": "Unanswerable",
     "answer": "无法回答",
     "score_points": [],
     "required_events": [],
     "ask_time": "2025-08"
-  },
-  {
-    "question": "7月12日的事故发生后，于晓薇是如何处理车辆维修事宜的？",
-    "answer": "事故导致车辆轻微受损，无人受伤；随后她根据保险公司指引，驾车到土瓜湾的指定维修厂，办理了车辆定损和送修手续。",
-    "score_points": [
-      {
-        "description": "描述事故结果：车辆轻微受损，无人受伤",
-        "score": 5
-      },
-      {
-        "description": "描述后续行动：驾车到维修厂并办理定损送修手续",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "2779",
-      "2784"
-    ],
-    "required_events_date": [
-      "2025-07-12",
-      "2025-07-12"
-    ],
-    "ask_time": "2025-08",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 784
-      },
-      {
-        "type": "push",
-        "id": 1379
-      },
-      {
-        "type": "call",
-        "id": 786
-      },
-      {
-        "type": "photo",
-        "id": 993
-      },
-      {
-        "type": "push",
-        "id": 1382
-      },
-      {
-        "type": "call",
-        "id": "1474"
-      },
-      {
-        "type": "push",
-        "id": "2728"
-      },
-      {
-        "type": "photo",
-        "id": "1877"
-      },
-      {
-        "type": "note",
-        "id": "266"
-      }
-    ]
   },
   {
     "question": "我为什么能在7月用新学的语言尝试联系一位上海的潜在客户？",
@@ -3922,7 +2577,7 @@
       "2025-07-16"
     ],
     "ask_time": "2025-08",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "call",
@@ -3987,7 +2642,7 @@
       "2025-07-05"
     ],
     "ask_time": "2025-08",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "push",
@@ -4059,55 +2714,7 @@
         "id": "2214"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在6月份的一次午餐后，于晓薇通过手机APP预订了位于哪个区域的民宿用于周末静修？",
-    "options": [
-      {
-        "option": "A",
-        "content": "西贡"
-      },
-      {
-        "option": "B",
-        "content": "南丫岛"
-      },
-      {
-        "option": "C",
-        "content": "大屿山"
-      },
-      {
-        "option": "D",
-        "content": "长洲"
-      }
-    ],
-    "answer": "C",
-    "required_events": [
-      {
-        "event_id": "2310",
-        "event_name": "午餐交流与预订周末静修民宿"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 371
-      },
-      {
-        "type": "push",
-        "id": 1144
-      },
-      {
-        "type": "sms",
-        "id": 952
-      },
-      {
-        "type": "sms",
-        "id": 953
-      }
-    ],
-    "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "6月份，于晓薇与同事在华星冰室午餐时，使用自带杯购买了什么饮品并因此获得了折扣？",
@@ -4147,7 +2754,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "6月20日，于晓薇在办公室为感谢教练准备了什么礼物？",
@@ -4187,7 +2794,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "1月份，于晓薇在通勤途中使用APP学习普通话，她学习的课程主题是什么？",
@@ -4219,7 +2826,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "7月，于晓薇与跑友在咖啡馆会面后，初步制定的康复期运动计划不包括以下哪项？",
@@ -4267,51 +2874,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "3月17日午休时，于晓薇与同事苏丽珊在哪家餐厅用餐？",
-    "options": [
-      {
-        "option": "A",
-        "content": "新钊记茶餐厅"
-      },
-      {
-        "option": "B",
-        "content": "华嫂冰室"
-      },
-      {
-        "option": "C",
-        "content": "地茂馆甜品店"
-      },
-      {
-        "option": "D",
-        "content": "定食Doraya"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "1082",
-        "event_name": "午间与同事苏丽珊用餐闲聊"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "27"
-      },
-      {
-        "type": "note",
-        "id": "45"
-      },
-      {
-        "type": "photo",
-        "id": "1832"
-      }
-    ],
-    "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "5月份，于晓薇在九龙仔公园散步时，除了处理理赔咨询，还构思了什么工作内容？",
@@ -4343,7 +2906,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年5月，于晓薇在与闺蜜林嘉欣的聊天中，谈论到另一位闺蜜黄文慧最近遇到了什么让她感到困扰但又与于晓薇自身生活无关的事情？",
@@ -4385,53 +2948,7 @@
         "id": "2338"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年5月，于晓薇在与同事苏丽珊的聊天中，分享了自己目前对于“港式奶茶”的具体品味偏好是什么？",
-    "answer": "B",
-    "ask_time": "2025-08",
-    "options": [
-      {
-        "option": "A",
-        "content": "茶味清淡、奶香突出，并且使用全脂鲜奶冲制的港式奶茶。"
-      },
-      {
-        "option": "B",
-        "content": "茶味浓郁、口感顺滑，并且使用传统丝袜和淡奶冲制的港式奶茶。"
-      },
-      {
-        "option": "C",
-        "content": "甜度适中、带有焦糖风味，并且使用炼乳冲制的港式奶茶。"
-      },
-      {
-        "option": "D",
-        "content": "茶底回甘、略带涩味，并且使用豆奶冲制的创新港式奶茶。"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2339"
-      },
-      {
-        "type": "sms",
-        "id": "2340"
-      },
-      {
-        "type": "sms",
-        "id": "2341"
-      },
-      {
-        "type": "sms",
-        "id": "2342"
-      },
-      {
-        "type": "sms",
-        "id": "2343"
-      }
-    ],
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "4月21日，于晓薇在办公室处理完一件棘手的客户事务后，为了平复情绪，她做了什么？",
@@ -4485,7 +3002,7 @@
       }
     ],
     "ask_time": "2025-08",
-    "question_type": "single_hop"
+    "question_type": "Temporal and Knowledge Updating"
   },
   {
     "question": "你举办过几次关于家庭财务安全的主题讲座了？",
@@ -4503,7 +3020,7 @@
       "2025-07-31"
     ],
     "ask_time": "2025-08",
-    "question_type": "updating",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -4555,7 +3072,7 @@
     "required_events_id": [
       "2326"
     ],
-    "question_type": "open_domain",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -4572,74 +3089,6 @@
       {
         "type": "push",
         "id": 1153
-      }
-    ],
-    "ask_time": "2025-08"
-  },
-  {
-    "question": "根据六月期间的事件记录，于晓薇的母亲陈美玲的身体状况和家庭照护安排是怎样的？",
-    "options": [
-      {
-        "option": "A",
-        "content": "身体状况良好，无需特殊照护"
-      },
-      {
-        "option": "B",
-        "content": "身体状况基本稳定，但需要家庭协助和专业护工照护"
-      },
-      {
-        "option": "C",
-        "content": "身体状况很差，长期住院治疗"
-      },
-      {
-        "option": "D",
-        "content": "身体状况有波动，主要由子女轮流在家照顾"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "2217",
-      "2232",
-      "2449",
-      "2545"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 633
-      },
-      {
-        "type": "agent_chat",
-        "id": 392
-      },
-      {
-        "type": "push",
-        "id": 1254
-      },
-      {
-        "type": "push",
-        "id": 1255
-      },
-      {
-        "type": "sms",
-        "id": 1055
-      },
-      {
-        "type": "calendar",
-        "id": "58"
-      },
-      {
-        "type": "note",
-        "id": "85"
-      },
-      {
-        "type": "note",
-        "id": "103"
-      },
-      {
-        "type": "calendar",
-        "id": "76"
       }
     ],
     "ask_time": "2025-08"
@@ -4666,7 +3115,7 @@
       "2283",
       "2437"
     ],
-    "question_type": "open_domain",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "push",
@@ -4708,151 +3157,6 @@
     "ask_time": "2025-08"
   },
   {
-    "question": "于晓薇在五月最终决定聘请护工王阿姨，最核心的考虑因素是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "王阿姨薪资要求最低，符合家庭当前紧缩的财务预算。"
-      },
-      {
-        "option": "B",
-        "content": "王阿姨与于晓薇的母亲初次见面时互动自然，母亲表示接受。"
-      },
-      {
-        "option": "C",
-        "content": "王阿姨是唯一愿意在周末全天提供服务的候选人，时间最灵活。"
-      },
-      {
-        "option": "D",
-        "content": "于晓薇的弟弟强力推荐王阿姨，并承担了部分费用。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "1761",
-      "1817"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 275
-      },
-      {
-        "type": "push",
-        "id": 876
-      },
-      {
-        "type": "calendar",
-        "id": "93"
-      },
-      {
-        "type": "note",
-        "id": "123"
-      },
-      {
-        "type": "photo",
-        "id": "1846"
-      },
-      {
-        "type": "sms",
-        "id": 722
-      },
-      {
-        "type": "note",
-        "id": "166"
-      },
-      {
-        "type": "sms",
-        "id": "2465"
-      },
-      {
-        "type": "sms",
-        "id": "2471"
-      },
-      {
-        "type": "note",
-        "id": "196"
-      }
-    ],
-    "ask_time": "2025-09"
-  },
-  {
-    "question": "于晓薇在8月9日晚与女儿互动时，以及随后在8月17日和8月22日与绣友何美玲的两次远程交流中，分别获得了哪些关键启发，这些启发对她的粤绣生活化创新项目构想产生了什么影响？",
-    "answer": "8月9日晚，女儿张雨欣请求在书包上绣花，直接触发了于晓薇将粤绣应用于日常物品的灵感，她随即构思了荔枝图案并开始调研。8月17日与何美玲的交流，何美玲从产品设计角度提出了“岭南佳果”系列化、风格简约现代等建议，使于晓薇的思路从个人爱好向产品设计迈进。8月22日与何美玲的交流，何美玲进一步从市场角度分析了手机壳、书签、茶席垫等载体的市场需求、成本控制和销售渠道，提供了务实建议，让于晓薇的构想向“可能的小事业”迈进。",
-    "score_points": [
-      {
-        "description": "8月9日晚，女儿张雨欣请求在书包上绣花，直接触发了于晓薇将粤绣应用于日常物品（书包）的灵感，她随即构思了荔枝图案寓意“利子”、“吉利”，并开始搜索布料市场和针法视频。",
-        "score": 4
-      },
-      {
-        "description": "8月17日与何美玲远程探讨，何美玲从产品设计角度补充想法，如建议设计“岭南佳果”系列，风格要简约现代，使于晓薇的思路从个人爱好向系列化产品设计迈进。",
-        "score": 3
-      },
-      {
-        "description": "8月22日与何美玲再次探讨，何美玲从市场角度分析了手机壳、小书签、茶席垫、小挂饰等载体的市场需求、生产成本、定价策略及销售渠道，建议从书签或杯垫试水，提供了关于目标人群、成本控制和推广渠道的务实建议，让于晓薇的思路向“可能的小事业”迈进。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "3209",
-      "3314",
-      "3389"
-    ],
-    "question_type": "mutihop",
-    "evidence": [
-      {
-        "type": "note",
-        "id": "136"
-      },
-      {
-        "type": "photo",
-        "id": "1850"
-      },
-      {
-        "type": "sms",
-        "id": "2458"
-      },
-      {
-        "type": "push",
-        "id": 1639
-      },
-      {
-        "type": "agent_chat",
-        "id": 536
-      },
-      {
-        "type": "push",
-        "id": 1675
-      },
-      {
-        "type": "sms",
-        "id": 1385
-      },
-      {
-        "type": "note",
-        "id": "191"
-      },
-      {
-        "type": "note",
-        "id": "192"
-      },
-      {
-        "type": "photo",
-        "id": "1861"
-      },
-      {
-        "type": "calendar",
-        "id": "133"
-      },
-      {
-        "type": "note",
-        "id": "193"
-      }
-    ],
-    "ask_time": "2025-09"
-  },
-  {
     "question": "为什么于晓薇在8月15日与同学何俊杰初步讨论了业务机会后，没有在周末（8月16-17日）跟进，而是等到8月18日才与他进行正式的详细沟通？",
     "options": [
       {
@@ -4881,7 +3185,7 @@
       "3327",
       "3328"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -4969,7 +3273,7 @@
       "358",
       "362"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "calendar",
@@ -5035,7 +3339,7 @@
       "1297",
       "1410"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "calendar",
@@ -5133,7 +3437,7 @@
       "1482",
       "1566"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -5264,7 +3568,7 @@
       "2580",
       "2590"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -5324,7 +3628,7 @@
       "1127",
       "1130"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -5378,7 +3682,7 @@
       "927",
       "991"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -5459,7 +3763,7 @@
       "1108",
       "1208"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "call",
@@ -5527,59 +3831,11 @@
   {
     "question": "在2025-08-09，于晓薇进行粤绣项目时，使用的碎布头具体来源于哪一件旧衣物？",
     "type": "question_answer",
-    "question_type": "unanswerable",
+    "question_type": "Unanswerable",
     "answer": " 无法回答",
     "score_points": [],
     "required_events": [],
     "ask_time": "2025-09"
-  },
-  {
-    "question": "于晓薇在8月收到同学业务咨询联系的直接诱因是什么？",
-    "answer": "她在同学聚会早茶活动中分享了保险行业见闻和理念。",
-    "score_points": [
-      {
-        "description": "准确指出行为：分享了保险行业见闻/理念。",
-        "score": 5
-      },
-      {
-        "description": "准确定位场景：发生在同学聚会早茶活动上。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "3285"
-    ],
-    "required_events_date": [
-      "2025-08-15"
-    ],
-    "ask_time": "2025-09",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "call",
-        "id": "1471"
-      },
-      {
-        "type": "note",
-        "id": "179"
-      },
-      {
-        "type": "calendar",
-        "id": "175"
-      },
-      {
-        "type": "note",
-        "id": "271"
-      },
-      {
-        "type": "sms",
-        "id": "2587"
-      },
-      {
-        "type": "photo",
-        "id": "1879"
-      }
-    ]
   },
   {
     "question": "于晓薇在设置医疗主题基金定投后，过了多久对子女教育基金定投账户进行了系统检视？",
@@ -5599,7 +3855,7 @@
       "2025-07-28"
     ],
     "ask_time": "2025-09",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "calendar",
@@ -5663,7 +3919,7 @@
       "2025-08-17"
     ],
     "ask_time": "2025-09",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -5724,82 +3980,6 @@
     ]
   },
   {
-    "question": "在9月份，于晓薇与跑友沈佩雯交流时，对方推荐了哪条慢跑路线？",
-    "answer": "观塘海滨长廊慢跑路线。",
-    "score_points": [
-      {
-        "description": "答案中包含推荐的慢跑路线名称“观塘海滨长廊慢跑路线”。",
-        "score": 10
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "3560",
-        "event_name": "午餐与跑友线上交流及午间散步"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "push",
-        "id": 1760
-      },
-      {
-        "type": "sms",
-        "id": 1442
-      },
-      {
-        "type": "sms",
-        "id": 1443
-      }
-    ],
-    "ask_time": "2025-09",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在9月份与理财规划师徐家明的会面中，于晓薇和他讨论的联合服务模式主要针对哪类客户？",
-    "options": [
-      {
-        "option": "A",
-        "content": "香港本地高净值客户"
-      },
-      {
-        "option": "B",
-        "content": "有跨境需求的客户"
-      },
-      {
-        "option": "C",
-        "content": "内地科技企业高管"
-      },
-      {
-        "option": "D",
-        "content": "香港储蓄险单一客户"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "3672",
-        "event_name": "与理财规划师徐家明会面"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 582
-      },
-      {
-        "type": "photo",
-        "id": 1281
-      },
-      {
-        "type": "push",
-        "id": 1812
-      }
-    ],
-    "ask_time": "2025-09",
-    "question_type": "single_hop"
-  },
-  {
     "question": "2025年10月，于晓薇在粤绣兴趣圈的微信群聊中，得知绣友何美玲最近在深圳完成了一件什么样的粤绣作品？",
     "answer": "一件将粤绣传统牡丹图案与深圳地标“春笋”（华润大厦）轮廓巧妙结合的现代风格挂画。",
     "score_points": [
@@ -5839,57 +4019,7 @@
         "id": "2174"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年11月，于晓薇在与闺蜜林嘉欣的聊天中，提到自己最近在挑选家用香薰时，最看重香薰的哪个方面？",
-    "options": [
-      {
-        "option": "A",
-        "content": "香薰的品牌知名度和价格"
-      },
-      {
-        "option": "B",
-        "content": "香薰的包装设计和外观"
-      },
-      {
-        "option": "C",
-        "content": "香薰的气味是否有助于放松和助眠"
-      },
-      {
-        "option": "D",
-        "content": "香薰的扩香范围和持久时间"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2175"
-      },
-      {
-        "type": "sms",
-        "id": "2176"
-      },
-      {
-        "type": "sms",
-        "id": "2177"
-      },
-      {
-        "type": "sms",
-        "id": "2178"
-      },
-      {
-        "type": "sms",
-        "id": "2179"
-      },
-      {
-        "type": "sms",
-        "id": "2180"
-      }
-    ],
-    "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "8月中旬，于晓薇为了获得粤绣创新的指导，前往何处拜访了吴秀英老师？",
@@ -5921,7 +4051,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "8月21日，于晓薇与同事苏丽珊在华星冰室午餐时，苏丽珊对于晓薇的工作案例提出了什么具体建议？",
@@ -5953,51 +4083,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在8月份与绣友何美玲视频通话探讨粤绣产品化时，何美玲建议从哪类产品开始试水以积累市场反馈？",
-    "options": [
-      {
-        "option": "A",
-        "content": "手机壳"
-      },
-      {
-        "option": "B",
-        "content": "茶席垫"
-      },
-      {
-        "option": "C",
-        "content": "小挂饰"
-      },
-      {
-        "option": "D",
-        "content": "书签或杯垫"
-      }
-    ],
-    "answer": "D",
-    "required_events": [
-      {
-        "event_id": "3389",
-        "event_name": "与绣友视频通话探讨粤绣产品化"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 536
-      },
-      {
-        "type": "push",
-        "id": 1675
-      },
-      {
-        "type": "sms",
-        "id": 1385
-      }
-    ],
-    "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在6月份，于晓薇在尖沙咀的苹果零售店购买了一台Apple Vision Pro作为对自己的奖励，这台设备的存储容量是多少？",
@@ -6045,7 +4131,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "7月12日，于晓薇在办公室加班时，通过哪个线上渠道提交了正式的保险理赔申请？",
@@ -6089,7 +4175,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，于晓薇为母亲康复在线下单了哪两个品牌的辅助设备？",
@@ -6133,7 +4219,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "3月份，于晓薇与同事苏丽珊在华嫂冰室共进午餐时，苏丽珊为她提供了哪方面的技能支持？",
@@ -6177,7 +4263,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "4月2日，于晓薇在茶水间与哪位同事交流并约定午餐？",
@@ -6209,7 +4295,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "清明节当天，于晓薇全家在哪个餐厅享用了家庭午餐？",
@@ -6253,7 +4339,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在4月份的一个周日早晨，于晓薇准备早餐时，儿子张子轩向她倾诉了什么情绪？",
@@ -6293,171 +4379,7 @@
       }
     ],
     "ask_time": "2025-09",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "5月10日，于晓薇在尖沙咀与闺蜜林嘉欣观看了一场演出。根据这次体验以及她次日的后续反应，可以推断她可能对以下哪种艺术形式产生了新的兴趣？",
-    "options": [
-      {
-        "option": "A",
-        "content": "古典交响乐"
-      },
-      {
-        "option": "B",
-        "content": "现代话剧"
-      },
-      {
-        "option": "C",
-        "content": "音乐剧"
-      },
-      {
-        "option": "D",
-        "content": "传统粤剧"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "1883",
-      "1886",
-      "1899"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 711
-      },
-      {
-        "type": "photo",
-        "id": 712
-      },
-      {
-        "type": "push",
-        "id": 936
-      },
-      {
-        "type": "push",
-        "id": 941
-      },
-      {
-        "type": "agent_chat",
-        "id": 294
-      },
-      {
-        "type": "push",
-        "id": 946
-      },
-      {
-        "type": "sms",
-        "id": 757
-      },
-      {
-        "type": "sms",
-        "id": 758
-      }
-    ],
-    "ask_time": "2025-09"
-  },
-  {
-    "question": "在9月，我主要通过以下哪些方式进行社交？",
-    "options": [
-      {
-        "option": "A",
-        "content": "与闺蜜进行深度交谈和情感支持"
-      },
-      {
-        "option": "B",
-        "content": "参与同事或团队的聚餐与工作交流"
-      },
-      {
-        "option": "C",
-        "content": "与有共同运动爱好的朋友一起锻炼和聊天"
-      },
-      {
-        "option": "D",
-        "content": "以上所有方式"
-      }
-    ],
-    "answer": "D",
-    "required_events_id": [
-      "3535",
-      "3565",
-      "3576",
-      "3696",
-      "3697"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 1748
-      },
-      {
-        "type": "sms",
-        "id": 1433
-      },
-      {
-        "type": "call",
-        "id": 995
-      },
-      {
-        "type": "push",
-        "id": 1767
-      },
-      {
-        "type": "photo",
-        "id": 1293
-      },
-      {
-        "type": "push",
-        "id": 1826
-      },
-      {
-        "type": "sms",
-        "id": 1499
-      },
-      {
-        "type": "agent_chat",
-        "id": 585
-      },
-      {
-        "type": "photo",
-        "id": 1294
-      },
-      {
-        "type": "photo",
-        "id": 1295
-      },
-      {
-        "type": "push",
-        "id": 1825
-      },
-      {
-        "type": "sms",
-        "id": 1500
-      },
-      {
-        "type": "sms",
-        "id": "2451"
-      },
-      {
-        "type": "note",
-        "id": "113"
-      },
-      {
-        "type": "calendar",
-        "id": "98"
-      },
-      {
-        "type": "photo",
-        "id": "1849"
-      },
-      {
-        "type": "push",
-        "id": "2671"
-      }
-    ],
-    "ask_time": "2025-09"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "在九月份，我的康复训练活动呈现出怎样的变化趋势？",
@@ -6482,7 +4404,7 @@
       "3725",
       "3899"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "photo",
@@ -6515,68 +4437,6 @@
       {
         "type": "note",
         "id": "151"
-      }
-    ],
-    "ask_time": "2025-09"
-  },
-  {
-    "question": "在2月5日和6日，我与客户陈太的两次互动，主要属于我工作中的哪个核心环节？",
-    "options": [
-      {
-        "option": "A",
-        "content": "潜在客户开发"
-      },
-      {
-        "option": "B",
-        "content": "保单售后检视与关系维护"
-      },
-      {
-        "option": "C",
-        "content": "理赔案件处理"
-      },
-      {
-        "option": "D",
-        "content": "团队内部培训"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "526",
-      "545"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 146
-      },
-      {
-        "type": "agent_chat",
-        "id": 80
-      },
-      {
-        "type": "photo",
-        "id": 228
-      },
-      {
-        "type": "push",
-        "id": 325
-      },
-      {
-        "type": "sms",
-        "id": 192
-      },
-      {
-        "type": "sms",
-        "id": 194
-      },
-      {
-        "type": "sms",
-        "id": "2438"
-      },
-      {
-        "type": "calendar",
-        "id": "62"
       }
     ],
     "ask_time": "2025-09"
@@ -6624,7 +4484,7 @@
       "765",
       "766"
     ],
-    "question_type": "open_domain",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "call",
@@ -6862,7 +4722,7 @@
       "3339",
       "3342"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -6964,121 +4824,6 @@
     "ask_time": "2025-09"
   },
   {
-    "question": "在六月，于晓薇为了养成携带环保杯的习惯，经历了怎样的过程？",
-    "answer": "经历了从初期健忘感到挫败，到主动利用手机日历设置双重提醒来辅助习惯养成，最终成功养成习惯并因此感到满意的过程。",
-    "score_points": [
-      {
-        "description": "指出初期多次忘记携带环保杯并感到挫败（如6月1日、2日）。",
-        "score": 3
-      },
-      {
-        "description": "提及为克服健忘主动采取了系统性措施（6月5日设置手机日历提醒）。",
-        "score": 4
-      },
-      {
-        "description": "说明习惯最终成功养成并获得成就感（6月18日、25日用自带杯买奶茶并感到满意）。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "2206",
-      "2247",
-      "2260",
-      "2436",
-      "2446",
-      "2538",
-      "2541"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": 918
-      },
-      {
-        "type": "photo",
-        "id": 825
-      },
-      {
-        "type": "sms",
-        "id": 925
-      },
-      {
-        "type": "push",
-        "id": 1199
-      },
-      {
-        "type": "photo",
-        "id": 894
-      },
-      {
-        "type": "push",
-        "id": 1204
-      },
-      {
-        "type": "push",
-        "id": 1250
-      },
-      {
-        "type": "agent_chat",
-        "id": 405
-      },
-      {
-        "type": "push",
-        "id": 1252
-      },
-      {
-        "type": "sms",
-        "id": 1052
-      },
-      {
-        "type": "calendar",
-        "id": "68"
-      },
-      {
-        "type": "calendar",
-        "id": "69"
-      },
-      {
-        "type": "note",
-        "id": "94"
-      },
-      {
-        "type": "note",
-        "id": "145"
-      },
-      {
-        "type": "calendar",
-        "id": "103"
-      },
-      {
-        "type": "photo",
-        "id": "1853"
-      },
-      {
-        "type": "calendar",
-        "id": "112"
-      },
-      {
-        "type": "photo",
-        "id": "1855"
-      },
-      {
-        "type": "calendar",
-        "id": "113"
-      },
-      {
-        "type": "sms",
-        "id": "2462"
-      },
-      {
-        "type": "note",
-        "id": "157"
-      }
-    ],
-    "ask_time": "2025-09"
-  },
-  {
     "question": "于晓薇为母亲引入兼职护工王阿姨，从面试到首次服务落地，经历了哪些关键步骤？",
     "answer": "5月2日面试并选定王阿姨；5月5日与弟弟视频商讨细节并达成一致；5月6日召开家庭会议说服母亲同意尝试；5月8日王阿姨首次上门服务，并根据母亲反馈微调了服务细节。",
     "score_points": [
@@ -7105,7 +4850,7 @@
       "1817",
       "1847"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -7201,7 +4946,7 @@
       "3264",
       "3515"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "calendar",
@@ -7255,44 +5000,6 @@
     "ask_time": "2025-10"
   },
   {
-    "question": "清明节假期（4月4日至5日）期间，于晓薇没有进行晚间康复拉伸的主要原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "因为参加了半程马拉松比赛，身体过于疲劳。"
-      },
-      {
-        "option": "B",
-        "content": "因为白天活动较多且心情放松，以及祭扫活动劳累，决定休息。"
-      },
-      {
-        "option": "C",
-        "content": "因为忙于准备重要客户的保险方案提案，熬夜工作。"
-      },
-      {
-        "option": "D",
-        "content": "因为肩颈不适加剧，改变了康复计划。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "1339",
-      "1353"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 216
-      },
-      {
-        "type": "note",
-        "id": "177"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
     "question": "在4月30日之前，于晓薇每月10日通过基金定投计划投资的总金额是多少港元？",
     "answer": "1000港元。",
     "score_points": [
@@ -7305,7 +5012,7 @@
       "1296",
       "new_event_20250410_1"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "call",
@@ -7348,7 +5055,7 @@
       "860",
       "862"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "calendar",
@@ -7398,7 +5105,7 @@
       "4149",
       "4247"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -7419,51 +5126,6 @@
       {
         "type": "photo",
         "id": 1478
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "于晓薇在10月21日与银行经理会面后，决定将一笔即将到期的存款转为货币基金。这一决策的主要促成因素是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "因为她当天首次查看了公司财报，并学习了相关理财知识，想尝试更高收益的投资。"
-      },
-      {
-        "option": "B",
-        "content": "因为她与闺蜜深入探讨了股权激励处理策略，并确认了“保守策略”，需要更多低风险理财。"
-      },
-      {
-        "option": "C",
-        "content": "因为银行经理李国栋基于于晓薇家庭“防御型”财务策略的建议，旨在增强流动性。"
-      },
-      {
-        "option": "D",
-        "content": "因为10月20日的家庭会议已决定搁置日本深度游计划，腾出了一大笔预算用于理财。"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "4210"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 678
-      },
-      {
-        "type": "calendar",
-        "id": "140"
-      },
-      {
-        "type": "note",
-        "id": "203"
-      },
-      {
-        "type": "sms",
-        "id": "2475"
       }
     ],
     "ask_time": "2025-10"
@@ -7490,7 +5152,7 @@
       "4021",
       "4092"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -7563,7 +5225,7 @@
       "4296",
       "4327"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -7661,7 +5323,7 @@
       "2025-09-10"
     ],
     "ask_time": "2025-10",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -7714,68 +5376,6 @@
     ]
   },
   {
-    "question": "于晓薇在报名粤绣高级工作坊时，是如何安排时间以确保能参加的？",
-    "answer": "她首先评估了十月份的工作日程，确认时间允许，然后在午餐时间利用手机在线完成报名和支付。",
-    "score_points": [
-      {
-        "description": "正确指出她评估了十月份的工作日程",
-        "score": 5
-      },
-      {
-        "description": "准确说明她在午餐时间完成报名",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "3854",
-      "3862"
-    ],
-    "required_events_date": [
-      "2025-09-24",
-      "2025-09-25"
-    ],
-    "ask_time": "2025-10",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 1898
-      },
-      {
-        "type": "sms",
-        "id": 1570
-      },
-      {
-        "type": "sms",
-        "id": 1571
-      },
-      {
-        "type": "push",
-        "id": 1902
-      },
-      {
-        "type": "push",
-        "id": 1903
-      },
-      {
-        "type": "sms",
-        "id": 1572
-      },
-      {
-        "type": "note",
-        "id": "282"
-      },
-      {
-        "type": "calendar",
-        "id": "184"
-      },
-      {
-        "type": "sms",
-        "id": "2593"
-      }
-    ]
-  },
-  {
     "question": "于晓薇在9月能够与新潜在客户建立联系并面谈，最直接的推动因素是什么？",
     "options": [
       {
@@ -7806,7 +5406,7 @@
       "2025-09-15"
     ],
     "ask_time": "2025-10",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -7864,7 +5464,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年10月，于晓薇在与闺蜜林嘉欣的聊天中，谈论到另一位闺蜜黄文慧最近发生了一件什么事情，并且这件事对于晓薇自己的生活没有直接影响？",
@@ -7902,99 +5502,7 @@
         "id": "2204"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年9月，于晓薇在与同事苏丽珊讨论近期上映的电影时，表达了她对哪一类电影题材的明确偏好？",
-    "options": [
-      {
-        "option": "A",
-        "content": "科幻特效大片"
-      },
-      {
-        "option": "B",
-        "content": "家庭温情喜剧"
-      },
-      {
-        "option": "C",
-        "content": "悬疑烧脑剧情片"
-      },
-      {
-        "option": "D",
-        "content": "历史传记题材"
-      }
-    ],
-    "answer": "B",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2205"
-      },
-      {
-        "type": "sms",
-        "id": "2206"
-      },
-      {
-        "type": "sms",
-        "id": "2207"
-      },
-      {
-        "type": "sms",
-        "id": "2208"
-      },
-      {
-        "type": "sms",
-        "id": "2209"
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年10月，于晓薇在与跑友沈佩雯交流时，分享了自己最近在挑选运动耳机时最看重的一个具体功能或特性是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "超长的电池续航，能支持连续超过10小时的音乐播放。"
-      },
-      {
-        "option": "B",
-        "content": "极强的防水防汗等级，适合马拉松和雨天训练。"
-      },
-      {
-        "option": "C",
-        "content": "轻若无物的佩戴感和稳固性，跑步时完全不会晃动或掉落。"
-      },
-      {
-        "option": "D",
-        "content": "卓越的主动降噪功能，能在嘈杂的街道隔绝噪音。"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2215"
-      },
-      {
-        "type": "sms",
-        "id": "2216"
-      },
-      {
-        "type": "sms",
-        "id": "2217"
-      },
-      {
-        "type": "sms",
-        "id": "2218"
-      },
-      {
-        "type": "sms",
-        "id": "2219"
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，于晓薇在短信中与闺蜜林嘉欣谈论了另一位闺蜜黄文慧最近遇到的什么事情？这件事对于晓薇本人的生活有直接影响吗？",
@@ -8032,155 +5540,7 @@
         "id": "2247"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年1月，于晓薇在与跑友沈佩雯的短信聊天中，分享了自己最近在挑选运动耳机时最看重哪个具体特性？",
-    "options": [
-      {
-        "option": "A",
-        "content": "音质和降噪效果"
-      },
-      {
-        "option": "B",
-        "content": "超长的电池续航时间"
-      },
-      {
-        "option": "C",
-        "content": "佩戴的稳固性和防水防汗性能"
-      },
-      {
-        "option": "D",
-        "content": "轻巧的重量和时尚的外观"
-      }
-    ],
-    "answer": "C",
-    "ask_time": "2025-10",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2248"
-      },
-      {
-        "type": "sms",
-        "id": "2249"
-      },
-      {
-        "type": "sms",
-        "id": "2250"
-      },
-      {
-        "type": "sms",
-        "id": "2251"
-      },
-      {
-        "type": "sms",
-        "id": "2252"
-      }
-    ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在7月份的普通话学习总结中，于晓薇为改进发音制定了什么具体计划？",
-    "options": [
-      {
-        "option": "A",
-        "content": "每天背诵一篇普通话文章"
-      },
-      {
-        "option": "B",
-        "content": "每周跟读“央视财经”新闻片段录音"
-      },
-      {
-        "option": "C",
-        "content": "报名参加线下的普通话培训班"
-      },
-      {
-        "option": "D",
-        "content": "与家人约定在家只讲普通话"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "2824",
-        "event_name": "专注总结普通话学习与应用心得"
-      }
-    ],
-    "score_points": [
-      {
-        "description": "答案中包含“每周跟读”这一频率和行动描述。",
-        "score": 4
-      },
-      {
-        "description": "答案中明确指出跟读的材料来源是“央视财经”新闻片段。",
-        "score": 3
-      },
-      {
-        "description": "答案中明确指出改进发音的具体方式是“录音”。",
-        "score": 3
-      }
-    ],
-    "evidence": [
-      {
-        "type": "note",
-        "id": "58"
-      },
-      {
-        "type": "calendar",
-        "id": "39"
-      },
-      {
-        "type": "push",
-        "id": "2634"
-      },
-      {
-        "type": "sms",
-        "id": "2195"
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在幻想世界园区游玩时，于晓薇一家体验了哪些游乐项目？",
-    "answer": "小小世界、小熊维尼历险记、疯帽子旋转杯。",
-    "score_points": [
-      {
-        "description": "准确答出项目一：小小世界",
-        "score": 4
-      },
-      {
-        "description": "准确答出项目二：小熊维尼历险记",
-        "score": 3
-      },
-      {
-        "description": "准确答出项目三：疯帽子旋转杯",
-        "score": 3
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "3927",
-        "event_name": "幻想世界温和项目游玩"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "photo",
-        "id": "1829"
-      },
-      {
-        "type": "note",
-        "id": "39"
-      },
-      {
-        "type": "sms",
-        "id": "2162"
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "10月份，于晓薇与闺蜜林嘉欣在九龙城广场会面时，去了哪家咖啡店？",
@@ -8220,89 +5580,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在10月份的一次购物中，我为了日常训练升级装备，最终选择了哪款跑鞋？",
-    "answer": "Asics Gel-Kayano 28",
-    "score_points": [
-      {
-        "description": "准确回答出跑鞋的品牌和具体型号：Asics Gel-Kayano 28",
-        "score": 10
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "4027",
-        "event_name": "选购并购买新跑鞋"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 643
-      },
-      {
-        "type": "photo",
-        "id": 1412
-      },
-      {
-        "type": "photo",
-        "id": 1413
-      },
-      {
-        "type": "push",
-        "id": 1973
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年1月，于晓薇在与同事苏丽珊讨论为孩子选择兴趣班时，表达了自己对女儿未来音乐启蒙更倾向于哪种类型的课程？",
-    "options": [
-      {
-        "option": "A",
-        "content": "传统的、强调基本功和考级的钢琴或小提琴一对一课程"
-      },
-      {
-        "option": "B",
-        "content": "融合游戏、律动和多种乐器体验的综合性音乐启蒙课程"
-      },
-      {
-        "option": "C",
-        "content": "专注于合唱训练，培养团队合作与和声感的合唱团"
-      },
-      {
-        "option": "D",
-        "content": "以流行音乐和电子创作为主的现代音乐制作体验课"
-      }
-    ],
-    "answer": "B",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2290"
-      },
-      {
-        "type": "sms",
-        "id": "2291"
-      },
-      {
-        "type": "sms",
-        "id": "2292"
-      },
-      {
-        "type": "sms",
-        "id": "2293"
-      },
-      {
-        "type": "sms",
-        "id": "2294"
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，于晓薇在和跑友沈佩雯交流时，提到自己最近在挑选运动耳机时最看重哪个特性？",
@@ -8344,95 +5622,7 @@
         "id": "2303"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年6月，于晓薇在与闺蜜林嘉欣聊天时，分享了自己最近在音乐品味上的一个新偏好。她最近特别喜欢听哪种风格或类型的音乐？",
-    "options": [
-      {
-        "option": "A",
-        "content": "节奏强劲的电子舞曲（EDM），用于跑步时提神"
-      },
-      {
-        "option": "B",
-        "content": "经典粤语流行金曲，尤其是八九十年代的怀旧老歌"
-      },
-      {
-        "option": "C",
-        "content": "轻柔舒缓的钢琴独奏或古典乐，用于放松和助眠"
-      },
-      {
-        "option": "D",
-        "content": "带有自然声音（如雨声、海浪声）的白噪音或冥想音乐"
-      }
-    ],
-    "answer": "D",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2309"
-      },
-      {
-        "type": "sms",
-        "id": "2310"
-      },
-      {
-        "type": "sms",
-        "id": "2311"
-      },
-      {
-        "type": "sms",
-        "id": "2312"
-      },
-      {
-        "type": "sms",
-        "id": "2313"
-      }
-    ],
-    "ask_time": "2025-10",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年5月，于晓薇在与闺蜜林嘉欣的聊天中，得知了她们共同认识的一位高中同学最近发生了什么事情，并且这件事对这位同学的生活产生了什么具体影响？",
-    "answer": "她们共同认识的高中同学周敏仪（Mandy）最近被公司裁员了。这件事导致周敏仪的家庭经济压力变大，她需要重新找工作，并且情绪比较低落。",
-    "score_points": [
-      {
-        "description": "明确指出事件涉及的同学是周敏仪（Mandy）。",
-        "score": 4
-      },
-      {
-        "description": "明确指出事件是周敏仪被公司裁员。",
-        "score": 3
-      },
-      {
-        "description": "明确指出事件对周敏仪的影响是家庭经济压力变大，需要重新找工作，情绪低落。",
-        "score": 3
-      }
-    ],
-    "ask_time": "2025-10",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2324"
-      },
-      {
-        "type": "sms",
-        "id": "2325"
-      },
-      {
-        "type": "sms",
-        "id": "2326"
-      },
-      {
-        "type": "sms",
-        "id": "2327"
-      },
-      {
-        "type": "sms",
-        "id": "2328"
-      }
-    ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年4月，于晓薇在微信上与闺蜜林嘉欣聊天时，谈论到另一位闺蜜黄文慧最近遇到的一件烦心事。这件烦心事是什么？",
@@ -8474,7 +5664,7 @@
         "id": "2360"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年4月，于晓薇在与跑友沈佩雯的聊天中，分享了她个人目前对于“运动恢复饮品”的具体品味偏好。她最常选择的是以下哪一种？",
@@ -8524,7 +5714,7 @@
       }
     ],
     "ask_time": "2025-10",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，于晓薇在微信上与闺蜜林嘉欣聊天时，提到了另一位闺蜜黄文慧最近遇到的一件烦心事。这件事是什么？",
@@ -8562,576 +5752,7 @@
         "id": "2373"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年4月，于晓薇在与跑友沈佩雯的短信聊天中，分享了自己最近在挑选运动耳机时的一些具体品味偏好。以下哪一项最符合她所描述的偏好？",
-    "options": [
-      {
-        "option": "A",
-        "content": "偏好音质澎湃、低音强劲的耳机，适合在跑步时听摇滚或电子音乐来激发动力。"
-      },
-      {
-        "option": "B",
-        "content": "偏好佩戴稳固、完全防汗防水的骨传导耳机，主要为了在跑步时能清晰听到环境音，保障安全。"
-      },
-      {
-        "option": "C",
-        "content": "偏好轻便、续航长的真无线耳机，并且一定要有通透模式，可以随时切换听到周围声音和孩子叫唤。"
-      },
-      {
-        "option": "D",
-        "content": "偏好头戴式降噪耳机，虽然不适合跑步，但喜欢在瑜伽或做手工时用它来隔绝一切外界干扰，完全沉浸。"
-      }
-    ],
-    "answer": "C",
-    "ask_time": "2025-10",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2386"
-      },
-      {
-        "type": "sms",
-        "id": "2387"
-      },
-      {
-        "type": "sms",
-        "id": "2388"
-      },
-      {
-        "type": "sms",
-        "id": "2389"
-      },
-      {
-        "type": "sms",
-        "id": "2390"
-      }
-    ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在10月5日和10月11日，当原计划的户外运动因故取消时，我分别如何调整了活动？",
-    "answer": "10月5日，因天气取消原计划运动，改为在室内进行15分钟核心和肩背舒缓拉伸。10月11日，因台风预警取消户外跑步，并考虑到膝盖轻微酸胀，改为前往健身中心进行45分钟的室内匀速慢游。",
-    "score_points": [
-      {
-        "description": "指出10月5日调整为室内核心和肩背舒缓拉伸",
-        "score": 5
-      },
-      {
-        "description": "指出10月11日调整为室内匀速慢游",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "3978",
-      "4069"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 1949
-      },
-      {
-        "type": "push",
-        "id": 1999
-      },
-      {
-        "type": "calendar",
-        "id": "63"
-      },
-      {
-        "type": "note",
-        "id": "91"
-      },
-      {
-        "type": "push",
-        "id": "2654"
-      },
-      {
-        "type": "calendar",
-        "id": "64"
-      },
-      {
-        "type": "calendar",
-        "id": "85"
-      },
-      {
-        "type": "push",
-        "id": "2665"
-      },
-      {
-        "type": "push",
-        "id": "2666"
-      },
-      {
-        "type": "calendar",
-        "id": "86"
-      },
-      {
-        "type": "note",
-        "id": "115"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "在5月中旬，于晓薇向上司申请并获批了灵活办公安排。此后，她在5月下旬参加了一场重要的线上研讨会，并与一位专家建立了联系。综合来看，在5月份，她大部分时间的主要工作地点是哪里？",
-    "options": [
-      {
-        "option": "A",
-        "content": "位于湾仔区的公司办公室"
-      },
-      {
-        "option": "B",
-        "content": "客户的办公室或约定的会面场所"
-      },
-      {
-        "option": "C",
-        "content": "家中（居家办公）"
-      },
-      {
-        "option": "D",
-        "content": "咖啡厅或共享办公空间"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "1969",
-      "2051"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": 779
-      },
-      {
-        "type": "sms",
-        "id": 780
-      },
-      {
-        "type": "calendar",
-        "id": "50"
-      },
-      {
-        "type": "note",
-        "id": "73"
-      },
-      {
-        "type": "push",
-        "id": "2641"
-      },
-      {
-        "type": "call",
-        "id": "1465"
-      },
-      {
-        "type": "sms",
-        "id": "2432"
-      },
-      {
-        "type": "calendar",
-        "id": "56"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "在9月4日与产品专员协同定制客户保障方案时，于晓薇特别坚持并成功加入了哪项针对特定家族病史的附加保障内容？",
-    "answer": "增加中风后专业康复治疗费用津贴。",
-    "score_points": [
-      {
-        "description": "指出事件核心是9月4日与产品专员郭俊伟协同定制方案（事件ID: 3558）。",
-        "score": 4
-      },
-      {
-        "description": "准确提取并指出于晓薇坚持加入的具体保障内容是“中风后专业康复治疗费用津贴”。",
-        "score": 6
-      }
-    ],
-    "required_events_id": [
-      "3558"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 564
-      },
-      {
-        "type": "photo",
-        "id": 1237
-      },
-      {
-        "type": "sms",
-        "id": 1439
-      },
-      {
-        "type": "sms",
-        "id": 1440
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "在1月，关于我的跑步训练，以下描述正确的是？",
-    "options": [
-      {
-        "option": "A",
-        "content": "只在周末进行短距离轻松跑"
-      },
-      {
-        "option": "B",
-        "content": "训练不规律，完全看心情"
-      },
-      {
-        "option": "C",
-        "content": "有明确的渐进式训练计划，为赛事做准备"
-      },
-      {
-        "option": "D",
-        "content": "只进行室内跑步机训练"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "85",
-      "111",
-      "157",
-      "255"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": 32
-      },
-      {
-        "type": "sms",
-        "id": 41
-      },
-      {
-        "type": "agent_chat",
-        "id": 24
-      },
-      {
-        "type": "agent_chat",
-        "id": 25
-      },
-      {
-        "type": "call",
-        "id": 52
-      },
-      {
-        "type": "photo",
-        "id": 93
-      },
-      {
-        "type": "push",
-        "id": 128
-      },
-      {
-        "type": "agent_chat",
-        "id": 38
-      },
-      {
-        "type": "call",
-        "id": 75
-      },
-      {
-        "type": "push",
-        "id": 169
-      },
-      {
-        "type": "push",
-        "id": "2672"
-      },
-      {
-        "type": "note",
-        "id": "132"
-      },
-      {
-        "type": "calendar",
-        "id": "99"
-      },
-      {
-        "type": "push",
-        "id": "2687"
-      },
-      {
-        "type": "note",
-        "id": "153"
-      },
-      {
-        "type": "calendar",
-        "id": "109"
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "在四月份，于晓薇长期同住并需要她照顾康复的年长女性亲属是谁？",
-    "options": [
-      {
-        "option": "A",
-        "content": "母亲"
-      },
-      {
-        "option": "B",
-        "content": "婆婆"
-      },
-      {
-        "option": "C",
-        "content": "闺蜜"
-      },
-      {
-        "option": "D",
-        "content": "同事"
-      }
-    ],
-    "answer": "A",
-    "required_events_id": [
-      "1291",
-      "1300",
-      "1305",
-      "1506",
-      "1507",
-      "1508",
-      "1510",
-      "1511",
-      "1514",
-      "1515",
-      "1523",
-      "1525",
-      "1526",
-      "1528",
-      "1529",
-      "1530",
-      "1375",
-      "1376",
-      "1384"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 511
-      },
-      {
-        "type": "push",
-        "id": 673
-      },
-      {
-        "type": "push",
-        "id": 679
-      },
-      {
-        "type": "agent_chat",
-        "id": 209
-      },
-      {
-        "type": "photo",
-        "id": 515
-      },
-      {
-        "type": "photo",
-        "id": 573
-      },
-      {
-        "type": "push",
-        "id": 762
-      },
-      {
-        "type": "sms",
-        "id": 599
-      },
-      {
-        "type": "sms",
-        "id": 600
-      },
-      {
-        "type": "agent_chat",
-        "id": 237
-      },
-      {
-        "type": "push",
-        "id": 763
-      },
-      {
-        "type": "call",
-        "id": 435
-      },
-      {
-        "type": "push",
-        "id": 765
-      },
-      {
-        "type": "push",
-        "id": 766
-      },
-      {
-        "type": "push",
-        "id": 767
-      },
-      {
-        "type": "photo",
-        "id": 576
-      },
-      {
-        "type": "push",
-        "id": 769
-      },
-      {
-        "type": "photo",
-        "id": 577
-      },
-      {
-        "type": "photo",
-        "id": 580
-      },
-      {
-        "type": "photo",
-        "id": 581
-      },
-      {
-        "type": "agent_chat",
-        "id": 243
-      },
-      {
-        "type": "call",
-        "id": 438
-      },
-      {
-        "type": "photo",
-        "id": 582
-      },
-      {
-        "type": "push",
-        "id": 773
-      },
-      {
-        "type": "sms",
-        "id": 607
-      },
-      {
-        "type": "agent_chat",
-        "id": 241
-      },
-      {
-        "type": "push",
-        "id": 774
-      },
-      {
-        "type": "push",
-        "id": 775
-      },
-      {
-        "type": "push",
-        "id": 776
-      },
-      {
-        "type": "sms",
-        "id": 608
-      },
-      {
-        "type": "photo",
-        "id": 584
-      },
-      {
-        "type": "sms",
-        "id": 609
-      },
-      {
-        "type": "photo",
-        "id": 585
-      },
-      {
-        "type": "push",
-        "id": 777
-      },
-      {
-        "type": "call",
-        "id": 403
-      },
-      {
-        "type": "photo",
-        "id": 526
-      },
-      {
-        "type": "agent_chat",
-        "id": 220
-      },
-      {
-        "type": "call",
-        "id": 404
-      },
-      {
-        "type": "call",
-        "id": 406
-      }
-    ],
-    "ask_time": "2025-10"
-  },
-  {
-    "question": "于晓薇在8月11日收到公司邮件后，感到兴奋但困惑，并在当晚和次日进行了相关学习。结合她8月14日签署协议时的感受，以及股权激励（RSU）的常识，公司授予她RSU最可能反映了什么意图？",
-    "options": [
-      {
-        "option": "A",
-        "content": "认可她过去的业绩表现"
-      },
-      {
-        "option": "B",
-        "content": "希望激励她长期留在公司并创造更大价值"
-      },
-      {
-        "option": "C",
-        "content": "为了弥补她相对较低的工资"
-      },
-      {
-        "option": "D",
-        "content": "这是一种随机发放的福利"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "3234",
-      "3240",
-      "3273"
-    ],
-    "question_type": "multiple_choice",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 509
-      },
-      {
-        "type": "call",
-        "id": 902
-      },
-      {
-        "type": "push",
-        "id": 1609
-      },
-      {
-        "type": "push",
-        "id": 1611
-      },
-      {
-        "type": "agent_chat",
-        "id": 519
-      },
-      {
-        "type": "sms",
-        "id": 1347
-      },
-      {
-        "type": "sms",
-        "id": 1348
-      }
-    ],
-    "ask_time": "2025-10"
+    "question_type": "Information Extraction"
   },
   {
     "question": "于晓薇在整理母亲旧物时，是什么促使她将家庭旅行计划从日本深度游调整为粤港澳大湾区寻根旅行？",
@@ -9157,7 +5778,7 @@
     "required_events_id": [
       "4562"
     ],
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -9215,7 +5836,7 @@
       "4573",
       "4588"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -9341,160 +5962,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "于晓薇在1月10日体检后，医生针对她的跑步训练提出了什么具体建议？",
-    "options": [
-      {
-        "option": "A",
-        "content": "建议她停止跑步，专注于瑜伽练习。"
-      },
-      {
-        "option": "B",
-        "content": "建议她在坚持跑步的同时，增加如游泳、瑜伽等低冲击运动来平衡肌肉力量、保护关节。"
-      },
-      {
-        "option": "C",
-        "content": "建议她减少运动频率，多休息以缓解膝盖不适。"
-      },
-      {
-        "option": "D",
-        "content": "建议她更换跑步场地和鞋子，并增加力量训练。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "126",
-      "174"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 20
-      },
-      {
-        "type": "photo",
-        "id": 84
-      },
-      {
-        "type": "call",
-        "id": 57
-      },
-      {
-        "type": "push",
-        "id": 134
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
-    "question": "在因家庭聚餐导致体重上升后，于晓薇通过恢复哪项个人活动，使得体重开始进入稳定下降或控制的趋势？",
-    "answer": "她恢复了个人晨跑（时隔近一个月首次在清晨进行慢跑）。",
-    "score_points": [
-      {
-        "description": "答案明确指出是恢复“个人晨跑”（或清晨慢跑）这一活动。",
-        "score": 10
-      }
-    ],
-    "required_events_id": [
-      "2219",
-      "2231"
-    ],
-    "question_type": "temporal",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 354
-      },
-      {
-        "type": "agent_chat",
-        "id": 357
-      },
-      {
-        "type": "calendar",
-        "id": "127"
-      },
-      {
-        "type": "note",
-        "id": "182"
-      },
-      {
-        "type": "calendar",
-        "id": "143"
-      },
-      {
-        "type": "note",
-        "id": "207"
-      },
-      {
-        "type": "push",
-        "id": "2697"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
-    "question": "在6月7日的研究之后，于晓薇于6月10日首次进行基金定投操作时，最终选定并设置每月自动定投的是哪种类型的基金？",
-    "answer": "一只主要投资于亚洲生物科技公司的医疗健康主题基金。",
-    "score_points": [
-      {
-        "description": "答案明确指出基金的投资领域：医疗健康（或生物科技）。",
-        "score": 10
-      }
-    ],
-    "required_events_id": [
-      "2282",
-      "2326"
-    ],
-    "question_type": "mutihop",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 367
-      },
-      {
-        "type": "push",
-        "id": 1129
-      },
-      {
-        "type": "push",
-        "id": 1130
-      },
-      {
-        "type": "agent_chat",
-        "id": 374
-      },
-      {
-        "type": "call",
-        "id": 655
-      },
-      {
-        "type": "push",
-        "id": 1152
-      },
-      {
-        "type": "push",
-        "id": 1153
-      },
-      {
-        "type": "note",
-        "id": "211"
-      },
-      {
-        "type": "push",
-        "id": "2698"
-      },
-      {
-        "type": "push",
-        "id": "2706"
-      },
-      {
-        "type": "note",
-        "id": "230"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "于晓薇从徐家明那里获得首批目标客户名单，是在双方完成哪一项关键合作步骤之后？",
     "answer": "是在双方确认并签署《合作意向备忘录》之后。",
     "score_points": [
@@ -9507,7 +5974,7 @@
       "2553",
       "2566"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "call",
@@ -9545,218 +6012,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "10月24日，于晓薇提前去社区中心测试讲座设备，最直接的原因是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "因为在之前的社区保险讲座中，她发现了案例不够本地化的问题，需要改进。"
-      },
-      {
-        "option": "B",
-        "content": "因为她在10月23日晚上的家庭讲座演练中语速过快，并担心现场互动冷场，感到焦虑。"
-      },
-      {
-        "option": "C",
-        "content": "因为收到新的工作邮件，告知她周末可能需要临时加班处理客户事务。"
-      },
-      {
-        "option": "D",
-        "content": "因为她的丈夫张伟明建议她，应该提前去场地看看以确保万无一失。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "4232",
-      "new_event_2025_10_23_1"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 685
-      },
-      {
-        "type": "call",
-        "id": 1167
-      },
-      {
-        "type": "photo",
-        "id": 1469
-      },
-      {
-        "type": "push",
-        "id": 2093
-      },
-      {
-        "type": "sms",
-        "id": "2466"
-      },
-      {
-        "type": "calendar",
-        "id": "120"
-      },
-      {
-        "type": "note",
-        "id": "169"
-      },
-      {
-        "type": "note",
-        "id": "200"
-      },
-      {
-        "type": "calendar",
-        "id": "137"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
-    "question": "于晓薇在完成个人粤绣创作“家庭与木棉树”设计图的过程中，除了自身修改，主要得益于谁的持续指导？",
-    "answer": "粤绣老师吴秀英（吴老师）",
-    "score_points": [
-      {
-        "description": "10月13日，于晓薇在工作间隙通过微信向粤绣老师吴秀英分享了创作灵感，获得了吴老师的赞赏和约谈回复。",
-        "score": 2.5
-      },
-      {
-        "description": "10月24日，于晓薇在通勤途中将第二版草图发给吴老师，并获得了关于线条流畅度和传统元素运用不足的反馈。",
-        "score": 2.5
-      },
-      {
-        "description": "10月28日，于晓薇在午休间隙通过视频通话与吴老师就修改后的草图进行实时讨论，获得了关于色彩过渡等具体指导。",
-        "score": 2.5
-      },
-      {
-        "description": "10月30日，于晓薇在午休时间将综合了吴老师全部指导后的最终定稿照片发给吴老师，并获得了肯定。",
-        "score": 2.5
-      }
-    ],
-    "required_events_id": [
-      "4090",
-      "4228",
-      "4281",
-      "4314"
-    ],
-    "question_type": "mutihop",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 655
-      },
-      {
-        "type": "photo",
-        "id": 1435
-      },
-      {
-        "type": "sms",
-        "id": 1646
-      },
-      {
-        "type": "sms",
-        "id": 1647
-      },
-      {
-        "type": "agent_chat",
-        "id": 686
-      },
-      {
-        "type": "call",
-        "id": 1166
-      },
-      {
-        "type": "agent_chat",
-        "id": 703
-      },
-      {
-        "type": "photo",
-        "id": 1498
-      },
-      {
-        "type": "sms",
-        "id": 1738
-      },
-      {
-        "type": "photo",
-        "id": "1862"
-      },
-      {
-        "type": "sms",
-        "id": "2470"
-      },
-      {
-        "type": "note",
-        "id": "195"
-      },
-      {
-        "type": "photo",
-        "id": "1868"
-      },
-      {
-        "type": "sms",
-        "id": "2478"
-      },
-      {
-        "type": "note",
-        "id": "219"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
-    "question": "于晓薇从着手预约全家流感疫苗接种，到实际带领家人完成接种，中间间隔了多少天？",
-    "options": [
-      {
-        "option": "A",
-        "content": "10天"
-      },
-      {
-        "option": "B",
-        "content": "12天"
-      },
-      {
-        "option": "C",
-        "content": "14天"
-      },
-      {
-        "option": "D",
-        "content": "16天"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "3805",
-      "3974"
-    ],
-    "required_events_date": [
-      "2025-09-21",
-      "2025-10-05"
-    ],
-    "ask_time": "2025-11",
-    "question_type": "temporal",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 602
-      },
-      {
-        "type": "photo",
-        "id": 1334
-      },
-      {
-        "type": "push",
-        "id": 1877
-      },
-      {
-        "type": "sms",
-        "id": 1548
-      },
-      {
-        "type": "agent_chat",
-        "id": 637
-      }
-    ]
-  },
-  {
     "question": "10月制定刚性预算会议中决定设立‘子女兴趣发展基金’，根据会议分工，于晓薇负责后续联络银行咨询开设该账户。她最早在何时联系了李国栋经理咨询此事？",
     "options": [
       {
@@ -9786,7 +6041,7 @@
       "2025-10-29"
     ],
     "ask_time": "2025-11",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -9850,7 +6105,7 @@
       "2025-10-12"
     ],
     "ask_time": "2025-11",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -9920,7 +6175,7 @@
       "2025-10-14"
     ],
     "ask_time": "2025-11",
-    "question_type": "question_answer",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -9982,7 +6237,7 @@
       "2025-10-09"
     ],
     "ask_time": "2025-11",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -10021,148 +6276,6 @@
         "id": 1635
       }
     ]
-  },
-  {
-    "question": "于晓薇在2025年8月3日进行了康复训练后，间隔了大约多少天在九龙仔公园进行了新跑鞋的首次晨跑？",
-    "options": [
-      {
-        "option": "A",
-        "content": "大约45天"
-      },
-      {
-        "option": "B",
-        "content": "大约60天"
-      },
-      {
-        "option": "C",
-        "content": "大约74天"
-      },
-      {
-        "option": "D",
-        "content": "大约90天"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "3108",
-      "4129"
-    ],
-    "required_events_date": [
-      "2025-08-03",
-      "2025-10-16"
-    ],
-    "ask_time": "2025-11",
-    "question_type": "temporal",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 492
-      },
-      {
-        "type": "push",
-        "id": 1549
-      },
-      {
-        "type": "agent_chat",
-        "id": 663
-      },
-      {
-        "type": "photo",
-        "id": 1445
-      },
-      {
-        "type": "push",
-        "id": 2035
-      }
-    ]
-  },
-  {
-    "question": "在9月份的团队周会上，于晓薇作为签单明星进行分享，她认为促成其成功案例的核心因素是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "专业的财务分析能力"
-      },
-      {
-        "option": "B",
-        "content": "将照顾中风母亲的真实经历融入沟通"
-      },
-      {
-        "option": "C",
-        "content": "提供了极具竞争力的产品价格"
-      },
-      {
-        "option": "D",
-        "content": "利用了广泛的人脉网络"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "3574",
-        "event_name": "团队周会与成功案例专题分享"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 566
-      },
-      {
-        "type": "call",
-        "id": 996
-      },
-      {
-        "type": "photo",
-        "id": 1240
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在9月份的午休活动中，我通过手机APP为女儿选购了什么生日礼物？",
-    "options": [
-      {
-        "option": "A",
-        "content": "儿童拼图"
-      },
-      {
-        "option": "B",
-        "content": "入门电子琴"
-      },
-      {
-        "option": "C",
-        "content": "音乐绘本"
-      },
-      {
-        "option": "D",
-        "content": "儿童手鼓"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "3778",
-        "event_name": "午休活动：午餐、选购礼物、散步"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 599
-      },
-      {
-        "type": "push",
-        "id": 1865
-      },
-      {
-        "type": "sms",
-        "id": 1536
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
   },
   {
     "question": "9月份，于晓薇与银行经理在中环咖啡馆会面，主要探讨了哪项财务资产的规划？",
@@ -10206,7 +6319,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在8月份的一次通勤途中，于晓薇预订了位于哪里的餐厅用于纪念日晚餐？",
@@ -10246,7 +6359,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在6月份的家庭财务规划碰头会中，于晓薇和丈夫明确分工，由谁负责联系理财顾问进行预约？",
@@ -10286,101 +6399,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "6月份，于晓薇带女儿在旺角购物时，除了为女儿购买毕业典礼服装，还顺便为谁购买了衣服？",
-    "options": [
-      {
-        "option": "A",
-        "content": "丈夫"
-      },
-      {
-        "option": "B",
-        "content": "儿子"
-      },
-      {
-        "option": "C",
-        "content": "母亲"
-      },
-      {
-        "option": "D",
-        "content": "父亲"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "2484",
-        "event_name": "外出为女儿购买毕业典礼服装"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "push",
-        "id": "2635"
-      },
-      {
-        "type": "photo",
-        "id": "1836"
-      },
-      {
-        "type": "note",
-        "id": "59"
-      },
-      {
-        "type": "sms",
-        "id": "2196"
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年10月，于晓薇在与同事苏丽珊讨论近期热播的电视剧时，表达了她对哪部剧的男主角的看法？",
-    "options": [
-      {
-        "option": "A",
-        "content": "认为《新闻女王2》的男主角方太山过于理想化，不接地气。"
-      },
-      {
-        "option": "B",
-        "content": "认为《家族荣耀之继承者》的男主角卓启堂很有担当，但感情线太拖沓。"
-      },
-      {
-        "option": "C",
-        "content": "认为《黑色月光》的男主角张俊伟演技出色，但角色设定太阴暗。"
-      },
-      {
-        "option": "D",
-        "content": "认为《婚后事》的男主角甘言栋太过优柔寡断，让人看得着急。"
-      }
-    ],
-    "answer": "D",
-    "ask_time": "2025-11",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2226"
-      },
-      {
-        "type": "sms",
-        "id": "2227"
-      },
-      {
-        "type": "sms",
-        "id": "2228"
-      },
-      {
-        "type": "sms",
-        "id": "2229"
-      },
-      {
-        "type": "sms",
-        "id": "2230"
-      }
-    ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年9月，于晓薇在与跑友沈佩雯交流时，分享了自己最近在跑步时最喜欢听的音乐类型。请问她目前最喜欢听哪种类型的音乐来配合跑步？",
@@ -10426,219 +6445,7 @@
         "id": "2240"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年1月，于晓薇在与同事苏丽珊的短信聊天中，分享了自己近期在听音乐方面的一个具体品味偏好是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "她最近特别喜欢听80年代的粤语流行金曲，尤其是陈百强和梅艳芳的歌。"
-      },
-      {
-        "option": "B",
-        "content": "她迷上了用手机APP听一些专门为跑步和瑜伽设计的纯音乐或轻电子乐歌单。"
-      },
-      {
-        "option": "C",
-        "content": "她开始尝试听一些内地的民谣歌曲，觉得歌词很有故事感，比如毛不易的歌。"
-      },
-      {
-        "option": "D",
-        "content": "她最近在重温一些经典的英文老歌，比如惠特尼·休斯顿和席琳·迪翁的经典作品。"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2258"
-      },
-      {
-        "type": "sms",
-        "id": "2259"
-      },
-      {
-        "type": "sms",
-        "id": "2260"
-      },
-      {
-        "type": "sms",
-        "id": "2261"
-      },
-      {
-        "type": "sms",
-        "id": "2262"
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "7月份，于晓薇在通勤途中忘记带了什么物品？",
-    "answer": "环保杯",
-    "score_points": [
-      {
-        "description": "答案准确指出忘记携带的物品是“环保杯”。",
-        "score": 10
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "2622",
-        "event_name": "通勤至公司"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "push",
-        "id": "2621"
-      },
-      {
-        "type": "note",
-        "id": "31"
-      },
-      {
-        "type": "calendar",
-        "id": "15"
-      },
-      {
-        "type": "sms",
-        "id": "2159"
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "7月3日，于晓薇与同事共进午餐时，主要咨询了关于购买哪类家具的经验？",
-    "options": [
-      {
-        "option": "A",
-        "content": "儿童学习桌椅"
-      },
-      {
-        "option": "B",
-        "content": "护理床和扶手椅"
-      },
-      {
-        "option": "C",
-        "content": "客厅沙发"
-      },
-      {
-        "option": "D",
-        "content": "厨房橱柜"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "2636",
-        "event_name": "与同事午餐并咨询护理家具经验"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 419
-      },
-      {
-        "type": "call",
-        "id": 742
-      },
-      {
-        "type": "photo",
-        "id": 952
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在7月份的一次家庭早餐中，于晓薇因身体不适宣布了什么决定？",
-    "answer": "取消了跑步计划，并考虑就医。",
-    "score_points": [
-      {
-        "description": "答出宣布的决定为“取消跑步计划”。",
-        "score": 5
-      },
-      {
-        "description": "答出宣布的决定为“考虑就医”。",
-        "score": 5
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "2889",
-        "event_name": "家庭早餐并通报足跟情况"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "note",
-        "id": "67"
-      },
-      {
-        "type": "sms",
-        "id": "2241"
-      },
-      {
-        "type": "calendar",
-        "id": "46"
-      },
-      {
-        "type": "push",
-        "id": "2639"
-      },
-      {
-        "type": "note",
-        "id": "68"
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年7月，于晓薇在与闺蜜林嘉欣的聊天中，得知林嘉欣的丈夫最近在工作中遇到了什么具体问题？",
-    "answer": "林嘉欣的丈夫（阿杰）最近在工作中遇到了公司内部人事斗争，他所在的部门被合并，他需要重新竞聘上岗，面临失业风险。",
-    "score_points": [
-      {
-        "description": "明确指出林嘉欣的丈夫（阿杰）遇到了工作问题",
-        "score": 3
-      },
-      {
-        "description": "具体说明问题是公司内部人事斗争",
-        "score": 3
-      },
-      {
-        "description": "具体说明问题是部门被合并，需要重新竞聘上岗，面临失业风险",
-        "score": 4
-      }
-    ],
-    "ask_time": "2025-11",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2265"
-      },
-      {
-        "type": "sms",
-        "id": "2266"
-      },
-      {
-        "type": "sms",
-        "id": "2267"
-      },
-      {
-        "type": "sms",
-        "id": "2268"
-      },
-      {
-        "type": "sms",
-        "id": "2269"
-      }
-    ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，于晓薇在与闺蜜林嘉欣聊天时，得知她们共同的好友黄文慧最近在深圳遇到了什么让她感到困扰但又不至于影响于晓薇自己生活的事情？",
@@ -10680,91 +6487,7 @@
         "id": "2279"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "10月份，于晓薇在搭乘地铁通勤时构思的社区讲座PPT框架包含了哪四个核心模块？",
-    "answer": "压力识别、家庭沟通、资源利用、自我关怀",
-    "score_points": [
-      {
-        "description": "答出“压力识别”模块",
-        "score": 2.5
-      },
-      {
-        "description": "答出“家庭沟通”模块",
-        "score": 2.5
-      },
-      {
-        "description": "答出“资源利用”模块",
-        "score": 2.5
-      },
-      {
-        "description": "答出“自我关怀”模块",
-        "score": 2.5
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "4089",
-        "event_name": "地铁通勤与构思讲座框架"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "43"
-      },
-      {
-        "type": "note",
-        "id": "63"
-      },
-      {
-        "type": "note",
-        "id": "64"
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在10月份举办的社区保险知识讲座结束后，有多少位听众主动留下进行了咨询？",
-    "options": [
-      {
-        "option": "A",
-        "content": "一位"
-      },
-      {
-        "option": "B",
-        "content": "两位"
-      },
-      {
-        "option": "C",
-        "content": "三位"
-      },
-      {
-        "option": "D",
-        "content": "四位"
-      }
-    ],
-    "answer": "C",
-    "required_events": [
-      {
-        "event_id": "4149",
-        "event_name": "社区保险知识讲座举办与咨询"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 665
-      },
-      {
-        "type": "push",
-        "id": 2046
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "10月份，于晓薇在晚餐后与家人聊天时，首次透露了想创作一幅以什么为主题的粤绣作品？",
@@ -10796,43 +6519,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在10月份与银行经理会面后，于晓薇将一笔20万港元的到期定期存款调整为了哪种金融产品？",
-    "options": [
-      {
-        "option": "A",
-        "content": "一款高风险的股票型基金"
-      },
-      {
-        "option": "B",
-        "content": "一款流动性更佳、风险较低的货币市场基金"
-      },
-      {
-        "option": "C",
-        "content": "一款新的投资连结保险产品"
-      },
-      {
-        "option": "D",
-        "content": "一款长期国债"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "4210",
-        "event_name": "与银行经理进行家庭财务检视与调整"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 678
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，于晓薇在与闺蜜林嘉欣聊天时，提到另一位闺蜜黄文慧最近遇到了什么与工作相关的烦恼？",
@@ -10874,7 +6561,7 @@
         "id": "2289"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "5月9日，于晓薇在午休跑步后，在哪里进行了冲凉？",
@@ -10910,47 +6597,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "5月份，于晓薇通过公司内部通讯软件向上司申请了什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "申请年假"
-      },
-      {
-        "option": "B",
-        "content": "申请调岗"
-      },
-      {
-        "option": "C",
-        "content": "申请灵活办公"
-      },
-      {
-        "option": "D",
-        "content": "申请项目奖金"
-      }
-    ],
-    "answer": "C",
-    "required_events": [
-      {
-        "event_id": "1969",
-        "event_name": "正式向上司申请灵活办公"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "sms",
-        "id": 779
-      },
-      {
-        "type": "sms",
-        "id": 780
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "5月下旬，于晓薇婉拒了一项工作拓展邀约，她给出的主要理由是什么？",
@@ -11000,7 +6647,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在2月份的除夕夜家庭团圆饭中，我们享用了以下哪道传统菜肴？",
@@ -11052,61 +6699,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2月份，于晓薇去深水埗区的一家手工艺店装裱了一件什么作品作为礼物？",
-    "options": [
-      {
-        "option": "A",
-        "content": "一幅山水画"
-      },
-      {
-        "option": "B",
-        "content": "一张全家福照片"
-      },
-      {
-        "option": "C",
-        "content": "一幅木棉花粤绣作品"
-      },
-      {
-        "option": "D",
-        "content": "一件书法作品"
-      }
-    ],
-    "answer": "C",
-    "required_events": [
-      {
-        "event_id": "665",
-        "event_name": "装裱粤绣作品与闲逛"
-      }
-    ],
-    "score_points": [
-      {
-        "description": "明确指出作品是“木棉花粤绣作品”",
-        "score": 10
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 99
-      },
-      {
-        "type": "photo",
-        "id": 274
-      },
-      {
-        "type": "photo",
-        "id": 275
-      },
-      {
-        "type": "push",
-        "id": 390
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在11月份，于晓薇在小区花园陪伴孩子们时，具体进行了哪些活动？",
@@ -11142,7 +6735,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "11月，于晓薇与丈夫在哪个地点详细讨论了家庭储蓄优化方案并做出了调整决定？",
@@ -11186,43 +6779,7 @@
       }
     ],
     "ask_time": "2025-11",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "11月下旬，于晓薇在海滨长廊散步时，构思了送给粤绣老师的杯垫可能采用哪些吉祥纹样？",
-    "answer": "荔枝、蝙蝠。",
-    "score_points": [
-      {
-        "description": "答出“荔枝”纹样",
-        "score": 5
-      },
-      {
-        "description": "答出“蝙蝠”纹样",
-        "score": 5
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "4613",
-        "event_name": "午间舒缓散步与礼物构思"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "53"
-      },
-      {
-        "type": "push",
-        "id": "2643"
-      },
-      {
-        "type": "note",
-        "id": "78"
-      }
-    ],
-    "ask_time": "2025-11",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "根据于晓薇在10月7日下午陪伴母亲外出活动的路线和内容，可以推断她们此次出行的主要目的可能是什么？",
@@ -11241,7 +6798,7 @@
       "4009",
       "4010"
     ],
-    "question_type": "open_domain",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "photo",
@@ -11262,107 +6819,6 @@
       {
         "type": "sms",
         "id": "2191"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
-    "question": "在10月份，我进行家庭财务决策时，通常表现出怎样的风格或偏好？",
-    "answer": "稳健、防御型的财务规划风格，注重长期保障和安全性。",
-    "score_points": [
-      {
-        "description": "指出风格为“稳健”或“防御型”",
-        "score": 4
-      },
-      {
-        "description": "指出关注“长期保障”或“教育/医疗储备”",
-        "score": 3
-      },
-      {
-        "description": "指出注重“安全性”或“风险规避”",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "3975",
-      "3983",
-      "3984",
-      "4108",
-      "4271"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 638
-      },
-      {
-        "type": "push",
-        "id": 1947
-      },
-      {
-        "type": "sms",
-        "id": 1603
-      },
-      {
-        "type": "sms",
-        "id": 1604
-      },
-      {
-        "type": "sms",
-        "id": 1605
-      },
-      {
-        "type": "call",
-        "id": 1107
-      },
-      {
-        "type": "push",
-        "id": 1953
-      },
-      {
-        "type": "push",
-        "id": 1954
-      },
-      {
-        "type": "agent_chat",
-        "id": 658
-      },
-      {
-        "type": "sms",
-        "id": 1657
-      },
-      {
-        "type": "sms",
-        "id": 1658
-      },
-      {
-        "type": "agent_chat",
-        "id": 692
-      },
-      {
-        "type": "sms",
-        "id": 1713
-      },
-      {
-        "type": "sms",
-        "id": 1714
-      },
-      {
-        "type": "sms",
-        "id": 1715
-      },
-      {
-        "type": "calendar",
-        "id": "75"
-      },
-      {
-        "type": "note",
-        "id": "100"
-      },
-      {
-        "type": "sms",
-        "id": "2445"
       }
     ],
     "ask_time": "2025-11"
@@ -11392,7 +6848,7 @@
       "1945",
       "1952"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -11422,116 +6878,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "我5月份在九龙塘公园进行的那项主要体育活动，通常是如何安排的？",
-    "answer": "该项体育活动（半程马拉松训练）具有系统性，通常按照详细的计划进行。周末（如周日清晨）会进行较长距离的慢跑，与跑友一起完成；工作日则会安排节奏跑或恢复跑，通常在傍晚或晚间于小区附近进行。训练计划是个人化定制的，并获得了家人的支持。",
-    "score_points": [
-      {
-        "description": "训练具有系统性，是个人化定制计划的一部分（如5月7日制定计划）。",
-        "score": 3
-      },
-      {
-        "description": "周末（如周日）通常进行较长距离的慢跑，且多与跑友结伴（如5月11日、25日）。",
-        "score": 3
-      },
-      {
-        "description": "工作日（如周二、周五）的训练安排在傍晚或晚上，在小区或附近进行（如5月9日、13日）。",
-        "score": 2
-      },
-      {
-        "description": "训练计划获得了家人的知情与支持（如5月9日获得家人支持）。",
-        "score": 2
-      }
-    ],
-    "required_events_id": [
-      "1834",
-      "1867",
-      "1863",
-      "1889",
-      "1927",
-      "2115"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 914
-      },
-      {
-        "type": "agent_chat",
-        "id": 288
-      },
-      {
-        "type": "photo",
-        "id": 704
-      },
-      {
-        "type": "push",
-        "id": 926
-      },
-      {
-        "type": "calendar",
-        "id": "30"
-      },
-      {
-        "type": "note",
-        "id": "49"
-      },
-      {
-        "type": "push",
-        "id": "2628"
-      },
-      {
-        "type": "sms",
-        "id": "2168"
-      },
-      {
-        "type": "sms",
-        "id": 751
-      },
-      {
-        "type": "sms",
-        "id": 752
-      },
-      {
-        "type": "agent_chat",
-        "id": 300
-      },
-      {
-        "type": "photo",
-        "id": 772
-      },
-      {
-        "type": "push",
-        "id": 1040
-      },
-      {
-        "type": "sms",
-        "id": 854
-      },
-      {
-        "type": "note",
-        "id": "92"
-      },
-      {
-        "type": "calendar",
-        "id": "65"
-      },
-      {
-        "type": "sms",
-        "id": "2439"
-      },
-      {
-        "type": "calendar",
-        "id": "80"
-      },
-      {
-        "type": "push",
-        "id": "2661"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "在5月份，关于我母亲陈美玲的健康状况和家庭照料安排，主要发生了哪些积极的变化？",
     "answer": "母亲陈美玲的骨折愈合良好，可以逐步增加活动量；家庭成功引入并确定了兼职护工王阿姨提供服务，母亲从最初的拘谨逐步接受了这项服务。",
     "score_points": [
@@ -11555,7 +6901,7 @@
       "1847",
       "2118"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -11605,39 +6951,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "在7月2日忘带环保杯后，于晓薇采取了什么具体措施来优化这个习惯？",
-    "options": [
-      {
-        "option": "A",
-        "content": "完全依赖记忆和自觉"
-      },
-      {
-        "option": "B",
-        "content": "通过多次失败后，将其纳入固定的睡前检查流程"
-      },
-      {
-        "option": "C",
-        "content": "让家人每天提醒自己"
-      },
-      {
-        "option": "D",
-        "content": "仅在周末尝试执行"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "2623"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 415
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "9月，我处理客户咨询和方案定制的主要工作地点是哪里？",
     "options": [
       {
@@ -11663,7 +6976,7 @@
       "3558",
       "3546"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "call",
@@ -11713,85 +7026,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "我于9月预约并完成了一次深度体检，结合我的家庭情况，这次体检最可能旨在评估以下哪种健康风险？",
-    "options": [
-      {
-        "option": "A",
-        "content": "心脑血管疾病风险"
-      },
-      {
-        "option": "B",
-        "content": "消化道疾病风险"
-      },
-      {
-        "option": "C",
-        "content": "骨骼关节疾病风险"
-      },
-      {
-        "option": "D",
-        "content": "内分泌系统疾病风险"
-      }
-    ],
-    "answer": "A",
-    "required_events_id": [
-      "3655",
-      "3745",
-      "3888"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 1016
-      },
-      {
-        "type": "push",
-        "id": 1806
-      },
-      {
-        "type": "agent_chat",
-        "id": 592
-      },
-      {
-        "type": "call",
-        "id": 1042
-      },
-      {
-        "type": "agent_chat",
-        "id": 619
-      },
-      {
-        "type": "sms",
-        "id": 1580
-      },
-      {
-        "type": "sms",
-        "id": 1581
-      },
-      {
-        "type": "sms",
-        "id": "2452"
-      },
-      {
-        "type": "note",
-        "id": "116"
-      },
-      {
-        "type": "calendar",
-        "id": "87"
-      },
-      {
-        "type": "note",
-        "id": "134"
-      },
-      {
-        "type": "push",
-        "id": "2673"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "在2月，我通常在一天中的什么时间进行晨跑训练？",
     "answer": "清晨（具体时间段为早上7:00至9:45之间）。",
     "score_points": [
@@ -11811,7 +7045,7 @@
       "624",
       "660"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "photo",
@@ -11885,7 +7119,7 @@
       "4456",
       "4468"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -11976,7 +7210,7 @@
       "40",
       "164"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "photo",
@@ -12018,47 +7252,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "在8月16日下午，于晓薇拜访了深水埗的吴老师，这位吴老师是她的什么人？",
-    "answer": "她是于晓薇的粤绣老师。",
-    "score_points": [
-      {
-        "description": "从事件ID 3302中识别出“拜访粤绣老师吴秀英”的描述，表明存在师徒或教学关系",
-        "score": 5
-      },
-      {
-        "description": "从用户画像的‘relation’字段中确认吴秀英的‘relation’属性值为‘老师’，且事件ID 3302中参与者关系为‘粤绣老师’",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "3302"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "25"
-      },
-      {
-        "type": "note",
-        "id": "43"
-      },
-      {
-        "type": "push",
-        "id": "2626"
-      },
-      {
-        "type": "call",
-        "id": "1466"
-      },
-      {
-        "type": "note",
-        "id": "86"
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
     "question": "基于我在8月对粤绣这一传统手艺的态度和行动，可以推断我性格中哪两种看似矛盾的倾向并存？",
     "answer": "“珍视/尊重传统”与“拥抱/尝试创新”（或类似表述，如“守成”与“开拓”）。",
     "score_points": [
@@ -12082,7 +7275,7 @@
       "3380",
       "3509"
     ],
-    "question_type": "open_domain",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "push",
@@ -12132,149 +7325,6 @@
     "ask_time": "2025-11"
   },
   {
-    "question": "六月，我作为保险代理人的工作状态如何？主要体现在哪些方面？",
-    "options": [
-      {
-        "option": "A",
-        "content": "工作清闲，主要以维护老客户为主"
-      },
-      {
-        "option": "B",
-        "content": "工作压力大，完全陷入家庭事务，无暇顾及工作"
-      },
-      {
-        "option": "C",
-        "content": "工作积极主动，既有重要客户续约的成功，也在积极拓展新的业务渠道（如跨境合作）"
-      },
-      {
-        "option": "D",
-        "content": "工作遇到瓶颈，正在考虑转行"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "2222",
-      "2249",
-      "2267",
-      "2224",
-      "2458"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 355
-      },
-      {
-        "type": "sms",
-        "id": 904
-      },
-      {
-        "type": "agent_chat",
-        "id": 360
-      },
-      {
-        "type": "call",
-        "id": 636
-      },
-      {
-        "type": "sms",
-        "id": 920
-      },
-      {
-        "type": "call",
-        "id": 640
-      },
-      {
-        "type": "push",
-        "id": 1122
-      },
-      {
-        "type": "call",
-        "id": 631
-      },
-      {
-        "type": "agent_chat",
-        "id": 394
-      },
-      {
-        "type": "push",
-        "id": 1210
-      },
-      {
-        "type": "sms",
-        "id": 1018
-      },
-      {
-        "type": "sms",
-        "id": 1020
-      },
-      {
-        "type": "sms",
-        "id": 1022
-      }
-    ],
-    "ask_time": "2025-11"
-  },
-  {
-    "question": "于晓薇在11月18日深夜提炼演讲核心主题时，精神处于兴奋状态，这主要是由当天哪两件紧密相连的事情直接促成的？",
-    "options": [
-      {
-        "option": "A",
-        "content": "白天成功向上司汇报了年底工作并得到积极反馈，以及晚上与同事进行了深入的案例复盘。"
-      },
-      {
-        "option": "B",
-        "content": "白天成功举办了重要的客户答谢晚宴巩固了核心关系，以及晚宴后得到了上司对其竞聘准备的指导。"
-      },
-      {
-        "option": "C",
-        "content": "午间与同事苏丽珊复盘了高净值客户案例获得启发，以及下午执行了家庭储蓄优化方案的第一步。"
-      },
-      {
-        "option": "D",
-        "content": "上午与同事约定了案例复盘，以及下午通过内部系统深入调研了母亲适用的保险产品。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "4585",
-      "4588"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "push",
-        "id": 2279
-      },
-      {
-        "type": "sms",
-        "id": 1838
-      },
-      {
-        "type": "call",
-        "id": 1267
-      },
-      {
-        "type": "photo",
-        "id": 1602
-      },
-      {
-        "type": "calendar",
-        "id": "123"
-      },
-      {
-        "type": "note",
-        "id": "174"
-      },
-      {
-        "type": "sms",
-        "id": "2469"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "于晓薇在11月10日至12日期间跟进了一个需要多日沟通的客户项目，请简述该项目的性质及这三天的关键进程。",
     "answer": "参加了，是一个新客户的家庭保险规划项目。她在11月10日完成初步需求分析，11月11日进行深入沟通收集信息，11月12日完成最终方案设计并预约下周面谈。",
     "score_points": [
@@ -12292,7 +7342,7 @@
       "4492",
       "4510"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "note",
@@ -12359,7 +7409,7 @@
       "4427",
       "4592"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -12409,101 +7459,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "12月2日晚上，于晓薇与弟弟于晓峰秘密联系，商讨父母纪念日惊喜的根本目的是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "邀请弟弟一家从深圳回来参加晚宴，并商讨行程和礼物，以确保惊喜万无一失"
-      },
-      {
-        "option": "B",
-        "content": "请弟弟帮忙照顾母亲陈美玲，以便自己专心筹备晚宴"
-      },
-      {
-        "option": "C",
-        "content": "与弟弟商量共同出资为父母购买一份贵重的金饰作为礼物"
-      },
-      {
-        "option": "D",
-        "content": "确认弟弟一家在12月中旬是否有时间来香港进行家庭聚会"
-      }
-    ],
-    "answer": "A",
-    "required_events_id": [
-      "4804"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "call",
-        "id": "1470"
-      },
-      {
-        "type": "note",
-        "id": "161"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "12月下旬，于晓薇根据体检报告调整了个人运动计划，其最直接的触发因素是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "为准备马拉松比赛而需要增加耐力训练"
-      },
-      {
-        "option": "B",
-        "content": "医生发现其骨密度轻微下降，建议加强力量训练和补钙"
-      },
-      {
-        "option": "C",
-        "content": "同事苏丽珊推荐了新型普拉提融合课程，觉得很有趣"
-      },
-      {
-        "option": "D",
-        "content": "上个月运动里程未达标，决定优化运动组合"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "5151",
-      "5157"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 820
-      },
-      {
-        "type": "photo",
-        "id": 1798
-      },
-      {
-        "type": "calendar",
-        "id": "92"
-      },
-      {
-        "type": "note",
-        "id": "122"
-      },
-      {
-        "type": "push",
-        "id": "2668"
-      },
-      {
-        "type": "note",
-        "id": "163"
-      },
-      {
-        "type": "sms",
-        "id": "2464"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "在12月14日全家动手制作圣诞装饰活动之前，于晓薇为客厅和餐厅的微更新做了哪些具体准备工作？",
     "answer": "与丈夫讨论了需要更新的软装（窗帘和沙发靠垫），并一同在线浏览和初步选定了款式。",
     "score_points": [
@@ -12519,7 +7474,7 @@
     "required_events_id": [
       "4787"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "sms",
@@ -12565,7 +7520,7 @@
       "4940",
       "4946"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "calendar",
@@ -12663,7 +7618,7 @@
       "4872",
       "4869"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "calendar",
@@ -12732,7 +7687,7 @@
       "4847",
       "4895"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "push",
@@ -12814,97 +7769,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "于晓薇在12月上旬为优化家庭财务状况，具体执行了哪些存款操作？",
-    "answer": "她使用手机银行将一笔五万元的活期存款转为定期存款，并将另一部分活期余额转入了高息活期账户。",
-    "score_points": [
-      {
-        "description": "答案包含使用手机银行将一笔五万元的活期存款转为定期存款",
-        "score": 5
-      },
-      {
-        "description": "答案包含将另一部分活期余额转入了高息活期账户",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "4883",
-      "4914",
-      "4986"
-    ],
-    "question_type": "mutihop",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "96"
-      },
-      {
-        "type": "note",
-        "id": "127"
-      },
-      {
-        "type": "photo",
-        "id": "1847"
-      },
-      {
-        "type": "push",
-        "id": "2670"
-      },
-      {
-        "type": "sms",
-        "id": 1998
-      },
-      {
-        "type": "calendar",
-        "id": 10
-      },
-      {
-        "type": "photo",
-        "id": 1740
-      },
-      {
-        "type": "photo",
-        "id": 1741
-      },
-      {
-        "type": "push",
-        "id": 2473
-      },
-      {
-        "type": "sms",
-        "id": 2029
-      },
-      {
-        "type": "sms",
-        "id": 2030
-      },
-      {
-        "type": "sms",
-        "id": 2031
-      },
-      {
-        "type": "sms",
-        "id": "2463"
-      },
-      {
-        "type": "note",
-        "id": "162"
-      },
-      {
-        "type": "push",
-        "id": "2709"
-      },
-      {
-        "type": "sms",
-        "id": "2486"
-      },
-      {
-        "type": "note",
-        "id": "237"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "于晓薇在5月6日召开家庭会议决定引入护工，其最直接的触发因素是什么？",
     "options": [
       {
@@ -12929,7 +7793,7 @@
       "1794",
       "1817"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -12995,7 +7859,7 @@
       "1881",
       "1830"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -13113,7 +7977,7 @@
       "1959",
       "2046"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -13183,51 +8047,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "于晓薇在8月2日考察并办理了健身卡，她做出这个决定并决心系统化康复的核心驱动因素是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "因为她发现社区泳池人太多，无法保证训练质量，需要更私密和专业的环境。"
-      },
-      {
-        "option": "B",
-        "content": "因为在8月2日考察并办理了附近一家有泳池和力量区的健身房会员卡，决心系统化康复，这为后续接受专业评估和使用器械提供了固定场所。"
-      },
-      {
-        "option": "C",
-        "content": "因为她的丈夫张伟明建议她去健身房，认为那里有教练指导更安全，并且可以陪同她一起锻炼。"
-      },
-      {
-        "option": "D",
-        "content": "因为8月6日赵教练在健身房评估后指出了她力量薄弱的问题，她认为必须在器械上才能有效改善。"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "3091"
-    ],
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 1084
-      },
-      {
-        "type": "push",
-        "id": 1538
-      },
-      {
-        "type": "note",
-        "id": "170"
-      },
-      {
-        "type": "calendar",
-        "id": "121"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "于晓薇在八月获得股权激励资格后，为了理解其运作机制，她通过哪些途径进行了系统学习？",
     "answer": "她在公司内部知识库搜索资料并建立电子学习文件夹（8月16日），向人力资源同事咨询（8月19日），与在互联网公司工作的弟弟于晓峰多次深入讨论（8月18日、8月20日），并报名了公司举办的线上说明会（8月29日）。",
     "score_points": [
@@ -13255,7 +8074,7 @@
       "3364",
       "3493"
     ],
-    "question_type": "mutihop",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -13337,7 +8156,7 @@
       "24",
       "49"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "push",
@@ -13396,7 +8215,7 @@
       "1371",
       "1372"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "sms",
@@ -13470,68 +8289,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "于晓薇为了养成携带环保杯的习惯，最终采取了什么具体方法？",
-    "answer": "她在手机日历上设置了每晚22:30“清洗并装入环保杯”和次日早上7:15“检查是否带了环保杯”的重复提醒。",
-    "score_points": [
-      {
-        "description": "答案包含具体方法：使用手机日历设置两个重复提醒（清洗和检查）。",
-        "score": 5
-      },
-      {
-        "description": "答案包含具体时间：每晚22:30和次日早上7:15。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "2260",
-      "2247"
-    ],
-    "question_type": "mutihop",
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 825
-      },
-      {
-        "type": "sms",
-        "id": 925
-      },
-      {
-        "type": "calendar",
-        "id": "103"
-      },
-      {
-        "type": "note",
-        "id": "145"
-      },
-      {
-        "type": "photo",
-        "id": "1853"
-      },
-      {
-        "type": "sms",
-        "id": 918
-      },
-      {
-        "type": "calendar",
-        "id": "155"
-      },
-      {
-        "type": "note",
-        "id": "236"
-      },
-      {
-        "type": "calendar",
-        "id": "162"
-      },
-      {
-        "type": "calendar",
-        "id": "163"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "于晓薇在十月下旬的哪一天，因为对即将到来的活动感到期待和喜悦而晚睡？",
     "answer": "10月30日",
     "score_points": [
@@ -13545,7 +8302,7 @@
       "4323",
       "4325"
     ],
-    "question_type": "temporal",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -13612,7 +8369,7 @@
       "1280",
       "1281"
     ],
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -13650,36 +8407,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "于晓薇在8月请母亲帮忙联系的粤绣老师，其工作地点在哪个区？",
-    "answer": "深水埗区",
-    "score_points": [
-      {
-        "description": "明确于晓薇母亲推荐的粤绣老师吴秀英的工作室所在区域",
-        "score": 10
-      }
-    ],
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2495"
-      },
-      {
-        "type": "sms",
-        "id": "2496"
-      },
-      {
-        "type": "sms",
-        "id": "2497"
-      },
-      {
-        "type": "sms",
-        "id": "2498"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "mutihop"
-  },
-  {
     "question": "于晓薇在10月完成的半程马拉松，具体是在哪一天举行的？",
     "answer": "2025年10月18日",
     "score_points": [
@@ -13707,37 +8434,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
-  },
-  {
-    "question": "于晓薇在1月提到买了三种菠萝油，加上2月新发现的，她总共买过几种不同口味的菠萝油？",
-    "answer": "4种",
-    "score_points": [
-      {
-        "description": "整合两个时期短信信息，明确于晓薇提及购买的不同口味菠萝油的总数",
-        "score": 10
-      }
-    ],
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2503"
-      },
-      {
-        "type": "sms",
-        "id": "2504"
-      },
-      {
-        "type": "sms",
-        "id": "2505"
-      },
-      {
-        "type": "sms",
-        "id": "2506"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇的同学阿杰在3月提到的一款新车，具体是什么型号？",
@@ -13767,7 +8464,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "客户王总在5月和7月总共向于晓薇咨询了几种类型的保险？",
@@ -13797,7 +8494,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "跑友阿雯在3月邀请于晓薇参加的亲子活动，具体在哪一天举行？",
@@ -13827,7 +8524,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇2025年计划参加的半程马拉松比赛起点设在香港哪个公园？",
@@ -13857,7 +8554,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇2025年夏天完成的粤绣作品是计划送给谁的生日礼物？",
@@ -13887,7 +8584,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇的客户陈太在2025年秋天因为家庭新增了什么成员而考虑升级家庭保单？",
@@ -13917,37 +8614,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
-  },
-  {
-    "question": "于晓薇在2025年4月曾想购买哪个品牌的经典款手袋作为给自己的奖励？",
-    "answer": "Louis Vuitton (LV)",
-    "score_points": [
-      {
-        "description": "明确于晓薇在2025年4月考虑购买的品牌手袋名称",
-        "score": 10
-      }
-    ],
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2531"
-      },
-      {
-        "type": "sms",
-        "id": "2532"
-      },
-      {
-        "type": "sms",
-        "id": "2533"
-      },
-      {
-        "type": "sms",
-        "id": "2534"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇的弟弟于晓峰在2025年初搬到深圳哪个区的新家？",
@@ -13977,7 +8644,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇在2025年为了晋升区域销售经理需要达成的季度业绩目标是多少万港元？",
@@ -14007,7 +8674,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇在2025年7月和9月提到的细佬（于晓峰）在腾讯公司内部获得了什么新的职位？",
@@ -14033,7 +8700,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇在2025年4月和6月提到的吴秀英老师参与筹办的传统工艺展览，主题是什么？",
@@ -14059,7 +8726,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇在2025年1月和3月提到的周医生建议她做的检查项目是什么？",
@@ -14085,7 +8752,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇在2025年请教同事郭俊伟关于咖啡机的问题时，郭俊伟推荐的咖啡机品牌，其产品特点是否符合于晓薇的需求？",
@@ -14115,7 +8782,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇在2025年得知她的粤绣老师吴秀英作品参展的消息，这个展览最终在哪里开幕？",
@@ -14145,7 +8812,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇在2025年向跑友沈佩雯咨询运动手表推荐后，沈佩雯最终给自己购买了哪个型号？",
@@ -14175,7 +8842,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇在2025年推荐给客户陈太去看咳嗽的医生是谁？",
@@ -14209,7 +8876,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "为何在12月中旬，家庭晚餐时开始出现主动分享和引导话题的新习惯？",
@@ -14239,7 +8906,7 @@
       "2025-12-11"
     ],
     "ask_time": "2025-12",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "note",
@@ -14292,80 +8959,6 @@
     ]
   },
   {
-    "question": "在父母结婚纪念日当晚的庆祝活动中，以下哪个环节是实际发生的？",
-    "options": [
-      {
-        "option": "A",
-        "content": "弟弟于晓峰在晚宴上发表了精心准备的致辞"
-      },
-      {
-        "option": "B",
-        "content": "于晓薇播放了事先制作的电子纪念相册"
-      },
-      {
-        "option": "C",
-        "content": "全家在餐厅合唱了父母喜欢的歌曲"
-      },
-      {
-        "option": "D",
-        "content": "孩子们向祖父母赠送了亲手制作的纪念品"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "4846",
-      "4895"
-    ],
-    "required_events_date": [
-      "2025-12-05",
-      "2025-12-09"
-    ],
-    "ask_time": "2025-12",
-    "question_type": "temporal",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "131"
-      },
-      {
-        "type": "call",
-        "id": 1344
-      },
-      {
-        "type": "note",
-        "id": "186"
-      },
-      {
-        "type": "push",
-        "id": 2402
-      },
-      {
-        "type": "note",
-        "id": "235"
-      },
-      {
-        "type": "photo",
-        "id": 1714
-      },
-      {
-        "type": "photo",
-        "id": 1715
-      },
-      {
-        "type": "photo",
-        "id": 1716
-      },
-      {
-        "type": "push",
-        "id": 2438
-      },
-      {
-        "type": "sms",
-        "id": "2485"
-      }
-    ]
-  },
-  {
     "question": "制定2026年家庭预算框架时，确立‘保障优先，稳健增值’这一核心原则，其直接触发因素是事件中提到的哪个具体考量？",
     "answer": "对2026年收入与支出的综合评估与风险规避考虑",
     "score_points": [
@@ -14385,7 +8978,7 @@
       "2025-12-15"
     ],
     "ask_time": "2025-12",
-    "question_type": "reasoning",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "photo",
@@ -14443,7 +9036,7 @@
       "2025-11-09"
     ],
     "ask_time": "2025-12",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "calendar",
@@ -14529,7 +9122,7 @@
       "2025-11-11"
     ],
     "ask_time": "2025-12",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "call",
@@ -14597,7 +9190,7 @@
       "2025-11-25"
     ],
     "ask_time": "2025-12",
-    "question_type": "reasoning",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "agent_chat",
@@ -14699,135 +9292,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年10月，于晓薇在与闺蜜林嘉欣聊天时，得知她们共同的朋友何俊杰最近遇到了什么家庭变故？",
-    "answer": "何俊杰的父亲确诊了肺癌，正在医院接受治疗。",
-    "score_points": [
-      {
-        "description": "明确指出何俊杰的父亲生病了。",
-        "score": 5
-      },
-      {
-        "description": "明确指出疾病是肺癌，且正在医院治疗。",
-        "score": 5
-      }
-    ],
-    "ask_time": "2025-12",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2181"
-      },
-      {
-        "type": "sms",
-        "id": "2182"
-      },
-      {
-        "type": "sms",
-        "id": "2183"
-      },
-      {
-        "type": "sms",
-        "id": "2184"
-      },
-      {
-        "type": "sms",
-        "id": "2185"
-      }
-    ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年11月，于晓薇在与同事苏丽珊讨论给家人购买冬季衣物时，提到她最近偏爱哪种材质或风格的围巾？",
-    "options": [
-      {
-        "option": "A",
-        "content": "纯羊绒材质的素色围巾"
-      },
-      {
-        "option": "B",
-        "content": "带有传统粤绣图案的真丝混纺围巾"
-      },
-      {
-        "option": "C",
-        "content": "加厚保暖的摇粒绒围巾"
-      },
-      {
-        "option": "D",
-        "content": "色彩鲜艳的针织羊毛围巾"
-      }
-    ],
-    "answer": "B",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2186"
-      },
-      {
-        "type": "sms",
-        "id": "2187"
-      },
-      {
-        "type": "sms",
-        "id": "2188"
-      },
-      {
-        "type": "sms",
-        "id": "2189"
-      },
-      {
-        "type": "sms",
-        "id": "2190"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在8月份的一次部门周会上，于晓薇向上司提出了什么新的业务构想？",
-    "options": [
-      {
-        "option": "A",
-        "content": "举办家庭保障规划讲座"
-      },
-      {
-        "option": "B",
-        "content": "推出线上服务试点"
-      },
-      {
-        "option": "C",
-        "content": "开展跨境资产配置项目"
-      },
-      {
-        "option": "D",
-        "content": "录制《财智对话》播客"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "3122",
-        "event_name": "主持部门周会及与上司交流"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 496
-      },
-      {
-        "type": "call",
-        "id": 869
-      },
-      {
-        "type": "push",
-        "id": 1555
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在6月份的一次个人反思活动中，于晓薇在凤凰观景台日落时分写下了哪四个关键词？",
@@ -14863,7 +9328,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "针对跑步后右膝不适，医生给出的具体运动建议是什么？",
@@ -14903,51 +9368,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "1月份，于晓薇与银行客户经理会面进行财务检视时，对方针对其投资组合的主要建议是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "增加股票型基金配置以追求更高收益"
-      },
-      {
-        "option": "B",
-        "content": "将部分资金配置到波动率较低的环球债券基金以平衡风险"
-      },
-      {
-        "option": "C",
-        "content": "将所有资金转入定期存款以确保本金安全"
-      },
-      {
-        "option": "D",
-        "content": "投资高风险高回报的科技初创企业"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "341",
-        "event_name": "年度财务检视与规划会议"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 51
-      },
-      {
-        "type": "call",
-        "id": 103
-      },
-      {
-        "type": "sms",
-        "id": 124
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "7月14日，于晓薇与同事在湾仔区克街的华星冰室共进午餐时，主要分享了什么个人经历？",
@@ -14979,7 +9400,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年5月，于晓薇在与跑友沈佩雯交流时，分享了自己近期在挑选运动耳机时最看重的一个具体功能或特性是什么？",
@@ -15025,7 +9446,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "10月份，我推着母亲从九龙城寨公园步行前往九龙塘宣道小学外围，母亲在那里主要回忆了什么？",
@@ -15069,7 +9490,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，于晓薇在和闺蜜林嘉欣聊天时，提到另一位闺蜜黄文慧最近在深圳遇到的一件烦心事是什么？这件事对于晓薇本人的生活有直接影响吗？",
@@ -15107,7 +9528,7 @@
         "id": "2299"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "3月份，于晓薇在步行回家途中，于便利店采购了哪些物品？",
@@ -15143,97 +9564,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "3月份，于晓薇参加社区冥想体验课的地点在哪里？",
-    "options": [
-      {
-        "option": "A",
-        "content": "九龙城广场商场家中"
-      },
-      {
-        "option": "B",
-        "content": "长沙湾社区中心3楼活动室"
-      },
-      {
-        "option": "C",
-        "content": "潭公道健身中心"
-      },
-      {
-        "option": "D",
-        "content": "九龙城广场L2层慢调咖啡店"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "1164",
-        "event_name": "参加社区冥想体验课"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "48"
-      },
-      {
-        "type": "sms",
-        "id": "2263"
-      },
-      {
-        "type": "note",
-        "id": "71"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年5月，于晓薇在与跑友沈佩雯交流时，分享了自己最近在挑选运动耳机时最看重哪个特性？",
-    "options": [
-      {
-        "option": "A",
-        "content": "极致的音质和重低音效果"
-      },
-      {
-        "option": "B",
-        "content": "超长的续航时间（超过20小时）"
-      },
-      {
-        "option": "C",
-        "content": "稳固的佩戴感和优秀的防水防汗性能"
-      },
-      {
-        "option": "D",
-        "content": "轻若无物的重量和时尚的外观设计"
-      }
-    ],
-    "answer": "C",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2319"
-      },
-      {
-        "type": "sms",
-        "id": "2320"
-      },
-      {
-        "type": "sms",
-        "id": "2321"
-      },
-      {
-        "type": "sms",
-        "id": "2322"
-      },
-      {
-        "type": "sms",
-        "id": "2323"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "在5月3日早晨，于晓薇起床后进行了什么活动来放松身体？",
@@ -15269,7 +9600,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Nondeclarative"
   },
   {
     "question": "在5月份参加的一场线上研讨会后，于晓薇通过什么方式与哪位专业人士建立了联系，并表达了什么意愿？",
@@ -15309,7 +9640,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "4月份，于晓薇与同事在华星冰室午餐后构思粤绣发圈时，其设计灵感来源于什么？",
@@ -15337,83 +9668,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "12月份，于晓薇在家庭早餐时提醒自己下午有什么安排？",
-    "answer": "下午有银行面谈",
-    "score_points": [
-      {
-        "description": "答案需准确提及“银行面谈”这一核心安排。",
-        "score": 10
-      }
-    ],
-    "required_events": [
-      {
-        "event_id": "4773",
-        "event_name": "早晨起床与家庭早餐"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "14"
-      },
-      {
-        "type": "note",
-        "id": "30"
-      },
-      {
-        "type": "sms",
-        "id": "2158"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "12月2日午餐时，于晓薇致电护工李阿姨的主要目的是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "确认婆婆的日常用药情况"
-      },
-      {
-        "option": "B",
-        "content": "邀请其参加父母结婚纪念日晚宴"
-      },
-      {
-        "option": "C",
-        "content": "讨论下个月的护理费用结算"
-      },
-      {
-        "option": "D",
-        "content": "询问婆婆近期的身体状况"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "4798",
-        "event_name": "午餐、致电护工及午间休息"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "call",
-        "id": "1460"
-      },
-      {
-        "type": "calendar",
-        "id": "20"
-      },
-      {
-        "type": "note",
-        "id": "37"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "12月，于晓薇在九龙城广场商场购买了哪些圣诞装饰材料？",
@@ -15457,99 +9712,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "12月份，于晓薇在湾仔区骆克道的便利店购买了哪种非处方止痛药？",
-    "options": [
-      {
-        "option": "A",
-        "content": "布洛芬"
-      },
-      {
-        "option": "B",
-        "content": "扑热息痛"
-      },
-      {
-        "option": "C",
-        "content": "阿司匹林"
-      },
-      {
-        "option": "D",
-        "content": "双氯芬酸钠"
-      }
-    ],
-    "answer": "B",
-    "required_events": [
-      {
-        "event_id": "4884",
-        "event_name": "下午工作、购药及峰会最后准备"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "push",
-        "id": "2640"
-      },
-      {
-        "type": "photo",
-        "id": "1837"
-      },
-      {
-        "type": "note",
-        "id": "69"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "12月份，于晓薇在主持客户答谢午宴时，从客户陈太和王总那里分别了解到了哪些关键信息？",
-    "options": [
-      {
-        "option": "A",
-        "content": "陈太的子女升学计划和王总的公司股权激励方案"
-      },
-      {
-        "option": "B",
-        "content": "陈太的退休计划和王总的海外投资意向"
-      },
-      {
-        "option": "C",
-        "content": "陈太的家庭旅行计划和王总的公司上市计划"
-      },
-      {
-        "option": "D",
-        "content": "陈太的购房计划和王总的个人健康问题"
-      }
-    ],
-    "answer": "A",
-    "required_events": [
-      {
-        "event_id": "5011",
-        "event_name": "主持客户答谢午宴及送别"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 800
-      },
-      {
-        "type": "calendar",
-        "id": 12
-      },
-      {
-        "type": "push",
-        "id": 2486
-      },
-      {
-        "type": "sms",
-        "id": 2041
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "12月20日，于晓薇在九龙寨城公园陪伴孩子玩耍时，通过微信向谁咨询并获取了关于大湾区博物馆、亲子场馆和顺德菜馆的信息？",
@@ -15581,7 +9744,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "12月24日，于晓薇在便利店购买了什么点心用于晚上的聚餐分享？",
@@ -15617,7 +9780,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，于晓薇在与闺蜜林嘉欣的聊天中，得知了她们共同的朋友黄文慧最近遇到了什么个人生活上的新情况？",
@@ -15655,7 +9818,7 @@
         "id": "2395"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，于晓薇在与同事苏丽珊讨论近期上映的电影时，明确表示自己对以下哪种类型的电影最不感兴趣？",
@@ -15701,7 +9864,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，于晓薇在与闺蜜林嘉欣的聊天中，谈论到另一位闺蜜黄文慧最近发生了一件什么事情？这件事对于晓薇本人的生活没有直接影响。",
@@ -15743,97 +9906,7 @@
         "id": "2405"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年1月，于晓薇在与同事苏丽珊讨论近期上映的电影时，明确表示自己对以下哪种类型的电影最不感兴趣？",
-    "options": [
-      {
-        "option": "A",
-        "content": "科幻特效大片"
-      },
-      {
-        "option": "B",
-        "content": "悬疑烧脑剧情片"
-      },
-      {
-        "option": "C",
-        "content": "温馨家庭喜剧片"
-      },
-      {
-        "option": "D",
-        "content": "热血体育励志片"
-      }
-    ],
-    "answer": "B",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2406"
-      },
-      {
-        "type": "sms",
-        "id": "2407"
-      },
-      {
-        "type": "sms",
-        "id": "2408"
-      },
-      {
-        "type": "sms",
-        "id": "2409"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "在11月份的绩效评估面谈中，上司梁振华对于晓薇的职业发展做出了什么具体承诺？",
-    "options": [
-      {
-        "option": "A",
-        "content": "推荐她竞聘明年的区域销售经理"
-      },
-      {
-        "option": "B",
-        "content": "承诺为她申请大幅加薪"
-      },
-      {
-        "option": "C",
-        "content": "计划将她调任到核心业务部门"
-      },
-      {
-        "option": "D",
-        "content": "安排她参加海外领导力培训"
-      }
-    ],
-    "answer": "A",
-    "required_events": [
-      {
-        "event_id": "4405",
-        "event_name": "年度绩效评估面谈"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "29"
-      },
-      {
-        "type": "note",
-        "id": "47"
-      },
-      {
-        "type": "push",
-        "id": "2627"
-      },
-      {
-        "type": "sms",
-        "id": "2166"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "11月9日，于晓薇在送女儿上音乐课期间，在社区中心休息区远程操作了什么设备？",
@@ -15869,99 +9942,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "11月，于晓薇通过视频连线最终确认了哪场活动的菜单细节？",
-    "options": [
-      {
-        "option": "A",
-        "content": "亲子日活动烧烤午餐"
-      },
-      {
-        "option": "B",
-        "content": "家庭周日早茶聚会"
-      },
-      {
-        "option": "C",
-        "content": "客户答谢晚宴"
-      },
-      {
-        "option": "D",
-        "content": "与闺蜜的晚餐聚会"
-      }
-    ],
-    "answer": "C",
-    "required_events": [
-      {
-        "event_id": "4476",
-        "event_name": "视频确认答谢晚宴细节并发送邀请函"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 724
-      },
-      {
-        "type": "calendar",
-        "id": 2
-      },
-      {
-        "type": "call",
-        "id": 1233
-      },
-      {
-        "type": "push",
-        "id": 2221
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
-  },
-  {
-    "question": "11月份，于晓薇与丈夫进行了一次家庭深度清洁，他们具体清洁了哪些区域？",
-    "options": [
-      {
-        "option": "A",
-        "content": "厨房、客厅、卧室"
-      },
-      {
-        "option": "B",
-        "content": "厨房、客厅、阳台"
-      },
-      {
-        "option": "C",
-        "content": "厨房、客厅"
-      },
-      {
-        "option": "D",
-        "content": "餐厅、客厅、书房"
-      }
-    ],
-    "answer": "C",
-    "required_events": [
-      {
-        "event_id": "4647",
-        "event_name": "家庭深度清洁"
-      }
-    ],
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "54"
-      },
-      {
-        "type": "note",
-        "id": "79"
-      },
-      {
-        "type": "push",
-        "id": "2644"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年1月，于晓薇在与闺蜜林嘉欣的聊天中，谈论到她们共同的朋友黄文慧最近在深圳遇到了一件什么事情？这件事对于晓薇本人没有直接影响。",
@@ -16003,57 +9984,7 @@
         "id": "2414"
       }
     ],
-    "question_type": "single_hop"
-  },
-  {
-    "question": "2025年1月，于晓薇在与同事苏丽珊讨论近期想看的电影时，明确表示自己对哪种类型的电影最不感兴趣？",
-    "options": [
-      {
-        "option": "A",
-        "content": "科幻特效大片"
-      },
-      {
-        "option": "B",
-        "content": "恐怖惊悚片"
-      },
-      {
-        "option": "C",
-        "content": "文艺爱情片"
-      },
-      {
-        "option": "D",
-        "content": "历史战争片"
-      }
-    ],
-    "answer": "B",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": "2415"
-      },
-      {
-        "type": "sms",
-        "id": "2416"
-      },
-      {
-        "type": "sms",
-        "id": "2417"
-      },
-      {
-        "type": "sms",
-        "id": "2418"
-      },
-      {
-        "type": "sms",
-        "id": "2419"
-      },
-      {
-        "type": "sms",
-        "id": "2420"
-      }
-    ],
-    "ask_time": "2025-12",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年3月，于晓薇在与闺蜜林嘉欣的聊天中，谈论到另一位闺蜜黄文慧最近遇到了什么事情？这件事对于晓薇本人的生活没有直接影响。",
@@ -16087,7 +10018,7 @@
         "id": "2425"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "2025年4月，于晓薇在与同事苏丽珊的聊天中，分享了她个人对港式奶茶口味的具体偏好是什么？",
@@ -16129,7 +10060,7 @@
         "id": "2430"
       }
     ],
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "于晓薇在2025年10月9日晚上与谁视频通话，咨询了公司股权激励事宜？",
@@ -16155,7 +10086,7 @@
     "required_events_id": [
       "4045"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -16177,230 +10108,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "根据于晓薇10月31日晚在澳门的活动安排，可以推断她此次旅行可能注重哪方面的体验？",
-    "options": [
-      {
-        "option": "A",
-        "content": "自然风光"
-      },
-      {
-        "option": "B",
-        "content": "历史文化"
-      },
-      {
-        "option": "C",
-        "content": "购物消费"
-      },
-      {
-        "option": "D",
-        "content": "美食探索"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "4335",
-      "4337"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 707
-      },
-      {
-        "type": "photo",
-        "id": 1508
-      },
-      {
-        "type": "photo",
-        "id": 1509
-      },
-      {
-        "type": "photo",
-        "id": 1510
-      },
-      {
-        "type": "sms",
-        "id": 1749
-      },
-      {
-        "type": "sms",
-        "id": 1750
-      },
-      {
-        "type": "photo",
-        "id": 1513
-      },
-      {
-        "type": "photo",
-        "id": 1514
-      },
-      {
-        "type": "photo",
-        "id": 1515
-      },
-      {
-        "type": "push",
-        "id": 2149
-      },
-      {
-        "type": "push",
-        "id": 2150
-      },
-      {
-        "type": "sms",
-        "id": 1751
-      },
-      {
-        "type": "note",
-        "id": "81"
-      },
-      {
-        "type": "sms",
-        "id": "2433"
-      },
-      {
-        "type": "push",
-        "id": "2645"
-      },
-      {
-        "type": "note",
-        "id": "101"
-      },
-      {
-        "type": "sms",
-        "id": "2446"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "12月9日、11日、13日和17日，于晓薇在工作方面主要围绕哪一项核心任务展开了一系列活动？",
-    "options": [
-      {
-        "option": "A",
-        "content": "筹备年度核心客户答谢活动"
-      },
-      {
-        "option": "B",
-        "content": "创作新的粤绣作品"
-      },
-      {
-        "option": "C",
-        "content": "规划粤港澳大湾区家庭旅行"
-      },
-      {
-        "option": "D",
-        "content": "进行年度家庭财务盘点"
-      }
-    ],
-    "answer": "A",
-    "required_events_id": [
-      "4892",
-      "4924",
-      "4958",
-      "4959",
-      "4962",
-      "5011"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 788
-      },
-      {
-        "type": "push",
-        "id": 2435
-      },
-      {
-        "type": "sms",
-        "id": 1988
-      },
-      {
-        "type": "sms",
-        "id": 1989
-      },
-      {
-        "type": "call",
-        "id": 1366
-      },
-      {
-        "type": "push",
-        "id": 2449
-      },
-      {
-        "type": "push",
-        "id": 2450
-      },
-      {
-        "type": "call",
-        "id": 1376
-      },
-      {
-        "type": "photo",
-        "id": 1734
-      },
-      {
-        "type": "push",
-        "id": 2464
-      },
-      {
-        "type": "push",
-        "id": 2465
-      },
-      {
-        "type": "push",
-        "id": 2466
-      },
-      {
-        "type": "call",
-        "id": 1377
-      },
-      {
-        "type": "photo",
-        "id": 1735
-      },
-      {
-        "type": "push",
-        "id": 2467
-      },
-      {
-        "type": "sms",
-        "id": 2020
-      },
-      {
-        "type": "call",
-        "id": 1378
-      },
-      {
-        "type": "agent_chat",
-        "id": 800
-      },
-      {
-        "type": "calendar",
-        "id": 12
-      },
-      {
-        "type": "push",
-        "id": 2486
-      },
-      {
-        "type": "sms",
-        "id": 2041
-      },
-      {
-        "type": "push",
-        "id": "2650"
-      },
-      {
-        "type": "calendar",
-        "id": "60"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "于晓薇在12月2日和12月11日晚上进行的日本旅行信息搜集，其内容重点分别是什么？",
     "answer": "12月2日晚上，她重点搜集了东京的历史文化信息，如皇居、浅草寺、上野动物园，并关注无障碍设施。12月11日晚上，她重点搜集了京都的传统文化体验信息，如嵯峨野观光小火车、岚山竹林和服体验、茶道或京果子制作工作坊。",
     "score_points": [
@@ -16417,7 +10124,7 @@
       "4805",
       "4933"
     ],
-    "question_type": "open_domain",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "photo",
@@ -16447,335 +10154,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "在12月初，我预约并会见了汇丰银行的客户经理。根据这一系列行为，结合常识，可以推断我的主要目的是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "申请一笔新的住房贷款"
-      },
-      {
-        "option": "B",
-        "content": "咨询家庭存款结构的优化方案"
-      },
-      {
-        "option": "C",
-        "content": "购买高风险的股票或基金"
-      },
-      {
-        "option": "D",
-        "content": "开设一个海外投资账户"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "4837",
-      "4883",
-      "4986"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 1342
-      },
-      {
-        "type": "push",
-        "id": 2396
-      },
-      {
-        "type": "calendar",
-        "id": 10
-      },
-      {
-        "type": "photo",
-        "id": 1740
-      },
-      {
-        "type": "photo",
-        "id": 1741
-      },
-      {
-        "type": "push",
-        "id": 2473
-      },
-      {
-        "type": "sms",
-        "id": 2029
-      },
-      {
-        "type": "sms",
-        "id": 2030
-      },
-      {
-        "type": "sms",
-        "id": 2031
-      },
-      {
-        "type": "calendar",
-        "id": "96"
-      },
-      {
-        "type": "photo",
-        "id": "1847"
-      },
-      {
-        "type": "push",
-        "id": "2670"
-      },
-      {
-        "type": "note",
-        "id": "127"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在12月，我通常选择在一天的什么时间进行粤绣创作？请描述其典型的时间规律和场景条件。",
-    "answer": "我通常选择在周末（周六/周日）的下午，或者工作日晚上在孩子们睡后，家中较为安静、拥有个人不受打扰的时间段进行粤绣创作。创作时常伴有家人外出或已入睡的场景，以确保专注。",
-    "score_points": [
-      {
-        "description": "识别出主要创作时间段集中在周末或晚上（个人闲暇时间）。",
-        "score": 5
-      },
-      {
-        "description": "识别出创作需要“安静”、“不受打扰”或“家人不在/已睡”的场景条件。",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "4869",
-      "4872",
-      "4855",
-      "4788"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "sms",
-        "id": 1972
-      },
-      {
-        "type": "push",
-        "id": 2419
-      },
-      {
-        "type": "sms",
-        "id": 1974
-      },
-      {
-        "type": "photo",
-        "id": 1700
-      },
-      {
-        "type": "push",
-        "id": 2406
-      },
-      {
-        "type": "push",
-        "id": 2407
-      },
-      {
-        "type": "photo",
-        "id": 1679
-      },
-      {
-        "type": "photo",
-        "id": 1680
-      },
-      {
-        "type": "push",
-        "id": 2374
-      },
-      {
-        "type": "calendar",
-        "id": "67"
-      },
-      {
-        "type": "note",
-        "id": "93"
-      },
-      {
-        "type": "calendar",
-        "id": "77"
-      },
-      {
-        "type": "push",
-        "id": "2659"
-      },
-      {
-        "type": "note",
-        "id": "126"
-      },
-      {
-        "type": "calendar",
-        "id": "95"
-      },
-      {
-        "type": "note",
-        "id": "141"
-      },
-      {
-        "type": "push",
-        "id": "2677"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在12月26日体检后，于晓薇根据医生的具体建议，对她的运动计划做出了怎样的关键调整？",
-    "answer": "在常规有氧运动之外，系统性地增加了针对骨骼健康的力量训练，特别是下肢和核心的负重训练。",
-    "score_points": [
-      {
-        "description": "识别出调整发生在12月26日体检后，是基于医生的建议。",
-        "score": 3
-      },
-      {
-        "description": "识别出调整的核心内容是新增了力量训练。",
-        "score": 4
-      },
-      {
-        "description": "识别出新增力量训练的目的是为了改善骨密度，关注长期骨骼健康。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "5151",
-      "5157",
-      "5158",
-      "5223"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 820
-      },
-      {
-        "type": "photo",
-        "id": 1798
-      },
-      {
-        "type": "note",
-        "id": "122"
-      },
-      {
-        "type": "calendar",
-        "id": "92"
-      },
-      {
-        "type": "push",
-        "id": "2668"
-      },
-      {
-        "type": "note",
-        "id": "135"
-      },
-      {
-        "type": "push",
-        "id": "2674"
-      },
-      {
-        "type": "calendar",
-        "id": "105"
-      },
-      {
-        "type": "note",
-        "id": "150"
-      },
-      {
-        "type": "push",
-        "id": "2683"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在2月中下旬，当我感到工作或家庭压力时，我倾向于通过什么方式来主动调节情绪？",
-    "answer": "通过正念呼吸练习、与亲友（如同事、丈夫、闺蜜）交流或进行深呼吸来主动调节情绪。",
-    "score_points": [
-      {
-        "description": "识别出使用正念呼吸练习来调节情绪（2月23日、24日、28日）。",
-        "score": 4
-      },
-      {
-        "description": "识别出通过与亲友交流来调节情绪（如2月13日与同事聊天，2月20日与闺蜜通话，2月19日与丈夫沟通）。",
-        "score": 3
-      },
-      {
-        "description": "识别出通过深呼吸来调节情绪（2月13日）。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "648",
-      "650",
-      "779",
-      "790",
-      "799",
-      "872"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "photo",
-        "id": 266
-      },
-      {
-        "type": "push",
-        "id": 382
-      },
-      {
-        "type": "push",
-        "id": 444
-      },
-      {
-        "type": "call",
-        "id": 218
-      },
-      {
-        "type": "push",
-        "id": 451
-      },
-      {
-        "type": "sms",
-        "id": 314
-      },
-      {
-        "type": "note",
-        "id": "102"
-      },
-      {
-        "type": "push",
-        "id": "2658"
-      },
-      {
-        "type": "sms",
-        "id": "2447"
-      },
-      {
-        "type": "push",
-        "id": "2664"
-      },
-      {
-        "type": "note",
-        "id": "111"
-      },
-      {
-        "type": "push",
-        "id": "2675"
-      },
-      {
-        "type": "note",
-        "id": "137"
-      },
-      {
-        "type": "calendar",
-        "id": "100"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "根据2025年11月15日发现的旧相册内容，可以推断陈美玲（于晓薇的母亲）年轻时主要生活在哪个文化区域？",
     "answer": "广府文化区（岭南文化区），具体指广州西关一带。",
     "score_points": [
@@ -16791,7 +10169,7 @@
     "required_events_id": [
       "4544"
     ],
-    "question_type": "open_domain",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -16812,399 +10190,6 @@
       {
         "type": "sms",
         "id": 1825
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "11月，我为母亲配置了一份补充医疗保险。基于常识，推动我做出这个决定的最主要原因可能是什么？",
-    "answer": "母亲年事渐高且有大病初愈的病史，需要额外的医疗保障来应对潜在的、更高的健康风险。",
-    "score_points": [
-      {
-        "description": "指出核心原因是母亲年龄增长带来的健康风险",
-        "score": 4
-      },
-      {
-        "description": "结合事件信息，提及母亲“大病初愈”的背景",
-        "score": 3
-      },
-      {
-        "description": "阐明配置补充保险是为了弥补基本医保的不足",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "4616",
-      "4694"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 747
-      },
-      {
-        "type": "sms",
-        "id": 1852
-      },
-      {
-        "type": "sms",
-        "id": 1853
-      },
-      {
-        "type": "agent_chat",
-        "id": 760
-      },
-      {
-        "type": "push",
-        "id": 2332
-      },
-      {
-        "type": "push",
-        "id": 2333
-      },
-      {
-        "type": "sms",
-        "id": 1892
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在11月的一次重要评估面谈中，于晓薇获得了关于职业发展的明确承诺，并为此开始了一系列准备。请问，这次承诺的具体内容是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "策划并执行了一次核心客户答谢晚宴"
-      },
-      {
-        "option": "B",
-        "content": "获得了明确的晋升承诺并开始相关准备"
-      },
-      {
-        "option": "C",
-        "content": "完成了年底业绩冲刺计划的大部分目标"
-      },
-      {
-        "option": "D",
-        "content": "受邀返回母校进行职业分享演讲"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "4405",
-      "4528",
-      "4530",
-      "4588"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "calendar",
-        "id": "29"
-      },
-      {
-        "type": "note",
-        "id": "47"
-      },
-      {
-        "type": "push",
-        "id": "2627"
-      },
-      {
-        "type": "sms",
-        "id": "2166"
-      },
-      {
-        "type": "call",
-        "id": 1253
-      },
-      {
-        "type": "photo",
-        "id": 1579
-      },
-      {
-        "type": "push",
-        "id": 2244
-      },
-      {
-        "type": "sms",
-        "id": 1817
-      },
-      {
-        "type": "photo",
-        "id": 1581
-      },
-      {
-        "type": "push",
-        "id": 2246
-      },
-      {
-        "type": "sms",
-        "id": 1818
-      },
-      {
-        "type": "call",
-        "id": 1267
-      },
-      {
-        "type": "photo",
-        "id": 1602
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在11月，我的运动安排最突出的特点是？",
-    "options": [
-      {
-        "option": "A",
-        "content": "固定在晚间进行高强度训练"
-      },
-      {
-        "option": "B",
-        "content": "严格遵循预先制定的周计划执行"
-      },
-      {
-        "option": "C",
-        "content": "根据天气、身体状况和工作家庭事务灵活调整"
-      },
-      {
-        "option": "D",
-        "content": "完全以备战马拉松赛事为中心"
-      }
-    ],
-    "answer": "C",
-    "required_events_id": [
-      "4382",
-      "4383",
-      "4399",
-      "4400",
-      "4509",
-      "4534",
-      "4748"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 715
-      },
-      {
-        "type": "call",
-        "id": 1212
-      },
-      {
-        "type": "push",
-        "id": 2236
-      },
-      {
-        "type": "agent_chat",
-        "id": 734
-      },
-      {
-        "type": "push",
-        "id": 2250
-      },
-      {
-        "type": "calendar",
-        "id": "72"
-      },
-      {
-        "type": "note",
-        "id": "98"
-      },
-      {
-        "type": "push",
-        "id": "2676"
-      },
-      {
-        "type": "note",
-        "id": "138"
-      },
-      {
-        "type": "push",
-        "id": "2686"
-      },
-      {
-        "type": "calendar",
-        "id": "108"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在1月的事件中，我经常活动的‘九龙城区’最可能是什么？",
-    "options": [
-      {
-        "option": "A",
-        "content": "一家大型购物中心"
-      },
-      {
-        "option": "B",
-        "content": "一个住宅及商业区域"
-      },
-      {
-        "option": "C",
-        "content": "一个主题公园"
-      },
-      {
-        "option": "D",
-        "content": "一所大学校园"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "58",
-      "60",
-      "69",
-      "155",
-      "162"
-    ],
-    "question_type": "open_domain",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 9
-      },
-      {
-        "type": "call",
-        "id": 19
-      },
-      {
-        "type": "photo",
-        "id": 65
-      },
-      {
-        "type": "photo",
-        "id": 66
-      },
-      {
-        "type": "sms",
-        "id": 22
-      },
-      {
-        "type": "agent_chat",
-        "id": 10
-      },
-      {
-        "type": "sms",
-        "id": 55
-      },
-      {
-        "type": "photo",
-        "id": "1841"
-      },
-      {
-        "type": "calendar",
-        "id": "66"
-      },
-      {
-        "type": "push",
-        "id": "2655"
-      },
-      {
-        "type": "sms",
-        "id": "2440"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "我在4月5日和4月6日分别进行的理财行为，主要反映出我对哪方面家庭风险的担忧和规划？",
-    "answer": "健康（医疗）风险",
-    "score_points": [
-      {
-        "description": "识别4月5日设置医疗主题基金定投的行为，并明确提及是为‘家庭健康风险’考虑。",
-        "score": 4
-      },
-      {
-        "description": "识别4月6日与丈夫规划尝试性投资时，说明其目的为‘应对未来可能的家庭健康风险’。",
-        "score": 3
-      },
-      {
-        "description": "结合4月1日定投事件，以及母亲中风康复的背景，推断出该风险特指健康或医疗保障风险。",
-        "score": 3
-      }
-    ],
-    "required_events_id": [
-      "1306",
-      "1371",
-      "1378"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 208
-      },
-      {
-        "type": "push",
-        "id": 681
-      },
-      {
-        "type": "sms",
-        "id": 499
-      },
-      {
-        "type": "push",
-        "id": 711
-      },
-      {
-        "type": "agent_chat",
-        "id": 221
-      },
-      {
-        "type": "photo",
-        "id": 528
-      },
-      {
-        "type": "push",
-        "id": 713
-      },
-      {
-        "type": "push",
-        "id": 714
-      },
-      {
-        "type": "push",
-        "id": "2647"
-      },
-      {
-        "type": "sms",
-        "id": "2435"
-      },
-      {
-        "type": "note",
-        "id": "84"
-      },
-      {
-        "type": "calendar",
-        "id": "57"
-      },
-      {
-        "type": "note",
-        "id": "110"
-      },
-      {
-        "type": "sms",
-        "id": "2449"
-      },
-      {
-        "type": "note",
-        "id": "128"
-      },
-      {
-        "type": "calendar",
-        "id": "97"
-      },
-      {
-        "type": "note",
-        "id": "147"
-      },
-      {
-        "type": "calendar",
-        "id": "104"
       }
     ],
     "ask_time": "2025-12"
@@ -17231,7 +10216,7 @@
       "1374",
       "1405"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "photo",
@@ -17305,222 +10290,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "在8月份，于晓薇通常每周进行几次康复性游泳或力量训练？",
-    "answer": "通常每周进行2-3次康复性游泳或力量训练。",
-    "score_points": [
-      {
-        "description": "识别出规律性的游泳康复训练事件（如8月1日、7日、13日、29日、31日）",
-        "score": 5
-      },
-      {
-        "description": "识别出规律性的力量或器械训练事件（如8月6日、11日、14日、23日、31日）并总结出每周2-3次的频率",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "3072",
-      "3177",
-      "3264",
-      "3279",
-      "3303",
-      "3497",
-      "3515"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "call",
-        "id": 859
-      },
-      {
-        "type": "agent_chat",
-        "id": 503
-      },
-      {
-        "type": "agent_chat",
-        "id": 517
-      },
-      {
-        "type": "photo",
-        "id": 1136
-      },
-      {
-        "type": "sms",
-        "id": 1350
-      },
-      {
-        "type": "photo",
-        "id": 1138
-      },
-      {
-        "type": "photo",
-        "id": 1139
-      },
-      {
-        "type": "agent_chat",
-        "id": 551
-      },
-      {
-        "type": "agent_chat",
-        "id": 556
-      },
-      {
-        "type": "photo",
-        "id": 1222
-      },
-      {
-        "type": "calendar",
-        "id": "94"
-      },
-      {
-        "type": "sms",
-        "id": "2456"
-      },
-      {
-        "type": "note",
-        "id": "125"
-      },
-      {
-        "type": "note",
-        "id": "149"
-      },
-      {
-        "type": "push",
-        "id": "2682"
-      },
-      {
-        "type": "note",
-        "id": "155"
-      },
-      {
-        "type": "calendar",
-        "id": "110"
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "为应对家庭照护需求，我在3月份与上司沟通后，最终采取了哪种具体的工作安排调整？",
-    "options": [
-      {
-        "option": "A",
-        "content": "减少工作时间"
-      },
-      {
-        "option": "B",
-        "content": "申请并实施弹性工作制"
-      },
-      {
-        "option": "C",
-        "content": "寻找新工作"
-      },
-      {
-        "option": "D",
-        "content": "辞职在家照顾家庭"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "895",
-      "927",
-      "991",
-      "1010",
-      "1042"
-    ],
-    "question_type": "user_modeling",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 144
-      },
-      {
-        "type": "agent_chat",
-        "id": 150
-      },
-      {
-        "type": "photo",
-        "id": 378
-      },
-      {
-        "type": "push",
-        "id": 509
-      },
-      {
-        "type": "sms",
-        "id": 349
-      },
-      {
-        "type": "sms",
-        "id": 350
-      },
-      {
-        "type": "sms",
-        "id": 351
-      },
-      {
-        "type": "agent_chat",
-        "id": 160
-      },
-      {
-        "type": "call",
-        "id": 281
-      },
-      {
-        "type": "call",
-        "id": 282
-      },
-      {
-        "type": "photo",
-        "id": 409
-      },
-      {
-        "type": "push",
-        "id": 535
-      },
-      {
-        "type": "agent_chat",
-        "id": 163
-      },
-      {
-        "type": "photo",
-        "id": 419
-      },
-      {
-        "type": "push",
-        "id": 549
-      },
-      {
-        "type": "sms",
-        "id": 377
-      },
-      {
-        "type": "sms",
-        "id": 378
-      },
-      {
-        "type": "sms",
-        "id": 379
-      },
-      {
-        "type": "sms",
-        "id": 380
-      },
-      {
-        "type": "agent_chat",
-        "id": 168
-      },
-      {
-        "type": "call",
-        "id": 300
-      },
-      {
-        "type": "push",
-        "id": 570
-      }
-    ],
-    "ask_time": "2025-12"
-  },
-  {
     "question": "在3月，当夜深人静、家人休息后，我常通过什么个人活动来寻求内心平静？",
     "answer": "进行粤绣（传统刺绣）创作。",
     "score_points": [
@@ -17537,7 +10306,7 @@
       "1005",
       "1290"
     ],
-    "question_type": "user_modeling",
+    "question_type": "Nondeclarative",
     "evidence": [
       {
         "type": "push",
@@ -17590,7 +10359,7 @@
       "1248",
       "1281"
     ],
-    "question_type": "open_domain",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -17696,118 +10465,6 @@
     "ask_time": "2025-12"
   },
   {
-    "question": "于晓薇基于女儿的音乐课表现和家庭财务规划，考虑了哪些具体方式来支持女儿的兴趣发展？",
-    "answer": "在了解到女儿音乐课表现良好（节奏感好、模仿能力强）后，她考虑未来送电子琴作为礼物；同时，在家庭财务规划中，她整理了教育金和储蓄目标，为女儿的兴趣发展提供资金支持。",
-    "score_points": [
-      {
-        "description": "答案中包含对女儿音乐课表现（节奏感好、模仿能力强）的了解以及考虑送电子琴作为支持方式",
-        "score": 5
-      },
-      {
-        "description": "答案中包含家庭财务规划中涉及教育金和储蓄目标，以为兴趣发展提供资金",
-        "score": 5
-      }
-    ],
-    "required_events_id": [
-      "4561",
-      "5030"
-    ],
-    "required_events_date": [
-      "2025-11-16",
-      "2025-12-18"
-    ],
-    "ask_time": "2026-01",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 804
-      },
-      {
-        "type": "photo",
-        "id": 1759
-      },
-      {
-        "type": "sms",
-        "id": 2058
-      },
-      {
-        "type": "sms",
-        "id": "2592"
-      },
-      {
-        "type": "note",
-        "id": "281"
-      },
-      {
-        "type": "calendar",
-        "id": "183"
-      },
-      {
-        "type": "photo",
-        "id": "1883"
-      }
-    ]
-  },
-  {
-    "question": "在12月与朋友的聚会中，于晓薇主要分享了哪些方面的内容？",
-    "options": [
-      {
-        "option": "A",
-        "content": "工作上的线上营销心得和同事的建议"
-      },
-      {
-        "option": "B",
-        "content": "冥想缓解压力和插花学习的个人体会"
-      },
-      {
-        "option": "C",
-        "content": "家庭财务规划和子女教育基金的设想"
-      },
-      {
-        "option": "D",
-        "content": "粤港澳大湾区旅行的筹备信息和计划"
-      }
-    ],
-    "answer": "B",
-    "required_events_id": [
-      "5057",
-      "5046"
-    ],
-    "required_events_date": [
-      "2025-12-20",
-      "2025-12-19"
-    ],
-    "ask_time": "2026-01",
-    "question_type": "reasoning",
-    "evidence": [
-      {
-        "type": "agent_chat",
-        "id": 808
-      },
-      {
-        "type": "call",
-        "id": 1405
-      },
-      {
-        "type": "push",
-        "id": 2517
-      },
-      {
-        "type": "push",
-        "id": 2518
-      },
-      {
-        "type": "photo",
-        "id": 1764
-      },
-      {
-        "type": "push",
-        "id": 2512
-      }
-    ]
-  },
-  {
     "question": "于晓薇在一月份通过普通话学习App完成了第一单元的学习闭环，她分别在何时完成了该单元的录音挑战和最终的学习、练习及模拟测试？",
     "answer": "于晓薇在1月15日完成了第一单元的录音挑战，在1月21日完成了第一单元的所有学习、练习和模拟测试。",
     "score_points": [
@@ -17824,7 +10481,7 @@
       "210",
       "289"
     ],
-    "question_type": "mutihop",
+    "question_type": "Multi-hop reasoning",
     "evidence": [
       {
         "type": "agent_chat",
@@ -17891,7 +10548,7 @@
       }
     ],
     "ask_time": "2025-06",
-    "question_type": "single_hop"
+    "question_type": "Information Extraction"
   },
   {
     "question": "从于晓薇家的新年家庭聚餐到浅水湾沙滩出游，相差了多少天？",
@@ -17911,7 +10568,7 @@
       "2025-07-26"
     ],
     "ask_time": "2025-08",
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "calendar",
@@ -17952,7 +10609,7 @@
       "3143",
       "3472"
     ],
-    "question_type": "temporal",
+    "question_type": "Temporal and Knowledge Updating",
     "evidence": [
       {
         "type": "agent_chat",
@@ -18005,7 +10662,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "于晓薇在2025年10月跑友沈佩雯提到的“那场比赛”具体是哪场比赛？",
@@ -18027,82 +10684,7 @@
       }
     ],
     "ask_time": "2025-12",
-    "question_type": "mutihop"
-  },
-  {
-    "question": "在2025-08-10，于晓薇在九龙城街市采购鲈鱼时，向鱼贩支付了具体多少港币现金？",
-    "options": [
-      {
-        "option": "A",
-        "content": "80港币"
-      },
-      {
-        "option": "B",
-        "content": "120港币"
-      },
-      {
-        "option": "C",
-        "content": "150港币"
-      },
-      {
-        "option": "D",
-        "content": "无法回答"
-      }
-    ],
-    "answer": "D",
-    "type": "multiple_choice",
-    "question_type": "unanswerable",
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在2025年6月29日之前的一周内，于晓薇的女儿张雨欣在学校参与了以下哪一项活动？",
-    "options": [
-      {
-        "option": "A",
-        "content": "参加了班级组织的合唱比赛预选"
-      },
-      {
-        "option": "B",
-        "content": "在科学课上完成了一项关于植物的观察实验"
-      },
-      {
-        "option": "C",
-        "content": "无法回答"
-      },
-      {
-        "option": "D",
-        "content": "担任了学校运动会某项目的志愿者"
-      }
-    ],
-    "answer": "C",
-    "type": "multiple_choice",
-    "question_type": "unanswerable",
-    "ask_time": "2025-12"
-  },
-  {
-    "question": "在2025-02-05的晚瑜伽练习中，于晓薇使用的在线瑜伽课程的具体教练是谁？",
-    "options": [
-      {
-        "option": "A",
-        "content": "李教练"
-      },
-      {
-        "option": "B",
-        "content": "王教练"
-      },
-      {
-        "option": "C",
-        "content": "张教练"
-      },
-      {
-        "option": "D",
-        "content": "无法回答"
-      }
-    ],
-    "answer": "D",
-    "type": "multiple_choice",
-    "question_type": "unanswerable",
-    "ask_time": "2025-12"
+    "question_type": "Multi-hop reasoning"
   },
   {
     "question": "在2025年4月5日回顾线上课程笔记之前，于晓薇最近一次完成的职业培训课程名称是以下哪一个？",
@@ -18126,8 +10708,7 @@
     ],
     "answer": "C",
     "type": "multiple_choice",
-    "question_type": "unanswerable",
+    "question_type": "Unanswerable",
     "ask_time": "2025-12"
   }
-
 ]
