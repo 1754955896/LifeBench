@@ -1,0 +1,3673 @@
+[
+  {
+    "event_id": "37",
+    "type": "photo",
+    "caption": "阳台排水管维修前拍摄的损坏部位特写。",
+    "title": "IMG_20250104_093501.jpg",
+    "datetime": "2025-01-04 09:35:01",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "",
+      "poi": "家中阳台"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "水管",
+      "裂缝",
+      "维修",
+      "阳台",
+      "老式",
+      "渗水痕迹"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "微距",
+    "image_size": "4032×3024",
+    "summarized_info": "一张在阳台拍摄的水管局部特写照片，显示水管连接处有明显裂缝和渗水痕迹。",
+    "phone_id": "1"
+  },
+  {
+    "type": "photo",
+    "event_id": "4042",
+    "caption": "带儿子出来买东西，他非要在这家店门口拍一张。",
+    "title": "IMG_20251004_165103",
+    "datetime": "2025-10-04 16:51:03",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "poi": "诚信五金建材店"
+    },
+    "faceRecognition": [
+      "陆子轩"
+    ],
+    "imageTag": [
+      "五金店",
+      "门头",
+      "儿童",
+      "街拍"
+    ],
+    "ocrText": "诚信五金建材店",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强在诚信五金建材店门口为儿子陆子轩拍摄了一张照片。",
+    "phone_id": "2"
+  },
+  {
+    "event_id": "2644",
+    "type": "photo",
+    "caption": "搜索‘个人电工 工作室 资质’后的截屏",
+    "title": "Screenshot_20250703_1245",
+    "datetime": "2025-07-03 12:50:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "永桂工业区",
+      "streetNumber": "",
+      "poi": "员工休息室"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "搜索",
+      "工作室",
+      "电工",
+      "资质"
+    ],
+    "ocrText": "申请个人电工工作室需提交高级技师证书复印件，并满足相关注册条件...",
+    "shoot_mode": "截屏",
+    "image_size": "720×1280",
+    "summarized_info": "陆明强截屏了关于个人电工工作室资质的搜索结果。",
+    "phone_id": "3"
+  },
+  {
+    "event_id": "4442",
+    "type": "photo",
+    "caption": "修复后的万用表表笔线，绝缘胶带包裹牢固。",
+    "title": "IMG_20251101_093500",
+    "datetime": "2025-11-01 09:35:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "家中阳台"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "万用表",
+      "表笔线",
+      "绝缘胶带",
+      "工具修复"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "微距",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了万用表表笔线修复后的照片，显示绝缘胶带包裹。",
+    "phone_id": "4"
+  },
+  {
+    "event_id": "876",
+    "type": "photo",
+    "caption": "和建国在茶店闲聊，窗外雨声淅沥。",
+    "title": "IMG_20250302_140520",
+    "datetime": "2025-03-02 14:05:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "文明一路",
+      "streetNumber": "54号",
+      "poi": "海口小巷茶店"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "陈建国"
+    ],
+    "imageTag": [
+      "茶店",
+      "喝茶",
+      "下雨",
+      "工友"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张与工友陈建国在茶店喝茶的照片，包含位置信息。",
+    "phone_id": "5"
+  },
+  {
+    "event_id": "28",
+    "type": "photo",
+    "caption": "午餐套餐，两荤一素，和陈建国边吃边聊房子修水管的事。",
+    "title": "IMG_20250103_123520",
+    "datetime": "2025-01-03 12:35:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "紫园路",
+      "streetNumber": "3号",
+      "poi": "快客中式快餐店"
+    },
+    "faceRecognition": [
+      "陈建国"
+    ],
+    "imageTag": [
+      "工作午餐",
+      "中式快餐",
+      "套餐",
+      "同事聚餐",
+      "快餐"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "美食",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张与工友陈建国在快餐店吃午餐的照片。",
+    "phone_id": "6"
+  },
+  {
+    "event_id": "1360",
+    "type": "photo",
+    "caption": "上午施工结束时拍摄的配电箱内部线路照片，已完成新线路接驳。",
+    "title": "IMG_20250403_115030",
+    "datetime": "2025-04-03 11:50:30",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "海甸岛五西路",
+      "streetNumber": "",
+      "poi": "碧海蓝天小区3号楼配电间"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "配电箱",
+      "电缆",
+      "施工现场",
+      "电工工具"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "标准",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张配电箱内部线路的照片，照片位置信息显示在碧海蓝天小区3号楼配电间。",
+    "phone_id": "7"
+  },
+  {
+    "type": "photo",
+    "event_id": "4112",
+    "caption": "万绿园环湖跑道旁的草坪，跑完步后在这里做拉伸放松。",
+    "title": "IMG_20251009_181011",
+    "datetime": "2025-10-09 18:10:11",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "滨海大道",
+      "streetNumber": "38号",
+      "poi": "万绿园内草坪"
+    },
+    "faceRecognition": [
+      "陆明强"
+    ],
+    "imageTag": [
+      "草坪",
+      "拉伸",
+      "跑步",
+      "傍晚",
+      "公园"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "照片",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强在万绿园内拍摄了一张自己跑完步后在草坪上拉伸的照片。",
+    "phone_id": "8"
+  },
+  {
+    "event_id": "2279",
+    "type": "photo",
+    "caption": "桌上的一碟花生，旁边是茶壶和茶杯。",
+    "title": "IMG_20250608_150123",
+    "datetime": "2025-06-08 15:01:23",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "文明一路",
+      "streetNumber": "54号",
+      "poi": "海口小巷茶店"
+    },
+    "faceRecognition": [
+      "张建国"
+    ],
+    "imageTag": [
+      "花生",
+      "茶具",
+      "桌子",
+      "茶店"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "食物",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强在茶店拍摄了一张照片，内容为桌上的花生和茶具，人物识别包含张建国。",
+    "phone_id": "9"
+  },
+  {
+    "event_id": "81",
+    "type": "photo",
+    "caption": "涵涵在草地上奔跑，手里的燕子风筝刚刚离地飞起，笑得很开心。",
+    "title": "IMG_20250111_111520",
+    "datetime": "2025-01-11 11:15:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "滨海大道",
+      "streetNumber": "",
+      "poi": "世纪公园草坪"
+    },
+    "faceRecognition": [
+      "陆子涵"
+    ],
+    "imageTag": [
+      "放风筝",
+      "公园",
+      "草地",
+      "儿童",
+      "户外活动"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "运动",
+    "image_size": "4032×3024",
+    "summarized_info": "拍摄了一张小儿子陆子涵在公园放风筝的照片，记录了周末的家庭活动。",
+    "phone_id": "10"
+  },
+  {
+    "event_id": "2757",
+    "type": "photo",
+    "caption": "全家晚餐合影，笑容满面",
+    "title": "IMG_20250710_190200",
+    "datetime": "2025-07-10 19:02:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "近金贸中路",
+      "poi": "龙华法院住宅小区家中"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "王丽娟",
+      "陆子轩",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "家庭晚餐",
+      "庆祝",
+      "举杯"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "拍摄了家庭晚餐时的场景，家人们正在举杯庆祝。",
+    "phone_id": "11"
+  },
+  {
+    "type": "photo",
+    "event_id": "518",
+    "caption": "在老旧小区楼道内更换断路器设备，现场工具摆放。",
+    "title": "IMG_20250206_093000",
+    "datetime": "2025-02-06 09:30:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "向荣路",
+      "streetNumber": "26号",
+      "poi": "某老旧小区3单元楼道"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "断路器",
+      "楼道",
+      "工具",
+      "工作现场",
+      "老旧小区"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "普通",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张工作现场照片，显示在向荣路老旧小区3单元楼道内进行设备更换。",
+    "phone_id": "12"
+  },
+  {
+    "type": "photo",
+    "event_id": "3633",
+    "caption": "在万绿园的草坪上，儿子正在尝试控制风筝，我站在他身后稍微扶着。",
+    "title": "IMG_20250907_103421",
+    "datetime": "2025-09-07 10:34:21",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "滨海大道",
+      "streetNumber": "38号",
+      "poi": "万绿园草坪"
+    },
+    "faceRecognition": [
+      "陆子轩",
+      "陆明强"
+    ],
+    "imageTag": [
+      "放风筝",
+      "户外",
+      "亲子",
+      "蓝天",
+      "草坪",
+      "风筝线"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "运动",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张在万绿园草坪的照片，内容为他与儿子陆子轩一同控制风筝的场景。",
+    "phone_id": "13"
+  },
+  {
+    "event_id": "3214",
+    "type": "photo",
+    "caption": "书籍页面拍摄",
+    "title": "IMG_20250810_093200",
+    "datetime": "2025-08-10 09:32:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "书房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "教科书",
+      "电路图",
+      "文字"
+    ],
+    "ocrText": "第8章 三相异步电动机的启动与调速 本节介绍直接启动、星三角启动等方法...",
+    "shoot_mode": "文档",
+    "image_size": "2000x1500",
+    "summarized_info": "陆明强拍摄了电工基础书籍页面，显示三相异步电动机的启动与调速章节。",
+    "phone_id": "14"
+  },
+  {
+    "event_id": "882",
+    "type": "photo",
+    "caption": "车辆故障停在路口附近，打开引擎盖检查。",
+    "title": "IMG_20250303_072500",
+    "datetime": "2025-03-03 07:25:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金垦路",
+      "streetNumber": "与南沙路交叉口东北侧",
+      "poi": "临时停车点"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "汽车故障",
+      "路口",
+      "引擎盖"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了车辆故障时的照片，显示在路口附近停车。",
+    "phone_id": "15"
+  },
+  {
+    "event_id": "1421",
+    "type": "photo",
+    "caption": "在手机屏幕上截图保存的订单确认页面。",
+    "title": "IMG_20250408_225518",
+    "datetime": "2025-04-08 22:55:18",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "家中书房"
+    },
+    "faceRecognition": [
+      "无"
+    ],
+    "imageTag": [
+      "手机屏幕截图",
+      "订单确认",
+      "支付成功",
+      "考试资料"
+    ],
+    "ocrText": "订单支付成功！商品：《电工高级技师理论考试题库》x1，《电力系统继电保护》x1，订单号：2025040857912345。",
+    "shoot_mode": "截图",
+    "image_size": "1080×2340",
+    "summarized_info": "陆明强截图了一张订单支付成功的页面，显示购买了两本教材。",
+    "phone_id": "16"
+  },
+  {
+    "event_id": "4194",
+    "type": "photo",
+    "caption": "庆祝午餐，食物很美味",
+    "title": "IMG_20251015_121500",
+    "datetime": "2025-10-15 12:15:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "秀英大道",
+      "streetNumber": "29号",
+      "poi": "秀英万达广场三楼"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "陈建国"
+    ],
+    "imageTag": [
+      "椰子鸡",
+      "斋菜煲",
+      "海南菜",
+      "餐厅环境"
+    ],
+    "ocrText": "拾味馆海南菜(万达店)",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张午餐照片，显示食物和餐厅招牌，OCR识别出餐厅名称。",
+    "phone_id": "17"
+  },
+  {
+    "event_id": "1853",
+    "type": "photo",
+    "caption": "考察的第一家泳池，环境干净，水温舒适。",
+    "title": "IMG_20250511_093500",
+    "datetime": "2025-05-11 09:35:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "长秀路",
+      "streetNumber": "5号附近",
+      "poi": "社区健身中心"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "泳池",
+      "健身中心",
+      "环境"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了秀英区社区健身中心泳池的照片，显示环境干净。",
+    "phone_id": "18"
+  },
+  {
+    "event_id": "2783",
+    "type": "photo",
+    "caption": "晨跑后的早餐，海南粉和冰豆浆。",
+    "title": "IMG_20250712_074520",
+    "datetime": "2025-07-12 07:45:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "海甸岛人民大道",
+      "streetNumber": "附近",
+      "poi": "茶餐厅"
+    },
+    "faceRecognition": [
+      "陈斌"
+    ],
+    "imageTag": [
+      "海南粉",
+      "冰豆浆",
+      "早餐",
+      "茶餐厅"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了晨跑后早餐的照片，显示海南粉和冰豆浆，地点在海甸岛人民大道附近的茶餐厅，陈斌在画面中。",
+    "phone_id": "19"
+  },
+  {
+    "type": "photo",
+    "event_id": "955",
+    "caption": "一张手写的收据，放在修理厂工作台的桌面上，旁边有工具。",
+    "title": "IMG_20250307_0930",
+    "datetime": "2025-03-07 09:30:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "南海大道",
+      "poi": "海口秀英锦荣汽车修理厂"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "收据",
+      "工作台",
+      "修理厂",
+      "手写"
+    ],
+    "ocrText": "今收到 陆明强先生 车辆维修费用合计：人民币捌仟元整 (¥8000.00)。收款人：张建国。2025年3月7日。海口秀英锦荣汽车修理厂。",
+    "shoot_mode": "文档",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张修理厂开具的手写收据照片，收据显示收到了车辆维修费用人民币8000元。",
+    "phone_id": "20"
+  },
+  {
+    "event_id": "164",
+    "type": "photo",
+    "caption": "电缆故障测试仪屏幕显示读数",
+    "title": "IMG_20250114_093000",
+    "datetime": "2025-01-14 09:30:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金垦路",
+      "streetNumber": "附近",
+      "poi": "老旧小区花园步道旁"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "测试仪",
+      "电缆",
+      "故障检测",
+      "现场勘查"
+    ],
+    "ocrText": "绝缘电阻: 0.5 MΩ; 定位深度: 1.5m",
+    "shoot_mode": "文档",
+    "image_size": "1920×1080",
+    "summarized_info": "陆明强拍摄了电缆故障测试仪的屏幕，显示绝缘电阻低和故障点深度信息。",
+    "phone_id": "21"
+  },
+  {
+    "event_id": "2362",
+    "type": "photo",
+    "caption": "新能源系统展示区",
+    "title": "IMG_20250614_150020",
+    "datetime": "2025-06-14 15:00:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "滨海大道",
+      "streetNumber": "258号",
+      "poi": "海南国际会议展览中心"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "新能源系统",
+      "展览",
+      "技术展示"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张新能源系统展示区的照片。",
+    "phone_id": "22"
+  },
+  {
+    "event_id": "592",
+    "type": "photo",
+    "caption": "在旧货摊看到的宝贝，决定带回家。",
+    "title": "IMG_20250211_155520",
+    "datetime": "2025-02-11 15:55:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "海垦路",
+      "streetNumber": "8号",
+      "poi": "海垦花园夜市旧货摊"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "酒瓶",
+      "旧货",
+      "收藏"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了一张在旧货摊看到的酒瓶照片，准备购买收藏。",
+    "phone_id": "23"
+  },
+  {
+    "type": "photo",
+    "event_id": "5157",
+    "caption": "聚餐时大家举杯的场景，桌上摆满了烤鱼和烧烤。",
+    "title": "IMG_20251220_183021.jpg",
+    "datetime": "2025-12-20 18:30:21",
+    "location": null,
+    "faceRecognition": [
+      "陆明强",
+      "张班长",
+      "赵强"
+    ],
+    "imageTag": [
+      "聚餐",
+      "举杯",
+      "烤鱼",
+      "露天",
+      "夜晚"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "夜景",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张班组聚餐时大家举杯的照片，人物包括他自己、张班长和赵强，场景在露天夜晚。",
+    "phone_id": "24"
+  },
+  {
+    "type": "photo",
+    "event_id": "4545",
+    "caption": "子轩第一次尝试放风筝，风筝飞得很高。",
+    "title": "IMG_20251108_103005.jpg",
+    "datetime": "2025-11-08 10:30:05",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "滨海大道",
+      "streetNumber": "38号",
+      "poi": "万绿园草坪"
+    },
+    "faceRecognition": [
+      "陆子轩"
+    ],
+    "imageTag": [
+      "风筝",
+      "草坪",
+      "天空",
+      "儿童"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "风景",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了儿子在万绿园放风筝的照片，风筝在空中飞翔。",
+    "phone_id": "25"
+  },
+  {
+    "event_id": "3269",
+    "type": "photo",
+    "caption": "南沙路胡辣汤早餐店，早晨人很多，能听到周围食客的对话声。",
+    "title": "IMG_20250814_070123",
+    "datetime": "2025-08-14 07:01:23",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "南沙路",
+      "streetNumber": "",
+      "poi": "胡辣汤早餐店"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "早餐",
+      "店铺",
+      "人群"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了早餐店的场景，caption提到能听到食客对话。",
+    "phone_id": "26"
+  },
+  {
+    "event_id": "2464",
+    "type": "photo",
+    "caption": "和吴刚喝茶时点的茶点，鹧鸪茶很香。",
+    "title": "IMG_20250621_151230",
+    "datetime": "2025-06-21 15:12:30",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "文明一路",
+      "streetNumber": "54号",
+      "poi": "茶店"
+    },
+    "faceRecognition": [
+      "吴刚"
+    ],
+    "imageTag": [
+      "茶壶",
+      "茶杯",
+      "茶点",
+      "室内",
+      "靠窗"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张喝茶时的照片，画面中有茶点和人物吴刚。",
+    "phone_id": "27"
+  },
+  {
+    "event_id": "3742",
+    "type": "photo",
+    "caption": "父亲正在阳台上比划着讲解电路图，桌上摊开着我的项目图纸。",
+    "title": "IMG_20250913_170852",
+    "datetime": "2025-09-13 17:08:52",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "海府路",
+      "streetNumber": "42号",
+      "poi": "海南省卫生厅宿舍家中阳台"
+    },
+    "faceRecognition": [
+      "陆建国"
+    ],
+    "imageTag": [
+      "技术讨论",
+      "图纸",
+      "阳台",
+      "父亲",
+      "继电保护调试"
+    ],
+    "ocrText": "部分图纸文字：采样回路…定值单…",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张父亲在阳台讲解图纸的照片，地点是家中阳台。",
+    "phone_id": "28"
+  },
+  {
+    "type": "photo",
+    "event_id": "3366",
+    "caption": "万绿园晨光中的塑胶步道，空气清新，适合运动后放松。",
+    "title": "IMG_20250820_071523",
+    "datetime": "2025-08-20 07:15:23",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "滨海大道",
+      "streetNumber": "38号",
+      "poi": "万绿园内塑胶步道"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "步道",
+      "晨光",
+      "公园",
+      "风景",
+      "运动"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "风景",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了一张万绿园塑胶步道的风景照片。",
+    "phone_id": "29"
+  },
+  {
+    "event_id": "3841",
+    "type": "photo",
+    "caption": "新买的毛竹，准备用于制作沙燕风筝骨架。",
+    "title": "IMG_20250920_143500",
+    "datetime": "2025-09-20 14:35:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "博爱南路",
+      "streetNumber": "",
+      "poi": "博爱南路商业区"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "毛竹",
+      "手工材料",
+      "风筝制作"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张新购毛竹的照片，地点在博爱南路。",
+    "phone_id": "30"
+  },
+  {
+    "event_id": "768",
+    "type": "photo",
+    "caption": "阳光下，一个男孩开心地指向天空中的风筝，逆光勾勒出金色的轮廓。",
+    "title": "IMG_20250223_143025",
+    "datetime": "2025-02-23 14:30:25",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "滨海大道",
+      "poi": "西秀公园草坪"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "风筝",
+      "户外",
+      "儿童",
+      "阳光",
+      "运动",
+      "逆光"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "运动",
+    "image_size": "4032×3024",
+    "summarized_info": "在公园草坪上拍摄了一个孩子指向天空风筝的逆光瞬间。",
+    "phone_id": "31"
+  },
+  {
+    "type": "photo",
+    "event_id": "294",
+    "caption": "作业现场工具箱旁的一个棕色小瓶。",
+    "title": "IMG_20250122_171015",
+    "datetime": "2025-01-22 17:10:15",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "海盛路",
+      "streetNumber": "XX号",
+      "poi": "老旧小区作业现场"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "药瓶",
+      "工具箱",
+      "施工现场"
+    ],
+    "ocrText": "活血...油",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张作业现场药瓶的照片。",
+    "phone_id": "32"
+  },
+  {
+    "event_id": "2016",
+    "type": "photo",
+    "caption": "在车行查看的车辆外观",
+    "title": "IMG_20250521_183500",
+    "datetime": "2025-05-21 18:35:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "海甸五西路",
+      "streetNumber": "近海大",
+      "poi": "群烽二手车"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "SUV",
+      "国产",
+      "车辆照片"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强在群烽二手车拍摄了一辆车的照片，照片显示为一辆SUV",
+    "phone_id": "33"
+  },
+  {
+    "type": "photo",
+    "event_id": "3869",
+    "caption": "电表箱改造施工中拍摄的问题部位",
+    "title": "IMG_20250922_1035",
+    "datetime": "2025-09-22 10:35:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "海甸岛五西路",
+      "streetNumber": "某号",
+      "poi": "老旧小区3号楼楼道"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "铜接线端子",
+      "断裂",
+      "电表箱",
+      "施工环境"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "拍摄了电表箱改造施工中发现的断裂铜接线端子。",
+    "phone_id": "34"
+  },
+  {
+    "event_id": "131",
+    "type": "photo",
+    "caption": "和建国、小赵在向荣路大排档，烤鱼很香，以茶代酒庆祝！",
+    "title": "IMG_20250111_195520",
+    "datetime": "2025-01-11 19:55:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "向荣路",
+      "streetNumber": "24号",
+      "poi": "向荣路大排档"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "陈建国",
+      "赵强"
+    ],
+    "imageTag": [
+      "聚餐",
+      "烤鱼",
+      "大排档",
+      "朋友聚会"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张与陈建国、赵强在向荣路大排档聚餐的照片，画面中有烤鱼等菜肴。",
+    "phone_id": "35"
+  },
+  {
+    "event_id": "3561",
+    "type": "photo",
+    "caption": "雨后傍晚的滨海步道，空气清新，适合慢跑。",
+    "title": "滨海步道晚霞",
+    "datetime": "2025-09-01 17:20:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "滨海大道",
+      "streetNumber": "118号",
+      "poi": "观海台附近步道"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "步道",
+      "晚霞",
+      "海边",
+      "跑步",
+      "风景"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "风景",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张雨后傍晚观海台附近滨海步道的风景照片。",
+    "phone_id": "36"
+  },
+  {
+    "event_id": "5013",
+    "type": "photo",
+    "caption": "阳台旧灯和部分老化的线路，需要更换线缆。",
+    "title": "IMG_20251210_213015",
+    "datetime": "2025-12-10 21:30:15",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "不详",
+      "poi": "龙华法院住宅小区"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "灯具",
+      "电线",
+      "维修",
+      "阳台",
+      "现场勘查"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了一张阳台灯具和线路的照片，记录维修前的状况。",
+    "phone_id": "37"
+  },
+  {
+    "event_id": "3108",
+    "type": "photo",
+    "caption": "完工的沙燕风筝平铺在客厅地板上，旁边围着家人。历时近一个月终于完成。",
+    "title": "IMG_20250801_190520",
+    "datetime": "2025-08-01 19:05:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "",
+      "poi": "龙华法院住宅小区家中客厅"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "王丽娟",
+      "陆子轩",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "风筝",
+      "手工艺品",
+      "沙燕图案",
+      "客厅",
+      "家庭"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "照片",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张完工的大型沙燕风筝在客厅展示的照片，家人围在周围。",
+    "phone_id": "38"
+  },
+  {
+    "type": "photo",
+    "event_id": "339",
+    "caption": "父亲郑重递给我的旧木质工具箱，打开后，里面整齐摆放着各种老式工具和几本封面泛黄的电工书籍。",
+    "title": "IMG_20250125_2015.jpg",
+    "datetime": "2025-01-25 20:15:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "海府路",
+      "streetNumber": "42号",
+      "poi": "父母家中客厅"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "工具箱",
+      "电工工具",
+      "旧书籍",
+      "父亲赠予",
+      "家庭"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张父亲赠予的木质工具箱的照片，里面装有老式电工工具和旧电工书籍。",
+    "phone_id": "39"
+  },
+  {
+    "type": "photo",
+    "event_id": "1429",
+    "caption": "抢修现场记录。",
+    "title": "IMG_20250409_110523",
+    "datetime": "2025-04-09 11:05:23",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "南海大道",
+      "streetNumber": "附近",
+      "poi": "高压线路故障杆塔处"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "电力线路",
+      "绝缘斗臂车",
+      "湿滑杆塔",
+      "雷击痕迹",
+      "工作现场"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "拍照",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张高压线路抢修工作现场的照片，定位显示在海口市秀英区。",
+    "phone_id": "40"
+  },
+  {
+    "event_id": "593",
+    "type": "photo",
+    "caption": "新入手的“海口大曲”酒瓶，已经过彻底清洁，瓶身光洁，正被安放在收藏架上，旁边还有其他几个造型各异的陶瓷酒瓶。",
+    "title": "IMG_20250211_171520",
+    "datetime": "2025-02-11 17:15:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "",
+      "poi": "龙华法院住宅小区家中客厅"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "海口大曲",
+      "陶瓷酒瓶",
+      "收藏架",
+      "清洁后",
+      "收藏品"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "专业",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了一张已经清洁并放置在收藏架上的“海口大曲”酒瓶照片。",
+    "phone_id": "41"
+  },
+  {
+    "event_id": "4",
+    "type": "photo",
+    "caption": "孩子们在草坪上放飞一只沙燕风筝，陆明强在旁指导动作。",
+    "title": "IMG_20250101_104500",
+    "datetime": "2025-01-01 10:45:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "滨海大道",
+      "streetNumber": "",
+      "poi": "万绿园中心大草坪"
+    },
+    "faceRecognition": [
+      "陆子轩",
+      "陆子涵",
+      "陆明强"
+    ],
+    "imageTag": [
+      "沙燕风筝",
+      "传统风筝",
+      "户外指导",
+      "家庭活动"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "运动",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了孩子们在万绿园放传统沙燕风筝的照片。",
+    "phone_id": "42"
+  },
+  {
+    "type": "photo",
+    "event_id": "4655",
+    "caption": "晨跑后拉伸时拍的滨海跑道景色，晨光很好。",
+    "title": "IMG_20251116_080520",
+    "datetime": "2025-11-16 08:05:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "海甸六东路",
+      "streetNumber": "",
+      "poi": "白沙门公园滨海跑道"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "跑道",
+      "海岸",
+      "清晨",
+      "锻炼"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "风景",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强在白沙门公园晨跑时拍摄了一张滨海跑道的风景照片。",
+    "phone_id": "43"
+  },
+  {
+    "event_id": "456",
+    "type": "photo",
+    "caption": "两个孩子正在游乐设施上玩耍，笑容灿烂，背景是开阔的草坪和远处的城市天际线。",
+    "title": "IMG_20250202_143025.jpg",
+    "datetime": "2025-02-02 14:30:25",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "滨海大道",
+      "streetNumber": "38号",
+      "poi": "万绿园儿童游乐区"
+    },
+    "faceRecognition": [
+      "陆子轩",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "儿童玩耍",
+      "游乐设施",
+      "草坪",
+      "绿植",
+      "海景"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强在万绿园使用手机的人像模式拍摄了几张孩子玩耍的照片，画面中包含了绿植和远处的海景。",
+    "phone_id": "44"
+  },
+  {
+    "event_id": "5154",
+    "type": "photo",
+    "caption": "陆明强手持电工高级技师证书和红包站在领奖台上，背景是会议室",
+    "title": "IMG_20251220_163500",
+    "datetime": "2025-12-20 16:35:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "永万路",
+      "streetNumber": "1号",
+      "poi": "南光中心写字楼公司会议室"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "刘经理"
+    ],
+    "imageTag": [
+      "证书",
+      "红包",
+      "领奖台",
+      "表彰"
+    ],
+    "ocrText": "电工高级技师证书 技能提升奖",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张在年终总结会上获奖的照片，显示电工高级技师证书和技能提升奖红包",
+    "phone_id": "45"
+  },
+  {
+    "event_id": "3615",
+    "type": "photo",
+    "caption": "检查室外设备安装情况，位置可能不当，需注意防雨和电线保护。",
+    "title": "IMG_20250905_180000",
+    "datetime": "2025-09-05 18:00:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "住宅楼外墙面"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "空调外机",
+      "电线",
+      "安装",
+      "安全检查"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张室外设备的照片，涉及安装位置和电线情况。",
+    "phone_id": "46"
+  },
+  {
+    "event_id": "5041",
+    "type": "photo",
+    "caption": "王叔家阳台灯工作正常。",
+    "title": "IMG_20251212_110125",
+    "datetime": "2025-12-12 11:01:25",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "",
+      "poi": "龙华法院住宅小区"
+    },
+    "faceRecognition": [
+      "王建国"
+    ],
+    "imageTag": [
+      "阳台灯",
+      "开关测试",
+      "室内环境",
+      "维修测试"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张照片，内容是在一个住宅内，一盏安装好的阳台灯被点亮，王建国出现在画面中。",
+    "phone_id": "47"
+  },
+  {
+    "event_id": "3954",
+    "type": "photo",
+    "caption": "清晨的万绿园，环湖跑道起点，阳光透过树叶洒下。",
+    "title": "IMG_20250928_065030",
+    "datetime": "2025-09-28 06:50:30",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "滨海大道",
+      "streetNumber": "38号",
+      "poi": "万绿园"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "公园",
+      "跑道",
+      "清晨",
+      "树木",
+      "阳光"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "风景",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张万绿园环湖跑道起点的照片，时间为清晨。",
+    "phone_id": "48"
+  },
+  {
+    "event_id": "597",
+    "type": "photo",
+    "caption": "一个陶瓷酒瓶的正面细节，瓶身上有“海口大曲”字样，釉面光洁，摆放在铺着软布的桌面上。",
+    "title": "海口大曲酒瓶细节_1",
+    "datetime": "2025-02-11 20:35:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "",
+      "poi": "龙华法院住宅小区家中书房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "陶瓷酒瓶",
+      "海口大曲",
+      "收藏品",
+      "细节特写",
+      "桌面摆拍"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "微距",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张“海口大曲”陶瓷酒瓶的特写照片，用于展示其瓶身细节。",
+    "phone_id": "49"
+  },
+  {
+    "event_id": "246",
+    "type": "photo",
+    "caption": "师父借给我的学习资料，要好好保管和消化。",
+    "title": "IMG_20250119_173000",
+    "datetime": "2025-01-19 17:30:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "海府路",
+      "streetNumber": "56号",
+      "poi": "华锦名都小区附近"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "笔记本",
+      "泛黄",
+      "纸张",
+      "学习资料",
+      "手写"
+    ],
+    "ocrText": "（部分模糊）故障分析实例...三相电机缺相...速记口诀：一看二听三测量...",
+    "shoot_mode": "文档",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张看起来是老旧笔记本内页的照片，内容似乎与电路故障分析和实用口诀相关。",
+    "phone_id": "50"
+  },
+  {
+    "event_id": "1482",
+    "type": "photo",
+    "caption": "老旧小区电缆沟内积水严重，正在使用抽水泵进行紧急排水作业。",
+    "title": "IMG_20250413_100520",
+    "datetime": "2025-04-13 10:05:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "滨海新村",
+      "streetNumber": "某老旧小区内",
+      "poi": "电缆沟抢修现场"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "积水",
+      "电缆沟",
+      "抽水泵",
+      "抢修",
+      "雨季"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "普通",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了电缆沟积水抢修现场的照片，显示积水和排水作业，地点在海口市龙华区滨海新村。",
+    "phone_id": "51"
+  },
+  {
+    "type": "photo",
+    "event_id": "102",
+    "caption": "配电房内，几个人围着一张文件在讨论。",
+    "title": "IMG_20250109_145002",
+    "datetime": "2025-01-09 14:50:02",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "向荣路",
+      "poi": "某社区内"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "配电设备",
+      "文件",
+      "多人",
+      "施工现场"
+    ],
+    "ocrText": "项目完工确认单...秀海社区...",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍摄了一张照片，内容为几个人在配电房内围绕文件讨论，OCR识别出“项目完工确认单”和“秀海社区”。",
+    "phone_id": "52"
+  },
+  {
+    "event_id": "907",
+    "type": "photo",
+    "caption": "新空气开关安装完成后的配电箱接线特写，正在进行规范性和安全性检查。",
+    "title": "IMG_20250304_153000",
+    "datetime": "2025-03-04 15:30:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "海秀中路",
+      "streetNumber": "金城花园小区3号楼配电间",
+      "poi": "配电间"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "配电箱",
+      "空气开关",
+      "电线连接",
+      "施工现场",
+      "安全作业"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了配电箱改造现场，展示新安装的空气开关和规范接线情况。",
+    "phone_id": "53"
+  },
+  {
+    "event_id": "1398",
+    "type": "photo",
+    "caption": "整理出的几件旧物品，准备处理掉。",
+    "title": "IMG_20250405_202015",
+    "datetime": "2025-04-05 20:20:15",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "家中客厅"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "万用表",
+      "螺丝刀",
+      "工具",
+      "旧物",
+      "桌面"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "拍照",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了一张旧万用表和螺丝刀等工具的照片，物品被放置在桌面上。",
+    "phone_id": "54"
+  },
+  {
+    "event_id": "1762",
+    "type": "photo",
+    "caption": "儿子在草坪上放风筝，背景是绿树和海景。",
+    "title": "IMG_20250504_103020",
+    "datetime": "2025-05-04 10:30:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "滨海大道",
+      "streetNumber": "38号",
+      "poi": "万绿园"
+    },
+    "faceRecognition": [
+      "陆子轩",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "放风筝",
+      "草坪",
+      "家庭活动",
+      "户外"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "风景",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张儿子在万绿园放风筝的照片。",
+    "phone_id": "55"
+  },
+  {
+    "type": "photo",
+    "event_id": "2244",
+    "caption": "午餐聚餐。",
+    "title": "IMG_20250606_1245",
+    "datetime": "2025-06-06 12:45:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "向荣路",
+      "streetNumber": "18号",
+      "poi": "潮汕妹仔肠粉店"
+    },
+    "faceRecognition": [
+      "陈建国",
+      "赵强"
+    ],
+    "imageTag": [
+      "肠粉",
+      "餐桌",
+      "聚餐"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强在午餐时拍了一张照片，照片中包含陈建国和赵强，定位在潮汕妹仔肠粉店。",
+    "phone_id": "56"
+  },
+  {
+    "event_id": "460",
+    "type": "photo",
+    "caption": "陆明强和王丽娟带着孩子们在公园草坪上，孩子们笑得很开心。",
+    "title": "IMG_20250202_152030",
+    "datetime": "2025-02-02 15:20:30",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "滨海大道",
+      "streetNumber": "",
+      "poi": "万绿园"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "王丽娟",
+      "孩子1",
+      "孩子2"
+    ],
+    "imageTag": [
+      "全家福",
+      "孩子们笑脸",
+      "草坪",
+      "公园",
+      "户外"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强在万绿园拍摄的一张家庭合照，人物包括他自己、妻子和孩子们，大家表情愉快。",
+    "phone_id": "57"
+  },
+  {
+    "event_id": "2339",
+    "type": "photo",
+    "caption": "检修时拍摄的王叔家吊灯灯口，金属簧片明显变形。",
+    "title": "IMG_20250612_210530",
+    "datetime": "2025-06-12 21:05:30",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "王叔家客厅"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "吊灯",
+      "灯口",
+      "金属簧片",
+      "变形",
+      "接触不良"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "微距",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强在帮助邻居王叔检修吊灯时拍摄的照片，显示灯口金属簧片变形。",
+    "phone_id": "58"
+  },
+  {
+    "event_id": "3814",
+    "type": "photo",
+    "caption": "傍晚夕阳下的电网结构，金属线条在光影中形成几何图案，题名为《网》。",
+    "title": "IMG_20250918_205500",
+    "datetime": "2025-09-18 20:55:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "家中书房窗口"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "电网",
+      "夕阳",
+      "工业结构",
+      "几何线条",
+      "光影"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "风景",
+    "image_size": "4000×3000",
+    "summarized_info": "陆明强拍摄了一张傍晚夕阳下的电网照片，突出工业结构的几何美感和光影效果。",
+    "phone_id": "59"
+  },
+  {
+    "event_id": "4556",
+    "type": "photo",
+    "caption": "与朋友享用早餐，海南粉味道不错。",
+    "title": "IMG_20251109_080200",
+    "datetime": "2025-11-09 08:02:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "南沙路",
+      "streetNumber": "华泰公寓龙华014号34-2号",
+      "poi": "阿福海南粉店"
+    },
+    "faceRecognition": [
+      "陈斌"
+    ],
+    "imageTag": [
+      "海南粉",
+      "早餐",
+      "社交",
+      "餐厅"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了与朋友陈斌在阿福海南粉店共进早餐的照片。",
+    "phone_id": "60"
+  },
+  {
+    "event_id": "1683",
+    "type": "photo",
+    "caption": "小区中心花园的景色，绿树成荫，有老人在打太极拳。",
+    "title": "IMG_20250428_143002",
+    "datetime": "2025-04-28 14:30:02",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "",
+      "poi": "龙华法院住宅小区中心花园"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "花园",
+      "绿树",
+      "康复散步",
+      "小区环境"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "风景",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍摄了一张小区中心花园的照片，记录康复期间户外活动的环境。",
+    "phone_id": "61"
+  },
+  {
+    "event_id": "1509",
+    "type": "photo",
+    "caption": "抢修现场，吊装新变压器。赵强在旁协助。环境湿度很高，设备外罩有水汽凝结。",
+    "title": "IMG_20250415_190532",
+    "datetime": "2025-04-15 19:05:32",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "国贸大道",
+      "streetNumber": "临近玉沙路交叉口",
+      "poi": "商业区配电房外"
+    },
+    "faceRecognition": [
+      "赵强"
+    ],
+    "imageTag": [
+      "变压器",
+      "工程车",
+      "安全帽",
+      "夜间施工",
+      "潮湿环境"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "夜景",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张夜间抢修现场的照片，显示正在吊装新变压器，环境潮湿，赵强在场协助。",
+    "phone_id": "62"
+  },
+  {
+    "event_id": "2197",
+    "type": "photo",
+    "caption": "小区步道的傍晚景色，光线柔和。",
+    "title": "IMG_20250603_203500",
+    "datetime": "2025-06-03 20:35:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "",
+      "poi": "龙华法院住宅小区步道"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "步道",
+      "傍晚",
+      "小区环境"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "夜景",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了傍晚时分小区步道的场景",
+    "phone_id": "63"
+  },
+  {
+    "event_id": "1140",
+    "type": "photo",
+    "caption": "接地极增打作业现场，拍摄于要求返工的焊接点，可见初步焊接处的焊缝状态。",
+    "title": "IMG_20250319_110015",
+    "datetime": "2025-03-19 11:00:15",
+    "location": {
+      "province": "海南省",
+      "city": "三亚市",
+      "district": "天涯区",
+      "streetName": "未知",
+      "streetNumber": "未知",
+      "poi": "三亚凤凰岛星之海全海景度假酒店外围施工区域"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "接地极",
+      "焊接点",
+      "施工现场",
+      "金属",
+      "检查"
+    ],
+    "ocrText": "接地体 扁钢 焊缝不饱满 需处理",
+    "shoot_mode": "专业",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张接地极焊接点的照片，用于记录施工质量。OCR识别文字表明该处焊接存在问题（焊缝不饱满）。",
+    "phone_id": "64"
+  },
+  {
+    "event_id": "5133",
+    "type": "photo",
+    "caption": "帮王叔家修好的吊灯，灯光正常了。",
+    "title": "IMG_20251218_185000",
+    "datetime": "2025-12-18 18:50:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "王建国家中"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "吊灯",
+      "维修",
+      "电路"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张修复后的吊灯照片，显示灯光正常工作。",
+    "phone_id": "65"
+  },
+  {
+    "event_id": "4592",
+    "type": "photo",
+    "caption": "午餐时，向工友陈建国展示手机屏幕，屏幕上显示着‘电工之家’论坛的页面，一篇技术文章的标题被红色‘置顶’标签标记。陈建国侧身观看，学徒赵强也在一旁。我们正在讨论文章里的一个技术细节。",
+    "title": "Screenshot_20251111_1230",
+    "datetime": "2025-11-11 12:32:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "未知",
+      "streetName": "紫园路",
+      "streetNumber": "3号",
+      "poi": "仁恒里必胜客餐厅"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "陈建国"
+    ],
+    "imageTag": [
+      "手机截图",
+      "论坛界面",
+      "置顶标志",
+      "餐厅环境",
+      "多人交谈"
+    ],
+    "ocrText": "电工之家 | 技术交流区...【置顶】关于新型断路器安全冗余设计的实践探讨...楼主：匿名用户...",
+    "shoot_mode": "屏幕截图",
+    "image_size": "1080×2400",
+    "summarized_info": "一张手机截图照片，显示陆明强在午餐时间向工友陈建国展示‘电工之家’论坛上一篇被置顶的技术文章页面。",
+    "phone_id": "66"
+  },
+  {
+    "event_id": "3574",
+    "type": "photo",
+    "caption": "变电站的金属构件特写，聚焦于交错的线条与反光面。",
+    "title": "IMG_20250902_125500",
+    "datetime": "2025-09-02 12:55:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "永万路",
+      "streetNumber": "1号",
+      "poi": "南光中心后院仓库区"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "变电站",
+      "金属",
+      "构件",
+      "线条",
+      "反光",
+      "工业",
+      "几何"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "专业",
+    "image_size": "3024×4032",
+    "summarized_info": "一张拍摄变电站金属构件线条与反光的特写照片。",
+    "phone_id": "67"
+  },
+  {
+    "event_id": "3574",
+    "type": "photo",
+    "caption": "堆叠的电缆盘与生锈铁架的局部，强调圆形与直线的对比。",
+    "title": "IMG_20250902_130500",
+    "datetime": "2025-09-02 13:05:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "永万路",
+      "streetNumber": "1号",
+      "poi": "南光中心后院仓库区"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "电缆盘",
+      "铁架",
+      "螺栓",
+      "圆形",
+      "直线",
+      "锈迹",
+      "工业",
+      "静物"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "专业",
+    "image_size": "3024×4032",
+    "summarized_info": "一张拍摄仓库区电缆盘与铁架局部，强调几何形状对比的照片。",
+    "phone_id": "68"
+  },
+  {
+    "event_id": "1583",
+    "type": "photo",
+    "caption": "抢修结束，恢复供电后拍摄的现场环境。路灯照亮湿漉漉的地面。",
+    "title": "IMG_20250421_004020",
+    "datetime": "2025-04-21 00:40:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "碧海大道",
+      "streetNumber": "",
+      "poi": "碧海大道附近居民区"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "夜间",
+      "路灯",
+      "电力设备",
+      "湿滑地面",
+      "工作现场"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "夜景",
+    "image_size": "4032×3024",
+    "summarized_info": "我拍摄了一张夜间抢修现场的照片，地点位于美兰区碧海大道附近，地面潮湿。",
+    "phone_id": "69"
+  },
+  {
+    "event_id": "335",
+    "type": "photo",
+    "caption": "长子手持我们制作的彩纸风筝，在花园成功试飞。风筝采用传统‘王’字形骨架设计。",
+    "title": "IMG_20250125_1145",
+    "datetime": "2025-01-25 11:45:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "中心花园空地"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "陆子轩"
+    ],
+    "imageTag": [
+      "风筝",
+      "传统手工艺",
+      "家庭活动",
+      "试飞",
+      "彩纸"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张长子试飞风筝的照片，展示了传统风筝制作成果和家庭互动。",
+    "phone_id": "70"
+  },
+  {
+    "event_id": "2569",
+    "type": "photo",
+    "caption": "和工友们聚餐，刚上桌的烤鱼，炭火很旺。",
+    "title": "IMG_20250628_190523",
+    "datetime": "2025-06-28 19:05:23",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "秀英大道",
+      "streetNumber": "29号",
+      "poi": "海口秀英万达广场烧烤大排档"
+    },
+    "faceRecognition": [
+      "陈建国",
+      "赵强"
+    ],
+    "imageTag": [
+      "烤鱼",
+      "炭火",
+      "聚餐",
+      "大排档",
+      "美食"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "美食",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张与工友陈建国、赵强在烧烤大排档聚餐的照片，照片主要内容是炭火烤鱼。",
+    "phone_id": "71"
+  },
+  {
+    "event_id": "1144",
+    "type": "photo",
+    "caption": "配电柜电流表读数，用于计算三相负载平衡。",
+    "title": "IMG_20250319_154321",
+    "datetime": "2025-03-19 15:43:21",
+    "location": {
+      "province": "海南省",
+      "city": "三亚市",
+      "district": "天涯区",
+      "streetName": "未知",
+      "streetNumber": "未知",
+      "poi": "星之海全海景度假酒店配电房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "电流表",
+      "配电柜",
+      "仪表盘",
+      "工作记录",
+      "电气设备"
+    ],
+    "ocrText": "A: 285A\nB: 262A\nC: 298A",
+    "shoot_mode": "专业",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张配电柜电流表的照片，记录了调整过程中的三相电流读数。",
+    "phone_id": "72"
+  },
+  {
+    "event_id": "3591",
+    "type": "photo",
+    "caption": "今日工作现场电气设备拍摄，用于分享和放松。",
+    "title": "IMG_20250903_210500",
+    "datetime": "2025-09-03 21:05:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "",
+      "poi": "工作现场"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "电气设备",
+      "工作实践",
+      "技术摄影"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4000×3000",
+    "summarized_info": "陆明强拍摄了一张工作现场的电气设备照片，体现了与工作相关的实践内容。",
+    "phone_id": "73"
+  },
+  {
+    "type": "photo",
+    "event_id": "1492",
+    "caption": "手机浏览器查询页面截图，显示'海南省电工高级技师报考条件'的相关搜索结果页面。",
+    "title": "Screenshot_20250414_103020",
+    "datetime": "2025-04-14 10:30:20",
+    "location": null,
+    "faceRecognition": [],
+    "imageTag": [
+      "浏览器截图",
+      "查询页面",
+      "报考条件"
+    ],
+    "ocrText": "海南省...电工...高级技师...报考条件...",
+    "shoot_mode": "截图",
+    "image_size": "1080×2340",
+    "summarized_info": "陆明强截屏了一张显示‘海南省电工高级技师报考条件’搜索结果的页面。",
+    "phone_id": "74"
+  },
+  {
+    "event_id": "2635",
+    "type": "photo",
+    "caption": "重要信息截图",
+    "title": "IMG_20250702_201200",
+    "datetime": "2025-07-02 20:12:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "家中书房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "政务服务网",
+      "申请步骤",
+      "资质要求"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "截图",
+    "image_size": "1920×1080",
+    "summarized_info": "陆明强截取了政务服务网上创业相关信息的屏幕。",
+    "phone_id": "75"
+  },
+  {
+    "event_id": "4614",
+    "type": "photo",
+    "caption": "运动后满头大汗，和林峰在球场合影，背景是壁球馆的玻璃墙。",
+    "title": "IMG_20251112_213002",
+    "datetime": "2025-11-12 21:30:02",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "滨海大道",
+      "streetNumber": "118号",
+      "poi": "观海台运动中心"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "林峰"
+    ],
+    "imageTag": [
+      "运动",
+      "汗水",
+      "朋友",
+      "壁球馆",
+      "合影"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张与朋友林峰在壁球馆运动后的合影。",
+    "phone_id": "76"
+  },
+  {
+    "event_id": "3670",
+    "type": "photo",
+    "caption": "一束从气窗射入的阳光照亮仓库角落，金属工具表面反射出斑驳的光泽。",
+    "title": "IMG_20250909_155500",
+    "datetime": "2025-09-09 15:55:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "永万路",
+      "streetNumber": "1号",
+      "poi": "南光中心写字楼公司材料仓库"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "旧扳手",
+      "钳子",
+      "铜质线鼻",
+      "油渍",
+      "光影",
+      "几何形状",
+      "工业静物"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "手动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强在公司仓库拍摄了一张照片，内容为被阳光照亮的旧工具，强调了金属表面的光影和几何形状。",
+    "phone_id": "77"
+  },
+  {
+    "event_id": "4850",
+    "type": "photo",
+    "caption": "红色封面的电工高级技师资格证书，内页有个人信息和签发机构盖章。",
+    "title": "IMG_20251130_083500",
+    "datetime": "2025-11-30 08:35:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "琼山区",
+      "streetName": "红城湖路",
+      "streetNumber": "100号",
+      "poi": "海南省直属机关服务中心，职业技能鉴定指导中心办事窗口"
+    },
+    "faceRecognition": [
+      "陆明强"
+    ],
+    "imageTag": [
+      "证书",
+      "红色封面",
+      "文本"
+    ],
+    "ocrText": "中华人民共和国职业资格证书 电工高级技师 姓名：陆明强 ...",
+    "shoot_mode": "文档",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了电工高级技师资格证书的照片。",
+    "phone_id": "78"
+  },
+  {
+    "type": "photo",
+    "event_id": "4600",
+    "caption": "茶店聚会时，手机屏幕亮着显示技术论坛的置顶帖子界面，旁边有普洱茶杯和小吃盘。",
+    "title": "IMG_20251111_223015",
+    "datetime": "2025-11-11 22:30:15",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "文明一路",
+      "streetNumber": "54号",
+      "poi": "海口小巷茶店"
+    },
+    "faceRecognition": [
+      "陈建国",
+      "赵强"
+    ],
+    "imageTag": [
+      "手机屏幕",
+      "论坛界面",
+      "茶饮",
+      "聚会",
+      "职业分享"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张照片，捕捉了聚会时手机屏幕上显示的技术论坛置顶帖子，体现分享时刻。",
+    "phone_id": "79"
+  },
+  {
+    "event_id": "4616",
+    "type": "photo",
+    "caption": "",
+    "title": "IMG_20251112_215520",
+    "datetime": "2025-11-12 21:55:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "滨海大道",
+      "streetNumber": "118号",
+      "poi": "椰语堂清补凉(观海台店)"
+    },
+    "faceRecognition": [
+      "林峰"
+    ],
+    "imageTag": [
+      "清补凉",
+      "甜品",
+      "朋友聚会",
+      "运动后"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍摄了一张在甜品店的照片，照片中包含林峰和两碗清补凉。",
+    "phone_id": "80"
+  },
+  {
+    "event_id": "1153",
+    "type": "photo",
+    "caption": "B区走廊吊顶内部，电缆桥架与空调送风管道在转角处发生空间冲突，桥架被管道挤压变形。",
+    "title": "IMG_20250320_080523",
+    "datetime": "2025-03-20 08:05:23",
+    "location": {
+      "province": "海南省",
+      "city": "三亚市",
+      "district": "吉阳区",
+      "streetName": "榆亚路",
+      "streetNumber": "",
+      "poi": "三亚大树之冠度假酒店项目工地B区走廊"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "施工现场",
+      "电缆桥架",
+      "空调管道",
+      "吊顶内部",
+      "空间冲突"
+    ],
+    "ocrText": "桥架-200*100",
+    "shoot_mode": "专业",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张B区走廊吊顶内电缆桥架与空调管道发生冲突的照片。",
+    "phone_id": "81"
+  },
+  {
+    "event_id": "4001",
+    "type": "photo",
+    "caption": "早餐餐桌上的食物",
+    "title": "IMG_20251001_071520",
+    "datetime": "2025-10-01 07:15:20",
+    "location": {
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "家中餐厅"
+    },
+    "faceRecognition": [
+      "王丽娟",
+      "陆子轩",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "海南鸡饭",
+      "鸡肉饭",
+      "家庭聚餐",
+      "节日早餐"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了早餐照片，显示海南鸡饭和家人在餐厅用餐。",
+    "phone_id": "82"
+  },
+  {
+    "type": "photo",
+    "event_id": "1957",
+    "caption": "家庭户外活动合影",
+    "title": "IMG_20250518_1030",
+    "datetime": "2025-05-18 10:30:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "滨海大道",
+      "streetNumber": "38号",
+      "poi": "中心大草坪"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "王丽娟",
+      "陆子轩",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "家庭",
+      "户外",
+      "野餐"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "合影",
+    "image_size": "4032×3024",
+    "summarized_info": "拍摄了家庭在户外草坪的合影。",
+    "phone_id": "83"
+  },
+  {
+    "event_id": "3979",
+    "type": "photo",
+    "caption": "蓝白相间的沙燕风筝平铺在旧报纸上，铅笔勾勒的祥云纹样清晰可见，旁边散落着蓝、白丙烯颜料和画笔。",
+    "title": "IMG_20250929_191520",
+    "datetime": "2025-09-29 19:15:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "",
+      "poi": "龙华法院住宅小区家中客厅"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "沙燕风筝",
+      "手工艺品",
+      "丙烯颜料",
+      "祥云纹样",
+      "绘制过程"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "标准",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张正在绘制中的沙燕风筝照片，风筝平铺在报纸上，颜料和画笔散落一旁。",
+    "phone_id": "84"
+  },
+  {
+    "type": "photo",
+    "event_id": "2726",
+    "caption": "合闸送电后，配电柜指示灯全部亮起，电压表显示读数正常。",
+    "title": "IMG_20250708_153510",
+    "datetime": "2025-07-08 15:35:10",
+    "location": {
+      "province": "某省",
+      "city": "某市",
+      "district": "某区",
+      "streetName": "某路",
+      "streetNumber": "某号",
+      "poi": "滨海新村3号楼配电间"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "配电柜",
+      "指示灯",
+      "电压表",
+      "送电成功",
+      "设备间"
+    ],
+    "ocrText": "电压 380V",
+    "shoot_mode": "专业",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了配电柜送电后指示灯和电压表显示正常的照片。",
+    "phone_id": "85"
+  },
+  {
+    "event_id": "1498",
+    "type": "photo",
+    "caption": "手机银行APP界面的截图，显示转账成功的提示信息。",
+    "title": "Screenshot_20250414_202802.jpg",
+    "datetime": "2025-04-14 20:28:02",
+    "location": null,
+    "faceRecognition": [],
+    "imageTag": [
+      "银行转账",
+      "328元",
+      "家庭账户",
+      "交易成功"
+    ],
+    "ocrText": "转账成功\n转账金额：328.00元\n收款方：*丽娟 (微信零钱-家庭零钱账户)\n交易时间：2025-04-14 20:25:10",
+    "shoot_mode": "自动",
+    "image_size": "1080×2400",
+    "summarized_info": "一张手机截图，显示了向家庭账户成功转账328元的记录。",
+    "phone_id": "86"
+  },
+  {
+    "type": "photo",
+    "event_id": "3794",
+    "caption": "指导学徒赵强进行空气开关更换操作，正在讲解验电笔的使用方法和安全规程。背景是客户家的配电箱。",
+    "title": "IMG_20250917_143022",
+    "datetime": "2025-09-17 14:30:22",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "海甸岛",
+      "streetNumber": "",
+      "poi": "某老旧小区客户家中"
+    },
+    "faceRecognition": [
+      "赵强"
+    ],
+    "imageTag": [
+      "配电箱",
+      "验电笔",
+      "空气开关",
+      "安全帽",
+      "教学",
+      "实操"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张指导学徒进行空气开关更换操作的照片，画面中他正在讲解安全规程。",
+    "phone_id": "87"
+  },
+  {
+    "event_id": "1156",
+    "type": "photo",
+    "caption": "高压柜三相母排接线已完成紧固，并用红色相色带标识。",
+    "title": "IMG_20250320_163000",
+    "datetime": "2025-03-20 16:30:00",
+    "location": {
+      "province": "海南省",
+      "city": "三亚市",
+      "district": "吉阳区",
+      "streetName": "榆亚路",
+      "streetNumber": "",
+      "poi": "大树之冠度假酒店项目工地地下配电房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "高压柜",
+      "电气接线",
+      "母排",
+      "配电房",
+      "现场工作"
+    ],
+    "ocrText": "A相 B相 C相 N相 已紧固",
+    "shoot_mode": "专业",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了完成接线和紧固后的高压柜母排照片。",
+    "phone_id": "88"
+  },
+  {
+    "event_id": "3980",
+    "type": "photo",
+    "caption": "傍晚时分，一个色彩鲜艳的沙燕风筝在渐暗的天空中翱翔，下方是两个小小的、模糊的奔跑身影。",
+    "title": "IMG_20250929_195020",
+    "datetime": "2025-09-29 19:50:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "不适用",
+      "poi": "龙华法院住宅小区楼下空地"
+    },
+    "faceRecognition": [
+      "陆子轩",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "风筝",
+      "天空",
+      "儿童",
+      "户外",
+      "傍晚"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "夜景",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张孩子们放飞风筝的照片，画面中是空中的沙燕风筝和下方奔跑的孩子。",
+    "phone_id": "89"
+  },
+  {
+    "type": "photo",
+    "event_id": "2727",
+    "caption": "抢修任务结束，3号楼前废旧电缆已全部装车运走，地面清扫完毕，现场恢复整洁。",
+    "title": "IMG_20250708_161520",
+    "datetime": "2025-07-08 16:15:20",
+    "location": {
+      "province": "浙江省",
+      "city": "宁波市",
+      "district": "北仑区",
+      "streetName": "滨海路",
+      "streetNumber": "**号",
+      "poi": "滨海新村社区3号楼前"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "施工现场",
+      "清理后",
+      "电缆盘",
+      "社区环境",
+      "抢修"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "普通",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张社区3号楼前抢修现场清理完毕后的照片，显示废旧电缆已装车运走，地面干净。",
+    "phone_id": "90"
+  },
+  {
+    "event_id": "2156",
+    "type": "photo",
+    "caption": "子轩成功放飞了风筝，大家都很开心。",
+    "title": "IMG_20250531_161230",
+    "datetime": "2025-05-31 16:12:30",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "滨海大道",
+      "streetNumber": "38号",
+      "poi": "万绿园"
+    },
+    "faceRecognition": [
+      "陆子轩",
+      "王丽娟",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "风筝",
+      "草坪",
+      "天空",
+      "户外活动"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "全景",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张儿子放风筝的照片，背景是万绿园的草坪和天空。",
+    "phone_id": "91"
+  },
+  {
+    "event_id": "4346",
+    "type": "photo",
+    "caption": "践行宴的菜肴，大家吃得开心。",
+    "title": "IMG_20251025_191234",
+    "datetime": "2025-10-25 19:12:34",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "家中餐厅"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "王丽娟",
+      "赵强"
+    ],
+    "imageTag": [
+      "海南鸡饭",
+      "白灼虾",
+      "家常菜",
+      "晚宴",
+      "海南特色菜"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "美食",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张践行宴菜肴的照片，照片识别出海南鸡饭和白灼虾等菜肴，拍摄地点在海南海口。",
+    "phone_id": "92"
+  },
+  {
+    "event_id": "1292",
+    "type": "photo",
+    "caption": "正在安装新的五孔插座面板，电线已连接好。",
+    "title": "IMG_20250329_1405",
+    "datetime": "2025-03-29 14:05:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "",
+      "poi": "龙华法院住宅小区家中厨房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "插座安装",
+      "电线连接",
+      "电工工作"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "普通",
+    "image_size": "2000x1500",
+    "summarized_info": "陆明强拍摄了一张正在安装新插座面板的照片，显示其动手操作的过程。",
+    "phone_id": "93"
+  },
+  {
+    "event_id": "4665",
+    "type": "photo",
+    "caption": "丰盛的烤鱼和烤串摆满一桌。",
+    "title": "IMG_20251116_185520",
+    "datetime": "2025-11-16 18:55:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "秀英大道",
+      "streetNumber": "29号",
+      "poi": "秀英万达广场烧烤大排档"
+    },
+    "faceRecognition": [
+      "陈斌"
+    ],
+    "imageTag": [
+      "烤鱼",
+      "烤串",
+      "聚餐",
+      "庆祝",
+      "跑友"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "拍摄了一张与跑友陈斌在烧烤店的聚餐照片。",
+    "phone_id": "94"
+  },
+  {
+    "event_id": "927",
+    "type": "photo",
+    "caption": "电缆抢修作业现场。一名身穿橙色工作服、头戴安全帽的同事正蹲在挖掘开的电缆沟旁，手持绝缘胶带进行包扎作业，旁边架设着应急照明灯。",
+    "title": "IMG_20250305_183025",
+    "datetime": "2025-03-05 18:30:25",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "海盛路",
+      "streetNumber": "",
+      "poi": "施工路段电缆沟"
+    },
+    "faceRecognition": [
+      "陈建国"
+    ],
+    "imageTag": [
+      "电力抢修",
+      "工友",
+      "绝缘包扎",
+      "电缆沟",
+      "安全帽",
+      "工作服",
+      "应急照明"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "夜景",
+    "image_size": "4032×3024",
+    "summarized_info": "拍摄了一张电缆抢修现场的照片，照片中识别到了同事陈建国正在作业。",
+    "phone_id": "95"
+  },
+  {
+    "type": "photo",
+    "event_id": "new_event_1",
+    "caption": "阳光花园二期，今天收工前的配电箱。活儿总算赶上了点进度。",
+    "title": "IMG_20250315_1745",
+    "datetime": "2025-03-15 17:45:20",
+    "location": {
+      "province": "浙江省",
+      "city": "杭州市",
+      "district": "萧山区",
+      "streetName": "建设一路",
+      "streetNumber": "",
+      "poi": "阳光花园二期工地"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "配电箱",
+      "电线",
+      "工地",
+      "工具"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "普通",
+    "image_size": "3024×4032",
+    "summarized_info": "一张在阳光花园二期工地拍摄的配电箱照片，记录了工作场景。",
+    "phone_id": "96"
+  },
+  {
+    "type": "photo",
+    "event_id": "new_event_1",
+    "caption": "阳光花园二期，今天收工前的配电箱。活儿总算赶上了点进度。",
+    "title": "IMG_20250315_1745",
+    "datetime": "2025-03-15 17:45:20",
+    "location": {
+      "province": "浙江省",
+      "city": "杭州市",
+      "district": "萧山区",
+      "streetName": "建设一路",
+      "streetNumber": "",
+      "poi": "阳光花园二期工地"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "配电箱",
+      "电线",
+      "工地",
+      "工具"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "普通",
+    "image_size": "3024×4032",
+    "summarized_info": "一张在阳光花园二期工地拍摄的配电箱照片，记录了工作场景。",
+    "phone_id": "96"
+  },
+  {
+    "event_id": "3766",
+    "type": "photo",
+    "caption": "某老旧小区单元楼楼梯间内，一个锈蚀严重的电表箱，内部线路杂乱，有几处接头老化明显。",
+    "title": "IMG_20250915_123000",
+    "datetime": "2025-09-15 12:30:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "海甸二东路",
+      "streetNumber": "41号附近",
+      "poi": "某老旧小区单元楼内"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "电表箱",
+      "老旧",
+      "锈蚀",
+      "电线",
+      "楼梯间"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "拍照",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张老旧小区楼梯间内锈蚀电表箱的照片，记录了线路杂乱和老化的隐患。",
+    "phone_id": "97"
+  },
+  {
+    "type": "photo",
+    "event_id": "1113",
+    "caption": "在社区卫生服务中心复诊时，医生正在亲自指导并纠正猫牛式、仰卧抱膝等腰部康复拉伸动作。",
+    "title": "康复指导_20250317",
+    "datetime": "2025-03-17 14:30:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "海秀路",
+      "streetNumber": "",
+      "poi": "海秀街道社区卫生服务中心诊室"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "医生指导",
+      "康复训练",
+      "拉伸动作",
+      "医疗"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "视频",
+    "image_size": "1920×1080",
+    "summarized_info": "陆明强在社区卫生服务中心录下了医生指导腰部康复动作的视频。",
+    "phone_id": "98"
+  },
+  {
+    "event_id": "3570",
+    "type": "photo",
+    "caption": "通勤路上看到的海秀快速路辅路旁的变电站，钢铁构架和交织的线路在阳光下形成强烈的几何感。",
+    "title": "IMG_20250902_123045",
+    "datetime": "2025-09-02 12:30:45",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "海秀快速路辅路",
+      "streetNumber": "",
+      "poi": "变电站附近"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "变电站",
+      "钢铁构架",
+      "线路",
+      "工业",
+      "几何",
+      "光影",
+      "通勤"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "专业",
+    "image_size": "4000×3000",
+    "summarized_info": "陆明强拍摄了一张海秀快速路辅路旁变电站的照片，内容主要是钢铁构架和线路，具有强烈的工业几何感。",
+    "phone_id": "99"
+  },
+  {
+    "event_id": "2369",
+    "type": "photo",
+    "caption": "完赛奖牌，阳光下闪闪发光。腰伤康复后的第一个5公里，值得纪念。",
+    "title": "IMG_20250615_084020.jpg",
+    "datetime": "2025-06-15 08:40:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "海甸六东路",
+      "streetNumber": "未识别",
+      "poi": "白沙门公园内"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "奖牌",
+      "跑步",
+      "完赛",
+      "户外"
+    ],
+    "ocrText": "欢乐跑 5KM 2025.06.15",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张5公里欢乐跑的完赛奖牌照片。",
+    "phone_id": "100"
+  },
+  {
+    "type": "photo",
+    "event_id": "2995",
+    "caption": "家宁安康补充医疗保险电子保单截图，被保险人：王丽娟，保单号：BA20250725****，生效日期2025-07-26。",
+    "title": "Screenshot_20250725_213520",
+    "datetime": "2025-07-25 21:35:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "家中书房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "截图",
+      "电子文档",
+      "保险"
+    ],
+    "ocrText": "安心保 家宁安康补充医疗保险 电子保单 被保险人：王丽娟 保险期间：2025-07-26至2026-07-25",
+    "shoot_mode": "标准",
+    "image_size": "1080×2340",
+    "phone_id": "101",
+    "summarized_info": "陆明强对为妻子王丽娟投保成功的电子保单进行了截图保存。"
+  },
+  {
+    "event_id": "769",
+    "type": "photo",
+    "caption": "陆子轩在公园草坪上奔跑，手中牵着风筝线，风筝在空中高高飞翔，阳光洒下形成逆光轮廓。",
+    "title": "IMG_20250223_1610",
+    "datetime": "2025-02-23 16:10:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "滨海大道",
+      "streetNumber": "",
+      "poi": "西秀公园"
+    },
+    "faceRecognition": [
+      "陆子轩"
+    ],
+    "imageTag": [
+      "放风筝",
+      "儿童",
+      "户外活动",
+      "逆光",
+      "公园"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张儿子陆子轩在西秀公园放风筝的照片，画面充满动感和幸福感。",
+    "phone_id": "102"
+  },
+  {
+    "event_id": "3578",
+    "type": "photo",
+    "caption": "辅导子涵写拼音，手把手纠正他的握笔姿势。",
+    "title": "IMG_20250902_193020.jpg",
+    "datetime": "2025-09-02 19:30:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区3栋502室",
+      "poi": "家中客厅学习角"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "写字",
+      "拼音",
+      "辅导",
+      "亲子",
+      "书桌"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "照片记录了陆明强正在手把手辅导次子陆子涵写字的场景。",
+    "phone_id": "103"
+  },
+  {
+    "event_id": "1977",
+    "type": "photo",
+    "caption": "一本摊开的笔记本，页面上有手写的《初级电工进阶学习要点》标题，下方列出了多个学习模块和要点，字迹工整。页面一角放着一支笔。",
+    "title": "IMG_20250519_151019",
+    "datetime": "2025-05-19 15:10:19",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "海盛路与向荣路交叉口附近",
+      "streetNumber": "",
+      "poi": "老旧小区改造现场临时休息区"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "笔记本",
+      "手写字",
+      "学习计划",
+      "工作现场"
+    ],
+    "ocrText": "初级电工进阶学习要点\n1. 图纸识读深化...\n2. 管线工艺标准...\n3. 安全规范实操...",
+    "shoot_mode": "文档",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张手写的《初级电工进阶学习要点》学习计划照片。",
+    "phone_id": "104"
+  },
+  {
+    "event_id": "3612",
+    "type": "photo",
+    "caption": "仰望视角下的塔吊巨臂，钢索与铰链在蓝天下勾勒出硬朗的几何线条，力量感扑面而来。",
+    "title": "IMG_20250903_104523",
+    "datetime": "2025-09-03 10:45:23",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "长滨路",
+      "streetNumber": "附近",
+      "poi": "某建筑项目工地外围"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "塔吊",
+      "工地",
+      "机械结构",
+      "工业",
+      "几何线条",
+      "钢铁",
+      "仰拍"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "专业",
+    "image_size": "4000×3000",
+    "summarized_info": "陆明强在工地外围拍摄了一张塔吊的照片，突出了其几何结构和力量感。",
+    "phone_id": "105"
+  },
+  {
+    "event_id": "1133",
+    "type": "photo",
+    "caption": "在出差宿舍清出的空地上准备开始腰部康复练习。",
+    "title": "IMG_20250318_180523",
+    "datetime": "2025-03-18 18:05:23",
+    "location": {
+      "province": "海南省",
+      "city": "三亚市",
+      "district": "吉阳区",
+      "streetName": "滨海路",
+      "streetNumber": null,
+      "poi": "海景度假酒店项目工地宿舍"
+    },
+    "faceRecognition": [
+      "陆明强"
+    ],
+    "imageTag": [
+      "宿舍",
+      "空地",
+      "健身垫"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "普通",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张在宿舍空地上准备开始康复练习的照片。",
+    "phone_id": "106"
+  },
+  {
+    "event_id": "973",
+    "type": "photo",
+    "caption": "陆子轩和陆子涵在老师指导下专注地进行陶艺拉坯，王丽娟在一旁微笑观看，工作台上散落着陶泥和工具。",
+    "title": "IMG_20250308_151023",
+    "datetime": "2025-03-08 15:10:23",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "羊山大道",
+      "streetNumber": "39号",
+      "poi": "观澜湖新城某手工坊"
+    },
+    "faceRecognition": [
+      "王丽娟",
+      "陆子轩",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "陶艺",
+      "拉坯",
+      "亲子活动",
+      "手工坊",
+      "微笑",
+      "家庭时光"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张孩子们和妻子在手工坊进行陶艺拉坯的照片，画面温馨欢乐。",
+    "phone_id": "107"
+  },
+  {
+    "type": "photo",
+    "event_id": "5015",
+    "caption": "技术论坛个人主页截图，显示我发布的配电柜改造帖子总点赞数已达87，最新评论时间为22:28。",
+    "title": "Screenshot_20251210_223523",
+    "datetime": "2025-12-10 22:35:23",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "",
+      "poi": "龙华法院住宅小区家中"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "手机截图",
+      "论坛界面",
+      "点赞数",
+      "评论"
+    ],
+    "ocrText": "我的帖子 关于老旧配电柜安全改造的几点经验分享 发布: 2025-12-09 总点赞: 87 最新评论: 2025-12-10 22:28 \"楼主经验宝贵，已收藏！\"",
+    "shoot_mode": "截图",
+    "image_size": "1080×2340",
+    "summarized_info": "我截图保存了论坛个人主页，显示我发布的配电柜改造经验帖获得了87个点赞和持续到夜间的新评论。",
+    "phone_id": "108"
+  },
+  {
+    "event_id": "3603",
+    "type": "photo",
+    "caption": "教导子涵系统整理书包后的效果：书本分层、作业本独立、文具盒侧袋。",
+    "title": "IMG_20250904_191500",
+    "datetime": "2025-09-04 19:15:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "poi": "龙华法院住宅小区家中客厅"
+    },
+    "faceRecognition": [
+      "陆子涵"
+    ],
+    "imageTag": [
+      "书包",
+      "书本",
+      "作业本",
+      "文具盒",
+      "整理"
+    ],
+    "ocrText": "语文 数学 英语 作业本",
+    "shoot_mode": "拍照",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张次子陆子涵整理好的书包照片，展示了书本分层、作业本单独放置、文具盒放侧袋的系统化整理成果。",
+    "phone_id": "109"
+  },
+  {
+    "event_id": "3792",
+    "type": "photo",
+    "caption": "工作间隙，在细雨中发现旧配电箱表面的水珠别有一番韵味。微距下的金属质感、斑驳的油漆和滚落的水痕，构成了偶然的工业美感。",
+    "title": "IMG_20250917_093215",
+    "datetime": "2025-09-17 09:32:15",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "海甸岛",
+      "streetNumber": "某老旧小区1号楼楼道",
+      "poi": "户外配电箱旁"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "配电箱",
+      "雨滴",
+      "水珠",
+      "金属表面",
+      "光影",
+      "工业",
+      "微距",
+      "老旧"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "微距",
+    "image_size": "3024x4032",
+    "summarized_info": "陆明强用手机微距模式拍摄了一张老旧配电箱表面汇聚滑落雨滴的照片，捕捉了雨天的工业细节。",
+    "phone_id": "110"
+  },
+  {
+    "event_id": "4070",
+    "type": "photo",
+    "caption": "中秋团聚晚餐，香辣烤鱼、多种月饼和饮料摆满餐桌，家人围坐欢笑。",
+    "title": "IMG_20251006_183000",
+    "datetime": "2025-10-06 18:30:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "家中餐厅"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "王丽娟",
+      "陆子轩",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "香辣烤鱼",
+      "月饼",
+      "丰盛晚餐",
+      "家庭聚会",
+      "饮料"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了中秋晚餐照片，显示食物丰盛和家人团聚。",
+    "phone_id": "111"
+  },
+  {
+    "type": "photo",
+    "event_id": "3290",
+    "caption": "配电房外墙上新贴的‘高压危险’和‘当心触电’安全标识，崭新醒目。旁边还有昨晚作业更换的新电缆段的接口特写。",
+    "title": "IMG_20250815_090510.jpg",
+    "datetime": "2025-08-15 09:05:10",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "poi": "龙华法院住宅小区配电房外"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "安全标识",
+      "电缆",
+      "配电房",
+      "工作现场"
+    ],
+    "ocrText": "高压危险\n当心触电",
+    "shoot_mode": "普通",
+    "image_size": "2000x1500",
+    "summarized_info": "陆明强在小区配电房外拍摄了新更换的安全标识和电缆接口照片。",
+    "phone_id": "112"
+  },
+  {
+    "type": "photo",
+    "event_id": "1097",
+    "caption": "在小区绿地，我和丽娟扶着树苗，子轩和子涵正在旁边认真地填土，一家人都笑得很开心。",
+    "title": "IMG_20250316_091523.jpg",
+    "datetime": "2025-03-16 09:15:23",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "",
+      "poi": "龙华法院住宅小区东南角绿地"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "王丽娟",
+      "陆子轩",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "植树",
+      "家庭活动",
+      "户外",
+      "绿地",
+      "树苗"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "4032×3024",
+    "summarized_info": "我拍摄了一张全家人在小区绿地一起植树的照片，大家表情愉悦。",
+    "phone_id": "113"
+  },
+  {
+    "event_id": "2686",
+    "type": "photo",
+    "caption": "客厅工作台上摆放着竹篾、棉线等材料，准备开始手工制作。",
+    "title": "IMG_20250705_193500",
+    "datetime": "2025-07-05 19:35:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区X栋XXX室",
+      "poi": "家中客厅"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "王丽娟",
+      "陆子轩",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "竹篾",
+      "棉线",
+      "工作台",
+      "手工制作",
+      "风筝材料"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张准备手工制作材料的照片，显示风筝材料和工作台。",
+    "phone_id": "114"
+  },
+  {
+    "event_id": "3629",
+    "type": "photo",
+    "caption": "一张用彩色画笔绘制的‘子涵每日学习时间表’，贴在墙上的学习角。表格清晰，内容为周一到周五的课后安排，包含学习、活动项目和时间。",
+    "title": "IMG_20250906_211205",
+    "datetime": "2025-09-06 21:12:05",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "家中次子房间学习角"
+    },
+    "faceRecognition": [
+      "陆子涵"
+    ],
+    "imageTag": [
+      "手绘表格",
+      "学习时间表",
+      "彩笔",
+      "A4纸",
+      "墙面"
+    ],
+    "ocrText": "子涵每日学习时间表 周一...",
+    "shoot_mode": "文档",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了与次子共同制作并张贴的‘子涵每日学习时间表’照片。",
+    "phone_id": "115"
+  },
+  {
+    "event_id": "3404",
+    "type": "photo",
+    "caption": "王叔家客厅的老化插座，插头接触不良。",
+    "title": "IMG_20250822_181520",
+    "datetime": "2025-08-22 18:15:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "",
+      "poi": "龙华法院住宅小区"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "插座",
+      "墙面",
+      "电线"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "一张拍摄于室内的老旧插座照片。",
+    "phone_id": "116"
+  },
+  {
+    "type": "photo",
+    "event_id": "2837",
+    "caption": "即将完工的沙燕风筝骨架，刚涂抹完白乳胶，放在阳台通风处晾干。",
+    "title": "IMG_20250715_203020",
+    "datetime": "2025-07-15 20:30:20",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "未知",
+      "poi": "家中阳台"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "风筝骨架",
+      "手工艺品",
+      "阳台",
+      "工作台"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "微距",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张刚完成加固、正在晾干的沙燕风筝骨架照片。",
+    "phone_id": "117"
+  },
+  {
+    "type": "photo",
+    "event_id": "1102",
+    "caption": "丽娟在厨房里忙碌的背影，灶台上摆着几个小碗和调料瓶，她正在专注地尝味道。",
+    "title": "IMG_20250316_175103",
+    "datetime": "2025-03-16 17:51:03",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "未知",
+      "poi": "家中厨房"
+    },
+    "faceRecognition": [
+      "王丽娟"
+    ],
+    "imageTag": [
+      "厨房",
+      "烹饪",
+      "尝试新配方",
+      "温馨"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "普通",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了妻子王丽娟在厨房尝试制作新菜品的背影照片，画面温馨。",
+    "phone_id": "118"
+  },
+  {
+    "event_id": "5044",
+    "type": "photo",
+    "caption": "向陈工友展示技术论坛上的帖子详情页截图，屏幕上显示着高点赞数、评论列表，以及一条未读私信消息的预览。",
+    "title": "Screenshot_20251212_135523_forum.png",
+    "datetime": "2025-12-12 13:55:23",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "永万路",
+      "streetNumber": "1号",
+      "poi": "南光中心写字楼休息角"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "手机屏幕截图",
+      "论坛界面",
+      "私信",
+      "点赞数"
+    ],
+    "ocrText": "帖子标题：工厂配电柜实战改造经验分享 点赞：1.2k 评论：356 私信（工厂-王主管）：陆工您好，仔细看了您的分享，非常专业。我们厂区也有类似需求，想具体咨询下施工细节和初步报价意向，方便详谈吗？",
+    "shoot_mode": "屏幕截图",
+    "image_size": "1080×2340",
+    "summarized_info": "一张手机屏幕截图，内容是一个技术论坛的帖子详情页，显示了高点赞和评论数，以及一条来自“工厂-王主管”的私信咨询施工细节和报价意向。",
+    "phone_id": "119"
+  },
+  {
+    "event_id": "1644",
+    "type": "photo",
+    "caption": "家庭综合意外险合同中的责任与免赔额条款页面。",
+    "title": "IMG_20250425_101500",
+    "datetime": "2025-04-25 10:15:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "家中主卧"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "保险合同",
+      "条款",
+      "免赔额"
+    ],
+    "ocrText": "保险责任...意外医疗费用...免赔额人民币100元...赔付比例90%...",
+    "shoot_mode": "文档",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了家庭综合意外险合同中关于保险责任和免赔额的条款页面。",
+    "phone_id": "120"
+  },
+  {
+    "event_id": "1103",
+    "type": "photo",
+    "caption": "餐桌中央摆着一盘精心调制的蘸料，妻子笑着说这是她根据记忆复刻的家传配方，家人围绕在旁。",
+    "title": "IMG_20250316_183050",
+    "datetime": "2025-03-16 18:30:50",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "家中餐厅"
+    },
+    "faceRecognition": [
+      "王丽娟",
+      "陆子轩",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "海南鸡饭蘸料",
+      "家庭聚餐",
+      "餐桌"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "美食",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张家庭晚餐照片，主要内容为妻子复刻的家传海南鸡饭蘸料以及家人的反应。",
+    "phone_id": "121"
+  },
+  {
+    "event_id": "1472",
+    "type": "photo",
+    "caption": "记录培训中的PPT内容，重点包括安全管理和任务分配部分。",
+    "title": "IMG_20250412_104015",
+    "datetime": "2025-04-12 10:40:15",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "美兰区",
+      "streetName": "文联路",
+      "streetNumber": "6号",
+      "poi": "职业技能培训中心报告厅"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "PPT",
+      "培训",
+      "管理技巧"
+    ],
+    "ocrText": "班组安全...沟通技巧...",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强在培训活动中拍摄了PPT照片，用于记录关键信息。",
+    "phone_id": "122"
+  },
+  {
+    "event_id": "737",
+    "type": "photo",
+    "caption": "楼道配电箱附近的线路，黑色绝缘套管有一段纵向裂口，内部电线隐约可见。",
+    "title": "IMG_20250221_103015",
+    "datetime": "2025-02-21 10:30:15",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "永万路",
+      "streetNumber": "碧海蓝天小区3号楼2单元",
+      "poi": "楼道配电间"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "电线",
+      "套管破损",
+      "配电箱",
+      "安全隐患"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张电力线路绝缘套管破损的照片作为工作记录。",
+    "phone_id": "123"
+  },
+  {
+    "event_id": "698",
+    "type": "photo",
+    "caption": "车间新设备调试，屏幕上显示故障代码查询界面。",
+    "title": "IMG_20250218_143015",
+    "datetime": "2025-02-18 14:30:15",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "永万路",
+      "streetNumber": "1号",
+      "poi": "南光中心写字楼一楼实操车间"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "工业设备",
+      "故障代码",
+      "屏幕截图",
+      "实操车间",
+      "高温高湿环境"
+    ],
+    "ocrText": "Fault Code: E05, High Temp & Humidity Alert",
+    "shoot_mode": "专业",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了一张车间新设备的照片，屏幕上显示着故障代码查询界面和高温高湿报警信息。",
+    "phone_id": "124"
+  },
+  {
+    "event_id": "2359",
+    "type": "photo",
+    "caption": "保险政策宣传册",
+    "title": "IMG_20250614_0920",
+    "datetime": "2025-06-14 09:20:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "南沙路",
+      "streetNumber": "",
+      "poi": "龙华区社区综合服务中心"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "宣传册",
+      "保险",
+      "文档"
+    ],
+    "ocrText": "灵活就业人员补充医疗保险...政策详情...",
+    "shoot_mode": "文档",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了社区提供的补充医疗保险宣传资料",
+    "phone_id": "125"
+  },
+  {
+    "type": "photo",
+    "event_id": "739",
+    "caption": "对碧海蓝天小区一处配电箱进行安全检查，记录设备状况。",
+    "title": "IMG_20250220_142020",
+    "datetime": "2025-02-20 14:20:00",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "秀英区",
+      "streetName": "未知",
+      "streetNumber": "未知",
+      "poi": "碧海蓝天小区"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "配电箱",
+      "安全检查",
+      "电力设施",
+      "小区",
+      "安全隐患检查"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "专业",
+    "image_size": "4032×3024",
+    "summarized_info": "陆明强拍摄了一张在碧海蓝天小区检查电力设施的照片。",
+    "phone_id": "126"
+  },
+  {
+    "event_id": "4086",
+    "type": "photo",
+    "caption": "2025年10月7日家庭晚餐，清蒸排骨、番茄炒蛋等清淡菜肴。",
+    "title": "IMG_20251007_190123",
+    "datetime": "2025-10-07 19:01:23",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "金宇东路",
+      "streetNumber": "龙华法院住宅小区",
+      "poi": "家中餐厅"
+    },
+    "faceRecognition": [
+      "陆明强",
+      "王丽娟",
+      "陆子轩",
+      "陆子涵"
+    ],
+    "imageTag": [
+      "家庭晚餐",
+      "清淡饮食",
+      "调节饮食"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "陆明强拍摄了10月7日家庭晚餐的照片，显示清淡菜肴。",
+    "phone_id": "127"
+  },
+  {
+    "event_id": "5293",
+    "type": "photo",
+    "caption": "手机银行APP转账成功页面的截屏。",
+    "title": "Screenshot_20251230_203515",
+    "datetime": "2025-12-30 20:35:15",
+    "location": {
+      "province": "海南省",
+      "city": "海口市",
+      "district": "龙华区",
+      "streetName": "国贸大道",
+      "streetNumber": "235号",
+      "poi": "汉南大厦内"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "手机截图",
+      "转账记录",
+      "银行APP"
+    ],
+    "ocrText": "转账成功 交易金额：3,218.00元 付款账号：尾号8876 收款人：泰康人寿保险 用途：保费支付",
+    "shoot_mode": "截屏",
+    "image_size": "1080×2400",
+    "summarized_info": "陆明强拍摄了一张手机银行转账成功页面的截图，显示向泰康人寿保险支付了3218元。",
+    "phone_id": "128"
+  }
+]

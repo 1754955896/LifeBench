@@ -1,0 +1,192 @@
+[
+  {
+    "name": "龙华法院住宅小区",
+    "location": "110.326158,20.013924",
+    "formatted_address": "海南省海口市龙华区金宇东路[]",
+    "city": "海口市",
+    "district": "龙华区",
+    "streetName": "金宇东路",
+    "streetNumber": [],
+    "description": "陆明强的常住住址，位于金贸中路，与配偶及两个孩子居住。"
+  },
+  {
+    "name": "南光中心写字楼",
+    "location": "110.267148,20.022298",
+    "formatted_address": "海南省海口市秀英区永万路1号",
+    "city": "海口市",
+    "district": "秀英区",
+    "streetName": "永万路",
+    "streetNumber": "1号",
+    "description": "陆明强的日常工作地，位于海盛路，是海口市电力工程服务有限公司的办公或施工地点。"
+  },
+  {
+    "name": "美兰实验小学",
+    "location": "110.360198,20.046997",
+    "formatted_address": "海南省海口市美兰区白龙北路1号",
+    "city": "海口市",
+    "district": "美兰区",
+    "streetName": "白龙北路",
+    "streetNumber": "1号",
+    "description": "陆明强长子就读的学校，海口市龙华区第一实验小学，位于美兰区，是孩子日常上学的固定地点。"
+  },
+  {
+    "name": "龙华区中心幼儿园",
+    "location": "110.301952,20.005999",
+    "formatted_address": "海南省海口市龙华区友谊路6号",
+    "city": "海口市",
+    "district": "龙华区",
+    "streetName": "友谊路",
+    "streetNumber": "6号",
+    "description": "陆明强次子就读的幼儿园，海口市龙华区金贸幼儿园，位于龙华区，是孩子日常上学的固定地点。"
+  },
+  {
+    "name": "海口西秀公园",
+    "location": "110.189968,20.024343",
+    "formatted_address": "海南省海口市秀英区[][]",
+    "city": "海口市",
+    "district": "秀英区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "陆明强常去的公园，如白沙门公园或万绿园，用于放风筝、跑步和家庭休闲活动。"
+  },
+  {
+    "name": "海口秀英万达广场烧烤大排档",
+    "location": "110.278330,19.980007",
+    "formatted_address": "海南省海口市秀英区秀英大道29号",
+    "city": "海口市",
+    "district": "秀英区",
+    "streetName": "秀英大道",
+    "streetNumber": "29号",
+    "description": "陆明强常去的大排档，用于与朋友聚餐、吃烤鱼等休闲活动。"
+  },
+  {
+    "name": "海口小巷茶店",
+    "location": "110.349855,20.039931",
+    "formatted_address": "文明一路54号",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "陆明强常去的茶店，用于喝老爸茶、与朋友交流或休闲放松。"
+  },
+  {
+    "name": "金宇东路日日隆小卖部",
+    "location": "110.329400,20.015977",
+    "formatted_address": "海南省海口市龙华区街道金宇东路[]",
+    "city": "海口市",
+    "district": "龙华区",
+    "streetName": "街道金宇东路",
+    "streetNumber": [],
+    "description": "居住小区附近的超市，用于日常购物和家庭生活用品采购"
+  },
+  {
+    "name": "生生产业园",
+    "location": "110.334759,20.011012",
+    "formatted_address": "南沙路35号",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住地附近的公园，用于带孩子放风筝或家庭休闲活动"
+  },
+  {
+    "name": "仁恒里必胜客餐厅",
+    "location": "110.265613,20.013379",
+    "formatted_address": "紫园路3号仁恒里·海棠公园F1层",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作地附近的快餐店，用于工作日午餐或快速用餐"
+  },
+  {
+    "name": "金楚小区便利店",
+    "location": "110.268925,20.011497",
+    "formatted_address": "海盛路33号金楚小区3栋",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作地附近的便利店，用于购买饮料、零食或日常小物品"
+  },
+  {
+    "name": "向荣路大排档",
+    "location": "110.269652,20.002811",
+    "formatted_address": "海南省海口市秀英区向荣路24号",
+    "city": "海口市",
+    "district": "秀英区",
+    "streetName": "向荣路",
+    "streetNumber": "24号",
+    "description": "工作地附近的大排档，用于与工友聚餐或吃烤鱼等休闲用餐"
+  },
+  {
+    "name": "龙湖天街鸿星尔克店",
+    "location": "110.331775,19.996625",
+    "formatted_address": "南海大道15号龙湖海南海口天街F2层",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住地附近的跑步道，用于日常跑步锻炼"
+  },
+  {
+    "name": "友谊路龙华区中心幼儿园",
+    "location": "110.301952,20.005999",
+    "formatted_address": "海南省海口市龙华区友谊路6号",
+    "city": "海口市",
+    "district": "龙华区",
+    "streetName": "友谊路",
+    "streetNumber": "6号",
+    "description": "孩子就读的幼儿园附近，用于接送孩子或相关活动"
+  },
+  {
+    "name": "海口市第十六小学",
+    "location": "110.353460,20.052502",
+    "formatted_address": "海甸二东路41号",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "孩子就读的小学附近，用于接送孩子或参加学校活动"
+  },
+  {
+    "name": "海口秀英万达广场火锅店",
+    "location": "110.277505,19.978159",
+    "formatted_address": "海榆中线29号万达广场三楼3008",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "常去的烧烤大排档附近，用于与朋友聚餐或家庭用餐"
+  },
+  {
+    "name": "堂善村儿童游乐场",
+    "location": "110.198516,20.012485",
+    "formatted_address": "海南省海口市秀英区[][]",
+    "city": "海口市",
+    "district": "秀英区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "常去的公园附近，用于放风筝、跑步或家庭休闲活动"
+  },
+  {
+    "name": "海口龙华五金建材店",
+    "location": "110.329384,20.014456",
+    "formatted_address": "南沙路33号",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住地附近的五金店，用于购买工具或家庭维修用品"
+  },
+  {
+    "name": "南沙路胡辣汤早餐店",
+    "location": "110.331612,20.011753",
+    "formatted_address": "金宇街道南沙路华泰公寓龙华014号34-2号",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住地附近的早餐店，用于日常早餐如海南粉"
+  }
+]

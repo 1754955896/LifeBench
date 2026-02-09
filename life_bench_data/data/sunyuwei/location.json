@@ -1,0 +1,112 @@
+[
+  {
+    "name": "云大小区住宅区",
+    "location": "102.721033,25.085281",
+    "formatted_address": "云南省昆明市五华区龙泉路343号",
+    "city": "昆明市",
+    "district": "五华区",
+    "streetName": "龙泉路",
+    "streetNumber": "343号",
+    "description": "日常居住的家庭住址，位于人民中路附近，与家人同住"
+  },
+  {
+    "name": "云南大学东陆校区",
+    "location": "102.702149,25.054035",
+    "formatted_address": "云南省昆明市五华区翠湖北路2号",
+    "city": "昆明市",
+    "district": "五华区",
+    "streetName": "翠湖北路",
+    "streetNumber": "2号",
+    "description": "就读的学校，云南大学主校区所在地，用于上课、学习和校园活动"
+  },
+  {
+    "name": "三联韬奋书店",
+    "location": "102.708366,25.061643",
+    "formatted_address": "云南省昆明市五华区学府路2号",
+    "city": "昆明市",
+    "district": "五华区",
+    "streetName": "学府路",
+    "streetNumber": "2号",
+    "description": "常去的独立书店（如明远书屋），用于阅读、写作和寻找灵感，每周约一两次"
+  },
+  {
+    "name": "金苑商厦健身房",
+    "location": "102.724990,25.067155",
+    "formatted_address": "云南省昆明市盘龙区北京路1035号",
+    "city": "昆明市",
+    "district": "盘龙区",
+    "streetName": "北京路",
+    "streetNumber": "1035号",
+    "description": "常去的瑜伽生活馆（如静心瑜伽生活馆），用于每周两次的瑜伽课程，以改善体态和缓解焦虑"
+  },
+  {
+    "name": "云纺花鸟市场",
+    "location": "102.707992,25.020927",
+    "formatted_address": "云南省昆明市西山区永兴路2号",
+    "city": "昆明市",
+    "district": "西山区",
+    "streetName": "永兴路",
+    "streetNumber": "2号",
+    "description": "常去的花卉市场（如斗南花市），用于购买花材以练习池坊流插花，与插花同好苏蔓同行"
+  },
+  {
+    "name": "云大小区北门便利店",
+    "location": "102.719394,25.085759",
+    "formatted_address": "云南省昆明市五华区[][]",
+    "city": "昆明市",
+    "district": "五华区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "居住小区附近的超市，用于日常购物"
+  },
+  {
+    "name": "云南大学东一院书店",
+    "location": "102.704433,25.055766",
+    "formatted_address": "云南省昆明市五华区北门街171号",
+    "city": "昆明市",
+    "district": "五华区",
+    "streetName": "北门街",
+    "streetNumber": "171号",
+    "description": "学校附近的书店，用于购买书籍或寻找灵感"
+  },
+  {
+    "name": "百分比健身中心",
+    "location": "102.725655,25.069229",
+    "formatted_address": "金江路130号久运商务楼五楼",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "健身场所附近的健身房，用于锻炼或瑜伽活动"
+  },
+  {
+    "name": "永兴路花卉市场",
+    "location": "102.707405,25.021134",
+    "formatted_address": "永兴路与永兴一号巷交叉口东北100米",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "花鸟市场附近的花店，用于购买花材学习插花"
+  },
+  {
+    "name": "云南省图书馆",
+    "location": "102.700163,25.045789",
+    "formatted_address": "云南省昆明市五华区翠湖南路141号",
+    "city": "昆明市",
+    "district": "五华区",
+    "streetName": "翠湖南路",
+    "streetNumber": "141号",
+    "description": "学校附近的图书馆，用于学习或查阅资料"
+  },
+  {
+    "name": "芳华里米轨文创集市",
+    "location": "102.738543,25.041176",
+    "formatted_address": "人民东路至东风东路段米轨铁路两侧",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "学校附近的文创市集，用于购买手账材料或寻找灵感"
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "name": "群英小区",
+    "location": "113.646141,34.790098",
+    "formatted_address": "河南省郑州市金水区街道群英路[]",
+    "city": "郑州市",
+    "district": "金水区",
+    "streetName": "街道群英路",
+    "streetNumber": [],
+    "description": "于晓雯的常住租房地址，位于金水区经三路附近，是她日常居住和生活的核心场所。"
+  },
+  {
+    "name": "郑州中心医院三甲医院",
+    "location": "113.612442,34.750679",
+    "formatted_address": "河南省郑州市中原区桐柏北路16号",
+    "city": "郑州市",
+    "district": "中原区",
+    "streetName": "桐柏北路",
+    "streetNumber": "16号",
+    "description": "于晓雯的工作单位郑州市中心医院所在地，位于中原区建设西路，是她日常工作的核心场所。"
+  },
+  {
+    "name": "芝麻街陶艺工作室",
+    "location": "113.596644,34.754229",
+    "formatted_address": "中原区1958芝麻街双创园F3栋1楼",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "于晓雯常去的陶艺兴趣班或工作室，是她定期参与陶艺学习和创作活动的固定场所。"
+  },
+  {
+    "name": "郑州奥体中心羽毛球馆",
+    "location": "113.530449,34.740808",
+    "formatted_address": "河南省郑州市中原区金尊路1号",
+    "city": "郑州市",
+    "district": "中原区",
+    "streetName": "金尊路",
+    "streetNumber": "1号",
+    "description": "于晓雯常去的羽毛球馆，是她每周固定进行羽毛球运动的场所，与球友林薇等人定期在此活动。"
+  },
+  {
+    "name": "丰乐路便民商店",
+    "location": "113.646892,34.786052",
+    "formatted_address": "河南省郑州市金水区[][]",
+    "city": "郑州市",
+    "district": "金水区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "居住小区附近的超市，用于日常购物和食品采购"
+  },
+  {
+    "name": "天旺广场儿童乐园",
+    "location": "113.639945,34.797826",
+    "formatted_address": "河南省郑州市金水区[]38号",
+    "city": "郑州市",
+    "district": "金水区",
+    "streetName": [],
+    "streetNumber": "38号",
+    "description": "居住小区附近的公园，用于晨跑、散步等户外活动"
+  },
+  {
+    "name": "天旺优库健身房",
+    "location": "113.641430,34.798327",
+    "formatted_address": "东风路与天明路交汇处西北角天旺优库南1号门负一楼",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住小区附近的健身房，用于规律运动"
+  },
+  {
+    "name": "群英路胡辣汤馆",
+    "location": "113.647021,34.790500",
+    "formatted_address": "群英路11-14号",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住小区附近的餐厅，用于日常用餐或与朋友聚会"
+  }
+]

@@ -6,7 +6,7 @@ import argparse
 import multiprocessing
 import time
 from datetime import datetime,timedelta
-
+import sys
 
 def ensure_directory_exists(directory):
     """确保目录存在，如果不存在则创建"""

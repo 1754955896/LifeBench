@@ -1,0 +1,713 @@
+[
+  {
+    "name": "于晓薇",
+    "birth": "1986-03-14",
+    "age": 35,
+    "nationality": "汉",
+    "home_address": {
+      "province": "香港特别行政区",
+      "city": "香港",
+      "district": "九龙城区",
+      "street_name": "太子道西",
+      "street_number": "328号"
+    },
+    "birth_place": {
+      "province": "香港特别行政区",
+      "city": "香港",
+      "district": "九龙城区"
+    },
+    "gender": "女",
+    "education": "普通高中",
+    "job": "保险代理人",
+    "occupation": "香港友邦保险（AIA）",
+    "workplace": {
+      "province": "香港特别行政区",
+      "city": "香港",
+      "district": "湾仔区",
+      "street_name": "告士打道",
+      "street_number": "138号友邦大厦"
+    },
+    "belief": "不信仰宗教",
+    "salary": 300000.0,
+    "body": {
+      "height": 155,
+      "weight": 55.0,
+      "BMI": 22.89
+    },
+    "family": "初婚有配偶，育有2个孩子（一子一女）",
+    "personality": {
+      "mbti": "ESFJ",
+      "traits": [
+        "事业导向",
+        "传统",
+        "精神满足导向"
+      ]
+    },
+    "hobbies": [
+      "瑜伽健身",
+      "马拉松",
+      "与朋友聚会",
+      "逛街购物",
+      "在家听音乐",
+      "做手工刺绣，专注于传统粤绣工艺",
+      "养宠物（猫）"
+    ],
+    "favorite_foods": [
+      "港式奶茶",
+      "菠萝油",
+      "云吞面",
+      "烧腊双拼"
+    ],
+    "memory_date": [
+      "2010-05-20：结婚纪念日",
+      "2015-08-15：长子出生日"
+    ],
+    "aim": [
+      "三年内晋升为区域销售经理",
+      "五年内带家人完成一次日本深度游",
+      "每年坚持完成至少两次半程马拉松"
+    ],
+    "healthy_desc": "个人整体健康状况良好，无慢性病。她将运动视为生活方式的一部分，定期进行瑜伽和马拉松训练，但运动模式偏向有目标的训练和赛事参与，而非日常例行活动。体检习惯为不定期，大约一年就医一次。个人护理习惯良好，注重饮食和间歇性高强度运动维持健康。",
+    "lifestyle_desc": "生活习惯以社交和家庭为中心，休闲活动频繁。信息获取主要依赖互联网，每天都会上网。媒体使用方面，每天在家听音乐，每月数次看电视和做手工。社交活动非常活跃，每周数次与朋友聚会、逛街购物以及与不住在一起的亲戚聚会，但较少参与看电影、读书或参观文化活动等。每年有11至20个晚上因度假或探亲而不在家，显示出一定的出行频率。生活风格务实且注重人际关系，享受在熟悉社交圈中的互动与放松。",
+    "economic_desc": "家庭经济状况稳定，她个人年收入约30万元，配偶年收入约10万元，家庭年收入合计约40万元，且收入多于支出。拥有一处房产和家用小汽车。消费习惯上偶尔会使用信用卡等透支方式。目前家庭没有任何股票、基金、债券等金融投资活动，理财风格偏向保守，更注重资产的安全性和流动性，投资活动可能集中于房产自住。",
+    "work_desc": "工作为受雇于一家私有/民营企业的保险代理人，每周工作时间约40小时，规律白班，通勤单程时间约60分钟。工作内容以销售和客户关系维护为主，重体力或重脑力劳动的情况很少。对当前工作非常满意，并且同时兼有多份工作，可能涉及不同保险产品的代理或客户拓展，显示出较强的事业心和业务能力。",
+    "experience_desc": "出生于香港九龙城区，并一直在此地居住，户口从未迁移。2005年高中毕业后，第一份工作是在一家工厂担任包装工人（非技术工人），受雇于他人。通过夜校学习保险知识，于2010年考取保险代理资格，加入香港友邦保险，转型进入保险销售行业。凭借出色的沟通能力和勤奋，逐步建立起自己的客户网络，并在香港成家立业，养育两个孩子。人生经历体现了从基层劳动到专业销售的职业跨越，以及扎根本地、经营家庭的生活轨迹。",
+    "description": "于晓薇是一位35岁的香港女性保险代理人，就职于香港友邦保险。她出生于并一直生活在香港，拥有高中教育背景。作为ESFJ（执政官型）人格，她热心、负责且重视人际关系，价值观偏向事业导向、传统和精神满足。她已婚并育有两个孩子，家庭年收入约40万元，经济状况稳定，拥有房产和汽车，投资风格保守。于晓薇健康状况良好，无慢性病，她将运动融入生活，热爱瑜伽和挑战马拉松。她的生活方式高度社交化，每周频繁与朋友、亲戚聚会和逛街，同时每天使用互联网获取信息并享受音乐。工作中，她是一名勤奋且满意的保险销售，通勤时间较长但善于管理时间，并兼有多份工作以拓展事业。生活中，她常为家庭组织聚会，并计划定期参加马拉松赛事。未来，她希望晋升为区域经理，带家人赴日旅行，并持续她的跑步爱好。",
+    "relation": [
+      [
+        {
+          "name": "陈美玲",
+          "relation": "母亲",
+          "social circle": "家庭圈",
+          "gender": "女",
+          "age": 62,
+          "birth_date": "1962-08-22",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区",
+            "street_name": "太子道西",
+            "street_number": "328号"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区"
+          },
+          "personality": "ISFJ",
+          "economic_level": "小康",
+          "occupation": "退休小学教师",
+          "organization": "九龙塘宣道小学（已退休）",
+          "nickname": "阿妈",
+          "relation_description": "于晓薇的母亲，一直与女儿一家同住，帮忙照顾外孙子女。母女关系亲密，于晓薇每天下班回家都会与母亲聊天，分享工作见闻和孩子的趣事。周末家庭聚餐通常由母亲主厨，准备传统的粤菜。母亲是于晓薇重要的情感支持，在她工作压力大或需要育儿建议时，总是第一个倾诉和求助的对象。"
+        },
+        {
+          "name": "于国强",
+          "relation": "父亲",
+          "social circle": "家庭圈",
+          "gender": "男",
+          "age": 65,
+          "birth_date": "1959-12-05",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区",
+            "street_name": "太子道西",
+            "street_number": "328号"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区"
+          },
+          "personality": "ISTJ",
+          "economic_level": "小康",
+          "occupation": "退休巴士司机",
+          "organization": "九龙巴士有限公司（已退休）",
+          "nickname": "老豆",
+          "relation_description": "于晓薇的父亲，退休后与妻子同住，平日喜欢到公园下棋、读报。父女关系传统而含蓄，交流多围绕家庭事务和孙辈教育。于晓薇会定期给父亲零用钱，并在父亲节等重要日子一起外出饮茶。父亲偶尔会对于晓薇的马拉松爱好表示担心，但更多的是默默支持，有时会去终点等她。"
+        },
+        {
+          "name": "张伟明",
+          "relation": "丈夫",
+          "social circle": "家庭圈",
+          "gender": "男",
+          "age": 38,
+          "birth_date": "1985-10-30",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区",
+            "street_name": "太子道西",
+            "street_number": "328号"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "观塘区"
+          },
+          "personality": "ISTP",
+          "economic_level": "小康",
+          "occupation": "空调维修技术员",
+          "organization": "香港机电工程服务公司",
+          "nickname": "明仔",
+          "relation_description": "于晓薇的丈夫，性格沉稳务实。两人于2010年结婚，育有一子一女。张伟明工作稳定但收入不高，主要负责家庭的后勤保障和子女的日常接送。夫妻分工明确，于晓薇主外拓展事业，张伟明主内维护家庭运转。他们每周会抽出一个晚上单独外出吃饭或看电影，是彼此最重要的伴侣。张伟明虽然不热衷跑步，但会在于晓薇参加马拉松时担任后勤，负责照顾孩子和准备补给。"
+        },
+        {
+          "name": "张子轩",
+          "relation": "儿子",
+          "social circle": "家庭圈",
+          "gender": "男",
+          "age": 8,
+          "birth_date": "2015-08-15",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区",
+            "street_name": "太子道西",
+            "street_number": "328号"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区"
+          },
+          "personality": "ENFP",
+          "economic_level": "无收入",
+          "occupation": "小学生",
+          "organization": "九龙塘官立小学",
+          "nickname": "轩轩",
+          "relation_description": "于晓薇的长子，活泼好动，正在读小学三年级。于晓薇非常重视儿子的教育，每晚都会检查他的功课，周末送他去参加足球兴趣班。母子关系亲密，张子轩会跟妈妈分享学校里的趣事。于晓薇有时会带着儿子一起进行短距离的慢跑，培养他的运动习惯。"
+        },
+        {
+          "name": "张雨欣",
+          "relation": "女儿",
+          "social circle": "家庭圈",
+          "gender": "女",
+          "age": 5,
+          "birth_date": "2018-03-10",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区",
+            "street_name": "太子道西",
+            "street_number": "328号"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区"
+          },
+          "personality": "ISFP",
+          "economic_level": "无收入",
+          "occupation": "幼儿园学生",
+          "organization": "九龙城浸信会幼儿园",
+          "nickname": "欣欣",
+          "relation_description": "于晓薇的小女儿，性格文静，喜欢画画和跟着外婆学做手工。于晓薇对女儿宠爱有加，经常在逛街时给她买小裙子和发饰。晚上睡前，于晓薇会给女儿讲故事。女儿是她忙碌工作后最好的慰藉，看到女儿的笑容能让她忘记疲惫。"
+        },
+        {
+          "name": "于晓峰",
+          "relation": "弟弟",
+          "social circle": "家庭圈",
+          "gender": "男",
+          "age": 32,
+          "birth_date": "1991-07-19",
+          "home_address": {
+            "province": "广东省",
+            "city": "深圳市",
+            "district": "南山区",
+            "street_name": "科技园南区",
+            "street_number": "高新南一道6号TCL大厦"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区"
+          },
+          "personality": "ENTJ",
+          "economic_level": "中产",
+          "occupation": "互联网公司产品经理",
+          "organization": "腾讯科技（深圳）有限公司",
+          "nickname": "细佬",
+          "relation_description": "于晓薇的弟弟，比她小三岁。姐弟俩从小感情很好。于晓峰大学毕业后选择到深圳发展，在互联网行业打拼，现已定居。他们主要通过微信视频保持联系，每周至少通话一次，聊聊近况、吐槽工作或分享育儿经（于晓峰也刚有了孩子）。每逢香港或内地长假，于晓峰会携家带口回香港探亲，姐弟两家会一起聚餐、带孩子去迪士尼或海洋公园玩。于晓薇有时也会向弟弟咨询一些理财和科技产品的问题。"
+        },
+        {
+          "name": "李淑芬",
+          "relation": "婆婆",
+          "social circle": "家庭圈",
+          "gender": "女",
+          "age": 68,
+          "birth_date": "1955-04-12",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "观塘区",
+            "street_name": "康宁道",
+            "street_number": "45号金桥华厦"
+          },
+          "birth_place": {
+            "province": "广东省",
+            "city": "江门市"
+          },
+          "personality": "ESFJ",
+          "economic_level": "温饱",
+          "occupation": "退休制衣厂女工",
+          "organization": "观塘联合制衣厂（已退休）",
+          "nickname": "奶奶",
+          "relation_description": "张伟明的母亲，于晓薇的婆婆。婆婆独自居住在观塘区，性格开朗健谈。婆媳关系融洽，于晓薇每月会带孩子们去探望婆婆一至两次，一起饮茶或在家吃饭。婆婆擅长煲汤，每次都会准备于晓薇爱喝的青红萝卜煲猪骨汤。传统节日如春节、中秋，一家人会聚在婆婆家过节。婆婆很以儿子和孙子孙女为荣，经常向街坊邻里夸赞儿媳能干。"
+        }
+      ],
+      [
+        {
+          "name": "林嘉欣",
+          "relation": "闺蜜",
+          "social_circle": "发小圈",
+          "gender": "女",
+          "age": 35,
+          "birth_date": "1986-07-22",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "深水埗区",
+            "street_name": "福荣街",
+            "street_number": "58号"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区"
+          },
+          "personality": "ENFJ",
+          "economic_level": "小康",
+          "occupation": "小学教师",
+          "organization": "九龙塘宣道小学",
+          "nickname": "欣欣",
+          "relation_description": "林嘉欣是于晓薇从小一起长大的发小，两人从幼稚园到高中都是同学。她性格开朗热情，善于组织活动，是三人闺蜜圈的核心联络人。目前在香港一所小学担任教师，工作稳定。两人虽居住在不同区域，但联系非常紧密，每周至少会通一次电话或视频聊天，分享工作、家庭和孩子教育的琐事。每月会固定聚会一至两次，通常是周末一起喝下午茶、逛街购物，或者带上各自的孩子去公园游玩。每年于晓薇的生日和重要纪念日，林嘉欣都会精心准备礼物并组织小型庆祝。"
+        },
+        {
+          "name": "黄文慧",
+          "relation": "闺蜜",
+          "social_circle": "发小圈",
+          "gender": "女",
+          "age": 36,
+          "birth_date": "1985-11-03",
+          "home_address": {
+            "province": "广东省",
+            "city": "深圳市",
+            "district": "南山区",
+            "street_name": "科技园南区",
+            "street_number": "高新南一道8号"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区"
+          },
+          "personality": "ISTP",
+          "economic_level": "富裕",
+          "occupation": "互联网公司产品经理",
+          "organization": "腾讯科技（深圳）有限公司",
+          "nickname": "阿慧",
+          "relation_description": "黄文慧是于晓薇和林嘉欣共同的发小，高中毕业后赴内地读大学并留在深圳发展。她性格冷静务实，逻辑性强，目前在深圳一家知名互联网公司担任产品经理。由于分隔两地，她与于晓薇、林嘉欣主要通过线上群组保持联系，几乎每天都会在群里分享生活见闻或讨论热点话题。虽然见面频率较低，大约每季度一次，但每次黄文慧回香港探亲或于晓薇、林嘉欣去深圳游玩时，三人必定会抽出时间相聚，通常会选择环境舒适的餐厅进行长谈，更新彼此的近况。黄文慧也是于晓薇在考虑家庭理财和保险规划时，会咨询其专业意见的对象之一。"
+        }
+      ],
+      [
+        {
+          "name": "何俊杰",
+          "relation": "同学",
+          "social circle": "高中同学圈",
+          "gender": "男",
+          "age": 36,
+          "birth_date": "1987-08-22",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "沙田区",
+            "street_name": "沙田正街",
+            "street_number": "18号沙田中心"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区"
+          },
+          "personality": "ESTP",
+          "economic_level": "中产",
+          "occupation": "汽车销售经理",
+          "organization": "皇冠汽车有限公司",
+          "nickname": "阿杰",
+          "relation_description": "何俊杰是于晓薇的高中同学，两人在九龙城区的同一所中学就读。毕业后，何俊杰进入汽车销售行业，凭借出色的交际能力逐步晋升。他与于晓薇及几位老同学保持着联系，每年会组织一两次高中同学聚会，通常在港式茶餐厅或火锅店。他们现在都在香港生活，但居住在不同区域，平时主要通过WhatsApp群组分享生活近况和行业信息，偶尔会因保险或购车咨询而单独联系。何俊杰性格外向，是聚会中的活跃分子。"
+        },
+        {
+          "name": "周敏仪",
+          "relation": "同学",
+          "social circle": "高中同学圈",
+          "gender": "女",
+          "age": 35,
+          "birth_date": "1986-11-05",
+          "home_address": {
+            "province": "广东省",
+            "city": "深圳市",
+            "district": "南山区",
+            "street_name": "科技园南区",
+            "street_number": "高新南一道飞亚达科技大厦"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "九龙城区"
+          },
+          "personality": "ISFJ",
+          "economic_level": "中产",
+          "occupation": "财务分析师",
+          "organization": "腾讯控股有限公司",
+          "nickname": "Mandy",
+          "relation_description": "周敏仪是于晓薇的高中同桌兼好友，两人关系亲密。高中毕业后，周敏仪赴内地读大学并留在深圳发展，目前在一家互联网公司担任财务分析师。尽管分隔两地，她们的感情并未疏远，主要通过微信视频和语音保持联系，频率大约每周一次，分享育儿心得、工作烦恼和生活趣事。于晓薇去深圳出差或周敏仪回香港探亲时，她们一定会见面，一起逛街、品尝美食或做SPA。周敏仪性格温和细腻，是于晓薇可以倾诉心事的对象，她也认识何俊杰和王志远，常在同学群中互动。"
+        },
+        {
+          "name": "王志远",
+          "relation": "同学",
+          "social circle": "高中同学圈",
+          "gender": "男",
+          "age": 36,
+          "birth_date": "1987-01-30",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "中西区",
+            "street_name": "德辅道中",
+            "street_number": "308号富裕大厦"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "湾仔区"
+          },
+          "personality": "INTJ",
+          "economic_level": "中产",
+          "occupation": "资讯科技顾问",
+          "organization": "电讯盈科企业方案",
+          "nickname": "Wilson",
+          "relation_description": "王志远是于晓薇的高中同学，曾是班上的学习委员。他性格沉稳，逻辑性强，大学攻读计算机科学，现为IT顾问。他与于晓薇、何俊杰、周敏仪同属一个紧密的高中同学圈。王志远目前独居在香港岛，工作忙碌但注重生活品质。他与同学们的联系频率相对较低，大约每月在群组里交流几次，但每次重要的同学聚会他都会参加。聚会时，他常与何俊杰讨论汽车科技，也会给于晓薇和周敏仪一些电子产品和网络安全方面的实用建议。大家欣赏他的专业和可靠。"
+        }
+      ],
+      [
+        {
+          "name": "刘家辉",
+          "relation": "工友",
+          "social circle": "第一份工作圈",
+          "gender": "男",
+          "age": 37,
+          "birth_date": "1987-08-22",
+          "home_address": {
+            "province": "广东省",
+            "city": "深圳市",
+            "district": "龙岗区",
+            "street_name": "坂田街道五和大道",
+            "street_number": "89号"
+          },
+          "birth_place": {
+            "province": "湖南省",
+            "city": "邵阳市"
+          },
+          "personality": "ISTP",
+          "economic_level": "中等",
+          "occupation": "物流仓储主管",
+          "organization": "深圳某国际物流公司华南仓",
+          "nickname": "辉哥",
+          "relation_description": "刘家辉是于晓薇2005年高中毕业后进入第一份工厂工作时认识的工友，两人当时同在包装流水线上工作，关系融洽。2007年，刘家辉离职前往深圳发展，起初在电子厂工作，后通过自学转型进入物流行业，目前负责仓库的日常运营管理。两人虽分隔两地，但通过微信保持联系，每年春节会互发问候和电子红包，偶尔会分享生活近况和行业信息。于晓薇去深圳出差或旅游时，会尝试约他见面吃饭叙旧，但频率不高，大约两三年一次。刘家辉性格务实、动手能力强，对于晓薇从工人转型为保险销售的成功经历表示钦佩。"
+        }
+      ],
+      [
+        {
+          "name": "梁振华",
+          "relation": "上司",
+          "social circle": "工作圈",
+          "gender": "男",
+          "age": 42,
+          "birth_date": "1982-08-22",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "东区",
+            "street_name": "太古城道",
+            "street_number": "18号太古城中心某座"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "湾仔区"
+          },
+          "personality": "ENTJ",
+          "economic_level": "中产",
+          "occupation": "区域销售总监",
+          "organization": "香港友邦保险（AIA）",
+          "nickname": "华哥",
+          "relation_description": "梁振华是于晓薇在香港友邦保险的直接上司，担任区域销售总监。两人相识于2012年，当时于晓薇刚转入保险行业不久，梁振华作为团队主管给予了她很多业务指导和客户资源支持。梁振华欣赏于晓薇的勤奋和客户维系能力，经常在团队会议中表扬她的业绩。他们每周都有固定的团队例会，平时主要通过公司内部通讯软件和电话沟通工作。偶尔在完成季度目标后，梁振华会组织团队聚餐，于晓薇通常是积极参与者。两人目前都在香港生活和工作，联系频率较高，属于亦师亦友的职场关系。"
+        },
+        {
+          "name": "苏丽珊",
+          "relation": "同事",
+          "social circle": "工作圈",
+          "gender": "女",
+          "age": 33,
+          "birth_date": "1991-05-30",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "荃湾区",
+            "street_name": "青山公路",
+            "street_number": "荃湾段289号"
+          },
+          "birth_place": {
+            "province": "广东省",
+            "city": "深圳市",
+            "district": "罗湖区"
+          },
+          "personality": "ENFP",
+          "economic_level": "小康",
+          "occupation": "高级保险顾问",
+          "organization": "香港友邦保险（AIA）",
+          "nickname": "珊珊",
+          "relation_description": "苏丽珊是于晓薇在同一团队的同事，两人共事超过五年。苏丽珊出生于深圳，后来到香港发展。她们因经常一起跑客户、分享销售技巧而熟络起来。苏丽珊性格开朗，是团队里的气氛担当，常常在午休时约于晓薇一起到公司附近的茶餐厅吃菠萝油和港式奶茶。两人在工作上互相照应，有时会合作处理交叉客户。私下里，她们每月会有一两次逛街聚会，交流育儿心得（苏丽珊有一个三岁的女儿），也会互相推荐瑜伽课程。虽然都住在香港，但一个在九龙一个在荃湾，见面需要特意安排，日常更多是通过微信保持联系。"
+        },
+        {
+          "name": "郭俊伟",
+          "relation": "同事",
+          "social circle": "工作圈",
+          "gender": "男",
+          "age": 38,
+          "birth_date": "1986-12-10",
+          "home_address": {
+            "province": "广东省",
+            "city": "广州市",
+            "district": "天河区",
+            "street_name": "体育东路",
+            "street_number": "112号"
+          },
+          "birth_place": {
+            "province": "福建省",
+            "city": "厦门市",
+            "district": "思明区"
+          },
+          "personality": "ISTP",
+          "economic_level": "中产",
+          "occupation": "保险精算与产品专员",
+          "organization": "香港友邦保险（AIA）",
+          "nickname": "阿伟",
+          "relation_description": "郭俊伟是于晓薇在友邦保险的同事，负责精算与保险产品设计支持。他出生于厦门，目前常驻广州分公司，但因工作需要经常与香港的销售团队进行线上会议。两人相识于公司组织的产品培训会，郭俊伟专业、冷静的产品讲解给于晓薇留下了深刻印象。此后，于晓薇在向客户推荐复杂保险产品时，常会通过电话或视频向郭俊伟咨询细节。郭俊伟偶尔来香港总部出差时，会与包括于晓薇、苏丽珊在内的几位同事一起吃饭。由于分处两地，他们的联系主要是工作驱动，频率约为每周一两次，关系专业而友好。于晓薇欣赏他对产品的深刻理解，这帮助她更好地服务高端客户。"
+        }
+      ],
+      [
+        {
+          "name": "陈美玲",
+          "relation": "客户",
+          "social_circle": "客户圈",
+          "gender": "女",
+          "age": 48,
+          "birth_date": "1977-05-22",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "东区",
+            "street_name": "太古城道",
+            "street_number": "太古城金殿台一座"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港"
+          },
+          "personality": "ISFJ",
+          "economic_level": "富裕",
+          "occupation": "家庭主妇",
+          "organization": "无",
+          "nickname": "陈太",
+          "relation_description": "陈美玲是于晓薇五年前通过朋友介绍认识的客户，主要为其家庭配置了全面的医疗、储蓄及子女教育保险。她是一位全职太太，家境优渥，性格温和细致，非常信任于晓薇的专业建议。两人目前同在香港生活，联系频率约为每季度一次，通常由于保单周年检视、新产品咨询或节日问候而联系，偶尔会约在铜锣湾的茶餐厅一边喝下午茶一边讨论家庭财务规划。于晓薇视她为重要的长期客户兼朋友。"
+        },
+        {
+          "name": "王启明",
+          "relation": "客户",
+          "social_circle": "客户圈",
+          "gender": "男",
+          "age": 42,
+          "birth_date": "1982-11-30",
+          "home_address": {
+            "province": "广东省",
+            "city": "深圳市",
+            "district": "南山区",
+            "street_name": "科技园南区",
+            "street_number": "粤海街道海天二路软件产业基地5栋"
+          },
+          "birth_place": {
+            "province": "福建省",
+            "city": "厦门市"
+          },
+          "personality": "ENTJ",
+          "economic_level": "中产",
+          "occupation": "科技公司联合创始人兼首席技术官",
+          "organization": "深圳智云科技有限公司",
+          "nickname": "王总",
+          "relation_description": "王启明是于晓薇三年前在一次行业分享会上认识的客户，当时他刚在香港设立分公司，需要为高管团队配置团体保险及个人高端医疗险。他是一位在深圳创业的科技精英，思维敏捷，决策果断。由于工作地点主要在深圳，两人主要通过微信和电话沟通，平均每两个月联系一次，讨论保单服务或根据其家庭状况变化调整保障方案。每年王启明来香港出差一两次时，他们会约在中环的咖啡厅见面详谈。于晓薇欣赏他的事业心，并努力为其提供符合其高流动性生活方式的保险解决方案。"
+        }
+      ],
+      [
+        {
+          "name": "赵志明",
+          "relation": "教练",
+          "social circle": "马拉松圈",
+          "gender": "男",
+          "age": 42,
+          "birth_date": "1982-08-22",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "沙田区",
+            "street_name": "沙田正街",
+            "street_number": "18号沙田中心"
+          },
+          "birth_place": {
+            "province": "广东省",
+            "city": "广州市"
+          },
+          "personality": "ESTJ",
+          "economic_level": "中产",
+          "occupation": "健身教练/马拉松私人教练",
+          "organization": "香港活力健身中心",
+          "nickname": "赵教练",
+          "relation_description": "于晓薇在2018年报名参加半程马拉松训练营时认识了赵教练。他是训练营的主教练，专业且严格，为于晓薇制定了系统的训练计划。两人相处时主要是教练与学员的关系，讨论训练进度、跑步技巧和赛事策略。于晓薇因备赛或遇到训练瓶颈时会主动联系他。他们都在香港生活，通常每周在训练营见面两次，偶尔也会通过WhatsApp交流训练心得。赵教练与跑友沈佩雯也相识，有时会组织小范围的跑团聚餐。"
+        },
+        {
+          "name": "沈佩雯",
+          "relation": "跑友",
+          "social circle": "马拉松圈",
+          "gender": "女",
+          "age": 33,
+          "birth_date": "1991-05-30",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "观塘区",
+            "street_name": "牛头角道",
+            "street_number": "33号得宝花园"
+          },
+          "birth_place": {
+            "province": "福建省",
+            "city": "厦门市"
+          },
+          "personality": "ENFP",
+          "economic_level": "小康",
+          "occupation": "小学教师",
+          "organization": "香港保良局陈守仁小学",
+          "nickname": "阿雯",
+          "relation_description": "沈佩雯和于晓薇是在2019年的一次周末晨跑活动中认识的，因为配速相近而结伴。两人性格互补，于晓薇务实，沈佩雯活泼，相处时话题从跑步延伸到家庭、工作和购物。她们会因相约周末长距离拉练、分享新的跑步路线或吐槽赛事组织而联系。见面时除了跑步，也常一起喝港式奶茶、逛街。两人同在香港生活，联系频率较高，通常每周会见面跑步一至两次，并在社交媒体上频繁互动。她们共同认识教练赵志明，三人偶尔会一起参加跑团活动。"
+        }
+      ],
+      [
+        {
+          "name": "吴秀英",
+          "relation": "老师",
+          "social_circle": "粤绣兴趣圈",
+          "gender": "女",
+          "age": 68,
+          "birth_date": "1956-08-22",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "深水埗区",
+            "street_name": "荔枝角道",
+            "street_number": "245号"
+          },
+          "birth_place": {
+            "province": "广东省",
+            "city": "广州市"
+          },
+          "personality": "ISFJ",
+          "economic_level": "小康",
+          "occupation": "粤绣工艺师",
+          "organization": "香港传统工艺协会（退休返聘）",
+          "nickname": "吴老师",
+          "relation_description": "于晓薇在五年前参加社区中心举办的粤绣入门班时结识了吴秀英老师。吴老师是资深的粤绣工艺师，对于晓薇的耐心和细致颇为欣赏，认为她有传承传统工艺的潜质。两人相处时，吴老师更像一位慈祥的长辈，不仅传授刺绣技巧，也常分享人生经验。她们现在主要通过微信联系，于晓薇会定期发送自己的作品照片请教，吴老师则给予点评和鼓励。大约每两到三个月，于晓薇会前往吴老师位于深水埗的工作室拜访一次，带上茶点，一边刺绣一边聊天，话题从技艺到家庭生活无所不包。吴老师也认识另一位绣友何太太，偶尔会在工作室小聚时提及她的近况。"
+        },
+        {
+          "name": "何美玲",
+          "relation": "绣友",
+          "social_circle": "粤绣兴趣圈",
+          "gender": "女",
+          "age": 42,
+          "birth_date": "1982-11-05",
+          "home_address": {
+            "province": "广东省",
+            "city": "深圳市",
+            "district": "南山区",
+            "street_name": "科技园南区",
+            "street_number": "高新南一道8号"
+          },
+          "birth_place": {
+            "province": "广东省",
+            "city": "佛山市"
+          },
+          "personality": "INFP",
+          "economic_level": "富裕",
+          "occupation": "互联网公司产品经理",
+          "organization": "腾讯科技（深圳）有限公司",
+          "nickname": "阿玲",
+          "relation_description": "何美玲与于晓薇是在吴秀英老师的粤绣进阶班上认识的同期学员。何美玲当时因工作调动从深圳来香港短期培训，被粤绣的精致所吸引。课程结束后，她返回深圳，但两人因共同的爱好保持了联系。何美玲性格沉静富有创意，常将现代设计理念融入传统粤绣，这与于晓薇偏重传统技法的风格形成有趣互补。她们现在几乎完全通过网络联系，每周会在专门的绣友微信群交流作品和心得，偶尔进行视频通话讨论复杂的针法。由于分隔两地，见面机会较少，大约每年一至两次，要么是于晓薇去深圳出差时相约，要么是何美玲来香港旅游时特意拜访。她们都视吴老师为共同的导师，并会通过老师了解彼此的近况。"
+        }
+      ],
+      [
+        {
+          "name": "周文彬",
+          "relation": "医生",
+          "social_circle": "医疗服务圈",
+          "gender": "男",
+          "age": 42,
+          "birth_date": "1982-08-19",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "中西区",
+            "street_name": "般咸道",
+            "street_number": "45号"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港"
+          },
+          "personality": "ISTJ",
+          "economic_level": "中产",
+          "occupation": "全科医生",
+          "organization": "香港养和医院",
+          "nickname": "周医生",
+          "relation_description": "周文彬医生是于晓薇的家庭医生，相识于五年前一次常规体检。他性格沉稳细致，深受于晓薇及其家人的信任。于晓薇每年会带全家去他那里做一次健康检查，平时遇到孩子发烧或家人小病痛也会通过电话或即时通讯软件咨询他。两人联系频率不高，但关系稳固，通常一年见面一至两次，主要是在诊所进行例行检查或处理具体健康问题。周医生了解于晓薇热爱运动的生活习惯，常会就此给出一些专业建议。"
+        }
+      ],
+      [
+        {
+          "name": "李国栋",
+          "relation": "客户经理",
+          "social_circle": "金融服务圈",
+          "gender": "男",
+          "age": 42,
+          "birth_date": "1982-08-22",
+          "home_address": {
+            "province": "香港特别行政区",
+            "city": "香港",
+            "district": "湾仔区",
+            "street_name": "轩尼诗道",
+            "street_number": "200号"
+          },
+          "birth_place": {
+            "province": "香港特别行政区",
+            "city": "香港"
+          },
+          "personality": "ENTJ",
+          "economic_level": "中产",
+          "occupation": "银行财富管理部高级经理",
+          "organization": "汇丰银行（香港）",
+          "nickname": "李经理",
+          "relation_description": "李国栋是于晓薇在友邦保险工作时认识的一位重要客户经理，服务于汇丰银行。两人相识于2018年的一次行业交流会上，因业务互补而建立了稳定的合作关系。于晓薇的客户若有复杂的资产配置或银行业务需求，常会引荐给李国栋；反之，李国栋的客户有保险规划需要时，也会优先考虑于晓薇。他们每月会通过电话或微信沟通数次，交流市场信息和客户情况，每季度会约在湾仔或中环的咖啡馆见面一次，讨论合作项目并维系关系。虽然同在香港金融圈，但各自服务于不同机构，保持着专业且互利的伙伴关系。"
+        }
+      ]
+    ]
+  }
+]

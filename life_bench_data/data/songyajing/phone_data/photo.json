@@ -1,0 +1,2578 @@
+[
+  {
+    "event_id": "3131",
+    "type": "photo",
+    "caption": "一张放在客厅茶几上的便条，字迹略显潦草。",
+    "title": "IMG_20250809_075030",
+    "datetime": "2025-08-09 07:50:30",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中客厅"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "便条",
+      "茶几",
+      "早晨",
+      "居家"
+    ],
+    "ocrText": "书房...工作...",
+    "shoot_mode": "文档",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张放在客厅茶几上的手写便条。",
+    "phone_id": "1"
+  },
+  {
+    "type": "photo",
+    "event_id": "2581",
+    "caption": "萱萱在厨房用模具压出饼干形状，桌面上有面粉和面团。",
+    "title": "IMG_20250702_161045",
+    "datetime": "2025-07-02 16:10:45",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "上古街",
+      "streetNumber": "小区家中",
+      "poi": "厨房"
+    },
+    "faceRecognition": [
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "烘焙",
+      "饼干",
+      "小熊模具",
+      "亲子互动"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了女儿在烘焙饼干的照片，显示使用模具和厨房场景。",
+    "phone_id": "2"
+  },
+  {
+    "type": "photo",
+    "event_id": "282",
+    "caption": "拍摄于店铺仓库货架前，手中拿着一件米色针织衫，特写其内部的商品标签。",
+    "title": "IMG_20250121_143305",
+    "datetime": "2025-01-21 14:33:05",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "中山路步行街",
+      "streetNumber": "36号铺",
+      "poi": "瑞景商业广场“雅集”精品服饰店仓库区"
+    },
+    "faceRecognition": [
+      "无"
+    ],
+    "imageTag": [
+      "针织衫",
+      "服装标签",
+      "库存检查",
+      "工作记录"
+    ],
+    "ocrText": "洗涤标签：请用30度以下冷水手洗，不可漂白，平摊晾干。\n材质标：成分：100%羊毛。",
+    "shoot_mode": "文档",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张针织衫标签的特写照片，照片中包含洗涤说明和材质成分信息。",
+    "phone_id": "3"
+  },
+  {
+    "event_id": "2679",
+    "type": "photo",
+    "caption": "在NITORI试坐了几款靠椅，这款腰部支撑看起来不错。",
+    "title": "IMG_20250710_101520",
+    "datetime": "2025-07-10 10:15:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "湖里区",
+      "streetName": "嘉禾路",
+      "streetNumber": "468号",
+      "poi": "SM城市广场二期 NITORI店内"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "靠椅",
+      "家具店",
+      "NITORI",
+      "购物"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静在SM城市广场的NITORI店内拍摄了一张靠椅的照片。",
+    "phone_id": "4"
+  },
+  {
+    "event_id": "3229",
+    "type": "photo",
+    "caption": "咖啡馆角落的工作环境，桌上放着一杯饮品和打开的笔记本。",
+    "title": "IMG_20250816_141520",
+    "datetime": "2025-08-16 14:15:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨中路",
+      "streetNumber": "86号",
+      "poi": "默迹咖啡MOJEMINI(厦门地铁大厦店)"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "咖啡杯",
+      "笔记本",
+      "咖啡馆内饰",
+      "工作状态"
+    ],
+    "ocrText": "默迹咖啡订单\n冰拿铁 x1\n金额：35.00元\n时间：2025-08-16 14:05",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静拍摄了一张在默迹咖啡工作时的照片，显示咖啡杯和笔记本，OCR识别出订单包含冰拿铁。",
+    "phone_id": "5"
+  },
+  {
+    "event_id": "550",
+    "type": "photo",
+    "caption": "和美玲在咖啡厅，下午茶时光。",
+    "title": "IMG_20250208_150230",
+    "datetime": "2025-02-08 15:02:30",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "洪文五里",
+      "streetNumber": "",
+      "poi": "乐萃咖啡厅"
+    },
+    "faceRecognition": [
+      "李美玲",
+      "宋雅静"
+    ],
+    "imageTag": [
+      "咖啡",
+      "拿铁",
+      "咖啡厅",
+      "闺蜜"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张与闺蜜李美玲在咖啡厅的照片。",
+    "phone_id": "6"
+  },
+  {
+    "event_id": "1081",
+    "type": "photo",
+    "caption": "橱窗设计草图手稿，铅笔绘制绿藤和连衣裙轮廓，旁边有标注。",
+    "title": "IMG_20250319_103000",
+    "datetime": "2025-03-19 10:30:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "中山路",
+      "streetNumber": "附近",
+      "poi": "工作区域"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "手绘草图",
+      "绿藤",
+      "连衣裙",
+      "设计稿",
+      "春季"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "标准",
+    "image_size": "2000×1500",
+    "summarized_info": "宋雅静拍摄了春季橱窗草图的照片，显示手绘的绿藤和连衣裙元素",
+    "phone_id": "7"
+  },
+  {
+    "event_id": "2729",
+    "type": "photo",
+    "caption": "午餐在鼓浪屿沈家闽南肠粉店，桌上的肠粉和鲨鱼丸汤，背景是店内的装饰。",
+    "title": "IMG_20250713_114520",
+    "datetime": "2025-07-13 11:45:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "福建路",
+      "streetNumber": "57号",
+      "poi": "沈家闽南肠粉店"
+    },
+    "faceRecognition": [
+      "宋雅静",
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "肠粉",
+      "鲨鱼丸汤",
+      "午餐",
+      "鼓浪屿",
+      "家庭"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了在鼓浪屿沈家闽南肠粉店午餐的照片，显示肠粉和鲨鱼丸汤。",
+    "phone_id": "8"
+  },
+  {
+    "event_id": "2252",
+    "type": "photo",
+    "caption": "健康应用体重记录页面截图",
+    "title": "Screenshot_20250609_064000",
+    "datetime": "2025-06-09 06:40:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "截图",
+      "健康应用",
+      "体重记录"
+    ],
+    "ocrText": "当前体重: 50.2 kg 记录时间: 2025-06-09 06:35",
+    "shoot_mode": "截图",
+    "image_size": "1080x2340",
+    "summarized_info": "宋雅静截取了薄荷健康应用体重记录页面，显示体重为50.2公斤，记录于早晨06:35。",
+    "phone_id": "9"
+  },
+  {
+    "event_id": "1913",
+    "type": "photo",
+    "caption": "在小区花园的长椅处与张阿姨休息聊天，背景是绿树和花卉，夕阳余晖洒落。",
+    "title": "IMG_20250515_1715",
+    "datetime": "2025-05-15 17:15:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区花园长椅"
+    },
+    "faceRecognition": [
+      "宋雅静",
+      "张阿姨"
+    ],
+    "imageTag": [
+      "花园",
+      "长椅",
+      "聊天",
+      "休闲",
+      "社区活动"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "风景",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静拍摄了一张在小区花园与张阿姨坐在长椅上聊天的照片，时间在活动结束后。",
+    "phone_id": "10"
+  },
+  {
+    "type": "photo",
+    "event_id": "1549",
+    "caption": "下午和闺蜜们的茶话会，点心精致，聊得很开心。",
+    "title": "IMG_20250419_163050",
+    "datetime": "2025-04-19 16:30:50",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "附近",
+      "poi": "某咖啡馆"
+    },
+    "faceRecognition": [
+      "美玲",
+      "其他女性面孔"
+    ],
+    "imageTag": [
+      "下午茶",
+      "甜品",
+      "闺蜜聚会",
+      "咖啡馆"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "美食",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静拍摄了一张与闺蜜们下午茶聚会的照片，照片中有精致的点心和开心的氛围。",
+    "phone_id": "11"
+  },
+  {
+    "event_id": "3618",
+    "type": "photo",
+    "caption": "课堂指导瞬间：学员正在学习为旧衣物添加装饰性边缘。",
+    "title": "IMG_20250913_093520",
+    "datetime": "2025-09-13 09:35:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "138号",
+      "poi": "思明区希望社区党员活动室"
+    },
+    "faceRecognition": [
+      "宋雅静",
+      "张阿姨"
+    ],
+    "imageTag": [
+      "牛仔裤",
+      "绣边",
+      "手工装饰",
+      "课堂活动",
+      "旧衣物"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "4032×3024",
+    "summarized_info": "拍摄了课堂中学员学习衣物装饰技巧的照片，标签显示与牛仔裤绣边相关。",
+    "phone_id": "12"
+  },
+  {
+    "event_id": "2406",
+    "type": "photo",
+    "caption": "在糖心坊等待取货时拍摄的定制巧克力牌。上面有精心设计的文字，背景是店铺的操作台。",
+    "title": "IMG_20250619_170103",
+    "datetime": "2025-06-19 17:01:03",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "溪岸路",
+      "streetNumber": "",
+      "poi": "溪岸路花鸟市场糖心坊"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "巧克力",
+      "甜品",
+      "定制",
+      "糖心坊",
+      "花鸟市场"
+    ],
+    "ocrText": "Welcome Home, Mom & Dad!",
+    "shoot_mode": "美食",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张在糖心坊定制的巧克力牌照片，OCR识别出上面的欢迎文字。",
+    "phone_id": "13"
+  },
+  {
+    "event_id": "1993",
+    "type": "photo",
+    "caption": "调整后的橱窗陈列，以浅色系连衣裙和印花衬衫为主打，搭配草编包和太阳帽，营造夏日氛围。",
+    "title": "IMG_20250521_110025",
+    "datetime": "2025-05-21 11:00:25",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "中山路步行街",
+      "streetNumber": "36号铺",
+      "poi": "雅致衣橱店铺橱窗"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "橱窗",
+      "模特",
+      "浅色连衣裙",
+      "印花衬衫",
+      "夏装",
+      "陈列"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "普通",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张店铺橱窗陈列的照片，显示模特穿着浅色连衣裙和印花衬衫等夏装，搭配了草编包和太阳帽。",
+    "phone_id": "14"
+  },
+  {
+    "event_id": "3632",
+    "type": "photo",
+    "caption": "乐萱站在一台造型精美的古董钢琴前，专注地看着琴键，脸上带着好奇的笑容。",
+    "title": "IMG_20250914_112015",
+    "datetime": "2025-09-14 11:20:15",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "港仔后路",
+      "streetNumber": "7号",
+      "poi": "鼓浪屿钢琴博物馆"
+    },
+    "faceRecognition": [
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "博物馆",
+      "古钢琴",
+      "自动钢琴",
+      "女儿",
+      "参观"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "一张在鼓浪屿钢琴博物馆拍摄的照片，画面中是女儿陈乐萱站在一台古钢琴前，照片标签包含‘自动钢琴’。",
+    "phone_id": "15"
+  },
+  {
+    "event_id": "2001",
+    "type": "photo",
+    "caption": "筼筜湖步道清晨景色，湖面平静。",
+    "title": "IMG_20250522_080200",
+    "datetime": "2025-05-22 08:02:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "筼筜湖步道",
+      "streetNumber": "",
+      "poi": "近湖滨北路"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "湖景",
+      "清晨",
+      "散步"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4000×3000",
+    "summarized_info": "宋雅静拍摄了一张筼筜湖步道清晨湖景的照片。",
+    "phone_id": "16"
+  },
+  {
+    "type": "photo",
+    "event_id": "5013",
+    "caption": "童年时与姐姐宋雅雯在老家公园的合影，最近扫描准备用于电子相册。",
+    "title": "扫描_童年合影_20251221",
+    "datetime": "2025-12-21 15:30:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中书房"
+    },
+    "faceRecognition": [
+      "宋雅静",
+      "宋雅雯"
+    ],
+    "imageTag": [
+      "童年",
+      "合影",
+      "扫描",
+      "老照片",
+      "电子相册"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "文档扫描",
+    "image_size": "2480x3508",
+    "summarized_info": "宋雅静扫描了一张童年与姐姐的合影照片，计划用于电子相册。",
+    "phone_id": "17"
+  },
+  {
+    "event_id": "720",
+    "type": "photo",
+    "caption": "午餐时拍摄的烧鹅拼盘，背景是餐厅室内装饰。",
+    "title": "IMG_20250221_124520",
+    "datetime": "2025-02-21 12:45:20",
+    "location": {
+      "province": "广东省",
+      "city": "广州市",
+      "district": "荔湾区",
+      "streetName": "十三行路",
+      "streetNumber": "附近",
+      "poi": "港式烧鹅仔餐厅"
+    },
+    "faceRecognition": [
+      "苏珊"
+    ],
+    "imageTag": [
+      "烧鹅",
+      "餐厅",
+      "午餐",
+      "装饰"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张午餐照片，显示烧鹅拼盘和餐厅环境，与苏珊一起。",
+    "phone_id": "18"
+  },
+  {
+    "event_id": "755",
+    "type": "photo",
+    "caption": "萱萱开心地吃着熊猫造型的流沙包，儿童餐看起来很丰盛。",
+    "title": "IMG_20250223_203000",
+    "datetime": "2025-02-23 20:30:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨东路",
+      "streetNumber": "99号",
+      "poi": "港吉冰室港式茶餐厅"
+    },
+    "faceRecognition": [
+      "陈乐萱",
+      "宋雅静",
+      "陈志强"
+    ],
+    "imageTag": [
+      "儿童餐",
+      "熊猫流沙包",
+      "家庭晚餐",
+      "餐厅环境"
+    ],
+    "ocrText": "港吉冰室 欢迎光临",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张家庭晚餐的照片，萱萱在吃熊猫造型的流沙包，照片拍摄于港吉冰室。",
+    "phone_id": "19"
+  },
+  {
+    "type": "photo",
+    "event_id": "645",
+    "caption": "教堂内部，彩色玻璃窗透进阳光。",
+    "title": "IMG_20250216_091523",
+    "datetime": "2025-02-16 09:15:23",
+    "location": {
+      "province": "福建省",
+      "city": "泉州市",
+      "district": "鲤城区",
+      "streetName": "许厝埕",
+      "streetNumber": "25号",
+      "poi": "花巷天主教堂内"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "教堂",
+      "彩色玻璃",
+      "阳光",
+      "长椅"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "我拍摄了一张教堂内部的照片，显示了彩色玻璃窗和长椅。",
+    "phone_id": "20"
+  },
+  {
+    "type": "photo",
+    "event_id": "3149",
+    "caption": "活动结束后在建筑前的留影。",
+    "title": "IMG_20250810_093520",
+    "datetime": "2025-08-10 09:35:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "鹿礁路",
+      "streetNumber": "34号",
+      "poi": "鼓浪屿天主教堂"
+    },
+    "faceRecognition": [
+      "宋雅静"
+    ],
+    "imageTag": [
+      "教堂建筑",
+      "十字架",
+      "哥特式",
+      "户外",
+      "主日"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "照片",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静在鼓浪屿天主教堂建筑前拍摄了一张个人留影。",
+    "phone_id": "21"
+  },
+  {
+    "event_id": "1694",
+    "type": "photo",
+    "caption": "野餐垫上摆着的食物，有自制的小蛋糕和色彩鲜艳的水果盒。坚持少糖少油，乐萱也吃得很开心。",
+    "title": "IMG_20250502_101523",
+    "datetime": "2025-05-02 10:15:23",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "环岛路",
+      "streetNumber": "",
+      "poi": "家中"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "杯子蛋糕",
+      "水果拼盘",
+      "野餐垫",
+      "健康饮食",
+      "自制点心"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "食物",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张照片，内容是野餐时准备的食物，包括自制的蛋糕和水果，并在描述中提及了坚持少糖少油的健康理念。",
+    "phone_id": "22"
+  },
+  {
+    "event_id": "2699",
+    "type": "photo",
+    "caption": "摊开在桌上的手写笔记本，上面有‘马卡龙配方要点’的字样，旁边放着一支笔。",
+    "title": "IMG_20250712_093002",
+    "datetime": "2025-07-12 09:30:02",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "中山路步行街",
+      "streetNumber": "36号铺",
+      "poi": "雅致衣橱店内"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "笔记本",
+      "手写笔记",
+      "桌面",
+      "烘焙",
+      "学习"
+    ],
+    "ocrText": "马卡龙配方要点：杏仁粉，糖粉，蛋白，老化，晾皮...",
+    "shoot_mode": "文档",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了一张记录有‘马卡龙配方要点’手写笔记的照片。",
+    "phone_id": "23"
+  },
+  {
+    "type": "photo",
+    "event_id": "3943",
+    "caption": "一大家子人在客厅的合影，每个人脸上都洋溢着笑容。",
+    "title": "IMG_20251004_110523",
+    "datetime": "2025-10-04 11:05:23",
+    "location": {
+      "province": "福建省",
+      "city": "泉州市",
+      "district": "鲤城区",
+      "streetName": "新华北路",
+      "streetNumber": "附近",
+      "poi": "家中客厅"
+    },
+    "faceRecognition": [
+      "宋明辉",
+      "林秀英",
+      "宋雅静",
+      "陈志强",
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "客厅",
+      "沙发",
+      "家庭合影",
+      "笑容"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "合照",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张在泉州家中的家庭合影，照片中识别出宋明辉、林秀英、宋雅静、陈志强和陈乐萱。",
+    "phone_id": "24"
+  },
+  {
+    "type": "photo",
+    "event_id": "460",
+    "caption": "在高速公路服务区，两杯喝了一半的咖啡放在桌子上。",
+    "title": "IMG_20250202_153520",
+    "datetime": "2025-02-02 15:35:20",
+    "location": {
+      "province": "福建省",
+      "city": "泉州市",
+      "district": "南安市",
+      "streetName": "沈海高速",
+      "poi": "朴里服务区休息区"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "咖啡",
+      "桌子",
+      "服务区",
+      "休息"
+    ],
+    "ocrText": "养老规划讨论要点……",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍了一张在服务区休息时桌上咖啡的照片。",
+    "phone_id": "25"
+  },
+  {
+    "type": "photo",
+    "event_id": "3032",
+    "caption": "门店入口的七夕主题装饰。",
+    "title": "IMG_20250802_102502",
+    "datetime": "2025-08-02 10:25:02",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "中山路步行街",
+      "streetNumber": "36号铺",
+      "poi": "瑞景商业广场，店铺入口"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "门店装饰",
+      "七夕",
+      "入口",
+      "商业街"
+    ],
+    "ocrText": "雅集服饰",
+    "shoot_mode": "照片",
+    "image_size": "4032×3024",
+    "summarized_info": "我拍摄了一张店铺门口的七夕主题装饰照片。",
+    "phone_id": "26"
+  },
+  {
+    "event_id": "4542",
+    "type": "photo",
+    "caption": "弥撒后，在教堂门口和志强、萱萱拍了张合影。萱萱笑得很开心。",
+    "title": "IMG_20251117_101523",
+    "datetime": "2025-11-17 10:15:23",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "鹿礁路",
+      "streetNumber": "34号",
+      "poi": "鼓浪屿天主教堂门口"
+    },
+    "faceRecognition": [
+      "陈志强",
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "教堂",
+      "建筑",
+      "合影",
+      "家庭"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "4032×3024",
+    "summarized_info": "我拍了一张在教堂门口与丈夫、女儿的合影。",
+    "phone_id": "27"
+  },
+  {
+    "type": "photo",
+    "event_id": "5048",
+    "caption": "女儿乐萱举着刚用模具压出的姜饼人面团，面团上可以清晰看到模具的纹理。桌上散落着星星、圣诞树形状的面团，背景是厨房台面和烘焙工具。",
+    "title": "IMG_20251223_194920",
+    "datetime": "2025-12-23 19:49:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中厨房"
+    },
+    "faceRecognition": [
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "姜饼人面团",
+      "圣诞模具",
+      "亲子烘焙",
+      "厨房"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍摄了一张女儿拿着姜饼人面团的照片，记录了亲子烘焙的过程。",
+    "phone_id": "28"
+  },
+  {
+    "event_id": "359",
+    "type": "photo",
+    "caption": "一座历史悠久的教堂建筑，女儿在教堂前合影。",
+    "title": "IMG_20250126_100200",
+    "datetime": "2025-01-26 10:02:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "鹿礁路",
+      "streetNumber": "34号",
+      "poi": "鼓浪屿天主堂"
+    },
+    "faceRecognition": [
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "教堂",
+      "宗教建筑",
+      "鼓浪屿"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "徐静拍摄了一张鼓浪屿天主堂的照片，女儿陈乐萱在画面中。",
+    "phone_id": "29"
+  },
+  {
+    "type": "photo",
+    "event_id": "466",
+    "caption": "在电脑上使用浏览器搜索“厦门 思明区 小区 环境 医疗”，屏幕上显示着一些房产中介网站的列表和简介。",
+    "title": "屏幕截图_20250203_110000",
+    "datetime": "2025-02-03 11:00:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "上古街",
+      "streetNumber": "**号",
+      "poi": "家中书房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "电脑屏幕",
+      "浏览器",
+      "房产网站",
+      "搜索页面"
+    ],
+    "ocrText": "安居** 厦门思明区在售房源... 临近公园... 周边有社区卫生服务站...",
+    "shoot_mode": "屏幕截图",
+    "image_size": "1920×1080",
+    "summarized_info": "我截屏了一张在电脑上搜索厦门思明区房源信息的页面。",
+    "phone_id": "30"
+  },
+  {
+    "event_id": "4400",
+    "type": "photo",
+    "caption": "打包区准备发货的线上订单包裹，背景是店铺库存货架。",
+    "title": "IMG_20251105_141520",
+    "datetime": "2025-11-05 14:15:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "中山路步行街",
+      "streetNumber": "36号铺",
+      "poi": "瑞景商业广场“雅致衣橱”店铺打包区"
+    },
+    "faceRecognition": [
+      "宋雅静",
+      "小美"
+    ],
+    "imageTag": [
+      "订单包裹",
+      "打包区",
+      "库存货架",
+      "实体店"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍摄了打包区的照片，显示线上订单的包裹和店铺库存。",
+    "phone_id": "31"
+  },
+  {
+    "event_id": "590",
+    "type": "photo",
+    "caption": "白鹭洲公园清晨的湖景，早春花初绽，宁静而美丽。",
+    "title": "IMG_20250212_075020",
+    "datetime": "2025-02-12 07:50:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "白鹭洲路",
+      "streetNumber": "",
+      "poi": "白鹭洲公园环湖步道"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "清晨",
+      "公园",
+      "湖泊",
+      "风景",
+      "早春"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静在白鹭洲公园拍摄的一张清晨湖景照片，记录晨间时刻。",
+    "phone_id": "32"
+  },
+  {
+    "event_id": "1283",
+    "type": "photo",
+    "caption": "上学途中的清晨，记录这一刻。",
+    "title": "IMG_20250401_083200",
+    "datetime": "2025-04-01 08:32:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "思明南路",
+      "streetNumber": "422号",
+      "poi": "厦门大学幼儿园"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "幼儿园",
+      "上学",
+      "早晨"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "拍摄了上学途中的照片，地点在厦门大学幼儿园。",
+    "phone_id": "33"
+  },
+  {
+    "event_id": "2268",
+    "type": "photo",
+    "caption": "与供应商苏珊在展馆查看新款服装样品。",
+    "title": "IMG_20250610_093000",
+    "datetime": "2025-06-10 09:30:00",
+    "location": {
+      "province": "广东省",
+      "city": "广州市",
+      "district": "天河区",
+      "streetName": "琶洲大道东路",
+      "streetNumber": "1号",
+      "poi": "广州国际采购中心"
+    },
+    "faceRecognition": [
+      "苏珊"
+    ],
+    "imageTag": [
+      "服装样品",
+      "展馆",
+      "商业会议"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张与苏珊在展馆查看服装样品的照片。",
+    "phone_id": "34"
+  },
+  {
+    "event_id": "841",
+    "type": "photo",
+    "caption": "鼓浪屿天主堂内部场景",
+    "title": "IMG_20250302_103000",
+    "datetime": "2025-03-02 10:30:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "鹿礁路",
+      "streetNumber": "34号",
+      "poi": "鼓浪屿天主堂"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "教堂",
+      "宗教场所",
+      "室内"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张鼓浪屿天主堂内部的照片。",
+    "phone_id": "35"
+  },
+  {
+    "type": "photo",
+    "event_id": "1896",
+    "caption": "精心装饰的蛋糕切片特写，表面铺满新鲜水果和奶油裱花，背景是厨房操作台。",
+    "title": "IMG_20250514_110502",
+    "datetime": "2025-05-14 11:05:02",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "中山路步行街",
+      "streetNumber": "36号",
+      "poi": "瑞景商业广场内店铺"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "蛋糕",
+      "烘焙成品",
+      "奶油裱花",
+      "新鲜水果",
+      "自制甜点"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "美食",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静拍摄了一张自制的装饰精美的蛋糕照片。",
+    "phone_id": "36"
+  },
+  {
+    "type": "photo",
+    "event_id": "3517",
+    "caption": "清晨的海滩，众人面朝大海静立祈祷的背影，远方是初升的太阳。",
+    "title": "IMG_20250906_063000",
+    "datetime": "2025-09-06 06:30:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "环岛南路",
+      "poi": "心海静修院专属海滩观景台"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "大海",
+      "日出",
+      "人群背影",
+      "祈祷",
+      "海滩"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "风景",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍摄了一张清晨在海边观景台众人集体祈祷的照片。",
+    "phone_id": "37"
+  },
+  {
+    "type": "photo",
+    "event_id": "2269",
+    "caption": "在展会品牌展位拍摄的一款米白色收腰伞裙样品，悬挂在衣架上，背景是品牌Logo和灯光。",
+    "title": "IMG_20250610_110203",
+    "datetime": "2025-06-10 11:02:03",
+    "location": {
+      "province": "广东省",
+      "city": "广州市",
+      "district": "天河区",
+      "streetName": "琶洲大道东路",
+      "streetNumber": "",
+      "poi": "广州国际采购中心A区"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "服装样品",
+      "米白色",
+      "收腰伞裙",
+      "展位",
+      "衣架"
+    ],
+    "ocrText": "茉里 MORLI",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "我拍摄了一张在展会上看到的米白色收腰伞裙样品的照片，照片中能识别出品牌名'茉里'。",
+    "phone_id": "38"
+  },
+  {
+    "event_id": "977",
+    "type": "photo",
+    "caption": "在服装市场看款，记录流行色针织套装。",
+    "title": "IMG_20250311_093000",
+    "datetime": "2025-03-11 09:30:00",
+    "location": {
+      "province": "广东省",
+      "city": "广州市",
+      "district": "越秀区",
+      "streetName": "站南路",
+      "streetNumber": "16号",
+      "poi": "广州白马服装市场"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "服装",
+      "市场",
+      "展位"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "徐静拍摄了一张在服装市场看款的照片，地点显示为广州白马服装市场。",
+    "phone_id": "39"
+  },
+  {
+    "event_id": "2271",
+    "type": "photo",
+    "caption": "在品牌展位内，模特正在试穿一件米色衬衫，旁边立着品牌色卡和尺码表。",
+    "title": "IMG_20250610_151230",
+    "datetime": "2025-06-10 15:12:30",
+    "location": {
+      "province": "广东省",
+      "city": "广州市",
+      "district": "天河区",
+      "streetName": "琶洲大道东路",
+      "poi": "广州国际采购中心"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "模特",
+      "衬衫",
+      "色卡",
+      "尺码表",
+      "展位"
+    ],
+    "ocrText": "素然 2025秋季系列 色号：CR01",
+    "shoot_mode": "拍照",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍摄了一张在展位内模特试穿衬衫的照片，照片中包含品牌色卡和尺码信息。",
+    "phone_id": "40"
+  },
+  {
+    "type": "photo",
+    "event_id": "490",
+    "caption": "参考图片：淡紫色与米白色布料搭配效果。",
+    "title": "Supplier_A_Ref_20250115.jpg",
+    "datetime": "2025-02-04 08:40:00",
+    "location": null,
+    "faceRecognition": [],
+    "imageTag": [
+      "供应商画册",
+      "色卡参考",
+      "布料",
+      "淡薰衣草紫",
+      "奶油白",
+      "春日灵感",
+      "店铺陈列"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "标准",
+    "image_size": "1200x800",
+    "summarized_info": "宋雅静在手机相册中查看了一张来自供应商的参考图片，内容为淡紫色与米白色布料的搭配。",
+    "phone_id": "41"
+  },
+  {
+    "event_id": "492",
+    "type": "photo",
+    "caption": "服装展厅内，模特身着春季新款连衣裙，正在展示。",
+    "title": "IMG_20250204_140523",
+    "datetime": "2025-02-04 14:05:23",
+    "location": {
+      "province": "广东省",
+      "city": "广州市",
+      "district": "越秀区",
+      "streetName": "站南路",
+      "streetNumber": "16号",
+      "poi": "白马服装市场7楼展厅"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "模特",
+      "碎花连衣裙",
+      "服装展厅",
+      "春季新品"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "专业",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张服装展厅内模特展示新款连衣裙的照片。",
+    "phone_id": "42"
+  },
+  {
+    "type": "photo",
+    "event_id": "991",
+    "caption": "在订货会现场拍摄的服装款式，用于后续成本核算。",
+    "title": "IMG_20250312_093500",
+    "datetime": "2025-03-12 09:35:00",
+    "location": {
+      "province": "广东省",
+      "city": "广州市",
+      "district": "越秀区",
+      "streetName": "站南路",
+      "streetNumber": "16号",
+      "poi": "广州白马服装市场展馆"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "服装",
+      "展位",
+      "面料",
+      "对比"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "标准",
+    "image_size": "3024×4032",
+    "summarized_info": "徐静在广州白马服装市场拍摄了服装款式照片。",
+    "phone_id": "43"
+  },
+  {
+    "type": "photo",
+    "event_id": "512",
+    "caption": "视频通话截图，显示与家人的讨论界面。",
+    "title": "Screenshot_20250205_221520",
+    "datetime": "2025-02-05 22:15:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "不详",
+      "poi": "家中"
+    },
+    "faceRecognition": [
+      "宋雅雯"
+    ],
+    "imageTag": [
+      "视频通话",
+      "屏幕截图",
+      "家庭"
+    ],
+    "ocrText": "养老 社区 医保 体验",
+    "shoot_mode": "屏幕截图",
+    "image_size": "1920×1080",
+    "summarized_info": "截取了视频通话屏幕，内容涉及养老讨论。",
+    "phone_id": "44"
+  },
+  {
+    "event_id": "1355",
+    "type": "photo",
+    "caption": "乐萱捡到一个漂亮的海螺，在夕阳下开心地向我展示。",
+    "title": "IMG_20250405_180215",
+    "datetime": "2025-04-05 18:02:15",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "环岛南路",
+      "streetNumber": "318号",
+      "poi": "音乐广场海边沙滩"
+    },
+    "faceRecognition": [
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "海边",
+      "夕阳",
+      "儿童",
+      "海螺",
+      "沙滩"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍了一张女儿乐萱在海边捡到海螺的照片。",
+    "phone_id": "45"
+  },
+  {
+    "type": "photo",
+    "event_id": "788",
+    "caption": "湖滨四里三区老旧小区房源的房间内部，朝向良好，但卫生间地砖有破损。",
+    "title": "IMG_20250226_140123",
+    "datetime": "2025-02-26 14:01:23",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨四里",
+      "streetNumber": "三区11-13号",
+      "poi": "某栋2楼"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "房间",
+      "卫生间",
+      "厨房",
+      "老旧小区",
+      "看房"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了湖滨四里房源的内部照片，显示房间朝向和卫生间细节。",
+    "phone_id": "46"
+  },
+  {
+    "type": "photo",
+    "event_id": "789",
+    "caption": "拍摄了公寓客厅的窗户和阳台，检查视野和采光。楼道内的消防通道和指示牌也拍了下来。",
+    "title": "IMG_20250226_145500",
+    "datetime": "2025-02-26 14:55:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "体育路",
+      "streetNumber": "105号",
+      "poi": "骏豪国际社区某栋高层公寓"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "客厅",
+      "窗户",
+      "消防通道",
+      "公寓内部"
+    ],
+    "ocrText": "安全出口",
+    "shoot_mode": "照片",
+    "image_size": "3024×4032",
+    "summarized_info": "在看房时拍摄了公寓内部和消防通道的照片。",
+    "phone_id": "47"
+  },
+  {
+    "type": "photo",
+    "event_id": "790",
+    "caption": "下午实地考察拍摄的两处不同房源照片，包含小区环境、房间内部结构和周边街道。",
+    "title": "DIY_20250226_162530",
+    "datetime": "2025-02-26 16:30:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中书房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "房源",
+      "小区环境",
+      "客厅",
+      "卧室",
+      "街道"
+    ],
+    "ocrText": "阳光花园A栋502...康乐新村3单元301...",
+    "shoot_mode": "普通",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静在手机上浏览并筛选下午实地考察时拍摄的房源照片，准备进行整理和对比。",
+    "phone_id": "48"
+  },
+  {
+    "event_id": "1356",
+    "type": "photo",
+    "caption": "晚餐进行中，萱萱在餐桌旁。",
+    "title": "IMG_20250405_194500",
+    "datetime": "2025-04-05 19:45:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "上古街小区12栋302室",
+      "poi": "家中餐厅"
+    },
+    "faceRecognition": [
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "家庭聚餐",
+      "晚餐",
+      "清蒸鲈鱼"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了一张家庭晚餐的照片，陈乐萱在餐桌旁。",
+    "phone_id": "49"
+  },
+  {
+    "event_id": "1357",
+    "type": "photo",
+    "caption": "和志强、萱萱一起玩垃圾分类游戏，宝贝学得很快，正在把“过期药片”卡片投进有害垃圾盒。",
+    "title": "IMG_20250405_211500",
+    "datetime": "2025-04-05 21:15:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "上古街小区12栋302室",
+      "poi": "家中客厅"
+    },
+    "faceRecognition": [
+      "陈志强",
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "垃圾分类",
+      "家庭游戏",
+      "手工卡片",
+      "纸盒垃圾桶",
+      "儿童教育"
+    ],
+    "ocrText": "有害垃圾",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了一张家庭垃圾分类游戏的照片，陈志强和陈乐萱出镜，内容为投放卡片。",
+    "phone_id": "50"
+  },
+  {
+    "event_id": "1483",
+    "type": "photo",
+    "caption": "晨间快走后，乐萱在小区步道上玩耍。",
+    "title": "IMG_20250415_0815",
+    "datetime": "2025-04-15 08:15:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区周边步道"
+    },
+    "faceRecognition": [
+      "陈乐萱",
+      "宋雅静"
+    ],
+    "imageTag": [
+      "户外",
+      "运动",
+      "儿童",
+      "步道"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "风景",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静拍摄了晨间快走时女儿乐萱在步道上玩耍的照片。",
+    "phone_id": "51"
+  },
+  {
+    "event_id": "1484",
+    "type": "photo",
+    "caption": "在幼儿园教室里，一个扎着马尾辫的小女孩正在专注地捏着彩泥。旁边摆放着她刚做好的一个歪歪扭扭的小动物。",
+    "title": "萱萱开放日手工",
+    "datetime": "2025-04-15 09:45:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "思明南路",
+      "streetNumber": "422号",
+      "poi": "厦门大学幼儿园"
+    },
+    "faceRecognition": [
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "手工活动",
+      "彩泥",
+      "幼儿园",
+      "儿童",
+      "教室"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "在幼儿园开放日拍摄了一张小女孩做手工的照片，人脸识别为陈乐萱。",
+    "phone_id": "52"
+  },
+  {
+    "event_id": "1487",
+    "type": "photo",
+    "caption": "乐萱坐在餐桌前，开心地用勺子吃着碗里的清炒虾仁。",
+    "title": "我的宝贝女儿乐萱在吃虾仁",
+    "datetime": "2025-04-15 18:30:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "湖里区",
+      "streetName": "上古街",
+      "streetNumber": "",
+      "poi": "上古街小区家中餐厅"
+    },
+    "faceRecognition": [
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "女儿",
+      "餐桌",
+      "清炒虾仁",
+      "家庭晚餐"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍摄了一张女儿乐萱在家中吃晚餐的照片，主要画面是她开心地吃虾仁。",
+    "phone_id": "53"
+  },
+  {
+    "type": "photo",
+    "event_id": "3449",
+    "caption": "手机截屏，内容是关于中山路商业区改造升级的新闻报道，标题中提到了‘政府扶持’、‘租金优惠’等关键词。",
+    "title": "Screenshot_20250825_中山路改造新闻",
+    "datetime": "2025-09-01 12:20:00",
+    "location": null,
+    "faceRecognition": [],
+    "imageTag": [
+      "截图",
+      "新闻",
+      "中山路",
+      "改造"
+    ],
+    "ocrText": "中山路街区启动改造升级计划，政府将出台...对符合条件的商户提供...租金...支持...",
+    "shoot_mode": "截屏",
+    "image_size": "1080×2340",
+    "summarized_info": "我查看了一张关于中山路改造升级新闻报道的截图。",
+    "phone_id": "54"
+  },
+  {
+    "event_id": "2732",
+    "type": "photo",
+    "caption": "在白色大理石台面上，整齐摆放着刚完成的彩色马卡龙，旁边是裱花袋和料理盆。",
+    "title": "IMG_20250712_173010",
+    "datetime": "2025-07-12 17:30:10",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "上古街小区",
+      "poi": "家中厨房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "马卡龙",
+      "烘焙甜点",
+      "厨房",
+      "美食摄影"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "美食",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静拍摄了一张自己制作完成的法式马卡龙的照片。",
+    "phone_id": "55"
+  },
+  {
+    "event_id": "426",
+    "type": "photo",
+    "caption": "今天晨光不错，准备出门活动一下。",
+    "title": "IMG_20250130_0825",
+    "datetime": "2025-01-30 08:25:00",
+    "location": {
+      "province": "福建省",
+      "city": "泉州市",
+      "district": "鲤城区",
+      "streetName": "新华北路",
+      "streetNumber": "18号",
+      "poi": "家中（父母家）"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "窗外",
+      "清晨",
+      "小区",
+      "阳光"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静在2025-01-30早晨拍摄了一张窗外晨景的照片，地点显示为父母家。",
+    "phone_id": "56"
+  },
+  {
+    "type": "photo",
+    "event_id": "3027",
+    "caption": "一个完成度很高的蛋糕侧面切面，层次分明，装饰着蜜桃片和乌龙茶粉。",
+    "title": "IMG_20250809_221523",
+    "datetime": "2025-08-09 22:15:23",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "蛋糕",
+      "提拉米苏",
+      "蜜桃",
+      "甜品",
+      "成功",
+      "烘焙作品"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "食物",
+    "image_size": "3024×4032",
+    "summarized_info": "一张蛋糕的照片，外观完整，装饰精致，看起来是成功的烘焙作品。",
+    "phone_id": "57"
+  },
+  {
+    "event_id": "31",
+    "type": "photo",
+    "caption": "周末烘焙成果！金黄的玛德琳蛋糕，完美的贝壳形状和小肚子。作为年度目标‘学习制作更复杂的法式甜点’的首次成功实践，成就感满满。",
+    "title": "第一次成功！玛德琳蛋糕",
+    "datetime": "2025-01-04 16:20:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中厨房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "玛德琳蛋糕",
+      "烘焙",
+      "甜点",
+      "法式",
+      "成功",
+      "厨房"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "美食",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张成功制作的玛德琳蛋糕照片，并在标注中提及这是其年度甜点学习目标的首次成功实践。",
+    "phone_id": "58"
+  },
+  {
+    "event_id": "650",
+    "type": "photo",
+    "caption": "妈妈正在灶台前准备晚餐，系着围裙的背影在水汽和灯光下显得有些模糊和单薄。",
+    "title": "IMG_20250216_1630",
+    "datetime": "2025-02-16 16:30:00",
+    "location": {
+      "province": "福建省",
+      "city": "泉州市",
+      "district": "鲤城区",
+      "streetName": "新华北路",
+      "streetNumber": "45号",
+      "poi": "父母家厨房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "背影",
+      "厨房",
+      "灶台",
+      "母亲",
+      "忙碌",
+      "单薄感"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍下了一张母亲在厨房准备晚餐时的背影照片。",
+    "phone_id": "59"
+  },
+  {
+    "event_id": "3437",
+    "type": "photo",
+    "caption": "阳光透过彩窗洒在教堂的长椅上，静谧而庄严。",
+    "title": "IMG_20250831_100523",
+    "datetime": "2025-08-31 10:05:23",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "鹿礁路",
+      "streetNumber": "34号",
+      "poi": "鼓浪屿天主堂内部"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "教堂",
+      "彩窗",
+      "长椅",
+      "阳光"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "一张在鼓浪屿天主堂内部拍摄的照片，展现了教堂内的景象。",
+    "phone_id": "60"
+  },
+  {
+    "event_id": "1697",
+    "type": "photo",
+    "caption": "捕捉到乐乐专注阅读的瞬间。今天一起读了关于季节变化的绘本，她很喜欢里面的插图。",
+    "title": "IMG_20250508_190215",
+    "datetime": "2025-05-08 19:02:15",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "上古街小区",
+      "poi": "家中客厅"
+    },
+    "faceRecognition": [
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "儿童",
+      "阅读",
+      "绘本",
+      "客厅",
+      "家庭"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张女儿陈乐萱专注阅读绘本的照片，记录了又一次亲子阅读时光。",
+    "phone_id": "61"
+  },
+  {
+    "type": "photo",
+    "event_id": "4555",
+    "caption": "新采购的打包物料堆放在工作台上，准备进行流程测试。",
+    "title": "IMG_20251117_150125",
+    "datetime": "2025-11-17 15:01:25",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "具体街道不详",
+      "streetNumber": "",
+      "poi": "自己店铺"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "泡泡纸填充袋",
+      "自带背胶快递袋",
+      "定制封口贴纸",
+      "工作台",
+      "包装物料"
+    ],
+    "ocrText": "物料测试 宋雅静&小美",
+    "shoot_mode": "普通",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张照片，内容是堆放在工作台上的新采购的打包物料，包括泡泡纸填充袋、自带背胶快递袋和定制封口贴纸，正准备进行测试。",
+    "phone_id": "62"
+  },
+  {
+    "event_id": "4333",
+    "type": "photo",
+    "caption": "宋雅静在客厅沙发上查看Keep应用弹出的月度报告通知，随后截屏保存了报告详情页。",
+    "title": "Screenshot_20251031_200514_keep.jpg",
+    "datetime": "2025-10-31 20:05:14",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "上古街小区",
+      "poi": "家中客厅"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "屏幕截图",
+      "月度报告",
+      "跑步数据",
+      "Keep应用"
+    ],
+    "ocrText": "Keep 10月运动报告\n本月总跑量：52.3公里\n总运动次数：8次\n累计燃烧：2840千卡\n月度成就：10月23日，你首次完成了5公里跑！\n……",
+    "shoot_mode": "屏幕截图",
+    "image_size": "1080×2400",
+    "summarized_info": "一张Keep应用月度报告页面的截图，显示了十月总跑量和一项具体成就。",
+    "phone_id": "63"
+  },
+  {
+    "type": "photo",
+    "event_id": "4367",
+    "caption": "时光印记摄影工作室的门面，看起来挺专业的。",
+    "title": "IMG_20251108_143021",
+    "datetime": "2025-11-08 14:30:21",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "poi": "时光印记摄影工作室"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "门头",
+      "招牌",
+      "工作室"
+    ],
+    "ocrText": "时光印记摄影工作室",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静拍摄了一张时光印记摄影工作室门面的照片。",
+    "phone_id": "64"
+  },
+  {
+    "type": "photo",
+    "event_id": "96",
+    "caption": "午餐执行调整计划：一份烤鸡胸肉蔬菜沙拉，特意选了油醋汁。旁边放着一杯温水。",
+    "title": "IMG_20250109_123056",
+    "datetime": "2025-01-09 12:30:56",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "湖里区",
+      "streetName": "台湾街",
+      "poi": "自家小吃店厨房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "鸡胸肉",
+      "蔬菜沙拉",
+      "油醋汁",
+      "水杯",
+      "健康餐"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "照片",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静拍摄了1月9日的午餐照片，内容是烤鸡胸肉蔬菜沙拉配油醋汁和一杯温水。",
+    "phone_id": "65"
+  },
+  {
+    "event_id": "1477",
+    "type": "photo",
+    "caption": "第一次做的香草烤鸡胸肉配蒸南瓜，卖相和味道都得到了家人的认可，低盐挑战成功！",
+    "title": "IMG_20250414_194520",
+    "datetime": "2025-04-14 19:45:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中餐厅"
+    },
+    "faceRecognition": [
+      "林秀英",
+      "宋明辉",
+      "陈志强",
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "香草烤鸡胸肉",
+      "蒸南瓜",
+      "晚餐",
+      "低盐食谱",
+      "迷迭香",
+      "家庭聚餐"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "美食",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了晚餐菜肴“香草烤鸡胸肉配蒸南瓜”的照片，记录了家人共进晚餐的场景，图片标签显示这是一道低盐食谱并使用了迷迭香等香料。",
+    "phone_id": "66"
+  },
+  {
+    "type": "photo",
+    "event_id": "1308",
+    "caption": "在厨房操作台旁，我拿着两节旧电池，正向乐萱展示如何辨认和处理有害垃圾。她在一旁认真观看。",
+    "title": "IMG_20250408_194523",
+    "datetime": "2025-04-08 19:45:23",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中厨房"
+    },
+    "faceRecognition": [
+      "宋雅静",
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "厨房",
+      "旧电池",
+      "有害垃圾",
+      "教学",
+      "亲子互动"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张照片，记录了在4月8日向女儿陈乐萱示范如何处理有害垃圾（旧电池）的场景。",
+    "phone_id": "67"
+  },
+  {
+    "type": "photo",
+    "event_id": "1812",
+    "caption": "智能体重秤显示屏，显示体重50.2kg。",
+    "title": "IMG_20250509_0655",
+    "datetime": "2025-05-09 06:55:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中客厅"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "体重秤",
+      "显示屏",
+      "数据"
+    ],
+    "ocrText": "50.2 kg",
+    "shoot_mode": "文档",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了智能体重秤的显示屏照片，显示体重为50.2公斤。",
+    "phone_id": "68"
+  },
+  {
+    "type": "photo",
+    "event_id": "4556",
+    "caption": "在工作台上，新采购的统一尺寸泡泡纸和自带背胶的快递袋摊开着，旁边放着已贴好定制贴纸的包裹样品。",
+    "title": "IMG_20251117_111520",
+    "datetime": "2025-11-17 11:15:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "中山路步行街",
+      "streetNumber": "36号",
+      "poi": "瑞景商业广场精品服饰店内"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "打包物料",
+      "泡泡纸",
+      "快递袋",
+      "测试",
+      "工作台"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "拍照",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张新采购的打包物料和打包样品在工作台上的照片。",
+    "phone_id": "69"
+  },
+  {
+    "type": "photo",
+    "event_id": "4448",
+    "caption": "在亲子摄影工作室翻阅他们的实体样册，风格很温馨，色彩和构图正是我喜欢的类型。萱萱爸也对质感表示满意。",
+    "title": "IMG_20251108_171523",
+    "datetime": "2025-11-08 17:15:23",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "沙坡尾",
+      "streetNumber": "60号",
+      "poi": "沙坡尾艺术西区时光印记工作室"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "摄影样册",
+      "相册",
+      "亲子照",
+      "工作室内景",
+      "翻阅"
+    ],
+    "ocrText": "部分文字识别：【时光印记】客片欣赏·幸福一家…",
+    "shoot_mode": "拍照",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍摄了一张在摄影工作室查看实体样册的照片。",
+    "phone_id": "70"
+  },
+  {
+    "event_id": "1387",
+    "type": "photo",
+    "caption": "早晨送孩子上学前，和乐萱一起把家里的过期药和旧电池拿到小区西门的有害垃圾箱。告诉她这些东西不能乱扔，要放到红色的箱子里。",
+    "title": "IMG_20250408_0810",
+    "datetime": "2025-04-08 08:10:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区西门有害垃圾回收箱"
+    },
+    "faceRecognition": [
+      "宋雅静",
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "有害垃圾箱",
+      "母女",
+      "小区",
+      "早晨"
+    ],
+    "ocrText": "有害垃圾\nHARMFUL WASTE\n回收箱",
+    "shoot_mode": "普通",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍摄了一张照片，内容是我和女儿在小区西门的有害垃圾回收箱前，我正在教她如何正确投放有害垃圾。",
+    "phone_id": "71"
+  },
+  {
+    "event_id": "4431",
+    "type": "photo",
+    "caption": "挂在衣架上的一件米白色高领羊绒衫，光线柔和，重点展示其细腻的针织纹理。",
+    "title": "IMG_20251107_152318",
+    "datetime": "2025-11-07 15:23:18",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "中山路步行街",
+      "streetNumber": "瑞景商业广场36号铺",
+      "poi": "雅致衣橱店内"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "羊绒衫",
+      "冬季新品",
+      "细节展示",
+      "双十一预告"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "专业",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静在店内拍摄了一件米白色高领羊绒衫的细节图，用于展示其纹理质感。",
+    "phone_id": "72"
+  },
+  {
+    "event_id": "905",
+    "type": "photo",
+    "caption": "新购置的四个分类垃圾桶已按示意图（厨余、可回收、有害、其他）在厨房摆放整齐，并贴好了彩色标签。示意图已贴在冰箱侧面。硬件准备完成，等待正式启动家庭实践。",
+    "title": "IMG_20250306_220512",
+    "datetime": "2025-03-06 22:05:12",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中厨房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "分类垃圾桶",
+      "厨房",
+      "垃圾分类示意图",
+      "冰箱",
+      "家居准备"
+    ],
+    "ocrText": "垃圾分类家庭指引图 厨余垃圾 可回收物 有害垃圾 其他垃圾",
+    "shoot_mode": "拍照",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了已摆放好并贴好标签的四个分类垃圾桶及贴在冰箱上的示意图，记录了硬件准备完成的状态。",
+    "phone_id": "73"
+  },
+  {
+    "event_id": "1789",
+    "type": "photo",
+    "caption": "乐萱指认绘本上的‘平静’小怪兽。",
+    "title": "IMG_20250507_194523",
+    "datetime": "2025-05-07 19:45:23",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "上古街小区",
+      "poi": "家中客厅"
+    },
+    "faceRecognition": [
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "儿童绘本",
+      "情绪认知",
+      "亲子阅读",
+      "客厅"
+    ],
+    "ocrText": "《我的情绪小怪兽》",
+    "shoot_mode": "拍照",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了一张女儿乐萱在进行亲子阅读时，指认绘本《我的情绪小怪兽》中‘平静’情绪的照片。",
+    "phone_id": "74"
+  },
+  {
+    "event_id": "119",
+    "type": "photo",
+    "caption": "遵照医嘱准备的清淡晚餐：清蒸鲈鱼和香菇豆腐蔬菜汤。",
+    "title": "IMG_20250109_190115",
+    "datetime": "2025-01-09 19:01:15",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中餐厅"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "清蒸鲈鱼",
+      "蔬菜汤",
+      "晚餐",
+      "清淡"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "食物",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张清淡晚餐的照片，里面有清蒸鲈鱼和香菇豆腐蔬菜汤。",
+    "phone_id": "75"
+  },
+  {
+    "event_id": "1397",
+    "type": "photo",
+    "caption": "新设立的家庭有害垃圾暂存点，一个蓝色带盖小铁盒贴有手写便签'有害垃圾暂存点'，放置于白色冰箱侧面。",
+    "title": "IMG_20250408_203520",
+    "datetime": "2025-04-08 20:35:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中厨房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "小铁盒",
+      "便签",
+      "冰箱",
+      "有害垃圾",
+      "家居整理"
+    ],
+    "ocrText": "有害垃圾暂存点",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了新设立的有害垃圾暂存点照片，显示带盖小铁盒贴有标签。",
+    "phone_id": "76"
+  },
+  {
+    "event_id": "918",
+    "type": "photo",
+    "caption": "女儿萱萱在厨房水池边，一手拿着鸡蛋壳，一手拿着空牛奶盒，准备进行分类投放。",
+    "title": "IMG_20250310_082015",
+    "datetime": "2025-03-10 08:20:15",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中厨房"
+    },
+    "faceRecognition": [
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "蛋壳",
+      "牛奶盒",
+      "厨房",
+      "垃圾分类",
+      "儿童"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "拍摄了女儿萱萱在厨房准备进行垃圾分类的照片，主要内容为蛋壳和牛奶盒。",
+    "phone_id": "77"
+  },
+  {
+    "type": "photo",
+    "event_id": "2239",
+    "caption": "和家人在鼓浪屿的周日午餐。",
+    "title": "IMG_20250608_123005",
+    "datetime": "2025-06-08 12:30:05",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "龙头路",
+      "streetNumber": "",
+      "poi": "鼓浪屿"
+    },
+    "faceRecognition": [
+      "宋雅静",
+      "陈志强",
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "餐厅",
+      "餐桌",
+      "家庭聚餐",
+      "菜肴"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张在鼓浪屿龙头路某餐厅与家人的午餐合影。",
+    "phone_id": "78"
+  },
+  {
+    "event_id": "2539",
+    "type": "photo",
+    "caption": "义卖摊位上，精心摆放的马卡龙和各式糕点。今天大受欢迎。",
+    "title": "IMG_20250629_103015",
+    "datetime": "2025-06-29 10:30:15",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "大同路",
+      "streetNumber": "200号",
+      "poi": "思明天主堂院内"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "马卡龙",
+      "糕点",
+      "甜品台",
+      "摊位",
+      "夏季慈善义卖"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "美食",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静拍摄了一张义卖活动现场她负责的糕点摊位的照片，照片中主要展示了马卡龙等甜品。",
+    "phone_id": "79"
+  },
+  {
+    "event_id": "1029",
+    "type": "photo",
+    "caption": "书桌电脑屏幕显示税务相关界面，背景有书架和窗户。",
+    "title": "IMG_20250315_151000",
+    "datetime": "2025-03-15 15:10:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中书房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "书房",
+      "电脑",
+      "书桌",
+      "工作环境"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静拍摄了一张书房书桌工作环境的照片，位置在家中书房。",
+    "phone_id": "80"
+  },
+  {
+    "type": "photo",
+    "event_id": "2499",
+    "caption": "电脑屏幕上显示的几款服装设计线稿和面料特写照片。",
+    "title": "DESIGN_DRAFT_20250626",
+    "datetime": "2025-06-26 10:15:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "上古街",
+      "streetNumber": "xxx号",
+      "poi": "家中书房"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "设计稿",
+      "面料",
+      "电脑屏幕"
+    ],
+    "ocrText": "复古绞花针织衫 设计稿v2\n垂感西装裤 版型图\n色系参考：燕麦色、灰褐色、米白色",
+    "shoot_mode": "文档",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了电脑屏幕上的服装设计稿和面料照片，OCR识别出复古针织衫、垂感西装裤及色系信息。",
+    "phone_id": "81"
+  },
+  {
+    "event_id": "648",
+    "type": "photo",
+    "caption": "教堂图书室的一角，整理后整洁有序。服务时内心感到宁静与充实。",
+    "title": "IMG_20250215_110520",
+    "datetime": "2025-02-15 11:05:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "教堂路",
+      "streetNumber": "123号",
+      "poi": "厦门教堂图书室"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "图书室",
+      "整洁",
+      "教堂"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了教堂图书室的照片，caption表达服务时的宁静与充实感受。",
+    "phone_id": "82"
+  },
+  {
+    "event_id": "3461",
+    "type": "photo",
+    "caption": "签署完成的店铺续租合同最后一页，上面有双方签字和红色印章。",
+    "title": "IMG_20250902_131105",
+    "datetime": "2025-09-02 13:11:05",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "洪文五里",
+      "streetNumber": "未知",
+      "poi": "乐萃咖啡厅内"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "合同",
+      "签名",
+      "印章",
+      "咖啡桌"
+    ],
+    "ocrText": "续租合同...宋雅静...李红...2025年9月2日...",
+    "shoot_mode": "文档",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了一张已签署的店铺续租合同的照片。",
+    "phone_id": "83"
+  },
+  {
+    "event_id": "3979",
+    "type": "photo",
+    "caption": "中秋赏月家庭合影，灯笼和茶点，美好夜晚。",
+    "title": "IMG_20251006_205000",
+    "datetime": "2025-10-06 20:50:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "上古街",
+      "streetNumber": "",
+      "poi": "小区中心花园"
+    },
+    "faceRecognition": [
+      "宋雅静",
+      "陈志强",
+      "陈乐萱",
+      "林秀英"
+    ],
+    "imageTag": [
+      "中秋",
+      "赏月",
+      "家庭",
+      "灯笼",
+      "合影"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静拍摄了中秋赏月的家庭合影。",
+    "phone_id": "84"
+  },
+  {
+    "event_id": "3244",
+    "type": "photo",
+    "caption": "睡前泡脚准备，热水和泡脚盆已就位，放松身心。",
+    "title": "IMG_20250817_234000",
+    "datetime": "2025-08-17 23:40:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中卧室"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "泡脚盆",
+      "热水",
+      "家居",
+      "放松"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "自动",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静拍摄了睡前泡脚准备的场景。",
+    "phone_id": "85"
+  },
+  {
+    "event_id": "3168",
+    "type": "photo",
+    "caption": "美玲对着插好蜡烛的提拉米苏蛋糕许愿，大家围在一起唱生日歌。",
+    "title": "IMG_20250812_203015",
+    "datetime": "2025-08-12 20:30:15",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨西路",
+      "streetNumber": "18号",
+      "poi": "星光KTV 888包厢"
+    },
+    "faceRecognition": [
+      "李美玲",
+      "王小红",
+      "张丽"
+    ],
+    "imageTag": [
+      "生日聚会",
+      "提拉米苏",
+      "生日蛋糕",
+      "蜡烛",
+      "朋友聚会",
+      "KTV"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "夜景",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静拍摄了生日聚会时朋友对着提拉米苏蛋糕许愿的照片。",
+    "phone_id": "86"
+  },
+  {
+    "event_id": "2423",
+    "type": "photo",
+    "caption": "自制的提拉米苏蛋糕放在餐桌中央，周围是几杯茶。窗外阳光明亮，是下午的光线。",
+    "title": "IMG_20250620_155320",
+    "datetime": "2025-06-20 15:53:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "上古街小区",
+      "poi": "家中餐厅"
+    },
+    "faceRecognition": [
+      "林秀英",
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "提拉米苏蛋糕",
+      "下午茶",
+      "家庭聚会",
+      "餐桌",
+      "庆祝"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "食物",
+    "image_size": "3024×4032",
+    "summarized_info": "我拍摄了一张下午餐桌的照片，桌上有自制的提拉米苏蛋糕和茶杯，母亲和女儿入镜。",
+    "phone_id": "87"
+  },
+  {
+    "event_id": "3786",
+    "type": "photo",
+    "caption": "中秋促销活动主视觉海报，融合了月饼、灯笼等节日元素与店铺服装商品。",
+    "title": "MidAutumn_Poster_Final.jpg",
+    "datetime": "2025-09-21 15:20:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "中山路步行街",
+      "streetNumber": "36号铺",
+      "poi": "雅致衣橱店铺内"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "海报设计",
+      "中秋促销",
+      "服装",
+      "月饼",
+      "灯笼"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "专业",
+    "image_size": "2000×3000",
+    "summarized_info": "宋雅静拍摄了已设计完成的中秋促销活动主视觉海报。",
+    "phone_id": "88"
+  },
+  {
+    "event_id": "2409",
+    "type": "photo",
+    "caption": "在元初食品店，购物车里放着几样准备做甜点的原料。",
+    "title": "IMG_20250619_164523.jpg",
+    "datetime": "2025-06-19 16:45:23",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "",
+      "poi": "元初食品（上古街店）"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "超市",
+      "购物车",
+      "马斯卡彭奶酪",
+      "手指饼干",
+      "可可粉",
+      "意式浓缩咖啡"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "照片",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静在元初食品店拍摄了一张购物车内食材的照片，里面有奶酪、饼干等甜点原料。",
+    "phone_id": "89"
+  },
+  {
+    "event_id": "1868",
+    "type": "photo",
+    "caption": "乐萱在客厅穿着小象服装跳舞",
+    "title": "IMG_20250512_193520.jpg",
+    "datetime": "2025-05-12 19:35:20",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "湖滨南路",
+      "streetNumber": "128号",
+      "poi": "上古街小区家中客厅"
+    },
+    "faceRecognition": [
+      "陈乐萱"
+    ],
+    "imageTag": [
+      "角色扮演",
+      "儿童",
+      "跳舞",
+      "客厅",
+      "绘本"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "4032×3024",
+    "summarized_info": "宋雅静拍摄了一张女儿在客厅进行角色扮演的照片",
+    "phone_id": "90"
+  },
+  {
+    "event_id": "3422",
+    "type": "photo",
+    "caption": "钢琴琴键上方摆放的乐谱，标题是《小星星变奏曲》，旁边放着一支铅笔。",
+    "title": "钢琴课笔记_20250823_1925",
+    "datetime": "2025-08-23 19:25:00",
+    "location": {
+      "province": "福建省",
+      "city": "厦门市",
+      "district": "思明区",
+      "streetName": "金榜路",
+      "streetNumber": "98之2号",
+      "poi": "音维悦琴行教室内"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "钢琴",
+      "乐谱",
+      "课堂笔记",
+      "铅笔"
+    ],
+    "ocrText": "小星星变奏曲， 注意：右手旋律突出， 左手伴奏轻柔。 老师批注：节奏稳了很多，继续保持。",
+    "shoot_mode": "文档",
+    "image_size": "3024×4032",
+    "summarized_info": "宋雅静在钢琴课上拍摄了乐谱和老师批注的笔记。",
+    "phone_id": "91"
+  }
+]

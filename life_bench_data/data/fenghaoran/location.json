@@ -1,0 +1,222 @@
+[
+  {
+    "name": "岳麓区机关金星住宅小区",
+    "location": "112.937966,28.221552",
+    "formatted_address": "湖南省长沙市岳麓区双塘路99号",
+    "city": "长沙市",
+    "district": "岳麓区",
+    "streetName": "双塘路",
+    "streetNumber": "99号",
+    "description": "冯浩然的常住住址，位于岳麓区麓山南路附近，用于日常居住和休息。"
+  },
+  {
+    "name": "湖南广电中心写字楼",
+    "location": "113.046406,28.237515",
+    "formatted_address": "湖南省长沙市开福区[][]",
+    "city": "长沙市",
+    "district": "开福区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "冯浩然的日常工作地，位于开福区芙蓉中路附近，是华泰证券股份有限公司的办公地点。"
+  },
+  {
+    "name": "岳麓山风景名胜区",
+    "location": "112.936606,28.180729",
+    "formatted_address": "湖南省长沙市岳麓区登高路58号",
+    "city": "长沙市",
+    "district": "岳麓区",
+    "streetName": "登高路",
+    "streetNumber": "58号",
+    "description": "冯浩然常去的晨跑地点，位于岳麓区，用于日常体育锻炼和休闲活动。"
+  },
+  {
+    "name": "一丹咖啡厅",
+    "location": "113.039976,28.208764",
+    "formatted_address": "湖南省长沙市芙蓉区浏阳河大道[]",
+    "city": "长沙市",
+    "district": "芙蓉区",
+    "streetName": "浏阳河大道",
+    "streetNumber": [],
+    "description": "冯浩然常去的手冲咖啡馆，位于芙蓉区解放西路附近，用于品尝咖啡和社交活动。"
+  },
+  {
+    "name": "罗比零食专卖店",
+    "location": "112.931476,28.217875",
+    "formatted_address": "湖南省长沙市岳麓区双塘路[]",
+    "city": "长沙市",
+    "district": "岳麓区",
+    "streetName": "双塘路",
+    "streetNumber": [],
+    "description": "居住地长沙市岳麓区双塘路99号附近的超市，用于日常购物"
+  },
+  {
+    "name": "西湖建新安置小区湘菜馆",
+    "location": "112.937049,28.220841",
+    "formatted_address": "湖南省长沙市岳麓区银双路[]",
+    "city": "长沙市",
+    "district": "岳麓区",
+    "streetName": "银双路",
+    "streetNumber": [],
+    "description": "居住地附近的湘菜馆，因人物喜好湘菜"
+  },
+  {
+    "name": "长沙王府井购物中心健身中心",
+    "location": "112.933775,28.218839",
+    "formatted_address": "湖南省长沙市岳麓区[][]",
+    "city": "长沙市",
+    "district": "岳麓区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "居住地附近的公园，适合晨跑和休闲"
+  },
+  {
+    "name": "王府井写字楼瑜伽普拉提馆",
+    "location": "112.933780,28.218862",
+    "formatted_address": "金星中路河西王府井写字楼901",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住地附近的健身房，用于日常锻炼"
+  },
+  {
+    "name": "圣爵菲斯咖啡厅",
+    "location": "113.045262,28.239221",
+    "formatted_address": "圣爵菲斯之家1层",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作地湖南广电中心大楼附近的咖啡馆，用于工作间隙休息或洽谈业务"
+  },
+  {
+    "name": "传媒路快餐店",
+    "location": "113.046492,28.237687",
+    "formatted_address": "湖南省长沙市开福区传媒路[]",
+    "city": "长沙市",
+    "district": "开福区",
+    "streetName": "传媒路",
+    "streetNumber": [],
+    "description": "工作地附近的快餐店，用于工作日午餐"
+  },
+  {
+    "name": "归心苑小区便利店",
+    "location": "113.044387,28.239790",
+    "formatted_address": "湖南省长沙市开福区[][]",
+    "city": "长沙市",
+    "district": "开福区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "工作地附近的便利店，用于购买日常用品或零食"
+  },
+  {
+    "name": "金鹰路兰州拉面馆",
+    "location": "113.040558,28.243161",
+    "formatted_address": "湖南省长沙市开福区金鹰路[]",
+    "city": "长沙市",
+    "district": "开福区",
+    "streetName": "金鹰路",
+    "streetNumber": [],
+    "description": "工作地附近的湘菜馆，用于与同事或客户聚餐"
+  },
+  {
+    "name": "白鸽咀地铁站健身中心",
+    "location": "112.929679,28.224207",
+    "formatted_address": "湖南省长沙市岳麓区[][]",
+    "city": "长沙市",
+    "district": "岳麓区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "岳麓山风景名胜区附近的跑步道，适合晨跑"
+  },
+  {
+    "name": "小咖主咖啡厅",
+    "location": "113.034988,28.201898",
+    "formatted_address": "湖南省长沙市芙蓉区[][]",
+    "city": "长沙市",
+    "district": "芙蓉区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "一丹咖啡(浏阳河店)附近的其他咖啡馆，用于品尝手冲咖啡"
+  },
+  {
+    "name": "万科·西街花园日式拉面店",
+    "location": "113.039327,28.183976",
+    "formatted_address": "湖南省长沙市芙蓉区[][]",
+    "city": "长沙市",
+    "district": "芙蓉区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "一丹咖啡(浏阳河店)附近的日式拉面店，因人物喜好日式拉面"
+  },
+  {
+    "name": "湘腾城市广场渤海银行ATM",
+    "location": "112.935745,28.219584",
+    "formatted_address": "湖南省长沙市岳麓区金星中路438号",
+    "city": "长沙市",
+    "district": "岳麓区",
+    "streetName": "金星中路",
+    "streetNumber": "438号",
+    "description": "居住地附近的银行，用于个人理财或业务办理"
+  },
+  {
+    "name": "诚兴园文具店",
+    "location": "112.949874,28.149752",
+    "formatted_address": "湖南省长沙市岳麓区北门西[]",
+    "city": "长沙市",
+    "district": "岳麓区",
+    "streetName": "北门西",
+    "streetNumber": [],
+    "description": "居住地附近的书店，用于购买投资或摄影相关书籍"
+  },
+  {
+    "name": "长沙王府井购物中心阿迪达斯店",
+    "location": "112.933775,28.218839",
+    "formatted_address": "湖南省长沙市岳麓区[][]",
+    "city": "长沙市",
+    "district": "岳麓区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "居住地附近的户外用品店，用于购买露营装备"
+  },
+  {
+    "name": "骏豪花园南地面停车场",
+    "location": "113.046406,28.237515",
+    "formatted_address": "湖南省长沙市开福区[][]",
+    "city": "长沙市",
+    "district": "开福区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "工作地附近的停车场，用于通勤停车"
+  },
+  {
+    "name": "律政服务大楼写字楼",
+    "location": "113.024628,28.212294",
+    "formatted_address": "湖南省长沙市芙蓉区紫薇路8号",
+    "city": "长沙市",
+    "district": "芙蓉区",
+    "streetName": "紫薇路",
+    "streetNumber": "8号",
+    "description": "工作地附近的会议室，用于与客户或团队会议"
+  },
+  {
+    "name": "恒大雅苑健身中心",
+    "location": "113.045541,28.242708",
+    "formatted_address": "湖南省长沙市开福区[][]",
+    "city": "长沙市",
+    "district": "开福区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "工作地附近的健身中心，用于午休或下班后锻炼"
+  },
+  {
+    "name": "桃子湖文创园便利店",
+    "location": "112.949935,28.183355",
+    "formatted_address": "桃子湖文化创意园A1栋新佳宜",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "岳麓山风景名胜区附近的便利店，用于购买水或零食"
+  }
+]

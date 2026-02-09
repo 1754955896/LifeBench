@@ -1,0 +1,122 @@
+[
+  {
+    "name": "静海中南君悦府小区",
+    "location": "116.960582,38.937905",
+    "formatted_address": "天津市天津市静海区瑞和道[]",
+    "city": "天津市",
+    "district": "静海区",
+    "streetName": "瑞和道",
+    "streetNumber": [],
+    "description": "马秀兰的常住住址，位于静海区静文路附近，是她日常居住和操持家务的家庭所在地。"
+  },
+  {
+    "name": "梧桐公社菜市场",
+    "location": "117.091131,38.977215",
+    "formatted_address": "天津市天津市静海区[][]",
+    "city": "天津市",
+    "district": "静海区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "马秀兰常去的日常采购地点，用于购买蔬菜和生活用品，是她家庭生活的重要场所。"
+  },
+  {
+    "name": "静海区朝阳街社区医院",
+    "location": "116.926563,38.939672",
+    "formatted_address": "静文路16号静海粮食局后院(司法局西侧、建设银行斜对面)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "马秀兰和家人偶尔就医的社区诊所，用于处理小病小痛，是她健康护理的常去地点。"
+  },
+  {
+    "name": "静海区第三小学",
+    "location": "116.726115,38.921779",
+    "formatted_address": "天津市天津市静海区胜利南街[]",
+    "city": "天津市",
+    "district": "静海区",
+    "streetName": "胜利南街",
+    "streetNumber": [],
+    "description": "马秀兰次子就读的学校，是她参加家长会和关注孩子教育的常去地点。"
+  },
+  {
+    "name": "华康第一幼儿园",
+    "location": "117.072765,38.967087",
+    "formatted_address": "天津市天津市静海区[][]",
+    "city": "天津市",
+    "district": "静海区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "马秀兰女儿就读的幼儿园，是她接送孩子和参与活动的常去地点。"
+  },
+  {
+    "name": "海馨园小区烟酒店",
+    "location": "116.959611,38.936187",
+    "formatted_address": "天津市天津市静海区瑞和道g108号",
+    "city": "天津市",
+    "district": "静海区",
+    "streetName": "瑞和道",
+    "streetNumber": "g108号",
+    "description": "居住小区附近的超市，用于日常购物和家庭用品采购"
+  },
+  {
+    "name": "泰安盛世郡蔬菜市场",
+    "location": "116.965773,38.932729",
+    "formatted_address": "天津市天津市静海区月纬路[]",
+    "city": "天津市",
+    "district": "静海区",
+    "streetName": "月纬路",
+    "streetNumber": [],
+    "description": "居住小区附近的菜市场，用于购买新鲜蔬菜和食材"
+  },
+  {
+    "name": "静海海洋厅水族馆",
+    "location": "116.964956,38.943329",
+    "formatted_address": "天津市天津市静海区[][]",
+    "city": "天津市",
+    "district": "静海区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "居住小区附近的公园，用于带孩子玩耍或散步休闲"
+  },
+  {
+    "name": "梦香花园社区卫生室",
+    "location": "116.928535,38.932153",
+    "formatted_address": "天津市天津市静海区[][]",
+    "city": "天津市",
+    "district": "静海区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "居住小区附近的社区卫生服务中心，用于日常医疗和健康咨询"
+  },
+  {
+    "name": "王口镇第二小学",
+    "location": "116.774302,38.933988",
+    "formatted_address": "天津市天津市静海区[][]",
+    "city": "天津市",
+    "district": "静海区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "孩子学校附近的小学，用于接送孩子和参加家长活动"
+  },
+  {
+    "name": "静海杨成庄幼儿园",
+    "location": "117.087393,38.947459",
+    "formatted_address": [],
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "孩子幼儿园附近的幼儿园，用于接送孩子和日常联系"
+  },
+  {
+    "name": "静海万达御府世家便利店",
+    "location": "116.953494,38.943356",
+    "formatted_address": "天津市天津市静海区[][]",
+    "city": "天津市",
+    "district": "静海区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "居住小区附近的便利店，用于快速购买日常用品"
+  }
+]

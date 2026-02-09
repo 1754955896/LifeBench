@@ -1,0 +1,112 @@
+[
+  {
+    "name": "九龙城广场商场",
+    "location": "114.192980,22.328095",
+    "formatted_address": "香港特别行政区[]九龙城区贾炳达道128号",
+    "city": [],
+    "district": "九龙城区",
+    "streetName": "贾炳达道",
+    "streetNumber": "128号",
+    "description": "于晓薇的常住住址，位于香港九龙城区，是她与家人日常居住的地方。"
+  },
+  {
+    "name": "湾仔入境事务大楼",
+    "location": "114.177960,22.277046",
+    "formatted_address": "香港特别行政区[]湾仔区告士打道7号",
+    "city": [],
+    "district": "湾仔区",
+    "streetName": "告士打道",
+    "streetNumber": "7号",
+    "description": "于晓薇的工作地点，位于香港湾仔区，是她作为保险代理人的日常办公场所。"
+  },
+  {
+    "name": "九龙塘官立小学",
+    "location": "113.432965,22.230832",
+    "formatted_address": "广东省中山市[]添福路[]",
+    "city": "中山市",
+    "district": [],
+    "streetName": "添福路",
+    "streetNumber": [],
+    "description": "于晓薇儿子就读的学校，位于香港九龙城区，是她常去接送孩子的地方。"
+  },
+  {
+    "name": "九龙城浸信会幼儿园",
+    "location": "114.190655,22.321961",
+    "formatted_address": "香港特别行政区[]九龙城区亚皆老街206号",
+    "city": [],
+    "district": "九龙城区",
+    "streetName": "亚皆老街",
+    "streetNumber": "206号",
+    "description": "于晓薇女儿就读的幼儿园，位于香港九龙城区，是她常去接送孩子的地方。"
+  },
+  {
+    "name": "长沙湾社区中心",
+    "location": "114.163679,22.332309",
+    "formatted_address": "香港特别行政区[]深水埗区发祥街[]",
+    "city": [],
+    "district": "深水埗区",
+    "streetName": "发祥街",
+    "streetNumber": [],
+    "description": "于晓薇参加粤绣兴趣班的地点，位于香港深水埗区，是她定期学习传统粤绣工艺的场所。"
+  },
+  {
+    "name": "格兰坪路便利店",
+    "location": "114.191535,22.328878",
+    "formatted_address": "Hong Kong,Kowloon City,Grampian Rd,54A地下",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住地九龙城广场附近的超市，用于家庭日常购物"
+  },
+  {
+    "name": "潭公道健身中心",
+    "location": "114.193576,22.319970",
+    "formatted_address": "香港特别行政区[]九龙城区潭公道[]",
+    "city": [],
+    "district": "九龙城区",
+    "streetName": "潭公道",
+    "streetNumber": [],
+    "description": "居住地九龙城广场附近的健身房，用于瑜伽健身等运动"
+  },
+  {
+    "name": "湾仔区骆克道便利店",
+    "location": "114.175996,22.275298",
+    "formatted_address": "香港特别行政区[]湾仔区骆克道64号",
+    "city": [],
+    "district": "湾仔区",
+    "streetName": "骆克道",
+    "streetNumber": "64号",
+    "description": "工作地入境事务大楼附近的便利店，用于购买零食或日常用品"
+  },
+  {
+    "name": "九龙城浸信会幼稚园",
+    "location": "114.190655,22.321961",
+    "formatted_address": "香港特别行政区[]九龙城区亚皆老街206号",
+    "city": [],
+    "district": "九龙城区",
+    "streetName": "亚皆老街",
+    "streetNumber": "206号",
+    "description": "九龙城浸信会幼稚园附近的学校，用于接送孩子"
+  },
+  {
+    "name": "九龙塘金城道兴趣班",
+    "location": "114.185488,22.336804",
+    "formatted_address": "香港特别行政区[]九龙城区金城道[]",
+    "city": [],
+    "district": "九龙城区",
+    "streetName": "金城道",
+    "streetNumber": [],
+    "description": "长沙湾社区中心附近的兴趣班，用于粤绣学习或孩子活动"
+  },
+  {
+    "name": "九龙城体育用品店",
+    "location": "114.196253,22.325750",
+    "formatted_address": "香港特别行政区[]九龙城区打鼓岭道9号",
+    "city": [],
+    "district": "九龙城区",
+    "streetName": "打鼓岭道",
+    "streetNumber": "9号",
+    "description": "居住地九龙城广场附近的运动用品店，用于购买马拉松装备"
+  }
+]

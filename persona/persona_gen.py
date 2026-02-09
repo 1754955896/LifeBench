@@ -335,11 +335,11 @@ class PersonaGenerator:
         # 创建临时文件路径
         basic_temp_file = median_path
         
-        # # 第一步：生成基础画像
-        # basic_profiles = self.generate_basic_profile(start_id, end_id, in_file_path, basic_temp_file, max_workers=max_workers)
-        # if not basic_profiles:
-        #     print("生成基础画像失败，无法继续")
-        #     return None
+        # 第一步：生成基础画像
+        basic_profiles = self.generate_basic_profile(start_id, end_id, in_file_path, basic_temp_file, max_workers=max_workers)
+        if not basic_profiles:
+            print("生成基础画像失败，无法继续")
+            return None
         
         # 第二步：生成关系并完成画像
         complete_profiles = self.generate_relation_and_complete(basic_temp_file, out_file_path, max_workers=max_workers)

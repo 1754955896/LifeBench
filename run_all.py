@@ -5,7 +5,8 @@ import os
 import json
 import pypinyin
 import shutil
-
+# 获取项目根目录并加入 sys.path
+sys.path.append('D:\pyCharmProjects\pythonProject4')
 
 def run_script(script_path, description, args=None):
     """

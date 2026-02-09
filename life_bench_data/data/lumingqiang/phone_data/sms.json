@@ -1,0 +1,5677 @@
+[
+  {
+    "type": "sms",
+    "event_id": "2180",
+    "message_content": "吃完饭了，腰有点酸，在这边活动活动再回去吧？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-06-02 12:45:00",
+    "message_type": "接收",
+    "phone_id": "1"
+  },
+  {
+    "type": "sms",
+    "event_id": "37",
+    "message_content": "陆明强：爸，家里阳台那截旧水管我看得修一下了，不然总渗水。今天下午我去买材料，明天上午弄。",
+    "contactName": "父亲",
+    "contact_phone_number": "+8613012345678",
+    "datetime": "2025-01-04 08:10:00",
+    "message_type": "发送",
+    "phone_id": "2"
+  },
+  {
+    "type": "sms",
+    "event_id": "4042",
+    "message_content": "老婆：五金店那边东西买好了吗？轩轩没闹吧？",
+    "contactName": "张慧",
+    "contact_phone_number": "+8613987654321",
+    "datetime": "2025-10-04 17:05:00",
+    "message_type": "接收",
+    "phone_id": "3"
+  },
+  {
+    "type": "sms",
+    "event_id": "4042",
+    "message_content": "我：买好了。小家伙对螺丝扳手什么的特别感兴趣，问个不停。现在去取滤芯，然后走路回家。",
+    "contactName": "张慧",
+    "contact_phone_number": "+8613987654321",
+    "datetime": "2025-10-04 17:08:00",
+    "message_type": "发送",
+    "phone_id": "4"
+  },
+  {
+    "type": "sms",
+    "event_id": "3125",
+    "message_content": "我：今天陪孩子玩的时候，用手机查了些健康知识。啤酒的热量真不低，以后得控制。另外，夜宵会影响睡眠，要注意。",
+    "contactName": "张丽",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-08-03 11:15:00",
+    "message_type": "发送",
+    "phone_id": "5"
+  },
+  {
+    "type": "sms",
+    "event_id": "2644",
+    "message_content": "陈建国：明强，你中午咨询的自己开工作室的可能性，我回忆了一下，客源确实是个大问题。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-07-03 14:30:00",
+    "message_type": "接收",
+    "phone_id": "6"
+  },
+  {
+    "type": "sms",
+    "event_id": "502",
+    "message_content": "赵强：师傅，您午餐时在运动健康APP上查的那个腰部康复视频，能告诉我具体搜索词吗？我腰疼想参考一下。",
+    "contactName": "赵强",
+    "contact_phone_number": "+8613812345679",
+    "datetime": "2025-02-05 13:10:00",
+    "message_type": "接收",
+    "summarized_info": "陆明强收到学徒赵强的短信，询问午餐时在运动健康APP上使用的搜索关键词",
+    "phone_id": "7"
+  },
+  {
+    "type": "sms",
+    "event_id": "4442",
+    "message_content": "工具箱维护完成，那个万用表的表笔线已经用绝缘胶带修复好了。",
+    "contactName": "张工",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-11-01 10:50:00",
+    "message_type": "发送",
+    "phone_id": "8"
+  },
+  {
+    "type": "sms",
+    "event_id": "876",
+    "message_content": "陈建国：明强，明天下午老地方见，文明一路那家茶店，别忘了。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-03-01 15:30:00",
+    "message_type": "接收",
+    "phone_id": "9"
+  },
+  {
+    "type": "sms",
+    "event_id": "2669",
+    "message_content": "丽娟：明强，昨晚聊的家庭与小商铺电力维修工作室的计划，我后来想了想，觉得方向是好的，但第一步是不是先做个更详细的预算和潜在客户分析比较好？这样我们心里更有底。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613900000001",
+    "datetime": "2025-07-04 21:10:00",
+    "message_type": "接收",
+    "phone_id": "10"
+  },
+  {
+    "type": "sms",
+    "event_id": "3555",
+    "message_content": "陈建国：明强，中午客来乐见，商量下个月滨海步道的事。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-09-01 12:10:00",
+    "message_type": "接收",
+    "phone_id": "11"
+  },
+  {
+    "type": "sms",
+    "event_id": "2213",
+    "message_content": "明强，那个线上课程的价格和内容我看了，同意报名。我们晚上定一下学习计划。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-06-04 19:55:00",
+    "message_type": "接收",
+    "phone_id": "12"
+  },
+  {
+    "type": "sms",
+    "event_id": "4944",
+    "message_content": "陈斌：今天跑步时碰面很愉快，简单交流后受益匪浅！",
+    "contactName": "陈斌",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-12-06 08:45:00",
+    "message_type": "接收",
+    "phone_id": "13"
+  },
+  {
+    "type": "sms",
+    "event_id": "3580",
+    "message_content": "林峰：强哥，聊完训练的事，现在突然想出去吃烤鱼了，我知道新开一家店开到凌晨，一起？\n我：抱歉啊峰哥，今晚真去不了。明天有重要安排，得保持好状态，得养足精神。下次，下次恢复打球了我请客。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8618901234567",
+    "datetime": "2025-09-02 21:18:00",
+    "message_type": "发送",
+    "phone_id": "14"
+  },
+  {
+    "type": "sms",
+    "event_id": "4501",
+    "message_content": "陆先生，您于今日提交的建筑安全课程申请已处理完毕，费用扣款成功。学习资料可通过平台下载。",
+    "contactName": "教育平台客服",
+    "contact_phone_number": "+8610001234567",
+    "datetime": "2025-11-05 12:55:00",
+    "message_type": "接收",
+    "phone_id": "15"
+  },
+  {
+    "type": "sms",
+    "event_id": "4931",
+    "message_content": "李老板您好，我已经从公司出发，预计上午9点50分左右到您店里。我们今天重点是把操作流程过一遍，确保您会用。操作手册和演示要点都准备好了，一会儿见。",
+    "contactName": "李老板",
+    "contact_phone_number": "+86138XXXX5678",
+    "datetime": "2025-12-05 09:05:00",
+    "message_type": "发送",
+    "phone_id": "16"
+  },
+  {
+    "type": "sms",
+    "event_id": "81",
+    "message_content": "王丽娟：明强，记得你早上答应涵涵周末去放风筝吗？别忘了买风筝线。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8618501234567",
+    "datetime": "2025-01-08 17:30:00",
+    "message_type": "接收",
+    "phone_id": "17"
+  },
+  {
+    "type": "sms",
+    "event_id": "2757",
+    "message_content": "【社区家政中心】尊敬的王丽娟女士，恭喜您荣获‘社区服务之星’奖项，奖金500元已发放至您的账户。颁奖详情请留意后续通知。",
+    "contactName": "社区家政中心",
+    "contact_phone_number": "+8612345678900",
+    "datetime": "2025-07-10 17:55:00",
+    "message_type": "接收",
+    "phone_id": "18"
+  },
+  {
+    "type": "sms",
+    "event_id": "518",
+    "message_content": "陆明强：赵强，今天在3单元发现的图纸上没有的老化接头已经修复了，万用表测量正常。",
+    "contactName": "赵强",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-02-06 12:20:00",
+    "message_type": "发送",
+    "phone_id": "19"
+  },
+  {
+    "type": "sms",
+    "event_id": "3214",
+    "message_content": "昨天在书房复习电工基础，终于搞定了那个难懂的启动调速章节，现在感觉清晰多了。",
+    "contactName": "李明",
+    "contact_phone_number": "+8613909876543",
+    "datetime": "2025-08-11 09:15:00",
+    "message_type": "发送",
+    "phone_id": "20"
+  },
+  {
+    "type": "sms",
+    "event_id": "882",
+    "message_content": "陆明强：送涵涵上学，车在南沙路这边突然故障了，发动机异响。我靠边停了，正在处理。",
+    "contactName": "妻子",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-03-03 07:20:00",
+    "message_type": "发送",
+    "phone_id": "21"
+  },
+  {
+    "type": "sms",
+    "event_id": "117",
+    "message_content": "【刘经理】明强，关于会上提到的对你个人发展的支持，公司人力资源部已走完流程。恭喜！公司决定全额资助你报考电工高级技师的所有费用，包括培训、考试和材料费。具体申请表和流程说明我稍后邮件发你。好好准备！",
+    "contactName": "刘经理",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-01-13 10:15:00",
+    "message_type": "接收",
+    "phone_id": "22"
+  },
+  {
+    "type": "sms",
+    "event_id": "2303",
+    "message_content": "丽娟：明强，我准备好了，你送完孩子们就直接回来接我吗？记得带上我的医保卡，在我包里。今天雨大，开车小心。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613900000000",
+    "datetime": "2025-06-10 08:25:00",
+    "message_type": "接收",
+    "phone_id": "23"
+  },
+  {
+    "type": "sms",
+    "event_id": "546",
+    "message_content": "老婆，我锻炼完回来了。早餐买回来了，菠萝包和豆浆，放桌上了。",
+    "contactName": "妻子",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-02-08 08:25:00",
+    "message_type": "发送",
+    "phone_id": "24"
+  },
+  {
+    "type": "sms",
+    "event_id": "4194",
+    "message_content": "陆明强：建国，考试终于结束了！中午11点秀英万达广场见，一起庆祝一下。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-10-15 10:30:00",
+    "message_type": "发送",
+    "phone_id": "25"
+  },
+  {
+    "type": "sms",
+    "event_id": "3234",
+    "message_content": "建国：强哥，临时有个急活，客户李建国店里电路出问题了，让今晚过去看看。你时间方便吗？我们大概七点到店。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-08-11 16:45:00",
+    "message_type": "接收",
+    "phone_id": "26"
+  },
+  {
+    "type": "sms",
+    "event_id": "4994",
+    "message_content": "老公，水管修得怎么样？听说扳手打滑了，你的手有没有事？",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-12-09 20:15:00",
+    "message_type": "接收",
+    "phone_id": "27"
+  },
+  {
+    "type": "sms",
+    "event_id": "2783",
+    "message_content": "晨跑后老地方见？",
+    "contactName": "陈斌",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-07-12 07:00:00",
+    "message_type": "发送",
+    "phone_id": "28"
+  },
+  {
+    "type": "sms",
+    "event_id": "4216",
+    "message_content": "李工您好！非常感谢您昨晚在电话里的详细解答，关于变压器差动保护接线极性的现场验证方法，您提到的结合相位表的步骤我记下了，准备这两天再模拟练习一下。再次感谢！",
+    "contactName": "李工",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-10-17 09:15:00",
+    "message_type": "发送",
+    "phone_id": "29"
+  },
+  {
+    "type": "sms",
+    "event_id": "955",
+    "message_content": "修理厂 张师傅：陆先生，您的车我们开始拆检了。费用就和昨天电话里说的一样，您明天过来的时候直接带现金就行。",
+    "contactName": "修理厂 张师傅",
+    "contact_phone_number": "+8613908987654",
+    "datetime": "2025-03-06 16:20:00",
+    "message_type": "接收",
+    "phone_id": "30"
+  },
+  {
+    "type": "sms",
+    "event_id": "2831",
+    "message_content": "陆师傅您好，我是秀华路便利店的王老板。今天辛苦您了，电路升级这么快就弄好了，听您一解释，我对用电也放心多了，特别是您说的那几个优点，确实很重要，非常感谢！",
+    "contactName": "王老板",
+    "contact_phone_number": "+8613887654321",
+    "datetime": "2025-07-15 19:15:00",
+    "message_type": "接收",
+    "phone_id": "31"
+  },
+  {
+    "type": "sms",
+    "event_id": "3650",
+    "message_content": "陈工，中午一起吃饭时，想问问你有没有好的餐厅推荐，适合带家人去的。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-09-08 12:10:00",
+    "message_type": "发送",
+    "phone_id": "32"
+  },
+  {
+    "type": "sms",
+    "event_id": "5006",
+    "message_content": "陆工，巡检完了吗？红外测温仪的数据记得整理一下发给我。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613900000000",
+    "datetime": "2025-12-10 14:30:00",
+    "message_type": "接收",
+    "phone_id": "33"
+  },
+  {
+    "type": "sms",
+    "event_id": "164",
+    "message_content": "赵强，故障点已精确定位在花园步道下方1.5米深处。现场观察有击穿电弧痕迹，导致短路现象。抢修方案草案已完成，等你反馈。",
+    "contactName": "赵强",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-01-14 10:45:00",
+    "message_type": "发送",
+    "phone_id": "34"
+  },
+  {
+    "type": "sms",
+    "event_id": "975",
+    "message_content": "王丽娟：小宇妈妈你好，下周我们家车子要维修，想问问您方便顺路接送一下子轩上学吗？如果可以，我们也乐意在别的时间帮忙。",
+    "contactName": "小宇妈妈",
+    "contact_phone_number": "+8613987654321",
+    "datetime": "2025-03-08 19:45:00",
+    "message_type": "发送",
+    "phone_id": "35"
+  },
+  {
+    "type": "sms",
+    "event_id": "1419",
+    "message_content": "王丽娟：记得晚餐规则吗？谁先到家谁动手，今天你准备吧。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-04-09 17:45:00",
+    "message_type": "接收",
+    "phone_id": "36"
+  },
+  {
+    "type": "sms",
+    "event_id": "5157",
+    "message_content": "张班长：明天晚上聚餐，就定在老地方‘旺记烤鱼大排档’，大家记得准时。",
+    "contactName": "张班长",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-12-19 16:22:00",
+    "message_type": "接收",
+    "phone_id": "37"
+  },
+  {
+    "type": "sms",
+    "event_id": "4305",
+    "message_content": "陆工，李师傅的过渡方案很实用，我们已经按步骤开始执行临时旁路敷设。陈建国",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-10-23 12:45:00",
+    "message_type": "接收",
+    "phone_id": "38"
+  },
+  {
+    "type": "sms",
+    "event_id": "4545",
+    "message_content": "明强，明天去万绿园记得带水和防晒，孩子们的水壶我也准备好了。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-11-07 19:30:00",
+    "message_type": "接收",
+    "phone_id": "39"
+  },
+  {
+    "type": "sms",
+    "event_id": "638",
+    "message_content": "陈建国：陆工，上午提到的那个改造方案，关于老旧部件的，我们下午细聊？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-02-14 10:30:00",
+    "message_type": "接收",
+    "phone_id": "40"
+  },
+  {
+    "type": "sms",
+    "event_id": "1948",
+    "message_content": "紧急抢修：秀英区海秀街道一老旧小区配电箱主断路器烧毁，两栋楼停电，居民多为老人。请火速前往处理。",
+    "contactName": "张班长",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-05-17 17:01:00",
+    "message_type": "接收",
+    "phone_id": "41"
+  },
+  {
+    "type": "sms",
+    "event_id": "3334",
+    "message_content": "林哥，我手腕伤了，动不了，很疼。你能马上来俱乐部接我一下吗？得去医院看看。你到了吗？",
+    "contactName": "林哥",
+    "contact_phone_number": "+8613500000000",
+    "datetime": "2025-08-17 20:08:00",
+    "message_type": "发送",
+    "phone_id": "42"
+  },
+  {
+    "type": "sms",
+    "event_id": "2464",
+    "message_content": "陆明强：下午小巷茶店见？\n吴刚：好的，老地方见，我大概两点到。",
+    "contactName": "吴刚",
+    "contact_phone_number": "+8618501234567",
+    "datetime": "2025-06-21 10:30:00",
+    "message_type": "发送",
+    "phone_id": "43"
+  },
+  {
+    "type": "sms",
+    "event_id": "1493",
+    "message_content": "建国，我中午已经跟领导确认报名那个竞赛了。你这边怎么说？晚上有空聊聊怎么准备吗？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-04-14 12:55:00",
+    "message_type": "发送",
+    "phone_id": "44"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：明强，最近忙啥呢？好久没视频了，晚上有空聊聊不？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 20:05:00",
+    "message_type": "接收",
+    "phone_id": "45"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：海子！刚下班吃完饭。行啊，九点左右吧，我收拾一下。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 20:10:00",
+    "message_type": "发送",
+    "phone_id": "46"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：好嘞！对了，你最近跟刚子联系没？听说他出事了。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 20:12:00",
+    "message_type": "接收",
+    "phone_id": "47"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：啊？刚子？没听说啊，他咋了？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 20:15:00",
+    "message_type": "发送",
+    "phone_id": "48"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：我也是听伟哥说的。好像是上周在小区修路灯，梯子没放稳，摔下来了，把脚踝给扭了，还挺严重，医生让在家躺着，至少得歇半个月。咱们这行，安全第一啊！",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 20:18:00",
+    "message_type": "接收",
+    "phone_id": "49"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：唉，真是的。回头我给他打个电话问问。咱们晚上视频聊吧。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 20:20:00",
+    "message_type": "发送",
+    "phone_id": "50"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：明强，周末去旧货市场不？听说新到了一批老物件，说不定有漏可捡。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-01-10 14:30:00",
+    "message_type": "接收",
+    "phone_id": "51"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：老陈，这周末得陪孩子，去不了。你看到好东西帮我留意下。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-01-10 14:35:00",
+    "message_type": "发送",
+    "phone_id": "52"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：行。对了，你上次不是说想找点有年代感的瓶子吗？具体喜欢啥样的？现在好多年轻人喜欢那种花里胡哨的新瓶子。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-01-10 14:38:00",
+    "message_type": "接收",
+    "phone_id": "53"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：我还是喜欢老东西。就那种八九十年代的，瓶子上印着“地方国营酒厂”、“优质产品”字样的，看着就扎实，有那个年代的味道。我爹以前就喝那种酒。现在的新瓶子太轻飘了，没感觉。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-01-10 14:42:00",
+    "message_type": "发送",
+    "phone_id": "54"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：明白！你这口味够怀旧的。那种瓶子现在确实不好找了，品相好的更少。我帮你盯着，有消息告诉你。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-01-10 14:45:00",
+    "message_type": "接收",
+    "phone_id": "55"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：明强，在忙吗？晚上有空视频不？想跟你唠唠。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613576890123",
+    "datetime": "2025-01-15 20:05:00",
+    "message_type": "接收",
+    "phone_id": "56"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚收拾完，有空。半小时后？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613576890123",
+    "datetime": "2025-01-15 20:10:00",
+    "message_type": "发送",
+    "phone_id": "57"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：行！正好跟你分享个事，我舅舅，就是我妈的亲弟弟，最近在深圳龙岗那边买了个新房，刚办完手续，可把他累坏了。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613576890123",
+    "datetime": "2025-01-15 20:12:00",
+    "message_type": "接收",
+    "phone_id": "58"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：好事啊！恭喜你舅舅。深圳房价不低吧？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613576890123",
+    "datetime": "2025-01-15 20:15:00",
+    "message_type": "发送",
+    "phone_id": "59"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：是啊，压力不小。不过总算安顿下来了。晚上视频细聊！",
+    "contactName": "王海",
+    "contact_phone_number": "+8613576890123",
+    "datetime": "2025-01-15 20:16:00",
+    "message_type": "接收",
+    "phone_id": "60"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：明强，看你最近朋友圈老转发一些机器的照片，咋了，对摄影上心了？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-01-22 18:30:00",
+    "message_type": "接收",
+    "phone_id": "61"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：哈哈，被你看出来了。考完试轻松点，刷手机看到些工业摄影，挺有意思。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-01-22 18:35:00",
+    "message_type": "发送",
+    "phone_id": "62"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：哦？都喜欢看啥样的？是拍整个大工地那种，还是拍咱们这种干活的人？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-01-22 18:36:00",
+    "message_type": "接收",
+    "phone_id": "63"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：不太一样。我特别喜欢看那种把断路器、继电器内部拍得特别清楚的照片，螺丝、铜排、线圈，在光线下特别有质感，感觉把咱天天摸的东西拍出了另一种美。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-01-22 18:40:00",
+    "message_type": "发送",
+    "phone_id": "64"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：懂了，就是设备特写呗。你这眼光可以，改天拿手机拍拍咱的工具箱试试？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-01-22 18:42:00",
+    "message_type": "接收",
+    "phone_id": "65"
+  },
+  {
+    "type": "sms",
+    "event_id": "2927",
+    "message_content": "陆明强：昨天在书房研读的那本安全规程很有用，尤其是工作票部分，我整理了一些要点，回头分享给你。",
+    "contactName": "李工",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-07-22 10:30:00",
+    "message_type": "发送",
+    "phone_id": "66"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：明强，下午三点老地方喝茶？我有点关于新小区配电箱布线的问题想跟你聊聊。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613987654321",
+    "datetime": "2025-07-15 10:23:00",
+    "message_type": "接收",
+    "phone_id": "67"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：行啊建国，没问题。正好我也有点事想跟你说说。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613987654321",
+    "datetime": "2025-07-15 10:30:00",
+    "message_type": "发送",
+    "phone_id": "68"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：建国，你最近跟海子联系没？他昨晚跟我视频，聊了快一个小时，情绪不高。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613987654321",
+    "datetime": "2025-07-15 15:45:00",
+    "message_type": "发送",
+    "phone_id": "69"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：没呢，他咋了？深圳那边生意不顺？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613987654321",
+    "datetime": "2025-07-15 15:47:00",
+    "message_type": "接收",
+    "phone_id": "70"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：是啊，他说华强北那边竞争太激烈，他们店铺这几个月业绩一直上不去，老板给的压力很大。他还在纠结要不要干脆回海南来，但又怕回来收入少一大截，养家压力更大。我看他是真烦。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613987654321",
+    "datetime": "2025-07-15 15:50:00",
+    "message_type": "发送",
+    "phone_id": "71"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（酒瓶同好）：明强，周末有空吗？我在旧货市场淘到两个挺有意思的瓶子，一起看看？",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613572468135",
+    "datetime": "2025-09-12 19:15:00",
+    "message_type": "接收",
+    "phone_id": "72"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：老陈，这周末要陪孩子。瓶子啥样的？拍个照看看。",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613572468135",
+    "datetime": "2025-09-12 19:20:00",
+    "message_type": "发送",
+    "phone_id": "73"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（酒瓶同好）：【图片】一个是90年代初的椰岛鹿龟酒瓶，玻璃的，但标签设计很有年代感。另一个是近两年的某品牌新出的光瓶酒，设计挺简约。",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613572468135",
+    "datetime": "2025-09-12 19:25:00",
+    "message_type": "接收",
+    "phone_id": "74"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：老陈，不瞒你说，我现在对后面这种新出的、设计花哨的瓶子兴趣不大了。",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613572468135",
+    "datetime": "2025-09-12 19:28:00",
+    "message_type": "发送",
+    "phone_id": "75"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：前阵子收拾我爸的老房子，翻出几个他当年喝剩的空瓶子，都是八九十年代的，玻璃厚实，标签都泛黄了，拿在手里感觉不一样。我现在就特别想找那种有年头、有故事的老瓶子，新的反而不怎么想收了。",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613572468135",
+    "datetime": "2025-09-12 19:30:00",
+    "message_type": "发送",
+    "phone_id": "76"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：明强，下午去海盛路那家新开的茶店坐坐？听说他们家的鹧鸪茶不错。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-07-15 14:20:00",
+    "message_type": "接收",
+    "phone_id": "77"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：行啊，建国。正好今天活干完得早。三点半见？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-07-15 14:25:00",
+    "message_type": "发送",
+    "phone_id": "78"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：好。对了，昨天我去给李师傅送点老家带来的黄灯笼辣椒，听他唉声叹气的。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-07-15 14:27:00",
+    "message_type": "接收",
+    "phone_id": "79"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：李师傅怎么了？身体不舒服？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-07-15 14:30:00",
+    "message_type": "发送",
+    "phone_id": "80"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：不是身体，是操心他儿子。他儿子不是在深圳搞IT嘛，听说最近项目黄了，干得不顺心，想回海口来。李师傅又愁他回来找不到像样的工作，IT岗位海口少。可看着儿子在那边天天加班到半夜，他又心疼。两头为难。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-07-15 14:32:00",
+    "message_type": "接收",
+    "phone_id": "81"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：唉，父母都是这样。儿孙自有儿孙福，李师傅也别太焦虑了。咱们下午见面聊。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-07-15 14:35:00",
+    "message_type": "发送",
+    "phone_id": "82"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（收藏同好）：明强，周末东门老街那个旧货市场听说来了一批老酒瓶，去淘淘看？",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613577771234",
+    "datetime": "2025-09-12 19:05:00",
+    "message_type": "接收",
+    "phone_id": "83"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：好啊老陈。我最近收瓶子，眼光有点变了。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613577771234",
+    "datetime": "2025-09-12 19:10:00",
+    "message_type": "发送",
+    "phone_id": "84"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（收藏同好）：哦？怎么说？以前你不是主要看是不是名酒，酱香还是浓香吗？",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613577771234",
+    "datetime": "2025-09-12 19:12:00",
+    "message_type": "接收",
+    "phone_id": "85"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：那些当然还是基础。但现在我更喜欢找有“故事”的瓶子。比如瓶身上印着“建厂XX周年纪念”、“某年某月特供”，或者干脆就是某个特定年份的生肖纪念版。感觉这样的瓶子摆在那里，不光是酒瓶，更像一个时间标记。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613577771234",
+    "datetime": "2025-09-12 19:15:00",
+    "message_type": "发送",
+    "phone_id": "86"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（收藏同好）：有道理！这种带特殊标识的确实更有收藏味道。那周末我们就重点淘这类！",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613577771234",
+    "datetime": "2025-09-12 19:18:00",
+    "message_type": "接收",
+    "phone_id": "87"
+  },
+  {
+    "type": "sms",
+    "event_id": "258",
+    "message_content": "【海南农商银行】验证码887654，用于您尾号1234账户的业务办理，请勿泄露。",
+    "contactName": "海南农商银行",
+    "contact_phone_number": "+861000000000",
+    "datetime": "2025-01-20 12:15:00",
+    "message_type": "接收",
+    "phone_id": "88"
+  },
+  {
+    "type": "sms",
+    "event_id": "1070",
+    "message_content": "【银行提醒】您尾号5678的账户于3月14日17:08在日日隆小卖部消费支出人民币8.00元。",
+    "contactName": "银行",
+    "contact_phone_number": "+861000000000",
+    "datetime": "2025-03-14 17:08:00",
+    "message_type": "接收",
+    "phone_id": "89"
+  },
+  {
+    "type": "sms",
+    "event_id": "3366",
+    "message_content": "我：今早按计划出去跑步了，很顺利。路上还碰到了一位跑友，聊了聊各自受伤恢复的心得，挺有收获的。",
+    "contactName": "张伟",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-08-20 07:35:00",
+    "message_type": "发送",
+    "phone_id": "90"
+  },
+  {
+    "type": "sms",
+    "event_id": "1993",
+    "message_content": "陈建国：明强，刚才听你说首付解决了，真替你高兴！父母的借款到账了？这下可以放心去选车了。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613917895623",
+    "datetime": "2025-05-20 10:55:00",
+    "message_type": "接收",
+    "phone_id": "91"
+  },
+  {
+    "type": "sms",
+    "event_id": "5166",
+    "message_content": "林峰：今天在万绿园碰到你真巧！明晚的活动别忘了哈～昨天获奖了，得请客喝水啊！",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-12-21 11:40:00",
+    "message_type": "接收",
+    "phone_id": "92"
+  },
+  {
+    "type": "sms",
+    "event_id": "2968",
+    "message_content": "陈师傅您好，关于您今天下午提到的合作邀请，我仔细考虑并与家人商量后，非常感谢您的赏识和厚爱。但出于个人发展规划的考虑，我目前无法加入您的新团队。祝您的新工作室一切顺利！",
+    "contactName": "陈师傅",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-07-24 21:30:00",
+    "message_type": "发送",
+    "phone_id": "93"
+  },
+  {
+    "type": "sms",
+    "event_id": "5182",
+    "message_content": "陆先生您好，您下午定的那套电工工具礼盒（包含绝缘螺丝刀等）已包装好，随时可以来取。祝您徒弟工作顺利！",
+    "contactName": "五金店张老板",
+    "contact_phone_number": "+8613387654321",
+    "datetime": "2025-12-22 18:15:00",
+    "message_type": "接收",
+    "phone_id": "94"
+  },
+  {
+    "type": "sms",
+    "event_id": "1568",
+    "message_content": "老陆，今天的茶叙很愉快，谢谢你的专业建议，热水器的事我按你说的办。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-19 17:30:00",
+    "message_type": "接收",
+    "phone_id": "95"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：明强，在忙吗？晚上方便视频不？有点事想跟你唠唠，关于我家那臭小子的。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-08-15 19:30:00",
+    "message_type": "接收",
+    "phone_id": "96"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚吃完饭，不忙。行啊，八点半吧。你家小子又咋了？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-08-15 19:35:00",
+    "message_type": "发送",
+    "phone_id": "97"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：唉，说起来又好气又好笑。这小子，不知道从哪学的，迷上了搞发明。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-08-15 20:45:00",
+    "message_type": "接收",
+    "phone_id": "98"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：天天从我店里捡些报废的电路板、旧电池、小马达回去，在他自己房间里鼓捣。昨天搞了个什么“自动喂鱼机”，结果电线短路，冒火星子，差点把他书桌给点了！吓得我老婆够呛。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-08-15 20:46:00",
+    "message_type": "接收",
+    "phone_id": "99"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：哈哈，这小子有想法啊，像你，爱折腾。不过安全第一，你得好好教教他用电常识。我这边有些基础的绝缘胶布、万用表啥的，要不寄点给你？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-08-15 20:50:00",
+    "message_type": "发送",
+    "phone_id": "100"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：明强，上周去文昌，在一个老酒铺看到两瓶九十年代的“海口大曲”，品相不错，瓶盖挺特别，你要不要看看图？",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613898765432",
+    "datetime": "2025-10-12 14:20:00",
+    "message_type": "接收",
+    "phone_id": "101"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：要啊，老陈，快发来看看。我最近正好对老酒的瓶盖有点新想法。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613898765432",
+    "datetime": "2025-10-12 14:22:00",
+    "message_type": "发送",
+    "phone_id": "102"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：【图片】你看，就是这种。盖子本身是陶瓷的，上面烧制了当年的生肖图案，龙年的就是一条龙，虎年的就是一只虎。用手压下去盖紧的那种，我们叫“压盖”。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613898765432",
+    "datetime": "2025-10-12 14:25:00",
+    "message_type": "接收",
+    "phone_id": "103"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：对，就是这种！我最近特别迷这种带生肖图案的陶瓷压盖。感觉比现在清一色的金属旋盖有味道，有年代感，图案也吉祥。我正想着能不能按十二生肖收一套呢，不过猴年和马年的特别难找。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613898765432",
+    "datetime": "2025-10-12 14:28:00",
+    "message_type": "发送",
+    "phone_id": "104"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：有追求！这套收齐了可值钱了，不光酒有价值，这盖子本身就是工艺品。我帮你留意着，有消息通知你。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613898765432",
+    "datetime": "2025-10-12 14:30:00",
+    "message_type": "接收",
+    "phone_id": "105"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：建国，下班没？今天活干完了，累得够呛。",
+    "contactName": "陈建国（工友）",
+    "contact_phone_number": "+8613808987654",
+    "datetime": "2025-08-15 18:30:00",
+    "message_type": "发送",
+    "phone_id": "106"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（工友）：刚到家。可不是嘛，今天那变压器调试真费劲。对了，你哥在深圳那边生意怎么样？上次听你说他公司做得挺大。",
+    "contactName": "陈建国（工友）",
+    "contact_phone_number": "+8613808987654",
+    "datetime": "2025-08-15 18:35:00",
+    "message_type": "接收",
+    "phone_id": "107"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：唉，别提了。昨晚跟他视频，他正烦着呢。说是一个合作了好几年的老客户，这次货发过去快三个月了，尾款一直拖着不给，催了好几次都没用。",
+    "contactName": "陈建国（工友）",
+    "contact_phone_number": "+8613808987654",
+    "datetime": "2025-08-15 18:38:00",
+    "message_type": "发送",
+    "phone_id": "108"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（工友）：啊？那可不是小数目吧？公司周转会不会受影响？",
+    "contactName": "陈建国（工友）",
+    "contact_phone_number": "+8613808987654",
+    "datetime": "2025-08-15 18:40:00",
+    "message_type": "接收",
+    "phone_id": "109"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：影响不小，他说现在现金流有点紧，正想办法看是走法律途径还是找中间人再去谈谈。做生意的风险是真大，还是咱们这技术活稳当，一手交钱一手交货。",
+    "contactName": "陈建国（工友）",
+    "contact_phone_number": "+8613808987654",
+    "datetime": "2025-08-15 18:42:00",
+    "message_type": "发送",
+    "phone_id": "110"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（收藏同好）：明强，周末去老街旧货市场不？听说有个摊新到了一批老物件，可能有酒瓶。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613812345098",
+    "datetime": "2025-08-22 14:20:00",
+    "message_type": "接收",
+    "phone_id": "111"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：去啊！正好这周不加班。我就喜欢淘那种八九十年代的老瓶子，玻璃的，上面还印着“地方国营XX酒厂”字样的，看着就踏实，有年代感。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613812345098",
+    "datetime": "2025-08-22 14:25:00",
+    "message_type": "发送",
+    "phone_id": "112"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（收藏同好）：哈哈，你这口味一直没变。我就不一样，我喜欢现在那些大厂出的限量版陶瓷瓶，造型好看，摆家里气派。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613812345098",
+    "datetime": "2025-08-22 14:28:00",
+    "message_type": "接收",
+    "phone_id": "113"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：各有所爱嘛。我觉得老玻璃瓶实在，记录了一段历史。那些新出的花里胡哨的，价格炒得高，我不太感冒。咱们周六上午九点，市场门口见？",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613812345098",
+    "datetime": "2025-08-22 14:30:00",
+    "message_type": "发送",
+    "phone_id": "114"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（收藏同好）：行，就这么定了！看看这次能不能帮你淘到个带“琼”字头的国营厂瓶子。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613812345098",
+    "datetime": "2025-08-22 14:32:00",
+    "message_type": "接收",
+    "phone_id": "115"
+  },
+  {
+    "type": "sms",
+    "event_id": "4719",
+    "message_content": "张头：明强，今天例会上对你的贡献进行了表彰，奖金已安排发放，注意查收。",
+    "contactName": "张头",
+    "contact_phone_number": "+8613900012345",
+    "datetime": "2025-11-20 15:35:00",
+    "message_type": "接收",
+    "phone_id": "116"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：老陆，在忙吗？跟你说个又好气又好笑的事。",
+    "contactName": "陈建国（收藏）",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 20:12:00",
+    "message_type": "接收",
+    "phone_id": "117"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚下班，建国哥，啥事？说来听听。",
+    "contactName": "陈建国（收藏）",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 20:15:00",
+    "message_type": "发送",
+    "phone_id": "118"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：上周我不是在旧货市场淘了个老酒瓶嘛，造型像个葫芦，挺别致的。",
+    "contactName": "陈建国（收藏）",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 20:16:00",
+    "message_type": "接收",
+    "phone_id": "119"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：我放阳台角落想着先晾晾灰。结果今天早上，我老婆收拾阳台，看那瓶子脏兮兮的，以为是普通玻璃瓶，差点就给扔到废品袋里了！",
+    "contactName": "陈建国（收藏）",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 20:17:00",
+    "message_type": "接收",
+    "phone_id": "120"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：哈哈，嫂子也是好心收拾。还好你发现得及时。这瓶子看来跟你有缘，差点就“飞”了。",
+    "contactName": "陈建国（收藏）",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 20:18:00",
+    "message_type": "发送",
+    "phone_id": "121"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：阿强，最近忙吗？想跟你咨询个事。",
+    "contactName": "陈志强",
+    "contact_phone_number": "+8613912345987",
+    "datetime": "2025-01-22 19:30:00",
+    "message_type": "发送",
+    "phone_id": "122"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈志强：姐夫，刚吃完饭。不忙，你说。",
+    "contactName": "陈志强",
+    "contact_phone_number": "+8613912345987",
+    "datetime": "2025-01-22 19:35:00",
+    "message_type": "接收",
+    "phone_id": "123"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：最近海口这边空气质量感觉时好时坏，加上孩子有时咳嗽，想给家里买个空气净化器。你们在深圳接触电子产品多，有没有什么靠谱的品牌或者要注意的功能推荐？",
+    "contactName": "陈志强",
+    "contact_phone_number": "+8613912345987",
+    "datetime": "2025-01-22 19:36:00",
+    "message_type": "发送",
+    "phone_id": "124"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈志强：这个问我就对了！我们店里也卖一些小家电。姐夫，你主要考虑净化效果和噪音对吧？我建议你看几个国产品牌，性价比高，滤芯也好买。回头我发几个型号和参数给你参考。",
+    "contactName": "陈志强",
+    "contact_phone_number": "+8613912345987",
+    "datetime": "2025-01-22 19:38:00",
+    "message_type": "接收",
+    "phone_id": "125"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：好的，麻烦你了阿强。主要是实用、耐用，别太吵。等你消息。",
+    "contactName": "陈志强",
+    "contact_phone_number": "+8613912345987",
+    "datetime": "2025-01-22 19:40:00",
+    "message_type": "发送",
+    "phone_id": "126"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：明强，下午三点老地方喝老爸茶？我请客。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 13:20:00",
+    "message_type": "接收",
+    "phone_id": "127"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：好，准时到。正好有点事想跟你聊聊。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 13:25:00",
+    "message_type": "发送",
+    "phone_id": "128"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：对了，昨天小赵给我发微信了，说回湖南老家后工作定了。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 16:10:00",
+    "message_type": "接收",
+    "phone_id": "129"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：哦？他找到什么工作了？还在干电工吗？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 16:12:00",
+    "message_type": "发送",
+    "phone_id": "130"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：嗯，他说在永州市，一家新开的电动车厂里做电工，待遇还行，离家也近。这小子总算安定下来了。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 16:15:00",
+    "message_type": "接收",
+    "phone_id": "131"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：老陆，最近有没有淘到什么好瓶子？",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613912345987",
+    "datetime": "2025-01-22 19:30:00",
+    "message_type": "接收",
+    "phone_id": "132"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚收了一个，品相不错。老陈，跟你说，我最近口味变了。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613912345987",
+    "datetime": "2025-01-22 19:35:00",
+    "message_type": "发送",
+    "phone_id": "133"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：哦？以前你不是喜欢川酒那种浓香的吗？",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613912345987",
+    "datetime": "2025-01-22 19:37:00",
+    "message_type": "接收",
+    "phone_id": "134"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：对，但现在觉得贵州那边的酱香型更有味道，瓶子设计也大气。特别是茅台镇那几个老厂出的，瓶型有历史感，我最近就盯着这个方向收了。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613912345987",
+    "datetime": "2025-01-22 19:40:00",
+    "message_type": "发送",
+    "phone_id": "135"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：哈哈，品味上档次了！酱香型确实经典，瓶子也耐看。改天把你新收的拍给我看看。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613912345987",
+    "datetime": "2025-01-22 19:42:00",
+    "message_type": "接收",
+    "phone_id": "136"
+  },
+  {
+    "type": "sms",
+    "event_id": "294",
+    "message_content": "老陆，看您今天动作有点僵，多歇歇。我备了点东西，等会儿拿给您。腰要紧，别硬撑。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-01-22 17:04:00",
+    "message_type": "发送",
+    "phone_id": "137"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：强哥，在忙吗？晚上方便视频聊会儿不？心里有点堵得慌。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-03-15 19:30:00",
+    "message_type": "接收",
+    "phone_id": "138"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚吃完饭，不忙。行啊，九点吧，我安顿好孩子。咋了海子，工作不顺心？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-03-15 19:35:00",
+    "message_type": "发送",
+    "phone_id": "139"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：唉，别提了。我们华强北这片，上个月底在我店铺隔壁，开了家XX数码连锁，规模大，装修亮堂，广告打得凶。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-03-15 19:38:00",
+    "message_type": "接收",
+    "phone_id": "140"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：这个月明显感觉老客人都被拉走了，新客人也更愿意去大店。我这个月销售额掉了快三成，看着店里冷冷清清的，真不是滋味。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-03-15 19:40:00",
+    "message_type": "接收",
+    "phone_id": "141"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：确实闹心。大店有优势，但你们老店也有熟客和口碑。别太焦虑，晚上视频咱再细聊，看看有没有啥招。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-03-15 19:45:00",
+    "message_type": "发送",
+    "phone_id": "142"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：明强，最近有没有淘到什么好瓶子？我上周去文昌，在一个老供销社看到几个八十年代的玻璃瓶，品相一般，就没收。",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-04-10 14:20:00",
+    "message_type": "接收",
+    "phone_id": "143"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：最近忙考证，没特意去淘。瓶子没收获，不过对酒的口味有点新感觉。",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-04-10 14:25:00",
+    "message_type": "发送",
+    "phone_id": "144"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：哦？说来听听。你以前不是挺认准咱本地那几个浓香牌子吗？",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-04-10 14:27:00",
+    "message_type": "接收",
+    "phone_id": "145"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：是啊，浓香喝惯了。但过年我哥从深圳带回来两瓶兼香型的，说是湖北那边的酒。我尝了尝，感觉挺有意思。",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-04-10 14:30:00",
+    "message_type": "发送",
+    "phone_id": "146"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：它不像纯浓香那么冲，入口比较绵，细品又有酱香那种焦糊香，回味挺丰富。我现在觉得这种浓酱兼香的风格更合我胃口，既有劲儿，又细腻。",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-04-10 14:32:00",
+    "message_type": "发送",
+    "phone_id": "147"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：强子，在忙吗？方便视频聊聊吗？心里有点堵得慌。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613576890123",
+    "datetime": "2025-03-15 20:30:00",
+    "message_type": "接收",
+    "phone_id": "148"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚吃完饭，不忙。怎么了海子？我打给你。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613576890123",
+    "datetime": "2025-03-15 20:32:00",
+    "message_type": "发送",
+    "phone_id": "149"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：唉，还是华强北店铺那点破事。房东合同快到期了，说要涨40%的租金，这还让人怎么干？我这几天愁得睡不着。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613576890123",
+    "datetime": "2025-03-15 21:05:00",
+    "message_type": "接收",
+    "phone_id": "150"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：涨这么多？这也太狠了。那你打算怎么办？是续租还是找新地方？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613576890123",
+    "datetime": "2025-03-15 21:07:00",
+    "message_type": "发送",
+    "phone_id": "151"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：就是不知道啊！老客户都在这片，搬远了生意肯定受影响。不搬吧，这租金一涨，利润就薄了。真难选。还是羡慕你在老家稳定。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613576890123",
+    "datetime": "2025-03-15 21:10:00",
+    "message_type": "接收",
+    "phone_id": "152"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：明强，周末有空吗？我淘到两个挺特别的瓶子，一起出来喝杯茶看看？",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-04-12 14:20:00",
+    "message_type": "接收",
+    "phone_id": "153"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：好啊老陈，周六下午三点，老地方见？",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-04-12 14:25:00",
+    "message_type": "发送",
+    "phone_id": "154"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：行！对了，你上次说想换换口味，最近有发现什么好喝的吗？",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-04-12 14:27:00",
+    "message_type": "接收",
+    "phone_id": "155"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：还真有。我最近试了一款，不是咱们常喝的酱香或浓香，是兼香型的。闻起来有股淡淡的花果香，喝进去口感层次挺丰富，觉得挺新鲜。",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-04-12 14:30:00",
+    "message_type": "发送",
+    "phone_id": "156"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：哦？带花果香的兼香型？这倒是少见。什么牌子的？周六带点见识见识，我也尝尝你这新口味。",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-04-12 14:32:00",
+    "message_type": "接收",
+    "phone_id": "157"
+  },
+  {
+    "type": "sms",
+    "event_id": "1596",
+    "message_content": "丽娟：明强，早上想到我们昨晚的决定，那些额外开销如外卖、电影票先停掉，它们不是必需的。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-04-22 08:45:00",
+    "message_type": "接收",
+    "phone_id": "158"
+  },
+  {
+    "type": "sms",
+    "event_id": "2016",
+    "message_content": "陈杰：那辆国产SUV我仔细检查了，车况不错，是2022年的，可以考虑入手。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-05-21 19:45:00",
+    "message_type": "接收",
+    "phone_id": "159"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：明强，在忙吗？刚跟周伟通完电话，听他吐槽了半天。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613507654321",
+    "datetime": "2025-01-15 20:32:00",
+    "message_type": "接收",
+    "phone_id": "160"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚下班到家。周伟咋了？又跟他老板闹别扭了？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613507654321",
+    "datetime": "2025-01-15 20:35:00",
+    "message_type": "发送",
+    "phone_id": "161"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：不是工作的事，是他那辆老雅阁。开了七八年了，一直挺皮实，结果前两天变速箱突然出毛病了，挂不上档。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613507654321",
+    "datetime": "2025-01-15 20:36:00",
+    "message_type": "接收",
+    "phone_id": "162"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：哦，车坏了啊。修一下得多少钱？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613507654321",
+    "datetime": "2025-01-15 20:37:00",
+    "message_type": "发送",
+    "phone_id": "163"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：问了几家修理厂，都说换件加人工，估计要八千到一万。把他心疼坏了，说这钱够带老婆孩子出去玩一趟了。不过还好，不影响他跑业务，公司有备用车。就是自己掏腰包修，肉疼。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613507654321",
+    "datetime": "2025-01-15 20:38:00",
+    "message_type": "接收",
+    "phone_id": "164"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（老陈）：明强，周末去老街旧货市场不？听说那边有个摊新收了一批老酒瓶，可能有海南本地的。",
+    "contactName": "陈建国（老陈）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-01-22 14:15:00",
+    "message_type": "接收",
+    "phone_id": "165"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：这周末可能得陪孩子。对了老陈，最近我喝酒的口味有点变了。",
+    "contactName": "陈建国（老陈）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-01-22 14:20:00",
+    "message_type": "发送",
+    "phone_id": "166"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（老陈）：哦？以前你不是挺能喝高度数的嘛，现在改喝低度了？",
+    "contactName": "陈建国（老陈）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-01-22 14:21:00",
+    "message_type": "接收",
+    "phone_id": "167"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：不是度数问题。是香型。以前觉得酱香、浓香够劲，现在反而觉得有点太冲，一口下去烧得慌。",
+    "contactName": "陈建国（老陈）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-01-22 14:22:00",
+    "message_type": "发送",
+    "phone_id": "168"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：上个月工头请客，尝了种兼香型的，好像叫白云边？还有种湖南的馥郁香型酒鬼酒。感觉一口下去有好几种味道，没那么烈，但层次很丰富，顺口多了。现在自己买酒会留意这类。",
+    "contactName": "陈建国（老陈）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-01-22 14:23:00",
+    "message_type": "发送",
+    "phone_id": "169"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：明强，最近忙不？我上周去乡下收旧货，淘到个好东西。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613898765432",
+    "datetime": "2025-01-15 19:30:00",
+    "message_type": "接收",
+    "phone_id": "170"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：还行，老样子。淘到啥了？发来看看。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613898765432",
+    "datetime": "2025-01-15 19:32:00",
+    "message_type": "发送",
+    "phone_id": "171"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：[图片]看，98年的海口大曲，瓶子品相没得说，釉色正，标也全。就是这铁皮盖子锈得有点厉害。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613898765432",
+    "datetime": "2025-01-15 19:35:00",
+    "message_type": "接收",
+    "phone_id": "172"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：这瓶子确实少见！锈盖子是有点可惜。你打算咋弄？",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613898765432",
+    "datetime": "2025-01-15 19:38:00",
+    "message_type": "发送",
+    "phone_id": "173"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：就是纠结这个。保持原样吧，看着别扭；找人修复吧，又怕弄巧成拙，失了老物件的味道。你经验多，给点意见？",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613898765432",
+    "datetime": "2025-01-15 19:40:00",
+    "message_type": "接收",
+    "phone_id": "174"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：强子，在干嘛呢？方便视频不？",
+    "contactName": "王海（发小）",
+    "contact_phone_number": "+8613578963214",
+    "datetime": "2025-01-22 21:05:00",
+    "message_type": "接收",
+    "phone_id": "175"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚收拾完，可以。啥事？",
+    "contactName": "王海（发小）",
+    "contact_phone_number": "+8613578963214",
+    "datetime": "2025-01-22 21:07:00",
+    "message_type": "发送",
+    "phone_id": "176"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：没事，就聊聊。对了，最近我迷上搞家庭影院了，天天研究。",
+    "contactName": "王海（发小）",
+    "contact_phone_number": "+8613578963214",
+    "datetime": "2025-01-22 21:10:00",
+    "message_type": "接收",
+    "phone_id": "177"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：你又折腾啥？电视不是刚换没多久？",
+    "contactName": "王海（发小）",
+    "contact_phone_number": "+8613578963214",
+    "datetime": "2025-01-22 21:12:00",
+    "message_type": "发送",
+    "phone_id": "178"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：电视是还行，但声音不行啊！我现在看大片，总觉得缺那么点意思。我看中了一套支持杜比全景声的音响，环绕感绝了，就是价格有点肉疼，小两万。不过想想下班回家能享受一下，也值了，准备下个月发了奖金就拿下！",
+    "contactName": "王海（发小）",
+    "contact_phone_number": "+8613578963214",
+    "datetime": "2025-01-22 21:15:00",
+    "message_type": "接收",
+    "phone_id": "179"
+  },
+  {
+    "type": "sms",
+    "event_id": "1210",
+    "message_content": "陆明强：老陈，我大概五点过来，铜芯线要质量好的国标货。",
+    "contactName": "老陈",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-03-24 15:30:00",
+    "message_type": "发送",
+    "phone_id": "180"
+  },
+  {
+    "type": "sms",
+    "event_id": "3386",
+    "message_content": "陈建国：明强，下班了？晚上整点烤鱼去，老地方见。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-08-21 17:35:00",
+    "message_type": "接收",
+    "phone_id": "181"
+  },
+  {
+    "type": "sms",
+    "event_id": "3386",
+    "message_content": "陆明强：建国，今晚不了，涵涵咳嗽得早点回。饮食也得调整，宵夜负担大。改约周末下午吧，我请客，喝点清淡的。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-08-21 17:45:00",
+    "message_type": "发送",
+    "phone_id": "182"
+  },
+  {
+    "type": "sms",
+    "event_id": "3869",
+    "message_content": "陈建国：陆师傅，3号楼电表箱的接线端子断裂了，需要立即处理。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-09-22 10:25:00",
+    "message_type": "接收",
+    "phone_id": "183"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：明强，下班了没？今天小赵干活有点心不在焉，差点出岔子。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-06-18 18:30:15",
+    "message_type": "接收",
+    "phone_id": "184"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚到家。怎么回事？小赵平时挺稳当的。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-06-18 18:35:22",
+    "message_type": "发送",
+    "phone_id": "185"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：唉，他家里出事了。中午吃饭时跟我说的，他爸在湖南老家突然脑梗，送医院了，情况好像挺急。他正愁着要不要请假回去，又怕耽误工作。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-06-18 18:38:10",
+    "message_type": "接收",
+    "phone_id": "186"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：这么严重？那是得回去看看。工作的事跟张头说说，应该能理解。回头我也问问他，看有什么能帮的。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-06-18 18:42:05",
+    "message_type": "发送",
+    "phone_id": "187"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈杰：明强哥，周末天气不错，下午三点万绿园老地方放风筝？我新做了个沙燕，试试风。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8613577778899",
+    "datetime": "2025-06-13 09:15:33",
+    "message_type": "接收",
+    "phone_id": "188"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：行啊，我带轩轩一起去。对了，你上次不是说有个朋友在贵州做物流吗？",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8613577778899",
+    "datetime": "2025-06-13 09:20:18",
+    "message_type": "发送",
+    "phone_id": "189"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈杰：对啊，我表哥，跑贵州线的。怎么了？",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8613577778899",
+    "datetime": "2025-06-13 09:22:05",
+    "message_type": "接收",
+    "phone_id": "190"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：我最近不是好收藏酒瓶嘛。看网上有人说，贵州仁怀茅台镇那边，除了茅台，还有很多小酒厂，瓶子设计挺有特色，有的还沿用老工艺，造型古朴。我想托你表哥方便的时候，帮我留意看看，有没有那种不常见的小厂出的空瓶子，我想收几个。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8613577778899",
+    "datetime": "2025-06-13 09:25:47",
+    "message_type": "发送",
+    "phone_id": "191"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈杰：哦，这个兴趣挺特别啊。行，我回头问问我表哥。茅台镇的瓶子是吧？我记下了。周末见！",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8613577778899",
+    "datetime": "2025-06-13 09:27:12",
+    "message_type": "接收",
+    "phone_id": "192"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈杰：明强哥，最近忙不？周末天气好，去万绿园放风筝不？",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-05-10 19:22:00",
+    "message_type": "接收",
+    "phone_id": "193"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：阿杰，周末可以啊。你最近咋样，店里生意还好吧？",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-05-10 19:30:00",
+    "message_type": "发送",
+    "phone_id": "194"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈杰：唉，别提了。房东前两天找我，说下个季度开始租金要涨30%，压力太大了。我正纠结要不要搬店呢，找个便宜点的地方。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-05-10 19:35:00",
+    "message_type": "接收",
+    "phone_id": "195"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：涨这么多？是挺头疼的。你好好算算账，看看搬店成本和新地方客流。周末见面细聊。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-05-10 19:40:00",
+    "message_type": "发送",
+    "phone_id": "196"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈杰：嗯，也只能这样了。周末见，老地方。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-05-10 19:42:00",
+    "message_type": "接收",
+    "phone_id": "197"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（五金店）：明强，最近淘到什么好瓶子没？我上周去旧货市场，看到几个七八十年代的郎酒瓶，品相一般就没收。",
+    "contactName": "陈建国（五金店）",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-05-15 14:05:00",
+    "message_type": "接收",
+    "phone_id": "198"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：老陈，我最近兴趣有点变了。以前啥牌子都收，现在反而更偏爱咱们海南本地酒厂的瓶子。像海口大曲、椰岛鹿龟酒那些老款瓶子，设计有地方特色，收着感觉更亲切。",
+    "contactName": "陈建国（五金店）",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-05-15 14:15:00",
+    "message_type": "发送",
+    "phone_id": "199"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（五金店）：哈哈，回归本土了是吧。这想法不错，本地老酒瓶存量少，更有收藏挑战性。我帮你留意着，有消息告诉你。",
+    "contactName": "陈建国（五金店）",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-05-15 14:20:00",
+    "message_type": "接收",
+    "phone_id": "200"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：谢了！主要是觉得这些瓶子承载了咱们这代人的记忆，看着亲切。外地名酒瓶子当然也好，但感觉没那么“对味”了。",
+    "contactName": "陈建国（五金店）",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-05-15 14:25:00",
+    "message_type": "发送",
+    "phone_id": "201"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：明强，下午三点老地方喝茶？有点事想跟你聊聊。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-15 11:20:00",
+    "message_type": "接收",
+    "phone_id": "202"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：行啊，建国。正好今天活干完了，三点见。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-15 11:25:00",
+    "message_type": "发送",
+    "phone_id": "203"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：你听说了吗？小赵，就是赵强，他好像要走了。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-15 15:45:00",
+    "message_type": "接收",
+    "phone_id": "204"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：啊？没听说啊。他不是干得好好的吗？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-15 15:47:00",
+    "message_type": "发送",
+    "phone_id": "205"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：他老家湖南永州那边有家电力公司招人，他上个月偷偷回去面试，刚收到通知，通过了。他说下个月就辞职回老家了。唉，年轻人，还是想离家近点。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-15 15:50:00",
+    "message_type": "接收",
+    "phone_id": "206"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王丽娟：老公，今天刷短视频，看到有人把自己的车库改成了工作室，接点小活，挺不错的。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345679",
+    "datetime": "2025-04-18 20:15:00",
+    "message_type": "接收",
+    "phone_id": "207"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：嗯，我也想过。不过车库太小，施展不开。真要开工作室，地方得好好选。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345679",
+    "datetime": "2025-04-18 20:18:00",
+    "message_type": "发送",
+    "phone_id": "208"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王丽娟：那你觉得最重要的是什么？便宜？还是地方大？",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345679",
+    "datetime": "2025-04-18 20:20:00",
+    "message_type": "接收",
+    "phone_id": "209"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：租金当然要考虑，但不是第一位的。我觉得最关键的是位置，最好在那种老社区旁边，或者小工厂、小作坊多的工业区边上。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345679",
+    "datetime": "2025-04-18 20:22:00",
+    "message_type": "发送",
+    "phone_id": "210"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：你想啊，这种地方，家里电器坏了、厂里机器要修，需求多，而且离得近，人家才愿意把东西搬过来或者叫上门。客源才是根本。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345679",
+    "datetime": "2025-04-18 20:23:00",
+    "message_type": "发送",
+    "phone_id": "211"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：明强，在忙吗？晚上有空视频不？有点烦心事想跟你唠唠。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613507654321",
+    "datetime": "2025-05-15 20:05:00",
+    "message_type": "接收",
+    "phone_id": "212"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚收拾完，有空。怎么了海子，工作不顺心？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613507654321",
+    "datetime": "2025-05-15 20:12:00",
+    "message_type": "发送",
+    "phone_id": "213"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：不是工作。是我们组里一个老同事，跟我关系还不错的，最近离了。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613507654321",
+    "datetime": "2025-05-15 20:13:00",
+    "message_type": "接收",
+    "phone_id": "214"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：啊？这么突然。我记得他孩子都上小学了吧？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613507654321",
+    "datetime": "2025-05-15 20:15:00",
+    "message_type": "发送",
+    "phone_id": "215"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：是啊。他老婆孩子在老家湖南，他一个人在这边打拼，一年就回去一两次。说是感情慢慢就淡了，吵了几次大的，就离了。唉，看着真不是滋味。你说图啥呢，为了多挣那点钱，家都没了。我觉得真不值当。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613507654321",
+    "datetime": "2025-05-15 20:16:00",
+    "message_type": "接收",
+    "phone_id": "216"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：老陆，周末有空吗？我最近淘到两个挺有意思的瓶子，一起看看？",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-07-10 14:20:00",
+    "message_type": "接收",
+    "phone_id": "217"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：建国，周末得陪孩子。瓶子啥样的？发图看看。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-07-10 14:35:00",
+    "message_type": "发送",
+    "phone_id": "218"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：一个是四川的郎酒，一个是贵州的董酒。都是经典款，品相不错。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-07-10 14:36:00",
+    "message_type": "接收",
+    "phone_id": "219"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：图收到了。瓶子是不错，不过我现在兴趣有点变了。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-07-10 14:40:00",
+    "message_type": "发送",
+    "phone_id": "220"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：哦？怎么说？",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-07-10 14:41:00",
+    "message_type": "接收",
+    "phone_id": "221"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：以前是看到好看的、没见过的瓶子就想要，不管哪里的。现在觉得，还是咱们海南本地酒厂的瓶子更有意思，像海口大曲、椰岛鹿龟酒这些老牌子，瓶子上有本地特色，收着更有感情，也更有故事。我最近就在专门找这类。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-07-10 14:43:00",
+    "message_type": "发送",
+    "phone_id": "222"
+  },
+  {
+    "type": "sms",
+    "event_id": "4703",
+    "message_content": "陆明强：今天工业园的机床故障解决了，更换了一个损坏的电气元件。后续报告等你整理。",
+    "contactName": "赵强",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-11-19 16:45:00",
+    "message_type": "发送",
+    "phone_id": "223"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：强子，最近咋样？我这边快被家里的小祖宗气死了。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-12 20:15:00",
+    "message_type": "接收",
+    "phone_id": "224"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：海子，咋了？你家闺女小雅不是挺乖的吗？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-12 20:18:00",
+    "message_type": "发送",
+    "phone_id": "225"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：乖啥啊！上小学三年级了，最近迷上手机游戏，一放学就抱着手机不撒手。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-12 20:20:00",
+    "message_type": "接收",
+    "phone_id": "226"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：那可不行，得管管。成绩受影响了吧？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-12 20:22:00",
+    "message_type": "发送",
+    "phone_id": "227"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：可不是嘛！上次单元测试，数学才考了七十多分，以前都是九十分以上的。说她还顶嘴，气得我肝疼。还是你家轩轩省心。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-12 20:25:00",
+    "message_type": "接收",
+    "phone_id": "228"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：明强，周末去府城老街那边转悠，看到个老物件，你肯定喜欢。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613911122233",
+    "datetime": "2025-05-08 14:30:00",
+    "message_type": "接收",
+    "phone_id": "229"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：哦？啥好东西？我现在收瓶子，越来越挑嘴了。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613911122233",
+    "datetime": "2025-05-08 14:35:00",
+    "message_type": "发送",
+    "phone_id": "230"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：一个玻璃瓶，看着有些年头了，上面还印着“为人民服务”的字，应该是六七十年代那会儿的。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613911122233",
+    "datetime": "2025-05-08 14:38:00",
+    "message_type": "接收",
+    "phone_id": "231"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：这种带红色标语的“老八大”玻璃瓶我最爱！收它们最有感觉，比现在那些花里胡哨的纪念瓶有味道多了。上次收了个类似的，擦干净摆柜子里，看了就舒坦。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613911122233",
+    "datetime": "2025-05-08 14:42:00",
+    "message_type": "发送",
+    "phone_id": "232"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：哈哈，就知道你好这口。那瓶子品相一般，你要有兴趣，我把摊主微信推你，你自己聊聊？",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613911122233",
+    "datetime": "2025-05-08 14:45:00",
+    "message_type": "接收",
+    "phone_id": "233"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：老陈，最近有没有淘到什么好瓶子？我上周在旧货市场看到个五粮液老瓶，品相一般，没下手。",
+    "contactName": "陈建国（收藏）",
+    "contact_phone_number": "+8613890765432",
+    "datetime": "2025-03-22 15:30:00",
+    "message_type": "发送",
+    "phone_id": "234"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（收藏）：别提了，明强。我最近可算是栽了个跟头，正郁闷呢。",
+    "contactName": "陈建国（收藏）",
+    "contact_phone_number": "+8613890765432",
+    "datetime": "2025-03-22 15:35:00",
+    "message_type": "接收",
+    "phone_id": "235"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：怎么了？打眼了？",
+    "contactName": "陈建国（收藏）",
+    "contact_phone_number": "+8613890765432",
+    "datetime": "2025-03-22 15:36:00",
+    "message_type": "发送",
+    "phone_id": "236"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（收藏）：唉，上个月在线上一个藏友群里，有个自称是茅台酒厂退休职工的老头，说手里有个80年代的飞天茅台空瓶，要转让。我看他发的图，瓶标、瓶盖看着都挺旧，就心动了。",
+    "contactName": "陈建国（收藏）",
+    "contact_phone_number": "+8613890765432",
+    "datetime": "2025-03-22 15:38:00",
+    "message_type": "接收",
+    "phone_id": "237"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（收藏）：花了八百多块钱买回来，宝贝得不行。结果前两天请一个真正懂行的老朋友来家里看，人家一眼就说是近几年的高仿货，做旧的。瓶子本身可能就值个十几块。八百多块打了水漂，心里别提多憋屈了。以后再也不轻易信这些网上来路不明的人了。",
+    "contactName": "陈建国（收藏）",
+    "contact_phone_number": "+8613890765432",
+    "datetime": "2025-03-22 15:40:00",
+    "message_type": "接收",
+    "phone_id": "238"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "吴刚：明强，最近看你朋友圈总发些电工理论的东西，是在准备考高级技师吧？",
+    "contactName": "吴刚",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-03-10 20:15:00",
+    "message_type": "接收",
+    "phone_id": "239"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：是啊，理论这块是短板，得补。光看书有点闷，想找个靠谱的培训班系统学一下。",
+    "contactName": "吴刚",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-03-10 20:18:00",
+    "message_type": "发送",
+    "phone_id": "240"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "吴刚：有方向了吗？我听说省技师学院好像有面向社会的短期技能提升班，名气挺大。",
+    "contactName": "吴刚",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-03-10 20:20:00",
+    "message_type": "接收",
+    "phone_id": "241"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：省技师学院我也知道，但感觉他们课程偏重理论体系，时间也长。我打听了一圈，还是觉得海口市高级技工学校的“周末电工强化班”最适合我。",
+    "contactName": "吴刚",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-03-10 20:22:00",
+    "message_type": "发送",
+    "phone_id": "242"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：他们课程安排紧凑，都是周末上课，不耽误我平时干活。而且教课的老师很多都是以前供电局退下来的老师傅，实战经验丰富，讲的东西更贴近我们实际工作遇到的问题。我比较看重这个。",
+    "contactName": "吴刚",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-03-10 20:24:00",
+    "message_type": "发送",
+    "phone_id": "243"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：明强，下午三点老地方喝老爸茶？我有点事想跟你聊聊。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 13:20:00",
+    "message_type": "接收",
+    "phone_id": "244"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：行啊建国，正好今天活干完得早。一会儿见。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-01-15 13:25:00",
+    "message_type": "发送",
+    "phone_id": "245"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚到家。今天听你说王海那事，真是没想到。他那么精明一个人，怎么会在货上栽跟头。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345679",
+    "datetime": "2025-01-15 18:05:00",
+    "message_type": "发送",
+    "phone_id": "246"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王丽娟：建国跟你说啥了？王海怎么了？",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345679",
+    "datetime": "2025-01-15 18:10:00",
+    "message_type": "接收",
+    "phone_id": "247"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：建国说他从别的老乡那听说的。王海在深圳的店，进了一批二手翻新机，说是来路不太清楚，结果被市场监督的查到了，罚了不少钱。唉，做生意还是得踏踏实实。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345679",
+    "datetime": "2025-01-15 18:15:00",
+    "message_type": "发送",
+    "phone_id": "248"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（收藏同好）：明强，最近淘到个不错的瓶子，是前几年的茅台王子酒，品相很正。我记得你好像挺喜欢这个？",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613812345680",
+    "datetime": "2025-01-08 19:30:00",
+    "message_type": "接收",
+    "phone_id": "249"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：老陈你记性真好！我确实最喜欢茅台王子酒。倒不是说它最贵，是那个酱香味正，入口也顺，不上头。比五粮液那种浓香对我胃口，汾酒太清冽了，米香型的像三花酒又总觉得差点意思。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613812345680",
+    "datetime": "2025-01-08 19:35:00",
+    "message_type": "发送",
+    "phone_id": "250"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（收藏同好）：哈哈，行家！那这瓶子我给你留着，周末喝茶带给你看看。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613812345680",
+    "datetime": "2025-01-08 19:40:00",
+    "message_type": "接收",
+    "phone_id": "251"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：好嘞，先谢了！对了，酒我也爱喝这个，瓶子收藏，酒偶尔小酌，美得很。",
+    "contactName": "陈建国（收藏同好）",
+    "contact_phone_number": "+8613812345680",
+    "datetime": "2025-01-08 19:42:00",
+    "message_type": "发送",
+    "phone_id": "252"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：强子，刚跟伟哥（周伟）视频完，聊到刚子（吴刚）了，他最近可太倒霉了。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-03-15 21:10:00",
+    "message_type": "接收",
+    "phone_id": "253"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚子？他怎么了？我们上个月还一起喝过茶。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-03-15 21:12:00",
+    "message_type": "发送",
+    "phone_id": "254"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：就三月初的事，他们那个美兰区的物业服务中心搞优化，把他给裁了。他干了这么多年水电维修，说裁就裁。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-03-15 21:13:00",
+    "message_type": "接收",
+    "phone_id": "255"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：啊？这么突然？他之前一点风声都没透。我得打个电话问问。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-03-15 21:15:00",
+    "message_type": "发送",
+    "phone_id": "256"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：嗯，伟哥说刚子现在情绪有点低落，正托人打听新工作。咱们老同学能帮就帮一把。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-03-15 21:16:00",
+    "message_type": "接收",
+    "phone_id": "257"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（老陈）：明强，周末茶店见？我淘到个有意思的瓶子给你看看。",
+    "contactName": "陈建国（老陈）",
+    "contact_phone_number": "+8613912345098",
+    "datetime": "2025-05-10 14:30:00",
+    "message_type": "接收",
+    "phone_id": "258"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：好啊老陈。正好，我最近口味变了，不太迷那些花里胡哨的玻璃瓶了。",
+    "contactName": "陈建国（老陈）",
+    "contact_phone_number": "+8613912345098",
+    "datetime": "2025-05-10 14:35:00",
+    "message_type": "发送",
+    "phone_id": "259"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（老陈）：哦？转性了？看上什么新风格了？",
+    "contactName": "陈建国（老陈）",
+    "contact_phone_number": "+8613912345098",
+    "datetime": "2025-05-10 14:36:00",
+    "message_type": "接收",
+    "phone_id": "260"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：最近特别迷浓香型白酒里那些仿古青铜器样子的瓶子，像鼎啊、尊啊那种造型，感觉有分量，有历史感。",
+    "contactName": "陈建国（老陈）",
+    "contact_phone_number": "+8613912345098",
+    "datetime": "2025-05-10 14:38:00",
+    "message_type": "发送",
+    "phone_id": "261"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（老陈）：哈哈，你这品味上档次了！我这次淘到的就是个仿汉代青铜酒樽造型的浓香型酒瓶，周末带来给你掌掌眼。",
+    "contactName": "陈建国（老陈）",
+    "contact_phone_number": "+8613912345098",
+    "datetime": "2025-05-10 14:40:00",
+    "message_type": "接收",
+    "phone_id": "262"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：明强，下班了没？今天活干得真累。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-10-15 18:30:00",
+    "message_type": "接收",
+    "phone_id": "263"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚到家，正准备吃饭。是挺累的，今天爬了三栋楼查线路。你那边咋样？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-10-15 18:35:00",
+    "message_type": "发送",
+    "phone_id": "264"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：别提了，一肚子火。对了，你最近跟你哥联系没？我听说深圳那边生意也不好做。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-10-15 18:37:00",
+    "message_type": "接收",
+    "phone_id": "265"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：上周刚通过电话。我哥最近是有点烦，他公司被人坑了。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-10-15 18:40:00",
+    "message_type": "发送",
+    "phone_id": "266"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：啊？咋回事？严重吗？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-10-15 18:41:00",
+    "message_type": "接收",
+    "phone_id": "267"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：说是以前合作过一两次的一个客户，这次又要了一批货，价值差不多五万块。货发过去，人找不到了，电话微信全拉黑。我哥正为这事上火呢，说就当买个教训，但心里肯定憋屈。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613898987654",
+    "datetime": "2025-10-15 18:45:00",
+    "message_type": "发送",
+    "phone_id": "268"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（酒瓶同好）：明强，周末有空吗？我朋友从景德镇回来，带了个挺特别的瓷酒瓶，釉色很漂亮，过来看看？",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613577778899",
+    "datetime": "2025-10-20 14:22:00",
+    "message_type": "接收",
+    "phone_id": "269"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：景德镇的？那得看看！我现在收瓶子，越来越觉得造型花里胡哨的没意思，看多了都差不多。",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613577778899",
+    "datetime": "2025-10-20 14:25:00",
+    "message_type": "发送",
+    "phone_id": "270"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（酒瓶同好）：哈哈，那你现在好哪一口？是不是开始研究那些限量版、有升值潜力的了？",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613577778899",
+    "datetime": "2025-10-20 14:27:00",
+    "message_type": "接收",
+    "phone_id": "271"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：那倒不是。升值不升值的，咱也不是为了卖。我现在就特别喜欢琢磨瓶子的“料”和“色”。",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613577778899",
+    "datetime": "2025-10-20 14:30:00",
+    "message_type": "发送",
+    "phone_id": "272"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：比如是玻璃还是陶瓷，是粗陶还是细瓷，上面的釉是怎么烧出来的，那种质感，在光下面看特别有味道。比什么品牌故事实在多了。",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613577778899",
+    "datetime": "2025-10-20 14:32:00",
+    "message_type": "发送",
+    "phone_id": "273"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国（酒瓶同好）：有道理！你这眼光越来越“技术流”了，不愧是干技术的。那周末下午老地方见，这个瓶子你肯定喜欢，釉色温润得像玉。",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613577778899",
+    "datetime": "2025-10-20 14:35:00",
+    "message_type": "接收",
+    "phone_id": "274"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：明强，国庆节过得咋样？带老婆孩子出去玩没？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-10-08 19:15:00",
+    "message_type": "接收",
+    "phone_id": "275"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：就在海口周边转了转，万绿园、假日海滩，人太多。你呢？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-10-08 19:20:00",
+    "message_type": "发送",
+    "phone_id": "276"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：我也差不多。对了，小赵国庆回湖南老家了，你听说了吗？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-10-08 19:22:00",
+    "message_type": "接收",
+    "phone_id": "277"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：没听说，回去探亲？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-10-08 19:23:00",
+    "message_type": "发送",
+    "phone_id": "278"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：哈哈，回去相亲！家里给安排的，听说成了！这小子，动作还挺快。这下估计更想回老家发展了。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-10-08 19:25:00",
+    "message_type": "接收",
+    "phone_id": "279"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：那是好事啊。他之前就说过想回去，这下更有理由了。对我们这边工作安排可能有点影响，不过也是人之常情。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-10-08 19:28:00",
+    "message_type": "发送",
+    "phone_id": "280"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "林峰：明强哥，周三晚壁球场见啊。最近看你朋友圈发了不少照片，拍得挺有感觉啊。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613912345098",
+    "datetime": "2025-11-05 14:30:00",
+    "message_type": "接收",
+    "phone_id": "281"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：谢谢。就是瞎拍，工作时候看到有意思的就随手记录下。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613912345098",
+    "datetime": "2025-11-05 14:35:00",
+    "message_type": "发送",
+    "phone_id": "282"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "林峰：我看你拍的好像都是些老机器、旧零件？跟那些摄影师拍的风景啊人像啊很不一样。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613912345098",
+    "datetime": "2025-11-05 14:37:00",
+    "message_type": "接收",
+    "phone_id": "283"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：嗯，我比较喜欢拍那些有年头的东西。崭新的设备看着是漂亮，但总觉得少了点味道。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613912345098",
+    "datetime": "2025-11-05 14:40:00",
+    "message_type": "发送",
+    "phone_id": "284"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：比如老电表箱上的锈斑，在下午阳光斜照下，那种颜色和纹理，还有拆下来的旧继电器，里面的铜片都氧化变色了，但结构还是很精密。我觉得这些东西有故事，有我们这行的手艺和时间在里面。拍出来质感特别好。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613912345098",
+    "datetime": "2025-11-05 14:42:00",
+    "message_type": "发送",
+    "phone_id": "285"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "林峰：懂了，你这叫‘工业复古风’！有眼光。周三见面再细聊。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613912345098",
+    "datetime": "2025-11-05 14:45:00",
+    "message_type": "接收",
+    "phone_id": "286"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：强子，晚上有空不？想跟你视频聊聊，心里有点堵。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-11-18 20:15:00",
+    "message_type": "接收",
+    "phone_id": "287"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：刚收拾完工具，有空。怎么了海子？工作上不顺心？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-11-18 20:20:00",
+    "message_type": "发送",
+    "phone_id": "288"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：不是工作，是我表弟的事。这小子在深圳，本来年底要结婚的，现在搞出个大麻烦。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-11-18 20:22:00",
+    "message_type": "接收",
+    "phone_id": "289"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：表弟？出啥事了？车祸还是生病了？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-11-18 20:23:00",
+    "message_type": "发送",
+    "phone_id": "290"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：比那还糟心！他听信一个所谓朋友的话，把攒了好几年准备结婚的二十多万，全投进了一个什么虚拟货币项目，说能翻倍。结果现在平台跑路了，钱一分都拿不回来，婚期估计都得推迟。唉，年轻人太容易上头。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613578901234",
+    "datetime": "2025-11-18 20:25:00",
+    "message_type": "接收",
+    "phone_id": "291"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：明强，周末去旧货市场不？听说新到了一批老物件。",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-11-22 14:30:00",
+    "message_type": "接收",
+    "phone_id": "292"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：这周末得陪孩子。老陈，跟你说，我最近收瓶子的兴趣有点变了。",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-11-22 14:35:00",
+    "message_type": "发送",
+    "phone_id": "293"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈：哦？不追茅台生肖瓶了？",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-11-22 14:36:00",
+    "message_type": "接收",
+    "phone_id": "294"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：那些太贵，炒得也厉害，没意思。我现在专门找咱们海南本地老酒厂出的瓶子，像以前的海口大曲那种矮胖的陶瓷瓶，或者椰岛鹿龟酒最早那批带浮雕的。",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-11-22 14:38:00",
+    "message_type": "发送",
+    "phone_id": "295"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：上个月在府城一个老伯家收到一个七十年代的海口大曲瓶，品相特别好，瓶底还有厂标。这种瓶子不多见，记录了咱们本地的一段历史，比收那些全国都有的名酒瓶有成就感多了。",
+    "contactName": "陈建国（酒瓶同好）",
+    "contact_phone_number": "+8613890123456",
+    "datetime": "2025-11-22 14:40:00",
+    "message_type": "发送",
+    "phone_id": "296"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：强哥，最近咋样？我这边有点烦心事，想跟你唠唠。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-11-18 21:15:00",
+    "message_type": "接收",
+    "phone_id": "297"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：海子，我还行。你那边出啥事了？工作不顺？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-11-18 21:18:00",
+    "message_type": "发送",
+    "phone_id": "298"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：是啊，华强北这边今年市场太差了，我们店销售额掉了快三成。公司总部那边给了压力，说要么接受降薪，要么可能调到其他城市的门店去。唉，在深圳这么多年，老婆孩子都在这，真不想动。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-11-18 21:20:00",
+    "message_type": "接收",
+    "phone_id": "299"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：确实难办。降薪幅度大吗？调岗是去哪？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-11-18 21:22:00",
+    "message_type": "发送",
+    "phone_id": "300"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王海：降薪大概15%。调岗的话，可能去惠州或者东莞的新店，职位不变，但那边市场更不熟悉。我再跟公司磨磨看吧。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-11-18 21:25:00",
+    "message_type": "接收",
+    "phone_id": "301"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：老陆，周末去茶店坐坐？我最近淘到个80年代的董酒瓶，品相不错。",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613812345679",
+    "datetime": "2025-11-22 14:30:00",
+    "message_type": "接收",
+    "phone_id": "302"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：好啊。董酒是药香型吧？我还是更偏爱酱香型的瓶子，感觉工艺更复杂，瓶型也大气。像茅台、郎酒那些老瓶子，看着就舒服。",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613812345679",
+    "datetime": "2025-11-22 14:35:00",
+    "message_type": "发送",
+    "phone_id": "303"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陈建国：哈哈，你真是酱香型铁粉。我倒是啥香型都收，主要看瓶子造型和历史。那你最近有收到什么好货吗？",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613812345679",
+    "datetime": "2025-11-22 14:38:00",
+    "message_type": "接收",
+    "phone_id": "304"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "陆明强：前阵子收了个90年代初的习酒瓶，也是酱香的，品相还行。周末带给你看看。",
+    "contactName": "陈建国（藏友）",
+    "contact_phone_number": "+8613812345679",
+    "datetime": "2025-11-22 14:40:00",
+    "message_type": "发送",
+    "phone_id": "305"
+  },
+  {
+    "type": "sms",
+    "event_id": "4865",
+    "message_content": "建国，和供货商确认了，新开关明天上午能送到维修店，风扇和线材也一并到。明天按计划先换开关。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613900000000",
+    "datetime": "2025-12-01 16:20:00",
+    "message_type": "发送",
+    "phone_id": "306"
+  },
+  {
+    "type": "sms",
+    "event_id": "2104",
+    "message_content": "【支付宝】验证码952713（请勿泄露），您正在支付99.00元，付款方：*明强。如非本人操作，请勿泄露验证码。",
+    "contactName": "支付宝",
+    "contact_phone_number": "+869516",
+    "datetime": "2025-05-27 21:47:00",
+    "message_type": "接收",
+    "phone_id": "307"
+  },
+  {
+    "type": "sms",
+    "event_id": "131",
+    "message_content": "建国：明强，今晚聊得很开心，祝你高级技师考试顺利！我回去就把上次提到的那个复习资料链接发你。赵强也说回去找找实操的注意事项。咱们都注意身体，劳逸结合！",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-01-11 20:25:00",
+    "message_type": "接收",
+    "phone_id": "308"
+  },
+  {
+    "type": "sms",
+    "event_id": "92",
+    "message_content": "林峰：陆哥，明天周三晚上壁球馆场地订好了，老时间19:30，别迟到啊。",
+    "contactName": "林峰",
+    "contact_phone_number": "+86",
+    "datetime": "2025-01-07 16:05:00",
+    "message_type": "接收",
+    "phone_id": "309"
+  },
+  {
+    "type": "sms",
+    "event_id": "2192",
+    "message_content": "建国，上午发现的继电器氧化和那个复杂回路的故障点，我拍了照片也做了笔记。另外，我上次跟你提过的那个电工高级技师在线题库和实操视频的网站链接，回头我发你微信上，你看看对考证有没有帮助。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+86138*****789",
+    "datetime": "2025-06-03 11:30:00",
+    "message_type": "发送",
+    "phone_id": "310"
+  },
+  {
+    "type": "sms",
+    "event_id": "1596",
+    "message_content": "陆明强：收到，通勤安排就这么定，我主要骑电驴。明天我问问老张，看他方不方便，以后天气不好就搭他车。其他开销控制我们晚上再对一下。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-04-22 09:05:00",
+    "message_type": "发送",
+    "phone_id": "311"
+  },
+  {
+    "type": "sms",
+    "event_id": "3120",
+    "message_content": "建国：明强，周末那顿烤鱼咋样，能来不？上次你提肠胃不舒服，兄弟们都记着呢，不行就换个清淡的。等你信儿。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+86 138 0013 8000",
+    "datetime": "2025-08-09 17:45:30",
+    "message_type": "接收",
+    "phone_id": "312"
+  },
+  {
+    "type": "sms",
+    "event_id": "3120",
+    "message_content": "建国：明强，周末那顿烤鱼咋样，能来不？上次你提肠胃不舒服，兄弟们都记着呢，不行就换个清淡的。等你信儿。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+86 138 0013 8000",
+    "datetime": "2025-08-09 17:45:30",
+    "message_type": "接收",
+    "phone_id": "312"
+  },
+  {
+    "type": "sms",
+    "event_id": "1351",
+    "message_content": "峰哥，最近家里开销要规划一下，加上我这老腰感觉不太得劲，按今早备忘录说的，咱们打球的活动我得暂停一阵子了，实在不好意思。我改成晚上在小区附近散步，活动活动身体。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-04-02 19:45:00",
+    "message_type": "发送",
+    "phone_id": "313"
+  },
+  {
+    "type": "sms",
+    "event_id": "5013",
+    "message_content": "陆工您好，阳台灯还是不亮，今天您有空过来看看吗？昨天麻烦您了。",
+    "contactName": "王建国",
+    "contact_phone_number": "+8610000000000",
+    "datetime": "2025-12-10 20:03:00",
+    "message_type": "接收",
+    "phone_id": "314"
+  },
+  {
+    "type": "sms",
+    "event_id": "2298",
+    "message_content": "王叔，晚上散步完我过去帮您看看吊灯，大概八点半左右到。",
+    "contactName": "王建国",
+    "contact_phone_number": "+8618501234567",
+    "datetime": "2025-06-09 18:15:00",
+    "message_type": "发送",
+    "phone_id": "315"
+  },
+  {
+    "type": "sms",
+    "event_id": "4555",
+    "message_content": "陆明强：好的，明早见。",
+    "contactName": "陈斌",
+    "contact_phone_number": "+8618600123456",
+    "datetime": "2025-11-08 20:30:00",
+    "message_type": "发送",
+    "phone_id": "316"
+  },
+  {
+    "type": "sms",
+    "event_id": "189",
+    "message_content": "林峰：明强，今晚老地方见，别忘了带装备。",
+    "contactName": "林峰",
+    "contact_phone_number": "+86138XXXXXXXX",
+    "datetime": "2025-01-15 18:20:00",
+    "message_type": "接收",
+    "phone_id": "317"
+  },
+  {
+    "type": "sms",
+    "event_id": "64",
+    "message_content": "陆明强：今天项目现场忙了一天，肩膀有点抬不起来了，可能明天还得继续盯。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+86139****5678",
+    "datetime": "2025-01-06 20:20:00",
+    "message_type": "发送",
+    "phone_id": "318"
+  },
+  {
+    "type": "sms",
+    "event_id": "4655",
+    "message_content": "陈斌：明早老时间老地方见，白沙门公园滨海跑道，7点集合，天气不错，跑个轻松的。",
+    "contactName": "陈斌",
+    "contact_phone_number": "+8618001234567",
+    "datetime": "2025-11-15 20:30:00",
+    "message_type": "接收",
+    "phone_id": "319"
+  },
+  {
+    "type": "sms",
+    "event_id": "2995",
+    "message_content": "老公，今天社区给我发了个‘优秀家政服务员’的表彰证书！开心！不过今天擦窗户时又有点腰酸，我这工作，确实得注意身体。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-07-25 18:30:00",
+    "message_type": "接收",
+    "phone_id": "320"
+  },
+  {
+    "type": "sms",
+    "event_id": "551",
+    "message_content": "明强，记得下午去大姨王秀英家带上前两天买的茶叶和点心。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-02-08 10:30:00",
+    "message_type": "接收",
+    "phone_id": "321"
+  },
+  {
+    "type": "sms",
+    "event_id": "489",
+    "message_content": "儿子：爸，最近开始注意锻炼身体了，但老坐着腰不太舒服。您以前做电工，有没有什么针对腰部的、适合我们这种上班族的拉伸方法？",
+    "contactName": "父亲",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-02-15 09:30:00",
+    "message_type": "发送",
+    "phone_id": "322"
+  },
+  {
+    "type": "sms",
+    "event_id": "1812",
+    "message_content": "李师傅：明强，上次聊的职业发展，别忘了考虑报考高级技师证书，稳字当头，先打好基础再行动。",
+    "contactName": "李师傅",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-05-10 11:00:00",
+    "message_type": "接收",
+    "phone_id": "323"
+  },
+  {
+    "type": "sms",
+    "event_id": "3615",
+    "message_content": "王叔，今天下午见面时提到的安装问题，我回想了一下，安全方面需要重视。",
+    "contactName": "王建国",
+    "contact_phone_number": "+8613800012345",
+    "datetime": "2025-09-05 18:30:00",
+    "message_type": "发送",
+    "phone_id": "324"
+  },
+  {
+    "type": "sms",
+    "event_id": "5041",
+    "message_content": "王叔，灯没问题了。用电注意安全，有事随时叫我。",
+    "contactName": "王建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-12-12 12:00:05",
+    "message_type": "发出",
+    "phone_id": "325"
+  },
+  {
+    "type": "sms",
+    "event_id": "3656",
+    "message_content": "最近在调整社交饮食，为了工作状态和健康，一般不参加酒局了。",
+    "contactName": "吴刚",
+    "contact_phone_number": "+8613900000001",
+    "datetime": "2025-09-08 17:25:00",
+    "message_type": "发送",
+    "phone_id": "326"
+  },
+  {
+    "type": "sms",
+    "event_id": "3656",
+    "message_content": "老同学难得一聚，理解你的健康计划，但偶尔破例无妨。晚上XX大排档见？",
+    "contactName": "吴刚",
+    "contact_phone_number": "+8613900000001",
+    "datetime": "2025-09-08 17:30:00",
+    "message_type": "接收",
+    "phone_id": "327"
+  },
+  {
+    "type": "sms",
+    "event_id": "444",
+    "message_content": "老王，上次捡漏的那套纪念币品相确实不错，市场反响也好，这次多亏你提醒！",
+    "contactName": "藏友老王",
+    "contact_phone_number": "+8613809876543",
+    "datetime": "2025-02-15 16:30:00",
+    "message_type": "发送",
+    "phone_id": "328"
+  },
+  {
+    "type": "sms",
+    "event_id": "2240",
+    "message_content": "老陆，上次说的电工考证资料我发你邮箱了，有空看看。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-06-03 09:30:00",
+    "message_type": "接收",
+    "phone_id": "329"
+  },
+  {
+    "type": "sms",
+    "event_id": "4459",
+    "message_content": "【海南省职业技能鉴定中心】尊敬的考生陆明强，您参加的电工高级技师理论笔试成绩已通过。实操考核安排将于近期通知，请保持手机畅通并关注官网信息。",
+    "contactName": "海南省职业技能鉴定中心",
+    "contact_phone_number": "+8612388888888",
+    "datetime": "2025-11-10 09:15:00",
+    "message_type": "接收",
+    "phone_id": "330"
+  },
+  {
+    "type": "sms",
+    "event_id": "4459",
+    "message_content": "老陆，在《电气工程》上看到你的文章了，写得非常扎实，把那个疑难案例讲得很透！公司技术部王总也在群里表扬了，说这是实践结合理论的典范，要给你申请专项奖励！恭喜！",
+    "contactName": "同事张伟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-11-28 16:45:00",
+    "message_type": "接收",
+    "phone_id": "331"
+  },
+  {
+    "type": "sms",
+    "event_id": "919",
+    "message_content": "张班长：明强，今天晨会后记得和建国一起去碧海蓝天小区做春季安全检查。",
+    "contactName": "张班长",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-03-05 08:45:00",
+    "message_type": "接收",
+    "phone_id": "332"
+  },
+  {
+    "type": "sms",
+    "event_id": "3108",
+    "message_content": "丽娟：晚上记得看明强做的那个大风筝，孩子们很期待。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-08-01 18:45:00",
+    "message_type": "接收",
+    "phone_id": "333"
+  },
+  {
+    "type": "sms",
+    "event_id": "1771",
+    "message_content": "张工，我腰伤复发，今天能否安排我做现场技术监督，避免重体力活？",
+    "contactName": "张工",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-05-05 08:20:00",
+    "message_type": "发送",
+    "phone_id": "334"
+  },
+  {
+    "type": "sms",
+    "event_id": "5013",
+    "message_content": "王建国：明强，修灯的事多谢了！咱们邻居就该互帮互助。明天晚上等你来测试。",
+    "contactName": "王建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-12-10 22:05:00",
+    "message_type": "接收",
+    "phone_id": "335"
+  },
+  {
+    "type": "sms",
+    "event_id": "102",
+    "message_content": "‘秀海电力改造项目攻坚群’ 陈建国：各位，今天下午验收，大家上午最后检查一遍，确保万无一失。刘工和王主任都会过来。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-01-09 09:30:00",
+    "message_type": "接收",
+    "phone_id": "336"
+  },
+  {
+    "type": "sms",
+    "event_id": "907",
+    "message_content": "建国，现场已按安全规程执行停电，旧配电箱拆卸中。遇到螺栓锈蚀，正用工具处理，预计按计划推进。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-03-04 14:15:00",
+    "message_type": "发送",
+    "phone_id": "337"
+  },
+  {
+    "type": "sms",
+    "event_id": "2722",
+    "message_content": "陆工，刚接到通知，滨海新村社区因雷击导致停电，需要紧急抢修，请尽快到场。",
+    "contactName": "王主任",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-07-08 09:00:00",
+    "message_type": "接收",
+    "phone_id": "338"
+  },
+  {
+    "type": "sms",
+    "event_id": "4690",
+    "message_content": "【省技能鉴定中心】尊敬的陆明强先生，您的电工高级技师（等级认定）实操考核成绩已评定通过。电子版职业资格证书将在15个工作日内生成，请留意后续通知。",
+    "contactName": "省技能鉴定中心",
+    "contact_phone_number": "+86968XXXXXXX",
+    "datetime": "2025-11-20 10:15:00",
+    "message_type": "接收",
+    "phone_id": "339"
+  },
+  {
+    "type": "sms",
+    "event_id": "3903",
+    "message_content": "王建国：明强，昨天多亏了你，不然晚上进出都不安全。新灯泡很亮！王叔。",
+    "contactName": "王建国",
+    "contact_phone_number": "+8613999999999",
+    "datetime": "2025-09-25 09:12:00",
+    "message_type": "接收",
+    "phone_id": "340"
+  },
+  {
+    "type": "sms",
+    "event_id": "2618",
+    "message_content": "表哥，我最近在考虑自己开个电力维修工作室，你觉得市场怎么样？有什么建议吗？",
+    "contactName": "表哥",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-07-03 15:30:00",
+    "message_type": "发送",
+    "phone_id": "341"
+  },
+  {
+    "type": "sms",
+    "event_id": "1183",
+    "message_content": "师父，晚上好。我复习时有个理论问题一直搞不定，想请您帮忙看看。方便时回复我。",
+    "contactName": "李师傅",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-03-22 21:00:00",
+    "message_type": "发送",
+    "phone_id": "342"
+  },
+  {
+    "type": "sms",
+    "event_id": "3109",
+    "message_content": "妻子：家庭财务压力测试结果出来了，创业计划暂缓。我们需要先增加稳定收入。",
+    "contactName": "王芳",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-08-05 21:00:00",
+    "message_type": "接收",
+    "phone_id": "343"
+  },
+  {
+    "type": "sms",
+    "event_id": "5207",
+    "message_content": "我：老陈，上次聊到独立接单的事，我仔细想了想。目前还是按原计划，先在公司里把几个大项目跟完，把名气和客户关系做扎实。你那边关于技术伙伴和初期启动资金的门路，方便时再帮我多留意一下。这事急不来，得水到渠成。",
+    "contactName": "陈工",
+    "contact_phone_number": "+8613900123456",
+    "datetime": "2025-12-26 11:20:00",
+    "message_type": "发送",
+    "phone_id": "344"
+  },
+  {
+    "type": "sms",
+    "event_id": "3725",
+    "message_content": "丽娟，最近推掉了一些烧烤饭局，想好好养养身体，手腕也能早点康复。这样既能多陪你和孩子们，工作起来也能更安心专注。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+86186****7890",
+    "datetime": "2025-09-12 19:45:00",
+    "message_type": "发送",
+    "phone_id": "345"
+  },
+  {
+    "type": "sms",
+    "event_id": "653",
+    "message_content": "老李：明强，下周厂里几个老朋友说聚聚，2月1号晚上六点，老地方，有空不？\n陆明强：谢谢李哥想着。最近家里有点事，2月1号可能去不了了，你们聚得开心，下次再约！",
+    "contactName": "老李",
+    "contact_phone_number": "+86180xxxx5678",
+    "datetime": "2025-01-30 15:20:00",
+    "message_type": "接收",
+    "phone_id": "346"
+  },
+  {
+    "type": "sms",
+    "event_id": "920",
+    "message_content": "陆师傅，我马上到公司了，今天咱俩去海甸岛工地，开那辆黄色工程车。一会见。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8618501234567",
+    "datetime": "2025-03-05 08:00:00",
+    "message_type": "接收",
+    "phone_id": "347"
+  },
+  {
+    "type": "sms",
+    "event_id": "2339",
+    "message_content": "王叔：明强，我家吊灯又坏了，能麻烦你晚上来看看吗？",
+    "contactName": "王叔",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-06-12 20:00:00",
+    "message_type": "接收",
+    "phone_id": "348"
+  },
+  {
+    "type": "sms",
+    "event_id": "3174",
+    "message_content": "陈建国：强哥，收工了一起去老地方吃烤鱼宵夜？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-08-06 17:30:00",
+    "message_type": "接收",
+    "phone_id": "349"
+  },
+  {
+    "type": "sms",
+    "event_id": "3174",
+    "message_content": "陆明强：谢邀，但今天肠胃不太舒服，烤鱼就算了，下次再聚。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-08-06 17:35:00",
+    "message_type": "发送",
+    "phone_id": "350"
+  },
+  {
+    "type": "sms",
+    "event_id": "299",
+    "message_content": "陆明强：林峰，腰伤突然加重，今晚的壁球打不了了，我们改天再约。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-01-22 19:45:00",
+    "message_type": "发送",
+    "phone_id": "351"
+  },
+  {
+    "type": "sms",
+    "event_id": "4556",
+    "message_content": "陈斌：明天晨跑结束后，一起到老地方吃个早餐吧？",
+    "contactName": "陈斌",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-11-08 21:15:00",
+    "message_type": "接收",
+    "phone_id": "352"
+  },
+  {
+    "type": "sms",
+    "event_id": "4549",
+    "message_content": "陈建国：明强，晚上有空吗？一起聚聚？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-11-08 16:35:00",
+    "message_type": "接收",
+    "phone_id": "353"
+  },
+  {
+    "type": "sms",
+    "event_id": "2249",
+    "message_content": "陆明强：建国，今天下班我车送你，老地方等你。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8612345678910",
+    "datetime": "2025-06-06 16:50:00",
+    "message_type": "发送",
+    "phone_id": "354"
+  },
+  {
+    "type": "sms",
+    "event_id": "2249",
+    "message_content": "陈建国：老陆，谢了啊，到家了。今天车上聊了车和维修的事挺有意思，下次再请教。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8612345678910",
+    "datetime": "2025-06-06 17:45:00",
+    "message_type": "接收",
+    "phone_id": "355"
+  },
+  {
+    "type": "sms",
+    "event_id": "1773",
+    "message_content": "老陆，听说你腰又不太舒服？多注意休息，别硬撑。晚上回去热敷一下，有用。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613822223333",
+    "datetime": "2025-05-05 11:30:00",
+    "message_type": "接收",
+    "phone_id": "356"
+  },
+  {
+    "type": "sms",
+    "event_id": "5133",
+    "message_content": "明强，灯修好了，太感谢了！这木瓜你拿着，自家种的，别客气。",
+    "contactName": "王建国",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-12-18 19:00:00",
+    "message_type": "接收",
+    "phone_id": "357"
+  },
+  {
+    "type": "sms",
+    "event_id": "5029",
+    "message_content": "明强，我家阳台灯不亮了，能帮忙看看吗？明天晚上方便吗？咱们单元就你懂电工，麻烦了。",
+    "contactName": "王建国",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-12-10 20:15:00",
+    "message_type": "接收",
+    "phone_id": "358"
+  },
+  {
+    "type": "sms",
+    "event_id": "2746",
+    "message_content": "林峰：明天周三晚上壁球别忘了，老时间老地方见。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613917895623",
+    "datetime": "2025-07-08 20:00:00",
+    "message_type": "发送",
+    "phone_id": "359"
+  },
+  {
+    "type": "sms",
+    "event_id": "4833",
+    "message_content": "陈斌：明天早上老地方见，6:45准时开始。记得带上装备。",
+    "contactName": "陈斌",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-11-28 19:15:00",
+    "message_type": "接收",
+    "phone_id": "360"
+  },
+  {
+    "type": "sms",
+    "event_id": "3245",
+    "message_content": "陈建国：明强，晚上收工后有没有空？建国和强子他们说想搞个烤鱼宵夜，热闹一下。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+86186****5678",
+    "datetime": "2025-08-12 11:45:00",
+    "message_type": "接收",
+    "phone_id": "361"
+  },
+  {
+    "type": "sms",
+    "event_id": "3245",
+    "message_content": "陆明强：建国，晚上就不去了，感觉特别累，想早点回家休息。家里人也做好饭了，下次吧。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+86186****5678",
+    "datetime": "2025-08-12 12:10:00",
+    "message_type": "发送",
+    "phone_id": "362"
+  },
+  {
+    "type": "sms",
+    "event_id": "1418",
+    "message_content": "丽娟：第一天兼职保洁结束了，比想象中累，但能帮补家里很开心。快到家了。\n陆明强：辛苦了，回来好好休息，晚上听听你的故事。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+86139****5678",
+    "datetime": "2025-04-08 18:28:00",
+    "message_type": "接收",
+    "phone_id": "363"
+  },
+  {
+    "type": "sms",
+    "event_id": "2364",
+    "message_content": "王叔：明强啊，电话里说好了，那就麻烦你明天上午九点左右过来帮我看看家里的电路，总闸那边好像有点问题，真是再次麻烦你了。",
+    "contactName": "王叔",
+    "contact_phone_number": "+8613012345678",
+    "datetime": "2025-06-14 17:45:00",
+    "message_type": "接收",
+    "phone_id": "364"
+  },
+  {
+    "type": "sms",
+    "event_id": "5041",
+    "message_content": "王建国（王叔）：小陆啊，灯我试了，亮是亮，但那个开关面板总觉得有点松，你方便再来帮我看看吗？就在我家，楼上楼下别客气。",
+    "contactName": "王建国（王叔）",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-12-12 11:50:00",
+    "message_type": "接收",
+    "phone_id": "365"
+  },
+  {
+    "type": "sms",
+    "event_id": "1928",
+    "message_content": "妻子：我刚做完早上的热敷，腰部肌肉放松多了。按你建议的，会坚持每天做。晚上游泳时注意安全。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-05-16 08:50:00",
+    "message_type": "发送",
+    "phone_id": "366"
+  },
+  {
+    "type": "sms",
+    "event_id": "3514",
+    "message_content": "建国，中午聊得很开心。以后咱们的聚会确实可以少点油腻，多注意健康。下周找个下午，我请你喝老爸茶，慢慢聊。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613700000000",
+    "datetime": "2025-08-29 13:15:00",
+    "message_type": "发送",
+    "phone_id": "367"
+  },
+  {
+    "type": "sms",
+    "event_id": "3162",
+    "message_content": "明强，今晚的讨论让我心里踏实了。暂缓创业是明智的。你专心考高级技师证，考过了公司会给加薪的，这样我们家庭收入就能增加，储蓄更快，抗风险能力也强了。我们一起努力！",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-08-05 22:05:00",
+    "message_type": "接收",
+    "phone_id": "368"
+  },
+  {
+    "type": "sms",
+    "event_id": "922",
+    "message_content": "陆哥，中午杂粮店见，厂里老张说最近活不多，正好聊聊你的车。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-03-05 11:30:00",
+    "message_type": "接收",
+    "phone_id": "369"
+  },
+  {
+    "type": "sms",
+    "event_id": "1148",
+    "message_content": "酒店活动区域突然断电，影响现场活动，请尽快处理。",
+    "contactName": "酒店工程部值班室",
+    "contact_phone_number": "+8610000000000",
+    "datetime": "2025-03-19 20:30:05",
+    "message_type": "接收",
+    "phone_id": "370"
+  },
+  {
+    "type": "sms",
+    "event_id": "489",
+    "message_content": "儿子，用新手机视频感觉清楚多了，下次孙子想爷爷了就直接打过来。",
+    "contactName": "父亲",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-02-02 20:15:00",
+    "message_type": "接收",
+    "phone_id": "371"
+  },
+  {
+    "type": "sms",
+    "event_id": "5132",
+    "message_content": "小陆，到家了吗？我家客厅灯有点问题，方便的话来3单元202看看？",
+    "contactName": "王叔 (王建国)",
+    "contact_phone_number": "+8613588888888",
+    "datetime": "2025-12-18 17:55:00",
+    "message_type": "接收",
+    "phone_id": "372"
+  },
+  {
+    "type": "sms",
+    "event_id": "1930",
+    "message_content": "老张，今天下班后我去小区里走几圈，活动活动老腰，你要不要一起？",
+    "contactName": "张师傅",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-05-16 17:20:00",
+    "message_type": "发送",
+    "phone_id": "373"
+  },
+  {
+    "type": "sms",
+    "event_id": "1774",
+    "message_content": "陆师傅，午餐时看你腰不舒服，好点没？下午别干重活，多指导我们就行。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-05-05 12:45:00",
+    "message_type": "接收",
+    "phone_id": "374"
+  },
+  {
+    "type": "sms",
+    "event_id": "3693",
+    "message_content": "张班长您好，我是陆明强。想跟您申请一下，近期能否借用公司培训室的设备进行练习？我正在备考高级技师，感觉理论复习后，特别需要通过实际操作来加深理解，巩固知识。谢谢您！",
+    "contactName": "张班长",
+    "contact_phone_number": "+86138****8910",
+    "datetime": "2025-09-10 19:32:00",
+    "message_type": "发送",
+    "phone_id": "375"
+  },
+  {
+    "type": "sms",
+    "event_id": "4850",
+    "message_content": "【职业技能鉴定中心】陆明强先生，您的高级技师职业资格证书已制好，请于2025-11-30工作时间持身份证至红城湖路100号省直属机关服务中心窗口领取。",
+    "contactName": "职业技能鉴定中心",
+    "contact_phone_number": "+8612345678900",
+    "datetime": "2025-11-28 10:00:00",
+    "message_type": "接收",
+    "phone_id": "376"
+  },
+  {
+    "type": "sms",
+    "event_id": "4218",
+    "message_content": "陆明强：复习强度太大，手腕都有点吃不消了，酸得不行。刚练了会儿握力器，感觉好点儿。你也注意劳逸结合。",
+    "contactName": "陈浩",
+    "contact_phone_number": "+8618501234567",
+    "datetime": "2025-10-16 22:05:00",
+    "message_type": "发送",
+    "phone_id": "377"
+  },
+  {
+    "type": "sms",
+    "event_id": "5046",
+    "message_content": "老婆，客户李老板店铺电路出问题了，需要紧急维修，我过去一下，晚点回来吃饭。",
+    "contactName": "妻子",
+    "contact_phone_number": "+8613812345679",
+    "datetime": "2025-12-12 17:10:00",
+    "message_type": "发送",
+    "phone_id": "378"
+  },
+  {
+    "type": "sms",
+    "event_id": "1497",
+    "message_content": "丽娟，昨晚沟通后心里踏实多了。备考计划我会严格执行，财务紧缩计划里我们定的开源节流我也会努力。为了这个家，我们一起加油。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-04-15 08:05:00",
+    "message_type": "发送",
+    "phone_id": "379"
+  },
+  {
+    "type": "sms",
+    "event_id": "4616",
+    "message_content": "林峰：明强，刚运动完，一起去吃点东西聊聊？我知道有家清补凉不错。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-11-12 21:45:00",
+    "message_type": "接收",
+    "phone_id": "380"
+  },
+  {
+    "type": "sms",
+    "event_id": "2662",
+    "message_content": "建国，上次午餐聊的那个创业想法，我这两天大概想了下，觉得还是得先摸清楚市场情况和具体手续。最近复习也紧，可能得先放一放。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613987654321",
+    "datetime": "2025-07-07 09:30:00",
+    "message_type": "发送",
+    "phone_id": "381"
+  },
+  {
+    "type": "sms",
+    "event_id": "4209",
+    "message_content": "今天这天气，在户外干活真要命。我这汗就没停过。下午那阵雨不知道还下不下。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613900000000",
+    "datetime": "2025-10-16 11:20:00",
+    "message_type": "接收",
+    "phone_id": "382"
+  },
+  {
+    "type": "sms",
+    "event_id": "2726",
+    "message_content": "陆工：王主任，滨海新村3号楼雷击导致的停电故障已处理完毕，现已恢复送电，各楼层抽查电压正常。本次抢修完成。",
+    "contactName": "王主任",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-07-08 15:50:00",
+    "message_type": "发送",
+    "phone_id": "383"
+  },
+  {
+    "type": "sms",
+    "event_id": "2726",
+    "message_content": "王主任：好的，辛苦陆工和陈工了！大夏天的，你们这响应速度真是没得说，业主这边我来通知。",
+    "contactName": "王主任",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-07-08 15:52:00",
+    "message_type": "接收",
+    "phone_id": "384"
+  },
+  {
+    "type": "sms",
+    "event_id": "5133",
+    "message_content": "陆师傅，我家客厅的灯不亮了，您方便时能帮忙看一下吗？谢谢！",
+    "contactName": "王建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-12-18 17:30:00",
+    "message_type": "接收",
+    "phone_id": "385"
+  },
+  {
+    "type": "sms",
+    "event_id": "3078",
+    "message_content": "阿峰：明强，我到了，老时间老地方，壁球场见。",
+    "contactName": "阿峰",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-07-30 20:00:00",
+    "message_type": "接收",
+    "phone_id": "386"
+  },
+  {
+    "type": "sms",
+    "event_id": "2727",
+    "message_content": "王主任：小陆师傅，上次提到的社区电力问题处理得非常及时彻底，记录也做得很规范，辛苦了！代表物业表示感谢！",
+    "contactName": "王主任",
+    "contact_phone_number": "+86138****5678",
+    "datetime": "2025-07-08 16:20:00",
+    "message_type": "接收",
+    "phone_id": "387"
+  },
+  {
+    "type": "sms",
+    "event_id": "4655",
+    "message_content": "陈斌：明天早上7点滨海跑道见，别忘了",
+    "contactName": "陈斌",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-11-15 19:45:00",
+    "message_type": "接收",
+    "phone_id": "388"
+  },
+  {
+    "type": "sms",
+    "event_id": "4346",
+    "message_content": "师傅，我已平安到家，谢谢您和师娘今晚的招待。海南鸡饭和白灼虾都很美味，我会牢记您的叮嘱，努力工作，注意安全。",
+    "contactName": "赵强",
+    "contact_phone_number": "+8613600000000",
+    "datetime": "2025-10-25 22:15:00",
+    "message_type": "接收",
+    "summarized_info": "陆明强收到了徒弟赵强的感谢短信，短信中提到了晚宴享用了海南鸡饭和白灼虾。",
+    "phone_id": "389"
+  },
+  {
+    "type": "sms",
+    "event_id": "1781",
+    "message_content": "发送给工友赵刚：腰伤复发，明天我转为现场指导，你们多照看下工作进度。",
+    "contactName": "赵刚",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-05-05 21:55:00",
+    "message_type": "发送",
+    "phone_id": "390"
+  },
+  {
+    "type": "sms",
+    "event_id": "2832",
+    "message_content": "老婆：今天和建国吃了午饭，然后去见了张建国老师傅，听他讲了些创业失败的事。感觉创业风险不小，我得再想想。",
+    "contactName": "妻子",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-07-15 15:00:00",
+    "message_type": "发送",
+    "phone_id": "391"
+  },
+  {
+    "type": "sms",
+    "event_id": "4656",
+    "message_content": "我：早啊，按昨晚约的，待会跑完步我们直接走过去？那家酸奶店离终点不远。",
+    "contactName": "陈斌",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-11-16 07:55:00",
+    "message_type": "发送",
+    "phone_id": "392"
+  },
+  {
+    "type": "sms",
+    "event_id": "4583",
+    "message_content": "陆工，您的技术文章《高压配电柜零线故障案例分析》已在我们期刊发表，读者反馈很好。公司也决定给予奖励，恭喜！",
+    "contactName": "编辑张华",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-11-20 10:00:00",
+    "message_type": "接收",
+    "phone_id": "393"
+  },
+  {
+    "type": "sms",
+    "event_id": "1921",
+    "message_content": "（工友群）陆明强：晚上老地方烧烤，庆祝强子转正！不过我腰伤又犯了，今晚就喝茶陪你们了哈。",
+    "contactName": "工友群",
+    "contact_phone_number": "+8613900001921",
+    "datetime": "2025-05-15 17:05:00",
+    "message_type": "发送",
+    "phone_id": "394"
+  },
+  {
+    "type": "sms",
+    "event_id": "4665",
+    "message_content": "陈斌：明强，晚上有空吗？跑完比赛想放松下，一起烧烤？",
+    "contactName": "陈斌",
+    "contact_phone_number": "+86186XXXXXXXX",
+    "datetime": "2025-11-16 16:15:00",
+    "message_type": "接收",
+    "phone_id": "395"
+  },
+  {
+    "type": "sms",
+    "event_id": "4597",
+    "message_content": "师父：明强，恭喜！省职业技能鉴定中心的成绩出来了，你理论95，实操优秀，电工高级技师的证这下稳了！没白费你这几个月的准备，真给师父长脸！",
+    "contactName": "师父",
+    "contact_phone_number": "+8613898765432",
+    "datetime": "2025-11-18 14:20:00",
+    "message_type": "接收",
+    "phone_id": "396"
+  },
+  {
+    "type": "sms",
+    "event_id": "927",
+    "message_content": "明强，刚才的抢修报告我已经提交到系统了。今天监护任务顺利完成，绝缘测试结果也合格。下周排班表好像有调整，你看了吗？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613500000000",
+    "datetime": "2025-03-05 19:40:15",
+    "message_type": "接收",
+    "phone_id": "397"
+  },
+  {
+    "type": "sms",
+    "event_id": "2924",
+    "message_content": "刚完成自我评估，那个创业的想法我决定先放一放了，还是专心备考高级技师更稳妥。",
+    "contactName": "王伟",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-07-21 20:50:00",
+    "message_type": "发送",
+    "phone_id": "398"
+  },
+  {
+    "type": "sms",
+    "event_id": "1122",
+    "message_content": "张伟：陆明强，班前会决定派你和陈建国立即前往三亚支援电力增容项目，请准备。",
+    "contactName": "张伟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-03-18 07:30:00",
+    "message_type": "接收",
+    "phone_id": "399"
+  },
+  {
+    "type": "sms",
+    "event_id": "2936",
+    "message_content": "老婆，我决定了，创业计划先放一放。昨天和老陈聊完，他建议我先考个技术证书，积累一下。我觉得很有道理，稳扎稳打更好。",
+    "contactName": "张丽",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-07-23 08:15:00",
+    "message_type": "发送",
+    "summarized_info": "给妻子发短信，告知决定暂缓创业计划，并提到采纳了工友关于先考技术证书、稳扎稳打的建议。",
+    "phone_id": "400"
+  },
+  {
+    "type": "sms",
+    "event_id": "2942",
+    "message_content": "建国哥，前阵子跟你聊的那事，我跟家里仔细商量过了，考虑再三，觉得现在条件还不成熟，风险比较大。我决定先按兵不动，把证考下来，多攒点经验本钱再说。暂时不折腾了。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-07-22 21:05:00",
+    "message_type": "发送",
+    "phone_id": "401"
+  },
+  {
+    "type": "sms",
+    "event_id": "1123",
+    "message_content": "陈工友，工具间的出差设备清单我核对过了，你那边申请工程车进展如何？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-03-18 08:10:00",
+    "message_type": "发送",
+    "phone_id": "402"
+  },
+  {
+    "type": "sms",
+    "event_id": "1125",
+    "message_content": "陆明强：今天和工友一起出差，他叫陈建国，我们从公司出发。",
+    "contactName": "妻子",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-03-18 08:45:00",
+    "message_type": "发送",
+    "phone_id": "403"
+  },
+  {
+    "type": "sms",
+    "event_id": "1127",
+    "message_content": "建国：明强，今天路上讨论的接地问题，我刚又想了想，到了现场我们按土壤、测试点、引线的顺序分头排查，效率更高。你那边和设计院沟通的情况如何？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613900000000",
+    "datetime": "2025-03-19 09:20:00",
+    "message_type": "接收",
+    "phone_id": "404"
+  },
+  {
+    "type": "sms",
+    "event_id": "1275",
+    "message_content": "陈建国：强哥，明天下午别忘了啊，老地方见，几个工友聚聚。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613800123456",
+    "datetime": "2025-03-27 19:22:00",
+    "message_type": "接收",
+    "phone_id": "405"
+  },
+  {
+    "type": "sms",
+    "event_id": "1284",
+    "message_content": "工友陈建国：老陆，明天晚上老地方喝茶聊聊？我看你最近心事重，有啥别憋着。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+86186****8912",
+    "datetime": "2025-03-27 19:22:00",
+    "message_type": "接收",
+    "phone_id": "406"
+  },
+  {
+    "type": "sms",
+    "event_id": "3119",
+    "message_content": "建国哥，昨天聚会确实吃得太多了。我到现在胃还胀得难受，有点恶心，以后真得注意点。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-08-02 11:30:00",
+    "message_type": "发送",
+    "phone_id": "407"
+  },
+  {
+    "type": "sms",
+    "event_id": "3119",
+    "message_content": "建国哥，昨天聚会确实吃得太多了。我到现在胃还胀得难受，有点恶心，以后真得注意点。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-08-02 11:30:00",
+    "message_type": "发送",
+    "phone_id": "407"
+  },
+  {
+    "type": "sms",
+    "event_id": "4278",
+    "message_content": "陈工，感谢邀请，今晚实在是不巧，已经有安排了。改天有空我请你，我们再好好聚聚。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613900000000",
+    "datetime": "2025-10-21 12:30:00",
+    "message_type": "发送",
+    "phone_id": "408"
+  },
+  {
+    "type": "sms",
+    "event_id": "4278",
+    "message_content": "陈工，感谢邀请，今晚实在是不巧，已经有安排了。改天有空我请你，我们再好好聚聚。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613900000000",
+    "datetime": "2025-10-21 12:30:00",
+    "message_type": "发送",
+    "phone_id": "408"
+  },
+  {
+    "type": "sms",
+    "event_id": "3991",
+    "message_content": "【XX银行】尊敬的陆明强客户，您的尾号8877账户于09月30日14:25入账人民币1500.00元（项目绩效奖金），当前余额为...",
+    "contactName": "XX银行",
+    "contact_phone_number": "+86955123456789",
+    "datetime": "2025-09-30 14:25:00",
+    "message_type": "接收",
+    "phone_id": "409"
+  },
+  {
+    "type": "sms",
+    "event_id": "2104",
+    "message_content": "【工商银行】您尾号3478的储蓄卡账户5月26日09:15消费支出人民币1，300.00元，交易类型：自动扣款（新车贷款月供）。",
+    "contactName": "工商银行",
+    "contact_phone_number": "+869558",
+    "datetime": "2025-05-26 09:16:00",
+    "message_type": "接收",
+    "phone_id": "410"
+  },
+  {
+    "type": "sms",
+    "event_id": "293",
+    "message_content": "老陈，昨天收工那会儿腰不太得劲，换变压器时弯腰捡工具，一下直起来感觉腰又酸又僵，缓了半天。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-01-23 09:20:00",
+    "message_type": "发送",
+    "phone_id": "411"
+  },
+  {
+    "type": "sms",
+    "event_id": "2848",
+    "message_content": "峰哥，昨天谢谢指导！你教的那个拉伸动作做完舒服多了，感觉对腰背力量很有帮助。回头练核心力量再向你请教。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8618601234567",
+    "datetime": "2025-07-17 09:30:00",
+    "message_type": "发送",
+    "phone_id": "412"
+  },
+  {
+    "type": "sms",
+    "event_id": "3008",
+    "message_content": "陆明强：建国，今天聊的工具型号清单和备货量我发你邮箱了，方便你进货时核对。别忘了最重要的一点：所有带电的，一定得是带3C标志的正规货。安全无小事。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613807668321",
+    "datetime": "2025-07-28 10:15:00",
+    "message_type": "发送",
+    "phone_id": "413"
+  },
+  {
+    "type": "sms",
+    "event_id": "4285",
+    "message_content": "康复指导陈医生：今天按计划完成了三组核心力量训练。最近腰部的感觉稳定多了，继续坚持这个针对性的训练方案应该会越来越好。",
+    "contactName": "康复指导陈医生",
+    "contact_phone_number": "+8613917895623",
+    "datetime": "2025-10-21 21:30:00",
+    "message_type": "发送",
+    "phone_id": "414"
+  },
+  {
+    "type": "sms",
+    "event_id": "4285",
+    "message_content": "康复指导陈医生：今天按计划完成了三组核心力量训练。最近腰部的感觉稳定多了，继续坚持这个针对性的训练方案应该会越来越好。",
+    "contactName": "康复指导陈医生",
+    "contact_phone_number": "+8613917895623",
+    "datetime": "2025-10-21 21:30:00",
+    "message_type": "发送",
+    "phone_id": "414"
+  },
+  {
+    "type": "sms",
+    "event_id": "4136",
+    "message_content": "我回复：斌哥早。跑不了了，最近在专心备考，时间很紧。你们跑得开心。",
+    "contactName": "陈斌",
+    "contact_phone_number": "+8613900000000",
+    "datetime": "2025-10-11 06:15:00",
+    "message_type": "发送",
+    "phone_id": "415"
+  },
+  {
+    "type": "sms",
+    "event_id": "2971",
+    "message_content": "明强，今晚聊得很透。虽然新机会收入诱人，弹性工作听起来也不错，但我们仔细想想，现阶段家庭的稳定和你的长远发展才是根本。跳槽风险不小，我们都不是追求冒险的人。既然你现有的平台很稳定，能支持你继续钻研技术，那就先专心备考高级技师吧。我支持你按我们商量的方向回复。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8610000000001",
+    "datetime": "2025-07-24 22:15:00",
+    "message_type": "接收",
+    "phone_id": "416"
+  },
+  {
+    "type": "sms",
+    "event_id": "174",
+    "message_content": "娟：你回家后一直按腰，是不是今天抢修太累了？腰又疼得厉害吗？我上次说让你别逞强运动你总不听，这次必须听我的。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+86139XXXXXXXX",
+    "datetime": "2025-01-14 21:10:00",
+    "message_type": "接收",
+    "phone_id": "417"
+  },
+  {
+    "type": "sms",
+    "event_id": "174",
+    "message_content": "老陆：确实使不上劲，这次听你的。那咱俩之前说好周末去打球和晨跑的计划就先暂停吧，等我好点再说。下周体检再问问医生。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+86139XXXXXXXX",
+    "datetime": "2025-01-14 21:12:00",
+    "message_type": "发送",
+    "phone_id": "418"
+  },
+  {
+    "type": "sms",
+    "event_id": "5092",
+    "message_content": "老婆：你昨晚说的那些饮食调整，从今天晚饭就开始执行吧。米饭我只盛了半碗，青菜多炒了一盘。我们一起坚持。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-12-16 18:05:00",
+    "message_type": "接收",
+    "phone_id": "419"
+  },
+  {
+    "type": "sms",
+    "event_id": "5092",
+    "message_content": "老婆：和保险公司约了明天下午签约。方案我发你了，晚上我们再一起过一遍，没问题的话就定下来。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-12-27 19:20:00",
+    "message_type": "发送",
+    "phone_id": "420"
+  },
+  {
+    "type": "sms",
+    "event_id": "5092",
+    "message_content": "老婆：合同签好了，首期保费也支付了。电子保单发到你邮箱了，记得查收。心里踏实多了。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-12-30 16:50:00",
+    "message_type": "发送",
+    "phone_id": "421"
+  },
+  {
+    "type": "sms",
+    "event_id": "2902",
+    "message_content": "陆明强：峰哥，我16号打完壁球后腰有点酸，一直有点在意。你上次提到的核心训练对腰保护很有用，明天方便在球馆教我吗？想系统学一下。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613900000000",
+    "datetime": "2025-07-19 22:15:00",
+    "message_type": "发送",
+    "phone_id": "422"
+  },
+  {
+    "type": "sms",
+    "event_id": "1350",
+    "message_content": "丽娟，今晚讨论的紧缩计划，我觉得还需要细化。特别是孩子们的开销，需要想一个温和的方式和他们沟通。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613800123456",
+    "datetime": "2025-04-01 21:30:00",
+    "message_type": "发送",
+    "phone_id": "423"
+  },
+  {
+    "type": "sms",
+    "event_id": "1096",
+    "message_content": "同事老张：明强，看你今天弯腰干活时动作不太利索，腰伤又犯了？这几天室外工作量太大了，回去好好休息，别硬撑。",
+    "contactName": "老张",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-03-15 19:30:00",
+    "message_type": "接收",
+    "phone_id": "424"
+  },
+  {
+    "type": "sms",
+    "event_id": "4278",
+    "message_content": "建国，谢谢邀请，但今晚宵夜真去不了了，最近项目压力太大了，一直在赶工，而且饮食也得控制下。改天我请你！",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613800123456",
+    "datetime": "2025-10-21 13:15:00",
+    "message_type": "发送",
+    "phone_id": "425"
+  },
+  {
+    "type": "sms",
+    "event_id": "3618",
+    "message_content": "丽娟，聚餐刚结束。今晚我没多喝，只要了茶水，菜也主要点的清淡的。大家聊得挺开心。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-09-05 21:45:00",
+    "message_type": "发送",
+    "phone_id": "426"
+  },
+  {
+    "type": "sms",
+    "event_id": "2222",
+    "message_content": "老陆，不客气！‘技能在线’平台挺靠谱的，课程你就按自己最需要补强的部分选就行，教材他们后续会寄。好好学，等你好消息。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-06-05 19:30:00",
+    "message_type": "接收",
+    "phone_id": "427"
+  },
+  {
+    "type": "sms",
+    "event_id": "1634",
+    "message_content": "建国哥，我这边刚干完活，老毛病好像又犯了，腰疼得厉害，下午的班去不了了，得跟组长请个假，歇几天。你帮我跟强子也说一声。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+86186XXXX1234",
+    "datetime": "2025-04-24 12:30:00",
+    "message_type": "发送",
+    "phone_id": "428"
+  },
+  {
+    "type": "sms",
+    "event_id": "3772",
+    "message_content": "妻子：今天的户外活动孩子们特别开心，放风筝玩得很尽兴。",
+    "contactName": "张丽",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-09-07 18:30:00",
+    "message_type": "接收",
+    "phone_id": "429"
+  },
+  {
+    "type": "sms",
+    "event_id": "1757",
+    "message_content": "王丽娟：明强，看你最近晚上总看手机到很晚，是不是又在想创业的事？注意休息。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-05-20 22:15:00",
+    "message_type": "接收",
+    "phone_id": "430"
+  },
+  {
+    "type": "sms",
+    "event_id": "946",
+    "message_content": "丽娟，会议决定我记下了。明天我先去咨询车辆报废的具体流程和残值估算。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-03-06 21:00:00",
+    "message_type": "发送",
+    "phone_id": "431"
+  },
+  {
+    "type": "sms",
+    "event_id": "39",
+    "message_content": "下午不跑步了，身体有点累。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-01-04 13:35:00",
+    "message_type": "发送",
+    "phone_id": "432"
+  },
+  {
+    "type": "sms",
+    "event_id": "1732",
+    "message_content": "丽娟，今天早上感觉腰部好多了，这是一个好迹象。我们晚上一起制定一个康复计划吧，确保长期健康。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-05-02 08:20:00",
+    "message_type": "发送",
+    "phone_id": "433"
+  },
+  {
+    "type": "sms",
+    "event_id": "2315",
+    "message_content": "丽娟：明强，今天下午腰突然很痛，动不了，现在在医院等着看医生，医生初步判断是腰肌劳损。晚上回来再说。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-06-10 15:30:00",
+    "message_type": "接收",
+    "phone_id": "434"
+  },
+  {
+    "type": "sms",
+    "event_id": "3993",
+    "message_content": "丽娟，项目奖金到账了，有1500元。晚上吃饭的时候我们一起商量下怎么安排这笔钱吧。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613808987654",
+    "datetime": "2025-09-30 18:20:00",
+    "message_type": "发送",
+    "phone_id": "435"
+  },
+  {
+    "type": "sms",
+    "event_id": "3603",
+    "message_content": "我：今天教了子涵系统整理书包，按大小放书，作业本单独放，文具盒放侧袋，让他练习了两遍。慢慢来，习惯要一点点培养。",
+    "contactName": "妻子",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-09-04 20:30:00",
+    "message_type": "发送",
+    "phone_id": "436"
+  },
+  {
+    "type": "sms",
+    "event_id": "1101",
+    "message_content": "张工，谢谢您的好意。但我仔细考虑了，这个活儿时间太赶，我担心仓促施工会有安全隐患，工艺上也怕达不到标准。为了负责任，我还是不接了。",
+    "contactName": "张建国",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-03-16 16:00:00",
+    "message_type": "发送",
+    "phone_id": "437"
+  },
+  {
+    "type": "sms",
+    "event_id": "5031",
+    "message_content": "刚刚聊天提到的运动损伤预防文章链接发你了，有空看看。【链接：健康之路-常见运动损伤防护指南】",
+    "contactName": "林峰",
+    "contact_phone_number": "+8618501234567",
+    "datetime": "2025-12-11 20:30:00",
+    "message_type": "接收",
+    "phone_id": "438"
+  },
+  {
+    "type": "sms",
+    "event_id": "2232",
+    "message_content": "陆明强：今晚的散步取消了，天气不好，在家锻炼吧。",
+    "contactName": "康复教练",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-06-05 20:08:00",
+    "message_type": "发送",
+    "phone_id": "439"
+  },
+  {
+    "type": "sms",
+    "event_id": "3110",
+    "message_content": "丽娟，今晚工友烤鱼聚会吃多了，现在胃胀头晕，很不舒服。我们真得注意饮食了，以后尽量清淡。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-08-02 22:15:00",
+    "message_type": "发送",
+    "phone_id": "440"
+  },
+  {
+    "type": "sms",
+    "event_id": "1635",
+    "message_content": "丽娟，刚从医院出来。医生说腰伤挺严重的，筋膜炎，让必须卧床至少一周，完全不能干活。建国送我回来的。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-04-24 14:15:00",
+    "message_type": "发送",
+    "phone_id": "441"
+  },
+  {
+    "type": "sms",
+    "event_id": "5130",
+    "message_content": "陆明强：刚下班，今天下午检修配电箱的活儿太琐碎了，耗尽了耐心，累得不行。",
+    "contactName": "妻子",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-12-18 17:45:00",
+    "message_type": "发送",
+    "phone_id": "442"
+  },
+  {
+    "type": "sms",
+    "event_id": "1596",
+    "message_content": "陆明强：老李，这周末的聚会我得取消了，车报废后经济紧张，得省着点花。",
+    "contactName": "李强",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-04-25 15:30:00",
+    "message_type": "发送",
+    "phone_id": "443"
+  },
+  {
+    "type": "sms",
+    "event_id": "1143",
+    "message_content": "明强，三亚项目接地故障的现场照片和初步报告发你邮箱了，有空分析一下。",
+    "contactName": "王工（项目同事）",
+    "contact_phone_number": "+8618701234567",
+    "datetime": "2025-03-19 11:30:15",
+    "message_type": "接收",
+    "phone_id": "444"
+  },
+  {
+    "type": "sms",
+    "event_id": "2976",
+    "message_content": "陈师傅，您好。昨晚电话沟通的内容再和您确认一下。非常感谢您的赏识和邀请，但我经过仔细考虑，还是决定留在现在的公司。我目前的核心目标是专注于现有平台及备考，希望您能理解。再次感谢！",
+    "contactName": "陈师傅",
+    "contact_phone_number": "+86186****5678",
+    "datetime": "2025-07-24 22:20:00",
+    "message_type": "发送",
+    "phone_id": "445"
+  },
+  {
+    "type": "sms",
+    "event_id": "4235",
+    "message_content": "明天有重要考试，今晚我得早点休息，养足精神。你帮我调暗灯光吧。",
+    "contactName": "王芳",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-10-17 20:45:00",
+    "message_type": "发送",
+    "phone_id": "446"
+  },
+  {
+    "type": "sms",
+    "event_id": "4235",
+    "message_content": "明天有重要考试，今晚我得早点休息，养足精神。你帮我调暗灯光吧。",
+    "contactName": "王芳",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-10-17 20:45:00",
+    "message_type": "发送",
+    "phone_id": "446"
+  },
+  {
+    "type": "sms",
+    "event_id": "290",
+    "message_content": "陆明强：建国，今天上午那个活太累了，腰都快断了。老式变压器是真不好装，一直在那个姿势拧螺栓。下回这种户外活真得多个人轮换。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-01-22 13:20:00",
+    "message_type": "发送",
+    "phone_id": "447"
+  },
+  {
+    "type": "sms",
+    "event_id": "1097",
+    "message_content": "丽娟：明强，物业发的植树活动看到了吗？这周日早上，反正免费，我们带子轩子涵一起去吧，就当周末家庭活动了，孩子们肯定开心。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613587654321",
+    "datetime": "2025-03-14 16:05:00",
+    "message_type": "接收",
+    "phone_id": "448"
+  },
+  {
+    "type": "sms",
+    "event_id": "543",
+    "message_content": "明强，今天去银行办理年终奖存款吧。按我们昨晚商量的，大部分作为应急储备金和教育基金存定期，一部分用于春节开销。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613900000001",
+    "datetime": "2025-02-08 09:00:00",
+    "message_type": "接收",
+    "phone_id": "449"
+  },
+  {
+    "type": "sms",
+    "event_id": "3335",
+    "message_content": "林峰：你从医院回来了吗？手腕怎么样？",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-08-17 21:50:00",
+    "message_type": "接收",
+    "phone_id": "450"
+  },
+  {
+    "type": "sms",
+    "event_id": "1362",
+    "message_content": "师父，电工高级技师考试的备考重点和难点，能指导一下吗？",
+    "contactName": "李师傅",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-04-02 10:00:00",
+    "message_type": "发送",
+    "phone_id": "451"
+  },
+  {
+    "type": "sms",
+    "event_id": "4237",
+    "message_content": "理论考试终于结束了，休息几天调整状态。明天恢复壁球运动，老时间老地方见！",
+    "contactName": "王教练",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-10-25 14:30:00",
+    "message_type": "发送",
+    "summarized_info": "陆明强发送短信约教练恢复壁球运动。",
+    "phone_id": "452"
+  },
+  {
+    "type": "sms",
+    "event_id": "3404",
+    "message_content": "王叔，下午看过那个插座，型号是德力西CD606，建议买带开关的新款，安全方便些。五金店或网上都有。换的时候记得先关掉那个回路的电闸。",
+    "contactName": "王建国",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-08-22 18:20:00",
+    "message_type": "发送",
+    "phone_id": "453"
+  },
+  {
+    "type": "sms",
+    "event_id": "2315",
+    "message_content": "今晚的谈话让我感触很深。家庭健康保障是当务之急。我这几天先在网上找找合适的保险产品信息，周末我们再一起去社区中心详细咨询一下政策。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-06-10 21:05:00",
+    "message_type": "发送",
+    "phone_id": "454"
+  },
+  {
+    "type": "sms",
+    "event_id": "1634",
+    "message_content": "【银行通知】您尾号1234的账户收到二手平台交易款项500元。",
+    "contactName": "银行",
+    "contact_phone_number": "+861000000001",
+    "datetime": "2025-04-13 10:30:00",
+    "message_type": "接收",
+    "phone_id": "455"
+  },
+  {
+    "type": "sms",
+    "event_id": "1407",
+    "message_content": "师父您好，我是明强。关于高级技师考试，我有些问题想当面向您请教，不知您明天或后天是否方便？",
+    "contactName": "李师傅",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-04-05 10:30:00",
+    "message_type": "发送",
+    "phone_id": "456"
+  },
+  {
+    "type": "sms",
+    "event_id": "1644",
+    "message_content": "建国，咱们公司的团体意外险保单号是多少？保障范围能发我看看吗？想了解一下。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-25 09:30:00",
+    "message_type": "发送",
+    "phone_id": "457"
+  },
+  {
+    "type": "sms",
+    "event_id": "1644",
+    "message_content": "伟哥，最近养伤闲着，在琢磨以后干点啥。你开维修店经验丰富，方便的时候想跟你取取经，比如启动资金、找铺面这些。",
+    "contactName": "张伟",
+    "contact_phone_number": "+8613834567890",
+    "datetime": "2025-04-28 14:00:00",
+    "message_type": "发送",
+    "phone_id": "458"
+  },
+  {
+    "type": "sms",
+    "event_id": "4917",
+    "message_content": "陆明强：晚上锻炼取消了，白天安装配电柜太累，身体扛不住。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-12-04 18:45:00",
+    "message_type": "发送",
+    "phone_id": "459"
+  },
+  {
+    "type": "sms",
+    "event_id": "1845",
+    "message_content": "明强，为期三天的家庭活动总算圆满结束了，这几天大家都很开心，尤其是前天的生日晚餐。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613900000000",
+    "datetime": "2025-05-12 21:00:00",
+    "message_type": "接收",
+    "phone_id": "460"
+  },
+  {
+    "type": "sms",
+    "event_id": "5160",
+    "message_content": "明强，上次说的保险的事，我推给你那个经纪人张伟，微信号是zw138***，电话138****5678。我刚跟他微信上简单聊了聊，你加他细问吧。",
+    "contactName": "陈刚",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-12-20 21:10:00",
+    "message_type": "接收",
+    "phone_id": "461"
+  },
+  {
+    "type": "sms",
+    "event_id": "4079",
+    "message_content": "陆明强：今天午餐我点了清补凉和白灼菜心，昨天吃太油腻了，得清淡一下。",
+    "contactName": "妻子",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-10-07 12:45:00",
+    "message_type": "发送",
+    "phone_id": "462"
+  },
+  {
+    "type": "sms",
+    "event_id": "2720",
+    "message_content": "妈妈：明强，今天回来吃晚饭吗？做了红烧肉和几个菜。",
+    "contactName": "妈妈",
+    "contact_phone_number": "+8613800012345",
+    "datetime": "2025-07-11 17:30:00",
+    "message_type": "接收",
+    "phone_id": "463"
+  },
+  {
+    "type": "sms",
+    "event_id": "470",
+    "message_content": "陈斌：明强，我最近发现一个挺好用的APP，推荐给你，或许对你有帮助。",
+    "contactName": "陈斌",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-02-03 10:30:00",
+    "message_type": "接收",
+    "phone_id": "464"
+  },
+  {
+    "type": "sms",
+    "event_id": "1472",
+    "message_content": "老张，今天那个活动挺有启发，虽然感觉管人不容易，但学到不少。回头公司见再聊。",
+    "contactName": "张建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-12 13:05:00",
+    "message_type": "发送",
+    "phone_id": "465"
+  },
+  {
+    "type": "sms",
+    "event_id": "4356",
+    "message_content": "林峰：明强，今天恢复性练习感觉如何？我看你脚步移动比想象中好。手腕感觉没问题吧？",
+    "contactName": "林峰",
+    "contact_phone_number": "+86 138****5678",
+    "datetime": "2025-10-26 18:05:00",
+    "message_type": "接收",
+    "phone_id": "466"
+  },
+  {
+    "type": "sms",
+    "event_id": "1707",
+    "message_content": "明华哥，谢谢你的创业提议。我仔细考虑了，觉得需要更多时间来评估，特别是要平衡家庭和风险。我计划先做些市场调研，所以暂时把它当作一个长期项目来规划。",
+    "contactName": "陆明华",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-04-30 09:00:00",
+    "message_type": "发送",
+    "phone_id": "467"
+  },
+  {
+    "type": "sms",
+    "event_id": "4084",
+    "message_content": "老婆：明强，去买菜吧。昨天月饼螃蟹吃太多，今天晚饭我们简单点，弄点番茄鸡蛋，青菜，炖个清淡的排骨汤就好。",
+    "contactName": "妻子",
+    "contact_phone_number": "+8613987654321",
+    "datetime": "2025-10-07 16:45:00",
+    "message_type": "接收",
+    "phone_id": "468"
+  },
+  {
+    "type": "sms",
+    "event_id": "1688",
+    "message_content": "陆明强：李老板好，打扰了。想帮一个朋友打听下，如果开个电器维修店，大概需要多少启动资金？每个月租金、水电、买零件这些固定成本要多少？",
+    "contactName": "李老板",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-04-28 19:35:00",
+    "message_type": "发送",
+    "phone_id": "469"
+  },
+  {
+    "type": "sms",
+    "event_id": "1688",
+    "message_content": "李老板：陆工客气。启动看地段和规模，小店十来万吧。租金是大头，好点位置每月四五千，水电几百，零件备货看业务量。最难的是客源，新店没口碑，得多跑社区、跟物业搞关系，或者线上平台做推广，回头客靠手艺和诚信。",
+    "contactName": "李老板",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-04-28 19:50:00",
+    "message_type": "接收",
+    "phone_id": "470"
+  },
+  {
+    "type": "sms",
+    "event_id": "1688",
+    "message_content": "陆明强：明白了，谢谢李老板！这些经验太实在了。还有个问题，日常经营里，除了客源，你觉得最大的挑战是什么？怎么维系老客户比较好？",
+    "contactName": "李老板",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-04-28 19:55:00",
+    "message_type": "发送",
+    "phone_id": "471"
+  },
+  {
+    "type": "sms",
+    "event_id": "1688",
+    "message_content": "李老板：挑战嘛，技术更新快，得不停学。还有压款，有些单位结账慢。维系客户就简单实在点，价格透明点，修完留个电话，有问题随时问，逢年过节发个问候。慢慢口碑就起来了。",
+    "contactName": "李老板",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-04-28 20:10:00",
+    "message_type": "接收",
+    "phone_id": "472"
+  },
+  {
+    "type": "sms",
+    "event_id": "2359",
+    "message_content": "明强，我的腰还是疼，诊断是腰肌劳损。你那边保险咨询有结果吗？",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-06-14 10:30:00",
+    "message_type": "接收",
+    "phone_id": "473"
+  },
+  {
+    "type": "sms",
+    "event_id": "1714",
+    "message_content": "陆明强：建国，在忙吗？我五一后复工的事基本定了，公司安排我主要做‘技术监督’，负责指导审核，具体就是跟进秀英区那个老旧小区电路改造项目。我这躺床上也干着急，方便的话，能不能先把项目图纸的电子版发我看看？另外，现在项目进展到哪一步了？有没有遇到什么难点？还有啊，安全操作规范这块，你一定得多提醒现场的兄弟们。\n陈建国：老陆你就安心养着吧。图纸和目前的施工记录我整理一下发你微信。进展还算顺利，就是有几处老管线情况比预想的复杂，等你回来咱们细聊。安全你放心，我天天念叨着呢。你定的这个技术监督的岗挺好，适合你现在的情况。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613987654321",
+    "datetime": "2025-04-30 15:20:00",
+    "message_type": "发送",
+    "phone_id": "474"
+  },
+  {
+    "type": "sms",
+    "event_id": "2725",
+    "message_content": "明强，晚上来家里吃饭吧，妈做了你爱吃的红烧肉。",
+    "contactName": "母亲",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-07-11 17:30:00",
+    "message_type": "接收",
+    "phone_id": "475"
+  },
+  {
+    "type": "sms",
+    "event_id": "2269",
+    "message_content": "哥哥，关于创业提议，我仔细考虑后觉得现在不太合适。家庭储蓄不足，我还要备考高级技师，而且腰伤需要康复。暂时婉拒了，谢谢你的好意。",
+    "contactName": "陆明华",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-06-01 15:30:00",
+    "message_type": "发送",
+    "phone_id": "476"
+  },
+  {
+    "type": "sms",
+    "event_id": "739",
+    "message_content": "陈队：明强，昨天社区电力设施现场勘查完成，辛苦了。相关材料我已整理，报告部分就麻烦你了。",
+    "contactName": "陈队",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-02-21 10:30:00",
+    "message_type": "接收",
+    "phone_id": "477"
+  },
+  {
+    "type": "sms",
+    "event_id": "1856",
+    "message_content": "王丽娟：昨天的聚会大家都很开心，孩子们说这是最好的生日庆祝。周末家庭活动圆满结束。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-05-12 09:30:00",
+    "message_type": "接收",
+    "phone_id": "478"
+  },
+  {
+    "type": "sms",
+    "event_id": "2738",
+    "message_content": "陆工，今天看你开会时记笔记特别认真，会后也没怎么休息就带我们领设备。知道你压力大，但饭还是要按时吃啊，身体是革命的本钱。明天我给你带点水果吧？",
+    "contactName": "赵强",
+    "contact_phone_number": "+86150****5678",
+    "datetime": "2025-07-10 08:05:00",
+    "message_type": "接收",
+    "summarized_info": "陆明强收到了同事赵强的短信，短信中赵强观察到陆明强工作投入、压力大，并提醒他要按时吃饭。",
+    "phone_id": "479"
+  },
+  {
+    "type": "sms",
+    "event_id": "1860",
+    "message_content": "爸爸，三天活动结束了，明天又要回学校了，真舍不得。这几天特别开心，尤其是你过生日那天！",
+    "contactName": "陆子轩",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-05-12 20:05:00",
+    "message_type": "接收",
+    "phone_id": "480"
+  },
+  {
+    "type": "sms",
+    "event_id": "5149",
+    "message_content": "明强，体检报告看了，我们调整饮食吧：晚餐少吃米饭，多吃青菜，限制外食和油炸食品，你工作也要注意。",
+    "contactName": "妻子",
+    "contact_phone_number": "+8612345678901",
+    "datetime": "2025-12-15 20:00:00",
+    "message_type": "接收",
+    "phone_id": "481"
+  },
+  {
+    "type": "sms",
+    "event_id": "4086",
+    "message_content": "王丽娟：明强，晚餐好了。昨天中秋团聚吃得太丰盛，你说有点撑，今天咱们吃清淡点调节一下。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-10-07 18:35:00",
+    "message_type": "接收",
+    "phone_id": "482"
+  },
+  {
+    "type": "sms",
+    "event_id": "1873",
+    "message_content": "我这边都准备好了，明天公园见，天气应该不错。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-05-11 21:05:00",
+    "message_type": "发送",
+    "phone_id": "483"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "建国，今天张头开会说公司鼓励考高级技师证，有补贴。我琢磨着是不是也该准备一下了，毕竟都干了十几年了。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-03-08 18:30:00",
+    "message_type": "发送",
+    "phone_id": "484"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "你说得对，咱俩技术都不差，是该往上考一考了。我打听了一下，今年下半年的考试安排在10月底，现在开始看书做题刚好。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-03-08 19:05:00",
+    "message_type": "接收",
+    "phone_id": "485"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "李师傅，跟您报告一下，我准备报今年10月的电工高级技师考试了。您当年考的时候，理论和实操哪个部分比较难啃？我想提前重点准备。",
+    "contactName": "李师傅",
+    "contact_phone_number": "+8613912345679",
+    "datetime": "2025-03-09 21:15:00",
+    "message_type": "发送",
+    "phone_id": "486"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "明强啊，好样的！理论部分的新规和复杂电路分析是难点，得下功夫。实操主要考故障排查的综合能力和新设备安装规范。你基础扎实，问题不大，就是得系统复习。我这还有些老资料，改天拿给你。",
+    "contactName": "李师傅",
+    "contact_phone_number": "+8613912345679",
+    "datetime": "2025-03-10 08:20:00",
+    "message_type": "接收",
+    "phone_id": "487"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈，周末去乡下走亲戚，居然在老供销社仓库里翻到一瓶八十年代的本地白酒，瓶身图案是椰林夕阳，保存得相当好！真是捡到宝了。",
+    "contactName": "陈建国（酒友）",
+    "contact_phone_number": "+8615012345670",
+    "datetime": "2025-06-15 16:45:00",
+    "message_type": "发送",
+    "phone_id": "488"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "真的？那图案是不是红色背景，一棵大椰树，旁边还有“琼州佳酿”四个字？要是的话，那可能是椰岛酒厂最早一批的试制品，存量极少！你运气太好了！",
+    "contactName": "陈建国（酒友）",
+    "contact_phone_number": "+8615012345670",
+    "datetime": "2025-06-15 17:20:00",
+    "message_type": "接收",
+    "phone_id": "489"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "爸，我上次跟您说淘到那瓶老酒，我酒友老陈说是海口椰岛酒厂的。您当年在供电局，有没有听说这个厂？",
+    "contactName": "陆建国",
+    "contact_phone_number": "+8613887654321",
+    "datetime": "2025-07-05 19:30:00",
+    "message_type": "发送",
+    "phone_id": "490"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "椰岛酒厂？有印象！就在以前的海府路东头，早关了。他们厂长还来我们局拉过电线。你那瓶酒要是他们的，还真是个念想。好好收着吧。",
+    "contactName": "陆建国",
+    "contact_phone_number": "+8613887654321",
+    "datetime": "2025-07-05 20:10:00",
+    "message_type": "接收",
+    "phone_id": "491"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "阿杰，天气预报说这周六（4月12日）下午万绿园那边风好，咱去试试我新改良的那个“沙燕”风筝？我加了点配重，应该更稳。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8615212345678",
+    "datetime": "2025-04-08 09:00:00",
+    "message_type": "发送",
+    "phone_id": "492"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "好啊明强哥！我正好也修好了我的“龙头蜈蚣”，周六下午两点万绿园老地方见！",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8615212345678",
+    "datetime": "2025-04-08 09:30:00",
+    "message_type": "接收",
+    "phone_id": "493"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "阿杰，刚接到公司紧急通知，周六（12号）下午有个抢修任务，去不成了。得改天。你看下周二（15号）下午如何？那天我调休。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8615212345678",
+    "datetime": "2025-04-10 17:45:00",
+    "message_type": "发送",
+    "phone_id": "494"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "没问题，明强哥。工作要紧。那就改到15号下午两点，还是万绿园。我周二也刚好轮休。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8615212345678",
+    "datetime": "2025-04-10 18:05:00",
+    "message_type": "接收",
+    "phone_id": "495"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "娟子，老爸刚才来电话，说家里有个老电器出问题了，洗澡时有点麻手，吓了他一跳。我下班得赶紧过去看看。晚饭你们先吃，不用等我。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345670",
+    "datetime": "2025-05-18 16:50:00",
+    "message_type": "发送",
+    "phone_id": "496"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "啊？人没事吧？你快去看看，肯定是漏电了。带上工具，注意安全！晚饭我给你留着。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345670",
+    "datetime": "2025-05-18 17:05:00",
+    "message_type": "接收",
+    "phone_id": "497"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "建国，昨天给我爸修好了，是那个用了快二十年的老热水器，内部加热管绝缘老化导致外壳带电。已经断了电，让他们暂时别用了。得买个新的。",
+    "contactName": "陈建国（工友）",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-05-19 12:30:00",
+    "message_type": "发送",
+    "phone_id": "498"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "这种老家伙是该换了，安全隐患大。需要帮忙挑型号或者安装的话说一声。老爷子没被电到真是万幸。",
+    "contactName": "陈建国（工友）",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-05-19 13:00:00",
+    "message_type": "接收",
+    "phone_id": "499"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "张头，我是明强。建国在秀英区那个老小区改造工地出事了，被上面掉下来的东西砸到，已经送医院了。我正在去医院的路上。",
+    "contactName": "张班长",
+    "contact_phone_number": "+8613712345678",
+    "datetime": "2025-08-22 14:25:00",
+    "message_type": "发送",
+    "phone_id": "500"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "收到！我马上通知刘经理和安全科。你们先照看好建国，我处理完手头事马上过去。是哪家医院？",
+    "contactName": "张班长",
+    "contact_phone_number": "+8613712345678",
+    "datetime": "2025-08-22 14:40:00",
+    "message_type": "接收",
+    "phone_id": "501"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老婆，建国检查结果出来了，左肩胛骨骨裂，要住院观察几天。就是拆旧线路时，头顶一个生锈的固定支架突然松脱掉下来砸的。万幸戴了安全帽，没伤到头。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345670",
+    "datetime": "2025-08-22 19:10:00",
+    "message_type": "发送",
+    "phone_id": "502"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "天啊，太危险了！你也要千万小心啊！这几天多照顾一下建国他们家，有什么需要帮忙的就说。晚上回来吃饭吗？",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613912345670",
+    "datetime": "2025-08-22 19:30:00",
+    "message_type": "接收",
+    "phone_id": "503"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "明强哥，最近看了几部老战争片真不错。《拯救大兵瑞恩》就不用说了，经典。还发现一部《细细的红线》，讲太平洋战争的，摄影和叙事很特别，你应该会喜欢。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8615212345678",
+    "datetime": "2025-09-28 21:15:00",
+    "message_type": "接收",
+    "phone_id": "504"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "收到。最近忙考证，没空看。等考完试一定补上。你说的这两部我记下了。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8615212345678",
+    "datetime": "2025-09-28 21:40:00",
+    "message_type": "发送",
+    "phone_id": "505"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "明强哥，考完试可以放松了吧？再给你推荐两部冷门但精彩的，《血战钢锯岭》和《狂怒》。一个是医疗兵的故事，一个是坦克小组，都很真实震撼。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8615212345678",
+    "datetime": "2025-10-31 20:05:00",
+    "message_type": "接收",
+    "phone_id": "506"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "刚考完，是得歇歇。你这存货不少啊，又两部。行，我都记到待看清单里了，谢谢推荐！",
+    "contactName": "陈杰",
+    "contact_phone_number": "+8615212345678",
+    "datetime": "2025-10-31 20:25:00",
+    "message_type": "发送",
+    "phone_id": "507"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "建国，今天线路检修提前收工了，下了班老地方喝两杯？",
+    "contactName": "陆明强",
+    "contact_phone_number": "+86138********",
+    "datetime": "2025-01-10 16:22:00",
+    "message_type": "发送",
+    "phone_id": "508"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "行啊，我也快弄完了。还是白沙门公园门口那家大排档吧，他家烤鱼最地道。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+86137********",
+    "datetime": "2025-01-10 16:35:00",
+    "message_type": "接收",
+    "phone_id": "509"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "明强，我爸从老家带了些自己晒的小鱼干，下周去放风筝的时候我给你带点，配啤酒正好。",
+    "contactName": "陈杰（风筝友）",
+    "contact_phone_number": "+86135********",
+    "datetime": "2025-02-15 09:18:00",
+    "message_type": "接收",
+    "phone_id": "510"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "好啊！谢了阿杰。对了，上周在白沙门公园门口那家大排档吃饭，老板还说最近进了批不错的鱼。",
+    "contactName": "陆明强",
+    "contact_phone_number": "+86138********",
+    "datetime": "2025-02-15 09:25:00",
+    "message_type": "发送",
+    "phone_id": "511"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "阿杰，上次你说的那个让风筝转向更灵活的新方法，我照着试了，果然比以前用的老办法强不少。",
+    "contactName": "陆明强",
+    "contact_phone_number": "+86138********",
+    "datetime": "2025-04-12 20:05:00",
+    "message_type": "发送",
+    "phone_id": "512"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "哈哈，是吧！关键就在提线的定位，跟风筝骨架的受力点配合好了，操控性提升一大截。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+86135********",
+    "datetime": "2025-04-12 20:15:00",
+    "message_type": "接收",
+    "phone_id": "513"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "强哥，我画了个草图，我改良的那个鹰风筝，关键是把传统两点提线改成了更精准的三点定位法，骨架这里也做了调整。你有空看看。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+86135********",
+    "datetime": "2025-03-28 11:30:00",
+    "message_type": "接收",
+    "phone_id": "514"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "图收到了。三点定位？这个思路有意思，我琢磨琢磨。",
+    "contactName": "陆明强",
+    "contact_phone_number": "+86138********",
+    "datetime": "2025-03-28 11:45:00",
+    "message_type": "发送",
+    "phone_id": "515"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老婆，轩轩说暑假作业快写完了，想让我周末带他去看电影。他说想看那种有很多机器人、很热闹的。",
+    "contactName": "陆明强",
+    "contact_phone_number": "+86138********",
+    "datetime": "2025-07-20 19:10:00",
+    "message_type": "发送",
+    "phone_id": "516"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "好。他念叨好久了，说同学都看过了，是什么机器人去外星冒险的故事。你看下排片吧。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+86139********",
+    "datetime": "2025-07-20 19:22:00",
+    "message_type": "接收",
+    "phone_id": "517"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "爸，我们班小明说《星际守卫队》特别好看，讲机器人团队探索新星球打坏人的，是冒险动画片！你能带我去看吗？",
+    "contactName": "陆子轩",
+    "contact_phone_number": "+86150********",
+    "datetime": "2025-06-28 17:05:00",
+    "message_type": "接收",
+    "phone_id": "518"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "听起来不错。等放假了，如果你作业完成得好，爸爸就带你去。",
+    "contactName": "陆明强",
+    "contact_phone_number": "+86138********",
+    "datetime": "2025-06-28 17:15:00",
+    "message_type": "发送",
+    "phone_id": "519"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "建国，刚在论坛看到一个挺典型的案例分享。一个老小区，电路老化，症状很特别，不是简单的跳闸。",
+    "contactName": "陆明强",
+    "contact_phone_number": "+86138********",
+    "datetime": "2025-05-08 21:30:00",
+    "message_type": "发送",
+    "phone_id": "520"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "哦？啥症状？说说看，以后碰到好有个参考。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+86137********",
+    "datetime": "2025-05-08 21:42:00",
+    "message_type": "接收",
+    "phone_id": "521"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "哥，你上次说在论坛看到的那个老小区电路问题，具体是晚上灯会闪吗？我们小区最近好像也有类似情况。",
+    "contactName": "吴刚",
+    "contact_phone_number": "+86159********",
+    "datetime": "2025-05-25 10:05:00",
+    "message_type": "接收",
+    "phone_id": "522"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "对，就是那个。发帖的老师傅说，典型特征是晚上七八点用电高峰，公共楼道的灯会像心跳一样规律地闪烁，白天就没事。大概率是主零线接触不良。",
+    "contactName": "陆明强",
+    "contact_phone_number": "+86138********",
+    "datetime": "2025-05-25 10:20:00",
+    "message_type": "发送",
+    "phone_id": "523"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "阿杰，我前几天不是买了根新鱼竿吗？我琢磨着，能不能借鉴做风筝骨架的碳纤维管经验，把它改造成一个超轻便、可拆卸的大风筝支撑杆？",
+    "contactName": "陆明强",
+    "contact_phone_number": "+86138********",
+    "datetime": "2025-10-18 15:05:00",
+    "message_type": "发送",
+    "phone_id": "524"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "这想法够跨界啊！你买的哪款竿子？太硬或太软都不行吧。",
+    "contactName": "陈杰",
+    "contact_phone_number": "+86135********",
+    "datetime": "2025-10-18 15:18:00",
+    "message_type": "接收",
+    "phone_id": "525"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "强哥，上次托你帮我问的海钓装备，有消息了吗？最好是结实耐用的海竿。",
+    "contactName": "王海",
+    "contact_phone_number": "+86136********",
+    "datetime": "2025-08-03 09:00:00",
+    "message_type": "接收",
+    "phone_id": "526"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "问了本地渔具店。老板推荐光威的“浪”系列，2.1米的海竿，说性价比高，竿体弹性也不错。我自己也买了一根玩玩。",
+    "contactName": "陆明强",
+    "contact_phone_number": "+86138********",
+    "datetime": "2025-08-03 09:25:00",
+    "message_type": "发送",
+    "phone_id": "527"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "阿峰，上周打球时你说海南要办个新的体育赛事，具体是啥来着？我刷新闻好像看到了。",
+    "contactName": "陆明强",
+    "contact_phone_number": "+86138********",
+    "datetime": "2025-03-29 19:40:00",
+    "message_type": "发送",
+    "phone_id": "528"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "“环琼国际公路自行车赛”，听说首次办，规格挺高。咱们打球那会儿刚公布的消息。",
+    "contactName": "林峰",
+    "contact_phone_number": "+86133********",
+    "datetime": "2025-03-29 19:55:00",
+    "message_type": "接收",
+    "phone_id": "529"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "阿斌，看新闻说今年海南要办环岛自行车赛了，时间好像定在下半年。",
+    "contactName": "陆明强",
+    "contact_phone_number": "+86138********",
+    "datetime": "2025-04-05 08:15:00",
+    "message_type": "发送",
+    "phone_id": "530"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "是啊，我配送时听客人聊起过。说是暂定11月，全程一千多公里，要经过好多市县。",
+    "contactName": "陈斌",
+    "contact_phone_number": "+86134********",
+    "datetime": "2025-04-05 08:30:00",
+    "message_type": "接收",
+    "phone_id": "531"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "建国，问你个事。秀英区那个老厂的配电柜，80年代的，老是跳总闸，查了线路和负载都没超。你有印象类似案例不？明天上班细聊。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-08 20:15:00",
+    "message_type": "发送",
+    "phone_id": "532"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "上次你说的那个老柜子问题，我周六去市图书馆翻旧期刊，还真找到一篇85年《海南电力》上的案例，跟你的情况几乎一样，是内部母排绝缘老化导致的间歇性短路。图片发你了，你看看。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-04-15 09:30:00",
+    "message_type": "接收",
+    "phone_id": "533"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "海子，最近想换个手机，电池要耐用，拍照清楚点，主要上网、看视频、偶尔玩点小游戏。预算两千五左右。你干这行的，给推荐推荐？",
+    "contactName": "王海",
+    "contact_phone_number": "+8613811112222",
+    "datetime": "2025-03-12 19:05:00",
+    "message_type": "发送",
+    "phone_id": "534"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "这个价位A型号和B型号都不错。A的电池公认的牛，重度用一天没问题，系统也流畅；B的拍照算法好点，屏幕更亮。看你更看重哪头。",
+    "contactName": "王海",
+    "contact_phone_number": "+8613811112222",
+    "datetime": "2025-03-12 21:20:00",
+    "message_type": "接收",
+    "phone_id": "535"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "海子，手机收到了，A型号的。电量是真顶用，昨天充满电，今天忙活一天回家还有40%。拍照给娟子和孩子们看，也说挺清楚。谢了兄弟！",
+    "contactName": "王海",
+    "contact_phone_number": "+8613811112222",
+    "datetime": "2025-04-05 18:40:00",
+    "message_type": "发送",
+    "phone_id": "536"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "明强，我儿子学校开了壁球兴趣班，他挺喜欢。想给他买个专业点的拍子当生日礼物，你用的啥牌子？有推荐不？",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-05-10 12:10:00",
+    "message_type": "接收",
+    "phone_id": "537"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "今天在球馆遇到阿峰，他看我拍子线松了，还帮我紧了紧。他那个X品牌的拍子用了快三年了，说手感一直很稳定。",
+    "contactName": "林峰",
+    "contact_phone_number": "+8613822223333",
+    "datetime": "2025-05-18 21:50:00",
+    "message_type": "接收",
+    "phone_id": "538"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "建国，问了下球友，都说初学用X品牌的均衡型不错，耐用，手感好。你可以看看。",
+    "contactName": "陈建国",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-05-18 22:15:00",
+    "message_type": "发送",
+    "phone_id": "539"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "姐夫，我国庆回海口，轩轩和涵涵有啥想吃的深圳特产不？我提前准备。",
+    "contactName": "陈志强",
+    "contact_phone_number": "+8613833334444",
+    "datetime": "2025-09-20 15:30:00",
+    "message_type": "接收",
+    "phone_id": "540"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "那敢情好，他俩就爱吃甜口的点心。你看着带点就行，路上注意安全。",
+    "contactName": "陈志强",
+    "contact_phone_number": "+8613833334444",
+    "datetime": "2025-09-20 16:00:00",
+    "message_type": "发送",
+    "phone_id": "541"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "阿强刚来电话，说买了老婆饼和鸡仔饼，都是深圳老字号的那家。这下孩子们有口福了。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613844445555",
+    "datetime": "2025-09-28 10:05:00",
+    "message_type": "接收",
+    "phone_id": "542"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "明强，在家吗？我收拾老房子翻出个酒瓶，白色瓷的，上面画个椰子树，写“椰岛大曲”，好像是80年代的。你懂这个，能帮我看看吗？",
+    "contactName": "王叔（王建国）",
+    "contact_phone_number": "+8613855556666",
+    "datetime": "2025-06-05 18:20:00",
+    "message_type": "接收",
+    "phone_id": "543"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "王叔，这种老国营酒厂的地方名酒瓶现在挺有怀旧价值的。我晚上回去上网帮你查查资料。",
+    "contactName": "王叔（王建国）",
+    "contact_phone_number": "+8613855556666",
+    "datetime": "2025-06-05 18:35:00",
+    "message_type": "发送",
+    "phone_id": "544"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "老陈，你上次说的那个‘老酒收藏网’靠谱吗？我想查个海南老酒瓶的信息。",
+    "contactName": "陈建国（收藏圈）",
+    "contact_phone_number": "+8613866667777",
+    "datetime": "2025-06-08 20:50:00",
+    "message_type": "发送",
+    "phone_id": "545"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "靠谱啊，上面很多老师傅。我上次找的文昌老酒标信息就是那上面问到的。你要查啥？发图来我帮你一起看看。",
+    "contactName": "陈建国（收藏圈）",
+    "contact_phone_number": "+8613866667777",
+    "datetime": "2025-06-08 21:10:00",
+    "message_type": "接收",
+    "phone_id": "546"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "明强，周末有空不？听说美兰区新开了家烧烤店，味道绝了，一直想去试试。一起？",
+    "contactName": "吴刚",
+    "contact_phone_number": "+8613877778888",
+    "datetime": "2025-07-15 17:45:00",
+    "message_type": "接收",
+    "phone_id": "547"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "行啊，正好这周不忙。你定好时间地点发我。",
+    "contactName": "吴刚",
+    "contact_phone_number": "+8613877778888",
+    "datetime": "2025-07-15 18:00:00",
+    "message_type": "发送",
+    "phone_id": "548"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "阿斌，你上周跑完步是不是去‘老王烧烤’了？味道咋样？吴刚约我这周末去。",
+    "contactName": "陈斌",
+    "contact_phone_number": "+8613888889999",
+    "datetime": "2025-07-18 20:30:00",
+    "message_type": "发送",
+    "phone_id": "549"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "是啊！牛油和烤鱼一绝！就是人多要排队。我那天还碰到吴刚了，他跟他几个同事也在那。",
+    "contactName": "陈斌",
+    "contact_phone_number": "+8613888889999",
+    "datetime": "2025-07-18 20:45:00",
+    "message_type": "接收",
+    "phone_id": "550"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "（发送给‘老陈’）老陈，我今天真走运！在旧货市场淘到我念了好几年的一个酒瓶，品相完美。改天拿给你看看。",
+    "contactName": "陈建国（酒瓶藏友）",
+    "contact_phone_number": "+8613911122334",
+    "datetime": "2025-03-08 15:23:12",
+    "message_type": "发送",
+    "phone_id": "551"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "（发送给‘老陈’）上周用那个五粮液的瓶子，跟网上一个藏友换了个八十年代的景芝白干老瓶子，算是各取所需。",
+    "contactName": "陈建国（酒瓶藏友）",
+    "contact_phone_number": "+8613911122334",
+    "datetime": "2025-03-17 09:45:03",
+    "message_type": "发送",
+    "phone_id": "552"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "（接收自‘娟子’）今天回来挺晚啊？",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-04-15 21:08:33",
+    "message_type": "接收",
+    "phone_id": "553"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "（发送给‘娟子’）嗯，今天去打球，在壁球场碰到个熟人，聊了几句。他还推荐我现在用的这款球拍，说性价比高，上个月我就是听他建议买的，确实好用。",
+    "contactName": "王丽娟",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-04-15 21:11:18",
+    "message_type": "发送",
+    "phone_id": "554"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "（发送给‘老爸’）爸，我看到娟子发的朋友圈了，谢谢您今天带轩轩和涵涵去海边玩，他们肯定开心坏了。我这边抢修刚结束。",
+    "contactName": "陆建国",
+    "contact_phone_number": "+8613709876543",
+    "datetime": "2025-05-10 19:22:55",
+    "message_type": "发送",
+    "phone_id": "555"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "（接收自‘老爸’）没事，两个小家伙玩得可疯了。你妈给他们带了水煮蛋和水果。你工作辛苦，注意安全。",
+    "contactName": "陆建国",
+    "contact_phone_number": "+8613709876543",
+    "datetime": "2025-05-10 19:30:01",
+    "message_type": "接收",
+    "phone_id": "556"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "（接收自‘建国（工友）’）明强，今天公司那个技能比赛，你猜怎么着？我拿了个第一！有个奖品，正合我意。",
+    "contactName": "陈建国（工友）",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-06-05 17:45:12",
+    "message_type": "接收",
+    "phone_id": "557"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "（接收自‘建国（工友）’）今天上班看到小赵拎着个新工具箱，挺精神的。他还炫耀说是之前比赛赢的，跟我那个一样。现在的小年轻，有点成绩就藏不住。",
+    "contactName": "陈建国（工友）",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-06-12 08:15:44",
+    "message_type": "接收",
+    "phone_id": "558"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "（接收自‘李老板’）陆师傅，周末帮我看看店里线路？对了，我有个朋友在清理仓库，好像找到一个老酒瓶，我看你收藏这个，就帮你留意了，听说挺稀有的。",
+    "contactName": "李建国（客户）",
+    "contact_phone_number": "+8613522233445",
+    "datetime": "2025-07-20 10:33:21",
+    "message_type": "接收",
+    "phone_id": "559"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "（接收自‘李老板’）陆师傅，上次说那个瓶子，我朋友今天发照片来了，是国窖1573的典藏版瓶子。网上搜了下，这种空瓶子现在也有人出价几百块收呢。",
+    "contactName": "李建国（客户）",
+    "contact_phone_number": "+8613522233445",
+    "datetime": "2025-07-24 16:50:19",
+    "message_type": "接收",
+    "phone_id": "560"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "（发送给‘华哥’）哥，今天大姨来家里聚餐，带了她自己做的点心，一吃就想起小时候在你家玩，外婆也做这个给我们吃，味道一模一样。",
+    "contactName": "陆明华",
+    "contact_phone_number": "+8613577788899",
+    "datetime": "2025-08-25 20:05:37",
+    "message_type": "发送",
+    "phone_id": "561"
+  },
+  {
+    "type": "sms",
+    "event_id": "0",
+    "message_content": "（接收自‘华哥’）你是说椰香糍粑吧？我也好多年没吃到了。还是大姨的手艺好，能做出外婆的味道。",
+    "contactName": "陆明华",
+    "contact_phone_number": "+8613577788899",
+    "datetime": "2025-08-25 20:12:08",
+    "message_type": "接收",
+    "phone_id": "562"
+  }
+]

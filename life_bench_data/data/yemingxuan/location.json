@@ -1,0 +1,172 @@
+[
+  {
+    "name": "西青道小区",
+    "location": "117.134062,39.154187",
+    "formatted_address": "天津市天津市红桥区西青道171号",
+    "city": "天津市",
+    "district": "红桥区",
+    "streetName": "西青道",
+    "streetNumber": "171号",
+    "description": "叶明轩的常住住址，位于天津市西青区中北大道附近，用于日常居住。"
+  },
+  {
+    "name": "海泰大厦写字楼",
+    "location": "117.124511,39.095145",
+    "formatted_address": "天津市天津市西青区梅苑路6号",
+    "city": "天津市",
+    "district": "西青区",
+    "streetName": "梅苑路",
+    "streetNumber": "6号",
+    "description": "叶明轩的日常工作地，位于天津市西青区海泰发展六道附近，用于在天津海泰精密机械有限公司担任机械工程师。"
+  },
+  {
+    "name": "龙湖天街游泳馆",
+    "location": "117.222380,39.064538",
+    "formatted_address": "天津市天津市西青区[][]",
+    "city": "天津市",
+    "district": "西青区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "叶明轩常去的健身场所，位于天津市西青区海泰发展三道附近，用于每周固定的力量训练和有氧指导，由教练王健指导。"
+  },
+  {
+    "name": "南开大学八里台校区",
+    "location": "117.167998,39.103412",
+    "formatted_address": "天津市天津市南开区卫津路94号",
+    "city": "天津市",
+    "district": "南开区",
+    "streetName": "卫津路",
+    "streetNumber": "94号",
+    "description": "叶明轩的母校，位于天津市南开区卫津路附近，用于偶尔参加校友活动或技术研讨会，与导师陈建国保持联系。"
+  },
+  {
+    "name": "千禧园小区便利店",
+    "location": "117.139778,39.156055",
+    "formatted_address": "天津市天津市红桥区[][]",
+    "city": "天津市",
+    "district": "红桥区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "居住小区附近的超市，用于日常购物和家庭生活"
+  },
+  {
+    "name": "清真天商幸福小院餐厅",
+    "location": "117.138290,39.152142",
+    "formatted_address": "咸阳路2号商苑教师公寓",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住小区附近的餐厅，用于日常用餐或家庭聚餐"
+  },
+  {
+    "name": "青云桥小游园公园",
+    "location": "117.144424,39.154453",
+    "formatted_address": "天津市天津市红桥区与西青道[]",
+    "city": "天津市",
+    "district": "红桥区",
+    "streetName": "与西青道",
+    "streetNumber": [],
+    "description": "居住小区附近的公园，用于周末慢跑或休闲散步"
+  },
+  {
+    "name": "水畔花园健身房",
+    "location": "117.150301,39.142431",
+    "formatted_address": "水畔花园9号楼商7(人民医院地铁站A口步行470米)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住小区附近的健身房，用于器械锻炼和运动"
+  },
+  {
+    "name": "海泰信息广场咖啡厅",
+    "location": "117.123571,39.096446",
+    "formatted_address": "华天道6号海泰信息广场H座一层117号",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作楼下的咖啡馆，用于工作休息或与同事交流"
+  },
+  {
+    "name": "智慧山喜乐巷面馆",
+    "location": "117.122025,39.093621",
+    "formatted_address": "工华道华苑产业区工华道1号虚拟园-103-1-B",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作楼下的快餐店，用于工作日午餐或快速用餐"
+  },
+  {
+    "name": "海泰国际公寓便利店",
+    "location": "117.129100,39.096141",
+    "formatted_address": "开华道3号海泰国际公寓1楼",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作楼下的便利店，用于购买零食或日常用品"
+  },
+  {
+    "name": "红桥区古玩市场",
+    "location": "117.150139,39.161680",
+    "formatted_address": "海源道与煤建东大道交叉口南20米",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住小区附近的古玩市场，用于收藏古币爱好"
+  },
+  {
+    "name": "环宇城健身中心",
+    "location": "117.235018,39.041917",
+    "formatted_address": "解放南路环宇城顶楼(解放南路地铁站B口旁)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "健身场所附近的游泳馆，用于游泳锻炼"
+  },
+  {
+    "name": "南开大学图书馆文中馆",
+    "location": "117.173225,39.104569",
+    "formatted_address": "卫津路94号南开大学八里台校区",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "学校附近的图书馆，用于学习或编程研究"
+  },
+  {
+    "name": "光大银行ATM(水木天成)",
+    "location": "117.130269,39.160351",
+    "formatted_address": "水木天成逸树园",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住小区附近的银行，用于理财和日常金融事务"
+  },
+  {
+    "name": "燕宇社区卫生服务站",
+    "location": "117.142210,39.159915",
+    "formatted_address": "海源南道南200米中共天津市红桥区西沽街道燕宇社区委员会附近",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住小区附近的社区卫生服务中心，用于体检和就医"
+  },
+  {
+    "name": "红桥区涟源路花店",
+    "location": "117.149369,39.161642",
+    "formatted_address": "涟源路一号增1",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住小区附近的花店，用于种花种草爱好"
+  }
+]

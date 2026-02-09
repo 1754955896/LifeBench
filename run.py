@@ -203,7 +203,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='年度时间线草稿生成系统')
     
     # 路径参数
-    parser.add_argument('--base-path', type=str, default='output/fenghaoran/',
+    parser.add_argument('--base-path', type=str, default='output/yemingxuan_1/',
                         help='基础数据路径')
     parser.add_argument('--process-path', type=str, default='process/',
                         help='处理文件路径（相对于base-path，同时作为除每日状态外的其他数据输出路径）')
@@ -215,7 +215,7 @@ def parse_args():
                         help='最大工作线程数（默认：CPU核心数×2）')
     
     # 功能控制参数
-    parser.add_argument('--generate-phone-data', type=bool, default=False,
+    parser.add_argument('--generate-phone-data', type=bool, default=True,
                         help='是否生成手机数据（默认：True）')
     parser.add_argument('--year', type=int, default=2025,
                         help='生成数据的年份（默认：2025）')

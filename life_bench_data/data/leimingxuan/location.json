@@ -1,0 +1,242 @@
+[
+  {
+    "name": "上港小区",
+    "location": "121.513638,31.237805",
+    "formatted_address": "上海市上海市浦东新区浦东大道136弄2-51号",
+    "city": "上海市",
+    "district": "浦东新区",
+    "streetName": "浦东大道136弄",
+    "streetNumber": "2-51号",
+    "description": "日常居住的小区，与父母同住"
+  },
+  {
+    "name": "航头石辰商场",
+    "location": "121.580002,31.077599",
+    "formatted_address": "上海市上海市浦东新区[][]",
+    "city": "上海市",
+    "district": "浦东新区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "工作的服装店所在商场"
+  },
+  {
+    "name": "云川台球厅",
+    "location": "121.536437,31.178991",
+    "formatted_address": "上海市上海市浦东新区成山路[]",
+    "city": "上海市",
+    "district": "浦东新区",
+    "streetName": "成山路",
+    "streetNumber": [],
+    "description": "常去打台球的场所"
+  },
+  {
+    "name": "迪卡侬羽毛球馆",
+    "location": "121.595120,31.321761",
+    "formatted_address": "上海市上海市浦东新区兰谷路[]",
+    "city": "上海市",
+    "district": "浦东新区",
+    "streetName": "兰谷路",
+    "streetNumber": [],
+    "description": "常去玩轮滑的滨江轮滑道"
+  },
+  {
+    "name": "潍坊路篮球馆",
+    "location": "121.515069,31.220010",
+    "formatted_address": "上海市上海市浦东新区潍坊路2号",
+    "city": "上海市",
+    "district": "浦东新区",
+    "streetName": "潍坊路",
+    "streetNumber": "2号",
+    "description": "常去打篮球的社区或体育中心篮球场"
+  },
+  {
+    "name": "崂山路如海批发部",
+    "location": "121.515925,31.238325",
+    "formatted_address": "崂山路36号(浦东南路地铁站2号口步行300米)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住地附近的超市，用于日常购物和家庭生活用品采购"
+  },
+  {
+    "name": "东昌路本帮菜餐厅",
+    "location": "121.502500,31.237015",
+    "formatted_address": "上海市上海市浦东新区东昌路1号",
+    "city": "上海市",
+    "district": "浦东新区",
+    "streetName": "东昌路",
+    "streetNumber": "1号",
+    "description": "居住地附近的本帮菜餐厅，满足人物对红烧肉等本帮菜的喜好"
+  },
+  {
+    "name": "正大广场游乐场",
+    "location": "121.498723,31.236560",
+    "formatted_address": "陆家嘴西路168号正大广场2F层2F32",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住地附近的公园，用于日常散步、跑步等户外活动"
+  },
+  {
+    "name": "银城路健身中心",
+    "location": "121.511302,31.242057",
+    "formatted_address": "上海市上海市浦东新区[][]",
+    "city": "上海市",
+    "district": "浦东新区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "居住地附近的健身房，支持人物养成规律健身习惯的目标"
+  },
+  {
+    "name": "上海科技馆地铁站肯德基",
+    "location": "121.543014,31.218244",
+    "formatted_address": "上海市上海市浦东新区世纪大道2002号",
+    "city": "上海市",
+    "district": "浦东新区",
+    "streetName": "世纪大道",
+    "streetNumber": "2002号",
+    "description": "工作地附近的咖啡馆，用于工作间隙休息或与客户、朋友会面"
+  },
+  {
+    "name": "赛百味快餐厅(1188金融中心店)",
+    "location": "121.547991,31.226368",
+    "formatted_address": "杨高中路2839号地下1层01室B115号",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作地附近的快餐店，满足工作日的快速用餐需求"
+  },
+  {
+    "name": "证大五道口广场便利店",
+    "location": "121.549734,31.226706",
+    "formatted_address": "民生路1199弄证大五道口广场1号金融大厦(丁香路)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作地附近的便利店，方便购买日常用品、零食等"
+  },
+  {
+    "name": "锦延路拉面店",
+    "location": "121.540776,31.216332",
+    "formatted_address": "上海市上海市浦东新区锦延路[]",
+    "city": "上海市",
+    "district": "浦东新区",
+    "streetName": "锦延路",
+    "streetNumber": [],
+    "description": "工作地附近的日式拉面店，满足人物对日式拉面的喜好"
+  },
+  {
+    "name": "民生路火锅店",
+    "location": "121.551361,31.223342",
+    "formatted_address": "花木街道民生路1433号1楼109室",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作地附近的火锅店，用于与朋友、客户聚餐"
+  },
+  {
+    "name": "新里程台球厅",
+    "location": "121.530703,31.207025",
+    "formatted_address": "杨高南路1122号双季花艺4层",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "常去的台球厅附近，用于打台球（美式八球）的固定场所"
+  },
+  {
+    "name": "东昌绿地篮球场",
+    "location": "121.508648,31.224117",
+    "formatted_address": "上海市上海市浦东新区张杨路1号",
+    "city": "上海市",
+    "district": "浦东新区",
+    "streetName": "张杨路",
+    "streetNumber": "1号",
+    "description": "常去的篮球馆附近，用于打篮球的固定场所"
+  },
+  {
+    "name": "锦绣满堂文具店",
+    "location": "121.539877,31.205808",
+    "formatted_address": "上海市上海市浦东新区锦安东路55弄[]",
+    "city": "上海市",
+    "district": "浦东新区",
+    "streetName": "锦安东路55弄",
+    "streetNumber": [],
+    "description": "工作地附近的书店，满足人物读书（历史小说）的爱好"
+  },
+  {
+    "name": "北外滩来福士广场礼品店",
+    "location": "121.507260,31.252638",
+    "formatted_address": "东大名路999号北外滩来福士广场B2层",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作地附近的潮玩店，支持人物收藏潮玩盲盒（泡泡玛特）的爱好"
+  },
+  {
+    "name": "栖霞路中餐厅",
+    "location": "121.518827,31.236946",
+    "formatted_address": "栖霞路100号(浦东大道地铁站3号口步行450米)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住地附近的烧烤店，用于与朋友聚会夜宵"
+  },
+  {
+    "name": "乳山路汤包馆",
+    "location": "121.523316,31.236085",
+    "formatted_address": "中国(上海)自由贸易试验区乳山路213号",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住地附近的生煎包店，满足人物对生煎包的喜好"
+  },
+  {
+    "name": "崂山三四村草莓采摘园",
+    "location": "121.518363,31.234220",
+    "formatted_address": "崂山三四村南2门旁",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住地附近的水果店，用于购买新鲜水果沙拉食材"
+  },
+  {
+    "name": "浦东开锁配钥匙服务点",
+    "location": "121.515100,31.237360",
+    "formatted_address": "上海市上海市浦东新区南泉北路101弄1-11号",
+    "city": "上海市",
+    "district": "浦东新区",
+    "streetName": "南泉北路101弄",
+    "streetNumber": "1-11号",
+    "description": "居住地附近的汽车维修店，用于车辆保养和维修"
+  },
+  {
+    "name": "建设银行市民中心支行",
+    "location": "121.546236,31.224222",
+    "formatted_address": "合欢路2号(杨高中路地铁站6号口步行380米)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作地附近的银行，用于日常金融业务和理财"
+  },
+  {
+    "name": "明星时代影城(富荟店)",
+    "location": "121.545412,31.204264",
+    "formatted_address": "樱花路80号16号地下101室",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作地附近的电影院，用于休闲娱乐和社交活动"
+  }
+]

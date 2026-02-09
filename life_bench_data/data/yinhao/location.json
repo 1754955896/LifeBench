@@ -1,0 +1,132 @@
+[
+  {
+    "name": "松江科技园区新港小区",
+    "location": "121.145750,31.007019",
+    "formatted_address": "上海市上海市松江区新港路224弄1-246号",
+    "city": "上海市",
+    "district": "松江区",
+    "streetName": "新港路224弄",
+    "streetNumber": "1-246号",
+    "description": "尹浩日常居住的租房小区，位于松江区广富林路附近，是他主要的居住和生活场所。"
+  },
+  {
+    "name": "联东U谷松江工厂",
+    "location": "121.298752,31.048748",
+    "formatted_address": "上海市上海市松江区民益路[]",
+    "city": "上海市",
+    "district": "松江区",
+    "streetName": "民益路",
+    "streetNumber": [],
+    "description": "尹浩工作的上海精工机械制造有限公司，位于松江区莘砖公路附近，是他全职工作的数控机床操作岗位所在地。"
+  },
+  {
+    "name": "泗泾YONEX运动馆",
+    "location": "121.285381,31.104211",
+    "formatted_address": "上海市上海市松江区泗砖南路351号",
+    "city": "上海市",
+    "district": "松江区",
+    "streetName": "泗砖南路",
+    "streetNumber": "351号",
+    "description": "尹浩常去的晨跑地点，位于松江区，是他每周进行跑步锻炼的固定场所。"
+  },
+  {
+    "name": "淀山湖钓鱼点",
+    "location": "121.124249,31.150980",
+    "formatted_address": "上海市上海市青浦区[][]",
+    "city": "上海市",
+    "district": "青浦区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "尹浩常去的钓鱼地点，位于青浦区，是他周末进行淡水钓活动的固定场所。"
+  },
+  {
+    "name": "银都驾校",
+    "location": "121.351107,31.070459",
+    "formatted_address": "上海市上海市松江区申港路298号",
+    "city": "上海市",
+    "district": "松江区",
+    "streetName": "申港路",
+    "streetNumber": "298号",
+    "description": "尹浩曾学习C1驾照的驾校，位于松江区，是他获取驾驶技能培训的固定场所。"
+  },
+  {
+    "name": "江南职业技能培训中心",
+    "location": "121.513448,31.254980",
+    "formatted_address": "保定路22号(大连路地铁站6号口步行390米)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "尹浩参加数控机床高级操作工培训的场所，位于上海市，是他职业发展相关的固定学习地点。"
+  },
+  {
+    "name": "荣乐东路家电维修点",
+    "location": "121.246434,31.016594",
+    "formatted_address": "上海市上海市松江区荣乐东路2369弄1号",
+    "city": "上海市",
+    "district": "松江区",
+    "streetName": "荣乐东路2369弄",
+    "streetNumber": "1号",
+    "description": "尹浩常去的维修店，位于松江区，是他业余维修小家电和学习维修技巧的固定场所。"
+  },
+  {
+    "name": "广富林生鲜超市",
+    "location": "121.230825,31.058875",
+    "formatted_address": "广富林路与嘉松南路交叉口西北120米",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住小区附近的超市，用于日常购物和购买生活用品"
+  },
+  {
+    "name": "广富林路力扎谱健身中心",
+    "location": "121.235568,31.057628",
+    "formatted_address": "上海市上海市松江区[][]",
+    "city": "上海市",
+    "district": "松江区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "居住小区附近的健身房，用于力量训练和健身"
+  },
+  {
+    "name": "棕榈广场便利店",
+    "location": "121.324171,31.093534",
+    "formatted_address": "莘砖公路258号31号楼棕榈广场1层120室",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作地附近的便利店，用于购买零食或日常用品"
+  },
+  {
+    "name": "光华路驾校",
+    "location": "121.357654,31.060174",
+    "formatted_address": "上海市上海市闵行区光华路2118号",
+    "city": "上海市",
+    "district": "闵行区",
+    "streetName": "光华路",
+    "streetNumber": "2118号",
+    "description": "驾校附近的培训场所，用于学习驾驶技能"
+  },
+  {
+    "name": "环城路电动车专卖店",
+    "location": "121.247702,31.011802",
+    "formatted_address": "环城路863-864号",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "维修店附近的场所，用于业余维修小家电或咨询"
+  },
+  {
+    "name": "松江大学城运动馆",
+    "location": "121.232441,31.053776",
+    "formatted_address": "上海市上海市松江区梅家浜路[]",
+    "city": "上海市",
+    "district": "松江区",
+    "streetName": "梅家浜路",
+    "streetNumber": [],
+    "description": "居住小区附近的体育中心，用于跑步和体育锻炼"
+  }
+]

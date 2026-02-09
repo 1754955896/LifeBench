@@ -123,7 +123,7 @@ def process_phone_data(file_path):
         os.remove(event_perception_file)
         print(f"已删除event_perception.json文件: {event_perception_file}")
     
-    files_to_process = [f for f in os.listdir(phone_data_dir) if f.endswith('.json') and f != 'contact.json' and f != 'event_perception.json']
+    files_to_process = [f for f in os.listdir(phone_data_dir) if f.endswith('.json') and f.startswith('event_')]
     
     # 2. 创建process文件夹
     process_dir = os.path.join(file_path, "process")

@@ -1,0 +1,132 @@
+[
+  {
+    "name": "上古街小区",
+    "location": "118.086844,24.452194",
+    "formatted_address": "福建省厦门市思明区[][]",
+    "city": "厦门市",
+    "district": "思明区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "日常居住的小区，位于湖滨南路附近，是家庭生活的主要场所"
+  },
+  {
+    "name": "瑞景商业广场特产店",
+    "location": "118.158079,24.474323",
+    "formatted_address": "福建省厦门市思明区[][]",
+    "city": "厦门市",
+    "district": "思明区",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "工作的精品服饰店所在地，位于中山路步行街，是日常经营和销售的主要场所"
+  },
+  {
+    "name": "鼓浪屿天主教堂",
+    "location": "118.072779,24.443946",
+    "formatted_address": "福建省厦门市思明区鹿礁路34号",
+    "city": "厦门市",
+    "district": "思明区",
+    "streetName": "鹿礁路",
+    "streetNumber": "34号",
+    "description": "常去的教堂，参与弥撒和教会活动，是信仰生活的重要场所"
+  },
+  {
+    "name": "江头街道社区卫生服务中心",
+    "location": "118.132901,24.498848",
+    "formatted_address": "福建省厦门市湖里区台湾街331号",
+    "city": "厦门市",
+    "district": "湖里区",
+    "streetName": "台湾街",
+    "streetNumber": "331号",
+    "description": "常去的家庭医生所在地，进行健康咨询和日常医疗服务的场所"
+  },
+  {
+    "name": "甜QQ烘焙工坊",
+    "location": "118.154619,24.522848",
+    "formatted_address": "福建省厦门市湖里区[]120号",
+    "city": "厦门市",
+    "district": "湖里区",
+    "streetName": [],
+    "streetNumber": "120号",
+    "description": "常去的烘焙课程地点，学习制作蛋糕和甜点的兴趣班场所"
+  },
+  {
+    "name": "厦门大学幼儿园",
+    "location": "118.102630,24.436214",
+    "formatted_address": "福建省厦门市思明区思明南路422号",
+    "city": "厦门市",
+    "district": "思明区",
+    "streetName": "思明南路",
+    "streetNumber": "422号",
+    "description": "女儿就读的幼儿园，日常接送孩子的固定场所"
+  },
+  {
+    "name": "中国人民银行厦门分行",
+    "location": "118.190088,24.473514",
+    "formatted_address": "福建省厦门市思明区展鸿路100号",
+    "city": "厦门市",
+    "district": "思明区",
+    "streetName": "展鸿路",
+    "streetNumber": "100号",
+    "description": "常去的银行，办理店铺和个人金融业务的场所"
+  },
+  {
+    "name": "第一医院便利店",
+    "location": "118.087591,24.452185",
+    "formatted_address": "福建省厦门市思明区镇海路55号",
+    "city": "厦门市",
+    "district": "思明区",
+    "streetName": "镇海路",
+    "streetNumber": "55号",
+    "description": "居住小区附近的超市，用于日常家庭购物和食品采购"
+  },
+  {
+    "name": "创冠大厦陶艺手工坊",
+    "location": "118.094120,24.455958",
+    "formatted_address": "创冠大厦37号103请勿见外陶室",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住小区附近的公园，用于散步和家庭休闲活动"
+  },
+  {
+    "name": "嘉成花园底商元初食品店",
+    "location": "118.093574,24.467455",
+    "formatted_address": "后江埭路46号嘉成花园底商",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "居住小区附近的烘焙原料店，用于购买蛋糕和甜点制作材料"
+  },
+  {
+    "name": "乐萃咖啡厅",
+    "location": "118.157656,24.474629",
+    "formatted_address": "福建省厦门市思明区洪文五里[]",
+    "city": "厦门市",
+    "district": "思明区",
+    "streetName": "洪文五里",
+    "streetNumber": [],
+    "description": "工作地附近的咖啡馆，用于与朋友聚会或休息放松"
+  },
+  {
+    "name": "洪山柄小区便利店",
+    "location": "118.158020,24.473460",
+    "formatted_address": "福建省厦门市思明区洪文三路55之120号",
+    "city": "厦门市",
+    "district": "思明区",
+    "streetName": "洪文三路",
+    "streetNumber": "55之120号",
+    "description": "工作地附近的便利店，用于快速购买零食或日常用品"
+  },
+  {
+    "name": "洪文五里肠粉快餐店",
+    "location": "118.158352,24.475018",
+    "formatted_address": "洪文五里99一106",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "工作地附近的快餐店，用于工作日的午餐或快速用餐"
+  }
+]
