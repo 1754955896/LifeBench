@@ -1,0 +1,3673 @@
+[
+  {
+    "event_id": 37,
+    "type": "photo",
+    "caption": "Close-up of the damaged area of the balcony drainage pipe before repair.",
+    "title": "IMG_20250104_093501.jpg",
+    "datetime": "2025-01-04 09:35:01",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "",
+      "poi": "Balcony at home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Water pipe",
+      "Crack",
+      "Maintenance",
+      "Balcony",
+      "Old-fashioned",
+      "Water seepage marks"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Macro",
+    "image_size": "4032×3024",
+    "summarized_info": "A close-up photo of a water pipe taken on a balcony, showing visible cracks and signs of water leakage at the pipe connection.",
+    "phone_id": 1
+  },
+  {
+    "type": "photo",
+    "event_id": 4042,
+    "caption": "I took my son out shopping, and he insisted on taking a photo in front of this store.",
+    "title": "IMG_20251004_165103",
+    "datetime": "2025-10-04 16:51:03",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "poi": "Sincerity Hardware and Building Materials Store"
+    },
+    "faceRecognition": [
+      "Lu Zixuan"
+    ],
+    "imageTag": [
+      "Hardware store",
+      "Door header",
+      "Child",
+      "Street photography"
+    ],
+    "ocrText": "Chengxin Hardware and Building Materials Store",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of his son Lu Zixuan in front of the Chengxin Hardware and Building Materials Store.",
+    "phone_id": 2
+  },
+  {
+    "event_id": 2644,
+    "type": "photo",
+    "caption": "Screenshot after searching for 'Personal Electrician Studio Qualifications'",
+    "title": "Screenshot_20250703_1245",
+    "datetime": "2025-07-03 12:50:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Yonggui Industrial Zone",
+      "streetNumber": "",
+      "poi": "Employee Lounge"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Search",
+      "Studio",
+      "Electrician",
+      "Qualifications"
+    ],
+    "ocrText": "To apply for a personal electrician workshop, a copy of the senior technician certificate must be submitted, and relevant registration conditions must be met...",
+    "shoot_mode": "Screenshot",
+    "image_size": "720×1280",
+    "summarized_info": "Lu Mingqiang took a screenshot of the search results regarding the qualifications for an individual electrician's studio.",
+    "phone_id": 3
+  },
+  {
+    "event_id": 4442,
+    "type": "photo",
+    "caption": "The repaired multimeter test leads are securely wrapped with insulating tape.",
+    "title": "IMG_20251101_093500",
+    "datetime": "2025-11-01 09:35:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Balcony at home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Multimeter",
+      "Test lead wire",
+      "Insulation tape",
+      "Tool Repair"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Macro",
+    "image_size": "3024×4032",
+    "summarized_info": "Photos were taken of the repaired multimeter probe wires, showing insulation tape wrapping.",
+    "phone_id": 4
+  },
+  {
+    "event_id": 876,
+    "type": "photo",
+    "caption": "Jian Guo and I were chatting idly in the tea shop, with the sound of rain pattering outside the window.",
+    "title": "IMG_20250302_140520",
+    "datetime": "2025-03-02 14:05:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Civilization Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 54",
+      "poi": "Haikou Alley Tea Shop"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Chen Jianguo"
+    ],
+    "imageTag": [
+      "Tea Shop",
+      "Drink tea",
+      "It's raining.",
+      "Workmate"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo with his coworker Chen Jianguo drinking tea at a tea shop, including location information.",
+    "phone_id": 5
+  },
+  {
+    "event_id": 28,
+    "type": "photo",
+    "caption": "Lunch set, two meat dishes and one vegetable dish, chatting with Chen Jianguo about fixing the water pipes in the house while eating.",
+    "title": "IMG_20250103_123520",
+    "datetime": "2025-01-03 12:35:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Ziyuan Road",
+      "streetNumber": "Number 3",
+      "poi": "Quick Chinese Fast Food Restaurant"
+    },
+    "faceRecognition": [
+      "Chen Jianguo"
+    ],
+    "imageTag": [
+      "Working Lunch",
+      "Chinese fast food",
+      "Package",
+      "Colleague dinner gathering",
+      "Fast food"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Delicacy",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of himself having lunch at a fast food restaurant with his coworker Chen Jianguo.",
+    "phone_id": 6
+  },
+  {
+    "event_id": 1360,
+    "type": "photo",
+    "caption": "A photo of the internal wiring of the distribution box taken at the end of the morning construction, with the new wiring connections completed.",
+    "title": "IMG_20250403_115030",
+    "datetime": "2025-04-03 11:50:30",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Haidian Island, Wuxi Road",
+      "streetNumber": "",
+      "poi": "Power Distribution Room of Building 3, Bihailantian Residential Area"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Distribution box",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCable",
+      "Construction site",
+      "Electrician Tools"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Standard",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of the internal wiring of a distribution box, with the location information indicating it was in the distribution room of Building 3 in the Bihailantian Residential Community.",
+    "phone_id": 7
+  },
+  {
+    "type": "photo",
+    "event_id": 4112,
+    "caption": "The lawn beside the lakeside running track in Wanlvyuan Park, where you can stretch and relax after a run.",
+    "title": "IMG_20251009_181011",
+    "datetime": "2025-10-09 18:10:11",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "No. 38",
+      "poi": "The lawn in Wanlv Garden"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang"
+    ],
+    "imageTag": [
+      "Lawn",
+      "Stretch",
+      "Running",
+      "Evening",
+      "Park"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Photo",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of himself stretching on the lawn after a run in Wanlv Park.",
+    "phone_id": 8
+  },
+  {
+    "event_id": 2279,
+    "type": "photo",
+    "caption": "A plate of peanuts on the table, next to a teapot and teacups.",
+    "title": "IMG_20250608_150123",
+    "datetime": "2025-06-08 15:01:23",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Civilization Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 54",
+      "poi": "Haikou Alley Tea Shop"
+    },
+    "faceRecognition": [
+      "Zhang Jianguo"
+    ],
+    "imageTag": [
+      "Peanut",
+      "Tea set",
+      "Table",
+      "Tea Shop"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Food",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo in the tea shop, featuring peanuts and tea utensils on the table, with Zhang Jianguo identified among the people.",
+    "phone_id": 9
+  },
+  {
+    "event_id": 81,
+    "type": "photo",
+    "caption": "Hanhan was running on the grass, with the swallow kite in his hand just taking off from the ground, laughing happily.",
+    "title": "IMG_20250111_111520",
+    "datetime": "2025-01-11 11:15:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "",
+      "poi": "Century Park Lawn"
+    },
+    "faceRecognition": [
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Fly a kite.",
+      "Park",
+      "Grassland",
+      "Child",
+      "Outdoor activities"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Exercise",
+    "image_size": "4032×3024",
+    "summarized_info": "I took a photo of my youngest son, Lu Zihan, flying a kite in the park, capturing our family activity over the weekend.",
+    "phone_id": 10
+  },
+  {
+    "event_id": 2757,
+    "type": "photo",
+    "caption": "Family dinner photo, all smiles.",
+    "title": "IMG_20250710_190200",
+    "datetime": "2025-07-10 19:02:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Near Jinmao Middle Road",
+      "poi": "At home in the Longhua Court residential community"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Wang Lijuan",
+      "Lu Zixuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Family Dinner",
+      "Celebrate",
+      "Raise a glass"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Captured a scene of a family dinner, with family members raising their glasses in celebration.",
+    "phone_id": 11
+  },
+  {
+    "type": "photo",
+    "event_id": 518,
+    "caption": "Replacing circuit breaker equipment in the corridors of old residential communities, with on-site tools arranged.",
+    "title": "IMG_20250206_093000",
+    "datetime": "2025-02-06 09:30:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Xiangrong Road",
+      "streetNumber": "26th",
+      "poi": "The hallway of Unit 3 in an old residential community"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Circuit breaker",
+      "Corridor",
+      "Tool",
+      "Work site",
+      "Old residential communities"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Ordinary",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of the work site, showing the replacement of equipment in the hallway of Unit 3 in the old residential area on Xiangrong Road.",
+    "phone_id": 12
+  },
+  {
+    "type": "photo",
+    "event_id": 3633,
+    "caption": "On the lawn of Wanlv Park, my son was trying to control the kite, and I stood behind him, offering a little support.",
+    "title": "IMG_20250907_103421",
+    "datetime": "2025-09-07 10:34:21",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "Number 38",
+      "poi": "Wanlvyuan Lawn"
+    },
+    "faceRecognition": [
+      "Lu Zixuan",
+      "Lu Mingqiang"
+    ],
+    "imageTag": [
+      "Fly a kite",
+      "Outdoors",
+      "Parent-child",
+      "Blue sky",
+      "Lawn",
+      "Kite string"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Exercise",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo on the lawn of Wanlv Park, capturing a scene where he and his son Lu Zixuan were controlling a kite together.",
+    "phone_id": 13
+  },
+  {
+    "event_id": 3214,
+    "type": "photo",
+    "caption": "Book Page Photography",
+    "title": "IMG_20250810_093200",
+    "datetime": "2025-08-10 09:32:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Study"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTextbook",
+      "Circuit diagram",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nText"
+    ],
+    "ocrText": "Chapter 8 Starting and Speed Regulation of Three-Phase Induction Motors  \nThis section introduces methods such as direct starting and star-delta starting...",
+    "shoot_mode": "Document",
+    "image_size": "2000x1500",
+    "summarized_info": "Lu Mingqiang photographed the pages of a basic electrical engineering book, showing the chapter on starting and speed regulation of three-phase asynchronous motors.",
+    "phone_id": 14
+  },
+  {
+    "event_id": 882,
+    "type": "photo",
+    "caption": "The vehicle broke down near the intersection, and the hood was opened for inspection.",
+    "title": "IMG_20250303_072500",
+    "datetime": "2025-03-03 07:25:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinken Road",
+      "streetNumber": "Northeast side of the intersection with Nansha Road",
+      "poi": "Temporary Parking Spot"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Car breakdown",
+      "Intersection",
+      "Hood"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took photos of the vehicle malfunction, showing it parked near the intersection.",
+    "phone_id": 15
+  },
+  {
+    "event_id": 1421,
+    "type": "photo",
+    "caption": "The order confirmation page saved as a screenshot on the phone screen.",
+    "title": "IMG_20250408_225518",
+    "datetime": "2025-04-08 22:55:18",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Home Study"
+    },
+    "faceRecognition": [
+      "None"
+    ],
+    "imageTag": [
+      "Screenshot of mobile phone screen",
+      "Order Confirmation",
+      "Payment successful",
+      "Exam materials"
+    ],
+    "ocrText": "Order payment successful! Items: \"Electrician Senior Technician Theory Exam Question Bank\" x1, \"Power System Relay Protection\" x1, Order Number: 2025040857912345.",
+    "shoot_mode": "Screenshot",
+    "image_size": "1080×2340",
+    "summarized_info": "Lu Mingqiang took a screenshot of a page showing a successful order payment, indicating the purchase of two textbooks.",
+    "phone_id": 16
+  },
+  {
+    "event_id": 4194,
+    "type": "photo",
+    "caption": "Celebratory lunch, the food was delicious",
+    "title": "IMG_20251015_121500",
+    "datetime": "2025-10-15 12:15:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Xiuying Avenue",
+      "streetNumber": "29th",
+      "poi": "Xiuying Wanda Plaza, Third Floor"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Chen Jianguo"
+    ],
+    "imageTag": [
+      "Coconut Chicken",
+      "Vegetarian Hot Pot",
+      "Hainan cuisine",
+      "Restaurant environment"
+    ],
+    "ocrText": "Shiweiguan Hainan Cuisine (Wanda Store)",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of his lunch, showing the food and the restaurant's signboard, with the restaurant's name identified through OCR.",
+    "phone_id": 17
+  },
+  {
+    "event_id": 1853,
+    "type": "photo",
+    "caption": "The first swimming pool we inspected had a clean environment and comfortable water temperature.",
+    "title": "IMG_20250511_093500",
+    "datetime": "2025-05-11 09:35:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Changxiu Road",
+      "streetNumber": "Near No. 5",
+      "poi": "Community Fitness Center"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSwimming pool",
+      "Fitness Center",
+      "Environment"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took photos of the swimming pool at the Xiuying District Community Fitness Center, showing that the environment is clean.",
+    "phone_id": 18
+  },
+  {
+    "event_id": 2783,
+    "type": "photo",
+    "caption": "Breakfast after morning jog: Hainan noodles and iced soy milk.",
+    "title": "IMG_20250712_074520",
+    "datetime": "2025-07-12 07:45:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Renmin Avenue, Haidian Island",
+      "streetNumber": "Nearby",
+      "poi": "Cha Chaan Teng"
+    },
+    "faceRecognition": [
+      "Chen Bin"
+    ],
+    "imageTag": [
+      "Hainan Noodles",
+      "Iced Soy Milk",
+      "Breakfast",
+      "Tea restaurant"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of his post-morning run breakfast, featuring Hainan noodles and iced soy milk, at a tea restaurant near Renmin Avenue on Haidian Island, with Chen Bin appearing in the picture.",
+    "phone_id": 19
+  },
+  {
+    "type": "photo",
+    "event_id": 955,
+    "caption": "A handwritten receipt placed on the workbench in the repair shop, with tools nearby.",
+    "title": "IMG_20250307_0930",
+    "datetime": "2025-03-07 09:30:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "South Sea Avenue",
+      "poi": "Haikou Xiuying Jinrong Auto Repair Factory"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Receipt",
+      "Workbench",
+      "Repair shop",
+      "Handwriting"
+    ],
+    "ocrText": "Received from Mr. Lu Mingqiang the total vehicle repair cost: RMB Eight Thousand Yuan Only (¥8000.00). Received by: Zhang Jianguo. March 7, 2025. Haikou Xiuying Jinrong Auto Repair Shop.",
+    "shoot_mode": "Document",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of a handwritten receipt issued by the repair shop, which indicated that a vehicle repair fee of 8,000 yuan had been received.",
+    "phone_id": 20
+  },
+  {
+    "event_id": 164,
+    "type": "photo",
+    "caption": "Cable fault tester screen displays readings",
+    "title": "IMG_20250114_093000",
+    "datetime": "2025-01-14 09:30:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinken Road",
+      "streetNumber": "Nearby",
+      "poi": "Beside the garden pathway in the old residential area"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Tester",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCable",
+      "Fault Detection",
+      "On-site investigation"
+    ],
+    "ocrText": "Insulation Resistance: 0.5 MΩ; Positioning Depth: 1.5m",
+    "shoot_mode": "Document",
+    "image_size": "1920×1080",
+    "summarized_info": "Lu Mingqiang captured the screen of the cable fault tester, displaying low insulation resistance and fault point depth information.",
+    "phone_id": 21
+  },
+  {
+    "event_id": 2362,
+    "type": "photo",
+    "caption": "New Energy System Exhibition Area",
+    "title": "IMG_20250614_150020",
+    "datetime": "2025-06-14 15:00:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "No. 258",
+      "poi": "Hainan International Convention and Exhibition Center"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "New Energy System",
+      "Exhibition",
+      "Technical Demonstration"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of the new energy system display area.",
+    "phone_id": 22
+  },
+  {
+    "event_id": 592,
+    "type": "photo",
+    "caption": "A treasure found at the flea market, decided to bring it home.",
+    "title": "IMG_20250211_155520",
+    "datetime": "2025-02-11 15:55:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Haiken Road",
+      "streetNumber": "Number 8",
+      "poi": "Haiken Garden Night Market Second-hand Stall"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Wine bottle",
+      "Secondhand goods",
+      "Collect"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Took a photo of a wine bottle spotted at a flea market, planning to purchase it for my collection.",
+    "phone_id": 23
+  },
+  {
+    "type": "photo",
+    "event_id": 5157,
+    "caption": "The scene of everyone raising their glasses during the gathering, with the table filled with grilled fish and barbecue.",
+    "title": "IMG_20251220_183021.jpg",
+    "datetime": "2025-12-20 18:30:21",
+    "location": null,
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Squad Leader Zhang",
+      "Zhao Qiang"
+    ],
+    "imageTag": [
+      "Gathering for a meal",
+      "Raise a glass",
+      "Grilled Fish",
+      "Open-air",
+      "Night"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Night view",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of the team raising their glasses during a dinner gathering, featuring himself, Squad Leader Zhang, and Zhao Qiang, in an outdoor setting at night.",
+    "phone_id": 24
+  },
+  {
+    "type": "photo",
+    "event_id": 4545,
+    "caption": "Zixuan tried flying a kite for the first time, and it soared high into the sky.",
+    "title": "IMG_20251108_103005.jpg",
+    "datetime": "2025-11-08 10:30:05",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "Number 38",
+      "poi": "Wanlvyuan Lawn"
+    },
+    "faceRecognition": [
+      "Lu Zixuan"
+    ],
+    "imageTag": [
+      "Kite",
+      "Lawn",
+      "Sky",
+      "Child"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Scenery",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of his son flying a kite in Wanlü Park, with the kite soaring in the sky.",
+    "phone_id": 25
+  },
+  {
+    "event_id": 3269,
+    "type": "photo",
+    "caption": "At the Hulatang Breakfast Shop on Nansha Road, there are many people in the morning, and you can hear the conversations of the surrounding diners.",
+    "title": "IMG_20250814_070123",
+    "datetime": "2025-08-14 07:01:23",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Nansha Road",
+      "streetNumber": "",
+      "poi": "Spicy Soup Breakfast Shop"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Breakfast",
+      "Shop",
+      "Crowd"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang captured the scene of the breakfast shop, with the caption mentioning that the conversations of the diners could be heard.",
+    "phone_id": 26
+  },
+  {
+    "event_id": 2464,
+    "type": "photo",
+    "caption": "The snacks we ordered while drinking tea with Wu Gang, the partridge tea was very fragrant.",
+    "title": "IMG_20250621_151230",
+    "datetime": "2025-06-21 15:12:30",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Civilization Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 54",
+      "poi": "Tea Shop"
+    },
+    "faceRecognition": [
+      "Wu Gang"
+    ],
+    "imageTag": [
+      "Teapot",
+      "Teacup",
+      "Tea break",
+      "Indoors",
+      "By the window"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo while drinking tea, featuring tea snacks and the figure of Wu Gang.",
+    "phone_id": 27
+  },
+  {
+    "event_id": 3742,
+    "type": "photo",
+    "caption": "Father is gesturing on the balcony, explaining the circuit diagram, while my project drawings are spread out on the table.",
+    "title": "IMG_20250913_170852",
+    "datetime": "2025-09-13 17:08:52",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Haifu Road",
+      "streetNumber": "42",
+      "poi": "On the balcony of the home in the dormitory of the Hainan Provincial Health Department"
+    },
+    "faceRecognition": [
+      "Lu Jianguo"
+    ],
+    "imageTag": [
+      "Technical Discussion",
+      "Drawing",
+      "Balcony",
+      "Father",
+      "Relay Protection Commissioning"
+    ],
+    "ocrText": "Partial drawing text: Sampling circuit... Setting value sheet...",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of his father explaining blueprints on the balcony, with the location being the balcony at home.",
+    "phone_id": 28
+  },
+  {
+    "type": "photo",
+    "event_id": 3366,
+    "caption": "The plastic track in Wanlvyuan Park under the morning light, with fresh air, is perfect for relaxation after exercise.",
+    "title": "IMG_20250820_071523",
+    "datetime": "2025-08-20 07:15:23",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "38",
+      "poi": "Plastic walkway in Wanluyuan Park"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Trail",
+      "Morning Light",
+      "Park",
+      "Scenery",
+      "Exercise"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Scenery",
+    "image_size": "3024×4032",
+    "summarized_info": "A scenic photo of the plastic walkway in Wanlv Park was taken.",
+    "phone_id": 29
+  },
+  {
+    "event_id": 3841,
+    "type": "photo",
+    "caption": "The newly purchased moso bamboo is intended for making the frame of a swallow kite.",
+    "title": "IMG_20250920_143500",
+    "datetime": "2025-09-20 14:35:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "South Bo'ai Road",
+      "streetNumber": "",
+      "poi": "Boa South Road Commercial District"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Mao bamboo",
+      "Handmade Materials",
+      "Kite Making"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of the newly purchased bamboo at Bo'ai South Road.",
+    "phone_id": 30
+  },
+  {
+    "event_id": 768,
+    "type": "photo",
+    "caption": "Under the sunlight, a boy happily points to the kite in the sky, with backlighting outlining his golden silhouette.",
+    "title": "IMG_20250223_143025",
+    "datetime": "2025-02-23 14:30:25",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Binhai Avenue",
+      "poi": "Xixiu Park Lawn"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Kite",
+      "Outdoors",
+      "Child",
+      "Sunshine",
+      "Exercise",
+      "Against the Light"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Exercise",
+    "image_size": "4032×3024",
+    "summarized_info": "A backlit moment was captured on the park lawn, featuring a child pointing at a kite in the sky.",
+    "phone_id": 31
+  },
+  {
+    "type": "photo",
+    "event_id": 294,
+    "caption": "A small brown bottle beside the toolbox at the work site.",
+    "title": "IMG_20250122_171015",
+    "datetime": "2025-01-22 17:10:15",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Haisheng Road",
+      "streetNumber": "XX number",
+      "poi": "Construction site of old residential area"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Medicine bottle",
+      "Toolbox",
+      "Construction site"
+    ],
+    "ocrText": "Activating Blood Circulation... Oil",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of the medicine bottle at the work site.",
+    "phone_id": 32
+  },
+  {
+    "event_id": 2016,
+    "type": "photo",
+    "caption": "Vehicle exterior inspected at the dealership",
+    "title": "IMG_20250521_183500",
+    "datetime": "2025-05-21 18:35:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Haidian Fifth West Road",
+      "streetNumber": "Nearshore large",
+      "poi": "Qunfeng Used Car"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "SUV",
+      "Domestic",
+      "Vehicle Photos"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of a car at Qunfeng Used Cars, and the photo shows it to be an SUV.",
+    "phone_id": 33
+  },
+  {
+    "type": "photo",
+    "event_id": 3869,
+    "caption": "Problem areas photographed during the renovation construction of the electric meter box.",
+    "title": "IMG_20250922_1035",
+    "datetime": "2025-09-22 10:35:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Haidian Island, Wuxi Road",
+      "streetNumber": "Number so-and-so",
+      "poi": "Corridor of Building 3 in the Old Residential Area"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Copper terminal lug",
+      "Fracture",
+      "Electric Meter Box",
+      "Construction Environment"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "A broken copper wiring terminal was photographed during the renovation construction of the electrical meter box.",
+    "phone_id": 34
+  },
+  {
+    "event_id": 131,
+    "type": "photo",
+    "caption": "With Jianguo and Xiao Zhao at the Xiangrong Road food stall, the grilled fish is delicious, celebrating with tea instead of wine!",
+    "title": "IMG_20250111_195520",
+    "datetime": "2025-01-11 19:55:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Xiangrong Road",
+      "streetNumber": "24th",
+      "poi": "Xiangrong Road Food Stall"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Chen Jianguo",
+      "Zhao Qiang"
+    ],
+    "imageTag": [
+      "Gathering for a meal",
+      "Grilled fish",
+      "Street food stall",
+      "Friends gathering"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of a gathering with Chen Jianguo and Zhao Qiang at a street food stall on Xiangrong Road, featuring dishes such as grilled fish.",
+    "phone_id": 35
+  },
+  {
+    "event_id": 3561,
+    "type": "photo",
+    "caption": "The coastal promenade in the evening after the rain has fresh air, making it perfect for a jog.",
+    "title": "Sunset on the Coastal Boardwalk",
+    "datetime": "2025-09-01 17:20:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "No. 118",
+      "poi": "Trail near Guanhai Terrace"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Trail",
+      "Sunset glow",
+      "Seaside",
+      "Running",
+      "Scenery"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Scenery",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a scenic photo of the coastal walkway near Guanhaitai on a rainy evening.",
+    "phone_id": 36
+  },
+  {
+    "event_id": 5013,
+    "type": "photo",
+    "caption": "The old light on the balcony and some aging wiring require cable replacement.",
+    "title": "IMG_20251210_213015",
+    "datetime": "2025-12-10 21:30:15",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Unknown",
+      "poi": "Longhua Court Residential Community"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Lighting fixtures",
+      "Wire",
+      "Maintenance",
+      "Balcony",
+      "On-site Investigation"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Took a photo of the balcony light fixture and wiring to document the condition before repair.",
+    "phone_id": 37
+  },
+  {
+    "event_id": 3108,
+    "type": "photo",
+    "caption": "The finished swallow kite lay flat on the living room floor, surrounded by family members. It took nearly a month to complete.",
+    "title": "IMG_20250801_190520",
+    "datetime": "2025-08-01 19:05:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "",
+      "poi": "Living room in the residential community of Longhua Court."
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Wang Lijuan",
+      "Lu Zixuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Kite",
+      "Handicrafts",
+      "Sand Martin pattern",
+      "Living room",
+      "Family"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Photo",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of a completed large swallow kite displayed in the living room, with family members gathered around it.",
+    "phone_id": 38
+  },
+  {
+    "type": "photo",
+    "event_id": 339,
+    "caption": "The old wooden toolbox that my father solemnly handed to me was filled with neatly arranged vintage tools and several yellowed electrical engineering books.",
+    "title": "IMG_20250125_2015.jpg",
+    "datetime": "2025-01-25 20:15:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Haifu Road",
+      "streetNumber": "Number 42",
+      "poi": "Living room in parents' home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Toolbox",
+      "Electrician's tools",
+      "Old books",
+      "Given by father",
+      "Family"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photograph of a wooden toolbox gifted by his father, which contained old-fashioned electrical tools and vintage electrical engineering books.",
+    "phone_id": 39
+  },
+  {
+    "type": "photo",
+    "event_id": 1429,
+    "caption": "On-site repair record.",
+    "title": "IMG_20250409_110523",
+    "datetime": "2025-04-09 11:05:23",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "South Sea Avenue",
+      "streetNumber": "Nearby",
+      "poi": "High-voltage line fault tower location"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Power line",
+      "Insulated Aerial Lift",
+      "Slippery pole tower",
+      "Lightning strike marks",
+      "Work site"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Take a photo",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of the high-voltage line repair work site, with the location showing in Xiuying District, Haikou City.",
+    "phone_id": 40
+  },
+  {
+    "event_id": 593,
+    "type": "photo",
+    "caption": "The newly acquired \"Haikou Daqu\" liquor bottle has been thoroughly cleaned, its surface is smooth, and it is now placed on the collection shelf, alongside several other ceramic liquor bottles of various shapes.",
+    "title": "IMG_20250211_171520",
+    "datetime": "2025-02-11 17:15:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "",
+      "poi": "Living Room of Longhua Court Residential Community"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Haikou Daqu",
+      "Ceramic wine bottle",
+      "Collection Shelf",
+      "After cleaning",
+      "Collectibles"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Professional",
+    "image_size": "3024×4032",
+    "summarized_info": "A photo was taken of a \"Haikou Daqu\" liquor bottle that has been cleaned and placed on a collection shelf.",
+    "phone_id": 41
+  },
+  {
+    "event_id": 4,
+    "type": "photo",
+    "caption": "The children are flying a swallow-shaped kite on the lawn, with Lu Mingqiang guiding their movements nearby.",
+    "title": "IMG_20250101_104500",
+    "datetime": "2025-01-01 10:45:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "",
+      "poi": "Central Lawn of Evergreen Park"
+    },
+    "faceRecognition": [
+      "Lu Zixuan",
+      "Lu Zihan",
+      "Lu Mingqiang"
+    ],
+    "imageTag": [
+      "Sand Swallow Kite",
+      "Traditional kite",
+      "Outdoor Guidance",
+      "Family Activities"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Exercise",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang captured photos of children flying traditional swallow-shaped kites in Wanlv Park.",
+    "phone_id": 42
+  },
+  {
+    "type": "photo",
+    "event_id": 4655,
+    "caption": "A view of the coastal track taken while stretching after a morning run, with lovely morning light.",
+    "title": "IMG_20251116_080520",
+    "datetime": "2025-11-16 08:05:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Haidian Sixth East Road",
+      "streetNumber": "",
+      "poi": "Baimashan Park Coastal Running Track"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Runway",
+      "Coast",
+      "Early morning",
+      "Exercise"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Scenery",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a scenic photo of the coastal running track while jogging at Baishamen Park in the morning.",
+    "phone_id": 43
+  },
+  {
+    "event_id": 456,
+    "type": "photo",
+    "caption": "Two children are playing on the amusement ride, their smiles radiant, with a backdrop of open green lawns and the distant city skyline.",
+    "title": "IMG_20250202_143025.jpg",
+    "datetime": "2025-02-02 14:30:25",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "Number 38",
+      "poi": "Wanlv Garden Children's Play Area"
+    },
+    "faceRecognition": [
+      "Lu Zixuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Children playing",
+      "Amusement rides",
+      "Lawn",
+      "Green plants",
+      "Seascape"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang used the portrait mode on his phone to take several photos of children playing in Wanlv Park, capturing the greenery and the distant sea view in the frame.",
+    "phone_id": 44
+  },
+  {
+    "event_id": 5154,
+    "type": "photo",
+    "caption": "Lu Mingqiang stood on the podium holding an advanced electrician technician certificate and a red envelope, with the meeting room as the background.",
+    "title": "IMG_20251220_163500",
+    "datetime": "2025-12-20 16:35:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Yongwan Road",
+      "streetNumber": "Number One",
+      "poi": "Conference Room, Office Building, Nan Guang Center"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Manager Liu"
+    ],
+    "imageTag": [
+      "Certificate",
+      "Red envelope",
+      "Podium",
+      "Commendation"
+    ],
+    "ocrText": "Senior Electrician Technician Certificate  Skill Enhancement Award",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo at the year-end summary meeting, showing the certificate of senior electrician technician and the skill improvement award red envelope.",
+    "phone_id": 45
+  },
+  {
+    "event_id": 3615,
+    "type": "photo",
+    "caption": "Check the installation of outdoor equipment; the location may be inappropriate, and attention should be paid to rain protection and wire safeguarding.",
+    "title": "IMG_20250905_180000",
+    "datetime": "2025-09-05 18:00:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Exterior wall surface of residential building"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Outdoor air conditioning unit",
+      "Wire",
+      "Installation",
+      "Security Check"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of outdoor equipment, involving the installation location and wiring conditions.",
+    "phone_id": 46
+  },
+  {
+    "event_id": 5041,
+    "type": "photo",
+    "caption": "The balcony light at Uncle Wang's house is working properly.",
+    "title": "IMG_20251212_110125",
+    "datetime": "2025-12-12 11:01:25",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "",
+      "poi": "Longhua Court Residential Community"
+    },
+    "faceRecognition": [
+      "Wang Jianguo"
+    ],
+    "imageTag": [
+      "Balcony light",
+      "Switch test",
+      "Indoor environment",
+      "Maintenance Testing"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo showing an installed balcony light turned on inside a residence, with Wang Jianguo appearing in the frame.",
+    "phone_id": 47
+  },
+  {
+    "event_id": 3954,
+    "type": "photo",
+    "caption": "At the starting point of the lakeside running track in Wanlv Park, the morning sun filters through the leaves.",
+    "title": "IMG_20250928_065030",
+    "datetime": "2025-09-28 06:50:30",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "Number 38",
+      "poi": "Wanlvyuan Park"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Park",
+      "Runway",
+      "Early morning",
+      "Trees",
+      "Sunshine"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Scenery",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of the starting point of the circular lake track in Wanlv Park, captured in the early morning.",
+    "phone_id": 48
+  },
+  {
+    "event_id": 597,
+    "type": "photo",
+    "caption": "A detailed front view of a ceramic wine bottle, with the characters \"Haikou Daqu\" inscribed on its body, featuring a smooth glaze finish, placed on a table covered with soft cloth.",
+    "title": "Details of Haikou Daqu Liquor Bottle_1",
+    "datetime": "2025-02-11 20:35:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "",
+      "poi": "Home Study in Longhua Court Residential Compound"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Ceramic wine bottle",
+      "Haikou Daqu",
+      "Collectibles",
+      "Close-up of details",
+      "Desktop Staging"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Macro",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a close-up photo of a ceramic wine bottle of \"Haikou Daqu\" to showcase the details of its body.",
+    "phone_id": 49
+  },
+  {
+    "event_id": 246,
+    "type": "photo",
+    "caption": "The learning materials lent to me by my master must be carefully preserved and thoroughly understood.",
+    "title": "IMG_20250119_173000",
+    "datetime": "2025-01-19 17:30:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Haifu Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 56",
+      "poi": "Near Huajin Mingdu Residential Community"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Notebook",
+      "Yellowed",
+      "Paper",
+      "Learning materials",
+      "Handwriting"
+    ],
+    "ocrText": "(Partially unclear) Fault Analysis Example... Three-phase Motor Phase Loss... Mnemonic: One Look, Two Listen, Three Measure...",
+    "shoot_mode": "Document",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo that appears to be a page from an old notebook, with content seemingly related to circuit fault analysis and practical mnemonics.",
+    "phone_id": 50
+  },
+  {
+    "event_id": 1482,
+    "type": "photo",
+    "caption": "The cable trench in the old residential area is severely flooded, and emergency drainage operations are being carried out using a water pump.",
+    "title": "IMG_20250413_100520",
+    "datetime": "2025-04-13 10:05:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Binhai New Village",
+      "streetNumber": "Within a certain old residential area,",
+      "poi": "Cable trench emergency repair site"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Accumulated Water",
+      "Cable trench",
+      "Water pump",
+      "Emergency repair",
+      "Rainy season"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Ordinary",
+    "image_size": "3024×4032",
+    "summarized_info": "Photos were taken at the cable trench waterlogging emergency repair site, showing water accumulation and drainage operations, located in Binhai New Village, Longhua District, Haikou City.",
+    "phone_id": 51
+  },
+  {
+    "type": "photo",
+    "event_id": 102,
+    "caption": "Inside the distribution room, several people are gathered around a document, engaged in discussion.",
+    "title": "IMG_20250109_145002",
+    "datetime": "2025-01-09 14:50:02",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Xiangrong Road",
+      "poi": "Within a certain community,"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Power distribution equipment",
+      "File",
+      "Multiple people",
+      "Construction site"
+    ],
+    "ocrText": "Project Completion Confirmation Form... Xiuhai Community...",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "I took a photo of several people discussing documents inside a power distribution room. OCR recognized the text \"Project Completion Confirmation Form\" and \"Xiuhai Community.\"",
+    "phone_id": 52
+  },
+  {
+    "event_id": 907,
+    "type": "photo",
+    "caption": "Close-up of the wiring in the distribution box after the installation of the new air switch, with a normative and safety inspection currently underway.",
+    "title": "IMG_20250304_153000",
+    "datetime": "2025-03-04 15:30:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Haixiu Middle Road",
+      "streetNumber": "Power Distribution Room of Building 3, Jincheng Garden Residential Area",
+      "poi": "Power Distribution Room"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Distribution Box",
+      "Air switch",
+      "Wire connection",
+      "Construction site",
+      "Safe Operation"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang captured the scene of the distribution box renovation, showcasing the newly installed air switches and standardized wiring conditions.",
+    "phone_id": 53
+  },
+  {
+    "event_id": 1398,
+    "type": "photo",
+    "caption": "I've sorted out a few old items and am ready to dispose of them.",
+    "title": "IMG_20250405_202015",
+    "datetime": "2025-04-05 20:20:15",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Living room at home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Multimeter",
+      "Screwdriver",
+      "Tool",
+      "Old objects",
+      "Desktop"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Take a photo",
+    "image_size": "3024×4032",
+    "summarized_info": "A photo was taken of an old multimeter and tools such as screwdrivers, with the items placed on a tabletop.",
+    "phone_id": 54
+  },
+  {
+    "event_id": 1762,
+    "type": "photo",
+    "caption": "The son is flying a kite on the lawn, with a backdrop of green trees and a sea view.",
+    "title": "IMG_20250504_103020",
+    "datetime": "2025-05-04 10:30:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "Number 38",
+      "poi": "Wanlvyuan Park"
+    },
+    "faceRecognition": [
+      "Lu Zixuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Fly a kite",
+      "Lawn",
+      "Family Activities",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nOutdoors"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Scenery",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of his son flying a kite in Wanlv Park.",
+    "phone_id": 55
+  },
+  {
+    "type": "photo",
+    "event_id": 2244,
+    "caption": "Lunch gathering.",
+    "title": "IMG_20250606_1245",
+    "datetime": "2025-06-06 12:45:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Xiangrong Road",
+      "streetNumber": "18th",
+      "poi": "Chaoshan Girl Rice Noodle Roll Shop"
+    },
+    "faceRecognition": [
+      "Chen Jianguo",
+      "Zhao Qiang"
+    ],
+    "imageTag": [
+      "Rice noodle roll",
+      "Dining table",
+      "Dining together"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo during lunch, which included Chen Jianguo and Zhao Qiang, with the location tagged at the Chaoshan Meizai Rice Noodle Roll Shop.",
+    "phone_id": 56
+  },
+  {
+    "event_id": 460,
+    "type": "photo",
+    "caption": "Lu Mingqiang and Wang Lijuan were on the park lawn with their children, who were laughing happily.",
+    "title": "IMG_20250202_152030",
+    "datetime": "2025-02-02 15:20:30",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "",
+      "poi": "Wanluyuan Park"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Wang Lijuan",
+      "Child 1",
+      "Child 2"
+    ],
+    "imageTag": [
+      "Family Portrait",
+      "Children's smiling faces",
+      "Lawn",
+      "Park",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nOutdoors"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "4032×3024",
+    "summarized_info": "A family photo taken by Lu Mingqiang in Wanlv Park, featuring himself, his wife, and their children, all with joyful expressions.",
+    "phone_id": 57
+  },
+  {
+    "event_id": 2339,
+    "type": "photo",
+    "caption": "The lamp socket of Uncle Wang's ceiling light captured during maintenance, with the metal spring clearly deformed.",
+    "title": "IMG_20250612_210530",
+    "datetime": "2025-06-12 21:05:30",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "The living room of Uncle Wang's house"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Chandelier",
+      "Lamp socket",
+      "Metal reed",
+      "Deformation",
+      "Poor contact"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Macro",
+    "image_size": "3024×4032",
+    "summarized_info": "The photo taken by Lu Mingqiang while helping his neighbor Uncle Wang inspect the chandelier shows that the metal spring inside the lamp socket is deformed.",
+    "phone_id": 58
+  },
+  {
+    "event_id": 3814,
+    "type": "photo",
+    "caption": "Under the evening sunset, the structure of the power grid forms geometric patterns with its metal lines in the interplay of light and shadow, titled \"The Net.\"",
+    "title": "IMG_20250918_205500",
+    "datetime": "2025-09-18 20:55:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Window of the study room at home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Power grid",
+      "The setting sun",
+      "Industrial Structure",
+      "Geometric Lines",
+      "Light and Shadow"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Scenery",
+    "image_size": "4000×3000",
+    "summarized_info": "Lu Mingqiang captured a photograph of the power grid under the evening sunset, highlighting the geometric beauty and the interplay of light and shadow in the industrial structure.",
+    "phone_id": 59
+  },
+  {
+    "event_id": 4556,
+    "type": "photo",
+    "caption": "Enjoying breakfast with friends, the Hainan rice noodles taste great.",
+    "title": "IMG_20251109_080200",
+    "datetime": "2025-11-09 08:02:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Nansha Road",
+      "streetNumber": "Huatai Apartment Longhua No. 014, Unit 34-2",
+      "poi": "Afu Hainan Noodle Shop"
+    },
+    "faceRecognition": [
+      "Chen Bin"
+    ],
+    "imageTag": [
+      "Hainan Noodles",
+      "Breakfast",
+      "Social",
+      "Restaurant"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Took a photo of having breakfast with my friend Chen Bin at Afu Hainan Noodle Shop.",
+    "phone_id": 60
+  },
+  {
+    "event_id": 1683,
+    "type": "photo",
+    "caption": "The scenery in the central garden of the residential area is shaded by green trees, with elderly people practicing Tai Chi.",
+    "title": "IMG_20250428_143002",
+    "datetime": "2025-04-28 14:30:02",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "",
+      "poi": "Longhua Court Residential Area Central Garden"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Garden",
+      "Green trees",
+      "Rehabilitation Walk",
+      "Residential Community Environment"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Scenery",
+    "image_size": "3024×4032",
+    "summarized_info": "I took a photo of the central garden in the residential area to document the outdoor environment during my recovery period.",
+    "phone_id": 61
+  },
+  {
+    "event_id": 1509,
+    "type": "photo",
+    "caption": "At the emergency repair site, a new transformer is being hoisted into place. Zhao Qiang is assisting nearby. The environmental humidity is very high, with moisture condensing on the equipment's outer casing.",
+    "title": "IMG_20250415_190532",
+    "datetime": "2025-04-15 19:05:32",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Guomao Avenue",
+      "streetNumber": "Approaching the Intersection of Yusha Road",
+      "poi": "Outside the distribution room in the commercial district"
+    },
+    "faceRecognition": [
+      "Zhao Qiang"
+    ],
+    "imageTag": [
+      "Transformer",
+      "Engineering vehicle",
+      "Safety Helmet",
+      "Construction at night",
+      "Damp environment"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Night Scene",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of the nighttime emergency repair scene, showing the hoisting of a new transformer in a humid environment, with Zhao Qiang present to assist.",
+    "phone_id": 62
+  },
+  {
+    "event_id": 2197,
+    "type": "photo",
+    "caption": "The evening scene of the residential pathway, with its soft lighting.",
+    "title": "IMG_20250603_203500",
+    "datetime": "2025-06-03 20:35:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "",
+      "poi": "Longhua Court Residential Community Walkway"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Trail",
+      "Evening",
+      "Residential area environment"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Night Scene",
+    "image_size": "3024×4032",
+    "summarized_info": "Captured the scene of the residential pathway at dusk.",
+    "phone_id": 63
+  },
+  {
+    "event_id": 1140,
+    "type": "photo",
+    "caption": "At the grounding electrode additional driving operation site, photographed at the welding point requiring rework, the weld condition at the initial welding location is visible.",
+    "title": "IMG_20250319_110015",
+    "datetime": "2025-03-19 11:00:15",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Sanya City",
+      "district": "Tianya District",
+      "streetName": "Unknown",
+      "streetNumber": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nUnknown",
+      "poi": "Sanya Phoenix Island Star Sea All-Sea View Resort Hotel Peripheral Construction Area"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Grounding electrode",
+      "Welding point",
+      "Construction site",
+      "Metal",
+      "Check"
+    ],
+    "ocrText": "Grounding Body Flat Steel Weld Seam Not Full Needs Treatment",
+    "shoot_mode": "Professional",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of the grounding electrode welding point to document the construction quality. OCR-recognized text indicates that there is an issue with the welding at that location (the weld seam is not full).",
+    "phone_id": 64
+  },
+  {
+    "event_id": 5133,
+    "type": "photo",
+    "caption": "The repaired chandelier at Uncle Wang's house is now working properly.",
+    "title": "IMG_20251218_185000",
+    "datetime": "2025-12-18 18:50:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Wang Jianguo's home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Chandelier",
+      "Maintenance",
+      "Circuit"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of the restored chandelier, showing that the lights were functioning properly.",
+    "phone_id": 65
+  },
+  {
+    "event_id": 4592,
+    "type": "photo",
+    "caption": "During lunch, I showed my phone screen to my colleague Chen Jianguo. On the screen was the page of the \"Electrician's Home\" forum, with a technical article marked by a red \"pinned\" label. Chen Jianguo leaned in to take a look, and apprentice Zhao Qiang was also by our side. We were discussing a technical detail from the article.",
+    "title": "Screenshot_20251111_1230",
+    "datetime": "2025-11-11 12:32:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nUnknown",
+      "streetName": "Ziyuan Road",
+      "streetNumber": "Number 3",
+      "poi": "Yanlord Land Pizza Hut Restaurant"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Chen Jianguo"
+    ],
+    "imageTag": [
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMobile screenshot",
+      "Forum Interface",
+      "Pinned indicator",
+      "Restaurant Environment",
+      "Multi-person conversation"
+    ],
+    "ocrText": "Electrician's Home | Technical Exchange Area...【Pinned】Practical Discussion on Safety Redundancy Design of New Circuit Breakers...Poster: Anonymous User...",
+    "shoot_mode": "Screenshot",
+    "image_size": "1080×2400",
+    "summarized_info": "A screenshot from a mobile phone shows Lu Mingqiang presenting a pinned technical article page from the \"Electrician's Home\" forum to his coworker Chen Jianguo during lunch break.",
+    "phone_id": 66
+  },
+  {
+    "event_id": 3574,
+    "type": "photo",
+    "caption": "Close-up of metal components in a substation, focusing on the intersecting lines and reflective surfaces.",
+    "title": "IMG_20250902_125500",
+    "datetime": "2025-09-02 12:55:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Yongwan Road",
+      "streetNumber": "Number 1",
+      "poi": "South Light Center Backyard Warehouse Area"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Substation",
+      "Metal",
+      "Component",
+      "Line",
+      "Reflective",
+      "Industry",
+      "Geometry"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Professional",
+    "image_size": "3024×4032",
+    "summarized_info": "A close-up photograph capturing the lines and reflections of metal components in a substation.",
+    "phone_id": 67
+  },
+  {
+    "event_id": 3574,
+    "type": "photo",
+    "caption": "A close-up of stacked cable reels and rusty iron frames, highlighting the contrast between circles and straight lines.",
+    "title": "IMG_20250902_130500",
+    "datetime": "2025-09-02 13:05:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Yongwan Road",
+      "streetNumber": "Number One",
+      "poi": "South Light Center Backyard Warehouse Area"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Cable reel",
+      "Iron frame",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nBolt",
+      "Circle",
+      "straight line",
+      "Rust",
+      "Industry",
+      "Still Life"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Professional",
+    "image_size": "3024×4032",
+    "summarized_info": "A photo capturing a partial view of cable reels and iron racks in a warehouse area, emphasizing the contrast of geometric shapes.",
+    "phone_id": 68
+  },
+  {
+    "event_id": 1583,
+    "type": "photo",
+    "caption": "The on-site environment captured after the completion of emergency repairs and the restoration of power supply. Streetlights illuminate the wet ground.",
+    "title": "IMG_20250421_004020",
+    "datetime": "2025-04-21 00:40:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Blue Sea Avenue",
+      "streetNumber": "",
+      "poi": "Residential area near Bihai Avenue"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Night",
+      "Street light",
+      "Electrical equipment",
+      "Slippery floor",
+      "Work site"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Night View",
+    "image_size": "4032×3024",
+    "summarized_info": "I took a photo of the emergency repair site at night, located near Bihai Avenue in Meilan District, with the ground being damp.",
+    "phone_id": 69
+  },
+  {
+    "event_id": 335,
+    "type": "photo",
+    "caption": "The eldest son successfully flew the colorful paper kite we made in the garden. The kite features a traditional 'king'-shaped frame design.",
+    "title": "IMG_20250125_1145",
+    "datetime": "2025-01-25 11:45:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Central Garden Open Space"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Lu Zixuan"
+    ],
+    "imageTag": [
+      "Kite",
+      "Traditional Handicrafts",
+      "Family Activities",
+      "Test flight",
+      "Colored paper"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of his eldest son test-flying a kite, showcasing the achievements of traditional kite making and family interaction.",
+    "phone_id": 70
+  },
+  {
+    "event_id": 2569,
+    "type": "photo",
+    "caption": "Having a meal with my workmates, the grilled fish just served is sizzling over the hot charcoal fire.",
+    "title": "IMG_20250628_190523",
+    "datetime": "2025-06-28 19:05:23",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Xiuying Avenue",
+      "streetNumber": "29th",
+      "poi": "Haikou Xiuying Wanda Plaza Barbecue Street Stall"
+    },
+    "faceRecognition": [
+      "Chen Jianguo",
+      "Zhao Qiang"
+    ],
+    "imageTag": [
+      "Grilled fish",
+      "Charcoal fire",
+      "Gathering for a meal",
+      "Food stall",
+      "Delicacy"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Delicacy",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo with his coworkers Chen Jianguo and Zhao Qiang during their gathering at a barbecue street stall, with the main focus of the photo being charcoal-grilled fish.",
+    "phone_id": 71
+  },
+  {
+    "event_id": 1144,
+    "type": "photo",
+    "caption": "The ammeter reading of the distribution cabinet is used to calculate the three-phase load balance.",
+    "title": "IMG_20250319_154321",
+    "datetime": "2025-03-19 15:43:21",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Sanya City",
+      "district": "Tianya District",
+      "streetName": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nUnknown",
+      "streetNumber": "Unknown",
+      "poi": "Star Sea All-Sea View Resort Hotel Power Distribution Room"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Ammeter",
+      "Power distribution cabinet",
+      "Dashboard",
+      "Work Record",
+      "Electrical equipment"
+    ],
+    "ocrText": "A: 285A\nB: 262A\nC: 298A",
+    "shoot_mode": "Professional",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of the ammeter on the distribution cabinet, recording the three-phase current readings during the adjustment process.",
+    "phone_id": 72
+  },
+  {
+    "event_id": 3591,
+    "type": "photo",
+    "caption": "Today's on-site electrical equipment photoshoot, for sharing and relaxation.",
+    "title": "IMG_20250903_210500",
+    "datetime": "2025-09-03 21:05:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "",
+      "poi": "Work site"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Electrical equipment",
+      "Work Practice",
+      "Technical Photography"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "4000×3000",
+    "summarized_info": "Lu Mingqiang took a photo of electrical equipment at the work site, reflecting practical content related to the job.",
+    "phone_id": 73
+  },
+  {
+    "type": "photo",
+    "event_id": 1492,
+    "caption": "Screenshot of a mobile browser search results page, displaying the relevant search results page for 'Application Requirements for Senior Electrician Technician in Hainan Province'.",
+    "title": "Screenshot_20250414_103020",
+    "datetime": "2025-04-14 10:30:20",
+    "location": null,
+    "faceRecognition": [],
+    "imageTag": [
+      "Browser Screenshot",
+      "Query page",
+      "Admission Requirements"
+    ],
+    "ocrText": "Hainan Province... Electrician... Senior Technician... Application Requirements...",
+    "shoot_mode": "Screenshot",
+    "image_size": "1080×2340",
+    "summarized_info": "Lu Mingqiang took a screenshot of a page showing the search results for \"Hainan Province Senior Electrician Application Requirements.\"",
+    "phone_id": 74
+  },
+  {
+    "event_id": 2635,
+    "type": "photo",
+    "caption": "Important Information Screenshot",
+    "title": "IMG_20250702_201200",
+    "datetime": "2025-07-02 20:12:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Study at home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Government Service Network",
+      "Application Steps",
+      "Qualification Requirements"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Screenshot",
+    "image_size": "1920×1080",
+    "summarized_info": "Lu Mingqiang captured a screenshot of the entrepreneurship-related information on the government service website.",
+    "phone_id": 75
+  },
+  {
+    "event_id": 4614,
+    "type": "photo",
+    "caption": "Sweating profusely after exercise, taking a photo with Lin Feng on the court, with the glass wall of the squash court in the background.",
+    "title": "IMG_20251112_213002",
+    "datetime": "2025-11-12 21:30:02",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "No. 118",
+      "poi": "Guanhaitai Sports Center"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Lin Feng"
+    ],
+    "imageTag": [
+      "Exercise",
+      "Sweat",
+      "Friend",
+      "Squash Court",
+      "Please take a group photo."
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo with his friend Lin Feng after exercising at the squash court.",
+    "phone_id": 76
+  },
+  {
+    "event_id": 3670,
+    "type": "photo",
+    "caption": "A beam of sunlight streaming through the transom window illuminated a corner of the warehouse, casting a mottled gleam on the surfaces of the metal tools.",
+    "title": "IMG_20250909_155500",
+    "datetime": "2025-09-09 15:55:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Yongwan Road",
+      "streetNumber": "Number One",
+      "poi": "Nanguang Center Office Building Company Material Warehouse"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Old wrench",
+      "Pliers",
+      "Copper lug",
+      "Oil stain",
+      "Light and Shadow",
+      "Geometric shape",
+      "Industrial Still Life"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Manual",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo in the company warehouse, capturing old tools illuminated by sunlight, highlighting the interplay of light and shadow on the metal surfaces and their geometric shapes.",
+    "phone_id": 77
+  },
+  {
+    "event_id": 4850,
+    "type": "photo",
+    "caption": "Red-covered Senior Electrician Qualification Certificate with personal information and issuing authority's seal on the inner pages.",
+    "title": "IMG_20251130_083500",
+    "datetime": "2025-11-30 08:35:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Qiongshan District",
+      "streetName": "Hongchenghu Road",
+      "streetNumber": "Number 100",
+      "poi": "Service Window of the Hainan Provincial Government Offices Service Center and the Vocational Skills Appraisal Guidance Center"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang"
+    ],
+    "imageTag": [
+      "Certificate",
+      "Red cover",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nText"
+    ],
+    "ocrText": "Professional Qualification Certificate of the People's Republic of China  \nElectrician Senior Technician  \nName: Lu Mingqiang  \n...",
+    "shoot_mode": "Document",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of the Electrician Senior Technician Qualification Certificate.",
+    "phone_id": 78
+  },
+  {
+    "type": "photo",
+    "event_id": 4600,
+    "caption": "During the tea shop gathering, the phone screen lit up displaying the pinned post interface of a tech forum, with a Pu'er tea cup and a snack plate beside it.",
+    "title": "IMG_20251111_223015",
+    "datetime": "2025-11-11 22:30:15",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Civilization Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 54",
+      "poi": "Haikou Alley Tea Shop"
+    },
+    "faceRecognition": [
+      "Chen Jianguo",
+      "Zhao Qiang"
+    ],
+    "imageTag": [
+      "Mobile phone screen",
+      "Forum Interface",
+      "Tea Beverage",
+      "Gathering",
+      "Career Sharing"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo, capturing the pinned post on a technical forum displayed on a mobile phone screen during a gathering, reflecting a moment of sharing.",
+    "phone_id": 79
+  },
+  {
+    "event_id": 4616,
+    "type": "photo",
+    "caption": "",
+    "title": "IMG_20251112_215520",
+    "datetime": "2025-11-12 21:55:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "No. 118",
+      "poi": "Coconut Language Hall Qing Bu Liang (Guan Hai Tai Branch)"
+    },
+    "faceRecognition": [
+      "Lin Feng"
+    ],
+    "imageTag": [
+      "Qing Bu Liang",
+      "Dessert",
+      "Friends gathering",
+      "After exercise"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "I took a photo at the dessert shop, which includes Lin Feng and two bowls of Qing Bu Liang.",
+    "phone_id": 80
+  },
+  {
+    "event_id": 1153,
+    "type": "photo",
+    "caption": "In the ceiling of the corridor in Zone B, a spatial conflict occurs between the cable tray and the air conditioning supply duct at the corner, causing the cable tray to be deformed due to compression by the duct.",
+    "title": "IMG_20250320_080523",
+    "datetime": "2025-03-20 08:05:23",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Sanya City",
+      "district": "Jiyang District",
+      "streetName": "Yuyalu Road",
+      "streetNumber": "",
+      "poi": "Sanya Tree Crown Resort Hotel Project Site B Area Corridor"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Construction site",
+      "Cable Tray",
+      "Air conditioning duct",
+      "Inside the suspended ceiling",
+      "Spatial conflict"
+    ],
+    "ocrText": "Cable Tray - 200*100",
+    "shoot_mode": "Professional",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo showing a conflict between the cable tray and the air conditioning pipeline inside the ceiling of the corridor in Zone B.",
+    "phone_id": 81
+  },
+  {
+    "event_id": 4001,
+    "type": "photo",
+    "caption": "Food on the breakfast table",
+    "title": "IMG_20251001_071520",
+    "datetime": "2025-10-01 07:15:20",
+    "location": {
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Home dining room"
+    },
+    "faceRecognition": [
+      "Wang Lijuan",
+      "Lu Zixuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Hainanese Chicken Rice",
+      "Chicken Rice",
+      "Family dinner",
+      "Festive Breakfast"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of breakfast, showing Hainanese chicken rice and his family dining at the restaurant.",
+    "phone_id": 82
+  },
+  {
+    "type": "photo",
+    "event_id": 1957,
+    "caption": "Family Outdoor Activity Group Photo",
+    "title": "IMG_20250518_1030",
+    "datetime": "2025-05-18 10:30:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "Number 38",
+      "poi": "Central Lawn"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Wang Lijuan",
+      "Lu Zixuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Family",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nOutdoors",
+      "Picnic"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Group photo",
+    "image_size": "4032×3024",
+    "summarized_info": "A family photo was taken on the outdoor lawn.",
+    "phone_id": 83
+  },
+  {
+    "event_id": 3979,
+    "type": "photo",
+    "caption": "The blue and white sand swallow kite lies flat on old newspapers, with clearly visible pencil-drawn auspicious cloud patterns, surrounded by scattered blue and white acrylic paints and brushes.",
+    "title": "IMG_20250929_191520",
+    "datetime": "2025-09-29 19:15:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "",
+      "poi": "Living room in the residential compound of Longhua Court"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Sand Swallow Kite",
+      "Handicrafts",
+      "Acrylic paint",
+      "Auspicious Cloud Pattern",
+      "Drawing process"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nStandard",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang captured a photograph of a sand swallow kite in the process of being painted, with the kite laid flat on a newspaper and paint and brushes scattered nearby.",
+    "phone_id": 84
+  },
+  {
+    "type": "photo",
+    "event_id": 2726,
+    "caption": "After closing the switch and energizing the circuit, all indicator lights on the distribution cabinet are illuminated, and the voltmeter displays normal readings.",
+    "title": "IMG_20250708_153510",
+    "datetime": "2025-07-08 15:35:10",
+    "location": {
+      "province": "A certain province",
+      "city": "A certain city",
+      "district": "A certain district",
+      "streetName": "A certain road",
+      "streetNumber": "Number",
+      "poi": "Power Distribution Room of Building 3, Binhai New Village"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Distribution Cabinet",
+      "Indicator light",
+      "Voltmeter",
+      "Power transmission successful",
+      "Equipment Room"
+    ],
+    "ocrText": "Voltage 380V",
+    "shoot_mode": "Professional",
+    "image_size": "3024×4032",
+    "summarized_info": "A photo was taken showing the indicator lights and voltmeter displaying normal readings after the power distribution cabinet was energized.",
+    "phone_id": 85
+  },
+  {
+    "event_id": 1498,
+    "type": "photo",
+    "caption": "A screenshot of the mobile banking app interface, showing a successful transfer notification.",
+    "title": "Screenshot_20250414_202802.jpg",
+    "datetime": "2025-04-14 20:28:02",
+    "location": null,
+    "faceRecognition": [],
+    "imageTag": [
+      "Bank transfer",
+      "328 yuan",
+      "Family Account",
+      "Transaction successful"
+    ],
+    "ocrText": "Transfer Successful  \nTransfer Amount: 328.00 CNY  \nRecipient: *Lijuan (WeChat Change - Family Change Account)  \nTransaction Time: 2025-04-14 20:25:10",
+    "shoot_mode": "Automatic",
+    "image_size": "1080×2400",
+    "summarized_info": "A screenshot of a mobile phone showing a successful transfer record of 328 yuan to a family account.",
+    "phone_id": 86
+  },
+  {
+    "type": "photo",
+    "event_id": 3794,
+    "caption": "Instructing apprentice Zhao Qiang on the procedure for replacing an air switch, currently explaining the use of a voltage tester and safety regulations. The setting is the customer's home distribution box.",
+    "title": "IMG_20250917_143022",
+    "datetime": "2025-09-17 14:30:22",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Haidian Island",
+      "streetNumber": "",
+      "poi": "In the home of a client in an old residential community"
+    },
+    "faceRecognition": [
+      "Zhao Qiang"
+    ],
+    "imageTag": [
+      "Distribution box",
+      "Voltage Tester Pen",
+      "Air switch",
+      "Safety helmet",
+      "Teaching",
+      "Practical operation"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Take a photo",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo while instructing an apprentice on how to replace an air switch, capturing a moment where he was explaining safety procedures.",
+    "phone_id": 87
+  },
+  {
+    "event_id": 1156,
+    "type": "photo",
+    "caption": "The three-phase busbar wiring of the high-voltage cabinet has been securely fastened and marked with red phase color tape.",
+    "title": "IMG_20250320_163000",
+    "datetime": "2025-03-20 16:30:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Sanya City",
+      "district": "Jiyang District",
+      "streetName": "Yuyalu",
+      "streetNumber": "",
+      "poi": "Crown of the Great Tree Resort Project Site Underground Power Distribution Room"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "High-voltage cabinet",
+      "Electrical wiring",
+      "Busbar",
+      "Power distribution room",
+      "Field work"
+    ],
+    "ocrText": "Phase A Phase B Phase C Phase N have been tightened.",
+    "shoot_mode": "Professional",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took photos of the busbars in the high-voltage cabinet after completing the wiring and fastening.",
+    "phone_id": 88
+  },
+  {
+    "event_id": 3980,
+    "type": "photo",
+    "caption": "At dusk, a brightly colored swallow kite soars in the gradually darkening sky, with two small, blurry figures running below.",
+    "title": "IMG_20250929_195020",
+    "datetime": "2025-09-29 19:50:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Not applicable",
+      "poi": "The open space downstairs of the residential community of Longhua Court."
+    },
+    "faceRecognition": [
+      "Lu Zixuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Kite",
+      "Sky",
+      "Child",
+      "Outdoors",
+      "Evening"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Night Scene",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of children flying kites, capturing the image of a sand swallow kite in the sky and the children running below.",
+    "phone_id": 89
+  },
+  {
+    "type": "photo",
+    "event_id": 2727,
+    "caption": "The emergency repair task has been completed. All discarded cables in front of Building 3 have been loaded onto vehicles and transported away. The ground has been cleaned, and the site has been restored to a tidy condition.",
+    "title": "IMG_20250708_161520",
+    "datetime": "2025-07-08 16:15:20",
+    "location": {
+      "province": "Zhejiang Province",
+      "city": "Ningbo City",
+      "district": "Beilun District",
+      "streetName": "Binhai Road",
+      "streetNumber": "**Number**",
+      "poi": "In front of Building 3, Binhai New Village Community"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Construction site",
+      "After cleaning",
+      "Cable reel",
+      "Community Environment",
+      "Emergency repair"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Ordinary",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of the cleared emergency repair site in front of Building 3 in the community, showing that the discarded cables had been loaded onto a truck and removed, leaving the ground clean.",
+    "phone_id": 90
+  },
+  {
+    "event_id": 2156,
+    "type": "photo",
+    "caption": "Zixuan successfully flew the kite, and everyone was very happy.",
+    "title": "IMG_20250531_161230",
+    "datetime": "2025-05-31 16:12:30",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "Number 38",
+      "poi": "Wanlvyuan Park"
+    },
+    "faceRecognition": [
+      "Lu Zixuan",
+      "Wang Lijuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Kite",
+      "Lawn",
+      "Sky",
+      "Outdoor activities"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Panorama",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of his son flying a kite, with the lawn and sky of Wanlv Garden in the background.",
+    "phone_id": 91
+  },
+  {
+    "event_id": 4346,
+    "type": "photo",
+    "caption": "Everyone enjoyed the dishes at the practice banquet.",
+    "title": "IMG_20251025_191234",
+    "datetime": "2025-10-25 19:12:34",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Home dining room"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Wang Lijuan",
+      "Zhao Qiang"
+    ],
+    "imageTag": [
+      "Hainanese Chicken Rice",
+      "Poached Shrimp",
+      "Home-cooked dishes",
+      "Dinner Party",
+      "Hainan Specialty Dishes"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Delicacy",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of the dishes at a farewell dinner, which identified dishes such as Hainanese chicken rice and poached shrimp. The photo was taken in Haikou, Hainan.",
+    "phone_id": 92
+  },
+  {
+    "event_id": 1292,
+    "type": "photo",
+    "caption": "Installing a new five-hole outlet panel, the wires are already connected.",
+    "title": "IMG_20250329_1405",
+    "datetime": "2025-03-29 14:05:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "",
+      "poi": "Longhua Court Residential Community, kitchen at home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Socket installation",
+      "Wire connection",
+      "Electrician work"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Ordinary",
+    "image_size": "2000x1500",
+    "summarized_info": "Lu Mingqiang took a photo of the process of installing a new socket panel, showcasing his hands-on operation.",
+    "phone_id": 93
+  },
+  {
+    "event_id": 4665,
+    "type": "photo",
+    "caption": "A sumptuous spread of grilled fish and skewers covers the table.",
+    "title": "IMG_20251116_185520",
+    "datetime": "2025-11-16 18:55:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Xiuying Avenue",
+      "streetNumber": "29th",
+      "poi": "Xiuying Wanda Plaza Barbecue Food Stall"
+    },
+    "faceRecognition": [
+      "Chen Bin"
+    ],
+    "imageTag": [
+      "Grilled fish",
+      "Grilled skewers",
+      "Gathering for a meal",
+      "Celebrate",
+      "Running Buddy"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Took a photo with my running buddy Chen Bin during a gathering at a barbecue restaurant.",
+    "phone_id": 94
+  },
+  {
+    "event_id": 927,
+    "type": "photo",
+    "caption": "Cable emergency repair site. A colleague wearing an orange work uniform and a safety helmet is squatting beside the excavated cable trench, holding insulating tape to perform the wrapping task, with emergency lighting set up nearby.",
+    "title": "IMG_20250305_183025",
+    "datetime": "2025-03-05 18:30:25",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Haisheng Road",
+      "streetNumber": "",
+      "poi": "Construction site cable trench"
+    },
+    "faceRecognition": [
+      "Chen Jianguo"
+    ],
+    "imageTag": [
+      "Power emergency repair",
+      "Workmate",
+      "Insulation wrapping",
+      "Cable trench",
+      "Safety helmet",
+      "Work clothes",
+      "Emergency lighting"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Night View",
+    "image_size": "4032×3024",
+    "summarized_info": "A photo was taken at the cable repair site, and colleague Chen Jianguo was identified working in the photo.",
+    "phone_id": 95
+  },
+  {
+    "type": "photo",
+    "event_id": "new_event_1",
+    "caption": "Sunshine Garden Phase II, the distribution box before finishing work today. Finally managed to catch up a bit on the progress.",
+    "title": "IMG_20250315_1745",
+    "datetime": "2025-03-15 17:45:20",
+    "location": {
+      "province": "Zhejiang Province",
+      "city": "Hangzhou City",
+      "district": "Xiaoshan District",
+      "streetName": "Construction First Road",
+      "streetNumber": "",
+      "poi": "Sunshine Garden Phase II Construction Site"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Distribution Box",
+      "Wire",
+      "Construction site",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTool"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Ordinary",
+    "image_size": "3024×4032",
+    "summarized_info": "A photo of a distribution box taken at the construction site of Sunshine Garden Phase II, capturing the work scene.",
+    "phone_id": 96
+  },
+  {
+    "type": "photo",
+    "event_id": "new_event_1",
+    "caption": "Sunshine Garden Phase II, the distribution box before finishing work today. Finally managed to catch up a bit on the progress.",
+    "title": "IMG_20250315_1745",
+    "datetime": "2025-03-15 17:45:20",
+    "location": {
+      "province": "Zhejiang Province",
+      "city": "Hangzhou City",
+      "district": "Xiaoshan District",
+      "streetName": "Jianshe 1st Road",
+      "streetNumber": "",
+      "poi": "Sunshine Garden Phase II Construction Site"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Distribution Box",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nElectric wire",
+      "Construction site",
+      "Tool"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Ordinary",
+    "image_size": "3024×4032",
+    "summarized_info": "A photo of a distribution box taken at the construction site of Sunshine Garden Phase II, documenting the work scene.",
+    "phone_id": 96
+  },
+  {
+    "event_id": 3766,
+    "type": "photo",
+    "caption": "In the stairwell of a unit building in an old residential community, there is a severely rusted electrical meter box with messy internal wiring and several noticeably aged connection points.",
+    "title": "IMG_20250915_123000",
+    "datetime": "2025-09-15 12:30:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Haidian Second East Road",
+      "streetNumber": "Near No. 41",
+      "poi": "Inside a unit building of an old residential community"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Electric meter box",
+      "old and shabby",
+      "Rust",
+      "Wire",
+      "Stairwell"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Take a photo",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of a rusty electrical meter box in the stairwell of an old residential area, documenting the hazards of messy and aging wiring.",
+    "phone_id": 97
+  },
+  {
+    "type": "photo",
+    "event_id": 1113,
+    "caption": "During the follow-up visit at the community health service center, the doctor was personally guiding and correcting lumbar rehabilitation stretching movements such as the Cat-Cow pose and supine knee-to-chest stretches.",
+    "title": "Rehabilitation Guidance_20250317",
+    "datetime": "2025-03-17 14:30:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Haixiu Road",
+      "streetNumber": "",
+      "poi": "Haixiu Street Community Health Service Center Consultation Room"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Doctor's Guidance",
+      "Rehabilitation Training",
+      "Stretching exercises",
+      "Medical"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Video",
+    "image_size": "1920×1080",
+    "summarized_info": "Lu Mingqiang recorded a video at the community health service center where a doctor was demonstrating rehabilitation exercises for the lower back.",
+    "phone_id": 98
+  },
+  {
+    "event_id": 3570,
+    "type": "photo",
+    "caption": "On my commute, I noticed the substation beside the Haixiu Expressway service road. Its steel framework and intertwined power lines created a striking geometric pattern under the sunlight.",
+    "title": "IMG_20250902_123045",
+    "datetime": "2025-09-02 12:30:45",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Haixiu Expressway Service Road",
+      "streetNumber": "",
+      "poi": "Near the substation"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Substation",
+      "Steel framework",
+      "Line",
+      "Industry",
+      "Geometry",
+      "Light and Shadow",
+      "Commuting"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Professional",
+    "image_size": "4000×3000",
+    "summarized_info": "Lu Mingqiang took a photo of a substation beside the auxiliary road of Haixiu Expressway, primarily featuring steel structures and power lines, which conveys a strong sense of industrial geometry.",
+    "phone_id": 99
+  },
+  {
+    "event_id": 2369,
+    "type": "photo",
+    "caption": "The finisher's medal shines brightly in the sunlight. My first 5-kilometer run after recovering from a back injury is truly worth commemorating.",
+    "title": "IMG_20250615_084020.jpg",
+    "datetime": "2025-06-15 08:40:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Haidian Sixth East Road",
+      "streetNumber": "Unidentified",
+      "poi": "Inside Baishamen Park"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Medal",
+      "Running",
+      "Finish the race",
+      "Outdoors"
+    ],
+    "ocrText": "Happy Run 5KM 2025.06.15",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of the finisher's medal from a 5-kilometer fun run.",
+    "phone_id": 100
+  },
+  {
+    "type": "photo",
+    "event_id": 2995,
+    "caption": "Screenshot of the electronic policy for Jianing Ankang Supplementary Medical Insurance, Insured: Wang Lijuan, Policy Number: BA20250725****, Effective Date: July 26, 2025.",
+    "title": "Screenshot_20250725_213520",
+    "datetime": "2025-07-25 21:35:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Home Study Room"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Screenshot",
+      "Electronic Document",
+      "Insurance"
+    ],
+    "ocrText": "Anxinbao Jianing Ankang Supplementary Medical Insurance Electronic Policy Insured: Wang Lijuan Insurance Period: 2025-07-26 to 2026-07-25",
+    "shoot_mode": "Standard",
+    "image_size": "1080×2340",
+    "phone_id": 101,
+    "summarized_info": "Lu Mingqiang took a screenshot and saved the electronic insurance policy that was successfully issued for his wife, Wang Lijuan."
+  },
+  {
+    "event_id": 769,
+    "type": "photo",
+    "caption": "Lu Zixuan ran across the lawn in the park, holding the kite string in his hand as the kite soared high in the sky, with sunlight casting a backlit silhouette.",
+    "title": "IMG_20250223_1610",
+    "datetime": "2025-02-23 16:10:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Binhai Avenue",
+      "streetNumber": "",
+      "poi": "Xixiu Park"
+    },
+    "faceRecognition": [
+      "Lu Zixuan"
+    ],
+    "imageTag": [
+      "Fly a kite",
+      "Child",
+      "Outdoor activities",
+      "Against the Light",
+      "Park"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of his son Lu Zixuan flying a kite in Xixiu Park, capturing a scene full of dynamism and happiness.",
+    "phone_id": 102
+  },
+  {
+    "event_id": 3578,
+    "type": "photo",
+    "caption": "Tutoring Zihan in writing pinyin, correcting his pen-holding posture step by step.",
+    "title": "IMG_20250902_193020.jpg",
+    "datetime": "2025-09-02 19:30:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Room 502, Building 3, Longhua Court Residential Community",
+      "poi": "Study Corner in the Living Room at Home"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Writing",
+      "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nPinyin",
+      "Tutoring",
+      "Parent-child",
+      "Desk"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "The photo captures the scene of Lu Mingqiang personally tutoring his second son, Lu Zihan, in writing.",
+    "phone_id": 103
+  },
+  {
+    "event_id": 1977,
+    "type": "photo",
+    "caption": "An open notebook with the handwritten title \"Key Points for Advanced Learning in Basic Electrical Engineering\" on the page, listing multiple learning modules and key points below in neat handwriting. A pen is placed in the corner of the page.",
+    "title": "IMG_20250519_151019",
+    "datetime": "2025-05-19 15:10:19",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Near the intersection of Haisheng Road and Xiangrong Road",
+      "streetNumber": "",
+      "poi": "Temporary Rest Area at the Renovation Site of Old Residential Communities"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Notebook",
+      "Handwritten text",
+      "Study Plan",
+      "Work site"
+    ],
+    "ocrText": "Key Learning Points for Junior Electricians' Advancement\n1. Deepening Blueprint Reading...\n2. Standards for Pipeline Craftsmanship...\n3. Practical Application of Safety Regulations...",
+    "shoot_mode": "Document",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of a handwritten study plan titled \"Key Points for Advanced Learning in Basic Electrical Engineering.\"",
+    "phone_id": 104
+  },
+  {
+    "event_id": 3612,
+    "type": "photo",
+    "caption": "From a low-angle view, the massive arm of the tower crane stands tall, with steel cables and hinges tracing sharp geometric lines against the blue sky, exuding an overwhelming sense of power.",
+    "title": "IMG_20250903_104523",
+    "datetime": "2025-09-03 10:45:23",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Changbin Road",
+      "streetNumber": "Nearby",
+      "poi": "The periphery of a construction project site."
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Tower crane",
+      "Construction site",
+      "Mechanical Structure",
+      "Industry",
+      "Geometric lines",
+      "Steel",
+      "Low-angle shot"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Professional",
+    "image_size": "4000×3000",
+    "summarized_info": "Lu Mingqiang took a photo of a tower crane at the construction site's perimeter, highlighting its geometric structure and sense of power.",
+    "phone_id": 105
+  },
+  {
+    "event_id": 1133,
+    "type": "photo",
+    "caption": "On the cleared space in the business trip dormitory, ready to start waist rehabilitation exercises.",
+    "title": "IMG_20250318_180523",
+    "datetime": "2025-03-18 18:05:23",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Sanya City",
+      "district": "Jiyang District",
+      "streetName": "Binhai Road",
+      "streetNumber": null,
+      "poi": "Seaview Resort Hotel Project Site Dormitory"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang"
+    ],
+    "imageTag": [
+      "Dormitory",
+      "Open space",
+      "Fitness Mat"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Ordinary",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of himself preparing to start rehabilitation exercises in the open space of the dormitory.",
+    "phone_id": 106
+  },
+  {
+    "event_id": 973,
+    "type": "photo",
+    "caption": "Under the guidance of their teacher, Lu Zixuan and Lu Zihan are intently engaged in pottery wheel throwing, while Wang Lijuan watches with a smile nearby. The workbench is scattered with clay and tools.",
+    "title": "IMG_20250308_151023",
+    "datetime": "2025-03-08 15:10:23",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Yangshan Avenue",
+      "streetNumber": "Number 39",
+      "poi": "A Handicraft Workshop at Mission Hills New Town"
+    },
+    "faceRecognition": [
+      "Wang Lijuan",
+      "Lu Zixuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Pottery",
+      "Throwing",
+      "Parent-child activities",
+      "Workshop",
+      "Smile",
+      "Family time"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of the children and his wife working on pottery wheel throwing in the craft workshop, capturing a warm and joyful scene.",
+    "phone_id": 107
+  },
+  {
+    "type": "photo",
+    "event_id": 5015,
+    "caption": "Screenshot of a personal profile on a technical forum, showing that the total number of likes for my post about power distribution cabinet renovation has reached 87, with the latest comment time being 22:28.",
+    "title": "Screenshot_20251210_223523",
+    "datetime": "2025-12-10 22:35:23",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "",
+      "poi": "At home in the residential community of Longhua Court"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMobile screenshot",
+      "Forum Interface",
+      "Number of likes",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nComment"
+    ],
+    "ocrText": "My Post: A Few Experience Sharing Points on Safety Renovation of Old Distribution Cabinets  \nPublished: 2025-12-09  \nTotal Likes: 87  \nLatest Comment: 2025-12-10 22:28 \"The host's experience is invaluable, saved it!\"",
+    "shoot_mode": "Screenshot",
+    "image_size": "1080×2340",
+    "summarized_info": "I took a screenshot of my personal forum homepage, which shows that my post about the experience of renovating a power distribution cabinet received 87 likes and new comments that continued into the night.",
+    "phone_id": 108
+  },
+  {
+    "event_id": 3603,
+    "type": "photo",
+    "caption": "The effect of teaching Zihan to systematically organize his schoolbag: books are layered, homework notebooks are kept separate, and the pencil case is placed in the side pocket.",
+    "title": "IMG_20250904_191500",
+    "datetime": "2025-09-04 19:15:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "poi": "Living Room at Home in Longhua Court Residential Community"
+    },
+    "faceRecognition": [
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Schoolbag",
+      "Book",
+      "Homework notebook",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nStationery box",
+      "Organize"
+    ],
+    "ocrText": "Chinese Mathematics English Exercise Book",
+    "shoot_mode": "Take a photo",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of his second son Lu Zihan's neatly organized school bag, showcasing the systematic arrangement with books layered, homework notebooks placed separately, and the pencil case stored in the side pocket.",
+    "phone_id": 109
+  },
+  {
+    "event_id": 3792,
+    "type": "photo",
+    "caption": "During a work break, I discovered an unexpected charm in the water droplets on the surface of an old electrical box in the drizzling rain. The metallic texture under the macro lens, the peeling paint, and the rolling water trails together created an accidental industrial beauty.",
+    "title": "IMG_20250917_093215",
+    "datetime": "2025-09-17 09:32:15",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Haidian Island",
+      "streetNumber": "The corridor of Building 1 in an old residential community.",
+      "poi": "Beside the outdoor distribution box."
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Distribution Box",
+      "Raindrop",
+      "Water droplet",
+      "Metal surface",
+      "Light and Shadow",
+      "Industry",
+      "Macro",
+      "Old and dilapidated"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Macro",
+    "image_size": "3024x4032",
+    "summarized_info": "Lu Mingqiang used the macro mode on his phone to capture a photo of raindrops gathering and sliding down the surface of an old distribution box, highlighting the industrial details of a rainy day.",
+    "phone_id": 110
+  },
+  {
+    "event_id": 4070,
+    "type": "photo",
+    "caption": "The Mid-Autumn reunion dinner features a table filled with spicy grilled fish, various mooncakes, and drinks, as family members gather around, sharing laughter and joy.",
+    "title": "IMG_20251006_183000",
+    "datetime": "2025-10-06 18:30:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Home dining room"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Wang Lijuan",
+      "Lu Zixuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Spicy Grilled Fish",
+      "Mooncake",
+      "Sumptuous Dinner",
+      "Family gathering",
+      "Beverage"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took photos of the Mid-Autumn Festival dinner, showcasing abundant food and family reunion.",
+    "phone_id": 111
+  },
+  {
+    "type": "photo",
+    "event_id": 3290,
+    "caption": "The newly posted safety signs on the outer wall of the distribution room, reading 'High Voltage Danger' and 'Beware of Electric Shock', are fresh and eye-catching. Next to them is a close-up of the interface of the new cable segment that was replaced during last night's operation.",
+    "title": "IMG_20250815_090510.jpg",
+    "datetime": "2025-08-15 09:05:10",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "poi": "Outside the Power Distribution Room of Longhua Court Residential Compound"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Safety Signage",
+      "Cable",
+      "Power distribution room",
+      "Work site"
+    ],
+    "ocrText": "High Voltage Danger\nBeware of Electric Shock",
+    "shoot_mode": "Ordinary",
+    "image_size": "2000x1500",
+    "summarized_info": "Lu Mingqiang took photos of the newly replaced safety signs and cable connections outside the residential area's power distribution room.",
+    "phone_id": 112
+  },
+  {
+    "type": "photo",
+    "event_id": 1097,
+    "caption": "In the community green space, Li Juan and I were holding the sapling, while Zixuan and Zihan were carefully filling in the soil beside us. The whole family was smiling happily.",
+    "title": "IMG_20250316_091523.jpg",
+    "datetime": "2025-03-16 09:15:23",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "",
+      "poi": "Green space at the southeast corner of the residential community of Longhua Court"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Wang Lijuan",
+      "Lu Zixuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nTree planting",
+      "Family Activities",
+      "Outdoors",
+      "Green Space",
+      "Sapling"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "4032×3024",
+    "summarized_info": "I took a photo of my whole family planting trees together in the green space of our residential community, with everyone looking joyful.",
+    "phone_id": 113
+  },
+  {
+    "event_id": 2686,
+    "type": "photo",
+    "caption": "On the workbench in the living room, materials such as bamboo strips and cotton thread are laid out, ready for the start of the handicraft project.",
+    "title": "IMG_20250705_193500",
+    "datetime": "2025-07-05 19:35:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Room XXX, Building X, Longhua Court Residential Community",
+      "poi": "Living room at home"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Wang Lijuan",
+      "Lu Zixuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Bamboo strip",
+      "Cotton thread",
+      "Workbench",
+      "Handmade",
+      "Kite Materials"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of the materials prepared for handmade production, showing the kite materials and workbench.",
+    "phone_id": 114
+  },
+  {
+    "event_id": 3629,
+    "type": "photo",
+    "caption": "A 'Zihan's Daily Study Schedule' drawn with colored markers, posted on the study corner of the wall. The chart is clear, detailing after-school arrangements from Monday to Friday, including study and activity items along with their respective times.",
+    "title": "IMG_20250906_211205",
+    "datetime": "2025-09-06 21:12:05",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Study corner in the second son's room at home."
+    },
+    "faceRecognition": [
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Hand-drawn table",
+      "Study Schedule",
+      "Colored pen",
+      "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nA4 paper",
+      "Wall surface"
+    ],
+    "ocrText": "Zihan's Daily Study Schedule Monday...",
+    "shoot_mode": "Document",
+    "image_size": "3024×4032",
+    "summarized_info": "Took a photo of the 'Zihan Daily Study Schedule' that was made and posted together with my second son.",
+    "phone_id": 115
+  },
+  {
+    "event_id": 3404,
+    "type": "photo",
+    "caption": "The aging socket in Uncle Wang's living room has poor contact with the plug.",
+    "title": "IMG_20250822_181520",
+    "datetime": "2025-08-22 18:15:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "",
+      "poi": "Longhua Court Residential Community"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Socket",
+      "Wall surface",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nElectric wire"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "A photograph of an old socket taken indoors.",
+    "phone_id": 116
+  },
+  {
+    "type": "photo",
+    "event_id": 2837,
+    "caption": "The nearly completed skeleton of the swallow kite, freshly coated with white latex glue, is placed on the balcony to dry in a well-ventilated area.",
+    "title": "IMG_20250715_203020",
+    "datetime": "2025-07-15 20:30:20",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Unknown",
+      "poi": "Balcony at home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Kite frame",
+      "Handicrafts",
+      "Balcony",
+      "Workbench"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Macro",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of the skeleton of a sand swallow kite that had just been reinforced and was drying.",
+    "phone_id": 117
+  },
+  {
+    "type": "photo",
+    "event_id": 1102,
+    "caption": "Li Juan's busy figure in the kitchen, with several small bowls and condiment bottles on the stove, she is focused on tasting the flavor.",
+    "title": "IMG_20250316_175103",
+    "datetime": "2025-03-16 17:51:03",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nUnknown",
+      "poi": "Home kitchen"
+    },
+    "faceRecognition": [
+      "Wang Lijuan"
+    ],
+    "imageTag": [
+      "Kitchen",
+      "Cooking",
+      "Try new recipes",
+      "Warm and Cozy"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Ordinary",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of his wife Wang Lijuan trying to cook a new dish in the kitchen, capturing her back in a heartwarming scene.",
+    "phone_id": 118
+  },
+  {
+    "event_id": 5044,
+    "type": "photo",
+    "caption": "Show Comrade Chen a screenshot of the post details page on the technical forum, with the screen displaying a high number of likes, a list of comments, and a preview of an unread private message.",
+    "title": "Screenshot_20251212_135523_forum.png",
+    "datetime": "2025-12-12 13:55:23",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Yongwan Road",
+      "streetNumber": "Number 1",
+      "poi": "South Light Center Office Building Rest Area"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Screenshot of mobile phone screen",
+      "Forum Interface",
+      "Private message",
+      "Number of likes"
+    ],
+    "ocrText": "Post Title: Practical Experience Sharing on Factory Power Distribution Cabinet Renovation  \nLikes: 1.2k  \nComments: 356  \nPrivate Message (Factory - Supervisor Wang): Hello, Engineer Lu. I've carefully read your post, and it's very professional. Our factory also has similar needs and would like to inquire about the construction details and preliminary pricing intentions. Would it be convenient to discuss further?",
+    "shoot_mode": "Screenshot",
+    "image_size": "1080×2340",
+    "summarized_info": "A screenshot of a mobile phone screen, showing the details page of a post on a technical forum, which displays a high number of likes and comments, as well as a private message from \"Factory - Supervisor Wang\" inquiring about construction details and expressing interest in a quote.",
+    "phone_id": 119
+  },
+  {
+    "event_id": 1644,
+    "type": "photo",
+    "caption": "Page of Liability and Deductible Clauses in the Family Comprehensive Accident Insurance Contract.",
+    "title": "IMG_20250425_101500",
+    "datetime": "2025-04-25 10:15:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Master bedroom at home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Insurance Contract",
+      "Clause",
+      "Deductible"
+    ],
+    "ocrText": "Insurance Liability... Accidental Medical Expenses... Deductible RMB 100... Reimbursement Ratio 90%...",
+    "shoot_mode": "Document",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang photographed the page of the family comprehensive accident insurance contract that details the insurance coverage and deductible clauses.",
+    "phone_id": 120
+  },
+  {
+    "event_id": 1103,
+    "type": "photo",
+    "caption": "In the center of the dining table sat a carefully prepared dipping sauce. With a smile, my wife explained that she had recreated a family recipe from memory, as our family gathered around.",
+    "title": "IMG_20250316_183050",
+    "datetime": "2025-03-16 18:30:50",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Home Dining Room"
+    },
+    "faceRecognition": [
+      "Wang Lijuan",
+      "Lu Zixuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Hainanese Chicken Rice Dipping Sauce",
+      "Family dinner gathering",
+      "Dining table"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Delicacy",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo of a family dinner, mainly capturing the homemade Hainanese chicken rice dipping sauce recreated by his wife, along with the family's reactions.",
+    "phone_id": 121
+  },
+  {
+    "event_id": 1472,
+    "type": "photo",
+    "caption": "Record the content of the PPT during the training, with a focus on the sections covering safety management and task allocation.",
+    "title": "IMG_20250412_104015",
+    "datetime": "2025-04-12 10:40:15",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Meilan District",
+      "streetName": "Wenlian Road",
+      "streetNumber": "Number 6",
+      "poi": "Vocational Skills Training Center Lecture Hall"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "PPT",
+      "Training",
+      "Management Skills"
+    ],
+    "ocrText": "Team safety... Communication skills...",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took photos of the PPT during the training activity to record key information.",
+    "phone_id": 122
+  },
+  {
+    "event_id": 737,
+    "type": "photo",
+    "caption": "The wiring near the corridor distribution box has a longitudinal crack in the black insulation sleeve, with the internal wires faintly visible.",
+    "title": "IMG_20250221_103015",
+    "datetime": "2025-02-21 10:30:15",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Yongwan Road",
+      "streetNumber": "Unit 2, Building 3, Bihai Lantian Residential Community",
+      "poi": "Corridor Power Distribution Room"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Wire",
+      "Casing damage",
+      "Distribution Box",
+      "Potential safety hazard"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of a damaged power line insulating sleeve as a work record.",
+    "phone_id": 123
+  },
+  {
+    "event_id": 698,
+    "type": "photo",
+    "caption": "New equipment debugging in the workshop, the fault code query interface is displayed on the screen.",
+    "title": "IMG_20250218_143015",
+    "datetime": "2025-02-18 14:30:15",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Yongwan Road",
+      "streetNumber": "Number One",
+      "poi": "Practical Training Workshop on the First Floor of Nanguang Center Office Building"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Industrial equipment",
+      "Fault Code",
+      "Screenshot",
+      "Practical Training Workshop",
+      "High temperature and high humidity environment"
+    ],
+    "ocrText": "Fault Code: E05, High Temp & Humidity Alert",
+    "shoot_mode": "Professional",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took a photo of the new equipment in the workshop, with the fault code query interface and high-temperature, high-humidity alarm information displayed on the screen.",
+    "phone_id": 124
+  },
+  {
+    "event_id": 2359,
+    "type": "photo",
+    "caption": "Insurance Policy Brochure",
+    "title": "IMG_20250614_0920",
+    "datetime": "2025-06-14 09:20:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Nansha Road",
+      "streetNumber": "",
+      "poi": "Longhua District Community Comprehensive Service Center"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Brochure",
+      "Insurance",
+      "Document"
+    ],
+    "ocrText": "Supplementary Medical Insurance for Flexible Employees... Policy Details...",
+    "shoot_mode": "Document",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang photographed the promotional materials for the supplementary medical insurance provided by the community.",
+    "phone_id": 125
+  },
+  {
+    "type": "photo",
+    "event_id": 739,
+    "caption": "Conduct a safety inspection of a distribution box in the Bihai Lantian residential area and record the equipment status.",
+    "title": "IMG_20250220_142020",
+    "datetime": "2025-02-20 14:20:00",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Xiuying District",
+      "streetName": "Unknown",
+      "streetNumber": "Unknown",
+      "poi": "Bihai Lantian Residential Community"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Distribution Box",
+      "Security Check",
+      "Electrical facilities",
+      "Residential community",
+      "Safety Hazard Inspection"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Professional",
+    "image_size": "4032×3024",
+    "summarized_info": "Lu Mingqiang took a photo while inspecting the power facilities in the Bihailantian residential area.",
+    "phone_id": 126
+  },
+  {
+    "event_id": 4086,
+    "type": "photo",
+    "caption": "Family dinner on October 7, 2025, featuring light dishes such as steamed pork ribs and scrambled eggs with tomatoes.",
+    "title": "IMG_20251007_190123",
+    "datetime": "2025-10-07 19:01:23",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "Jinyu East Road",
+      "streetNumber": "Longhua Court Residential Community",
+      "poi": "Home Dining Room"
+    },
+    "faceRecognition": [
+      "Lu Mingqiang",
+      "Wang Lijuan",
+      "Lu Zixuan",
+      "Lu Zihan"
+    ],
+    "imageTag": [
+      "Family Dinner",
+      "Light diet",
+      "Adjust diet"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Lu Mingqiang took photos of the family dinner on October 7th, showing light dishes.",
+    "phone_id": 127
+  },
+  {
+    "event_id": 5293,
+    "type": "photo",
+    "caption": "Screenshot of the successful transfer page in the mobile banking app.",
+    "title": "Screenshot_20251230_203515",
+    "datetime": "2025-12-30 20:35:15",
+    "location": {
+      "province": "Hainan Province",
+      "city": "Haikou City",
+      "district": "Longhua District",
+      "streetName": "International Trade Avenue",
+      "streetNumber": "No. 235",
+      "poi": "Inside the Hannan Building"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMobile screenshot",
+      "Transfer Record",
+      "Bank APP"
+    ],
+    "ocrText": "Transfer Successful  \nTransaction Amount: 3,218.00 yuan  \nPayer Account: Ending with 8876  \nPayee: Taikang Life Insurance  \nPurpose: Premium Payment",
+    "shoot_mode": "Screenshot",
+    "image_size": "1080×2400",
+    "summarized_info": "Lu Mingqiang took a screenshot of the successful mobile banking transfer page, showing a payment of 3,218 yuan to Taikang Life Insurance.",
+    "phone_id": 128
+  }
+]

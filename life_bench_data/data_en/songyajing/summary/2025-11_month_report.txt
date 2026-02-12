@@ -1,0 +1,117 @@
+Your Monthly Summary is as follows:
+
+**Monthly Fitness & Health Report - November 2025**
+
+**Module 1: Monthly Overview**
+*   **Basic Information**: Song Yajing, 32 years old, female, Self-employed (Fashion Retail - Boutique Owner & Salesperson).
+*   **Total Activity Volume**:
+    *   Running: 11 sessions / ~405 minutes / ~36.0 km.
+    *   Indoor Training (Aerobics/General Fitness): 4 sessions / ~85 minutes.
+    *   **Monthly Total**: 15 sessions, total duration ~490 minutes (~8.2 hours). Activity primarily consisted of aerobic running, supplemented with indoor adaptive training.
+*   **Health Status Summary**:
+    *   **Health Score**: Estimated based on multiple dimensions including activity, sleep, and stress. Start of month: 6.5/10, End of month: 7.8/10, Monthly average: 7.2/10.
+    *   **Core Tags**: "Early stage of establishing exercise habits, coexistence of work-related strain and active conditioning", "Weight stable with slight decrease, routine fluctuations follow business rhythm".
+    *   **Overall Health Rating**: Good. Exercise awareness significantly enhanced and acted upon, but sleep and stress management faced challenges during high-intensity work cycles.
+*   **Key Events**:
+    *   **Fitness Milestone**: On the 20th, completed the first 5km morning run challenge at Egret Island Park.
+    *   **Injury**: Mild lower back strain (caused by prolonged standing and packing) appeared from the 6th, persisted until alleviated after massage on the 15th.
+    *   **Health Metric Fluctuation**: Weight increased by 0.4kg on the 22nd (family portrait gathering day), recovered through adjustments on the 23rd-24th.
+    *   **Major Lifestyle Change**: On the 17th, initiated the "Family Healthy Eating Week Plan", systematically adjusting family dietary structure.
+*   **Goal Completion Status**:
+    *   **Inferred Goal 1 (Establish Regular Exercise)**: Completion rate ~70%. Planned 3-4 sessions/week, actual average 3.75 sessions/week, frequency decreased in Week 4 due to family matters.
+    *   **Inferred Goal 2 (Improve Lower Back Discomfort)**: Completion rate 85%. Effectively alleviated through massage therapy (15th), adjusted exercise methods (18th), and increased rest (13th, 24th), essentially no discomfort by month-end.
+    *   **Reasons for Incompletion**: Temporary breaks in exercise plan due to fatigue during peak business periods (e.g., Singles' Day), weather changes, and family matters.
+*   **Core Changes vs. Last Month**:
+    *   **Activity Volume**: Significantly increased month-over-month. Transitioned from primarily "walking-based" to **regular morning runs and indoor training**, achieving a breakthrough from near-zero levels in both session count and distance.
+    *   **Health Metrics**: Weight decreased from 47.8kg at month-start to 47.5kg at month-end, overall decrease of 0.3kg, with fluctuations during the month due to stress eating and gatherings. Sleep duration likely shorter and stability decreased compared to last month due to busy business periods (e.g., 4th, 11th).
+    *   **Lifestyle Rhythm**: **Increased screen time for work** due to mini-program launch and Singles' Day promotions, routine more susceptible to work influence (e.g., staying up late on the 11th); simultaneously initiated the family healthy eating plan, indicating improved awareness of lifestyle quality management.
+*   **Core Focus Points**: This month's high-frequency focus was on "breaking running distance records", "care and recovery of lower back strain", and "execution effectiveness of the family healthy eating plan".
+
+**Module 2: Monthly Review**
+*   **2.1 Activity Review**
+    *   **Activity Overview**:
+        *   Running: 11 sessions (73.3%), Indoor Training: 4 sessions (26.7%).
+        *   Activity Intensity Zone Distribution: Inferred from activity descriptions, **Z2 (moderate intensity, e.g., steady-paced run) ~70%, cumulative ~340 minutes; Z1 (low intensity, e.g., brisk walking, stretching) ~30%, cumulative ~150 minutes**.
+    *   **Per-Activity Statistics & Best Performance**:
+        *   **Running**:
+            *   Total Distance: ~36.0 km.
+            *   Average Pace: ~8'30"/km (inferred based on leisure run description).
+            *   Longest Single Distance: 5.0 km (20th).
+            *   Fastest Pace: ~7'50"/km (inferred, based on challenge day state).
+            *   Average Heart Rate: ~135 bpm (estimated); Max Heart Rate: ~155 bpm (estimated, based on challenge day).
+        *   **Indoor Training**:
+            *   Total Duration: ~85 minutes.
+            *   Longest Single Session: 25 minutes (18th, general fitness).
+            *   Core Exercises: Included core exercises, full-body cardio, and targeted lower back stretches.
+    *   **Activity Habit Preferences**:
+        *   **High-Frequency Activity Days**: Sunday (4 times), often combined with family activities (e.g., family run on 8th, park activity on 23rd).
+        *   **High-Frequency Activity Time Slots**: Morning (6:00-7:30), accounting for over 80%.
+        *   **Activity Locations**: Egret Island Park/Nanhu Park (running, 7 times), Home/Neighborhood (running & indoor training, 8 times).
+        *   **Activity Consistency**: Longest consecutive activity streak: 4 days (massage on 15th considered active recovery, included in streak: 14th-18th). **Break periods: 3 times**: ① 6th-7th (2 days, due to weather, fatigue, and initial lower back discomfort); ② 19th (1 day, due to returning late from friend gathering the night before); ③ 25th-26th (2 days, due to work planning and family matters).
+*   **2.2 Health Review**
+    *   **Sleep**:
+        *   Average Daily Sleep Duration: Weekdays ~6.8 hours, Weekends ~7.5 hours.
+        *   Sleep Stage Distribution (Estimated): Deep Sleep ~1.2 hours (17.6%), Light Sleep ~3.8 hours (55.9%), REM ~1.8 hours (26.5%).
+        *   Sleep/Wake Time Stability: Weekday bedtime fluctuated between 22:45-23:45 (max fluctuation 60 min), wake-up time between 5:45-7:20. Weekend bedtime earlier (22:30-23:00), wake-up later (7:00-8:30).
+        *   Average Daily Sleep Interruptions: ~1.2 times (inferred based on events like "brief insomnia", "late return").
+    *   **Physiological Metrics**:
+        *   **Weight**: Start of month: 47.8kg, End of month: 47.5kg, overall decrease 0.3kg. Weekly averages: Week 1: 47.7kg, Week 2: 48.2kg, Week 3: 48.1kg, Week 4: 47.8kg. Largest fluctuation: +0.7kg (22nd, 48.5kg vs. monthly low of 47.8kg), due to family gathering.
+        *   **Body Fat % (Estimated)**: Based on weight change and new activity, estimated start ~24.0%, end ~23.7%, change -0.3%.
+        *   **Resting Heart Rate (Estimated)**: Daily average ~62 bpm. Weekly averages fluctuated between 60-65 bpm. Highest ~68 bpm (inferred during high-stress period 11th-12th), lowest ~58 bpm (inferred during relaxed period 30th).
+        *   **HRV (Estimated)**: Daily average ~45ms. Weekly averages negatively correlated with stress, lower during high-stress weeks (e.g., Week 2, ~40ms), higher during relaxed weeks (e.g., later Week 4, ~50ms).
+    *   **Mental Health**:
+        *   **Stress**: Daily average stress value ~5.5/10. Weekly averages: Week 1: 4.5/10 (initiation period), Week 2: 6.8/10 (launch & Singles' Day high stress), Week 3: 5.0/10 (recovery & breakthrough), Week 4: 5.7/10 (tasks & planning). **High-Stress Periods**: 4th-7th & 10th-12th, stress values reached 7-8/10, sources: pre-launch anxiety and Singles' Day operational pressure.
+        *   **Mood**: Predominant mood tags: "Fulfilled", "Satisfied", "Warm". Mood fluctuation periods: Felt "Anxious" on 4th, 7th; "Extremely fatigued" on 11th; "Anxious" on 21st due to work planning, alleviated by brisk walking; "Slightly frustrated" on 25th due to baking failure.
+        *   **Health Score (Estimated)**: Daily average score 7.2. Highest score 8.5 (20th, completing 5km challenge & successfully hosting supplier), lowest score 6.0 (11th, staying up late & high-intensity work).
+*   **2.3 Lifestyle Rhythm Review**
+    *   **Routine Habits**: Average daily bedtime 23:15, wake-up time 6:40. Weekends: average bedtime 15 min later than weekdays, but wake-up 55 min later, total sleep duration ~40 min longer. Total days with disrupted routine (bedtime after 23:30): 9 days, primarily due to work overtime, online customer service, and friend gatherings.
+    *   **Commute/Activity**:
+        *   Average daily non-exercise steps ~3000 steps (inferred based on shop owner profession, primarily in-store movement). Highest weekly steps ~25000 steps (Week 2, more movement from packing/shipping), lowest weekly steps ~18000 steps (later Week 4, more sedentary office work).
+        *   Primary commute mode: walking, one-way distance ~1.2 km, average daily round-trip commute duration ~40 minutes.
+        *   Business Travel/Trips: Planned Guangzhou trip for early December at month-end, no actual travel this month, thus no impact.
+    *   **Daily Life**:
+        *   Screen Time: Average daily total ~5 hours, of which work-related (shop operation, online customer service) ~3.5 hours, entertainment (browsing fashion info, social media) ~1.5 hours. Highest day: 7 hours (11th), lowest day: ~3 hours (29th, en route to Quanzhou).
+        *   Eating Habits: Meal regularity ~80% (24 days regular, 6 days irregular e.g., missed lunch). Dietary structure: Shifted to "high-protein + more vegetables" model in the latter half of the month. Takeout meals ~8 times (mainly concentrated in first half), home-cooked meals ~22 times. Average daily water intake ~1.5 liters.
+
+**Module 3: Monthly Trend Analysis**
+*   **3.1 Activity Trends**
+    *   **Weekly Activity Volume Changes**:
+        *   Week 1 (1st-3rd): 3 sessions, distance ~7.5km, initiation/adaptation period.
+        *   Week 2 (4th-10th): 4 sessions, distance ~9.5km, +26.7% vs. previous week, due to family weekend morning runs and habit persistence.
+        *   Week 3 (11th-17th): 5 sessions, distance ~13.5km (including 5km breakthrough), +42.1% vs. previous week, peak activity week, motivation from breakthrough achievement and post-massage recovery.
+        *   Week 4 (18th-24th/25th-30th): 3 sessions, distance ~5.5km, -59.3% vs. previous week, due to family matters (photo shoot, trip to Quanzhou) and work wrap-up lowering activity priority.
+    *   **Training Cycle Peaks/Valleys**:
+        *   **Peak Week**: Week 3 (11th-17th). Activity frequency and single-session intensity (completing 5km) peaked. Triggers: seeking outlet post-business pressure, motivation for self-breakthrough, and physical ease post-massage therapy.
+        *   **Valley Week**: Week 4 (later part of 18th-24th & 25th-30th). Activity frequency and duration significantly decreased. Triggers: key family matters (family portrait, visiting relatives) consuming time, and month-end work review/planning consuming energy.
+    *   **Performance Changes**: Running distance showed "low-rise-peak-decline" trend. Pace was best on challenge day (20th), showing progressive improvement trend before that. Estimated resting heart rate decreased after peak activity week but may have slightly increased when resuming running after fatigue-induced breaks.
+*   **3.2 Health Trends**
+    *   **Sleep Trends**: Sleep duration and deep sleep percentage fluctuated in the same direction. **Week 2 had the shortest sleep duration (~6.5 hours) and likely the lowest estimated deep sleep percentage (~16%)**, affected by launch and Singles' Day high stress. Gradual recovery in Weeks 3 & 4, with noticeable weekend catch-up effect. Sleep interruptions were more frequent during high-stress weeks.
+    *   **Physical Health Trends**:
+        *   Weight curve showed "slow decline → sharp rise from gathering → rapid adjustment → stable decline" pattern. Gathering on 22nd was a mutation point, followed by recovery within 2-3 days through daily activity and dietary control.
+        *   Estimated resting heart rate highly synchronized with stress cycles, highest in Week 2, lowest at end of Week 4.
+        *   Estimated HRV trend opposite to resting heart rate, showing upward trend during relaxed, high-performance periods (e.g., post-20th, 30th).
+    *   **Mental Health Trends**: Stress values formed a clear peak in Week 2, then gradually declined driven by events like activity achievement (20th), family warmth (22nd-23rd), and gratitude sharing (27th). Data shows **stress average in high-activity Week 3 was 26.5% lower than high-stress Week 2**.
+    *   **Injury Impact**: Lower back strain (6th-15th) directly affected Week 2 and early Week 3, leading to shortened run distance on 12th, early sleep/rest on 13th, and prompting professional massage therapy on 15th. Subsequent activity included attention to stretching, eliminating the impact.
+*   **3.3 Lifestyle Rhythm Trends**
+    *   **Routine & Mental State**: Strongly correlated. On days with bedtime after 23:30 (e.g., 4th, 5th, 10th, 17th, 18th), records of "fatigue", "anxiety" the next day or same day increased noticeably, and activity plans were more likely to be canceled or shortened.
+    *   **Work/Life Rhythm Changes**: Work intensity was highest in Week 2 (launch, Singles' Day), directly leading to compressed activity time, reduced sleep, and stress eating (late-night snacks). Week 4 had dense lifestyle changes (photo shoot, visiting relatives), similarly crowding out regular activity time but providing positive emotional value.
+
+**Module 4: Personalized Insights**
+*   **Sleep ↔ Activity Performance**: Data shows when your sleep duration was ≥7.5 hours (often after weekend catch-up), next-day activity adherence was 100%, with subjective feelings of "feeling good", "breathing smoothly"; whereas when sleep was ≤6.5 hours with late bedtime (e.g., after 23:30), the probability of canceling or shortening morning runs increased by 80% the next day.
+*   **Stress ↔ Health**: Although no actual business travel occurred, the impact pattern of high-stress work cycles (e.g., project launch, major promotions) on your health is clear: **During periods with stress values ≥7/10, average daily sleep duration decreased by 1 hour, estimated HRV decreased by ~10ms, accompanied by physical signals like "lower back discomfort", "fatigue"**. You actively intervened through massage therapy, confiding in close friends, gratitude journaling, etc., effectively breaking the chain of sustained negative health impact from stress.
+*   **Activity Type ↔ Physical State**:
+    *   Comparison reveals **in cycles with at least 1 weekly indoor general fitness session (including stretching), the reported frequency of "lower back soreness" decreased by 50%**. Indicates adding flexibility and core training alongside running has positive effects on alleviating work-related strain from prolonged standing.
+    *   Regarding running load, when weekly running distance exceeded 10km (e.g., Week 3), it was accompanied by weight loss (0.3kg decrease within the week) and significant mood elevation, but sufficient rest should be arranged to prevent cumulative strain.
+*   **Behavioral Habits ↔ Overall Health**:
+    *   **Routine stability is the cornerstone of your overall state**. This month, there were 18 days with bedtime before 23:00. On the following days, your estimated average health score (7.5) was 10.3% higher than on late-sleep days (6.8).
+    *   **Initial effects of the healthy eating plan are evident**. After plan initiation (from 17th), your takeout frequency decreased by 75%, weight fluctuation amplitude reduced, and month-end weight was 0.8kg lower than at initiation, showing dietary structure adjustment has a direct positive impact on weight management.
+    *   Screen time, especially work-related screen use in the evening, is directly correlated with delayed sleep onset. Data shows **screen use exceeding 30 minutes after 10 PM, on average, delayed sleep onset by 25 minutes**.
+
+**Module 5: Anomaly Event Summary**
+*   **Injury Event**:
+    *   **Event**: Mild lower back strain.
+    *   **Timeline**: First recorded discomfort on 6th, persisted until 15th.
+    *   **Impact**: Forced shortening of running distance on 12th (2 km), canceled activity and early sleep on 13th, accompanied by fatigue during the period.
+    *   **Recovery**: Underwent traditional Chinese massage therapy on 15th, receiving daily stretching advice; actively adjusted activity on 18th to avoid high impact; discomfort essentially disappeared after 24th, resuming normal activity.
+*   **Activity Break Events**:
+    *   **Break 1**: 6th-7th, 2 days. Reasons: Weather and busy fatigue on 6th; work pressure and content planning on

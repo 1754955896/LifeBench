@@ -1,0 +1,242 @@
+[
+  {
+    "name": "Shanggang Residential Area",
+    "location": "121.513638,31.237805",
+    "formatted_address": "No. 2-51, Lane 136, Pudong Avenue, Pudong New Area, Shanghai, China",
+    "city": "Shanghai City",
+    "district": "Pudong New Area",
+    "streetName": "No. 136 Alley, Pudong Avenue",
+    "streetNumber": "2-51",
+    "description": "The residential community where I live daily, together with my parents."
+  },
+  {
+    "name": "Hangtou Shichen Shopping Mall",
+    "location": "121.580002,31.077599",
+    "formatted_address": "Shanghai, Shanghai, Pudong New Area [][]",
+    "city": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nShanghai City",
+    "district": "Pudong New Area",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The shopping mall where the clothing store I work at is located"
+  },
+  {
+    "name": "Yunchuan Billiards Hall",
+    "location": "121.536437,31.178991",
+    "formatted_address": "Shanghai, Shanghai, Pudong New District, Chengshan Road []",
+    "city": "Shanghai City",
+    "district": "Pudong New Area",
+    "streetName": "Chengshan Road",
+    "streetNumber": [],
+    "description": "The place where I often go to play pool."
+  },
+  {
+    "name": "Decathlon Badminton Hall",
+    "location": "121.595120,31.321761",
+    "formatted_address": "Shanghai City, Pudong New Area, Langgu Road []",
+    "city": "Shanghai City",
+    "district": "Pudong New Area",
+    "streetName": "Lan Gu Road",
+    "streetNumber": [],
+    "description": "The Riverside Skate Path I often visit for rollerblading"
+  },
+  {
+    "name": "Weifang Road Basketball Gym",
+    "location": "121.515069,31.220010",
+    "formatted_address": "No. 2 Weifang Road, Pudong New Area, Shanghai, China",
+    "city": "Shanghai City",
+    "district": "Pudong New Area",
+    "streetName": "Weifang Road",
+    "streetNumber": "Number 2",
+    "description": "The community or sports center basketball court where one often goes to play basketball."
+  },
+  {
+    "name": "Laoshan Road Ruhai Wholesale Department",
+    "location": "121.515925,31.238325",
+    "formatted_address": "No. 36 Laoshan Road (300 meters walk from Exit 2 of South Pudong Road Metro Station)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The supermarket near the residence is used for daily shopping and household supplies procurement."
+  },
+  {
+    "name": "Dongchang Road Local Cuisine Restaurant",
+    "location": "121.502500,31.237015",
+    "formatted_address": "No. 1 Dongchang Road, Pudong New Area, Shanghai, China",
+    "city": "Shanghai City",
+    "district": "Pudong New Area",
+    "streetName": "Dongchang Road",
+    "streetNumber": "Number One",
+    "description": "The local Shanghainese restaurant near the residence satisfies the character's preference for dishes like braised pork belly and other Shanghainese cuisine."
+  },
+  {
+    "name": "Zhengda Plaza Amusement Park",
+    "location": "121.498723,31.236560",
+    "formatted_address": "No. 168 Lujiazui West Road, 2F32, 2nd Floor, Super Brand Mall",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The park near the residence is used for daily outdoor activities such as walking and running."
+  },
+  {
+    "name": "Yincheng Road Fitness Center",
+    "location": "121.511302,31.242057",
+    "formatted_address": "Shanghai City, Pudong New Area, Shanghai Municipality[][]",
+    "city": "Shanghai City",
+    "district": "Pudong New Area",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The gym near the residence supports the goal of cultivating a regular fitness habit for individuals."
+  },
+  {
+    "name": "KFC at Shanghai Science and Technology Museum Metro Station",
+    "location": "121.543014,31.218244",
+    "formatted_address": "No. 2002 Century Avenue, Pudong New Area, Shanghai, China",
+    "city": "Shanghai City",
+    "district": "Pudong New Area",
+    "streetName": "Century Avenue",
+    "streetNumber": "No. 2002",
+    "description": "A café near the workplace, used for breaks during work or for meeting with clients and friends."
+  },
+  {
+    "name": "Subway Fast Food Restaurant (1188 Financial Center Branch)",
+    "location": "121.547991,31.226368",
+    "formatted_address": "Room B115, Unit 01, Underground 1st Floor, No. 2839 Yanggao Middle Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Fast food restaurants near the workplace meet the need for quick meals on weekdays."
+  },
+  {
+    "name": "Zhengda Wudaokou Square Convenience Store",
+    "location": "121.549734,31.226706",
+    "formatted_address": "No. 1 Financial Building, Zhengda Wudaokou Square, Lane 1199, Minsheng Road (Dingxiang Road)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Convenience stores near the workplace, convenient for purchasing daily necessities, snacks, etc."
+  },
+  {
+    "name": "Jinyan Road Ramen Shop",
+    "location": "121.540776,31.216332",
+    "formatted_address": "Shanghai, Shanghai, Pudong New Area, Jinyan Road []",
+    "city": "Shanghai City",
+    "district": "Pudong New Area",
+    "streetName": "Jinyan Road",
+    "streetNumber": [],
+    "description": "The Japanese ramen shop near the workplace satisfies the character's preference for Japanese ramen."
+  },
+  {
+    "name": "Minsheng Road Hot Pot Restaurant",
+    "location": "121.551361,31.223342",
+    "formatted_address": "Room 109, 1st Floor, No. 1433 Minsheng Road, Huamu Subdistrict",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The hot pot restaurant near the workplace, used for dining with friends and clients."
+  },
+  {
+    "name": "New Journey Billiards Hall",
+    "location": "121.530703,31.207025",
+    "formatted_address": "No. 1122, 4th Floor, Shuangji Floristry, South Yanggao Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Near the frequently visited billiard hall, a fixed venue for playing pool (American eight-ball)."
+  },
+  {
+    "name": "Dongchang Green Space Basketball Court",
+    "location": "121.508648,31.224117",
+    "formatted_address": "No. 1 Zhangyang Road, Pudong New District, Shanghai, China",
+    "city": "Shanghai City",
+    "district": "Pudong New Area",
+    "streetName": "Zhang Yang Road",
+    "streetNumber": "Number One",
+    "description": "Near the basketball court I frequent, there is a fixed venue for playing basketball."
+  },
+  {
+    "name": "Jinxiu Mantang Stationery Store",
+    "location": "121.539877,31.205808",
+    "formatted_address": "Shanghai City, Shanghai Pudong New Area, Jin'an East Road, Lane 55, []",
+    "city": "Shanghai City",
+    "district": "Pudong New Area",
+    "streetName": "No. 55 Lane, East Jin'an Road",
+    "streetNumber": [],
+    "description": "The bookstore near the workplace satisfies the character's hobby of reading (historical novels)."
+  },
+  {
+    "name": "North Bund Raffles City Gift Shop",
+    "location": "121.507260,31.252638",
+    "formatted_address": "No. 999 Dongdaming Road, B2 Level, North Bund Raffles City, Shanghai",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The trendy toy store near the workplace supports the hobby of collecting character-themed blind box toys (Pop Mart)."
+  },
+  {
+    "name": "Qixia Road Chinese Restaurant",
+    "location": "121.518827,31.236946",
+    "formatted_address": "No. 100 Qixia Road (450 meters walk from Exit 3 of Pudong Avenue Metro Station)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The barbecue restaurant near the residence, used for gathering with friends for late-night snacks."
+  },
+  {
+    "name": "Tangbao Restaurant on Rushan Road",
+    "location": "121.523316,31.236085",
+    "formatted_address": "China (Shanghai) Pilot Free Trade Zone, No. 213 Rushan Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The shengjianbao shop near the residence satisfies the character's preference for shengjianbao."
+  },
+  {
+    "name": "Laoshan San-Si Village Strawberry Picking Garden",
+    "location": "121.518363,31.234220",
+    "formatted_address": "Beside the South Gate 2 of Laoshan San-Si Village",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The fruit shop near the residence is used for purchasing fresh fruit salad ingredients."
+  },
+  {
+    "name": "Pudong Lock Opening and Key Duplication Service Point",
+    "location": "121.515100,31.237360",
+    "formatted_address": "No. 1-11, Lane 101, Nanquan North Road, Pudong New Area, Shanghai, China",
+    "city": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nShanghai City",
+    "district": "Pudong New Area",
+    "streetName": "101 Lane, South Quan North Road",
+    "streetNumber": "1-11",
+    "description": "Car repair shop near the residence, used for vehicle maintenance and repairs."
+  },
+  {
+    "name": "China Construction Bank Civic Center Sub-branch",
+    "location": "121.546236,31.224222",
+    "formatted_address": "No. 2 Hehuan Road (380 meters walk from Exit 6 of Yanggao Middle Road Metro Station)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Banks near the workplace, used for daily financial transactions and wealth management."
+  },
+  {
+    "name": "Star Era Cinema (Fuhui Branch)",
+    "location": "121.545412,31.204264",
+    "formatted_address": "Room 101, Basement 16, No. 80 Yinghua Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The cinema near the workplace, used for leisure, entertainment, and social activities."
+  }
+]

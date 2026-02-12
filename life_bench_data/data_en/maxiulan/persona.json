@@ -1,0 +1,720 @@
+{
+  "name": "Ma Xiulan",
+  "birth": "1980-09-12",
+  "age": 41,
+  "nationality": "Han",
+  "home_address": {
+    "province": "Tianjin Municipality",
+    "city": "Tianjin Municipality",
+    "district": "Jinghai District",
+    "street_name": "Jingwen Road",
+    "street_number": "Number 156"
+  },
+  "birth_place": {
+    "province": "Tianjin Municipality",
+    "city": "Tianjin Municipality",
+    "district": "Jinghai District"
+  },
+  "gender": "Female",
+  "education": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nJunior high school",
+  "job": "Housewife/Part-time Gig Worker",
+  "occupation": "No fixed unit",
+  "workplace": {
+    "province": "Tianjin City",
+    "city": "Tianjin City",
+    "district": "Jinghai District",
+    "street_name": "",
+    "street_number": ""
+  },
+  "belief": "Not believing in religion",
+  "salary": 5000.0,
+  "body": {
+    "height": 165,
+    "weight": 55.0,
+    "BMI": 20.2
+  },
+  "family": "First marriage with a spouse, having 3 children.",
+  "personality": {
+    "mbti": "ISFJ",
+    "traits": [
+      "Traditional",
+      "Safety",
+      "Family-oriented"
+    ]
+  },
+  "hobbies": [
+    "Doing handicrafts (such as embroidery, weaving traditional Tianjin embroidery products)",
+    "Gathering with friends",
+    "Gathering with relatives who do not live together",
+    "Doing housework",
+    "Watch TV",
+    "Browse online for life information",
+    "Managing a Small Home Vegetable Garden",
+    "Occasionally participating in local craft markets"
+  ],
+  "favorite_foods": [
+    "Tianjin Baozi",
+    "Noodles with Gravy",
+    "Sweet and Sour Pork Tenderloin",
+    "Seasonal vegetables"
+  ],
+  "memory_date": [
+    "2005-10-01: Wedding Anniversary",
+    "2010-08-15: Birthdate of the eldest son"
+  ],
+  "aim": [
+    "Short-term family goal: Take the whole family on a trip to Beijing within a year.",
+    "Long-term financial goal: Save a family education reserve fund within five years.",
+    "Long-term life goal: Transform the home courtyard into a small garden."
+  ],
+  "healthy_desc": "I consider myself to be in good health, with no long-term chronic illnesses or disabilities. Although I do not have a regular habit of undergoing medical check-ups, I pay close attention to how my body feels and address minor ailments promptly. I rarely participate in physical exercise, but my daily household chores and family care activities involve a significant amount of physical effort, which helps maintain basic physical functions. My personal care habits are relatively traditional, with a focus on cleanliness and dietary adjustments.",
+  "lifestyle_desc": "Life revolves around family and community, characterized by a traditional and pragmatic style. The primary source of information is television, which is watched most frequently during leisure time, almost daily. Social activities are frequent, with gatherings among friends and relatives who do not live together occurring several times a month. Handicrafts, such as embroidery, are an important leisure hobby and are also practiced several times a month. Internet usage is mainly for socializing and accessing life-related information, with a frequency of about several times a month. Physical exercise or attending live sports events are never engaged in, while reading books or newspapers, shopping, and participating in cultural activities are also infrequent. There have been no overnight stays away from home for vacations or visiting relatives in the past year. The pace of life is stable, with a focus on interaction and harmony within the family.",
+  "economic_desc": "The family's financial situation is relatively tight, with a total annual household income of approximately 40,000 yuan over the past year. Among this, Ma Xiulan's personal annual income from part-time and casual work is about 5,000 yuan. The family owns a self-occupied property but does not possess a household car. There are no investment activities such as stocks, funds, or bonds. The family's finances primarily revolve around savings and covering basic living expenses, with frugal consumption habits and a focus on living within their means.",
+  "work_desc": "Currently, there is no fixed full-time job. The main responsibilities involve managing household chores and taking care of three children. Occasionally, some local manual odd jobs or seasonal farm work are taken on to supplement the family income, with irregular working hours and meager, unstable earnings. The current work-life situation, centered around the family, is generally accepted, with work primarily consisting of physical labor and household management.",
+  "experience_desc": "Ma Xiulan was born and has always lived in the Jinghai District of Tianjin, making her a native of the area with a household registration that has never been relocated. After graduating from junior high school, she worked for several years in agriculture, forestry, animal husbandry, and fishing in her hometown, primarily responsible for growing vegetables and caring for livestock. This was her first and only formal full-time job, an experience that equipped her with practical life skills. After getting married in 2005, and with the birth of her eldest son in 2010, followed by her second son and youngest daughter, she gradually shifted her focus entirely to her family, becoming a full-time homemaker. Her life journey has been relatively simple yet fulfilling, centered around her hometown, family, and community. From the hard work in the fields to the warm care of her household, her life has followed a stable and traditional path. Major life events include her marriage in 2005 and the subsequent births of her three children, which form the core of her life. She also actively participates in local community activities and maintains close relationships with her neighbors.",
+  "description": "Ma Xiulan, a 41-year-old woman from Jinghai District, Tianjin, has a junior high school education and currently prioritizes her family as a homemaker, occasionally taking on manual odd jobs. She is gentle, meticulous, and willing to give, with an MBTI personality type of ISFJ (Defender), and her values lean toward tradition, security, and family orientation. She is 165 cm tall, weighs 55 kg, has a normal BMI, and reports good health with no chronic illnesses. She has a stable family life, raising three children with her spouse. Her life revolves heavily around her family and local social circle, with her main leisure activities being watching TV, doing handicrafts (such as embroidery), and gathering with relatives and friends. She has almost no regular exercise routine but maintains physical activity through heavy household chores. Her family’s financial situation is modest, with an annual household income of approximately 40,000 yuan (of which her personal part-time income is about 5,000 yuan). They own a property but no car, have no financial investments, and practice extremely frugal spending. Her life experience is simple, having grown up in Jinghai, worked in farming in her early years, and devoted herself entirely to her family after marriage. Significant events in her life include frequent family gatherings and interactions with neighbors, as well as meticulously managing household affairs. Her future aspirations include traveling with her family, saving for her children, and beautifying her home environment.",
+  "relation": [
+    [
+      {
+        "name": "Ma Jianguo",
+        "relation": "Father",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 68,
+        "birth_date": "1956-03-22",
+        "home_address": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin Municipality",
+          "district": "Jinghai District",
+          "street_name": "Shengli Street",
+          "street_number": "Number 45"
+        },
+        "birth_place": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin City",
+          "district": "Jinghai District"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Adequate food and clothing",
+        "occupation": "Retired worker",
+        "organization": "Former Jinghai District Agricultural Machinery Factory",
+        "nickname": "Dad",
+        "relation_description": "Ma Xiulan's father, a former worker at an agricultural machinery factory before retirement, is a steady and reserved man who doesn't speak much but deeply cares for his family. He has always lived in the Jinghai District, residing in the old house with his wife. Ma Xiulan visits her parents once or twice a week with her children, helping with household chores, sharing meals, and chatting together. Occasionally, her father visits his daughter's home to repair household items or check on his grandchildren's schoolwork. Their father-daughter relationship is traditional yet close, with conversations often revolving around family matters and children's education."
+      },
+      {
+        "name": "Li Xiuying",
+        "relation": "Mother",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 66,
+        "birth_date": "1958-08-15",
+        "home_address": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin City",
+          "district": "Jinghai District",
+          "street_name": "Shengli Street",
+          "street_number": "Number 45"
+        },
+        "birth_place": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin Municipality",
+          "district": "Jinghai District"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Adequate food and clothing",
+        "occupation": "Retired housewife",
+        "organization": "None",
+        "nickname": "Mom",
+        "relation_description": "Ma Xiulan's mother, a typical homemaker, is diligent and warm-hearted, serving as the emotional core of the family. She lives with her husband and keeps the household in perfect order. Ma Xiulan has been deeply influenced by her mother, inheriting many domestic skills and traditional values from her. The mother and daughter maintain a very close connection, speaking on the phone almost daily to discuss family matters, updates about the children, and neighborhood news. Ma Xiulan often seeks her mother's advice on cooking and handicrafts, while her mother frequently visits to help care for her grandchildren. Their bond is exceptionally strong, providing each other with the most vital emotional support."
+      },
+      {
+        "name": "Ma Zhiqiang",
+        "relation": "Spouse",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 43,
+        "birth_date": "1981-05-18",
+        "home_address": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin Municipality",
+          "district": "Jinghai District",
+          "street_name": "Jingwen Road",
+          "street_number": "No. 156"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "city": "Cangzhou City",
+          "district": "Qing County"
+        },
+        "personality": "ISTP",
+        "economic_level": "Food and clothing",
+        "occupation": "Truck Driver",
+        "organization": "A logistics company in Tianjin",
+        "nickname": "The child's father",
+        "relation_description": "Ma Xiulan's husband is pragmatic and skilled with his hands, though he speaks little. He primarily works in transportation within Tianjin and its surrounding areas, with a busy schedule that sometimes requires overnight stays away from home. He is the main economic pillar of the family. The couple met through an introduction and married in 2005, sharing a stable relationship with a traditional dynamic. Their daily conversations often revolve around their children, household expenses, and work. When at home, Ma Zhiqiang helps with heavy chores and is relatively strict about their children's education. Together, they manage their household. Though they rarely express romance, they rely on each other and form a solid partnership in life."
+      },
+      {
+        "name": "Ma Mingxuan",
+        "relation": "Son",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 13,
+        "birth_date": "2010-08-15",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin City",
+          "district": "Jinghai District",
+          "street_name": "Jingwen Road",
+          "street_number": "No. 156"
+        },
+        "birth_place": {
+          "province": "Tianjin City",
+          "city": "Tianjin City",
+          "district": "Jinghai District"
+        },
+        "personality": "INTP",
+        "economic_level": "No income",
+        "occupation": "Junior high school students",
+        "organization": "A certain middle school in Jinghai District",
+        "nickname": "Xuanxuan",
+        "relation_description": "Ma Xiulan's eldest son is currently in the second year of middle school. He has a somewhat introverted personality, enjoys quiet environments, and is interested in mathematics and science. As the eldest child in the family, he sometimes helps take care of his younger siblings. Ma Xiulan is very attentive to his studies, supervising his homework daily, though occasional minor disagreements arise due to his adolescent rebelliousness. Their daily conversations mainly revolve around school life and daily routines. Ma Mingxuan has a relatively formal relationship with his father but is closer to his mother, serving as an important emotional support and helper for her."
+      },
+      {
+        "name": "Ma Mingzhe",
+        "relation": "Son",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 10,
+        "birth_date": "2013-11-05",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin Municipality",
+          "district": "Jinghai District",
+          "street_name": "Jingwen Road",
+          "street_number": "Number 156"
+        },
+        "birth_place": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin City",
+          "district": "Jinghai District"
+        },
+        "personality": "ESFP",
+        "economic_level": "No income",
+        "occupation": "Elementary school students",
+        "organization": "A certain primary school in Jinghai District",
+        "nickname": "Zhe Zhe",
+        "relation_description": "The second son of Ma Xiulan, a fourth-grade elementary school student. He is lively and energetic, serving as the family's little ray of sunshine, and enjoys playing outdoors with his classmates. Ma Xiulan needs to invest more effort in supervising him, urging him to complete his homework and stay safe. The mother-son relationship is close and casual, with Ma Xiulan often amused by him but also troubled by his mischievous antics. He loves sticking close to his mother, adding a touch of brightness to Ma Xiulan's busy daily life. His relationship with his older brother fluctuates—they often squabble but also play together."
+      },
+      {
+        "name": "Ma Yuxin",
+        "relation": "Daughter",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 6,
+        "birth_date": "2017-04-23",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin Municipality",
+          "district": "Jinghai District",
+          "street_name": "Jingwen Road",
+          "street_number": "Number 156"
+        },
+        "birth_place": {
+          "province": "Tianjin City",
+          "city": "Tianjin Municipality",
+          "district": "Jinghai District"
+        },
+        "personality": "ENFJ",
+        "economic_level": "No income",
+        "occupation": "Kindergarten student",
+        "organization": "A certain kindergarten in Jinghai District",
+        "nickname": "Xinxin",
+        "relation_description": "Ma Xiulan's youngest daughter is currently in the senior class of kindergarten. She is well-behaved, sensible, and sweet-talking, deeply cherished by the entire family. Ma Xiulan spends a lot of time with her, teaching her to read and do crafts. The daughter is Ma Xiulan's \"little cotton-padded jacket,\" often following her mother around and imitating her in doing household chores. The mother-daughter relationship is extremely close, with no topic left undiscussed. Ma Yuxin also enjoys playing with her two older brothers, and though she is often \"disdained\" by them, she never tires of it. She is an important bond that brings the family atmosphere together."
+      },
+      {
+        "name": "Li Xiuyun",
+        "relation": "Sister",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 45,
+        "birth_date": "1978-12-30",
+        "home_address": {
+          "province": "Beijing",
+          "city": "Beijing",
+          "district": "Daxing District",
+          "street_name": "Huangcun Town, Kangzhuang Road",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin City",
+          "district": "Jinghai District"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Supermarket Store Manager",
+        "organization": "A chain supermarket in Beijing",
+        "nickname": "Elder sister",
+        "relation_description": "Ma Xiulan's elder sister married into a family in Beijing at an early age. She is capable and ambitious in her career. The two sisters have been very close since childhood, but after growing up, they have met less frequently due to living in different cities. Nowadays, they mainly stay in touch through WeChat video calls and phone calls, about once a week, chatting about their children, parents, and the troubles and joys in their respective lives. Li Xiuyun is well-informed and often shares new information or affordable online shopping finds with Ma Xiulan. Ma Xiulan's desire to travel to Beijing partly stems from her wish to visit her sister. Every year during the Spring Festival or the National Day holiday, Li Xiuyun returns to Jinghai, Tianjin, with her family for a reunion, which is the liveliest time for the two sisters."
+      },
+      {
+        "name": "Ma Xiufen",
+        "relation": "Sister",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 38,
+        "birth_date": "1985-07-08",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin Municipality",
+          "district": "Binhai New Area",
+          "street_name": "Tanggu Street, Shanghai Road",
+          "street_number": "No. 210"
+        },
+        "birth_place": {
+          "province": "Tianjin City",
+          "city": "Tianjin City",
+          "district": "Jinghai District"
+        },
+        "personality": "ENFP",
+        "economic_level": "Adequate food and clothing",
+        "occupation": "Clothing Store Salesperson",
+        "organization": "A clothing store in the Binhai New Area",
+        "nickname": "Fen'er",
+        "relation_description": "Ma Xiulan's younger sister married into the Tianjin Binhai New Area. She has a cheerful personality and loves dressing up. Although they both live in Tianjin, one is in Jinghai and the other in Binhai, with a drive of over an hour between them, so they don’t meet very frequently—only about once or twice a month. Ma Xiufen often visits her parents in Jinghai and stops by her sister’s house, bringing snacks or clothes for her nieces and nephews. The two sisters stay closely connected, frequently sharing snippets of their lives and venting about family matters through WeChat. Ma Xiufen has a broader perspective than her sister and often takes her shopping in the city, making her an important peer companion and confidante for Ma Xiulan. The two also often arrange to go back to their parents’ home for meals together."
+      }
+    ],
+    [
+      {
+        "name": "Wang Guilan",
+        "relation": "Neighbor",
+        "social circle": "Neighborhood Circle",
+        "gender": "Female",
+        "age": 58,
+        "birth_date": "1966-03-22",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin City",
+          "district": "Jinghai District",
+          "street_name": "Jingwen Road",
+          "street_number": "Number 158"
+        },
+        "birth_place": {
+          "province": "Hebei Province",
+          "city": "Cangzhou City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Food and clothing",
+        "occupation": "Retired worker",
+        "organization": "Former Jinghai District Textile Factory",
+        "nickname": "Sister Wang",
+        "relation_description": "Wang Guilan is a neighbor living across from Ma Xiulan's house and has resided on Jingwen Road for nearly thirty years. The two became acquainted through mutual neighborhood assistance. After retiring, Wang Guilan, with ample free time, often shares homegrown vegetables with Ma Xiulan or spends time chatting together in the sun at their doorsteps. Their routine involves frequent visits to each other’s homes, sharing homemade dishes, and exchanging community gossip. They often connect over topics such as children’s education, household chores, or when needing temporary help with looking after things. Their interactions typically take place in each other’s homes or at their doorsteps, where they engage in casual conversations, make simple pickled vegetables together, or work on handicrafts. Both live in the Jinghai District and maintain very frequent contact, meeting or having brief conversations almost every day. They serve as an essential community support network in each other’s lives."
+      },
+      {
+        "name": "Zhang Shufen",
+        "relation": "Neighbor",
+        "social circle": "Neighborhood Circle",
+        "gender": "Female",
+        "age": 45,
+        "birth_date": "1979-07-15",
+        "home_address": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin City",
+          "district": "Jinghai District",
+          "street_name": "Jingwen Road",
+          "street_number": "No. 154"
+        },
+        "birth_place": {
+          "province": "Tianjin City",
+          "city": "Tianjin Municipality",
+          "district": "Nankai District"
+        },
+        "personality": "ISFP",
+        "economic_level": "Moderately prosperous",
+        "occupation": "Sole Proprietor",
+        "organization": "Shufen Convenience Supermarket",
+        "nickname": "Shufen",
+        "relation_description": "Zhang Shufen is a neighbor living diagonally across from Ma Xiulan's house, running a small supermarket on Jingwen Road. The two became acquainted through daily shopping and community activities. Zhang Shufen has a gentle personality, and her supermarket often serves as an information exchange hub for the neighborhood. Their routine interactions involve Ma Xiulan chatting with her while shopping at the supermarket or taking evening walks together in the community’s open spaces. They usually contact each other for daily necessities, community event notifications, or when temporary childcare is needed. Meetings typically take place at the supermarket or in public areas of the community, with activities including shopping and casual conversations, sharing parenting experiences, or participating in festive events organized by the community. Both reside in Jinghai District and maintain frequent contact, meeting several times a week. Zhang Shufen’s supermarket provides considerable convenience for Ma Xiulan’s family life, and their relationship is harmonious while maintaining an appropriate neighborly distance."
+      }
+    ],
+    [
+      {
+        "name": "Liu Chunmei",
+        "relation": "Childhood friend",
+        "social circle": "Childhood/Elementary School Classmates Circle",
+        "gender": "Female",
+        "age": 41,
+        "birth_date": "1980-05-23",
+        "home_address": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin City",
+          "district": "Jinghai District",
+          "street_name": "Shengli Street",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin City",
+          "district": "Jinghai District"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Food and clothing",
+        "occupation": "Supermarket Stock Clerk",
+        "organization": "Jinghai District Hualian Supermarket",
+        "nickname": "Chunmei",
+        "relation_description": "Liu Chunmei is Ma Xiulan's childhood friend whom she has known since first grade. They grew up together in the Jinghai District and were each other's most important playmates during their childhood. After graduating from junior high school, Liu Chunmei began working at a local supermarket, where she has remained ever since, while Ma Xiulan got married and focused on managing her household. Although their life paths diverged, they have maintained a deep friendship. They still live in the same district, not far from each other, and keep in touch daily through WeChat, sharing family updates and amusing anecdotes from their lives. On average, they meet up every two weeks—sometimes spending afternoons at each other's homes, chatting over tea and doing crafts together (such as exploring new embroidery patterns), and other times going to the local market or attending temple fairs. Their connection is effortless, requiring no specific reason to stay in touch, and they remain a stable and warm presence in each other's lives."
+      }
+    ],
+    [
+      {
+        "name": "Zhao Xiaohong",
+        "relation": "Elementary school classmates",
+        "social_circle": "Elementary School Classmates Circle",
+        "gender": "Female",
+        "age": 41,
+        "birth_date": "1980-05-23",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin City",
+          "district": "Jinghai District",
+          "street_name": "Shengli Avenue",
+          "street_number": "Number 88"
+        },
+        "birth_place": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin City",
+          "district": "Jinghai District"
+        },
+        "personality": "ESFJ",
+        "economic_level": "medium",
+        "occupation": "Supermarket cashier",
+        "organization": "Jinghai District Hualian Supermarket",
+        "nickname": "Xiao Hong",
+        "relation_description": "Zhao Xiaohong is Ma Xiulan's elementary school classmate; the two have known each other since childhood and grew up together in Jinghai District. Although they did not attend the same school after elementary school, they have maintained contact and remain among each other's most familiar old friends. Zhao Xiaohong currently works at a local supermarket and is known for her cheerful and warm-hearted personality. They communicate about once or twice a month, mainly through WeChat chats or phone calls, sharing daily life updates and occasional worries. When meeting in person, they usually arrange to visit each other's homes or meet at small restaurants in town, where they enjoy meals, conversations, and reminiscing about the past. Occasionally, they also go to local markets or participate in community activities together. Since both live in Jinghai District, meeting up is relatively convenient, but due to their respective family and work commitments, gatherings are not frequent."
+      }
+    ],
+    [
+      {
+        "name": "Sun Lihua",
+        "relation": "Junior high school classmates",
+        "social circle": "Junior High School Classmate Circle",
+        "gender": "Female",
+        "age": 41,
+        "birth_date": "1980-05-23",
+        "home_address": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin Municipality",
+          "district": "Jinghai District",
+          "street_name": "Shengli Street",
+          "street_number": "Number 88"
+        },
+        "birth_place": {
+          "province": "Tianjin City",
+          "city": "Tianjin City",
+          "district": "Jinghai District"
+        },
+        "personality": "ESFJ",
+        "economic_level": "medium",
+        "occupation": "Supermarket Stock Clerk",
+        "organization": "Jinghai District Hualian Supermarket",
+        "nickname": "Lihua",
+        "relation_description": "Sun Lihua is Ma Xiulan's middle school classmate, and the two have had a close relationship since their student days. After graduation, both stayed in the Jinghai District to live. They maintain contact through their mutual friend Chen Yulan, forming a stable small circle of middle school classmates. Nowadays, they mainly stay connected through chatting in a WeChat group and occasional offline gatherings, with a frequency of about once or twice a month. When they meet, they often go grocery shopping together, engage in handicrafts (such as exchanging embroidery techniques), or simply have tea and chat. Their conversations mostly revolve around family, children, and local daily life matters. Since they live in the same district, meeting up is relatively convenient, but due to their busy family lives, the timing of their gatherings is not fixed."
+      },
+      {
+        "name": "Chen Yulan",
+        "relation": "Junior high school classmates",
+        "social circle": "Junior High School Classmate Circle",
+        "gender": "Female",
+        "age": 42,
+        "birth_date": "1979-12-10",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "city": "Tangshan City",
+          "district": "Lubei District",
+          "street_name": "Jianshe North Road",
+          "street_number": "No. 210"
+        },
+        "birth_place": {
+          "province": "Tianjin City",
+          "city": "Tianjin City",
+          "district": "Jinghai District"
+        },
+        "personality": "ENFP",
+        "economic_level": "Medium",
+        "occupation": "Clothing store owner",
+        "organization": "Yulan Clothing Store",
+        "nickname": "Magnolia",
+        "relation_description": "Chen Yulan is a middle school classmate of Ma Xiulan and Sun Lihua, and she is also an active member of their trio of close friends. After graduating from middle school, she briefly worked in Tianjin before moving to Tangshan, Hebei, due to marriage. With a cheerful personality, she serves as the contact person in their circle of classmates, often initiating topics or organizing online activities in their WeChat group. Due to the distance, she has fewer opportunities to meet Ma Xiulan and Sun Lihua in person, usually gathering once or twice a year when she returns to Jinghai to visit family during the Spring Festival. On a regular basis, they mainly stay in touch through WeChat video calls and group chats, with a high frequency of communication—almost every week, they share updates about their lives, photos of their children, or discuss handicraft projects in the group. Chen Yulan runs her own small clothing store and occasionally sends fabrics or small accessories to Ma Xiulan for her handicraft work."
+      }
+    ],
+    [
+      {
+        "name": "Zhou Xiuqin",
+        "relation": "Craftsmanship Friends",
+        "social_circle": "Craftsmanship Circle",
+        "gender": "Female",
+        "age": 45,
+        "birth_date": "1979-05-23",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin Municipality",
+          "district": "Jinghai District",
+          "street_name": "Shengli Avenue",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin City",
+          "district": "Jinghai District"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Food and clothing",
+        "occupation": "Craftsman/Part-time Housekeeper",
+        "organization": "No fixed unit",
+        "nickname": "Sister Xiuqin",
+        "relation_description": "Zhou Xiuqin is a friend Ma Xiulan met at a local handicraft market, and they bonded over their shared passion for traditional embroidery. Having known each other for five years, they often exchange stitching techniques, share patterns, and sometimes collaborate on larger embroidery orders. Both live in the Jinghai District, not far from each other, and typically meet once or twice a month—either at each other's homes for tea and embroidery work or together at the market to set up stalls. They stay in frequent contact, sharing newly discovered patterns or chatting about daily life on WeChat almost every week. During their meetings, besides working on handicrafts, they also exchange parenting tips and local life information, serving as important leisure companions and supporters in each other's lives."
+      },
+      {
+        "name": "Aunt Wu",
+        "relation": "Craftsmanship Friends",
+        "social_circle": "Handicraft Circle",
+        "gender": "Female",
+        "age": 58,
+        "birth_date": "1966-12-08",
+        "home_address": {
+          "province": "Hebei Province",
+          "city": "Cangzhou City",
+          "district": "Renqiu City",
+          "street_name": "Jianshe West Road",
+          "street_number": "No. 203"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "city": "Cangzhou City",
+          "district": "Renqiu City"
+        },
+        "personality": "ISFP",
+        "economic_level": "Food and clothing",
+        "occupation": "Retired Employee / Handicraft Enthusiast",
+        "organization": "Former Renqiu City Textile Factory (retired)",
+        "nickname": "Aunt Wu",
+        "relation_description": "Aunt Wu is an online friend whom Ma Xiulan and Zhou Xiuqin met in a craft enthusiasts group. She is highly respected for her exquisite crochet skills and enthusiastic willingness to share her knowledge. Before retiring, she worked in a textile factory and is very familiar with fiber materials. Although she lives in Cangzhou, Hebei, separated from Xiulan and Xiuqin in Tianjin, they have formed a close \"craft circle\" through the internet. Aunt Wu serves as the \"technical advisor\" of this small group, often providing remote guidance via video calls to help them solve craft-related challenges. They manage to meet in person once or twice a year, usually when Aunt Wu visits relatives in Tianjin. On such occasions, the three make a point to get together, exploring markets, sharing meals, and exchanging their creations. In their daily lives, they primarily stay connected through a WeChat group, where they share progress updates and chat about everyday matters each week. This cross-regional friendship has enriched their lives in meaningful ways."
+      }
+    ],
+    [
+      {
+        "name": "Zheng Xiuying",
+        "relation": "Part-time Job Referrer",
+        "social circle": "Gig/Community Information Circle",
+        "gender": "Female",
+        "age": 48,
+        "birth_date": "1976-05-23",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin City",
+          "district": "Jinghai District",
+          "street_name": "Shengli Street",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "city": "Cangzhou City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Medium",
+        "occupation": "Community Grid Worker",
+        "organization": "Community Service Center of a Certain Street in Jinghai District",
+        "nickname": "Sister Zheng",
+        "relation_description": "Zheng Xiuying was introduced to Ma Xiulan through community activities. Known for her warm-heartedness and extensive connections, she often helps neighbors by recommending small manual tasks or seasonal short-term jobs. The two met five years ago at a community handicraft market, and since then, Sister Zheng has become Ma Xiulan's primary source for part-time job information. Their interactions are natural, often revolving around topics like family, children, and community matters. As they both live in Jinghai District, they meet once or twice a month, sometimes chatting casually when they run into each other at the market, and other times when Sister Zheng visits Ma Xiulan's home to deliver craft materials or inform her about job opportunities. Their communication mainly takes place via WeChat and phone calls, with a frequency of about once a week. Sister Zheng has an outgoing personality and is always eager to help others, playing a key role as an information hub in Ma Xiulan's network for short-term jobs."
+      }
+    ],
+    [
+      {
+        "name": "Han Mei",
+        "relation": "Head Teacher of the Eldest Son",
+        "social_circle": "Parents' Circle",
+        "gender": "Female",
+        "age": 38,
+        "birth_date": "1986-03-15",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin Municipality",
+          "district": "Jinghai District",
+          "street_name": "Dongfanghong Road",
+          "street_number": "Room 502, Building 3, Teacher's Apartments"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "city": "Cangzhou City"
+        },
+        "personality": "ENFJ",
+        "economic_level": "Medium",
+        "occupation": "Primary School Teacher",
+        "organization": "Jinghai District Experimental Primary School",
+        "nickname": "Teacher Han",
+        "relation_description": "Han Mei is the homeroom teacher of Ma Xiulan's eldest son, and they met through a parent-teacher conference. Ms. Han is enthusiastic and responsible, often sharing updates about the children's school life and educational insights in the parent group chat. Ma Xiulan is highly attentive to her child's studies, regularly communicating with Ms. Han via WeChat or phone calls, and attends at least one parent-teacher conference each semester. Their meetings primarily focus on the child's academic progress and school performance, occasionally touching on topics related to family education. Both live in the Jinghai District and maintain contact approximately once or twice a month."
+      },
+      {
+        "name": "Yang Jianguo",
+        "relation": "Second child's homeroom teacher",
+        "social_circle": "Parent Circle",
+        "gender": "Male",
+        "age": 42,
+        "birth_date": "1982-08-22",
+        "home_address": {
+          "province": "Tianjin Municipality",
+          "city": "Tianjin City",
+          "district": "Hexi District",
+          "street_name": "Friendship Road",
+          "street_number": "Room 301, Building 12, Sunshine Community"
+        },
+        "birth_place": {
+          "province": "Tianjin City",
+          "city": "Tianjin Municipality",
+          "district": "Heping District"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Medium",
+        "occupation": "Primary School Teacher",
+        "organization": "Jinghai District Yucai Primary School",
+        "nickname": "Teacher Yang",
+        "relation_description": "Yang Jianguo is the homeroom teacher of Ma Xiulan's second son, known for his rigorous and meticulous teaching style. Since Mr. Yang lives in the Hexi District of the city, which is some distance from Ma Xiulan's location in Jinghai District, daily communication is primarily conducted via phone calls and WeChat, with parent-teacher meetings each semester serving as the main occasions for face-to-face interaction. Ma Xiulan respects Mr. Yang's professional opinions and often consults him on issues such as her child's introverted personality and study habits. Mr. Yang and Teacher Han Mei both work within the Jinghai District education system and are acquainted with each other. They occasionally exchange information about their respective students during district-wide teaching and research activities. Ma Xiulan contacts Mr. Yang approximately two to three times per semester, mainly around exam periods and matters requiring collaboration between home and school."
+      }
+    ],
+    [
+      {
+        "name": "Sun Guifang",
+        "relation": "Stall owner at a vegetable market",
+        "social circle": "Daily Procurement Circle",
+        "gender": "Female",
+        "age": 58,
+        "birth_date": "1966-03-22",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin City",
+          "district": "Jinghai District",
+          "street_name": "Shengli Street",
+          "street_number": "Number 43"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "city": "Cangzhou City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Having adequate food and clothing",
+        "occupation": "Self-employed individual",
+        "organization": "Jinghai District Xingwang Vegetable Market",
+        "nickname": "Aunt Sun",
+        "relation_description": "Aunt Sun is the vegetable vendor at the market whom Ma Xiulan frequently visits, and they have known each other for seven or eight years. Ma Xiulan goes to her stall to buy vegetables almost every one or two days, and over time, they have become quite familiar. Aunt Sun is warm-hearted and cheerful, often rounding down the price for regular customers or throwing in a handful of scallions. When they meet, aside from transactions, they also chat about daily life, their children’s recent updates, and local prices. Both live in the Jinghai District, so they see each other frequently—almost daily or every other day at the market. Beyond business, they have developed a neighborly trust and familiarity."
+      }
+    ],
+    [
+      {
+        "name": "Liu Jianguo",
+        "relation": "Community Electrician and Plumber",
+        "social_circle": "Community Service Circle",
+        "gender": "Male",
+        "age": 48,
+        "birth_date": "1976-03-15",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin City",
+          "district": "Jinghai District",
+          "street_name": "Shengli Street",
+          "street_number": "Number 88"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "city": "Cangzhou City"
+        },
+        "personality": "ISTP",
+        "economic_level": "Food and clothing",
+        "occupation": "Individual Hydropower Maintenance Worker",
+        "organization": "No fixed unit",
+        "nickname": "Master Liu",
+        "relation_description": "Master Liu is a well-known independent plumber and electrician in Ma Xiulan's community, known for his reliability, diligence, and dependable skills. About five years ago, when the kitchen water pipe in Ma Xiulan's home burst, she was introduced to Master Liu by a neighbor. He promptly came to fix the issue and charged a fair price, establishing trust from then on. Since then, whenever minor problems like circuit trips or water leaks occurred, Ma Xiulan would directly call Master Liu. He would usually visit on the same day or the next, and during repairs, they would chat briefly about daily life, with Master Liu becoming quite familiar with Ma Xiulan's household. In addition to repairs, Master Liu occasionally helps elderly residents in the community by inspecting their electrical wiring for free. Their interactions are infrequent, occurring only a few times a year and limited to repair needs. Both live in Jinghai District but have no other social interactions in daily life."
+      }
+    ],
+    [
+      {
+        "name": "Wang Jianguo",
+        "relation": "Community clinic doctor",
+        "social circle": "Medical Circle",
+        "gender": "Male",
+        "age": 48,
+        "birth_date": "1976-03-22",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin Municipality",
+          "district": "Jinghai District",
+          "street_name": "Shengli Street",
+          "street_number": "Number 88"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "city": "Cangzhou City"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Well-off",
+        "occupation": "General Practitioner",
+        "organization": "Jingwen Road Community Health Service Center, Jinghai District",
+        "nickname": "Dr. Wang",
+        "relation_description": "Dr. Wang is a general practitioner at the community clinic in Ma Xiulan’s neighborhood, and the two have known each other for five years. Ma Xiulan visits him at the clinic when her child has a cold or fever, or when a family member occasionally feels unwell. Dr. Wang is patient and meticulous, familiar with the conditions of long-term patients in the community, and takes their financial situation into consideration when prescribing medication. They mainly meet at the clinic, not very frequently—about once or twice every quarter. Dr. Wang is a local of Jinghai, though his ancestral hometown is in Hebei. Besides working at the clinic, he actively participates in community health lectures. Ma Xiulan trusts him greatly and regards him as a reliable guardian of community health."
+      }
+    ],
+    [
+      {
+        "name": "Li Xiuying",
+        "relation": "Distant cousin (paternal aunt)",
+        "social_circle": "Relative circle",
+        "gender": "Female",
+        "age": 68,
+        "birth_date": "1956-03-22",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin City",
+          "district": "Jinghai District",
+          "street_name": "Shengli Avenue",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "city": "Cangzhou City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Having adequate food and clothing",
+        "occupation": "Retired worker",
+        "organization": "Former Jinghai District Textile Factory",
+        "nickname": "Aunt Li",
+        "relation_description": "Li Xiuying is a distant cousin of Ma Xiulan's mother. Both families live in the Jinghai District and frequently visit each other. Ma Xiulan has called her \"Aunt Li\" since childhood. Before retiring, Aunt Li worked in a textile factory. She is warm-hearted and enjoys organizing family gatherings. The two met at such a family event, and their relationship is characterized by Aunt Li's caring attitude as an elder, often inquiring about Ma Xiulan's family and children. They usually get in touch due to family matters, festivals, or neighborhood news. Their meetings typically take place at either Ma Xiulan's or Aunt Li's home, where they cook, chat, and share handicraft skills. Both still live in the same city, maintaining contact primarily through phone calls and visits, with a frequency of about once or twice a month."
+      }
+    ],
+    [
+      {
+        "name": "Zhao Jianguo",
+        "relation": "Husband's colleague",
+        "social_circle": "Spouse's Work Circle",
+        "gender": "Male",
+        "age": 45,
+        "birth_date": "1979-03-22",
+        "home_address": {
+          "province": "Tianjin City",
+          "city": "Tianjin Municipality",
+          "district": "Jinghai District",
+          "street_name": "Shengli Street",
+          "street_number": "Number 88"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "city": "Cangzhou City"
+        },
+        "personality": "ESTP",
+        "economic_level": "Medium",
+        "occupation": "Workshop Team Leader",
+        "organization": "A certain machinery processing factory in Jinghai District.",
+        "nickname": "Brother Zhao",
+        "relation_description": "Zhao Jianguo is a colleague and close friend of Ma Xiulan's husband at the machining factory, having worked together in the same workshop for over ten years. Ma Xiulan got to know Zhao Jianguo through her husband's factory gatherings and occasional family visits. Zhao Jianguo has an outgoing and cheerful personality, often being the life of the party. Sometimes, he would bring vegetables from his own garden or fish he caught to visit Ma Xiulan's home. Both families live in the Jinghai District, not far from each other, and they stay in touch about once or twice a month. Most of the contact is between her husband and Zhao Jianguo, discussing work or planning weekend fishing trips. Occasionally, the two families get together for simple meals during holidays. Ma Xiulan has a good impression of him, considering him sincere and responsible toward his family."
+      }
+    ]
+  ]
+}

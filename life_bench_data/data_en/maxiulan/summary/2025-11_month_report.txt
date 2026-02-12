@@ -1,0 +1,88 @@
+Your Monthly Summary is as follows:
+
+**Monthly Overview**
+
+*   **Basic Information**: 41 years old, female, occupation: Homemaker / Artisan.
+*   **Total Physical Activity**:
+    *   Baduanjin: 25 sessions / 250 minutes
+    *   Household Chores (Moderate-to-Vigorous Intensity): Estimated 30 days / 4500 minutes
+    *   Walking (Commuting/Errands): Estimated 22 sessions / 1100 minutes
+    *   Total Monthly Activity: Total sessions >77, total duration approx. 5850 minutes. Your primary "exercise" stems from high-intensity household labor and regular health-focused practice (Baduanjin).
+*   **Health Status Summary**:
+    *   Health Score (Event-based Inference): Focus on disease prevention (vaccination) at month's start, development of proactive health habits (Baduanjin) by month's end. Overall health awareness and behavior scores show an upward trend.
+    *   Core Tags: "Micro-business" launch brings pressure and sense of achievement; "Parent-child relationship" faces challenges and undergoes optimization; "Self-care" awareness awakens and leads to action.
+    *   Overall Health Rating: **Good**. Physical function maintained well through labor; mental health experienced fluctuations but regained balance through active adjustment.
+*   **Key Events**:
+    *   Fitness/Health Milestones: Maintained Baduanjin practice throughout the month; Successfully completed first self-hair dye on Nov 28th, achieving a breakthrough in self-image management.
+    *   Health Metric Fluctuation: Significant emotional low and delayed sleep on Nov 13th due to parent-child conflict.
+    *   Major Life Changes: Signed community embroidery order on Nov 4th, launching "micro-business"; Successfully delivered large order on Nov 25th, gaining significant professional recognition and financial reward.
+*   **Goal Completion Status**:
+    *   Set Goals (Behavior-based Inference): Establish Baduanjin habit, complete community order, improve parent-child communication.
+    *   Completion Rate: Baduanjin practiced consistently all month, 100% completion; Community order delivered on time with high quality, 100% completion; Parent-child communication significantly improved through establishing and trialing family rules, approx. 90% completion.
+    *   Reasons for Incompletion: Fully optimizing parent-child communication is a long-term process, still under continuous exploration and practice.
+*   **Core Changes vs. Last Month** (Based on lifestyle description inference):
+    *   **Physical Activity**: Added regular Baduanjin practice (+250 min/month); Household chore duration increased due to orders (estimated +15% month-over-month); Walking duration increased due to shopping trips and accompanying mother on outings.
+    *   **Health Metrics**: Shoulder/neck soreness alleviated due to Baduanjin, with improvements in body flexibility and mental state; Weight remained stable (monthly fluctuation ±0.5kg).
+    *   **Life Rhythm**: Work intensity significantly increased due to order acceptance, estimated screen time (for communication, learning) increased by 20% month-over-month; Effectively controlled later rhythm through process optimization and family collaboration.
+*   **Core Focus Areas**: High-frequency focus this month on improving parent-child relationship, progress and quality of handicraft orders, and self-health/image management through Baduanjin and hair dyeing.
+
+**Monthly Review**
+
+**2.1 Activity Review**
+*   **Activity Overview**:
+    *   Activity Types & Proportions: Household chores (~39%), Baduanjin (~32%), Walking (~19%), Handicraft work (sedentary, ~10%).
+    *   Activity Intensity Distribution: Z1 Low Intensity (Baduanjin, Walking) ~22.5 hours; Z2 Moderate Intensity (cleaning, carrying) ~75 hours; Z3 High Intensity (flow state during concentrated order work, intense emotional fluctuations) proportion small.
+*   **Activity Statistics & Best Performance**:
+    *   **Baduanjin**: Total duration 250 minutes, longest single session 20 minutes (Nov 1st), movement completion improved daily.
+    *   **Household Chores**: Total duration ~4500 minutes, longest single-day continuous labor 3 hours (Nov 9th, pickling winter vegetables), encompassing multi-dimensional physical output like cleaning, carrying, cooking.
+    *   **Walking**: Total duration ~1100 minutes, longest single continuous walk 1.5 hours (Nov 18th, accompanying mother on outing), average daily non-exercise steps ~3800.
+*   **Activity Habit Preferences**:
+    *   Days with highest weekly activity frequency: **Saturday, Sunday**. Family assistance with chores allows you more complete time blocks for Baduanjin and concentrated order work.
+    *   High-frequency daily activity periods: **Morning (6:00-7:30)**, primarily for Baduanjin (60%); **Afternoon (14:00-17:00)**, primarily for chores and handicraft work.
+    *   Activity Locations: Entirely **at home and within the community**, including own yard, living room, parents' home, and community streets.
+    *   Activity Consistency: Baduanjin practice **continued for 30 consecutive days** without break. Weather (Nov 5th), order pressure (Nov 15th), or emotional impact (Nov 13th) led to **3 days** without dedicated exercise, but basic chore activity was maintained on those days.
+
+**2.2 Health Review**
+*   **Sleep**:
+    *   Average Daily Sleep Duration: Weekdays ~6.5 hours, weekends ~7 hours. Monthly average ~6.6 hours.
+    *   Sleep Stage Distribution (based on routine regularity inference): Falls into deep sleep relatively quickly after falling asleep, but due to occasionally needing to check on family at night, light sleep proportion is relatively high, estimated deep sleep proportion ~18-20%.
+    *   Routine Stability: Weekday bedtime fluctuates between 22:20-23:50, wake-up time between 6:00-6:40; Weekend bedtime slightly later (22:30-23:40), wake-up slightly later (6:50-7:20). Overall routine is relatively regular.
+    *   Sleep Interruptions: Average ~0.5 times per day, mainly for checking on children or elderly family members at night.
+*   **Physiological Metrics**:
+    *   Weight: Start of month 53.5kg, end of month 53.3kg, monthly average 53.7kg. Largest fluctuation on Nov 13th (53.9kg, due to emotional eating), overall slight downward trend (-0.2kg).
+    *   Body Fat Percentage (based on BMI & activity inference): Possibly slight decrease or stable due to added Baduanjin (mild muscle activation) and household chores.
+    *   Resting Heart Rate (inferred): Daily average ~65-70 bpm. Possibly rose above 75 bpm on Nov 13-14 due to emotional stress, showed downward trend in late November due to Baduanjin and stress relief.
+    *   HRV (Heart Rate Variability, inferred): Daily average moderate. Showed downward trend in weeks 2-3 due to order pressure and parent-child conflict, gradually recovered in week 4 as issues resolved and habits solidified.
+*   **Mental Health**:
+    *   Stress: Daily average stress level 5/10. High-stress periods: **Nov 10-15** (stress level 7-8/10), sources: order delivery pressure and parent-child conflict; **Nov 25** around delivery (stress level 6/10).
+    *   Mood: Predominant mood tags: "Calm", "Fulfilled". Mood fluctuation periods: **Nov 13th** felt "sad, helpless" due to conflict; **Nov 18th, 28th** felt "relieved, confident" due to successfully accompanying mother and completing hair dye.
+    *   Health Score (comprehensive inference): Daily average score 7.5/10. Lowest score ~5/10 on Nov 13th, highest scores ~9/10 on Nov 25th (order delivery) and Nov 30th (month-end reflection).
+
+**2.3 Life Rhythm Review**
+*   **Sleep/Wake Habits**: Average daily bedtime 23:05, average daily wake-up time 06:30. Weekends average 20 minutes later bedtime and 40 minutes later wake-up than weekdays. Total of 7 days with disrupted routine (bedtime after 23:30), mainly due to order rush, studying parenting, or social gatherings.
+*   **Commute/Activity**: Average daily non-exercise steps 3800. Highest step week: Week 3 (~4500 steps/day, due to multiple shopping trips and accompanying mother). Lowest: Week 4 (~3000 steps/day, due to concentrated indoor work). Primary commute methods: walking or electric scooter, for school runs, shopping, community errands.
+*   **Daily Life**:
+    *   Screen Time: Average ~2.5 hours/day, of which work communication (WeChat) ~1 hour, entertainment/learning (videos, browsing) ~1.5 hours. Screen time exceeded 3 hours on evenings of Nov 10th, 19th due to researching embroidery techniques and studying parenting.
+    *   Dietary Habits: Very high regularity of three meals, 28 days regular. Diet structure primarily home-cooked meals, moderate-high carbs, sufficient protein intake. Very few takeouts (<2), self-prepared meals dominant. Average daily water intake ~1.5L.
+
+**Monthly Trend Analysis**
+
+**3.1 Activity Trends**
+*   **Weekly Activity Volume Changes**:
+    *   Week 1: Activity primarily chores and Baduanjin, duration stable, adaptation period.
+    *   Weeks 2-3: Chore and handicraft duration significantly increased (+25% week-over-week) due to order initiation and concentrated work; Baduanjin maintained well, becoming a stress regulator.
+    *   Week 4: Handicraft duration decreased, Baduanjin duration and completion peaked, activity focus shifted towards proactive health maintenance.
+*   **Performance Cycle Peaks/Lows**:
+    *   Peak Performance Week: **Week 4**. Baduanjin practice most proficient and stable, emotional and physical state optimal due to order completion and conflict resolution.
+    *   Low Week: **Mid Week 3 (Nov 13-14)**. Affected by parent-child conflict, low emotional energy, temporary decrease in willingness and performance of active exercise.
+*   **Performance Changes**: Baduanjin movement fluidity and single-session duration improved weekly, from initial 10-minute unfamiliar practice to completing full 20-minute follow-along by month's end.
+
+**3.2 Health Trends**
+*   **Sleep Trend**: Average sleep duration decreased to ~6.3 hours and bedtime delayed in Weeks 2-3 due to order pressure. Sleep duration recovered to ~6.8 hours and bedtime stabilized more in Week 4 after pressure subsided.
+*   **Physical Health Trend**: Weight showed slight increase (+0.4kg) in Weeks 2-3 due to stress eating and emotional fluctuations, naturally decreased in Week 4 with regular routine and improved mood. Changes in resting heart rate and HRV highly synchronized with stress cycle: heart rate up, HRV down during high stress, and vice versa.
+*   **Mental Health Trend**: Stress levels formed two peaks in Weeks 2 and 3, completely aligning with order pressure and family conflict nodes. Mood showed three significant highs on Nov 18th (mother outing), Nov 25th (order delivery), Nov 28th (successful hair dye). Data shows **your mood score significantly improved after completing a fulfilling task or engaging in effective family interaction**.
+*   **Injury/Illness Impact**: No physical injuries/illnesses this month, but **the Nov 13th parent-child conflict served as a psychological stressor**, causing two consecutive days of emotional low, decreased sleep quality, and irregular eating, significantly impacting short-term health status.
+
+**3.3 Life Rhythm Trends**
+*   **Sleep & Mental State**: Data shows when your **bedtime is after 23:30**, the next day's Baduanjin focus decreases by 30%, and you are more prone to fatigue during daytime chores.
+*   **Work/Life Rhythm Changes**: Weeks 2-4 were the "order攻坚期 (攻坚期:攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期攻坚期

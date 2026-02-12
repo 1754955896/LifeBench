@@ -1,0 +1,192 @@
+[
+  {
+    "name": "Longhua Court Residential Community",
+    "location": "110.326158,20.013924",
+    "formatted_address": "Hainan Province, Haikou City, Longhua District, Jinyu East Road []",
+    "city": "Haikou City",
+    "district": "Longhua District",
+    "streetName": "Jinyu East Road",
+    "streetNumber": [],
+    "description": "Lu Mingqiang's permanent residence is located on Jinmao Middle Road, where he lives with his spouse and two children."
+  },
+  {
+    "name": "Nanguang Center Office Building",
+    "location": "110.267148,20.022298",
+    "formatted_address": "No. 1 Yongwan Road, Xiuying District, Haikou City, Hainan Province",
+    "city": "Haikou City",
+    "district": "Xiuying District",
+    "streetName": "Yongwan Road",
+    "streetNumber": "Number 1",
+    "description": "Lu Mingqiang's daily workplace is located on Haisheng Road, serving as the office or construction site of Haikou City Power Engineering Service Co., Ltd."
+  },
+  {
+    "name": "Meilan Experimental Primary School",
+    "location": "110.360198,20.046997",
+    "formatted_address": "No. 1 Bailong North Road, Meilan District, Haikou City, Hainan Province",
+    "city": "Haikou City",
+    "district": "Meilan District",
+    "streetName": "Bailong North Road",
+    "streetNumber": "Number One",
+    "description": "The school attended by Lu Mingqiang's eldest son, Haikou Longhua District First Experimental Primary School, is located in Meilan District and serves as the child's regular place for daily schooling."
+  },
+  {
+    "name": "Longhua District Central Kindergarten",
+    "location": "110.301952,20.005999",
+    "formatted_address": "No. 6 Youyi Road, Longhua District, Haikou City, Hainan Province, China",
+    "city": "Haikou City",
+    "district": "Longhua District",
+    "streetName": "Friendship Road",
+    "streetNumber": "Number 6",
+    "description": "The kindergarten attended by Lu Mingqiang's second son, Haikou Longhua District Jinmao Kindergarten, is located in the Longhua District and serves as the child's regular place for daily schooling."
+  },
+  {
+    "name": "Haikou Xixiu Park",
+    "location": "110.189968,20.024343",
+    "formatted_address": "Haikou City, Xiuying District, Hainan Province, China[][]",
+    "city": "Haikou City",
+    "district": "Xiuying District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The parks that Lu Mingqiang often visits, such as Baishamen Park or Wanlv Garden, are used for kite flying, jogging, and family leisure activities."
+  },
+  {
+    "name": "Haikou Xiuying Wanda Plaza Barbecue Food Stall",
+    "location": "110.278330,19.980007",
+    "formatted_address": "No. 29, Xiuying Avenue, Xiuying District, Haikou City, Hainan Province, China",
+    "city": "Haikou City",
+    "district": "Xiuying District",
+    "streetName": "Xiuying Avenue",
+    "streetNumber": "29th",
+    "description": "The food stall that Lu Mingqiang often visits is used for leisure activities such as dining with friends and enjoying grilled fish."
+  },
+  {
+    "name": "Haikou Alley Tea Shop",
+    "location": "110.349855,20.039931",
+    "formatted_address": "No. 54, Wenming Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The tea shop that Lu Mingqiang frequents is used for drinking \"Dad's tea,\" socializing with friends, or relaxing."
+  },
+  {
+    "name": "Jinyu East Road Ririlong Grocery Store",
+    "location": "110.329400,20.015977",
+    "formatted_address": "Hainan Province, Haikou City, Longhua District, Jinyu East Road, Street []",
+    "city": "Haikou City",
+    "district": "Longhua District",
+    "streetName": "Jinyu East Road",
+    "streetNumber": [],
+    "description": "The supermarket near the residential community is used for daily shopping and purchasing household supplies."
+  },
+  {
+    "name": "Sheng Production Industrial Park",
+    "location": "110.334759,20.011012",
+    "formatted_address": "No. 35 Nansha Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The park near the residence, used for flying kites with children or family leisure activities."
+  },
+  {
+    "name": "Pizza Hut Restaurant at Renhengli",
+    "location": "110.265613,20.013379",
+    "formatted_address": "No. 3 Ziyuan Road, Renhengli · Haitang Park, F1 Floor",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Fast food restaurants near the workplace, used for weekday lunches or quick meals."
+  },
+  {
+    "name": "Jinchu Community Convenience Store",
+    "location": "110.268925,20.011497",
+    "formatted_address": "Building 3, Jinchu Residential Area, No. 33 Haisheng Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "A convenience store near the workplace for purchasing beverages, snacks, or daily small items."
+  },
+  {
+    "name": "Xiangrong Road Food Stall",
+    "location": "110.269652,20.002811",
+    "formatted_address": "No. 24 Xiangrong Road, Xiuying District, Haikou City, Hainan Province",
+    "city": "Haikou City",
+    "district": "Xiuying District",
+    "streetName": "Xiangrong Road",
+    "streetNumber": "24th",
+    "description": "The food stalls near the workplace are used for casual dining with coworkers, such as enjoying grilled fish or other meals."
+  },
+  {
+    "name": "Longfor Paradise Walk Hongxing Erke Store",
+    "location": "110.331775,19.996625",
+    "formatted_address": "No. 15 Nanhai Avenue, Longfor Hainan Haikou Tianjie, F2 Floor",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The running track near the residence, used for daily running exercise."
+  },
+  {
+    "name": "Friendship Road Longhua District Central Kindergarten",
+    "location": "110.301952,20.005999",
+    "formatted_address": "No. 6 Youyi Road, Longhua District, Haikou City, Hainan Province",
+    "city": "Haikou City",
+    "district": "Longhua District",
+    "streetName": "Friendship Road",
+    "streetNumber": "Number 6",
+    "description": "Near the kindergarten where the child attends, for picking up or dropping off the child or related activities"
+  },
+  {
+    "name": "Haikou No. 16 Primary School",
+    "location": "110.353460,20.052502",
+    "formatted_address": "No. 41 Haidian Second East Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Near the elementary school where the child attends, for picking up or dropping off the child or participating in school activities"
+  },
+  {
+    "name": "Haikou Xiuying Wanda Plaza Hot Pot Restaurant",
+    "location": "110.277505,19.978159",
+    "formatted_address": "Haiyu Middle Road No. 29, Wanda Plaza, 3rd Floor, Room 3008",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Near the frequently visited barbecue street food stalls, used for dining with friends or family meals."
+  },
+  {
+    "name": "Tangshan Village Children's Playground",
+    "location": "110.198516,20.012485",
+    "formatted_address": "Haikou City, Xiuying District, Hainan Province, China",
+    "city": "Haikou City",
+    "district": "Xiuying District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "Near the park I often visit, used for kite flying, running, or family leisure activities"
+  },
+  {
+    "name": "Haikou Longhua Hardware and Building Materials Store",
+    "location": "110.329384,20.014456",
+    "formatted_address": "No. 33 Nansha Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Hardware store near the residence, used for purchasing tools or home repair supplies."
+  },
+  {
+    "name": "Nansha Road Hu La Tang Breakfast Shop",
+    "location": "110.331612,20.011753",
+    "formatted_address": "No. 34-2, Longhua 014, Huatai Apartment, Nansha Road, Jinyu Street",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Breakfast shops near the residence, used for daily breakfast such as Hainan noodles."
+  }
+]

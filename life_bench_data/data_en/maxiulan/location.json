@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Jinghai Zhongnan Junyuefu Residential Community",
+    "location": "116.960582,38.937905",
+    "formatted_address": "Tianjin City, Tianjin City, Jinghai District, Ruihe Road []",
+    "city": "Tianjin Municipality",
+    "district": "Jinghai District",
+    "streetName": "Ruihe Avenue",
+    "streetNumber": [],
+    "description": "Ma Xiulan's permanent residence is located near Jingwen Road in Jinghai District, which serves as her family home where she lives and manages household affairs."
+  },
+  {
+    "name": "Wutong Community Market",
+    "location": "117.091131,38.977215",
+    "formatted_address": "Tianjin City, Tianjin Jinghai District[][]",
+    "city": "Tianjin City",
+    "district": "Jinghai District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The regular shopping spot where Ma Xiulan often goes to buy vegetables and daily necessities is an important place for her family life."
+  },
+  {
+    "name": "Jinghai District Chaoyang Street Community Hospital",
+    "location": "116.926563,38.939672",
+    "formatted_address": "No. 16 Jingwen Road, Rear Courtyard of Jinghai Grain Bureau (West of the Judicial Bureau, diagonally opposite the Construction Bank)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Ma Xiulan and her family occasionally visit the community clinic for minor illnesses and pains, which is a regular destination for her health care."
+  },
+  {
+    "name": "Jinghai District Third Primary School",
+    "location": "116.726115,38.921779",
+    "formatted_address": "Tianjin City, Jinghai District, Shengli South Street []",
+    "city": "Tianjin City",
+    "district": "Jinghai District",
+    "streetName": "Shengli South Street",
+    "streetNumber": [],
+    "description": "The school where Ma Xiulan's second son attends is a frequent location for her to participate in parent-teacher meetings and focus on her child's education."
+  },
+  {
+    "name": "Huakang No. 1 Kindergarten",
+    "location": "117.072765,38.967087",
+    "formatted_address": "Tianjin City, Tianjin Jinghai District[][]",
+    "city": "Tianjin Municipality",
+    "district": "Jinghai District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The kindergarten where Ma Xiulan's daughter attends is a frequent location for her to drop off and pick up her child, as well as participate in activities."
+  },
+  {
+    "name": "Hai Xin Yuan Residential Area Tobacco and Liquor Store",
+    "location": "116.959611,38.936187",
+    "formatted_address": "Tianjin City, Tianjin City, Jinghai District, Ruihe Road, No. G108",
+    "city": "Tianjin Municipality",
+    "district": "Jinghai District",
+    "streetName": "Ruihe Avenue",
+    "streetNumber": "g108",
+    "description": "The supermarket near the residential community is used for daily shopping and household supplies procurement."
+  },
+  {
+    "name": "Taian Shengshijun Vegetable Market",
+    "location": "116.965773,38.932729",
+    "formatted_address": "Tianjin City, Tianjin City, Jinghai District, Yuewei Road []",
+    "city": "Tianjin City",
+    "district": "Jinghai District",
+    "streetName": "Yuewei Road",
+    "streetNumber": [],
+    "description": "The vegetable market near the residential community is used for purchasing fresh vegetables and ingredients."
+  },
+  {
+    "name": "Jinghai Ocean Hall Aquarium",
+    "location": "116.964956,38.943329",
+    "formatted_address": "Tianjin City, Tianjin City, Jinghai District [][]",
+    "city": "Tianjin Municipality",
+    "district": "Jinghai District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The park near the residential community is used for taking children to play or for leisurely walks."
+  },
+  {
+    "name": "Mengxiang Garden Community Health Center",
+    "location": "116.928535,38.932153",
+    "formatted_address": "Tianjin City, Tianjin City, Jinghai District[][]",
+    "city": "Tianjin City",
+    "district": "Jinghai District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The community health service center near the residential area is used for daily medical care and health consultations."
+  },
+  {
+    "name": "Wangkou Town Second Primary School",
+    "location": "116.774302,38.933988",
+    "formatted_address": "Tianjin City, Tianjin Jinghai District [][]",
+    "city": "Tianjin Municipality",
+    "district": "Jinghai District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The primary school near the child's school, used for picking up and dropping off children and participating in parent activities."
+  },
+  {
+    "name": "Jinghai Yangchengzhuang Kindergarten",
+    "location": "117.087393,38.947459",
+    "formatted_address": [],
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The kindergarten near the child's kindergarten is used for picking up and dropping off children and for daily communication."
+  },
+  {
+    "name": "Jinghai Wanda Yufu Shijia Convenience Store",
+    "location": "116.953494,38.943356",
+    "formatted_address": "Tianjin City, Tianjin City, Jinghai District[][]",
+    "city": "Tianjin City",
+    "district": "Jinghai District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The convenience store near the residential community is used for quickly purchasing daily necessities."
+  }
+]

@@ -1,0 +1,732 @@
+{
+  "name": "Song Yajing",
+  "birth": "1989-05-04",
+  "age": 32,
+  "nationality": "Han",
+  "home_address": {
+    "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+    "city": "Xiamen City",
+    "district": "Siming District",
+    "street_name": "South Hubin Road",
+    "street_number": "128"
+  },
+  "birth_place": {
+    "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+    "city": "Quanzhou City",
+    "district": "Licheng District"
+  },
+  "gender": "Female",
+  "education": "College Diploma (Formal Higher Education)",
+  "job": "Boutique Clothing Store Owner and Clerk",
+  "occupation": "Individual Business (Self-Employed)",
+  "workplace": {
+    "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+    "city": "Xiamen City",
+    "district": "Siming District",
+    "street_name": "Zhongshan Road",
+    "street_number": "Shop No. 36, Pedestrian Street"
+  },
+  "belief": "Catholicism",
+  "salary": 80000.0,
+  "body": {
+    "height": 156,
+    "weight": 50.0,
+    "BMI": 20.5
+  },
+  "family": "First marriage with a spouse, having one child.",
+  "personality": {
+    "mbti": "ESFJ",
+    "traits": [
+      "Family-oriented",
+      "Safety",
+      "Career-oriented"
+    ]
+  },
+  "hobbies": [
+    "Listen to English music.",
+    "Go shopping",
+    "Gathering with friends",
+    "Browsing fashion information online.",
+    "Social Visiting",
+    "Baking (Cakes and Desserts)",
+    "Read novels"
+  ],
+  "favorite_foods": [
+    "Minnan Satay Noodles",
+    "Quanzhou Meat Dumpling",
+    "Tiramisu Cake",
+    "Fruit tea"
+  ],
+  "memory_date": [
+    "2015-10-01 Wedding Anniversary",
+    "2020-09-15 Opening Day of the First Store"
+  ],
+  "aim": [
+    "Increase the store's turnover by 20% within two years.",
+    "Learn to make more complex French pastries within a year.",
+    "Take the family on an overseas trip within three years."
+  ],
+  "healthy_desc": "The individual's overall health condition is good, and they feel relatively healthy with no long-term chronic illnesses or disabilities. The frequency of medical visits in the past year has been low, but no systematic health check-ups have been conducted in the past three years. Daily exercise frequency is not high, primarily consisting of light activities such as walking, and personal care habits are routine.",
+  "lifestyle_desc": "Personal lifestyle revolves around social interactions and family. The most frequent activities during leisure time are surfing the internet and gathering with friends, with frequencies reaching daily and several times a week, respectively. Meetings with relatives who do not live together are also relatively frequent (several times a month). Leisure activities are inclined toward rest, relaxation, and social visits, which are carried out very frequently or regularly. In contrast, activities such as watching TV, watching movies, reading books, participating in cultural events, engaging in physical exercise, and attending live sports events are done infrequently or never. Over the past year, there have been no overnight stays away from home for vacations or visiting relatives. Overall, the lifestyle leans toward pragmatism and emphasizes real-world interpersonal interactions rather than pursuing refined leisure activities in culture or sports.",
+  "economic_desc": "The family's financial situation is stable, with a total annual household income of approximately 300,000 yuan in 2020 (including the spouse's income). The family owns a property and a household car. Currently, there are no investment activities (such as stocks, funds, bonds, futures, warrants, property speculation, etc.). The spending habits are relatively conservative, leaning toward savings and meeting the daily and operational needs of the family. There are no personal characteristics in terms of financial investments at present.",
+  "work_desc": "The individual is self-employed as the owner and salesperson of a boutique clothing store, with no other part-time jobs. The weekly working hours are relatively long, approximately 56 hours. The work primarily involves store management, sales, customer service, and fashion merchandise procurement. It is not considered physically or mentally demanding labor, and the work schedule is relatively autonomous but busy. No specific satisfaction questionnaire regarding the work situation has been provided.",
+  "experience_desc": "Song Yajing was born in Quanzhou, Fujian Province. After graduating from a junior college in 2009, she was employed as a general professional technician, working as a sales assistant at a clothing company in Xiamen, where she secured her first job and moved to her current residence in Xiamen in the same year. After gaining some experience and accumulating funds, she chose to start her own business in 2020, opening a boutique clothing store on Zhongshan Road Pedestrian Street in Siming District, Xiamen, focusing on fashionable women's wear, transitioning from an employee to a self-employed store owner. During this period, she got married in 2015 and had a child, completing the transformation from a newcomer in the workplace to an entrepreneur and a core family member.",
+  "description": "Song Yajing, a 32-year-old Han Chinese woman with an ESFJ (Consul) personality, holds values centered around family, security, and career. Born in Quanzhou, Fujian, she currently resides in Xiamen with her spouse and one child, and is a devout Catholic. After graduating from a vocational college, she transitioned from being an employed professional technician to starting her own business. She now owns a boutique clothing store in Siming District, Xiamen, with an annual income of approximately 80,000 yuan, which, combined with her family’s total income, supports a middle-class lifestyle including homeownership and a car. Standing 156 cm tall and weighing 50 kg, she is in good health.  \n\nSong Yajing’s life revolves around her family, her store, and her social circle. She enjoys gathering with friends and family, shopping, and listening to pop music. She frequently browses fashion information online to stay updated on industry trends and has recently started experimenting with baking cakes and desserts. Her important milestones include her wedding anniversary in 2015 and the opening of her store in 2020.  \n\nLooking ahead, she hopes to improve her store’s performance, refine her baking skills, and plan family trips. In her daily life, she often manages her store, interacts with customers, purchases inventory, and regularly participates in community activities at her church. Her vision is to maintain stable business operations, enjoy a happy family life, and gradually achieve a balance between her personal and professional pursuits.",
+  "relation": [
+    [
+      {
+        "name": "Song Minghui",
+        "relation": "Father",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 62,
+        "birth_date": "1962-08-15",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Quanzhou City",
+          "district": "Licheng District",
+          "street_name": "Xinhua North Road",
+          "street_number": "45"
+        },
+        "birth_place": {
+          "province": "Fujian Province",
+          "city": "Quanzhou City"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Moderately prosperous",
+        "occupation": "Retired middle school teacher",
+        "organization": "Former Quanzhou No. 3 Middle School",
+        "nickname": "Dad",
+        "relation_description": "Song Yajing's father, now retired, lives with his wife Lin Xiuying in their hometown of Quanzhou. The father-daughter relationship is very close, and Song Yajing almost always contacts her parents via video calls every week to share updates about her shop and family matters. Her father, with his calm and steady personality, serves as an important emotional anchor for Song Yajing, often offering encouragement and practical advice when she encounters challenges in running her business. During the Spring Festival and National Day holidays each year, Song Yajing takes her family back to Quanzhou to visit her parents. Whenever the family gathers, her father always cooks several of his signature Southern Fujian dishes. He has been very supportive of his daughter's entrepreneurial endeavors, even making a special trip from Quanzhou to Xiamen to help when her shop first opened."
+      },
+      {
+        "name": "Lin Xiuying",
+        "relation": "Mother",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 60,
+        "birth_date": "1964-03-22",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Quanzhou City",
+          "district": "Licheng District",
+          "street_name": "Xinhua North Road",
+          "street_number": "No. 45"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Zhangzhou City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "A moderately prosperous society",
+        "occupation": "Retired community worker",
+        "organization": "Former LiCheng District Kaiyuan Street Community Service Center",
+        "nickname": "Mom",
+        "relation_description": "Song Yajing's mother, who worked in the community before retiring, is warm and outgoing in personality, and shares a friendship-like bond with her daughter. The two stay in frequent contact, chatting almost daily via WeChat on topics ranging from the granddaughter's growth to sourcing goods for the clothing store. A devout Catholic, the mother often reminds Song Yajing to participate in church activities and prays for her. Skilled in baking and sewing, she has greatly influenced Song Yajing's interest in baking. Occasionally, the mother visits Xiamen for short stays, helping to care for her granddaughter and guiding Song Yajing in trying new dessert recipes. Both mother and daughter enjoy shopping, and when the mother is in Xiamen, they often go to Zhongshan Road together to select merchandise for the store."
+      },
+      {
+        "name": "Chen Zhiqiang",
+        "relation": "Husband",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 35,
+        "birth_date": "1989-12-10",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City",
+          "district": "Siming District",
+          "street_name": "South Hubin Road",
+          "street_number": "No. 128"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City"
+        },
+        "personality": "ISTP",
+        "economic_level": "Middle class",
+        "occupation": "IT Technical Support Engineer",
+        "organization": "Xiamen A Software Technology Co., Ltd.",
+        "nickname": "Ah Qiang",
+        "relation_description": "Song Yajing's husband works as a technical support engineer at a software company and is one of the primary breadwinners for the family. The couple married in 2015 and have a daughter. Chen Zhiqiang is practical and skilled with his hands, taking charge of most technical issues and car maintenance at home. He supports his wife’s entrepreneurial endeavors and assists with tasks such as online promotion for the shop and maintaining the cash register system. Due to the nature of his job, he occasionally needs to travel for work. The couple maintains a stable daily routine, often spending evenings together with their daughter, and if the shop is not too busy on weekends, the whole family goes out for outings. Chen Zhiqiang respects his wife’s faith and, although he has not converted to Catholicism, accompanies her to important family religious events. Together, they plan their family finances with aligned goals."
+      },
+      {
+        "name": "Chen Lexuan",
+        "relation": "Daughter",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 5,
+        "birth_date": "2019-07-20",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City",
+          "district": "Siming District",
+          "street_name": "South Hubin Road",
+          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 128"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nFujian Province",
+          "city": "Xiamen City"
+        },
+        "personality": "ENFP (Childlike Tendency)",
+        "economic_level": "Relying on Family",
+        "occupation": "Kindergarten student",
+        "organization": "Xiamen Siming District Experimental Kindergarten",
+        "nickname": "Xuanxuan",
+        "relation_description": "The daughter of Song Yajing and Chen Zhiqiang is currently attending kindergarten. She is the center of the family—lively, active, and full of curiosity. Song Yajing picks up and drops off her daughter from school every day, and spends most of her evenings and weekends with her. The daughter loves the beautiful clothes in her mother’s shop and enjoys eating the cakes her mother makes. Song Yajing often takes her daughter to parent-child activities organized by the church and hopes to nurture an optimistic and cheerful personality in her. Due to the demands of running the shop, Song Yajing sometimes needs to temporarily entrust her daughter to the care of her husband or her mother, who visits from time to time. The presence of her daughter is a significant motivation for Song Yajing as she strives to manage both her family and her career."
+      },
+      {
+        "name": "Song Yawen",
+        "relation": "Sister",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 35,
+        "birth_date": "1989-11-28",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park Road",
+          "street_number": "Innovation Building B, Room 1203"
+        },
+        "birth_place": {
+          "province": "Fujian Province",
+          "city": "Quanzhou City"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Foreign Trade Company Project Manager",
+        "organization": "A certain import and export trading company in Shenzhen",
+        "nickname": "Sister Wen",
+        "relation_description": "Song Yajing's elder sister, who is three years older than her, moved to Shenzhen after graduating from university and currently works in the foreign trade industry, where she has achieved considerable success in her career. The two sisters share a close bond, but due to living in different cities, they mainly stay in touch through WeChat and phone calls, with a frequency of about once a week. Song Yawen is independent and decisive in character, serving as her younger sister's \"strategist\" in entrepreneurship. She often sends fashion magazines from Shenzhen or recommends supply chain resources to her. Besides family matters, their conversations frequently revolve around career planning and market information. Song Yawen returns to Fujian once or twice a year, usually during the Spring Festival or National Day holidays, when the two families reunite. Occasionally, when Song Yajing travels to Guangzhou for clothing procurement, she also takes the opportunity to visit her sister in Shenzhen. Although their life paths differ, they support each other and are confidants who share everything."
+      }
+    ],
+    [
+      {
+        "name": "Li Meiling",
+        "relation": "Bestie",
+        "social circle": "Post to Moments",
+        "gender": "Female",
+        "age": 32,
+        "birth_date": "1989-08-12",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City",
+          "district": "Huli District",
+          "street_name": "Xianyue Road",
+          "street_number": "Number 88"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Quanzhou City",
+          "district": "Licheng District"
+        },
+        "personality": "ENFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Primary School Chinese Language Teacher",
+        "organization": "Xiamen Huli District Experimental Primary School",
+        "nickname": "Lingling",
+        "relation_description": "Li Meiling is Song Yajing's childhood friend from Quanzhou, and they have been classmates from elementary school through high school. After graduating from university, Li Meiling was admitted to a teacher training college and now works as a Chinese language teacher at a primary school in Xiamen. Although they live in the same city, their busy family lives and work schedules limit their meetings to about once a month. They often meet for afternoon tea or go shopping on weekends, exchanging parenting tips, sharing daily life anecdotes, and discussing fashion and shopping. Li Meiling, with her outgoing and warm personality, is an important confidante for Song Yajing to vent frustrations and share joys. Along with another close friend, Wang Jia, they have a WeChat group for the three of them, where they frequently share interesting stories and plan group gatherings."
+      },
+      {
+        "name": "Wang Jia",
+        "relation": "Bestie",
+        "social circle": "Close Friends Circle",
+        "gender": "Female",
+        "age": 33,
+        "birth_date": "1988-11-25",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Technology Park Road",
+          "street_number": "Innovation Building, Tower A, Room 1203"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Quanzhou City",
+          "district": "Fengze District"
+        },
+        "personality": "ISTP",
+        "economic_level": "Affluent",
+        "occupation": "Internet Company Product Manager",
+        "organization": "A well-known internet technology company in Shenzhen",
+        "nickname": "Jiajia",
+        "relation_description": "Wang Jia is a childhood friend shared by Song Yajing and Li Meiling, and the three have been close friends since middle school. After graduating from university, Wang Jia moved to Shenzhen for career development and currently works as a product manager at an internet company. Due to the distance, she mainly keeps in touch with Song Yajing through WeChat and video calls, typically several times a week, sharing updates about work, fashion trends, and family matters. During the Spring Festival or long holidays each year, Wang Jia returns to Quanzhou or Xiamen, and the three always organize a get-together, often involving meals, shopping, or short trips. Wang Jia is calm and pragmatic by nature and often provides online marketing advice for Song Yajing’s store. She is the most knowledgeable and creative thinker among their circle of close friends."
+      }
+    ],
+    [
+      {
+        "name": "Liu Fang",
+        "relation": "Elementary school classmates",
+        "social circle": "Elementary School Classmate Circle",
+        "gender": "Female",
+        "age": 32,
+        "birth_date": "1989-08-12",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Quanzhou City",
+          "district": "Licheng District"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "Product Manager at an Internet Company",
+        "organization": "A certain technology company in Shenzhen",
+        "nickname": "Fangfang",
+        "relation_description": "Liu Fang was Song Yajing's classmate during their elementary school years in Quanzhou. The two shared a close bond in their childhood, often walking to and from school together. After graduating from elementary school, Liu Fang moved to Shenzhen with her family, but they maintained contact through QQ and later WeChat. Following her university graduation, Liu Fang entered the internet industry in Shenzhen, becoming a product manager—a role that keeps her busy but passionate. Nowadays, they primarily interact through WeChat Moments and occasional video calls, roughly once a month, with conversations often revolving around work stress, daily life matters, and fond memories of their childhood. Although living in different cities, they have made a pact to try to meet every two or three years, either in Fujian or Guangdong, to go shopping, savor delicious food, and relive their cherished friendship."
+      }
+    ],
+    [
+      {
+        "name": "Zhang Wei",
+        "relation": "Junior high school classmates",
+        "social_circle": "Junior High School Classmate Circle",
+        "gender": "Male",
+        "age": 33,
+        "birth_date": "1990-08-15",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Technology Park Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Quanzhou City"
+        },
+        "personality": "ISTP",
+        "economic_level": "Middle class",
+        "occupation": "Software Engineer",
+        "organization": "An internet technology company in Shenzhen",
+        "nickname": "Viagra",
+        "relation_description": "Zhang Wei is a middle school classmate of Song Yajing, and they met while attending middle school in Quanzhou. After graduating from middle school, Zhang Wei went on to high school and later pursued a major in computer science. Following his university graduation, he moved to Shenzhen to develop his career and became a software engineer. Song Yajing, on the other hand, stayed in Fujian. The two have primarily kept in touch through WeChat Moments and occasional online chats, staying updated on each other's lives. Due to living in different cities, they have not seen each other for nearly a decade, but they exchange greetings in their middle school class group chat around the time of the Spring Festival each year. Zhang Wei has a calm and pragmatic personality, focusing on his technical work, which contrasts with Song Yajing's warm and outgoing nature. However, the friendship rooted in their youth continues to maintain a subtle connection."
+      }
+    ],
+    [
+      {
+        "name": "Wu Xiaoli",
+        "relation": "High school classmates",
+        "social_circle": "High School Classmates Circle",
+        "gender": "Female",
+        "age": 32,
+        "birth_date": "1990-08-12",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Technology Park Road",
+          "street_number": "Room 1203, Building A, No. 88 Innovation Tower"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Quanzhou City"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "Product Manager at an Internet Company",
+        "organization": "A well-known internet technology company in Shenzhen",
+        "nickname": "Xiaoli",
+        "relation_description": "Wu Xiaoli is Song Yajing's high school classmate. They met while attending high school in Quanzhou, where they were once desk mates and shared a close relationship. After graduating from high school, Wu Xiaoli was admitted to a university in another province and later entered the internet industry. She is currently developing her career in Shenzhen. Although the two live in different cities, they have maintained contact through WeChat, sharing updates about their lives and insights from their respective industries (Wu Xiaoli pays attention to e-commerce and consumer trends and often provides suggestions for Song Yajing's store operations). They make an effort to meet each year during the Spring Festival when they return to their hometown in Quanzhou. During their gatherings, they enjoy shopping together, savoring local delicacies, and reminiscing about amusing stories from their student days. They communicate online approximately once or twice a month and meet in person once a year."
+      }
+    ],
+    [
+      {
+        "name": "Zhao Min",
+        "relation": "University classmate",
+        "social circle": "University Classmates Circle",
+        "gender": "Female",
+        "age": 33,
+        "birth_date": "1990-08-12",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Upper District",
+          "street_name": "Jiefang Road",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Fuzhou City"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "E-commerce Operations Manager",
+        "organization": "A well-known e-commerce company in Hangzhou",
+        "nickname": "Minmin",
+        "relation_description": "Zhao Min is both a university classmate and roommate of Song Yajing. They met while studying at a junior college in Quanzhou and have maintained a close relationship ever since. Zhao Min has an outgoing personality and chose to pursue her career in Hangzhou after graduation, where she currently works in the e-commerce industry. Despite living in different cities, they primarily stay in touch through WeChat, averaging one video call per week to share interesting stories from their lives and work. Zhao Min often provides online marketing advice for Song Yajing’s store, and Song Yajing makes it a point to meet up with her whenever she travels to Hangzhou for business or leisure. Along with another classmate, Zhou Ting, they have a group chat of three, where they frequently chat and reminisce about their university days."
+      },
+      {
+        "name": "Zhou Ting",
+        "relation": "University Classmate",
+        "social circle": "University Classmates Circle",
+        "gender": "Female",
+        "age": 32,
+        "birth_date": "1991-03-25",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Technology Park Road",
+          "street_number": "Innovation Building, Tower A"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Middle class",
+        "occupation": "Financial Supervisor",
+        "organization": "A technology company in Shenzhen",
+        "nickname": "Tingting",
+        "relation_description": "Zhou Ting is a university classmate of Song Yajing, and the three of them were once classmates in the same class. Zhou Ting has a calm and pragmatic personality. After graduation, she returned to her hometown Xiamen to work for a period of time, and later moved to Shenzhen due to career development opportunities. She currently serves as a financial supervisor at a technology company in Shenzhen. Zhou Ting maintains good relationships with both Song Yajing and Zhao Min and is a core member of their university classmates circle. Due to busy work schedules and geographical distance, Zhou Ting and Song Yajing communicate directly about once a month, primarily through text messages on WeChat, with occasional phone calls. The group chat among the three of them serves as the main platform for interaction, where they discuss topics such as parenting, shopping, and career planning. Whenever Zhou Ting returns to Xiamen to visit her family, she always makes sure to meet up with Song Yajing for a meal."
+      }
+    ],
+    [
+      {
+        "name": "Sun Li",
+        "relation": "Former colleague",
+        "social circle": "Former work circle",
+        "gender": "Female",
+        "age": 33,
+        "birth_date": "1990-08-12",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGuangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Technology Park Road",
+          "street_number": "Room 1203, Building A, No. 88 Innovation Building"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Regional Operations Manager for Apparel Brand",
+        "organization": "A certain international fast fashion brand's South China branch",
+        "nickname": "Lily",
+        "relation_description": "Sun Li was a colleague of Song Yajing when they both worked as sales assistants at a clothing company in Xiamen from 2010 to 2015. They were part of the same sales team and collaborated for five years. Sun Li, known for her decisiveness and leadership, served as the team leader at the time and provided guidance to Song Yajing, who was new to the workforce, in sales techniques and client communication. In 2015, Sun Li chose to pursue personal career growth and moved to an international fast-fashion brand in Shenzhen, where she steadily advanced to the position of regional operations manager. Nowadays, the two live in different cities—Xiamen and Shenzhen—and primarily stay in touch through likes and comments on WeChat Moments, occasionally exchanging insights online about trends in the clothing industry and sourcing information. Every year during the Spring Festival, when Sun Li returns to Xiamen to visit family, the two meet at a café in the old town to catch up on each other’s lives, families, and careers."
+      },
+      {
+        "name": "Zheng Kai",
+        "relation": "Former colleague",
+        "social circle": "Former work circle",
+        "gender": "Male",
+        "age": 35,
+        "birth_date": "1988-03-22",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District",
+          "street_name": "Wensan Road",
+          "street_number": "Building C, Huaxing Times Square, No. 456"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Wenzhou City"
+        },
+        "personality": "ISTP",
+        "economic_level": "Middle class",
+        "occupation": "Independent Fashion Designer and Buyer",
+        "organization": "Personal Studio",
+        "nickname": "Akai",
+        "relation_description": "Zheng Kai was a colleague of Song Yajing in the warehousing and logistics department of her former company, responsible for product allocation and quality inspection. He became acquainted with Song Yajing from the sales department due to frequent work interactions. Zheng Kai is pragmatic and skilled with his hands, possessing unique insights into clothing fabrics and patterns. In 2017, he left the company and moved to Hangzhou, leveraging his accumulated experience and connections to become an independent fashion designer and buyer, primarily providing design and procurement services for online brands and boutique stores. He maintains contact with both Song Yajing and Sun Li, and the three of them have a WeChat group named \"The Old Company Trio.\" Zheng Kai is now one of the important supply sources for Song Yajing’s boutique, often recommending women’s clothing with unique designs and high cost-effectiveness. They mainly communicate via WeChat and phone calls, averaging two to three interactions per month. When Song Yajing attends clothing ordering fairs in Hangzhou, she also meets up with Zheng Kai for meals and exchanges industry information."
+      }
+    ],
+    [
+      {
+        "name": "Lin Xiuying",
+        "relation": "Church member",
+        "social circle": "Church circle",
+        "gender": "Female",
+        "age": 56,
+        "birth_date": "1968-03-22",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nFujian Province",
+          "city": "Xiamen City",
+          "district": "Huli District",
+          "street_name": "Xianyue Road",
+          "street_number": "No. 458"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Zhangzhou City"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Well-off",
+        "occupation": "Retired elementary school teacher",
+        "organization": "Xiamen City Huli District Experimental Primary School (retired)",
+        "nickname": "Aunt Lin",
+        "relation_description": "Lin Xiuying is a fellow parishioner of Song Yajing in the Catholic church. They met five years ago after Sunday Mass and became acquainted through belonging to the same scripture reading group. Aunt Lin has a gentle temperament and is a devout believer, often caring for young families in the church. Before retiring, she was a primary school teacher, and now she focuses her energy on family and church service. When Song Yajing encounters confusion in business or family life, she occasionally seeks advice from the experienced Aunt Lin. They usually meet and have brief conversations at the church every Sunday, and once a month, after church activities, they have afternoon tea together at a nearby tea restaurant. Aunt Lin lives in another district of Xiamen. Apart from church activities, the two mainly communicate occasionally through WeChat to share prayer intentions or forward church notices."
+      },
+      {
+        "name": "Wang Mingde",
+        "relation": "Priest",
+        "social circle": "Church circle",
+        "gender": "Male",
+        "age": 48,
+        "birth_date": "1976-08-15",
+        "home_address": {
+          "province": "Fujian Province",
+          "city": "Xiamen City",
+          "district": "Siming District",
+          "street_name": "Back Alley of the Catholic Church",
+          "street_number": "1 Rue du Sacré-Cœur"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "city": "Shijiazhuang City"
+        },
+        "personality": "ENFJ",
+        "economic_level": "Food and clothing",
+        "occupation": "Catholic clergy",
+        "organization": "Xiamen Siming Catholic Church",
+        "nickname": "Father Wang",
+        "relation_description": "Father Wang Mingde is the parish priest of Song Yajing's church community, responsible for presiding over Mass, administering sacraments, and pastoral care. Hailing from northern China, he has served in the southern Fujian region for over a decade, speaks fluent Minnan dialect, and is deeply beloved by the local faithful. Father Wang is warm-hearted and charismatic, often encouraging parishioners to integrate their faith into daily life. Important family sacraments for Song Yajing’s family, such as the baptism of their children and anniversary Masses for their marriage, are all presided over by Father Wang. In addition to attending the Mass he celebrates weekly, Song Yajing meets with Father Wang privately whenever she needs spiritual guidance or family blessings, approximately once every quarter. Father Wang is also well-acquainted with older parishioners like Lin Xiuying and frequently organizes them to visit families within the community together."
+      }
+    ],
+    [
+      {
+        "name": "Susan",
+        "relation": "Supplier",
+        "social circle": "Work Circle",
+        "gender": "Female",
+        "age": 35,
+        "birth_date": "1988-08-12",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGuangdong Province",
+          "city": "Guangzhou City",
+          "district": "Liwan District",
+          "street_name": "Thirteen Hongs Road",
+          "street_number": "New Asia International Digital Electronics City, Building A, Room 502"
+        },
+        "birth_place": {
+          "province": "Guangdong Province",
+          "city": "Chaozhou City"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Wealthy",
+        "occupation": "Sales Director of a Garment Trading Company",
+        "organization": "Guangzhou Fengshangyuan Trading Co., Ltd.",
+        "nickname": "Susan",
+        "relation_description": "Susan is the primary clothing supplier for Song Yajing's boutique clothing store. The two met in 2020 at a clothing wholesale market in Guangzhou when Song Yajing was preparing to open her shop. Susan is efficient and has a keen eye, always providing fashionable women's clothing styles that meet the demands of the Xiamen market. They mainly communicate through WeChat and phone calls, with a high frequency of contact—almost every week they discuss new styles, place orders, and coordinate logistics. Song Yajing travels to Guangzhou twice a year to attend ordering conferences, during which she meets with Susan. They explore the market together, share meals, and exchange insights on industry trends. Despite being in different cities, their close business collaboration has fostered a strong and trusting relationship."
+      },
+      {
+        "name": "Sister Li",
+        "relation": "Landlord",
+        "social circle": "Work Circle",
+        "gender": "Female",
+        "age": 58,
+        "birth_date": "1965-03-22",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City",
+          "district": "Siming District",
+          "street_name": "Yundang Road",
+          "street_number": "Lakeview Garden, Building 12, Unit 301"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Affluent",
+        "occupation": "Retired Teacher (Property Rental)",
+        "organization": "None",
+        "nickname": "Sister Li",
+        "relation_description": "Ms. Li is the landlord of the shop space where Song Yajing’s store is located. She was formerly a Chinese language teacher at a primary school in Xiamen and is now retired. She is gentle, punctual, and principled. The two became acquainted through the rental contract. On the 1st of each month, Song Yajing pays the rent via bank transfer, and they occasionally communicate by phone regarding property management or maintenance issues. Ms. Li sometimes visits Zhongshan Road for shopping and stops by the store to check on its operations, but she does not interfere excessively. Their relationship is a standard and friendly landlord-tenant dynamic, maintained on the basis of mutual respect and contractual principles. They meet relatively infrequently, approximately once every quarter."
+      },
+      {
+        "name": "Xiaomei",
+        "relation": "Shop Assistant",
+        "social circle": "Work Circle",
+        "gender": "Female",
+        "age": 24,
+        "birth_date": "1999-11-05",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City",
+          "district": "Huli District",
+          "street_name": "Xinglong Road",
+          "street_number": "Tang Dynasty Family Phase V, No. 17, Unit 502"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Zhangzhou City"
+        },
+        "personality": "ESFP",
+        "economic_level": "Food and clothing",
+        "occupation": "Clothing Salesperson",
+        "organization": "Song Yajing's Boutique Clothing Store",
+        "nickname": "Xiaomei",
+        "relation_description": "Xiaomei is the only full-time shop assistant hired by Song Yajing, having joined the team at the beginning of 2021. With a lively and cheerful personality, she excels at communicating with customers and is considered the \"life of the shop.\" The two spend about eight hours working together in the store every day, sharing a relationship that is both professional and friendly. Song Yajing teaches her about clothing coordination, sales techniques, and inventory management, while Xiaomei handles most of the daily customer service and cashier duties. Outside of work, they occasionally have lunch together nearby, chatting about fashion gossip and daily life. Xiaomei regards Song Yajing as a trustworthy boss and an older sister figure, and Song Yajing appreciates Xiaomei’s hard work and enthusiasm. Their interaction is one of the most significant interpersonal relationships in their daily work life."
+      },
+      {
+        "name": "Vivian",
+        "relation": "Regular customer",
+        "social circle": "Work Circle",
+        "gender": "Female",
+        "age": 29,
+        "birth_date": "1994-07-30",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nFujian Province",
+          "city": "Xiamen City",
+          "district": "Haicang District",
+          "street_name": "North Binhu Road",
+          "street_number": "Tianyu Residential Area, Building 8, Unit 1602"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Wenzhou City"
+        },
+        "personality": "ENFP",
+        "economic_level": "Moderate prosperity",
+        "occupation": "Foreign Enterprise Market Specialist",
+        "organization": "A multinational consumer goods company's Xiamen branch",
+        "nickname": "Vivian",
+        "relation_description": "Vivian is a young white-collar worker who became a regular customer shortly after the store opened. With her fashionable taste and cheerful personality, she gradually developed a friendship with Song Yajing, moving beyond a simple buyer-seller relationship. She visits the store almost once or twice a month, trying on and purchasing a considerable number of clothes each time, making her an important client for the shop. Beyond shopping, they exchange tips on fashion, discuss newly opened cafes in Xiamen, and share baking recipes (as Vivian is also interested in baking). Their communication mainly takes place through WeChat, where Vivian reserves styles she likes, and Song Yajing proactively informs her when new arrivals suitable for her arrive. This relationship, built on shared interests and mutual commercial benefits, has turned them into friends who go beyond ordinary customers, occasionally meeting for afternoon tea together."
+      }
+    ],
+    [
+      {
+        "name": "Zhang Xiuying",
+        "relation": "Neighbor",
+        "social circle": "Neighborhood Circle",
+        "gender": "Female",
+        "age": 58,
+        "birth_date": "1966-08-12",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City",
+          "district": "Siming District",
+          "street_name": "South Hubin Road",
+          "street_number": "130."
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Zhangzhou City",
+          "district": "Xiangcheng District"
+        },
+        "personality": "ISFJ",
+        "economic_level": "A moderately prosperous society",
+        "occupation": "Retired elementary school teacher",
+        "organization": "A certain primary school in Siming District, Xiamen City (retired)",
+        "nickname": "Aunt Zhang",
+        "relation_description": "Aunt Zhang is the neighbor next door to Song Yajing's home, having lived in the same community on South Hubin Road for nearly twenty years. The two met during a community event shortly after Song Yajing moved in. Aunt Zhang is warm-hearted and kind, often sharing her homemade baked goods with Song Yajing's family and helping look after Song Yajing's children. After Song Yajing opened her shop, Aunt Zhang became a regular customer, frequently stopping by to chat and offer life advice. Now living in the same neighborhood, the two stay in close contact, meeting almost daily for casual conversations downstairs or in the community garden. On weekends, they sometimes go grocery shopping together or participate in activities organized by the community."
+      }
+    ],
+    [
+      {
+        "name": "Master Chen",
+        "relation": "Baking Teacher",
+        "social circle": "Baking Enthusiasts Circle",
+        "gender": "Male",
+        "age": 48,
+        "birth_date": "1976-08-22",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City",
+          "district": "Huli District",
+          "street_name": "Xinglong Road",
+          "street_number": "Baking Workshop Third Floor"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGuangdong Province",
+          "city": "Guangzhou City"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Middle class",
+        "occupation": "Pastry Chef/Baking Instructor",
+        "organization": "Personal Studio (Master Chen's Baking Workshop)",
+        "nickname": "Teacher Chen",
+        "relation_description": "Song Yajing first met Master Chen in early 2022 when she enrolled in his weekend dessert course through a local lifestyle platform to refine her baking skills. Master Chen, an experienced pastry chef, was patient and meticulous in his teaching, with a particular expertise in French desserts. After the course ended, Song Yajing, still deeply interested in baking, would occasionally reach out to Master Chen via WeChat to ask about recipes or techniques, and he was always happy to help. Both currently reside in Xiamen, but they do not meet frequently—approximately once a quarter, Song Yajing visits Master Chen’s studio to participate in new product tastings or short-term advanced courses. Most of their communication takes place online. At small gatherings within the baking enthusiast community, Song Yajing also met other like-minded individuals, such as Mrs. Liu, through Master Chen."
+      },
+      {
+        "name": "Mrs. Liu",
+        "relation": "Baking Enthusiast",
+        "social circle": "Baking Enthusiast Circle",
+        "gender": "Female",
+        "age": 35,
+        "birth_date": "1988-12-10",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District",
+          "street_name": "Wen'er West Road",
+          "street_number": "Building 12 of a certain residential community"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Ningbo City"
+        },
+        "personality": "ENFP",
+        "economic_level": "Affluent",
+        "occupation": "Full-time Housewife/Freelance Illustrator",
+        "organization": "Family/Personal Commission",
+        "nickname": "Lily",
+        "relation_description": "Mrs. Liu is a classmate Song Yajing met in Master Chen's baking class. Originally from Hangzhou, she enrolled in the course while temporarily living in Xiamen due to her husband's job transfer and has since returned to Hangzhou after the course ended. Mrs. Liu is cheerful and loves sharing, and the two became close during the class due to their shared preference for making cakes, eventually exchanging WeChat contacts. Now living apart in Xiamen and Hangzhou, they primarily stay connected online. They frequently share photos of their baking creations on WeChat, discuss lessons from failures or insights from successes, and occasionally mail each other homemade specialty snacks. When Mrs. Liu returns to Xiamen once or twice a year for family visits or travel, she arranges small gatherings with Song Yajing, Master Chen, and other friends in their circle to taste new creations and exchange fashion updates (as Mrs. Liu also has an interest in clothing). Their interaction frequency is approximately several times a week online, with in-person meetings occurring once or twice a year."
+      }
+    ],
+    [
+      {
+        "name": "Wang Mingyuan",
+        "relation": "Family Doctor",
+        "social circle": "Medical Circle",
+        "gender": "Male",
+        "age": 41,
+        "birth_date": "1984-08-12",
+        "home_address": {
+          "province": "Fujian Province",
+          "city": "Xiamen City",
+          "district": "Huli District",
+          "street_name": "Xianyue Road",
+          "street_number": "Number 456"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Middle class",
+        "occupation": "General Practitioner",
+        "organization": "Xiamen City Huli District Community Health Service Center",
+        "nickname": "Doctor Wang",
+        "relation_description": "Dr. Wang Mingyuan is Song Yajing's family physician. They first met in 2021 when Song visited the community health center for a seasonal flu. Dr. Wang's calm and meticulous demeanor left Song with an impression of professionalism and reliability, leading her to consistently seek his advice for family health matters. As Song is a Catholic and there happens to be a church near Dr. Wang's community center, the two occasionally cross paths at community events. Nowadays, Song and her family (including her children) contact Dr. Wang for minor illnesses, vaccinations, and health consultations. They primarily communicate through WeChat for online consultations, averaging about once per quarter, or schedule clinic appointments when a family member feels unwell. Their meetings usually take place at the community health center, with conversations focusing on diagnosis and health advice, occasionally accompanied by casual exchanges about their recent lives."
+      }
+    ],
+    [
+      {
+        "name": "Lin Xiaofeng",
+        "relation": "Bank Customer Manager",
+        "social circle": "Financial Circle",
+        "gender": "Male",
+        "age": 35,
+        "birth_date": "1989-08-12",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nFujian Province",
+          "city": "Xiamen City",
+          "district": "Huli District",
+          "street_name": "Xianyue Road",
+          "street_number": "Number 668"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Fuzhou City"
+        },
+        "personality": "ESTJ",
+        "economic_level": "Middle class",
+        "occupation": "Bank Customer Manager",
+        "organization": "Industrial and Commercial Bank of China Xiamen Branch Siming Sub-branch",
+        "nickname": "Manager Lin",
+        "relation_description": "Lin Xiaofeng is the account manager whom Song Yajing met when she was handling the corporate account for her shop and personal wealth management services at the Industrial and Commercial Bank of China. They became acquainted during the shop's preparation phase in 2020. He is meticulous and pragmatic, providing professional and attentive service. In addition to handling routine banking transactions, he also offers Song Yajing basic financial advice, such as savings planning and introductions to simple wealth management products. Since Song Yajing's shop is located in Siming District, their workplaces are not far apart. They primarily stay in touch via WeChat and phone calls, connecting about once or twice a month for business matters or holiday greetings. Occasionally, they communicate in person when Song Yajing visits the bank for transactions, but they do not engage in frequent social gatherings privately."
+      }
+    ]
+  ]
+}

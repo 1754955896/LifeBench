@@ -1,0 +1,2578 @@
+[
+  {
+    "event_id": 3131,
+    "type": "photo",
+    "caption": "A note placed on the coffee table in the living room, with slightly messy handwriting.",
+    "title": "IMG_20250809_075030",
+    "datetime": "2025-08-09 07:50:30",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n128号",
+      "poi": "In the living room of the Shanggu Street residential community."
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNote",
+      "Coffee table",
+      "Morning",
+      "Stay at home"
+    ],
+    "ocrText": "Study... Work...",
+    "shoot_mode": "Document",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of a handwritten note placed on the coffee table in the living room.",
+    "phone_id": 1
+  },
+  {
+    "type": "photo",
+    "event_id": 2581,
+    "caption": "Xuanxuan uses a mold to press out cookie shapes in the kitchen, with flour and dough on the table.",
+    "title": "IMG_20250702_161045",
+    "datetime": "2025-07-02 16:10:45",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Ancient Street",
+      "streetNumber": "Residential complex home",
+      "poi": "Kitchen"
+    },
+    "faceRecognition": [
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nBaking",
+      "Biscuit",
+      "Bear mold",
+      "Parent-child interaction"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "Took photos of my daughter baking cookies, showing the use of molds and the kitchen setting.",
+    "phone_id": 2
+  },
+  {
+    "type": "photo",
+    "event_id": 282,
+    "caption": "Taken in front of the store's warehouse shelves, holding a beige knit sweater, with a close-up of the product label inside.",
+    "title": "IMG_20250121_143305",
+    "datetime": "2025-01-21 14:33:05",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Zhongshan Road Pedestrian Street",
+      "streetNumber": "Shop No. 36",
+      "poi": "\"Elegant Collection\" Boutique Clothing Store Warehouse Area, Ruijing Commercial Plaza"
+    },
+    "faceRecognition": [
+      "None"
+    ],
+    "imageTag": [
+      "Knitted sweater",
+      "Clothing Label",
+      "Inventory check",
+      "Work Record"
+    ],
+    "ocrText": "Care Label: Hand wash in cold water below 30°C, do not bleach, lay flat to dry.\nMaterial Label: Composition: 100% Wool.",
+    "shoot_mode": "Document",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a close-up photo of a sweater tag, which included washing instructions and material composition information.",
+    "phone_id": 3
+  },
+  {
+    "event_id": 2679,
+    "type": "photo",
+    "caption": "I tried several recliners at NITORI, and this one seems to have good lumbar support.",
+    "title": "IMG_20250710_101520",
+    "datetime": "2025-07-10 10:15:20",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Huli District",
+      "streetName": "Jiahe Road",
+      "streetNumber": "No. 468",
+      "poi": "SM City Plaza Phase II NITORI Store"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Armchair",
+      "Furniture store",
+      "NITORI",
+      "Shopping"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took a photo of a recliner at the NITORI store in SM City Plaza.",
+    "phone_id": 4
+  },
+  {
+    "event_id": 3229,
+    "type": "photo",
+    "caption": "A workspace in the corner of a café, with a cup of drink and an open notebook on the table.",
+    "title": "IMG_20250816_141520",
+    "datetime": "2025-08-16 14:15:20",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Middle Lakefront Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 86",
+      "poi": "Mojie Coffee MOJEMINI (Xiamen Metro Building Store)"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Coffee cup",
+      "Notebook",
+      "Cafe interior design",
+      "Work status"
+    ],
+    "ocrText": "Moji Coffee Order\nIced Latte x1\nAmount: 35.00 yuan\nTime: 2025-08-16 14:05",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took a photo while working at Moji Coffee, showing a coffee cup and a notebook. OCR recognition revealed that the order included an iced latte.",
+    "phone_id": 5
+  },
+  {
+    "event_id": 550,
+    "type": "photo",
+    "caption": "Having afternoon tea with Meiling at the café.",
+    "title": "IMG_20250208_150230",
+    "datetime": "2025-02-08 15:02:30",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Hongwen Wuli",
+      "streetNumber": "",
+      "poi": "Le Cui Coffee Shop"
+    },
+    "faceRecognition": [
+      "Li Meiling",
+      "Song Yajing"
+    ],
+    "imageTag": [
+      "Coffee",
+      "Latte",
+      "Coffee Shop",
+      "Bestie"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo with her best friend Li Meiling at a cafe.",
+    "phone_id": 6
+  },
+  {
+    "event_id": 1081,
+    "type": "photo",
+    "caption": "Window display design sketch manuscript, pencil-drawn outlines of green vines and a dress, with annotations beside them.",
+    "title": "IMG_20250319_103000",
+    "datetime": "2025-03-19 10:30:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Zhongshan Road",
+      "streetNumber": "Nearby",
+      "poi": "Work area"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Hand-drawn sketch",
+      "Green Vine",
+      "Dress",
+      "Design draft",
+      "Spring"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Standard",
+    "image_size": "2000×1500",
+    "summarized_info": "Song Yajing took photos of the spring window sketches, showcasing hand-drawn green vines and dress elements.",
+    "phone_id": 7
+  },
+  {
+    "event_id": 2729,
+    "type": "photo",
+    "caption": "Lunch at Gulangyu Shenjia Minnan Rice Noodle Roll Shop, with rice noodle rolls and shark ball soup on the table, and the shop's decorations in the background.",
+    "title": "IMG_20250713_114520",
+    "datetime": "2025-07-13 11:45:20",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Fujian Road",
+      "streetNumber": "Number 57",
+      "poi": "Shen's Minnan Rice Noodle Roll Shop"
+    },
+    "faceRecognition": [
+      "Song Yajing",
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Rice noodle roll",
+      "Shark Ball Soup",
+      "Lunch",
+      "Gulangyu Island",
+      "Family"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took photos of her lunch at Shen's Minnan Rice Noodle Roll Shop on Gulangyu Island, showing rice noodle rolls and shark ball soup.",
+    "phone_id": 8
+  },
+  {
+    "event_id": 2252,
+    "type": "photo",
+    "caption": "Screenshot of the weight record page in the health app",
+    "title": "Screenshot_20250609_064000",
+    "datetime": "2025-06-09 06:40:00",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 128",
+      "poi": "At home in Shanggu Street Residential Area"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Screenshot",
+      "Health App",
+      "Weight Record"
+    ],
+    "ocrText": "Current weight: 50.2 kg Recorded at: 2025-06-09 06:35",
+    "shoot_mode": "Screenshot",
+    "image_size": "1080x2340",
+    "summarized_info": "Song Yajing captured a screenshot of the weight record page from the Mint Health app, showing a weight of 50.2 kilograms, recorded at 06:35 in the morning.",
+    "phone_id": 9
+  },
+  {
+    "event_id": 1913,
+    "type": "photo",
+    "caption": "Sitting on a bench in the residential garden, chatting and resting with Aunt Zhang, with green trees and flowers in the background and the glow of the setting sun shining down.",
+    "title": "IMG_20250515_1715",
+    "datetime": "2025-05-15 17:15:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "128.",
+      "poi": "Shanggu Street Residential Area Garden Bench"
+    },
+    "faceRecognition": [
+      "Song Yajing",
+      "Aunt Zhang"
+    ],
+    "imageTag": [
+      "Garden",
+      "Bench",
+      "Chat",
+      "Leisure",
+      "Community Activities"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Scenery",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took a photo of herself sitting on a bench in the community garden chatting with Aunt Zhang after the event.",
+    "phone_id": 10
+  },
+  {
+    "type": "photo",
+    "event_id": 1549,
+    "caption": "An afternoon tea party with my besties, with exquisite pastries and delightful conversations.",
+    "title": "IMG_20250419_163050",
+    "datetime": "2025-04-19 16:30:50",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Nearby",
+      "poi": "A certain café"
+    },
+    "faceRecognition": [
+      "Meiling",
+      "Other female faces"
+    ],
+    "imageTag": [
+      "Afternoon tea",
+      "Dessert",
+      "Gathering of Best Friends",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCafé"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Delicacy",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took a photo of an afternoon tea gathering with her close friends, featuring exquisite pastries and a joyful atmosphere.",
+    "phone_id": 11
+  },
+  {
+    "event_id": 3618,
+    "type": "photo",
+    "caption": "Classroom Guidance Moment: The student is learning to add decorative edges to old clothing.",
+    "title": "IMG_20250913_093520",
+    "datetime": "2025-09-13 09:35:20",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Number 138",
+      "poi": "Siming District Hope Community Party Member Activity Room"
+    },
+    "faceRecognition": [
+      "Song Yajing",
+      "Aunt Zhang"
+    ],
+    "imageTag": [
+      "Jeans",
+      "Embroidered Edge",
+      "Handmade Decoration",
+      "Classroom Activities",
+      "Old clothing"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "4032×3024",
+    "summarized_info": "Photos were taken of students learning clothing decoration techniques in the classroom, with tags indicating relevance to jeans hem embroidery.",
+    "phone_id": 12
+  },
+  {
+    "event_id": 2406,
+    "type": "photo",
+    "caption": "Customized chocolate plaque photographed while waiting for pickup at Sugar Heart Workshop. It features carefully designed text against the backdrop of the shop's workbench.",
+    "title": "IMG_20250619_170103",
+    "datetime": "2025-06-19 17:01:03",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Xian Road",
+      "streetNumber": "",
+      "poi": "Xian Road Flower and Bird Market Sugar Heart Workshop"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Chocolate",
+      "Dessert",
+      "Customization",
+      "Sugar Heart Workshop",
+      "Flower and Bird Market"
+    ],
+    "ocrText": "Welcome Home, Mom & Dad!",
+    "shoot_mode": "Delicacy",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of a customized chocolate plaque from Tangxin Workshop, and OCR recognized the welcoming text on it.",
+    "phone_id": 13
+  },
+  {
+    "event_id": 1993,
+    "type": "photo",
+    "caption": "The adjusted window display features light-colored dresses and printed shirts as the main attractions, paired with straw bags and sun hats to create a summer atmosphere.",
+    "title": "IMG_20250521_110025",
+    "datetime": "2025-05-21 11:00:25",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Zhongshan Road Pedestrian Street",
+      "streetNumber": "Shop No. 36",
+      "poi": "Elegant Wardrobe Shop Window"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Showcase",
+      "Model",
+      "Light-colored dress",
+      "Printed shirt",
+      "Summer clothing",
+      "Display"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Ordinary",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of the shop window display, showing models wearing light-colored dresses and printed shirts, among other summer outfits, paired with straw bags and sun hats.",
+    "phone_id": 14
+  },
+  {
+    "event_id": 3632,
+    "type": "photo",
+    "caption": "Yuexuan stood in front of an exquisitely designed antique piano, gazing intently at the keys with a curious smile on her face.",
+    "title": "IMG_20250914_112015",
+    "datetime": "2025-09-14 11:20:15",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Gangzaihou Road",
+      "streetNumber": "Number 7",
+      "poi": "Gulangyu Piano Museum"
+    },
+    "faceRecognition": [
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Museum",
+      "Harpsichord",
+      "Automatic piano",
+      "Daughter",
+      "Visit"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "A photo taken at the Gulangyu Piano Museum, featuring my daughter Chen Lexuan standing in front of an antique piano, with the photo tag including 'player piano'.",
+    "phone_id": 15
+  },
+  {
+    "event_id": 2001,
+    "type": "photo",
+    "caption": "The morning scenery of Yundang Lake Trail, with the lake surface calm.",
+    "title": "IMG_20250522_080200",
+    "datetime": "2025-05-22 08:02:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Yundang Lake Trail",
+      "streetNumber": "",
+      "poi": "Near Hubin North Road"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Lake View",
+      "Early morning",
+      "Take a walk"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "4000×3000",
+    "summarized_info": "Song Yajing took a photo of the morning lake view along the Yundang Lake trail.",
+    "phone_id": 16
+  },
+  {
+    "type": "photo",
+    "event_id": 5013,
+    "caption": "A childhood photo with my sister Song Yawen in our hometown park, recently scanned for an electronic photo album.",
+    "title": "Scan_Childhood Photo_20251221",
+    "datetime": "2025-12-21 15:30:00",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "128",
+      "poi": "In the study room at home in Shanggu Street Residential Area."
+    },
+    "faceRecognition": [
+      "Song Yajing",
+      "Song Yawen"
+    ],
+    "imageTag": [
+      "Childhood",
+      "Please take a group photo.",
+      "Scan",
+      "Old photographs",
+      "Electronic Photo Album"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Document Scanning",
+    "image_size": "2480x3508",
+    "summarized_info": "Song Yajing scanned a childhood photo with her sister, planning to use it for an electronic photo album.",
+    "phone_id": 17
+  },
+  {
+    "event_id": 720,
+    "type": "photo",
+    "caption": "Roast goose platter photographed during lunch, with the restaurant's interior decor in the background.",
+    "title": "IMG_20250221_124520",
+    "datetime": "2025-02-21 12:45:20",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGuangdong Province",
+      "city": "Guangzhou City",
+      "district": "Liwan District",
+      "streetName": "Thirteen Hongs Road",
+      "streetNumber": "Nearby",
+      "poi": "Hong Kong Style Roast Goose Restaurant"
+    },
+    "faceRecognition": [
+      "Susan"
+    ],
+    "imageTag": [
+      "Roast goose",
+      "Restaurant",
+      "Lunch",
+      "Decoration"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of lunch, showing a roast goose platter and the restaurant ambiance, together with Susan.",
+    "phone_id": 18
+  },
+  {
+    "event_id": 755,
+    "type": "photo",
+    "caption": "Xuanxuan happily eats the steamed buns shaped like pandas with flowing sand filling, and the children's meal looks quite sumptuous.",
+    "title": "IMG_20250223_203000",
+    "datetime": "2025-02-23 20:30:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "East Hubin Road",
+      "streetNumber": "Number 99",
+      "poi": "Gangji Bing Shi Hong Kong Style Tea Restaurant"
+    },
+    "faceRecognition": [
+      "Chen Lexuan",
+      "Song Yajing",
+      "Chen Zhiqiang"
+    ],
+    "imageTag": [
+      "Children's Meal",
+      "Panda Custard Bun",
+      "Family Dinner",
+      "Restaurant environment"
+    ],
+    "ocrText": "Gangji Ice Room, welcome.",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of a family dinner, showing Xuanxuan eating a panda-shaped custard bun, captured at Gangji Bing Shi.",
+    "phone_id": 19
+  },
+  {
+    "type": "photo",
+    "event_id": 645,
+    "caption": "Inside the church, sunlight streams through the stained glass windows.",
+    "title": "IMG_20250216_091523",
+    "datetime": "2025-02-16 09:15:23",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Quanzhou City",
+      "district": "Licheng District",
+      "streetName": "Xucuo Lane",
+      "streetNumber": "Number 25",
+      "poi": "Inside the Flower Lane Catholic Church"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Church",
+      "Stained glass",
+      "Sunshine",
+      "Bench"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "I took a photo inside the church, showing the stained glass windows and the pews.",
+    "phone_id": 20
+  },
+  {
+    "type": "photo",
+    "event_id": 3149,
+    "caption": "A group photo in front of the building after the event.",
+    "title": "IMG_20250810_093520",
+    "datetime": "2025-08-10 09:35:20",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Lujiao Road",
+      "streetNumber": "Number 34",
+      "poi": "Gulangyu Catholic Church"
+    },
+    "faceRecognition": [
+      "Song Yajing"
+    ],
+    "imageTag": [
+      "Church architecture",
+      "Cross",
+      "Gothic",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nOutdoors",
+      "Sunday"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Photo",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a personal photo in front of the Gulangyu Catholic Church building.",
+    "phone_id": 21
+  },
+  {
+    "event_id": 1694,
+    "type": "photo",
+    "caption": "The food laid out on the picnic mat included homemade mini cakes and colorful fruit boxes. Sticking to less sugar and oil, Lexuan also enjoyed it very much.",
+    "title": "IMG_20250502_101523",
+    "datetime": "2025-05-02 10:15:23",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Island Ring Road",
+      "streetNumber": "",
+      "poi": "At home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Cupcake",
+      "Fruit Platter",
+      "Picnic mat",
+      "Healthy Eating",
+      "Homemade Pastries"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Food",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of the food prepared for a picnic, including homemade cakes and fruits, and mentioned in the description her commitment to a healthy lifestyle with less sugar and oil.",
+    "phone_id": 22
+  },
+  {
+    "event_id": 2699,
+    "type": "photo",
+    "caption": "Spread out on the table is a handwritten notebook with the words 'Macaron Recipe Key Points' on it, and a pen is placed beside it.",
+    "title": "IMG_20250712_093002",
+    "datetime": "2025-07-12 09:30:02",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Zhongshan Road Pedestrian Street",
+      "streetNumber": "Shop No. 36",
+      "poi": "Elegant Wardrobe Store"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Notebook",
+      "Handwritten notes",
+      "Desktop",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nBaking",
+      "Learn"
+    ],
+    "ocrText": "Key Points of Macaron Recipe: Almond Flour, Powdered Sugar, Egg Whites, Aging, Drying the Shells...",
+    "shoot_mode": "Document",
+    "image_size": "3024×4032",
+    "summarized_info": "A photo was taken of handwritten notes recording the 'Key Points of Macaron Recipe'.",
+    "phone_id": 23
+  },
+  {
+    "type": "photo",
+    "event_id": 3943,
+    "caption": "A group photo of the whole family in the living room, with everyone beaming with smiles.",
+    "title": "IMG_20251004_110523",
+    "datetime": "2025-10-04 11:05:23",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Quanzhou City",
+      "district": "Licheng District",
+      "streetName": "Xinhua North Road",
+      "streetNumber": "Nearby",
+      "poi": "Living room at home"
+    },
+    "faceRecognition": [
+      "Song Minghui",
+      "Lin Xiuying",
+      "Song Yajing",
+      "Chen Zhiqiang",
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Living room",
+      "Sofa",
+      "Family group photo",
+      "Smile"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nGroup photo",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a family photo at home in Quanzhou, in which Song Minghui, Lin Xiuying, Song Yajing, Chen Zhiqiang, and Chen Lexuan were identified.",
+    "phone_id": 24
+  },
+  {
+    "type": "photo",
+    "event_id": 460,
+    "caption": "At the highway rest area, two half-drunk cups of coffee were left on the table.",
+    "title": "IMG_20250202_153520",
+    "datetime": "2025-02-02 15:35:20",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Quanzhou City",
+      "district": "Nan'an City",
+      "streetName": "Shenhai Expressway",
+      "poi": "Puli Service Area Rest Area"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Coffee",
+      "Table",
+      "Service Area",
+      "Rest"
+    ],
+    "ocrText": "Key Points for Discussion on Retirement Planning...",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "I took a photo of the coffee on the table while resting at the service area.",
+    "phone_id": 25
+  },
+  {
+    "type": "photo",
+    "event_id": 3032,
+    "caption": "The Qixi Festival-themed decorations at the entrance of the store.",
+    "title": "IMG_20250802_102502",
+    "datetime": "2025-08-02 10:25:02",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Zhongshan Road Pedestrian Street",
+      "streetNumber": "Shop No. 36",
+      "poi": "Ruijing Commercial Plaza, Shop Entrance"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Store decoration",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nQixi Festival",
+      "Entrance",
+      "Commercial Street"
+    ],
+    "ocrText": "Yaji Apparel",
+    "shoot_mode": "Photo",
+    "image_size": "4032×3024",
+    "summarized_info": "I took a photo of the Qixi Festival-themed decorations at the entrance of a shop.",
+    "phone_id": 26
+  },
+  {
+    "event_id": 4542,
+    "type": "photo",
+    "caption": "After the Mass, I took a group photo with Zhiqiang and Xuanxuan at the church entrance. Xuanxuan was smiling happily.",
+    "title": "IMG_20251117_101523",
+    "datetime": "2025-11-17 10:15:23",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Lujiao Road",
+      "streetNumber": "Number 34",
+      "poi": "At the entrance of the Gulangyu Catholic Church"
+    },
+    "faceRecognition": [
+      "Chen Zhiqiang",
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Church",
+      "Architecture",
+      "Group photo",
+      "Family"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "4032×3024",
+    "summarized_info": "I took a photo with my husband and daughter at the entrance of the church.",
+    "phone_id": 27
+  },
+  {
+    "type": "photo",
+    "event_id": 5048,
+    "caption": "My daughter Lexuan is holding a gingerbread man dough that she just pressed out with a mold, and the texture of the mold is clearly visible on the dough. Scattered on the table are dough in the shapes of stars and Christmas trees, with the kitchen countertop and baking tools in the background.",
+    "title": "IMG_20251223_194920",
+    "datetime": "2025-12-23 19:49:20",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "128",
+      "poi": "In the kitchen of the home in Shanggu Street Community."
+    },
+    "faceRecognition": [
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Gingerbread man dough",
+      "Christmas mold",
+      "Parent-Child Baking",
+      "Kitchen"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "I took a photo of my daughter holding gingerbread dough, capturing the process of parent-child baking.",
+    "phone_id": 28
+  },
+  {
+    "event_id": 359,
+    "type": "photo",
+    "caption": "A historic church building, with a daughter taking a photo in front of the church.",
+    "title": "IMG_20250126_100200",
+    "datetime": "2025-01-26 10:02:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Lujiao Road",
+      "streetNumber": "Number 34",
+      "poi": "Gulangyu Catholic Church"
+    },
+    "faceRecognition": [
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Church",
+      "Religious Architecture",
+      "Gulangyu Island"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "Xu Jing took a photo of the Gulangyu Catholic Church, with her daughter Chen Lexuan in the frame.",
+    "phone_id": 29
+  },
+  {
+    "type": "photo",
+    "event_id": 466,
+    "caption": "Using a browser on the computer to search for \"Xiamen Siming District residential area environment medical care,\" the screen displays a list and brief descriptions of some real estate agency websites.",
+    "title": "Screenshot_20250203_110000",
+    "datetime": "2025-02-03 11:00:00",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Ancient Street",
+      "streetNumber": "**Number**",
+      "poi": "Home Study"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Computer screen",
+      "Browser",
+      "Real Estate Website",
+      "Search Page"
+    ],
+    "ocrText": "Peaceful Living** Xiamen Siming District Properties for Sale... Adjacent to a park... Surrounded by community health service stations...",
+    "shoot_mode": "Screenshot",
+    "image_size": "1920×1080",
+    "summarized_info": "I took a screenshot of a page searching for housing information in Siming District, Xiamen on the computer.",
+    "phone_id": 30
+  },
+  {
+    "event_id": 4400,
+    "type": "photo",
+    "caption": "Online order packages ready for shipment in the packing area, with the background showing store inventory shelves.",
+    "title": "IMG_20251105_141520",
+    "datetime": "2025-11-05 14:15:20",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Zhongshan Road Pedestrian Street",
+      "streetNumber": "Shop No. 36",
+      "poi": "\"Elegant Wardrobe\" Store Packing Area at Ruijing Commercial Plaza"
+    },
+    "faceRecognition": [
+      "Song Yajing",
+      "Xiaomei"
+    ],
+    "imageTag": [
+      "Order Package",
+      "Packing Area",
+      "Inventory Shelves",
+      "Physical store"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "I took photos of the packing area, showing packages for online orders and store inventory.",
+    "phone_id": 31
+  },
+  {
+    "event_id": 590,
+    "type": "photo",
+    "caption": "The morning lake view at Egret Island Park, with early spring flowers just beginning to bloom, is serene and beautiful.",
+    "title": "IMG_20250212_075020",
+    "datetime": "2025-02-12 07:50:20",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Bailuzhou Road",
+      "streetNumber": "",
+      "poi": "Egret Island Park Lakeside Trail"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Early morning",
+      "Park",
+      "Lake",
+      "Scenery",
+      "Early Spring"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "A morning lakeside photo taken by Song Yajing at Egret Island Park, capturing the early morning moment.",
+    "phone_id": 32
+  },
+  {
+    "event_id": 1283,
+    "type": "photo",
+    "caption": "Morning on the way to school, capturing this moment.",
+    "title": "IMG_20250401_083200",
+    "datetime": "2025-04-01 08:32:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Siming South Road",
+      "streetNumber": "No. 422",
+      "poi": "Xiamen University Kindergarten"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Kindergarten",
+      "Go to school",
+      "Morning"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Took photos on the way to school, at the Xiamen University Kindergarten.",
+    "phone_id": 33
+  },
+  {
+    "event_id": 2268,
+    "type": "photo",
+    "caption": "Reviewing new clothing samples with supplier Susan at the exhibition hall.",
+    "title": "IMG_20250610_093000",
+    "datetime": "2025-06-10 09:30:00",
+    "location": {
+      "province": "Guangdong Province",
+      "city": "Guangzhou City",
+      "district": "Tianhe District",
+      "streetName": "Pazhou Avenue East Road",
+      "streetNumber": "Number One",
+      "poi": "Guangzhou International Procurement Center"
+    },
+    "faceRecognition": [
+      "Susan"
+    ],
+    "imageTag": [
+      "Clothing samples",
+      "Pavilion",
+      "Business Meeting"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo with Susan while they were inspecting clothing samples at the exhibition hall.",
+    "phone_id": 34
+  },
+  {
+    "event_id": 841,
+    "type": "photo",
+    "caption": "Interior scene of the Gulangyu Catholic Church",
+    "title": "IMG_20250302_103000",
+    "datetime": "2025-03-02 10:30:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Lujiao Road",
+      "streetNumber": "Number 34",
+      "poi": "Gulangyu Catholic Church"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Church",
+      "Religious sites",
+      "Indoors"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of the interior of the Gulangyu Catholic Church.",
+    "phone_id": 35
+  },
+  {
+    "type": "photo",
+    "event_id": 1896,
+    "caption": "A close-up of an elaborately decorated cake slice, topped with fresh fruits and cream piping, set against the backdrop of a kitchen counter.",
+    "title": "IMG_20250514_110502",
+    "datetime": "2025-05-14 11:05:02",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Zhongshan Road Pedestrian Street",
+      "streetNumber": "Number 36",
+      "poi": "Shops inside Ruijing Commercial Plaza"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Cake",
+      "Baked Finished Product",
+      "Cream piping",
+      "Fresh fruit",
+      "Homemade Desserts"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Gourmet",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took a photo of a homemade, beautifully decorated cake.",
+    "phone_id": 36
+  },
+  {
+    "type": "photo",
+    "event_id": 3517,
+    "caption": "On the early morning beach, the silhouettes of people standing still, praying towards the sea, with the rising sun in the distance.",
+    "title": "IMG_20250906_063000",
+    "datetime": "2025-09-06 06:30:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Island Ring Road",
+      "poi": "Heartsea Retreat Exclusive Beach Viewing Platform"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "The sea",
+      "Sunrise",
+      "Crowd Silhouette",
+      "Pray",
+      "Beach"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Scenery",
+    "image_size": "3024×4032",
+    "summarized_info": "I took a photo of a group of people praying together on a seaside viewing platform in the early morning.",
+    "phone_id": 37
+  },
+  {
+    "type": "photo",
+    "event_id": 2269,
+    "caption": "A sample of a beige waist-cinching umbrella skirt, photographed at the exhibition's brand booth, is hanging on a clothes hanger against a backdrop of the brand logo and lighting.",
+    "title": "IMG_20250610_110203",
+    "datetime": "2025-06-10 11:02:03",
+    "location": {
+      "province": "Guangdong Province",
+      "city": "Guangzhou City",
+      "district": "Tianhe District",
+      "streetName": "Pazhou Avenue East Road",
+      "streetNumber": "",
+      "poi": "Guangzhou International Procurement Center Area A"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Clothing sample",
+      "Off-white",
+      "Waist-cinching umbrella skirt",
+      "Booth",
+      "Hanger"
+    ],
+    "ocrText": "Moli MORLI",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "I took a photo of a beige waist-cinching umbrella skirt sample I saw at the exhibition, and the brand name 'Moli' is recognizable in the picture.",
+    "phone_id": 38
+  },
+  {
+    "event_id": 977,
+    "type": "photo",
+    "caption": "At the clothing market, looking at styles and recording popular color knit sets.",
+    "title": "IMG_20250311_093000",
+    "datetime": "2025-03-11 09:30:00",
+    "location": {
+      "province": "Guangdong Province",
+      "city": "Guangzhou City",
+      "district": "Yuexiu District",
+      "streetName": "South Station Road",
+      "streetNumber": "16th",
+      "poi": "Guangzhou White Horse Garment Market"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Clothing",
+      "Market",
+      "Booth"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Xu Jing took a photo while checking out styles at a clothing market, with the location indicated as Guangzhou Baima Clothing Market.",
+    "phone_id": 39
+  },
+  {
+    "event_id": 2271,
+    "type": "photo",
+    "caption": "Inside the brand booth, a model is trying on a beige shirt, with the brand's color chart and size chart standing nearby.",
+    "title": "IMG_20250610_151230",
+    "datetime": "2025-06-10 15:12:30",
+    "location": {
+      "province": "Guangdong Province",
+      "city": "Guangzhou City",
+      "district": "Tianhe District",
+      "streetName": "Pazhou Avenue East Road",
+      "poi": "Guangzhou International Procurement Center"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Model",
+      "Shirt",
+      "Color Chart",
+      "Size Chart",
+      "Booth"
+    ],
+    "ocrText": "SUREN 2025 Autumn Collection Color Code: CR01",
+    "shoot_mode": "Take a photo",
+    "image_size": "3024×4032",
+    "summarized_info": "I took a photo of a model trying on a shirt inside the booth, which includes the brand's color chart and size information.",
+    "phone_id": 40
+  },
+  {
+    "type": "photo",
+    "event_id": 490,
+    "caption": "Reference image: The effect of pairing lavender with beige fabric.",
+    "title": "Supplier_A_Ref_20250115.jpg",
+    "datetime": "2025-02-04 08:40:00",
+    "location": null,
+    "faceRecognition": [],
+    "imageTag": [
+      "Supplier Catalog",
+      "Color Card Reference",
+      "Fabric",
+      "Light Lavender Purple",
+      "Cream White",
+      "Spring Inspiration",
+      "Store Display"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Standard",
+    "image_size": "1200x800",
+    "summarized_info": "Song Yajing viewed a reference image from a supplier in her phone's photo album, which featured a combination of light purple and off-white fabrics.",
+    "phone_id": 41
+  },
+  {
+    "event_id": 492,
+    "type": "photo",
+    "caption": "In the clothing exhibition hall, a model is showcasing a new spring dress.",
+    "title": "IMG_20250204_140523",
+    "datetime": "2025-02-04 14:05:23",
+    "location": {
+      "province": "Guangdong Province",
+      "city": "Guangzhou City",
+      "district": "Yuexiu District",
+      "streetName": "South Station Road",
+      "streetNumber": "16th",
+      "poi": "White Horse Garment Market 7th Floor Exhibition Hall"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Model",
+      "Floral dress",
+      "Clothing Exhibition Hall",
+      "Spring New Arrivals"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Professional",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of a model showcasing a new dress in the clothing exhibition hall.",
+    "phone_id": 42
+  },
+  {
+    "type": "photo",
+    "event_id": 991,
+    "caption": "The clothing styles photographed at the order meeting are used for subsequent cost accounting.",
+    "title": "IMG_20250312_093500",
+    "datetime": "2025-03-12 09:35:00",
+    "location": {
+      "province": "Guangdong Province",
+      "city": "Guangzhou City",
+      "district": "Yuexiu District",
+      "streetName": "South Station Road",
+      "streetNumber": "16th",
+      "poi": "Guangzhou Baima Clothing Market Exhibition Hall"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Clothing",
+      "Booth",
+      "Fabric",
+      "Compare"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nStandard",
+    "image_size": "3024×4032",
+    "summarized_info": "Xu Jing took photos of clothing styles at the Guangzhou Baima Clothing Market.",
+    "phone_id": 43
+  },
+  {
+    "type": "photo",
+    "event_id": 512,
+    "caption": "Screenshot of a video call, showing the discussion interface with family members.",
+    "title": "Screenshot_20250205_221520",
+    "datetime": "2025-02-05 22:15:20",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Unknown",
+      "poi": "At home"
+    },
+    "faceRecognition": [
+      "Song Yawen"
+    ],
+    "imageTag": [
+      "Video call",
+      "Screenshot",
+      "Family"
+    ],
+    "ocrText": "Pension Community Medical Insurance Experience",
+    "shoot_mode": "Screenshot",
+    "image_size": "1920×1080",
+    "summarized_info": "A screenshot was taken of the video call screen, with content related to discussions about elderly care.",
+    "phone_id": 44
+  },
+  {
+    "event_id": 1355,
+    "type": "photo",
+    "caption": "Yuexuan picked up a beautiful conch and happily showed it to me under the setting sun.",
+    "title": "IMG_20250405_180215",
+    "datetime": "2025-04-05 18:02:15",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Ring Island Road",
+      "streetNumber": "Number 318",
+      "poi": "Music Square Seaside Beach"
+    },
+    "faceRecognition": [
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "By the seaside",
+      "The setting sun",
+      "Child",
+      "Conch",
+      "Beach"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "I took a photo of my daughter Lexuan picking up a seashell by the sea.",
+    "phone_id": 45
+  },
+  {
+    "type": "photo",
+    "event_id": 788,
+    "caption": "In the interior of the old residential unit in the third district of Hubin Sili, the orientation is favorable, but the floor tiles in the bathroom are damaged.",
+    "title": "IMG_20250226_140123",
+    "datetime": "2025-02-26 14:01:23",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Lakeside Sili",
+      "streetNumber": "District 3, Nos. 11-13",
+      "poi": "A certain building, 2nd floor"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Room",
+      "Bathroom",
+      "Kitchen",
+      "Old residential communities",
+      "Viewing the property"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took interior photos of the property in Hubin Sili, showing the room orientation and bathroom details.",
+    "phone_id": 46
+  },
+  {
+    "type": "photo",
+    "event_id": 789,
+    "caption": "I took photos of the windows and balcony in the apartment's living room to check the view and natural lighting. I also captured images of the fire escape and signage in the hallway.",
+    "title": "IMG_20250226_145500",
+    "datetime": "2025-02-26 14:55:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Sports Road",
+      "streetNumber": "No. 105",
+      "poi": "A high-rise apartment in the Junhao International Community"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Living room",
+      "Window",
+      "Fire escape passage",
+      "Inside the apartment"
+    ],
+    "ocrText": "Emergency Exit",
+    "shoot_mode": "Photo",
+    "image_size": "3024×4032",
+    "summarized_info": "Photos of the apartment interior and fire escape were taken during the property viewing.",
+    "phone_id": 47
+  },
+  {
+    "type": "photo",
+    "event_id": 790,
+    "caption": "In the afternoon, I conducted on-site inspections and photographed two different rental properties, capturing images of the residential complex environment, interior room layouts, and surrounding streets.",
+    "title": "DIY_20250226_162530",
+    "datetime": "2025-02-26 16:30:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 128",
+      "poi": "Home Study in Shanggu Street Residential Area"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nProperty Listing",
+      "Residential Area Environment",
+      "Living room",
+      "Bedroom",
+      "Street"
+    ],
+    "ocrText": "Sunshine Garden Building A, Unit 502... Happy Village Unit 3, Room 301...",
+    "shoot_mode": "Ordinary",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing browsed and filtered the photos of the properties taken during the afternoon field visit on her phone, preparing to organize and compare them.",
+    "phone_id": 48
+  },
+  {
+    "event_id": 1356,
+    "type": "photo",
+    "caption": "During dinner, Xuanxuan is at the dining table.",
+    "title": "IMG_20250405_194500",
+    "datetime": "2025-04-05 19:45:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Room 302, Building 12, Shanggu Street Residential Area",
+      "poi": "Home dining room"
+    },
+    "faceRecognition": [
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Family dinner",
+      "Dinner",
+      "Steamed Sea Bass"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "A photo was taken of a family dinner, with Chen Lexuan at the dining table.",
+    "phone_id": 49
+  },
+  {
+    "event_id": 1357,
+    "type": "photo",
+    "caption": "Playing the garbage sorting game with Zhiqiang and Xuanxuan, the baby is learning quickly and is currently throwing the \"expired pills\" card into the hazardous waste box.",
+    "title": "IMG_20250405_211500",
+    "datetime": "2025-04-05 21:15:00",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Room 302, Building 12, Shanggu Street Residential Area",
+      "poi": "Living room at home"
+    },
+    "faceRecognition": [
+      "Chen Zhiqiang",
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Garbage Classification",
+      "Family Games",
+      "Handmade card",
+      "Cardboard trash can",
+      "Children's Education"
+    ],
+    "ocrText": "Hazardous waste",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "A photo was taken of a family waste sorting game, featuring Chen Zhiqiang and Chen Lexuan, with the content showing them placing cards.",
+    "phone_id": 50
+  },
+  {
+    "event_id": 1483,
+    "type": "photo",
+    "caption": "After a brisk morning walk, Lexuan played on the neighborhood path.",
+    "title": "IMG_20250415_0815",
+    "datetime": "2025-04-15 08:15:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "128",
+      "poi": "Pedestrian Walkways around Shanggu Street Residential Area"
+    },
+    "faceRecognition": [
+      "Chen Lexuan",
+      "Song Yajing"
+    ],
+    "imageTag": [
+      "Outdoors",
+      "Exercise",
+      "Child",
+      "Trail"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Scenery",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took photos of her daughter Lexuan playing on the trail during her morning brisk walk.",
+    "phone_id": 51
+  },
+  {
+    "event_id": 1484,
+    "type": "photo",
+    "caption": "In the kindergarten classroom, a little girl with a ponytail is intently molding colored clay. Beside her lies a small, crooked animal she has just made.",
+    "title": "Xuanxuan Open Day Handicraft",
+    "datetime": "2025-04-15 09:45:20",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Siming South Road",
+      "streetNumber": "No. 422",
+      "poi": "Xiamen University Kindergarten"
+    },
+    "faceRecognition": [
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Handmade activities",
+      "Color clay",
+      "Kindergarten",
+      "Child",
+      "Classroom"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "A photo of a little girl doing crafts was taken during the kindergarten open day, and facial recognition identified her as Chen Lexuan.",
+    "phone_id": 52
+  },
+  {
+    "event_id": 1487,
+    "type": "photo",
+    "caption": "Yuexuan sat at the dining table, happily scooping up the stir-fried shrimp from her bowl with a spoon.",
+    "title": "My precious daughter Lexuan is eating shrimp.",
+    "datetime": "2025-04-15 18:30:00",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Huli District",
+      "streetName": "Ancient Street",
+      "streetNumber": "",
+      "poi": "Home Restaurant in Shanggu Street Residential Area"
+    },
+    "faceRecognition": [
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Daughter",
+      "Dining table",
+      "Stir-fried Shrimp",
+      "Family Dinner"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "I took a photo of my daughter Lexuan having dinner at home, with the main focus on her happily eating shrimp.",
+    "phone_id": 53
+  },
+  {
+    "type": "photo",
+    "event_id": 3449,
+    "caption": "Mobile screenshot showing a news report about the renovation and upgrading of the Zhongshan Road commercial district, with keywords such as 'government support' and 'rental discounts' mentioned in the headline.",
+    "title": "Screenshot_20250825_Zhongshan Road Renovation News",
+    "datetime": "2025-09-01 12:20:00",
+    "location": null,
+    "faceRecognition": [],
+    "imageTag": [
+      "Screenshot",
+      "News",
+      "Zhongshan Road",
+      "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nRenovation"
+    ],
+    "ocrText": "Zhongshan Road District Launches Renovation and Upgrade Plan, Government to Introduce... Providing... Rent... Support... for Eligible Businesses.",
+    "shoot_mode": "Screenshot",
+    "image_size": "1080×2340",
+    "summarized_info": "I looked at a screenshot of a news report about the renovation and upgrade of Zhongshan Road.",
+    "phone_id": 54
+  },
+  {
+    "event_id": 2732,
+    "type": "photo",
+    "caption": "On the white marble countertop, freshly made colorful macarons are neatly arranged, alongside a piping bag and a mixing bowl.",
+    "title": "IMG_20250712_173010",
+    "datetime": "2025-07-12 17:30:10",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Shanggu Street Residential Area",
+      "poi": "Kitchen at home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Macaron",
+      "Baking Desserts",
+      "Kitchen",
+      "Food Photography"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Gourmet food",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took a photo of the French macarons she had made.",
+    "phone_id": 55
+  },
+  {
+    "event_id": 426,
+    "type": "photo",
+    "caption": "The morning light is quite nice today, I'm planning to go out for some exercise.",
+    "title": "IMG_20250130_0825",
+    "datetime": "2025-01-30 08:25:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nFujian Province",
+      "city": "Quanzhou City",
+      "district": "Licheng District",
+      "streetName": "Xinhua North Road",
+      "streetNumber": "18th",
+      "poi": "At home (parents' house)"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Outside the window",
+      "Early morning",
+      "Residential community",
+      "Sunlight"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of the morning scenery outside the window on the morning of January 30, 2025, with the location indicated as her parents' home.",
+    "phone_id": 56
+  },
+  {
+    "type": "photo",
+    "event_id": 3027,
+    "caption": "A highly finished cake cross-section with distinct layers, decorated with peach slices and oolong tea powder.",
+    "title": "IMG_20250809_221523",
+    "datetime": "2025-08-09 22:15:23",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "128",
+      "poi": "At home in Shanggu Street Residential Area"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Cake",
+      "Tiramisu",
+      "Peach",
+      "Dessert",
+      "Success",
+      "Baking Works"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Food",
+    "image_size": "3024×4032",
+    "summarized_info": "A photo of a cake, with an intact appearance and exquisite decoration, appears to be a successful baking creation.",
+    "phone_id": 57
+  },
+  {
+    "event_id": 31,
+    "type": "photo",
+    "caption": "Weekend baking achievement! Golden madeleines with perfect shell shapes and little bellies. As the first successful practice of my annual goal 'learn to make more complex French desserts,' it's incredibly fulfilling.",
+    "title": "First success! Madeleine cake",
+    "datetime": "2025-01-04 16:20:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "No. 128",
+      "poi": "In the kitchen of the Shanggu Street residential complex."
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Madeleine Cake",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nBaking",
+      "Dessert",
+      "French",
+      "Success",
+      "Kitchen"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Delicacy",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of the successfully made madeleine cakes and mentioned in the caption that this was the first successful practice of her annual dessert learning goal.",
+    "phone_id": 58
+  },
+  {
+    "event_id": 650,
+    "type": "photo",
+    "caption": "Mother is preparing dinner in front of the stove, her apron-clad back appearing somewhat blurred and frail in the steam and light.",
+    "title": "IMG_20250216_1630",
+    "datetime": "2025-02-16 16:30:00",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Quanzhou City",
+      "district": "Licheng District",
+      "streetName": "Xinhua North Road",
+      "streetNumber": "Number 45",
+      "poi": "Parents' home kitchen"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nBack View",
+      "Kitchen",
+      "Stove",
+      "Mother",
+      "Busy",
+      "Sense of thinness"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "I took a photo of my mother's back as she was preparing dinner in the kitchen.",
+    "phone_id": 59
+  },
+  {
+    "event_id": 3437,
+    "type": "photo",
+    "caption": "Sunlight filters through the stained glass, casting a serene and solemn glow upon the pews of the church.",
+    "title": "IMG_20250831_100523",
+    "datetime": "2025-08-31 10:05:23",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Lujiao Road",
+      "streetNumber": "Number 34",
+      "poi": "Interior of the Gulangyu Catholic Church"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Church",
+      "Stained Glass Window",
+      "Bench",
+      "Sunlight"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "A photograph taken inside the Gulangyu Catholic Church, showcasing the interior view of the church.",
+    "phone_id": 60
+  },
+  {
+    "event_id": 1697,
+    "type": "photo",
+    "caption": "Captured a moment of Lele reading with great concentration. Today, we read a picture book about the changing seasons together, and she really enjoyed the illustrations inside.",
+    "title": "IMG_20250508_190215",
+    "datetime": "2025-05-08 19:02:15",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Shanggu Street Residential Area",
+      "poi": "Living room at home"
+    },
+    "faceRecognition": [
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Child",
+      "Reading",
+      "Picture Book",
+      "Living room",
+      "Family"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of her daughter Chen Lexuan engrossed in reading a picture book, capturing another precious moment of parent-child reading time.",
+    "phone_id": 61
+  },
+  {
+    "type": "photo",
+    "event_id": 4555,
+    "caption": "The newly purchased packaging materials are stacked on the workbench, ready for process testing.",
+    "title": "IMG_20251117_150125",
+    "datetime": "2025-11-17 15:01:25",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "The specific street is unknown.",
+      "streetNumber": "",
+      "poi": "My own shop"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Bubble wrap filler bag",
+      "Self-adhesive express bag",
+      "Customized Sealing Stickers",
+      "Workbench",
+      "Packaging materials"
+    ],
+    "ocrText": "Material Testing Song Yajing & Xiaomei",
+    "shoot_mode": "Ordinary",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of the newly purchased packaging materials piled on the workbench, including bubble wrap filler bags, self-adhesive courier bags, and custom sealing stickers, ready for testing.",
+    "phone_id": 62
+  },
+  {
+    "event_id": 4333,
+    "type": "photo",
+    "caption": "Song Yajing checked the monthly report notification that popped up from the Keep app on the living room sofa, and then took a screenshot to save the details page of the report.",
+    "title": "Screenshot_20251031_200514_keep.jpg",
+    "datetime": "2025-10-31 20:05:14",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Shanggu Street Residential Area",
+      "poi": "Living room at home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Screenshot",
+      "Monthly Report",
+      "Running Data",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nKeep app"
+    ],
+    "ocrText": "Keep October Fitness Report  \nTotal Running Distance This Month: 52.3 km  \nTotal Workout Sessions: 8  \nCalories Burned: 2840 kcal  \nMonthly Achievement: On October 23, you completed your first 5 km run!  \n……",
+    "shoot_mode": "Screenshot",
+    "image_size": "1080×2400",
+    "summarized_info": "A screenshot of the Keep app's monthly report page, showing the total running distance for October and a specific achievement.",
+    "phone_id": 63
+  },
+  {
+    "type": "photo",
+    "event_id": 4367,
+    "caption": "The facade of Time Imprint Photography Studio looks quite professional.",
+    "title": "IMG_20251108_143021",
+    "datetime": "2025-11-08 14:30:21",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "poi": "Time Imprint Photography Studio"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Doorhead",
+      "Signboard",
+      "Studio"
+    ],
+    "ocrText": "Time Imprint Photography Studio",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took a photo of the storefront of Time Imprint Photography Studio.",
+    "phone_id": 64
+  },
+  {
+    "type": "photo",
+    "event_id": 96,
+    "caption": "Lunch adjustment plan: A grilled chicken breast vegetable salad, specifically chosen with vinaigrette dressing. A glass of warm water is placed beside it.",
+    "title": "IMG_20250109_123056",
+    "datetime": "2025-01-09 12:30:56",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Huli District",
+      "streetName": "Taiwan Street",
+      "poi": "Kitchen of My Own Snack Shop"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Chicken breast",
+      "Vegetable Salad",
+      "Vinaigrette",
+      "Water cup",
+      "Healthy Meal"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Photo",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took a photo of her lunch on January 9th, which featured a grilled chicken breast vegetable salad with vinaigrette and a glass of warm water.",
+    "phone_id": 65
+  },
+  {
+    "event_id": 1477,
+    "type": "photo",
+    "caption": "My first attempt at making vanilla roasted chicken breast with steamed pumpkin was a success—both the presentation and flavor earned my family's approval. The low-salt challenge accomplished!",
+    "title": "IMG_20250414_194520",
+    "datetime": "2025-04-14 19:45:20",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Number 128",
+      "poi": "Home Restaurant in Shanggu Street Residential Area"
+    },
+    "faceRecognition": [
+      "Lin Xiuying",
+      "Song Minghui",
+      "Chen Zhiqiang",
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Herb Roasted Chicken Breast",
+      "Steamed Pumpkin",
+      "Dinner",
+      "Low-salt recipe",
+      "Rosemary",
+      "Family dinner"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Gourmet food",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of the dinner dish \"Herb-Roasted Chicken Breast with Steamed Pumpkin,\" capturing the scene of the family sharing a meal together. The image tag indicates that this is a low-sodium recipe and includes spices such as rosemary.",
+    "phone_id": 66
+  },
+  {
+    "type": "photo",
+    "event_id": 1308,
+    "caption": "By the kitchen counter, I held two old batteries and was showing Lexuan how to identify and dispose of hazardous waste. She watched attentively beside me.",
+    "title": "IMG_20250408_194523",
+    "datetime": "2025-04-08 19:45:23",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 128",
+      "poi": "In the kitchen of the Shanggu Street residential complex"
+    },
+    "faceRecognition": [
+      "Song Yajing",
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Kitchen",
+      "Old battery",
+      "Hazardous waste",
+      "Teaching",
+      "Parent-child interaction"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo documenting the scene on April 8th when she demonstrated to her daughter Chen Lexuan how to handle hazardous waste (old batteries).",
+    "phone_id": 67
+  },
+  {
+    "type": "photo",
+    "event_id": 1812,
+    "caption": "Smart scale display screen, showing weight 50.2kg.",
+    "title": "IMG_20250509_0655",
+    "datetime": "2025-05-09 06:55:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 128",
+      "poi": "In the living room of the Shanggu Street residential community."
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Weighing scale",
+      "Display screen",
+      "Data"
+    ],
+    "ocrText": "50.2 kg",
+    "shoot_mode": "Document",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of the smart scale's display, which showed a weight of 50.2 kilograms.",
+    "phone_id": 68
+  },
+  {
+    "type": "photo",
+    "event_id": 4556,
+    "caption": "On the workbench, newly purchased bubble wrap of uniform size and self-adhesive express bags are spread out, with sample packages that have already been affixed with custom stickers placed nearby.",
+    "title": "IMG_20251117_111520",
+    "datetime": "2025-11-17 11:15:20",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Zhongshan Road Pedestrian Street",
+      "streetNumber": "Number 36",
+      "poi": "Inside the Boutique Clothing Store at Ruijing Commercial Plaza"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Packing materials",
+      "Bubble wrap",
+      "Express delivery bag",
+      "Test",
+      "Workbench"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Take a photo",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of the newly purchased packaging materials and packaging samples on the workbench.",
+    "phone_id": 69
+  },
+  {
+    "type": "photo",
+    "event_id": 4448,
+    "caption": "While browsing through their physical sample albums at the parent-child photography studio, I found the style to be very warm, and the colors and composition were exactly the type I liked. Xuanxuan's dad was also satisfied with the quality.",
+    "title": "IMG_20251108_171523",
+    "datetime": "2025-11-08 17:15:23",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Shapowei",
+      "streetNumber": "Number 60",
+      "poi": "Shapowei Art West District Time Imprint Studio"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Photography Portfolio",
+      "Photo album",
+      "Parent-child photo",
+      "Studio Interior",
+      "Flip through"
+    ],
+    "ocrText": "Partial text recognition: 【Time Imprint】Client Photos Appreciation · Happy Family...",
+    "shoot_mode": "Take a photo",
+    "image_size": "3024×4032",
+    "summarized_info": "I took a photo of myself looking at a physical sample book in a photography studio.",
+    "phone_id": 70
+  },
+  {
+    "event_id": 1387,
+    "type": "photo",
+    "caption": "Before sending my child to school in the morning, I took expired medicine and old batteries to the hazardous waste bin at the west gate of our residential community with Lexuan. I explained to her that these items should not be discarded randomly and must be placed in the red bin.",
+    "title": "IMG_20250408_0810",
+    "datetime": "2025-04-08 08:10:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Number 128",
+      "poi": "Harmful Waste Recycling Bin at the West Gate of Shanggu Street Residential Area"
+    },
+    "faceRecognition": [
+      "Song Yajing",
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Hazardous Waste Bin",
+      "Mother and daughter",
+      "Residential community",
+      "Morning"
+    ],
+    "ocrText": "Hazardous Waste\nHARMFUL WASTE\nRecycling Bin",
+    "shoot_mode": "Ordinary",
+    "image_size": "3024×4032",
+    "summarized_info": "I took a photo of my daughter and me in front of the hazardous waste recycling bin at the west gate of our residential community, where I was teaching her how to properly dispose of hazardous waste.",
+    "phone_id": 71
+  },
+  {
+    "event_id": 4431,
+    "type": "photo",
+    "caption": "A beige high-neck cashmere sweater hangs on a coat hanger, bathed in soft light that highlights its fine knit texture.",
+    "title": "IMG_20251107_152318",
+    "datetime": "2025-11-07 15:23:18",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Zhongshan Road Pedestrian Street",
+      "streetNumber": "Shop No. 36, Ruijing Commercial Plaza",
+      "poi": "Elegant Wardrobe Store"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Cashmere sweater",
+      "New Winter Collection",
+      "Detail Display",
+      "Double Eleven Pre-sale"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Professional",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took detailed photos of a beige high-neck cashmere sweater in the store to showcase its texture and quality.",
+    "phone_id": 72
+  },
+  {
+    "event_id": 905,
+    "type": "photo",
+    "caption": "The four newly purchased sorting bins have been neatly arranged in the kitchen according to the diagram (kitchen waste, recyclables, hazardous waste, and other waste), with color-coded labels attached. The diagram has been posted on the side of the refrigerator. Hardware preparation is complete, awaiting the official launch of the household practice.",
+    "title": "IMG_20250306_220512",
+    "datetime": "2025-03-06 22:05:12",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 128",
+      "poi": "In the kitchen of the Shanggu Street residential area home."
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Classified Trash Bins",
+      "Kitchen",
+      "Waste Sorting Diagram",
+      "Refrigerator",
+      "Home Preparation"
+    ],
+    "ocrText": "Household Guide to Waste Sorting\nKitchen Waste\nRecyclables\nHazardous Waste\nOther Waste",
+    "shoot_mode": "Take a photo",
+    "image_size": "3024×4032",
+    "summarized_info": "Photographed the four sorted trash bins that were already placed and labeled, along with the diagram posted on the refrigerator, documenting the completion of hardware preparation.",
+    "phone_id": 73
+  },
+  {
+    "event_id": 1789,
+    "type": "photo",
+    "caption": "Yuexuan points to the 'calm' little monster in the picture book.",
+    "title": "IMG_20250507_194523",
+    "datetime": "2025-05-07 19:45:23",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Shanggu Street Residential Area",
+      "poi": "Living room at home"
+    },
+    "faceRecognition": [
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Children's Picture Books",
+      "Emotional Cognition",
+      "Parent-Child Reading",
+      "Living room"
+    ],
+    "ocrText": "\"My Emotional Little Monster\"",
+    "shoot_mode": "Take a photo",
+    "image_size": "3024×4032",
+    "summarized_info": "A photo was taken of my daughter Lexuan pointing to the 'calm' emotion in the picture book \"My Emotional Little Monster\" during parent-child reading.",
+    "phone_id": 74
+  },
+  {
+    "event_id": 119,
+    "type": "photo",
+    "caption": "A light dinner prepared according to the doctor's instructions: steamed perch and mushroom tofu vegetable soup.",
+    "title": "IMG_20250109_190115",
+    "datetime": "2025-01-09 19:01:15",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Number 128",
+      "poi": "Home Restaurant in Shanggu Street Community"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Steamed Sea Bass",
+      "Vegetable Soup",
+      "Dinner",
+      "light"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Food",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of a light dinner, which included steamed sea bass and a mushroom tofu vegetable soup.",
+    "phone_id": 75
+  },
+  {
+    "event_id": 1397,
+    "type": "photo",
+    "caption": "The newly established temporary storage point for household hazardous waste, a small blue lidded iron box with a handwritten note 'Temporary Storage Point for Hazardous Waste', is placed on the side of a white refrigerator.",
+    "title": "IMG_20250408_203520",
+    "datetime": "2025-04-08 20:35:20",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Number 128",
+      "poi": "In the kitchen of the Shanggu Street residential complex."
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Small iron box",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSticky note",
+      "Refrigerator",
+      "Hazardous Waste",
+      "Home Organization"
+    ],
+    "ocrText": "Hazardous Waste Temporary Storage Point",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took photos of the newly established hazardous waste temporary storage point, showing that the small covered iron box had a label attached.",
+    "phone_id": 76
+  },
+  {
+    "event_id": 918,
+    "type": "photo",
+    "caption": "At the kitchen sink, Xuanxuan holds an eggshell in one hand and an empty milk carton in the other, ready to sort them for recycling.",
+    "title": "IMG_20250310_082015",
+    "datetime": "2025-03-10 08:20:15",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "128",
+      "poi": "In the kitchen at home in the Shanggu Street residential area."
+    },
+    "faceRecognition": [
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Eggshell",
+      "Milk carton",
+      "Kitchen",
+      "Garbage Classification",
+      "Child"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "3024×4032",
+    "summarized_info": "Took a photo of my daughter Xuanxuan preparing to sort garbage in the kitchen, mainly featuring eggshells and milk cartons.",
+    "phone_id": 77
+  },
+  {
+    "type": "photo",
+    "event_id": 2239,
+    "caption": "Sunday lunch with family on Gulangyu Island.",
+    "title": "IMG_20250608_123005",
+    "datetime": "2025-06-08 12:30:05",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Longtou Road",
+      "streetNumber": "",
+      "poi": "Gulangyu Island"
+    },
+    "faceRecognition": [
+      "Song Yajing",
+      "Chen Zhiqiang",
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Restaurant",
+      "Dining table",
+      "Family dinner",
+      "Dishes"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of a lunch gathering with her family at a restaurant on Longtou Road in Gulangyu.",
+    "phone_id": 78
+  },
+  {
+    "event_id": 2539,
+    "type": "photo",
+    "caption": "At the charity sale booth, carefully arranged macarons and various pastries were very popular today.",
+    "title": "IMG_20250629_103015",
+    "datetime": "2025-06-29 10:30:15",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Datong Road",
+      "streetNumber": "Number 200",
+      "poi": "Inside the courtyard of Siming Catholic Church"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Macaron",
+      "Pastries",
+      "Dessert Table",
+      "Booth",
+      "Summer Charity Sale"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Delicacy",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took a photo of the pastry stall she was in charge of at the charity sale event, which mainly showcased desserts such as macarons.",
+    "phone_id": 79
+  },
+  {
+    "event_id": 1029,
+    "type": "photo",
+    "caption": "A desktop computer screen displays a tax-related interface, with bookshelves and a window in the background.",
+    "title": "IMG_20250315_151000",
+    "datetime": "2025-03-15 15:10:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "128",
+      "poi": "Ancient Street Community, Home Study Room"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Study",
+      "Computer",
+      "Desk",
+      "Working Environment"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took a photo of the study desk work environment, located in the home study.",
+    "phone_id": 80
+  },
+  {
+    "type": "photo",
+    "event_id": 2499,
+    "caption": "Several clothing design sketches and close-up photos of fabrics are displayed on the computer screen.",
+    "title": "DESIGN_DRAFT_20250626",
+    "datetime": "2025-06-26 10:15:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Ancient Street",
+      "streetNumber": "xxx number",
+      "poi": "Home Study"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Design draft",
+      "Fabric",
+      "Computer screen"
+    ],
+    "ocrText": "Retro Cable Knit Sweater Design Draft v2  \nDrape Suit Pants Pattern Diagram  \nColor Palette Reference: Oatmeal, Taupe, Off-White",
+    "shoot_mode": "Document",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing captured images of the clothing design drafts and fabric photos on the computer screen, with OCR identifying details such as the retro knitwear, drape-style suit pants, and color palette information.",
+    "phone_id": 81
+  },
+  {
+    "event_id": 648,
+    "type": "photo",
+    "caption": "A corner of the church library, tidy and orderly after being organized. Serving brings a sense of inner peace and fulfillment.",
+    "title": "IMG_20250215_110520",
+    "datetime": "2025-02-15 11:05:20",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Church Road",
+      "streetNumber": "No. 123",
+      "poi": "Xiamen Church Library"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Library",
+      "Neat",
+      "Church"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took photos of the church library, with the caption expressing a sense of tranquility and fulfillment during the service.",
+    "phone_id": 82
+  },
+  {
+    "event_id": 3461,
+    "type": "photo",
+    "caption": "The last page of the signed and completed shop lease renewal contract, bearing the signatures of both parties and a red seal.",
+    "title": "IMG_20250902_131105",
+    "datetime": "2025-09-02 13:11:05",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Hongwen Wuli",
+      "streetNumber": "Unknown",
+      "poi": "Inside Le Cui Cafe"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nContract",
+      "Signature",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSeal",
+      "Coffee table"
+    ],
+    "ocrText": "Renewal Contract... Song Yajing... Li Hong... September 2, 2025...",
+    "shoot_mode": "Document",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of the signed shop lease renewal contract.",
+    "phone_id": 83
+  },
+  {
+    "event_id": 3979,
+    "type": "photo",
+    "caption": "Family photo of moon appreciation during Mid-Autumn Festival, with lanterns and refreshments, a wonderful evening.",
+    "title": "IMG_20251006_205000",
+    "datetime": "2025-10-06 20:50:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Ancient Street",
+      "streetNumber": "",
+      "poi": "Community Center Garden"
+    },
+    "faceRecognition": [
+      "Song Yajing",
+      "Chen Zhiqiang",
+      "Chen Lexuan",
+      "Lin Xiuying"
+    ],
+    "imageTag": [
+      "Mid-Autumn Festival",
+      "Appreciating the Moon",
+      "Family",
+      "Lantern",
+      "Take a group photo"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Portrait",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took a family photo while admiring the moon during the Mid-Autumn Festival.",
+    "phone_id": 84
+  },
+  {
+    "event_id": 3244,
+    "type": "photo",
+    "caption": "Preparing for a foot soak before bed, hot water and foot basin are ready, relax body and mind.",
+    "title": "IMG_20250817_234000",
+    "datetime": "2025-08-17 23:40:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "128",
+      "poi": "Ancient Street Residential Area, Bedroom at Home"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Foot soaking basin",
+      "Hot water",
+      "Home Furnishings",
+      "Relax"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Automatic",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing captured the scene of preparing for a foot soak before bed.",
+    "phone_id": 85
+  },
+  {
+    "event_id": 3168,
+    "type": "photo",
+    "caption": "Meiling made a wish over the tiramisu cake with candles lit, while everyone gathered around singing the birthday song.",
+    "title": "IMG_20250812_203015",
+    "datetime": "2025-08-12 20:30:15",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "West Lakeside Road",
+      "streetNumber": "18th",
+      "poi": "Starlight KTV Room 888"
+    },
+    "faceRecognition": [
+      "Li Meiling",
+      "Wang Xiaohong",
+      "Zhang Li"
+    ],
+    "imageTag": [
+      "Birthday party",
+      "Tiramisu",
+      "Birthday cake",
+      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCandle",
+      "Friends gathering",
+      "KTV"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Night Scene",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took a photo of her friend making a wish over a tiramisu cake during the birthday party.",
+    "phone_id": 86
+  },
+  {
+    "event_id": 2423,
+    "type": "photo",
+    "caption": "The homemade tiramisu cake sat in the center of the dining table, surrounded by several cups of tea. Outside the window, the sunlight was bright, casting the glow of the afternoon.",
+    "title": "IMG_20250620_155320",
+    "datetime": "2025-06-20 15:53:20",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Shanggu Street Residential Area",
+      "poi": "Dining Room at Home"
+    },
+    "faceRecognition": [
+      "Lin Xiuying",
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Tiramisu Cake",
+      "Afternoon tea",
+      "Family gathering",
+      "Dining table",
+      "Celebrate"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Food",
+    "image_size": "3024×4032",
+    "summarized_info": "I took a photo of the afternoon dining table, featuring a homemade tiramisu cake and teacups, with both mother and daughter in the frame.",
+    "phone_id": 87
+  },
+  {
+    "event_id": 3786,
+    "type": "photo",
+    "caption": "The main visual poster for the Mid-Autumn Festival promotional campaign integrates festive elements such as mooncakes and lanterns with the store's clothing products.",
+    "title": "MidAutumn_Poster_Final.jpg",
+    "datetime": "2025-09-21 15:20:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Zhongshan Road Pedestrian Street",
+      "streetNumber": "Shop No. 36",
+      "poi": "Elegant Wardrobe Shop Interior"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Poster Design",
+      "Mid-Autumn Festival Promotion",
+      "Clothing",
+      "Mooncake",
+      "Lantern"
+    ],
+    "ocrText": "none",
+    "shoot_mode": "Professional",
+    "image_size": "2000×3000",
+    "summarized_info": "Song Yajing photographed the main visual poster for the Mid-Autumn Festival promotional campaign that has been designed.",
+    "phone_id": 88
+  },
+  {
+    "event_id": 2409,
+    "type": "photo",
+    "caption": "At the Yuanchu Food Store, there are several ingredients for making desserts in the shopping cart.",
+    "title": "IMG_20250619_164523.jpg",
+    "datetime": "2025-06-19 16:45:23",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "",
+      "poi": "Yuanchu Food (Ancient Street Store)"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Supermarket",
+      "Shopping cart",
+      "Mascarpone cheese",
+      "Ladyfinger biscuits",
+      "Cocoa powder",
+      "Espresso"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Photo",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took a photo of ingredients in a shopping cart at Yuanchu Food Store, which included dessert supplies such as cheese and biscuits.",
+    "phone_id": 89
+  },
+  {
+    "event_id": 1868,
+    "type": "photo",
+    "caption": "Lexuan is dancing in the living room wearing a little elephant costume.",
+    "title": "IMG_20250512_193520.jpg",
+    "datetime": "2025-05-12 19:35:20",
+    "location": {
+      "province": "Fujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "South Hubin Road",
+      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 128",
+      "poi": "In the living room of the Shanggu Street residential community."
+    },
+    "faceRecognition": [
+      "Chen Lexuan"
+    ],
+    "imageTag": [
+      "Role-playing",
+      "Child",
+      "Dancing",
+      "Living room",
+      "Picture Book"
+    ],
+    "ocrText": "None",
+    "shoot_mode": "Portrait",
+    "image_size": "4032×3024",
+    "summarized_info": "Song Yajing took a photo of her daughter role-playing in the living room.",
+    "phone_id": 90
+  },
+  {
+    "event_id": 3422,
+    "type": "photo",
+    "caption": "On the piano keys, there is a sheet of music titled \"Twinkle Twinkle Little Star Variations,\" with a pencil placed beside it.",
+    "title": "Piano Lesson Notes_20250823_1925",
+    "datetime": "2025-08-23 19:25:00",
+    "location": {
+      "province": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nFujian Province",
+      "city": "Xiamen City",
+      "district": "Siming District",
+      "streetName": "Golden List Road",
+      "streetNumber": "No. 98-2",
+      "poi": "Inside the Classroom of Yin Wei Yue Piano Studio"
+    },
+    "faceRecognition": [],
+    "imageTag": [
+      "Piano",
+      "Sheet music",
+      "Class Notes",
+      "Pencil"
+    ],
+    "ocrText": "Variations on \"Twinkle, Twinkle, Little Star\",  \nNote: Highlight the melody with the right hand,  \nKeep the left-hand accompaniment gentle.  \nTeacher's comment: The rhythm has become much steadier, keep it up.",
+    "shoot_mode": "Document",
+    "image_size": "3024×4032",
+    "summarized_info": "Song Yajing took photos of the sheet music and the teacher's annotated notes during the piano lesson.",
+    "phone_id": 91
+  }
+]

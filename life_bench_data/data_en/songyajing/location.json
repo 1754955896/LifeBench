@@ -1,0 +1,132 @@
+[
+  {
+    "name": "Shanggu Street Residential Area",
+    "location": "118.086844,24.452194",
+    "formatted_address": "Fujian Province, Xiamen City, Siming District[][]",
+    "city": "Xiamen City",
+    "district": "Siming District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The residential community where I live daily, located near South Hubin Road, serves as the primary setting for family life."
+  },
+  {
+    "name": "Ruijing Commercial Plaza Specialty Store",
+    "location": "118.158079,24.474323",
+    "formatted_address": "Xiamen City, Fujian Province, Siming District[][]",
+    "city": "Xiamen City",
+    "district": "Siming District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The location of the boutique clothing store where I work is situated on Zhongshan Road Pedestrian Street, serving as the primary venue for daily operations and sales."
+  },
+  {
+    "name": "Gulangyu Catholic Church",
+    "location": "118.072779,24.443946",
+    "formatted_address": "No. 34 Lujiao Road, Siming District, Xiamen City, Fujian Province",
+    "city": "Xiamen City",
+    "district": "Siming District",
+    "streetName": "Lujiao Road",
+    "streetNumber": "Number 34",
+    "description": "The church I frequently attend, where I participate in Mass and church activities, is an important place for my faith life."
+  },
+  {
+    "name": "Jiangtou Street Community Health Service Center",
+    "location": "118.132901,24.498848",
+    "formatted_address": "No. 331, Taiwan Street, Huli District, Xiamen City, Fujian Province",
+    "city": "Xiamen City",
+    "district": "Huli District",
+    "streetName": "Taiwan Street",
+    "streetNumber": "Number 331",
+    "description": "The location of the family doctor you frequently visit, a place for health consultations and routine medical services."
+  },
+  {
+    "name": "Sweet QQ Baking Workshop",
+    "location": "118.154619,24.522848",
+    "formatted_address": "No. 120, Huli District, Xiamen City, Fujian Province",
+    "city": "Xiamen City",
+    "district": "Huli District",
+    "streetName": [],
+    "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 120",
+    "description": "The frequently visited baking class location, a place for interest classes in learning to make cakes and desserts."
+  },
+  {
+    "name": "Xiamen University Kindergarten",
+    "location": "118.102630,24.436214",
+    "formatted_address": "No. 422, Siming South Road, Siming District, Xiamen City, Fujian Province",
+    "city": "Xiamen City",
+    "district": "Siming District",
+    "streetName": "Siming South Road",
+    "streetNumber": "No. 422",
+    "description": "The kindergarten where my daughter attends, the regular place for dropping off and picking up children."
+  },
+  {
+    "name": "People's Bank of China, Xiamen Branch",
+    "location": "118.190088,24.473514",
+    "formatted_address": "No. 100 Zhanhong Road, Siming District, Xiamen City, Fujian Province",
+    "city": "Xiamen City",
+    "district": "Siming District",
+    "streetName": "Zhanhong Road",
+    "streetNumber": "Number 100",
+    "description": "The bank I frequent, a place for handling both business and personal financial matters."
+  },
+  {
+    "name": "First Hospital Convenience Store",
+    "location": "118.087591,24.452185",
+    "formatted_address": "No. 55 Zhenhai Road, Siming District, Xiamen City, Fujian Province",
+    "city": "Xiamen City",
+    "district": "Siming District",
+    "streetName": "Zhenhai Road",
+    "streetNumber": "Number 55",
+    "description": "The supermarket near the residential community is used for daily household shopping and food purchases."
+  },
+  {
+    "name": "Chuangguan Building Pottery Handicraft Workshop",
+    "location": "118.094120,24.455958",
+    "formatted_address": "Room 103, Building 37, Chuang Guan Mansion, Tao Shi (Please Make Yourself at Home)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The park near the residential community is used for walking and family leisure activities."
+  },
+  {
+    "name": "Jiacheng Garden Ground Floor Commercial Space - Yuanchu Food Store",
+    "location": "118.093574,24.467455",
+    "formatted_address": "No. 46 Houjiangdai Road, Jiacheng Garden, Ground Floor Commercial Space",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "A baking ingredient store near the residential community, used for purchasing materials for making cakes and desserts."
+  },
+  {
+    "name": "Le Cui Cafe",
+    "location": "118.157656,24.474629",
+    "formatted_address": "Siming District, Xiamen City, Fujian Province, Hongwen Wuli []",
+    "city": "Xiamen City",
+    "district": "Siming District",
+    "streetName": "Hongwen Wuli",
+    "streetNumber": [],
+    "description": "A café near the workplace, used for meeting friends or relaxing."
+  },
+  {
+    "name": "Hongshanbing Community Convenience Store",
+    "location": "118.158020,24.473460",
+    "formatted_address": "No. 120, Building 55, Hongwen 3rd Road, Siming District, Xiamen City, Fujian Province",
+    "city": "Xiamen City",
+    "district": "Siming District",
+    "streetName": "Hongwen Third Road",
+    "streetNumber": "No. 120 of 55",
+    "description": "Convenience stores near the workplace, used for quickly purchasing snacks or daily necessities"
+  },
+  {
+    "name": "Hongwen Wuli Rice Noodle Roll Fast Food Restaurant",
+    "location": "118.158352,24.475018",
+    "formatted_address": "Hongwen Wuli 99-106",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Fast food restaurants near the workplace, used for weekday lunches or quick meals."
+  }
+]

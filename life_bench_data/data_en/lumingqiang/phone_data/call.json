@@ -1,0 +1,586 @@
+[
+  {
+    "type": "call",
+    "event_id": 2180,
+    "contactName": "Wife",
+    "contact_phone_number": "+8613887654321",
+    "datetime": "2025-06-02 13:05:00",
+    "call_type": "Caller",
+    "phone_id": 1
+  },
+  {
+    "type": "call",
+    "event_id": 2669,
+    "contactName": "Wang Lijuan",
+    "contact_phone_number": "+8613900000001",
+    "datetime": "2025-07-04 20:58:00",
+    "call_type": "Call ended.",
+    "phone_id": 2
+  },
+  {
+    "type": "call",
+    "event_id": 4099,
+    "contactName": "Chen Jianguo",
+    "contact_phone_number": "+8613900000000",
+    "datetime": "2025-10-08 16:05:00",
+    "call_type": "Receive video call (WeChat)",
+    "phone_id": 3
+  },
+  {
+    "type": "call",
+    "event_id": 1360,
+    "contactName": "Chen Jianguo",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-04-03 08:40:00",
+    "call_type": "Dial",
+    "phone_id": 4
+  },
+  {
+    "type": "call",
+    "event_id": 4501,
+    "contactName": "Chen Jianguo",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-11-05 12:10:00",
+    "call_type": "Dial out",
+    "phone_id": 5
+  },
+  {
+    "type": "call",
+    "event_id": 882,
+    "contactName": "Roadside Assistance",
+    "contact_phone_number": "+8610001234567",
+    "datetime": "2025-03-03 07:19:00",
+    "call_type": "Dial",
+    "phone_id": 6
+  },
+  {
+    "type": "call",
+    "event_id": 4216,
+    "contactName": "Master Li",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-10-16 20:35:00",
+    "call_type": "Call out",
+    "phone_id": 7
+  },
+  {
+    "type": "call",
+    "event_id": 4533,
+    "contactName": "Wang Lijuan",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-11-07 10:05:00",
+    "call_type": "Initiate",
+    "phone_id": 8
+  },
+  {
+    "type": "call",
+    "event_id": 5157,
+    "contactName": "Squad Leader Zhang",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-12-20 16:05:00",
+    "call_type": "Calling party",
+    "phone_id": 9
+  },
+  {
+    "type": "call",
+    "event_id": 4305,
+    "contactName": "Master Li",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-10-23 10:35:00",
+    "call_type": "Dial",
+    "phone_id": 10
+  },
+  {
+    "type": "call",
+    "event_id": 2450,
+    "contactName": "Mr. Zhao (Insurance)",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-06-20 07:50:00",
+    "call_type": "Call out",
+    "duration": 850,
+    "phone_id": 11
+  },
+  {
+    "type": "call",
+    "event_id": 1948,
+    "contactName": "Squad Leader Zhang",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-05-17 17:00:00",
+    "call_type": "Receive",
+    "phone_id": 12
+  },
+  {
+    "type": "call",
+    "event_id": 4342,
+    "contactName": "Master Li (Shifu)",
+    "contact_phone_number": "+8613698765432",
+    "datetime": "2025-10-25 14:25:00",
+    "call_type": "Dial",
+    "phone_id": 13
+  },
+  {
+    "type": "call",
+    "event_id": 1493,
+    "contactName": "Zhang Tou",
+    "contact_phone_number": "+8618801234567",
+    "datetime": "2025-04-14 12:20:00",
+    "call_type": "Caller",
+    "phone_id": 14
+  },
+  {
+    "type": "call",
+    "event_id": 727,
+    "contactName": "Father",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-02-20 12:45:00",
+    "call_type": "Dial out",
+    "phone_id": 15
+  },
+  {
+    "type": "call",
+    "event_id": 2968,
+    "contactName": "Master Chen",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-07-24 13:45:00",
+    "call_type": "Receive",
+    "phone_id": 16
+  },
+  {
+    "type": "call",
+    "event_id": 1143,
+    "contactName": "Master Li (Shifu)",
+    "contact_phone_number": "+8618901234567",
+    "datetime": "2025-03-19 13:35:22",
+    "call_type": "Dial",
+    "phone_id": 17
+  },
+  {
+    "type": "call",
+    "event_id": 3194,
+    "contactName": "Dad",
+    "contact_phone_number": "+8613987654321",
+    "datetime": "2025-08-07 17:30:00",
+    "call_type": "Dial out",
+    "phone_id": 18
+  },
+  {
+    "type": "call",
+    "event_id": 1127,
+    "contactName": "Master Li Shifu",
+    "contact_phone_number": "+8618501234567",
+    "datetime": "2025-03-18 13:05:00",
+    "call_type": "Dial",
+    "phone_id": 19
+  },
+  {
+    "type": "call",
+    "event_id": 2720,
+    "contactName": "Dispatch Center",
+    "contact_phone_number": "+8613800011122",
+    "datetime": "2025-07-08 09:12:00",
+    "call_type": "Receive",
+    "phone_id": 20
+  },
+  {
+    "type": "call",
+    "event_id": 2721,
+    "contactName": "Wang Dispatcher",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-07-08 09:18:00",
+    "call_type": "Dial out",
+    "phone_id": 21
+  },
+  {
+    "type": "call",
+    "event_id": 444,
+    "contactName": "Chen Jianguo",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-02-01 18:15:00",
+    "call_type": "Receive",
+    "phone_id": 22
+  },
+  {
+    "type": "call",
+    "event_id": 2240,
+    "contactName": "Chen Jianguo",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-06-06 08:45:00",
+    "call_type": "Dial",
+    "phone_id": 23
+  },
+  {
+    "type": "call",
+    "event_id": 102,
+    "contactName": "Engineer Liu",
+    "contact_phone_number": "+8613811111111",
+    "datetime": "2025-01-09 10:05:00",
+    "call_type": "Dial out",
+    "phone_id": 24
+  },
+  {
+    "type": "call",
+    "event_id": 2051,
+    "contactName": "Master Li",
+    "contact_phone_number": "+8618700000000",
+    "datetime": "2025-05-24 20:35:00",
+    "call_type": "Calling party",
+    "summarized_info": "Lu Mingqiang made a phone call to Master Li, and the conversation lasted approximately 45 minutes.",
+    "phone_id": 25
+  },
+  {
+    "type": "call",
+    "event_id": 3903,
+    "contactName": "Wang Jianguo",
+    "contact_phone_number": "+8613999999999",
+    "datetime": "2025-09-24 17:35:00",
+    "call_type": "Dial out",
+    "phone_id": 26
+  },
+  {
+    "type": "call",
+    "event_id": 1773,
+    "contactName": "Maintenance Worker",
+    "contact_phone_number": "+8613800011111",
+    "datetime": "2025-05-05 11:05:00",
+    "call_type": "Receive",
+    "phone_id": 27
+  },
+  {
+    "type": "call",
+    "event_id": 2723,
+    "contactName": "Company Dispatch Center",
+    "contact_phone_number": "+8613800123456",
+    "datetime": "2025-07-08 10:45:00",
+    "call_type": "Caller",
+    "phone_id": 28
+  },
+  {
+    "type": "call",
+    "event_id": 5133,
+    "contactName": "Wang Jianguo",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-12-18 18:15:00",
+    "call_type": "Receive",
+    "phone_id": 29
+  },
+  {
+    "type": "call",
+    "event_id": 1583,
+    "contactName": "Chen Jianguo",
+    "contact_phone_number": "+8613800000001",
+    "datetime": "2025-04-20 22:50:00",
+    "call_type": "Caller",
+    "summarized_info": "I called my colleague Chen Jianguo to discuss the repair matters.",
+    "phone_id": 30
+  },
+  {
+    "type": "call",
+    "event_id": 2364,
+    "contactName": "Uncle Wang",
+    "contact_phone_number": "+8613012345678",
+    "datetime": "2025-06-14 17:30:00",
+    "call_type": "Receive",
+    "phone_id": 31
+  },
+  {
+    "type": "call",
+    "event_id": 5041,
+    "contactName": "Wang Jianguo (Uncle Wang)",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-12-12 10:20:00",
+    "call_type": "Receive",
+    "phone_id": 32
+  },
+  {
+    "type": "call",
+    "event_id": 1185,
+    "contactName": "Master Li",
+    "contact_phone_number": "+8613918765432",
+    "datetime": "2025-03-22 21:55:00",
+    "call_type": "Receive",
+    "phone_id": 33
+  },
+  {
+    "type": "call",
+    "event_id": 1148,
+    "contactName": "Chen Jianguo",
+    "contact_phone_number": "+8610000000001",
+    "datetime": "2025-03-19 20:32:10",
+    "call_type": "Caller",
+    "phone_id": 34
+  },
+  {
+    "type": "call",
+    "event_id": 5132,
+    "contactName": "Uncle Wang (Wang Jianguo)",
+    "contact_phone_number": "+8613588888888",
+    "datetime": "2025-10-10 15:00:00",
+    "call_type": "Save Contact",
+    "phone_id": 35
+  },
+  {
+    "type": "call",
+    "event_id": 925,
+    "contactName": "Wife",
+    "contact_phone_number": "+86138****5678",
+    "datetime": "2025-03-05 16:31:00",
+    "call_type": "Dial",
+    "phone_id": 36
+  },
+  {
+    "type": "call",
+    "event_id": 5046,
+    "contactName": "Boss Li",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-12-12 17:05:00",
+    "call_type": "Receive",
+    "phone_id": 37
+  },
+  {
+    "type": "call",
+    "event_id": 1780,
+    "contactName": "Wang Lijuan",
+    "contact_phone_number": "+8613500000000",
+    "datetime": "2025-05-05 20:35:00",
+    "call_type": "Dial out",
+    "duration": "15 minutes",
+    "phone_id": 38
+  },
+  {
+    "type": "call",
+    "event_id": 731,
+    "contactName": "Father",
+    "contact_phone_number": "+8618688888888",
+    "datetime": "2025-02-18 19:30:00",
+    "call_type": "Receive",
+    "summarized_info": "Lu Mingqiang received a call from his father, who expressed concern about his recurring lower back discomfort due to recent high-intensity work and urged him to take it seriously and begin systematic rehabilitation.",
+    "phone_id": 39
+  },
+  {
+    "type": "call",
+    "event_id": 2192,
+    "contactName": "Wang Lijuan",
+    "contact_phone_number": "+86139*****456",
+    "datetime": "2025-06-04 20:15:00",
+    "call_type": "Dial",
+    "phone_id": 40
+  },
+  {
+    "type": "call",
+    "event_id": 2995,
+    "contactName": "Wang Lijuan",
+    "contact_phone_number": "+8613800000000",
+    "datetime": "2025-07-25 21:30:00",
+    "call_type": "Dial",
+    "phone_id": 41
+  },
+  {
+    "type": "call",
+    "event_id": 2298,
+    "contactName": "Wang Jianguo",
+    "contact_phone_number": "+8618501234567",
+    "datetime": "2025-06-14 20:10:00",
+    "call_type": "Receive",
+    "summarized_info": "Lu Mingqiang received a phone call from his neighbor Wang Jianguo.",
+    "phone_id": 42
+  },
+  {
+    "type": "call",
+    "event_id": 2301,
+    "contactName": "Squad Leader Zhang",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-06-10 06:45:00",
+    "call_type": "Dial",
+    "phone_id": 43
+  },
+  {
+    "type": "call",
+    "event_id": 2222,
+    "contactName": "Wang Yingli",
+    "contact_phone_number": "+8613509876543",
+    "datetime": "2025-06-05 20:15:00",
+    "call_type": "Caller",
+    "phone_id": 44
+  },
+  {
+    "type": "call",
+    "event_id": 2339,
+    "contactName": "Uncle Wang",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-06-14 20:15:00",
+    "call_type": "Receive",
+    "phone_id": 45
+  },
+  {
+    "type": "call",
+    "event_id": 2976,
+    "contactName": "Master Chen",
+    "contact_phone_number": "+86186****5678",
+    "datetime": "2025-07-24 22:03:00",
+    "call_type": "Exhale",
+    "phone_id": 46
+  },
+  {
+    "type": "call",
+    "event_id": 2163,
+    "contactName": "Lu Minghua",
+    "contact_phone_number": "+8618612345678",
+    "datetime": "2025-06-01 08:35:00",
+    "call_type": "Receive",
+    "phone_id": 47
+  },
+  {
+    "type": "call",
+    "event_id": 3290,
+    "contactName": "Uncle Wang",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-08-14 19:15:00",
+    "call_type": "Dial out",
+    "phone_id": 48
+  },
+  {
+    "type": "call",
+    "event_id": 1673,
+    "contactName": "Lu Minghua",
+    "contact_phone_number": "+8613512345678",
+    "datetime": "2025-04-27 14:30:00",
+    "call_type": "Receive",
+    "duration": 140,
+    "phone_id": 49
+  },
+  {
+    "type": "call",
+    "event_id": 1362,
+    "contactName": "Colleagues from the Human Resources Department",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-04-03 13:30:00",
+    "call_type": "Dial out",
+    "phone_id": 50
+  },
+  {
+    "type": "call",
+    "event_id": 3339,
+    "contactName": "Squad Leader Zhang",
+    "contact_phone_number": "+8613666666666",
+    "datetime": "2025-08-18 07:28:00",
+    "call_type": "Dial",
+    "phone_id": 51
+  },
+  {
+    "type": "call",
+    "event_id": 1634,
+    "contactName": "Chen Jianguo",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-04-24 11:20:00",
+    "call_type": "Dial out",
+    "phone_id": 52
+  },
+  {
+    "type": "call",
+    "event_id": 1644,
+    "contactName": "Director Li (Human Resources Department)",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-04-25 08:45:00",
+    "call_type": "Dial",
+    "phone_id": 53
+  },
+  {
+    "type": "call",
+    "event_id": 1644,
+    "contactName": "Lu Minghua (Elder Brother)",
+    "contact_phone_number": "+8613823456789",
+    "datetime": "2025-04-27 20:00:00",
+    "call_type": "Dial",
+    "phone_id": 54
+  },
+  {
+    "type": "call",
+    "event_id": 1112,
+    "contactName": "Engineer Zhang",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-03-17 12:15:00",
+    "call_type": "Dial",
+    "phone_id": 55
+  },
+  {
+    "type": "call",
+    "event_id": 2261,
+    "contactName": "Master Li",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-06-07 14:15:00",
+    "call_type": "Dial out",
+    "phone_id": 56
+  },
+  {
+    "type": "call",
+    "event_id": 825,
+    "contactName": "Lu's father",
+    "contact_phone_number": "+8613901234567",
+    "datetime": "2025-02-27 18:25:00",
+    "call_type": "Dial",
+    "phone_id": 57
+  },
+  {
+    "type": "call",
+    "event_id": 1160,
+    "contactName": "Wang Lijuan",
+    "contact_phone_number": "+8613912345678",
+    "datetime": "2025-03-20 19:32:00",
+    "call_type": "Dial out",
+    "phone_id": 58
+  },
+  {
+    "type": "call",
+    "event_id": 1673,
+    "contactName": "Lu Minghua",
+    "contact_phone_number": "+861361750XXXX",
+    "datetime": "2025-04-27 14:32:00",
+    "call_type": "Answering",
+    "phone_id": 59
+  },
+  {
+    "type": "call",
+    "event_id": 1673,
+    "contactName": "Manager Zhang",
+    "contact_phone_number": "+861391234XXXX",
+    "datetime": "2025-04-29 11:20:00",
+    "call_type": "Dial",
+    "phone_id": 60
+  },
+  {
+    "type": "call",
+    "event_id": 644,
+    "contactName": "Father",
+    "contact_phone_number": "+8613689876543",
+    "datetime": "2025-02-27 19:45:00",
+    "call_type": "Caller",
+    "duration": "1254",
+    "phone_id": 61
+  },
+  {
+    "type": "call",
+    "event_id": 1860,
+    "contactName": "Engineer Zhang",
+    "contact_phone_number": "+8613612345678",
+    "datetime": "2025-05-10 08:20:00",
+    "call_type": "Dial",
+    "phone_id": 62
+  },
+  {
+    "type": "call",
+    "event_id": 2275,
+    "contactName": "Wang Hai",
+    "contact_phone_number": "+8613801234567",
+    "datetime": "2025-06-08 10:05:00",
+    "call_type": "Dial",
+    "phone_id": 63
+  },
+  {
+    "type": "call",
+    "event_id": 2275,
+    "contactName": "Li Wei",
+    "contact_phone_number": "+8613812345678",
+    "datetime": "2025-06-08 11:10:00",
+    "call_type": "Dial",
+    "phone_id": 64
+  }
+]
