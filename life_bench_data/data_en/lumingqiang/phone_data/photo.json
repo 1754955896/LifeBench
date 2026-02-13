@@ -1793,7 +1793,7 @@
       "city": "Sanya City",
       "district": "Tianya District",
       "streetName": "Unknown",
-      "streetNumber": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nUnknown",
+      "streetNumber": "Unknown",
       "poi": "Sanya Phoenix Island Star Sea All-Sea View Resort Hotel Peripheral Construction Area"
     },
     "faceRecognition": [],
@@ -1845,7 +1845,7 @@
     "location": {
       "province": "Hainan Province",
       "city": "Haikou City",
-      "district": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nUnknown",
+      "district": "Unknown",
       "streetName": "Ziyuan Road",
       "streetNumber": "Number 3",
       "poi": "Yanlord Land Pizza Hut Restaurant"
@@ -2028,7 +2028,7 @@
       "province": "Hainan Province",
       "city": "Sanya City",
       "district": "Tianya District",
-      "streetName": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nUnknown",
+      "streetName": "Unknown",
       "streetNumber": "Unknown",
       "poi": "Star Sea All-Sea View Resort Hotel Power Distribution Room"
     },
@@ -2942,7 +2942,7 @@
     ],
     "imageTag": [
       "Writing",
-      "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nPinyin",
+      "Pinyin",
       "Tutoring",
       "Parent-child",
       "Desk"
@@ -3238,7 +3238,7 @@
       "Lu Zihan"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nTree planting",
+      "Tree planting",
       "Family Activities",
       "Outdoors",
       "Green Space",
@@ -3304,7 +3304,7 @@
       "Hand-drawn table",
       "Study Schedule",
       "Colored pen",
-      "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nA4 paper",
+      "A4 paper",
       "Wall surface"
     ],
     "ocrText": "Zihan's Daily Study Schedule Monday...",

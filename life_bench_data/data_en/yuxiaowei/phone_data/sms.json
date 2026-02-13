@@ -3923,7 +3923,7 @@
     "type": "sms",
     "event_id": 1050,
     "message_content": "【Asia Healthcare Fund】Dear Ms. Yu, your monthly investment plan (HKD 2000) has been successfully executed. Thank you for your trust.",
-    "contactName": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nAsia Healthcare Fund",
+    "contactName": "Asia Healthcare Fund",
     "phoneNumber": "106900001234",
     "datetime": "2025-03-15 13:35:00",
     "message_type": "Receive",

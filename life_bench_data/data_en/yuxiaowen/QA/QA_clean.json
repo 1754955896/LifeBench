@@ -152,7 +152,7 @@
   },
   {
     "question": "How many times have you participated in the escape room team-building activities organized by the department?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n1 time",
+    "answer": "1 time",
     "score_points": [
       {
         "description": "Provide the correct cumulative count.",

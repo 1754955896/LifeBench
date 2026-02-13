@@ -580,7 +580,7 @@
     "answer": "Calculation of Complex Grounding Systems",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English while preserving the original format and semantics:\n\nThe answer must precisely include the theoretical challenge name \"complex grounding system calculation\".",
+        "description": "The answer must precisely include the theoretical challenge name \"complex grounding system calculation\".",
         "score": 10
       }
     ],
@@ -6807,7 +6807,7 @@
   },
   {
     "question": "During a squash activity in March 2025, Lu Mingqiang heard from his friend Lin Feng about a specific sports event in Hainan. When exactly is it scheduled to take place?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nNovember 2025",
+    "answer": "November 2025",
     "score_points": [
       {
         "description": "Specify the specific months in which the sporting events mentioned by Lin Feng in Hainan are held.",

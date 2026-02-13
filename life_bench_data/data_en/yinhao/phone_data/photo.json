@@ -1243,7 +1243,7 @@
     "datetime": "2025-01-11 15:10:15",
     "location": {
       "province": "Shanghai City",
-      "city": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nShanghai",
+      "city": "Shanghai",
       "district": "Songjiang District",
       "streetName": "Guangfulin Road",
       "streetNumber": "No. 658",
@@ -5049,7 +5049,7 @@
     "imageTag": [
       "Fresh supermarket",
       "Vegetable Section",
-      "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nTomato",
+      "Tomato",
       "Green vegetables",
       "Shelving",
       "Procurement"
@@ -8716,7 +8716,7 @@
       "city": "Shanghai City",
       "district": "Songjiang District",
       "streetName": "Guangfulin Road",
-      "streetNumber": "Please translate the following Chinese text into English, preserving the original format and meaning:\n\n123 Alley",
+      "streetNumber": "123 Alley",
       "poi": "New Port Community Garbage Station"
     },
     "faceRecognition": [
@@ -9084,7 +9084,7 @@
       "Clam Sauce",
       "Salted pork",
       "Xiami",
-      "Please translate the following Chinese text into English, preserving the original format and meaning:\n\nFamily affection",
+      "Family affection",
       "Item Storage"
     ],
     "ocrText": "none",
@@ -17755,7 +17755,7 @@
     "imageTag": [
       "Moving and Packing",
       "Carton",
-      "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nMark",
+      "Mark",
       "Fragile",
       "Kitchenware",
       "Item Storage"
@@ -27378,7 +27378,7 @@
     ],
     "imageTag": [
       "Proctoring",
-      "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Training Room",
       "CNC Machine Tool",
       "Safety Regulations",
@@ -29680,7 +29680,7 @@
       "Computer screen",
       "Data Table",
       "Case Analysis",
-      "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nExcel spreadsheet",
+      "Excel spreadsheet",
       "Document Scanning",
       "Technical Report Materials"
     ],
@@ -30475,7 +30475,7 @@
       "Father and Son Taking a Walk",
       "Lakeside Boardwalk",
       "Silhouette at Sunset",
-      "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nBack View",
+      "Back View",
       "Family Time",
       "Dusk"
     ],
@@ -34610,7 +34610,7 @@
       "Mobile phone screen",
       "Parents",
       "Family",
-      "Please translate the following Chinese text into English, preserving the original format and meaning:\n\nFamily affection",
+      "Family affection",
       "Living room"
     ],
     "ocrText": "none",
@@ -36485,7 +36485,7 @@
     "imageTag": [
       "Bank APP Notification",
       "Performance Bonus",
-      "Please translate the following Chinese text into English, preserving the original format and meaning:\n\nMobile screenshot",
+      "Mobile screenshot",
       "Document scanning",
       "CNC Workshop",
       "Background of Storage Lockers"
@@ -39408,7 +39408,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Projection screen",
       "Operation Process",
       "Safety Specifications",

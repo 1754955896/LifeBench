@@ -1367,7 +1367,7 @@
     "answer": "He completed an 8-kilometer tempo run training session. Before the training, he performed dynamic warm-ups, including high knees and butt kicks. After the training, he engaged in 15 minutes of static stretching and used a foam roller to relax his leg muscles.",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nThe answer should include specific training content: 8-kilometer tempo run training",
+        "description": "The answer should include specific training content: 8-kilometer tempo run training",
         "score": 5
       },
       {
@@ -7765,7 +7765,7 @@
     "options": [
       {
         "option": "A",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n5 days"
+        "content": "5 days"
       },
       {
         "option": "B",
@@ -8365,11 +8365,11 @@
     "answer": "Spindle, tool magazine, servo motor",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nThe answer contains \"spindle\"",
+        "description": "The answer contains \"spindle\"",
         "score": 4
       },
       {
-        "description": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nThe answer contains \"tool magazine\".",
+        "description": "The answer contains \"tool magazine\".",
         "score": 3
       },
       {

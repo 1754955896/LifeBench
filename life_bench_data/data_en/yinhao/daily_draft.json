@@ -3880,7 +3880,7 @@
     {
       "date": "2025-03-27",
       "date_attribute": {
-        "weather": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nSunny",
+        "weather": "Sunny",
         "holiday": "无",
         "week": "Thursday"
       },
@@ -5694,7 +5694,7 @@
     {
       "date": "2025-05-04",
       "date_attribute": {
-        "weather": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nClear",
+        "weather": "Clear",
         "holiday": "无",
         "week": "Sunday"
       },
@@ -14935,7 +14935,7 @@
     {
       "date": "2025-12-10",
       "date_attribute": {
-        "weather": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nClear",
+        "weather": "Clear",
         "holiday": "无",
         "week": "Wednesday"
       },
@@ -15760,7 +15760,7 @@
     {
       "date": "2025-12-27",
       "date_attribute": {
-        "weather": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n晴",
+        "weather": "晴",
         "holiday": "无",
         "week": "Saturday"
       },

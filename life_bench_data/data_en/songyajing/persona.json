@@ -164,7 +164,7 @@
           "street_number": "No. 128"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City"
         },
         "personality": "ENFP (Childlike Tendency)",
@@ -449,7 +449,7 @@
         "age": 56,
         "birth_date": "1968-03-22",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City",
           "district": "Huli District",
           "street_name": "Xianyue Road",
@@ -576,7 +576,7 @@
         "age": 29,
         "birth_date": "1994-07-30",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City",
           "district": "Haicang District",
           "street_name": "North Binhu Road",
@@ -710,7 +710,7 @@
         "age": 35,
         "birth_date": "1989-08-12",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City",
           "district": "Huli District",
           "street_name": "Xianyue Road",

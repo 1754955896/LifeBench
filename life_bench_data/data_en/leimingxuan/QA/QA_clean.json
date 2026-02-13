@@ -408,7 +408,7 @@
   },
   {
     "question": "How many times have you visited the \"Between Mountains\" exhibition?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n1 time",
+    "answer": "1 time",
     "score_points": [
       {
         "description": "Correctly answer the cumulative number of visits",
@@ -880,7 +880,7 @@
   },
   {
     "question": "So far, how many independent cafe exploration trips have you been on?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n1 time",
+    "answer": "1 time",
     "score_points": [
       {
         "description": "Provide the specific cumulative count.",
@@ -9772,7 +9772,7 @@
   },
   {
     "question": "When Lei Mingxuan mentioned the self-driving tour to Western Sichuan in his chat with Zhang Wei in March, in which month of 2025 did he plan to depart?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nAugust 2025",
+    "answer": "August 2025",
     "score_points": [
       {
         "description": "Clarify the specific departure month for the self-driving tour in Western Sichuan.",
@@ -9802,7 +9802,7 @@
   },
   {
     "question": "In the communication with the property manager in May, regarding the lease renewal for Lei Mingxuan's store, in which specific month of 2025 does it expire?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nNovember 2025",
+    "answer": "November 2025",
     "score_points": [
       {
         "description": "Specify the exact month when the shop rental contract expires.",

@@ -2521,7 +2521,7 @@
     "answer": "Summer Charity Bazaar held at Siming Catholic Church on June 29, 2025",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nThe answer contains specific dates 'June 29, 2025' or 'June 29'.",
+        "description": "The answer contains specific dates 'June 29, 2025' or 'June 29'.",
         "score": 5
       },
       {
@@ -7592,7 +7592,7 @@
         "score": 5
       },
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nThe answer must clearly indicate that the payment is for the premium of \"Education Savings Insurance.\"",
+        "description": "The answer must clearly indicate that the payment is for the premium of \"Education Savings Insurance.\"",
         "score": 5
       }
     ],

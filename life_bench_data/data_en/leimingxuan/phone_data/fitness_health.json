@@ -689,7 +689,7 @@
       "距离统计": "6.8 kilometers",
       "平均心率": "85 times per minute",
       "平均步频": "110 steps/minute",
-      "步数统计": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n8765 steps",
+      "步数统计": "8765 steps",
       "平均配速": "12 minutes 30 seconds per kilometer",
       "最佳配速": "10 minutes 15 seconds per kilometer",
       "消耗热量": "280 kilocalories"
@@ -765,7 +765,7 @@
     "跑步": {
       "运动类型": "Indoor running",
       "运动时间": "2025/09/05/12:30:00-2025/09/05/13:30:00",
-      "天气": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n晴",
+      "天气": "晴",
       "距离统计": "0 kilometers",
       "平均心率": "0 times/minute",
       "平均步频": "0 steps/minute",
@@ -973,7 +973,7 @@
       "步数": "12,500 steps",
       "距离": "8.5 kilometers",
       "热量": "450 kilocalories",
-      "锻炼时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n45 minutes",
+      "锻炼时长": "45 minutes",
       "活动小时数": "12 hours"
     },
     "跑步": {
@@ -993,7 +993,7 @@
     "骑行": {
       "运动类型": "Outdoor Cycling",
       "运动时间": "2025/09/07/17:00:00-2025/09/07/17:20:00",
-      "天气": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n晴",
+      "天气": "晴",
       "距离统计": "4.0 kilometers",
       "平均速度": "12.0 kilometers per hour",
       "平均心率": "110 beats per minute",
@@ -1446,7 +1446,7 @@
       "距离统计": "2.5 kilometers",
       "平均心率": "95 beats per minute",
       "平均步频": "110 steps/minute",
-      "步数统计": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n3500 steps",
+      "步数统计": "3500 steps",
       "平均配速": "12 minutes 00 seconds per kilometer",
       "最佳配速": "10 minutes 30 seconds per kilometer",
       "消耗热量": "120 kilocalories"
@@ -1549,7 +1549,7 @@
       "距离统计": "2.5 kilometers",
       "平均心率": "100 times per minute",
       "平均步频": "110 steps/minute",
-      "步数统计": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n3500 steps",
+      "步数统计": "3500 steps",
       "平均配速": "12 minutes 00 seconds per kilometer",
       "最佳配速": "10 minutes 30 seconds per kilometer",
       "消耗热量": "150 kilocalories"
@@ -1635,7 +1635,7 @@
     "骑行": {
       "运动类型": "Outdoor cycling",
       "运动时间": "2025/09/13/08:40:00-2025/09/13/08:55:00",
-      "天气": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n晴",
+      "天气": "晴",
       "距离统计": "4.0 kilometers",
       "平均速度": "16.0 kilometers per hour",
       "平均心率": "105 beats per minute",
@@ -1975,7 +1975,7 @@
       "出睡时间": "06:30:00",
       "全部睡眠时长": "510 minutes",
       "浅睡时长": "280 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n120 minutes",
+      "深睡时长": "120 minutes",
       "快速眼动时长": "80 minutes",
       "清醒时长": "30 minutes",
       "清醒次数": "3 times",
@@ -2041,7 +2041,7 @@
     "跑步": {
       "运动类型": "Outdoor running",
       "运动时间": "2025/09/17/06:30:00-2025/09/17/07:00:00",
-      "天气": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n晴",
+      "天气": "晴",
       "距离统计": "5.0 kilometers",
       "平均心率": "145 beats per minute",
       "平均步频": "165 steps/minute",
@@ -2082,8 +2082,8 @@
       "出睡时间": "07:00:00",
       "全部睡眠时长": "510 minutes",
       "浅睡时长": "280 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n120 minutes",
-      "快速眼动时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n80 minutes",
+      "深睡时长": "120 minutes",
+      "快速眼动时长": "80 minutes",
       "清醒时长": "30 minutes",
       "清醒次数": "2 times",
       "深睡连续性得分": "85 points",
@@ -2185,7 +2185,7 @@
       "出睡时间": "08:15:00",
       "全部睡眠时长": "510 minutes",
       "浅睡时长": "280 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, preserving the original format and meaning:\n\n120 minutes",
+      "深睡时长": "120 minutes",
       "快速眼动时长": "80 minutes",
       "清醒时长": "30 minutes",
       "清醒次数": "3 times",
@@ -2249,7 +2249,7 @@
       "步数": "15,800 steps",
       "距离": "12.5 kilometers",
       "热量": "850 kilocalories",
-      "锻炼时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n120 minutes",
+      "锻炼时长": "120 minutes",
       "活动小时数": "10 hours"
     },
     "跑步": {
@@ -2407,7 +2407,7 @@
       "出睡时间": "08:00:00",
       "全部睡眠时长": "540 minutes",
       "浅睡时长": "300 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n120 minutes",
+      "深睡时长": "120 minutes",
       "快速眼动时长": "90 minutes",
       "清醒时长": "30 minutes",
       "清醒次数": "3 times",
@@ -2835,7 +2835,7 @@
       "出睡时间": "07:00:00",
       "全部睡眠时长": "435 minutes",
       "浅睡时长": "240 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n120 minutes",
+      "深睡时长": "120 minutes",
       "快速眼动时长": "60 minutes",
       "清醒时长": "15 minutes",
       "清醒次数": "2 times",
@@ -3049,7 +3049,7 @@
       "出睡时间": "07:15:00",
       "全部睡眠时长": "485 minutes",
       "浅睡时长": "240 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, preserving the original format and meaning:\n\n120 minutes",
+      "深睡时长": "120 minutes",
       "快速眼动时长": "80 minutes",
       "清醒时长": "45 minutes",
       "清醒次数": "3 times",
@@ -3522,10 +3522,10 @@
     "日期": "2025-10-18",
     "城市": "Shanghai",
     "日常活动": {
-      "步数": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n8765 steps",
+      "步数": "8765 steps",
       "距离": "6.8 kilometers",
       "热量": "420 kilocalories",
-      "锻炼时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n75 minutes",
+      "锻炼时长": "75 minutes",
       "活动小时数": "12 hours"
     },
     "跑步": {
@@ -3739,7 +3739,7 @@
       "步数": "15,680 steps",
       "距离": "11.8 kilometers",
       "热量": "820 kilocalories",
-      "锻炼时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n87 minutes",
+      "锻炼时长": "87 minutes",
       "活动小时数": "10 hours"
     },
     "跑步": {
@@ -3786,7 +3786,7 @@
       "出睡时间": "07:10:00",
       "全部睡眠时长": "390 minutes",
       "浅睡时长": "210 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n120 minutes",
+      "深睡时长": "120 minutes",
       "快速眼动时长": "45 minutes",
       "清醒时长": "15 minutes",
       "清醒次数": "2 times",
@@ -3893,7 +3893,7 @@
       "出睡时间": "07:40:00",
       "全部睡眠时长": "510 minutes",
       "浅睡时长": "280 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n120 minutes",
+      "深睡时长": "120 minutes",
       "快速眼动时长": "90 minutes",
       "清醒时长": "20 minutes",
       "清醒次数": "2 times",
@@ -3990,7 +3990,7 @@
     "睡眠": {
       "入睡时间": "01:00:00",
       "出睡时间": "07:50:00",
-      "全部睡眠时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n410 minutes",
+      "全部睡眠时长": "410 minutes",
       "浅睡时长": "220 minutes",
       "深睡时长": "120 minutes",
       "快速眼动时长": "50 minutes",
@@ -4527,7 +4527,7 @@
       "出睡时间": "07:50:00",
       "全部睡眠时长": "480 minutes",
       "浅睡时长": "240 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n120 minutes",
+      "深睡时长": "120 minutes",
       "快速眼动时长": "90 minutes",
       "清醒时长": "30 minutes",
       "清醒次数": "3 times",
@@ -4634,8 +4634,8 @@
       "出睡时间": "07:20:00",
       "全部睡眠时长": "455 minutes",
       "浅睡时长": "240 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n120 minutes",
-      "快速眼动时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n80 minutes",
+      "深睡时长": "120 minutes",
+      "快速眼动时长": "80 minutes",
       "清醒时长": "15 minutes",
       "清醒次数": "2 times",
       "深睡连续性得分": "85 points",
@@ -5028,7 +5028,7 @@
       "距离": "6.2 kilometers",
       "热量": "420 kcal",
       "锻炼时长": "0 minutes",
-      "活动小时数": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n10 hours"
+      "活动小时数": "10 hours"
     },
     "跑步": {
       "运动类型": "Outdoor running",
@@ -5074,8 +5074,8 @@
       "出睡时间": "07:30:00",
       "全部睡眠时长": "480 minutes",
       "浅睡时长": "240 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n120 minutes",
-      "快速眼动时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n90 minutes",
+      "深睡时长": "120 minutes",
+      "快速眼动时长": "90 minutes",
       "清醒时长": "30 minutes",
       "清醒次数": "2 times",
       "深睡连续性得分": "78 points",
@@ -5140,7 +5140,7 @@
     "跑步": {
       "运动类型": "Outdoor running",
       "运动时间": "2025/11/02/00:00:00-2025/11/02/00:00:00",
-      "天气": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n晴",
+      "天气": "晴",
       "距离统计": "0.0 kilometers",
       "平均心率": "75 times per minute",
       "平均步频": "0 steps/minute",
@@ -5393,10 +5393,10 @@
     "睡眠": {
       "入睡时间": "22:30:00",
       "出睡时间": "07:20:00",
-      "全部睡眠时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n530 minutes",
+      "全部睡眠时长": "530 minutes",
       "浅睡时长": "280 minutes",
       "深睡时长": "120 minutes",
-      "快速眼动时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n90 minutes",
+      "快速眼动时长": "90 minutes",
       "清醒时长": "40 minutes",
       "清醒次数": "3 times",
       "深睡连续性得分": "78 points",
@@ -5801,7 +5801,7 @@
     "步行": {
       "运动类型": "Outdoor walking",
       "运动时间": "2025/11/08/19:00:00-2025/11/08/20:15:00",
-      "天气": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nClear",
+      "天气": "Clear",
       "距离统计": 4.8,
       "平均心率": 95,
       "平均步频": 110,
@@ -5876,7 +5876,7 @@
       "距离": "8.2 kilometers",
       "热量": "450 kilocalories",
       "锻炼时长": "0 minutes",
-      "活动小时数": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n10 hours"
+      "活动小时数": "10 hours"
     },
     "跑步": {
       "运动类型": "Outdoor running",
@@ -6029,7 +6029,7 @@
       "出睡时间": "07:20:00",
       "全部睡眠时长": "425 minutes",
       "浅睡时长": "240 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n120 minutes",
+      "深睡时长": "120 minutes",
       "快速眼动时长": "45 minutes",
       "清醒时长": "20 minutes",
       "清醒次数": "3 times",
@@ -6358,7 +6358,7 @@
       "出睡时间": "07:10:00",
       "全部睡眠时长": "440 minutes",
       "浅睡时长": "220 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n120 minutes",
+      "深睡时长": "120 minutes",
       "快速眼动时长": "80 minutes",
       "清醒时长": "20 minutes",
       "清醒次数": "3 times",
@@ -6580,7 +6580,7 @@
       "出睡时间": "06:30:00",
       "全部睡眠时长": "465 minutes",
       "浅睡时长": "260 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n120 minutes",
+      "深睡时长": "120 minutes",
       "快速眼动时长": "85 minutes",
       "清醒时长": "25 minutes",
       "清醒次数": "3 times",
@@ -6761,7 +6761,7 @@
     "跑步": {
       "运动类型": "Outdoor running",
       "运动时间": "2025/11/18/07:45:00-2025/11/18/08:15:00",
-      "天气": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n晴",
+      "天气": "晴",
       "距离统计": "4.0 kilometers",
       "平均心率": "145 beats per minute",
       "平均步频": "165 steps/minute",
@@ -7137,9 +7137,9 @@
     "睡眠": {
       "入睡时间": "22:45:00",
       "出睡时间": "08:20:00",
-      "全部睡眠时长": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n575 minutes",
+      "全部睡眠时长": "575 minutes",
       "浅睡时长": "345 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, preserving the original format and meaning:\n\n115 minutes",
+      "深睡时长": "115 minutes",
       "快速眼动时长": "80 minutes",
       "清醒时长": "35 minutes",
       "清醒次数": "3 times",
@@ -7223,7 +7223,7 @@
     "骑行": {
       "运动类型": "Outdoor cycling",
       "运动时间": "2025/11/22/00:00:00-2025/11/22/00:00:00",
-      "天气": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n晴",
+      "天气": "晴",
       "距离统计": "0.0 kilometers",
       "平均速度": "0 km/h",
       "平均心率": "75 times per minute",
@@ -7631,7 +7631,7 @@
       "步数": "15,800 steps",
       "距离": "11.8 kilometers",
       "热量": "1250 kilocalories",
-      "锻炼时长": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n145 minutes",
+      "锻炼时长": "145 minutes",
       "活动小时数": "12 hours"
     },
     "跑步": {
@@ -7678,8 +7678,8 @@
       "出睡时间": "07:30:00",
       "全部睡眠时长": "490 minutes",
       "浅睡时长": "220 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, preserving the original format and meaning:\n\n120 minutes",
-      "快速眼动时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n90 minutes",
+      "深睡时长": "120 minutes",
+      "快速眼动时长": "90 minutes",
       "清醒时长": "60 minutes",
       "清醒次数": "3 times",
       "深睡连续性得分": "78 points",
@@ -8493,7 +8493,7 @@
       "累计下降": "10 meters",
       "平均配速": "06 minutes 00 seconds per kilometer",
       "最佳配速": "05 minutes 30 seconds per kilometer",
-      "总步数": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n3500 steps",
+      "总步数": "3500 steps",
       "消耗热量": "180 kilocalories"
     },
     "骑行": {
@@ -8524,7 +8524,7 @@
     "睡眠": {
       "入睡时间": "22:45:00",
       "出睡时间": "07:30:00",
-      "全部睡眠时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n525 minutes",
+      "全部睡眠时长": "525 minutes",
       "浅睡时长": "280 minutes",
       "深睡时长": "120 minutes",
       "快速眼动时长": "90 minutes",
@@ -8784,7 +8784,7 @@
       "步数": "11,250 steps",
       "距离": "8.2 kilometers",
       "热量": "420 kcal",
-      "锻炼时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n45 minutes",
+      "锻炼时长": "45 minutes",
       "活动小时数": "10 hours"
     },
     "跑步": {
@@ -9238,7 +9238,7 @@
     "跑步": {
       "运动类型": "Outdoor running",
       "运动时间": "2025/12/12/00:00:00-2025/12/12/00:00:00",
-      "天气": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n晴",
+      "天气": "晴",
       "距离统计": "0 kilometers",
       "平均心率": "75 times per minute",
       "平均步频": "0 steps/minute",
@@ -9545,7 +9545,7 @@
       "步数": "12,350 steps",
       "距离": "8.9 kilometers",
       "热量": "2850 kilocalories",
-      "锻炼时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n90 minutes",
+      "锻炼时长": "90 minutes",
       "活动小时数": "12 hours"
     },
     "跑步": {
@@ -9867,7 +9867,7 @@
       "距离": "8.2 kilometers",
       "热量": "520 kilocalories",
       "锻炼时长": "50 minutes",
-      "活动小时数": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n10 hours"
+      "活动小时数": "10 hours"
     },
     "跑步": {
       "运动类型": "Indoor running",
@@ -9913,8 +9913,8 @@
       "出睡时间": "07:40:00",
       "全部睡眠时长": "475 minutes",
       "浅睡时长": "260 minutes",
-      "深睡时长": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n120 minutes",
-      "快速眼动时长": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n75 minutes",
+      "深睡时长": "120 minutes",
+      "快速眼动时长": "75 minutes",
       "清醒时长": "20 minutes",
       "清醒次数": "3 times",
       "深睡连续性得分": "78 points",
@@ -10442,7 +10442,7 @@
     "睡眠": {
       "入睡时间": "00:30:00",
       "出睡时间": "08:15:00",
-      "全部睡眠时长": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\n465 minutes",
+      "全部睡眠时长": "465 minutes",
       "浅睡时长": "280 minutes",
       "深睡时长": "120 minutes",
       "快速眼动时长": "65 minutes",
@@ -10760,7 +10760,7 @@
       "入睡时间": "23:45:00",
       "出睡时间": "08:00:00",
       "全部睡眠时长": "495 minutes",
-      "浅睡时长": "Please translate the following Chinese text into English, preserving the original format and semantics:\n\n280 minutes",
+      "浅睡时长": "280 minutes",
       "深睡时长": "120 minutes",
       "快速眼动时长": "95 minutes",
       "清醒时长": "25 minutes",
@@ -11191,7 +11191,7 @@
     "睡眠": {
       "入睡时间": "22:30:00",
       "出睡时间": "08:15:00",
-      "全部睡眠时长": "Please translate the following Chinese text into English, preserving the original format and meaning:\n\n585 minutes",
+      "全部睡眠时长": "585 minutes",
       "浅睡时长": "320 minutes",
       "深睡时长": "150 minutes",
       "快速眼动时长": "95 minutes",
