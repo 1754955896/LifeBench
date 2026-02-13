@@ -11,8 +11,8 @@
     "street_number": "No. 12, Lane 1589"
   },
   "birth_place": {
-    "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nShanghai City",
-    "city": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nShanghai",
+    "province": "Shanghai City",
+    "city": "Shanghai",
     "district": "Pudong New Area"
   },
   "gender": "Male",
@@ -117,7 +117,7 @@
           "street_number": "No. 12, Lane 1589"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nJiangsu Province",
+          "province": "Jiangsu Province",
           "city": "Nantong City"
         },
         "personality": "ESFJ",
@@ -137,7 +137,7 @@
         "age": 31,
         "birth_date": "1990-08-15",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nShanghai",
+          "province": "Shanghai",
           "city": "Shanghai City",
           "district": "Pudong New Area",
           "street_name": "Jinqiao Road",
@@ -198,7 +198,7 @@
           "street_number": "Number 456"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nShanghai City",
+          "province": "Shanghai City",
           "city": "Shanghai City",
           "district": "Huangpu District"
         },
@@ -277,7 +277,7 @@
           "street_number": "No. 601, Building 15, Vanke Holiday Scenery Community, Lane 3333"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nJiangsu Province",
+          "province": "Jiangsu Province",
           "city": "Suzhou City"
         },
         "personality": "ENFP",
@@ -426,14 +426,14 @@
         "age": 35,
         "birth_date": "1989-08-22",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nJiangsu Province",
+          "province": "Jiangsu Province",
           "city": "Suzhou City",
           "district": "Industrial Park",
           "street_name": "Xinghu Street",
           "street_number": "Room 301, Building 12, a certain residential community"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nJiangsu Province",
+          "province": "Jiangsu Province",
           "city": "Nanjing City"
         },
         "personality": "ISFJ",
@@ -505,7 +505,7 @@
         "age": 29,
         "birth_date": "1995-03-15",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nShanghai City",
+          "province": "Shanghai City",
           "city": "Shanghai City",
           "district": "Minhang District",
           "street_name": "Qixin Road",
@@ -539,7 +539,7 @@
           "street_number": "Room 502, No. 8, Lane 3333"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nJiangsu Province",
+          "province": "Jiangsu Province",
           "city": "Nantong City"
         },
         "personality": "ESFP",
@@ -614,7 +614,7 @@
         "birth_date": "1989-05-14",
         "home_address": {
           "province": "Shanghai City",
-          "city": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nShanghai City",
+          "city": "Shanghai City",
           "district": "Xuhui District",
           "street_name": "Caoxi North Road",
           "street_number": "Room 1203, Building 5, Huayue Apartment No. 398"
@@ -667,7 +667,7 @@
         "age": 58,
         "birth_date": "1966-03-15",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nShanghai City",
+          "province": "Shanghai City",
           "city": "Shanghai City",
           "district": "Pudong New Area",
           "street_name": "Zhangyang Road",
@@ -701,8 +701,8 @@
           "street_number": "No. 588 Future Technology City Dream Town, Building E"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nShanghai",
-          "city": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nShanghai",
+          "province": "Shanghai",
+          "city": "Shanghai",
           "district": "Pudong New Area"
         },
         "personality": "INTP",

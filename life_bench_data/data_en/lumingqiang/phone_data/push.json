@@ -557,7 +557,7 @@
     "title": "Calendar: Event Reminder",
     "content": "The event \"Wednesday Evening Squash Activity\" will start at 20:00 tonight.",
     "datetime": "2025-12-24 19:30:00",
-    "source": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCalendar",
+    "source": "Calendar",
     "push_status": "Read",
     "jump_path": "Calendar → Squash activity on Wednesday evening",
     "summarized_info": "The user received a reminder from the calendar app about the squash activity on Wednesday evening.",

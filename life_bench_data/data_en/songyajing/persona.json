@@ -4,14 +4,14 @@
   "age": 32,
   "nationality": "Han",
   "home_address": {
-    "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+    "province": "Fujian Province",
     "city": "Xiamen City",
     "district": "Siming District",
     "street_name": "South Hubin Road",
     "street_number": "128"
   },
   "birth_place": {
-    "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+    "province": "Fujian Province",
     "city": "Quanzhou City",
     "district": "Licheng District"
   },
@@ -20,7 +20,7 @@
   "job": "Boutique Clothing Store Owner and Clerk",
   "occupation": "Individual Business (Self-Employed)",
   "workplace": {
-    "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+    "province": "Fujian Province",
     "city": "Xiamen City",
     "district": "Siming District",
     "street_name": "Zhongshan Road",
@@ -82,7 +82,7 @@
         "age": 62,
         "birth_date": "1962-08-15",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Quanzhou City",
           "district": "Licheng District",
           "street_name": "Xinhua North Road",
@@ -107,14 +107,14 @@
         "age": 60,
         "birth_date": "1964-03-22",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Quanzhou City",
           "district": "Licheng District",
           "street_name": "Xinhua North Road",
           "street_number": "No. 45"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Zhangzhou City"
         },
         "personality": "ESFJ",
@@ -132,14 +132,14 @@
         "age": 35,
         "birth_date": "1989-12-10",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City",
           "district": "Siming District",
           "street_name": "South Hubin Road",
           "street_number": "No. 128"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City"
         },
         "personality": "ISTP",
@@ -157,11 +157,11 @@
         "age": 5,
         "birth_date": "2019-07-20",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City",
           "district": "Siming District",
           "street_name": "South Hubin Road",
-          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 128"
+          "street_number": "No. 128"
         },
         "birth_place": {
           "province": "Please translate the following Chinese text into English, maintaining the original format and meaning:\n\nFujian Province",
@@ -209,14 +209,14 @@
         "age": 32,
         "birth_date": "1989-08-12",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City",
           "district": "Huli District",
           "street_name": "Xianyue Road",
           "street_number": "Number 88"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Quanzhou City",
           "district": "Licheng District"
         },
@@ -242,7 +242,7 @@
           "street_number": "Innovation Building, Tower A, Room 1203"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Quanzhou City",
           "district": "Fengze District"
         },
@@ -270,7 +270,7 @@
           "street_number": "18th"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Quanzhou City",
           "district": "Licheng District"
         },
@@ -298,7 +298,7 @@
           "street_number": "18th"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Quanzhou City"
         },
         "personality": "ISTP",
@@ -325,7 +325,7 @@
           "street_number": "Room 1203, Building A, No. 88 Innovation Tower"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Quanzhou City"
         },
         "personality": "ENFP",
@@ -352,7 +352,7 @@
           "street_number": "No. 88"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Fuzhou City"
         },
         "personality": "ENFP",
@@ -377,7 +377,7 @@
           "street_number": "Innovation Building, Tower A"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City"
         },
         "personality": "ISTJ",
@@ -397,14 +397,14 @@
         "age": 33,
         "birth_date": "1990-08-12",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGuangdong Province",
+          "province": "Guangdong Province",
           "city": "Shenzhen City",
           "district": "Nanshan District",
           "street_name": "Technology Park Road",
           "street_number": "Room 1203, Building A, No. 88 Innovation Building"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City"
         },
         "personality": "ENTJ",
@@ -456,7 +456,7 @@
           "street_number": "No. 458"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Zhangzhou City"
         },
         "personality": "ISFJ",
@@ -481,7 +481,7 @@
           "street_number": "1 Rue du Sacré-Cœur"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "province": "Hebei Province",
           "city": "Shijiazhuang City"
         },
         "personality": "ENFJ",
@@ -501,7 +501,7 @@
         "age": 35,
         "birth_date": "1988-08-12",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGuangdong Province",
+          "province": "Guangdong Province",
           "city": "Guangzhou City",
           "district": "Liwan District",
           "street_name": "Thirteen Hongs Road",
@@ -526,14 +526,14 @@
         "age": 58,
         "birth_date": "1965-03-22",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City",
           "district": "Siming District",
           "street_name": "Yundang Road",
           "street_number": "Lakeview Garden, Building 12, Unit 301"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City"
         },
         "personality": "ISFJ",
@@ -551,14 +551,14 @@
         "age": 24,
         "birth_date": "1999-11-05",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City",
           "district": "Huli District",
           "street_name": "Xinglong Road",
           "street_number": "Tang Dynasty Family Phase V, No. 17, Unit 502"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Zhangzhou City"
         },
         "personality": "ESFP",
@@ -603,14 +603,14 @@
         "age": 58,
         "birth_date": "1966-08-12",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City",
           "district": "Siming District",
           "street_name": "South Hubin Road",
           "street_number": "130."
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Zhangzhou City",
           "district": "Xiangcheng District"
         },
@@ -631,14 +631,14 @@
         "age": 48,
         "birth_date": "1976-08-22",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City",
           "district": "Huli District",
           "street_name": "Xinglong Road",
           "street_number": "Baking Workshop Third Floor"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGuangdong Province",
+          "province": "Guangdong Province",
           "city": "Guangzhou City"
         },
         "personality": "ISFJ",
@@ -717,7 +717,7 @@
           "street_number": "Number 668"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Fuzhou City"
         },
         "personality": "ESTJ",

@@ -401,7 +401,7 @@
   },
   {
     "question": "How many times have you visited the International Industrial Expo?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n1 time",
+    "answer": "1 time",
     "score_points": [
       {
         "description": "The correct answer is that the number of visits is 1.",
@@ -915,7 +915,7 @@
     "answer": "Fishing competition registration fee, newly purchased bait and floats, buying a foam roller, and hand-brew coffee equipment.",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer must include \"fishing competition registration fee\".",
+        "description": "The answer must include \"fishing competition registration fee\".",
         "score": 3
       },
       {
@@ -927,7 +927,7 @@
         "score": 2
       },
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer must include \"hand drip coffee equipment\".",
+        "description": "The answer must include \"hand drip coffee equipment\".",
         "score": 3
       }
     ],
@@ -1180,7 +1180,7 @@
   },
   {
     "question": "After my first long-distance training in March, how long did I wait before participating in the 10-kilometer health run as a pre-half-marathon test?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n34 days",
+    "answer": "34 days",
     "score_points": [
       {
         "description": "Accurately calculate the number of days between two event dates",
@@ -3229,7 +3229,7 @@
     "answer": "5 minutes and 5 seconds",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer should accurately provide the target pace value of \"5 minutes and 05 seconds\".",
+        "description": "The answer should accurately provide the target pace value of \"5 minutes and 05 seconds\".",
         "score": 10
       }
     ],
@@ -4186,11 +4186,11 @@
     "answer": "Guangfulin Road (near Chenta Road) Convenient Breakfast Stall",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer includes the correct road name \"Guangfulin Road\".",
+        "description": "The answer includes the correct road name \"Guangfulin Road\".",
         "score": 5
       },
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer includes a specific location description \"convenient breakfast stalls.\"",
+        "description": "The answer includes a specific location description \"convenient breakfast stalls.\"",
         "score": 5
       }
     ],
@@ -4488,7 +4488,7 @@
     "answer": "Secondary Vocational School Classmates Circle WeChat Group",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer must clearly indicate the group name: Secondary Vocational School Classmates Circle WeChat Group.",
+        "description": "The answer must clearly indicate the group name: Secondary Vocational School Classmates Circle WeChat Group.",
         "score": 5
       },
       {
@@ -4806,7 +4806,7 @@
     "answer": "Week Four.",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer must explicitly specify \"Week 4\".",
+        "description": "The answer must explicitly specify \"Week 4\".",
         "score": 10
       }
     ],
@@ -5862,7 +5862,7 @@
     "answer": "Foam Roller",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer explicitly mentions that the relaxation tool is a \"foam roller.\"",
+        "description": "The answer explicitly mentions that the relaxation tool is a \"foam roller.\"",
         "score": 10
       }
     ],
@@ -6813,7 +6813,7 @@
     "answer": "The commute to the company is convenient, and Aunt Chen, the neighbor, takes good care of him. The neighborhood environment is quiet.",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer should include specific manifestations of \"commuting convenience\": it is very convenient to get to the company.",
+        "description": "The answer should include specific manifestations of \"commuting convenience\": it is very convenient to get to the company.",
         "score": 4
       },
       {
@@ -6821,7 +6821,7 @@
         "score": 3
       },
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer should include specific manifestations of \"residential environment\": quietness",
+        "description": "The answer should include specific manifestations of \"residential environment\": quietness",
         "score": 3
       }
     ],
@@ -7777,7 +7777,7 @@
       },
       {
         "option": "D",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n11 days"
+        "content": "11 days"
       }
     ],
     "answer": "C",
@@ -8373,7 +8373,7 @@
         "score": 3
       },
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer includes \"servo motor\".",
+        "description": "The answer includes \"servo motor\".",
         "score": 3
       }
     ],
@@ -8503,7 +8503,7 @@
     "answer": "Observations from visiting the Industrial Expo yesterday",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nIn the answer, it is necessary to explicitly state that the shared observations are about the \"Industrial Expo.\"",
+        "description": "In the answer, it is necessary to explicitly state that the shared observations are about the \"Industrial Expo.\"",
         "score": 10
       }
     ],

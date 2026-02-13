@@ -177,7 +177,7 @@
   },
   {
     "name": "Chen Meiling",
-    "relation": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCustomer",
+    "relation": "Customer",
     "gender": "Female",
     "nickname": "Chen Tai",
     "phoneNumber": "85291234578",
@@ -188,7 +188,7 @@
   },
   {
     "name": "Wang Qiming",
-    "relation": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCustomer",
+    "relation": "Customer",
     "gender": "Male",
     "nickname": "President Wang",
     "phoneNumber": "13712345683",

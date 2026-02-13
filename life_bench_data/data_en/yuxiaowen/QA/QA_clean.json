@@ -1232,7 +1232,7 @@
     "answer": "May",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer must clearly indicate \"May\".",
+        "description": "The answer must clearly indicate \"May\".",
         "score": 10
       }
     ],
@@ -3650,7 +3650,7 @@
     "answer": "Second Assistant",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer must accurately include the description of the role \"Second Assistant\".",
+        "description": "The answer must accurately include the description of the role \"Second Assistant\".",
         "score": 10
       }
     ],
@@ -3952,7 +3952,7 @@
       },
       {
         "option": "D",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nEndocrine"
+        "content": "Endocrine"
       }
     ],
     "answer": "B",
@@ -5155,19 +5155,19 @@
     "options": [
       {
         "option": "A",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n44 days"
+        "content": "44 days"
       },
       {
         "option": "B",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n45 days"
+        "content": "45 days"
       },
       {
         "option": "C",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n46 days"
+        "content": "46 days"
       },
       {
         "option": "D",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n47 days"
+        "content": "47 days"
       }
     ],
     "answer": "C",
@@ -6065,7 +6065,7 @@
   },
   {
     "question": "How many days after Yu Xiaowen independently handled the night shift emergency for the first time did she begin systematically reviewing the BLS course?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n22 days",
+    "answer": "22 days",
     "score_points": [
       {
         "description": "The first independent handling of a night shift emergency occurred on March 5 (Event ID: 919), and the BLS course review began on March 27 (Event ID: 1256), with an interval of 22 days.",

@@ -16,7 +16,7 @@
     "district": "Meilan District"
   },
   "gender": "Male",
-  "education": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nJunior high school",
+  "education": "Junior high school",
   "job": "Electric Machinery Installation and Repair Workers",
   "occupation": "Haikou City Electric Power Engineering Service Co., Ltd.",
   "workplace": {
@@ -265,7 +265,7 @@
           "city": "Haikou City",
           "district": "Qiongshan District",
           "street_name": "Fengxiang East Road",
-          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 32"
+          "street_number": "Number 32"
         },
         "birth_place": {
           "province": "Hainan Province",
@@ -290,10 +290,10 @@
           "city": "Haikou City",
           "district": "Meilan District",
           "street_name": "Haifu Road",
-          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 56"
+          "street_number": "Number 56"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGuangdong Province",
+          "province": "Guangdong Province",
           "city": "Zhanjiang City"
         },
         "personality": "ISFJ",
@@ -388,7 +388,7 @@
         "age": 35,
         "birth_date": "1986-08-22",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGuangdong Province",
+          "province": "Guangdong Province",
           "city": "Shenzhen City",
           "district": "Nanshan District",
           "street_name": "Technology Park Road",
@@ -417,7 +417,7 @@
           "city": "Haikou City",
           "district": "Meilan District",
           "street_name": "Haifu Road",
-          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 56"
+          "street_number": "Number 56"
         },
         "birth_place": {
           "province": "Hainan Province",
@@ -605,7 +605,7 @@
           "city": "Haikou City",
           "district": "Qiongshan District",
           "street_name": "Fucheng Town, Zhongshan Road",
-          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 56"
+          "street_number": "Number 56"
         },
         "birth_place": {
           "province": "Hainan Province",

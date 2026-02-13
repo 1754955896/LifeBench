@@ -5164,7 +5164,7 @@
       },
       {
         "option": "D",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nForeign exchange conversion"
+        "content": "Foreign exchange conversion"
       }
     ],
     "answer": "B",
@@ -5983,7 +5983,7 @@
   },
   {
     "question": "From Song Yajing modifying the nickname of her mobile banking account in the shop's rest area to initiate the savings plan, to the couple officially resolving to establish the plan through an annual financial planning meeting at the dining table in the living room, how many days passed in between?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n14 days",
+    "answer": "14 days",
     "score_points": [
       {
         "description": "Correctly identify and locate the event that initiated the savings plan (Event ID 4737) and its date (2025-12-01).",

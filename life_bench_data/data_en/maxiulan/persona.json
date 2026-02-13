@@ -16,7 +16,7 @@
     "district": "Jinghai District"
   },
   "gender": "Female",
-  "education": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nJunior high school",
+  "education": "Junior high school",
   "job": "Housewife/Part-time Gig Worker",
   "occupation": "No fixed unit",
   "workplace": {
@@ -142,7 +142,7 @@
           "street_number": "No. 156"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "province": "Hebei Province",
           "city": "Cangzhou City",
           "district": "Qing County"
         },
@@ -428,7 +428,7 @@
         "age": 42,
         "birth_date": "1979-12-10",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "province": "Hebei Province",
           "city": "Tangshan City",
           "district": "Lubei District",
           "street_name": "Jianshe North Road",
@@ -489,7 +489,7 @@
           "street_number": "No. 203"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "province": "Hebei Province",
           "city": "Cangzhou City",
           "district": "Renqiu City"
         },
@@ -517,7 +517,7 @@
           "street_number": "No. 88"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "province": "Hebei Province",
           "city": "Cangzhou City"
         },
         "personality": "ESFJ",
@@ -544,7 +544,7 @@
           "street_number": "Room 502, Building 3, Teacher's Apartments"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "province": "Hebei Province",
           "city": "Cangzhou City"
         },
         "personality": "ENFJ",
@@ -597,7 +597,7 @@
           "street_number": "Number 43"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "province": "Hebei Province",
           "city": "Cangzhou City"
         },
         "personality": "ESFJ",
@@ -624,7 +624,7 @@
           "street_number": "Number 88"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "province": "Hebei Province",
           "city": "Cangzhou City"
         },
         "personality": "ISTP",
@@ -651,7 +651,7 @@
           "street_number": "Number 88"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "province": "Hebei Province",
           "city": "Cangzhou City"
         },
         "personality": "ISFJ",
@@ -678,7 +678,7 @@
           "street_number": "No. 88"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "province": "Hebei Province",
           "city": "Cangzhou City"
         },
         "personality": "ESFJ",
@@ -705,7 +705,7 @@
           "street_number": "Number 88"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+          "province": "Hebei Province",
           "city": "Cangzhou City"
         },
         "personality": "ESTP",

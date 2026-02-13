@@ -233,7 +233,7 @@
   {
     "type": "calendar",
     "event_id": 558,
-    "title": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPhysical Examination",
+    "title": "Physical Examination",
     "description": "Annual physical examination. Location: Ren'ai Hospital. Precautions: Maintain a light diet the night before and ensure adequate sleep.",
     "start_time": "2025-02-10 08:30:00",
     "end_time": "2025-02-10 11:00:00",

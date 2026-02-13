@@ -1399,7 +1399,7 @@
     "answer": "Hangzhou",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer must include the supplier's location, which is \"Hangzhou\".",
+        "description": "The answer must include the supplier's location, which is \"Hangzhou\".",
         "score": 10
       }
     ],
@@ -2866,7 +2866,7 @@
     "answer": "Vegetables and lean meat.",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer contains \"vegetables\"",
+        "description": "The answer contains \"vegetables\"",
         "score": 5
       },
       {
@@ -5650,7 +5650,7 @@
     "options": [
       {
         "option": "A",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n1 time"
+        "content": "1 time"
       },
       {
         "option": "B",
@@ -5720,7 +5720,7 @@
   },
   {
     "question": "How many days passed between my first official offline date with my girlfriend (not a large group activity) and our first overnight trip together?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n84 days",
+    "answer": "84 days",
     "score_points": [
       {
         "description": "Provide the correct number of days apart: 84 days.",
@@ -7807,7 +7807,7 @@
     "answer": "Cardiopulmonary Resuscitation (CPR), Automated External Defibrillator (AED) Usage.",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer includes \"cardiopulmonary resuscitation (CPR)\" or \"CPR\".",
+        "description": "The answer includes \"cardiopulmonary resuscitation (CPR)\" or \"CPR\".",
         "score": 5
       },
       {
@@ -8061,7 +8061,7 @@
     "answer": "Vehicle Maintenance and Safety Inspection",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer must accurately include the scheduled service content \"vehicle maintenance and safety inspection\".",
+        "description": "The answer must accurately include the scheduled service content \"vehicle maintenance and safety inspection\".",
         "score": 10
       }
     ],

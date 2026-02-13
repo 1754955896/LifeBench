@@ -267,7 +267,7 @@
       "city": "Tianjin Municipality",
       "district": "Xiqing District",
       "streetName": "Zhongbei Avenue",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 128",
+      "streetNumber": "No. 128",
       "poi": "Ye Mingxuan's family"
     },
     "faceRecognition": [
@@ -299,7 +299,7 @@
       "city": "Tianjin City",
       "district": "Xiqing District",
       "streetName": "Zhongbei Avenue",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 128",
+      "streetNumber": "No. 128",
       "poi": "Ye Mingxuan's home"
     },
     "faceRecognition": [
@@ -721,7 +721,7 @@
       "Yuan Datou Silver Coin",
       "Family Sharing",
       "Coffee table",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMagnifying glass"
+      "Magnifying glass"
     ],
     "ocrText": "None",
     "shoot_mode": "Portrait",
@@ -1093,7 +1093,7 @@
       "White gloves",
       "Soft cloth wiping",
       "Collection Album",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMagnifying glass",
+      "Magnifying glass",
       "Desk Lamp"
     ],
     "ocrText": "None",
@@ -1210,7 +1210,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT Screenshot",
+      "PPT Screenshot",
       "Project Progress",
       "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nMilestone",
       "Task Plan",
@@ -1975,7 +1975,7 @@
       "None"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Data Dashboard",
       "Meeting Room",
       "Screen",
@@ -2352,7 +2352,7 @@
       "Ancient Coin Collection",
       "Yuan Datou Silver Coin",
       "Fabric Storage Box",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMagnifying glass",
+      "Magnifying glass",
       "Study Room Desk",
       "Item Organization"
     ],
@@ -2697,7 +2697,7 @@
       "Wheelchair",
       "Hospital lobby",
       "Registration Window",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSignboard",
+      "Signboard",
       "Medical consultation"
     ],
     "ocrText": "None",
@@ -2717,7 +2717,7 @@
       "city": "Tianjin Municipality",
       "district": "Hexi District",
       "streetName": "Jiefang South Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 406",
+      "streetNumber": "No. 406",
       "poi": "Tianjin Hospital (Hexi Campus) Imaging Department"
     },
     "faceRecognition": "None",
@@ -2745,7 +2745,7 @@
       "city": "Tianjin Municipality",
       "district": "Hexi District",
       "streetName": "Jiefang South Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 406",
+      "streetNumber": "Number 406",
       "poi": "Tianjin Hospital (Hexi Campus) Orthopedic Clinic"
     },
     "faceRecognition": [
@@ -3041,7 +3041,7 @@
       "city": "Tianjin Municipality",
       "district": "Hexi District",
       "streetName": "Jiefang South Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 406",
+      "streetNumber": "Number 406",
       "poi": "Tianjin Hospital (Hexi Campus) Orthopedics Waiting Area"
     },
     "faceRecognition": [
@@ -3072,7 +3072,7 @@
       "city": "Tianjin City",
       "district": "Hexi District",
       "streetName": "Jiefang South Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 406",
+      "streetNumber": "No. 406",
       "poi": "Tianjin Hospital (Hexi Campus) Imaging Department"
     },
     "faceRecognition": [
@@ -3299,7 +3299,7 @@
       "Bedridden Rehabilitation",
       "Father and Son",
       "Bedroom",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCare"
+      "Care"
     ],
     "ocrText": "None",
     "shoot_mode": "Portrait",
@@ -5956,7 +5956,7 @@
       "Sun Yat-sen Commemorative Coin for the Founding of the Nation",
       "Silver Tip",
       "Dark velvet",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMagnifying glass",
+      "Magnifying glass",
       "Item Storage"
     ],
     "ocrText": "None",
@@ -6486,7 +6486,7 @@
     "faceRecognition": "None",
     "imageTag": [
       "Project Review",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Projection screen",
       "Meeting room",
       "Automated production line"
@@ -6548,7 +6548,7 @@
       "Ye Mingxuan"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Mechanical drawing",
       "Tolerance Fit",
       "Computer screen",
@@ -7259,7 +7259,7 @@
     "faceRecognition": "None",
     "imageTag": [
       "Engineering drawing scanning",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSolidWorks drawings",
+      "SolidWorks drawings",
       "Mechanical Design",
       "Desk",
       "Technical Documentation"
@@ -7624,7 +7624,7 @@
       "None"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "3D model",
       "Transmission Structure",
       "Engineering Drawing",
@@ -7749,7 +7749,7 @@
     ],
     "imageTag": [
       "Document Scanning",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPython code",
+      "Python code",
       "Data Analysis",
       "Trend Chart",
       "Health Data",
@@ -8063,7 +8063,7 @@
       "Ancient Coin Collection Album",
       "Guangxu Yuanbao Copper Coin",
       "Rosewood inlay",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMagnifying glass",
+      "Magnifying glass",
       "Soft-bristled brush",
       "White gloves",
       "Qing Dynasty Coins"
@@ -8629,7 +8629,7 @@
     "imageTag": [
       "Subway platform",
       "Commuting",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSign",
+      "Sign",
       "Honghuli Station",
       "Wait",
       "Urban Transportation"
@@ -9362,7 +9362,7 @@
       "Several other members of the project team."
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Project Weekly Meeting",
       "Gantt Chart",
       "Design Progress",
@@ -9702,8 +9702,8 @@
     ],
     "imageTag": [
       "Giving gifts",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCarnation",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nWomen's Day",
+      "Carnation",
+      "Women's Day",
       "Mother",
       "Surprise",
       "Family Warmth"
@@ -10156,7 +10156,7 @@
       "Whole Wheat Toast",
       "Millet porridge",
       "Wooden dining table",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTableware"
+      "Tableware"
     ],
     "ocrText": "None",
     "shoot_mode": "Take a normal photo",
@@ -10400,12 +10400,12 @@
       "None"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Benefit Verification",
       "Bar chart",
       "Project Summary",
       "Key Points of the Speech",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSlide"
+      "Slide"
     ],
     "ocrText": "Benefit Verification and Project Summary  \nCost Reduction: 15%  \nEfficiency Improvement: 20%  \nQuality Pass Rate: 99.5%  \nKey Presentation Points: Emphasize the stability and cost-effectiveness of the technical solution.",
     "shoot_mode": "Take a normal photo",
@@ -10716,7 +10716,7 @@
     "imageTag": [
       "Study materials",
       "Document Filing",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFolder",
+      "Folder",
       "Desk",
       "Study",
       "Organize"
@@ -11577,7 +11577,7 @@
       "Handwritten Whiteboard",
       "Quarterly Bonus",
       "Marker pen",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nKeywords"
+      "Keywords"
     ],
     "ocrText": "Meeting Minutes:  \n1. The Langfang project is progressing smoothly.  \n2. Engineer Ye Mingxuan has performed outstandingly.  \n3. Decision: Award a quarterly project bonus (additional).",
     "shoot_mode": "Take a normal photo",
@@ -11836,7 +11836,7 @@
       "Dinner",
       "Rice",
       "Stir-fried Tomato and Egg",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSpinach",
+      "Spinach",
       "Dinner plate",
       "Portion control"
     ],
@@ -11862,7 +11862,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Transmission components",
       "Optimization Plan",
       "Office computer",
@@ -11925,7 +11925,7 @@
       "Drainer",
       "Stainless steel pot",
       "Kitchen cleaning",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHousehold organization"
+      "Household organization"
     ],
     "ocrText": "none",
     "shoot_mode": "Take a normal photo",
@@ -12611,7 +12611,7 @@
     },
     "faceRecognition": "none",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "3D Model",
       "Transmission Components",
       "Dimension labeling",
@@ -13003,13 +13003,13 @@
       "city": "Tianjin Municipality",
       "district": "Xiqing District",
       "streetName": "Zhongbei Avenue",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 128",
+      "streetNumber": "No. 128",
       "poi": "Study in parents' home"
     },
     "faceRecognition": "None",
     "imageTag": [
       "Computer screen",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFolder",
+      "Folder",
       "Qingming Festival photos",
       "Thumbnail",
       "Study",
@@ -13032,7 +13032,7 @@
       "city": "Tianjin Municipality",
       "district": "Xiqing District",
       "streetName": "Zhongbei Avenue",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 128",
+      "streetNumber": "No. 128",
       "poi": "Kitchen in parents' home"
     },
     "faceRecognition": [
@@ -13125,7 +13125,7 @@
       "city": "Tianjin Municipality",
       "district": "Xiqing District",
       "streetName": "Zhongbei Avenue",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 128",
+      "streetNumber": "No. 128",
       "poi": "Parents' Home Dining Room"
     },
     "faceRecognition": "None",
@@ -13220,7 +13220,7 @@
       "None"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Design chart",
       "Projection screen",
       "Weekly Meeting",
@@ -13434,7 +13434,7 @@
       "Ye Mingxuan"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Stress Cloud Map",
       "Mechanical Simulation",
       "Clamping mechanism",
@@ -13464,7 +13464,7 @@
       "Ye Mingxuan"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPython code",
+      "Python code",
       "Data Visualization",
       "Line chart",
       "Programming Learning",
@@ -13559,7 +13559,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Clamping mechanism",
       "3D Model",
       "Parameter Table",
@@ -13990,7 +13990,7 @@
       "Ancient Coin Collection Album",
       "Jiangnan Province Minted Silver Dollar",
       "Item Storage",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMagnifying glass",
+      "Magnifying glass",
       "Coin Collection"
     ],
     "ocrText": "none",
@@ -14127,7 +14127,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSolidWorks screenshot",
+      "SolidWorks screenshot",
       "Mechanical Design",
       "Pneumatic connecting rod",
       "3D Model",
@@ -14607,7 +14607,7 @@
       "city": "Tianjin City",
       "district": "Hexi District",
       "streetName": "Longchang Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 94",
+      "streetNumber": "No. 94",
       "poi": "Third-floor Review Meeting Room at Tianjin Science and Technology Museum"
     },
     "faceRecognition": "none",
@@ -14696,14 +14696,14 @@
       "city": "Tianjin City",
       "district": "Hexi District",
       "streetName": "Longchang Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 94",
+      "streetNumber": "Number 94",
       "poi": "Third-floor Review Area, Tianjin Science and Technology Museum"
     },
     "faceRecognition": [
       "None"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT Screenshot",
+      "PPT Screenshot",
       "Bionic Mechanical Arm",
       "Structural Schematic Diagram",
       "Performance Parameters",
@@ -14829,7 +14829,7 @@
       "Gao Zhiyuan"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Performance Interview",
       "Work Report",
       "Data Chart",
@@ -16158,7 +16158,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Simulation Verification",
       "Finite Element Analysis",
       "Stress Cloud Map",
@@ -17149,7 +17149,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Tolerance Fit",
       "Conveyor Belt Tensioning Mechanism",
       "Projection screen",
@@ -17180,7 +17180,7 @@
       "Document Scanning",
       "Technical Specifications",
       "Conveyor Belt Tensioning Mechanism",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nA4 paper",
+      "A4 paper",
       "Office Desktop"
     ],
     "ocrText": "Technical Specification for Conveyor Belt Tensioning Mechanism V1.0  \nAuthor: Ye Mingxuan  \nDate: May 8, 2025",
@@ -18038,7 +18038,7 @@
       "Plant close-up",
       "The setting sun",
       "Balcony",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGardening",
+      "Gardening",
       "Still Life"
     ],
     "ocrText": "None",
@@ -18552,7 +18552,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "3D Model",
       "Mechanical Design",
       "Simulation Analysis",
@@ -19082,7 +19082,7 @@
       "Ye Mingxuan"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Interface parameters",
       "Transmission Module",
       "CAD model",
@@ -19495,7 +19495,7 @@
     "imageTag": [
       "Appreciation of Ancient Coins",
       "Sun Yat-sen Commemorative Coin",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMagnifying glass",
+      "Magnifying glass",
       "Collection Record Book",
       "Item Storage",
       "Macro"
@@ -19738,7 +19738,7 @@
     ],
     "imageTag": [
       "Programming",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPython code",
+      "Python code",
       "pandas library",
       "CSV file",
       "Code Editor",
@@ -20975,7 +20975,7 @@
     "imageTag": [
       "Document Scanning",
       "Simulation Report",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nA4 paper",
+      "A4 paper",
       "Office desk",
       "Technical Documentation"
     ],
@@ -21750,7 +21750,7 @@
       "Antique Shelf",
       "Woodworking Workshop",
       "Smile",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTo give as a gift"
+      "To give as a gift"
     ],
     "ocrText": "None",
     "shoot_mode": "Portrait",
@@ -22244,7 +22244,7 @@
     "title": "IMG_20250624_103015",
     "datetime": "2025-06-24 10:30:15",
     "location": {
-      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+      "province": "Hebei Province",
       "city": "Langfang City",
       "district": "Anci District",
       "streetName": "South Longdao",
@@ -22273,7 +22273,7 @@
     "title": "IMG_20250624_144520",
     "datetime": "2025-06-24 14:45:20",
     "location": {
-      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+      "province": "Hebei Province",
       "city": "Langfang City",
       "district": "Anci District",
       "streetName": "South Longdao",
@@ -22361,7 +22361,7 @@
     "title": "IMG_20250624_184005",
     "datetime": "2025-06-24 18:40:05",
     "location": {
-      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+      "province": "Hebei Province",
       "city": "Langfang City",
       "district": "Anci District",
       "streetName": "Longhe High-Tech Industrial Development Zone",
@@ -22390,11 +22390,11 @@
     "title": "IMG_20250624_194530",
     "datetime": "2025-06-24 19:45:30",
     "location": {
-      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+      "province": "Hebei Province",
       "city": "Langfang City",
       "district": "Guangyang District",
       "streetName": "North Yinhe Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 106",
+      "streetNumber": "No. 106",
       "poi": "Inside the room of Baiyuan Express Hotel"
     },
     "faceRecognition": "None",
@@ -22419,11 +22419,11 @@
     "title": "IMG_20250625_074530",
     "datetime": "2025-06-25 07:45:30",
     "location": {
-      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+      "province": "Hebei Province",
       "city": "Langfang City",
       "district": "Guangyang District",
       "streetName": "North Yinhe Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 106",
+      "streetNumber": "No. 106",
       "poi": "Baiyuan Express Hotel (Langfang Yinhe North Road Branch) Restaurant"
     },
     "faceRecognition": "None",
@@ -22448,7 +22448,7 @@
     "title": "IMG_20250625_110530",
     "datetime": "2025-06-25 11:05:30",
     "location": {
-      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+      "province": "Hebei Province",
       "city": "Langfang City",
       "district": "Anci District",
       "streetName": "Fuyou Dao",
@@ -22477,7 +22477,7 @@
     "title": "IMG_20250625_171030",
     "datetime": "2025-06-25 17:10:30",
     "location": {
-      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+      "province": "Hebei Province",
       "city": "Langfang City",
       "district": "Anci District",
       "streetName": "Fuyou Dao",
@@ -22505,7 +22505,7 @@
     "title": "IMG_20250625_171520",
     "datetime": "2025-06-25 17:15:20",
     "location": {
-      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+      "province": "Hebei Province",
       "city": "Langfang City",
       "district": "Anci District",
       "streetName": "Fuyou Dao",
@@ -22538,7 +22538,7 @@
     "title": "IMG_20250625_172530",
     "datetime": "2025-06-25 17:25:30",
     "location": {
-      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+      "province": "Hebei Province",
       "city": "Langfang City",
       "district": "Anci District",
       "streetName": "Fuyou Dao",
@@ -22547,7 +22547,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Problem Resolution Report",
       "Technical Documentation",
       "Work Summary",
@@ -22566,7 +22566,7 @@
     "title": "IMG_20250625_173530",
     "datetime": "2025-06-25 17:35:30",
     "location": {
-      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+      "province": "Hebei Province",
       "city": "Langfang City",
       "district": "Anci District",
       "streetName": "Fuyou Dao",
@@ -22597,7 +22597,7 @@
     "title": "IMG_20250626_091520",
     "datetime": "2025-06-26 09:15:20",
     "location": {
-      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+      "province": "Hebei Province",
       "city": "Langfang City",
       "district": "Guangyang District",
       "streetName": "Furong Avenue",
@@ -22626,7 +22626,7 @@
     "title": "IMG_20250626_094030",
     "datetime": "2025-06-26 09:40:30",
     "location": {
-      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+      "province": "Hebei Province",
       "city": "Langfang City",
       "district": "Guangyang District",
       "streetName": "Furong Avenue",
@@ -22658,7 +22658,7 @@
     "title": "IMG_20250626_101500",
     "datetime": "2025-06-26 10:15:00",
     "location": {
-      "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHebei Province",
+      "province": "Hebei Province",
       "city": "Langfang City",
       "district": "Guangyang District",
       "streetName": "Furong Avenue",
@@ -22880,8 +22880,8 @@
     "imageTag": [
       "Office desktop",
       "File Organization",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFolder",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nStorage",
+      "Folder",
+      "Storage",
       "Working environment",
       "Tidy"
     ],
@@ -23487,7 +23487,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Finite Element Analysis",
       "Stress Cloud Diagram",
       "Transmission Components",
@@ -23850,7 +23850,7 @@
     "faceRecognition": "None",
     "imageTag": [
       "Laptop",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Project Report",
       "Risk Assessment",
       "Design Iteration Diagram",
@@ -24496,7 +24496,7 @@
       "city": "Tianjin Municipality",
       "district": "Xiqing District",
       "streetName": "Jinlai Highway",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 112",
+      "streetNumber": "No. 112",
       "poi": "Old Li Auto Repair Shop"
     },
     "faceRecognition": [
@@ -24781,7 +24781,7 @@
       "Colleague dinner gathering",
       "Home-style stir-fry",
       "Restaurant booth",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nWorkday"
+      "Workday"
     ],
     "ocrText": "None",
     "shoot_mode": "Portrait",
@@ -25204,7 +25204,7 @@
     },
     "faceRecognition": "none",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMobile phone screenshot",
+      "Mobile phone screenshot",
       "Email Backup",
       "Accommodation Confirmation",
       "Order Details",
@@ -25751,7 +25751,7 @@
     "imageTag": [
       "Gathering of Travel Enthusiasts",
       "SUV",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHandshake",
+      "Handshake",
       "Parking lot",
       "Self-driving tour begins."
     ],
@@ -25783,7 +25783,7 @@
       "Car window",
       "Lights",
       "Inside the SUV",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nXining"
+      "Xining"
     ],
     "ocrText": "None",
     "shoot_mode": "Night Scene",
@@ -25967,7 +25967,7 @@
       "Guide Sign",
       "Sun-Moon Mountain",
       "Scenic Area Entrance",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSign",
+      "Sign",
       "Attraction Name",
       "Plateau"
     ],
@@ -26668,7 +26668,7 @@
       "Ye Mingxuan"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Projection screen",
       "Simulation Analysis",
       "AGV Chassis",
@@ -26888,7 +26888,7 @@
       "Hotel Reservation",
       "Computer screen",
       "Travel Plan",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nXining"
+      "Xining"
     ],
     "ocrText": "Booking Successful!\nXining Blue Gem Hotel\nCheck-in: 2025-08-02\nCheck-out: 2025-08-03\nOrder Number: XNHB20250801XXXX\nAmount: 368 yuan (Deposit Paid)",
     "shoot_mode": "Take a normal photo",
@@ -26948,7 +26948,7 @@
       "Nightstand",
       "Charging the mobile phone",
       "Alarm clock",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nClothing Organization"
+      "Clothing Organization"
     ],
     "ocrText": "None",
     "shoot_mode": "Normal photography",
@@ -27009,7 +27009,7 @@
       "Republic of China Commemorative Coin",
       "Collection Box",
       "Velvet",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nStorage",
+      "Storage",
       "Study"
     ],
     "ocrText": "None",
@@ -27218,7 +27218,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Projection screen",
       "Mechanical Design",
       "Plan Optimization",
@@ -27308,10 +27308,10 @@
     "imageTag": [
       "Travel documents",
       "File folder",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nID card",
+      "ID card",
       "Driver's License",
       "Car Rental Contract",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nLuggage Preparation"
+      "Luggage Preparation"
     ],
     "ocrText": "ID Card: Ye Mingxuan - Driver's License: Ye Mingxuan - Car Rental Contract: Toyota RAV4 - 2025-08-05 to 2025-08-12",
     "shoot_mode": "Normal photography",
@@ -27683,10 +27683,10 @@
     },
     "faceRecognition": "none",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nID card",
+      "ID card",
       "Boarding Pass",
       "Pre-departure check",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nDocument",
+      "Document",
       "Entrance Hall",
       "Departure"
     ],
@@ -28833,7 +28833,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSign",
+      "Sign",
       "Bird Island in Qinghai Lake",
       "Wetland Reserve",
       "Guide Sign",
@@ -29383,7 +29383,7 @@
     "imageTag": [
       "Qinghai Lake",
       "Sitting quietly by the lakeside",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nBack View",
+      "Back View",
       "Group photo of characters",
       "Tranquility",
       "Grassland",
@@ -30170,7 +30170,7 @@
     "imageTag": [
       "Office desk",
       "Technical Documentation",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSolidWorks Report",
+      "SolidWorks Report",
       "Parameter Annotation",
       "A4 paper"
     ],
@@ -30232,7 +30232,7 @@
       "Document scanning",
       "Office desk",
       "Mechanical Engineering",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nA4 paper",
+      "A4 paper",
       "Take a photo with a mobile phone"
     ],
     "ocrText": "AGV Transmission Mechanism Motion Simulation Analysis Report  \nReporter: Li Xiang  \nDate: August 21, 2025  \nTianjin Haitai Precision Machinery Co., Ltd.",
@@ -30358,7 +30358,7 @@
       "Parents",
       "Living room",
       "Warm and Cozy",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFamily affection",
+      "Family affection",
       "Family Time"
     ],
     "ocrText": "None",
@@ -30648,7 +30648,7 @@
       "city": "Beijing City",
       "district": "Yanqing District",
       "streetName": "Qingyuan Street",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 59",
+      "streetNumber": "Number 59",
       "poi": "Yanqing Wanda Plaza Ma Jiyong Lanzhou Beef Noodle"
     },
     "faceRecognition": "None",
@@ -30867,7 +30867,7 @@
       "Haituo Mountain",
       "Morning Light",
       "Alpine Meadow",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\ntent",
+      "tent",
       "Camping",
       "Scenery"
     ],
@@ -31446,7 +31446,7 @@
       "None"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCura software",
+      "Cura software",
       "Slicing Software",
       "3D Model",
       "Computer screen",
@@ -31756,7 +31756,7 @@
       "Ye Mingxuan"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCura software",
+      "Cura software",
       "3D Printing Parameters",
       "Computer screen",
       "Study Notes",
@@ -32511,7 +32511,7 @@
     "imageTag": [
       "PPT Screenshot",
       "Projection screen",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTopology Optimization",
+      "Topology Optimization",
       "AGV Project",
       "Drive unit",
       "Lightweight solution",
@@ -32574,7 +32574,7 @@
     "imageTag": [
       "Document Scanning",
       "Meeting Minutes",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nA4 paper",
+      "A4 paper",
       "To-do list",
       "Work Organization"
     ],
@@ -32631,7 +32631,7 @@
     "imageTag": [
       "Document Scanning",
       "Computer screen",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCura software",
+      "Cura software",
       "3D model",
       "Slice parameters",
       "Design of Woodworking Clamps"
@@ -32785,7 +32785,7 @@
     "imageTag": [
       "Screw Classification",
       "Transparent storage box",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTags",
+      "Tags",
       "Item Storage",
       "3D printer accessories"
     ],
@@ -33874,7 +33874,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTextbook cover",
+      "Textbook cover",
       "Document Scanning",
       "Learning materials",
       "Stroke Rehabilitation",
@@ -34337,7 +34337,7 @@
       "Item Storage",
       "Study desk",
       "Mechanical drawing",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFolder",
+      "Folder",
       "Pen Holder",
       "Organize"
     ],
@@ -34454,8 +34454,8 @@
     },
     "faceRecognition": "none",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTableware",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nStorage",
+      "Tableware",
+      "Storage",
       "Kitchen sink",
       "Cleaning",
       "Neat"
@@ -34597,9 +34597,9 @@
     "faceRecognition": "None",
     "imageTag": [
       "Computer screen",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCalendar",
+      "Calendar",
       "Plan for next week",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMark",
+      "Mark",
       "Discharge Date",
       "Document scanning"
     ],
@@ -34835,7 +34835,7 @@
       "Discharge Documents",
       "Bedside Table Storage",
       "Blue bed sheet",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFolder",
+      "Folder",
       "Home Care"
     ],
     "ocrText": "Tianjin People's Hospital - Discharge Summary  \nPatient: Ye Jianguo  \nDepartment: Neurology  \nAdmission Date: 2025-09-15  \nDischarge Date: 2025-09-21",
@@ -35007,7 +35007,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSticky note",
+      "Sticky note",
       "Key Points of Work",
       "Document Scanning",
       "Study",
@@ -35399,7 +35399,7 @@
       "Rehabilitation Equipment",
       "Living Room Storage",
       "Packing box",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nInstruction Manual",
+      "Instruction Manual",
       "Home Life"
     ],
     "ocrText": "None",
@@ -35459,7 +35459,7 @@
       "Family Meeting",
       "Financial Discussion",
       "Mother and Son",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nExcel spreadsheet",
+      "Excel spreadsheet",
       "Study Room Environment",
       "Attendees"
     ],
@@ -35614,7 +35614,7 @@
       "Food Close-up",
       "Lunch",
       "Home-cooked dishes",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTableware",
+      "Tableware",
       "Wooden dining table"
     ],
     "ocrText": "None",
@@ -35875,7 +35875,7 @@
     "faceRecognition": "None",
     "imageTag": [
       "Development Steps",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nList",
+      "List",
       "3D printing",
       "Rehabilitation Equipment",
       "Handwritten",
@@ -35938,7 +35938,7 @@
       "Ancient Coin Collection",
       "Copper Coins from the Late Qing Dynasty",
       "Collection Album",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n绒布",
+      "绒布",
       "Organize",
       "Item Storage"
     ],
@@ -36085,7 +36085,7 @@
     },
     "faceRecognition": "none",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nExcel spreadsheet",
+      "Excel spreadsheet",
       "Division of Family Care Responsibilities",
       "Computer screen",
       "Document Scanning",
@@ -36390,7 +36390,7 @@
       "Ancient Coin Collection",
       "Collection Album",
       "Copper Coins from the Republic of China Era",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMagnifying glass",
+      "Magnifying glass",
       "Desk",
       "Item Storage"
     ],
@@ -36571,7 +36571,7 @@
     ],
     "imageTag": [
       "Mechanics of Composite Materials",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTextbook",
+      "Textbook",
       "Notes",
       "Schematic Diagram",
       "Learning",
@@ -36605,7 +36605,7 @@
       "Ancient Coin Collection",
       "Please translate the following Chinese text into English, preserving the original format and semantics:\n\nCoin",
       "Desk",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nExcel spreadsheet",
+      "Excel spreadsheet",
       "Record"
     ],
     "ocrText": "none",
@@ -36751,7 +36751,7 @@
     "faceRecognition": "none",
     "imageTag": [
       "OA System",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nEmail",
+      "Email",
       "Formally Approved",
       "Flexible working hours system",
       "Computer screen",
@@ -36924,7 +36924,7 @@
       "city": "Tianjin City",
       "district": "Heping District",
       "streetName": "Liaoning Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 146",
+      "streetNumber": "Number 146",
       "poi": "Tianjin Roast Duck Restaurant Zhengyangchun (Liaoning Road Main Store)"
     },
     "faceRecognition": [
@@ -37447,7 +37447,7 @@
       "Ye Mingxuan"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSolidWorks drawings",
+      "SolidWorks drawings",
       "Design Modification",
       "Battery Pack Bracket",
       "Scan document",
@@ -37637,7 +37637,7 @@
       "Guangxu Yuanbao",
       "Copper coin",
       "Detail close-up",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMagnifying glass",
+      "Magnifying glass",
       "Historical Texture",
       "Macro Photography"
     ],
@@ -38923,7 +38923,7 @@
     ],
     "imageTag": [
       "Audit Report",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nWord document",
+      "Word document",
       "Work progress",
       "Computer screen",
       "Project"
@@ -39159,7 +39159,7 @@
     "imageTag": [
       "Medical documents",
       "Document Scanning",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nID card",
+      "ID card",
       "Social Security Card",
       "Wooden desktop",
       "Preparatory work"
@@ -39187,7 +39187,7 @@
     "faceRecognition": "none",
     "imageTag": [
       "Silver coins from the Qing Dynasty",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMagnifying glass",
+      "Magnifying glass",
       "Electronic scale",
       "Auction Catalog",
       "Ancient Coin Collection",
@@ -39342,7 +39342,7 @@
     "imageTag": [
       "Succulent plants",
       "Watering",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGardening watering can",
+      "Gardening watering can",
       "Small shovel",
       "Balcony Green Plants",
       "Home leisure"
@@ -39528,7 +39528,7 @@
       "Audit Report",
       "Document Writing",
       "Work progress",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nWord document",
+      "Word document",
       "Study"
     ],
     "ocrText": "XX Project Mechanical Drawing Review Report (Draft)\nI. Project Overview\nII. Review Scope and Methodology\nIII. Overall Evaluation\nIV. Detailed Problem Description\n...",
@@ -39737,7 +39737,7 @@
     ],
     "imageTag": [
       "Document Scanning",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nWord document",
+      "Word document",
       "Report Framework",
       "Problem Categorization",
       "Computer screen",
@@ -40074,7 +40074,7 @@
       "Family Meeting",
       "Mobile phone screen",
       "Living room sofa",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nReview"
+      "Review"
     ],
     "ocrText": "none",
     "shoot_mode": "Portrait",
@@ -40601,7 +40601,7 @@
     "imageTag": [
       "Document Scanning",
       "Simulation parameters",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nA4 paper",
+      "A4 paper",
       "Laptop",
       "Study room desk",
       "Working document"
@@ -41089,7 +41089,7 @@
       "Design drawings",
       "3D model",
       "Rehabilitation Spoon",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSolidWorks interface",
+      "SolidWorks interface",
       "Document scanning",
       "Material Plan"
     ],
@@ -41207,7 +41207,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nEmail Screenshot",
+      "Email Screenshot",
       "German feedback",
       "Work Email",
       "Computer screen",
@@ -41510,7 +41510,7 @@
     "imageTag": [
       "Wall tiles stacking",
       "Construction tools",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nLevel gauge",
+      "Level gauge",
       "Tape measure",
       "Cutter",
       "Bathroom Renovation",
@@ -41722,7 +41722,7 @@
       "Li Xiang"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Simulation Analysis Diagram",
       "Stress Cloud Map",
       "Composite materials",
@@ -41813,7 +41813,7 @@
     "faceRecognition": "none",
     "imageTag": [
       "3D model",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSolidWorks Interface",
+      "SolidWorks Interface",
       "Assembly",
       "Mechanical Design",
       "Computer screen",
@@ -42143,7 +42143,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Simulation Analysis",
       "Stress Contour Plot",
       "Fatigue life",
@@ -42381,7 +42381,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Composite Material Design",
       "3D Model",
       "Engineering Drawing",
@@ -42961,7 +42961,7 @@
     "faceRecognition": "None",
     "imageTag": [
       "CAD Modeling",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSolidWorks Interface",
+      "SolidWorks Interface",
       "Surface Design",
       "Spoon Handle Model",
       "Computer screen"
@@ -42988,7 +42988,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Project Stand-up Meeting",
       "Task Node",
       "Projection screen",
@@ -43637,7 +43637,7 @@
       "Ancient Coin Collection",
       "Collection Box",
       "Flannel check.",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMagnifying glass",
+      "Magnifying glass",
       "Notebook",
       "Item Storage",
       "Study"
@@ -43840,7 +43840,7 @@
     "faceRecognition": "None",
     "imageTag": [
       "Project Documentation",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFolder",
+      "Folder",
       "Laptop",
       "Study desk",
       "Archive and Organize",
@@ -44261,7 +44261,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT Screenshot",
+      "PPT Screenshot",
       "Computer screen",
       "Automated production line",
       "Joint Debugging Plan",
@@ -44322,7 +44322,7 @@
       "Material Storage",
       "Cable",
       "Storage Box",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTags",
+      "Tags",
       "Experimental Workshop",
       "Problem Solving"
     ],
@@ -44645,7 +44645,7 @@
       "Ye Mingxuan"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nID Card",
+      "ID Card",
       "Bank card",
       "Fund Annual Report",
       "Handwritten list",
@@ -44669,7 +44669,7 @@
       "city": "Tianjin Municipality",
       "district": "Hexi District",
       "streetName": "Guangdong Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 255",
+      "streetNumber": "No. 255",
       "poi": "China Merchants Bank Tianjin Branch Business Department Private Banking Meeting Room"
     },
     "faceRecognition": [
@@ -45042,7 +45042,7 @@
     "faceRecognition": "None",
     "imageTag": [
       "Online Seminar",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Predictive Maintenance",
       "Digital Twin",
       "Laptop screen",
@@ -45850,7 +45850,7 @@
     ],
     "imageTag": [
       "Computer screen",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nWord document",
+      "Word document",
       "Project Report",
       "Servo motor",
       "Selection Comparison",
@@ -46222,7 +46222,7 @@
     },
     "faceRecognition": "None",
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nPPT screenshot",
+      "PPT screenshot",
       "Projection screen",
       "Organization Chart",
       "Conceptual Design",
@@ -46719,7 +46719,7 @@
       "Making dumplings",
       "Pork and Cabbage Filling",
       "Family Activities",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nWinter Solstice",
+      "Winter Solstice",
       "Dining table",
       "Warm and cozy"
     ],
@@ -46926,7 +46926,7 @@
     "imageTag": [
       "Document scanning",
       "Process Record",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nA4 paper",
+      "A4 paper",
       "Wooden desktop",
       "Office Environment",
       "Take a photo with a mobile phone."
@@ -47512,7 +47512,7 @@
       "Ancient Coin Collection",
       "Copper coin",
       "Velvet storage box",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMagnifying glass",
+      "Magnifying glass",
       "White gloves",
       "Item Storage",
       "A corner of the study"
@@ -48124,7 +48124,7 @@
     "imageTag": [
       "Pancake",
       "Soy milk cup",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTableware",
+      "Tableware",
       "Family Scene"
     ],
     "ocrText": "None",
@@ -48618,7 +48618,7 @@
     "imageTag": [
       "Runway",
       "Park",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTrees",
+      "Trees",
       "Morning sunlight"
     ],
     "ocrText": "None",
@@ -48665,7 +48665,7 @@
       "city": "Tianjin City",
       "district": "Hongqiao District",
       "streetName": "Xiqing Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 70",
+      "streetNumber": "Number 70",
       "poi": "Xiqingdao Fitness Center"
     },
     "faceRecognition": [
@@ -49067,7 +49067,7 @@
     },
     "faceRecognition": [],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMobile screenshot",
+      "Mobile screenshot",
       "APP Interface",
       "Individual Income Tax"
     ],
@@ -49210,7 +49210,7 @@
     "faceRecognition": [],
     "imageTag": [
       "Document",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFolder",
+      "Folder",
       "Individual Income Tax",
       "Archive"
     ],

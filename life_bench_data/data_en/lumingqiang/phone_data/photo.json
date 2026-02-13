@@ -121,7 +121,7 @@
       "city": "Haikou City",
       "district": "Longhua District",
       "streetName": "Civilization Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 54",
+      "streetNumber": "No. 54",
       "poi": "Haikou Alley Tea Shop"
     },
     "faceRecognition": [
@@ -187,7 +187,7 @@
     "faceRecognition": [],
     "imageTag": [
       "Distribution box",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCable",
+      "Cable",
       "Construction site",
       "Electrician Tools"
     ],
@@ -238,7 +238,7 @@
       "city": "Haikou City",
       "district": "Longhua District",
       "streetName": "Civilization Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 54",
+      "streetNumber": "No. 54",
       "poi": "Haikou Alley Tea Shop"
     },
     "faceRecognition": [
@@ -393,9 +393,9 @@
     },
     "faceRecognition": [],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTextbook",
+      "Textbook",
       "Circuit diagram",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nText"
+      "Text"
     ],
     "ocrText": "Chapter 8 Starting and Speed Regulation of Three-Phase Induction Motors  \nThis section introduces methods such as direct starting and star-delta starting...",
     "shoot_mode": "Document",
@@ -504,7 +504,7 @@
     },
     "faceRecognition": [],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSwimming pool",
+      "Swimming pool",
       "Fitness Center",
       "Environment"
     ],
@@ -586,7 +586,7 @@
     "faceRecognition": [],
     "imageTag": [
       "Tester",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCable",
+      "Cable",
       "Fault Detection",
       "On-site investigation"
     ],
@@ -739,7 +739,7 @@
       "city": "Haikou City",
       "district": "Meilan District",
       "streetName": "Civilization Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 54",
+      "streetNumber": "No. 54",
       "poi": "Tea Shop"
     },
     "faceRecognition": [
@@ -1395,7 +1395,7 @@
       "city": "Haikou City",
       "district": "Meilan District",
       "streetName": "Haifu Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 56",
+      "streetNumber": "Number 56",
       "poi": "Near Huajin Mingdu Residential Community"
     },
     "faceRecognition": [],
@@ -1544,7 +1544,7 @@
       "Fly a kite",
       "Lawn",
       "Family Activities",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nOutdoors"
+      "Outdoors"
     ],
     "ocrText": "None",
     "shoot_mode": "Scenery",
@@ -1606,7 +1606,7 @@
       "Children's smiling faces",
       "Lawn",
       "Park",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nOutdoors"
+      "Outdoors"
     ],
     "ocrText": "None",
     "shoot_mode": "Portrait",
@@ -1855,7 +1855,7 @@
       "Chen Jianguo"
     ],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMobile screenshot",
+      "Mobile screenshot",
       "Forum Interface",
       "Pinned indicator",
       "Restaurant Environment",
@@ -1915,7 +1915,7 @@
     "imageTag": [
       "Cable reel",
       "Iron frame",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nBolt",
+      "Bolt",
       "Circle",
       "straight line",
       "Rust",
@@ -2198,7 +2198,7 @@
     "imageTag": [
       "Certificate",
       "Red cover",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nText"
+      "Text"
     ],
     "ocrText": "Professional Qualification Certificate of the People's Republic of China  \nElectrician Senior Technician  \nName: Lu Mingqiang  \n...",
     "shoot_mode": "Document",
@@ -2217,7 +2217,7 @@
       "city": "Haikou City",
       "district": "Longhua District",
       "streetName": "Civilization Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 54",
+      "streetNumber": "Number 54",
       "poi": "Haikou Alley Tea Shop"
     },
     "faceRecognition": [
@@ -2346,7 +2346,7 @@
     ],
     "imageTag": [
       "Family",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nOutdoors",
+      "Outdoors",
       "Picnic"
     ],
     "ocrText": "None",
@@ -2378,7 +2378,7 @@
       "Drawing process"
     ],
     "ocrText": "None",
-    "shoot_mode": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nStandard",
+    "shoot_mode": "Standard",
     "image_size": "3024×4032",
     "summarized_info": "Lu Mingqiang captured a photograph of a sand swallow kite in the process of being painted, with the kite laid flat on a newspaper and paint and brushes scattered nearby.",
     "phone_id": 84
@@ -2719,7 +2719,7 @@
       "Distribution Box",
       "Wire",
       "Construction site",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTool"
+      "Tool"
     ],
     "ocrText": "None",
     "shoot_mode": "Ordinary",
@@ -2744,7 +2744,7 @@
     "faceRecognition": [],
     "imageTag": [
       "Distribution Box",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nElectric wire",
+      "Electric wire",
       "Construction site",
       "Tool"
     ],
@@ -3087,10 +3087,10 @@
     },
     "faceRecognition": [],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMobile screenshot",
+      "Mobile screenshot",
       "Forum Interface",
       "Number of likes",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nComment"
+      "Comment"
     ],
     "ocrText": "My Post: A Few Experience Sharing Points on Safety Renovation of Old Distribution Cabinets  \nPublished: 2025-12-09  \nTotal Likes: 87  \nLatest Comment: 2025-12-10 22:28 \"The host's experience is invaluable, saved it!\"",
     "shoot_mode": "Screenshot",
@@ -3118,7 +3118,7 @@
       "Schoolbag",
       "Book",
       "Homework notebook",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nStationery box",
+      "Stationery box",
       "Organize"
     ],
     "ocrText": "Chinese Mathematics English Exercise Book",
@@ -3331,7 +3331,7 @@
     "imageTag": [
       "Socket",
       "Wall surface",
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nElectric wire"
+      "Electric wire"
     ],
     "ocrText": "None",
     "shoot_mode": "Automatic",
@@ -3377,7 +3377,7 @@
       "city": "Haikou City",
       "district": "Longhua District",
       "streetName": "Jinyu East Road",
-      "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nUnknown",
+      "streetNumber": "Unknown",
       "poi": "Home kitchen"
     },
     "faceRecognition": [
@@ -3660,7 +3660,7 @@
     },
     "faceRecognition": [],
     "imageTag": [
-      "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nMobile screenshot",
+      "Mobile screenshot",
       "Transfer Record",
       "Bank APP"
     ],

@@ -5043,7 +5043,7 @@
     "type": "sms",
     "event_id": 4831,
     "message_content": "Hello, your mail order has been confirmed. The L size is recommended as suitable. It will be arranged for shipment this afternoon and is expected to arrive tomorrow.",
-    "contactName": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCustomer",
+    "contactName": "Customer",
     "phoneNumber": "+8613812345678",
     "datetime": "2025-12-17 11:30:00",
     "message_type": "Send",

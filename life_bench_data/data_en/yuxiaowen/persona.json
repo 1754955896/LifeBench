@@ -4,7 +4,7 @@
   "age": 24,
   "nationality": "Han",
   "home_address": {
-    "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHenan Province",
+    "province": "Henan Province",
     "city": "Zhengzhou City",
     "district": "Jinshui District",
     "street_name": "Jingsan Road",
@@ -189,7 +189,7 @@
           "street_number": "18th"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHenan Province",
+          "province": "Henan Province",
           "city": "Luoyang City",
           "district": "Xigong District"
         },
@@ -240,7 +240,7 @@
           "city": "Luoyang City",
           "district": "Jianxi District",
           "street_name": "Nanchang Road",
-          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 56"
+          "street_number": "Number 56"
         },
         "birth_place": {
           "province": "Henan Province",
@@ -271,7 +271,7 @@
           "street_number": "18th"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHenan Province",
+          "province": "Henan Province",
           "city": "Zhengzhou City"
         },
         "personality": "ENTJ",
@@ -318,7 +318,7 @@
           "city": "Beijing",
           "district": "Haidian District",
           "street_name": "Zhongguancun Street",
-          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 59"
+          "street_number": "No. 59"
         },
         "birth_place": {
           "province": "Hubei Province",
@@ -345,7 +345,7 @@
           "city": "Zhengzhou City",
           "district": "Zhongyuan District",
           "street_name": "Gongren Road",
-          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 32"
+          "street_number": "Number 32"
         },
         "birth_place": {
           "province": "Henan Province",
@@ -524,7 +524,7 @@
           "city": "Zhengzhou City",
           "district": "Erqi District",
           "street_name": "University Road",
-          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 32"
+          "street_number": "Number 32"
         },
         "birth_place": {
           "province": "Henan Province",
@@ -634,7 +634,7 @@
           "street_number": "Courtyard No. 23"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nShandong Province",
+          "province": "Shandong Province",
           "city": "Qingdao City"
         },
         "personality": "ISTJ",

@@ -1672,7 +1672,7 @@
   },
   {
     "question": "From deciding to participate in vegetable cultivation training to tasting the organic vegetables grown by oneself for the first time, how many days passed in between?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n55 days",
+    "answer": "55 days",
     "score_points": [
       {
         "description": "The accurate number of days calculated by the answer (55 days).",
@@ -3197,7 +3197,7 @@
     "options": [
       {
         "option": "A",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFortune"
+        "content": "Fortune"
       },
       {
         "option": "B",
@@ -3553,7 +3553,7 @@
       },
       {
         "option": "B",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nTai Chi"
+        "content": "Tai Chi"
       },
       {
         "option": "C",
@@ -3686,7 +3686,7 @@
   },
   {
     "question": "How many days passed from the moment Ma Xiulan saw the payment notice on the community bulletin board and started planning, until she finally completed the payment?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n6 days",
+    "answer": "6 days",
     "score_points": [
       {
         "description": "The answer number is 6 (days).",
@@ -4466,7 +4466,7 @@
   },
   {
     "question": "From the day Ma Xiulan received the official admission letter for her eldest son to the day she sent him to the school for on-campus registration, approximately how many days passed in between?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n55 days",
+    "answer": "55 days",
     "score_points": [
       {
         "description": "Calculate the correct number of days between July 6, 2025, and August 30, 2025.",
@@ -4741,7 +4741,7 @@
     "answer": "The subject one driving test has been passed.",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer must clearly indicate that the shared good news is passing the driving test's subject one exam.",
+        "description": "The answer must clearly indicate that the shared good news is passing the driving test's subject one exam.",
         "score": 10
       }
     ],
@@ -6058,7 +6058,7 @@
       },
       {
         "option": "D",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nAsthma"
+        "content": "Asthma"
       }
     ],
     "answer": "B",
@@ -7214,7 +7214,7 @@
   },
   {
     "question": "From receiving the volunteer invitation for the community's Double Ninth Festival tea party to sharing the joy of the event with craft friend Zhou Xiuqin, how many days passed in between?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n12 days",
+    "answer": "12 days",
     "score_points": [
       {
         "description": "Accurately identify the event of receiving an invitation to volunteer for the community Double Ninth Festival tea party (event_id: 4210) and extract its occurrence date as 2025-10-10.",
@@ -7587,7 +7587,7 @@
     "answer": "Workwear Vest",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer accurately includes \"work vest\".",
+        "description": "The answer accurately includes \"work vest\".",
         "score": 10
       }
     ],
@@ -8351,7 +8351,7 @@
         "score": 5
       },
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer includes \"the task was successfully completed\" (or similar expressions, such as smoothly, successfully).",
+        "description": "The answer includes \"the task was successfully completed\" (or similar expressions, such as smoothly, successfully).",
         "score": 5
       }
     ],

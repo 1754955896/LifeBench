@@ -212,7 +212,7 @@
         "age": 32,
         "birth_date": "1991-07-19",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGuangdong Province",
+          "province": "Guangdong Province",
           "city": "Shenzhen City",
           "district": "Nanshan District",
           "street_name": "South District of the Science and Technology Park",
@@ -269,7 +269,7 @@
           "city": "Hong Kong",
           "district": "Sham Shui Po District",
           "street_name": "Fuk Wing Street",
-          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 58"
+          "street_number": "Number 58"
         },
         "birth_place": {
           "province": "Hong Kong Special Administrative Region",
@@ -478,14 +478,14 @@
         "age": 38,
         "birth_date": "1986-12-10",
         "home_address": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGuangdong Province",
+          "province": "Guangdong Province",
           "city": "Guangzhou City",
           "district": "Tianhe District",
           "street_name": "Tiyu East Road",
-          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 112"
+          "street_number": "No. 112"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City",
           "district": "Siming District"
         },
@@ -500,7 +500,7 @@
     [
       {
         "name": "Chen Meiling",
-        "relation": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCustomer",
+        "relation": "Customer",
         "social_circle": "Customer Circle",
         "gender": "Female",
         "age": 48,
@@ -538,7 +538,7 @@
           "street_number": "Building 5, Software Industry Base, Haitian Second Road, Yuehai Street"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City"
         },
         "personality": "ENTJ",
@@ -590,7 +590,7 @@
           "street_number": "No. 33 Debao Garden"
         },
         "birth_place": {
-          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "province": "Fujian Province",
           "city": "Xiamen City"
         },
         "personality": "ENFP",

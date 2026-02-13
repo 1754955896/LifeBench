@@ -4715,7 +4715,7 @@
     {
       "date": "2025-04-13",
       "date_attribute": {
-        "weather": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n晴",
+        "weather": "晴",
         "holiday": "无",
         "week": "Sunday"
       },
@@ -8835,7 +8835,7 @@
     {
       "date": "2025-07-08",
       "date_attribute": {
-        "weather": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n晴",
+        "weather": "晴",
         "holiday": "无",
         "week": "Tuesday"
       },

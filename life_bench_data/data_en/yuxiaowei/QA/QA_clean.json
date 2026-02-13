@@ -2801,7 +2801,7 @@
     "answer": "Appointment and Client Visit",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer must include the course theme name \"Appointment and Visiting Clients\".",
+        "description": "The answer must include the course theme name \"Appointment and Visiting Clients\".",
         "score": 10
       }
     ],
@@ -3006,7 +3006,7 @@
   },
   {
     "question": "How many lectures have you held on the topic of family financial security?",
-    "answer": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n1 time",
+    "answer": "1 time",
     "score_points": [
       {
         "description": "Provide the correct cumulative number of times held (once).",
@@ -5443,7 +5443,7 @@
     "answer": "Equity Incentive",
     "score_points": [
       {
-        "description": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nThe answer must accurately include the core information of \"equity incentive.\"",
+        "description": "The answer must accurately include the core information of \"equity incentive.\"",
         "score": 10
       }
     ],
@@ -6212,7 +6212,7 @@
     "options": [
       {
         "option": "A",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n55 days"
+        "content": "55 days"
       },
       {
         "option": "B",
@@ -6220,11 +6220,11 @@
       },
       {
         "option": "C",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n53 days"
+        "content": "53 days"
       },
       {
         "option": "D",
-        "content": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\n50 days"
+        "content": "50 days"
       }
     ],
     "answer": "C",

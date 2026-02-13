@@ -3546,7 +3546,7 @@
           "description": "Documenting the pottery experience at home, but starting to worry about the progress of renting a place."
         },
         {
-          "name": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nLearn to make a thank-you gift tea canister.",
+          "name": "Learn to make a thank-you gift tea canister.",
           "description": "Learning to make a tea canister in an interest class, planning to gift it to the landlord with the engraving \"Gratitude and Blessings.\""
         },
         {
@@ -6073,7 +6073,7 @@
     {
       "date": "2025-05-11",
       "date_attribute": {
-        "weather": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSunny",
+        "weather": "Sunny",
         "holiday": "无",
         "week": "Sunday"
       },
@@ -8001,7 +8001,7 @@
       "date_attribute": {
         "weather": "Sunny, comfortable in the evening.",
         "holiday": "无",
-        "week": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFive"
+        "week": "Five"
       },
       "daily_overview": "Yu Xiaowen completed the registration for first aid training, invited her best friend to share the green plants in her new home, planned a weekend City Walk, and registered online for a chief physician examination course.",
       "events": [
@@ -13083,7 +13083,7 @@
     {
       "date": "2025-10-10",
       "date_attribute": {
-        "weather": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nSunny",
+        "weather": "Sunny",
         "holiday": "无",
         "week": "Friday"
       },
