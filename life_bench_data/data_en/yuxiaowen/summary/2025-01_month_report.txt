@@ -1,0 +1,120 @@
+Your Monthly Summary is as follows:
+
+**Monthly Overview**
+
+*   **Basic Information**: Yu Xiaowen, 24, Female, Occupation: Healthcare - Resident Physician (Cardiology Rotation).
+*   **Total Activity Volume**:
+    *   Running: 4 sessions / 177 minutes / 20 km
+    *   Badminton: 1 session / 120 minutes
+    *   Family Hiking: 1 session / 120 minutes
+    *   Yoga/Stretching: 2 sessions / 50 minutes
+    *   Shooting/Pottery (Low-Intensity Activities): 3 sessions / ~180 minutes
+    *   **Monthly Total**: 11 sessions / ~647 minutes. Good activity variety, but regularity impacted by work.
+*   **Health Status Summary**:
+    *   **Health Score**: Based on data inference, the average monthly health score is approximately 75/100. The month started well (around 80) on Jan 2nd due to initiating regular exercise and data tracking; the score dipped to a low (around 65) in mid-month (Week 3) due to work stress, night shifts, and a setback event; by month-end, through adjustment, family support, and holiday activities, the score recovered to around 80.
+    *   **Core Tags**: "Resilient Adapter Under High-Pressure Rotation", "Flexible Activity Adjuster", "Family Support-Driven Health Recoverer".
+    *   **Overall Health Rating**: Good. Demonstrated the ability to maintain basic activity, proactively adjust, and seek balance under significant work pressure. Physiological indicators remained largely stable, and mental health effectively recovered after fluctuations.
+*   **Key Events**:
+    *   **Activity Milestones**: Initiated fitness tracker data recording and practiced regular exercise goals on the 2nd; completed a family health hike integrating activity and family bonding on the 30th.
+    *   **Injury**: Minor right calf muscle strain during a morning run on the 10th due to insufficient warm-up.
+    *   **Health Metric Fluctuation**: Extreme physical and mental fatigue on the 21st due to involvement in a critical rescue and night shift, causing a sharp drop in health score.
+    *   **Major Life Changes**: Started cardiology rotation on the 6th, leading to significantly increased work intensity and pressure; returned home for the Spring Festival holiday (28th-31st), switching life rhythm to family reunion mode.
+*   **Goal Completion Status**:
+    *   **Set Goal**: "At least three regular exercise sessions per week."
+    *   **Completion Rate**: 11 active days in the month, averaging ~2.75 sessions per week, achieving a **91.7%** goal completion rate. Failed to fully meet the weekly frequency of 3 times due to rotation work (especially night shifts) and an injury.
+    *   **Reasons for Non-Completion**: Primarily high work intensity in Weeks 2 & 3 (e.g., night shifts on the 8th, 21st) and a 3-day activity hiatus starting on the 10th due to the muscle strain.
+*   **Core Changes vs. Last Month** (Inferred based on user profile that last month was a regular work period):
+    *   **Activity Volume**: Activity types became more diverse (added shooting, family hiking), but total activity sessions likely **decreased by ~15% month-over-month** due to the rotation. Activity patterns shifted from individual regular morning runs towards more flexible modes combined with social and family activities.
+    *   **Health Metrics**: Weight increased slightly from 50.0kg at month-start to 51.0kg at month-end (+1.0kg, +2.0%), mainly influenced by family meals during the Spring Festival holiday; Resting Heart Rate increased by **~5-8 BPM month-over-month** during the mid-month high-stress period, recovering by month-end holiday.
+    *   **Life Rhythm**: **Significantly increased** variability in sleep schedule. Bedtime fluctuated widely between 23:00-00:30 due to studying and night shifts, contrasting with last month's relatively regular schedule. Work-related screen time increased.
+*   **Core Focus Areas**: High-frequency concerns this month were "**Balancing work stress and activity performance**", "**Maintaining physical and mental health under high pressure**", and "**Integrating healthy habits into an irregular work-life schedule**".
+
+**Monthly Review**
+
+**2.1 Activity Review**
+*   **Activity Overview**:
+    *   Engaged in 6 types of activities throughout the month: running, badminton, family hiking, yoga/stretching, shooting, pottery.
+    *   Session distribution: Running 36.4%, Low-Intensity Activities (Shooting/Pottery) 27.3%, Yoga/Stretching 18.2%, Badminton 9.1%, Family Hiking 9.1%.
+    *   **Activity Intensity Distribution**: Z2 Moderate Intensity (running, badminton, hiking) total duration ~417 minutes, 64.5%; Z1 Low Intensity (yoga, stretching, walking commute) total duration ~230 minutes, 35.5%; No Z3 High-Intensity training recorded.
+*   **Activity Statistics & Best Performances**:
+    *   **Running**: Total distance 20 km, average pace ~6'25"/km. Longest single distance 5 km (2nd), fastest pace 6'28"/km (2nd, 5 km), average heart rate 148 BPM.
+    *   **Badminton**: Total duration 120 minutes (15th), social doubles activity.
+    *   **Family Hiking**: Longest single duration 120 minutes (30th), location: Zhoushan Forest Park, low-intensity cardio.
+    *   **Yoga/Stretching**: Total duration 50 minutes. Longest single session 30 minutes (22nd, gentle yoga).
+    *   **Others**: Shooting experience total ~120 minutes (13th, 18th); Pottery activity total ~60 minutes (12th).
+*   **Activity Habit Preferences**:
+    *   **Weekly Frequency**: Activities distributed on Monday (1), Thursday (1), Friday (2), Saturday (4), Sunday (3). **Saturday was the most active day**.
+    *   **Daily Time Slots**: High-frequency activity periods were **early morning (6:30-7:30, 36.4%)** and **evening/night (18:00-21:00, 45.5%)**, correlating with work shifts.
+    *   **Location**: City park/riverside running (3), badminton court (1), shooting range (2), pottery studio (1), home yoga (2), forest park hiking (1).
+    *   **Consistency**: Longest consecutive active days: 3 days (1st-3rd, includes 1st with no record but activity on 2nd & 3rd). Two main hiatuses occurred: 3-day hiatus 10th-12th due to strain; 3-day hiatus 20th-22nd due to work stress and night shifts (22nd was low-intensity yoga).
+
+**2.2 Health Review**
+*   **Sleep**:
+    *   **Average Daily Sleep Duration**: ~6.5 hours on workdays, ~8 hours on weekends/holidays.
+    *   **Sleep Stage Distribution (Estimate)**: Deep sleep ~18% (~1.2 hours), Light sleep ~55% (~3.6 hours), REM ~27% (~1.8 hours). Deep sleep percentage likely dropped below 15% during mid-month stress period.
+    *   **Sleep Schedule Stability**: Large fluctuation in workday bedtime (range: 22:00-00:15, variation 135 mins); wake-up time relatively stable (06:20-07:00). Weekend bedtime fluctuation smaller (22:30-23:30).
+    *   **Sleep Interruptions**: Inferred from events, during high-pressure week (Week 3) and post-night shifts, average daily sleep interruptions ≥2 times.
+*   **Physiological Metrics**:
+    *   **Weight**: Start of month 50.0kg, end of month 51.0kg. Weekly averages: Week 1 50.1kg, Week 2 50.1kg, Week 3 50.3kg, Week 4 50.8kg. **Largest fluctuation** occurred during month-end holiday (28th-31st), cumulative increase 1.0kg, primarily due to family diet. Overall slight upward trend towards month-end due to holiday.
+    *   **Body Fat % (Estimate)**: Based on weight and activity changes, remained stable throughout the month, fluctuation <0.5%.
+    *   **Resting Heart Rate (RHR)**: Daily average ~62 BPM. Lowest ~58 BPM (4th, well-rested); Highest ~70 BPM (21st, post-rescue & night shift). Overall trend highly synchronized with stress cycles.
+    *   **HRV (Heart Rate Variability, Estimate)**: Daily average at medium level. Weekly averages show HRV decreased ~10-15% during high-pressure work Weeks 2 & 3, rebounded in Week 4 holiday, potentially exceeding start-of-month levels.
+*   **Mental Health**:
+    *   **Stress**: Daily average stress level ~5/10. Weekly averages: Week 1 4/10, Weeks 2 & 3 rose to 6.5/10, Week 4 dropped to 3/10. **High-Stress Period**: 15th-23rd, stress levels 7-8/10, sources: "challenges in critical patient management", "night shift fatigue", "short-term self-blame regarding professional competence".
+    *   **Mood**: Predominant mood tags were "focused", "fulfilled", "calm", but interspersed with "anxious" (3rd, 20th-21st), "excited" (6th, 18th), "exhausted" (8th, 21st), and "joyful/content" (24th, 30th). Mood fluctuations directly correlated with work events, social activities, and family reunions.
+    *   **Health Score (Inferred)**: Daily average ~75. Highest score ~85 (2nd, 30th), due to starting activity and family activities; Lowest score ~65 (21st), due to work setback and extreme fatigue.
+
+**2.3 Life Rhythm Review**
+*   **Sleep/Wake Habits**:
+    *   **Average Daily Schedule**: Workdays average bedtime ~23:40, wake-up ~06:45; Weekends/Holidays average bedtime ~23:00, wake-up ~08:15.
+    *   **Differences**: Weekends average 90 minutes later wake-up than workdays, total sleep duration ~1.5 hours longer.
+    *   **Disrupted Days**: Days with bedtime later than 23:30 totaled 14, with 8 days later than 00:00. Main reasons: "overtime/night shift" (5 days), "studying/reading" (6 days), "social activities" (3 days).
+*   **Commute / Activity**:
+    *   **Non-Exercise Steps**: Daily average ~8000 steps (estimated based on physician profession). Highest weekly steps expected in Week 3 (busy work), lowest in Week 4 holiday.
+    *   **Commute**: Mode: walking or driving, one-way distance ~3 km, average daily round-trip commute ~20 minutes.
+    *   **Business Trip/Travel**: 1 trip, Spring Festival return to hometown (Luoyang) 28th-31st. Impact: Activity mode shifted from individual morning runs to family hiking, sleep duration increased, dietary calorie intake increased.
+*   **Daily Life**:
+    *   **Screen Time**: Total daily average ~9 hours, of which work-related (medical records, studying) ~6 hours, entertainment/social ~3 hours. Peak daily duration exceeded 11 hours (20th, 27th, due to late-night studying).
+    *   **Dietary Habits**: High regularity of three meals, ~25 days regular. Balanced diet structure, preference for high-protein (fruit salad) and local carbs (stewed noodles, spicy soup). Monthly takeout/dining out ~10 times, home-cooked meals ~21 times. Estimated daily water intake ~1.8L.
+
+**Monthly Trend Analysis**
+
+**3.1 Activity Trends**
+*   **Weekly Activity Volume Changes**:
+    *   **Week 1 (1st-5th)**: Total 2 sessions (running 1, walking 1), duration ~92 mins. Post-New Year holiday recovery period.
+    *   **Week 2 (6th-12th)**: Total 3 sessions (running 1 leading to strain, pottery 1, walking 1), duration ~180 mins. **Activity volume increased 96% week-over-week**, but types shifted to low-intensity due to faster work pace at rotation start.
+    *   **Week 3 (13th-19th)**: Total 3 sessions (shooting 2, badminton 1), duration ~300 mins. **Activity volume increased 67% week-over-week**, primarily social stress-relief activities, corresponding to high work pressure period.
+    *   **Week 4 (20th-26th & 28th-31st)**: Total 3 sessions (yoga 1, running 1, family hike 1), duration ~215 mins. Activity volume **decreased 28% week-over-week**, initially due to adjustment post-work setback, later shifting to holiday family activity mode.
+*   **Training Cycle Peaks/Troughs**:
+    *   **Performance Peak Week**: Week 3. Despite high stress, effectively released pressure through social activities like shooting and badminton, showing high activity willingness and motivation.
+    *   **Performance Trough Week**: Early Week 4 (20th-23rd). Influenced by the 21st event, activity adjusted to minimal-intensity recovery yoga, representing a trough in psychology and physical energy.
+*   **Activity Performance Changes**: Limited running performance data, but shows stable pace from month-start (2nd, 6'28"/km) to month-end (25th, estimated similar pace) despite work stress cycles, reflecting a good aerobic capacity base.
+
+**3.2 Health Trends**
+*   **Sleep Trends**: Weeks 1 & 2 had stable sleep duration (~7 hours); Week 3 sleep duration compressed to ~6 hours with decreased deep sleep percentage; Week 4 holiday sleep duration recovered to over 8 hours with improved quality. Sleep continuity was worst in Week 3.
+*   **Physical Health Trends**: Weight remained extremely stable for the first three weeks (narrow fluctuation 50.0-50.5kg), linearly increased in Week 4 holiday. RHR and HRV showed an inverse relationship: RHR increased, HRV decreased in Weeks 2 & 3; both improved in Week 4. **Metric Fluctuation Node**: 21st, estimated peak RHR and trough HRV for the month, directly triggered by work stress event.
+*   **Mental Health Trends**: Stress levels began climbing in Week 2, peaked in Week 3, and dropped sharply in Week 4. Mood fluctuated with the stress curve but recovered quickly in late Week 3 (post-23rd) through proactive communication, cultural activities, and family support. Data suggests **activity, especially social activity (Week 3), had a buffering effect on mood during high-pressure periods**.
+*   **Injury Impact**: Calf strain on the 10th caused a hiatus in running plans 10th-12th, prompting a shift to low-intensity activities like pottery. No significant impact on core physiological metrics, shooting experience resumed on the 13th.
+
+**3.3 Life Rhythm Trends**
+*   **Sleep Schedule & Mental State**: Data shows that **on days following a bedtime later than 23:30, self-reported mental state descriptions were mostly "tired", "slightly anxious", and the daily activity plan was more likely to be canceled or downgraded** (e.g., 22nd).
+*   **Work/Life Rhythm Changes**: Weeks 2-3 were peak work intensity periods, accompanied by night shifts and rescue events, directly leading to activity hiatuses, reduced sleep, and sharp stress spikes. Week 4 holiday life rhythm completely changed, focusing on family, socializing, and leisure, with a comprehensive rebound in all health metrics.
+
+**Personalized Insights**
+
+*   **Sleep ↔ Activity Performance**: Data indicates that **when sleep duration is ≥7.5 hours (e.g., holidays), the willingness and execution rate for activity the next day increases by 50%**. Conversely, after workdays with insufficient sleep (<6.5 hours) and high pressure, the probability of engaging in moderate or higher intensity activity (e.g., running) is very low, with a tendency to choose yoga or complete rest.
+*   **Travel/Pressure ↔ Health**: **During the Spring Festival home visit (similar to short-term travel), average daily sleep duration increased by 1.5 hours, stress levels dropped by 4 points (on a 10-point scale), but average daily non-exercise energy expenditure decreased, and weight showed a linear increase of ~0.2kg per day**. During high work pressure periods (stress ≥7/10), RHR increased by 8-10 BPM, and HRV decreased by 15%-20%.
+*   **Activity Type ↔ Physical State**: Comparisons show that **during high-pressure work weeks (e.g., Week 3), group or social activities (badminton, shooting) improved daily mood scores more than individual running alone and had a better effect on alleviating subsequent sleep anxiety**. **Performing yoga or stretching at least once a week helps relieve muscle stiffness caused by prolonged standing and work tension and establishes a positive psychological cue for "active recovery"**.
+*   **Behavioral Habits ↔ Overall Health**: **The stability of "bedtime" has a more significant impact on next-day mental state than "total sleep duration"**. Periods with large bedtime fluctuations this month generally had lower health scores. **When the proportion of home-cooked meals exceeds 70% (~21 days this month), even with increased dining out (Spring Festival), the weight gain trend is relatively moderate (monthly +1kg, mainly concentrated in the last 4 days)**. Screen time, especially work/study-related screen use within 1 hour before bed, is positively correlated with sleep onset delay, averaging ~25 minutes delay per night.
+
+**Abnormal Event Summary**
+
+*   **Injury Event**:
+    *   **Event**: Minor right calf muscle strain.
+    *   **Time**: Morning of January 10th.
+    *   **Impact**: Caused cancellation of planned morning run, paused running 10th-12th, adjusted activity to walking and pottery (non-impact activities).
+    *   **Recovery**: Resumed low-intensity shooting on the 13th without reported discomfort; resumed morning run on the 25th, indicating full recovery.
+*   **Activity Hiatus Event**:
+    *   **Event**: Activity hiatus due to work intensity and mental fatigue.
+    *   **Time**: January 20th-22nd, consecutive 3 days.
+    *   **Cause**: High-intensity work on 20th-21st,

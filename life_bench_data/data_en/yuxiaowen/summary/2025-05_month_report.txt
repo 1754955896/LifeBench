@@ -1,0 +1,103 @@
+Your Monthly Summary is as follows:
+
+**Monthly Overview**
+*   **Basic Information**: Yu Xiaowen, Female, 24 years old (20-25 age group), Healthcare Industry - Resident Physician.
+*   **Total Exercise Volume**:
+    *   **Morning Runs**: 2 sessions / 90 minutes / 10km.
+    *   **Badminton**: 4 sessions / 360 minutes.
+    *   **Pilates**: 2 sessions / 120 minutes (one session ended early due to injury).
+    *   **Hiking**: 2 sessions (May 2nd, moderate intensity, 3 hours; May 31st, light intensity, 1 hour).
+    *   **Walks**: 4 sessions (as active movement or recovery).
+    *   **Total Monthly Exercise Volume**: 12 dedicated exercise sessions / cumulative ~690 minutes. Exercise frequency and duration showed significant fluctuations due to work pressure and injuries.
+*   **Health Status Summary**:
+    *   **Estimated Health Score**: Good at the beginning of the month (7.5/10), dropped to a low point in mid-to-late month due to high-pressure work and insomnia (6.0/10), rebounded to (7.0/10) by month-end through active adjustments. Monthly average ~6.8/10.
+    *   **Core Tags**: "Resilient Recoverer under High Pressure", "Exercise volume rose then fell, health management awareness awakened".
+    *   **Overall Health Rating**: **Good**. Despite experiencing significant stress and sleep challenges, systematic self-adjustments (sleep management, diet optimization, active recovery) effectively buffered the negative impacts. Weight remained stable, and condition rebounded by month-end.
+*   **Key Events**:
+    *   **Exercise Milestones**: Maintained regular badminton activity 1-2 times per week; completed a light hike on Songshan Mountain at the beginning of the month.
+    *   **Injuries**: Minor back strain during Pilates on the 12th; foot bruised by Lego at home on the evening of the 30th.
+    *   **Health Metric Sudden Change**: On the 20th, due to involvement in the launch of a national-level clinical research project, stress surged sharply, leading to the first occurrence of severe insomnia.
+    *   **Major Life Changes**: Appointed to participate in a national-level clinical research project on the 15th; successfully signed a lease for a youth apartment on the 29th, life is about to enter a new phase.
+*   **Goal Completion Status**:
+    *   **Goal 1 (Inferred): Maintain Regular Exercise Habit**. Actually completed 12 dedicated exercise sessions, estimated to exceed the presumed monthly goal of "at least 3 times per week" (assuming a target of 12 sessions).
+    *   **Goal 2 (Inferred): Weight and Body Fat Management**. Weight slightly decreased from 50.1kg at month-start to 49.8kg at month-end, remaining overall stable. Goal achieved.
+    *   **Goal 3 (Data Indicated): Cope with High-Pressure Work, Maintain Basic Health**. In mid-to-late month, actively implemented a health adjustment plan (setting phone to Do Not Disturb, optimizing diet), effectively curbing the decline in health metrics. Goal partially achieved.
+    *   **Completion Status**: Main exercise and health management goals were basically or exceeded, demonstrating strong execution and adaptability.
+*   **Core Changes vs. Last Month**:
+    *   **Exercise Volume**: Exercise types became more diverse (added regular badminton), but total duration likely decreased slightly month-over-month (estimated -15%) due to the mid-month high-pressure period and injuries.
+    *   **Health Metrics**: Sleep quality fluctuated significantly, deep sleep percentage estimated to have decreased in late month; stress levels increased substantially month-over-month; weight remained extremely stable (fluctuation only 0.3kg).
+    *   **Life Rhythm**: Work pace intensified significantly due to the research project, estimated screen time (work-related) increased by 30%; began investing energy in planning for the new home in late month, shifting life focus.
+*   **Core Focus Areas**: This month, high-frequency focus was on **"Sleep Quality and Physical/Mental Recovery under High-Pressure Work"** and **"Maintaining Exercise Habits to Balance Work Pressure during Transition Periods (Moving, New Project)"**.
+
+**Monthly Review**
+*   **2.1 Exercise Review**
+    *   **Exercise Overview**: Engaged in 4 main types of exercise throughout the month. By session percentage: Badminton 33.3%, Walks 33.3%, Morning Runs 16.7%, Pilates 16.7%. Exercise intensity was primarily Z2 moderate (badminton, morning runs, hiking), accounting for ~75%; Z1 low intensity (Pilates, recovery walks) accounted for ~25%.
+    *   **Statistics & Best Performance by Exercise**:
+        *   **Morning Runs**: Total distance 10km, estimated average pace 9′00″/km (leisure run), longest single distance 5km.
+        *   **Badminton**: Total duration 360 minutes, longest single session 1.5 hours, estimated average heart rate 135 bpm.
+        *   **Pilates**: Total duration 120 minutes (including one incomplete session), focused on core strengthening and posture correction.
+        *   **Hiking/Walks**: Total duration ~300 minutes, longest single session (Songshan hike) 180 minutes.
+    *   **Exercise Habit Preferences**:
+        *   **High-Frequency Exercise Days**: Saturday, Sunday (3 exercise sessions each), followed by Wednesday (fixed badminton day).
+        *   **High-Frequency Time Slots**: Evening (18:00-20:00, 50%), followed by morning (6:00-7:30, 16.7%).
+        *   **Exercise Locations**: Badminton court (4 times), outdoor parks/trails (3 times), streets near home (3 times), Pilates studio (2 times).
+        *   **Exercise Continuity**: Longest consecutive exercise streak was 3 days (May 1-3). Main breaks totaled 2: First due to back strain (12-14, break 3 days), second due to high-pressure work period and foot injury (20-22 and 30th, break/reduction totaling 4 days).
+*   **2.2 Health Review**
+    *   **Sleep**:
+        *   **Average Daily Sleep Duration**: ~6.8 hours on weekdays, ~8.0 hours on weekends.
+        *   **Estimated Sleep Stages**: Deep sleep ~20% (1.4 hours), light sleep ~55%, REM ~25%. Deep sleep percentage estimated to have dropped below 15% in mid-to-late month.
+        *   **Sleep Schedule Stability**: Bedtime fluctuated significantly on weekdays (22:30-00:15), wake-up time was relatively stable (06:30-07:00); weekend schedule noticeably shifted later.
+        *   **Sleep Interruptions**: Estimated average 1.2 interruptions per day, increased during high-pressure period (after the 20th).
+    *   **Physiological Metrics**:
+        *   **Weight**: Month-start 50.1kg, month-end 49.8kg, monthly average 50.2kg. Maximum fluctuation 0.8kg (50.6kg on 14th vs. 49.9kg on 28th). Overall trend: slight increase during holidays/social periods, decrease during high-pressure/adjustment periods.
+        *   **Estimated Body Fat Percentage**: Remained stable throughout the month at ~21.5%, based on regular exercise and dietary adjustments.
+        *   **Estimated Resting Heart Rate**: Daily average ~62 bpm. Weekly average likely increased to 65-68 bpm during high-pressure period (20-25th), then decreased after adjustments.
+        *   **Estimated HRV**: Negatively correlated with stress levels. Higher at month start and end, showed a clear decline in mid-to-late month due to stress and insomnia.
+    *   **Mental Health**:
+        *   **Stress**: Estimated daily average stress value 5.5/10. High-stress period was May 20-31 (stress value 7-8/10), primarily due to the surge in work intensity and responsibility from the national research project launch.
+        *   **Mood**: Primary mood tags alternated between "calm", "fulfilled", "pleasant", and "anxious". Notable mood fluctuation periods: early month holiday (pleasant) → mid-month project launch (anticipation mixed with pressure) → late month (anxious, fatigued) → post-signing at month-end (hopeful, relaxed).
+*   **2.3 Life Rhythm Review**
+    *   **Sleep/Wake Habits**: Average daily bedtime 23:25, wake-up time 07:00. Weekends averaged 40 minutes later bedtime and 60 minutes later wake-up than weekdays. Total days with disrupted schedule (bedtime after 23:30): 11 days, main reasons: work/study (6 days), social activities (3 days), stress-induced insomnia (2 days).
+    *   **Commute/Activity**:
+        *   **Non-Exercise Steps**: Daily average ~5000 steps (short commute, primarily indoor activities). Highest weekly steps in Week 1 (holiday hiking), lowest in Week 4 (high-pressure desk work).
+        *   **Commute**: By private car, one-way distance ~3km, average daily commute time 20 minutes.
+        *   **Business Travel/Vacation**: 1 trip (Songshan hike, May 1-3), positively promoted exercise, sleep duration and quality improved during the trip.
+    *   **Daily Life**:
+        *   **Screen Time**: Estimated average daily screen time 9 hours (work-related 6 hours, entertainment/social 3 hours). Work screen time could exceed 10 hours during high-pressure periods.
+        *   **Dietary Habits**: Regular three meals on ~25 days. Diet structure optimized towards high-protein, high-fiber (actively increased healthy snacks and vegetable intake after mid-month). Takeout meals ~8 times, home-cooked meals dominant. Estimated average daily water intake 1.8L.
+
+**Monthly Trend Analysis**
+*   **3.1 Exercise Trends**
+    *   **Weekly Exercise Volume Changes**:
+        *   **Week 1 (1-4)**: Peak exercise volume, primarily hiking and walks, total duration ~450 minutes, enabled by holiday time.
+        *   **Week 2 (5-11)**: Returned to routine, moderate exercise volume, including badminton, Pilates, and activities during ACLS training.
+        *   **Week 3 (12-18)**: Exercise volume setback, reduced due to back strain, resumed badminton later in the week.
+        *   **Week 4 (19-25)**: Exercise volume low point, only 1 badminton session completed due to high-pressure work period.
+        *   **Week 5 (26-31)**: Exercise volume slightly rebounded, but affected by foot injury, primarily light walks.
+    *   **Training Cycle Peaks/Lows**: Exercise performance peaks occurred in Week 1 and during badminton in Week 2, with good physical and mental state; low point in Week 4, where exercise willingness and physical capacity were suppressed by high-pressure work.
+    *   **Exercise Performance Changes**: Badminton, as the core cardio exercise, showed stable performance; morning runs served as leisure调剂, not pursuing intensity. Overall exercise performance was highly correlated with sleep quality and stress levels.
+*   **3.2 Health Trends**
+    *   **Sleep Trend**: Weeks 1-2 sleep duration met targets with high quality; Week 3 slightly affected by injury; Week 4 (from the 20th) saw significant deterioration in sleep duration and quality (especially deep sleep), not stopping the decline until Week 5 through active management.
+    *   **Physical Health Trend**: Weight curve closely linked to social meals, appetite during high-pressure periods, and active dietary adjustments. Estimated trends for resting heart rate and HRV completely synchronized with the stress cycle, showing clear physiological stress response during the peak stress period (Week 4).
+    *   **Mental Health Trend**: Stress curve showed a "low-gradual rise-sharp rise-gradual decline" pattern, perfectly matching work project milestones. Periods with higher exercise frequency (e.g., Week 2) correlated with more positive and stable mood.
+    *   **Injury Impact**: The back strain on the 12th directly affected Pilates and some daily activities that week, but through timely rest and adjusting exercise type (switching to walks), recovery was mostly complete in about 1 week, with no long-term impact on core exercise (badminton). The foot bruise on the 30th was an accident, causing temporary limitation on end-of-month mobility.
+*   **3.3 Life Rhythm Trends**
+    *   **Sleep Schedule & Mental State**: Data shows that on days following bedtime after 23:30, self-reported probability of "fatigue" and "poor mental state" significantly increased, and exercise plans were more likely to be canceled (e.g., May 6th, 20th).
+    *   **Work/Life Rhythm Changes**: Week 4 saw a qualitative change in work intensity (research project launch), directly leading to a sharp decrease in exercise frequency, sleep deterioration, and a surge in screen time. Simultaneously, the shift in life focus towards "planning the new home" brought positive anticipation, partially offsetting work pressure.
+
+**Personalized Insights**
+*   **Sleep ↔ Exercise Performance**: Data indicates that when your sleep duration is ≥7.5 hours and bedtime is before 23:00, willingness and duration for badminton or morning runs the next day increase by 50%. Conversely, after severe insomnia on the 20th, there were no dedicated exercises for 3 consecutive days, and daytime fatigue was significant.
+*   **Stress/Work ↔ Health**: This month provided a clear "stress-health" impact model. After the research project launch on May 20th, you entered a sustained high-pressure period (>7/10), directly leading to: 1) **Sleep**: Average bedtime delay of 1.5 hours, estimated deep sleep percentage decrease >5%; 2) **Physiology**: Estimated resting heart rate increase of 5-8 bpm; 3) **Behavior**: Exercise frequency reduced by 75%. The "active health management" measures you implemented from the 22nd (setting Do Not Disturb mode, adjusting diet) were key to breaking this negative cycle.
+*   **Exercise Type ↔ Physical State**: **Badminton** was your most effective "stress relief valve" this month, with post-exercise mood scores generally improving on the same day. **Pilates** was strongly correlated with "improved posture awareness" and "relief from discomfort from prolonged sitting at work", but attention to proper form is needed to prevent injury. **Walks** served as an effective "safe option" for maintaining basic activity levels during your injury recovery and high-pressure periods.
+*   **Behavioral Habits ↔ Overall Health**: 1) **Sleep Schedule Management**: After setting the phone's "Do Not Disturb" mode in late month, bedtime fluctuation range narrowed from 70 minutes to 30 minutes, and subjective sleep quality improved. 2) **Dietary Intervention**: Consciously choosing healthy snacks (nuts, oats) over high-sugar biscuits during high-pressure periods helped stabilize weight and avoid stress-induced binge eating. 3) **Social Support**: Regular gatherings and deep conversations with close friends (Zhang Jing, Sun Yue) were an important emotional buffer for you this month, especially during high-pressure weekends (23rd, 31st), with mindset noticeably shifting towards positivity after social activities.
+
+**Abnormal Event Summary**
+*   **Injury Events**:
+    *   **Minor Back Strain**: Occurred during Pilates training on May 12th. Impact: paused all moderate-to-high intensity exercise from 12th-14th, switched to light walks. Recovery good, able to resume normal badminton activity ~5 days later (18th).
+    *   **Foot Bruise**: Occurred at home on May 30th. Caused restricted activity and pain while walking that day and the next. After self-cleaning and bandaging, condition was fine by the 31st, able to do light walks. Expected full recovery in 2-3 days.
+*   **Exercise Break Events**:
+    *   **Main Break Period**: May 20-22, no exercise for 3 consecutive days. Reason: extremely high work pressure and first occurrence of severe insomnia due to the national research project launch, leading to physical and mental exhaustion, dropping exercise willingness and capacity to a low point. After a stress-relief dinner with colleagues on the 23rd, successfully resumed exercise on the 24th.
+*   **Health Metric Sudden Change Events**:
+    *   **Severe Insomnia**: First occurred on May 20th, bedtime delayed to 1:30 AM. Sudden change reason: daytime work pressure (research project launch meeting) causing sustained mental excitement. Subsequently, through active adjustments (setting Do Not Disturb mode, adjusting dinner), difficulty falling asleep gradually eased after May 23rd.
+*   **Life Rhythm Abnormal Events**:
+    *   **High-Pressure Work Period**: May 20-31, work rhythm abnormally intense due to the research project. Impact on health: average daily sleep reduced by ~1 hour, screen work time increased by 2 hours, exercise frequency reduced by 75%. The recovery measures you took (health plan, socializing, planning new home) effectively prevented further decline in condition, showing a rebound trend by month-end.

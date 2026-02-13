@@ -1,0 +1,140 @@
+Your Monthly Summary is as follows:
+
+**Monthly Exercise & Health Analysis Report**
+**Report Period:** December 1, 2025 - December 31, 2025
+**Report Subject:** Yin Hao
+
+---
+
+### **Module 1: Monthly Overview**
+
+*   **Basic Information:** 24 years old, male, occupation: Manufacturing - CNC Machine Operator.
+*   **Total Exercise Volume:**
+    *   Running: 12 sessions / 375 minutes / 56 km.
+    *   Core Strength Training: 8 sessions / 160 minutes.
+    *   Other Activities (Fishing, Tire Changing, etc. - physical labor): Estimated equivalent to 4 sessions of moderate-intensity exercise / approximately 240 minutes.
+    *   **Monthly Total:** 24 exercise sessions, total exercise duration approximately 775 minutes (approx. 12.9 hours).
+*   **Health Status Summary:**
+    *   **Health Score:** No specific score. Early-month (5th) physical exam confirmed "good physical condition, excellent cardiopulmonary function," but noted a "tendency towards mild fatty liver." Proactive intervention through increased strength training and controlled alcohol consumption later in the month improved health behavior scores.
+    *   **Core Tags:** "Health Optimization Driven by Physical Exam," "Improved Exercise Diversity," "Coexistence of Work Pressure and Technical Growth."
+    *   **Overall Health Rating:** **Good.** Solid physical foundation, actively adjusts lifestyle habits based on health feedback, but experiences sleep schedule fluctuations during high-pressure work periods.
+*   **Key Events:**
+    *   **Exercise/Health Milestones:**
+        1.  December 5th: Completed annual physical exam, learned health status.
+        2.  December 10th: Began implementing a core strength training plan customized by a running friend, based on exam recommendations.
+        3.  December 27th: Successfully passed the practical electrician skills exam.
+    *   **Health Indicator Focus:** December 5th, physical exam report indicated a "tendency towards mild fatty liver," becoming the direct motivation for health adjustments this month.
+    *   **Major Life Changes:** December 19th, confirmed receipt of "Excellent" annual skills assessment and year-end bonus, leading to significant improvement in financial situation and professional confidence.
+*   **Goal Completion Status:**
+    *   **This Month's Set Goal (inferred from persona):** "Maintain running ≥3 times per week."
+    *   **Completion Rate:** Approximately 80%. Total of 12 runs this month, below the target of 13-14 runs.
+    *   **Reasons for Non-Completion:** Primarily affected by weather (cold snap, light rain) on 3 occasions (Dec 16, 22, 25), and one planned session canceled due to social engagement (24th) at month-end.
+*   **Core Changes from Last Month:**
+    *   **Exercise Volume:** **Introduction of New Exercise Type.** While maintaining running habits, added "Core Strength Training" (8 sessions this month), shifting exercise structure from single aerobic to a "aerobic + strength" composite model.
+    *   **Health Indicators:** **Weight Stable with Slight Decrease.** Starting weight 70.0kg, end-of-month weight 70.5kg, fluctuated between 70.0-71.5kg throughout the month. End-of-month weight decreased by 1.0kg compared to the mid-month peak (71.5kg on the 20th), indicating effective dietary control and exercise adjustments later on.
+    *   **Life Rhythm:** **Pronounced Work Pressure Curve.** Late month (22nd-26th) due to tackling the "machining chatter" technical challenge, leading to consecutive days of overtime, mental strain, and delayed bedtime to 23:45-00:10.
+*   **Core Focus Areas:** High-frequency focus this month on **"Body Fat Improvement & Exercise Diversity"** (stemming from exam findings) and **"Maintaining Running Habits in Adverse Weather."**
+
+### **Module 2: Monthly Review**
+
+#### **2.1 Exercise Review**
+*   **Exercise Overview:**
+    *   Running (50%), Core Training (33.3%), Other Physical Activities (16.7%).
+    *   **Intensity Distribution:** Running primarily in Z2 (moderate intensity, aerobic endurance zone), approx. 70%; Core Training in Z3 (high intensity, strength zone); Fishing, tire changing, etc. in Z1-Z2 (low to moderate intensity).
+*   **Statistics & Best Performance by Activity:**
+    *   **Running:**
+        *   Total Distance: 56 km. Average per session: 4.67 km.
+        *   **Best Performance:** Longest single-session distance was 5 km (achieved multiple times). Pace stable, no extreme values recorded. Running environment included both outdoor (Guangfulin Road) and indoor (Songjiang Sports Center).
+    *   **Core Strength Training:**
+        *   Total Duration: 160 minutes. Average per session: 20 minutes.
+        *   **Core Exercise Completion Volume:** Plank: approx. 24 sets cumulative, Crunches: approx. 36 sets cumulative, Russian Twists: approx. 24 sets cumulative.
+*   **Exercise Habit Preferences:**
+    *   **High-Frequency Exercise Days:** Saturday (5 sessions), Tuesday/Thursday (4 sessions each).
+    *   **High-Frequency Exercise Times:** Morning (6:00-7:30, 58.3%), mainly for morning runs; Evening (20:00-21:00, 33.3%), mainly for core training.
+    *   **Exercise Locations:** Songjiang Sports Center indoor track (5 times), Guangfulin Road & surrounding neighborhood (4 times), Home living room (8 times), Other (fishing, garage, etc., 7 times).
+    *   **Exercise Consistency:**
+        *   **Longest Consecutive Exercise Days:** 5 days (Dec 27th-31st).
+        *   **Exercise Gaps:** 3 noticeable exercise gaps occurred this month, lasting 1-2 days. Reasons: cold snap/physical discomfort (16th, 22nd), social engagement staying up late the previous night (25th).
+
+#### **2.2 Health Review**
+*   **Sleep:**
+    *   **Average Daily Sleep Duration:** Weekdays approx. 6.8 hours, weekends approx. 7.5 hours.
+    *   **Sleep Stage Distribution:** No wearable device data. Based on inferred routine, deep sleep percentage likely stable due to regular exercise, but light sleep may have increased during high-pressure period (late month).
+    *   **Sleep Schedule Stability:** Weekday bedtime fluctuated between 22:45-23:45, a variation of 60 minutes; wake-up time fluctuated between 06:20-07:00, relatively stable. Weekend schedule shifted approx. 1 hour later.
+    *   **Sleep Interruptions:** No records. Overall sleep quality presumed acceptable, but sleep may have become lighter during pressure periods.
+*   **Physiological Indicators:**
+    *   **Weight:** Start of month 70.0kg, end of month 70.5kg, monthly average approx. 70.8kg. **Maximum fluctuation** was 1.5kg (reached 71.5kg on Dec 20th due to dinners and company year-end party meals preceding two days). Overall trend: "mid-month peak, late-month decline."
+    *   **Body Fat Percentage:** No specific data. Inferred from physical exam's "fatty liver tendency" and end-of-month weight decline trend that body fat percentage may have slightly decreased by month-end.
+    *   **Resting Heart Rate:** No device data. Inferred from fast post-exercise recovery (per exam description) and ISTJ personality that resting heart rate likely in low-medium range (e.g., 60-65 bpm), possibly briefly elevated during work pressure periods.
+    *   **HRV (Heart Rate Variability):** No data. Presumed higher during regular exercise periods, possibly briefly lowered after high work pressure and social drinking (14th, 19th, 24th).
+*   **Mental Health:**
+    *   **Stress:** **Average daily stress level medium-low, but with distinct peaks.** High-stress period was Dec 22nd-26th, stress level could reach 7/10 (10-point scale), source: "machining chatter technical challenge." Stress levels significantly reduced on Dec 10th and 19th due to professional recognition and financial benefits.
+    *   **Mood:** **Predominant moods were "calm" and "fulfilled."** Mood fluctuations: early month "anticipation" and "contemplation" due to exam results, learning new knowledge; mid-month "warmth" and "satisfaction" from house viewing, social events; late month "anxiety" and "frustration" due to technical challenge, turning into "sense of accomplishment" and "relief" after problem resolution.
+    *   **Health Score:** No quantitative score. Subjective health perception followed an upward curve: from "confirmation of good health" early month, to "proactive optimization" mid-month, to "solid and positive" by month-end.
+
+#### **2.3 Life Rhythm Review**
+*   **Sleep/Wake Habits:**
+    *   **Average Daily Routine:** Weekdays bedtime approx. 23:15, wake-up approx. 06:40; weekends bedtime approx. 23:20, wake-up approx. 07:45.
+    *   **Weekday vs. Weekend Difference:** Weekends average bedtime 5 minutes later than weekdays, but wake-up 65 minutes later, total sleep duration approx. 1 hour longer.
+    *   **Days with Disrupted Sleep Schedule:** 7 days with bedtime after 23:30, concentrated in weeks 3 and 4 (14th, 19th, 20th, 24th, 25th, 26th, 30th). Reasons included wedding, company party, technical challenge, social events, and year-end summary.
+*   **Commute/Activity:**
+    *   **Average Daily Non-Exercise Steps:** Estimated approx. 5000-7000 steps (based on manufacturing operator work nature). **Highest step week** likely week 1 (physical exam, skills assessment) and week 4 (increased technical challenge activities, workshop activity).
+    *   **Commute Mode:** Personal car. **One-way distance** estimated approx. 8-10 km (within Songjiang District), **average daily commute time** approx. 40 minutes.
+    *   **Business Travel/Vacation:** None. However, a short fishing trip to Jiaxing on Dec 13th did not affect that day's exercise (morning run) and increased outdoor activity volume.
+*   **Daily Life:**
+    *   **Screen Time:** **Average daily screen time approx. 4-5 hours.** Work-related (electrician study, technical queries) approx. 2 hours, entertainment (mobile games, social media, videos) approx. 2-3 hours. **Highest screen time day** likely 26th (forum posts seeking help, financial review), possibly exceeding 6 hours.
+    *   **Dietary Habits:**
+        *   **Meal Regularity:** Regular meals approx. 26 days. Irregular 5 days (2nd, 8th, 19th, 20th, 24th), primarily due to overtime and social meals.
+        *   **Diet Composition:** Preference for Shanghainese cuisine (braised pork, steamed fish), tendency for higher oil/salt during social meals. Conscious effort to control alcohol consumption this month (responding to exam advice).
+        *   **Takeout/Homemade Meals:** Estimated takeout approx. 8-10 times, homemade meals approx. 20-22 times.
+        *   **Average Daily Water Intake:** No records. Inferred from exercise habits that hydration is relatively adequate.
+
+### **Module 3: Monthly Trend Analysis**
+
+#### **3.1 Exercise Trends**
+*   **Weekly Exercise Volume Changes:**
+    *   **Week 1 (1st-7th):** 5 sessions (Running 2, Core 0, Other 3). Mainly running and fishing, exercise volume steady.
+    *   **Week 2 (8th-14th):** 6 sessions (Running 3, Core 1, Other 2). Running frequency recovered, and **core training introduced for the first time**.
+    *   **Week 3 (15th-21st):** 5 sessions (Running 2, Core 2, Other 1). Exercise volume slightly decreased due to work pressure and initiation of technical problem, but core training adherence remained good.
+    *   **Week 4 (22nd-31st):** 8 sessions (Running 5, Core 5, Other -2). **Exercise volume reached monthly peak**, especially after technical challenge resolution (29th-31st), with consecutive "running + core" composite sessions to release stress and solidify habits.
+*   **Training Cycle Peaks/Troughs:**
+    *   **Peak Week:** Week 4. Best exercise frequency and adherence, exercise performance (running mood, training completion) synchronized with positive mood.
+    *   **Trough Days:** December 22nd and 25th. Affected by work pressure, slight physical discomfort, and insufficient sleep the previous night, leading to consecutive morning run cancellations.
+*   **Exercise Performance Changes:**
+    *   Running pace and distance remained stable throughout the month, no significant improvement or decline, indicating purpose of maintaining habits and health.
+    *   Core training progressed from initial attempt on Dec 12th to 2 sessions per week in weeks 3 and 4, with completion and physical adaptation improving weekly.
+
+#### **3.2 Health Trends**
+*   **Sleep Trends:**
+    *   **Duration & Quality:** Sleep duration stable and quality high in weeks 1 and 2. **Sleep duration shortened and bedtime delayed in weeks 3 and 4**, especially during the technical challenge period (22nd-26th), with average sleep duration reduced by approx. 0.5-1 hour.
+    *   **Fluctuation Causes:** Directly correlated with work pressure and social activities (wedding, company party, Christmas gathering).
+*   **Physical Health Trends:**
+    *   **Weight Change Curve:** Weeks 1-2 slow increase (70.0→70.8kg), Week 3 peak at 71.5kg (company party meals), Week 4 steady decline to 70.5kg (pressure relief, diet/exercise control).
+    *   **Indicator Correlation:** **Weight changes highly correlated with social dining and work pressure cycles.** After pressure peak and resolution, weight was effectively managed through resumed exercise and dietary control.
+*   **Mental Health Trends:**
+    *   **Stress Curve:** Weeks 1-2 stress gentle; stress sharply increased from mid-late Week 3 (starting 22nd); stress rapidly decreased to low levels by end of Week 4 (starting 29th).
+    *   **Exercise & Mental Health Correlation:** Data shows **the period with highest exercise frequency in Week 4 also coincided with the fastest stress relief**, confirming exercise is an effective stress management tool for you.
+*   **Injury Impact:** No exercise-related injuries reported this month. Recorded "mild headache/cold symptoms" on Dec 1st, 11th, 22nd did not cause long-term impact on exercise, only led to single-session plan adjustments.
+
+#### **3.3 Life Rhythm Trends**
+*   **Sleep Schedule & Mental State:** On days with bedtime after 23:30 (7 days total), the following day often included descriptions of "fatigue" or "slight tiredness," and directly led to morning run cancellations on the 22nd and 25th, indicating **delayed sleep schedule negatively impacts daytime energy and exercise execution**.
+*   **Work/Life Rhythm Changes:**
+    *   **Work Intensity Changes:** Late Week 3 to early Week 4 (Dec 22nd-26th) was a **high-intensity work period** involving technical challenge resolution. Impact: caused 2-day exercise gap, compressed sleep time, increased screen time (technical queries).
+    *   **Life Changes:** Weekends of Weeks 2 and 3 (13th-14th, 20th-21st) involved dense social and personal activities like house viewing, wedding, winter fishing, which somewhat compressed exercise regularity for those weeks, but were maintained through flexible adjustments.
+
+### **Module 4: Personalized Insights**
+
+1.  **Sleep ↔ Exercise Performance:** Data indicates **when your bedtime is before 23:15 (e.g., Dec 2nd, 7th, 23rd, 29th), the completion rate for planned morning runs or core training the next day is 100%.** Conversely, when bedtime exceeds 23:45 (e.g., 20th, 24th, 26th), the probability of canceling exercise or switching to low-intensity activity the next day significantly increases.
+2.  **Work Pressure ↔ Health:** Although no business travel this month, **the high-intensity work pressure event (machining chatter challenge) produced a similar effect:** the approximately 5-day high-pressure period led to an average reduction in sleep duration of 0.8 hours, increased subjective fatigue, and directly caused a 2-day exercise gap. After pressure resolved, healthy behaviors (exercise, regular sleep) quickly returned.
+3.  **Exercise Type ↔ Physical State:** **The introduction of core strength training was the key turning point in health behaviors this month.** After starting bi-weekly core training (from Week 2), despite weight fluctuations from social meals, you felt "abdominal strength improved," and end-of-month weight control effects became apparent. Simultaneously, strength training as a complement to running reduced potential overuse injury risk from a single exercise type.
+4.  **Behavioral Habits ↔ Overall Health:**
+    *   **Sleep Schedule Stability Impact:** During Weeks 1 and 2 with relatively regular sleep, your predominant moods were "calm" and "fulfilled," with learning and work plans progressing smoothly. Increased sleep schedule fluctuations in Weeks 3 and 4 overlapped with periods of anxiety and stress.
+    *   **Social Dining Control:** After receiving physical exam advice this month, you consciously "controlled alcohol" and "ate more steamed dishes" during multiple social meals (6th, 14th, 19th, 24th). **This conscious control allowed you to return your weight close to the starting level by month-end despite several social meals**, demonstrating good self-management ability.
+    *   **Problem-Solving Pattern:** Faced with the technical challenge (chatter), you exhibited a complete ISTJ-style health coping chain: **"Encounter pressure → Briefly affects sleep/exercise → Seek social support (mentor, colleagues) & external knowledge (forums) → Solve problem → Release stress through exercise, restore sleep schedule"**. This pattern effectively prevented pressure from transforming into chronic health issues.
+
+### **Module 5: Anomaly Event Summary**
+
+1.  **Exercise Gap Events:**
+    *   **Event:** Planned exercise consecutively paused.
+    *   **Time & Duration:** December 22nd, 25th, each a 1-day gap.
+    *   **Causes:** 22nd due to increased technical challenge pressure and

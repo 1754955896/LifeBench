@@ -1,0 +1,133 @@
+Your Monthly Summary is as follows:
+
+**Monthly Overview**
+
+*   **Basic Information**: Yin Hao, 24 years old, male, occupation: Manufacturing - CNC Machine Operator.
+*   **Total Activity**:
+    *   Running: 17 sessions / Total duration ~835 minutes / Total distance ~101 km (estimated based on average daily pace of 6'00").
+    *   Strength Training (Cross-Training): 1 session / Duration ~40 minutes.
+    *   Other Activities (Walking, Fishing, Moving Labor): Multiple instances, counted as non-exercise activity thermogenesis (NEAT).
+    *   **Total Monthly Activity**: 18 sessions / Total duration ~875 minutes.
+*   **Health Status Summary**:
+    *   **Estimated Health Score**: Beginning of month (focused on preparation) 75 → End of month (multiple improvements, stable state) 82, monthly average ~78.
+    *   **Core Tags**: "Significant improvement in running performance, weight fluctuated due to life events", "Sleep affected by exam preparation/moving, stabilized by month-end".
+    *   **Overall Health Rating**: Good.
+*   **Key Events**:
+    *   **Fitness Milestones**: Major breakthrough on the 25th: "Average pace for 10km run improved by 15 seconds"; Completed first systematic strength cross-training session on the 14th under guidance from a running partner.
+    *   **Health Metric Fluctuations**: Weight increased by 0.2kg on the 21st due to a fishing picnic outing; Mild cold symptoms appeared on the 25th.
+    *   **Major Life Changes**: Completed the move and transition to shared accommodation from Guangfulin Road to Jiuting from the 14th to the 19th; Experienced an adjustment period with roommate (morning exercise conflict on the 20th) resolved through communication (21st).
+*   **Goal Completion Status**:
+    *   **Monthly Goal Set**: Adhere to three running sessions per week in preparation for a half marathon.
+    *   **Completion Rate**: Actually completed 17 running sessions, averaging over 4 per week, exceeding the target (completion rate ~133%).
+    *   **Reasons for Non-Completion**: All goals achieved.
+*   **Core Changes from Last Month** (Inferred from beginning-of-month status description):
+    *   **Activity Volume**: Running training transitioned from "regular" to "systematic improvement" phase, introduced strength cross-training (from 0 to 1 session), resulting in a more scientific training structure.
+    *   **Health Metrics**: Running pace and endurance (recovery time) improved noticeably; Weight fluctuated between 70.8-71.4kg due to holidays, moving, gatherings, etc., with an overall slight decrease of 0.2kg.
+    *   **Life Rhythm**: Experienced major life changes including Dragon Boat Festival family reunion, relocation, and shared accommodation adjustment; Sleep schedule was disrupted for a period (14th-20th), stabilizing by month-end.
+*   **Core Focus Areas**: This month's high-frequency focus was on "Improvement in running pace and endurance" (trend chart recorded) and "Execution and adjustment of half marathon training plan".
+
+**Monthly Review**
+
+*   **Activity Review**
+    *   **Activity Overview**:
+        *   Total recorded activities for the month: 18 sessions. Running accounted for 94.4% (17 sessions), strength training for 5.6% (1 session).
+        *   **Estimated Activity Intensity Zone Distribution**: Based on training descriptions, Z2 Moderate Intensity (tempo runs, long slow distance) accounted for ~60% of total running time, Z1 Low Intensity (easy runs, recovery runs) for ~30%, and Z3 High Intensity (interval runs) for ~10%.
+    *   **Activity Statistics & Best Performances**:
+        *   **Running**:
+            *   Total Distance: ~101 km; Average Pace: Estimated ~6'00"/km.
+            *   **Longest Single Distance/Duration**: Simulated half marathon route run on the 8th, distance 10 km (data specified).
+            *   **Fastest Pace (with distance)**: Average pace for the 10km run on the 25th improved by 15 seconds compared to the beginning of the month, marking the month's best performance.
+            *   **Average/Maximum Heart Rate**: Data missing, but improved cardio efficiency can be inferred from "noticeably shorter post-run recovery time".
+        *   **Strength Training**:
+            *   Total Duration: 40 minutes (14th).
+            *   Core Exercises: Plank, Squats, Leg Press machine.
+    *   **Activity Habit Preferences**:
+        *   **High-Frequency Days of the Week**: Weekends (Saturday, Sunday), with 7 running sessions, accounting for 41.2%.
+        *   **High-Frequency Time of Day**: Early morning (5:30-7:00), accounting for ~82.4% (14 sessions); Evening sessions were less frequent.
+        *   **Activity Locations**: Guangfulin Cultural Relics Park/Songjiang Sports Center vicinity (early to mid-month, ~10 sessions), Jiuting new residence vicinity (end of month, ~4 sessions), Gym (1 session).
+        *   **Activity Consistency**:
+            *   Longest consecutive active days: 5 days (24th-28th, including running and pre-exam simulation).
+            *   Break periods: 2 instances. First: 16th-18th (3 days), due to moving transition period and overtime work. Second: 20th (1 day), due to morning rain conflict. Recovery after breaks was smooth.
+
+*   **Health Review**
+    *   **Sleep**:
+        *   Average Daily Sleep Duration: ~6.5 hours on weekdays, ~7.5 hours on weekends.
+        *   Sleep Stage Distribution: Data missing. Inferred from sleep schedule stability, deep sleep percentage likely decreased mid-month due to disruptions, recovering by month-end.
+        *   Sleep Schedule Stability: Weekday bedtime fluctuated between 22:00-23:45, wake-up time concentrated between 6:00-6:30; Weekend bedtime slightly later (23:00-24:00), wake-up slightly later (6:30-7:00). Greatest fluctuation occurred during the moving week (14th-19th).
+        *   Sleep Interruptions: Not explicitly recorded, but early awakening on the 20th due to roommate conflict can be considered an external interruption.
+    *   **Physiological Metrics**:
+        *   **Weight**: Beginning of month 71.0kg, end of month 70.8kg, overall decrease of 0.2kg. Weekly averages: Week 1: 71.03kg, Week 2: 71.10kg, Week 3: 71.23kg (moving week), Week 4: 70.93kg. Largest fluctuation: +0.2kg (21st, due to fishing picnic).
+        *   **Body Fat Percentage**: Data missing. Inferred from increased activity and slight weight loss trend, body fat percentage likely stable or slightly decreased.
+        *   **Resting Heart Rate**: Data missing. Inferred from faster post-exercise recovery, resting heart rate likely showed a positive trend.
+        *   **HRV (Heart Rate Variability)**: Data missing. Inferred from stressful events (household registration assessment, exam preparation, moving), HRV likely decreased mid-month, recovering by month-end as issues were resolved.
+    *   **Mental Health**:
+        *   **Stress (Estimated 0-10 scale)**: Average daily stress ~4.5. High-stress periods: 5th-6th (household registration policy assessment, stress ~7), 24th (pre-exam simulation nerves, stress ~6). Weekly averages showed a "low-high-release" curve.
+        *   **Mood**: Predominant mood tags were "focused", "satisfied", and "anticipatory". Fluctuation periods: "Warm and relaxed" during family reunion at month's beginning; Occasional "anxiety" and "fatigue" mid-month due to household registration and moving; "Pleasant" and "fulfilled" after problem resolution by month-end.
+        *   **Health Score (Estimated 1-100 scale)**: Daily average ~78. Lowest score ~70 (18th, during overtime fatigue period), highest score ~85 (25th after running breakthrough, 28th after team activity). Changes strongly correlated with stressful and achievement events.
+
+*   **Life Rhythm Review**
+    *   **Sleep/Wake Habits**:
+        *   Average Daily Schedule: Weekdays bedtime ~22:45, wake-up ~6:15; Weekends bedtime ~23:30, wake-up ~6:45.
+        *   Weekday vs. Weekend Difference: Bedtime averaged 45 minutes later, wake-up averaged 30 minutes later, total sleep duration ~1 hour more on weekends.
+        *   Days with Disrupted Schedule: ~8 days (mainly concentrated during the moving and shared accommodation adjustment period, 14th-20th), reasons included moving labor, roommate conflict, pre-exam studying, etc.
+    *   **Commute/Activity**:
+        *   Estimated Average Daily Non-Exercise Steps: Based on commute and job nature, ~6000 steps. Highest weekly step count occurred during moving week, lowest during rainy week.
+        *   Commute Method: Personal vehicle. Estimated one-way distance ~8 km, average daily commute time ~40 minutes.
+        *   Business Travel/Vacation: 1 instance, returned to hometown Rudong, Jiangsu from 1st-3rd, minimal impact on exercise (maintained morning runs), sleep duration and quality were actually better due to family atmosphere.
+    *   **Daily Life**:
+        *   Screen Time: Average daily duration ~3.5 hours (work 1 hour + entertainment 2.5 hours). Highest duration occurred on days involving video editing learning and exam preparation review (e.g., 24th).
+        *   Dietary Habits: High regularity for three meals, ~25 days regular. Dietary structure leaned towards high-protein (fish, meat) combined with carbohydrates. Takeout/eating out frequency increased (~8 times), concentrated during moving and social gatherings. Estimated average daily water intake ~1.8L.
+
+**Monthly Trend Analysis**
+
+*   **Activity Trends**
+    *   **Weekly Activity Volume Changes**:
+        *   Week 1 (1st-7th): 4 sessions (all running), holiday and plan initiation period, running volume steady.
+        *   Week 2 (8th-14th): 5 sessions (4 running + 1 strength), increased running volume, introduced new training type, due to training plan execution and moving preparation.
+        *   Week 3 (15th-21st): 3 sessions (all running), lowest monthly session count, primarily affected by moving transition, overtime, and weather.
+        *   Week 4 (22nd-30th): 6 sessions (5 running + 1 other), highest monthly session frequency, significant improvement in running quality, as training returned to normal after life stabilized.
+    *   **Training Cycle Peaks/Lows**:
+        *   **Peak Week**: Week 4, running performance (pace) reached its best, activity consistency was highest.
+        *   **Low Week**: Week 3, fewest activity sessions, most disrupted by life changes.
+    *   **Performance Changes**: Running pace showed a "initiation-adaptation-disruption-breakthrough" curve. Weeks 1-2: steady execution; Week 3: slight stagnation due to disruptions; Week 4: achieved pace breakthrough after life stabilized and initial effects of cross-training appeared.
+
+*   **Health Trends**
+    *   **Sleep Trend**: Weekly sleep duration and quality showed a "V" shape. Weeks 1-2: acceptable; Week 3 (moving week): duration shortened, quality declined; Week 4: sleep duration and stability significantly recovered after proactively communicating and adjusting shared living arrangements.
+    *   **Physical Health Trend**: Weight curve highly synchronized with life events: slight increase during holiday, slight increase during moving week (eating out + fatigue), slight increase after social events, decrease during regular activity weeks. Overall trend slightly downward, showing activity's controlling effect on weight.
+    *   **Mental Health Trend**: Stress levels and mood fluctuated with events. Relaxed at month's beginning, stress increased mid-month due to household registration, exam prep, moving/friction, effectively released by month-end through problem-solving (communication, insurance purchase, exam simulation), social activities (escape room), and activity breakthroughs, mood turned positive.
+    *   **Injury/Illness Impact**: Mild cold on the 25th led to reduced activity intensity that day but did not cause a training break, with quick recovery.
+
+*   **Life Rhythm Trends**
+    *   **Sleep Schedule & Mental State**: Data shows that when bedtime was after 23:30 (e.g., moving week), next-day mental state was often described as "fatigued", "slightly tired"; when bedtime was stable before 23:00, next-day state was often described as "focused", "energetic".
+    *   **Work/Life Rhythm Changes**: Work intensity increased in Week 3 due to temporary overtime, compounded by moving tasks, creating dual pressure on activity and sleep; In Week 4, after adapting to the new life rhythm (shared rules, commute), activity and health metrics fully recovered.
+
+**Personalized Insights**
+
+*   **Sleep ↔ Activity Performance**: Data shows your running pace achieved a breakthrough during periods of stable sleep (e.g., Week 4); while activity frequency decreased during sleep-disrupted periods (Week 3). Specific correlation: When sleep duration was ≥7 hours for three consecutive days with stable bedtime, subjective feeling ("body feels light") and objective performance (pace) during next-day morning runs were better.
+*   **Business Travel/Pressure ↔ Health**: Analysis shows short-term home visits had minimal impact on your activity habits, and family support was beneficial for mental health. However, work/life pressures (e.g., exam prep, moving) significantly impacted health: during high-stress periods (Weeks 2-3), your days with disrupted sleep increased, and weight showed minor fluctuations. Data shows that when you addressed stress sources through concrete actions like making plans (exam prep) and proactive communication (shared living), health metrics improved rapidly.
+*   **Activity Type ↔ Physical State**: Comparison reveals that after introducing a single strength cross-training session (14th), you felt "improved body stability and endurance" in subsequent runs (17th, 25th). This indicates even low-frequency targeted strength training positively impacted your running economy and injury prevention.
+*   **Behavioral Habits ↔ Overall Health**: Your behavior patterns show strong correlations: 1) **Regular sleep schedule is foundational**: When you maintained early morning runs and stable bedtime, daily efficiency and mood were more positive; 2) **Socializing & hobbies are buffers**: Social leisure activities like fishing and escape rooms effectively counterbalanced work and exam pressure, clearly reflected in data from the 21st and 28th; 3) **Problem-solving orientation**: Facing shared living friction and household registration confusion, you took proactive actions like communication and policy research, rather than passive anxiety, which is key to mental health resilience.
+
+**Abnormal Event Summary**
+
+*   **Injury/Illness Events**:
+    *   **Occurrence Time**: June 25th.
+    *   **Type**: Mild cold (nasal congestion, fatigue).
+    *   **Impact**: Led to reduced planned activity intensity for that day, only light stretching performed.
+    *   **Recovery**: Symptoms alleviated the next day (26th), normal running training resumed, did not affect subsequent training plan.
+*   **Activity Break Events**:
+    *   **Break Periods**: June 16th-18th, June 20th.
+    *   **Duration**: First instance 3 days, second instance 1 day.
+    *   **Causes**: First instance due to moving transition period (hotel stay) and work overtime; Second instance due to morning rain.
+    *   **Post-Break Recovery Performance**: Resumed activity on the 19th (moving items), resumed running on the 21st, performance not noticeably affected.
+*   **Health Metric Fluctuation Events**:
+    *   **Fluctuating Metric**: Weight.
+    *   **Fluctuation Time**: June 21st.
+    *   **Fluctuation Magnitude**: Single-day increase of 0.2kg (from 71.2kg to 71.4kg).
+    *   **Cause**: Outing for fishing that day, lunch was a lakeside picnic with higher-calorie snacks.
+    *   **Subsequent Change**: Weight decreased by 0.1kg the next day (22nd) through morning run and return to normal diet, returning to normal fluctuation range by month-end.
+*   **Life Rhythm Anomaly Events**:
+    *   **Anomaly Period**: June 14th to 20th.
+    *   **Anomaly Type**: Sleep schedule disruption and brief interpersonal friction due to moving and initial shared accommodation adjustment.
+    *   **Impact on Health/Activity**: During this period, sleep duration shortened and became unstable, activity frequency dropped to the monthly low, brief anxiety felt psychologically.
+    *   **Recovery Measures & Effect**: You proactively initiated honest communication with your roommate on the 21st, jointly developing solutions (posting a rotation chart, adjusting morning exercise location). After implementation (from 22nd onward), sleep, activity, and shared living relationship all significantly improved and stabilized.

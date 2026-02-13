@@ -1,0 +1,133 @@
+Your Monthly Summary is as follows:
+
+**Monthly Overview**
+
+*   **Basic Information**: Yu Xiaowen, 24 (young female), Occupation: Medical Industry - Resident Physician (Zhengzhou Central Hospital).
+*   **Total Activity Volume**:
+    *   Running: 6 sessions / 180 minutes / approx. 21 km (estimated at 30 min/session, 5 km/session).
+    *   Badminton: 3 sessions / approx. 255 minutes (estimated at 1-1.5 hours/session).
+    *   Walking (including City Walk, strolls): 8 sessions / approx. 570 minutes.
+    *   Other (mild activities like pottery, organizing): 3 sessions / approx. 240 minutes.
+    *   Total Monthly Activity: 20 sessions / Total duration approx. 1245 minutes (20.75 hours). Activity is primarily aerobic and social, moderate in total volume but significantly impacted by stressful events.
+*   **Health Status Summary**:
+    *   Health Score (estimated based on data, 10-point scale): Start of month 7.5, End of month 7.0, Monthly average 6.8. Score bottomed out mid-month (approx. 5.0) due to stress event, with slight recovery by month-end through active intervention.
+    *   Core Tags: "High-pressure life leading to activity fluctuations and sleep challenges", "Proactively using meditation and socializing for stress management".
+    *   Overall Health Rating: **Average**. Physiological indicators (resting heart rate, weight) were noticeably disturbed by psychological stress, sleep quality was unstable, but the user demonstrated excellent self-awareness and proactive adjustment capabilities.
+*   **Key Events**:
+    *   **Major Life Change**: March 5th, received landlord's notice to sell the property, triggering a month-long housing crisis and anxiety.
+    *   **Health Indicator Sudden Change**: March 10-13th, data analysis clearly showed physiological deterioration due to stress, such as increased resting heart rate and decreased running pace, following the March 5th event.
+    *   **Activity Milestone/Injury**: March 30th, mild right shoulder strain during badminton, affecting end-of-month activity schedule.
+    *   **Health Behavior Breakthrough**: March 21st, began and persisted with daily mindfulness meditation as a new tool for coping with stress.
+*   **Goal Completion Status**:
+    *   Set Goal (derived from "develop a habit of regular exercise at least three times a week within two years"): This month's goal was "Exercise ≥3 times/week".
+    *   Completion Rate: Actual weekly activity frequency was 2.5 times (20 sessions total / 4 weeks), completion rate 83.3%. Difference from goal: 0.5 times/week.
+    *   Reasons for Non-Completion: Primarily due to emotional fluctuations and scattered energy following the housing crisis after March 5th, resulting in multiple zero-activity days; secondary reason was the March 30th shoulder injury prematurely ending that week's activity.
+*   **Core Changes from Last Month**:
+    *   **Activity Volume**: Estimated to show a downward trend month-over-month. Running frequency and pace were affected; added mindfulness meditation as "mental exercise".
+    *   **Health Indicators**: Resting heart rate increased significantly (estimated increase from ~58 bpm to ~65 bpm mid-month); weight showed minor fluctuations (start: 50.0kg, end: 50.3kg); sleep duration and quality showed a clear decline mid-month.
+    *   **Life Rhythm**: Increased number of days with disrupted sleep schedule (~10 days sleeping after 23:30), increased screen time (especially evening browsing for rental information), life themes dominated by house-hunting, financial planning, etc.
+*   **Core Focus Areas**: This month, the user frequently focused on **stress management** (via meditation, music, socializing), **sleep improvement** (trying meditation for sleep), and maintaining **basic exercise habits** amidst fluctuations.
+
+**Monthly Review**
+
+**2.1 Activity Review**
+*   **Activity Overview**:
+    *   Activity Types & Proportions: Walking (40%), Running (30%), Badminton (15%), Other Mild Activities (15%).
+    *   Activity Intensity Distribution: Z1 Low Intensity (walking, meditation, organizing, ~55%), Z2 Moderate Intensity (jogging, regular badminton play, ~40%), Z3 High Intensity (badminton smashes, etc., ~5%). This month's activity was primarily maintenance-oriented at low-to-moderate intensity.
+*   **Activity Statistics & Best Performances**:
+    *   **Running**: Total distance ~21km, average pace ~6'20"/km (pace decreased compared to usual due to stress), longest single distance 5km (Mar 2nd), fastest pace estimated at ~6'00"/km based on good state, average and max heart rates elevated during stress period.
+    *   **Badminton**: Total duration ~4.3 hours, longest single session 1.5 hours (Mar 19th), activity format was doubles practice, offering both social and stress-relief properties.
+    *   **Walking/City Walk**: Total duration ~9.5 hours, longest single session 2 hours (Mar 23rd), combining exploration, socializing, and low-intensity cardio functions.
+*   **Activity Habit Preferences**:
+    *   High-Frequency Activity Days: Saturday, Sunday (each accounting for 30% of activity days).
+    *   High-Frequency Activity Times: Morning (7:00-8:00, 30%, mainly morning runs), Evening (17:30-19:00, 50%, mainly post-work runs or badminton), Variable times (20%, e.g., weekend City Walks).
+    *   Activity Locations: Community/Park (running, walking), Badminton Court, City Streets (City Walk), Home (meditation).
+    *   Activity Consistency: Longest consecutive activity streak was 3 days (e.g., Mar 1-2). Main breaks occurred Mar 5-7 (3-day break due to emotional low from sudden housing crisis) and Mar 17-18 (2-day break due to work overtime and fatigue).
+
+**2.2 Health Review**
+*   **Sleep**:
+    *   Average Daily Sleep Duration: Workdays ~6.5 hours, Weekends ~7.5 hours. Overall insufficient sleep.
+    *   Sleep Stage Distribution (Estimate): Deep Sleep ~1.6 hours (25%), Light Sleep ~3.4 hours (52%), REM ~1.5 hours (23%). Deep sleep percentage estimated to decrease during mid-month stress period.
+    *   Sleep Schedule Stability: Workday bedtime highly variable (22:40 to 01:10), wake-up time relatively stable (06:30-07:00); weekend schedule slightly later. Bedtime variability exceeded 2 hours.
+    *   Average Daily Sleep Interruptions: Estimated 2-3 times/night during mid-month anxiety period, improved to 0-1 times/night after starting meditation by month-end.
+*   **Physiological Indicators**:
+    *   Weight: Start 50.0kg, End 50.3kg, overall slight increase of 0.3kg. Weekly average fluctuated between 49.2kg (decreased appetite during stress) and 50.3kg (after social meals), max fluctuation 1.1kg (Mar 15th 49.2kg vs Mar 9th 50.0kg). Trend was first down then up, correlating with stress and dietary changes.
+    *   Body Fat % (Estimate): Based on weight and activity changes, body fat % remained stable or showed minor fluctuations.
+    *   Resting Heart Rate: Daily average increased from ~58 bpm at start to ~65 bpm during mid-month stress, recovering to ~62 bpm by month-end. Peak values occurred the week after the stress event (estimated 65-68 bpm), lowest values during stable state at start (~57 bpm).
+    *   HRV (Heart Rate Variability, Estimate): Trend opposite to resting heart rate, showing a decline during mid-month stress, with some recovery by month-end as stress eased and meditation continued.
+*   **Mental Health**:
+    *   Stress: Daily average stress showed a "Medium-High-Easing" trend. Stress rapidly increased to 8/10 (10-point scale) after Mar 5th, remaining high until late month; the week starting Mar 21st with meditation introduction saw average stress drop to 6/10. High-stress period was Mar 5-20, primarily from housing crisis and associated work-life uncertainty.
+    *   Mood: Predominant mood tags alternated between "Anxious/Uneasy" and "Calm/Content". Mood fluctuation periods: Mar 5-15 dominated by anxiety; feelings of calm and contentment appeared after Mar 14th (concert), Mar 23rd (City Walk), Mar 26th (organizing farewell).
+    *   Health Score (Estimate): Daily average score 6.8. Lowest scores (~5.0) appeared around Mar 6th and 13th (stress and poor sleep combined); highest scores (~7.5) appeared on Mar 14th (concert) and Mar 26th (after finishing organizing). Score changes directly correlated with stress events and effectiveness of coping measures.
+
+**2.3 Life Rhythm Review**
+*   **Sleep/Wake Habits**:
+    *   Average Daily Bedtime/Wake-up: Workdays bedtime ~23:50, wake-up ~06:50; Weekends bedtime ~23:40, wake-up ~07:40. Weekends: 10 minutes later to bed, 50 minutes later to rise, ~1 hour more total sleep.
+    *   Days with Disrupted Schedule: ~10 days in the month with bedtime after 23:30, mainly due to anxious thoughts about housing, overtime work, and pre-sleep screen use for information browsing.
+*   **Commute/Activity**:
+    *   Average Daily Non-Exercise Steps: ~4000 steps (inferred based on driving commute and mostly indoor work activity). Lowest weekly step count occurred during busy work weeks with no extra activity (e.g., week 3), highest during weekends with City Walk (e.g., week 4).
+    *   Commute: Mode: driving, one-way distance ~5 km (from Jinshui District home to Zhongyuan District hospital), average daily round-trip commute duration ~20 minutes.
+    *   Business Travel/Vacation: None this month.
+*   **Daily Life**:
+    *   Screen Use: Average daily total duration ~5 hours, of which work-related (medical records system, studying) ~3.5 hours, entertainment/information (rental apps, social media, reading) ~1.5 hours. Peak usage days occurred on weekends focused on house-hunting (over 3 hours entertainment screen time).
+    *   Eating Habits: Regularity of three meals on ~20 days (irregular days mainly due to overtime, anxiety causing missed meals or simple takeout). Dietary structure leans towards high-carb (favoring stewed noodles, spicy soup), but conscious effort made this month to increase fruit salads. Estimated takeout meals ~8 times, home-cooked meals ~22 times. Average daily water intake ~1.5L, basically meeting target.
+
+**Monthly Trend Analysis**
+
+**3.1 Activity Trends**
+*   **Weekly Activity Volume Changes**:
+    *   Week 1 (1-7): Moderate activity volume, but zero activity in last 3 days due to stress event. Activity mainly running and badminton.
+    *   Week 2 (8-14): Activity volume recovered, tried shooting to release stress, weekend City Walk. Activity types diversified.
+    *   Week 3 (15-21): Activity volume maintained, introduced evening walks combined with mindfulness, began regular meditation. Activity started serving stress management.
+    *   Week 4 (22-31): Activity volume first increased then decreased, early part increased walking due to active house viewings, late part affected by shoulder injury limiting badminton. Activity performance constrained by physical state.
+*   **Performance Peak/Valley Weeks**:
+    *   Peak Performance Week: Week 2. Despite stress, proactive intervention through shooting, concert, socializing provided emotional release, activity participation recovered.
+    *   Valley Performance Week: Latter half of Week 1 (Mar 5-7). Impacted by sudden event, activity completely halted, various health indicators began deteriorating.
+*   **Activity Performance Changes**:
+    *   Running pace noticeably decreased in the week following Mar 5th (~20 sec/km slower). With stress adaptation and meditation intervention, pace stabilized by month-end but did not return to pre-event levels. This shows the immediate and sustained impact of psychological load on activity performance.
+
+**3.2 Health Trends**
+*   **Sleep Trends**:
+    *   Weeks 1-2: Sleep duration and stability rapidly deteriorated, deep sleep percentage estimated to decrease.
+    *   Weeks 3-4: With establishment of meditation habit (starting Mar 21st) and problem sorting (e.g., organizing on Mar 26th), sleep duration somewhat recovered, difficulty falling asleep slightly eased, but deep sleep recovery lagged behind total duration.
+*   **Physical Health Trends**:
+    *   Weight curve showed a "V" shape: Decreased initially under stress due to reduced appetite (lowest point 49.2kg in Week 2), later increased due to social meals and emotional eating (recovered to 50.3kg in Week 4).
+    *   Resting Heart Rate and HRV showed clear "mirror" changes: After Mar 5th, RHR climbed and HRV dropped, reaching a turning point around Mar 20th (active stress management), after which RHR slowly declined and HRV gradually recovered.
+*   **Mental Health Trends**:
+    *   Stress levels remained high throughout mid-to-late month, only showing a trend decline after starting daily meditation on Mar 21st. Data indicates that active psychological interventions (meditation, deep socializing, artistic experiences) were key to the stress curve inflection point.
+    *   Correlation between activity frequency and mental state: During complete activity breaks (Mar 5-7), anxiety was strongest; resuming activity (even just walking) significantly improved mood.
+*   **Injury Impact**: Mild right shoulder strain on Mar 30th directly affected badminton and potential upper body strength training that day and subsequently, prompting a shift in activity mode towards gentler walking and meditation.
+
+**3.3 Life Rhythm Trends**
+*   **Sleep Schedule & Mental State**: Data shows that whenever bedtime was after 23:30, the probability of the user describing the next day as "fatigued" or "slightly fatigued" increased, and the daily activity plan was more likely to be cancelled (e.g., Mar 7th, 17th).
+*   **Work/Life Rhythm Changes**:
+    *   Work Intensity: Remained high throughout the month, with significant peaks on Mar 3rd (independent patient admission), Mar 5th (night shift emergency), Mar 17th (patient condition change), directly leading to cancellation or postponement of daily activity.
+    *   Life Changes: The "housing crisis" initiated on Mar 5th was the core variable dominating this month's life rhythm, triggering a chain reaction from emotional anxiety to financial planning, from organizing belongings to social negotiation, systematically squeezing activity and rest time.
+
+**Personalized Insights**
+
+*   **Sleep ↔ Activity Performance**: Your data clearly shows that on days following insufficient sleep (especially when deep sleep is estimated <1.5 hours) or poor sleep quality, your evening running pace on average decreases by 15-25 seconds/km, and subjective fatigue is stronger. Conversely, after the Mar 14th concert which provided deep mental relaxation, although no activity was recorded the next day, the mental state was described as "content", storing energy for subsequent activities.
+*   **Stress ↔ Health**: The Mar 5th housing crisis, as an acute stressor, triggered a physiological stress response lasting several weeks. Data shows that during the peak stress period (Mar 5-15), your average resting heart rate increased by ~10%, sleep efficiency decreased, and activity performance was impaired. However, after persisting with daily meditation starting Mar 21st, despite the stressor remaining, resting heart rate began a downward trend, proving the effectiveness of active relaxation techniques in buffering the physiological stress response.
+*   **Activity Type ↔ Physical State**: Comparison reveals that during high-stress periods, group-based, socially interactive activities (e.g., City Walk with close friend, badminton with colleagues) brought more significant mood enhancement effects than solo running. However, note that engaging in high-intensity, competitive sports (e.g., badminton on Mar 30th) when physically and mentally exhausted increases injury risk. In the latter part of the month, low-intensity walking combined with mindful breathing became a more sustainable stress-management activity for you.
+*   **Behavioral Habits ↔ Overall Health**:
+    *   **Meditation Habit**: Data shows that since establishing a daily meditation habit on Mar 21st, your evening sleep onset delay improved and sleep interruptions decreased. This is the most important positive behavioral change this month.
+    *   **Social Support**: Deep conversations with parents (Mar 25th) and close friend (multiple times) were explicitly recorded as key moments for emotions like "relief", "warmth", "peace of mind". Strong social support served as a buffer against the crisis.
+    *   **Screen Use**: Evening pre-sleep browsing of rental apps and financial information was directly linked to "racing thoughts" and "delayed sleep onset", a negative factor for sleep hygiene this month.
+
+**Abnormal Event Summary**
+
+1.  **Major Life Stress Event**:
+    *   **Occurrence Time**: March 5th.
+    *   **Event Type**: Received landlord's notice to sell property, triggering a housing crisis.
+    *   **Impact Scope**: Caused a complete 3-day activity break; triggered weeks of anxiety, leading to increased resting heart rate, decreased sleep quality, and fluctuating activity performance; initiated a series of life tasks like house-hunting, financial planning, and organizing belongings.
+    *   **Recovery Status**: Through proactive coping (setting up emergency fund, meditation, seeking social support, organizing belongings for psychological closure), emotions calmed by month-end, physiological indicators (resting heart rate) partially recovered, but the life issue remains unresolved, continuing as background stress.
+2.  **Activity Injury Event**:
+    *   **Occurrence Time**: March 30th, evening.
+    *   **Injury Type**: Mild right shoulder muscle strain.
+    *   **Impact Scope**: Caused cessation of badminton activity that day and affected ability for subsequent days' vigorous upper body activities.
+    *   **Recovery Status**: Immediately stopped the movement causing injury, subsequent activity adjusted to low-intensity walking. As of month-end, in recovery phase, requiring avoidance of weight-bearing and overextension.
+3.  **Health Indicator Sudden Change Event**:
+    *   **Changed Indicators**: Resting Heart Rate, Running Pace.
+    *   **Change Time**: Within the week following March 5th (clearly revealed by Mar 10-13 data).
+    *   **Change Magnitude**: Resting heart rate increased ~10% (from 58 bpm to 65 bpm), running pace decreased ~5-6%.
+    *   **Change Cause**: Direct

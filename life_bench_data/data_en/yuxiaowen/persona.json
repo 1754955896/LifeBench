@@ -1,0 +1,703 @@
+{
+  "name": "Yu Xiaowen",
+  "birth": "1997-12-29",
+  "age": 24,
+  "nationality": "Han",
+  "home_address": {
+    "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHenan Province",
+    "city": "Zhengzhou City",
+    "district": "Jinshui District",
+    "street_name": "Jingsan Road",
+    "street_number": "No. 89"
+  },
+  "birth_place": {
+    "province": "Henan Province",
+    "city": "Luoyang City",
+    "district": "Xigong District"
+  },
+  "gender": "Female",
+  "education": "Bachelor's Degree (Formal Higher Education)",
+  "job": "Resident Physician",
+  "occupation": "Zhengzhou Central Hospital",
+  "workplace": {
+    "province": "Henan Province",
+    "city": "Zhengzhou City",
+    "district": "Zhongyuan District",
+    "street_name": "Jianshe West Road",
+    "street_number": "Number One"
+  },
+  "belief": "Not believing in religion",
+  "salary": 120000.0,
+  "body": {
+    "height": 163,
+    "weight": 50.0,
+    "BMI": 18.8
+  },
+  "family": "Unmarried",
+  "personality": {
+    "mbti": "ISFJ",
+    "traits": [
+      "Kindness",
+      "Social Responsibility Orientation",
+      "Personal Growth Orientation"
+    ]
+  },
+  "hobbies": [
+    "city walk",
+    "Reading books/newspapers/magazines",
+    "Listen to European classical music",
+    "Badminton",
+    "Pottery Making (Hand Modeling)"
+  ],
+  "favorite_foods": [
+    "Hulatang",
+    "Stewed Noodles",
+    "Sweet and Sour Pork Tenderloin",
+    "Fruit Salad"
+  ],
+  "memory_date": [
+    "2019-07-01: Officially became a doctor and joined Zhengzhou Central Hospital."
+  ],
+  "aim": [
+    "Obtain the qualification of attending physician within three years.",
+    "Develop the habit of exercising regularly at least three times a week within two years.",
+    "Learn to create basic pottery pieces within one year."
+  ],
+  "healthy_desc": "The overall personal health condition is good, with a subjective feeling of being relatively healthy. There is currently no documented history of chronic diseases or long-term health issues. A regular exercise routine is maintained, with physical activity several times a week, particularly enjoying morning runs. Personal care habits are good, with attention paid to daily routines and a balanced diet. The frequency of medical visits is low, relying primarily on regular health check-ups and self-health management.",
+  "lifestyle_desc": "Daily routines are regular, with leisure activities balanced between indoor and outdoor pursuits. Reading books and newspapers, listening to music at home, and browsing the internet for information are daily habits, with the internet being the primary source of information. Physical exercise is undertaken several times a week, with a particular fondness for outdoor activities such as morning runs and hiking. Social activities occur at a moderate frequency, with gatherings with friends taking place once or twice a month. Occasionally, cultural events or live sports matches are attended. Overall, the lifestyle leans toward tranquility, emphasizing self-improvement and relaxation, with a preference for seeking peace in nature. Over the past year, there have been no overnight stays due to vacations or family visits, and the number of flights taken is zero.",
+  "economic_desc": "Personal financial situation is stable, with income exceeding expenses over the past year and no debt or overdrafts. Annual income is approximately 120,000 yuan. Currently, there is no real estate under my name, but I own a family car. Investment activities are relatively conservative, primarily focused on fund investments, with no involvement in other investment areas such as stocks, bonds, futures, warrants, or property speculation. Spending habits lean toward rationality, emphasizing financial security and long-term accumulation.",
+  "work_desc": "Currently employed at a state-owned public institution—Zhengzhou Central Hospital—as a resident physician, classified as a general professional technical staff without any administrative role. The nature of the work is being employed by others, with a fixed employer, working approximately 40 hours per week and holding no secondary job. The work schedule follows a rotating shift system, with a one-way commute time of about 10 minutes. The job frequently involves intensive mental labor, while heavy physical labor is minimal. Although the job is stable and aligns with my professional background, I am somewhat dissatisfied with the current work situation, possibly due to work-related stress or higher expectations for career development.",
+  "experience_desc": "Yu Xiaowen was born in Luoyang, Henan. After completing her primary and secondary education locally, she was admitted to a medical school outside the province to pursue a bachelor's degree in clinical medicine. In 2019, she graduated from university, successfully passed the medical licensing examination, and joined Zhengzhou Central Hospital as a resident physician, marking the beginning of her medical career. In the same year, she moved her household registration to Zhengzhou and rented an apartment in Jinshui District. Since entering the medical profession, she has diligently studied and actively participated in hospital work, gradually growing from a novice doctor to a more experienced practitioner. To this day, she remains unmarried, living independently in Zhengzhou, and dedicating most of her energy to career development and cultivating personal interests.",
+  "description": "Yu Xiaowen, a 24-year-old female of Han ethnicity, was born in Luoyang, Henan Province, and currently resides in Zhengzhou, where she works as a resident physician at Zhengzhou Central Hospital. She holds a bachelor's degree and is a professional technical personnel dedicated to medical services. Standing at 163 cm tall and weighing 50 kg, she has a well-proportioned figure and is in good health. She is unmarried, lives independently, and enjoys stable financial conditions with an annual income of approximately 120,000 yuan. She has a habit of investing in funds, owns a car, but does not yet possess real estate. Her MBTI personality type is ISFJ (Defender), characterized by a gentle, attentive, and giving nature, with values leaning toward kindness, social responsibility, and personal growth. She values a structured lifestyle and enjoys hobbies such as running, reading, listening to music, pottery, and collecting zodiac commemorative coins. She has a fondness for local Henan cuisine like spicy soup and braised noodles. In her daily life, she reads and surfs the internet every day, exercises and engages in outdoor activities weekly, and meets with friends and family monthly. A significant memory for her is officially becoming a doctor in 2019. Her future goals include obtaining the title of attending physician, maintaining a regular exercise routine, and mastering pottery skills. As a doctor, she is diligent in her work but faces mental stress, with a desire to improve her current situation. Her life journey has taken her from Luoyang to Zhengzhou, transitioning from a student to a professional physician. She is currently committed to deepening her expertise in the medical field while building a rich personal life.",
+  "relation": [
+    [
+      {
+        "name": "Yu Jianguo",
+        "relation": "Father",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 56,
+        "birth_date": "1968-05-14",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Luoyang City",
+          "district": "Xigong District",
+          "street_name": "Kaisheng Road",
+          "street_number": "42"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Luoyang City"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Moderately prosperous",
+        "occupation": "Middle school teacher",
+        "organization": "Luoyang No.1 Senior High School",
+        "nickname": "Lao Yu",
+        "relation_description": "Yu Xiaowen's father was born in Luoyang and worked as a mathematics teacher at Luoyang No. 1 Senior High School before retiring. The father-daughter relationship is close, and Yu Xiaowen's rigor and sense of responsibility are largely influenced by her father. After retirement, her father lives with her mother in their old house in Luoyang. Yu Xiaowen contacts them via video calls two to three times a month to share updates about her work and life. During long holidays such as the Spring Festival and National Day, she returns to Luoyang to reunite with her parents. During these visits, her father often shows concern for her career development, and they spend time together taking walks and playing chess. Although her father lives in Luoyang, he frequently forwards health and wellness articles to his daughter via WeChat."
+      },
+      {
+        "name": "Li Xiuying",
+        "relation": "Mother",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 54,
+        "birth_date": "1970-09-23",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Luoyang City",
+          "district": "Xigong District",
+          "street_name": "Triumph Road",
+          "street_number": "42"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Kaifeng City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Retired Accountant",
+        "organization": "Former Luoyang Department Store Company",
+        "nickname": "Mom",
+        "relation_description": "Yu Xiaowen's mother, originally from Kaifeng, worked as an accountant at the Luoyang Department Store before retiring. The bond between mother and daughter is deep, with the mother being warm-hearted and serving as the emotional anchor of the family. After retirement, she lives with her husband, Yu Jianguo, in Luoyang, dedicating most of her time to taking care of the household and tending to their small garden. She is deeply concerned about her daughter's daily life in Zhengzhou, sending messages almost every day in the family WeChat group and having at least one long video call with her daughter each week, discussing everything from work stress to dietary health. Skilled in cooking, she prepares Yu Xiaowen's favorite dishes like spicy soup and stewed noodles whenever her daughter visits home, and she also tries to teach her some home-style cooking and pastry-making techniques."
+      },
+      {
+        "name": "Yu Xiaofeng",
+        "relation": "Brother",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 30,
+        "birth_date": "1994-03-11",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "South Road of Science and Technology Park",
+          "street_number": "Apartments near Tencent Building"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Luoyang City"
+        },
+        "personality": "ENTP",
+        "economic_level": "Middle class",
+        "occupation": "Senior Software Engineer",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "Brother Feng",
+        "relation_description": "Yu Xiaowen's elder brother is three years older than her. He studied computer science in university and moved to Shenzhen after graduation, where he now works as a senior software engineer at Tencent. The siblings grew up together in Luoyang during their childhood and have a harmonious relationship, though they see each other less frequently in adulthood due to geographical distance. The brother is outgoing and quick-witted, complementing his sister's calm and meticulous nature. They mainly stay in touch through WeChat, chatting casually once or twice a week on average, sharing stories about their respective cities, interesting work anecdotes, or venting about life's pressures. The brother serves as Yu Xiaowen's primary window into the latest trends in internet technology and also offers advice when she faces important decisions. Every Spring Festival is a fixed reunion time for the siblings at their parents' home in Luoyang, where they often play badminton together or accompany their parents on city walks."
+      }
+    ],
+    [
+      {
+        "name": "Zhang Jing",
+        "relation": "Bestie",
+        "social circle": "Close Friends Circle",
+        "gender": "Female",
+        "age": 25,
+        "birth_date": "1998-05-14",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Guancheng Hui District",
+          "street_name": "Hanghai East Road",
+          "street_number": "No. 203"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Luoyang City",
+          "district": "Xigong District"
+        },
+        "personality": "ENFP",
+        "economic_level": "Moderately prosperous",
+        "occupation": "Primary School Chinese Language Teacher",
+        "organization": "Zhengzhou Guancheng Hui Ethnic District Experimental Primary School",
+        "nickname": "Quietly",
+        "relation_description": "Zhang Jing is Yu Xiaowen's childhood playmate. They attended the same school in the Xigong District of Luoyang from elementary school through high school and are each other's closest and most understanding friends. Although they were separated during their university years, they maintained close contact. After graduating from teacher's college, Zhang Jing chose to return to Zhengzhou for work, living in the same city as Yu Xiaowen. Their interactions are relaxed and casual, often connecting over sharing daily life details, venting about work stress, or planning visits to explore new food spots. When they meet, they typically go shopping, watch movies, try out newly opened restaurants, or cook together, watch shows, and chat at Yu Xiaowen's apartment. Currently, both are in Zhengzhou and stay in very frequent contact, chatting almost daily on WeChat and meeting up once a week or every two weeks. Together with another close friend, Wang Lina, they form a solid \"childhood trio,\" often gathering as a group of three or chatting in group chats."
+      },
+      {
+        "name": "Wang Lina",
+        "relation": "Bestie",
+        "social circle": "Post to Moments",
+        "gender": "Female",
+        "age": 25,
+        "birth_date": "1998-08-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHenan Province",
+          "city": "Luoyang City",
+          "district": "Xigong District"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Internet Product Manager",
+        "organization": "A well-known internet company in Shenzhen",
+        "nickname": "Nana",
+        "relation_description": "Wang Lina is a childhood friend shared by Yu Xiaowen and Zhang Jing, and the three of them grew up together. After graduating from high school, Wang Lina was admitted to a key university in southern China to study computer-related majors. Upon graduation, she entered the internet industry in Shenzhen to pursue her career. She is decisive and assertive, serving as the \"decision-maker\" among the three. Although separated from Yu Xiaowen and Zhang Jing by distance, their friendship has not faded due to the separation. Their communication often stems from sharing professional insights, discussing life plans, or seeking advice from each other when facing significant choices. Due to the long distance, they meet less frequently, usually gathering during the Spring Festival when they return to their hometown in Luoyang, or arranging trips to a city during annual leave. On a regular basis, they stay in touch mainly through WeChat group chats and video calls, with a frequency of about once a week. Wang Lina also maintains separate contact with Zhang Jing, forming a close emotional support network spanning the north and south among the three."
+      }
+    ],
+    [
+      {
+        "name": "Liu Yang",
+        "relation": "High school classmates",
+        "social circle": "High School Classmates Circle",
+        "gender": "Male",
+        "age": 25,
+        "birth_date": "1998-05-17",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Luoyang City",
+          "district": "Xigong District"
+        },
+        "personality": "ENTP",
+        "economic_level": "Middle class",
+        "occupation": "Software Engineer",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "Yangyang",
+        "relation_description": "Liu Yang is a high school classmate of Yu Xiaowen, and they met while studying at Luoyang No. 1 High School. During high school, Liu Yang was an active member of the class, often organizing class activities. After graduating from high school, he was admitted to the Computer Science program at South China University of Technology and later entered the internet industry in Shenzhen after graduation. Although they live in different cities, the two stay in touch through their high school classmate WeChat group, occasionally sharing updates about their lives or industry gossip in the group. Every year during the Spring Festival when they return to their hometown in Luoyang, if timing permits, they gather with a few other high school classmates who are also in Luoyang for a small get-together, sharing a meal and catching up. On a daily basis, they mainly interact through WeChat Moments, liking or commenting on each other's posts, with a frequency of about once per quarter."
+      },
+      {
+        "name": "Chen Siyu",
+        "relation": "High school classmates",
+        "social circle": "High School Classmates Circle",
+        "gender": "Female",
+        "age": 24,
+        "birth_date": "1997-08-03",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Luoyang City",
+          "district": "Jianxi District",
+          "street_name": "Nanchang Road",
+          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 56"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Luoyang City",
+          "district": "Jianxi District"
+        },
+        "personality": "ENFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "High School Chinese Language Teacher",
+        "organization": "Luoyang Experimental Senior High School",
+        "nickname": "Sisi",
+        "relation_description": "Chen Siyu was one of Yu Xiaowen's closest classmates during high school, and the two shared a desk for a year. After graduating from high school, Chen Siyu was admitted to the Chinese Language and Literature program at Henan Normal University. Upon completing her studies, she returned to her hometown, Luoyang, and became a high school Chinese teacher. She still lives in Luoyang and maintains a relatively close connection with Yu Xiaowen. Both are core members of their high school classmates' circle, and Chen Siyu often organizes local gatherings for classmates in Luoyang. They talk on the phone or via video once or twice a month, discussing work, life, and relationships. Whenever Yu Xiaowen returns to Luoyang to visit family, she always meets up with Chen Siyu to go shopping, have coffee, or reminisce near their old high school campus. Chen Siyu has an outgoing and warm personality, cares deeply about Yu Xiaowen's life in Zhengzhou, and often encourages her to pursue her goals."
+      }
+    ],
+    [
+      {
+        "name": "Zhao Ming",
+        "relation": "University classmate",
+        "social circle": "University Classmate Circle",
+        "gender": "Male",
+        "age": 25,
+        "birth_date": "1998-08-15",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Technology Park Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nHenan Province",
+          "city": "Zhengzhou City"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Neurosurgery Resident",
+        "organization": "Shenzhen People's Hospital",
+        "nickname": "Brother Ming",
+        "relation_description": "Zhao Ming is a university classmate of Yu Xiaowen. They met while studying in the Clinical Medicine program at the medical school and became familiar through shared study groups and exam preparation experiences. After graduation, Zhao Ming chose to pursue his career in Shenzhen in the south, where he currently works as a neurosurgery resident. Although they live in different cities, they stay in touch via WeChat, sharing challenging cases from work and insights into their professional development, occasionally venting about work-related stress. They meet annually at university class reunions, typically around once a year, where they dine together, reminisce about their campus days, and exchange stories about life in their respective cities."
+      },
+      {
+        "name": "Sun Yue",
+        "relation": "University classmates",
+        "social circle": "University Classmate Circle",
+        "gender": "Female",
+        "age": 24,
+        "birth_date": "1997-05-22",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Erqi District",
+          "street_name": "University Road",
+          "street_number": "32"
+        },
+        "birth_place": {
+          "province": "Shandong Province",
+          "city": "Qingdao City"
+        },
+        "personality": "ENFP",
+        "economic_level": "Well-off",
+        "occupation": "Pediatric Resident",
+        "organization": "Henan Children's Hospital",
+        "nickname": "Yueyue",
+        "relation_description": "Sun Yue is Yu Xiaowen's college roommate and close friend, having built a deep friendship over their five years of university life. Sun Yue is cheerful and lively, often serving as the life of the party among their circle of friends. After graduation, she chose to stay in Zhengzhou and currently works at the Henan Provincial Children's Hospital. Since they live in the same city, the two keep in touch quite frequently, meeting for meals or going on city walks about once every two weeks, and sometimes playing badminton together on weekends. They share daily life anecdotes, interesting stories from work, and encourage each other to achieve their career goals. Sun Yue is also acquainted with Zhao Ming and Zhou Haoran, occasionally meeting them at small local gatherings of former classmates."
+      },
+      {
+        "name": "Zhou Haoran",
+        "relation": "University classmate",
+        "social circle": "University Classmate Circle",
+        "gender": "Male",
+        "age": 26,
+        "birth_date": "1996-03-10",
+        "home_address": {
+          "province": "Beijing City",
+          "city": "Beijing",
+          "district": "Haidian District",
+          "street_name": "Zhongguancun Street",
+          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 59"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City"
+        },
+        "personality": "INTP",
+        "economic_level": "Middle class",
+        "occupation": "Medical Researcher",
+        "organization": "National Center for Cardiovascular Diseases",
+        "nickname": "Haoran",
+        "relation_description": "Zhou Haoran is a university classmate of Yu Xiaowen, and the two became acquainted through their shared interest in medical research. Zhou Haoran excelled academically and chose to pursue further studies after graduation, eventually joining the National Center for Cardiovascular Diseases to engage in research work. He is currently based in Beijing, leading a fast-paced life focused on scientific research. His communication with Yu Xiaowen is mostly conducted online, primarily within the professional domain, such as sharing the latest medical literature or discussing the potential integration of clinical practice and research. They meet infrequently, usually at national medical academic conferences or large annual gatherings organized by university classmates, with a frequency of about one to two times per year. He also maintains contact with Zhao Ming and Sun Yue as fellow classmates."
+      }
+    ],
+    [
+      {
+        "name": "Li Wei",
+        "relation": "Mentor Teacher",
+        "social_circle": "Work Circle",
+        "gender": "Male",
+        "age": 38,
+        "birth_date": "1986-05-17",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Zhongyuan District",
+          "street_name": "Gongren Road",
+          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 32"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Kaifeng City"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Middle class",
+        "occupation": "Attending Physician",
+        "organization": "Zhengzhou Central Hospital",
+        "nickname": "Teacher Li",
+        "relation_description": "Li Wei was designated as Yu Xiaowen's mentor after she joined Zhengzhou Central Hospital, and they first met in July 2019. Li Wei is meticulous and responsible, providing Yu Xiaowen with systematic guidance in clinical skills and medical record documentation. They work in the same medical team and have frequent daily interactions. Li Wei often holds brief case discussions with Yu Xiaowen and other junior doctors after ward rounds. Currently, both still work at the same hospital, primarily communicating through workplace guidance and WeChat discussions on case-related issues, with interactions occurring several times a week. Occasionally, they meet and exchange ideas during departmental gatherings or hospital-organized training sessions."
+      },
+      {
+        "name": "Wang Fang",
+        "relation": "Colleague from the same department",
+        "social_circle": "Work Circle",
+        "gender": "Female",
+        "age": 27,
+        "birth_date": "1996-08-23",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Erqi District",
+          "street_name": "University Road",
+          "street_number": "15th"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Anyang City"
+        },
+        "personality": "ENFP",
+        "economic_level": "Moderately prosperous",
+        "occupation": "Resident Physician",
+        "organization": "Zhengzhou Central Hospital",
+        "nickname": "Fangfang",
+        "relation_description": "Wang Fang is a resident physician who joined the hospital in the same year as Yu Xiaowen. The two met during pre-job training and became close friends due to their similar ages and overlapping rotations in various departments. Wang Fang is cheerful and enthusiastic, making her an active presence in the department. They often work night shifts together, sharing snacks and venting about work stress during breaks, and occasionally meet for simple meals near the hospital after work. Wang Fang knows Yu Xiaowen enjoys pottery and once gifted her a handmade ceramic mug. Currently, both live and work in the same city, maintaining their friendship through daily chats on WeChat and meeting offline once or twice a week for activities like dining out or visiting bookstores. Wang Fang is one of Yu Xiaowen’s closest friends in her professional circle."
+      },
+      {
+        "name": "Liu Qiang",
+        "relation": "Department colleague",
+        "social_circle": "Work Circle",
+        "gender": "Male",
+        "age": 31,
+        "birth_date": "1992-11-05",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Huiji District",
+          "street_name": "Kaiyuan Road",
+          "street_number": "Number 8"
+        },
+        "birth_place": {
+          "province": "Shandong Province",
+          "city": "Jinan City"
+        },
+        "personality": "INTP",
+        "economic_level": "Moderate prosperity",
+        "occupation": "Resident Physician",
+        "organization": "Zhengzhou Central Hospital",
+        "nickname": "Brother Qiang",
+        "relation_description": "Liu Qiang is a colleague who joined the company a few years earlier than Yu Xiaowen and has more extensive clinical experience. He is introverted but meticulous in his thinking, excelling in the analysis of complex cases. Yu Xiaowen sometimes consults him when dealing with complicated patients. Liu Qiang also maintains a good relationship with Teacher Li Wei, and the three of them once collaborated on a clinical research project. In his spare time, he enjoys delving into medical literature. Although he and Yu Xiaowen do not communicate frequently, they hold mutual respect for each other. Currently, both work in the same department and meet through work handovers and departmental meetings. They have minimal private contact and primarily communicate about work matters via the hospital's internal communication software, with a frequency of several times per week."
+      },
+      {
+        "name": "Zhang Lei",
+        "relation": "Department Director",
+        "social_circle": "Work Circle",
+        "gender": "Male",
+        "age": 48,
+        "birth_date": "1975-03-30",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Zhengdong New District",
+          "street_name": "Business Outer Ring Road",
+          "street_number": "20th"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Affluent",
+        "occupation": "Department Head, Chief Physician",
+        "organization": "Zhengzhou Central Hospital",
+        "nickname": "Director Zhang",
+        "relation_description": "Zhang Lei is the director of Yu Xiaowen's department and a senior expert in the hospital. He is decisive in his actions and maintains strict standards for departmental management and medical quality. Yu Xiaowen primarily interacts with him through departmental meetings, grand ward rounds, and annual evaluations. Director Zhang appreciates diligent and hardworking young people and has taken note of Yu Xiaowen's conscientious attitude, having praised her medical record writing during a departmental meeting. Their relationship is a typical superior-subordinate work dynamic. Currently, both work in the same institution, and their communication mainly occurs through formal work settings and the hospital's OA system. Director Zhang occasionally learns about the progress of young doctors like Yu Xiaowen through Li Wei."
+      },
+      {
+        "name": "Wu Min",
+        "relation": "Head Nurse",
+        "social_circle": "Work Circle",
+        "gender": "Female",
+        "age": 42,
+        "birth_date": "1981-09-14",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Guancheng Hui District",
+          "street_name": "Mall Road",
+          "street_number": "25th"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Middle class",
+        "occupation": "Head Nurse",
+        "organization": "Zhengzhou Central Hospital",
+        "nickname": "Sister Min",
+        "relation_description": "Wu Min is the head nurse of the department, responsible for coordinating and managing the nursing team. She is efficient and empathetic, serving as a vital bridge between doctors and nurses. When Yu Xiaowen first joined, Wu Min provided her with a lot of assistance in coordinating medical order execution and patient care handovers. They work together seamlessly, and Wu Min sometimes reminds Yu Xiaowen of nursing details that are easily overlooked. Wang Fang also has a good relationship with Wu Min, and the three of them occasionally engage in brief chats at the nurses' station. Currently, Yu Xiaowen and Wu Min work together in the same department, primarily communicating about patient conditions during daily morning shift handovers and ward rounds. They have a high frequency of interaction and share a mutually supportive working partnership."
+      }
+    ],
+    [
+      {
+        "name": "Lin Wei",
+        "relation": "Badminton friend",
+        "social circle": "Badminton Circle",
+        "gender": "Female",
+        "age": 26,
+        "birth_date": "1998-05-14",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Zhongyuan District",
+          "street_name": "Gongren Road",
+          "street_number": "32"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Kaifeng City"
+        },
+        "personality": "ESFP",
+        "economic_level": "Moderately prosperous",
+        "occupation": "Primary School Physical Education Teacher",
+        "organization": "Zhengzhou Zhongyuan District Experimental Primary School",
+        "nickname": "Weiwei",
+        "relation_description": "Lin Wei is a badminton partner Yu Xiaowen met at a badminton court near her workplace. The two became regular partners due to their similar skill levels and compatible personalities, and they arrange to play every Wednesday and Saturday evening. Lin Wei is cheerful and lively, always good at creating a lively atmosphere. After playing, they often go to nearby night markets for late-night snacks, chatting about work and life. Both living in Zhengzhou, aside from playing badminton, they occasionally go shopping or participate in outdoor activities together. They are each other's important sports partners and leisure friends in Zhengzhou."
+      },
+      {
+        "name": "Xu Tao",
+        "relation": "Badminton friend",
+        "social circle": "Badminton circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1996-08-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Technology Park Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Affluent",
+        "occupation": "Algorithm Engineer",
+        "organization": "An internet technology company in Shenzhen",
+        "nickname": "Brother Tao",
+        "relation_description": "Xu Tao is another high-level badminton player that Yu Xiaowen and Lin Wei met at the badminton hall. He is skilled in all aspects of the game and often partners with or competes against them in doubles matches. A native of Wuhan, Xu Tao moved to Shenzhen for work after graduating from university and now works as a busy algorithm engineer. He returns to Henan several times a year for business trips or to visit family, and each time he makes sure to reach out to Lin Wei and Yu Xiaowen to arrange badminton sessions and gatherings. On a daily basis, they stay connected through the WeChat group \"Badminton Trio,\" where they share videos of their games, tournament updates, and interesting life stories. Xu Tao also occasionally shares tech-related news and insights from Shenzhen in the group. Despite living in different cities, their shared passion for sports has helped them maintain a stable and relaxed friendship."
+      }
+    ],
+    [
+      {
+        "name": "Su Ya",
+        "relation": "Ceramics Class Classmates",
+        "social circle": "Pottery Enthusiasts Circle",
+        "gender": "Female",
+        "age": 26,
+        "birth_date": "1998-05-14",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Erqi District",
+          "street_name": "University Road",
+          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 32"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Kaifeng City"
+        },
+        "personality": "ENFP",
+        "economic_level": "Medium",
+        "occupation": "Primary School Art Teacher",
+        "organization": "Zhengzhou Erqi District Experimental Primary School",
+        "nickname": "Yaya",
+        "relation_description": "Yu Xiaowen met her classmate Su Ya in a community pottery interest class at the beginning of 2022. The two became close due to their shared passion for pottery. Su Ya, with her lively and cheerful personality, often shared creative ideas in class, complementing Yu Xiaowen’s calm and steady demeanor. Their interactions are relaxed and casual, often involving discussions about pottery techniques, sharing interesting life stories, or planning visits to art exhibitions. Both currently live in Zhengzhou and usually spend time together exploring craft markets, trying out new pottery studios, or simply chatting over coffee. They now stay in touch primarily through WeChat, chatting several times a week and meeting approximately every 1–2 months to participate in pottery activities or small gatherings."
+      },
+      {
+        "name": "Zheng Guodong",
+        "relation": "Ceramics Teacher",
+        "social circle": "Pottery Enthusiasts Circle",
+        "gender": "Male",
+        "age": 45,
+        "birth_date": "1979-08-22",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Guancheng Hui District",
+          "street_name": "Shangcheng Road",
+          "street_number": "Artist Park, Building 7"
+        },
+        "birth_place": {
+          "province": "Jiangxi Province",
+          "city": "Jingdezhen City"
+        },
+        "personality": "INTP",
+        "economic_level": "Upper middle",
+        "occupation": "Independent Ceramic Artist / Ceramic Studio Director",
+        "organization": "\"Between the Earth\" Personal Pottery Studio",
+        "nickname": "Master Zheng",
+        "relation_description": "Master Zheng is the instructor of the pottery interest class that Yu Xiaowen attends and also the founder of the pottery studio. Born in Jingdezhen, the \"Porcelain Capital,\" he is highly skilled yet introverted, dedicating himself to creation and teaching. Yu Xiaowen admires his profound understanding of pottery and patient guidance. Their relationship is primarily that of teacher and student, with interactions centered around discussions on pottery techniques and critiques of works. They communicate mainly due to class schedules, issues with firing pottery pieces, or studio activities. Master Zheng is acquainted with several students, including Yu Xiaowen and Su Ya, and occasionally organizes small-scale work exhibitions at the studio. Currently, both are in Zhengzhou, maintaining a stable but infrequent connection. Communication is primarily through the class WeChat group, with in-person meetings occurring every 1–2 weeks during classes, and occasional private consultations on professional matters."
+      }
+    ],
+    [
+      {
+        "name": "Song Yumei",
+        "relation": "Landlord",
+        "social circle": "Life Service Circle",
+        "gender": "Female",
+        "age": 58,
+        "birth_date": "1966-08-15",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Jinshui District",
+          "street_name": "Jingsan Road",
+          "street_number": "No. 89"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Zhongyuan District"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Affluent",
+        "occupation": "Retired teacher",
+        "organization": "Zhengzhou Jinshui District Experimental Primary School (Retired)",
+        "nickname": "Aunt Song",
+        "relation_description": "Aunt Song was Yu Xiaowen's landlord when she rented an apartment in Zhengzhou. The two met in 2019, when Yu Xiaowen had just started working at the hospital. Aunt Song, a warm-hearted and kind retired teacher, rented her small apartment on Jingsan Road in the Jinshui District to Yu Xiaowen. They handled rent payments through WeChat transfers each month, and occasionally, Aunt Song would come by to check on the apartment or bring some homemade snacks. Yu Xiaowen was often busy with work, and Aunt Song was understanding, helping with minor tasks like contacting maintenance for water or electricity repairs. Although they lived in the same city, they didn’t meet frequently—only about once every three months, mainly to handle rental matters or exchange simple greetings. Aunt Song saw Yu Xiaowen as a young person striving on her own in Zhengzhou and often offered her care and support in daily life."
+      }
+    ],
+    [
+      {
+        "name": "Wang Mingyuan",
+        "relation": "Financial Advisor",
+        "social circle": "Financial Management Circle",
+        "gender": "Male",
+        "age": 35,
+        "birth_date": "1989-05-17",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Zhengdong New District",
+          "street_name": "Business Outer Ring Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Senior Wealth Manager",
+        "organization": "China Merchants Bank Zhengzhou Branch Private Banking Department",
+        "nickname": "Manager Wang",
+        "relation_description": "Yu Xiaowen met Wang Mingyuan through the online wealth management service of the bank's app, where he served as her assigned dedicated financial advisor. They primarily communicated via WeChat and phone calls. Wang Mingyuan regularly sent market analysis reports and provided fund allocation suggestions based on Yu Xiaowen’s risk preference (conservative) and professional characteristics (stable income as a doctor but irregular working hours). They typically connected once or twice a month, often during periods of significant market fluctuations or when Yu Xiaowen had idle funds to plan for. Since both were based in Zhengzhou, they occasionally met at the café downstairs from the bank for annual financial reviews. During these meetings, they mainly discussed portfolio performance and future planning, with Wang Mingyuan also sharing some steady wealth growth strategies. Beyond their professional relationship, Wang Mingyuan knew Yu Xiaowen was a doctor and sometimes consulted her on simple health-related questions."
+      }
+    ],
+    [
+      {
+        "name": "Chen Mingyuan",
+        "relation": "Dentist",
+        "social circle": "Medical circle",
+        "gender": "Male",
+        "age": 38,
+        "birth_date": "1987-05-14",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City",
+          "district": "Zhongyuan District",
+          "street_name": "Tongbai Road",
+          "street_number": "Courtyard No. 23"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nShandong Province",
+          "city": "Qingdao City"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Middle class",
+        "occupation": "Attending Physician in Dentistry",
+        "organization": "Zhengzhou Central Hospital Department of Stomatology",
+        "nickname": "Dr. Chen",
+        "relation_description": "Chen Mingyuan is a colleague of Yu Xiaowen in the Stomatology Department of Zhengzhou Central Hospital. The two met through their work interactions. When Yu Xiaowen rotated to the Stomatology Department for training, Dr. Chen, as one of her mentors, provided her with extensive clinical guidance on the relationship between oral diseases and overall health. Their interactions are largely professional, with conversations often centered around case studies and academic developments. Currently, both work at the same hospital, but due to different departments, they do not communicate frequently on a daily basis. Their interactions mainly occur through the hospital’s internal communication software or brief encounters in the cafeteria. On average, they meet once or twice a month for cross-departmental consultations or hospital-wide events. During these meetings, they typically discuss complex cases or the latest information from medical conferences."
+      }
+    ],
+    [
+      {
+        "name": "Li Yaqin",
+        "relation": "Cousin",
+        "social_circle": "Relatives Circle",
+        "gender": "Female",
+        "age": 30,
+        "birth_date": "1994-05-17",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District",
+          "street_name": "Wensan Road",
+          "street_number": "Number 456"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Luoyang City"
+        },
+        "personality": "ENFJ",
+        "economic_level": "Middle class",
+        "occupation": "Senior Product Manager",
+        "organization": "Alibaba Group",
+        "nickname": "Sister Qin",
+        "relation_description": "Li Yaqin is the daughter of Yu Xiaowen's uncle, and the two grew up together in Luoyang since childhood, sharing a close bond. During Xiaowen's university years, her cousin had already moved to Hangzhou for career opportunities and settled there. They mainly keep in touch through WeChat video calls, averaging one or two conversations per month, sharing updates about work, daily life, and family matters. When Xiaowen travels to Hangzhou for business, she meets up with her cousin to enjoy local Hangzhou cuisine and stroll around West Lake. Similarly, when her cousin returns to Henan to visit relatives, she makes a special trip to Zhengzhou to see Xiaowen. Despite living in different cities, their blood ties and shared childhood memories have kept their warm familial connection alive."
+      }
+    ],
+    [
+      {
+        "name": "Zhao Xiulan",
+        "relation": "Mother's close friend",
+        "social_circle": "Elder Circle",
+        "gender": "Female",
+        "age": 58,
+        "birth_date": "1967-03-15",
+        "home_address": {
+          "province": "Henan Province",
+          "city": "Luoyang City",
+          "district": "Xigong District",
+          "street_name": "Triumph Road",
+          "street_number": "Number 42"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Luoyang City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Retired primary school teacher",
+        "organization": "Luoyang Xigong District Experimental Primary School (Retired)",
+        "nickname": "Aunt Zhao",
+        "relation_description": "Zhao Xiulan is a long-time close friend of Yu Xiaowen's mother, having been colleagues when they were young. Yu Xiaowen has addressed her as \"Aunt Zhao\" since childhood. Aunt Zhao has witnessed Xiaowen's growth—from her elementary school days in Luoyang, to studying at a university in another province, and eventually returning to work in Zhengzhou. Whenever Xiaowen visits her parents in her hometown of Luoyang, she makes it a point to stop by Aunt Zhao's home if time permits, catching up on each other's lives. Aunt Zhao is warm-hearted and always shows concern for Xiaowen's career and personal life, often bringing her homemade Luoyang specialties. Now living in Zhengzhou and Luoyang respectively, the two mainly stay in touch through WeChat video calls and phone conversations, with a frequency of about once or twice a month. During holidays, Xiaowen sends her blessings and greetings."
+      }
+    ]
+  ]
+}

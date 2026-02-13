@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Qunying Residential Community",
+    "location": "113.646141,34.790098",
+    "formatted_address": "Jinshui District, Zhengzhou City, Henan Province, Qunying Road Street[]",
+    "city": "Zhengzhou City",
+    "district": "Jinshui District",
+    "streetName": "Street Qunying Road",
+    "streetNumber": [],
+    "description": "Yu Xiaowen's permanent rental address, located near Jingsan Road in Jinshui District, serves as the central place for her daily living and daily life."
+  },
+  {
+    "name": "Zhengzhou Central Hospital, a Grade A Tertiary Hospital",
+    "location": "113.612442,34.750679",
+    "formatted_address": "No. 16 Tongbai North Road, Zhongyuan District, Zhengzhou City, Henan Province",
+    "city": "Zhengzhou City",
+    "district": "Zhongyuan District",
+    "streetName": "Tongbai North Road",
+    "streetNumber": "16th",
+    "description": "The location of Yu Xiaowen's workplace, Zhengzhou Central Hospital, is on Jianshe West Road in Zhongyuan District, which serves as the central hub of her daily professional activities."
+  },
+  {
+    "name": "Sesame Street Pottery Studio",
+    "location": "113.596644,34.754229",
+    "formatted_address": "Zhongyuan District 1958 Zhima Street Double Innovation Park, Building F3, 1st Floor",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The pottery interest class or studio that Yu Xiaowen often visits is her regular venue for participating in pottery learning and creative activities."
+  },
+  {
+    "name": "Zhengzhou Olympic Sports Center Badminton Hall",
+    "location": "113.530449,34.740808",
+    "formatted_address": "No. 1 Jinzun Road, Zhongyuan District, Zhengzhou City, Henan Province, China",
+    "city": "Zhengzhou City",
+    "district": "Zhongyuan District",
+    "streetName": "Jinzun Road",
+    "streetNumber": "No. 1",
+    "description": "The badminton hall that Yu Xiaowen frequents is her regular venue for weekly badminton activities, where she regularly meets with friends like Lin Wei to play."
+  },
+  {
+    "name": "Fengle Road Convenience Store",
+    "location": "113.646892,34.786052",
+    "formatted_address": "Jinshui District, Zhengzhou City, Henan Province[][]",
+    "city": "Zhengzhou City",
+    "district": "Jinshui District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The supermarket near the residential community is used for daily shopping and food procurement."
+  },
+  {
+    "name": "Tianwang Plaza Children's Playground",
+    "location": "113.639945,34.797826",
+    "formatted_address": "No. 38, Jinshui District, Zhengzhou City, Henan Province",
+    "city": "Zhengzhou City",
+    "district": "Jinshui District",
+    "streetName": [],
+    "streetNumber": "No. 38",
+    "description": "The park near the residential community is used for outdoor activities such as morning jogging and walking."
+  },
+  {
+    "name": "Tianwang Youku Gym",
+    "location": "113.641430,34.798327",
+    "formatted_address": "Northwest corner of the intersection of Dongfeng Road and Tianming Road, South Gate 1, Basement Level, Tianwang Youku.",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The gym near the residential community, used for regular exercise."
+  },
+  {
+    "name": "Qunying Road Hu La Tang Restaurant",
+    "location": "113.647021,34.790500",
+    "formatted_address": "No. 11-14, Qunying Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Restaurants near residential areas, used for daily meals or gatherings with friends"
+  }
+]

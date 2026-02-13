@@ -1,0 +1,126 @@
+Your Monthly Summary is as follows:
+
+**Monthly Overview**
+
+*   **Basic Information**: 24-year-old male, CNC machine operator (machinery manufacturing industry).
+*   **Total Activity**:
+    *   Running: 19 sessions / ~1015 minutes / ~150.5 km.
+    *   Strength Training: 3 sessions / ~90 minutes.
+    *   Other (Fishing, Stretching): 4 sessions / ~300 minutes (primarily static/low-intensity activity).
+    *   Total: 26 sessions, total duration ~1405 minutes.
+*   **Health Status Summary**:
+    *   **Core Tag**: "Steady improvement in athletic performance, but mid-month rental pressure caused a training hiatus and disrupted sleep schedule."
+    *   **Overall Health Rating**: Good. Solid foundation in fitness reserves and exercise habits, but recovery and adjustment capabilities in response to sudden life stressors need strengthening.
+*   **Key Events**:
+    *   **Fitness Milestone**: May 24th, successfully completed a 10.5km long-distance training run combined with the "Run for Love" charity event; May 30th, completed an 8km simulated test run, showing improved pace control.
+    *   **Health Metric Fluctuation**: May 12-18, entered a period of house-hunting stress after receiving the landlord's notice to sell, leading to delayed sleep and interrupted training.
+    *   **Major Life Change**: May 12th, received landlord's notice to sell, initiating urgent house-hunting and moving plans.
+*   **Goal Completion Status**:
+    *   **Monthly Goal**: Execute half-marathon training plan, maintain three weekly running sessions.
+    *   **Completion Rate**: Running plan completion rate ~86% (19 sessions total, missed 1 key session due to stress), overall activity volume met target.
+    *   **Reason for Incompletion**: May 18th, canceled scheduled high-intensity interval training due to mental fatigue from staying up late the previous night searching for housing.
+*   **Core Changes from Last Month**:
+    *   **Activity Volume**: Enhanced training structure this month, increased number of long-distance runs (over 10km), estimated running volume increased ~15% month-over-month, introduced regular strength training as a supplement.
+    *   **Health Metrics**: Weight: 70.2kg at month start, 71.0kg at month end, overall stable (±0.8kg fluctuation), but showed a brief increase during the stress period (May 16-18). Sleep stability impacted mid-month by the rental event.
+    *   **Life Rhythm**: Mid-to-late May, screen time (especially at night) increased significantly due to house-hunting, disrupting the regular schedule; effectively recovered by month-end through family reunion.
+*   **Core Focus**: This month's focus was on the stability and improvement of running pace, and how to maintain training rhythm and sleep quality amidst high-intensity work and sudden life stress.
+
+**Monthly Review**
+
+**2.1 Activity Review**
+*   **Activity Overview**:
+    *   Activity Types & Proportions: Running (73.1%), Strength Training (11.5%), Fishing/Leisure (15.4%).
+    *   Intensity Distribution (inferred from running event descriptions): ~60% duration in Z2 (moderate intensity, e.g., tempo runs, long slow distance), ~25% in Z3 (high intensity, e.g., interval runs, test runs), ~15% in Z1 (low intensity, e.g., recovery runs, walks).
+*   **Activity Statistics & Best Performances**:
+    *   **Running**:
+        *   Total Distance: ~150.5 km.
+        *   Average Pace: ~5'50"/km (estimated mix of training types).
+        *   Longest Single Distance: 12 km (May 5th).
+        *   Best Performance: Estimated 5km tempo run pace entered the 5'30" range (inferred from training descriptions and end-of-month test run progress).
+        *   Cumulative Elevation Gain: Data missing, but routes included Guangfulin Cultural Site area, with some elevation changes.
+    *   **Strength Training**: 3 sessions total, ~90 minutes total, focused on core (planks, crunches) and full-body foundational movements.
+    *   **Fishing**: 2 sessions total, ~6 hours total, low-intensity outdoor activity.
+*   **Activity Habit Preferences**:
+    *   **High-Frequency Activity Days**: Saturday (5 sessions), Monday (4 sessions).
+    *   **High-Frequency Time Slots**: Early morning (6:00-7:30, ~60%), Evening (18:00-20:00, ~40%).
+    *   **Activity Locations**: Songjiang Stadium/Guangfulin Road area (running, 15 sessions); Residential complex/Company gym (strength training, 3 sessions); Dianshan Lake etc. outdoors (fishing, 2 sessions).
+    *   **Activity Consistency**:
+        *   Longest Consecutive Active Days: 6 days (May 3rd to May 8th).
+        *   Hiatus Periods: 2 significant hiatuses. ① May 2nd (no recorded activity), Reason: Holiday rest. ② May 18th (canceled high-intensity training), Reason: Mental fatigue from staying up late house-hunting the previous night.
+
+**2.2 Health Review**
+*   **Sleep**:
+    *   Average Daily Sleep Duration: ~6.5 hours on weekdays, ~7.5 hours on weekends.
+    *   Sleep Stage Distribution: Data missing, but inferred from events like "anxiety-induced insomnia" and "listening to music to aid sleep" that deep sleep percentage likely decreased during stress period.
+    *   Schedule Stability: Wake-up time stable on weekdays (06:15-06:50), bedtime highly variable (22:30-00:10). Weekend schedule slightly later. During May 12-20, bedtime generally delayed past 23:30.
+    *   Sleep Interruptions: Events mention "anxiety-induced insomnia," inferring increased nighttime awakenings during stress period.
+*   **Physiological Metrics**:
+    *   **Weight**: 70.2kg at month start, 71.0kg at month end, monthly average ~70.8kg. Maximum fluctuation +0.9kg (May 7th, 70.8kg), related to work achievement excitement and dining out; minimum 70.2kg (May 1st). Overall slight upward trend (+0.8kg), likely main causes: occasional takeout (greasy) during stress period and family meals at month-end.
+    *   **Body Fat Percentage**: Data missing, but combined with slight weight gain and strength training frequency, inferred minimal change.
+    *   **Resting Heart Rate**: Data missing, but inferred from event correlations, likely elevated upon waking during stress period (e.g., May 12th) and after staying up late (e.g., May 19th).
+    *   **HRV**: Data missing.
+*   **Mental Health**:
+    *   **Stress**: Daily average stress showed a "low at both ends, high in the middle" pattern. High-stress period was May 12-20, sources being uncertainty from house-hunting/moving due to landlord selling and financial planning pressure.
+    *   **Mood**: Primary mood tags were "calm," "focused," "pleased." Fluctuation periods: May 12-18 showed "anxious," "frustrated"; May 7th, 24th, 27th showed peaks of "pride," "excitement," "satisfaction" due to work achievements, completing challenges, receiving recognition.
+    *   **Health Score**: Data missing, but can be inferred from event descriptions: higher at month start/end, lower mid-month due to stressful event.
+
+**2.3 Life Rhythm Review**
+*   **Sleep/Wake Habits**:
+    *   Average Daily Schedule: Weekdays bedtime ~23:20, wake-up ~06:30; Weekends bedtime ~23:00, wake-up ~07:00.
+    *   Differences: Weekends average 20 minutes later to bed, 30 minutes later to rise, ~40 minutes more total sleep than weekdays.
+    *   Disrupted Schedule Days: 8 days (bedtime after 23:30), concentrated May 12-20 and individual overtime/social days, primarily due to house-hunting stress, overtime, social activities.
+*   **Commute/Activity**:
+    *   Average Daily Non-Exercise Steps: Estimated ~5000 steps (based on job nature and commute mode). Lowest step weeks likely on training weekends (May 10, 17, 24).
+    *   Commute Mode: Personal car (inferred from profile and events). One-way distance ~8 km, average daily commute time ~40 minutes.
+    *   Business Trip/Travel: 1 instance, drove back to Nantong hometown on May 31st, impact on activity: shifted to light activity, impact on sleep: environment change but family atmosphere promoted relaxation.
+*   **Daily Life**:
+    *   Screen Time: Estimated average daily: work-related 4-5 hours, entertainment (gaming, social media, house-hunting) 2-3 hours. May 12-20, entertainment screen time (especially house-hunting, researching listings) increased significantly.
+    *   Dietary Habits: High regularity of three meals (~27 days regular). Diet structure leans traditional Chinese, balanced protein (fish, meat) and carbs. Takeout meals ~4-5 times (mainly during stress period or tired days). Primarily home-cooked meals. Estimated daily water intake 1.5-2L.
+
+**Monthly Trend Analysis**
+
+**3.1 Activity Trends**
+*   **Weekly Activity Volume Changes**:
+    *   Week 1 (1st-4th): Moderate activity volume, focused on initiating training.
+    *   Week 2 (5th-11th): Activity volume peaked, completed 12km LSD and maintained regular training; total duration stable despite interspersed professional training and social events.
+    *   Week 3 (12th-18th): Activity volume low point, total running volume decreased ~30%, key training interrupted on May 18th. Reason: Sudden rental stress caused distraction and fatigue accumulation.
+    *   Week 4 (19th-25th) & Week 5 (26th-31st): Activity volume strongly recovered and reached new highs, completed 10.5km charity run, 10km tempo run, and simulated test run, with high training quality. Reason: Stress alleviated, shared housing plan progressed, sense of purpose (successful half-marathon registration) strengthened.
+*   **Training Cycle Peaks/Lows**:
+    *   **Peak Week**: Week 4 (19th-25th), improved running pace control, completed high-quality long-distance and tempo runs, best athletic performance.
+    *   **Low Week**: Week 3 (12th-18th), training interrupted, athletic performance affected by mental fatigue.
+*   **Athletic Performance Changes**: Running pace showed better control and stability at month start and end. Week 3 performance stagnated due to unsystematic training from stress; after Week 4, with stress relief and training recovery, pace (especially in tempo and test runs) showed an improving trend.
+
+**3.2 Health Trends**
+*   **Sleep Trend**: Weeks 1 & 2 sleep regular and stable; Week 3 (12th-18th) sleep duration shortened ~0.5-1 hour, bedtime significantly delayed, deep sleep quality likely decreased; gradually recovered after Week 4, achieved complete relaxation and sleep compensation through family reunion by Week 5 weekend.
+*   **Physical Health Trend**: Weight curve highly correlated with stress/social cycles. Slight increase late Week 2 (7th-9th) due to achievement celebration, possible brief increase mid-late Week 3 (16th-18th) from stress-related eating, decreased after Week 4 with training recovery and dietary control, slight increase at month-end from family meals. Resting heart rate trend positively correlated with perceived stress.
+*   **Mental Health Trend**: Stress levels peaked in Week 3 (7/10), then gradually declined due to taking action (financial planning, exploring shared housing, gaining support). Emotional state positively correlated with activity completion and social support (family, friends, classmates).
+*   **Injury Impact**: No major injury events this month.
+
+**3.3 Life Rhythm Trends**
+*   **Sleep Schedule & Mental State**: Data shows that on days following bedtime after 23:30 (e.g., May 7th, 19th), although work might be completed due to excitement or focus, subsequent days were generally accompanied by higher fatigue, directly leading to the training interruption on May 18th.
+*   **Work/Life Rhythm Changes**: Week 3 (12th-18th) non-work life rhythm dominated by house-hunting, screen time surged, squeezing out activity recovery and learning time, forming a negative cycle of "stress -> late sleep -> fatigue -> activity interruption." After Week 4, rhythm returned to control through clarifying shared housing plan and gaining social support.
+
+**Personalized Insights**
+
+*   **Sleep ↔ Athletic Performance**: Data shows that when your bedtime is before 23:00 (e.g., May 1st, 5th, 11th), the execution rate and completion quality of the next morning's run are higher. Conversely, when staying up late due to stress (e.g., May 18th), the probability of canceling next-day high-intensity training was 100%. Your data indicates that ensuring sleep is the first line of defense in maintaining your training plan.
+*   **Business Trip/Stress ↔ Health**: This month's simulated "stress event" (rental crisis) showed that during the high-pressure week (May 12-18), even without actual business travel, your average daily sleep duration decreased ~45 minutes, bedtime delayed an average of 40 minutes, and directly led to one key training interruption. However, you effectively prevented sustained worsening of stress by using running as a pressure regulation tool (e.g., insisting on running after the May 9th evening gathering).
+*   **Activity Type ↔ Physical State**: Comparison reveals that when you run at least twice weekly combined with one strength session (e.g., Week 4), physical state and athletic performance are most balanced. Running-only training is more easily affected during stress periods, while adding strength training helps maintain basal metabolism and structural stability. Outdoor leisure activities like fishing significantly promote your mental health recovery.
+*   **Behavioral Habits ↔ Overall Health**: Your sleep schedule regularity is strongly correlated with overall sense of life control. When you adhere to early sleep/wake times and home-cooked meals (month start), all plans progress smoothly. When screen time (especially passive nighttime browsing of listings) increases abnormally, it triggers a chain reaction of late sleep, fatigue, and next-day performance decline. Furthermore, proactive socializing (e.g., meeting old classmates, communicating with family) is an effective pressure buffer for you.
+
+**Abnormal Event Summary**
+
+*   **Activity Hiatus Event**:
+    *   **Event**: High-intensity interval training interruption.
+    *   **Time**: May 18th.
+    *   **Impact**: Directly caused incomplete weekly training plan, disrupted half-marathon preparation cycle rhythm.
+    *   **Recovery Status**: You reflected promptly, restarted training the next day (May 19th) with a recovery easy run, and quickly restored training rhythm the following week by adjusting training time (avoiding heat), thorough warm-up/stretching, and progressing the shared housing plan to alleviate the stressor, culminating in a high-quality long-distance run on May 24th.
+*   **Health Metric Fluctuation Event**:
+    *   **Event**: Brief weight fluctuation and accompanying anxiety.
+    *   **Time**: May 12-18.
+    *   **Impact**: Short-term weight increase (~0.3kg), decreased sleep quality, noticeable daytime anxiety.
+    *   **Recovery Status**: You conducted financial review, sought social support (older brother, friends), channeled stress into concrete house-hunting actions, and emotionally疏导 through running and hobbies (repairing tape recorder). Weight returned to baseline and emotions stabilized after May 20th.
+*   **Life Rhythm Disruption Event**:
+    *   **Event**: Phased life rhythm disruption triggered by landlord's notice to sell.
+    *   **Time**: May 12th to 20th.
+    *   **Impact**: Delayed sleep schedule, screen time surge, entertainment/learning time squeezed, training affected.
+    *   **Recovery Measures & Effectiveness**: You took systematic countermeasures: financial planning, market research, initiating shared housing plan, communicating with family. These measures gradually took effect after May 20th, life focus returned to balance, and complete psychological recovery was achieved through family reunion at month-end.

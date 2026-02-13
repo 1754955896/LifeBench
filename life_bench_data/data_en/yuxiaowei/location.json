@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Kowloon City Plaza Shopping Mall",
+    "location": "114.192980,22.328095",
+    "formatted_address": "Hong Kong Special Administrative Region, 128 Jabbada Road, Kowloon City District",
+    "city": [],
+    "district": "Kowloon City District",
+    "streetName": "Jiabingda Road",
+    "streetNumber": "128",
+    "description": "Yu Xiaowei's permanent residential address is located in Kowloon City District, Hong Kong, which is where she lives with her family on a daily basis."
+  },
+  {
+    "name": "Wan Chai Immigration Tower",
+    "location": "114.177960,22.277046",
+    "formatted_address": "Hong Kong Special Administrative Region[] No. 7 Gloucester Road, Wan Chai District",
+    "city": [],
+    "district": "Wan Chai District",
+    "streetName": "Gloucester Road",
+    "streetNumber": "Number 7",
+    "description": "Yu Xiaowei's workplace, located in the Wan Chai District of Hong Kong, serves as her daily office as an insurance agent."
+  },
+  {
+    "name": "Kowloon Tong Government Primary School",
+    "location": "113.432965,22.230832",
+    "formatted_address": "Zhongshan City, Guangdong Province, [] Tianfu Road []",
+    "city": "Zhongshan City",
+    "district": [],
+    "streetName": "Tianfu Road",
+    "streetNumber": [],
+    "description": "The school attended by Yu Xiaowei's son is located in the Kowloon City District of Hong Kong, a place she frequently visits to drop off and pick up her child."
+  },
+  {
+    "name": "Kowloon City Baptist Church Kindergarten",
+    "location": "114.190655,22.321961",
+    "formatted_address": "Hong Kong Special Administrative Region [] 206 Argyle Street, Kowloon City District",
+    "city": [],
+    "district": "Kowloon City District",
+    "streetName": "Argyle Street",
+    "streetNumber": "No. 206",
+    "description": "The kindergarten where Yu Xiaowei's daughter attends is located in the Kowloon City District of Hong Kong, a place she frequently visits to drop off and pick up her child."
+  },
+  {
+    "name": "Changsha Bay Community Center",
+    "location": "114.163679,22.332309",
+    "formatted_address": "Hong Kong Special Administrative Region [] Sham Shui Po District Fat Tseung Street []",
+    "city": [],
+    "district": "Sham Shui Po District",
+    "streetName": "Fāxiáng Street",
+    "streetNumber": [],
+    "description": "The location where Yu Xiaowei attends the Cantonese embroidery interest class is in the Sham Shui Po District of Hong Kong, where she regularly learns the traditional Cantonese embroidery craft."
+  },
+  {
+    "name": "Granping Road Convenience Store",
+    "location": "114.191535,22.328878",
+    "formatted_address": "Hong Kong, Kowloon City, Grampian Rd, 54A Basement",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The supermarket near Kowloon City Plaza is used for daily household shopping."
+  },
+  {
+    "name": "Tan Gong Dao Fitness Center",
+    "location": "114.193576,22.319970",
+    "formatted_address": "Hong Kong Special Administrative Region [ ] Kowloon City District, Tan Gong Road [ ]",
+    "city": [],
+    "district": "Kowloon City District",
+    "streetName": "Tan Gongdao",
+    "streetNumber": [],
+    "description": "The gym near Kowloon City Plaza, used for activities such as yoga and fitness."
+  },
+  {
+    "name": "Convenience store on Lockhart Road, Wan Chai District",
+    "location": "114.175996,22.275298",
+    "formatted_address": "Hong Kong Special Administrative Region, Wan Chai District, 64 Lockhart Road",
+    "city": [],
+    "district": "Wan Chai District",
+    "streetName": "Lockhart Road",
+    "streetNumber": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 64",
+    "description": "The convenience store near the Immigration Tower at the workplace is used for purchasing snacks or daily necessities."
+  },
+  {
+    "name": "Kowloon City Baptist Church Kindergarten",
+    "location": "114.190655,22.321961",
+    "formatted_address": "Hong Kong Special Administrative Region [] 206 Argyle Street, Kowloon City District",
+    "city": [],
+    "district": "Kowloon City District",
+    "streetName": "Argyle Street",
+    "streetNumber": "No. 206",
+    "description": "Schools near Kowloon City Baptist Church Kindergarten for picking up and dropping off children."
+  },
+  {
+    "name": "Kowloon Tong Jin Cheng Road Interest Classes",
+    "location": "114.185488,22.336804",
+    "formatted_address": "Hong Kong Special Administrative Region[] Kowloon City District, Kam Shing Road[]",
+    "city": [],
+    "district": "Kowloon City District",
+    "streetName": "Jincheng Avenue",
+    "streetNumber": [],
+    "description": "Interest classes near the Changsha Bay Community Center for Cantonese embroidery learning or children's activities."
+  },
+  {
+    "name": "Kowloon City Sports Equipment Store",
+    "location": "114.196253,22.325750",
+    "formatted_address": "Hong Kong Special Administrative Region [] 9 Tak Ku Ling Road, Kowloon City District",
+    "city": [],
+    "district": "Kowloon City District",
+    "streetName": "Dagu Ling Road",
+    "streetNumber": "Number 9",
+    "description": "A sports equipment store near Kowloon City Plaza, used for purchasing marathon gear."
+  }
+]

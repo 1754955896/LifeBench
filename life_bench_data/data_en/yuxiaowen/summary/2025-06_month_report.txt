@@ -1,0 +1,113 @@
+Your Monthly Summary is as follows:
+
+**Monthly Exercise & Health Analysis Report (June 2025)**
+
+**Module 1: Monthly Overview**
+
+*   **Basic Information**: Yu Xiaowen, 24 years old (Youth), Female, Occupation: Healthcare Industry - Resident Physician (Zhengzhou Central Hospital).
+*   **Total Exercise Volume**:
+    *   Running: 2 sessions / 60 minutes / approx. 9.0 km (estimated, based on 30 minutes per session, pace 7'00"/km).
+    *   Pilates: 4 sessions / 240 minutes.
+    *   City Walk: 2 sessions / approx. 180 minutes.
+    *   Other (Moving labor, First Aid training practicals): 2 sessions / approx. 300 minutes (estimated).
+    *   **Monthly Total**: 10 exercise sessions / Total duration approx. 780 minutes (13 hours). Good exercise diversity, but regularity needs improvement.
+*   **Health Status Summary**:
+    *   **Health Score**: A composite score (0-10) based on data modeling. Estimated start-of-month value: 6.5 (affected by irregular holiday schedule, neck/shoulder strain). Estimated end-of-month value: 7.8 (benefiting from new exercise mode, settled living, and increased sense of achievement). Monthly average approx. 7.2.
+    *   **Core Tags**: "Exploring new exercise to alleviate strain", "Slight weight loss but significant life rhythm fluctuations", "Parallel progress in career growth and health management".
+    *   **Overall Health Rating**: **Good**. Stable physical function, actively introduced Pilates to address occupational strain, but sleep and exercise continuity were significantly impacted by work/life events.
+*   **Key Events**:
+    *   **Exercise Milestones**: June 8th, first Pilates experience, initiating targeted posture management and strain relief training; June 29th, successfully obtained Red Cross First Aid Certificate.
+    *   **Health Metric Fluctuations**: June 3rd, weight dropped to monthly low (49.8kg) due to night shift and high-intensity emergency work; June 25th-27th, weight consecutively dropped to monthly lowest (49.4kg), related to work stress, regular Pilates training, and dietary control.
+    *   **Major Life Changes**: June 6th-7th, processed and completed moving, relocating from Jinshui District to the hospital's youth apartment, significantly reducing commute time; June 12th, completed quarterly performance bonus financial planning and asset allocation adjustment.
+*   **Goal Completion Status**:
+    *   **Set Goals (derived from annual goals)**: ① Cultivate a regular exercise habit (≥3 times/week); ② Complete 4 Pilates trial sessions, evaluating improvement effect on neck/shoulder strain.
+    *   **Completion Rate**:
+        *   Goal ①: **40% completion**. 10 exercise sessions for the month, weekly average only 2.5 times, not meeting the 3 times/week standard. Mainly due to early-month holiday, mid-month moving, and intensive work periods causing exercise gaps.
+        *   Goal ②: **100% completion**. Completed 4 Pilates sessions on the 8th, 15th, 22nd, and 26th, confirming significant effect on alleviating neck/shoulder stiffness.
+*   **Core Changes vs. Last Month (based on profile inference)**:
+    *   **Exercise Volume**: This month introduced **Pilates** (4 sessions) as a new exercise type, **running frequency likely decreased** (inferred more frequent last month), total exercise duration **increased month-over-month** due to inclusion of first aid training.
+    *   **Health Metrics**: **Overall downward trend in weight** (start: 49.8kg → end: 49.5kg), end-of-month weight decreased by 0.3kg, a 0.6% reduction. Subjective feeling of neck/shoulder stiffness **significantly alleviated** due to Pilates.
+    *   **Life Rhythm**: **Major optimization in living environment and commute** (moved near hospital), expected to benefit long-term routine and exercise; **High concentration of work stress events** (night shift rescue, case presentation, inter-departmental consultation) led to periodic routine disruption and increased screen time.
+*   **Core Focus Points**: This month, high-frequency focus on **alleviating neck/shoulder strain caused by prolonged sitting/desk work through Pilates**, and actively exploring its integration into daily life. Simultaneously, focus on maintaining basic exercise and sleep rhythm during **high-pressure work periods**.
+
+**Module 2: Monthly Review**
+
+**2.1 Exercise Review**
+*   **Exercise Overview**:
+    *   This month engaged in 4 exercise types: Pilates (4 sessions, 40%), Running (2 sessions, 20%), City Walk (2 sessions, 20%), Other (moving/training practicals, 2 sessions, 20%).
+    *   **Exercise Intensity Zone Distribution (estimated)**: Z1 Low Intensity (Pilates, City Walk) approx. 60%, cumulative duration ~420 min; Z2 Moderate Intensity (Running, First Aid training practicals) approx. 40%, cumulative duration ~360 min; Z3 High Intensity not involved.
+*   **Statistics & Best Performance by Exercise**:
+    *   **Running**: Total distance ~9.0 km, estimated average pace 7'00"/km, single longest distance ~4.5 km, estimated average heart rate 145 bpm, estimated max heart rate 160 bpm.
+    *   **Pilates**: Total duration 240 minutes, single longest duration 60 minutes (standard session). Core focus on breath control, core activation, and neck/shoulder relaxation movements.
+    *   **City Walk**: Total duration ~180 minutes, single longest duration 120 minutes (June 21st), serving both leisure/relaxation and light activity functions.
+    *   **Other**: Moving labor (June 7th) and First Aid training practicals (June 28th-29th) served as unplanned moderate-to-high intensity physical activities, effectively supplementing this month's activity volume.
+*   **Exercise Habit Preferences**:
+    *   **High-Frequency Exercise Day**: **Sunday** (3 sessions, including Pilates, running), followed by Saturday (2 sessions, including City Walk, moving).
+    *   **High-Frequency Time Slots**: **Morning** (5:30-10:00, 50%, for morning runs, Pilates), **Afternoon** (14:00-18:00, 30%, for Pilates, City Walk), evening less frequent.
+    *   **Exercise Locations**: **Serenity Pilates Studio** (4 sessions), **Shaded paths/parks near hospital youth apartment** (running, walking, 3 sessions), **Old city district streets** (City Walk, 1 session), **Other** (moving route, training base, 2 sessions).
+    *   **Exercise Continuity**:
+        *   Longest consecutive exercise days: 2 days (June 14th-15th: City Walk + Pilates; June 28th-29th: First Aid training).
+        *   Gap periods: **3 significant gaps** occurred. ① June 1st-6th (6 days), due to holiday, return trip, night shift, and moving preparation; ② June 9th-13th (5 days), due to concentrated work pressure preparing case presentation; ③ June 17th-20th (4 days), due to work overtime and social arrangements. Main reasons for gaps: **work schedule changes, social activities, and life affairs**.
+
+**2.2 Health Review**
+*   **Sleep**:
+    *   Average daily sleep duration: **~6.8 hours on weekdays**, **~7.5 hours on weekends**. Weekend catch-up sleep is evident.
+    *   Sleep stage distribution (estimated): Based on inferred routine quality fluctuations, deep sleep ~20% (low), light sleep ~55%, REM ~25%. Deep sleep proportion significantly impaired on night shift days (e.g., June 3rd) and late-night days (e.g., June 9th).
+    *   Routine stability: Weekday bedtime fluctuates greatly (22:00 to 01:40 next day), wake-up time fluctuates greatly (05:30 to 09:45); weekend routine relatively delayed and relaxed. Stability is poor.
+    *   Sleep interruptions: Not explicitly recorded, but based on night shifts, overtime, and stress events, inferred approximately 5-7 days of poorer sleep quality with increased interruptions during the month.
+*   **Physiological Metrics**:
+    *   **Weight**: Start 49.8kg, end 49.5kg, overall decrease 0.3kg. Weekly averages: Week 1 49.9kg, Week 2 49.9kg, Week 3 50.1kg, Week 4 49.6kg. Max fluctuation: single-day low 49.4kg (June 27th), high 50.3kg (June 19th). Trend shows "holiday slight rise - mid-month plateau - late-month decline".
+    *   **Body Fat Percentage (estimated)**: Based on BMI (18.8) and weight trend, estimated start-of-month ~22.0%, end-of-month ~21.5%, change -0.5%, at lower end of healthy range.
+    *   **Resting Heart Rate (estimated)**: Daily average ~62 bpm. Weekly averages relatively stable. Highest estimated after night shifts or high-pressure days (e.g., June 4th, 10th) ~65-68 bpm, lowest on well-rested mornings (e.g., June 30th) ~58-60 bpm.
+    *   **HRV (Heart Rate Variability, estimated)**: Daily average at medium level. Expected peaks after night shift (June 4th), after deeply relaxing music night (June 27th), and after completing important tasks (June 12th, 29th); expected troughs during high-pressure work periods (June 9th-11th).
+*   **Mental Health**:
+    *   **Stress**: Estimated daily stress level medium (5/10). High-stress periods: **June 3rd** (night shift rescue), **June 9th-11th** (preparing case presentation, listening to friend's emotional troubles). Main stress sources: **work responsibility, urgent tasks, emotional sharing**.
+    *   **Mood**: Predominant mood tags: "calm", "fulfilled", "warm". Positive mood peaks during social gatherings (June 2nd, 14th), receiving professional recognition (June 4th, 12th), and after completing personal growth events (June 15th, 29th). Brief mood lows during high-pressure work periods and setbacks trying new things (June 9th, 15th pottery class).
+    *   **Health Score (constructed)**: Daily score average 7.2. Highest scores 8.5 (June 12th, 29th), due to financial and professional gains, obtaining first aid certificate; lowest scores 5.5 (June 3rd, 9th), due to late-night work, insufficient sleep, and work pressure.
+
+**2.3 Life Rhythm Review**
+*   **Routine Habits**:
+    *   Average daily bedtime/wake-up time: Weekdays ~23:20 / 07:10; Weekends ~23:00 / 08:20.
+    *   Weekday vs. Weekend difference: Bedtime difference ~20 min, wake-up time difference ~70 min, total sleep duration difference ~50 min (longer on weekends).
+    *   Routine disruption days: Approximately **8 days** with bedtime after 23:30, reasons include night shifts (June 3rd), overtime (June 5th, 9th), social gatherings (June 2nd, 18th), and exam preparation (June 11th).
+*   **Commute / Activity**:
+    *   Average daily non-exercise steps: Estimated ~5000-7000 steps. Highest weekly steps likely during moving week (week of June 7th) and training week (week of June 28th), lowest during intensive work week post-holiday.
+    *   Commute mode: Before moving, driving (10 min one-way); after moving, primarily **walking** (only 5 min to hospital), significantly increasing daily non-exercise activity.
+    *   Business trip/Travel: 1 trip, June 1st-3rd returning to Luoyang hometown. Impact on exercise: interrupted for 3 days; impact on sleep: initial improvement due to relaxation at home, severe deprivation due to return trip night shift; impact on diet: increased family meals, heavier flavors.
+*   **Daily Life**:
+    *   Screen time: Estimated daily total **7-8 hours** (work-related 5-6 hours, entertainment/leisure 1-2 hours). Highest days possibly exceeding 10 hours (e.g., June 9th preparing case materials), lowest days possibly below 5 hours (e.g., June 14th housewarming gathering).
+    *   Eating habits: Regular three meals on approx. 22 days. Diet structure primarily **balanced home-cooked meals**, preference for high-protein (sweet and sour pork), fruits/vegetables (fruit salad), but high oil/salt intake on gathering days (June 2nd, 14th, 18th). Monthly takeout approx. 4-5 times, self-prepared meals dominant. Estimated daily water intake ~1.5 liters.
+
+**Module 3: Monthly Trend Analysis**
+
+**3.1 Exercise Trends**
+*   **Weekly Exercise Volume Changes**:
+    *   **Week 1 (Jun 1-7)**: Low exercise volume (only 1 moving session), **sharp decline** month-over-month (vs. last week of May). Reasons: holiday travel, return trip night shift, moving preparation.
+    *   **Week 2 (Jun 8-14)**: Exercise volume significantly rebounded (4 sessions, incl. Pilates, City Walk, walking), **300% increase** month-over-month. Reasons: holiday ended, introduced Pilates, weekend social activities included light exercise.
+    *   **Week 3 (Jun 15-21)**: Exercise volume maintained (3 sessions, incl. Pilates, City Walk), **25% decrease** month-over-month. Reasons: work routine normalized, exercise focused on planned Pilates and leisure walks.
+    *   **Week 4 (Jun 22-30)**: Exercise volume peaked (5 sessions, incl. intensive Pilates, first aid training, running), **67% increase** month-over-month. Reasons: Pilates course conclusion, weekend all-day first aid training provided substantial practical activity, resumed morning run at month-end.
+*   **Training Cycle Peaks/Troughs**:
+    *   **Peak Week**: Week 4, most diverse in exercise frequency and types, marked by obtaining first aid certificate, strong sense of physical/mental achievement.
+    *   **Trough Week**: Week 1, exercise almost completely interrupted, most affected by sudden life rhythm changes.
+*   **Exercise Performance Changes**: Running only occurred at month start and end, lacking continuous data, but subjective feeling of "steady" during month-end morning run may indicate maintained basic aerobic capacity. Pilates performance showed clear learning curve, from initial "soreness" to "dynamic integration" by fourth session, with gradual improvement in control and body awareness.
+
+**3.2 Health Trends**
+*   **Sleep Trends**: Weekly sleep duration showed "U-shaped" change. Week 1 highly volatile due to holiday and night shift; Weeks 2-3 relatively stable but short duration (~6.5-7 hours); Week 4, despite training exertion, sleep quality likely improved due to stress release from task completion. Sleep continuity worst in Week 1 and during high-pressure work periods (parts of Weeks 2-3).
+*   **Physical Health Trends**:
+    *   **Weight**: Weekly averages showed "plateau → slight rise → decline" trend. Week 3 reached monthly peak due to social gatherings; Week 4 steadily declined to monthly low under regular Pilates, adjusted diet, and training exertion.
+    *   **Resting Heart Rate & HRV (estimated)**: Trends highly correlated with stress events. High-pressure work weeks (Weeks 2-3) showed higher resting heart rate, lower HRV; opposite trend after task completion and relaxation (end of Week 4).
+*   **Mental Health Trends**: Stress and mood curves closely linked to work achievements and social support. Mid-Week 2 to early Week 3 was peak stress and mood fluctuation period; late Week 3 (pottery insights, housewarming) to Week 4 (completing training, obtaining certificate) was peak positive mood and low stress.
+*   **Injury Impact**: No acute exercise injuries this month. However, occupational strain (neck/shoulder stiffness) as a baseline issue was explicitly noted at month start and received targeted management through Pilates training, with significant subjective improvement by month-end.
+
+**3.3 Life Rhythm Trends**
+*   **Routine & Mental State**: Data shows that on weekdays with bedtime after 23:30 (e.g., June 3rd, 9th, 18th), difficulty waking early next day, lower mental state rating, and direct cancellation of that day's exercise plan occurred. Following days with regular early sleep (e.g., June 4th, 8th, 30th), morning activity willingness and capability were stronger.
+*   **Work/Life Rhythm Changes**:
+    *   **Work Intensity Peaks**: Week 2 (case presentation preparation), early Week 3 (post-interdepartmental consultation review). Impact: squeezed exercise time, delayed bedtime, increased screen time.
+    *   **Major Life Change**: **Moving** from late Week 1 to early Week 2. Short-term impact: caused complete exercise gap, physical exertion from organizing; Long-term impact: shortened commute creates extremely favorable conditions for regular routine and exercise.
+    *   **Concentrated Social Activity Periods**: Weeks 1-2 (holidays, gatherings), mid-Week 3 (housewarming). Impact: brought positive emotions, but accompanied by relaxed dietary control and occasional late sleep.
+
+**Module 4: Personalized Insights**
+
+*   **Sleep ↔ Exercise Performance**: Your data shows that **on days following at least 7 hours of sleep and earlier bedtime (e.g., before 22:30), willingness and completion quality of morning runs or Pilates are higher** (e.g., June 16th, 30th). Conversely, **after night shifts or staying up past midnight (sleep <6 hours), not only is exercise interrupted, but next-day resting heart rate is estimated to increase by 3-5 bpm**.
+*   **Travel/Pressure ↔ Health**: **Short-term hometown return (analogous to business trip)** relaxed you, but the pattern of connecting to a night shift upon return caused acute sleep deprivation and short-term weight loss. **During high-pressure work periods (e.g., pre-case presentation)**, your coping strategy prioritized task completion, but at the cost of paused exercise, spiked screen time, and emotional tension. During this phase, weight showed plateau or fluctuation due to stress hormones and potentially irregular eating.
+*   **

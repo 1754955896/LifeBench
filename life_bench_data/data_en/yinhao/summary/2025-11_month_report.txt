@@ -1,0 +1,123 @@
+Your Monthly Summary is as follows:
+
+**Monthly Fitness & Health Report (November 2025)**
+
+**Module 1: Monthly Overview**
+*   **Basic Information**: Yin Hao, 24 years old (age group 20-25), male, occupation: Manufacturing - CNC Machine Operator.
+*   **Total Activity Volume**:
+    *   Running: 16 sessions / ~778 minutes / ~127.2 km
+    *   Cycling: 1 session / 60 minutes / distance unknown
+    *   Swimming: 1 session / duration unknown / 200 meters
+    *   Fishing (light activity): 5 sessions / total duration ~850 minutes
+    *   Other (Stretching/Household chores): 4 sessions / total duration ~80 minutes
+    *   **Total Monthly Activity Volume**: 27 sessions (excluding fishing) / total duration ~918 minutes (15.3 hours).
+*   **Health Status Summary**:
+    *   **Health Score (Estimated)**: Based on sleep schedule, exercise consistency, and goal progress, the overall health score shows an upward trend, with significant improvement from the beginning to the end of the month.
+    *   **Core Tags**: "Steady increase in activity volume, effective weight management", "Sleep schedule impacted by work but quickly recovered", "Multiple goals pursued concurrently, high psychological fulfillment".
+    *   **Overall Health Rating**: **Good**. Exercise habits are solid, health awareness is enhanced, weight control is effective. Despite minor injuries and sleep schedule fluctuations, recovery and adjustment capabilities are strong.
+*   **Key Events**:
+    *   **Fitness Milestone**: On the 8th, stepped up as head chef during a camping trip, earning the title "Chef Yin", boosting social confidence and sense of achievement.
+    *   **Injury/Illness**: On the 12th, mild right calf strain due to insufficient warm-up for interval running; mild cold symptoms from the 17th to 19th.
+    *   **Health Metric Fluctuation**: From the 19th to 20th, weight peaked at 71.3kg due to consecutive social dinners, later adjusted through diet control and exercise.
+    *   **Major Life Changes**: On the 1st, officially initiated a home purchase plan; on the 7th, formally informed parents about the plan and received support; on the 25th, received an "Excellent" rating in the company's annual performance review.
+*   **Goal Completion Status**:
+    *   **Monthly Goals (Inferred from profile)**: "Maintain running three times per week".
+    *   **Completion Rate**: **Fully Achieved**. 16 running sessions this month, averaging 4 times per week, exceeding the goal of 3 times per week.
+    *   **Reasons for Non-completion**: Not applicable.
+*   **Core Changes vs. Last Month (Inferred from lifestyle rhythm)**:
+    *   **Activity Volume**: Running frequency and distance estimated to increase by ~20% month-over-month (due to interval running attempts and post-recovery consistency), added cross-training like cycling and swimming.
+    *   **Health Metrics**: End-of-month weight (70.0kg) decreased by 0.5kg compared to beginning-of-month (70.5kg); body fat percentage estimated to have slightly decreased accordingly; resting heart rate may have slightly decreased due to improved fitness.
+    *   **Lifestyle Rhythm**: Work/study intensity significantly increased in Week 1 and Weeks 3-4 due to emergency night shifts, new equipment training, and home purchase plan initiation. Screen time (for studying, house viewing) increased by ~30%.
+*   **Key Focus Areas**: High-frequency focus this month on "Improving running endurance and pace", "Recovery from right calf strain", "Financial planning and area research for home purchase", "Study progress for electrician certification exam".
+
+**Module 2: Monthly Review**
+*   **2.1 Activity Review**
+    *   **Activity Overview**:
+        *   Activity type & session percentage: Running (59.3%), Fishing-light activity (18.5%), Stretching/Household chores (14.8%), Cycling (3.7%), Swimming (3.7%).
+        *   Activity intensity distribution (inferred from description): Z2 Moderate Intensity (~70%, e.g., 8km steady runs), Z1 Low Intensity (~25%, e.g., recovery runs, fishing, stretching), Z3 High Intensity (~5%, e.g., interval running attempts).
+    *   **Activity Statistics & Best Performances**:
+        *   **Running**: Total distance ~127.2km, average pace ~6'10"/km. Longest single distance: 9km (9th). Fastest pace not effectively recorded due to injury during interval attempt. Average and max heart rate data missing, but based on description, heart rate control was good during morning runs in cold weather.
+        *   **Cycling**: Total duration 60 minutes (10th), longest single duration 60 minutes, average speed and heart rate data missing.
+        *   **Swimming**: Total distance 200 meters (2nd), attempted as cross-training.
+        *   **Fishing/Other**: Fishing ~5 sessions total, longest single session ~4 hours (2nd). Home stretching/chores ~4 sessions total.
+    *   **Activity Habit Preferences**:
+        *   **High-frequency activity days**: Tuesday, Thursday, Saturday, Sunday (primary morning run days).
+        *   **High-frequency activity time slots**: **Morning 6:30-7:30** (>70% of sessions), followed by evening.
+        *   **Activity locations**: Songjiang Sports Center (≥5 times), Guangfulin Cultural Site area (≥5 times), neighborhood greenways, Dianshan Lake (fishing).
+        *   **Activity consistency**: Longest consecutive activity streak: 6 days (24th-29th, including running and chores). Main break: 3-day break from 12th-14th due to right calf strain and active rest.
+*   **2.2 Health Review**
+    *   **Sleep**:
+        *   Average daily sleep duration: **~6.5-7 hours on weekdays**, **~7-7.5 hours on weekends**.
+        *   Sleep stage data missing; deep sleep percentage inferred to be stable based on schedule.
+        *   Sleep/wake time consistency: Weekday bedtime fluctuated between 22:20-23:45, wake-up between 06:20-07:20; weekend bedtime fluctuated between 22:40-00:05, wake-up between 06:40-08:00. Circadian rhythm reversed during night shifts (3rd-6th).
+        *   Average nightly sleep interruptions: Inferred to be infrequent (<1 per night) based on lack of mention in events.
+    *   **Physiological Metrics**:
+        *   **Weight**: Start of month: 70.5kg, end of month: 70.0kg, overall decrease of 0.5kg. Weekly averages: Week 1: 70.5kg, Week 2: 70.8kg (night shift impact), Week 3: 71.1kg (social dinner peak), Week 4: 70.6kg (post-control decline). Max fluctuation: +0.8kg (71.3kg on 19th).
+        *   **Body Fat Percentage**: Data missing. Inferred to show a slight decreasing trend based on weight loss and activity volume.
+        *   **Resting Heart Rate**: Data missing. Inferred to be stable or slightly decreasing based on improved post-exercise recovery feeling (described on 1st).
+        *   **HRV**: Data missing.
+    *   **Mental Health**:
+        *   **Stress**: Daily average stress level low-medium, but clear high-stress periods occurred on **3rd-6th (emergency night shifts), 26th (training pressure)**, with stressors being work intensity and study tasks.
+        *   **Mood**: Predominant mood tags: "Calm", "Fulfilled", "Content", "Anticipatory". Mood fluctuations: slight pressure at start of night shifts, significantly positive mood after receiving recognition during camping and receiving performance bonus.
+        *   **Health Score**: Data missing, but based on event descriptions, end-of-month state (30th) described as "Fulfilled, satisfied, with a strong sense of control" was the monthly high point.
+*   **2.3 Lifestyle Rhythm Review**
+    *   **Sleep/Wake Habits**:
+        *   Weekdays: Average bedtime ~23:15, average wake-up ~06:50.
+        *   Weekends: Average bedtime ~23:20, average wake-up ~07:20.
+        *   Weekday vs. Weekend difference: Bedtime similar, weekend wake-up ~30 minutes later, total sleep duration ~30 minutes longer on weekends.
+        *   Days with disrupted schedule: ~6 days (3rd-6th due to night shift reversal, 17th & 26th due to work/study late nights).
+    *   **Commute / Activity**:
+        *   Average daily non-exercise steps (inferred): ~5000 steps. Commute method: **Driving**, one-way distance ~8 km, average daily commute time ~40 minutes (round trip).
+        *   Business travel/Vacation: No long-term business trips, but weekend short trips included camping (8th), fishing, house viewing (29th). These did not negatively impact exercise, instead incorporating outdoor activity.
+    *   **Daily Life**:
+        *   Screen time: Average daily duration ~4-5 hours (work communication 1h, studying 1-2h, entertainment/house viewing 1-2h). Peak duration occurred on 29th (reviewing, house viewing, shopping).
+        *   Dietary habits: High regularity of three meals (~25 days regular), diet structure leans towards home-cooked and high-protein (braised pork, fish). Low frequency of takeout, frequent homemade lunches (e.g., 4th). Social dinners ~5 times, main cause of weight fluctuations. Daily water intake (inferred) sufficient, ~1.5-2L.
+
+**Module 3: Monthly Trend Analysis**
+*   **3.1 Activity Trends**
+    *   **Weekly Activity Volume Changes**:
+        *   Week 1 (1st-7th): Moderate activity volume, including running, swimming, fishing. Experienced night shifts but maintained morning runs, demonstrating resilience.
+        *   Week 2 (8th-14th): Higher activity volume, stable running frequency, added cycling. Attempted interval running on 12th leading to strain, followed by active reduction in load, demonstrating flexible adjustment.
+        *   Week 3 (15th-21st): Activity volume impacted by strain recovery and cold, frequency reduced, focused on low-intensity recovery and stretching.
+        *   Week 4 (22nd-30th): Activity volume recovered and peaked, high running frequency, completed monthly closing run. Performance recovered to pre-injury level.
+    *   **Training Cycle Peaks/Valleys**:
+        *   **Peak Week**: Week 4, high activity frequency, significant weight management results, high mental energy.
+        *   **Valley Week**: Week 3, lowest activity volume and intensity for the month due to combined strain and cold.
+    *   **Performance Changes**: Running pace fluctuated due to weather (low temperature, wind) and physical state (strain, fatigue), but endurance consistently improved (single-session distance stabilized from 8km to attempting 9km). Ability to complete target running volume in low temperatures during Week 4 demonstrates enhanced stress resistance.
+*   **3.2 Health Trends**
+    *   **Sleep Trends**: Weekly sleep duration and quality directly impacted by **work schedule**. Week 1 night shifts caused sleep deprivation; Weeks 2-4 saw stable sleep duration and improved quality after returning to day shifts. Weekend catch-up sleep mechanism was effective.
+    *   **Physical Health Trends**: Weight showed a "W-shaped" fluctuation: stable in Week 1 → slight rise post-night shift in Week 2 → peak in Week 3 due to social dinners → steady decline to monthly low in Week 4 after strict control. Trend shows strong monitoring and intervention capability regarding weight.
+    *   **Mental Health Trends**: Stress levels strongly correlated with **work/study task density**. Positive mood correlated positively with **social feedback** (e.g., camping recognition, good news from friends, family support, excellent work rating) and **goal progress** (home purchase research, study progress).
+    *   **Injury Impact**: Right calf strain on the 12th directly impacted Week 3 activity schedule, shifting to low-intensity recovery. Through rest, icing, and stretching, full recovery achieved by Week 4, without affecting core monthly running volume goal.
+*   **3.3 Lifestyle Rhythm Trends**
+    *   **Sleep Schedule & Mental State**: When bedtime was after 23:30 (e.g., 17th, 26th), the subjective feeling of effort during next-day morning runs increased. On days ensuring bedtime before 23:00, next-day work and study focus were higher.
+    *   **Work/Life Rhythm Changes**: Emergency night shifts in Week 1 and concurrent new equipment training/home purchase planning in Weeks 3-4 were the two main periods of lifestyle tension. You balanced these through **strict time management** (e.g., using lunch break for loan calculations, fixed evening study time) and **proactive social relaxation** (camping, gatherings), resulting in an overall smooth transition.
+
+**Module 4: Personalized Insights**
+*   **Sleep ↔ Performance**: Data shows that when you maintain a regular day-shift sleep schedule (bedtime no later than 23:30), next-day morning run completion rate and subjective ease reach 100%. Conversely, after night shifts or late nights, even if running is completed, pace spontaneously slows by ~0'20"-0'30"/km, and physical startup is slower.
+*   **Work Pressure ↔ Health**: Although no long business trips, **emergency night shifts** as a high-intensity work stress event led to three consecutive days of sleep deprivation, during which weight showed a slight increase (+0.3kg) and recovery run pace decreased. This indicates that acute work stress has a noticeable impact on short-term physical recovery and metabolism.
+*   **Activity Type ↔ Physical State**: Comparison reveals that in weeks where you engaged in **at least one non-running cross-training session or outdoor hobby** (e.g., cycling, swimming, fishing), your mood score (inferred from description) was higher, and perceived risk of exercise injury was lower. Fishing, as a low-intensity outdoor activity, was particularly effective in alleviating work-related mental fatigue.
+*   **Behavioral Habits ↔ Overall Health**: Data shows that **"combining high-intensity work periods with clear social/leisure plans"** is an effective pattern for you to maintain psychological balance. Examples: planning camping after night shifts (8th), arranging friend gatherings during training pressure periods (14th, 15th). This planned relaxation effectively counters stress and prevents burnout. Additionally, **"breaking down large goals into weekly executable small tasks"** (e.g., studying fixed chapters weekly, researching one home purchase area weekly) is key to your ability to maintain multi-threaded progress with a strong sense of achievement.
+
+**Module 5: Anomaly Event Summary**
+*   **Injury Event**:
+    *   **Occurrence Time**: Afternoon of November 12th.
+    *   **Injury Type**: Mild right calf muscle strain.
+    *   **Impact Scope**: Led to suspension of running plans from 12th-14th, replaced with home rest and light stretching.
+    *   **Recovery Status**: After 3 days of rest and subsequent gentle stretching, low-intensity activity resumed on the 15th, with no discomfort during morning run by the 18th, and full return to regular training after the 22nd. No secondary injury occurred during recovery.
+*   **Activity Break Event**:
+    *   **Break Period**: November 12th - November 14th.
+    *   **Duration**: 3 days.
+    *   **Cause**: Right calf strain due to insufficient warm-up for interval running training, leading to an active rest strategy.
+    *   **Post-break Recovery Performance**: Gentle stretching on the 15th, cautious pace upon running resumption on the 16th, full return to normal training rhythm after the 18th. The break did not affect monthly exercise habits.
+*   **Health Metric Fluctuation Event**:
+    *   **Fluctuating Metric**: Weight.
+    *   **Fluctuation Time**: November 19th - 20th.
+    *   **Fluctuation Magnitude**: Increased from 71.1kg to 71.3kg, a gain of 0.2kg.
+    *   **Cause**: Consecutive social dinners over two nights, leading to excessive calorie intake.
+    *   **Subsequent Change**: Upon awareness, immediate diet control was implemented, combined with exercise from 21st-24th, resulting in steady weight decline to the monthly low of 70.0kg by the 30th.
+*   **Lifestyle Rhythm Anomaly Event**:
+    *   **Anomaly Period**: November 3rd - November 6th.
+    *   **Anomaly Type**: Consecutive night shifts due to emergency production tasks, leading to circadian rhythm reversal.
+    *   **Impact on Health/Activity**: Average daily sleep duration reduced to 5-6 hours with poor quality. Morning runs were still maintained, but pace decreased and subjective fatigue increased.
+    *   **Recovery Measures & Effect**: After night shifts ended, utilized the weekend (7th-9th) for social/leisure activities (camping, dinners, karaoke) and catch-up sleep. By the 10th, sleep schedule and mental state had fully returned to the normal day-shift rhythm.

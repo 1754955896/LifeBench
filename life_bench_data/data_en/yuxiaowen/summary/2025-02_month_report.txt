@@ -1,0 +1,125 @@
+Your Monthly Summary is as follows:
+
+**Monthly Overview**
+
+*   **Basic Information**: Yu Xiaowen, 24 years old, female, Occupation: Resident Physician (Healthcare Industry).
+*   **Total Physical Activity**:
+    *   Running: 2 sessions / Total 40 minutes / 5.0 km
+    *   Badminton: 1 session / 90 minutes
+    *   City Walk: 3 sessions / Total approx. 60 minutes / Estimated 6.4 km
+    *   Light Indoor Activity (stretching, etc.): 2 sessions / Total approx. 30 minutes
+    *   **Monthly Total**: 8 activity sessions / Total approx. 220 minutes (3.7 hours). Activity volume decreased significantly due to mid-month illness, characterized by a "restart-interruption-cautious recovery" pattern.
+*   **Health Status Summary**:
+    *   **Core Tag**: "Cautious Recovery and Systemic Adjustment Post-Major Illness Interruption". Experienced immune system collapse (influenza) due to high-intensity work, leading to deep reflection on self-health management as a physician. Shifted towards building systematic health management (routine, work methods, health records) by month-end.
+    *   **Overall Health Rating**: **Good**. Despite a mid-month health crisis, recovery was swift, and the crisis was transformed into motivation for deepening health management. Both physiological and psychological states returned to good levels by month-end.
+*   **Key Events**:
+    *   **Activity Milestone**: On the 22nd, cautiously resumed running post-illness, marking a shift in focus from pursuing data to paying attention to bodily feedback.
+    *   **Illness/Injury**: From the 9th to 12th, contracted influenza (high fever, fatigue) due to decreased immunity after a continuous 36-hour shift, leading to complete rest.
+    *   **Health Metric Fluctuation**: From the 9th to 11th, weight dropped from 49.6kg to the month's low of 49.2kg, caused by illness-related depletion and loss of appetite.
+    *   **Major Life Change**: On the 2nd, began rotation in the Cardiology Department, entering a new phase of work pace and stress patterns.
+*   **Goal Completion Status**:
+    *   **Set Goal**: "Restart and maintain the morning running habit."
+    *   **Completion Rate**: **Approximately 50%**. Partially executed early in the month (2nd-9th), but completely interrupted due to illness. Cautiously resumed post-illness (after the 22nd). Overall execution was disrupted by unforeseen events.
+    *   **Reasons for Non-Completion**: Direct cause was falling ill due to consecutive high-intensity shifts on Feb 8th-9th. Core reason was an imbalance between work intensity and personal recovery capacity.
+*   **Core Changes vs. Last Month (Inferred from lifestyle descriptions)**:
+    *   **Activity Volume**: **Significantly decreased month-over-month**. Due to the end of the Spring Festival holiday, pressure from the new rotation department, and mid-month illness, both activity frequency and intensity were lower than during the regular period last month.
+    *   **Health Metrics**: **Increased weight fluctuation**. This month's weight fluctuation range reached 1.0kg (49.2-50.2kg), significantly higher than usual, primarily influenced by illness.
+    *   **Life Rhythm**: **Prominent work stress peaks, shifting towards active management later**. High-pressure periods formed by the start of rotation early in the month and shifts late in the month. However, by month-end, began building a stress-resistant rhythm by introducing the Pomodoro Technique and adjusting routines.
+*   **Core Focus Areas**: High-frequency focus this month on "maintaining vs. interrupting exercise habits", "routine adjustment", and "health maintenance under work pressure".
+
+**Monthly Review**
+
+**2.1 Activity Review**
+*   **Activity Overview**:
+    *   Engaged in 4 types of activity throughout the month: Running (2 sessions, 25%), Badminton (1 session, 12.5%), City Walk (3 sessions, 37.5%), Light Indoor Activity (2 sessions, 25%).
+    *   **Activity Intensity Distribution**: Primarily Z2 moderate intensity (e.g., badminton, recovery runs), approx. 60%; supplemented by Z1 low intensity (e.g., City Walk, stretching), approx. 40%; no Z3 high-intensity training.
+*   **Activity Statistics & Best Performances**:
+    *   **Running**: Total distance 5.0 km, average pace approx. 8'00"/km (post-illness recovery runs were very slow). Longest single distance: 3.0 km (2nd). Fastest pace: Not recorded (all runs this month were for recovery). Average and max heart rate data not recorded, but subjectively felt elevated heart rate during post-illness recovery runs.
+    *   **Badminton**: Total duration 90 minutes. Longest single session: 90 minutes (23rd). Moderate-intensity aerobic and social activity.
+    *   **City Walk/Walking**: Total duration approx. 60 minutes, estimated total distance 6.4 km. Longest single session: 15 minutes (15th, 28th). Primarily used for post-illness movement and daily commuting.
+*   **Activity Habit Preferences**:
+    *   **High-Frequency Activity Days**: Saturday, Sunday (4 activity sessions total, 50%), aligning with the rotational work schedule.
+    *   **High-Frequency Activity Time Slots**: Evening (17:00-19:00, 3 sessions, 37.5%). Adjusted original morning run plan post-illness to accommodate physical state.
+    *   **Activity Locations**: City park/residential area (running, City Walk, 5 sessions); Badminton court (1 session); Home (indoor activities, 2 sessions).
+    *   **Activity Consistency**: Longest consecutive activity days only 2 days (1st-2nd, 22nd-23rd). Main **break period**: Feb 10th to 21st, a 12-day break due to illness, directly causing the low activity volume this month.
+
+**2.2 Health Review**
+*   **Sleep**:
+    *   **Average Daily Sleep Duration**: Workdays approx. 7.5 hours, weekends approx. 8.5 hours. Monthly average approx. 7.8 hours.
+    *   **Sleep Stages**: Estimated based on wearable device data. Deep sleep approx. 20-25% (approx. 1.5-1.9 hours), light sleep approx. 50-55%, REM approx. 20-25%.
+    *   **Routine Stability**: Bedtime fluctuated significantly, typically between 22:30-00:15 on workdays, and 23:00-01:40 on weekends. Wake-up time: 6:40-7:20 on workdays, 7:15-9:30 on weekends. **Days with disrupted routine** (bedtime after 24:00): 8 days, primarily due to shifts, overtime, and weekend socializing.
+*   **Physiological Metrics**:
+    *   **Weight**: Start of month 50.2kg, end of month 50.0kg, overall decrease of 0.2kg. **Weekly Averages**: Week 1: 50.1kg, Week 2 (illness): 49.4kg, Week 3: 49.9kg, Week 4: 50.0kg. **Maximum Fluctuation**: Decrease of 1.0kg (49.6kg on 9th → 49.2kg on 11th), corresponding to the peak of illness.
+    *   **Body Fat Percentage (Estimate)**: Based on BMI 18.8 and activity habits, estimated body fat maintained within the healthy 18-20% range. Start of month approx. 19.5%, end of month approx. 19.2%. Change approx. -0.3% due to combined muscle and fat loss during illness.
+    *   **Resting Heart Rate (Estimate)**: As a young healthy female, average daily resting heart rate approx. 65 bpm. **Weekly Trend**: Increased to approx. 70-75 bpm during illness in Week 2, recovered to approx. 62-65 bpm by Week 4.
+    *   **HRV (Heart Rate Variability, Estimate)**: Daily average approx. 50ms (medium). **Trend**: Decreased to below 40ms (increased stress) during illness and high-pressure Week 2, rebounded to approx. 55ms (good recovery) after routine adjustments in Week 4.
+*   **Mental Health**:
+    *   **Stress**: Daily average stress level approx. 5.5/10. **Weekly Averages**: Week 1: 6.0 (new rotation), Week 2: 7.5 (illness + guilt), Week 3: 5.0 (recovery period), Week 4: 4.5 (post-adjustment). **High-Stress Periods**: 8th-10th (consecutive shifts and falling ill), stress level reached 8/10, sourced from work intensity and loss of health control.
+    *   **Mood**: **Primary Tags**: "Calm", "Fulfilled", "Tired", "Pleasant". Mood fluctuations: Week 2: "Weak", "Lonely"; Week 4: "Sense of accomplishment", "Relaxed".
+    *   **Health Score (Estimate based on state)**: Daily average 7/10. Lowest 5 (during illness), highest 8.5 (after team-building at month-end).
+
+**2.3 Life Rhythm Review**
+*   **Routine Habits**: Workdays average bedtime 23:30, wake-up 7:00; Weekends average bedtime 00:25, wake-up 8:30. Weekends average 55 minutes later bedtime and 90 minutes later wake-up than workdays, with 35 minutes more total sleep.
+*   **Commute/Activity**:
+    *   **Average Daily Non-Exercise Steps**: Approx. 8000 steps (including commute and hospital movement). **Highest week**: Week 1 (rotation adaptation period). **Lowest week**: Week 2 (sick leave).
+    *   **Commute**: Method: Driving. One-way distance approx. 3 km. Average daily commute time approx. 20 minutes.
+    *   **Business Travel/Vacation**: None.
+*   **Daily Life**:
+    *   **Screen Time**: Average daily total approx. 9-10 hours. Work-related (medical record system, literature): approx. 6-8 hours. Entertainment (social media, reading, shopping): approx. 2-3 hours. **Highest day**: over 12 hours (shift days). **Lowest day**: approx. 4 hours (severe illness period).
+    *   **Dietary Habits**: Regular three meals on approx. 20 days, irregular on 8 days (mainly due to shifts, illness). Balanced diet structure, preference for high-protein (eggs, yogurt) and vegetables. Approx. 10 takeout meals and 18 homemade meals this month. Average daily water intake approx. 1.5 liters, increased during illness.
+
+**Monthly Trend Analysis**
+
+**3.1 Activity Trends**
+*   **Weekly Activity Volume Changes**:
+    *   **Week 1 (1st-7th)**: 2 activity sessions (running, none). Initiation period. Low activity volume due to work adaptation.
+    *   **Week 2 (8th-14th)**: 0 activity sessions. Complete interruption due to illness from shift work. Lowest point of the month.
+    *   **Week 3 (15th-21st)**: 2 activity sessions (City Walk, indoor activity). Post-illness recovery period, primarily low-intensity activity.
+    *   **Week 4 (22nd-28th)**: 4 activity sessions (running, badminton, walking, etc.). **Activity volume increased significantly by 100% month-over-month**, marking physical recovery and adjustment of activity strategy.
+*   **Training Cycle Peaks/Lows**:
+    *   **Low Week**: Week 2, zero activity volume, triggered by extreme work load leading to health crisis.
+    *   **Peak Week**: Week 4, most diverse in activity frequency and types, reflecting new strategy of cautious recovery combined with social activity.
+*   **Activity Performance Changes**: Running performance dominated by health event. Pre-illness (2nd) could complete a 3km slow run. Post-illness (22nd) only managed a 2km very slow run. Performance significantly declined but focused more on safety.
+
+**3.2 Health Trends**
+*   **Sleep Trends**: Week 2 had the poorest sleep duration and quality (average <7 hours, decreased deep sleep percentage). Week 4 saw sleep duration rebound to over 7.5 hours and stability improve through active adjustment. Sleep interruptions were frequent during illness.
+*   **Physiological Health Trends**:
+    *   **Weight & Body Fat**: Rapid decrease in Week 2, slow recovery in Weeks 3-4, forming a "V-shaped" curve, completely aligned with the illness cycle.
+    *   **Resting Heart Rate & HRV**: Increased resting heart rate and decreased HRV in Week 2, indicating the body was under high stress and inflammatory state. Both metrics returned to baseline in Week 4, indicating good recovery. Data shows HRV recovery slightly lagged behind subjective feeling of recovery.
+*   **Mental Health Trends**: Stress levels and emotional state closely followed work events and physical health. Stress peak and negative emotions coexisted in Week 2. Through socialization (23rd), team activities (28th), and self-regulation in Week 4, stress was effectively alleviated, and mood shifted towards positivity.
+*   **Illness/Injury Impact**: Influenza (9th-12th) led to **complete 12-day activity interruption**, **1.0kg weight loss**, **approx. 10 bpm increase in resting heart rate**, and psychological feelings of "vulnerability and guilt". Activity capacity was only cautiously restored to about 70% of pre-illness level by Week 4.
+
+**3.3 Life Rhythm Trends**
+*   **Routine & Mental State**: Data shows that on days following bedtime after 24:00, self-reported "fatigue" increased and subjective work efficiency scores decreased. After implementing a fixed routine plan at month-end, daytime mental state became more stable.
+*   **Work/Life Rhythm Changes**: The "36-hour shift" in Week 2 was the health turning point this month, directly triggering a chain reaction. The trial of the "Pomodoro Technique" starting in Week 4 was a behavioral correction to this event, aiming to segment prolonged mental work to protect focus and energy.
+
+**Personalized Insights**
+
+*   **Sleep ↔ Activity Performance**: Your data shows that **when sleep duration is ≥7.5 hours and bedtime is stable, the willingness and completion rate for activity the next day is higher**. Example: Sufficient sleep the night before restarting running on the 22nd. Inverse correlation: After severe sleep deprivation following the ultra-long shift on the 8th, not only was there no activity, but it directly triggered illness.
+*   **Work Pressure/Events ↔ Health**: **Extreme work events (consecutive shifts) have a devastating impact on health**. Data shows that shifts on the 8th-9th directly led to immune system collapse (influenza) and worsened multiple physiological metrics like weight, heart rate, and HRV. A stress peak (≥7/10) lasting over 48 hours is a clear health risk signal.
+*   **Activity Type ↔ Physical State**: Comparison reveals that **activities with a social component like badminton have a significant immediate improvement effect on your mental health** (stress level dropped from 5.0 to 4.5 after the 23rd). Conversely, **very low-intensity running post-illness (focusing on feedback rather than data) was key to safely restarting activity**, avoiding secondary injury.
+*   **Behavioral Habits ↔ Overall Health**: **Establishing systematic management habits (e.g., health records, routine planning) brings a sense of control, directly improving mental health scores**. After initiating health record organization and routine planning at month-end, the "anxiety" tag decreased and "steadiness" increased in mood tags. **Periods with a higher proportion of homemade meals (e.g., Week 4) saw more stable weight recovery**.
+
+**Abnormal Event Summary**
+
+1.  **Illness/Injury Event**:
+    *   **Event**: Acute Upper Respiratory Tract Infection (Influenza).
+    *   **Time**: Feb 9th (high fever) to Feb 12th (main symptoms alleviated).
+    *   **Impact**: Directly caused complete interruption of activity plan (10th-21st); 1.0kg weight loss; increased resting heart rate; brought significant psychological fatigue and loneliness.
+    *   **Recovery**: Entered recovery period from Feb 13th, cautiously restarted activity on the 22nd. By month-end, physiological metrics largely recovered, but activity performance not yet at pre-illness level, recovery rate approx. 80%.
+2.  **Activity Break Event**:
+    *   **Event**: Prolonged activity break due to illness.
+    *   **Time Period**: Feb 10th to Feb 21st, totaling 12 days.
+    *   **Cause**: Directly caused by influenza triggered by consecutive 36-hour high-intensity shifts on the 8th-9th.
+    *   **Post-Break Recovery Performance**: First recovery run on the 22nd, adopted very low intensity (2 km, slow pace). Bodily feedback was good, no discomfort, but cardiopulmonary system felt more strained than pre-illness.
+3.  **Health Metric Fluctuation Event**:
+    *   **Event**: Significant short-term weight loss.
+    *   **Metric & Time**: Weight, between Feb 9th and 11th, dropped sharply from 49.6kg to 49.2kg.
+    *   **Fluctuation Magnitude**: 0.4kg drop in 3 days, cumulative 1.0kg drop from pre-illness.
+    *   **Cause**: High fever consumption, loss of appetite, and insufficient intake due to influenza.
+    *   **Subsequent Change**: Weight entered a recovery phase from the 12th onwards with illness improvement and nutritional supplementation, recovering to 50.0kg by the 28th.
+4.  **Life Rhythm Anomaly Event**:
+    *   **Event**: Ultra-long consecutive shift and emergency overtime.
+    *   **Anomaly Period**: Feb 8th morning to Feb 9th morning (continuous 36 hours); also multiple days of overtime past 23:00 due to emergencies/consultations.
+    *   **Impact**: The direct trigger for this month's health crisis, causing acute sleep deprivation and extreme fatigue, ultimately breaching immune defenses.
+    *   **Recovery Measures & Effect**: After the event, you actively engaged in systematic reflection. Introduced the "Pomodoro Technique" from

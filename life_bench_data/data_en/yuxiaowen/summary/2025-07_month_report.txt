@@ -1,0 +1,119 @@
+Your Monthly Summary is as follows:
+
+**Monthly Exercise and Health Analysis Report (July 2025)**
+
+**Module 1: Monthly Overview**
+*   **Basic Information**: Yu Xiaowen, 24 years old (age group 20-25), female, occupation: Medical Health - Resident Physician (Zhengzhou Central Hospital).
+*   **Total Exercise Volume**:
+    *   Running: 2 sessions / ~100 minutes / 10.0km
+    *   Pilates: 4 sessions / 240 minutes
+    *   Badminton: 1 session / 90 minutes
+    *   Walking: 1 session / 30 minutes
+    *   **Monthly Total**: 8 sessions / ~460 minutes. Good exercise variety, but total frequency is below the personal goal of "three times per week."
+*   **Health Status Summary**:
+    *   **Health Score**: Based on event inference, the score was lower at the beginning of the month due to recovery from gastroenteritis. By month-end, with physical recovery and rotation completion, the overall score showed an upward trend. The monthly average was approximately 75/100.
+    *   **Core Tags**: "Dual-line pressure from teaching and exam prep, infections disrupting exercise rhythm."
+    *   **Overall Health Rating**: Fair. Weight management was stable, but two acute infections (cold, gastroenteritis) during the month significantly disrupted exercise continuity and physical state.
+*   **Key Events**:
+    *   **Exercise Milestone**: July 6th, explored a new morning running route in a city park, increasing exercise enjoyment.
+    *   **Injury/Illness**: July 15-18th, viral cold due to temperature differences in air-conditioned environments; July 20-21st, acute gastroenteritis triggered by improper diet.
+    *   **Health Metric Fluctuation**: July 15-17th, weight decreased from 49.5kg to 49.1kg (a 0.8% drop) due to reduced appetite from the cold.
+    *   **Major Life Changes**: July 22nd, experienced a conflict with a patient's family member in the outpatient clinic; July 24-30th, fostered a pet cat for the first time, leading to changes in daily rhythm and emotional experience.
+*   **Goal Completion Status**:
+    *   **Set Goal**: Develop the habit of "regular exercise at least three times per week."
+    *   **Completion Rate**: Exercised 8 days this month, achieving approximately 66.7% of the goal (target ≥12 days), falling short by 4 days.
+    *   **Reasons for Non-Completion**: Primarily due to 5 days of physical discomfort preventing exercise caused by a mid-month cold (16-18th) and late-month gastroenteritis (20-21st). Secondly, work adjustments and starting exam preparation at the beginning of the month occupied some exercise time.
+*   **Core Changes Compared to Last Month**:
+    *   **Exercise Volume**: Lack of last month's data. Inferred that due to starting attending physician exam preparation and taking on teaching responsibilities this month, available energy and time for exercise were compressed, potentially leading to a month-over-month decrease in exercise frequency.
+    *   **Health Metrics**: Weight at month-end (49.8kg) slightly increased by 0.3kg compared to month-start (49.5kg), remaining overall stable. However, resting heart rate and HRV showed fluctuations during infection periods (inferred from events).
+    *   **Life Rhythm**: Life focus clearly shifted towards "exam preparation/studying" and "clinical teaching." Screen time (for study/work) increased. Social activities concentrated in the latter half of the month. Overall rhythm became more compact, with increased sources of stress.
+*   **Core Focus Areas**: This month's high-frequency focus dimensions were **maintaining a basic exercise habit to cope with exam preparation pressure**, and **managing the risk of acute infections triggered by the work environment (air conditioning) and improper diet**.
+
+**Module 2: Monthly Review**
+**2.1 Exercise Review**
+*   **Exercise Overview**:
+    *   Engaged in 4 types of exercise throughout the month: running, Pilates, badminton, walking.
+    *   Percentage breakdown by type: Pilates 50% (4 sessions), running 25% (2 sessions), badminton 12.5% (1 session), walking 12.5% (1 session). Pilates was the core training program.
+    *   **Exercise Intensity Zone Distribution (Estimated)**: Z2 (moderate intensity, e.g., steady-state running, Pilates core sequences) accounted for ~70%, totaling ~322 minutes; Z1 (low intensity, e.g., walking, stretching) accounted for ~30%, totaling ~138 minutes. No high-intensity (Z3) training records this month.
+*   **Statistics and Best Performance by Exercise**:
+    *   **Running**: Total distance 10.0km, average pace ~6'00"/km. Single longest distance 5.0km (July 1st, 6th). Fastest pace data not recorded, presumed to be during the enjoyable exploration of the new route.
+    *   **Pilates**: Total duration 240 minutes, single longest session 60 minutes (all sessions). Core focus was integrating diaphragmatic breathing with core control.
+    *   **Badminton**: Total duration 90 minutes (July 19th), social doubles practice.
+    *   **Walking**: Total duration 30 minutes (July 13th), combined with podcast listening.
+*   **Exercise Habit Preferences**:
+    *   **Weekly Frequency**: Exercise distribution was relatively dispersed, with no absolute high-frequency days. Weekend (Sat, Sun) exercise totaled 3 sessions, weekday exercise totaled 5 sessions.
+    *   **Daily Time Slots**: High-frequency exercise periods were **early morning** (5:30-6:30, 25%) and **evening after work** (19:00-20:30, 75%).
+    *   **Exercise Locations**: City park/trail running 2 times; Pilates studio 4 times; community sports center badminton 1 time; walking near apartment 1 time.
+    *   **Exercise Consistency**:
+        *   Longest consecutive exercise streak: 2 days (July 1-2).
+        *   **Gap Periods**: Three significant gaps occurred. ① July 3-4 (2 days), due to work and starting exam prep; ② July 16-18 (3 days), due to cold; ③ July 20-22 (3 days), due to acute gastroenteritis and recovery.
+
+**2.2 Health Review**
+*   **Sleep**:
+    *   **Average Daily Sleep Duration**: ~6.5 hours on weekdays, ~7.5 hours on weekends. Monthly average ~6.8 hours.
+    *   **Sleep Stage Distribution (Estimated)**: Deep sleep ~1.4 hours (20.5%), light sleep ~3.8 hours (55.9%), REM ~1.6 hours (23.6%).
+    *   **Sleep Schedule Stability**: Bedtime varied widely, 22:30-00:15 on weekdays, 22:45-00:30 on weekends. Wake-up time was relatively stable, 05:30-06:45 on weekdays, 07:00-08:30 on weekends.
+    *   **Sleep Interruptions**: Average daily interruptions ~1.2 times, potentially increased during infections and after late-night studying.
+*   **Physiological Metrics (Based on diary data and reasonable inference)**:
+    *   **Weight**: Start-of-month 49.5kg, end-of-month 49.8kg, overall slight increase of 0.3kg. Weekly averages fluctuated between 49.2-49.7kg. Largest fluctuation was a 0.8% drop (49.5→49.1kg) during the cold period July 15-17. Trend: first decreased then increased, recovering by month-end.
+    *   **Body Fat Percentage**: Inferred based on weight and exercise patterns, ~21.5% at month-start, ~21.8% at month-end, change of +0.3%, synchronized with weight change.
+    *   **Resting Heart Rate**: Daily average ~65 bpm. Highest values likely occurred during cold and gastroenteritis periods (>70 bpm), lowest values likely on well-rested weekend mornings (~60 bpm). Overall trend strongly correlated with infection events.
+    *   **HRV (Heart Rate Variability)**: Daily average ~50ms (estimated). Likely showed significant decreases (<45ms) during July 15-18 (cold), July 20-21 (gastroenteritis), and July 22 (work conflict), with recovery after July 19 (exercise resumption), July 30-31 (task completion).
+*   **Mental Health**:
+    *   **Stress**: Daily average stress level ~5.5/10. High-stress periods: ① July 15-18 (working while sick + exam prep, stress level ≈7/10); ② July 22 (patient conflict, stress level ≈8/10); ③ End-of-month exam prep冲刺期. Stress primarily stemmed from work intensity, doctor-patient relationships, and exam preparation.
+    *   **Mood**: Predominant mood tags were "calm," "fulfilled," "fatigued," "anxious." Mood fluctuations: "anticipatory" at month-start; "uncomfortable," "low" during mid-month infection; "joyful," "satisfied," "warm" during late-month social/achievement periods; "fatigued but growing" post-conflict.
+    *   **Health Score (Inferred)**: Daily average ~75 points. Lowest scores likely on July 16th (worsening cold) and July 21st (gastroenteritis medical visit), ~60 points; highest scores likely on July 19th (exercise resumption), July 31st (rotation end), ~85 points.
+
+**2.3 Life Rhythm Review**
+*   **Sleep/Wake Habits**:
+    *   Weekday average bedtime ~23:40, wake-up time ~06:15; weekend average bedtime ~23:35, wake-up time ~07:45. Slept ~1.5 hours more on weekends than weekdays.
+    *   Total days with disrupted sleep schedule (bedtime after 00:00): 9 days (e.g., 2nd, 3rd, 4th, 11th, 12th, 14th, 25th, 26th), reasons included exam prep studying, social gatherings, work overtime.
+*   **Commute/Activity**:
+    *   **Average Daily Non-Exercise Steps**: ~5500 steps (estimated). Highest weekly step count likely in the socially active Week 3 (July 12-18), lowest in the infection Week 2 (July 16-18).
+    *   **Commute**: Mode: driving, one-way distance ~5 km, average daily commute time ~20 minutes (round trip).
+    *   **Business Travel/Vacation**: No business travel this month. However, plans are made for an academic conference in Shanghai and a wedding in Hangzhou in August.
+*   **Daily Life**:
+    *   **Screen Time**: Average daily total ~7 hours, of which ~5 hours related to work/study, ~2 hours for entertainment/leisure. Peak days (e.g., exam prep simulation, organizing cases) may exceed 9 hours.
+    *   **Dietary Habits**: Days with three regular meals: ~25 days. Diet structure primarily home-cooked meals, occasionally high-carb (e.g., stewed noodles), high-protein (light meals). This month's takeout/dining out frequency: ~8 times (gatherings, during illness). Homemade meals: ~22 times. Average daily water intake ~1.5L, increased during infections.
+    *   **New Addition**: July 24-30th, due to fostering a pet cat, added daily pet care routines and emotional interaction.
+
+**Module 3: Monthly Trend Analysis**
+**3.1 Exercise Trends**
+*   **Weekly Exercise Volume Changes**:
+    *   **Week 1 (July 1-6)**: 2 exercise sessions (run, Pilates), good start.
+    *   **Week 2 (July 7-13)**: 1 exercise session (run), exercise volume decreased 50%, due to time occupied by clinical teaching and exam prep.
+    *   **Week 3 (July 14-20)**: 1 exercise session (badminton), but a continuous gap occurred in the latter part of the week (16-20th) due to cold and gastroenteritis.
+    *   **Week 4 (July 21-31)**: 4 exercise sessions (2 Pilates, 1 Pilates, 1 organizing), exercise volume significantly rebounded, a 300% increase compared to the previous week, actively compensating after physical recovery.
+*   **Training Cycle Peaks/Valleys**:
+    *   **Peak Week**: Week 4, exercise frequency recovered to 4 sessions, and Pilates training perception (breathing and core linkage) was reported as best.
+    *   **Valley Week**: Week 3, lowest exercise frequency and interrupted by acute illness, the exercise low point for the month.
+*   **Exercise Performance Changes**: This month's exercise performance was significantly affected by health events. Weeks 1-2: stable exercise state; Week 3: absent due to illness; Week 4: after resuming training, Pilates focus improved, but running did not resume. Overall performance characterized by "cautious recovery post-illness."
+
+**3.2 Health Trends**
+*   **Sleep Trends**: Sleep duration and quality showed a "U-shaped" change. Weeks 1-2: acceptable; Week 3: increased sleep interruptions and decreased quality due to infection symptoms; Week 4: sleep gradually stabilized with physical recovery and reduced stressful events.
+*   **Physical Health Trends**:
+    *   **Weight/Body Fat**: Weeks 1-2: stable; Week 3: decreased due to illness; Week 4: recovered and slightly increased.
+    *   **Resting Heart Rate/HRV**: Weeks 1-2: stable; mid-Week 3 (infection period): resting heart rate increased, HRV dropped sharply; late Week 3 to Week 4: gradually recovered. Data indicates acute infections caused short-term significant impact on the autonomic nervous system.
+*   **Mental Health Trends**: Stress levels and mood fluctuated noticeably with events. Week 2: initial emergence of exam prep/teaching pressure; Week 3: health crisis叠加 work pressure reached peak, mood relatively low; Week 4: effectively alleviated through social venting, exercise resumption, task completion, mood warmed up.
+*   **Impact of Injury/Illness**:
+    *   **Cold (July 15-18)**: Directly caused a 3-day exercise gap, weight loss, decreased HRV, insufficient daytime energy.
+    *   **Acute Gastroenteritis (July 20-21)**: Caused a 2-day exercise gap and triggered attention to food safety. The medical visit process validated the importance of health management.
+
+**3.3 Life Rhythm Trends**
+*   **Sleep Schedule & Mental State**: Data shows that on days following bedtime after 00:00 (total 9 days), descriptions of "fatigue" appeared more frequently in the diary, and exercise plans were more likely to be canceled (e.g., July 3, 4, 14). On days following regular early sleep (e.g., before 22:30), morning activity execution rate was 100% (e.g., July 1 morning run).
+*   **Work/Life Rhythm Changes**: Weeks 2-3 saw叠加 work intensity (teaching, case discussions) and exam prep intensity, which was the concentrated period of health risk爆发. Week 4 introduced the new element of pet fostering, which, while adding tasks, provided emotional companionship that acted as a stress buffer.
+
+**Module 4: Personalized Insights**
+*   **Sleep ↔ Exercise Performance**: Your data shows that when sleep duration ≥7 hours and bedtime is before 23:30, the willingness and execution rate for exercise the next day is as high as 80% (e.g., July 1, 6, 13). Conversely, after staying up late (>00:00), the next day's exercise cancellation rate is 67%. **Conclusion**: Ensuring basic sleep is a key prerequisite for you to maintain exercise habits.
+*   **Business Travel/Pressure ↔ Health**: Although there was no business travel this month, high-pressure work events (e.g., July 22 conflict) caused a peak stress level that day, with weight and mood not fully recovered the next day. **Inference**: As a medical professional, sudden occupational stress significantly impacts your short-term physiological and psychological state, requiring rapid intervention mechanisms.
+*   **Exercise Type ↔ Physical State**: Comparison reveals that **Pilates training** directly provides feedback for alleviating your "neck/shoulder stiffness, lower back soreness" (sedentary occupational hazards). During periods of weekly Pilates adherence, your reported discomfort decreased. **Badminton** and other social sports significantly improved mood for alleviating "exam prep anxiety, work pressure" (July 19 feedback).
+*   **Behavioral Habits ↔ Overall Health**: Using the **mobile health record** (July 21st) greatly improved efficiency during the acute gastroenteritis medical visit, validating the practical value of systematic health management. **Pet companionship** (July 24-30th), while adding new tasks, received diary feedback of "healing fatigue," "bringing warmth and peace," positively impacting your mental health.
+
+**Module 5: Abnormal Event Summary**
+1.  **Injury/Illness Events**:
+    *   **Event One (Cold)**: Occurrence time: July 15-18. Triggered by temperature differences in the hospital air-conditioned environment, leading to viral upper respiratory infection. Impact: Caused suspension of all exercise for 3 days (July 16-18) and cancellation of one Pilates session. Resting heart rate increased and HRV decreased during this period. Recovery: After home rest and hydration, symptoms基本消失 by July 19th, and badminton was resumed that day.
+    *   **Event Two (Acute Gastroenteritis)**: Occurrence time: July 20-21. Triggered by improper diet. Impact: Caused a 2-day exercise gap (July 20-21) and required an outpatient medical visit. Recovery: After medication and a bland diet, symptoms alleviated by July 22nd, and Pilates training resumed on July 23rd.
+2.  **Exercise Gap Events**:
+    *   **Major Gaps**: July 16-18 (3 days, cold), July 20-21 (2 days, gastroenteritis). Cause: Acute illness. The first exercise session after recovery (badminton and Pilates respectively) both选择 moderate-low intensity, with no reported discomfort, showing caution.
+3.  **Health Metric Fluctuation Events**:
+    *   **Sudden Weight Loss**: July 15-17, weight dropped from 49.5kg to 49.1kg, a 0.8% decrease. Cause: Loss of appetite and reduced intake during the cold. Subsequently, it gradually

@@ -1,0 +1,711 @@
+{
+  "name": "Yu Xiaowei",
+  "birth": "1986-03-14",
+  "age": 35,
+  "nationality": "Han",
+  "home_address": {
+    "province": "Hong Kong Special Administrative Region",
+    "city": "Hong Kong",
+    "district": "Kowloon City District",
+    "street_name": "Prince Edward Road West",
+    "street_number": "Number 328"
+  },
+  "birth_place": {
+    "province": "Hong Kong Special Administrative Region",
+    "city": "Hong Kong",
+    "district": "Kowloon City District"
+  },
+  "gender": "Female",
+  "education": "Regular High School",
+  "job": "Insurance Agent",
+  "occupation": "AIA Hong Kong (AIA)",
+  "workplace": {
+    "province": "Hong Kong Special Administrative Region",
+    "city": "Hong Kong",
+    "district": "Wan Chai District",
+    "street_name": "Gloucester Road",
+    "street_number": "No. 138 AIA Building"
+  },
+  "belief": "Not believing in religion",
+  "salary": 300000.0,
+  "body": {
+    "height": 155,
+    "weight": 55.0,
+    "BMI": 22.89
+  },
+  "family": "First marriage with spouse, having two children (one son and one daughter).",
+  "personality": {
+    "mbti": "ESFJ",
+    "traits": [
+      "Career-oriented",
+      "Traditional",
+      "Orientation towards spiritual fulfillment"
+    ]
+  },
+  "hobbies": [
+    "Yoga Fitness",
+    "Marathon",
+    "Gathering with friends",
+    "Go shopping",
+    "Listening to music at home",
+    "Engage in hand embroidery, focusing on traditional Cantonese embroidery craftsmanship.",
+    "Keeping a pet (cat)"
+  ],
+  "favorite_foods": [
+    "Hong Kong-style milk tea",
+    "Pineapple Bun",
+    "Wonton Noodles",
+    "Roasted Meat Platter"
+  ],
+  "memory_date": [
+    "2010-05-20: Wedding Anniversary",
+    "2015-08-15: The birth date of the eldest son"
+  ],
+  "aim": [
+    "Promoted to Regional Sales Manager within three years.",
+    "Take the family on an in-depth tour of Japan within five years.",
+    "Consistently complete at least two half marathons every year."
+  ],
+  "healthy_desc": "Overall, her personal health condition is good, with no chronic diseases. She views exercise as part of her lifestyle, regularly practicing yoga and marathon training. However, her exercise pattern tends to focus on goal-oriented training and event participation rather than daily routine activities. Her health check-up habits are irregular, with approximately one medical visit per year. She maintains good personal care habits, paying attention to diet and intermittent high-intensity exercise to sustain her health.",
+  "lifestyle_desc": "Lifestyle revolves around social interactions and family, with frequent leisure activities. Information is primarily obtained through the internet, with daily online usage. In terms of media consumption, music is listened to at home every day, while television is watched and handicrafts are made several times a month. Social activities are highly active, including gatherings with friends, shopping trips, and meetings with relatives who do not live together several times a week. However, activities such as watching movies, reading books, or participating in cultural events are less frequent. There are 11 to 20 nights spent away from home each year for vacations or visiting relatives, indicating a moderate level of travel. The lifestyle is pragmatic and emphasizes interpersonal relationships, with enjoyment derived from interactions and relaxation within familiar social circles.",
+  "economic_desc": "The family's financial situation is stable. Her personal annual income is approximately 300,000 yuan, while her spouse's annual income is about 100,000 yuan, resulting in a combined family annual income of around 400,000 yuan, with income exceeding expenses. They own a property and a family car. In terms of spending habits, they occasionally use credit cards or other forms of overdraft. Currently, the family does not engage in any financial investment activities such as stocks, funds, or bonds. Their financial management style leans toward conservatism, placing greater emphasis on asset safety and liquidity. Investment activities may primarily focus on property for self-occupation.",
+  "work_desc": "Working as an insurance agent employed by a private/privately-owned enterprise, with a weekly working time of approximately 40 hours, regular day shifts, and a one-way commute time of about 60 minutes. The job primarily involves sales and customer relationship maintenance, with minimal instances of heavy physical or mental labor. I am highly satisfied with my current job and simultaneously hold multiple positions, which may involve representing different insurance products or expanding the client base, demonstrating strong ambition and professional capabilities.",
+  "experience_desc": "Born and raised in Kowloon City, Hong Kong, I have lived here my entire life and have never relocated my household registration. After graduating from high school in 2005, my first job was as a packaging worker (non-skilled laborer) in a factory, working as an employee. Through evening classes, I studied insurance knowledge and obtained my insurance agent qualification in 2010, joining AIA Hong Kong to transition into the insurance sales industry. With excellent communication skills and diligence, I gradually built my own client network, established a family in Hong Kong, and raised two children. My life journey reflects a career transition from grassroots labor to professional sales, as well as a life path rooted in the local community and dedicated to building a family.",
+  "description": "Yu Xiaowei is a 35-year-old female insurance agent from Hong Kong, working at AIA Hong Kong. She was born and has lived in Hong Kong her entire life, with a high school education background. As an ESFJ (Executive) personality type, she is warm-hearted, responsible, and values interpersonal relationships. Her values lean toward career orientation, tradition, and spiritual fulfillment. She is married with two children, and her family’s annual income is approximately 400,000 yuan. Her financial situation is stable, owning both property and a car, and she maintains a conservative investment style.  \n\nYu Xiaowei is in good health with no chronic illnesses. She incorporates exercise into her daily life, enjoying yoga and challenging marathons. Her lifestyle is highly social, frequently gathering with friends and relatives for outings and shopping each week. She also uses the internet daily to access information and enjoy music.  \n\nAt work, she is a diligent and satisfied insurance salesperson. Although her commute is long, she manages her time effectively and takes on multiple jobs to expand her career. In her personal life, she often organizes gatherings for her family and plans to participate in marathon events regularly. Looking ahead, she aspires to be promoted to a regional manager, take her family on a trip to Japan, and continue pursuing her passion for running.",
+  "relation": [
+    [
+      {
+        "name": "Chen Meiling",
+        "relation": "Mother",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 62,
+        "birth_date": "1962-08-22",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District",
+          "street_name": "Prince Edward Road West",
+          "street_number": "Number 328"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District"
+        },
+        "personality": "ISFJ",
+        "economic_level": "A moderately prosperous society",
+        "occupation": "Retired elementary school teacher",
+        "organization": "Kowloon Tong Alliance Primary School (Retired)",
+        "nickname": "Mother",
+        "relation_description": "Yu Xiaowei's mother has always lived with her daughter's family, helping to take care of her grandchildren. The mother-daughter relationship is very close, and Yu Xiaowei chats with her mother every day after returning home from work, sharing stories about her job and amusing anecdotes about the children. Weekend family meals are usually prepared by her mother, who specializes in traditional Cantonese cuisine. Her mother is an important source of emotional support for Yu Xiaowei, always being the first person she turns to for comfort when work stress mounts or when she needs parenting advice."
+      },
+      {
+        "name": "Yu Guoqiang",
+        "relation": "Father",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 65,
+        "birth_date": "1959-12-05",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District",
+          "street_name": "Prince Edward Road West",
+          "street_number": "Number 328"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Well-off",
+        "occupation": "Retired bus driver",
+        "organization": "Kowloon Motor Bus Company Limited (Retired)",
+        "nickname": "Old dad",
+        "relation_description": "Yu Xiaowei's father lives with his wife after retirement and enjoys playing chess and reading newspapers in the park during his free time. The father-daughter relationship is traditional and reserved, with their conversations often revolving around family matters and the education of their grandchildren. Yu Xiaowei regularly gives her father pocket money and takes him out for tea on special occasions such as Father's Day. Occasionally, her father expresses concern about Yu Xiaowei's marathon hobby, but more often than not, he offers quiet support, sometimes even waiting for her at the finish line."
+      },
+      {
+        "name": "Zhang Weiming",
+        "relation": "Husband",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 38,
+        "birth_date": "1985-10-30",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District",
+          "street_name": "Prince Edward Road West",
+          "street_number": "Number 328"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kwun Tong District"
+        },
+        "personality": "ISTP",
+        "economic_level": "Xiaokang",
+        "occupation": "Air Conditioning Repair Technician",
+        "organization": "Hong Kong Electrical and Mechanical Engineering Services Company",
+        "nickname": "Mingzai",
+        "relation_description": "Yu Xiaowei's husband is a man of steady and pragmatic character. The couple got married in 2010 and have a son and a daughter. Zhang Weiming has a stable job but earns a modest income, primarily responsible for the family's logistical support and the daily transportation of their children. The division of labor between the couple is clear: Yu Xiaowei focuses on expanding her career externally, while Zhang Weiming takes care of maintaining the household internally. They set aside one evening each week to go out for dinner or watch a movie alone, serving as each other's most important companion. Although Zhang Weiming is not particularly enthusiastic about running, he takes on a supportive role when Yu Xiaowei participates in marathons, looking after the children and preparing supplies."
+      },
+      {
+        "name": "Zhang Zixuan",
+        "relation": "Son",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 8,
+        "birth_date": "2015-08-15",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District",
+          "street_name": "Prince Edward Road West",
+          "street_number": "Number 328"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District"
+        },
+        "personality": "ENFP",
+        "economic_level": "No income",
+        "occupation": "Elementary school student",
+        "organization": "Kowloon Tong Government Primary School",
+        "nickname": "Xuanxuan",
+        "relation_description": "Yu Xiaowei's eldest son is lively and active, currently in the third grade of elementary school. Yu Xiaowei places great importance on her son's education, checking his homework every evening and sending him to a soccer interest class on weekends. The mother-son relationship is close, and Zhang Zixuan often shares interesting stories from school with his mother. Occasionally, Yu Xiaowei takes her son for short-distance jogging to cultivate his exercise habits."
+      },
+      {
+        "name": "Zhang Yuxin",
+        "relation": "Daughter",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 5,
+        "birth_date": "2018-03-10",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District",
+          "street_name": "Prince Edward Road West",
+          "street_number": "Number 328"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District"
+        },
+        "personality": "ISFP",
+        "economic_level": "No income",
+        "occupation": "Kindergarten student",
+        "organization": "Kowloon City Baptist Church Kindergarten",
+        "nickname": "Xinxin",
+        "relation_description": "Yu Xiaowei's youngest daughter has a quiet personality and enjoys drawing and learning handicrafts from her grandmother. Yu Xiaowei dotes on her daughter, often buying her little dresses and hair accessories while shopping. Before bedtime, she tells her daughter stories. Her daughter is her greatest comfort after a busy day at work, and seeing her smile helps Yu Xiaowei forget her fatigue."
+      },
+      {
+        "name": "Yu Xiaofeng",
+        "relation": "Younger brother",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 32,
+        "birth_date": "1991-07-19",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGuangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "South District of the Science and Technology Park",
+          "street_number": "No. 6 Gaoxin South 1st Road, TCL Building"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Product Manager at an Internet Company",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "Younger brother",
+        "relation_description": "Yu Xiaowei's younger brother is three years her junior. The siblings have always been very close since childhood. After graduating from university, Yu Xiaofeng chose to pursue his career in Shenzhen, working in the internet industry, and has now settled there. They mainly stay in touch through WeChat video calls, speaking at least once a week to catch up on each other's lives, vent about work, or share parenting tips (Yu Xiaofeng has also recently become a father). During holidays in Hong Kong or mainland China, Yu Xiaofeng returns to Hong Kong with his family to visit relatives. The two families often gather for meals and take the children to Disneyland or Ocean Park. Yu Xiaowei sometimes also consults her brother on matters related to finance and technology products."
+      },
+      {
+        "name": "Li Shufen",
+        "relation": "Mother-in-law",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 68,
+        "birth_date": "1955-04-12",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kwun Tong District",
+          "street_name": "Kangning Road",
+          "street_number": "No. 45 Jinqiao Huaxia"
+        },
+        "birth_place": {
+          "province": "Guangdong Province",
+          "city": "Jiangmen City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Adequate food and clothing",
+        "occupation": "Retired female garment factory worker",
+        "organization": "Kwun Tong United Garment Factory (Retired)",
+        "nickname": "Grandma",
+        "relation_description": "Zhang Weiming's mother, Yu Xiaowei's mother-in-law. The mother-in-law lives alone in the Kwun Tong District and has a cheerful and talkative personality. The relationship between mother-in-law and daughter-in-law is harmonious. Yu Xiaowei takes the children to visit her mother-in-law once or twice a month, where they enjoy tea or have meals together at home. The mother-in-law is skilled at making soups and always prepares Yu Xiaowei's favorite—carrot and radish pork bone soup. During traditional festivals such as the Spring Festival and Mid-Autumn Festival, the whole family gathers at the mother-in-law's home to celebrate. The mother-in-law takes great pride in her son and grandchildren and often praises her capable daughter-in-law to the neighbors."
+      }
+    ],
+    [
+      {
+        "name": "Lin Chia-hsin",
+        "relation": "Bestie",
+        "social_circle": "Close Friends Circle",
+        "gender": "Female",
+        "age": 35,
+        "birth_date": "1986-07-22",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Sham Shui Po District",
+          "street_name": "Fuk Wing Street",
+          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNumber 58"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District"
+        },
+        "personality": "ENFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Elementary School Teacher",
+        "organization": "Kowloon Tong Alliance Primary School",
+        "nickname": "Xinxin",
+        "relation_description": "Lin Jiaxin is Yu Xiaowei's childhood friend, having been classmates from kindergarten through high school. She is cheerful and enthusiastic, skilled at organizing activities, and serves as the central coordinator among their trio of close friends. Currently, she works as a teacher at a primary school in Hong Kong, enjoying a stable career. Although they live in different areas, they maintain a very close connection, speaking on the phone or video chatting at least once a week to share updates about work, family, and the daily details of raising children. They meet regularly once or twice a month, often spending weekends together over afternoon tea, shopping, or taking their children to the park. Every year, on Yu Xiaowei's birthday and important anniversaries, Lin Jiaxin thoughtfully prepares gifts and organizes small celebrations."
+      },
+      {
+        "name": "Huang Wenhui",
+        "relation": "Bestie",
+        "social_circle": "Post to Moments",
+        "gender": "Female",
+        "age": 36,
+        "birth_date": "1985-11-03",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park South District",
+          "street_number": "No. 8 Gaoxin South 1st Road"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District"
+        },
+        "personality": "ISTP",
+        "economic_level": "Affluent",
+        "occupation": "Product Manager at an Internet Company",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "Ah Hui",
+        "relation_description": "Huang Wenhui is a childhood friend shared by Yu Xiaowei and Lin Jiaxin. After graduating from high school, she went to mainland China for university and later settled in Shenzhen for her career. She is known for her calm, pragmatic, and logical personality and currently works as a product manager at a well-known internet company in Shenzhen. Due to the distance, she primarily stays in touch with Yu Xiaowei and Lin Jiaxin through online group chats, where they share daily life updates or discuss trending topics almost every day. Although they meet less frequently—approximately once every quarter—whenever Huang Wenhui returns to Hong Kong to visit family or when Yu Xiaowei and Lin Jiaxin travel to Shenzhen, the three always make time to get together. They usually choose cozy restaurants for long conversations to catch up on each other’s lives. Huang Wenhui is also one of the people Yu Xiaowei consults for professional advice when considering family financial planning and insurance matters."
+      }
+    ],
+    [
+      {
+        "name": "He Junjie",
+        "relation": "Classmate",
+        "social circle": "High School Classmates Circle",
+        "gender": "Male",
+        "age": 36,
+        "birth_date": "1987-08-22",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Shatin District",
+          "street_name": "Shatin Centre Street",
+          "street_number": "No. 18 Shatin Centre"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District"
+        },
+        "personality": "ESTP",
+        "economic_level": "Middle class",
+        "occupation": "Car Sales Manager",
+        "organization": "Crown Motors Limited",
+        "nickname": "Ajie",
+        "relation_description": "He Junjie is a high school classmate of Yu Xiaowei, and they both attended the same secondary school in Kowloon City District. After graduation, He Junjie entered the automotive sales industry and gradually advanced in his career due to his excellent interpersonal skills. He maintains contact with Yu Xiaowei and several other old classmates, organizing high school reunions once or twice a year, typically at Hong Kong-style tea restaurants or hot pot restaurants. They all currently live in Hong Kong but reside in different districts. They primarily stay in touch through a WhatsApp group, sharing updates about their lives and industry information. Occasionally, they contact each other individually for consultations on insurance or car purchases. He Junjie has an outgoing personality and is an active participant in these gatherings."
+      },
+      {
+        "name": "Zhou Minyi",
+        "relation": "Classmate",
+        "social circle": "High School Classmate Circle",
+        "gender": "Female",
+        "age": 35,
+        "birth_date": "1986-11-05",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park South Zone",
+          "street_number": "Feiyada Technology Building, South Gaoxin 1st Road"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kowloon City District"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Middle class",
+        "occupation": "Financial Analyst",
+        "organization": "Tencent Holdings Limited",
+        "nickname": "Mandy",
+        "relation_description": "Zhou Minyi was Yu Xiaowei's high school deskmate and close friend, with a very intimate relationship between them. After graduating from high school, Zhou Minyi went to study at a university in mainland China and later settled in Shenzhen for her career. She currently works as a financial analyst at an internet company. Despite living in different cities, their bond has not weakened. They mainly stay in touch through WeChat video calls and voice messages, communicating about once a week to share parenting experiences, work-related frustrations, and interesting stories from daily life. Whenever Yu Xiaowei travels to Shenzhen for business or Zhou Minyi returns to Hong Kong to visit family, they make sure to meet up, often going shopping, trying out delicious food, or enjoying a spa day together. Zhou Minyi has a gentle and thoughtful personality, making her someone Yu Xiaowei can confide in. She also knows He Junjie and Wang Zhiyuan and often interacts with them in their alumni group chats."
+      },
+      {
+        "name": "Wang Zhiyuan",
+        "relation": "Classmate",
+        "social circle": "High School Classmates Circle",
+        "gender": "Male",
+        "age": 36,
+        "birth_date": "1987-01-30",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Central and Western District",
+          "street_name": "Des Voeux Road Central",
+          "street_number": "No. 308 Fuyu Building"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Wan Chai District"
+        },
+        "personality": "INTJ",
+        "economic_level": "Middle class",
+        "occupation": "Information Technology Consultant",
+        "organization": "PCCW Solutions",
+        "nickname": "Wilson",
+        "relation_description": "Wang Zhiyuan is a high school classmate of Yu Xiaowei and once served as the academic monitor in their class. He has a calm personality and strong logical thinking skills. He studied computer science in university and now works as an IT consultant. He belongs to a close-knit high school friend circle along with Yu Xiaowei, He Junjie, and Zhou Minyi. Currently, Wang Zhiyuan lives alone on Hong Kong Island. Although his work keeps him busy, he values a high quality of life. He maintains relatively infrequent contact with his classmates, typically interacting in group chats a few times a month, but he always attends important class reunions. During gatherings, he often discusses automotive technology with He Junjie and offers practical advice to Yu Xiaowei and Zhou Minyi on electronic products and cybersecurity. His professionalism and reliability are highly appreciated by everyone."
+      }
+    ],
+    [
+      {
+        "name": "Liu Jiahui",
+        "relation": "Workmate",
+        "social circle": "First Job Circle",
+        "gender": "Male",
+        "age": 37,
+        "birth_date": "1987-08-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Longgang District",
+          "street_name": "Hewu Avenue, Bantian Street",
+          "street_number": "Number 89"
+        },
+        "birth_place": {
+          "province": "Hunan Province",
+          "city": "Shaoyang City"
+        },
+        "personality": "ISTP",
+        "economic_level": "Medium",
+        "occupation": "Logistics Warehouse Supervisor",
+        "organization": "South China Warehouse of a Certain International Logistics Company in Shenzhen",
+        "nickname": "Brother Hui",
+        "relation_description": "Liu Jiahui was a colleague Yu Xiaowei met in 2005 when she started her first job at a factory after graduating from high school. At that time, both worked on the packaging assembly line and maintained a harmonious relationship. In 2007, Liu Jiahui left his job to pursue opportunities in Shenzhen, initially working at an electronics factory before transitioning into the logistics industry through self-study. He is currently responsible for the daily operations and management of a warehouse. Although they live in different cities, they stay in touch via WeChat, exchanging greetings and digital red envelopes during the Spring Festival each year, and occasionally sharing updates about their lives and industry insights. When Yu Xiaowei travels to Shenzhen for business or leisure, she tries to arrange a meal with him to catch up, though such meetings are infrequent, occurring roughly once every two or three years. Liu Jiahui is pragmatic and skilled with his hands, and he admires Yu Xiaowei's successful transition from factory work to a career in insurance sales."
+      }
+    ],
+    [
+      {
+        "name": "Liang Zhenhua",
+        "relation": "Superior",
+        "social circle": "Work Circle",
+        "gender": "Male",
+        "age": 42,
+        "birth_date": "1982-08-22",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "East District",
+          "street_name": "Tai Koo Shing Road",
+          "street_number": "18th, Cityplaza, Taikoo Shing"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Wan Chai District"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Regional Sales Director",
+        "organization": "AIA Hong Kong (AIA)",
+        "nickname": "Brother Hua",
+        "relation_description": "Liang Zhenhua is Yu Xiaowei's direct supervisor at AIA Hong Kong, serving as the Regional Sales Director. They first met in 2012, shortly after Yu Xiaowei transitioned into the insurance industry. As the team leader, Liang Zhenhua provided her with extensive business guidance and client resource support. He admires Yu Xiaowei's diligence and client retention skills, often praising her performance during team meetings. They hold regular weekly team meetings and typically communicate about work through the company’s internal messaging software and phone calls. Occasionally, after achieving quarterly targets, Liang Zhenhua organizes team dinners, and Yu Xiaowei is usually an active participant. Both currently live and work in Hong Kong, maintaining frequent contact, and share a professional relationship that is both mentor-like and friendly."
+      },
+      {
+        "name": "Su Lishan",
+        "relation": "Colleague",
+        "social circle": "Work Circle",
+        "gender": "Female",
+        "age": 33,
+        "birth_date": "1991-05-30",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Tsuen Wan District",
+          "street_name": "Castle Peak Road",
+          "street_number": "No. 289, Tsuen Wan Section"
+        },
+        "birth_place": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Luohu District"
+        },
+        "personality": "ENFP",
+        "economic_level": "Moderately prosperous",
+        "occupation": "Senior Insurance Consultant",
+        "organization": "AIA Hong Kong (AIA)",
+        "nickname": "Shanshan",
+        "relation_description": "Su Lishan is a colleague of Yu Xiaowei in the same team, and they have worked together for over five years. Su Lishan was born in Shenzhen and later moved to Hong Kong for career development. They became close by frequently visiting clients together and sharing sales techniques. Su Lishan has an outgoing personality and is the team's mood-maker, often inviting Yu Xiaowei to nearby tea restaurants during lunch breaks for pineapple buns and Hong Kong-style milk tea. At work, they support each other and occasionally collaborate on handling overlapping clients. In their personal lives, they meet once or twice a month for shopping and gatherings, exchanging parenting tips (Su Lishan has a three-year-old daughter) and recommending yoga classes to each other. Although both live in Hong Kong, one resides in Kowloon and the other in Tsuen Wan, so meeting up requires deliberate planning, and they mostly stay in touch through WeChat on a daily basis."
+      },
+      {
+        "name": "Guo Junwei",
+        "relation": "Colleague",
+        "social circle": "Work Circle",
+        "gender": "Male",
+        "age": 38,
+        "birth_date": "1986-12-10",
+        "home_address": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nGuangdong Province",
+          "city": "Guangzhou City",
+          "district": "Tianhe District",
+          "street_name": "Tiyu East Road",
+          "street_number": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nNo. 112"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City",
+          "district": "Siming District"
+        },
+        "personality": "ISTP",
+        "economic_level": "Middle class",
+        "occupation": "Actuarial and Product Specialist",
+        "organization": "AIA Hong Kong (AIA)",
+        "nickname": "Ah Wei",
+        "relation_description": "Guo Junwei is a colleague of Yu Xiaowei at AIA, responsible for actuarial support and insurance product design. Born in Xiamen, he is currently based at the Guangzhou branch but frequently participates in online meetings with the sales team in Hong Kong due to work requirements. The two met at a company-organized product training session, where Guo Junwei’s professional and composed product explanations left a deep impression on Yu Xiaowei. Since then, when recommending complex insurance products to clients, Yu Xiaowei often consults Guo Junwei for details via phone or video calls. Occasionally, when Guo Junwei travels to the Hong Kong headquarters for business, he dines with several colleagues, including Yu Xiaowei and Su Lishan. As they are based in different locations, their interactions are primarily work-driven, occurring about once or twice a week, and their relationship is professional and friendly. Yu Xiaowei appreciates his profound understanding of products, which helps her better serve high-end clients."
+      }
+    ],
+    [
+      {
+        "name": "Chen Meiling",
+        "relation": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nCustomer",
+        "social_circle": "Customer Circle",
+        "gender": "Female",
+        "age": 48,
+        "birth_date": "1977-05-22",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "East District",
+          "street_name": "Tai Koo Shing Road",
+          "street_number": "A unit in Golden Terrace, Taikoo Shing."
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Affluent",
+        "occupation": "Housewife",
+        "organization": "None",
+        "nickname": "Chen Tai",
+        "relation_description": "Chen Meiling is a client whom Yu Xiaowei met through a friend's introduction five years ago. Yu has primarily arranged comprehensive medical, savings, and children's education insurance for her family. Chen is a full-time homemaker, comes from a well-off family, and has a gentle and meticulous personality. She highly trusts Yu Xiaowei's professional advice. Both currently live in Hong Kong and maintain contact approximately once every quarter, usually for reasons such as policy anniversary reviews, inquiries about new products, or holiday greetings. Occasionally, they meet at a cha chaan teng in Causeway Bay to discuss family financial planning over afternoon tea. Yu Xiaowei regards her as an important long-term client and friend."
+      },
+      {
+        "name": "Wang Qiming",
+        "relation": "Customer",
+        "social_circle": "Customer Circle",
+        "gender": "Male",
+        "age": 42,
+        "birth_date": "1982-11-30",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park South District",
+          "street_number": "Building 5, Software Industry Base, Haitian Second Road, Yuehai Street"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Co-founder and Chief Technology Officer of a technology company",
+        "organization": "Shenzhen Zhiyun Technology Co., Ltd.",
+        "nickname": "President Wang",
+        "relation_description": "Wang Qiming was a client Yu Xiaowei met three years ago at an industry sharing session. At that time, he had just established a branch in Hong Kong and needed to arrange group insurance and personal high-end medical insurance for his executive team. As a tech entrepreneur based in Shenzhen, he was sharp-minded and decisive in his decision-making. Since his work was primarily in Shenzhen, they mainly communicated via WeChat and phone calls, connecting approximately once every two months to discuss policy services or adjust coverage plans based on changes in his family situation. Whenever Wang Qiming visited Hong Kong for business once or twice a year, they would meet at a café in Central for detailed discussions. Yu Xiaowei admired his entrepreneurial drive and strived to provide him with insurance solutions tailored to his highly mobile lifestyle."
+      }
+    ],
+    [
+      {
+        "name": "Zhao Zhiming",
+        "relation": "Coach",
+        "social circle": "Marathon circle",
+        "gender": "Male",
+        "age": 42,
+        "birth_date": "1982-08-22",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Shatin District",
+          "street_name": "Shatin Centre Street",
+          "street_number": "No. 18 Shatin Centre"
+        },
+        "birth_place": {
+          "province": "Guangdong Province",
+          "city": "Guangzhou City"
+        },
+        "personality": "ESTJ",
+        "economic_level": "Middle class",
+        "occupation": "Fitness Coach/Marathon Personal Trainer",
+        "organization": "Hong Kong Vitality Fitness Center",
+        "nickname": "Coach Zhao",
+        "relation_description": "Yu Xiaowei met Coach Zhao when she signed up for the half-marathon training camp in 2018. As the head coach of the camp, he was professional and strict, creating a systematic training plan for Yu Xiaowei. Their interactions were primarily based on a coach-trainee relationship, discussing training progress, running techniques, and race strategies. Yu Xiaowei would reach out to him when preparing for competitions or encountering training bottlenecks. Both of them lived in Hong Kong and typically met twice a week at the training camp, occasionally exchanging training insights via WhatsApp. Coach Zhao was also acquainted with fellow runner Shen Peiwen and sometimes organized small running group dinners."
+      },
+      {
+        "name": "Shen Peiwen",
+        "relation": "Running buddy",
+        "social circle": "Marathon circle",
+        "gender": "Female",
+        "age": 33,
+        "birth_date": "1991-05-30",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Kwun Tong District",
+          "street_name": "Ngau Tau Kok Road",
+          "street_number": "No. 33 Debao Garden"
+        },
+        "birth_place": {
+          "province": "Please translate the following Chinese text into English, maintaining the original format and semantics:\n\nFujian Province",
+          "city": "Xiamen City"
+        },
+        "personality": "ENFP",
+        "economic_level": "Moderately prosperous",
+        "occupation": "Primary school teacher",
+        "organization": "Po Leung Kuk Chan Shu Kui Primary School",
+        "nickname": "Awén",
+        "relation_description": "Shen Peiwen and Yu Xiaowei met during a weekend morning running event in 2019 and became running partners due to their similar pace. Their personalities complement each other—Yu Xiaowei is practical, while Shen Peiwen is lively. Their conversations often extend from running to topics like family, work, and shopping. They stay connected by planning weekend long-distance training sessions, sharing new running routes, or venting about race organizations. Besides running, they often enjoy Hong Kong-style milk tea and go shopping together. Both living in Hong Kong, they maintain a high frequency of contact, typically meeting for running once or twice a week and frequently interacting on social media. They both know Coach Zhao Zhiming, and the three occasionally participate in running group activities together."
+      }
+    ],
+    [
+      {
+        "name": "Wu Xiuying",
+        "relation": "Teacher",
+        "social_circle": "Cantonese Embroidery Interest Circle",
+        "gender": "Female",
+        "age": 68,
+        "birth_date": "1956-08-22",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Sham Shui Po District",
+          "street_name": "Lai Chi Kok Road",
+          "street_number": "No. 245"
+        },
+        "birth_place": {
+          "province": "Guangdong Province",
+          "city": "Guangzhou City"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Well-off",
+        "occupation": "Cantonese Embroidery Artisan",
+        "organization": "Hong Kong Traditional Crafts Association (Re-employed after retirement)",
+        "nickname": "Teacher Wu",
+        "relation_description": "Five years ago, Yu Xiaowei met teacher Wu Xiuying when she attended a Cantonese embroidery introductory class held at the community center. Teacher Wu, a seasoned Cantonese embroidery artisan, was quite impressed by Yu Xiaowei's patience and meticulousness, believing she had the potential to carry on the traditional craft. When they spent time together, Teacher Wu was more like a kind elder, not only teaching embroidery skills but also often sharing life experiences. They now mainly keep in touch through WeChat, with Yu Xiaowei regularly sending photos of her work for advice, and Teacher Wu providing feedback and encouragement. Approximately every two to three months, Yu Xiaowei visits Teacher Wu's studio in Sham Shui Po, bringing along tea and snacks. They chat while embroidering, covering topics ranging from techniques to family life. Teacher Wu also knows another embroidery enthusiast, Mrs. He, and occasionally mentions her recent updates during small gatherings at the studio."
+      },
+      {
+        "name": "He Meiling",
+        "relation": "Embroidery Enthusiast",
+        "social_circle": "Cantonese Embroidery Interest Circle",
+        "gender": "Female",
+        "age": 42,
+        "birth_date": "1982-11-05",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park South Zone",
+          "street_number": "No. 8, Gaoxin South 1st Road"
+        },
+        "birth_place": {
+          "province": "Guangdong Province",
+          "city": "Foshan City"
+        },
+        "personality": "INFP",
+        "economic_level": "Affluent",
+        "occupation": "Product Manager at an Internet Company",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "A Ling",
+        "relation_description": "He Meiling and Yu Xiaowei were classmates in Ms. Wu Xiuying’s advanced Cantonese embroidery course. At the time, He Meiling had come to Hong Kong for short-term training due to a work transfer from Shenzhen and was captivated by the exquisite craftsmanship of Cantonese embroidery. After the course ended, she returned to Shenzhen, but the two maintained contact through their shared interest. He Meiling is quiet and creative, often blending modern design concepts into traditional Cantonese embroidery, which interestingly complements Yu Xiaowei’s style, which leans more toward traditional techniques. They now communicate almost entirely online, sharing their works and insights weekly in a dedicated embroidery enthusiasts’ WeChat group and occasionally holding video calls to discuss complex stitching techniques. Due to living in different cities, they meet infrequently, about once or twice a year—either when Yu Xiaowei travels to Shenzhen for work or when He Meiling visits Hong Kong as a tourist. Both regard Ms. Wu as their shared mentor and often learn about each other’s recent activities through her."
+      }
+    ],
+    [
+      {
+        "name": "Zhou Wenbin",
+        "relation": "Doctor",
+        "social_circle": "Medical Service Circle",
+        "gender": "Male",
+        "age": 42,
+        "birth_date": "1982-08-19",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Central and Western District",
+          "street_name": "Bonham Road",
+          "street_number": "45"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Middle class",
+        "occupation": "General Practitioner",
+        "organization": "Hong Kong Sanatorium & Hospital",
+        "nickname": "Dr. Zhou",
+        "relation_description": "Dr. Zhou Wenbin is Yu Xiaowei's family doctor, and they first met during a routine health check-up five years ago. He is calm and meticulous in character, earning the trust of Yu Xiaowei and her family. Every year, Yu Xiaowei takes her entire family to him for a health examination, and she often consults him via phone or instant messaging when her child has a fever or when family members experience minor health issues. Although they do not communicate frequently, their relationship is stable, typically meeting once or twice a year, mainly at the clinic for routine check-ups or to address specific health concerns. Dr. Zhou is aware of Yu Xiaowei's active lifestyle and often provides professional advice on the matter."
+      }
+    ],
+    [
+      {
+        "name": "Li Guodong",
+        "relation": "Account Manager",
+        "social_circle": "Financial Services Circle",
+        "gender": "Male",
+        "age": 42,
+        "birth_date": "1982-08-22",
+        "home_address": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong",
+          "district": "Wan Chai District",
+          "street_name": "Hennessy Road",
+          "street_number": "No. 200"
+        },
+        "birth_place": {
+          "province": "Hong Kong Special Administrative Region",
+          "city": "Hong Kong"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Senior Manager of Bank Wealth Management Department",
+        "organization": "HSBC (Hong Kong)",
+        "nickname": "Manager Li",
+        "relation_description": "Li Guodong is an important client manager whom Yu Xiaowei met while working at AIA, serving at HSBC. The two became acquainted at an industry exchange conference in 2018 and established a stable cooperative relationship due to complementary business needs. When Yu Xiaowei’s clients have complex asset allocation or banking service requirements, she often refers them to Li Guodong; conversely, when Li Guodong’s clients need insurance planning, he prioritizes Yu Xiaowei. They communicate several times a month via phone or WeChat to exchange market information and client updates, and meet quarterly at a café in Wan Chai or Central to discuss collaborative projects and maintain their relationship. Although both work in Hong Kong’s financial sector, they serve different institutions, maintaining a professional and mutually beneficial partnership."
+      }
+    ]
+  ]
+}

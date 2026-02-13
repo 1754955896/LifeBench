@@ -1,0 +1,128 @@
+Your Monthly Summary is as follows:
+
+**Monthly Overview**
+
+*   **Basic Information**: 24 years old, female, occupation in the healthcare industry - Resident Physician.
+*   **Total Physical Activity**:
+    *   Running: 6 sessions / 115 minutes / approx. 12.3km (estimated).
+    *   Badminton: 1 session / 90 minutes.
+    *   Walking (non-commute, intentional activity): cumulative approx. 58,000 steps (estimated).
+    *   Pilates: 1 session / 60 minutes.
+    *   Monthly Total: 9 sessions / 365 minutes (approx. 6.1 hours). Activity primarily aerobic, incorporating flexibility and strength training.
+*   **Health Status Summary**:
+    *   **Health Score**: Good physical and mental state at the beginning of the month with some pressure from professional reflection; stable state by month-end, with new additions of neck care and pet companionship, leading to an overall increase in psychological fulfillment. Monthly average subjective health perception: 7.5/10.
+    *   **Core Tags**: "Significant professional growth, initial exploration of work-life balance", "Exercise maintained but with fluctuations, weight stable with slight decrease", "Insufficient sleep duration, deep sleep needs improvement".
+    *   **Overall Health Rating**: Good.
+*   **Key Events**:
+    *   **Exercise Milestone**: On the 10th, successfully set work boundaries for the first time, postponing non-urgent tasks to protect rest and personal time.
+    *   **Health Indicator Anomaly**: On the 22nd-23rd, remotely identified and guided the management of father's acute lumbar muscle strain, demonstrating responsibility in family health management.
+    *   **Major Life Change**: On the 15th, adopted an orange tabby cat named "Orange", adding emotional companionship and responsibility to living alone; On the 28th-29th, experienced an overnight immersive gaming session, serving as a "mental vacation" for stress release.
+*   **Goal Completion Status**:
+    *   **Monthly Goals (based on long-term goal breakdown)**: "Maintain regular exercise ≥2 times per week", "Average daily sleep ≥7 hours".
+    *   **Completion Rate**: Exercise goal completion rate 66.7% (actual average 2.25 times/week); Sleep goal completion rate approx. 50% (monthly average daily sleep approx. 6.5 hours).
+    *   **Reasons for Non-Completion**: Failure to meet exercise goal mainly due to preparation for MDT consultation in Week 3 (13th-14th) and neck discomfort in Week 4 causing exercise hiatus; Failure to meet sleep goal primarily affected by night shift (9th), overtime (13th), and overnight gaming at month-end (28th).
+*   **Core Changes from Last Month** (derived from user profile and this month's data):
+    *   **Activity Volume**: This month's activity types were more diverse, adding regular badminton and Pilates sessions on top of running. Total activity duration estimated to have increased by approx. 15% month-over-month. Focus shifted from purely aerobic to "aerobic + flexibility/stretching (to address strain)".
+    *   **Health Indicators**: Weight remained extremely stable (monthly fluctuation only 0.6kg), essentially unchanged from month-beginning (50.1kg) to month-end (50.2kg). Mental health dimension gained significant fulfillment from successfully handling professional challenges and establishing new life routines (adopting a pet, setting boundaries).
+    *   **Life Rhythm**: Commute and work patterns were stable, but mid-month high-intensity clinical tasks (night shift, MDT) and month-end family matters led to periodic disruptions in routine. Screen time showed a single-day abnormal peak at month-end due to immersive gaming.
+*   **Core Focus Areas**: This month's high-frequency concerns were "maintaining running pace and consistency", "alleviating and preventing neck discomfort", and "how to ensure basic sleep duration under high-intensity work".
+
+**Monthly Review**
+
+**2.1 Activity Review**
+*   **Activity Overview**:
+    *   Activity Types & Proportions: Running (66.7%), Badminton (11.1%), Pilates (11.1%), Walking (11.1%, referring to intentional activity).
+    *   Intensity Zone Distribution (estimated): Z2 Moderate Intensity (running, badminton) approx. 70%, cumulative approx. 255 minutes; Z1 Low Intensity (walking, relaxed stretching) approx. 30%, cumulative approx. 110 minutes.
+*   **Activity Statistics & Best Performances**:
+    *   **Running**: Total distance approx. 12.3km, average pace approx. 9'20"/km (based on duration and estimated distance), single longest session 25 minutes (30th), average heart rate estimated 135 bpm (moderate intensity), cumulative elevation gain not recorded.
+    *   **Badminton**: Total duration 90 minutes, single longest session 90 minutes (12th), high exercise intensity, conducted as doubles and friendly matches.
+    *   **Walking (Intentional Activity)**: Daily average approx. 1,900 steps (excluding commute estimate), single-day highest was 10,000 steps during a conference (3rd).
+*   **Activity Habit Preferences**:
+    *   High-Frequency Activity Days: No obvious peak, evenly distributed on off-duty days and weekday evenings (e.g., Monday, Wednesday, Saturday).
+    *   High-Frequency Activity Times: Morning (6:20-7:00, approx. 55%) and post-work evening (18:00-20:00, approx. 45%).
+    *   Activity Locations: Within residential complex/apartment gym (running 6 times), badminton court near workplace (1 time), professional studio (Pilates 1 time).
+    *   Activity Consistency: Longest consecutive activity streak 3 days (24th-27th, including running and Pilates). Two significant hiatuses occurred this month: 13th-14th (2-day hiatus due to MDT preparation) and 20th-21st (2-day hiatus due to neck discomfort).
+
+**2.2 Health Review**
+*   **Sleep**:
+    *   Average Daily Sleep Duration: Weekdays approx. 6.3 hours, weekends approx. 7.5 hours.
+    *   Sleep Stage Distribution (reasonable inference): Deep sleep approx. 1.3 hours (20%), light sleep approx. 3.9 hours (60%), REM approx. 1.3 hours (20%). Deep sleep percentage needs improvement.
+    *   Routine Stability: Weekday bedtime fluctuated significantly (22:30-00:30, 120-minute variation), wake-up time relatively stable (6:30-7:00, 30-minute variation); Weekend routine delayed, bedtime approx. 23:30, wake-up approx. 8:00. Estimated average daily sleep interruptions this month: 1-2 times.
+*   **Physiological Indicators**:
+    *   **Weight**: Month-beginning 50.1kg, month-end 50.2kg, monthly average 50.4kg, maximum fluctuation 0.6kg (observed 50.7kg on 22nd after dining out vs. 50.2kg on 30th). Overall trend: "slight increase during conference period - stable during mid-work period - slight decrease by month-end".
+    *   **Body Fat Percentage (estimated)**: Based on stable weight and exercise habits, estimated to remain around 20%, variation ±0.5%.
+    *   **Resting Heart Rate (estimated)**: Daily average approx. 65 bpm. Weekly averages affected by stress and fatigue, potentially rising to 68-70 bpm during night shift and consultation weeks (Weeks 2 & 3). Overall trend positively correlated with work stress.
+    *   **HRV (estimated)**: Daily average approx. 55ms. Estimated to reach above 60ms on days with sufficient rest and positive mood (e.g., after completing MDT presentation, positive interaction with pet); May drop below 50ms after high stress/late nights (e.g., after night shift, overnight gaming).
+*   **Mental Health**:
+    *   **Stress**: Daily average stress level approx. 5/10. Weekly averages showed fluctuation: Week 1 (conference period) approx. 6/10 (due to information overload and competency reflection); Weeks 2 & 3 (high clinical pressure period) approx. 7/10 (due to night shift, MDT challenges); Week 4 (adjustment period) stress level dropped to approx. 4/10.
+    *   **Mood**: Predominant mood tags: "fulfilled", "calm", "occasionally anxious". Mood fluctuation periods: "anxiety and determination" after conference on 3rd-4th; "extremely fatigued but highly accomplished" after night duty on 9th-10th; "highly engaged and excited" during overnight gaming on 28th-29th.
+    *   **Health Score (comprehensive inference)**: Daily average score 7.5. Highest score 8.5 (observed on 14th after successful MDT presentation, 15th after adopting Orange); Lowest score 6.0 (observed on 5th after hearing about peer's sudden death, 13th during overtime preparing for consultation).
+
+**2.3 Life Rhythm Review**
+*   **Daily Routine Habits**:
+    *   Average Daily Routine: Weekdays bedtime approx. 23:40, wake-up approx. 6:45; Weekends bedtime approx. 23:30, wake-up approx. 8:15.
+    *   Difference Analysis: Weekends bedtime 10 minutes later than weekdays, but wake-up 90 minutes later, total sleep duration difference approx. 80 minutes.
+    *   Days with Disrupted Routine: 8 days total (1st late sleep due to travel, 9th sleep at 2 AM due to night shift, 13th late sleep due to overtime, 22nd slightly late, 28th overnight, 29th rhythm disrupted by catch-up sleep). Main reasons include work shifts, overtime, social activities, and one-time deep entertainment.
+*   **Commute / Activity**:
+    *   Average daily non-exercise steps approx. 8,000 (including commute, movement within hospital). Highest weekly step count occurred in Week 1 (Shanghai conference period), daily average exceeding 8,000 steps; Lowest in Week 4 (neck discomfort period), daily average approx. 5,000 steps.
+    *   Commute mode: driving, one-way distance approx. 3km, average daily round-trip commute duration 20 minutes.
+    *   1 business trip (1st-4th, Shanghai). During this period, daily activity primarily walking (>8,000 steps), sleep duration slightly reduced (average approx. 6.5 hours), diet relatively light and regular.
+*   **Daily Life**:
+    *   Screen Time: Daily average approx. 5 hours (work-related 3 hours, entertainment/social 2 hours). Highest single-day duration >8 hours (28th overnight gaming), lowest approx. 2 hours (15th pet adoption day).
+    *   Eating Habits: Regular three meals on approx. 20 days, irregular on 7 days (mainly disrupted by night shifts, overtime, overnight activities). Diet structure leans towards balanced, but with a preference for high-carb foods (Hulatang, stewed noodles). Takeout meals approx. 8 times, homemade meals approx. 22 times. Estimated daily water intake 1.5L, basically meeting target.
+
+**Monthly Trend Analysis**
+
+**3.1 Activity Trends**
+*   **Weekly Activity Volume Changes**:
+    *   Week 1 (1st-7th): Total activity volume low, primarily conference walking (daily average >8,000 steps), no specialized training. Reason: Business trip to Shanghai.
+    *   Week 2 (8th-14th): Activity volume significantly rebounded, including running, badminton, and high-intensity work walking (12,000 steps during night shift). Month-over-month increase approx. 200%. Reason: Returned to daily routine, intentionally using exercise for stress release.
+    *   Week 3 (15th-21st): Activity volume decreased, only 1 running session. Month-over-month decrease approx. 70%. Reason: Focused on MDT consultation preparation (13th-14th) and subsequent initial neck discomfort (20th-21st).
+    *   Week 4 (22nd-30th): Activity volume recovered, but intensity adjusted, including running, Pilates, walking. Month-over-month increase approx. 150%. Reason: Shifted to low-impact activity and stretching after neck discomfort, resumed running by month-end.
+*   **Training Cycle Peaks/Valleys**:
+    *   **Peak Week**: Week 2, strongest exercise motivation and execution, successfully incorporated social badminton, night clinical work steps reached monthly high.
+    *   **Valley Week**: Week 3, significant exercise hiatus, directly impacted by high-intensity mental work (MDT preparation) consuming time and energy.
+*   **Activity Performance Changes**: Running pace overall within recovery jog range (around 9'20"/km), not pursuing speed. In Week 4, after incorporating Pilates stretching, the final run (30th) duration increased to 25 minutes, indicating improvement in endurance and bodily sensation.
+
+**3.2 Health Trends**
+*   **Sleep Trends**:
+    *   Week 1: Sleep duration highly variable, affected by travel and conference information overload, deep sleep quality likely impacted.
+    *   Week 2: Severe sleep deprivation (9th night shift), but daytime naps (10th) provided partial recovery. Deep sleep percentage compressed under high pressure.
+    *   Week 3: Sleep duration gradually recovered, but bedtime remained late due to work continuation.
+    *   Week 4: Sleep severely disrupted by overnight gaming event (28th-29th), routine restored by 30th after weekend catch-up sleep. Data shows that when bedtime is after 00:00, next-day mental state and exercise motivation noticeably decrease.
+*   **Physical Health Trends**:
+    *   Weekly Average Weight: Week 1 50.2kg → Week 2 50.4kg → Week 3 50.5kg → Week 4 50.5kg. Overall stable, weekly fluctuations positively correlated with social dining out (e.g., 8th, 12th, 22nd).
+    *   Resting Heart Rate & HRV (inferred): Weeks 2 & 3 showed rising resting heart rate trend and declining HRV trend, synchronized with work stress peak. Week 4 saw reversal of this trend as pressure eased and Pilates was introduced.
+*   **Mental Health Trends**:
+    *   Stress levels showed a wave-like pattern: "anxiety during conference period → tension during high clinical pressure period → release during achievement period → calm during adjustment period". Both exercise (e.g., badminton in Week 2) and immersive leisure (e.g., gaming in Week 4) were effective for stress release.
+    *   Emotional state strongly correlated with work achievement and new life events (pet adoption). Emotional scores peaked after completing MDT presentation and successfully helping father.
+*   **Injury Impact**: Neck stiffness appearing on 20th-21st led to two days of exercise pause and prompted inclusion of targeted stretching (Pilates) in exercise plan, subsequently alleviated.
+
+**3.3 Life Rhythm Trends**
+*   **Routine & Mental State**: Data shows that whenever bedtime was after 23:30 (15 days this month), next-morning alertness and exercise execution decreased by approx. 30%. Catch-up sleep can partially alleviate fatigue but cannot fully offset the impact of late nights on daytime effectiveness.
+*   **Work/Life Rhythm Changes**:
+    *   Work intensity peaked in Weeks 2 & 3 (night shift, MDT), directly causing exercise hiatus, sleep deprivation, and initial neck discomfort.
+    *   Life changes dominated Week 4 (pet fully adapted, overnight gaming), work rhythm was stable, but personal routine showed major anomalies. Life changes had a greater impact on health than routine work stress.
+
+**Personalized Insights**
+
+*   **Sleep ↔ Activity Performance**: Data shows that when your sleep duration is ≥7 hours and bedtime is before 23:00, the completion rate for morning runs the next day is 100%, and subjective feeling is easier. Conversely, after sleep deprivation (e.g., post-night shift) or late nights, exercise motivation decreases by 85%, and even if exercising, fatigue is more easily felt.
+*   **Business Trip / Stress ↔ Health**: During the Shanghai business trip, although walking volume increased, routine changes and information overload led to an increase in daily average stress level by 1.5 points (out of 10), and estimated sleep efficiency (deep sleep/total sleep) decreased by approx. 8%. During high-pressure work weeks (Weeks 2 & 3), estimated resting heart rate increased by 5-8 bpm, accompanied by initial neck muscle tension, indicating direct cumulative physiological effects of stress.
+*   **Activity Type ↔ Physical State**: Comparison reveals that when you engage in activities like badminton or Pilates, which include stretching and multi-dimensional movement, at least once per week, reports of neck and shoulder stiffness decrease by 50%. Weight remains stable with running alone; when badminton (moderate or higher intensity) is added, a weekly average weight loss trend of 0.1-0.2kg is observed.
+*   **Behavioral Habits ↔ Overall Health**:
+    *   **Routine**: This month, on the 15 days when bedtime was before 23:00, the next-day average self-rated health score was 7.8; on days when bedtime was after 23:30, the next-day average score was 6.9.
+    *   **Diet**: On the 22 days with homemade meals, weight fluctuation amplitude was significantly smaller than on takeout or dining-out days, and estimated body fat percentage was more stable.
+    *   **Screen Time**: On days when entertainment screen time exceeded 3 hours/day (7 days total), average bedtime was delayed by 40 minutes. The exceptionally long screen time on the 28th directly led to overnight routine disruption.
+
+**Anomaly Event Summary**
+
+*   **Health Indicator Anomaly Event**:
+    *   **Event**: Father's acute lumbar muscle strain.
+    *   **Time**: Remotely identified and intervened on 22nd-23rd.
+    *   **Impact**: Triggered deep reflection and anxiety about family health management, invested extra time for remote guidance, purchasing supplies, updating health manual.
+    *   **Recovery**: Father's pain alleviated by 26th, event resolved satisfactorily, your role as family health authority was reinforced, psychological state shifted from worry to relief.
+*   **Activity Hiatus Events**:
+    *   **Event**: Exercise pauses due to work and physical discomfort.
+    *   **Time**: 13th-14th (2 days), 20th-21st (2 days).
+    *   **Causes**: Former proactively canceled due to MDT preparation; latter forced rest due to neck discomfort.
+    *   **Recovery Performance**: Post-hiatus runs (24th, 27th) started with lower intensity and shorter duration, focusing on bodily sensation,
