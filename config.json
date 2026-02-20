@@ -1,6 +1,6 @@
 {
   "llm": {
-    "api_key": "",
+    "api_key": " ",
     "base_url": "https://api.deepseek.com"
   },
   "map_tool": {
