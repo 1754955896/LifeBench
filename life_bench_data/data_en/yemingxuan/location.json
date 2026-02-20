@@ -1,0 +1,172 @@
+[
+  {
+    "name": "Xiqingdao Residential Community",
+    "location": "117.134062,39.154187",
+    "formatted_address": "No. 171, Xiqing Road, Hongqiao District, Tianjin, China",
+    "city": "Tianjin Municipality",
+    "district": "Hongqiao District",
+    "streetName": "Xiqing Road",
+    "streetNumber": "No. 171",
+    "description": "Ye Mingxuan's permanent residential address is located near Zhongbei Avenue in Xiqing District, Tianjin, and is used for daily living."
+  },
+  {
+    "name": "Haitai Building Office Tower",
+    "location": "117.124511,39.095145",
+    "formatted_address": "No. 6 Meiyuan Road, Xiqing District, Tianjin, China",
+    "city": "Tianjin Municipality",
+    "district": "Xiqing District",
+    "streetName": "Meiyuan Road",
+    "streetNumber": "No. 6",
+    "description": "Ye Mingxuan's regular workplace is located near Haitai Fazhan 6th Road in Xiqing District, Tianjin, where he serves as a mechanical engineer at Tianjin Haitai Precision Machinery Co., Ltd."
+  },
+  {
+    "name": "Longfor Paradise Walk Swimming Pool",
+    "location": "117.222380,39.064538",
+    "formatted_address": "Tianjin City, Xiqing District, Tianjin Municipality",
+    "city": "Tianjin Municipality",
+    "district": "Xiqing District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The fitness facility that Ye Mingxuan frequents is located near Haitai Fazhan Third Road in Xiqing District, Tianjin. It is used for his weekly strength training and aerobic guidance sessions, which are conducted under the instruction of Coach Wang Jian."
+  },
+  {
+    "name": "Nankai University Balitai Campus",
+    "location": "117.167998,39.103412",
+    "formatted_address": "No. 94 Weijin Road, Nankai District, Tianjin, China",
+    "city": "Tianjin Municipality",
+    "district": "Nankai District",
+    "streetName": "Weijin Road",
+    "streetNumber": "No. 94",
+    "description": "Ye Mingxuan's alma mater, located near Weijin Road in Nankai District, Tianjin, is used for occasionally attending alumni events or technical seminars, and for maintaining contact with his mentor, Chen Jianguo."
+  },
+  {
+    "name": "Millennium Garden Community Convenience Store",
+    "location": "117.139778,39.156055",
+    "formatted_address": "Hongqiao District, Tianjin, Tianjin Municipality",
+    "city": "Tianjin Municipality",
+    "district": "Hongqiao District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The supermarket near the residential community is used for daily shopping and household needs."
+  },
+  {
+    "name": "Halal Tian Shang Happiness Courtyard Restaurant",
+    "location": "117.138290,39.152142",
+    "formatted_address": "Shangyuan Teachers' Apartment, No. 2 Xianyang Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Restaurants in the vicinity of residential communities, suitable for daily dining or family gatherings."
+  },
+  {
+    "name": "Qingyun Bridge Small Park",
+    "location": "117.144424,39.154453",
+    "formatted_address": "Hongqiao District, Tianjin City, and Xiqing Road",
+    "city": "Tianjin Municipality",
+    "district": "Hongqiao District",
+    "streetName": "With Xiqing Road",
+    "streetNumber": [],
+    "description": "The park near the residential community is used for weekend jogging or leisurely walks."
+  },
+  {
+    "name": "Waterside Garden Gymnasium",
+    "location": "117.150301,39.142431",
+    "formatted_address": "Commercial Unit 7, Building 9, Shuipan Garden (470m walk from Exit A of People's Hospital Metro Station)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "A gymnasium near the residential community for equipment-based exercises and physical activities."
+  },
+  {
+    "name": "Haitai Information Plaza Coffee Shop",
+    "location": "117.123571,39.096446",
+    "formatted_address": "Unit 117, 1st Floor, Building H, Haitian Information Plaza, Huatiandao No. 6",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The café downstairs from the workplace, used for work breaks or communication with colleagues."
+  },
+  {
+    "name": "Zhihui Shan Xile Lane Noodle Restaurant",
+    "location": "117.122025,39.093621",
+    "formatted_address": "Virtual Park 103-1-B, No. 1 Gonghua Avenue, Gonghuadao Huayuan Industrial Zone",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The fast-food restaurant downstairs from the office, used for weekday lunches or quick meals."
+  },
+  {
+    "name": "Haitai International Apartment Convenience Store",
+    "location": "117.129100,39.096141",
+    "formatted_address": "1st Floor, Haitai International Apartment, No. 3 Kaihua Avenue",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The convenience store downstairs from the workplace is used for purchasing snacks or daily necessities."
+  },
+  {
+    "name": "Hongqiao District Antique Market",
+    "location": "117.150139,39.161680",
+    "formatted_address": "20 meters south of the intersection of Haiyuan Road and Meijian East Avenue",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The antique market near the residential community is used for collecting ancient coins."
+  },
+  {
+    "name": "Universal City Fitness Center",
+    "location": "117.235018,39.041917",
+    "formatted_address": "Top floor of Huan Yu City, South Jiefang Road (next to Exit B of South Jiefang Road Metro Station)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Swimming pool near fitness facilities, used for swimming exercise."
+  },
+  {
+    "name": "Nankai University Library Wenzhong Branch",
+    "location": "117.173225,39.104569",
+    "formatted_address": "No. 94 Weijin Road, Balitai Campus, Nankai University",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The library near the school, used for studying or programming research."
+  },
+  {
+    "name": "Everbright Bank ATM (Shuimu Tiancheng)",
+    "location": "117.130269,39.160351",
+    "formatted_address": "Shuimu Tiancheng Yishu Garden",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The bank near the residential community is used for financial management and daily financial affairs."
+  },
+  {
+    "name": "Yanyu Community Health Service Station",
+    "location": "117.142210,39.159915",
+    "formatted_address": "Near the Yan Yu Community Committee of Xigu Subdistrict, Hongqiao District, Tianjin, China, 200 meters south of Haiyuan South Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Community health service center near the residential area, used for physical examinations and medical treatment."
+  },
+  {
+    "name": "Hongqiao District Lianyuan Road Flower Shop",
+    "location": "117.149369,39.161642",
+    "formatted_address": "No. 1-1 Lianyuan Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "A flower shop near the residential community, used for gardening hobbies"
+  }
+]

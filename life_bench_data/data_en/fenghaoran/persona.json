@@ -1,0 +1,716 @@
+{
+  "name": "Feng Haoran",
+  "birth": "1994-10-29",
+  "age": 27,
+  "nationality": "Han",
+  "home_address": {
+    "province": "Hunan Province",
+    "city": "Changsha City",
+    "district": "Yuelu District",
+    "street_name": "Lushan South Road",
+    "street_number": "No. 156"
+  },
+  "birth_place": {
+    "province": "Hubei Province",
+    "city": "Wuhan City",
+    "district": "Jiang'an District"
+  },
+  "gender": "Male",
+  "education": "Bachelor's Degree",
+  "job": "Financial Investment Advisor",
+  "occupation": "Huatai Securities Co., Ltd.",
+  "workplace": {
+    "province": "Hunan Province",
+    "city": "Changsha City",
+    "district": "Kaifu District",
+    "street_name": "Furong Middle Road",
+    "street_number": "No. 88"
+  },
+  "belief": "Do not believe in religion",
+  "salary": 200000.0,
+  "body": {
+    "height": 189,
+    "weight": 75.0,
+    "BMI": 20.9960527421
+  },
+  "family": "Unmarried",
+  "personality": {
+    "mbti": "ENTJ",
+    "traits": [
+      "Achievements",
+      "Power",
+      "Social Responsibility Orientation"
+    ]
+  },
+  "hobbies": [
+    "Photography (Street Photography)",
+    "Running (Morning Run)",
+    "Camping (Wilderness)",
+    "Collecting Stamps"
+  ],
+  "favorite_foods": [
+    "Hunan Cuisine",
+    "Japanese Ramen",
+    "Pour-over coffee"
+  ],
+  "memory_date": [
+    "July 1, 2018 (First employment in the financial industry)",
+    "May 20, 2020 (Purchase of First Property)"
+  ],
+  "aim": [
+    "Promoted to Investment Director within 3 years",
+    "Complete an in-depth self-driving tour annually.",
+    "Build a personal investment portfolio to reach a scale of 1 million."
+  ],
+  "healthy_desc": "In good physical health, with no history of chronic diseases, maintaining a daily exercise routine, undergoing annual health check-ups regularly, and having a low frequency of medical visits.",
+  "lifestyle_desc": "Maintaining a regular routine, I adhere to daily morning runs and listening to music. During leisure time, the internet serves as my primary source of information. I frequently engage in gatherings with friends and participate in social activities, spending 21 to 30 nights away on vacation each year. I enjoy outdoor activities but at a moderate frequency.",
+  "economic_desc": "Annual income of 200,000 yuan, total household income of 200,000 yuan, owns two properties and a family car, maintains a sound balance between income and expenditure, frequently uses credit for consumption but engages in no other investment activities, with a relatively conservative consumption habit.",
+  "work_desc": "Working as an investment advisor at a private securities company, with a weekly workload of 40 hours, primarily engaged in intensive mental labor. The commute time is 45 minutes, job satisfaction is relatively high, and career development is stable.",
+  "experience_desc": "Born in Wuhan, Hubei, I moved to Changsha after graduating from university in 2018 and entered the financial industry, starting as a commercial service professional. Having now settled and worked in Changsha for four years, my career has progressed steadily. During this time, I have enhanced my investment analysis skills through self-study.",
+  "description": "Feng Haoran is a 27-year-old financial investment advisor, standing 189cm tall with a well-proportioned physique. As an ENTJ personality type, he possesses a strong achievement orientation and a sense of social responsibility. Born in Wuhan, he moved to Changsha in 2018 to pursue his career and currently works at Huatai Securities, specializing in asset allocation and investment analysis. In his daily life, he maintains a routine of morning runs and music appreciation, with hobbies including photography and outdoor camping. He also engages in frequent social activities with friends. For the future, he plans to advance professionally to the position of investment director while hoping to explore local customs and cultures through road trips and establish a personal investment portfolio. As the only child in his family, he remains unmarried but has already purchased property, leading an independent and well-planned life.",
+  "relation": [
+    [
+      {
+        "name": "Feng Jianguo",
+        "relation": "Father",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 58,
+        "birth_date": "1965-03-12",
+        "home_address": {
+          "province": "Hubei Province",
+          "city": "Wuhan City",
+          "district": "Jiang'an District",
+          "street_name": "Jiefang Avenue",
+          "street_number": "No. 368"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City",
+          "district": "Jiang'an District"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Moderately Prosperous Society",
+        "occupation": "Senior Engineer",
+        "organization": "Wuhan Railway Bureau",
+        "nickname": "Old Feng",
+        "relation_description": "Feng Haoran's father, a retired railway engineer, currently resides with his wife in their hometown of Wuhan. They maintain contact through video calls 2-3 times per month, and Feng Haoran returns to Wuhan to visit during holidays. The father-son relationship is harmonious, often involving discussions on investment and financial management topics. The father offers career development advice from the perspective of someone with experience."
+      },
+      {
+        "name": "Li Xiuying",
+        "relation": "Mother",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 56,
+        "birth_date": "1967-08-25",
+        "home_address": {
+          "province": "Hubei Province",
+          "city": "Wuhan City",
+          "district": "Jiang'an District",
+          "street_name": "Jiefang Avenue",
+          "street_number": "No. 368"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Huangshi City"
+        },
+        "personality": "ISFJ",
+        "economic_level": "A moderately prosperous society",
+        "occupation": "Retired Teacher",
+        "organization": "Jiang'an District Experimental Primary School, Wuhan City",
+        "nickname": "Mother",
+        "relation_description": "Feng Haoran's mother, a former primary school Chinese language teacher, is now retired. She lives in Wuhan with her husband and has a weekly video call with her son to inquire about his daily life and marriage prospects. Skilled in cooking Hubei-style home dishes, she always prepares his favorite pork rib and lotus root soup whenever Feng Haoran returns home."
+      },
+      {
+        "name": "Feng Xinran",
+        "relation": "Sister",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 24,
+        "birth_date": "1999-05-18",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Pudong New Area",
+          "district": "Lujiazui Subdistrict",
+          "street_name": "Century Avenue",
+          "street_number": "No. 100"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City",
+          "district": "Jiang'an District"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "Marketing Specialist",
+        "organization": "An internet company in Shanghai",
+        "nickname": "Xiao Ran",
+        "relation_description": "Feng Haoran's younger sister currently resides in Shanghai and works in internet marketing. The siblings share a close relationship, maintaining weekly contact through WeChat and frequently exchanging updates about their work and daily lives. They return to Wuhan together for reunions during the Spring Festival and National Day holidays each year. In their daily lives, they often send each other local specialties, and Feng Haoran provides guidance to his sister on financial planning."
+      }
+    ],
+    [
+      {
+        "name": "Zhang Mingxuan",
+        "relation": "Childhood friend",
+        "social circle": "Childhood Playmates Circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1995-03-12",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science and Technology Park Road",
+          "street_number": "No. 36"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City",
+          "district": "Jiang'an District"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "Internet Product Manager",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "Xuanzi",
+        "relation_description": "Zhang Mingxuan and Feng Haoran are childhood friends who grew up in the same residential community in Jiang'an District, Wuhan. They attended school and played together from a young age. After 2018, they moved to Changsha and Shenzhen respectively for career development. Nowadays, they primarily keep in touch via WeChat, engaging in video calls two to three times a month. When they meet in person, they often revisit hometown delicacies together and discuss topics such as career advancement and investment planning. Although they live in different cities, they make it a point to reunite during the Spring Festival when they return to Wuhan to visit family, maintaining their deep and enduring childhood friendship."
+      }
+    ],
+    [
+      {
+        "name": "Chen Zhiyuan",
+        "relation": "Elementary school classmate",
+        "social circle": "Elementary School Classmates Circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1995-03-12",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "South District of the Science Park",
+          "street_number": "No. 18, South Keji 8th Road"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City",
+          "district": "Hongshan District"
+        },
+        "personality": "ISTP",
+        "economic_level": "Middle class",
+        "occupation": "Software Engineer",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "A Yuan",
+        "relation_description": "Chen Zhiyuan was Feng Haoran's classmate during their elementary school years in Wuhan, and they both played on the school basketball team. In 2014, Chen Zhiyuan was admitted to the Computer Science program at South China University of Technology. After graduation, he remained in Shenzhen for career development and currently works as a backend development engineer at Tencent. Although they live in different cities, the two maintain a quarterly video call to discuss work updates and topics related to investment and financial management. Every year during the Spring Festival, when they return to Wuhan to visit family, they arrange to meet up. They typically enjoy local delicacies together and reminisce about their childhood memories."
+      }
+    ],
+    [
+      {
+        "name": "Wang Lina",
+        "relation": "Junior high school classmates",
+        "social circle": "Junior High School Classmates Circle",
+        "gender": "Female",
+        "age": 28,
+        "birth_date": "1995-03-15",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park Road",
+          "street_number": "No. 36"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City",
+          "district": "Jianghan District"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "Internet Product Manager",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "Nana",
+        "relation_description": "Wang Lina and Feng Haoran were middle school classmates in Wuhan, where they became acquainted through participating in mathematics competitions together. After graduation, they attended high schools in different cities but maintained contact through social media platforms. Currently, Wang Lina works in the internet industry in Shenzhen. The two primarily interact via WeChat Moments and meet during annual class reunions when returning to their hometown for the Spring Festival. During these meetings, they discuss topics such as career development and investment planning. Due to living in separate cities, they have a video call once every quarter. Their relationship remains amicable but is not particularly close."
+      }
+    ],
+    [
+      {
+        "name": "Liu Haoran",
+        "relation": "High school classmates",
+        "social circle": "High School Classmates Circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1995-03-12",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park Road",
+          "street_number": "Number 36"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City",
+          "district": "Hongshan District"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "Internet Product Manager",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "Haozi",
+        "relation_description": "The two were classmates at a key high school in Wuhan and became close during their senior year through joint training for a mathematics competition. After graduation, Liu Haoran was admitted to the Computer Science program at Shenzhen University and now resides in Shenzhen, working in the internet industry. Despite living in different cities, they communicate monthly via video calls to discuss investments and technology trends, occasionally sharing photos of local specialty foods from their respective cities. Each year during the Spring Festival, when they return to Wuhan to visit family, they arrange a gathering to discuss career development and reminisce about amusing high school memories."
+      }
+    ],
+    [
+      {
+        "name": "Zhao Tianyu",
+        "relation": "University Roommate",
+        "social circle": "University Classmate Circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1995-03-12",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Technology Park Road",
+          "street_number": "Number 36"
+        },
+        "birth_place": {
+          "province": "Hunan Province",
+          "city": "Changsha City"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "Internet Product Manager",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "Tianyu",
+        "relation_description": "Zhao Tianyu is Feng Haoran's university roommate. They shared a dormitory for four years during college and often participated together in club activities and academic competitions. After graduation, Zhao Tianyu chose to develop his career in Shenzhen in the south and currently works as a product manager at Tencent, primarily responsible for the social product line. Although they live in different cities, they maintain contact through monthly video calls and occasionally meet up in Changsha or Shenzhen. During their gatherings, they mainly discuss topics related to career development and investment and financial management."
+      },
+      {
+        "name": "Zhou Yuwei",
+        "relation": "University classmate",
+        "social circle": "University Alumni Circle",
+        "gender": "Female",
+        "age": 27,
+        "birth_date": "1996-08-25",
+        "home_address": {
+          "province": "Shanghai Municipality",
+          "city": "Shanghai Municipality",
+          "district": "Pudong New Area",
+          "street_name": "Lujiazui Ring Road",
+          "street_number": "No. 188"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nanjing City"
+        },
+        "personality": "INFJ",
+        "economic_level": "Middle class",
+        "occupation": "Financial Analyst",
+        "organization": "HSBC Bank (China) Company Limited",
+        "nickname": "Vivi",
+        "relation_description": "Zhou Yuwei is a university classmate of Feng Haoran. They once participated together in a financial modeling competition and won an award. Currently residing in Shanghai, she works as an analyst at a foreign bank and maintains professional exchanges with Feng Haoran. They discuss market trends through online meetings every quarter and meet during annual class reunions. When together, they habitually share industry updates and career development experiences."
+      },
+      {
+        "name": "Wu Junjie",
+        "relation": "University classmate",
+        "social circle": "University Classmate Circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1995-11-03",
+        "home_address": {
+          "province": "Hunan Province",
+          "city": "Changsha City",
+          "district": "Yuhua District",
+          "street_name": "Shaoshan South Road",
+          "street_number": "No. 215"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City"
+        },
+        "personality": "ISTP",
+        "economic_level": "Moderately prosperous",
+        "occupation": "IT Engineer",
+        "organization": "Hunan Mobile Communications Co., Ltd.",
+        "nickname": "Ajie",
+        "relation_description": "Wu Junjie and Feng Haoran are university classmates who share a close bond due to their common hometown of Hubei. Currently settled in Changsha, they both work in the telecommunications technology sector. They maintain a monthly offline gathering, often meeting for running sessions or enjoying Hunan cuisine. The two frequently recommend investment opportunities to each other, and Wu Junjie occasionally seeks financial advice from Feng Haoran, forming a complementary friendship."
+      }
+    ],
+    [
+      {
+        "name": "Zheng Wenbo",
+        "relation": "Colleague",
+        "social circle": "Huatai Securities Colleague Circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1995-03-15",
+        "home_address": {
+          "province": "Hunan Province",
+          "city": "Changsha City",
+          "district": "Yuhua District",
+          "street_name": "Shaoshan South Road",
+          "street_number": "No. 233"
+        },
+        "birth_place": {
+          "province": "Guangdong Province",
+          "city": "Guangzhou City"
+        },
+        "personality": "ESTP",
+        "economic_level": "Middle class",
+        "occupation": "Securities Analyst",
+        "organization": "Huatai Securities Co., Ltd.",
+        "nickname": "Brother Bo",
+        "relation_description": "Zheng Wenbo and Feng Haoran both work in the Investment Advisory Department of Huatai Securities, where they became acquainted through business collaboration. As peers, they often discuss market trends and investment strategies together, and during lunch breaks, they frequently visit a Hunan cuisine restaurant near the company. Although they live in the same city, their busy schedules limit communication primarily to WeCom. They typically have one or two work-related meals together each week and occasionally meet on weekends to play basketball or attend industry salon events."
+      },
+      {
+        "name": "Sun Xiaoya",
+        "relation": "Colleague",
+        "social circle": "Huatai Securities Colleague Circle",
+        "gender": "Female",
+        "age": 26,
+        "birth_date": "1997-08-22",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District",
+          "street_name": "Wensan Road",
+          "street_number": "No. 456"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nanjing City"
+        },
+        "personality": "INFJ",
+        "economic_level": "Middle class",
+        "occupation": "Account Manager",
+        "organization": "Huatai Securities Co., Ltd.",
+        "nickname": "Xiaoya",
+        "relation_description": "Sun Xiaoya is a client manager in Feng Haoran's team, responsible for maintaining high-net-worth clients. The two collaborate seamlessly at work, often jointly developing asset allocation plans for clients. Although she works remotely from Hangzhou, she travels to the Changsha headquarters monthly for performance reviews, during which the three-person team always organizes team-building activities. They maintain work communication through video conferences and occasionally share specialty cafes and photography works from their respective cities, sustaining a professional collegial friendship."
+      },
+      {
+        "name": "Qian Yongqiang",
+        "relation": "Immediate Supervisor",
+        "social circle": "Huatai Securities Colleague Circle",
+        "gender": "Male",
+        "age": 35,
+        "birth_date": "1988-12-05",
+        "home_address": {
+          "province": "Hunan Province",
+          "city": "Changsha City",
+          "district": "Kaifu District",
+          "street_name": "Middle Xiangjiang Road",
+          "street_number": "No. 168"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Affluent",
+        "occupation": "Investment Director",
+        "organization": "Huatai Securities Co., Ltd.",
+        "nickname": "President Qian",
+        "relation_description": "As the department head, Qian Yongqiang serves as Feng Haoran's career mentor. Both are natives of Wuhan and share similar personalities. He frequently organizes team sessions to review investment cases and takes team members to high-end financial forums on weekends. Living near the company, he often discusses career planning with Feng Haoran after work. He organizes two team outdoor development activities each year, providing extensive guidance to his subordinates in both work and life."
+      }
+    ],
+    [
+      {
+        "name": "Huang Siqi",
+        "relation": "Client",
+        "social circle": "Work Client Circle",
+        "gender": "Female",
+        "age": 35,
+        "birth_date": "1988-03-15",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park Road",
+          "street_number": "Number 36"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City"
+        },
+        "personality": "INTJ",
+        "economic_level": "Affluent",
+        "occupation": "Founder of a Technology Company",
+        "organization": "Shenzhen Innovation Technology Co., Ltd.",
+        "nickname": "Sisi",
+        "relation_description": "Huang Siqi is a high-net-worth client served by Feng Haoran, and they became acquainted through business cooperation at Huatai Securities. As the founder of a technology company, she frequently consults Feng Haoran on asset allocation and investment strategies. Although they reside in Shenzhen and Changsha respectively, they conduct professional exchanges via video conference once or twice a month. Occasionally, Feng Haoran makes special trips to Shenzhen to present investment proposals in person. Their relationship is professional and built on mutual trust, with occasional in-depth discussions on industry trends."
+      },
+      {
+        "name": "Lin Zhihao",
+        "relation": "Client",
+        "social circle": "Work Client Circle",
+        "gender": "Male",
+        "age": 42,
+        "birth_date": "1981-08-22",
+        "home_address": {
+          "province": "Shanghai Municipality",
+          "city": "Shanghai Municipality",
+          "district": "Pudong New Area",
+          "street_name": "Lujiazui Ring Road",
+          "street_number": "No. 188"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Suzhou City"
+        },
+        "personality": "ESTJ",
+        "economic_level": "Affluent",
+        "occupation": "Real estate enterprise executive",
+        "organization": "Shanghai Jinmao Group",
+        "nickname": "General Manager Lin",
+        "relation_description": "Lin Zhihao is another key client served by Feng Haoran, with many years of experience in the real estate industry. The two established a business relationship through a mutual friend and primarily collaborate on bulk asset management and portfolio optimization. Although residing in Shanghai, Lin Zhihao frequently travels to Changsha for business needs. During each visit, he holds face-to-face meetings with Feng Haoran for two to three hours. They maintain weekly contact via WeChat and occasionally meet for golf to exchange insights on investment."
+      }
+    ],
+    [
+      {
+        "name": "Xu Jianing",
+        "relation": "Photography Partner",
+        "social circle": "Street Photography Circle",
+        "gender": "Female",
+        "age": 26,
+        "birth_date": "1996-08-15",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Technology Park Road",
+          "street_number": "No. 32"
+        },
+        "birth_place": {
+          "province": "Hunan Province",
+          "city": "Changsha City",
+          "district": "Yuhua District"
+        },
+        "personality": "ISFP",
+        "economic_level": "Middle class",
+        "occupation": "Visual Designer",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "Jianing",
+        "relation_description": "Xu Jianing was a companion Feng Haoran met through the photography club while studying at university in Changsha, and the two became friends due to their shared passion for street photography. After graduation, Xu Jianing moved to Shenzhen for career development and currently works as a visual designer at Tencent, yet they maintain the habit of exchanging photography techniques online every month. They primarily share their latest works through WeChat, and whenever Feng Haoran travels to Shenzhen for business trips each year, they arrange to meet for urban street photography sessions. Their most recent meeting was half a year ago, when they captured night scenes at the OCT-LOFT Creative Park in Shenzhen."
+      }
+    ],
+    [
+      {
+        "name": "Gao Yunfei",
+        "relation": "Running buddy",
+        "social circle": "Morning Running Circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1995-03-12",
+        "home_address": {
+          "province": "Hunan Province",
+          "city": "Changsha City",
+          "district": "Yuhua District",
+          "street_name": "Shaoshan South Road",
+          "street_number": "No. 233"
+        },
+        "birth_place": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Futian District"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Middle class",
+        "occupation": "IT Project Manager",
+        "organization": "Tencent Technology (Changsha) Branch",
+        "nickname": "Yun Fei",
+        "relation_description": "Gao Yunfei is a running partner Feng Haoran met during morning jogs at Yuelu Mountain, and their shared commitment to early morning exercise brought them together. As an IT project manager with a regular work schedule, he jogs with Feng Haoran along Lushan South Road every Wednesday and Saturday morning, often discussing investment strategies and technology industry trends along the way. Although Gao Yunfei was born in Shenzhen, he has settled in Changsha for three years due to a job transfer. The two live about six kilometers apart and, in addition to their morning runs, meet once a month for meals at Hunan cuisine restaurants."
+      }
+    ],
+    [
+      {
+        "name": "Xie Yutong",
+        "relation": "Camping Partner",
+        "social circle": "Outdoor Camping Community",
+        "gender": "Female",
+        "age": 26,
+        "birth_date": "1997-03-15",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park Road",
+          "street_number": "Number 36"
+        },
+        "birth_place": {
+          "province": "Sichuan Province",
+          "city": "Chengdu City",
+          "district": "Wuhou District"
+        },
+        "personality": "ISFP",
+        "economic_level": "Middle class",
+        "occupation": "User Experience Designer",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "Light rain",
+        "relation_description": "Xie Yutong is a companion Feng Haoran met during a 2021 outdoor camping association event in Hunan, and their shared passion for wilderness camping brought them together. Although they live in Changsha and Shenzhen respectively, they share camping experiences via video calls every month and meet quarterly at campsites in either Hunan or Guangdong. During their interactions, they primarily exchange insights on equipment usage and photography techniques, with Xie Yutong often providing composition suggestions for Feng Haoran's photographic works. They maintain a moderate and stable frequency of contact through outdoor activities."
+      }
+    ],
+    [
+      {
+        "name": "Luo Zhenyu",
+        "relation": "Stamp Collectors",
+        "social circle": "Stamp Collecting Community",
+        "gender": "Male",
+        "age": 45,
+        "birth_date": "1979-03-12",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park Road",
+          "street_number": "No. 36"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Middle class",
+        "occupation": "Internet Product Manager",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "Lao Luo",
+        "relation_description": "The two have known each other for five years through an online stamp collecting forum and have built a profound friendship based on their shared appreciation for special stamps. Luo Zhenyu is based in Shenzhen for work, while Feng Haoran is developing his career in Changsha. They primarily maintain contact through WeChat groups and video calls, exchanging updates on stamp market trends and collecting insights two to three times a month. They meet once a year at the National Stamp Exhibition, where they visit exhibits together and share their latest collections. Despite being in different locations, they share a strong默契 (implicit understanding), and occasionally send each other distinctive stamps as gifts."
+      }
+    ],
+    [
+      {
+        "name": "Peng Yuqing",
+        "relation": "Good friend",
+        "social circle": "Close Friends Circle",
+        "gender": "Female",
+        "age": 26,
+        "birth_date": "1995-08-14",
+        "home_address": {
+          "province": "Hunan Province",
+          "city": "Changsha City",
+          "district": "Yuhua District",
+          "street_name": "Shaoshan South Road",
+          "street_number": "No. 233"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City",
+          "district": "Hongshan District"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "New Media Operations Manager",
+        "organization": "Hunan Daily New Media Center",
+        "nickname": "Light rain",
+        "relation_description": "Feng Haoran's university alumnus, the two met during undergraduate studies in Wuhan through club activities. After graduation, both chose to develop their careers in Changsha and often gather for meals or outdoor activities on weekends. Peng Yuqing has an outgoing and lively personality, frequently organizing gatherings with friends. She maintains contact with Feng Haoran 2-3 times a week, primarily exchanging insights on investments and sharing interesting life updates via WeChat."
+      },
+      {
+        "name": "Dong Haoran",
+        "relation": "Good friend",
+        "social circle": "Inner Circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1994-03-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Technology Park Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan City",
+          "district": "Wuchang District"
+        },
+        "personality": "INTJ",
+        "economic_level": "Affluent",
+        "occupation": "Product Director at a Technology Company",
+        "organization": "Tencent Technology",
+        "nickname": "Haozi",
+        "relation_description": "Feng Haoran's high school classmate, the two grew up together in Wuhan. After graduating from university, Dong Haoran moved to Shenzhen for career development. Although they live in different cities, they maintain close contact, having video calls 2-3 times per month, primarily discussing career development and investment opportunities. Feng Haoran makes a point to meet Dong Haoran when traveling to Guangdong on business trips, and Dong Haoran also arranges gatherings with Feng Haoran when returning to Wuhan to visit family."
+      },
+      {
+        "name": "Cai Wenjing",
+        "relation": "Close friend",
+        "social circle": "Inner Circle",
+        "gender": "Female",
+        "age": 27,
+        "birth_date": "1994-12-05",
+        "home_address": {
+          "province": "Shanghai Municipality",
+          "city": "Pudong New Area",
+          "district": "Lujiazui",
+          "street_name": "Century Avenue",
+          "street_number": "Number 100"
+        },
+        "birth_place": {
+          "province": "Hunan Province",
+          "city": "Changsha City",
+          "district": "Furong District"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Middle class",
+        "occupation": "Bank Wealth Management Manager",
+        "organization": "China Merchants Bank Shanghai Branch",
+        "nickname": "Wen Jing",
+        "relation_description": "Introduced through Peng Yuqing, they became close friends within the same social circle, and the three of them often organize activities together. Cai Wenjing, originally from Changsha, now lives and works in Shanghai, and primarily stays in touch with Feng Haoran through WeChat group chats. They always meet up when she returns to Changsha for the Spring Festival each year, and usually have video calls once or twice a month to discuss trends in the financial industry and share investment experiences. When Feng Haoran travels to Shanghai on business, they also arrange to meet and enjoy local cuisine together."
+      }
+    ],
+    [
+      {
+        "name": "Lu Jiaming",
+        "relation": "Real Estate Agency",
+        "social circle": "Real Estate Services Circle",
+        "gender": "Male",
+        "age": 35,
+        "birth_date": "1989-03-18",
+        "home_address": {
+          "province": "Hunan Province",
+          "city": "Changsha City",
+          "district": "Yuhua District",
+          "street_name": "Shaoshan South Road",
+          "street_number": "No. 233"
+        },
+        "birth_place": {
+          "province": "Guangdong Province",
+          "city": "Guangzhou City",
+          "district": "Tianhe District"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Middle class",
+        "occupation": "Senior Real Estate Agent",
+        "organization": "Lianjia Real Estate Changsha Branch",
+        "nickname": "Aming",
+        "relation_description": "Lu Jiaming is a real estate agent whom Feng Haoran met when purchasing a property in 2020. He is warm and attentive, with a thorough understanding of the real estate market across various districts in Changsha. The two established a trusting relationship through the property transaction and have maintained irregular contact since then, exchanging greetings during holidays. Lu Jiaming proactively shares the latest updates on the housing market, and Feng Haoran recommends him to friends in need of real estate services. Currently, both are based in Changsha but meet infrequently, primarily communicating via WeChat. They arrange to meet at a café approximately once every quarter to discuss investment and real estate information."
+      }
+    ],
+    [
+      {
+        "name": "Shen Xinyi",
+        "relation": "Coffee Shop Owner",
+        "social circle": "Pour-over coffee community",
+        "gender": "Female",
+        "age": 32,
+        "birth_date": "1992-05-18",
+        "home_address": {
+          "province": "Hunan Province",
+          "city": "Changsha City",
+          "district": "Furong District",
+          "street_name": "Jiefang West Road",
+          "street_number": "No. 233"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Pu'er City"
+        },
+        "personality": "ISFP",
+        "economic_level": "Middle class",
+        "occupation": "Independent Coffee Shop Owner",
+        "organization": "Xinyi Hand-Drip Coffee Shop",
+        "nickname": "Mr. Shen",
+        "relation_description": "Feng Haoran is a regular customer at Shen Xinyi's café, where they became acquainted through a shared passion for pour-over coffee. Shen Xinyi's café is located near Feng Haoran's workplace, and he visits 2–3 times a week to sample new coffee offerings. The two often discuss coffee bean origins and brewing techniques, occasionally attending local coffee tasting events together. Shen Xinyi reserves limited-edition coffee beans for Feng Haoran, while Feng Haoran, in turn, recommends clients to her café for business meetings."
+      }
+    ]
+  ]
+}

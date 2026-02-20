@@ -1,0 +1,132 @@
+[
+  {
+    "name": "Songjiang Science Park Xincang Residential Area",
+    "location": "121.145750,31.007019",
+    "formatted_address": "1-246, Lane 224, Xingang Road, Songjiang District, Shanghai, China",
+    "city": "Shanghai Municipality",
+    "district": "Songjiang District",
+    "streetName": "224 Nong, Xingang Road",
+    "streetNumber": "Nos. 1-246",
+    "description": "The rental community where Yin Hao resides daily, located near Guangfulin Road in Songjiang District, serves as his primary living and residential space."
+  },
+  {
+    "name": "Liandong U Valley Songjiang Factory",
+    "location": "121.298752,31.048748",
+    "formatted_address": "Minyi Road, Songjiang District, Shanghai",
+    "city": "Shanghai Municipality",
+    "district": "Songjiang District",
+    "streetName": "Minyi Road",
+    "streetNumber": [],
+    "description": "Yin Hao works at Shanghai Jinggong Machinery Manufacturing Co., Ltd., located near Xinzhuang Highway in Songjiang District, which is the site of his full-time position as a CNC machine operator."
+  },
+  {
+    "name": "Sijing YONEX Sports Center",
+    "location": "121.285381,31.104211",
+    "formatted_address": "No. 351 Sizhuan South Road, Songjiang District, Shanghai, China",
+    "city": "Shanghai Municipality",
+    "district": "Songjiang District",
+    "streetName": "South Sizhuan Road",
+    "streetNumber": "No. 351",
+    "description": "The morning jogging spot that Yin Hao frequents is located in Songjiang District, serving as his regular venue for weekly running exercises."
+  },
+  {
+    "name": "Dianshan Lake Fishing Spot",
+    "location": "121.124249,31.150980",
+    "formatted_address": "Shanghai Municipality, Qingpu District, Shanghai",
+    "city": "Shanghai Municipality",
+    "district": "Qingpu District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "The fishing spot that Yin Hao frequents is located in Qingpu District, serving as his regular venue for freshwater fishing activities on weekends."
+  },
+  {
+    "name": "Yindu Driving School",
+    "location": "121.351107,31.070459",
+    "formatted_address": "No. 298, Shengang Road, Songjiang District, Shanghai, China",
+    "city": "Shanghai Municipality",
+    "district": "Songjiang District",
+    "streetName": "Shengang Road",
+    "streetNumber": "Number 298",
+    "description": "The driving school where Yin Hao studied for his C1 driver's license is located in Songjiang District and served as his regular training venue for acquiring driving skills."
+  },
+  {
+    "name": "Jiangnan Vocational Skills Training Center",
+    "location": "121.513448,31.254980",
+    "formatted_address": "No. 22 Baoding Road (390 meters walk from Exit 6 of Dalian Road Metro Station)",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The venue where Yin Hao participates in the training for senior CNC machine tool operators, located in Shanghai, is a fixed learning site related to his career development."
+  },
+  {
+    "name": "Rongle East Road Home Appliance Repair Point",
+    "location": "121.246434,31.016594",
+    "formatted_address": "No. 1, Lane 2369, East Rongle Road, Songjiang District, Shanghai, China",
+    "city": "Shanghai Municipality",
+    "district": "Songjiang District",
+    "streetName": "2369 Nong, Rongle East Road",
+    "streetNumber": "Number One",
+    "description": "The repair shop that Yin Hao frequents, located in Songjiang District, is his regular venue for repairing small household appliances and learning maintenance techniques in his spare time."
+  },
+  {
+    "name": "Guangfulin Fresh Food Supermarket",
+    "location": "121.230825,31.058875",
+    "formatted_address": "120 meters northwest of the intersection of Guangfulin Road and Jiasong South Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Supermarkets located near residential communities, used for daily shopping and purchasing daily necessities."
+  },
+  {
+    "name": "Guangfulin Road Liza Fitness Center",
+    "location": "121.235568,31.057628",
+    "formatted_address": "Shanghai City, Songjiang District, Shanghai",
+    "city": "Shanghai Municipality",
+    "district": "Songjiang District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "A gym near the residential community for strength training and fitness."
+  },
+  {
+    "name": "Palm Plaza Convenience Store",
+    "location": "121.324171,31.093534",
+    "formatted_address": "Room 120, 1st Floor, Palm Plaza, Building 31, No. 258 Xinzhu Highway",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Convenience stores near the workplace, used for purchasing snacks or daily necessities."
+  },
+  {
+    "name": "Guanghua Road Driving School",
+    "location": "121.357654,31.060174",
+    "formatted_address": "No. 2118, Guanghua Road, Minhang District, Shanghai, China",
+    "city": "Shanghai Municipality",
+    "district": "Minhang District",
+    "streetName": "Guanghua Road",
+    "streetNumber": "No. 2118",
+    "description": "Training facilities near driving schools for learning driving skills."
+  },
+  {
+    "name": "Electric Vehicle Specialty Store on Ring Road",
+    "location": "121.247702,31.011802",
+    "formatted_address": "No. 863-864, Ring Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "Locations near repair shops for amateur maintenance of small household appliances or consultation."
+  },
+  {
+    "name": "Songjiang University Town Sports Center",
+    "location": "121.232441,31.053776",
+    "formatted_address": "Meijiabang Road, Songjiang District, Shanghai",
+    "city": "Shanghai Municipality",
+    "district": "Songjiang District",
+    "streetName": "Meijiabang Road",
+    "streetNumber": [],
+    "description": "The sports center near the residential community is used for running and physical exercise."
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Yun Da Residential Quarter",
+    "location": "102.721033,25.085281",
+    "formatted_address": "No. 343 Longquan Road, Wuhua District, Kunming City, Yunnan Province",
+    "city": "Kunming City",
+    "district": "Wuhua District",
+    "streetName": "Longquan Road",
+    "streetNumber": "No. 343",
+    "description": "The daily residential address is located near Renmin Middle Road, where I live with my family."
+  },
+  {
+    "name": "Yunnan University Donglu Campus",
+    "location": "102.702149,25.054035",
+    "formatted_address": "No. 2, Cuihu North Road, Wuhua District, Kunming City, Yunnan Province",
+    "city": "Kunming City",
+    "district": "Wuhua District",
+    "streetName": "North Cuihu Road",
+    "streetNumber": "Number 2",
+    "description": "The main campus of Yunnan University, where the school is located, is used for classes, studying, and campus activities."
+  },
+  {
+    "name": "Sanlian Taofen Bookstore",
+    "location": "102.708366,25.061643",
+    "formatted_address": "No. 2 Xuefu Road, Wuhua District, Kunming City, Yunnan Province",
+    "city": "Kunming City",
+    "district": "Wuhua District",
+    "streetName": "Xuefu Road",
+    "streetNumber": "Number 2",
+    "description": "A frequently visited independent bookstore (such as Mingyuan Bookstore), used for reading, writing, and seeking inspiration, approximately once or twice a week."
+  },
+  {
+    "name": "Jinyuan Commercial Building Gymnasium",
+    "location": "102.724990,25.067155",
+    "formatted_address": "No. 1035, Beijing Road, Panlong District, Kunming City, Yunnan Province, China",
+    "city": "Kunming City",
+    "district": "Panlong District",
+    "streetName": "Beijing Road",
+    "streetNumber": "No. 1035",
+    "description": "The yoga lifestyle studio I frequent (such as Jingxin Yoga Lifestyle Studio), used for twice-weekly yoga classes to improve posture and alleviate anxiety."
+  },
+  {
+    "name": "Yunfang Flower and Bird Market",
+    "location": "102.707992,25.020927",
+    "formatted_address": "No. 2 Yongxing Road, Xishan District, Kunming City, Yunnan Province",
+    "city": "Kunming City",
+    "district": "Xishan District",
+    "streetName": "Yongxing Road",
+    "streetNumber": "Number 2",
+    "description": "A frequently visited flower market (such as the Dounan Flower Market), used for purchasing floral materials to practice Ikenobo flower arrangement, accompanied by fellow flower arrangement enthusiast Su Man."
+  },
+  {
+    "name": "Yun Da Xiao Qu North Gate Convenience Store",
+    "location": "102.719394,25.085759",
+    "formatted_address": "Wuhua District, Kunming City, Yunnan Province, China",
+    "city": "Kunming City",
+    "district": "Wuhua District",
+    "streetName": [],
+    "streetNumber": [],
+    "description": "Supermarkets located near residential communities, used for daily shopping."
+  },
+  {
+    "name": "Yunnan University East First Courtyard Bookstore",
+    "location": "102.704433,25.055766",
+    "formatted_address": "No. 171, Beimen Street, Wuhua District, Kunming City, Yunnan Province",
+    "city": "Kunming City",
+    "district": "Wuhua District",
+    "streetName": "Beimen Street",
+    "streetNumber": "No. 171",
+    "description": "The bookstore near the school, used for purchasing books or seeking inspiration."
+  },
+  {
+    "name": "Percentage Fitness Center",
+    "location": "102.725655,25.069229",
+    "formatted_address": "5th Floor, Jiuyun Business Building, No. 130 Jinjiang Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "A gym near the fitness venue, used for exercise or yoga activities."
+  },
+  {
+    "name": "Yongxing Road Flower Market",
+    "location": "102.707405,25.021134",
+    "formatted_address": "100 meters northeast of the intersection of Yongxing Road and Yongxing 1st Lane",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The flower shop near the flower and bird market, used for purchasing floral materials to learn flower arrangement."
+  },
+  {
+    "name": "Yunnan Provincial Library",
+    "location": "102.700163,25.045789",
+    "formatted_address": "141 Cuihu South Road, Wuhua District, Kunming City, Yunnan Province",
+    "city": "Kunming City",
+    "district": "Wuhua District",
+    "streetName": "South Cuihu Road",
+    "streetNumber": "No. 141",
+    "description": "The library near the school is used for studying or consulting reference materials."
+  },
+  {
+    "name": "Fanghua Li Meter Gauge Cultural and Creative Market",
+    "location": "102.738543,25.041176",
+    "formatted_address": "Both sides of the meter-gauge railway from Renmin East Road to Dongfeng East Road",
+    "city": "",
+    "district": "",
+    "streetName": "",
+    "streetNumber": "",
+    "description": "The cultural and creative market near the school is used for purchasing stationery materials or seeking inspiration."
+  }
+]

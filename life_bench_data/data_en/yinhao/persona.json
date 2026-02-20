@@ -1,0 +1,743 @@
+{
+  "name": "Yin Hao",
+  "birth": "1997-06-02",
+  "age": 24,
+  "nationality": "Han",
+  "home_address": {
+    "province": "Shanghai Municipality",
+    "city": "Shanghai Municipality",
+    "district": "Songjiang District",
+    "street_name": "Guangfulin Road",
+    "street_number": "No. 15, Lane 123"
+  },
+  "birth_place": {
+    "province": "Jiangsu Province",
+    "city": "Nantong City",
+    "district": "Rudong County"
+  },
+  "gender": "Male",
+  "education": "Secondary vocational education (specialized secondary school)",
+  "job": "CNC Machine Operator",
+  "occupation": "Shanghai Jinggong Machinery Manufacturing Co., Ltd.",
+  "workplace": {
+    "province": "Shanghai Municipality",
+    "city": "Shanghai Municipality",
+    "district": "Songjiang District",
+    "street_name": "Xinzhu Highway",
+    "street_number": "Number 666"
+  },
+  "belief": "Not religious",
+  "salary": 120000.0,
+  "body": {
+    "height": 178,
+    "weight": 71.0,
+    "BMI": 22.41
+  },
+  "family": "Unmarried",
+  "personality": {
+    "mbti": "ISTJ",
+    "traits": [
+      "Career-Oriented",
+      "Tradition",
+      "Independent and Self-reliant"
+    ]
+  },
+  "hobbies": [
+    "Running (Morning Run)",
+    "Fishing (Freshwater Fishing)",
+    "Camping",
+    "KTV singing",
+    "Listening to Music at Home",
+    "Playing mobile games (Honor of Kings)",
+    "Gathering with friends",
+    "Amateur Repair of Small Household Appliances"
+  ],
+  "favorite_foods": [
+    "Braised Pork in Brown Sauce, Shanghai Style",
+    "Nantong Hard Clam",
+    "Xiaolongbao",
+    "Steamed Perch"
+  ],
+  "memory_date": [
+    "September 1, 2014: Military Enlistment Commemoration Day",
+    "March 15, 2020: Commemorative Day of Relocating to Shanghai to Begin a New Life"
+  ],
+  "aim": [
+    "Career Objective: Obtain the Advanced CNC Machine Tool Operation Technician Certificate within the next three years.",
+    "Health Goal: Maintain a routine of running three times per week and complete a half marathon within two years.",
+    "Life Goal: To purchase a property of my own in the Shanghai metropolitan area within five years."
+  ],
+  "healthy_desc": "He personally considers himself to be in good health, with no long-term chronic illnesses or disabilities. He maintains a regular exercise routine, engaging in physical activities several times a week, primarily running. Although he has not undergone systematic health check-ups in the past three years, he pays close attention to his physical well-being in daily life and has a low frequency of medical visits. Overall, he maintains his health by adhering to consistent exercise and a regular daily routine.",
+  "lifestyle_desc": "He maintains a regular lifestyle with an emphasis on socializing and relaxation. The internet serves as his primary source of information, and he goes online daily. In terms of leisure activities, he listens to music at home every day, meets friends and engages in physical exercise (such as running) several times a week, and goes shopping or gathers with relatives who do not live with him several times a month. He spends over 30 nights away from home each year for vacations or visiting relatives, indicating a certain degree of mobility. He rarely participates in activities such as reading books or newspapers, attending live sports events, or engaging in handicrafts. His leisure style leans toward practicality, social interaction, and outdoor relaxation.",
+  "economic_desc": "My personal financial situation is stable. I currently rent an apartment in Songjiang District, Shanghai, and own a family car. My annual salary is approximately 120,000 yuan. I have a pragmatic consumption habit, emphasize saving, and currently do not own any property or engage in other major investment activities. My investment preference is conservative.",
+  "work_desc": "He is currently employed as a CNC machine operator at a mechanical manufacturing company in Shanghai, which falls under the category of a skilled worker position. The job is full-time, with approximately 40 working hours per week, and the commute time is within an acceptable range. The work involves a certain degree of physical labor and requires operational precision, but he is familiar with the workflow and capable of completing tasks independently. He is satisfied with the stability and technical nature of his current job.",
+  "experience_desc": "Yin Hao was born in Nantong, Jiangsu Province. After graduating from a secondary specialized school in 2014, he enlisted in the military and spent several years in the army, which cultivated his rigorous and disciplined work style. After retiring from the military in 2020, he decided to move to Shanghai for career development. Leveraging his experience with mechanical equipment gained during his military service, he transitioned to become a CNC machine operator. Through diligent study and practice, he quickly established himself in his new role. Currently, he lives independently in a rented apartment in Songjiang District, Shanghai, gradually integrating into the metropolis while planning his future career development and goals of settling down.",
+  "description": "Yin Hao, 24 years old, male, of Han ethnicity, was born in Nantong, Jiangsu, and currently resides in Songjiang District, Shanghai. He holds a secondary specialized education diploma and works as a CNC machine operator at Shanghai Jinggong Machinery Manufacturing Co., Ltd., with an annual salary of approximately 120,000 yuan. He has an ISTJ (Inspector) personality type, characterized by career-oriented, traditional, and self-reliant values. In good health with no chronic illnesses, he maintains a regular exercise routine, running several times a week. His lifestyle is disciplined and socially active, frequently gathering with friends and spending considerable time each year on vacations or visiting relatives. Financially stable, he owns a car but does not yet own property, and his investment style is conservative. His hobbies include running, fishing, camping, pottery-making, listening to music, playing mobile games, and amateur repairs of small household appliances. Significant life experiences include enlisting in the military in 2014 and relocating to Shanghai in 2020. Future goals include obtaining an advanced technician certificate, completing a half marathon, and purchasing property in or around Shanghai. He is calm, pragmatic, and diligent, with a strong sense of responsibility, pursuing stability and order in both work and life. He is a young technician striving to establish roots in a major city while planning for the future.",
+  "relation": [
+    [
+      {
+        "name": "Yin Jianguo",
+        "relation": "Father",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 52,
+        "birth_date": "1972-08-15",
+        "home_address": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City",
+          "district": "Rudong County",
+          "street_name": "Renmin Road, Juegang Town",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City",
+          "district": "Rudong County"
+        },
+        "personality": "ISTJ",
+        "economic_level": "A moderately prosperous society",
+        "occupation": "Mechanical Maintenance Technician",
+        "organization": "Rudong County Agricultural Machinery Maintenance Station",
+        "nickname": "Dad",
+        "relation_description": "Yin Hao's father lives with his mother, Wang Xiuying, in their hometown of Rudong County, Nantong, Jiangsu Province. After graduating from a technical secondary school, Yin Hao chose to enlist in the military. His father was initially somewhat concerned but respected his son's decision. After completing his military service, Yin Hao moved to Shanghai to pursue his career. Though his father was reluctant to see him leave, he felt gratified that his son could venture out independently. The father and son share similar personalities—both are pragmatic and not particularly talkative, yet they share a deep bond. They now primarily stay in touch through weekly video calls, discussing work updates and matters from their hometown. Yin Hao returns to Rudong to visit his parents during the Spring Festival and the National Day holiday each year. During these visits, his father often inquires about his technical work, and they enjoy sharing a few drinks together."
+      },
+      {
+        "name": "Wang Xiuying",
+        "relation": "Mother",
+        "social circle": "Family Circle",
+        "gender": "Female",
+        "age": 50,
+        "birth_date": "1974-03-22",
+        "home_address": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City",
+          "district": "Rudong County",
+          "street_name": "Renmin Road, Juegang Town",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City",
+          "district": "Rudong County"
+        },
+        "personality": "ESFJ",
+        "economic_level": "A moderately prosperous society",
+        "occupation": "Primary School Cafeteria Manager",
+        "organization": "Rudong County Experimental Primary School",
+        "nickname": "Mom",
+        "relation_description": "Yin Hao's mother is gentle and family-oriented, deeply concerned about her son living alone in Shanghai. She supports his decision to pursue better opportunities in Shanghai but constantly worries about whether he eats well and gets enough rest. The mother and son communicate more frequently than the father and son, connecting via WeChat voice messages or short videos every one or two days, mostly discussing daily life matters and offering reminders. Wang Xiuying is skilled in cooking, particularly adept at preparing Yin Hao's favorite dishes such as Nantong clams and braised pork. Whenever Yin Hao returns to his hometown, she prepares a large table of local specialties. Occasionally, she and Yin Jianguo send some hometown specialties from Rudong to Shanghai for Yin Hao. Despite living apart, the family bond remains strong."
+      },
+      {
+        "name": "Yin Tao",
+        "relation": "Brother",
+        "social circle": "Family Circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1996-01-10",
+        "home_address": {
+          "province": "Jiangsu Province",
+          "city": "Suzhou City",
+          "district": "Wuzhong District",
+          "street_name": "Jinshan Road, Mudu Town",
+          "street_number": "Room 302, Building 12, Garden Residential Community"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City",
+          "district": "Rudong County"
+        },
+        "personality": "ESTP",
+        "economic_level": "Middle class",
+        "occupation": "Automotive Sales Manager",
+        "organization": "A well-known automobile 4S store in Suzhou",
+        "nickname": "Brother",
+        "relation_description": "Yin Hao's elder brother, who started working a few years earlier than Yin Hao, is currently developing his career in Suzhou and has already established a family and career. The two brothers share a close bond, with Yin Tao being more outgoing and adaptable. When Yin Hao chose to attend a technical secondary school and later enlist in the military, his brother once suggested he consider other paths but ultimately respected his younger brother's decision. Today, Yin Hao works as a technical worker in Shanghai, while Yin Tao is in sales in Suzhou. Though their career paths differ, both are diligent and hardworking. They usually keep in touch via WeChat, sharing amusing anecdotes from daily life and workplace experiences, and occasionally team up to play \"Honor of Kings.\" As the distance between them is not far, the brothers meet approximately every two to three months—sometimes Yin Hao visits Suzhou, sometimes Yin Tao travels to Shanghai, or they return together to their hometown in Nantong for family reunions. During these meetings, they often gather for drinks and exchange thoughts on their future plans."
+      }
+    ],
+    [
+      {
+        "name": "Zhang Wei",
+        "relation": "Childhood friend",
+        "social circle": "Childhood/Hometown Close Friends Circle",
+        "gender": "Male",
+        "age": 24,
+        "birth_date": "1997-08-15",
+        "home_address": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City",
+          "district": "Rudong County",
+          "street_name": "Renmin South Road, Juegang Town",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City",
+          "district": "Rudong County"
+        },
+        "personality": "ESFP",
+        "economic_level": "Medium",
+        "occupation": "Automotive Service Technician",
+        "organization": "Nantong Volkswagen 4S Service Center",
+        "nickname": "Viagra",
+        "relation_description": "Zhang Wei is a childhood friend of Yin Hao from their hometown in Rudong County. They have been classmates from elementary school through junior high, and their relationship is extremely close. Zhang Wei has an outgoing and lively personality and enjoys social gatherings. After graduating from junior high, he attended a vocational school specializing in automotive repair and now works at a 4S dealership in his hometown of Nantong. Although they live in different cities, they mainly stay in touch through WeChat and phone calls, chatting several times a week about games (such as Honor of Kings) and their recent lives. Every year during the Spring Festival, when Yin Hao returns to his hometown, they always get together for meals, sing karaoke, and share stories about their lives in Shanghai and Nantong. Occasionally, Zhang Wei visits Shanghai, and Yin Hao takes him to experience the city's nightlife."
+      },
+      {
+        "name": "Li Qiang",
+        "relation": "Childhood friend",
+        "social circle": "Childhood/Hometown Close Friends Circle",
+        "gender": "Male",
+        "age": 25,
+        "birth_date": "1996-12-03",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xiaoshan District",
+          "street_name": "Jincheng Road, Beigan Subdistrict",
+          "street_number": "No. 456"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City",
+          "district": "Rudong County"
+        },
+        "personality": "ISTP",
+        "economic_level": "Above average",
+        "occupation": "E-commerce Operations Specialist",
+        "organization": "A certain apparel e-commerce company in Hangzhou",
+        "nickname": "Hadron",
+        "relation_description": "Li Qiang is also a childhood friend of Yin Hao's. The three of them were once inseparable playmates. Li Qiang has a relatively reserved personality but strong practical skills. He studied computer applications at a technical secondary school. He later moved to Hangzhou to pursue his career and entered the e-commerce industry, working in operations. He, Yin Hao, and Zhang Wei have a three-person WeChat group where they often share interesting life updates and technical issues (for example, Li Qiang helps Yin Hao solve computer problems). Due to the greater distance, Li Qiang and Yin Hao meet less frequently, about once or twice a year, usually when Yin Hao returns to his hometown and Li Qiang also goes back, or when Li Qiang visits Shanghai on business for a brief gathering. They usually stay in touch by teaming up in online games (such as Honor of Kings) and interacting on social media, keeping each other updated on the ups and downs of striving in big cities."
+      }
+    ],
+    [
+      {
+        "name": "Chen Ming",
+        "relation": "Secondary vocational school classmate",
+        "social circle": "Secondary Vocational School Alumni Circle",
+        "gender": "Male",
+        "age": 25,
+        "birth_date": "1996-08-15",
+        "home_address": {
+          "province": "Jiangsu Province",
+          "city": "Suzhou City",
+          "district": "Wuzhong District",
+          "street_name": "Taihu East Road",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City",
+          "district": "Rudong County"
+        },
+        "personality": "ESFP",
+        "economic_level": "Medium",
+        "occupation": "Automotive Repair Technician",
+        "organization": "Tuhu Auto Service Workshop Store in Suzhou",
+        "nickname": "Xiaoming",
+        "relation_description": "Chen Ming was both a classmate and roommate of Yin Hao during their time at a technical secondary school in Nantong, Jiangsu. The two shared a very close relationship. After graduating from the technical secondary school, Chen Ming chose to stay in Jiangsu to pursue his career, entering the automotive repair industry. He currently works and lives in Suzhou. They mainly keep in touch through WeChat and phone calls, sharing updates about their work and daily lives, and occasionally teaming up to play the game \"Honor of Kings.\" Due to living in different cities, they meet about once or twice a year, usually during the Spring Festival when they return to their hometown for a small gathering, or when one of them travels to the other's city for work. When they meet, they enjoy dining together, singing at KTV, and reminiscing about amusing stories from their student days."
+      },
+      {
+        "name": "Zhao Lei",
+        "relation": "Secondary vocational school classmates",
+        "social circle": "Secondary Vocational School Classmate Circle",
+        "gender": "Male",
+        "age": 24,
+        "birth_date": "1997-03-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Longhua District",
+          "street_name": "Minzhi Subdistrict",
+          "street_number": "Building 12, Chuangye Garden Phase II"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City",
+          "district": "Chongchuan District"
+        },
+        "personality": "ENTP",
+        "economic_level": "Above average",
+        "occupation": "E-commerce Operations Specialist",
+        "organization": "A cross-border e-commerce company in Shenzhen",
+        "nickname": "Leizi",
+        "relation_description": "Zhao Lei was a vocational school classmate of Yin Hao and Chen Ming, and the three of them formed a close-knit \"iron triangle\" at the time. Zhao Lei had an outgoing personality and, after graduating from vocational school, did not pursue a career in his field of study. Instead, he ventured south to Shenzhen and entered the e-commerce industry. He shares a WeChat group with Yin Hao and Chen Ming, where they often chat, share short videos, and discuss industry trends. Zhao Lei and Yin Hao maintain relatively infrequent contact, typically having a video call or a lengthy WeChat chat about once every quarter. Their conversations mostly revolve around career development, experiences of living in a big city, and occasional nostalgia. Due to the long distance between them, they have not met in person for over two years, but they have agreed to find an opportunity to reunite in a city in the future."
+      },
+      {
+        "name": "Liu Fang",
+        "relation": "Classmate",
+        "social circle": "Secondary Vocational School Classmates Circle",
+        "gender": "Female",
+        "age": 24,
+        "birth_date": "1997-11-10",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Pudong New Area",
+          "street_name": "Zhangjiang Road",
+          "street_number": "Building 3, Science Park Apartments"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Yancheng City",
+          "district": "Tinghu District"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Medium",
+        "occupation": "Quality Inspector for Medical Device Company",
+        "organization": "Shanghai XX Biotechnology Co., Ltd.",
+        "nickname": "Fangfang",
+        "relation_description": "Liu Fang was a classmate of Yin Hao during their technical secondary school years, and one of the few female students in the class. After graduating from technical secondary school, she furthered her education to obtain a higher academic qualification and later moved to Shanghai for career development. She currently works for a medical device company in the Pudong New Area. As both are based in Shanghai, Yin Hao and Liu Fang maintain slightly more frequent contact compared to other out-of-town classmates, exchanging brief greetings via WeChat approximately every two months and occasionally sharing information about life in Shanghai, such as recommendations for good local Shanghainese restaurants. They are both members of the same alumni group chat with Chen Ming and Zhao Lei, but they rarely organize private gatherings. They might meet for a meal once or twice a year, usually in small gatherings with a few classmates living in Shanghai, to catch up on recent developments and discuss work."
+      }
+    ],
+    [
+      {
+        "name": "Sun Jianguo",
+        "relation": "Master",
+        "social circle": "Work Circle",
+        "gender": "Male",
+        "age": 45,
+        "birth_date": "1979-03-18",
+        "home_address": {
+          "province": "Shanghai Municipality",
+          "city": "Shanghai Municipality",
+          "district": "Songjiang District",
+          "street_name": "Rongle East Road",
+          "street_number": "No. 12, Lane 88"
+        },
+        "birth_place": {
+          "province": "Anhui Province",
+          "city": "Wuhu City"
+        },
+        "personality": "ISTJ",
+        "economic_level": "A moderately prosperous society",
+        "occupation": "Senior CNC Machine Tool Technician",
+        "organization": "Shanghai Jinggong Machinery Manufacturing Co., Ltd.",
+        "nickname": "Master Sun",
+        "relation_description": "Sun Jianguo is Yin Hao's mentor at the company, and they first met in 2020 when Yin Hao had just joined. Master Sun is highly skilled, meticulous, and responsible, providing Yin Hao with extensive guidance in operational standards and troubleshooting. They work in the same team, often tackling technical challenges together on weekdays and sharing meals in the cafeteria during lunch breaks, discussing both work and life. Currently, both of them work and live in Songjiang District, Shanghai, maintaining a very close connection and meeting almost every day. In addition to work-related exchanges, Master Sun occasionally checks on Yin Hao's adjustment to life in Shanghai and shares advice on career development."
+      },
+      {
+        "name": "Wang Lei",
+        "relation": "Colleague",
+        "social circle": "Work Circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1996-08-25",
+        "home_address": {
+          "province": "Shanghai Municipality",
+          "city": "Shanghai Municipality",
+          "district": "Minhang District",
+          "street_name": "Qixin Road",
+          "street_number": "No. 8, Lane 3655"
+        },
+        "birth_place": {
+          "province": "Henan Province",
+          "city": "Zhengzhou City"
+        },
+        "personality": "ESFP",
+        "economic_level": "Adequate food and clothing",
+        "occupation": "CNC Machine Operator",
+        "organization": "Shanghai Jinggong Machinery Manufacturing Co., Ltd.",
+        "nickname": "Squad Leader Wang",
+        "relation_description": "Wang Lei is both a colleague and team leader of Yin Hao, and the two cooperate seamlessly at work. Wang Lei has an outgoing personality and is an active member within the team, often organizing colleagues for dinners after work or playing mobile games together on weekends. Yin Hao, Wang Lei, and Engineer Liu frequently team up to play \"Honor of Kings.\" They met at the company and became friends due to their similar ages and shared interests. Currently, both are based in Shanghai but reside in different districts. They maintain frequent contact, working together on weekdays and sharing meals or playing online games after work about once or twice a week. Occasionally, they plan weekend trips to the suburbs for fishing or camping. Wang Lei is also acquainted with Master Sun and Engineer Liu, and this small circle constitutes Yin Hao's primary work-related social network in Shanghai."
+      },
+      {
+        "name": "Liu Zhiqiang",
+        "relation": "Colleague",
+        "social circle": "Work Circle",
+        "gender": "Male",
+        "age": 26,
+        "birth_date": "1998-11-30",
+        "home_address": {
+          "province": "Jiangsu Province",
+          "city": "Suzhou City",
+          "district": "Kunshan City",
+          "street_name": "Middle Qianjin Road",
+          "street_number": "No. 288"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Yancheng City"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Adequate food and clothing",
+        "occupation": "CNC Machine Tool Programmer",
+        "organization": "Shanghai Jinggong Machinery Manufacturing Co., Ltd.",
+        "nickname": "Engineer Liu",
+        "relation_description": "Liu Zhiqiang is a colleague of Yin Hao, responsible for the programming and debugging of machine tools. He has a gentle and meticulous personality and works in an upstream-downstream collaboration with Yin Hao. The two became acquainted due to frequent work handovers and later discovered they were both from Jiangsu province (Yin Hao from Nantong, Liu Zhiqiang from Yancheng), which brought them even closer. Liu Zhiqiang currently resides in Kunshan, Suzhou, and commutes daily to Songjiang, Shanghai, for work. He, Yin Hao, and Wang Lei are in the same project team and often need to communicate about technical details. Outside of work, the three of them have a WeChat group where they frequently share interesting life updates and mobile gaming achievements. Due to Liu Zhiqiang’s cross-city commute, he has fewer in-person gatherings after work compared to Wang Lei. However, they still have at least one weekly online gaming session together and one or two weekend meals in Shanghai or Suzhou each month."
+      }
+    ],
+    [
+      {
+        "name": "Zhang Jianguo",
+        "relation": "Comrade-in-arms",
+        "social circle": "Comrades Circle",
+        "gender": "Male",
+        "age": 25,
+        "birth_date": "1996-08-15",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Yuhang District",
+          "street_name": "Wenyi West Road",
+          "street_number": "No. 588 Future Sci-Tech City Dream Town"
+        },
+        "birth_place": {
+          "province": "Anhui Province",
+          "city": "Hefei City"
+        },
+        "personality": "ESTP",
+        "economic_level": "A moderately prosperous society",
+        "occupation": "Fitness Trainer",
+        "organization": "Hangzhou Lijian Chain Fitness Club",
+        "nickname": "Old Zhang",
+        "relation_description": "Zhang Jianguo is a comrade-in-arms who served in the same squad and shared the same dormitory with Yin Hao during their military service. Both enlisted in 2014 and underwent the rigorous training of the recruit company together, forging a profound bond of camaraderie. Zhang Jianguo is outgoing and energetic, and he was a physical fitness model soldier during his time in the military. After being discharged, he chose to pursue his career in Hangzhou. Leveraging his excellent physical condition and passion for fitness, he obtained a coaching certificate and became a fitness trainer. Although they now live in Shanghai and Hangzhou respectively, they have maintained contact through WeChat, frequently teaming up to play \"Honor of Kings\" and sharing updates about their lives and work. They meet at least once a year, typically taking advantage of holidays to return to their hometowns in Jiangsu or Anhui, where they arrange to meet along the way, or they plan short trips and camping excursions to a city together."
+      },
+      {
+        "name": "Zhou Xiaofeng",
+        "relation": "Comrade-in-arms",
+        "social circle": "Comrade Circle",
+        "gender": "Male",
+        "age": 26,
+        "birth_date": "1995-03-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park Road",
+          "street_number": "Rental Apartments near Tencent Building"
+        },
+        "birth_place": {
+          "province": "Hunan Province",
+          "city": "Changsha City"
+        },
+        "personality": "INTP",
+        "economic_level": "Middle class",
+        "occupation": "Cybersecurity Engineer",
+        "organization": "An internet technology company in Shenzhen",
+        "nickname": "Xiao Zhou",
+        "relation_description": "Zhou Xiaofeng was a comrade-in-arms of Yin Hao and Zhang Jianguo during their military service, belonging to the same company but different squads. He has a relatively reserved personality but a quick mind, and he showed a strong interest in electronic devices and network technology while in the military. After retiring from service, he taught himself programming and participated in vocational training, eventually moving south to Shenzhen to become a cybersecurity engineer. Together with Yin Hao and Zhang Jianguo, he formed a WeChat group named \"Iron Triangle,\" where he is the most active technical supporter, frequently sharing practical mobile applications or cybersecurity tips. Due to his busy work schedule and the long distance between them, Zhou Xiaofeng has fewer opportunities to meet with Yin Hao and Zhang Jianguo, averaging once every one or two years. These meetings usually occur when one of them travels to the other’s city for a brief gathering or when the three plan an annual trip together (such as fishing by the sea or mountain camping) to reunite. Most of their daily communication relies on the internet, where they play online games together and discuss current events and technical issues in the group chat."
+      }
+    ],
+    [
+      {
+        "name": "Wu Zhiqiang",
+        "relation": "Angling enthusiast",
+        "social_circle": "Fishing Community",
+        "gender": "Male",
+        "age": 45,
+        "birth_date": "1979-08-15",
+        "home_address": {
+          "province": "Shanghai Municipality",
+          "city": "Shanghai Municipality",
+          "district": "Qingpu District",
+          "street_name": "Dianshan Lake Avenue, Zhujiajiao Town",
+          "street_number": "No. 12, Lane 88"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Jiaxing City"
+        },
+        "personality": "ISFP",
+        "economic_level": "Middle class",
+        "occupation": "Auto Repair Shop Owner",
+        "organization": "Zhiqiang Auto Maintenance Center",
+        "nickname": "Angkor",
+        "relation_description": "Wu Zhiqiang is a seasoned fishing enthusiast whom Yin Hao met while fishing at Dianshan Lake. The two bonded over their shared passion for freshwater fishing. Wu, who runs an auto repair shop in Qingpu District, is easygoing and experienced, often sharing fishing techniques and prime spots. They usually meet on weekends to fish at Dianshan Lake or nearby wild ponds, chatting about work and daily life as they fish. Since they both live in Shanghai and share highly similar interests, they maintain contact once a week or every two weeks, primarily using WeChat to schedule meetups. Their gatherings are almost exclusively for fishing, though they occasionally share a casual meal after finishing their fishing trips."
+      }
+    ],
+    [
+      {
+        "name": "Chen Jie",
+        "relation": "Running companion",
+        "social_circle": "Running Circle",
+        "gender": "Male",
+        "age": 26,
+        "birth_date": "1998-05-18",
+        "home_address": {
+          "province": "Shanghai Municipality",
+          "city": "Shanghai Municipality",
+          "district": "Songjiang District",
+          "street_name": "Xinsongjiang Road",
+          "street_number": "No. 22, Lane 888"
+        },
+        "birth_place": {
+          "province": "Anhui Province",
+          "city": "Hefei City"
+        },
+        "personality": "ESTP",
+        "economic_level": "Medium",
+        "occupation": "Fitness Coach",
+        "organization": "Songjiang Vitality Fitness Center",
+        "nickname": "A Jie",
+        "relation_description": "Chen Jie is a running partner whom Yin Hao met during morning runs at the Songjiang Sports Center. The two gradually became acquainted due to their similar pace and regular training schedules. Over the past year and a half since they met, they have arranged to run together two to three times a week, usually along routes around the Guangfulin Cultural Heritage Site or the university town. Besides running, they occasionally exchange fitness tips. As a fitness coach, Chen Jie sometimes offers Yin Hao advice on strength training. Both now live in Shanghai’s Songjiang District and coordinate their runs primarily through WeChat. On weekends, they sometimes have breakfast together after running. Their relationship is pure and stable, grounded in their shared passion for sports."
+      }
+    ],
+    [
+      {
+        "name": "Zhang Fei",
+        "relation": "Game Friends",
+        "social circle": "Mobile Game (Honor of Kings) Community",
+        "gender": "Male",
+        "age": 26,
+        "birth_date": "1998-03-15",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen City",
+          "district": "Nanshan District",
+          "street_name": "Science Park Road",
+          "street_number": "Number 88"
+        },
+        "birth_place": {
+          "province": "Hunan Province",
+          "city": "Changsha City"
+        },
+        "personality": "ESTP",
+        "economic_level": "Medium",
+        "occupation": "Game UI Designer",
+        "organization": "Shenzhen Fantasy Game Technology Co., Ltd.",
+        "nickname": "Dafei",
+        "relation_description": "Zhang Fei is a gaming friend Yin Hao met in \"Honor of Kings.\" The two became familiar through frequently teaming up for ranked matches, demonstrating strong synergy, particularly excelling in the roles of marksman and jungler. They primarily communicate via in-game voice chat and WeChat, logging on almost every night to play a few rounds together, with longer sessions sometimes on weekends. Beyond discussing game tactics and version updates, they occasionally chat about their respective work and personal lives. Zhang Fei works as a game designer in Shenzhen and has never met Yin Hao offline, but they plan to meet up for a meal if Yin Hao travels to Shenzhen for business or leisure in the future. Their friendship is primarily built on shared gaming interests and online companionship."
+      }
+    ],
+    [
+      {
+        "name": "Gao Zhiyuan",
+        "relation": "Gathering Friends",
+        "social circle": "Shanghai Local Social Circle",
+        "gender": "Male",
+        "age": 26,
+        "birth_date": "1998-03-15",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai Municipality",
+          "district": "Songjiang District",
+          "street_name": "Xinsongjiang Road",
+          "street_number": "No. 22, Lane 888"
+        },
+        "birth_place": {
+          "province": "Anhui Province",
+          "city": "Hefei City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "A moderately prosperous society",
+        "occupation": "Automotive Maintenance Technician",
+        "organization": "Tuhu Car Service Workshop Store (Songjiang Branch)",
+        "nickname": "Lao Gao",
+        "relation_description": "Gao Zhiyuan is a local social circle friend whom Yin Hao met in Shanghai through mutual friends. The two became acquainted at a weekend KTV gathering and quickly grew close due to their shared experience of having served in the military (Gao Zhiyuan is a retired vehicle soldier). Their interactions are casual, often involving meals, singing, playing \"Honor of Kings,\" or weekend trips to the suburbs for fishing and camping. Both live in Songjiang District, making it convenient for them to meet, usually once or twice a week, primarily after work or on weekends. Communication is mainly through WeChat, where, apart from organizing gatherings, they also discuss technical work-related issues (as machinery and automotive maintenance share common ground) and share interesting moments from daily life."
+      },
+      {
+        "name": "Ma Xiaofeng",
+        "relation": "Gathering with Friends",
+        "social circle": "Shanghai Local Social Circle",
+        "gender": "Male",
+        "age": 25,
+        "birth_date": "1999-08-22",
+        "home_address": {
+          "province": "Shanghai Municipality",
+          "city": "Shanghai Municipality",
+          "district": "Minhang District",
+          "street_name": "Hongmei Road",
+          "street_number": "No. 3215"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Yancheng City"
+        },
+        "personality": "ISTP",
+        "economic_level": "Moderately Prosperous Society",
+        "occupation": "Logistics Company Dispatcher",
+        "organization": "Deppon Logistics Shanghai Transfer Center",
+        "nickname": "Pony",
+        "relation_description": "Ma Xiaofeng is a mutual friend of Yin Hao and Gao Zhiyuan, belonging to the same local social circle in Shanghai. He met Yin Hao during a camping trip organized by Gao Zhiyuan. Xiao Ma is introverted but highly skilled with his hands, and like Yin Hao, he enjoys tinkering with machinery and repairs. The two often exchange tips and experiences on repairing small household appliances as a hobby. The three of them meet frequently, typically gathering on weekends for activities such as dining out, karaoke, playing mobile games together, and short road trips for camping. Although Xiao Ma lives in Minhang District, the distance is not far, and commuting is convenient. They primarily stay in touch through the WeChat group \"Songjiang Trio,\" where they chat almost daily, sharing short videos or arranging activities. On average, they have at least one offline gathering per week."
+      }
+    ],
+    [
+      {
+        "name": "Li Xiuying",
+        "relation": "Landlord",
+        "social_circle": "Life Service Circle",
+        "gender": "Female",
+        "age": 48,
+        "birth_date": "1976-08-22",
+        "home_address": {
+          "province": "Shanghai Municipality",
+          "city": "Shanghai Municipality",
+          "district": "Songjiang District",
+          "street_name": "Guangfulin Road",
+          "street_number": "No. 1, Lane 123"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Wenzhou City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Affluent",
+        "occupation": "Self-employed individual",
+        "organization": "Please translate the following Chinese text into English, strictly adhering to the following requirements:\n\nNone\n\nTranslation requirements:\n1. Semantic accuracy: Fully preserve all information and meaning of the original text.\n2. Consistent style: Maintain the formality and professional level of the original text.\n3. Standardized terminology: Ensure standardized and unified translation of professional terms, personal names, place names, and other proper nouns.\n4. Strict formatting: Output only the translated English text without adding any explanations, notes, or formatting marks.",
+        "nickname": "Sister Li",
+        "relation_description": "Li Xiuying is the landlord of Yin Hao, who rents a property she owns on Guangfulin Road in Songjiang District. They met in 2020 when Yin Hao first arrived in Shanghai to look for housing, and they signed a lease agreement through an agency introduction. Ms. Li is warm and straightforward, managing several properties and collecting rent punctually. She is also highly efficient in communication and handling minor housing issues, such as plumbing or electrical problems. As a tenant, Yin Hao pays rent on time and maintains the property’s cleanliness. Their relationship is friendly and businesslike, typical of a landlord-tenant dynamic. They primarily communicate via WeChat, with discussions limited to rent and property fee notifications, as well as housing maintenance matters, rarely touching on personal lives. They meet once a year when renewing the lease, usually at Ms. Li’s home or a café near the residential complex, to briefly discuss living conditions and market rental rates. Ms. Li lives in another building within the same complex. Although they are in close proximity, aside from necessary matters, they have no other social interactions."
+      }
+    ],
+    [
+      {
+        "name": "Chen Xiuying",
+        "relation": "Neighbor",
+        "social_circle": "Community Circle",
+        "gender": "Female",
+        "age": 58,
+        "birth_date": "1966-03-22",
+        "home_address": {
+          "province": "Shanghai Municipality",
+          "city": "Shanghai Municipality",
+          "district": "Songjiang District",
+          "street_name": "Guangfulin Road",
+          "street_number": "No. 12, Lane 123"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Ningbo City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "A moderately prosperous society",
+        "occupation": "Retired primary school teacher",
+        "organization": "Retired, former employer: Songjiang District No. 2 Experimental Primary School",
+        "nickname": "Aunt Chen",
+        "relation_description": "Aunt Chen is a long-time resident of the residential community where Yin Hao rents an apartment, and she lives right across from him. The two met when Yin Hao first moved in in 2020, when Aunt Chen warmly welcomed him with local specialties from her hometown. Living alone, Yin Hao often receives home-cooked meals from Aunt Chen, who occasionally prepares extra portions to share with him. In return, Yin Hao proactively helps with tasks like repairing household appliances or moving heavy items. They usually meet in the hallway or around the community, chatting about daily life, family matters, and neighborhood news. With her son working in another city, Aunt Chen treats Yin Hao like a younger family member, occasionally inquiring about his work and life. Currently, both reside in the same community and meet almost daily, maintaining a harmonious and mutually supportive neighborly relationship."
+      }
+    ],
+    [
+      {
+        "name": "Wang Jianguo",
+        "relation": "Driving School Instructor",
+        "social circle": "Skills Learning Circle",
+        "gender": "Male",
+        "age": 48,
+        "birth_date": "1976-08-15",
+        "home_address": {
+          "province": "Shanghai Municipality",
+          "city": "Shanghai Municipality",
+          "district": "Songjiang District",
+          "street_name": "Rongle Middle Road",
+          "street_number": "No. 12, Lane 88"
+        },
+        "birth_place": {
+          "province": "Anhui Province",
+          "city": "Hefei City"
+        },
+        "personality": "ESTP",
+        "economic_level": "Moderately Prosperous Society",
+        "occupation": "Driving School Instructor",
+        "organization": "Shanghai Songjiang Ping'an Driving School",
+        "nickname": "Coach Wang",
+        "relation_description": "Wang Jianguo was the instructor who taught Yin Hao for his C1 driver's license at Shanghai Songjiang Ping'an Driving School in 2021. His teaching style was strict and direct, but he was highly experienced, particularly skilled at guiding disciplined students like Yin Hao, who had a military background. During their time together, Coach Wang often shared driving safety stories and experiences of driving in Shanghai during training breaks. After Yin Hao obtained his license, they maintained occasional contact mainly through WeChat, with Yin Hao sending greetings during holidays. Coach Wang continues to work as an instructor in Songjiang, and Yin Hao sometimes recommends him to friends who need driving lessons. Their last meeting was on the day Yin Hao received his license, and they have not met since. However, Yin Hao remains grateful to this coach who taught him an important life skill."
+      }
+    ],
+    [
+      {
+        "name": "Liu Jianjun",
+        "relation": "Training Instructor",
+        "social circle": "Career Development Circle",
+        "gender": "Male",
+        "age": 38,
+        "birth_date": "1986-05-20",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai Municipality",
+          "district": "Pudong New Area",
+          "street_name": "Zhangyang Road",
+          "street_number": "No. 188"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Suzhou City"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Senior Technician/Training Instructor",
+        "organization": "Shanghai Vocational Skills Training Center",
+        "nickname": "Teacher Liu",
+        "relation_description": "Liu Jianjun was the lead instructor for Yin Hao's advanced CNC machine operator training in 2021. With exceptional technical skills and a rigorous yet passionate teaching style, he played a crucial guiding role in Yin Hao's professional development. After the training, Yin Hao maintained a mentor-friend relationship with Instructor Liu, primarily communicating via WeChat to discuss technical issues and industry trends, and occasionally meeting at technical exchange conferences in Shanghai. Instructor Liu continues to work in vocational training in Shanghai, and the two stay in touch approximately once every quarter. Yin Hao still consults him from time to time during the process of obtaining his senior technician certification."
+      }
+    ],
+    [
+      {
+        "name": "Chen Zhigang",
+        "relation": "Uncle",
+        "social circle": "Relatives Circle",
+        "gender": "Male",
+        "age": 48,
+        "birth_date": "1976-03-15",
+        "home_address": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City",
+          "district": "Rudong County",
+          "street_name": "Renmin South Road, Juegang Town",
+          "street_number": "Number 88"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City",
+          "district": "Rudong County"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Moderately Prosperous Society",
+        "occupation": "Self-employed Individual",
+        "organization": "Zhigang Hardware and Building Materials Store",
+        "nickname": "Maternal Uncle",
+        "relation_description": "Chen Zhigang is the younger brother of Yin Hao's mother and runs a hardware and building materials store in their hometown of Rudong County. When Yin Hao was a child, he often visited his uncle's home. His uncle is warm-hearted and always ready to help others. Yin Hao received encouragement and support from his uncle both when he joined the military and when he pursued his career in Shanghai. Now living in different cities, they mainly stay in touch through WeChat video calls and phone conversations, speaking once or twice a month on average to chat about family matters and business updates. Every year during the Spring Festival, when Yin Hao returns to his hometown, he always visits his uncle's home to offer New Year greetings and share a meal. His uncle also frequently shows concern for Yin Hao's work and life in Shanghai, asking whether everything is going smoothly."
+      },
+      {
+        "name": "Chen Xiaowen",
+        "relation": "Elder female cousin",
+        "social circle": "Circle of Relatives",
+        "gender": "Female",
+        "age": 30,
+        "birth_date": "1994-08-22",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District",
+          "street_name": "Wensan Road",
+          "street_number": "Room 302, Building 5, Jialvyuan Residential Quarter No. 456"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City",
+          "district": "Rudong County"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "UI Designer",
+        "organization": "An Internet Technology Company in Hangzhou",
+        "nickname": "Sister Wenwen",
+        "relation_description": "Chen Xiaowen is the daughter of Chen Zhigang, Yin Hao's maternal uncle, and is a few years older than Yin Hao. The two often played together in their hometown during childhood. Her cousin excelled in her studies, later attended university in Hangzhou, and stayed there to work as a UI designer. Although they live in different cities, the bond between the cousins remains strong, and their connection has never been interrupted. They primarily keep in touch through WeChat, sharing amusing anecdotes from daily life and work-related frustrations, occasionally teaming up to play \"Honor of Kings.\" Her cousin has an outgoing personality and sometimes offers Yin Hao advice on career development. During the National Day or Spring Festival holidays each year, if Yin Hao returns to Nantong, the two make time to meet for a meal; sometimes, when her cousin travels to Shanghai for business, she also arranges to have dinner with Yin Hao."
+      }
+    ],
+    [
+      {
+        "name": "Chen Jianguo",
+        "relation": "Shopkeeper",
+        "social circle": "Hobbies/Maintenance Circle",
+        "gender": "Male",
+        "age": 48,
+        "birth_date": "1976-08-14",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai Municipality",
+          "district": "Songjiang District",
+          "street_name": "Rongle Middle Road",
+          "street_number": "Number 88"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Wenzhou City"
+        },
+        "personality": "ESTP",
+        "economic_level": "A moderately prosperous society",
+        "occupation": "Individual business owner/Repair shop owner",
+        "organization": "Jianguo Appliance Repair",
+        "nickname": "Master Chen",
+        "relation_description": "Yin Hao first met Chen Jianguo, who runs an electrical appliance repair shop in Songjiang District, through a friend's recommendation while repairing an old speaker. Master Chen is highly skilled, particularly adept at repairing various small household appliances and simple industrial control boards. Yin Hao has an interest in repair work and occasionally brings small items he has tinkered with and broken to seek advice. Master Chen is always happy to share his experience. The two gradually became familiar, and Yin Hao sometimes helps out at the shop on weekends, taking the opportunity to learn some practical repair skills. They now mainly stay in touch via WeChat, discussing repair issues or sharing interesting information about electronic components. They meet approximately once a month, either at the repair shop or at a nearby small restaurant for a casual meal."
+      }
+    ]
+  ]
+}
