@@ -203,7 +203,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='年度时间线草稿生成系统')
     
     # 路径参数
-    parser.add_argument('--base-path', type=str, default='output/yemingxuan_1/',
+    parser.add_argument('--base-path', type=str, default='fenghaoran/',
                         help='基础数据路径')
     parser.add_argument('--process-path', type=str, default='process/',
                         help='处理文件路径（相对于base-path，同时作为除每日状态外的其他数据输出路径）')
@@ -215,8 +215,12 @@ def parse_args():
                         help='最大工作线程数（默认：CPU核心数×2）')
     
     # 功能控制参数
-    parser.add_argument('--generate-phone-data', type=bool, default=True,
-                        help='是否生成手机数据（默认：True）')
+    parser.add_argument('--generate-phone-data', type=int, default=1,
+                        help='是否生成手机数据（默认：1）')
+    parser.add_argument('--generate-monthly-report', type=int, default=1,
+                        help='是否执行月度报告的生成（默认：1）')
+    parser.add_argument('--generate-qa', type=int, default=1,
+                        help='是否执行QA生成（默认：1）')
     parser.add_argument('--year', type=int, default=2025,
                         help='生成数据的年份（默认：2025）')
     
@@ -361,7 +365,7 @@ if __name__ == '__main__':
         os.makedirs(process_folder, exist_ok=True)
         
         # 要保留的文件名
-        keep_files = {'daily_draft.json', 'daily_event.json', 'persona.json'}
+        keep_files = {'daily_draft.json', 'daily_event.json', 'persona.json','event_tree.json'}
         
         # 获取base_path下的所有json文件
         for filename in os.listdir(args.base_path):
@@ -382,63 +386,69 @@ if __name__ == '__main__':
         print(f"文件移动完成")
         print(f"{'='*60}")
         
-        # 调用parallel_monthly_health_report_generation生成月度健康报告
-        print(f"\n{'='*60}")
-        print(f"开始生成月度健康报告")
-        print(f"{'='*60}")
-        
-        try:
-            # 导入EventRefiner类
-            from event.event_refiner import EventRefiner
-            import json
-            
-            # 加载persona数据
-            persona_path = os.path.join(args.base_path, 'persona.json')
-            with open(persona_path, 'r', encoding='utf-8') as f:
-                persona_data = json.load(f)
-            
-            # 构建文件路径
-            health_analysis_file = os.path.join(args.base_path, args.process_path, 'final_timeline.json')
-            event_data_path = os.path.join(args.base_path, 'daily_draft.json')
-            output_dir = os.path.join(args.base_path, 'summary')
-            all_reports_file = os.path.join(output_dir, 'all_monthly_health_reports.json')
-            context = "你是一个生活分析师，健康分析师，报告专家。"
-            
-            # 确保output_dir存在
-            os.makedirs(output_dir, exist_ok=True)
-            
-            # 检查是否已经有月度报告文件
-            if os.path.exists(all_reports_file):
-                print(f"\n{'='*60}")
-                print(f"月度健康报告已存在，跳过生成")
-                print(f"报告文件位置: {all_reports_file}")
-                print(f"{'='*60}")
-            else:
-                # 调用静态方法
-                reports = EventRefiner.parallel_monthly_health_report_generation(
-                    persona=persona_data,
-                    event_data_path=event_data_path,
-                    health_analysis_file=health_analysis_file,
-                    output_dir=output_dir,
-                    context=context
-                )
-                
-                print(f"\n{'='*60}")
-                print(f"月度健康报告生成完成")
-                print(f"报告已保存至: {output_dir}")
-                print(f"{'='*60}")
-            
-        except Exception as e:
+        # 根据参数决定是否执行月度报告生成
+        if args.generate_monthly_report == 1:
+            # 调用parallel_monthly_health_report_generation生成月度健康报告
             print(f"\n{'='*60}")
-            print(f"错误: 生成月度健康报告时发生异常!")
-            print(f"错误信息: {str(e)}")
+            print(f"开始生成月度健康报告")
             print(f"{'='*60}")
-            import traceback
-            traceback.print_exc()
-            sys.exit(1)
+            
+            try:
+                # 导入EventRefiner类
+                from event.event_refiner import EventRefiner
+                import json
+                
+                # 加载persona数据
+                persona_path = os.path.join(args.base_path, 'persona.json')
+                with open(persona_path, 'r', encoding='utf-8') as f:
+                    persona_data = json.load(f)
+                
+                # 构建文件路径
+                health_analysis_file = os.path.join(args.base_path, args.process_path, 'final_timeline.json')
+                event_data_path = os.path.join(args.base_path, 'daily_draft.json')
+                output_dir = os.path.join(args.base_path, 'summary')
+                all_reports_file = os.path.join(output_dir, 'all_monthly_health_reports.json')
+                context = "你是一个生活分析师，健康分析师，报告专家。"
+                
+                # 确保output_dir存在
+                os.makedirs(output_dir, exist_ok=True)
+                
+                # 检查是否已经有月度报告文件
+                if os.path.exists(all_reports_file):
+                    print(f"\n{'='*60}")
+                    print(f"月度健康报告已存在，跳过生成")
+                    print(f"报告文件位置: {all_reports_file}")
+                    print(f"{'='*60}")
+                else:
+                    # 调用静态方法
+                    reports = EventRefiner.parallel_monthly_health_report_generation(
+                        persona=persona_data,
+                        event_data_path=event_data_path,
+                        health_analysis_file=health_analysis_file,
+                        output_dir=output_dir,
+                        context=context
+                    )
+                    
+                    print(f"\n{'='*60}")
+                    print(f"月度健康报告生成完成")
+                    print(f"报告已保存至: {output_dir}")
+                    print(f"{'='*60}")
+                
+            except Exception as e:
+                print(f"\n{'='*60}")
+                print(f"错误: 生成月度健康报告时发生异常!")
+                print(f"错误信息: {str(e)}")
+                print(f"{'='*60}")
+                import traceback
+                traceback.print_exc()
+                sys.exit(1)
+        else:
+            print(f"\n{'='*60}")
+            print(f"跳过生成月度健康报告")
+            print(f"{'='*60}")
         
         # 根据参数决定是否生成手机数据
-        if args.generate_phone_data:
+        if args.generate_phone_data == 1:
             print(f"\n{'='*60}")
             print(f"开始生成手机数据...")
             print(f"{'='*60}")
@@ -470,49 +480,57 @@ if __name__ == '__main__':
             print(f"跳过生成手机数据")
             print(f"{'='*60}")
         
-        # 检查是否需要执行QA生成
-        updating_qa_path = os.path.join(args.base_path, 'updating_qa.json')
-        qa_folder_path = os.path.join(args.base_path, 'QA')
-        process_path = os.path.join(args.base_path, 'process')
-        process_updating_qa_path = os.path.join(process_path, 'updating_qa.json')
+        # 根据参数决定是否执行QA生成
+        if args.generate_qa == 1:
+            # 检查是否需要执行QA生成
+            updating_qa_path = os.path.join(args.base_path, 'updating_qa.json')
+            qa_folder_path = os.path.join(args.base_path, 'QA')
+            process_path = os.path.join(args.base_path, 'process')
+            process_updating_qa_path = os.path.join(process_path, 'updating_qa.json')
 
-        if os.path.exists(updating_qa_path) or os.path.exists(qa_folder_path) or os.path.exists(process_updating_qa_path):
+            if os.path.exists(updating_qa_path) or os.path.exists(qa_folder_path) or os.path.exists(process_updating_qa_path):
+                print(f"\n{'='*60}")
+                print(f"跳过生成问答数据")
+                print(f"{'='*60}")
+                if os.path.exists(updating_qa_path):
+                    print(f"原因: {updating_qa_path} 文件已存在")
+                if os.path.exists(qa_folder_path):
+                    print(f"原因: {qa_folder_path} 文件夹已存在")
+            else:
+                # 调用QA_gen生成问答数据
+                print(f"\n{'='*60}")
+                print(f"开始生成问答数据...")
+                print(f"{'='*60}")
+                
+                # 构建QA_gen.py的命令行参数
+                qa_gen_cmd = [
+                    sys.executable,
+                    os.path.join(os.path.dirname(__file__), 'run', 'QA_gen.py'),
+                    '--data-path', args.base_path,
+                    '--year', str(args.year),
+                ]
+                
+                # 执行QA_gen.py脚本
+                try:
+                    result = subprocess.run(qa_gen_cmd, check=True, capture_output=True, text=True)
+                    print(f"\n{'='*60}")
+                    print(f"问答数据生成完成")
+                    print(f"{'='*60}")
+                except subprocess.CalledProcessError as e:
+                    print(f"\n{'='*60}")
+                    print(f"错误: 生成问答数据时发生异常!")
+                    print(f"错误信息: {e.stderr}")
+                    print(f"{'='*60}")
+                    sys.exit(1)
+        else:
             print(f"\n{'='*60}")
             print(f"跳过生成问答数据")
             print(f"{'='*60}")
-            if os.path.exists(updating_qa_path):
-                print(f"原因: {updating_qa_path} 文件已存在")
-            if os.path.exists(qa_folder_path):
-                print(f"原因: {qa_folder_path} 文件夹已存在")
-        else:
-            # 调用QA_gen生成问答数据
-            print(f"\n{'='*60}")
-            print(f"开始生成问答数据...")
-            print(f"{'='*60}")
-            
-            # 构建QA_gen.py的命令行参数
-            qa_gen_cmd = [
-                sys.executable,
-                os.path.join(os.path.dirname(__file__), 'run', 'QA_gen.py'),
-                '--data-path', args.base_path,
-                '--year', str(args.year),
-            ]
-            
-            # 执行QA_gen.py脚本
-            try:
-                result = subprocess.run(qa_gen_cmd, check=True, capture_output=True, text=True)
-                print(f"\n{'='*60}")
-                print(f"问答数据生成完成")
-                print(f"{'='*60}")
-            except subprocess.CalledProcessError as e:
-                print(f"\n{'='*60}")
-                print(f"错误: 生成问答数据时发生异常!")
-                print(f"错误信息: {e.stderr}")
-                print(f"{'='*60}")
-                sys.exit(1)
         
-        # 合并QA文件
-        merge_qa_files(args.base_path)
+        # 根据参数决定是否合并QA文件
+        if args.generate_qa == 1:
+            # 合并QA文件
+            merge_qa_files(args.base_path)
         
         sys.exit(0)
     else:

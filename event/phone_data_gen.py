@@ -742,20 +742,8 @@ class PerceptionDataGenerator:
         """
         # 默认事件类型列表
         default_schema = [
-            
-            "景点浏览", "购物", "逛街", "城市漫游", "出海游船", "露营", "度假村放松", "酒店休息", "就餐", "出差", "上班通勤", "下班通勤", "办公", "会议研讨", "请假", "加班",
-            "工作总结", "工作交流", "培训", "报销", "与某人通话", "与某人视频通话",
-            "向某人发送即时消息", "接收某人发送的即时消息", "向某人发送邮件", "接收某人发送的工作邮件",
-            "邀请某人参加日历事件", "接受某人发起的日历邀请",  "与某人参加同一会议",
-            "与某人参加同一培训/讲座", "在通讯录中新增联系人", "更新某人联系信息", "删除/屏蔽某人",
-            "参加聚餐", "参加婚礼", "参加生日派对", "参加公司团建", "参加社区活动", "拜访他人住所",
-            "探望住院人员", "参加节日庆典", "参加宗教仪式", "参加慈善活动", "参加政治集会", "参加亲子活动",
-            "陪同前往学校/培训机构", "组织活动", "预订餐厅/场地", "宠物照料", "作业", "课程",
-            "背单词", "预约考试", "参加考试", "成绩查询", "家政", "政务和公共服务", "生活缴费",
-            "跑腿代办", "3C数码维修", "行李寄存", "银行入账", "银行出账", "金融app入账", "金融app出账",
-            "记账", "理财", "保险", "支付订单", "房产装修", "房产交易", "汽车交易", "运动记录",
-            "体检", "挂号", "查看电子病历或检查报告", "服药", "心理咨询", "睡眠管理", "饮食管理",
-            "精神健康管理", "旅游", "行走", "跑", "骑车", "乘飞机", "乘火车", "乘地铁", "开车",
+            "景点浏览", "购物", "逛街", "城市漫游", "出海游船", "露营", "度假村放松", "酒店休息", "就餐", "出差", "上班通勤", "下班通勤", "办公", "会议研讨", "家政", "政务和公共服务", "生活缴费",
+            "跑腿代办", "3C数码维修", "行李寄存", "旅游", "行走", "跑", "骑车", "乘飞机", "乘火车", "乘地铁", "开车",
             "乘车", "乘交通工具", "行程规划", "购票", "检票", "退票", "改签", "出发",
             "城市切换", "达到", "城市旅游", "旅程", "游玩主题乐园", "参观动物园", "参观博物馆",
             "参观美术馆", "参观海洋馆", "节假日回乡", "居家拜访", "扫墓", "探亲", "看演唱会", "看话剧",
@@ -823,7 +811,13 @@ class PerceptionDataGenerator:
         
         # 构建prompt让LLM从事件列表中提取属于schema类别的事件
         prompt = f"""
-        你是一位事件分类专家，请根据以下事件信息和事件类别列表，提取出属于这些类别的事件为感知数据，你可以从事件中合理推断用户的行动，此外再进行出行数据提取，若某天的事件涉及到出行更换城市（如出差，旅游，搬家，开学）那么提取的事件类别新增Departure（出发）事件， CitySwitch(城市切换)事件，ReturnDeparture（达到）事件：
+        你是一位事件分类专家，请根据以下事件信息和事件类别列表，提取出属于这些类别的事件为感知数据，此外再进行出行数据提取，若某天的事件涉及到出行更换城市（如出差，旅游，搬家，开学）那么提取的事件类别新增Departure（出发）事件， CitySwitch(城市切换)事件，ReturnDeparture（达到）事件：
+        
+        重要要求：
+        - 只提取当天实际发生的动作，而不是规划或准备做的事情
+        - 例如："今天去公园跑步"属于实际动作，应提取；"计划明天去公园跑步"属于规划，不应提取
+        - 例如："今天开会讨论项目"属于实际动作，应提取；"准备下周的会议材料"属于准备，不应提取
+        - 只有当天事件实际执行了某个类别的动作，才进行提取
         
         事件类别列表：{json.dumps(self.schema, ensure_ascii=False)}
         出行数据事件类别提取：出行场景：
@@ -834,18 +828,21 @@ class PerceptionDataGenerator:
         输出要求：
         1. 仅输出一个JSON数组，包含所有符合条件的事件
         2. 每个事件必须包含以下字段：
-           - type: 事件类型，必须从给定的事件类别列表中选择
+           - event_type: 事件类型，必须从给定的事件类别列表中选择
            - event_id: 事件ID，与输入保持一致
            - date: 事件日期，格式为YYYY-MM-DD
            - time: 事件时间区间，格式为["开始时间", "结束时间"]，时间格式为HH:MM:SS
+           - location: 事件发生地点，若没有或无法获取则输出空字符串
+           - participant: 事件参与者，若没有或无法获取则输出空字符串
+           - description: 事件描述，只描述动作类别对应的动作信息，不包含其他无关信息，内容需对应动作类别更具体一些；若没有或无法获取则输出空字符串
         3. 只返回JSON数据，不要包含任何解释或其他文本
-        4. 确保每个事件的type字段都是事件类别列表中的有效类别
-        5. 仅包含那些确实属于指定类别的事件，不要为每个事件都分配类别
-        6. 如果某个事件不属于任何指定类别，请不要将其包含在输出中
+        4. 确保每个事件的event_type字段都是事件类别列表中的有效类别
+        5. 仅包含那些确实属于指定类别且实际发生的事件，不要为每个事件都分配类别
+        6. 如果某个事件不属于任何指定类别，或者只是规划/准备/回忆而不是实际执行的动作，请不要将其包含在输出中
         7. 如果类别为与某人做什么可以明确这个某人是谁(示例：明确为和张三一起开会)。
         
         输出示例：
-        [{{"type": "办公", "event_id": "1", "date": "2025-01-01", "time": ["09:00:00", "10:30:00"]}}, {{"type": "会议研讨", "event_id": "2", "date": "2025-01-01", "time": ["14:00:00", "15:30:00"]}}]
+        [{{"event_type": "办公", "event_id": "1", "date": "2025-01-01", "time": ["09:00:00", "10:30:00"], "location": "公司办公室", "participant": "张三", "description": "处理日常工作"}}, {{"event_type": "会议研讨", "event_id": "2", "date": "2025-01-01", "time": ["14:00:00", "15:30:00"], "location": "会议室", "participant": "", "description": "项目讨论"}}]
         
         事件信息：
         {json.dumps(valid_events, ensure_ascii=False, indent=2)}
@@ -864,10 +861,19 @@ class PerceptionDataGenerator:
                 print("LLM返回的不是JSON数组，返回空列表")
                 return []
             
-            # 过滤确保所有事件类型都在schema中且包含必要字段
+            # 过滤确保所有事件类型都在schema中且包含必要字段，并确保新字段存在
             filtered_data = []
             for item in perception_data:
-                if isinstance(item, dict) and 'type' in item and 'event_id' in item and 'date' in item and 'time' in item and isinstance(item['time'], list) and len(item['time']) == 2 and item['type'] in self.schema:
+                if isinstance(item, dict) and 'event_type' in item and 'event_id' in item and 'date' in item and 'time' in item and isinstance(item['time'], list) and len(item['time']) == 2 and item['event_type'] in self.schema:
+                    # 确保新添加的字段存在，若不存在则设为空字符串
+                    if 'location' not in item:
+                        item['location'] = ''
+                    if 'participant' not in item:
+                        item['participant'] = ''
+                    if 'description' not in item:
+                        item['description'] = ''
+                    # 设置type字段为'perception'
+                    item['type'] = 'perception'
                     filtered_data.append(item)
 
             return filtered_data
@@ -875,6 +881,434 @@ class PerceptionDataGenerator:
         except Exception as e:
             print(f"生成感知数据时出错: {str(e)}")
             return []
+
+
+class PhoneEventMatcher:
+    """
+    手机事件与原子事件匹配器
+    功能：基于当日事件的atomic_id，为手机操作数据匹配对应的原子事件
+    """
+    
+    def __init__(self, atomic_events_file: str):
+        self.context = "你是一位事件匹配专家，擅长分析手机操作与原子事件之间的关联性"
+        self.atomic_events_file = atomic_events_file
+    
+    def match_phone_events_with_atomic_events(self, phone_operations: List[Dict], date: str) -> Dict:
+        """
+        匹配手机操作数据与原子事件
+        
+        参数:
+            phone_operations: 手机操作数据列表
+            date: 要匹配的日期，格式为YYYY-MM-DD
+            
+        返回:
+            Dict: 包含两个字段：
+                - matched_phone_events: 匹配后的手机操作数据，每个事件包含atomic_id字段
+                - unmatched_atomic_events: 当日未被手机数据体现的原子事件
+        """
+        try:
+            # 初始化PhoneDataGenerator
+            phone_data_generator = PhoneDataGenerator(extool)
+            
+            # 步骤1：加载原子事件数据
+            atomic_events_data = self._load_atomic_events(self.atomic_events_file)
+            all_atomic_events = atomic_events_data.get("all_atomic_events", {})
+            date_based_atomic_events = atomic_events_data.get("date_based_atomic_events", {})
+            print(f"成功加载原子事件数据，共 {len(all_atomic_events)} 个原子事件")
+            
+            # 步骤2：获取当日的原子事件
+            daily_atomic_events = date_based_atomic_events.get(date, [])
+            print(f"当日（{date}）共有 {len(daily_atomic_events)} 个原子事件")
+            
+            # 步骤3：通过extool获取当日事件数据，并筛选出有atomic_id的事件
+            daily_events = extool.filter_by_date(date)
+            
+            events_with_atomic_ids = []
+            all_atomic_ids = set()
+            
+            for event in daily_events:
+                atomic_ids = event.get("atomic_id", [])
+                if atomic_ids:
+                    events_with_atomic_ids.append(event)
+                    all_atomic_ids.update(atomic_ids)
+            
+            print(f"当日事件中共有 {len(events_with_atomic_ids)} 个事件包含atomic_id，共 {len(all_atomic_ids)} 个原子事件")
+            
+            # 步骤4：合并当日原子事件和当日事件关联的原子事件
+            # 从当日原子事件中提取原子事件ID
+            daily_atomic_event_ids = {event.get("event_id", "") for event in daily_atomic_events}
+            # 合并所有相关原子事件ID
+            all_relevant_atomic_ids = all_atomic_ids.union(daily_atomic_event_ids)
+            
+            # 确保当日事件的所有atomic_id都能被包含在当日原子事件中
+            # 检查当日事件的atomic_id是否在all_atomic_events中存在
+            for atomic_id in all_atomic_ids:
+                if atomic_id not in all_atomic_events:
+                    print(f"警告：原子事件ID {atomic_id} 在all_atomic_events中不存在")
+            
+            # 确保所有相关原子事件ID都在all_atomic_events中存在
+            all_relevant_atomic_ids = {atomic_id for atomic_id in all_relevant_atomic_ids if atomic_id in all_atomic_events}
+            
+            # 确保当日事件的所有atomic_id都被包含在当日原子事件中
+            # 即使这些atomic_id不在date_based_atomic_events中
+            for atomic_id in all_atomic_ids:
+                if atomic_id in all_atomic_events and atomic_id not in daily_atomic_event_ids:
+                    # 如果该atomic_id不在当日原子事件中，添加到当日原子事件列表
+                    atomic_event_info = all_atomic_events.get(atomic_id, {})
+                    daily_atomic_events.append({
+                        "event_id": atomic_id,
+                        "name": atomic_event_info.get("name", f"原子事件_{atomic_id}"),
+                        "description": atomic_event_info.get("description", ""),
+                        "date": [date]
+                    })
+                    print(f"添加原子事件ID {atomic_id} 到当日原子事件列表")
+            
+            print(f"当日所有相关原子事件ID：{len(all_relevant_atomic_ids)} 个")
+            
+            # 如果没有原子事件或手机操作，直接返回
+            if not all_relevant_atomic_ids or not phone_operations:
+                return {
+                    "matched_phone_events": phone_operations,
+                    "unmatched_atomic_events": list(all_relevant_atomic_ids)
+                }
+            
+            # 步骤5：准备原子事件文本 - 从all_atomic_events中获取完整的原子事件信息
+            atomic_events_text = "\n".join([
+                f"原子事件ID {atomic_id}: {all_atomic_events.get(atomic_id, {}).get('name', '')} - {all_atomic_events.get(atomic_id, {}).get('description', '')}"
+                for atomic_id in all_relevant_atomic_ids
+                if atomic_id in all_atomic_events
+            ])
+            
+            # 步骤6：准备当日事件背景信息（有atomic_id的事件）
+            daily_events_background = "\n".join([
+                f"当日事件ID {event.get('event_id', '')}: {event.get('name', '')} - {event.get('description', '')}\n  关联原子事件: {', '.join(event.get('atomic_id', []))}"
+                for event in events_with_atomic_ids
+            ])
+            
+            # 步骤7：为每个手机操作添加序号并准备文本
+            # 先为每个手机操作添加序号字段
+            phone_ops_with_index = []
+            for i, op in enumerate(phone_operations):
+                op_with_index = op.copy()
+                op_with_index['index'] = i + 1  # 添加序号字段
+                phone_ops_with_index.append(op_with_index)
+            
+            # 转换为JSON格式
+            phone_operations_text = json.dumps(phone_ops_with_index, ensure_ascii=False, indent=2)
+            
+            # 步骤8：调用LLM进行匹配
+            prompt = self._generate_match_prompt(atomic_events_text, phone_operations_text, daily_events_background)
+            print("LLM调用参数：", prompt)
+            match_result = llm_call(prompt, self.context)
+            print("LLM返回结果：", match_result)
+            # 步骤9：解析匹配结果
+            matched_indices = self._parse_match_result(match_result, len(phone_operations))
+            
+            # 步骤10：为手机操作添加atomic_id字段
+            matched_phone_events = []
+            matched_atomic_ids = set()
+            
+            for i, op in enumerate(phone_operations):
+                if i in matched_indices:
+                    op["atomic_id"] = matched_indices[i]
+                    matched_atomic_ids.update(matched_indices[i])
+                else:
+                    op["atomic_id"] = []
+                matched_phone_events.append(op)
+            
+            # 步骤11：找出未被匹配的原子事件
+            unmatched_atomic_events = list(all_relevant_atomic_ids - matched_atomic_ids)
+            
+            print(f"匹配完成：{len(matched_atomic_ids)} 个原子事件被手机数据体现，{len(unmatched_atomic_events)} 个未被体现")
+            
+            # 步骤12：为未匹配的原子事件生成手机操作数据
+            if unmatched_atomic_events:
+                print(f"为 {len(unmatched_atomic_events)} 个未匹配的原子事件生成手机操作数据")
+                for atomic_id in unmatched_atomic_events:
+                    # 获取原子事件信息
+                    atomic_event_info = all_atomic_events.get(atomic_id, {})
+                    print(f"原子事件ID {atomic_id}：{atomic_event_info.get('name', '')} - {atomic_event_info.get('description', '')}")
+                    if atomic_event_info:
+                        # 查找包含该atomic_id的当日事件
+                        event_id = None
+                        for event in events_with_atomic_ids:
+                            event_atomic_ids = event.get("atomic_id", [])
+                            print(f"事件ID {event.get('event_id', '')}：{event.get('name', '')} - {event.get('description', '')}")
+                            print(f"事件包含的 atomic_id：{event_atomic_ids}")
+                            if atomic_id in event_atomic_ids:
+                                event_id = event.get("event_id", '')
+                                break
+                        print(f"找到事件ID {event_id}，原子事件ID {atomic_id}")
+                        # 如果没有匹配到对应的每日事件，则跳过这个原子事件的手机生成
+                        if not event_id:
+                            print(f"未找到包含原子事件ID {atomic_id} 的当日事件，跳过手机数据生成")
+                            continue
+                        
+                        # 构造事件信息
+                        event_info = {
+                            "event_id": event_id,
+                            "atomic_id": [atomic_id],
+                            "name": atomic_event_info.get("name", f"原子事件_{atomic_id}"),
+                            "description": atomic_event_info.get("description", "")
+                        }
+                        # 生成手机操作数据
+                        generated_data = phone_data_generator.generate(date, event_info)
+                        # 将生成的数据添加到matched_phone_events中
+                        for data_type, data_list in generated_data.items():
+                            for data in data_list:
+                                matched_phone_events.append(data)
+                # 清空未匹配原子事件列表，因为已经生成了对应的数据
+                unmatched_atomic_events = []
+            
+            return {
+                "matched_phone_events": matched_phone_events,
+                "unmatched_atomic_events": unmatched_atomic_events
+            }
+            
+        except Exception as e:
+            print(f"匹配手机事件与原子事件时出错：{str(e)}")
+            import traceback
+            traceback.print_exc()
+            # 出错时，为所有手机事件添加空的atomic_id
+            for op in phone_operations:
+                op["atomic_id"] = []
+            
+            # 返回所有原子事件作为未匹配
+            all_relevant_atomic_ids = set()
+            # 重新获取当日原子事件
+            try:
+                atomic_events_data = self._load_atomic_events(self.atomic_events_file)
+                date_based_atomic_events = atomic_events_data.get("date_based_atomic_events", {})
+                daily_atomic_events = date_based_atomic_events.get(date, [])
+                daily_atomic_event_ids = {event.get("event_id", "") for event in daily_atomic_events}
+                
+                # 重新获取当日事件的atomic_id
+                daily_events = extool.filter_by_date(date)
+                for event in daily_events:
+                    all_relevant_atomic_ids.update(event.get("atomic_id", []))
+                
+                # 合并
+                all_relevant_atomic_ids.update(daily_atomic_event_ids)
+                
+                # 确保当日事件的所有atomic_id都被包含在当日原子事件中
+                # 即使这些atomic_id不在date_based_atomic_events中
+                all_atomic_events = atomic_events_data.get("all_atomic_events", {})
+                for atomic_id in all_relevant_atomic_ids:
+                    if atomic_id in all_atomic_events and atomic_id not in daily_atomic_event_ids:
+                        # 如果该atomic_id不在当日原子事件中，添加到当日原子事件列表
+                        atomic_event_info = all_atomic_events.get(atomic_id, {})
+                        daily_atomic_events.append({
+                            "event_id": atomic_id,
+                            "name": atomic_event_info.get("name", f"原子事件_{atomic_id}"),
+                            "description": atomic_event_info.get("description", ""),
+                            "date": [date]
+                        })
+                        print(f"添加原子事件ID {atomic_id} 到当日原子事件列表")
+                
+                # 尝试为未匹配的原子事件生成手机操作数据
+                try:
+                    phone_data_generator = PhoneDataGenerator(extool)
+                    for atomic_id in all_relevant_atomic_ids:
+                        atomic_events_data = self._load_atomic_events(self.atomic_events_file)
+                        all_atomic_events = atomic_events_data.get("all_atomic_events", {})
+                        atomic_event_info = all_atomic_events.get(atomic_id, {})
+                        if atomic_event_info:
+                            # 查找包含该atomic_id的当日事件
+                            event_id = None
+                            try:
+                                daily_events = extool.filter_by_date(date)
+                                for event in daily_events:
+                                    event_atomic_ids = event.get("atomic_id", [])
+                                    if atomic_id in event_atomic_ids:
+                                        event_id = event.get("event_id", atomic_id)
+                                        break
+                            except Exception as e4:
+                                print(f"查找包含atomic_id的事件时出错：{str(e4)}")
+                            
+                            # 如果没有匹配到对应的每日事件，则跳过这个原子事件的手机生成
+                            if not event_id:
+                                print(f"未找到包含原子事件ID {atomic_id} 的当日事件，跳过手机数据生成")
+                                continue
+                            
+                            event_info = {
+                                "event_id": event_id,
+                                "atomic_id": [atomic_id],
+                                "name": atomic_event_info.get("name", f"原子事件_{atomic_id}"),
+                                "description": atomic_event_info.get("description", "")
+                            }
+                            generated_data = phone_data_generator.generate(date, event_info)
+                            for data_type, data_list in generated_data.items():
+                                for data in data_list:
+                                    phone_operations.append(data)
+                    # 清空未匹配原子事件列表，因为已经生成了对应的数据
+                    all_relevant_atomic_ids = set()
+                except Exception as e3:
+                    print(f"为未匹配原子事件生成数据时出错：{str(e3)}")
+            except Exception as e2:
+                print(f"获取未匹配原子事件时出错：{str(e2)}")
+            
+            return {
+                "matched_phone_events": phone_operations,
+                "unmatched_atomic_events": list(all_relevant_atomic_ids)
+            }
+    
+    def _load_atomic_events(self, atomic_events_file: str) -> Dict[str, Dict]:
+        """
+        加载原子事件数据
+        
+        参数:
+            atomic_events_file: 原子事件数据文件路径
+            
+        返回:
+            Dict: 包含两个键的字典：
+                - "all_atomic_events": 所有原子事件字典，键为atomic_id，值为原子事件数据
+                - "date_based_atomic_events": 按日期组织的原子事件，键为日期字符串，值为该日期的原子事件列表
+        """
+        try:
+            if os.path.exists(atomic_events_file):
+                with open(atomic_events_file, "r", encoding="utf-8") as f:
+                    events_data = json.load(f)
+                
+                # 递归提取所有最底层事件（decompose=0）作为原子事件
+                def extract_atomic_events(events):
+                    atomic_events = []
+                    for event in events:
+                        # 如果是原子事件（decompose=0）
+                        if event.get("decompose") == 0:
+                            atomic_events.append(event)
+                        # 如果有子事件，递归提取
+                        elif "subevent" in event:
+                            atomic_events.extend(extract_atomic_events(event["subevent"]))
+                    return atomic_events
+                
+                # 提取所有原子事件
+                atomic_events = extract_atomic_events(events_data)
+                
+                # 将原子事件转换为字典格式
+                all_atomic_events = {}
+                date_based_atomic_events = {}
+                
+                for atomic_event in atomic_events:
+                    event_id = atomic_event.get("event_id")
+                    if event_id:
+                        all_atomic_events[event_id] = atomic_event
+                        
+                        # 按日期组织原子事件
+                        date_list = atomic_event.get("date", [])
+                        if not isinstance(date_list, list):
+                            date_list = [date_list]
+                        
+                        for date_str in date_list:
+                            # 处理日期范围（如"2025-01-19至2025-01-19"）
+                            if "至" in date_str:
+                                start_date, end_date = date_str.split("至")
+                                start_date = start_date.strip()[:10]  # 确保格式为YYYY-MM-DD
+                                end_date = end_date.strip()[:10]  # 确保格式为YYYY-MM-DD
+                                # 这里简化处理，只取开始日期
+                                date_key = start_date
+                            else:
+                                date_key = date_str.strip()[:10]  # 确保格式为YYYY-MM-DD
+                            
+                            if date_key not in date_based_atomic_events:
+                                date_based_atomic_events[date_key] = []
+                            
+                            date_based_atomic_events[date_key].append(atomic_event)
+                        
+                print(f"成功从event_tree2.json提取 {len(all_atomic_events)} 个原子事件，分布在 {len(date_based_atomic_events)} 个日期")
+                
+                return {
+                    "all_atomic_events": all_atomic_events,
+                    "date_based_atomic_events": date_based_atomic_events
+                }
+            else:
+                print(f"原子事件文件不存在：{atomic_events_file}")
+                return {
+                    "all_atomic_events": {},
+                    "date_based_atomic_events": {}
+                }
+            
+        except Exception as e:
+            print(f"加载原子事件数据时出错：{str(e)}")
+            import traceback
+            traceback.print_exc()
+            return {
+                "all_atomic_events": {},
+                "date_based_atomic_events": {}
+            }
+    
+    def _generate_match_prompt(self, atomic_events_text: str, phone_operations_text: str, daily_events_background: str = "") -> str:
+        """
+        生成匹配提示
+        
+        参数:
+            atomic_events_text: 原子事件文本
+            phone_operations_text: 手机操作JSON文本
+            daily_events_background: 当日事件背景信息（有atomic_id的事件）
+            
+        返回:
+            str: 匹配提示
+        """
+        return f"""
+        请仔细分析以下JSON格式的手机操作数据、当日事件背景以及原子事件列表，找出每个手机操作与哪些原子事件相关：
+        
+        当日事件背景（这些事件包含atomic_id字段，代表与原子事件的对应关系）：
+        {daily_events_background}
+        
+        原子事件列表：
+        {atomic_events_text}
+        
+        手机操作数据（JSON格式）：
+        {phone_operations_text}
+        
+        匹配要求：
+        1. 分析每个手机操作的类型和内容，判断其与哪些原子事件相关
+        2. 一个手机操作可能与多个原子事件相关，需列出所有相关的原子事件ID
+        3. 如果某个手机操作与任何原子事件都不相关，请返回空列表
+        
+        返回格式：
+        请返回JSON格式的字典，键为手机操作索引（数字，从1开始，表示手机操作列表中的第几个元素），值为相关的原子事件ID数组。
+        例如：
+        {{
+            "1": ["159-1", "159-2"],
+            "2": [],
+            "3": ["159-3"]
+        }}
+        
+        注意：
+        - 只返回JSON数据，不要包含任何额外的解释或说明
+        - 确保JSON格式正确，没有语法错误
+        - 原子事件ID必须是字符串格式
+        - 手机操作索引必须与输入的手机操作列表顺序一致
+        """
+    
+    def _parse_match_result(self, match_result: str, phone_ops_count: int) -> Dict[int, List[str]]:
+        """
+        解析匹配结果
+        
+        参数:
+            match_result: LLM返回的匹配结果
+            phone_ops_count: 手机操作数量
+            
+        返回:
+            Dict: 键为手机操作索引（从0开始），值为匹配的原子事件ID列表
+        """
+        matched_indices = {i: [] for i in range(phone_ops_count)}
+        
+        try:
+            # 清理匹配结果
+            cleaned_result = remove_json_wrapper(match_result, json_type='object')
+            match_mappings = json.loads(cleaned_result)
+            
+            # 转换为0-based索引
+            for phone_op_id_str, atomic_ids in match_mappings.items():
+                phone_op_id = int(phone_op_id_str) - 1
+                if 0 <= phone_op_id < phone_ops_count:
+                    matched_indices[phone_op_id] = atomic_ids
+            
+        except Exception as e:
+            print(f"解析匹配结果时出错：{str(e)}")
+        
+        return matched_indices
 
 
 class CommunicationOperationGenerator:
@@ -1762,6 +2196,527 @@ class GalleryOperationGenerator:
         c += data
         print(c)
         return c
+
+
+class PhoneDataGenerator:
+    """
+    手机操作数据生成器
+    输入日期和目标事件信息，生成对应的手机操作数据
+    支持：短信、通话、图片、推送、笔记、日历数据
+    """
+    def __init__(self, extool=None):
+        """初始化手机数据生成器"""
+        self.context = "你是一名手机数据生成专家，能够根据事件信息生成相应的手机操作数据"
+    
+    def get_daily_events(self, date: str, extool=None) -> List[Dict]:
+        """
+        通过extool获取当日事件作为背景信息
+        
+        参数:
+            date: 日期
+            extool: 提供事件上下文的工具
+            
+        返回:
+            List[Dict]: 当日事件列表
+        """
+        if extool and hasattr(extool, 'get_daily_events'):
+            return extool.get_daily_events(date)
+        return []
+    
+    def determine_data_type(self, date: str, event_info: Dict, extool=None) -> List[Dict]:
+        """
+        调用LLM判断生成什么类别的手机操作数据
+        
+        参数:
+            date: 日期，格式如"2025-01-01"
+            event_info: 目标事件信息
+            extool: 提供事件上下文的工具
+            
+        返回:
+            List[Dict]: 要生成的数据类型和生成指导列表，如[
+                {"type": "sms", "generate_text": "生成一条关于会议提醒的短信"},
+                {"type": "calendar", "generate_text": "生成会议的日历记录"}
+            ]
+        """
+        # 获取当日事件作为背景信息
+        daily_events = self.get_daily_events(date, extool)
+        daily_events_str = json.dumps(daily_events, ensure_ascii=False) if daily_events else "无"
+        
+        # 提取event_id和atomic_id
+        event_id = event_info.get('event_id', '')
+        atomic_id = event_info.get('atomic_id', [])
+        
+        prompt = f"""
+        请作为手机数据生成专家，分析以下事件信息，并思考应该生成哪些类型的手机操作数据（1-3个）来共同反映该事件。
+        
+        ## 输入信息
+        - 日期: {date}
+        - 当日事件背景: {daily_events_str}
+        - 目标事件信息: {json.dumps(event_info, ensure_ascii=False)}
+        
+        ## 可选数据类型
+        1. 短信 (sms)
+        2. 通话 (call)
+        3. 图片 (photo)
+        4. 推送 (notification)
+        5. 笔记 (note)
+        6. 日历 (calendar)
+        
+        ## 分析要求
+        1. 任意选择最能共同反映该事件的数据类型，可以多类型，也可以都为同一类信息
+        2. 解释为什么选择这些数据类型，它们如何共同反映事件
+        3. 为每个数据类型提供具体的生成指导（生成文本）
+        4. 生成的数据数目尽可能少，但要求能反映事件的全部信息，尽量多样化生成。数目不超过三个。
+        ## 输出格式要求
+        仅输出JSON数组，严格遵循以下格式，不添加任何额外文本：
+        [
+            {{"type": "<数据类型>", "generate_text": "<具体生成指导>"}},
+            {{"type": "<数据类型>", "generate_text": "<具体生成指导>"}}
+        ]
+        
+        示例：
+        [
+            {{"type": "calendar", "generate_text": "生成关于项目会议的日历记录，包含时间、地点、参会人员和会议主题"}},
+            {{"type": "sms", "generate_text": "生成项目经理发送的会议提醒短信，包含会议时间和地点"}}
+        ]
+        """
+        print(prompt)
+        response = llm_call(prompt, self.context)
+        response = self.remove_json_wrapper(response)
+        print( response)
+        try:
+            data_types = json.loads(response)
+            # 验证数据格式并添加event_id和atomic_id
+            valid_types = []
+            for item in data_types:
+                if isinstance(item, dict) and "type" in item and "generate_text" in item:
+                    item_type = item["type"]
+                    if item_type in ["sms", "call", "photo", "notification", "note", "calendar"]:
+                        # 直接添加event_id和atomic_id，不依赖LLM生成
+                        item["event_id"] = event_id
+                        item["atomic_id"] = atomic_id
+                        valid_types.append(item)
+            return valid_types[:3]  # 最多返回3个
+        except json.JSONDecodeError:
+            return []
+    
+    def generate_sms_data(self, date: str, event_info: Dict, generate_text: str = "", event_id: str = "", atomic_id: List = []) -> List[Dict]:
+        """
+        生成短信数据
+        
+        参数:
+            date: 日期
+            event_info: 事件信息
+            generate_text: 生成指导文本
+            event_id: 事件ID
+            atomic_id: 原子事件ID列表
+            
+        返回:
+            List[Dict]: 短信数据列表
+        """
+        # 获取生成指导
+        generate_guide = generate_text if generate_text else "生成一条与事件相关的短信数据"
+        
+        prompt = f"""
+        请根据以下事件信息和生成指导生成短信数据。
+        
+        ## 输入信息
+        - 日期: {date}
+        - 事件信息: {json.dumps(event_info, ensure_ascii=False)}
+        - 生成指导: {generate_guide}
+        - 事件ID: {event_id}
+        - 原子事件ID: {json.dumps(atomic_id, ensure_ascii=False)}
+        
+        ## 输出格式要求
+        仅输出JSON数组，严格遵循以下格式，不添加任何额外文本：
+        [
+            {{
+                "type": "sms",
+                "event_id": "{event_id}",
+                "message_content": "<短信内容>",
+                "contactName": "<联系人姓名>",
+                "phoneNumber": "<电话号码>",
+                "datetime": "<日期时间，格式为YYYY-MM-DD HH:MM:SS>",
+                "message_type": "<接收/发送>",
+                "atomic_id": {json.dumps(atomic_id, ensure_ascii=False)},
+                "phone_id": 0
+            }}
+        ]
+        
+        请确保生成的数据与事件信息相关且合理。
+        """
+        
+        response = llm_call(prompt, self.context)
+        response = self.remove_json_wrapper(response)
+        try:
+            return json.loads(response)
+        except json.JSONDecodeError:
+            return []
+    
+    def generate_call_data(self, date: str, event_info: Dict, generate_text: str = "", event_id: str = "", atomic_id: List = []) -> List[Dict]:
+        """
+        生成通话数据
+        
+        参数:
+            date: 日期
+            event_info: 事件信息
+            generate_text: 生成指导文本
+            event_id: 事件ID
+            atomic_id: 原子事件ID列表
+            
+        返回:
+            List[Dict]: 通话数据列表
+        """
+        # 获取生成指导
+        generate_guide = generate_text if generate_text else "生成一条与事件相关的通话数据"
+        
+        prompt = f"""
+        请根据以下事件信息和生成指导生成通话数据。
+        
+        ## 输入信息
+        - 日期: {date}
+        - 事件信息: {json.dumps(event_info, ensure_ascii=False)}
+        - 生成指导: {generate_guide}
+        - 事件ID: {event_id}
+        - 原子事件ID: {json.dumps(atomic_id, ensure_ascii=False)}
+        
+        ## 输出格式要求
+        仅输出JSON数组，严格遵循以下格式，不添加任何额外文本：
+        [
+            {{
+                "type": "call",
+                "event_id": "{event_id}",
+                "phoneNumber": "<电话号码>",
+                "contactName": "<联系人姓名>",
+                "datetime": "<开始时间，格式为YYYY-MM-DD HH:MM:SS>",
+                "datetime_end": "<结束时间，格式为YYYY-MM-DD HH:MM:SS>",
+                "direction": <1表示接收，0表示发送>,
+                "call_result": "<接通/未接通/拒接>",
+                "atomic_id": {json.dumps(atomic_id, ensure_ascii=False)},
+                "phone_id": 0
+            }}
+        ]
+        
+        请确保生成的数据与事件信息相关且合理。
+        """
+        
+        response = llm_call(prompt, self.context)
+        response = self.remove_json_wrapper(response)
+        try:
+            return json.loads(response)
+        except json.JSONDecodeError:
+            return []
+    
+    def generate_photo_data(self, date: str, event_info: Dict, generate_text: str = "", event_id: str = "", atomic_id: List = []) -> List[Dict]:
+        """
+        生成图片数据
+        
+        参数:
+            date: 日期
+            event_info: 事件信息
+            generate_text: 生成指导文本
+            event_id: 事件ID
+            atomic_id: 原子事件ID列表
+            
+        返回:
+            List[Dict]: 图片数据列表
+        """
+        # 获取生成指导
+        generate_guide = generate_text if generate_text else "生成一条与事件相关的图片数据"
+        
+        prompt = f"""
+        请根据以下事件信息和生成指导生成图片数据。
+        
+        ## 输入信息
+        - 日期: {date}
+        - 事件信息: {json.dumps(event_info, ensure_ascii=False)}
+        - 生成指导: {generate_guide}
+        - 事件ID: {event_id}
+        - 原子事件ID: {json.dumps(atomic_id, ensure_ascii=False)}
+        
+        ## 输出格式要求
+        仅输出JSON数组，严格遵循以下格式，不添加任何额外文本：
+        [
+            {{
+                "event_id": "{event_id}",
+                "type": "photo",
+                "caption": "<图片描述>",
+                "title": "IMG_<年月日>_<时分秒>",
+                "datetime": "<日期时间，格式为YYYY-MM-DD HH:MM:SS>",
+                "location": {{
+                    "province": "<省份>",
+                    "city": "<城市>",
+                    "district": "<区县>",
+                    "streetName": "<街道>",
+                    "streetNumber": "<门牌号>",
+                    "poi": "<POI名称>"
+                }},
+                "faceRecognition": ["<识别到的人脸>", ...] or [],
+                "imageTag": ["<标签1>", "<标签2>", ...],
+                "ocrText": "<OCR识别文本>",
+                "shoot_mode": "<拍摄模式>",
+                "image_size": "<图片尺寸>",
+                "summarized_info": "<图片操作总结>",
+                "atomic_id": {json.dumps(atomic_id, ensure_ascii=False)},
+                "phone_id": 0
+            }}
+        ]
+        
+        请确保生成的数据与事件信息相关且合理。
+        """
+        
+        response = llm_call(prompt, self.context)
+        response = self.remove_json_wrapper(response)
+        try:
+            return json.loads(response)
+        except json.JSONDecodeError:
+            return []
+    
+    def generate_notification_data(self, date: str, event_info: Dict, generate_text: str = "", event_id: str = "", atomic_id: List = []) -> List[Dict]:
+        """
+        生成推送通知数据
+        
+        参数:
+            date: 日期
+            event_info: 事件信息
+            generate_text: 生成指导文本
+            event_id: 事件ID
+            atomic_id: 原子事件ID列表
+            
+        返回:
+            List[Dict]: 推送通知数据列表
+        """
+        # 获取生成指导
+        generate_guide = generate_text if generate_text else "生成一条与事件相关的手机推送通知数据"
+        
+        prompt = f"""
+        请根据以下事件信息和生成指导生成手机推送通知数据。
+        
+        ## 输入信息
+        - 日期: {date}
+        - 事件信息: {json.dumps(event_info, ensure_ascii=False)}
+        - 生成指导: {generate_guide}
+        - 事件ID: {event_id}
+        - 原子事件ID: {json.dumps(atomic_id, ensure_ascii=False)}
+        
+        ## 输出格式要求
+        仅输出JSON数组，严格遵循以下格式，不添加任何额外文本：
+        [
+            {{
+                "type": "push",
+                "event_id": "{event_id}",
+                "title": "<通知标题>",
+                "content": "<通知内容>",
+                "datetime": "<日期时间，格式为YYYY-MM-DD HH:MM:SS>",
+                "source": "<应用名称>",
+                "push_status": "<未读/已读>",
+                "jump_path": "<跳转路径>",
+                "summarized_info": "<通知内容总结>",
+                "atomic_id": {json.dumps(atomic_id, ensure_ascii=False)},
+                "phone_id": <手机ID，整数>
+            }}
+        ]
+        
+        请确保生成的数据与事件信息相关且合理。
+        """
+        
+        response = llm_call(prompt, self.context)
+        response = self.remove_json_wrapper(response)
+        try:
+            return json.loads(response)
+        except json.JSONDecodeError:
+            return []
+    
+    def generate_note_data(self, date: str, event_info: Dict, generate_text: str = "", event_id: str = "", atomic_id: List = []) -> List[Dict]:
+        """
+        生成笔记数据
+        
+        参数:
+            date: 日期
+            event_info: 事件信息
+            generate_text: 生成指导文本
+            event_id: 事件ID
+            atomic_id: 原子事件ID列表
+            
+        返回:
+            List[Dict]: 笔记数据列表
+        """
+        # 获取生成指导
+        generate_guide = generate_text if generate_text else "生成一条与事件相关的笔记数据"
+        
+        prompt = f"""
+        请根据以下事件信息和生成指导生成笔记数据。
+        
+        ## 输入信息
+        - 日期: {date}
+        - 事件信息: {json.dumps(event_info, ensure_ascii=False)}
+        - 生成指导: {generate_guide}
+        - 事件ID: {event_id}
+        - 原子事件ID: {json.dumps(atomic_id, ensure_ascii=False)}
+        
+        ## 输出格式要求
+        仅输出JSON数组，严格遵循以下格式，不添加任何额外文本：
+        [
+            {{
+                "type": "note",
+                "event_id": "{event_id}",
+                "title": "<笔记标题>",
+                "content": "<笔记内容>",
+                "datetime": "<日期时间，格式为YYYY-MM-DD HH:MM:SS>",
+                "summarized_info": "<笔记操作总结>",
+                "atomic_id": {json.dumps(atomic_id, ensure_ascii=False)},
+                "phone_id": 0
+            }}
+        ]
+        
+        请确保生成的数据与事件信息相关且合理。
+        """
+        
+        response = llm_call(prompt, self.context)
+        response = self.remove_json_wrapper(response)
+        try:
+            return json.loads(response)
+        except json.JSONDecodeError:
+            return []
+    
+    def generate_calendar_data(self, date: str, event_info: Dict, generate_text: str = "", event_id: str = "", atomic_id: List = []) -> List[Dict]:
+        """
+        生成日历数据
+        
+        参数:
+            date: 日期
+            event_info: 事件信息
+            generate_text: 生成指导文本
+            event_id: 事件ID
+            atomic_id: 原子事件ID列表
+            
+        返回:
+            List[Dict]: 日历数据列表
+        """
+        # 获取生成指导
+        generate_guide = generate_text if generate_text else "生成一条与事件相关的日历数据"
+        
+        prompt = f"""
+        请根据以下事件信息和生成指导生成日历数据。
+        
+        ## 输入信息
+        - 日期: {date}
+        - 事件信息: {json.dumps(event_info, ensure_ascii=False)}
+        - 生成指导: {generate_guide}
+        - 事件ID: {event_id}
+        - 原子事件ID: {json.dumps(atomic_id, ensure_ascii=False)}
+        
+        ## 输出格式要求
+        仅输出JSON数组，严格遵循以下格式，不添加任何额外文本：
+        [
+            {{
+                "type": "calendar",
+                "event_id": "{event_id}",
+                "title": "<日历标题>",
+                "description": "<日历描述>",
+                "start_time": "<开始时间，格式为YYYY-MM-DD HH:MM:SS>",
+                "end_time": "<结束时间，格式为YYYY-MM-DD HH:MM:SS>",
+                "datetime": "<创建时间，格式为YYYY-MM-DD HH:MM:SS>",
+                "summarized_info": "<日历操作总结>",
+                "atomic_id": {json.dumps(atomic_id, ensure_ascii=False)},
+                "phone_id": 0
+            }}
+        ]
+        
+        请确保生成的数据与事件信息相关且合理。
+        """
+        
+        response = llm_call(prompt, self.context)
+        response = self.remove_json_wrapper(response)
+        try:
+            return json.loads(response)
+        except json.JSONDecodeError:
+            return []
+    
+    def remove_json_wrapper(self, input_str: str) -> str:
+        """
+        移除JSON字符串的包装
+        提取从第一个括号到最后一个匹配括号的内容
+        """
+        # 移除代码块包装
+        if input_str.startswith('```json'):
+            input_str = input_str[7:]
+        if input_str.endswith('```'):
+            input_str = input_str[:-3]
+        
+        # 去除首尾空格
+        input_str = input_str.strip()
+        
+        # 判断是否以{或[开头
+        if input_str.startswith('{'):
+            # 找到对应的结束括号}
+            bracket_count = 0
+            end_idx = -1
+            for i, char in enumerate(input_str):
+                if char == '{':
+                    bracket_count += 1
+                elif char == '}':
+                    bracket_count -= 1
+                    if bracket_count == 0:
+                        end_idx = i
+                        break
+            if end_idx != -1:
+                input_str = input_str[:end_idx+1]
+        elif input_str.startswith('['):
+            # 找到对应的结束括号]
+            bracket_count = 0
+            end_idx = -1
+            for i, char in enumerate(input_str):
+                if char == '[':
+                    bracket_count += 1
+                elif char == ']':
+                    bracket_count -= 1
+                    if bracket_count == 0:
+                        end_idx = i
+                        break
+            if end_idx != -1:
+                input_str = input_str[:end_idx+1]
+        
+        return input_str
+    
+    def generate(self, date: str, event_info: Dict, extool=None) -> Dict[str, List[Dict]]:
+        """
+        生成手机操作数据的主方法
+        
+        参数:
+            date: 日期
+            event_info: 事件信息
+            extool: 提供事件上下文的工具
+            
+        返回:
+            Dict[str, List[Dict]]: 按数据类型分类的手机操作数据
+        """
+        # 确定要生成的数据类型和生成指导
+        data_type_info = self.determine_data_type(date, event_info, extool)
+        
+        # 生成对应的数据
+        result = {}
+        for info in data_type_info:
+            data_type = info["type"]
+            generate_text = info["generate_text"]
+            # 提取event_id和atomic_id
+            event_id = info.get("event_id", event_info.get("event_id", ""))
+            atomic_id = info.get("atomic_id", event_info.get("atomic_id", []))
+            
+            if data_type == "sms":
+                result["sms"] = self.generate_sms_data(date, event_info, generate_text, event_id, atomic_id)
+            elif data_type == "call":
+                result["call"] = self.generate_call_data(date, event_info, generate_text, event_id, atomic_id)
+            elif data_type == "photo":
+                result["photo"] = self.generate_photo_data(date, event_info, generate_text, event_id, atomic_id)
+            elif data_type == "notification":
+                result["notification"] = self.generate_notification_data(date, event_info, generate_text, event_id, atomic_id)
+            elif data_type == "note":
+                result["note"] = self.generate_note_data(date, event_info, generate_text, event_id, atomic_id)
+            elif data_type == "calendar":
+                result["calendar"] = self.generate_calendar_data(date, event_info, generate_text, event_id, atomic_id)
+        
+        return result
 
 
 class FitnessHealthOperationGenerator:

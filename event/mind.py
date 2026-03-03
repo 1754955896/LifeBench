@@ -1239,14 +1239,17 @@ class Mind:
         last_bracket = res.rfind('}')
         if first_bracket != -1 and last_bracket != -1 and first_bracket < last_bracket:
             res = res[first_bracket:last_bracket + 1]
-        data = json.loads(res)
-        result, error_summary = self.maptools.process_instruction_route(data)
-        instr = ""
-        instr += self.maptools.extract_poi_route_simplified(result)
-        #print(instr)
-        # with open(self.txt_file_path, "a", encoding="utf-8") as file:  # 记录，防止丢失
-        #         file.write("-----------------------poi\n"+instr + "\n")  # 每个字符串后加换行符，实现分行存储
-        return instr
+        try:
+            data = json.loads(res)
+            result, error_summary = self.maptools.process_instruction_route(data)
+            instr = ""
+            instr += self.maptools.extract_poi_route_simplified(result)
+            #print(instr)
+            # with open(self.txt_file_path, "a", encoding="utf-8") as file:  # 记录，防止丢失
+            #         file.write("-----------------------poi\n"+instr + "\n")  # 每个字符串后加换行符，实现分行存储
+            return instr
+        except json.JSONDecodeError:
+            return ""
 
 
     def remove_json_wrapper(self, input_str: str) -> str:

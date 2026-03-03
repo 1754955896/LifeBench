@@ -30,6 +30,8 @@ class EventRefiner:
         self.events = events
         self.context = context
         self.bottom_events: Optional[List[Dict]] = None
+        # 保存当前的事件更新操作
+        self.current_event_updates = []
         # 初始化时更新底层事件
         self.update_bottom_events()
     
@@ -331,10 +333,10 @@ class EventRefiner:
                 date_range=date_range_desc,
                 persona=self.persona
             )
-            print(prompt)
+            #print(prompt)
             res = self.llm_call_sr(prompt, 0)
             print("时间范围事件批量分析思考-----------------------------------------------------------------------")
-            print(res)
+            #print(res)
 
             prompt = template_event_update.format(
                 result=res,
@@ -343,7 +345,7 @@ class EventRefiner:
             from utils.llm_call import llm_call_reason_j
             res = llm_call_reason_j(prompt)
             print("时间范围事件批量调整-----------------------------------------------------------------------")
-            print(res)
+            #print(res)
             # 提取并解析JSON响应
             start_index = res.find('{')
             end_index = res.rfind('}')
@@ -531,8 +533,11 @@ class EventRefiner:
                 date_range_result = self.date_range_event_refine(events, range_start, range_end, context)
                 event_updates = date_range_result.get("event_updates", [])
                 
-                # 应用事件更新
-                updated_events = self.apply_event_updates(copy.deepcopy(events), event_updates)
+                # 移除深拷贝，不直接应用更新，而是将更新操作保存起来
+                self.current_event_updates = event_updates
+                
+                # 为了保持代码兼容性，创建一个更新后的事件副本
+                updated_events = self.apply_event_updates(events, event_updates)
 
                 # 构建日期范围描述
                 date_range_desc = self.get_holidays_and_weekends_in_range(range_start, range_end)
@@ -552,12 +557,13 @@ class EventRefiner:
                 for date in range_dates:
                     date_events = self.filter_by_date(updated_events, date)
                     event_descriptions = []
+                    event_ids = []
                     for event in date_events:
                         event_descriptions.append(event.get("description", ""))
-                    
+                        event_ids.append(event.get("event_id", ""))
                     daily_life_entry = {
                         "date": date,
-                        "events": event_descriptions  # 添加事件描述的数组
+                        "events": event_descriptions # 添加事件描述的数组
                     }
                     daily_life_data.append(daily_life_entry)
 

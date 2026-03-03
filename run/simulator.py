@@ -11,7 +11,7 @@ from utils.IO import *
 
 # 命令行参数解析
 parser = argparse.ArgumentParser(description='模拟生成模块')
-parser.add_argument('--file-path', type=str, default='output/xujing/', help='数据文件路径')
+parser.add_argument('--file-path', type=str, default='data/fenghaoran/', help='数据文件路径')
 parser.add_argument('--start-date', type=str, default='2025-01-01', help='开始日期')
 parser.add_argument('--end-date', type=str, default='2025-12-31', help='结束日期')
 parser.add_argument('--max-workers', type=int, default=30, help='最大并行线程数')
@@ -41,10 +41,12 @@ interval_days = args.interval_days  # 每个线程处理的天数
 # 中断保存文件路径
 INTERRUPT_FILE = file_path + "process/interrupt_state.json"
 
+
 # 日志函数
 def log(message):
     log_line = f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {message}"
     print(log_line.strip())
+
 
 # 确保必要的目录存在
 os.makedirs(os.path.join(file_path, "process"), exist_ok=True)
@@ -62,6 +64,8 @@ if generate_data:
     monthly_file = os.path.join(file_path, "monthly_summaries.json")
     cumulative_file = os.path.join(file_path, "cumulative_summaries.json")
     year = int(start_date[:4])
+
+
     def convert(input_file, output_file):
 
         # 读取输入JSON文件
@@ -91,6 +95,8 @@ if generate_data:
 
         print(f"转换完成！共转换了 {len(events_array)} 个事件。")
         print(f"结果已保存到：{output_file}")
+
+
     if not os.path.exists(file_path + "event_transfer.json"):
         print(f"未找到event_transfer文件，开始转换...")
         convert(file_path + "daily_draft.json", file_path + "event_transfer.json")
@@ -120,9 +126,9 @@ if generate_data:
         event_file=adjusted_events_path,
         daily_state_file=file_path + 'daily_draft.json',
         instance_id=args.instance_id,
-        loc_data = file_path + 'location.json'
+        loc_data=file_path + 'location.json'
     )
-    
+
     # 3.2 执行多线程并行处理
     results = controller.run_daily_event_with_threading(
         start_date=start_date,
@@ -130,23 +136,23 @@ if generate_data:
         max_workers=max_workers,
         interval_days=interval_days
     )
-    
+
     # 3.3 统计结果
     total_days = len(results)
     success_count = sum(1 for result in results if result[1])
     failed_count = total_days - success_count
-    
+
     log(f"\n=== 数据生成结果 ===")
     log(f"总天数: {total_days}")
     log(f"成功天数: {success_count}")
     log(f"失败天数: {failed_count}")
     log(f"成功率: {(success_count / total_days * 100):.1f}%")
-    
+
     # 3.4 检查是否有失败的日期
     failed_dates = [result[0] for result in results if not result[1]]
     if failed_dates:
         log(f"\n失败的日期: {', '.join(failed_dates)}")
-    
+
     end_time_generate = time.time()
     execution_times['data_generate'] = end_time_generate - start_time_generate
     log(f"数据生成流程耗时: {execution_times['data_generate']:.2f}秒")
@@ -158,13 +164,13 @@ else:
 if format_events:
     log("\n=== 开始事件格式化流程 ===")
     start_time_format = time.time()
-    
+
     # 4.1 创建EventFormatter实例
     formatter = EventFormatter(data_dir=file_path)
-    
+
     # 4.2 执行格式化
     formatter.run(max_workers=max_workers)
-    
+
     end_time_format = time.time()
     execution_times['event_format'] = end_time_format - start_time_format
     log(f"事件格式化流程耗时: {execution_times['event_format']:.2f}秒")
@@ -179,7 +185,7 @@ execution_times['total'] = end_time_total - start_time_total
 log("\n=== 执行时间统计 ===")
 for process, duration in execution_times.items():
     if process == 'total':
-        log(f"总执行时间: {duration:.2f}秒 ({duration/60:.2f}分钟)")
+        log(f"总执行时间: {duration:.2f}秒 ({duration / 60:.2f}分钟)")
     else:
         log(f"{process.replace('_', ' ').title()}耗时: {duration:.2f}秒")
 

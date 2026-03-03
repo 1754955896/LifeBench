@@ -875,13 +875,13 @@ class Scheduler:
 
     def llm_call_sr(self,prompt,record=0):
         """调用大模型的函数"""
-        res = llm_call_reason(prompt,context2,record=record)
+        res = llm_call_reason_j(prompt)
         return res
 
     
     def llm_call_s(self,prompt,record=0):
         """调用大模型的函数"""
-        res = llm_call(prompt,context2,record=record)
+        res = llm_call_j(prompt)
         return res
 
     def handle_profie(self,persona):
@@ -4613,8 +4613,6 @@ class Scheduler:
                 print(f"✓ 优化后的时间线文件已存在，直接读取: {optimized_timelines_path}")
                 with open(optimized_timelines_path, 'r', encoding='utf-8') as f:
                     optimized_timelines = json.load(f)
-                # 仍然需要执行convert_timeline_to_events_with_llm
-                optimized_timelines = self.convert_timeline_to_events_with_llm(optimized_timelines)
             else:
                 optimized_timelines = self.optimize_merged_timelines(merged_timelines)
                 print(f"✓ 成功优化为{len(optimized_timelines)}个时间线")
@@ -4622,7 +4620,6 @@ class Scheduler:
                 with open(optimized_timelines_path, 'w', encoding='utf-8') as f:
                     json.dump(optimized_timelines, f, ensure_ascii=False, indent=2)
                 print(f"✓ 优化后的时间线已保存到: {optimized_timelines_path}")
-                optimized_timelines = self.convert_timeline_to_events_with_llm(optimized_timelines)
 
             # 步骤5: 生成并插入事件
             print("\n=== 步骤5: 生成并插入事件 ===")
@@ -4632,6 +4629,8 @@ class Scheduler:
                 with open(rich_timeline_path, 'r', encoding='utf-8') as f:
                     rich_timeline = json.load(f)
             else:
+                # 在这里执行convert_timeline_to_events_with_llm
+                optimized_timelines = self.convert_timeline_to_events_with_llm(optimized_timelines)
                 rich_timeline = self.generate_and_insert_events(optimized_timelines["timeline_data"],optimized_timelines["events_by_theme"])
                 print(f"✓ 成功生成并插入事件")
                 # 保存结果
@@ -4673,6 +4672,52 @@ class Scheduler:
             else:
                 self.parallel_daily_event_refine(final_timeline["analysis_results"],self.persona,monthly_details,daily_draft_file)
                 print(f"✓ 每日状态已保存到: {daily_draft_file}")
+
+            # 步骤9: 调用check_event_matching.py进行事件匹配分析
+            print("\n=== 步骤9: 事件匹配分析 ===")
+            import event.check_event_matching
+            event_decompose_dfs_path = os.path.join(meidan_path, "event_decompose_dfs.json")
+            new_event_tree_file = os.path.join(output_path, "event_tree.json")
+            
+            # 检查目标文件是否存在，如果存在则跳过
+            if 0:
+                print(f"✓ 事件匹配分析结果文件已存在，跳过生成: {new_event_tree_file}")
+            else:
+                print(f"正在调用check_event_matching.py，输入文件：")
+                print(f"  - event_decompose_dfs.json: {event_decompose_dfs_path}")
+                print(f"  - daily_draft.json: {daily_draft_file}")
+                
+                # 保存原始daily_draft.json为daily_draft_raw.json到meidan_path
+                import shutil
+                raw_daily_draft_path = os.path.join(meidan_path, "daily_draft_raw.json")
+                shutil.copy2(daily_draft_file, raw_daily_draft_path)
+                print(f"✓ 已将原始daily_draft.json保存为: {raw_daily_draft_path}")
+                
+                # 调用check_event_matching.py的main函数，传递输出路径
+                event.check_event_matching.main(
+                    event_decompose_dfs_path=event_decompose_dfs_path,
+                    daily_draft_path=daily_draft_file,
+                    output_path=output_path
+                )
+
+                # 新生成的daily_draft.json已经保存在output_path，无需替换
+
+            # 步骤10: 调用event_tree_classify.py进行event_tree文件的分类
+            print("\n=== 步骤10: 事件树分类 ===")
+            import event.event_tree_classify
+            # 使用步骤九生成的event_tree.json文件作为分类的目标文件
+            event_tree_file = os.path.join(output_path, "event_tree.json")
+            
+            print(f"正在调用event_tree_classify.py，处理文件：")
+            print(f"  - event_tree.json: {event_tree_file}")
+            
+            # 创建分类器实例
+            classifier = event.event_tree_classify.EventTreeClassifier()
+            
+            # 处理event_tree文件，直接输出到原文件
+            classifier.process_events(event_tree_file, output_path=event_tree_file)
+            print(f"✓ 已用分类结果替换原来的event_tree.json")
+            
 
             print("\n🎉 年度时间线草稿生成完成！")
             print(f"除每日状态外的其他数据已保存到: {meidan_path}")
@@ -5021,13 +5066,14 @@ class Scheduler:
                 actual_length = len(dailylife_data)
                 if actual_length != month_days:
                     print(f"✗ 月份 {month} 处理不完整，实际生成 {actual_length} 天数据，预期 {month_days} 天数据")
-                    return month, None  # 标记为失败
+                    return month, None, []  # 标记为失败，返回空的更新操作
                 else:
                     print(f"✓ 月份 {month} 处理完成，共 {actual_length} 天数据")
-                    return month, refine_result
+                    # 返回事件更新操作而不是整个事件列表
+                    return month, refine_result, refiner.current_event_updates
             else:
                 print(f"✗ 月份 {month} 处理失败，返回数据格式错误")
-                return month, None  # 标记为失败
+                return month, None, []  # 标记为失败，返回空的更新操作
         
         # 使用线程池并行处理每个月的数据
         all_refine_results = {}
@@ -5038,6 +5084,8 @@ class Scheduler:
         def execute_parallel_months(months_to_process):
             """并行执行指定月份的处理"""
             temp_results = {}
+            all_event_updates = []  # 收集所有线程的事件更新操作
+            
             with ThreadPoolExecutor(max_workers=max_workers) as executor:
                 # 提交任务
                 futures = []
@@ -5049,16 +5097,19 @@ class Scheduler:
                 # 收集结果
                 for future in futures:
                     try:
-                        month, result = future.result()
+                        month, result, event_updates = future.result()
                         if result:
                             temp_results[month] = result
+                            if event_updates:
+                                all_event_updates.extend(event_updates)
                     except Exception as e:
-                        print(f"处理{month}月份数据时出错: {e}")
-            return temp_results
+                        print(f"处理月份数据时出错: {e}")
+            
+            return temp_results, all_event_updates
         
         # 第一次执行：处理所有月份
         print("第一次并行处理所有月份...")
-        all_refine_results = execute_parallel_months(list(monthly_analysis_results.keys()))
+        all_refine_results, all_event_updates = execute_parallel_months(list(monthly_analysis_results.keys()))
         
         # 检查是否有月份处理失败
         all_months = set(monthly_analysis_results.keys())
@@ -5070,10 +5121,13 @@ class Scheduler:
             print("正在重新并行处理这些月份...")
             
             # 第二次执行：仅处理失败的月份
-            retry_results = execute_parallel_months(failed_months)
+            retry_results, retry_event_updates = execute_parallel_months(failed_months)
             
             # 合并重试结果
             all_refine_results.update(retry_results)
+            # 合并重试的事件更新操作
+            if retry_event_updates:
+                all_event_updates.extend(retry_event_updates)
             
             # 再次检查是否还有失败的月份
             final_failed_months = sorted(list(all_months - set(all_refine_results.keys())))
@@ -5083,6 +5137,17 @@ class Scheduler:
                 print("\n✅ 所有月份重试成功！")
         else:
             print("\n✅ 第一次处理所有月份都成功！")
+        
+        # 创建EventRefiner实例，应用所有事件更新操作
+        if all_event_updates:
+            print(f"\n应用所有事件更新操作，共{len(all_event_updates)}个更新")
+            from event.event_refiner import EventRefiner
+            refiner = EventRefiner(persona=persona, events=refined_timeline)
+            
+            # 应用所有事件更新操作到原始事件树上
+            refined_timeline = refiner.apply_event_updates(refined_timeline, all_event_updates)
+            
+            print("✅ 所有事件更新操作已应用到事件树")
         
         # # 保存所有月份的事件细化结果
         # all_refine_file = os.path.join(output_dir, f"all_months_event_refine_{datetime.now().strftime('%Y%m%d%H%M%S')}.json")
@@ -5101,6 +5166,23 @@ class Scheduler:
         with open(output_dir, 'w', encoding='utf-8') as f:
             json.dump(all_refine_results, f, ensure_ascii=False, indent=2)
         print(f"每日状态数据已按月份字典格式保存到: {output_dir}")
+        
+        # 保存更新后的事件树到event_tree.json
+        import os
+        import json
+        
+        # 构建保存路径
+        if os.path.isdir(output_dir):
+            event_tree_path = os.path.join(output_dir, "event_tree.json")
+        else:
+            # 如果output_dir是文件路径，在同一目录下保存
+            output_dir_path = os.path.dirname(output_dir)
+            event_tree_path = os.path.join(output_dir_path, "event_tree.json")
+        
+        # 保存修改后的事件树
+        with open(event_tree_path, 'w', encoding='utf-8') as f:
+            json.dump(refined_timeline, f, ensure_ascii=False, indent=2)
+        print(f"更新后的事件树已保存到: {event_tree_path}")
         
         return all_refine_results
 

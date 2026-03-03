@@ -5,8 +5,33 @@ import os
 import json
 import pypinyin
 import shutil
+import argparse
 # 获取项目根目录并加入 sys.path
 sys.path.append('D:\pyCharmProjects\pythonProject4')
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='批量运行人物数据生成')
+    parser.add_argument('--persona-folder', type=str, default='data/',
+                        help='人物数据文件夹路径')
+    parser.add_argument('--start-id', type=int, default=0,
+                        help='开始的人物ID')
+    parser.add_argument('--end-id', type=int, default=0,
+                        help='结束的人物ID')
+    
+    # 添加run.py支持的参数
+    parser.add_argument('--process-path', type=str, default='process/',
+                        help='处理文件路径（相对于base-path）')
+    parser.add_argument('--max-workers', type=int, default=None,
+                        help='最大工作线程数（默认：CPU核心数×2）')
+    parser.add_argument('--generate-phone-data', type=int, default=1,
+                        help='是否生成手机数据（默认：1）')
+    parser.add_argument('--generate-monthly-report', type=int, default=1,
+                        help='是否执行月度报告的生成（默认：1）')
+    parser.add_argument('--generate-qa', type=int, default=1,
+                        help='是否执行QA生成（默认：1）')
+    parser.add_argument('--year', type=int, default=2025,
+                        help='生成数据的年份（默认：2025）')
+    return parser.parse_args()
 
 def run_script(script_path, description, args=None):
     """
@@ -50,12 +75,13 @@ def run_script(script_path, description, args=None):
         print(f"{'='*60}")
         return False
 
-def run_for_persona(persona_data, persona_folder, instance_id):
+def run_for_persona(persona_data, persona_folder, instance_id, args):
     """
     为单个画像执行完整流程
     :param persona_data: 画像数据
     :param persona_folder: 画像文件夹路径
     :param instance_id: 人物实例ID
+    :param args: 命令行参数
     :return: 是否成功运行
     """
     # 创建文件夹（如果不存在）
@@ -83,11 +109,26 @@ def run_for_persona(persona_data, persona_folder, instance_id):
     need_run = not os.path.exists(merged_qa_path)
     
     if need_run:
+        # 构建run.py的命令行参数
+        run_args = [
+            "--base-path", persona_folder+'/', 
+            "--instance-id", str(instance_id),
+            "--process-path", args.process_path,
+            "--generate-phone-data", str(args.generate_phone_data),
+            "--generate-monthly-report", str(args.generate_monthly_report),
+            "--generate-qa", str(args.generate_qa),
+            "--year", str(args.year)
+        ]
+        
+        # 添加可选参数
+        if args.max_workers is not None:
+            run_args.extend(["--max-workers", str(args.max_workers)])
+        
         # 调用集成好的run.py
         scripts = [{
             "path": "run.py",
             "description": "集成生成模块",
-            "args": ["--base-path", persona_folder+'/', "--instance-id", str(instance_id), "--generate-phone-data", "True", "--year", "2025"]
+            "args": run_args
         }]
     else:
         print(f"检测到合并后的QA文件: {merged_qa_path}")
@@ -123,11 +164,14 @@ def main():
     主函数，实现批量运行功能
     """
     
+    # 解析命令行参数
+    args = parse_args()
+    
     # 设置工作目录为脚本所在目录
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     
     # 读取person.json文件
-    person_json_path = "data/person.json"
+    person_json_path = os.path.join(args.persona_folder, "person.json")
     if not os.path.exists(person_json_path):
         print(f"❌ 错误: {person_json_path} 文件不存在")
         return 1
@@ -138,6 +182,13 @@ def main():
     if not isinstance(personas, list):
         print(f"❌ 错误: {person_json_path} 不是有效的画像数组")
         return 1
+    
+    # 根据start-id和end-id过滤人物
+    if args.start_id > 0 or args.end_id > 0:
+        start_idx = args.start_id - 1 if args.start_id > 0 else 0
+        end_idx = args.end_id if args.end_id > 0 else len(personas)
+        personas = personas[start_idx:end_idx]
+        print(f"\n根据ID范围过滤后，需要处理的人物数: {len(personas)}")
     
     # 记录总开始时间
     total_start_time = time.time()
@@ -165,7 +216,7 @@ def main():
         persona_folder = os.path.join("output", persona_folder_name)
         
         # 执行流程
-        if run_for_persona(persona, persona_folder, i+1):
+        if run_for_persona(persona, persona_folder, i+1, args):
             success_count += 1
             print(f"\n✅ 人物 {name} 处理成功!")
         else:

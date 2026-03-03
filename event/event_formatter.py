@@ -8,6 +8,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from event.templates import template_event_format_sequence
 from event.mind import llm_call
+from utils.llm_call import llm_call_reason, llm_call_reason_j
+
 
 class EventFormatter:
     """
@@ -24,6 +26,156 @@ class EventFormatter:
         self.data_dir = data_dir
         self.formatted_events = []
         self.event_id_counter = 1
+        self.daily_draft_data = self._load_daily_draft_id()
+    
+    def _load_daily_draft_id(self) -> Dict:
+        """
+        加载daily_draft_id.json文件
+        
+        返回:
+            Dict: daily_draft_id数据，键为完整日期（如"2025-01-01"），值为该日期的原子事件数据
+        """
+        # 先尝试在data_dir下查找daily_draft_id.json
+        daily_draft_file = os.path.join(self.data_dir, "daily_draft_id.json")
+        # 如果找不到，尝试在当前目录查找
+        if not os.path.exists(daily_draft_file):
+            daily_draft_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "fenghaoran", "daily_draft_id.json")
+            
+        date_based_data = {}
+        
+        try:
+            if os.path.exists(daily_draft_file):
+                with open(daily_draft_file, "r", encoding="utf-8") as f:
+                    monthly_data = json.load(f)
+                
+                print(f"成功加载daily_draft_id.json，包含 {len(monthly_data)} 个月份的数据")
+                
+                # 将按月组织的数据转换为按天组织的数据
+                total_days = 0
+                total_events = 0
+                
+                for month, days in monthly_data.items():
+                    for day_data in days:
+                        date = day_data.get("date")
+                        if date:
+                            atomic_events = day_data.get("events", [])
+                            # 提取所有原子事件并转换为统一格式
+                            formatted_atomic_events = []
+                            for atomic_event in atomic_events:
+                                event_ids = atomic_event.get("event_id", [])
+                                # 将每个event_id转换为单独的原子事件
+                                for event_id in event_ids:
+                                    formatted_atomic_events.append({
+                                        "event_id": event_id,
+                                        "content": atomic_event.get("description", "")
+                                    })
+                                    total_events += 1
+                            
+                            date_based_data[date] = formatted_atomic_events
+                            total_days += 1
+                
+                print(f"数据转换完成：{total_days} 天，共 {total_events} 个原子事件")
+            else:
+                print(f"未找到daily_draft_id.json文件: {daily_draft_file}")
+        except Exception as e:
+            print(f"读取daily_draft_id.json时出错: {str(e)}")
+        
+        return date_based_data
+    
+    def _match_atomic_events(self, formatted_events: List[Dict], daily_draft_date_data: List[Dict], date: str, task_id: int) -> List[Dict]:
+        """
+        为格式化后的事件匹配原子事件ID（批量处理版本，一天只调用一次LLM）
+        
+        参数:
+            formatted_events: 格式化后的事件列表
+            daily_draft_date_data: 该日期的原子事件数据
+            date: 日期
+            task_id: 任务ID
+            
+        返回:
+            List[Dict]: 添加了atomic_id字段的格式化事件列表
+        """
+        try:
+            # 如果没有格式化事件或原子事件，直接返回
+            if not formatted_events or not daily_draft_date_data:
+                for event in formatted_events:
+                    event["atomic_id"] = []
+                return formatted_events
+            
+            # 准备格式化事件文本（为每个事件分配临时ID）
+            formatted_events_text = "\n".join([
+                f"事件临时ID {i+1}：{event.get('name', '')} - {event.get('description', '')}"
+                for i, event in enumerate(formatted_events)
+            ])
+            
+            # 准备原子事件数据文本
+            atomic_events_text = "\n".join([
+                f"原子事件ID {atomic_event.get('event_id', '')}: {atomic_event.get('content', '')}"
+                for atomic_event in daily_draft_date_data
+            ])
+            
+            # 生成匹配提示
+            match_prompt = f"""
+            请仔细比较以下所有格式化事件与原子事件列表，为每个格式化事件找出所有相关的原子事件ID：
+            
+            格式化事件列表（当天）：
+            {formatted_events_text}
+            
+            原子事件列表（当天）：
+            {atomic_events_text}
+            
+            匹配要求：
+            1. 重点关注事件的核心活动和主要内容，而不是次要细节
+            2. 即使事件的时间（如早晨改到晚上）、地点（如不同的跑步路线）等次要信息有差异，只要核心活动一致或高度相关，就应视为相关事件
+            3. 允许一个格式化事件对应多个原子事件ID（即一个事件可能由多个原子事件组成）
+            4. 分析每个格式化事件的主要内容和原子事件的内容是否相关
+            5. 对于每个格式化事件，返回所有与之相关的原子事件ID
+            6. 如果某个格式化事件没有相关的原子事件，请返回空列表
+            7. 确保每个格式化事件都有对应的匹配结果
+            
+            返回格式：
+            请返回JSON格式的字典，键为事件临时ID（数字，从1开始），值为相关的原子事件ID数组。
+            例如：
+            {{"1": ["3", "5"], "2": ["2"], "3": []}}
+            
+            注意：
+            - 只返回JSON数据，不要包含任何额外的解释或说明
+            - 确保JSON格式正确，没有语法错误
+            - 原子事件ID必须是字符串格式
+            """
+            # 调用LLM进行批量匹配，使用llm_call_reason_j确保返回JSON格式
+            from utils.llm_call import llm_call_reason_j
+            match_result = llm_call_reason_j(match_prompt)
+            
+            # 清理匹配结果
+            cleaned_match_result = self.remove_json_wrapper(match_result, json_type='object')
+            try:
+                match_mappings = json.loads(cleaned_match_result)
+                print(match_mappings)
+                # 为每个事件添加atomic_id字段
+                for i, event in enumerate(formatted_events):
+                    event_temp_id = str(i+1)
+                    atomic_ids = match_mappings.get(event_temp_id, [])
+                    
+                    # 确保atomic_ids是列表格式
+                    if not isinstance(atomic_ids, list):
+                        atomic_ids = []
+                    
+                    event["atomic_id"] = atomic_ids
+                    
+                print(f"任务 {task_id} - 日期 {date} 批量匹配完成，为 {len(formatted_events)} 个事件分配了atomic_id")
+            except Exception as e:
+                print(f"任务 {task_id} - 日期 {date} 匹配原子事件时出错: {str(e)}")
+                # 为所有事件添加空的atomic_id字段
+                for event in formatted_events:
+                    event["atomic_id"] = []
+        finally:
+            # 确保所有事件都有atomic_id字段，无论处理结果如何
+            for event in formatted_events:
+                if "atomic_id" not in event:
+                    event["atomic_id"] = []
+        
+        return formatted_events
     
     def find_all_intermediate_files(self) -> List[str]:
         """
@@ -139,15 +291,21 @@ class EventFormatter:
                 poi=poi_data,
                 date=date
             )
-            from utils.llm_call import llm_call_reason
             # 调用LLM获取格式化后的事件
-            formatted_content = llm_call_reason(prompt, "你是一位事件格式化专家", 0)
+            formatted_content = llm_call_reason_j(prompt)
             #print(formatted_content)
             # 清理JSON格式
             cleaned_content = self.remove_json_wrapper(formatted_content, json_type='array')
             
             # 解析JSON
             formatted_events = json.loads(cleaned_content)
+            
+            # 获取该日期的daily_draft数据
+            daily_draft_date_data = self.daily_draft_data.get(date, [])
+            
+            # 为每个格式化后的事件匹配原子事件ID
+            if daily_draft_date_data:
+                formatted_events = self._match_atomic_events(formatted_events, daily_draft_date_data, date, task_id)
             
             return formatted_events
         except Exception as e:
@@ -191,6 +349,13 @@ class EventFormatter:
         for event in formatted_events:
             event["event_id"] = str(self.event_id_counter)
             self.event_id_counter += 1
+        
+        # 获取该日期的daily_draft数据
+        daily_draft_date_data = self.daily_draft_data.get(date, [])
+        
+        # 为每个格式化后的事件匹配原子事件ID
+        if daily_draft_date_data:
+            formatted_events = self._match_atomic_events(formatted_events, daily_draft_date_data, date, 0)
         
         return formatted_events
     
