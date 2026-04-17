@@ -1,0 +1,68 @@
+[
+  {
+    "type": "call",
+    "phoneNumber": "+8613777349876",
+    "contactName": "郑文博",
+    "datetime": "2025-01-01 09:10:00",
+    "datetime_end": "2025-01-01 09:12:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5",
+    "event_id": [],
+    "phone_id": 0
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613907128765",
+    "contactName": "李秀英",
+    "datetime": "2025-01-01 19:30:00",
+    "datetime_end": "2025-01-01 19:45:15",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "11",
+    "event_id": [
+      "159-4"
+    ],
+    "phone_id": 1
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613787349876",
+    "contactName": "郑文博",
+    "datetime": "2025-01-02 08:40:00",
+    "datetime_end": "2025-01-02 08:52:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "15",
+    "event_id": [
+      "160-1"
+    ],
+    "phone_id": 2
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613672341234",
+    "contactName": "黄思琪",
+    "datetime": "2025-01-02 10:30:00",
+    "datetime_end": "2025-01-02 10:38:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "16",
+    "event_id": [
+      "160-1"
+    ],
+    "phone_id": 3
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613787344567",
+    "contactName": "彭雨晴",
+    "datetime": "2025-01-02 17:45:00",
+    "datetime_end": "2025-01-02 17:48:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "19",
+    "event_id": [],
+    "phone_id": 4
+  }
+]

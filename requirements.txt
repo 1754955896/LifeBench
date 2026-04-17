@@ -6,3 +6,4 @@ sentence_transformers
 transformers==4.37.0
 pyarrow
 pypinyin
+pyvis

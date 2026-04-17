@@ -1,195 +1,29 @@
 import json
 import os.path
-import threading
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from event.phone_data_gen import (
+    PhoneEventMatcher,
+    extool,
+    iterate_dates,
+    remove_json_wrapper,
+    parallel_process_dates_dynamic
+)
 
-from event.phone_data_gen import *
-from event.phone_data_gen import PhoneEventMatcher
+from utils.IO import read_json_file
 
-
-def run_communication_task(date, contact, file_path, initial_data):
-    """执行通讯数据生成任务"""
-    g1 = CommunicationOperationGenerator()
-    return g1.phone_gen_callandmsm(date, contact, file_path, initial_data)
-
-
-def run_notecalendar_task(date, contact, file_path, initial_data):
-    """执行笔记日历数据生成任务"""
-    g2 = NoteCalendarOperationGenerator(random_seed=42)
-    return g2.phone_gen_noteandcalendar(date, contact, file_path, initial_data)
-
-
-def run_gallery_task(date, contact, file_path, initial_data):
-    """执行相册数据生成任务"""
-    g3 = GalleryOperationGenerator(random_seed=42)
-    return g3.phone_gen_gallery(date, contact, file_path, initial_data)
-
-
-def run_push_task(date, contact, file_path, initial_data):
-    """执行推送数据生成任务"""
-    g4 = PushOperationGenerator(random_seed=42)
-    return g4.phone_gen_push(date, contact, file_path, initial_data)
-
-
-def run_fitness_health_task(date, contact, file_path, initial_data):
-    """执行运动健康数据生成任务"""
-    g5 = FitnessHealthOperationGenerator(random_seed=42)
-    return g5.phone_gen_fitness_health(date, contact, file_path, initial_data)
-
-
-def run_chat_task(date, contact, file_path, initial_data):
-    """执行聊天数据生成任务"""
-    g6 = ChatOperationGenerator(random_seed=42)
-    return g6.phone_gen_agent_chat(date, contact, file_path, initial_data)
-
-
-def run_perception_task(date, contact, file_path, initial_data):
-    """执行感知数据生成任务"""
-    g7 = PerceptionDataGenerator()
-    return g7.generate_perception_data(date, initial_data)
-
-
-# 单个日期的完整处理任务
-def process_single_date(date, contact, file_path, initial_a, initial_b, initial_c, initial_d, initial_e, initial_f,
-                        initial_g, matcher):
-    """
-    处理单个日期的所有数据生成（不进行文件写入）
-    :param date: 要处理的日期
-    :param contact: 联系人信息
-    :param file_path: 文件保存路径
-    :param initial_a: communication操作的初始数据
-    :param initial_b: note&calendar操作的初始数据
-    :param initial_c: gallery操作的初始数据
-    :param initial_d: push操作的初始数据
-    :param initial_e: fitness_health操作的初始数据
-    :param initial_f: chat操作的初始数据
-    :param initial_g: perception操作的初始数据
-    :return: 处理结果（成功/失败，日期，生成的数据字典）
-    """
-    try:
-        # 内部并行执行7个生成器任务
-        with ThreadPoolExecutor(max_workers=7) as inner_executor:
-            # 提交所有内部任务
-            future_a = inner_executor.submit(run_communication_task, date, contact, file_path, initial_a)
-            future_b = inner_executor.submit(run_notecalendar_task, date, contact, file_path, initial_b)
-            future_c = inner_executor.submit(run_gallery_task, date, contact, file_path, initial_c)
-            future_d = inner_executor.submit(run_push_task, date, contact, file_path, initial_d)
-            future_e = inner_executor.submit(run_fitness_health_task, date, contact, file_path, initial_e)
-            future_f = inner_executor.submit(run_chat_task, date, contact, file_path, initial_f)
-            future_g = inner_executor.submit(run_perception_task, date, contact, file_path, initial_g)
-
-            # 获取执行结果
-            a_result = future_a.result()
-            b_result = future_b.result()
-            c_result = future_c.result()
-            d_result = future_d.result()
-            e_result = future_e.result()
-            f_result = future_f.result()
-            g_result = future_g.result()
-
-        # 整理生成的数据
-        generated_data = {
-            "event_note.json": b_result,
-            "event_call.json": a_result,
-            "event_gallery.json": c_result,
-            "event_push.json": d_result,
-            "event_fitness_health.json": e_result,
-            "event_chat.json": f_result,
-            "event_perception.json": g_result
-        }
-
-        # 调用PhoneEventMatcher进行原子事件匹配分析
-        try:
-            # 汇总该日数据（除了event_fitness_health.json）
-            all_phone_operations = []
-            for filename, data in generated_data.items():
-                if filename != "event_fitness_health.json" and data:
-                    all_phone_operations.extend(data)
-
-            # 使用传入的PhoneEventMatcher实例
-            match_result = matcher.match_phone_events_with_atomic_events(
-                phone_operations=all_phone_operations,
-                date=date
-            )
-
-            # 将匹配结果更新回generated_data
-            matched_phone_events = match_result["matched_phone_events"]
-
-            # 按文件类型分配匹配后的手机事件
-            # 首先，为每个文件类型创建一个空列表
-            phone_ops_by_type = {
-                "event_note.json": [],
-                "event_call.json": [],
-                "event_gallery.json": [],
-                "event_push.json": [],
-                "event_chat.json": [],
-                "event_perception.json": []
-            }
-
-            # 根据事件类型将匹配后的手机事件分配回相应的文件
-            for op in matched_phone_events:
-                if "type" in op:
-                    event_type = op["type"]
-                    if event_type == "note" or event_type == "calendar":
-                        phone_ops_by_type["event_note.json"].append(op)
-                    elif event_type == "call" or event_type == "sms":
-                        phone_ops_by_type["event_call.json"].append(op)
-                    elif event_type == "photo":
-                        phone_ops_by_type["event_gallery.json"].append(op)
-                    elif event_type == "push":
-                        phone_ops_by_type["event_push.json"].append(op)
-                    elif event_type == "chat" or "agent_chat" in op.get("type", ""):
-                        phone_ops_by_type["event_chat.json"].append(op)
-                    elif event_type == "perception":
-                        phone_ops_by_type["event_perception.json"].append(op)
-
-            # 更新generated_data中的手机事件数据
-            for filename, ops in phone_ops_by_type.items():
-                if ops:
-                    generated_data[filename] = ops
-
-            print(f"成功完成原子事件匹配，为手机数据添加atomic_id字段")
-        except Exception as e:
-            print(f"调用PhoneEventMatcher时出错：{str(e)}")
-            import traceback
-            traceback.print_exc()
-
-        # 重命名字段：先将event_id更名为daily_event_id，再将atomic_id更名为event_id
-        for filename, data_list in generated_data.items():
-            if data_list:
-                for item in data_list:
-                    # 先重命名event_id为daily_event_id
-                    if 'event_id' in item and 'daily_event_id' not in item:
-                        item['daily_event_id'] = item.pop('event_id')
-                    # 再重命名atomic_id为event_id
-                    if 'atomic_id' in item:
-                        item['event_id'] = item.pop('atomic_id')
-
-        print(f"成功处理日期：{date}")
-        return (True, date, generated_data)
-
-    except Exception as e:
-        print(f"处理日期 {date} 时出错：{str(e)}")
-        import traceback
-        traceback.print_exc()
-        return (False, date, None)
-
-
-# 主函数：多线程并行处理所有日期
 def process_phone_data(file_path):
     """
-    处理手机数据的后处理操作：分类、排序、添加phone_id
+    处理手机数据的后处理操作：分类、排序、添加 phone_id
     :param file_path: 数据文件路径
     """
-    # 数据后处理：分类、排序、添加phone_id
+    # 数据后处理：分类、排序、添加 phone_id
     print(f"\n开始数据后处理...")
 
-    # 1. 定义需要处理的文件（除了contact.json）
+    # 1. 定义需要处理的文件（除了 contact.json）
     phone_data_dir = os.path.join(file_path, "phone_data")
 
     files_to_process = [f for f in os.listdir(phone_data_dir) if f.endswith('.json') and f.startswith('event_')]
 
-    # 2. 创建process文件夹
+    # 2. 创建 process 文件夹
     process_dir = os.path.join(file_path, "process")
     process_dir = os.path.join(process_dir, "phone_data")
     os.makedirs(process_dir, exist_ok=True)
@@ -202,17 +36,17 @@ def process_phone_data(file_path):
         with open(file_path_old, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
-        # 特殊处理event_perception.json文件
+        # 特殊处理 event_perception.json 文件
         if filename == "event_perception.json":
-            # 直接保留所有数据，不按type分类
-            # 排序：先按date排序，再按time数组的第一个元素排序
+            # 直接保留所有数据，不按 type 分类
+            # 排序：先按 date 排序，再按 time 数组的第一个元素排序
             sorted_data = sorted(data, key=lambda x: (x.get('date', ''), x.get('time', [''])[0]))
 
-            # 添加phone_id
+            # 添加 phone_id
             for i, item in enumerate(sorted_data):
                 item['phone_id'] = i
 
-            # 保存为新文件perception.json
+            # 保存为新文件 perception.json
             new_filename = "perception.json"
             new_file_path = os.path.join(phone_data_dir, new_filename)
             with open(new_file_path, 'w', encoding='utf-8') as f:
@@ -220,8 +54,8 @@ def process_phone_data(file_path):
 
             print(f"✅ 生成新文件：{new_filename}，共 {len(sorted_data)} 条记录")
         else:
-            # 其他文件按type分类
-            # 按type分类
+            # 其他文件按 type 分类
+            # 按 type 分类
             type_dict = {}
             for item in data:
                 if 'type' in item:
@@ -230,7 +64,7 @@ def process_phone_data(file_path):
                         type_dict[data_type] = []
                     type_dict[data_type].append(item)
                 else:
-                    # 如果没有type字段，使用文件名作为类型
+                    # 如果没有 type 字段，使用文件名作为类型
                     data_type = filename.replace('event_', '').replace('.json', '')
                     if data_type not in type_dict:
                         type_dict[data_type] = []
@@ -240,19 +74,19 @@ def process_phone_data(file_path):
             for data_type, type_data in type_dict.items():
                 # 排序
                 if data_type in ['call', 'gallery', 'note', 'calendar', 'push', 'photo', 'sms']:
-                    # 使用datetime字段排序
+                    # 使用 datetime 字段排序
                     sorted_data = sorted(type_data, key=lambda x: x.get('datetime', ''))
                 elif data_type == 'fitness_health':
                     # 按日期字段排序
                     sorted_data = sorted(type_data, key=lambda x: x.get('日期', ''))
                 elif data_type == 'agent_chat':
-                    # 按date字段排序
+                    # 按 date 字段排序
                     sorted_data = sorted(type_data, key=lambda x: x.get('date', ''))
                 else:
-                    # 默认按datetime排序
+                    # 默认按 datetime 排序
                     sorted_data = sorted(type_data, key=lambda x: x.get('datetime', ''))
 
-                # 添加phone_id
+                # 添加 phone_id
                 for i, item in enumerate(sorted_data):
                     item['phone_id'] = i
 
@@ -264,245 +98,12 @@ def process_phone_data(file_path):
 
                 print(f"✅ 生成新文件：{new_filename}，共 {len(sorted_data)} 条记录")
 
-        # 将老文件移动到process文件夹
+        # 将老文件移动到 process 文件夹
         new_file_path_old = os.path.join(process_dir, filename)
         os.replace(file_path_old, new_file_path_old)
         print(f"📁 已将原文件 {filename} 移动到 process 文件夹")
 
     print(f"\n数据后处理完成！")
-
-
-def parallel_process_dates(start_time, end_time, contact, file_path, initial_a, initial_b, initial_c, initial_d,
-                           initial_e, initial_f, initial_g, matcher,
-                           max_workers=8):
-    """
-    多线程并行处理所有日期
-    :param start_time: 开始时间
-    :param end_time: 结束时间
-    :param contact: 联系人信息
-    :param file_path: 文件保存路径
-    :param initial_a: communication操作的初始数据
-    :param initial_b: note&calendar操作的初始数据
-    :param initial_c: gallery操作的初始数据
-    :param initial_d: push操作的初始数据
-    :param initial_e: fitness_health操作的初始数据
-    :param initial_f: chat操作的初始数据
-    :param initial_g: perception操作的初始数据
-    :param max_workers: 最大并行线程数
-    :return: 处理统计结果
-    """
-    # 收集所有处理结果
-    success_dates = []
-    failed_dates = []
-
-    # 收集所有生成的数据
-    data_collector = {
-        "event_note.json": [],
-        "event_call.json": [],
-        "event_gallery.json": [],
-        "event_push.json": [],
-        "event_fitness_health.json": [],
-        "event_chat.json": [],
-        "event_perception.json": []
-    }
-
-    # 创建线程池，并行处理所有日期
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        # 提交所有日期的处理任务
-        futures = []
-        for date in iterate_dates(start_time, end_time):
-            future = executor.submit(
-                process_single_date,
-                date=date,
-                contact=contact,
-                file_path=file_path,
-                initial_a=initial_a,
-                initial_b=initial_b,
-                initial_c=initial_c,
-                initial_d=initial_d,
-                initial_e=initial_e,
-                initial_f=initial_f,
-                initial_g=initial_g,
-                matcher=matcher
-            )
-            futures.append(future)
-
-        # 等待所有任务完成并收集结果
-        for future in as_completed(futures):
-            success, date, generated_data = future.result()
-            if success:
-                success_dates.append(date)
-                # 合并生成的数据到收集器
-                for filename, data in generated_data.items():
-                    if isinstance(data, list) and isinstance(data_collector[filename], list):
-                        data_collector[filename].extend(data)
-                    else:
-                        data_collector[filename] = data
-            else:
-                failed_dates.append(date)
-
-    # 创建phone_data文件夹（如果不存在）
-    phone_data_dir = os.path.join(file_path, "phone_data")
-    os.makedirs(phone_data_dir, exist_ok=True)
-
-    # 将所有收集的数据写入文件（增量式，保留原有数据）
-    for filename, data in data_collector.items():
-        file_path = os.path.join(phone_data_dir, filename)
-        try:
-            # 读取原有数据
-            existing_data = []
-            if os.path.exists(file_path):
-                with open(file_path, "r", encoding="utf-8") as f:
-                    file_content = f.read().strip()
-                    if file_content:
-                        existing_data = json.loads(file_content)
-                    else:
-                        existing_data = []
-
-            # 合并数据
-            if isinstance(data, list) and isinstance(existing_data, list):
-                # 如果都是列表，合并列表
-                merged_data = existing_data + data
-            else:
-                # 否则，使用新数据
-                merged_data = data
-
-            # 写入合并后的数据
-            with open(file_path, "w", encoding="utf-8") as f:
-                json.dump(merged_data, f, ensure_ascii=False, indent=2)
-
-            print(f"✅ 数据成功写入文件：{filename}")
-            print(f"   共写入 {len(merged_data)} 条数据")
-        except json.JSONDecodeError as e:
-            print(f"❌ 文件 {filename} JSON格式错误，将覆盖原有文件：{str(e)}")
-            # 如果JSON格式错误，使用新数据覆盖
-            with open(file_path, "w", encoding="utf-8") as f:
-                json.dump(data, f, ensure_ascii=False, indent=2)
-        except Exception as e:
-            print(f"❌ 写入文件 {filename} 时出错：{str(e)}")
-
-    # 输出统计信息
-    total_dates = len(success_dates) + len(failed_dates)
-    print(f"\n处理完成统计：")
-    print(f"总日期数：{total_dates}")
-    print(f"成功处理：{len(success_dates)} 个")
-    print(f"处理失败：{len(failed_dates)} 个")
-    if failed_dates:
-        print(f"失败日期：{failed_dates}")
-
-    return {
-        "total": total_dates,
-        "success": len(success_dates),
-        "failed": len(failed_dates),
-        "failed_dates": failed_dates
-    }
-
-
-def parallel_process_perception_only(start_time, end_time, contact, file_path, initial_g, max_workers=8):
-    """
-    多线程并行处理所有日期的感知数据生成（仅运行感知数据任务）
-    :param start_time: 开始时间
-    :param end_time: 结束时间
-    :param contact: 联系人信息
-    :param file_path: 文件保存路径
-    :param initial_g: perception操作的初始数据
-    :param max_workers: 最大并行线程数
-    :return: 处理统计结果
-    """
-    # 收集所有处理结果
-    success_dates = []
-    failed_dates = []
-
-    # 收集所有生成的感知数据
-    all_perception_data = []
-
-    # 创建phone_data文件夹（如果不存在）
-    phone_data_dir = os.path.join(file_path, "phone_data")
-    os.makedirs(phone_data_dir, exist_ok=True)
-
-    # 单个感知任务处理函数
-    def process_perception_date(date):
-        try:
-            # 运行感知数据生成任务
-            result = run_perception_task(date, contact, file_path, initial_g)
-
-            print(f"成功生成感知数据：{date}")
-            return (True, date, result)
-        except Exception as e:
-            print(f"生成感知数据 {date} 时出错：{str(e)}")
-            return (False, date, None)
-
-    # 创建线程池，并行处理所有日期
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        # 提交所有日期的处理任务
-        futures = []
-        for date in iterate_dates(start_time, end_time):
-            future = executor.submit(process_perception_date, date)
-            futures.append(future)
-
-        # 等待所有任务完成并收集结果
-        for future in as_completed(futures):
-            success, date, result = future.result()
-            if success and result is not None:
-                success_dates.append(date)
-                # 收集生成的数据
-                if isinstance(result, list):
-                    all_perception_data.extend(result)
-                else:
-                    all_perception_data.append(result)
-            else:
-                failed_dates.append(date)
-
-    # 增量式写入文件（保留原有数据）
-    perception_file_path = os.path.join(phone_data_dir, "event_perception.json")
-    try:
-        # 读取原有数据
-        existing_data = []
-        if os.path.exists(perception_file_path):
-            with open(perception_file_path, "r", encoding="utf-8") as f:
-                file_content = f.read().strip()
-                if file_content:
-                    existing_data = json.loads(file_content)
-                else:
-                    existing_data = []
-
-        # 合并数据
-        if isinstance(all_perception_data, list) and isinstance(existing_data, list):
-            # 如果都是列表，合并列表
-            merged_data = existing_data + all_perception_data
-        else:
-            # 否则，使用新数据
-            merged_data = all_perception_data
-
-        # 写入合并后的数据
-        with open(perception_file_path, "w", encoding="utf-8") as f:
-            json.dump(merged_data, f, ensure_ascii=False, indent=2)
-
-        print(f"✅ 感知数据成功写入文件：{perception_file_path}")
-        print(f"   共写入 {len(merged_data)} 条数据")
-    except json.JSONDecodeError as e:
-        print(f"❌ JSON格式错误，将覆盖原有文件：{str(e)}")
-        # 如果JSON格式错误，使用新数据覆盖
-        with open(perception_file_path, "w", encoding="utf-8") as f:
-            json.dump(all_perception_data, f, ensure_ascii=False, indent=2)
-    except Exception as e:
-        print(f"❌ 写入感知数据文件时出错：{str(e)}")
-
-    # 输出统计信息
-    total_dates = len(success_dates) + len(failed_dates)
-    print(f"\n感知数据处理完成统计：")
-    print(f"总日期数：{total_dates}")
-    print(f"成功处理：{len(success_dates)} 个")
-    print(f"处理失败：{len(failed_dates)} 个")
-    if failed_dates:
-        print(f"失败日期：{failed_dates}")
-
-    return {
-        "total": total_dates,
-        "success": len(success_dates),
-        "failed": len(failed_dates),
-        "failed_dates": failed_dates
-    }
 
 
 if __name__ == "__main__":
@@ -512,7 +113,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='手机操作生成模块')
     parser.add_argument('--file-path', type=str, default='fenghaoran/', help='数据文件路径')
     parser.add_argument('--start-time', type=str, default='2025-01-01', help='开始日期')
-    parser.add_argument('--end-time', type=str, default='2025-12-31', help='结束日期')
+    parser.add_argument('--end-time', type=str, default='2025-01-31', help='结束日期')
     parser.add_argument('--max-workers', type=int, default=40, help='最大并行线程数')
     parser.add_argument('--process-only', action='store_true', help='仅执行数据后处理操作，不生成新数据')
     args = parser.parse_args()
@@ -526,100 +127,57 @@ if __name__ == "__main__":
     if os.path.exists(file_path + "phone_data/contact.json"):
         contact = read_json_file(file_path + "phone_data/contact.json")
     else:
+        from event.phone_data_gen import contact_gen
         contact = contact_gen(persona)
         contact = remove_json_wrapper(contact, json_type='array')
         contact = json.loads(contact)
-        # 创建phone_data文件夹（如果不存在）
+        # 创建 phone_data 文件夹（如果不存在）
         phone_data_dir = os.path.join(file_path, "phone_data")
         os.makedirs(phone_data_dir, exist_ok=True)
         with open(os.path.join(phone_data_dir, "contact.json"), "w", encoding="utf-8") as f:
             json.dump(contact, f, ensure_ascii=False, indent=2)
 
-    a = []
-    b = []
-    c = []
-    d = []
-    e = []
-    f = []
-    g = []
+    # 准备所有生成器的初始数据
+    generators_initial_data = {}
     if os.path.exists(file_path + "phone_data/event_gallery.json"):
-        a = read_json_file(file_path + "phone_data/event_gallery.json")
+        generators_initial_data['gallery'] = read_json_file(file_path + "phone_data/event_gallery.json")
     if os.path.exists(file_path + "phone_data/event_push.json"):
-        b = read_json_file(file_path + "phone_data/event_push.json")
+        generators_initial_data['push'] = read_json_file(file_path + "phone_data/event_push.json")
     if os.path.exists(file_path + "phone_data/event_call.json"):
-        c = read_json_file(file_path + "phone_data/event_call.json")
+        generators_initial_data['communication'] = read_json_file(file_path + "phone_data/event_call.json")
     if os.path.exists(file_path + "phone_data/event_note.json"):
-        d = read_json_file(file_path + "phone_data/event_note.json")
+        generators_initial_data['note_calendar'] = read_json_file(file_path + "phone_data/event_note.json")
     if os.path.exists(file_path + "phone_data/event_fitness_health.json"):
-        e = read_json_file(file_path + "phone_data/event_fitness_health.json")
+        generators_initial_data['fitness_health'] = read_json_file(file_path + "phone_data/event_fitness_health.json")
     if os.path.exists(file_path + "phone_data/event_chat.json"):
-        f = read_json_file(file_path + "phone_data/event_chat.json")
+        generators_initial_data['chat'] = read_json_file(file_path + "phone_data/event_chat.json")
     if os.path.exists(file_path + "phone_data/event_perception.json"):
-        g = read_json_file(file_path + "phone_data/event_perception.json")
+        generators_initial_data['perception'] = read_json_file(file_path + "phone_data/event_perception.json")
+    
     extool.load_from_json(read_json_file(file_path + 'daily_event.json'), persona,
                           read_json_file(file_path + 'daily_draft.json'))
-    # for i in iterate_dates(start_time,end_time):
-    #     phone_gen(i,contact,file_path,a,b,c,d,e)
-    #
-    # for i in iterate_dates(start_time,end_time):
-    #
-    #     g1 = CommunicationOperationGenerator()
-    #     a = g1.phone_gen_callandmsm(i,contact,file_path,a)
-    #     #
-    #     # g2 = NoteCalendarOperationGenerator(random_seed=42)
-    #     # # 生成2023-10-05的日历和笔记数据（总数≤4）
-    #     # b = g2.phone_gen_noteandcalendar(i,contact,file_path,b)
-    #     #
-    #     # g3 = GalleryOperationGenerator(random_seed=42)
-    #     # c = g3.phone_gen_gallery(i,contact,file_path,c)
-    #     #
-    #     # g4 = PushOperationGenerator(random_seed=42)
-    #     # d = g4.phone_gen_push(i,contact,file_path,d)
-    #     print('---------------------------')
-    #     print(a)
-    #     print('---------------------------')
-    #     print(b)
-    #     print('---------------------------')
-    #     print(c)
-    #     print('---------------------------')
-    #     print(d)
-    #     with open(file_path + "phone_data/event_note.json", "w", encoding="utf-8") as f:
-    #         json.dump(d, f, ensure_ascii=False, indent=2)
-    #     with open(file_path + "phone_data/event_call.json", "w", encoding="utf-8") as f:
-    #         json.dump(c, f, ensure_ascii=False, indent=2)
-    #     with open(file_path + "phone_data/event_gallery.json", "w", encoding="utf-8") as f:
-    #         json.dump(a, f, ensure_ascii=False, indent=2)
-    #     with open(file_path + "phone_data/event_push.json", "w", encoding="utf-8") as f:
-    #         json.dump(b, f, ensure_ascii=False, indent=2)
-    # 单个生成器任务的封装（用于内部并行）
-
+    
     # 根据参数决定执行模式
     if args.process_only:
         print(f"仅执行数据后处理操作...")
-        # 直接执行数据后处理
+        # 直接执行数据后处理（调用 phone_data_gen.py 中的函数）
         process_phone_data(file_path)
     else:
-        # 在main中初始化PhoneEventMatcher实例，传入atomic_events_file
+        # 在 main 中初始化 PhoneEventMatcher 实例，传入 atomic_events_file
         atomic_events_file = os.path.join(file_path, "event_tree.json")
         matcher = PhoneEventMatcher(atomic_events_file=atomic_events_file)
 
-        # 执行全部数据生成任务
+        # 执行全部数据生成任务（使用 dynamic 版本）
         print(f"开始生成所有类型的手机数据，日期范围：{start_time} 到 {end_time}")
-        result = parallel_process_dates(
+        result = parallel_process_dates_dynamic(
             start_time=start_time,
             end_time=end_time,
             contact=contact,
             file_path=file_path,
-            initial_a=a,
-            initial_b=b,
-            initial_c=c,
-            initial_d=d,
-            initial_e=e,
-            initial_f=f,
-            initial_g=g,
+            generators_initial_data=generators_initial_data,
             matcher=matcher,
             max_workers=args.max_workers  # 可根据实际情况调整
         )
 
-        # 执行数据后处理操作
+        # 执行数据后处理操作（调用 phone_data_gen.py 中的函数）
         process_phone_data(file_path)

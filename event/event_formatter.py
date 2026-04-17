@@ -6,9 +6,9 @@ from typing import List, Dict
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from event.templates import template_event_format_sequence
-from event.mind import llm_call
-from utils.llm_call import llm_call_reason, llm_call_reason_j
+from event.templates.templates import template_event_format_sequence
+from utils.llm_call import llm_call_reason_j
+from event.tools.check_event_matching import main as check_event_matching_main
 
 
 class EventFormatter:
@@ -30,16 +30,16 @@ class EventFormatter:
     
     def _load_daily_draft_id(self) -> Dict:
         """
-        加载daily_draft_id.json文件
+        加载daily_draft.json文件
         
         返回:
-            Dict: daily_draft_id数据，键为完整日期（如"2025-01-01"），值为该日期的原子事件数据
+            Dict: daily_draft数据，键为完整日期（如"2025-01-01"），值为该日期的原子事件数据
         """
-        # 先尝试在data_dir下查找daily_draft_id.json
-        daily_draft_file = os.path.join(self.data_dir, "daily_draft_id.json")
+        # 先尝试在data_dir下查找daily_draft.json
+        daily_draft_file = os.path.join(self.data_dir, "daily_draft.json")
         # 如果找不到，尝试在当前目录查找
         if not os.path.exists(daily_draft_file):
-            daily_draft_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "fenghaoran", "daily_draft_id.json")
+            daily_draft_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "fenghaoran", "daily_draft.json")
             
         date_based_data = {}
         
@@ -48,7 +48,7 @@ class EventFormatter:
                 with open(daily_draft_file, "r", encoding="utf-8") as f:
                     monthly_data = json.load(f)
                 
-                print(f"成功加载daily_draft_id.json，包含 {len(monthly_data)} 个月份的数据")
+                print(f"成功加载daily_draft.json，包含 {len(monthly_data)} 个月份的数据")
                 
                 # 将按月组织的数据转换为按天组织的数据
                 total_days = 0
@@ -76,9 +76,9 @@ class EventFormatter:
                 
                 print(f"数据转换完成：{total_days} 天，共 {total_events} 个原子事件")
             else:
-                print(f"未找到daily_draft_id.json文件: {daily_draft_file}")
+                print(f"未找到daily_draft.json文件: {daily_draft_file}")
         except Exception as e:
-            print(f"读取daily_draft_id.json时出错: {str(e)}")
+            print(f"读取daily_draft.json时出错: {str(e)}")
         
         return date_based_data
     
@@ -359,13 +359,32 @@ class EventFormatter:
         
         return formatted_events
     
-    def process_all_files(self, max_workers: int = 30):
+    def process_all_files(self, max_workers: int = 30, start_date: str = None, end_date: str = None):
         """
         处理所有中间输出文件
         
         参数:
             max_workers: 并行处理的最大线程数，默认5
+            start_date: 起始日期，格式为"YYYY-MM-DD"
+            end_date: 结束日期，格式为"YYYY-MM-DD"
         """
+        # 解析起止日期，默认为2025年全年
+        if start_date is None:
+            start_date = "2025-01-01"
+        if end_date is None:
+            end_date = "2025-12-31"
+        
+        start_datetime = None
+        end_datetime = None
+        try:
+            start_datetime = datetime.strptime(start_date, "%Y-%m-%d")
+        except ValueError:
+            print(f"无效的起始日期格式: {start_date}，应为YYYY-MM-DD")
+        try:
+            end_datetime = datetime.strptime(end_date, "%Y-%m-%d")
+        except ValueError:
+            print(f"无效的结束日期格式: {end_date}，应为YYYY-MM-DD")
+        
         # 查找所有中间输出文件
         intermediate_files = self.find_all_intermediate_files()
         print(f"找到 {len(intermediate_files)} 个中间输出文件")
@@ -386,13 +405,28 @@ class EventFormatter:
                 events = item["events"]
                 poi_data = item["poi_data"]
                 
-                tasks.append({
-                    'task_id': task_id,
-                    'events': events,
-                    'poi_data': poi_data,
-                    'date': date
-                })
-                task_id += 1
+                # 检查日期是否在指定范围内
+                include_date = True
+                if start_datetime or end_datetime:
+                    try:
+                        # 解析日期字符串，提取日期部分
+                        event_date = datetime.strptime(date.split()[0], "%Y-%m-%d")
+                        if start_datetime and event_date < start_datetime:
+                            include_date = False
+                        if end_datetime and event_date > end_datetime:
+                            include_date = False
+                    except ValueError:
+                        print(f"无效的事件日期格式: {date}，跳过该事件")
+                        include_date = False
+                
+                if include_date:
+                    tasks.append({
+                        'task_id': task_id,
+                        'events': events,
+                        'poi_data': poi_data,
+                        'date': date
+                    })
+                    task_id += 1
         
         print(f"共收集到 {len(tasks)} 个处理任务")
         
@@ -476,17 +510,19 @@ class EventFormatter:
         
         print(f"格式化后的事件已保存到: {output_path}")
     
-    def run(self, max_workers: int = 5):
+    def run(self, max_workers: int = 5, start_date: str = None, end_date: str = None):
         """
         执行完整的事件格式化流程
         
         参数:
             max_workers: 并行处理的最大线程数，默认5
+            start_date: 起始日期，格式为"YYYY-MM-DD"
+            end_date: 结束日期，格式为"YYYY-MM-DD"
         """
         print("=== 开始事件格式化流程 ===")
         
         # 处理所有文件
-        self.process_all_files(max_workers=max_workers)
+        self.process_all_files(max_workers=max_workers, start_date=start_date, end_date=end_date)
         
         # 保存结果
         self.save_to_event_json(self.data_dir+'daily_event.json')
@@ -501,6 +537,8 @@ if __name__ == "__main__":
     # 默认数据目录为项目根目录下的output文件夹
     data_dir = "../output"
     max_workers = 5  # 默认并行线程数
+    start_date = None
+    end_date = None
     
     # 解析命令行参数
     if len(sys.argv) > 1:
@@ -512,6 +550,10 @@ if __name__ == "__main__":
                 max_workers = 5
         except ValueError:
             print("警告: 无效的max_workers参数，使用默认值5")
+    if len(sys.argv) > 3:
+        start_date = sys.argv[3]
+    if len(sys.argv) > 4:
+        end_date = sys.argv[4]
     
     formatter = EventFormatter(data_dir=data_dir)
-    formatter.run(max_workers=max_workers)
+    formatter.run(max_workers=max_workers, start_date=start_date, end_date=end_date)

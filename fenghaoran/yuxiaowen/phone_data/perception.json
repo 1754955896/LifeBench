@@ -1,0 +1,290 @@
+[
+  {
+    "dataname": "开车",
+    "inTimestamp": "2025-05-01 08:15:00",
+    "outTimestamp": "2025-05-01 11:30:00",
+    "locationInfo": "从河南省郑州市金水区群英路群英小区经郑少洛高速至河南省郑州市登封市中岳大街",
+    "date": "2025-05-01",
+    "type": "perception",
+    "daily_event_id": "1736",
+    "phone_id": 0
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-05-01 11:30:00",
+    "outTimestamp": "2025-05-01 12:10:00",
+    "locationInfo": "河南省郑州市登封市中岳大街永兴烩面馆",
+    "date": "2025-05-01",
+    "type": "perception",
+    "daily_event_id": "1737",
+    "phone_id": 1
+  },
+  {
+    "dataname": "开车",
+    "inTimestamp": "2025-05-01 12:10:00",
+    "outTimestamp": "2025-05-01 13:30:00",
+    "locationInfo": "从河南省郑州市登封市中岳大街永兴烩面馆至河南省郑州市登封市大禹路29号山这边民宿(登封嵩山风景区店)",
+    "date": "2025-05-01",
+    "type": "perception",
+    "daily_event_id": "1738",
+    "phone_id": 2
+  },
+  {
+    "dataname": "徒步",
+    "inTimestamp": "2025-05-01 13:30:00",
+    "outTimestamp": "2025-05-01 16:30:00",
+    "locationInfo": "河南省郑州市登封市嵩山景区山这边民宿后山休闲步道",
+    "date": "2025-05-01",
+    "type": "perception",
+    "daily_event_id": "1739",
+    "phone_id": 3
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-05-01 16:30:00",
+    "outTimestamp": "2025-05-01 17:00:00",
+    "locationInfo": "河南省郑州市登封市大禹路29号山这边民宿(登封嵩山风景区店)客房",
+    "date": "2025-05-01",
+    "type": "perception",
+    "daily_event_id": "1740",
+    "phone_id": 4
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-05-01 17:00:00",
+    "outTimestamp": "2025-05-01 18:30:00",
+    "locationInfo": "河南省郑州市登封市大禹路29号山这边民宿(登封嵩山风景区店)餐厅及院子",
+    "date": "2025-05-01",
+    "type": "perception",
+    "daily_event_id": "1741",
+    "phone_id": 5
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-05-01 18:30:00",
+    "outTimestamp": "2025-05-01 19:30:00",
+    "locationInfo": "河南省郑州市登封市大禹路29号山这边民宿(登封嵩山风景区店)客房阳台",
+    "date": "2025-05-01",
+    "type": "perception",
+    "daily_event_id": "1742",
+    "phone_id": 6
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-05-01 19:30:00",
+    "outTimestamp": "2025-05-01 20:30:00",
+    "locationInfo": "河南省郑州市登封市大禹路29号山这边民宿(登封嵩山风景区店)小院",
+    "date": "2025-05-01",
+    "type": "perception",
+    "daily_event_id": "1743",
+    "phone_id": 7
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-05-01 20:30:00",
+    "outTimestamp": "2025-05-01 22:00:00",
+    "locationInfo": "河南省郑州市登封市大禹路29号山这边民宿(登封嵩山风景区店)客房",
+    "date": "2025-05-01",
+    "type": "perception",
+    "daily_event_id": "1744",
+    "phone_id": 8
+  },
+  {
+    "dataname": "徒步",
+    "inTimestamp": "2025-05-02 09:20:00",
+    "outTimestamp": "2025-05-02 10:15:00",
+    "locationInfo": "从河南省郑州市登封市大禹路29号山这边民宿步行至卢崖瀑布景区外围入口",
+    "date": "2025-05-02",
+    "type": "perception",
+    "daily_event_id": "1747",
+    "phone_id": 9
+  },
+  {
+    "dataname": "登山",
+    "inTimestamp": "2025-05-02 10:15:00",
+    "outTimestamp": "2025-05-02 13:00:00",
+    "locationInfo": "河南省郑州市登封市，嵩山风景区，卢崖瀑布景区外围非开发区域的山野小径",
+    "date": "2025-05-02",
+    "type": "perception",
+    "daily_event_id": "1748",
+    "phone_id": 10
+  },
+  {
+    "dataname": "徒步",
+    "inTimestamp": "2025-05-02 13:00:00",
+    "outTimestamp": "2025-05-02 13:25:00",
+    "locationInfo": "从卢崖瀑布景区外围非开发区域步行至河南省郑州市登封市嵩阳街道，“嵩山风味”农家菜馆",
+    "date": "2025-05-02",
+    "type": "perception",
+    "daily_event_id": "1749",
+    "phone_id": 11
+  },
+  {
+    "dataname": "徒步",
+    "inTimestamp": "2025-05-02 14:00:00",
+    "outTimestamp": "2025-05-02 14:25:00",
+    "locationInfo": "从河南省郑州市登封市嵩阳街道，“嵩山风味”农家菜馆步行至河南省郑州市登封市大禹路29号山这边民宿",
+    "date": "2025-05-02",
+    "type": "perception",
+    "daily_event_id": "1750",
+    "phone_id": 12
+  },
+  {
+    "dataname": "户外步行",
+    "inTimestamp": "2025-05-02 19:00:00",
+    "outTimestamp": "2025-05-02 19:20:00",
+    "locationInfo": "河南省郑州市登封市大禹路29号，山这边民宿(登封嵩山风景区店)门口安静小路",
+    "date": "2025-05-02",
+    "type": "perception",
+    "daily_event_id": "1752",
+    "phone_id": 13
+  },
+  {
+    "dataname": "跨市出游",
+    "inTimestamp": "2025-05-01 08:15:00",
+    "inDate": "2025-05-01",
+    "description": "用户从郑州市出发，驾车前往登封市嵩山景区游玩",
+    "sceneList": [
+      {
+        "event_id": "1736",
+        "dataname": "出发",
+        "inTimestamp": "2025-05-01 08:15:00",
+        "outTimestamp": "2025-05-01 11:30:00",
+        "locationInfo": "通勤：从群英小区经郑少洛高速至登封市中岳大街",
+        "date": "2025-05-01"
+      },
+      {
+        "event_id": "1737",
+        "dataname": "就餐",
+        "inTimestamp": "2025-05-01 11:30:00",
+        "outTimestamp": "2025-05-01 12:10:00",
+        "locationInfo": "河南省郑州市登封市中岳大街永兴烩面馆",
+        "date": "2025-05-01"
+      },
+      {
+        "event_id": "1738",
+        "dataname": "酒店休息",
+        "inTimestamp": "2025-05-01 12:10:00",
+        "outTimestamp": "2025-05-01 13:30:00",
+        "locationInfo": "河南省郑州市登封市大禹路29号山这边民宿(登封嵩山风景区店)",
+        "date": "2025-05-01"
+      },
+      {
+        "event_id": "1739",
+        "dataname": "景点浏览",
+        "inTimestamp": "2025-05-01 13:30:00",
+        "outTimestamp": "2025-05-01 16:30:00",
+        "locationInfo": "嵩山景区山这边民宿后山休闲步道及民宿小院",
+        "date": "2025-05-01"
+      },
+      {
+        "event_id": "1740",
+        "dataname": "酒店休息",
+        "inTimestamp": "2025-05-01 16:30:00",
+        "outTimestamp": "2025-05-01 17:00:00",
+        "locationInfo": "河南省郑州市登封市大禹路29号山这边民宿(登封嵩山风景区店)客房",
+        "date": "2025-05-01"
+      },
+      {
+        "event_id": "1741",
+        "dataname": "就餐",
+        "inTimestamp": "2025-05-01 17:00:00",
+        "outTimestamp": "2025-05-01 18:30:00",
+        "locationInfo": "河南省郑州市登封市大禹路29号山这边民宿(登封嵩山风景区店)餐厅及院子",
+        "date": "2025-05-01"
+      },
+      {
+        "event_id": "1747",
+        "dataname": "景点浏览",
+        "inTimestamp": "2025-05-02 09:20:00",
+        "outTimestamp": "2025-05-02 10:15:00",
+        "locationInfo": "从河南省郑州市登封市大禹路29号山这边民宿步行至卢崖瀑布景区外围入口",
+        "date": "2025-05-02"
+      },
+      {
+        "event_id": "1748",
+        "dataname": "景点浏览",
+        "inTimestamp": "2025-05-02 10:15:00",
+        "outTimestamp": "2025-05-02 13:00:00",
+        "locationInfo": "河南省郑州市登封市，嵩山风景区，卢崖瀑布景区外围非开发区域的山野小径",
+        "date": "2025-05-02"
+      },
+      {
+        "event_id": "1749",
+        "dataname": "就餐",
+        "inTimestamp": "2025-05-02 13:00:00",
+        "outTimestamp": "2025-05-02 14:25:00",
+        "locationInfo": "河南省郑州市登封市嵩阳街道，“嵩山风味”农家菜馆",
+        "date": "2025-05-02"
+      },
+      {
+        "event_id": "1750",
+        "dataname": "酒店休息",
+        "inTimestamp": "2025-05-02 14:25:00",
+        "outTimestamp": "2025-05-02 16:20:00",
+        "locationInfo": "河南省郑州市登封市大禹路29号，山这边民宿(登封嵩山风景区店)，房间内及小院露台",
+        "date": "2025-05-02"
+      },
+      {
+        "event_id": "1751",
+        "dataname": "茶馆棋牌",
+        "inTimestamp": "2025-05-02 16:20:00",
+        "outTimestamp": "2025-05-02 17:40:00",
+        "locationInfo": "河南省郑州市登封市大禹路29号，山这边民宿(登封嵩山风景区店)，公共茶室",
+        "date": "2025-05-02"
+      },
+      {
+        "event_id": "1752",
+        "dataname": "就餐",
+        "inTimestamp": "2025-05-02 17:40:00",
+        "outTimestamp": "2025-05-02 19:20:00",
+        "locationInfo": "河南省郑州市登封市大禹路29号，山这边民宿(登封嵩山风景区店)，公共厨房及小院餐厅",
+        "date": "2025-05-02"
+      },
+      {
+        "event_id": "1753",
+        "dataname": "茶馆棋牌",
+        "inTimestamp": "2025-05-02 19:20:00",
+        "outTimestamp": "2025-05-02 21:20:00",
+        "locationInfo": "河南省郑州市登封市大禹路29号，山这边民宿(登封嵩山风景区店)，小院藤椅区",
+        "date": "2025-05-02"
+      },
+      {
+        "event_id": "1755",
+        "dataname": "酒店休息",
+        "inTimestamp": "2025-05-02 22:20:00",
+        "outTimestamp": "2025-05-03 06:00:00",
+        "locationInfo": "河南省郑州市登封市大禹路29号，山这边民宿(登封嵩山风景区店)，房间内",
+        "date": "2025-05-02"
+      },
+      {
+        "event_id": "1756",
+        "dataname": "就餐",
+        "inTimestamp": "2025-05-03 08:30:00",
+        "outTimestamp": "2025-05-03 09:40:00",
+        "locationInfo": "河南省郑州市登封市大禹路29号，山这边民宿房间及餐厅",
+        "date": "2025-05-03"
+      },
+      {
+        "event_id": "1757",
+        "dataname": "购物",
+        "inTimestamp": "2025-05-03 09:40:00",
+        "outTimestamp": "2025-05-03 11:10:00",
+        "locationInfo": "河南省郑州市登封市大禹路29号山这边民宿、民宿后方溪流步道、嵩山景区附近某特产店",
+        "date": "2025-05-03"
+      },
+      {
+        "event_id": "1758",
+        "dataname": "返程",
+        "inTimestamp": "2025-05-03 11:10:00",
+        "outTimestamp": "2025-05-03 15:10:00",
+        "locationInfo": "从河南省郑州市登封市特产店至登封汽车站、登封汽车站候车室及快餐店、登封至郑州大巴上、郑州中心站至金水区群英路群英小区",
+        "date": "2025-05-03"
+      }
+    ],
+    "type": "perception",
+    "outTimestamp": "2025-05-03 15:10:00",
+    "date": "2025-05-03",
+    "phone_id": 14
+  }
+]

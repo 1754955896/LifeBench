@@ -1,0 +1,587 @@
+[
+  {
+    "dataname": "市内出游",
+    "inTimestamp": "2025-01-01 12:05:00",
+    "inDate": "2025-01-01",
+    "description": "用户从家中出发，前往西湖公园附近餐厅与好友共进午餐，随后在西湖公园散步，并前往潮宗街历史文化街区进行街拍活动",
+    "sceneList": [
+      {
+        "event_id": "7",
+        "dataname": "出发",
+        "inTimestamp": "2025-01-01 12:05:00",
+        "outTimestamp": "2025-01-01 12:30:00",
+        "location": {
+          "country": "中国",
+          "province": "湖南省",
+          "city": "长沙市",
+          "district": "岳麓区",
+          "streetName": "双塘路",
+          "streetNumber": "99号",
+          "POI": "岳麓区机关金星住宅小区"
+        },
+        "date": "2025-01-01"
+      },
+      {
+        "event_id": "7",
+        "dataname": "就餐",
+        "inTimestamp": "2025-01-01 12:30:00",
+        "outTimestamp": "2025-01-01 14:15:00",
+        "location": {
+          "country": "中国",
+          "province": "湖南省",
+          "city": "长沙市",
+          "district": "岳麓区",
+          "streetName": "西湖公园路",
+          "streetNumber": "",
+          "POI": "未里创意融合菜餐厅"
+        },
+        "date": "2025-01-01"
+      },
+      {
+        "event_id": "7",
+        "dataname": "景点浏览",
+        "inTimestamp": "2025-01-01 14:15:00",
+        "outTimestamp": "2025-01-01 14:30:00",
+        "location": {
+          "country": "中国",
+          "province": "湖南省",
+          "city": "长沙市",
+          "district": "岳麓区",
+          "streetName": "",
+          "streetNumber": "",
+          "POI": "西湖公园"
+        },
+        "date": "2025-01-01"
+      },
+      {
+        "event_id": "8",
+        "dataname": "逛街",
+        "inTimestamp": "2025-01-01 14:30:00",
+        "outTimestamp": "2025-01-01 17:00:00",
+        "location": {
+          "country": "中国",
+          "province": "湖南省",
+          "city": "长沙市",
+          "district": "开福区",
+          "streetName": "通泰街",
+          "streetNumber": "",
+          "POI": "潮宗街历史文化街区"
+        },
+        "date": "2025-01-01"
+      }
+    ],
+    "type": "perception",
+    "summary": "用户已完成市内出游，从岳麓区家中出发，前往西湖公园附近餐厅与好友共进午餐，随后在西湖公园散步，并前往潮宗街历史文化街区进行街拍活动，行程于当天下午5点结束",
+    "outTimestamp": "2025-01-01 17:00:00",
+    "outDate": "2025-01-01",
+    "event_id": [
+      "159-5"
+    ],
+    "phone_id": 0
+  },
+  {
+    "dataname": "跑步",
+    "inTimestamp": "2025-01-01 07:00:00",
+    "outTimestamp": "2025-01-01 07:50:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "潇湘北路",
+      "streetNumber": "",
+      "POI": "湘江风光带（岳麓区段）"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "2",
+    "event_id": [
+      "159-1",
+      "159-3"
+    ],
+    "phone_id": 1
+  },
+  {
+    "dataname": "健身锻炼",
+    "inTimestamp": "2025-01-01 07:50:00",
+    "outTimestamp": "2025-01-01 08:20:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "双塘路",
+      "streetNumber": "99号",
+      "POI": "岳麓区机关金星住宅小区"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "3",
+    "event_id": [
+      "159-1"
+    ],
+    "phone_id": 2
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-01-01 08:20:00",
+    "outTimestamp": "2025-01-01 09:00:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "双塘路",
+      "streetNumber": "99号",
+      "POI": "岳麓区机关金星住宅小区"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "4",
+    "event_id": [
+      "159-3",
+      "159-4",
+      "159-5"
+    ],
+    "phone_id": 3
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-01-01 09:00:00",
+    "outTimestamp": "2025-01-01 09:20:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "双塘路",
+      "streetNumber": "99号",
+      "POI": "岳麓区机关金星住宅小区"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "5",
+    "event_id": [],
+    "phone_id": 4
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-01-01 09:20:00",
+    "outTimestamp": "2025-01-01 12:00:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "双塘路",
+      "streetNumber": "99号",
+      "POI": "岳麓区机关金星住宅小区"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "6",
+    "event_id": [
+      "159-5"
+    ],
+    "phone_id": 5
+  },
+  {
+    "dataname": "开车",
+    "inTimestamp": "2025-01-01 12:05:00",
+    "outTimestamp": "2025-01-01 12:30:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "",
+      "streetName": "",
+      "streetNumber": "",
+      "POI": "双塘路、金星北路、枫林路"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "7",
+    "event_id": [
+      "159-5"
+    ],
+    "phone_id": 6
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-01-01 12:30:00",
+    "outTimestamp": "2025-01-01 14:15:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "西湖公园路",
+      "streetNumber": "",
+      "POI": "未里创意融合菜餐厅"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "7",
+    "event_id": [
+      "159-5"
+    ],
+    "phone_id": 7
+  },
+  {
+    "dataname": "户外步行",
+    "inTimestamp": "2025-01-01 14:15:00",
+    "outTimestamp": "2025-01-01 14:30:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "西湖公园路",
+      "streetNumber": "",
+      "POI": "西湖公园"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "7",
+    "event_id": [
+      "159-5"
+    ],
+    "phone_id": 8
+  },
+  {
+    "dataname": "开车",
+    "inTimestamp": "2025-01-01 14:30:00",
+    "outTimestamp": "2025-01-01 14:45:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "",
+      "streetName": "",
+      "streetNumber": "",
+      "POI": "从西湖公园至潮宗街"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "7",
+    "event_id": [
+      "159-5"
+    ],
+    "phone_id": 9
+  },
+  {
+    "dataname": "户外步行",
+    "inTimestamp": "2025-01-01 14:45:00",
+    "outTimestamp": "2025-01-01 17:00:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "开福区",
+      "streetName": "通泰街",
+      "streetNumber": "",
+      "POI": "潮宗街历史文化街区"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "8",
+    "event_id": [],
+    "phone_id": 10
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-01-01 17:00:00",
+    "outTimestamp": "2025-01-01 17:40:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "开福区",
+      "streetName": "潮宗街",
+      "streetNumber": "127号",
+      "POI": "晨曦咖啡"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "9",
+    "event_id": [
+      "159-3"
+    ],
+    "phone_id": 11
+  },
+  {
+    "dataname": "开车",
+    "inTimestamp": "2025-01-01 17:40:00",
+    "outTimestamp": "2025-01-01 18:10:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "",
+      "streetName": "",
+      "streetNumber": "",
+      "POI": "从潮宗街至步步高超市"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "10",
+    "event_id": [],
+    "phone_id": 12
+  },
+  {
+    "dataname": "室内步行",
+    "inTimestamp": "2025-01-01 18:10:00",
+    "outTimestamp": "2025-01-01 18:40:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "金星北路",
+      "streetNumber": "428号",
+      "POI": "步步高超市(金星路店)"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "10",
+    "event_id": [],
+    "phone_id": 13
+  },
+  {
+    "dataname": "开车",
+    "inTimestamp": "2025-01-01 18:40:00",
+    "outTimestamp": "2025-01-01 19:10:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "",
+      "streetName": "",
+      "streetNumber": "",
+      "POI": "从步步高超市至家"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "10",
+    "event_id": [],
+    "phone_id": 14
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-01-01 19:10:00",
+    "outTimestamp": "2025-01-01 20:00:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "双塘路",
+      "streetNumber": "99号",
+      "POI": "岳麓区机关金星住宅小区"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "11",
+    "event_id": [
+      "159-4"
+    ],
+    "phone_id": 15
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-01-01 20:00:00",
+    "outTimestamp": "2025-01-01 23:15:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "双塘路",
+      "streetNumber": "99号",
+      "POI": "岳麓区机关金星住宅小区"
+    },
+    "date": "2025-01-01",
+    "type": "perception",
+    "daily_event_id": "12",
+    "event_id": [
+      "2-1",
+      "159-3"
+    ],
+    "phone_id": 16
+  },
+  {
+    "dataname": "跑步",
+    "inTimestamp": "2025-01-02 06:40:00",
+    "outTimestamp": "2025-01-02 08:00:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "双塘路",
+      "streetNumber": "99号",
+      "POI": "岳麓区机关金星住宅小区"
+    },
+    "date": "2025-01-02",
+    "type": "perception",
+    "daily_event_id": "13",
+    "event_id": [],
+    "phone_id": 17
+  },
+  {
+    "dataname": "开车",
+    "inTimestamp": "2025-01-02 08:00:00",
+    "outTimestamp": "2025-01-02 08:35:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "开福区",
+      "streetName": "",
+      "streetNumber": "",
+      "POI": "湖南广电中心写字楼"
+    },
+    "date": "2025-01-02",
+    "type": "perception",
+    "daily_event_id": "14",
+    "event_id": [
+      "160-1"
+    ],
+    "phone_id": 18
+  },
+  {
+    "dataname": "行走",
+    "inTimestamp": "2025-01-02 08:35:00",
+    "outTimestamp": "2025-01-02 08:35:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "开福区",
+      "streetName": "",
+      "streetNumber": "",
+      "POI": "湖南广电中心写字楼"
+    },
+    "date": "2025-01-02",
+    "type": "perception",
+    "daily_event_id": "14",
+    "event_id": [
+      "160-1"
+    ],
+    "phone_id": 19
+  },
+  {
+    "dataname": "行走",
+    "inTimestamp": "2025-01-02 12:00:00",
+    "outTimestamp": "2025-01-02 12:00:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "开福区",
+      "streetName": "金鹰路",
+      "streetNumber": "",
+      "POI": "某小炒黄牛肉快餐店"
+    },
+    "date": "2025-01-02",
+    "type": "perception",
+    "daily_event_id": "17",
+    "event_id": [],
+    "phone_id": 20
+  },
+  {
+    "dataname": "停留",
+    "inTimestamp": "2025-01-02 12:00:00",
+    "outTimestamp": "2025-01-02 13:30:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "开福区",
+      "streetName": "金鹰路",
+      "streetNumber": "",
+      "POI": "某小炒黄牛肉快餐店"
+    },
+    "date": "2025-01-02",
+    "type": "perception",
+    "daily_event_id": "17",
+    "event_id": [],
+    "phone_id": 21
+  },
+  {
+    "dataname": "行走",
+    "inTimestamp": "2025-01-02 13:30:00",
+    "outTimestamp": "2025-01-02 13:30:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "开福区",
+      "streetName": "金鹰路",
+      "streetNumber": "",
+      "POI": "某小炒黄牛肉快餐店"
+    },
+    "date": "2025-01-02",
+    "type": "perception",
+    "daily_event_id": "17",
+    "event_id": [],
+    "phone_id": 22
+  },
+  {
+    "dataname": "行走",
+    "inTimestamp": "2025-01-02 17:15:00",
+    "outTimestamp": "2025-01-02 17:15:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "开福区",
+      "streetName": "",
+      "streetNumber": "",
+      "POI": "湖南广电中心写字楼"
+    },
+    "date": "2025-01-02",
+    "type": "perception",
+    "daily_event_id": "19",
+    "event_id": [],
+    "phone_id": 23
+  },
+  {
+    "dataname": "开车",
+    "inTimestamp": "2025-01-02 17:15:00",
+    "outTimestamp": "2025-01-02 18:03:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "芙蓉区",
+      "streetName": "浏阳河大道",
+      "streetNumber": "",
+      "POI": "一丹咖啡厅"
+    },
+    "date": "2025-01-02",
+    "type": "perception",
+    "daily_event_id": "19",
+    "event_id": [],
+    "phone_id": 24
+  },
+  {
+    "dataname": "开车",
+    "inTimestamp": "2025-01-02 19:30:00",
+    "outTimestamp": "2025-01-02 20:30:00",
+    "location": {
+      "country": "中国",
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "双塘路",
+      "streetNumber": "99号",
+      "POI": "岳麓区机关金星住宅小区"
+    },
+    "date": "2025-01-02",
+    "type": "perception",
+    "daily_event_id": "21",
+    "event_id": [],
+    "phone_id": 25
+  }
+]

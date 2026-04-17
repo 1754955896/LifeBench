@@ -3,11 +3,13 @@ import sys
 import argparse
 import json
 
-# 添加项目根目录到Python路径
+# 添加项目根目录到 Python 路径
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# 导入qa_generator模块
-from event.qa_generator import QAGenerator
+# 导入 qa_generator 模块（直接从 event 目录导入 QaGenerator.py 文件）
+from event import qa_generator
+
+QAGenerator = qa_generator.QAGenerator
 
 def main():
     # 创建参数解析器

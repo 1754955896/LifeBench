@@ -1,0 +1,265 @@
+[
+  {
+    "type": "photo",
+    "caption": "于晓雯将刚煎好的太阳蛋和全麦面包摆放在白色餐盘中，旁边是一杯牛奶，背景是整洁的厨房操作台和窗外晨光",
+    "title": "IMG_20250101_094520",
+    "datetime": "2025-01-01 09:45:20",
+    "location": {
+      "province": "河南省",
+      "city": "郑州市",
+      "district": "金水区",
+      "streetName": "群英路",
+      "streetNumber": "XX号",
+      "poi": "群英小区自租公寓厨房"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "太阳蛋",
+      "全麦面包",
+      "牛奶",
+      "早餐",
+      "厨房",
+      "晨光"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "于晓雯拍摄了一张早餐照片，里面的主要内容为刚做好的太阳蛋、全麦面包和牛奶，背景是厨房操作台",
+    "daily_event_id": "2",
+    "phone_id": 0
+  },
+  {
+    "type": "photo",
+    "caption": "于晓雯的手正翻开着写有2024年成就与待改进事项的笔记本，旁边放着一杯热茶，背景是书桌和医学书籍",
+    "title": "IMG_20250101_140510",
+    "datetime": "2025-01-01 14:05:10",
+    "location": {
+      "province": "河南省",
+      "city": "郑州市",
+      "district": "金水区",
+      "streetName": "群英路",
+      "streetNumber": "XX号",
+      "poi": "群英小区自租公寓书房"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "手写笔记",
+      "年度回顾",
+      "笔记本",
+      "茶杯",
+      "书桌",
+      "文档扫描"
+    ],
+    "ocrText": "2024年度回顾 - 职业收获：心内科轮转、病例处理能力提升；个人成长：阅读清单完成70%、基金定投收益5.2%、陶艺学习进度...",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "于晓雯拍摄了一张年度回顾笔记的照片，里面的主要内容为手写的成就与待改进事项、一杯热茶和书桌背景",
+    "daily_event_id": "5",
+    "phone_id": 1
+  },
+  {
+    "type": "photo",
+    "caption": "于晓雯将写有2025年核心目标（专业精读、理财课程、陶艺作品等）的卡片平放在书桌上，旁边是钢笔和手机",
+    "title": "IMG_20250101_143025",
+    "datetime": "2025-01-01 14:30:25",
+    "location": {
+      "province": "河南省",
+      "city": "郑州市",
+      "district": "金水区",
+      "streetName": "群英路",
+      "streetNumber": "XX号",
+      "poi": "群英小区自租公寓书房"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "目标卡片",
+      "新年计划",
+      "手写",
+      "钢笔",
+      "书桌",
+      "规划"
+    ],
+    "ocrText": "2025年核心目标：1. 专业精读《哈里森内科学》等3本医学书籍；2. 完成医疗人文阅读清单；3. 报名理财课程；4. 独立完成一件陶艺作品；5. 坚持每周三次健康运动...",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "于晓雯拍摄了一张新年目标卡片的照片，里面的主要内容为手写的2025年核心目标清单、一支钢笔和书桌",
+    "daily_event_id": "5",
+    "phone_id": 2
+  },
+  {
+    "type": "photo",
+    "caption": "一碗热气腾腾的河南烩面被放在餐桌上，汤色浓郁，面片上铺着羊肉片和配菜，背景是简约的餐厅环境",
+    "title": "IMG_20250101_195815",
+    "datetime": "2025-01-01 19:58:15",
+    "location": {
+      "province": "河南省",
+      "city": "郑州市",
+      "district": "金水区",
+      "streetName": "群英路",
+      "streetNumber": "XX号",
+      "poi": "群英小区自租公寓餐厅"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "河南烩面",
+      "羊肉汤",
+      "新年晚餐",
+      "美食",
+      "热气",
+      "餐桌"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "正常拍照",
+    "image_size": "3024×4032",
+    "summarized_info": "于晓雯拍摄了一张新年晚餐照片，里面的主要内容为一碗热气腾腾的河南烩面，汤色浓郁，配有羊肉和配菜",
+    "daily_event_id": "10",
+    "phone_id": 3
+  },
+  {
+    "type": "photo",
+    "caption": "于晓雯与同事王芳在暖光轻食简餐店共进午餐，桌上摆着色彩鲜艳的蔬菜沙拉和番茄肉酱意面，背景是简约的木质餐桌和绿植装饰",
+    "title": "IMG_20250102_122530",
+    "datetime": "2025-01-02 12:25:30",
+    "location": {
+      "province": "河南省",
+      "city": "郑州市",
+      "district": "中原区",
+      "streetName": "桐柏北路",
+      "streetNumber": "XX号",
+      "poi": "暖光轻食简餐店"
+    },
+    "faceRecognition": [
+      "于晓雯",
+      "王芳"
+    ],
+    "imageTag": [
+      "午餐",
+      "蔬菜沙拉",
+      "番茄肉酱意面",
+      "同事聚餐",
+      "轻食简餐",
+      "木质餐桌"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "于晓雯拍摄了一张与同事王芳的午餐照片，里面的主要内容为暖光轻食简餐店、桌上的蔬菜沙拉和番茄肉酱意面",
+    "daily_event_id": "20",
+    "phone_id": 4
+  },
+  {
+    "type": "photo",
+    "caption": "于晓雯拍摄自己点的牛油果鲜虾沙拉特写，虾仁饱满，牛油果切片整齐，搭配藜麦和多种蔬菜，盛放在白色陶瓷碗中",
+    "title": "IMG_20250102_123015",
+    "datetime": "2025-01-02 12:30:15",
+    "location": {
+      "province": "河南省",
+      "city": "郑州市",
+      "district": "中原区",
+      "streetName": "桐柏北路",
+      "streetNumber": "XX号",
+      "poi": "暖光轻食简餐店"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "牛油果鲜虾沙拉",
+      "藜麦",
+      "白色陶瓷碗",
+      "美食特写",
+      "健康午餐"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "于晓雯拍摄了一张午餐美食特写照片，里面的主要内容为牛油果鲜虾沙拉、白色陶瓷碗",
+    "daily_event_id": "20",
+    "phone_id": 5
+  },
+  {
+    "type": "photo",
+    "caption": "于晓雯在医生休息区，将下午需要跟进的几份患者化验单整齐地叠放在桌面上，旁边放着一杯刚泡好的绿茶",
+    "title": "IMG_20250102_131520",
+    "datetime": "2025-01-02 13:15:20",
+    "location": {
+      "province": "河南省",
+      "city": "郑州市",
+      "district": "中原区",
+      "streetName": "桐柏北路",
+      "streetNumber": "16号",
+      "poi": "郑州市中心医院心内科医生休息区"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "化验单",
+      "文档整理",
+      "医生休息区",
+      "办公桌",
+      "绿茶",
+      "工作准备"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "于晓雯拍摄了一张工作准备照片，里面的主要内容为医生休息区的桌面、叠放的患者化验单和一杯绿茶",
+    "daily_event_id": "21",
+    "phone_id": 6
+  },
+  {
+    "type": "photo",
+    "caption": "于晓雯在科室病例讨论会上，用手机拍摄投影屏幕上关于心律失常分析的PPT页面，页面包含心电图波形和诊断要点",
+    "title": "IMG_20250102_151045",
+    "datetime": "2025-01-02 15:10:45",
+    "location": {
+      "province": "河南省",
+      "city": "郑州市",
+      "district": "中原区",
+      "streetName": "桐柏北路",
+      "streetNumber": "16号",
+      "poi": "郑州市中心医院心内科会议室"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "PPT截图",
+      "心律失常",
+      "心电图",
+      "病例讨论",
+      "投影屏幕",
+      "医学学习"
+    ],
+    "ocrText": "心律失常的鉴别诊断\n房颤 vs 房扑\n2025-01-02 病例讨论",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "于晓雯拍摄了一张病例讨论会PPT照片，里面的主要内容为投影屏幕上关于心律失常分析的PPT页面",
+    "daily_event_id": "22",
+    "phone_id": 7
+  },
+  {
+    "type": "photo",
+    "caption": "于晓雯在书房复习时，用手机扫描心内科教材中关于高血压药物分类的对比表格，表格清晰列出了ACEI、ARB、CCB等药物的作用机理和代表药物",
+    "title": "IMG_20250102_211030",
+    "datetime": "2025-01-02 21:10:30",
+    "location": {
+      "province": "河南省",
+      "city": "郑州市",
+      "district": "金水区",
+      "streetName": "群英路",
+      "streetNumber": "XX号",
+      "poi": "群英小区家中书房"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "文档扫描",
+      "高血压药物",
+      "对比表格",
+      "医学教材",
+      "复习笔记",
+      "书房"
+    ],
+    "ocrText": "高血压药物分类与机理\nACEI（血管紧张素转换酶抑制剂）\n作用机理：抑制血管紧张素I向II转换\n代表药物：卡托普利、依那普利\nARB（血管紧张素II受体拮抗剂）\n作用机理：阻断血管紧张素II与AT1受体结合\n代表药物：氯沙坦、缬沙坦\nCCB（钙通道阻滞剂）\n作用机理：阻滞钙离子进入血管平滑肌细胞\n代表药物：硝苯地平、氨氯地平",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "于晓雯拍摄了一张复习资料照片，里面的主要内容为心内科教材中关于高血压药物分类的对比表格",
+    "daily_event_id": "25",
+    "phone_id": 8
+  }
+]

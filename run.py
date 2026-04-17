@@ -3,196 +3,6 @@ import os
 import time
 import argparse
 import subprocess
-import json
-
-def merge_qa_files(base_path):
-    """
-    合并QA文件并移动原文件到指定目录
-    
-    Args:
-        base_path: 基础数据路径
-    """
-    print(f"\n{'='*60}")
-    print(f"开始合并QA文件...")
-    print(f"{'='*60}")
-    
-    # 定义需要合并的QA文件列表
-    qa_files = [
-        "muti_hop_qa.json",
-        "reasoning_qa.json",
-        "single_hop_qa.json",
-        "updating_qa.json",
-        "user_modeling_qa.json"
-    ]
-    
-    # 初始化合并后的QA列表
-    merged_qa = []
-    
-    # 初始化统计字典
-    statistics = {
-        "file_distribution": {},  # 每个文件的问答对数量
-        "type_distribution": {},  # 不同类型问答对的分布（基于question_type字段）
-        "total_count": 0  # 总问答对数量
-    }
-    
-    # 确保输出目录存在
-    output_dir = os.path.join(base_path, "QA")
-    process_dir = os.path.join(base_path, "process")
-    
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-        print(f"创建输出目录: {output_dir}")
-    
-    if not os.path.exists(process_dir):
-        os.makedirs(process_dir)
-        print(f"创建处理目录: {process_dir}")
-    
-    # 遍历每个QA文件
-    for qa_file in qa_files:
-        # 先检查base_path下是否存在
-        file_path = os.path.join(base_path, qa_file)
-        file_exists = os.path.exists(file_path)
-        
-        # 如果base_path下不存在，检查process_dir下是否存在
-        if not file_exists:
-            file_path = os.path.join(process_dir, qa_file)
-            file_exists = os.path.exists(file_path)
-        
-        if file_exists:
-            try:
-                # 打开并读取JSON文件
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                
-                # 检查数据类型是否为列表
-                if isinstance(data, list):
-                    # 处理single_hop_qa.json文件，确保每个问答对都有question_type字段
-                    if qa_file == "single_hop_qa.json":
-                        print(f"正在为 {qa_file} 中的所有问答对添加question_type:'single_hop'字段...")
-                        processed_data = []
-                        for qa in data:
-                            # 添加或更新question_type字段
-                            qa["question_type"] = "single_hop"
-                            processed_data.append(qa)
-                        merged_qa.extend(processed_data)
-                        file_data = processed_data
-                    else:
-                        merged_qa.extend(data)
-                        file_data = data
-                    
-                    # 更新文件分布统计
-                    file_name = os.path.splitext(qa_file)[0]  # 获取不带扩展名的文件名
-                    statistics["file_distribution"][file_name] = len(data)
-                    
-                    # 统计当前文件中不同类型的问答对
-                    for qa in file_data:
-                        # 检查问答对是否有question_type字段
-                        if "question_type" in qa:
-                            qa_type = qa["question_type"]
-                            if qa_type in statistics["type_distribution"]:
-                                statistics["type_distribution"][qa_type] += 1
-                            else:
-                                statistics["type_distribution"][qa_type] = 1
-                    
-                    print(f"成功合并 {qa_file}，添加了 {len(data)} 个问答对")
-                    
-                    # 只有当文件在base_path下时才移动到process目录
-                    if file_path.startswith(base_path) and not file_path.startswith(process_dir):
-                        target_path = os.path.join(process_dir, qa_file)
-                        os.rename(file_path, target_path)
-                        print(f"已将 {qa_file} 移动到 {target_path}")
-                else:
-                    print(f"警告：{qa_file} 的数据类型不是列表，跳过该文件")
-                    
-            except json.JSONDecodeError:
-                print(f"警告：{qa_file} 不是有效的JSON文件，跳过该文件")
-            except Exception as e:
-                print(f"处理 {qa_file} 时出错：{str(e)}")
-        else:
-            print(f"警告：{qa_file} 文件不存在于 {base_path} 或 {process_dir}，跳过该文件")
-    
-    # 更新总问答对数量
-    statistics["total_count"] = len(merged_qa)
-    
-    # 按照ask_time字段排序（升序）
-    print(f"\n正在按ask_time字段对问答对进行排序...")
-    merged_qa_sorted = sorted(merged_qa, key=lambda x: x.get("ask_time", "9999-99"))
-    
-    # 将排序后的QA列表写入新的JSON文件
-    output_file = os.path.join(output_dir, "QA.json")
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(merged_qa_sorted, f, ensure_ascii=False, indent=2)
-    
-    # 打印详细统计信息
-    print(f"\n{'='*60}")
-    print(f"合并完成！")
-    print(f"所有问答对已合并到 {output_file}")
-    print(f"总共合并了 {len(merged_qa)} 个问答对")
-    
-    print(f"\n=== 数据分布统计 ===")
-    print(f"\n1. 按文件分布：")
-    for file_name, count in statistics["file_distribution"].items():
-        percentage = (count / statistics["total_count"]) * 100 if statistics["total_count"] > 0 else 0
-        print(f"   {file_name}: {count} 个 ({percentage:.2f}%)")
-    
-    print(f"\n2. 按类型分布：")
-    if statistics["type_distribution"]:
-        for qa_type, count in statistics["type_distribution"].items():
-            percentage = (count / statistics["total_count"]) * 100 if statistics["total_count"] > 0 else 0
-            print(f"   {qa_type}: {count} 个 ({percentage:.2f}%)")
-    else:
-        print("   未找到带有question_type字段的问答对")
-    
-    # 统计没有question_type字段的问答对数量
-    no_type_count = statistics["total_count"] - sum(statistics["type_distribution"].values())
-    if no_type_count > 0:
-        percentage = (no_type_count / statistics["total_count"]) * 100 if statistics["total_count"] > 0 else 0
-        print(f"   无类型标识: {no_type_count} 个 ({percentage:.2f}%)")
-    
-    print(f"\n=== 统计结束 ===")
-    print(f"{'='*60}")
-    
-    # 新增功能：处理phone_data文件夹
-    print(f"\n{'='*60}")
-    print(f"开始处理phone_data文件夹...")
-    print(f"{'='*60}")
-    
-    # 1. 将base_path+phone_data文件夹中的所有json文件移动到base_path+process/phone_data2
-    phone_data_dir = os.path.join(base_path, 'phone_data')
-    phone_data2_dir = os.path.join(process_dir, 'phone_data2')
-    
-    # 确保phone_data2目录存在
-    if not os.path.exists(phone_data2_dir):
-        os.makedirs(phone_data2_dir)
-        print(f"创建目录: {phone_data2_dir}")
-    
-    # 移动phone_data中的所有json文件到phone_data2
-    if os.path.exists(phone_data_dir):
-        for filename in os.listdir(phone_data_dir):
-            if filename.endswith('.json') and filename != 'new':
-                src_path = os.path.join(phone_data_dir, filename)
-                dst_path = os.path.join(phone_data2_dir, filename)
-                os.rename(src_path, dst_path)
-                print(f"已将 {filename} 从 {phone_data_dir} 移动到 {phone_data2_dir}")
-    
-    # 2. 把base_path+phone_data/new的json文件移动到base_path+phone_data
-    new_phone_data_dir = os.path.join(phone_data_dir, 'new')
-    if os.path.exists(new_phone_data_dir):
-        for filename in os.listdir(new_phone_data_dir):
-            if filename.endswith('.json'):
-                src_path = os.path.join(new_phone_data_dir, filename)
-                dst_path = os.path.join(phone_data_dir, filename)
-                os.rename(src_path, dst_path)
-                print(f"已将 {filename} 从 {new_phone_data_dir} 移动到 {phone_data_dir}")
-    
-    # 3. 删除base_path+phone_data/new
-    if os.path.exists(new_phone_data_dir):
-        os.rmdir(new_phone_data_dir)
-        print(f"已删除目录: {new_phone_data_dir}")
-    
-    print(f"\n{'='*60}")
-    print(f"phone_data文件夹处理完成！")
-    print(f"{'='*60}")
 
 
 def parse_args():
@@ -219,10 +29,6 @@ def parse_args():
                         help='是否生成手机数据（默认：1）')
     parser.add_argument('--generate-monthly-report', type=int, default=1,
                         help='是否执行月度报告的生成（默认：1）')
-    parser.add_argument('--generate-qa', type=int, default=1,
-                        help='是否执行QA生成（默认：1）')
-    parser.add_argument('--year', type=int, default=2025,
-                        help='生成数据的年份（默认：2025）')
     
     return parser.parse_args()
 
@@ -395,7 +201,7 @@ if __name__ == '__main__':
             
             try:
                 # 导入EventRefiner类
-                from event.event_refiner import EventRefiner
+                from event.draft.event_refiner import EventRefiner
                 import json
                 
                 # 加载persona数据
@@ -479,58 +285,6 @@ if __name__ == '__main__':
             print(f"\n{'='*60}")
             print(f"跳过生成手机数据")
             print(f"{'='*60}")
-        
-        # 根据参数决定是否执行QA生成
-        if args.generate_qa == 1:
-            # 检查是否需要执行QA生成
-            updating_qa_path = os.path.join(args.base_path, 'updating_qa.json')
-            qa_folder_path = os.path.join(args.base_path, 'QA')
-            process_path = os.path.join(args.base_path, 'process')
-            process_updating_qa_path = os.path.join(process_path, 'updating_qa.json')
-
-            if os.path.exists(updating_qa_path) or os.path.exists(qa_folder_path) or os.path.exists(process_updating_qa_path):
-                print(f"\n{'='*60}")
-                print(f"跳过生成问答数据")
-                print(f"{'='*60}")
-                if os.path.exists(updating_qa_path):
-                    print(f"原因: {updating_qa_path} 文件已存在")
-                if os.path.exists(qa_folder_path):
-                    print(f"原因: {qa_folder_path} 文件夹已存在")
-            else:
-                # 调用QA_gen生成问答数据
-                print(f"\n{'='*60}")
-                print(f"开始生成问答数据...")
-                print(f"{'='*60}")
-                
-                # 构建QA_gen.py的命令行参数
-                qa_gen_cmd = [
-                    sys.executable,
-                    os.path.join(os.path.dirname(__file__), 'run', 'QA_gen.py'),
-                    '--data-path', args.base_path,
-                    '--year', str(args.year),
-                ]
-                
-                # 执行QA_gen.py脚本
-                try:
-                    result = subprocess.run(qa_gen_cmd, check=True, capture_output=True, text=True)
-                    print(f"\n{'='*60}")
-                    print(f"问答数据生成完成")
-                    print(f"{'='*60}")
-                except subprocess.CalledProcessError as e:
-                    print(f"\n{'='*60}")
-                    print(f"错误: 生成问答数据时发生异常!")
-                    print(f"错误信息: {e.stderr}")
-                    print(f"{'='*60}")
-                    sys.exit(1)
-        else:
-            print(f"\n{'='*60}")
-            print(f"跳过生成问答数据")
-            print(f"{'='*60}")
-        
-        # 根据参数决定是否合并QA文件
-        if args.generate_qa == 1:
-            # 合并QA文件
-            merge_qa_files(args.base_path)
         
         sys.exit(0)
     else:

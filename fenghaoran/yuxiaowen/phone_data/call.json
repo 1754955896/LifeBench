@@ -1,0 +1,35 @@
+[
+  {
+    "type": "call",
+    "phoneNumber": "+8613937981234",
+    "contactName": "于建国",
+    "datetime": "2025-01-01 18:20:00",
+    "datetime_end": "2025-01-01 19:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "9",
+    "phone_id": 0
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613683858901",
+    "contactName": "李伟",
+    "datetime": "2025-01-02 08:35:00",
+    "datetime_end": "2025-01-02 08:38:15",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "18",
+    "phone_id": 1
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613683858901",
+    "contactName": "李伟",
+    "datetime": "2025-01-02 17:45:00",
+    "datetime_end": "2025-01-02 17:50:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "22",
+    "phone_id": 2
+  }
+]

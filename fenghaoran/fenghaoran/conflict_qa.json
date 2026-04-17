@@ -1,0 +1,56 @@
+[
+  {
+    "question": "我在8月份外出办理房产过户与抵押贷款手续时，具体是按照什么顺序进行的？",
+    "answer": "先前往长沙市不动产登记中心办理房产过户手续，然后前往渤海银行网点办理抵押贷款手续。",
+    "score_points": [
+      {
+        "description": "准确回答问题",
+        "score": 10
+      }
+    ],
+    "required_events_id": [
+      "3097"
+    ],
+    "evidence": [
+      {
+        "event_id": 0,
+        "type": "sms",
+        "content": "钱总，我计划8月19日下午先去渤海银行办理抵押贷款手续，然后再去不动产登记中心办过户，预计14:20出发，特此报备。",
+        "datetime": "2025-08-16 14:20:00",
+        "direction": "outgoing",
+        "contact_name": "钱永强",
+        "phone_id": "1"
+      },
+      {
+        "event_id": 0,
+        "type": "calendar",
+        "title": "办理房产过户与抵押贷款",
+        "description": "14:20出发去渤海银行办理抵押贷款，然后去不动产登记中心办理过户",
+        "start_time": "2025-08-16 14:20:00",
+        "end_time": "2025-08-16 16:50:00",
+        "datetime": "2025-08-16 14:20:00",
+        "phone_id": "1"
+      },
+      {
+        "event_id": 0,
+        "type": "sms",
+        "content": "钱总，不好意思，我之前报备的行程顺序可能不对，我需要重新确认一下流程，稍后更新准确信息。",
+        "datetime": "2025-08-17 10:30:00",
+        "direction": "outgoing",
+        "contact_name": "钱永强",
+        "phone_id": "2"
+      },
+      {
+        "type": "sms",
+        "message_content": "钱总，已确认流程：先前往长沙市不动产登记中心办理房产过户手续，然后前往渤海银行网点办理抵押贷款手续。",
+        "contactName": "钱永强",
+        "phoneNumber": "138****5678",
+        "datetime": "2025-08-19 14:15:00",
+        "message_type": "发送",
+        "daily_event_id": "3097",
+        "event_id": [],
+        "phone_id": "3"
+      }
+    ]
+  }
+]

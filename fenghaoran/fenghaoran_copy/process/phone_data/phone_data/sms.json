@@ -1,0 +1,101 @@
+[
+  {
+    "type": "sms",
+    "message_content": "我：沈老板，下午在晨曦咖啡，耶加雪菲很棒，光影也美。刚走，谢谢款待。",
+    "contactName": "沈心怡",
+    "phoneNumber": "+8613787346789",
+    "datetime": "2025-01-01 17:45:00",
+    "message_type": "发送",
+    "daily_event_id": "9",
+    "event_id": [
+      "159-3"
+    ],
+    "phone_id": 0
+  },
+  {
+    "type": "sms",
+    "message_content": "我：妈，今天降温，你和爸晚上记得关好窗户，别着凉了。",
+    "contactName": "李秀英",
+    "phoneNumber": "+8613907128765",
+    "datetime": "2025-01-01 20:30:00",
+    "message_type": "发送",
+    "daily_event_id": "12",
+    "event_id": [
+      "2-1",
+      "159-3"
+    ],
+    "phone_id": 1
+  },
+  {
+    "type": "sms",
+    "message_content": "郑文博，我大概8点35到公司，上午沟通会需要提前碰一下吗？",
+    "contactName": "郑文博",
+    "phoneNumber": "+8613787349876",
+    "datetime": "2025-01-02 08:05:00",
+    "message_type": "发送",
+    "daily_event_id": "14",
+    "event_id": [
+      "160-1"
+    ],
+    "phone_id": 2
+  },
+  {
+    "type": "sms",
+    "message_content": "【美年大健康】尊敬的冯浩然先生，您已成功预约1月9日（周四）上午8:00的全面健康体检，请携带身份证件，体检前保持空腹8-12小时。预约号：MN20250102001。",
+    "contactName": "美年大健康",
+    "phoneNumber": "106900009876",
+    "datetime": "2025-01-02 12:25:00",
+    "message_type": "接收",
+    "daily_event_id": "17",
+    "event_id": [
+      "161-1"
+    ],
+    "phone_id": 3
+  },
+  {
+    "type": "sms",
+    "message_content": "钱总，新年工作计划和客户体验优化方案构想已发您邮箱，请审阅。",
+    "contactName": "钱永强",
+    "phoneNumber": "+8613973111222",
+    "datetime": "2025-01-02 13:20:00",
+    "message_type": "发送",
+    "daily_event_id": "18",
+    "event_id": [
+      "160-1"
+    ],
+    "phone_id": 4
+  },
+  {
+    "type": "sms",
+    "message_content": "妈，我下班了，路上有点堵，晚上回家吃饭。",
+    "contactName": "李秀英",
+    "phoneNumber": "+8613907128765",
+    "datetime": "2025-01-02 17:10:00",
+    "message_type": "发送",
+    "daily_event_id": "19",
+    "event_id": [],
+    "phone_id": 5
+  },
+  {
+    "type": "sms",
+    "message_content": "今天拍的照片发你了，那张潮宗街的构图你觉得怎么样？",
+    "contactName": "彭雨晴",
+    "phoneNumber": "+8613787344567",
+    "datetime": "2025-01-02 19:35:00",
+    "message_type": "发送",
+    "daily_event_id": "21",
+    "event_id": [],
+    "phone_id": 6
+  },
+  {
+    "type": "sms",
+    "message_content": "妈，我到家了，晚饭吃了番茄鸡蛋面，您吃了吗？",
+    "contactName": "李秀英",
+    "phoneNumber": "+8613907128765",
+    "datetime": "2025-01-02 19:40:00",
+    "message_type": "发送",
+    "daily_event_id": "21",
+    "event_id": [],
+    "phone_id": 7
+  }
+]
