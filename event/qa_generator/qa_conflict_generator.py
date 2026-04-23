@@ -408,7 +408,8 @@ class QAConflictGenerator(BaseQAGenerator):
             "信息传递错误：在不同渠道（短信、邮件、对话）中传达了不一致的信息",
             "多方协调不一致：多个参与方对同一事件的理解或安排有差异",
             "遗忘与混淆：用户忘记了某些细节，与其他类似事件混淆",
-            "意图与行动不符：用户原本打算做某事，但实际做了另一件事"
+            "意图与行动不符：用户原本打算做某事，但实际做了另一件事",
+            "记忆冲突（回忆冲突）：在后续回忆该事件时给出了错误的信息"
         ]
         
         conflict_type = random.choice(conflict_types)
@@ -421,6 +422,12 @@ class QAConflictGenerator(BaseQAGenerator):
         
         【冲突类型及错误信息来源】
         {conflict_type}
+        
+        **重要提示：灵活选择冲突类型**
+        - 上述冲突类型仅作为参考和启发
+        - **如果当前类型难以设计出合理、自然的冲突情节，可以自由选择其他更适合的冲突类型**
+        - 优先考虑冲突的合理性、真实性和可设计性，不必严格遵循指定的类型
+        - 最终目标是生成一个逻辑清晰、符合生活场景的冲突故事
         
         **冲突类型详解（指导错误信息的设计）**
         
@@ -452,57 +459,82 @@ class QAConflictGenerator(BaseQAGenerator):
         
         6. **意图与行动不符**：用户原本打算做某事，但实际做了另一件事
            - 错误信息来源：表达意图的信息 vs 实际行动的记录
-           - 示例：说"我打算5月去"，但实际4月就去了；或者说"我要去A地"，但实际去了B地
+           - 示例：说“我打算5月去”，但实际4月就去了；或者说“我要去A地”，但实际去了B地
            - 关键：体现意图声明和实际行动的差异
+                
+        7. **记忆冲突（回忆冲突）**：在后续回忆该事件时给出了错误的信息
+           - 错误信息来源：事后回忆、聊天回顾、笔记记录时的错误记忆
+           - 示例：事件发生在4月15日，但在5月份回忆时说“我记得是4月20日”；或者在6月份和朋友聊天时说错地点
+           - 关键：**错误情节必须发生在原事件之后**，体现记忆的偏差或遗忘
+           - 特点：不需要纠正情节，因为这是纯粹的回忆错误，原事件已经正常发生
         
         **核心设计原则**
         
         ⚠️ **关键要求：保证原事件的合理性**
         - **绝对不能改变原事件的发生**：原事件必须按照原定时间、地点、内容正常发生
-        - **冲突必须是可纠正的**：设计的错误/矛盾信息必须在原事件发生前被纠正
-        - **完整的冲突-纠正链条**：错误信息产生 → 发现并纠正 → 原事件合理发生
+        - **对于前6种冲突类型**：冲突必须是可纠正的，设计的错误/矛盾信息必须在原事件发生前被纠正
+        - **对于第7种（记忆冲突）**：错误发生在原事件之后，不需要纠正情节，因为原事件已经正常发生
+        - **完整的冲突-纠正链条（仅适用于前6种类型）**：错误信息产生 → 发现并纠正 → 原事件合理发生
         
         **任务要求**
-        
-        1. **设计冲突-纠正情节（三步走）**
+                
+        1. **设计冲突情节（根据冲突类型选择不同策略）**
+                
+           ### 对于前6种冲突类型（错误发生在原事件之前）
                    
            **第一步：引入错误/矛盾信息（可以有多条）**
            - 在原事件之前，生成**1-3条**与最终事实不符的信息
            - **多条错误情节可以互相印证**，形成一个看似合理但实际错误的链条
            - 例如：
-             * 先发信息说"计划5月15日去北京"
-             * 过几天又说"我订了5月15日的机票"（印证前面的说法）
-             * 再过几天说"酒店也订好了，5月15-17日"（继续印证）
+             * 先发信息说“计划5月15日去北京”
+             * 过几天又说“我订了5月15日的机票”（印证前面的说法）
+             * 再过几天说“酒店也订好了，5月15-17日”（继续印证）
              * （这些都是错误的，实际是4月15日）
            - **互相印证的示例**：
-             * 第一条："我查了下日历，你生日好像是5月15日"
-             * 第二条："我刚跟朋友确认了，他说也是5月15日"（用第三方印证）
-             * 第三条："我订了5月15日的餐厅，到时候见"（用行动印证）
+             * 第一条：“我查了下日历，你生日好像是5月15日”
+             * 第二条：“我刚跟朋友确认了，他说也是5月15日”（用第三方印证）
+             * 第三条：“我订了5月15日的餐厅，到时候见”（用行动印证）
            - 多条互相印证的错误信息会让冲突更真实、更有说服力
            - 这些错误信息要符合冲突类型的特征
-                   
+                           
            **第二步：纠正错误信息（只生成一条）**
            - 在原事件发生前，必须有**且仅有一条**明确的情节显示所有错误被纠正
-           - **纠正方式要自然含蓄**：不要直接说出正确答案，而是表达"我之前的信息有误"、"我需要重新确认/安排"
+           - **纠正方式要自然含蓄**：不要直接说出正确答案，而是表达“我之前的信息有误”、“我需要重新确认/安排”
            - **关键要求**：纠正信息只声明自己纠正了，但**不需要告诉具体正确内容**
            - 例如：
-             * "不好意思，我之前说的时间可能不对，我需要重新确认一下"（不说正确时间）
-             * "我发现之前搞错了，让我重新安排一下时间"（不说新时间）
-             * "等等，我刚才发现有些问题，我们重新商量一下"（不说具体问题）
-             * "我之前说的都不算数了，有变动，稍后告诉你准确信息"（不说准确信息）
-             * "之前的计划有变，我重新安排了"（不说新计划）
-           - **禁止**：纠正信息中直接说出正确答案（如"应该是4月15日"）
+             * “不好意思，我之前说的时间可能不对，我需要重新确认一下”（不说正确时间）
+             * “我发现之前搞错了，让我重新安排一下时间”（不说新时间）
+             * “等等，我刚才发现有些问题，我们重新商量一下”（不说具体问题）
+             * “我之前说的都不算数了，有变动，稍后告诉你准确信息”（不说准确信息）
+             * “之前的计划有变，我重新安排了”（不说新计划）
+           - **禁止**：纠正信息中直接说出正确答案（如“应该是4月15日”）
            - 纠正情节要让原事件的发生变得合理、不突兀
-           - **关键**：纠正信息应该体现"意识到错误 → 重新确认/安排"的过程，但**不透露最终结果**
-                   
+           - **关键**：纠正信息应该体现“意识到错误 → 重新确认/安排”的过程，但**不透露最终结果**
+                           
            **第三步：原事件正常发生**
            - 原事件按照最初的事实正常进行
            - 因为有纠正情节，所以原事件的发生是合理的
+                
+           ### 对于第7种冲突类型（记忆冲突/回忆冲突）
+                   
+           **只需一步：在原事件之后生成回忆错误的信息**
+           - 错误情节必须发生在**原事件日期之后**
+           - 生成**1-2条**回忆时的错误信息
+           - 例如：
+             * 原事件是4月15日参加聚会
+             * 5月10日：发短信给朋友说“我记得上次聚会是4月20日吧？”（实际是4月15日）
+             * 或者在6月份记录笔记时写错日期
+           - **不需要纠正情节**，因为这是纯粹的回忆错误
+           - 错误信息要体现记忆的偏差、遗忘或混淆
         
         2. **确定新增情节的日期**
-           - **错误信息情节**：应该在原事件日期之前的较早时间
-           - **纠正情节**：应该在错误信息之后、原事件之前
-           - 所有新增情节都应该在原事件日期前后合理的时间范围内
+           - **对于前6种冲突类型**：
+             * **错误信息情节**：应该在原事件日期之前的较早时间
+             * **纠正情节**：应该在错误信息之后、原事件之前
+             * 所有新增情节都应该在原事件日期前后合理的时间范围内
+           - **对于第7种冲突类型（记忆冲突）**：
+             * **回忆错误情节**：必须在**原事件日期之后**，可以是几天后、几周后甚至几个月后
+             * 例如：原事件是4月15日，回忆错误可以发生在5月、6月或更晚
         
         3. **定义需要生成的手机数据类型**
            - 可以生成 sms、agent_chat、calendar、note 类型的数据
@@ -529,15 +561,21 @@ class QAConflictGenerator(BaseQAGenerator):
         
         假设原事件是“4月15日参加朋友的生日聚会”
         
-        ✅ **正确设计**（包含纠正）：
+        ✅ **正确设计（前6种类型，包含纠正）**：
         - 4月5日：发短信给朋友“我可能5月15日才能参加你的生日聚会了，4月有事”
         - 4月10日：再发短信“不好意思，我重新安排了时间，4月15日可以参加了！之前说的5月不对”
         - 4月15日：原事件正常发生（参加生日聚会）
         
-        ❌ **错误设计**（缺少纠正）：
+        ❌ **错误设计（前6种类型，缺少纠正）**：
         - 4月5日：发短信说“我5月15日参加你的生日聚会”
         - 4月15日：原事件发生（参加生日聚会）
         - 问题：没有纠正情节，4月15日的发生显得突兀
+        
+        ✅ **正确设计（第7种类型，记忆冲突）**：
+        - 4月15日：原事件正常发生（参加生日聚会）
+        - 5月20日：发短信给朋友说“我记得上次聚会是4月20日吧？”（实际是4月15日）
+        - 或者在6月份记录笔记时写错日期：“4月20日参加了张三的生日聚会”
+        - 特点：错误发生在事后，不需要纠正，体现记忆的偏差
         
         **输出要求**
         请以 JSON 格式返回：
@@ -559,9 +597,11 @@ class QAConflictGenerator(BaseQAGenerator):
         }}
         
         **注意事项**
-        - new_plots 中必须至少包含2个情节：一个引入错误，一个纠正错误
-        - 纠正情节必须在原事件日期之前
-        - 确保整个冲突-纠正链条逻辑清晰、符合真实生活场景
+        - **对于前6种冲突类型**：new_plots 中必须至少包含2个情节：一个引入错误，一个纠正错误
+        - **对于第7种冲突类型（记忆冲突）**：new_plots 中包含1-2个回忆错误的情节即可，不需要纠正
+        - **纠正情节必须在原事件日期之前**（仅适用于前6种类型）
+        - **回忆错误情节必须在原事件日期之后**（仅适用于第7种类型）
+        - 确保整个冲突链条逻辑清晰、符合真实生活场景
         """
         
         try:
@@ -624,20 +664,21 @@ class QAConflictGenerator(BaseQAGenerator):
                 format_requirements = {
                     'sms': """
             ### SMS (短信) 格式要求
-            - event_id: 固定为 0
             - type: 固定为 "sms"
-            - content: 短信内容，体现冲突情节（如发错的信息或纠正信息）
+            - message_content: 短信内容，体现冲突情节（如发错的信息或纠正信息）
+            - contactName: 联系人姓名（对方）
+            - phoneNumber: 电话号码
             - datetime: 发送时间，格式 YYYY-MM-DD HH:MM:SS，日期使用 {plot_date}
-            - direction: "outgoing" (发出) 或 "incoming" (接收)
-            - contact_name: 联系人姓名（如果有）
+            - message_type: "发送" 或 "接收"
+            - daily_event_id: 字符串类型的事件ID
             """,
                     'note': """
             ### Note (笔记) 格式要求
-            - event_id: 固定为 0
             - type: 固定为 "note"
             - title: 笔记标题，简洁明确
             - content: 笔记内容，结构化分点，体现冲突情节相关信息
             - datetime: 创建时间，格式 YYYY-MM-DD HH:MM:SS，日期使用 {plot_date}
+            - summarized_info: 笔记内容的摘要总结
             """,
                     'calendar': """
             ### Calendar (日历) 格式要求
@@ -648,6 +689,7 @@ class QAConflictGenerator(BaseQAGenerator):
             - start_time: 开始时间，格式 YYYY-MM-DD HH:MM:SS
             - end_time: 结束时间，格式 YYYY-MM-DD HH:MM:SS
             - datetime: 创建时间，格式 YYYY-MM-DD HH:MM:SS
+            - summarized_info: 日历内容的摘要总结
             """,
                     'agent_chat': """
             ### Agent Chat (智能体对话) 格式要求
@@ -786,7 +828,7 @@ class QAConflictGenerator(BaseQAGenerator):
         print(f"[Generate Phone Data] 总共生成 {len(all_operations)} 条手机数据")
         return all_operations
     
-    def QAGen(self, year: int = 2025, num_samples: int = 20) -> List[Dict[str, Any]]:
+    def QAGen(self, year: int = 2025, num_samples: int = 30) -> List[Dict[str, Any]]:
         """
         生成冲突 QA 对的主入口函数
         
@@ -803,7 +845,7 @@ class QAConflictGenerator(BaseQAGenerator):
         print("\n[Step 1] 生成各月份的主要事件总结...")
         monthly_summaries = []
         
-        with concurrent.futures.ThreadPoolExecutor(max_workers=12) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
             futures = [executor.submit(self._generate_monthly_summary, year, month) 
                       for month in range(1, 13)]
             
@@ -853,20 +895,47 @@ class QAConflictGenerator(BaseQAGenerator):
             
             sampled_events = enriched_sampled_events
         
-        # Step 3: 为每个采样事件生成冲突情节
-        print("\n[Step 3] 生成冲突情节...")
-        conflict_plots = []
+        # Step 3: 为每个采样事件生成冲突情节（20线程并行）
+        print("\n[Step 3] 生成冲突情节（20线程并行）...")
         
-        for i, event in enumerate(sampled_events, 1):
-            print(f"\n--- 处理第 {i}/{len(sampled_events)} 个事件 ---")
+        conflict_plots = [None] * len(sampled_events)  # 预分配列表保持顺序
+        
+        def generate_single_plot(idx: int, event: Dict[str, Any]) -> tuple:
+            """处理单个事件的冲突情节生成"""
+            try:
+                print(f"\n--- 处理第 {idx + 1}/{len(sampled_events)} 个事件 ---")
+                plot = self._generate_conflict_plot(event)
+                if plot:
+                    plot['target_event'] = event
+                    return idx, plot
+                else:
+                    print(f"[Step 3] 第 {idx + 1} 个事件生成冲突情节失败")
+                    return idx, None
+            except Exception as e:
+                print(f"[Step 3] 第 {idx + 1} 个事件生成冲突情节异常：{e}")
+                return idx, None
+        
+        # 使用 ThreadPoolExecutor 并行处理，最多20线程
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            futures = [
+                executor.submit(generate_single_plot, idx, event)
+                for idx, event in enumerate(sampled_events)
+            ]
             
-            plot = self._generate_conflict_plot(event)
-            if plot:
-                plot['target_event'] = event
-                conflict_plots.append(plot)
-                print(f"[Step 3] 生成冲突情节成功")
-            else:
-                print(f"[Step 3] 生成冲突情节失败")
+            # 收集结果
+            completed_count = 0
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    idx, plot = future.result()
+                    conflict_plots[idx] = plot
+                    completed_count += 1
+                    if completed_count % 5 == 0 or completed_count == len(sampled_events):
+                        print(f"\n[Step 3] 已完成 {completed_count}/{len(sampled_events)} 个事件的冲突情节生成")
+                except Exception as e:
+                    print(f"[Step 3] 结果收集失败：{e}")
+        
+        # 过滤掉 None 值
+        conflict_plots = [plot for plot in conflict_plots if plot is not None]
         
         print(f"[Step 3] 完成，共生成 {len(conflict_plots)} 个冲突情节")
         print("情节具体内容：", conflict_plots)
@@ -926,7 +995,9 @@ class QAConflictGenerator(BaseQAGenerator):
             2. **在题面中加入月份信息**：
                - 从原始事件的 date 字段中提取月份（如 "2025-12-01" 提取为 "12月"）
                - 在问题中自然地融入月份信息，例如“我在12月份...”或“12月的时候...”
-            
+               - 如果目标事件常规来说可能在一个月内经常发生，请加上上旬，下旬，第x周等描述，如 "我在12月上旬..."
+               - 如果目标事件可能每天都会发生，请加上具体的日期信息，如 "我在12月1号..."
+               
             3. **根据提问类型添加相关上下文**：
                - **提问时间时**：加上地点和人物信息，例如“我在12月份在[地点]与[人物]见面是什么时候？”
                - **提问地点时**：加上时间信息，例如“我在12月份[时间描述]XX时是在哪里？”
@@ -1097,6 +1168,13 @@ class QAConflictGenerator(BaseQAGenerator):
             print(f"[Step 5] 完成，最终证据数量：{len(qa_pair['evidence'])}")
         
         print(f"\n[Step 5] 完成，共生成 {len(qa_pairs)} 个冲突问答对")
+        
+        # 为每个问题添加 question_type 字段
+        print("\n[Step 6] 为所有问题设置 question_type 为 'Conflict'...")
+        for qa in qa_pairs:
+            qa['question_type'] = 'Conflict'
+            qa['ask_time'] = '2025-12'
+        print(f"✓ 已为 {len(qa_pairs)} 个问题设置 question_type")
         
         # 保存到文件
         if self.phone_data_dir:

@@ -28,18 +28,36 @@ class QAUnanswerableGenerator(BaseQAGenerator):
     3. 答案为"无法回答"
     4. 并行对12个月生成，每个月生成5个问题
     """
-    
-    def __init__(self, phone_data_dir: str = None, is_print: bool = True):
+
+    def __init__(self, daily_event: List[Dict], event_tree: List[Dict],
+                 draft_event: Dict[str, List], phonedata: Dict[str, List],
+                 phone_data_dir: str = None, is_print: bool = True):
         """
-        初始化不可回答问题生成器
-        
+        初始化知识更新 QA 生成器
+
         Args:
-            phone_data_dir: 手机数据文件夹路径
-            is_print: 是否打印 LLM 输出，默认 True
+            daily_event: daily_event 数据列表
+            event_tree: event_tree 数据列表
+            draft_event: draft_event 数据字典（按月份组织）
+            phonedata: 手机操作数据字典
+            phone_data_dir: 手机数据目录路径
+            is_print: 是否打印调试信息
         """
-        super().__init__(phone_data_dir=phone_data_dir)
+        # 调用父类的 __init__
+        super().__init__()
+        self.daily_event = daily_event
+        self.event_tree = event_tree
+        self.draft_event = draft_event
+        self.phonedata = phonedata
+        self.phone_data_dir = phone_data_dir
         self.is_print = is_print
-    
+
+        # 初始化线程锁
+        self.phonedata_lock = threading.Lock()
+        self.phone_id_lock = threading.Lock()
+
+        # 初始化手机操作生成器
+
     def _extract_date_from_event(self, event: Dict[str, Any]) -> str:
         """
         从事件中提取日期字符串

@@ -15,32 +15,76 @@ class QAGenerator:
     GENERATOR_CONFIG = {
         'qa_single_generator': {
             'class_name': 'QASingleGenerator',
-            'qagen_params': {},  # 默认参数
-            'order': 1
+            'order': 1,
+            'qagen_params': {
+                'year': 2025,
+                'output_path': None
+            }
         },
-        # 'qa_multi_hop_generator': {
-        #     'class_name': 'QAMultiHopGenerator',
-        #     'qagen_params': {
-        #         'num_questions_per_month': 8,
-        #         'num_persona_questions': 6
-        #     },
-        #     'order': 3
-        # },
+        'qa_temporal_generator': {
+            'class_name': 'QATemporalGenerator',
+            'order': 2,
+            'qagen_params': {
+                'year': '2025'
+            }
+        },
+        'qa_multi_hop_generator': {
+            'class_name': 'QAMultiHopGenerator',
+            'order': 3,
+            'qagen_params': {
+                'year': 2025,
+                'num_questions_per_month': 5
+            }
+        },
         'qa_pattern_recognition_generator': {
             'class_name': 'QAPatternRecognitionGenerator',
+            'order': 4,
             'qagen_params': {
+                'year': '2025',
                 'num_questions_per_month': 5
-            },
-            'order': 2
+            }
         },
-        # 'qa_reasoning_generator': {
-        #     'class_name': 'QAReasoningGenerator',
-        #     'qagen_params': {
-        #         'num_questions_per_theme': 2,
-        #         'num_questions_per_group': 2
-        #     },
-        #     'order': 4
-        # }
+        'qa_conflict_generator': {
+            'class_name': 'QAConflictGenerator',
+            'order': 5,
+            'qagen_params': {
+                'year': 2025,
+                'num_samples': 30
+            }
+        },
+        # 'qa_harmful_memory_generator': {
+        #     'class_name': 'QAHarmfulMemoryGenerator',
+        #     'order': 6,
+        #     'qagen_params': {}
+        # },
+        'qa_unanswerable_generator': {
+            'class_name': 'QAUnanswerableGenerator',
+            'order': 7,
+            'qagen_params': {
+                'year': 2025,
+                'num_questions_per_month': 5
+            }
+        },
+        'qa_knowledge_updating_generator': {
+            'class_name': 'QAKnowledgeUpdatingGenerator',
+            'order': 8,
+            'qagen_params': {
+                'max_questions_per_topic': 6
+            }
+        },
+        'qa_hidden_info_generator': {
+            'class_name': 'QAHiddenInfoGenerator',
+            'order': 9,
+            'qagen_params': {}
+        },
+        'qa_causal_generator': {
+            'class_name': 'QACausalGenerator',
+            'order': 10,
+            'qagen_params': {
+                'year': 2025,
+                'num_questions_per_month': 5
+            }
+        }
     }
     
     def __init__(self, data_path: str, auto_discover: bool = True):
@@ -66,10 +110,62 @@ class QAGenerator:
         """
         print("开始自动发现和加载 QA 生成器...")
         
+        # 先加载数据
+        print("\n[Step 1] 加载基础数据...")
+        persona_data = {}
+        daily_event = []
+        event_tree = []
+        draft_event = {}
+        phonedata = {}
+        
+        # 加载 persona
+        persona_path = os.path.join(self.data_path, "persona.json")
+        if os.path.exists(persona_path):
+            with open(persona_path, 'r', encoding='utf-8') as f:
+                persona_data = json.load(f)
+            print(f"✓ 加载 persona: {len(persona_data)} 个字段")
+        
+        # 加载 daily_event
+        daily_event_path = os.path.join(self.data_path, "daily_event.json")
+        if os.path.exists(daily_event_path):
+            with open(daily_event_path, 'r', encoding='utf-8') as f:
+                daily_event = json.load(f)
+            print(f"✓ 加载 daily_event: {len(daily_event)} 个事件")
+        
+        # 加载 event_tree
+        event_tree_path = os.path.join(self.data_path, "event_tree.json")
+        if os.path.exists(event_tree_path):
+            with open(event_tree_path, 'r', encoding='utf-8') as f:
+                event_tree = json.load(f)
+            print(f"✓ 加载 event_tree: {len(event_tree)} 个节点")
+        
+        # 加载 draft_event
+        draft_event_path = os.path.join(self.data_path, "daily_draft.json")
+        if os.path.exists(draft_event_path):
+            with open(draft_event_path, 'r', encoding='utf-8') as f:
+                draft_event = json.load(f)
+            print(f"✓ 加载 draft_event: {len(draft_event)} 个月份")
+        
+        # 加载 phone data
+        if os.path.exists(self.phone_data_dir):
+            print(f"\n[Step 2] 加载手机数据从 {self.phone_data_dir}...")
+            for filename in os.listdir(self.phone_data_dir):
+                if filename.endswith('.json'):
+                    filepath = os.path.join(self.phone_data_dir, filename)
+                    data_type = filename.replace('.json', '')
+                    try:
+                        with open(filepath, 'r', encoding='utf-8') as f:
+                            data_list = json.load(f)
+                            if isinstance(data_list, list):
+                                phonedata[data_type] = data_list
+                    except Exception as e:
+                        print(f"✗ {data_type} 加载失败: {e}")
+            print(f"✓ 加载手机数据: {len(phonedata)} 种类型")
+        
         # 尝试从 event.qa_generator 包的__init__.py 中获取所有导出类
         try:
             import event.qa_generator as qa_pkg
-            print(f"✓ 成功导入 event.qa_generator 包")
+            print(f"\n[Step 3] 导入 event.qa_generator 包")
             
             # 检查是否有__all__定义
             if hasattr(qa_pkg, '__all__'):
@@ -96,14 +192,34 @@ class QAGenerator:
                 
                 try:
                     # 动态导入模块
-                    print(f"正在导入模块：event.qa_generator.{module_name}")
+                    print(f"\n正在导入模块：event.qa_generator.{module_name}")
                     module = importlib.import_module(f'event.qa_generator.{module_name}')
                     # 获取类
                     generator_class = getattr(module, class_name)
                     print(f"✓ 找到类：{class_name}")
                     
+                    # 根据类的构造函数签名初始化生成器
+                    import inspect
+                    sig = inspect.signature(generator_class.__init__)
+                    params = sig.parameters
+                    
+                    # 准备初始化参数
+                    init_kwargs = {'phone_data_dir': self.phone_data_dir}
+                    
+                    # 如果构造函数需要其他参数，添加它们
+                    if 'persona_data' in params:
+                        init_kwargs['persona_data'] = persona_data
+                    if 'daily_event' in params:
+                        init_kwargs['daily_event'] = daily_event
+                    if 'event_tree' in params:
+                        init_kwargs['event_tree'] = event_tree
+                    if 'draft_event' in params:
+                        init_kwargs['draft_event'] = draft_event
+                    if 'phonedata' in params:
+                        init_kwargs['phonedata'] = phonedata
+                    
                     # 初始化生成器
-                    generator = generator_class(phone_data_dir=self.phone_data_dir)
+                    generator = generator_class(**init_kwargs)
                     
                     # 存储生成器实例
                     self.generators[module_name] = {
@@ -124,9 +240,6 @@ class QAGenerator:
             import traceback
             traceback.print_exc()
             return
-        
-        # 加载数据到所有生成器
-        self._load_data_to_generators()
         
         # 初始同步一次所有数据
         self._share_phone_data()
@@ -172,10 +285,34 @@ class QAGenerator:
                 key=lambda x: x[1]['order']
             )
         
+        # 创建 QA_all 文件夹
+        qa_all_dir = os.path.join(self.data_path, "QA_all")
+        if not os.path.exists(qa_all_dir):
+            os.makedirs(qa_all_dir)
+            print(f"✓ 创建 QA_all 文件夹: {qa_all_dir}")
+        
+        # 存储所有生成的问题
+        all_questions = []
+        
         # 依次调用每个生成器
         for idx, (gen_name, gen_data) in enumerate(ordered_generators, 1):
             generator = gen_data['instance']
             config = gen_data['config']
+            
+            # 检查对应的文件是否已存在
+            single_output_path = os.path.join(qa_all_dir, f"{gen_name}.json")
+            if os.path.exists(single_output_path):
+                print(f"\n{idx}. 跳过 {gen_name}（文件已存在: {single_output_path}）")
+                # 加载已有文件并添加到总列表
+                try:
+                    with open(single_output_path, 'r', encoding='utf-8') as f:
+                        existing_questions = json.load(f)
+                    if isinstance(existing_questions, list):
+                        all_questions.extend(existing_questions)
+                        print(f"   ✓ 已加载 {len(existing_questions)} 个已有问题")
+                except Exception as e:
+                    print(f"   ⚠️ 加载已有文件失败: {e}")
+                continue
             
             print(f"\n{idx}. 开始生成{gen_name}问题...")
             
@@ -203,7 +340,16 @@ class QAGenerator:
                 # 共享数据
                 self._share_phone_data()
                 
-                print(f"✓ {gen_name}问题生成完成")
+                # 单独保存该生成器的问题
+                if result and isinstance(result, list):
+                    with open(single_output_path, 'w', encoding='utf-8') as f:
+                        json.dump(result, f, ensure_ascii=False, indent=2)
+                    print(f"✓ {gen_name}问题生成完成，共 {len(result)} 个问题，已保存到 {single_output_path}")
+                    
+                    # 添加到总列表
+                    all_questions.extend(result)
+                else:
+                    print(f"✓ {gen_name}问题生成完成，但未返回问题")
                 
             except Exception as e:
                 print(f"✗ {gen_name}问题生成失败：{e}")
@@ -211,6 +357,26 @@ class QAGenerator:
                 traceback.print_exc()
         
         print("\n所有问答对生成完成！")
+        
+        # 整合所有问题到 QA.json
+        if all_questions:
+            final_output_path = os.path.join(qa_all_dir, "QA.json")
+            with open(final_output_path, 'w', encoding='utf-8') as f:
+                json.dump(all_questions, f, ensure_ascii=False, indent=2)
+            print(f"\n✓ 所有问题已整合保存到: {final_output_path}")
+            print(f"✓ 总计 {len(all_questions)} 个问题")
+            
+            # 统计各类型问题数量
+            type_count = {}
+            for qa in all_questions:
+                q_type = qa.get('question_type', 'unknown')
+                type_count[q_type] = type_count.get(q_type, 0) + 1
+            
+            print("\n问题类型统计:")
+            for q_type, count in sorted(type_count.items()):
+                print(f"  - {q_type}: {count} 个问题")
+        else:
+            print("\n⚠️ 未生成任何问题")
         
         # 保存所有手机数据到新目录
         print("\n开始保存所有手机数据...")

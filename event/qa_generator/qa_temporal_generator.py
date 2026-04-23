@@ -83,6 +83,7 @@ class QATemporalGenerator(BaseQAGenerator):
         - **包含重要事件**：出行、娱乐、工作成就、等重要活动都要包含
         - **数量限制**：只输出 10 个最主要的事件
         - **独立性保证**：输出的事件之间不应存在可合并的步骤关系，请你分析已有事件的关联，可以把他们合并为一个连贯的事件输出。
+        - 优先按独特性排序，这个月同类型事件只发生过一次的优先提取（如去云南旅行，去北京出差等），发生过多次的优先级较低（如跑步，工作）。
         
         **提取标准**
         1. **出行旅游事件**：短途旅行、长途旅游、出差等
@@ -222,9 +223,10 @@ class QATemporalGenerator(BaseQAGenerator):
         
         print(f"\n========== 完成 {len(monthly_summaries)}/12 个月的总结 ==========")
         
-        # Step 2: 分析全年相似事件分组
-        event_groups = self._analyze_similar_events(monthly_summaries, year)
-        
+        # # Step 2: 分析全年相似事件分组
+        # event_groups = self._analyze_similar_events(monthly_summaries, year)
+        #
+        event_groups = []
         return monthly_summaries, event_groups
     
     def _analyze_similar_events(self, yearly_summaries: List[Dict[str, Any]], year: int) -> Dict[str, Any]:
@@ -424,43 +426,263 @@ class QATemporalGenerator(BaseQAGenerator):
         
         all_questions = []
         
-        # 1. 生成排序问题
-        sort_questions = self._generate_sorting_questions(all_events, year)
-        all_questions.extend(sort_questions)
-        print(f"[Temporal Sequence Agent] 生成了 {len(sort_questions)} 个排序问题")
+        # 1. 并行20线程生成排序问题和时间差计算问题
+        print(f"\n[Temporal Sequence Agent] 开始并行生成排序问题和时间差计算问题（20线程）...")
         
-        # 2. 生成时间差计算问题
-        time_diff_questions = self._generate_time_difference_questions(all_events, year)
-        all_questions.extend(time_diff_questions)
-        print(f"[Temporal Sequence Agent] 生成了 {len(time_diff_questions)} 个时间差计算问题")
+        import concurrent.futures
+        
+        def generate_sorting_task(task_id: int) -> List[Dict[str, Any]]:
+            """生成排序问题的任务函数"""
+            try:
+                print(f"\n[Temporal Sequence Agent] 生成排序问题任务 {task_id + 1}/20...")
+                questions = self._generate_sorting_questions(all_events, year)
+                print(f"[Temporal Sequence Agent] 任务 {task_id + 1} 生成了 {len(questions)} 个排序问题")
+                return questions
+            except Exception as e:
+                print(f"[Temporal Sequence Agent] 排序问题生成任务 {task_id + 1} 失败：{e}")
+                return []
+        
+        def generate_time_diff_task(task_id: int) -> List[Dict[str, Any]]:
+            """生成时间差计算问题的任务函数"""
+            try:
+                print(f"\n[Temporal Sequence Agent] 生成时间差问题任务 {task_id + 1}/20...")
+                questions = self._generate_time_difference_questions(all_events, year)
+                print(f"[Temporal Sequence Agent] 任务 {task_id + 1} 生成了 {len(questions)} 个时间差问题")
+                return questions
+            except Exception as e:
+                print(f"[Temporal Sequence Agent] 时间差问题生成任务 {task_id + 1} 失败：{e}")
+                return []
+        
+        # 使用 ThreadPoolExecutor 并行执行20次排序问题和20次时间差问题
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            # 提交所有任务（20个排序 + 20个时间差 = 40个任务）
+            futures = []
+            for i in range(20):
+                futures.append(executor.submit(generate_sorting_task, i))
+                futures.append(executor.submit(generate_time_diff_task, i))
+            
+            # 收集结果
+            completed_count = 0
+            total_tasks = len(futures)
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    result = future.result()
+                    if result:
+                        all_questions.extend(result)
+                    completed_count += 1
+                    if completed_count % 5 == 0 or completed_count == total_tasks:
+                        print(f"\n[Temporal Sequence Agent] 已完成 {completed_count}/{total_tasks} 个生成任务，累计生成 {len(all_questions)} 个问题")
+                except Exception as e:
+                    print(f"[Temporal Sequence Agent] 任务结果收集失败：{e}")
+        
+        print(f"\n[Temporal Sequence Agent] 并行生成完成：共生成 {len(all_questions)} 个问题")
         
         # 3. 生成持续时长分析问题
         duration_questions = self._generate_duration_analysis_questions(all_events, year)
         all_questions.extend(duration_questions)
         print(f"[Temporal Sequence Agent] 生成了 {len(duration_questions)} 个持续时长分析问题")
-        
-        # 4. 生成次数统计问题：基于相似事件分组
-        if event_groups and event_groups.get('event_groups'):
-            frequency_questions = self._generate_frequency_count_questions(event_groups, year)
-            all_questions.extend(frequency_questions)
-            print(f"[Temporal Sequence Agent] 生成了 {len(frequency_questions)} 个次数统计问题")
-        else:
-            print("[Temporal Sequence Agent] 没有相似事件分组数据，跳过次数统计问题生成")
 
-        print(f"[Temporal Sequence Agent] 总共生成 {len(all_questions)} 个时序问题")
+        # # 4. 生成次数统计问题：基于相似事件分组
+        # if event_groups and event_groups.get('event_groups'):
+        #     frequency_questions = self._generate_frequency_count_questions(event_groups, year)
+        #     all_questions.extend(frequency_questions)
+        #     print(f"[Temporal Sequence Agent] 生成了 {len(frequency_questions)} 个次数统计问题")
+        # else:
+        #     print("[Temporal Sequence Agent] 没有相似事件分组数据，跳过次数统计问题生成")
+        # 
+        # print(f"[Temporal Sequence Agent] 总共生成 {len(all_questions)} 个时序问题")
+        # 
+        # # 5. 并行20线程对生成的问题进行过滤检查
+        # filtered_questions = self._filter_questions_parallel(all_questions)
+        #
+        filtered_questions = all_questions
         
-        # 5. 为每个问题调用 evidence_refine 补充手机数据证据
-        print(f"\n[Temporal Sequence Agent] 开始为 {len(all_questions)} 个问题补充手机数据证据...")
-        refined_questions = []
-        for i, question in enumerate(all_questions, 1):
-            print(f"\n[Temporal Sequence Agent] 处理第 {i}/{len(all_questions)} 个问题...")
-            refined_question = self.evidence_refine(question)
-            refined_questions.append(refined_question)
+        # 为所有问题添加 ask_time 字段
+        for question in filtered_questions:
+            question['ask_time'] = '2025-12'
         
-        print(f"\n[Temporal Sequence Agent] 总共生成 {len(refined_questions)} 个时序问题（已完成证据补充）")
+        print(f"[Temporal Sequence Agent] 已为 {len(filtered_questions)} 个问题添加 ask_time 字段")
+        # 6. 为每个问题调用 evidence_refine 补充手机数据证据（20线程并行）
+        print(f"\n[Temporal Sequence Agent] 开始为 {len(filtered_questions)} 个问题补充手机数据证据（20线程并行）...")
+        
+        import concurrent.futures
+        refined_questions = [None] * len(filtered_questions)  # 预分配列表保持顺序
+        
+        def refine_single_question(idx: int, question: Dict[str, Any]) -> tuple:
+            """处理单个问题的证据补充"""
+            try:
+                print(f"\n[Temporal Sequence Agent] 处理第 {idx + 1}/{len(filtered_questions)} 个问题...")
+                refined_question = self.evidence_refine(question)
+                return idx, refined_question
+            except Exception as e:
+                print(f"[Temporal Sequence Agent] 第 {idx + 1} 个问题证据补充失败：{e}")
+                return idx, question
+        
+        # 使用 ThreadPoolExecutor 并行处理，最多20线程
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            futures = [
+                executor.submit(refine_single_question, idx, question)
+                for idx, question in enumerate(filtered_questions)
+            ]
+            
+            # 收集结果
+            completed_count = 0
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    idx, refined_question = future.result()
+                    refined_questions[idx] = refined_question
+                    completed_count += 1
+                    if completed_count % 5 == 0 or completed_count == len(filtered_questions):
+                        print(f"\n[Temporal Sequence Agent] 已完成 {completed_count}/{len(filtered_questions)} 个问题的证据补充")
+                except Exception as e:
+                    print(f"[Temporal Sequence Agent] 结果收集失败：{e}")
+        
+        # 过滤掉 None 值（如果有）
+        refined_questions = [q for q in refined_questions if q is not None]
+        
+        print(f"\n[Temporal Sequence Agent] 总共生成 {len(refined_questions)} 个时序问题（已完成过滤和证据补充）")
         return refined_questions
     
     # ========== 公共辅助方法 ==========
+    
+    def _filter_questions_parallel(self, questions: List[Dict[str, Any]], max_workers: int = 20) -> List[Dict[str, Any]]:
+        """
+        并行过滤检查问题质量（20线程）
+        
+        Args:
+            questions: 待检查的问题列表
+            max_workers: 最大线程数，默认20
+            
+        Returns:
+            过滤后的问题列表（保留通过检查或被重新生成的问题）
+        """
+        print(f"\n[_filter_questions_parallel] 开始对 {len(questions)} 个问题进行过滤检查（{max_workers}线程并行）...")
+        
+        import concurrent.futures
+        filtered_results = [None] * len(questions)  # 预分配列表保持顺序
+        
+        def filter_single_question(idx: int, question: Dict[str, Any]) -> tuple:
+            """处理单个问题的过滤检查"""
+            try:
+                print(f"\n[_filter_questions_parallel] 检查第 {idx + 1}/{len(questions)} 个问题...")
+                
+                # 调用 LLM 进行质量检查
+                check_prompt = f"""
+作为 QA Quality Checker，请检查以下时序推理问题的质量。
+
+【问题】
+{question.get('question', '')}
+
+【答案】
+{question.get('answer', '')}
+
+【证据数据】
+{json.dumps(question.get('evidence', []), ensure_ascii=False, indent=2) if question.get('evidence') else '无'}
+
+**检查标准**
+
+1. **问题和答案的合理性**
+   - 问题是否清晰、无歧义？
+   - 答案是否正确回答了问题？
+   - 答案的内容是否合理、符合逻辑？
+
+2. **可从 evidence 推理的可回答性**
+   - 提供的 evidence 是否包含回答问题所需的足够信息？
+   - 从 evidence 出发，是否能推导出答案？
+   - 是否存在 evidence 不足导致无法回答的情况？
+   - **对于持续时长分析问题（如"活动持续了多久"、"做了多长时间"等）：只要 evidence 中有表明事件/活动开始的标志和结束的标志即可，不需要期间该活动相关的数据**
+     * 开始标志示例："开始跑步"、"进入健身房"、"打开应用"、"会议开始"
+     * 结束标志示例："完成跑步"、"离开健身房"、"关闭应用"、"会议结束"
+     * 只要有明确的开始和结束时间点，就能计算持续时间
+
+3. **是否存在明显错误**
+   - 问题或答案中是否有事实性错误？
+   - 时间、地点、人物等信息是否一致？
+
+**输出要求**
+
+请以 JSON 格式返回检查结果：
+{{
+    "is_valid": true/false,
+    "issues": ["问题列表，如果没有问题则为空数组"],
+    "action": "keep/regenerate/discard",
+    "reason": "做出该决定的原因",
+    "suggested_question": "如果需要重新生成，建议的新问题（可选）",
+    "suggested_answer": "如果需要重新生成，建议的新答案（可选）"
+}}
+
+**决策规则**：
+- keep: 问题和答案都合理，且可以从 evidence 推理得出
+- regenerate: 问题或答案有小问题，但可以通过修改改进
+- discard: 问题严重不合理，或 evidence 完全不足以支持回答
+"""
+                
+                check_result = llm_call_j(check_prompt)
+                
+                try:
+                    start_idx = check_result.find('{')
+                    end_idx = check_result.rfind('}') + 1
+                    if start_idx != -1 and end_idx != -1:
+                        check_json = json.loads(check_result[start_idx:end_idx])
+                        is_valid = check_json.get('is_valid', True)
+                        action = check_json.get('action', 'keep')
+                        issues = check_json.get('issues', [])
+                        reason = check_json.get('reason', '')
+                        
+                        if action == 'discard':
+                            print(f"[_filter_questions_parallel] 第 {idx + 1} 个问题被抛弃：{reason}")
+                            return idx, None
+                        elif action == 'regenerate':
+                            suggested_question = check_json.get('suggested_question', '')
+                            suggested_answer = check_json.get('suggested_answer', '')
+                            if suggested_question and suggested_answer:
+                                print(f"[_filter_questions_parallel] 第 {idx + 1} 个问题需要重新生成：{reason}")
+                                question['question'] = suggested_question
+                                question['answer'] = suggested_answer
+                                return idx, question
+                            else:
+                                print(f"[_filter_questions_parallel] 第 {idx + 1} 个问题需要重新生成但未提供建议，抛弃：{reason}")
+                                return idx, None
+                        else:  # keep
+                            print(f"[_filter_questions_parallel] 第 {idx + 1} 个问题通过检查")
+                            return idx, question
+                    else:
+                        print(f"[_filter_questions_parallel] 第 {idx + 1} 个问题检查结果解析失败，保留原问题")
+                        return idx, question
+                except Exception as e:
+                    print(f"[_filter_questions_parallel] 第 {idx + 1} 个问题检查异常：{e}，保留原问题")
+                    return idx, question
+                    
+            except Exception as e:
+                print(f"[_filter_questions_parallel] 第 {idx + 1} 个问题检查失败：{e}")
+                return idx, question
+        
+        # 使用 ThreadPoolExecutor 并行处理
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            futures = [
+                executor.submit(filter_single_question, idx, question)
+                for idx, question in enumerate(questions)
+            ]
+            
+            # 收集结果
+            completed_count = 0
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    idx, result = future.result()
+                    filtered_results[idx] = result
+                    completed_count += 1
+                    if completed_count % 5 == 0 or completed_count == len(questions):
+                        print(f"\n[_filter_questions_parallel] 已完成 {completed_count}/{len(questions)} 个问题的过滤检查")
+                except Exception as e:
+                    print(f"[_filter_questions_parallel] 结果收集失败：{e}")
+        
+        # 过滤掉 None 值（被抛弃的问题）
+        filtered_questions = [q for q in filtered_results if q is not None]
+        
+        discarded_count = len(questions) - len(filtered_questions)
+        print(f"\n[_filter_questions_parallel] 过滤完成：保留 {len(filtered_questions)} 个问题，抛弃 {discarded_count} 个问题")
+        
+        return filtered_questions
     
     def _get_month_key_from_event_id(self, event_id: str) -> str:
         """
@@ -669,16 +891,16 @@ class QATemporalGenerator(BaseQAGenerator):
         
         # Step 3: 生成问题 - 随机sample 3-6个事件生成排序问题
         questions = []
-        num_questions = min(3, len(daily_events) // 3)
+        num_questions = 1
         
         for _ in range(num_questions):
-            num_events = random.randint(3, min(6, len(daily_events)))
+            num_events = random.randint(4, min(6, len(daily_events)))
             selected_events = random.sample(daily_events, num_events)
             question_data = self._generate_single_sorting_question_with_llm(selected_events, year)
             if question_data:
                 questions.append(question_data)
         
-        print(f"[Sorting Questions] 生成了 {len(questions)} 个排序问题")
+        #print(f"[Sorting Questions] 生成了 {len(questions)} 个排序问题")
         return questions
     
     def _generate_time_difference_questions(self, events: List[Dict[str, Any]], year: int) -> List[Dict[str, Any]]:
@@ -713,7 +935,7 @@ class QATemporalGenerator(BaseQAGenerator):
         
         # Step 3: 生成问题 - 计算时间差
         questions = []
-        num_questions = min(5, len(daily_events) // 2)
+        num_questions = 1
         
         for _ in range(num_questions):
             selected_events = random.sample(daily_events, 2)
@@ -721,7 +943,7 @@ class QATemporalGenerator(BaseQAGenerator):
             if question_data:
                 questions.append(question_data)
         
-        print(f"[Time Difference Questions] 生成了 {len(questions)} 个时间差计算问题")
+        #print(f"[Time Difference Questions] 生成了 {len(questions)} 个时间差计算问题")
         return questions
     
     def _generate_duration_analysis_questions(self, events: List[Dict[str, Any]], year: int) -> List[Dict[str, Any]]:
@@ -2457,12 +2679,16 @@ class QATemporalGenerator(BaseQAGenerator):
         {json.dumps(daily_events_on_date2, ensure_ascii=False, indent=2) if daily_events_on_date2 else '无其他事件'}
                 
         **任务要求**
-                
+                        
         1. **问题设计规范**：
-           - 问题应该涉及时间推理，例如：“事件1的X天/星期后，我做了什么？”
-           - 题面中只描述事件1的细节，不直接提及事件2
-           - 回答者必须根据日期计算（事件1日期 + X天/星期），然后推理定位到事件2
-           - **关键：题面必须包含能唯一定位事件2的最小信息**
+           - 问题应该涉及时间推理,例如:"事件1的X天/星期后,我做了什么?"
+           - **题面对事件1的描述必须带有月份信息**（如"5月我去云南旅游回来后"）
+           - **如果事件1本身比较模糊或是可能经常发生的事件,必须带上事件1的具体日期**（如"5月10日我跑步回来后"）
+             * 判断标准:事件名称过于通用(如"吃饭"、"开会"、"运动")、缺少独特特征、或可能在多日重复发生
+             * 示例:"5月15日锻炼后"、"6月3日完成Python课程学习后"
+           - 题面中只描述事件1的细节,不直接提及事件2
+           - 回答者必须根据日期计算(事件1日期 + X天/星期),然后推理定位到事件2
+           - **关键:题面必须包含能唯一定位事件2的最小信息**
              * **最小信息原则**：只给出能区别于当天其他事件的最少必要信息，不要添加冗余细节
              * 仔细查看【事件2日期当天的其他事件】列表，分析哪些特征能唯一区分事件2
              * 如果某个特征足以唯一定位，就不要添加额外信息

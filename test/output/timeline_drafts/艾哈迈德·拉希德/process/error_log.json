@@ -1,0 +1,5 @@
+{
+  "error": "'Scheduler' object has no attribute 'extract_important_nodes'",
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\pyCharmProjects\\pythonProject4\\event\\copy\\scheduler.py\", line 1331, in generate_yearly_timeline_draft\n    important_nodes = self.extract_important_nodes(persona=persona)\nAttributeError: 'Scheduler' object has no attribute 'extract_important_nodes'\n",
+  "timestamp": "2026-04-18 16:17:07"
+}

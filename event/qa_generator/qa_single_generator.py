@@ -14,7 +14,7 @@ from event.templates.template_qa import (
     QUESTION_SCREENING_OPTIMIZATION_TEMPLATE,
     PHONE_OPERATIONS_REGENERATION_TEMPLATE1
 )
-from utils.llm_call import llm_call, llm_call_reason
+from utils.llm_call import llm_call, llm_call_reason, llm_call_j
 from .phone_operation_generator import PhoneOperationGenerator
 from .base_generator import BaseQAGenerator
 
@@ -31,7 +31,9 @@ class QASingleGenerator(BaseQAGenerator):
     5. Output: 输出最终问题
     """
     
-    def __init__(self, phone_data_dir: str = None, is_print: bool = True):
+    def __init__(self, daily_event: List[Dict], event_tree: List[Dict],
+                 draft_event: Dict[str, List], phonedata: Dict[str, List],
+                 phone_data_dir: str = None, is_print: bool = True):
         """
         初始化单跳 QA 生成器
             
@@ -40,8 +42,12 @@ class QASingleGenerator(BaseQAGenerator):
             is_print: 是否打印 Agent 的 LLM 输出，默认 True
         """
         # 调用父类的 __init__
+        #print(phone_data_dir)
         super().__init__(phone_data_dir=phone_data_dir)
-        
+        self.daily_event = daily_event
+        self.event_tree = event_tree
+        self.draft_event = draft_event
+        self.phonedata = phonedata
         # 初始化 QASingleGenerator 特有的属性
         self.phonedata_lock = threading.Lock()
         self.phone_id_lock = threading.Lock()
@@ -822,8 +828,8 @@ class QASingleGenerator(BaseQAGenerator):
            - 考虑问题怎么设计需要根据手机数据推理，且具有一定的难度。
            
         **手机数据规划原则**
-           - **避免冗余**：如果现有手机数据已经足以回答问题，不要新增多余的数据
-           - **干扰数据例外**：只有为了增加检索难度的干扰/迷惑性数据才值得新增
+           - **避免冗余**：如果现有手机数据已经足以回答问题，不要新增多余的数据。让主要信息反映在尽可能少的数据条目中。
+           - **干扰数据例外**：只有为了增加检索难度的干扰/迷惑性数据才值得新增（这种数据不包含能回答问题的信息）
            - **删除不合理数据**：当发现手机数据与问题不匹配、相互矛盾或明显冗余时，应该删除
            - **精简优先**：保持手机数据的精简性和合理性，宁缺毋滥
             
@@ -922,6 +928,7 @@ class QASingleGenerator(BaseQAGenerator):
         - 如果润色后的问题需要新的证据支持，可以补充生成
         - 如果某些手机数据与润色后的问题不匹配，可以删除或修改
         - 确保手机数据与问题和答案保持一致性和逻辑连贯性
+        
         
         请以 JSON 格式返回：
         {{
@@ -1423,6 +1430,11 @@ class QASingleGenerator(BaseQAGenerator):
             final_question['ask_time'] = f"{year}-{str(random_month).zfill(2)}"
             final_question['question_type'] = 'single_hop'
             
+            # 删除内部使用字段
+            final_question.pop('design_rationale', None)
+            final_question.pop('strategy_narrative', None)
+            final_question.pop('target_event', None)
+            
             monthly_qa.append(final_question)
         
         print(f"========== {year}-{month:02d} 完成，生成 {len(monthly_qa)} 个问题 ==========")
@@ -1484,15 +1496,259 @@ class QASingleGenerator(BaseQAGenerator):
                 except Exception as e:
                     print(f"[QAGen] 问题生成异常：{e}")
         
+        # 过滤和优化生成的问题
+        print("\n[QAGen] 开始过滤和优化生成的问题...")
+        filtered_qa = self._filter_and_refine_questions(all_qa)
+        
         # 保存到文件
         if output_path is None:
             parent_dir = os.path.dirname(self.phone_data_dir)
             output_path = os.path.join(parent_dir, "single_hop_qa.json")
         
         with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(all_qa, f, ensure_ascii=False, indent=2)
+            json.dump(filtered_qa, f, ensure_ascii=False, indent=2)
         
         print(f"\n问答对已成功写入文件：{output_path}")
-        print(f"共生成 {len(all_qa)} 个问答对\n")
+        print(f"共生成 {len(filtered_qa)} 个问答对（过滤前：{len(all_qa)}）\n")
         
-        return all_qa
+        return filtered_qa
+    
+    def _filter_and_refine_questions(self, questions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """
+        使用 20 线程并行过滤和优化问题
+        
+        工作流程：
+        1. 检查问题和答案是否可以根据 evidence 推断回答
+        2. 如果可以，则通过
+        3. 否则重新设计问题和答案
+        4. 若难以设计则抛弃
+        
+        Args:
+            questions: 待过滤的问题列表
+            
+        Returns:
+            过滤和优化后的问题列表
+        """
+        import concurrent.futures
+        
+        print(f"\n{'='*80}")
+        print(f"[Filter & Refine] 开始并行过滤和优化 {len(questions)} 个问题...")
+        print(f"{'='*80}")
+        
+        # 用于存储结果的字典（保持顺序）
+        results_dict = {}
+        
+        def process_single_question(idx: int, question: Dict[str, Any]) -> Tuple[int, Dict[str, Any], bool]:
+            """
+            处理单个问题的过滤和优化
+            
+            Args:
+                idx: 问题索引
+                question: 问题对象
+                
+            Returns:
+                (索引, 优化后的问题或 None, 是否保留)
+            """
+            try:
+                print(f"\n[Filter Thread {idx + 1}/{len(questions)}] 开始处理问题...")
+                
+                # 构建评估 prompt
+                eval_prompt = f"""
+                作为 QA 质量评估专家，请仔细分析以下问答对的质量。
+                
+                【问题】
+                {question.get('question', '')}
+                
+                【答案】
+                {question.get('answer', '')}
+                
+                【证据数据】
+                {json.dumps(question.get('evidence', []), ensure_ascii=False, indent=2)}
+                
+                **评估任务**
+                
+                1. **可回答性检查（核心）**
+                   - 基于现有 evidence，能否准确回答问题？
+                   - 关键信息（时间、地点、人物、事件）是否齐全？
+                   - 答案是否能完全从 evidence 中推理出来？
+                   - 是否存在幻觉或编造的信息？
+                
+                2. **题面合理性检查**
+                   - 问题表述是否逻辑清晰、无矛盾？
+                   - 问题是否可以已经 evidence 回答？
+                
+                3. **答案合理性检查**
+                   - 答案是否完整回答了问题？
+                   - 答案内部逻辑是否自洽？
+                   - 答案中的事实是否与 evidence 中的数据严格匹配？
+                
+                **决策规则**
+                
+                ### 情况 A：问题和答案可以根据 evidence 推断回答
+                - **判断标准**：
+                  * evidence 充足，能支撑答案
+                  * 答案准确、无幻觉
+                  * 问题表述合理
+                - **处理方式**：**通过**
+                
+                ### 情况 B：无法根据 evidence 推断回答，但可以重新设计
+                - **判断标准**：
+                  * evidence 与问题不匹配，或答案有幻觉
+                  * 但 evidence 中有足够的信息可以设计一个合理的新问题
+                - **处理方式**：**重新设计问题和答案**
+                - **设计要求**：
+                  * 新问题必须能从 evidence 中推理出来
+                  * 新答案必须严格基于 evidence
+                  * 增加难度：需要综合分析多个证据点
+                
+                ### 情况 C：难以设计出合理问题
+                - **判断标准**：
+                  * evidence 不足或与问题完全不相关
+                  * 无法从 evidence 中设计出有意义的问答对
+                - **处理方式**：**抛弃该问题**
+                
+                **输出格式**
+                请以 JSON 格式返回评估结果：
+                {{
+                    "decision": "pass/redesign/discard",
+                    "analysis": "详细分析（包括可回答性、题面合理性、答案合理性）",
+                    "modified_question": null,
+                    "modified_answer": null,
+                    "reason": "决策理由"
+                }}
+                
+                **字段说明**：
+                - `decision`: 决策类型
+                  * `pass`: 问题和答案合理，可以通过
+                  * `redesign`: 需要重新设计问题和答案
+                  * `discard`: 难以设计，直接抛弃
+                - `modified_question`: 在 `redesign` 时必须填写新问题
+                - `modified_answer`: 在 `redesign` 时必须填写新答案
+                """
+                
+                # 调用 LLM 进行评估
+                llm_result = llm_call_j(eval_prompt)
+                print(f"[Filter Thread {idx + 1}] LLM 评估结果: {llm_result}")
+                if self.is_print:
+                    print(f"[Filter Thread {idx + 1}] LLM 评估输出:")
+                    print(str(llm_result)[:300] + "..." if len(str(llm_result)) > 300 else str(llm_result))
+                
+                # 解析 LLM 结果
+                if isinstance(llm_result, str):
+                    start_idx = llm_result.find('{')
+                    end_idx = llm_result.rfind('}') + 1
+                    if start_idx != -1 and end_idx != -1:
+                        llm_result = json.loads(llm_result[start_idx:end_idx])
+                
+                if not isinstance(llm_result, dict):
+                    print(f"[Filter Thread {idx + 1}] LLM 返回格式错误，保留原问题")
+                    return idx, question, True
+                
+                decision = llm_result.get('decision', 'pass')
+                analysis = llm_result.get('analysis', '')
+                reason = llm_result.get('reason', '')
+                
+                print(f"[Filter Thread {idx + 1}] 决策：{decision}")
+                print(f"  理由：{reason[:100]}..." if len(reason) > 100 else f"  理由：{reason}")
+                
+                # 根据决策执行相应操作
+                if decision == 'pass':
+                    # 情况 A：通过
+                    print(f"[Filter Thread {idx + 1}] ✓ 问题质量良好，通过")
+                    return idx, question, True
+                
+                elif decision == 'redesign':
+                    # 情况 B：重新设计
+                    modified_question = llm_result.get('modified_question', '')
+                    modified_answer = llm_result.get('modified_answer', '')
+                    
+                    if modified_question and modified_answer:
+                        # 验证新问题是否真的可以从 evidence 中推理出来
+                        verification_prompt = f"""
+                        请验证以下新问题是否可以从提供的 evidence 中推理出来。
+                        
+                        【新问题】
+                        {modified_question}
+                        
+                        【新答案】
+                        {modified_answer}
+                        
+                        【证据数据】
+                        {json.dumps(question.get('evidence', []), ensure_ascii=False, indent=2)}
+                        
+                        **验证要求**
+                        1. 新问题是否能从 evidence 中推理出来？
+                        2. 新答案是否能完全从 evidence 中推理出来？
+                        3. 是否存在幻觉或编造的信息？
+                        
+                        请以 JSON 格式返回：
+                        {{
+                            "is_valid": true/false,
+                            "reason": "验证理由"
+                        }}
+                        """
+                        
+                        verify_result = llm_call_j(verification_prompt)
+                        
+                        if isinstance(verify_result, str):
+                            start_idx = verify_result.find('{')
+                            end_idx = verify_result.rfind('}') + 1
+                            if start_idx != -1 and end_idx != -1:
+                                verify_result = json.loads(verify_result[start_idx:end_idx])
+                        
+                        if isinstance(verify_result, dict) and verify_result.get('is_valid', False):
+                            question['question'] = modified_question
+                            question['answer'] = modified_answer
+                            print(f"[Filter Thread {idx + 1}] ✓ 问题已重新设计并通过验证")
+                            return idx, question, True
+                        else:
+                            print(f"[Filter Thread {idx + 1}] ✗ 重新设计的问题未通过验证，抛弃")
+                            return idx, None, False
+                    else:
+                        print(f"[Filter Thread {idx + 1}] ✗ 需要重新设计但未提供新问题或答案，抛弃")
+                        return idx, None, False
+                
+                elif decision == 'discard':
+                    # 情况 C：直接抛弃
+                    print(f"[Filter Thread {idx + 1}] ✗ 问题无法修复，抛弃")
+                    return idx, None, False
+                
+                else:
+                    print(f"[Filter Thread {idx + 1}] ⚠ 未知决策类型：{decision}，保留原问题")
+                    return idx, question, True
+            
+            except Exception as e:
+                print(f"[Filter Thread {idx + 1}] 处理异常：{e}，保留原问题")
+                return idx, question, True
+        
+        # 使用 ThreadPoolExecutor 并行处理，最多 20 个线程
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            futures = [
+                executor.submit(process_single_question, idx, question)
+                for idx, question in enumerate(questions)
+            ]
+            
+            # 收集结果
+            completed = 0
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    idx, result, should_keep = future.result()
+                    if should_keep and result is not None:
+                        results_dict[idx] = result
+                    completed += 1
+                    if completed % 10 == 0 or completed == len(futures):
+                        print(f"\n[Filter & Refine] 已完成 {completed}/{len(futures)} 个问题")
+                except Exception as e:
+                    print(f"[Filter & Refine] 结果收集异常：{e}")
+        
+        # 按索引顺序构建结果列表
+        filtered_questions = [results_dict[i] for i in range(len(questions)) if i in results_dict]
+        
+        print(f"\n{'='*80}")
+        print(f"[Filter & Refine] 过滤完成")
+        print(f"  - 原始问题数：{len(questions)}")
+        print(f"  - 保留问题数：{len(filtered_questions)}")
+        print(f"  - 抛弃问题数：{len(questions) - len(filtered_questions)}")
+        print(f"{'='*80}")
+        
+        return filtered_questions

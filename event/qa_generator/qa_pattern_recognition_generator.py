@@ -396,11 +396,15 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
         for question in all_questions:
             question['question_type'] = 'ND'
         
-        # Step 5: 保存结果
-        if all_questions:
-            self._save_questions(all_questions, year)
+        # Step 5: 并行过滤和优化问题
+        print("\n[QAGen] 开始并行过滤和优化问题...")
+        filtered_questions = self._parallel_filter_and_refine(all_questions)
         
-        return all_questions
+        # Step 6: 保存结果
+        if filtered_questions:
+            self._save_questions(filtered_questions, year)
+        
+        return filtered_questions
     
     def _generate_monthly_questions(self, monthly_summary: Dict[str, Any]) -> List[Dict[str, Any]]:
         """
@@ -1058,6 +1062,247 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
             print(f"[Save] 共保存{len(questions)}个问题")
         except Exception as e:
             print(f"[Save] 保存失败：{e}")
+    
+    def _parallel_filter_and_refine(self, questions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """
+        使用 20 线程并行过滤和优化问题
+        
+        工作流程：
+        1. 调用 LLM 分析问题和答案的合理性
+        2. 检查答案是否能根据 evidence 字段推理出来，是否存在幻觉
+        3. 如果题目可回答但答案不合理，只修改答案
+        4. 否则根据 evidence 重新设计题目和答案
+        5. 遇到难以修改成合理的问题，直接抛弃
+        
+        Args:
+            questions: 待过滤的问题列表
+            
+        Returns:
+            过滤和优化后的问题列表
+        """
+        import concurrent.futures
+        
+        print(f"\n{'='*80}")
+        print(f"[Parallel Filter & Refine] 开始并行过滤和优化 {len(questions)} 个问题...")
+        print(f"{'='*80}")
+        
+        # 用于存储结果的字典（保持顺序）
+        results_dict = {}
+        
+        def process_single_question(idx: int, question: Dict[str, Any]) -> Tuple[int, Dict[str, Any], bool]:
+            """
+            处理单个问题的过滤和优化
+            
+            Args:
+                idx: 问题索引
+                question: 问题对象
+                
+            Returns:
+                (索引, 优化后的问题或 None, 是否保留)
+            """
+            try:
+                print(f"\n[Filter Thread {idx + 1}/{len(questions)}] 开始处理问题...")
+                
+                # 构建评估 prompt
+                eval_prompt = f"""
+                作为 QA 质量评估专家，请仔细分析以下问答对的质量。
+                
+                【问题】
+                {question.get('question', '')}
+                
+                【答案】
+                {question.get('answer', '')}
+                
+                【证据数据】
+                {json.dumps(question.get('evidence', []), ensure_ascii=False, indent=2)}
+                
+                **评估任务**
+                
+                1. **题面合理性检查**
+                   - 问题表述是否逻辑清晰、无矛盾？
+                   - 问题是否可以已经evidence回答
+                   - 问题是否过于简单，不需要整合多个evidence推理分析
+                
+                2. **答案合理性检查**
+                   - 答案是否完整回答了问题？
+                   - 答案内部逻辑是否自洽？
+                   - 答案中的事实是否与 evidence 中的数据匹配？
+                
+                3. **可回答性检查（核心）**
+                   - 基于现有 evidence，能否准确回答问题？
+                   - 关键信息（时间、地点、人物、事件）是否齐全？
+                   - 是否存在多个可能的答案？是否有歧义？
+                   - 是否需要多步推理？推理过程是否合理？
+                
+                4. **幻觉检测（核心）**
+                   - 答案中是否有 evidence 中没有的信息？
+                   - 答案是否在编造不存在的事实？
+                   - 答案是否过度推断或臆测？
+                
+                **决策规则**
+                
+                情况 A：题目本身不可回答（evidence 不足或无关）
+                - 判断标准：evidence 与问题完全不相关，或关键信息严重缺失
+                - 处理方式：**尝试根据 evidence 重新设计一个可回答的新问题和新答案**
+                - 要求：新问题必须能从所有 evidence 综合分析提取特征才能回答
+                - 如果无法设计出合理问题：**直接抛弃该问题**
+                
+                情况 B：题目可回答，但答案不合理或有幻觉，或可以优化
+                - 判断标准：evidence 充足，但答案不准确、不完整或包含幻觉
+                - 处理方式：**主要修改答案**，使其与 evidence 一致
+                - 可合理修改问题或重新设计问题，增加难度和合理性（如换一种提问方式，换一种提问点，使其更适配已有证据和修改后的答案，且更合理），但必须保留对月份信息的展现
+                
+                情况 C：题目和答案都合理
+                - 判断标准：题面清晰、答案准确、evidence 充足
+                - 处理方式：**保持不变**
+                
+                请以 JSON 格式返回评估结果：
+                {{
+                    "decision": "keep/modify_answer/redesign/discard",  // 决策类型
+                    "analysis": "详细分析（包括题面、答案、可回答性、幻觉检测）",
+                    "modified_question": null,  // 在 redesign 或 modify_answer时填写新问题
+                    "modified_answer": null,  // 在 modify_answer 或 redesign 时填写新答案
+                    "reason": "决策理由"
+                }}
+                """
+                
+                # 调用 LLM 进行评估
+                llm_result = llm_call_j(eval_prompt)
+                #print(f"[Filter Thread {idx + 1}] LLM 评估结果: {llm_result}")
+                if self.is_print:
+                    print(f"[Filter Thread {idx + 1}] LLM 评估输出:")
+                    print(str(llm_result)[:300] + "..." if len(str(llm_result)) > 300 else str(llm_result))
+                
+                # 解析 LLM 结果
+                if isinstance(llm_result, str):
+                    start_idx = llm_result.find('{')
+                    end_idx = llm_result.rfind('}') + 1
+                    if start_idx != -1 and end_idx != -1:
+                        llm_result = json.loads(llm_result[start_idx:end_idx])
+                
+                if not isinstance(llm_result, dict):
+                    print(f"[Filter Thread {idx + 1}] LLM 返回格式错误，保留原问题")
+                    return idx, question, True
+                
+                decision = llm_result.get('decision', 'keep')
+                analysis = llm_result.get('analysis', '')
+                reason = llm_result.get('reason', '')
+                
+                print(f"[Filter Thread {idx + 1}] 决策：{decision}")
+                print(f"  理由：{reason[:100]}..." if len(reason) > 100 else f"  理由：{reason}")
+                
+                # 根据决策执行相应操作
+                if decision == 'keep':
+                    # 情况 C：保持不变
+                    print(f"[Filter Thread {idx + 1}] ✓ 问题质量良好，保留")
+                    return idx, question, True
+                
+                elif decision == 'modify_answer':
+                    # 情况 B：只修改答案
+                    modified_answer = llm_result.get('modified_answer', '')
+                    if modified_answer:
+                        question['answer'] = modified_answer
+                        print(f"[Filter Thread {idx + 1}] ✓ 答案已修正")
+                        return idx, question, True
+                    else:
+                        print(f"[Filter Thread {idx + 1}] ⚠ 需要修改答案但未提供新答案，保留原问题")
+                        return idx, question, True
+                
+                elif decision == 'redesign':
+                    # 情况 A：重新设计问题和答案
+                    modified_question = llm_result.get('modified_question', '')
+                    modified_answer = llm_result.get('modified_answer', '')
+                    
+                    if modified_question and modified_answer:
+                        # 验证新问题是否真的可以从 evidence 中推理出来
+                        verification_prompt = f"""
+                        请验证以下新问题是否可以从提供的 evidence 中推理出来。
+                        
+                        【新问题】
+                        {modified_question}
+                        
+                        【新答案】
+                        {modified_answer}
+                        
+                        【证据数据】
+                        {json.dumps(question.get('evidence', []), ensure_ascii=False, indent=2)[:2000]}{'...' if len(json.dumps(question.get('evidence', []), ensure_ascii=False, indent=2)) > 2000 else ''}
+                        
+                        **验证要求**
+                        1. 新问题是否需要从所有 evidence 综合分析提取特征才能回答？
+                        2. 新答案是否能完全从 evidence 中推理出来？
+                        3. 是否存在幻觉或编造的信息？
+                        
+                        请以 JSON 格式返回：
+                        {{
+                            "is_valid": true/false,
+                            "reason": "验证理由"
+                        }}
+                        """
+                        
+                        verify_result = llm_call_j(verification_prompt)
+                        
+                        if isinstance(verify_result, str):
+                            start_idx = verify_result.find('{')
+                            end_idx = verify_result.rfind('}') + 1
+                            if start_idx != -1 and end_idx != -1:
+                                verify_result = json.loads(verify_result[start_idx:end_idx])
+                        
+                        if isinstance(verify_result, dict) and verify_result.get('is_valid', False):
+                            question['question'] = modified_question
+                            question['answer'] = modified_answer
+                            print(f"[Filter Thread {idx + 1}] ✓ 问题已重新设计并通过验证")
+                            return idx, question, True
+                        else:
+                            print(f"[Filter Thread {idx + 1}] ✗ 重新设计的问题未通过验证，抛弃")
+                            return idx, None, False
+                    else:
+                        print(f"[Filter Thread {idx + 1}] ✗ 需要重新设计但未提供新问题或答案，抛弃")
+                        return idx, None, False
+                
+                elif decision == 'discard':
+                    # 情况 A：直接抛弃
+                    print(f"[Filter Thread {idx + 1}] ✗ 问题无法修复，抛弃")
+                    return idx, None, False
+                
+                else:
+                    print(f"[Filter Thread {idx + 1}] ⚠ 未知决策类型：{decision}，保留原问题")
+                    return idx, question, True
+            
+            except Exception as e:
+                print(f"[Filter Thread {idx + 1}] 处理异常：{e}，保留原问题")
+                return idx, question, True
+        
+        # 使用 ThreadPoolExecutor 并行处理，最多 20 个线程
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            futures = [
+                executor.submit(process_single_question, idx, question)
+                for idx, question in enumerate(questions)
+            ]
+            
+            # 收集结果
+            completed = 0
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    idx, result, should_keep = future.result()
+                    if should_keep and result is not None:
+                        results_dict[idx] = result
+                    completed += 1
+                    if completed % 10 == 0 or completed == len(futures):
+                        print(f"\n[Parallel Filter & Refine] 已完成 {completed}/{len(futures)} 个问题")
+                except Exception as e:
+                    print(f"[Parallel Filter & Refine] 结果收集异常：{e}")
+        
+        # 按索引顺序构建结果列表
+        filtered_questions = [results_dict[i] for i in range(len(questions)) if i in results_dict]
+        
+        print(f"\n{'='*80}")
+        print(f"[Parallel Filter & Refine] 过滤完成")
+        print(f"  - 原始问题数：{len(questions)}")
+        print(f"  - 保留问题数：{len(filtered_questions)}")
+        print(f"  - 抛弃问题数：{len(questions) - len(filtered_questions)}")
+        print(f"{'='*80}")
+        
+        return filtered_questions
     
     def check_agent(self, question: Dict[str, Any], month_key: str) -> Dict[str, Any]:
         """

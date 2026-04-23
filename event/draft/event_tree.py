@@ -772,7 +772,7 @@ class EventTree:
 
         return processed_nodes
 
-    def event_decomposer(self, events: List[Dict[str, Any]], file: str, max_workers: int = 10):
+    def event_decomposer(self, events: List[Dict[str, Any]], file: str, max_workers: int = 20):
         """
         主函数：DFS并行分解事件为树形结构（基于decompose标记自动终止）
         Args:

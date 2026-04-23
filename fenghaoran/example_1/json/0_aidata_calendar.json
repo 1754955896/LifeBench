@@ -1,0 +1,4097 @@
+[
+  {
+    "id": "Calendar-0",
+    "generation_source": "159-5",
+    "title": "专注工作规划时段",
+    "description": "2025-01-01 09:20 开始，在书房进行深度工作，规划CFA三级备考甘特图和起草客户服务优化方案，来源：个人日程安排",
+    "startTime": "2025-01-01 09:20:00",
+    "endTime": "2025-01-01 12:00:00",
+    "generation_source_continue": "159-a"
+  },
+  {
+    "id": "Calendar-1",
+    "generation_source": "161-1",
+    "title": "美年大健康体检预约",
+    "description": "美年大健康全面体检，2025-01-09 08:00 开始，需空腹，预约码 MN202501091234，凭身份证前往，来源：美年大健康APP",
+    "startTime": "2025-01-09 08:00:00",
+    "endTime": "2025-01-09 08:00:00",
+    "generation_source_continue": "161-a"
+  },
+  {
+    "id": "Calendar-2",
+    "generation_source": "160-2-1",
+    "title": "部门年初工作会议",
+    "description": "部门年初工作会议，2025-01-03 09:30 开始，地点：华泰证券会议室，需准备个人工作汇报和上年度成果展示，来源：公司内部日程",
+    "startTime": "2025-01-03 09:30:00",
+    "endTime": "2025-01-03 12:00:00",
+    "generation_source_continue": "160-b"
+  },
+  {
+    "id": "Calendar-3",
+    "generation_source": "175-1",
+    "title": "限定咖啡豆品鉴会",
+    "description": "计划参加周末的限定咖啡豆品鉴会，对埃塞俄比亚、哥伦比亚和云南的豆子很感兴趣。已调整周末安排，预留出时间参加。",
+    "startTime": "2025-01-04 14:00:00",
+    "endTime": "2025-01-04 17:00:00",
+    "generation_source_continue": "175-a"
+  },
+  {
+    "id": "Calendar-4",
+    "generation_source": "1-1",
+    "title": "CFA备考学习与规划",
+    "description": "CFA备考学习与规划，2025-01-03 20:00 开始，重点学习道德与专业准则科目，并制定详细备考时间表，来源：个人学习计划",
+    "startTime": "2025-01-03 20:00:00",
+    "endTime": "2025-01-03 22:20:00",
+    "generation_source_continue": "1-a"
+  },
+  {
+    "id": "Calendar-5",
+    "generation_source": "163-1-1",
+    "title": "潮宗街主题街拍",
+    "description": "潮宗街历史文化街区主题街拍，2025-01-05 09:15 开始，专注于老街清晨生活气息与建筑光影，来源：个人摄影计划",
+    "startTime": "2025-01-05 09:15:00",
+    "endTime": "2025-01-05 09:15:00",
+    "generation_source_continue": "163-a"
+  },
+  {
+    "id": "Calendar-6",
+    "generation_source": "1-1",
+    "title": "CFA 三级备考学习",
+    "description": "CFA 三级备考学习，2025-01-06 21:00 开始，专注阅读资产管理中的职业操守章节并完成练习题，来源：个人备考计划",
+    "startTime": "2025-01-06 21:00:00",
+    "endTime": "2025-01-06 22:30:00",
+    "generation_source_continue": "1-a"
+  },
+  {
+    "id": "Calendar-7",
+    "generation_source": "",
+    "title": "与母亲视频通话讨论保险",
+    "description": "与母亲李秀英视频通话讨论保险方案，2025-01-08 19:30 开始，预计时长30分钟，需解释筛选产品的保障范围、理赔流程和注意事项，并询问父亲体检报告细节，来源：今日事件安排",
+    "startTime": "2025-01-08 19:30:00",
+    "endTime": "2025-01-08 20:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-8",
+    "generation_source": "161-2-1",
+    "title": "年度健康体检",
+    "description": "美年大健康体检中心(鸥波港湾)，2025-01-09 08:05 开始，需空腹，携带身份证和预约单，来源：体检中心预约确认",
+    "startTime": "2025-01-09 08:05:00",
+    "endTime": "2025-01-09 08:05:00",
+    "generation_source_continue": "161-b"
+  },
+  {
+    "id": "Calendar-9",
+    "generation_source": "172-1",
+    "title": "与父母视频讨论健康保障",
+    "description": "与父母微信视频通话，讨论父亲体检报告（血压、低密度脂蛋白临界指标）及补充医疗保险产品方案，2025-01-10 21:00 开始，来源：个人安排",
+    "startTime": "2025-01-10 21:00:00",
+    "endTime": "2025-01-10 21:40:00",
+    "generation_source_continue": "172-a"
+  },
+  {
+    "id": "Calendar-10",
+    "generation_source": "162-2-2",
+    "title": "春季露营",
+    "description": "地点：长沙周边水库露营地\n备注：需准备装备和食材清单",
+    "startTime": "2025-03-15 09:00:00",
+    "endTime": "2025-03-16 18:00:00",
+    "generation_source_continue": "162-b"
+  },
+  {
+    "id": "Calendar-11",
+    "generation_source": "3-2",
+    "title": "深度年度财务复盘与报告生成",
+    "description": "2025-01-11 10:05 开始，在家中进行2024年全年财务深度复盘，核对流水、账单，计算收支储蓄率，分析投资组合并生成图表，来源：个人日程安排",
+    "startTime": "2025-01-11 10:05:00",
+    "endTime": "2025-01-11 12:35:00",
+    "generation_source_continue": "3-j"
+  },
+  {
+    "id": "Calendar-12",
+    "generation_source": "165-1-1",
+    "title": "制定新年个人投资策略",
+    "description": "制定2025年上半年个人投资策略，2025-01-12 10:00开始，基于年度财务复盘数据，明确稳健为先、捕捉成长的核心思路，设定新的资产配置比例，来源：个人财务规划",
+    "startTime": "2025-01-12 10:00:00",
+    "endTime": "2025-01-12 12:00:00",
+    "generation_source_continue": "165-a"
+  },
+  {
+    "id": "Calendar-13",
+    "generation_source": "165-1-2",
+    "title": "完成投资持仓调整准备",
+    "description": "根据上午制定的策略，在证券APP中列出拟调整的持仓清单，包括卖出个股和买入基金/股票的具体代码、价格区间和数量，并设置周一开盘提醒，来源：个人投资执行计划",
+    "startTime": "2025-01-12 14:40:00",
+    "endTime": "2025-01-12 15:20:00",
+    "generation_source_continue": "165-a"
+  },
+  {
+    "id": "Calendar-14",
+    "generation_source": "164-1-2",
+    "title": "客户视频会议",
+    "description": "与核心客户黄思琪进行视频会议，2025-01-13 14:00 开始，会议链接已发送至邮箱，需准备ESG整合投资方案，来源：华泰证券内部日程",
+    "startTime": "2025-01-13 14:00:00",
+    "endTime": "2025-01-13 15:30:00",
+    "generation_source_continue": "164-a"
+  },
+  {
+    "id": "Calendar-15",
+    "generation_source": "165-2",
+    "title": "执行投资持仓调整",
+    "description": "2025-01-14 09:30 开始执行预设的卖出和买入指令，操作交易系统，记录交易日志，来源：当日工作安排",
+    "startTime": "2025-01-14 09:30:00",
+    "endTime": "2025-01-14 09:30:00",
+    "generation_source_continue": "165-b"
+  },
+  {
+    "id": "Calendar-16",
+    "generation_source": "164-2",
+    "title": "向钱总汇报客户进展",
+    "description": "2025-01-14 10:20 向投资总监钱永强汇报黄思琪客户案例进展及股权激励方案思路，来源：当日工作安排",
+    "startTime": "2025-01-14 10:20:00",
+    "endTime": "2025-01-14 10:50:00",
+    "generation_source_continue": "164-b"
+  },
+  {
+    "id": "Calendar-17",
+    "generation_source": "16-4",
+    "title": "整理学习环境与工具",
+    "description": "清理书桌、整理新教材和文具、在电脑上建立各科目学习文件夹。",
+    "startTime": "2025-01-15 09:00:00",
+    "endTime": "2025-01-15 11:00:00",
+    "generation_source_continue": "16-d"
+  },
+  {
+    "id": "Calendar-18",
+    "generation_source": "171-4",
+    "title": "研究股权激励税务影响",
+    "description": "聚焦于股权激励对员工个人（个人所得税）和公司（企业所得税抵扣）的税务影响，分析不同持有期、行权时机下的税负差异，并查阅相关税法条文和税务筹划案例。",
+    "startTime": "2025-01-16 00:00:00",
+    "endTime": "2025-01-16 23:59:59",
+    "generation_source_continue": "171-d"
+  },
+  {
+    "id": "Calendar-19",
+    "generation_source": "162-4",
+    "title": "松雅湖生态营地露营预订",
+    "description": "松雅湖生态营地临湖帐篷位与早餐套餐预订，2025-03-15 至 2025-03-16，预定码 CAMP20250115，凭身份证办理入住，来源：营地官网",
+    "startTime": "2025-03-15 14:00:00",
+    "endTime": "2025-03-16 12:00:00",
+    "generation_source_continue": "162-d"
+  },
+  {
+    "id": "Calendar-20",
+    "generation_source": "16-5",
+    "title": "制定CFA三级备考月度计划",
+    "description": "CFA三级备考月度计划制定，2025-01-16 20:00 开始，预计时长1小时15分钟，地点：家中书房，来源：个人学习规划",
+    "startTime": "2025-01-16 20:00:00",
+    "endTime": "2025-01-16 21:15:00",
+    "generation_source_continue": "16-e"
+  },
+  {
+    "id": "Calendar-21",
+    "generation_source": "171-5",
+    "title": "与客户黄思琪电话会议",
+    "description": "与客户黄思琪进行视频电话会议，时间 2025-01-17 15:45，讨论股权激励分析框架与优化后的投资方案，来源：今日事件安排",
+    "startTime": "2025-01-17 15:45:00",
+    "endTime": "2025-01-17 16:30:00",
+    "generation_source_continue": "171-e"
+  },
+  {
+    "id": "Calendar-22",
+    "generation_source": "",
+    "title": "加班处理客户林志豪紧急需求",
+    "description": "加班分析客户林志豪的境外资产配置紧急调整需求，时间 2025-01-17 18:00，需与同事孙晓雅同步分析，来源：今日事件安排",
+    "startTime": "2025-01-17 18:00:00",
+    "endTime": "2025-01-17 19:20:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-23",
+    "generation_source": "174-1",
+    "title": "跟进徐佳宁理财咨询",
+    "description": "上午收到徐佳宁微信，咨询个人储蓄及基金定投建议。需后续安排时间详细沟通。",
+    "startTime": "2025-01-19 09:00:00",
+    "endTime": "2025-01-19 09:30:00",
+    "generation_source_continue": "174-a"
+  },
+  {
+    "id": "Calendar-24",
+    "generation_source": "173-1",
+    "title": "与妈妈视频通话",
+    "description": "准备与妈妈视频通话。整理客厅环境，检查网络和设备，准备好分享的工作和生活近况要点。",
+    "startTime": "2025-01-19 20:00:00",
+    "endTime": "2025-01-19 21:00:00",
+    "generation_source_continue": "173-a"
+  },
+  {
+    "id": "Calendar-25",
+    "generation_source": "171-7",
+    "title": "下午工作与个人事务",
+    "description": "下午工作与个人事务，2025-01-20 14:20 开始，处理客户沟通、预约会议，并规划春节返乡行程，来源：当日事件安排",
+    "startTime": "2025-01-20 14:20:00",
+    "endTime": "2025-01-20 17:30:00",
+    "generation_source_continue": "171-g"
+  },
+  {
+    "id": "Calendar-26",
+    "generation_source": "",
+    "title": "上午工作启动与客户方案终审",
+    "description": "上午工作启动，包含处理紧急邮件、审阅徐佳宁理财方案PPT、准备黄思琪会议材料，并与同事郑文博沟通，来源：当日工作安排",
+    "startTime": "2025-01-22 09:30:00",
+    "endTime": "2025-01-22 10:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-27",
+    "generation_source": "174-3",
+    "title": "与客户徐佳宁语音沟通方案",
+    "description": "在小会议室通过微信语音与客户徐佳宁沟通理财方案，讲解PPT并解答风险参数与备用方案疑问，来源：当日工作安排",
+    "startTime": "2025-01-22 13:00:00",
+    "endTime": "2025-01-22 13:30:00",
+    "generation_source_continue": "174-c"
+  },
+  {
+    "id": "Calendar-28",
+    "generation_source": "",
+    "title": "林志豪紧急项目启动会议",
+    "description": "与客户林志豪进行视频会议，确认房地产项目资金需求，提出资产盘活初步思路，会后着手搭建财务模型，来源：当日工作安排",
+    "startTime": "2025-01-22 13:30:00",
+    "endTime": "2025-01-22 15:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-29",
+    "generation_source": "",
+    "title": "与客户黄思琪视频会议",
+    "description": "股权激励方案深度视频会议，2025-01-23 10:00:00 开始，会议号 123456，来源：Teams 日程邀请",
+    "startTime": "2025-01-23 10:00:00",
+    "endTime": "2025-01-23 11:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-30",
+    "generation_source": "174-4",
+    "title": "与徐佳宁跟进方案",
+    "description": "询问方案疑问，约定执行时联系调整细节，巩固跨领域友谊",
+    "startTime": "2025-01-24 10:00:00",
+    "endTime": "2025-01-24 10:30:00",
+    "generation_source_continue": "174-d"
+  },
+  {
+    "id": "Calendar-31",
+    "generation_source": "178-1-2",
+    "title": "收集市场研究报告",
+    "description": "为黄思琪投资组合筛选并下载宏观经济、行业及个股深度研报",
+    "startTime": "2025-01-24 09:00:00",
+    "endTime": "2025-01-24 11:00:00",
+    "generation_source_continue": "178-a"
+  },
+  {
+    "id": "Calendar-32",
+    "generation_source": "168-3",
+    "title": "与罗振宇线上交流",
+    "description": "与罗振宇讨论论坛内容，约定下次交流时间。",
+    "startTime": "2025-01-24 15:00:00",
+    "endTime": "2025-01-24 16:00:00",
+    "generation_source_continue": "168-c"
+  },
+  {
+    "id": "Calendar-33",
+    "generation_source": "",
+    "title": "回家后整理与放松",
+    "description": "时间 2025-01-26 17:45:00 开始，进行返乡前最终整理与放松，包括整理行李、核对高铁信息、与家人联络等，来源：当日计划",
+    "startTime": "2025-01-26 17:45:00",
+    "endTime": "2025-01-26 20:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-34",
+    "generation_source": "",
+    "title": "早餐与确认返乡行程",
+    "description": "早餐与确认返乡行程，2025-01-27 08:00 开始，2025-01-27 08:45 结束，地点：家中，来源：当日事件安排",
+    "startTime": "2025-01-27 08:00:00",
+    "endTime": "2025-01-27 08:45:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-35",
+    "generation_source": "1-8",
+    "title": "上午工作处理与客户方案审核",
+    "description": "上午工作处理与客户方案审核，2025-01-27 09:30 开始，2025-01-27 10:45 结束，地点：华泰证券办公室，来源：当日事件安排",
+    "startTime": "2025-01-27 09:30:00",
+    "endTime": "2025-01-27 10:45:00",
+    "generation_source_continue": "1-j"
+  },
+  {
+    "id": "Calendar-36",
+    "generation_source": "169-4",
+    "title": "G1002 次列车（长沙南 - 武汉）",
+    "description": "G1002 次列车（长沙南站→武汉站），2025-01-28 09:50 发车，座位 2车12F，凭身份证检票，来源：12306",
+    "startTime": "2025-01-28 09:50:00",
+    "endTime": "2025-01-28 09:50:00",
+    "generation_source_continue": "169-d"
+  },
+  {
+    "id": "Calendar-37",
+    "generation_source": "",
+    "title": "行前准备与睡前活动",
+    "description": "2025-02-01 20:00 开始，进行最终行前检查，核对身份证、行李等物品，阅读《周期》并复盘，设定明日闹钟，来源：当日事件",
+    "startTime": "2025-02-01 20:00:00",
+    "endTime": "2025-02-01 22:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-38",
+    "generation_source": "170-6-4",
+    "title": "返程高铁 G1005 次（武汉 - 长沙）",
+    "description": "G1005 次列车（武汉站→长沙南站），2025-02-03 08:00 发车，座位号 08 车 12F，凭身份证检票，来源：12306",
+    "startTime": "2025-02-03 08:00:00",
+    "endTime": "2025-02-03 08:00:00",
+    "generation_source_continue": "170-f"
+  },
+  {
+    "id": "Calendar-39",
+    "generation_source": "178-2-2",
+    "title": "深度工作准备：整理团队资料与梳理会议思路",
+    "description": "整理节后宏观经济数据、行业政策文件及上市公司业绩预告，更新至团队共享盘；梳理明日团队复盘会思路，撰写引导性问题清单，包括客户止损策略回顾、上季度业绩归因和节后布局方向，来源：个人工作计划",
+    "startTime": "2025-02-04 08:45:00",
+    "endTime": "2025-02-04 11:45:00",
+    "generation_source_continue": "178-b"
+  },
+  {
+    "id": "Calendar-40",
+    "generation_source": "170-6-5",
+    "title": "复工首日日程安排",
+    "description": "2025-02-04 09:00 公司晨会，2025-02-04 10:30 客户林总视频会议，2025-02-04 14:00 撰写资产建议草稿，2025-02-04 16:30 团队复盘会，来源：个人规划",
+    "startTime": "2025-02-04 09:00:00",
+    "endTime": "2025-02-04 18:00:00",
+    "generation_source_continue": "170-f"
+  },
+  {
+    "id": "Calendar-41",
+    "generation_source": "178-2-2",
+    "title": "处理客户紧急咨询并线上购买生活补给",
+    "description": "处理客户黄思琪关于节后市场波动的关切邮件，提供宏观数据截图和初步分析，承诺明日收盘后提交详细报告；同时在线上平台订购未来三天的蔬菜、蛋白质食材和咖啡胶囊，来源：工作邮件与个人生活安排",
+    "startTime": "2025-02-04 13:00:00",
+    "endTime": "2025-02-04 14:00:00",
+    "generation_source_continue": "178-b"
+  },
+  {
+    "id": "Calendar-42",
+    "generation_source": "182-1",
+    "title": "与父亲视频讨论家庭财务",
+    "description": "与父亲冯建国视频通话讨论家庭财务规划，2025-02-14 20:00 开始，请父亲提前整理相关资料，来源：微信约定",
+    "startTime": "2025-02-14 20:00:00",
+    "endTime": "2025-02-14 21:30:00",
+    "generation_source_continue": "182-a"
+  },
+  {
+    "id": "Calendar-43",
+    "generation_source": "178-3-2",
+    "title": "团队季度投资复盘会",
+    "description": "团队季度投资复盘会，2025-02-06 09:30 开始，地点：公司大会议室，主持：冯浩然，参会：郑文博、孙晓雅（远程）等，来源：公司会议安排",
+    "startTime": "2025-02-06 09:30:00",
+    "endTime": "2025-02-06 12:00:00",
+    "generation_source_continue": "178-c"
+  },
+  {
+    "id": "Calendar-44",
+    "generation_source": "",
+    "title": "紧急处理客户林志豪项目",
+    "description": "紧急处理客户林志豪的投资方案数据更新与风险收益比调整，2025-02-05 20:00 开始，来源：客户紧急邮件",
+    "startTime": "2025-02-05 20:00:00",
+    "endTime": "2025-02-05 21:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-45",
+    "generation_source": "180-1",
+    "title": "整理返乡行李并确认行程",
+    "description": "整理给父母的湖南特产（酱板鸭、黑茶）和礼物，根据武汉天气预报搭配衣物，检查笔记本电脑、充电器、相机等设备，确认G1005次高铁电子车票，来源：个人安排",
+    "startTime": "2025-02-08 10:00:00",
+    "endTime": "2025-02-08 11:30:00",
+    "generation_source_continue": "180-a"
+  },
+  {
+    "id": "Calendar-46",
+    "generation_source": "195-1",
+    "title": "G1005 次列车（长沙南 - 武汉）",
+    "description": "G1005 次列车（长沙南站→武汉站），2025-02-08 18:20 发车，座位号 08车12F，凭身份证检票，来源：12306",
+    "startTime": "2025-02-08 18:20:00",
+    "endTime": "2025-02-08 18:20:00",
+    "generation_source_continue": "195-a"
+  },
+  {
+    "id": "Calendar-47",
+    "generation_source": "4-8",
+    "title": "与黄思琪视频会议",
+    "description": "通过视频会议系统与客户黄思琪连线，汇报市场波动下的资产配置调整建议，并听取对方新的投资需求。双方就科技行业趋势进行了深入讨论，会议有效巩固了客户关系并明确下一步行动方向。",
+    "startTime": "2025-02-09 14:30:00",
+    "endTime": "2025-02-09 16:00:00",
+    "generation_source_continue": "4-i"
+  },
+  {
+    "id": "Calendar-48",
+    "generation_source": "181-2",
+    "title": "除夕年夜饭",
+    "description": "除夕年夜饭，2025-02-09 17:30 开始，地点：父母家餐厅，参与人：冯浩然、冯建国、李秀英、冯欣然，来源：家庭安排",
+    "startTime": "2025-02-09 17:30:00",
+    "endTime": "2025-02-09 20:00:00",
+    "generation_source_continue": "181-b"
+  },
+  {
+    "id": "Calendar-49",
+    "generation_source": "198-1",
+    "title": "晋升材料整理启动",
+    "description": "启动个人晋升材料整理工作，2025-02-10 20:00 开始，需登录公司安全系统导出业绩数据并搭建可视化图表框架，来源：今日事件规划",
+    "startTime": "2025-02-10 20:00:00",
+    "endTime": "2025-02-10 21:15:00",
+    "generation_source_continue": "198-a"
+  },
+  {
+    "id": "Calendar-50",
+    "generation_source": "4-3-3",
+    "title": "与父亲讨论家庭财务与医疗保障",
+    "description": "与父亲冯建国在父母家书房讨论家庭财务与医疗保障，2025-02-11 09:45开始，主要涉及资产盘点、现有保单梳理及未来大额医疗支出担忧，来源：家庭约定",
+    "startTime": "2025-02-11 09:45:00",
+    "endTime": "2025-02-11 11:30:00",
+    "generation_source_continue": "4-c"
+  },
+  {
+    "id": "Calendar-51",
+    "generation_source": "4-3-3",
+    "title": "与周雨薇视频讨论保险研究",
+    "description": "与大学同学周雨薇进行视频会议，讨论老年医疗补充保险研究，2025-02-11 16:40开始，共享屏幕展示产品对比表格，从产品设计、公司资质等角度提供外部视角，来源：微信约定",
+    "startTime": "2025-02-11 16:40:00",
+    "endTime": "2025-02-11 17:10:00",
+    "generation_source_continue": "4-c"
+  },
+  {
+    "id": "Calendar-52",
+    "generation_source": "197-4-1",
+    "title": "保险决策分析与视频敲定",
+    "description": "与父亲冯建国进行微信视频通话，共享屏幕解释A、B保险产品差异，回答关于保费和理赔流程的疑问，最终共同决定投保B产品，承诺后续完成线上操作，来源：当日家庭事务",
+    "startTime": "2025-02-13 09:40:00",
+    "endTime": "2025-02-13 11:15:00",
+    "generation_source_continue": "197-d"
+  },
+  {
+    "id": "Calendar-53",
+    "generation_source": "183-3-3",
+    "title": "Gxxxx次高铁（武汉 - 长沙）",
+    "description": "Gxxxx次高铁（武汉站→长沙南站），2025-02-14 12:20 发车，座位号 08车12F，凭身份证检票，来源：铁路12306",
+    "startTime": "2025-02-14 12:20:00",
+    "endTime": "2025-02-14 12:20:00",
+    "generation_source_continue": "183-c"
+  },
+  {
+    "id": "Calendar-54",
+    "generation_source": "",
+    "title": "晚间事务处理与就寝准备",
+    "description": "打开铁路12306 APP，最终确认并购买2025年2月15日上午9:24从武汉站出发、11:42抵达长沙南站的G1103次列车二等座车票，将订单信息截图发给家庭微信群和室友吴俊杰，来源：当日个人事务",
+    "startTime": "2025-02-13 20:45:00",
+    "endTime": "2025-02-13 22:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-55",
+    "generation_source": "197-5-1",
+    "title": "家庭保险线上投保",
+    "description": "家庭保险线上投保，2025-02-15 09:00 开始，需登录保险平台填写父母信息、完成健康告知并支付保费，生成电子保单后发送给父亲并致电说明，来源：今日事件安排",
+    "startTime": "2025-02-15 09:00:00",
+    "endTime": "2025-02-15 09:00:00",
+    "generation_source_continue": "197-e"
+  },
+  {
+    "id": "Calendar-56",
+    "generation_source": "182-3-1",
+    "title": "向母亲同步家庭财务规划",
+    "description": "时间 2025-02-16 09:15 至 10:00，核心要素 向母亲李秀英展示家庭资产配置图与新增医疗补充保险详情，解释规划逻辑、风险保障及预期收益，来源：今日事件",
+    "startTime": "2025-02-16 09:15:00",
+    "endTime": "2025-02-16 10:00:00",
+    "generation_source_continue": "182-c"
+  },
+  {
+    "id": "Calendar-57",
+    "generation_source": "184-1",
+    "title": "整理返程行李并确认行程",
+    "description": "时间 2025-02-16 15:10 至 16:30，核心要素 整理次日返程行李箱，包括衣物、个人用品和武汉特产，最终确认从家打车前往武汉站的高铁班次、预计出发时间和路线，来源：今日事件",
+    "startTime": "2025-02-16 15:10:00",
+    "endTime": "2025-02-16 16:30:00",
+    "generation_source_continue": "184-a"
+  },
+  {
+    "id": "Calendar-58",
+    "generation_source": "197-6",
+    "title": "视频告知母亲保险详情",
+    "description": "与母亲李秀英视频通话，详细解释电子保单关键条款和理赔流程，使用屏幕共享，通话结束后将保单文件发到家庭群，来源：家庭沟通",
+    "startTime": "2025-02-17 09:15:00",
+    "endTime": "2025-02-17 10:00:00",
+    "generation_source_continue": "197-f"
+  },
+  {
+    "id": "Calendar-59",
+    "generation_source": "184-2-3",
+    "title": "告别父母并前往武汉站",
+    "description": "与父母冯建国和李秀英告别，乘坐预约的网约车前往武汉站，通勤约40分钟，途中收听财经播客，来源：个人出行安排",
+    "startTime": "2025-02-17 12:30:00",
+    "endTime": "2025-02-17 13:10:00",
+    "generation_source_continue": "184-b"
+  },
+  {
+    "id": "Calendar-60",
+    "generation_source": "198-3",
+    "title": "梳理晋升材料团队贡献",
+    "description": "集中梳理晋升述职材料中的团队贡献，回顾与郑文博、孙晓雅协作完成的关键案例，如黄思琪跨市场资产配置方案、某家族办公室定制化服务，梳理协调、策略制定和风险把控角色，筛选邮件、会议纪要、报告作为佐证，来源：个人工作规划",
+    "startTime": "2025-02-19 15:40:00",
+    "endTime": "2025-02-19 17:10:00",
+    "generation_source_continue": "198-c"
+  },
+  {
+    "id": "Calendar-61",
+    "generation_source": "186-2-3",
+    "title": "向钱永强汇报",
+    "description": "向直属上司钱永强简要汇报与黄思琪会议的核心内容及达成的下一步计划，目的是听取上司的指导意见。",
+    "startTime": "2025-02-20 14:00:00",
+    "endTime": "2025-02-20 15:00:00",
+    "generation_source_continue": "186-b"
+  },
+  {
+    "id": "Calendar-62",
+    "generation_source": "47-1",
+    "title": "与妹妹远程策划父亲生日宴",
+    "description": "通过微信视频与在上海的妹妹冯欣然连线，讨论父亲下个月六十大寿安排，初步分工：冯浩然负责武汉本地餐厅考察和预订，冯欣然负责礼物筛选和蛋糕预订，约定周末再对接进度，来源：家庭视频通话",
+    "startTime": "2025-02-20 21:15:00",
+    "endTime": "2025-02-20 22:00:00",
+    "generation_source_continue": "47-a"
+  },
+  {
+    "id": "Calendar-63",
+    "generation_source": "186-3",
+    "title": "上午工作与规划",
+    "description": "上午工作与规划，2025-02-21 09:30 开始，处理紧急客户邮件，规划三月中旬深圳出差行程，完善新季度行动计划书，来源：当日工作安排",
+    "startTime": "2025-02-21 09:30:00",
+    "endTime": "2025-02-21 12:00:00",
+    "generation_source_continue": "186-c"
+  },
+  {
+    "id": "Calendar-64",
+    "generation_source": "185-4",
+    "title": "向上司汇报并优化计划",
+    "description": "向上司汇报并优化计划，2025-02-21 13:30 开始，向上司钱永强专题汇报新季度计划，阐述科技企业客户拓展策略、研究支持和出差预算，获得优化建议后修改行动计划书，来源：当日工作安排",
+    "startTime": "2025-02-21 13:30:00",
+    "endTime": "2025-02-21 15:00:00",
+    "generation_source_continue": "185-d"
+  },
+  {
+    "id": "Calendar-65",
+    "generation_source": "",
+    "title": "露营行前线上核对",
+    "description": "露营行前线上核对，2025-02-21 19:15 开始，通过微信视频与朋友彭雨晴、吴俊杰进行露营行前最终核对，逐项确认公共物资分工、集合时间地点和应急预案，来源：当日计划安排",
+    "startTime": "2025-02-21 19:15:00",
+    "endTime": "2025-02-21 20:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-66",
+    "generation_source": "187-4",
+    "title": "恢复训练计划制定",
+    "description": "调整训练计划，增加跑步频率至每周四次，并规划了接下来一周的渐进式恢复训练内容。",
+    "startTime": "2025-02-21 20:00:00",
+    "endTime": "2025-02-21 20:30:00",
+    "generation_source_continue": "187-a"
+  },
+  {
+    "id": "Calendar-67",
+    "generation_source": "124-1-3",
+    "title": "与邻居协商噪音问题",
+    "description": "友好协商晚间安静时段，邻居同意晚上10点后减少使用跑步机等设备",
+    "startTime": "2025-02-22 20:00:00",
+    "endTime": "2025-02-22 20:30:00",
+    "generation_source_continue": "124-a"
+  },
+  {
+    "id": "Calendar-68",
+    "generation_source": "124-1-2",
+    "title": "与邻居沟通噪音问题",
+    "description": "晚上9点左右，礼貌地敲开楼上邻居的门，与一位三十岁左右的男士沟通。委婉提出晚上跑步机的声音对休息和阅读有影响，建议晚上10点后避免使用会产生持续震动的设备。邻居表示理解并道歉，解释最近在减肥未注意到影响，答应调整使用时间。沟通气氛友好。",
+    "startTime": "2025-02-22 21:00:00",
+    "endTime": "2025-02-22 21:30:00",
+    "generation_source_continue": "124-a"
+  },
+  {
+    "id": "Calendar-69",
+    "generation_source": "124-1-1",
+    "title": "与邻居沟通噪音问题",
+    "description": "晚上9点左右与楼上邻居沟通。我作为新搬来的楼下邻居，委婉提出晚上跑步机的声音对休息和阅读有影响，询问是否可能协商晚上10点后避免使用。邻居表示理解并略带歉意，解释最近在减肥没注意到影响，答应会调整使用时间。沟通气氛友好。",
+    "startTime": "2025-02-22 21:00:00",
+    "endTime": "2025-02-22 21:30:00",
+    "generation_source_continue": "124-a"
+  },
+  {
+    "id": "Calendar-70",
+    "generation_source": "4-4-1",
+    "title": "复习投资组合管理",
+    "description": "系统复习资产配置理论、风险预算、业绩归因等核心公式和模型",
+    "startTime": "2025-02-24 00:00:00",
+    "endTime": "2025-02-24 23:59:59",
+    "generation_source_continue": "4-d"
+  },
+  {
+    "id": "Calendar-71",
+    "generation_source": "",
+    "title": "与客户黄思琪电话会议",
+    "description": "与科技公司创始人黄思琪进行视频会议，讨论股权激励资金长期配置方案，2025-02-25 13:30 开始，会议链接已通过邮件发送，来源：今日日程安排",
+    "startTime": "2025-02-25 13:30:00",
+    "endTime": "2025-02-25 14:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-72",
+    "generation_source": "124-2-1",
+    "title": "噪音观察记录",
+    "description": "与邻居沟通后，观察噪音改善情况。噪音减少但仍有残留，需后续跟进。",
+    "startTime": "2025-02-26 00:00:00",
+    "endTime": "2025-02-26 23:59:59",
+    "generation_source_continue": "124-b"
+  },
+  {
+    "id": "Calendar-73",
+    "generation_source": "",
+    "title": "客户季度电话回顾（林志豪）",
+    "description": "与上海客户林志豪进行季度电话回顾，2025-02-27 13:30:00 开始，汇报上季度投资组合表现与归因分析，提出微调建议，来源：今日事件日程",
+    "startTime": "2025-02-27 13:30:00",
+    "endTime": "2025-02-27 14:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-74",
+    "generation_source": "",
+    "title": "撰写与完善晋升述职报告",
+    "description": "撰写与完善晋升述职报告，2025-03-01 08:25 开始，预计持续至 12:00，地点：家中书房，来源：当日事件",
+    "startTime": "2025-03-01 08:25:00",
+    "endTime": "2025-03-01 12:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-75",
+    "generation_source": "198-5",
+    "title": "梅溪湖会面与讨论",
+    "description": "与同事郑文博在金茂览秀城湖畔餐厅户外露台会面，讨论晋升报告初稿，2025-03-02 13:50 开始，来源：与郑文博约定",
+    "startTime": "2025-03-02 13:50:00",
+    "endTime": "2025-03-02 15:20:00",
+    "generation_source_continue": "198-e"
+  },
+  {
+    "id": "Calendar-76",
+    "generation_source": "103-2",
+    "title": "阅读投资新书",
+    "description": "阅读《周期、价值与人性》，深入思考市场周期与人性关系，导致晚睡。",
+    "startTime": "2025-03-02 22:00:00",
+    "endTime": "2025-03-02 23:45:00",
+    "generation_source_continue": "103-b"
+  },
+  {
+    "id": "Calendar-77",
+    "generation_source": "198-6-2",
+    "title": "上午办公室工作与晋升材料提交",
+    "description": "上午办公室工作与晋升材料提交，2025-03-04 09:35 开始，通过企业微信向钱永强总监正式提交晋升材料并预约面谈，来源：当日工作安排",
+    "startTime": "2025-03-04 09:35:00",
+    "endTime": "2025-03-04 12:00:00",
+    "generation_source_continue": "198-f"
+  },
+  {
+    "id": "Calendar-78",
+    "generation_source": "198-6-3",
+    "title": "晋升面谈确认通知",
+    "description": "晋升面谈确认通知，2025-03-07 14:00 开始，与钱永强总监在其办公室进行述职面谈，已通过企业微信确认并录入日程，来源：钱永强总监企业微信通知",
+    "startTime": "2025-03-07 14:00:00",
+    "endTime": "2025-03-07 15:30:00",
+    "generation_source_continue": "198-f"
+  },
+  {
+    "id": "Calendar-79",
+    "generation_source": "208-1",
+    "title": "季度投资策略研讨会PPT制作",
+    "description": "为下周三的季度投资策略研讨会制作PPT，主题为风起于青萍之末——2025Q2市场展望与配置策略，2025-03-09 10:30开始，来源：今日工作计划",
+    "startTime": "2025-03-09 10:30:00",
+    "endTime": "2025-03-09 12:00:00",
+    "generation_source_continue": "208-a"
+  },
+  {
+    "id": "Calendar-80",
+    "generation_source": "6-1",
+    "title": "季度投资策略研讨会通知",
+    "description": "2025-03-12 14:00 开始，湖南广电中心写字楼会议室，会议议程已通过邮件发送给部门全体同事及上司钱永强，来源：冯浩然发送的邮件",
+    "startTime": "2025-03-12 14:00:00",
+    "endTime": "2025-03-12 15:30:00",
+    "generation_source_continue": "6-a"
+  },
+  {
+    "id": "Calendar-81",
+    "generation_source": "6-3",
+    "title": "与高净值客户视频沟通",
+    "description": "与高净值客户黄思琪视频沟通，2025-03-12 14:25 开始，在华泰证券视频会议室汇报定制资产配置调整方案，来源：客户预约",
+    "startTime": "2025-03-12 14:25:00",
+    "endTime": "2025-03-12 15:30:00",
+    "generation_source_continue": "6-c"
+  },
+  {
+    "id": "Calendar-82",
+    "generation_source": "207-6-2",
+    "title": "主持季度投资策略研讨会",
+    "description": "季度投资策略研讨会，2025-03-12 09:30 开始，在华泰证券大会议室举行，主讲人冯浩然，来源：公司日程",
+    "startTime": "2025-03-12 09:30:00",
+    "endTime": "2025-03-12 12:00:00",
+    "generation_source_continue": "207-f"
+  },
+  {
+    "id": "Calendar-83",
+    "generation_source": "207-6-1",
+    "title": "完成投资报告定稿与提交",
+    "description": "投资报告定稿与提交，2025-03-12 13:10 开始，在办公室完成《二季度科技股投资机会与风险》及《利率债配置策略微调》报告，通过OA系统提交，来源：工作安排",
+    "startTime": "2025-03-12 13:10:00",
+    "endTime": "2025-03-12 14:25:00",
+    "generation_source_continue": "207-f"
+  },
+  {
+    "id": "Calendar-84",
+    "generation_source": "6-5",
+    "title": "一季度工作汇报与复盘会议",
+    "description": "一季度工作汇报与复盘会议，2025-03-14 09:30 开始，向投资总监钱永强及团队汇报市场研判、客户策略、业绩达成及典型案例分析，来源：公司日程",
+    "startTime": "2025-03-14 09:30:00",
+    "endTime": "2025-03-14 11:00:00",
+    "generation_source_continue": "6-e"
+  },
+  {
+    "id": "Calendar-85",
+    "generation_source": "194-6-2",
+    "title": "露营装备补货下单",
+    "description": "清点露营装备发现旧炉头点火问题，基于安全考量在京东下单购买新款分体炉头，选择次日达，来源：京东购物记录",
+    "startTime": "2025-03-13 19:00:00",
+    "endTime": "2025-03-13 19:00:00",
+    "generation_source_continue": "194-f"
+  },
+  {
+    "id": "Calendar-86",
+    "generation_source": "47-3-1",
+    "title": "前往长沙南站并确认生日宴细节",
+    "description": "前往长沙南站并确认生日宴细节，2025-03-14 19:45 出发，预约网约车前往长沙南站，途中与武汉生日宴餐厅经理确认最终人数、菜品忌口（父亲少辣）、包厢及蛋糕送达安排，来源：个人计划",
+    "startTime": "2025-03-14 19:45:00",
+    "endTime": "2025-03-14 19:45:00",
+    "generation_source_continue": "47-c"
+  },
+  {
+    "id": "Calendar-87",
+    "generation_source": "7-7",
+    "title": "向上司汇报项目构想",
+    "description": "向上司钱永强汇报为高净值客户黄思琪组建跨部门虚拟服务小组的构想，2025-03-17 10:15:00 开始，地点为投资总监办公室，来源：内部通讯软件预约",
+    "startTime": "2025-03-17 10:15:00",
+    "endTime": "2025-03-17 10:45:00",
+    "generation_source_continue": "7-k"
+  },
+  {
+    "id": "Calendar-88",
+    "generation_source": "101-8-1",
+    "title": "跑步会议（与高云飞）",
+    "description": "与高云飞沿湘江中路步道从风帆广场慢跑至杜甫江阁附近折返，边跑边就本地科创项目投资前景进行头脑风暴，时间 2025-03-18 18:00 开始，来源：与高云飞的约定",
+    "startTime": "2025-03-18 18:00:00",
+    "endTime": "2025-03-18 19:00:00",
+    "generation_source_continue": "101-h"
+  },
+  {
+    "id": "Calendar-89",
+    "generation_source": "7-8-1",
+    "title": "虚拟项目小组首次线上会议",
+    "description": "黄思琪科技主题资产配置项目虚拟小组首次线上会议，2025-03-20 15:00 开始，会议链接将通过Teams发送，来源：今日与郑文博、孙晓雅沟通确认",
+    "startTime": "2025-03-20 15:00:00",
+    "endTime": "2025-03-20 16:30:00",
+    "generation_source_continue": "7-l"
+  },
+  {
+    "id": "Calendar-90",
+    "generation_source": "205-2",
+    "title": "与妹妹视频通话安排父母体检",
+    "description": "与妹妹冯欣然视频通话，讨论为父母预约武汉协和医院体检事宜，2025-03-20 13:10 开始，来源：当日事件",
+    "startTime": "2025-03-20 13:10:00",
+    "endTime": "2025-03-20 13:40:00",
+    "generation_source_continue": "205-b"
+  },
+  {
+    "id": "Calendar-91",
+    "generation_source": "208-9",
+    "title": "客户林志豪季度投资汇报",
+    "description": "视频会议向客户林志豪汇报季度投资报告，重点阐述房地产资产的风险对冲措施，2025-03-21 14:00 开始，会议链接已发邮箱，来源：华泰证券内部日程",
+    "startTime": "2025-03-21 14:00:00",
+    "endTime": "2025-03-21 15:30:00",
+    "generation_source_continue": "208-i"
+  },
+  {
+    "id": "Calendar-92",
+    "generation_source": "122-2-2",
+    "title": "团队拓展训练",
+    "description": "团队拓展训练（宁乡金太阳温泉度假村户外拓展训练基地及多功能活动室），2025-03-22 13:30 开始，预计17:00结束，来源：公司团队建设活动通知",
+    "startTime": "2025-03-22 13:30:00",
+    "endTime": "2025-03-22 17:00:00",
+    "generation_source_continue": "122-b"
+  },
+  {
+    "id": "Calendar-93",
+    "generation_source": "205-4-2",
+    "title": "父母体检预约（武汉协和医院）",
+    "description": "为父母两人预约武汉协和医院体检中心全面体检套餐，2025-04-12 上午，已支付费用，预约成功短信已发家庭群，来源：电话预约",
+    "startTime": "2025-04-12 08:00:00",
+    "endTime": "2025-04-12 08:00:00",
+    "generation_source_continue": "205-d"
+  },
+  {
+    "id": "Calendar-94",
+    "generation_source": "7-3",
+    "title": "团队小组会议（数据收集项目）",
+    "description": "与郑文博、孙晓雅进行虚拟小组短会，讨论科技数据收集框架、初步发现及下一步分工，来源：团队安排",
+    "startTime": "2025-03-24 15:00:00",
+    "endTime": "2025-03-24 16:00:00",
+    "generation_source_continue": "7-f"
+  },
+  {
+    "id": "Calendar-95",
+    "generation_source": "212-1",
+    "title": "晋升材料整理与晨会",
+    "description": "上午工作：晋升材料整理与晨会，2025-03-25 09:25 开始，与投资总监钱永强、同事郑文博同步市场焦点和工作计划，随后专注撰写晋升述职报告，来源：今日事件",
+    "startTime": "2025-03-25 09:25:00",
+    "endTime": "2025-03-25 12:00:00",
+    "generation_source_continue": "212-a"
+  },
+  {
+    "id": "Calendar-96",
+    "generation_source": "212-1",
+    "title": "晋升材料定稿与客户需求汇报",
+    "description": "下午工作：晋升材料定稿与客户需求汇报，2025-03-25 14:45 开始，将晋升材料最终定稿发送给钱总，随后观看客户经理孙晓雅与客户黄思琪的需求访谈录像并记录要点，来源：今日事件",
+    "startTime": "2025-03-25 14:45:00",
+    "endTime": "2025-03-25 16:00:00",
+    "generation_source_continue": "212-a"
+  },
+  {
+    "id": "Calendar-97",
+    "generation_source": "102-7",
+    "title": "岳麓山跑步合练",
+    "description": "与跑友高云飞在岳麓山环湖路跑道进行5公里合练，18:10开始，预计19:15结束，来源：与高云飞约定",
+    "startTime": "2025-03-27 18:10:00",
+    "endTime": "2025-03-27 19:15:00",
+    "generation_source_continue": "102-g"
+  },
+  {
+    "id": "Calendar-98",
+    "generation_source": "212-2",
+    "title": "提交晋升述职报告",
+    "description": "2025-03-28 09:20 至 10:30，在华泰证券办公室个人工位提交《晋升投资总监述职报告》最终版PDF及相关材料，来源：当日工作安排",
+    "startTime": "2025-03-28 09:20:00",
+    "endTime": "2025-03-28 10:30:00",
+    "generation_source_continue": "212-b"
+  },
+  {
+    "id": "Calendar-99",
+    "generation_source": "203-2",
+    "title": "午休与个人事务处理",
+    "description": "2025-03-28 13:10 至 13:40，在办公室处理个人事务，包括预约普拉提体验课、预订清明高铁票、提交调休申请，来源：当日日程",
+    "startTime": "2025-03-28 13:10:00",
+    "endTime": "2025-03-28 13:40:00",
+    "generation_source_continue": "203-b"
+  },
+  {
+    "id": "Calendar-100",
+    "generation_source": "8-1-4",
+    "title": "与藏友罗振宇月度邮票分享视频通话",
+    "description": "与藏友罗振宇进行月度邮票分享视频通话，2025-03-29 21:50 开始，预计时长1小时，讨论近期收藏和市场走势，来源：个人约定",
+    "startTime": "2025-03-29 21:50:00",
+    "endTime": "2025-03-29 22:50:00",
+    "generation_source_continue": "8-a"
+  },
+  {
+    "id": "Calendar-101",
+    "generation_source": "200-3-1",
+    "title": "月度财务复盘与投资管理",
+    "description": "月度财务复盘与投资管理，2025-03-30 14:15 开始，预计持续约3小时，涉及收支核对、投资组合检视与调仓，来源：个人财务规划",
+    "startTime": "2025-03-30 14:15:00",
+    "endTime": "2025-03-30 17:15:00",
+    "generation_source_continue": "200-c"
+  },
+  {
+    "id": "Calendar-102",
+    "generation_source": "",
+    "title": "普拉提常规小班课（4月）",
+    "description": "普拉提常规小班课，2025-04-02 19:30 开始，课程时长60分钟，预约码 PT2025040201，凭预约码签到，来源：心流普拉提工作室微信公众号",
+    "startTime": "2025-04-02 19:30:00",
+    "endTime": "2025-04-02 20:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-103",
+    "generation_source": "7-6-2",
+    "title": "项目团队第二次线上会议",
+    "description": "项目团队第二次线上会议，2025-04-01 09:00 开始，预计时长1.5小时，需提前调试设备并与线上同事沟通对齐，来源：上午工作安排",
+    "startTime": "2025-04-01 09:00:00",
+    "endTime": "2025-04-01 10:30:00",
+    "generation_source_continue": "7-i"
+  },
+  {
+    "id": "Calendar-104",
+    "generation_source": "58-1",
+    "title": "周末精品咖啡豆品鉴会",
+    "description": "周末精品咖啡豆品鉴会，2025-04-05 14:30 开始，地点为一丹咖啡厅，分享三款稀有瑰夏豆，来源：坐标咖啡老板沈心怡邀请",
+    "startTime": "2025-04-05 14:30:00",
+    "endTime": "2025-04-05 16:30:00",
+    "generation_source_continue": "58-a"
+  },
+  {
+    "id": "Calendar-105",
+    "generation_source": "219-5-2",
+    "title": "部门二季度投资策略分享会",
+    "description": "部门二季度投资策略分享会，2025-04-02 13:30 开始，地点公司会议室，主讲人冯浩然，来源：今日事件",
+    "startTime": "2025-04-02 13:30:00",
+    "endTime": "2025-04-02 16:30:00",
+    "generation_source_continue": "219-e"
+  },
+  {
+    "id": "Calendar-106",
+    "generation_source": "210-2-1",
+    "title": "紧急客户视频会议",
+    "description": "与客户黄思琪和林志豪进行视频电话，2025-04-03 09:00 开始，回复假期前咨询并确认节后安排，同步处理紧急邮件给出投资建议，来源：当日工作安排",
+    "startTime": "2025-04-03 09:00:00",
+    "endTime": "2025-04-03 10:30:00",
+    "generation_source_continue": "210-b"
+  },
+  {
+    "id": "Calendar-107",
+    "generation_source": "209-2-1",
+    "title": "个人财务季度复盘",
+    "description": "个人财务季度复盘与策略调整，2025-04-02 19:45 开始，地点家中书房，来源：今日事件",
+    "startTime": "2025-04-02 19:45:00",
+    "endTime": "2025-04-02 21:15:00",
+    "generation_source_continue": "209-b"
+  },
+  {
+    "id": "Calendar-108",
+    "generation_source": "",
+    "title": "G832 次列车（武汉 - 长沙）",
+    "description": "G832 次列车（武汉站→长沙南站），2025-04-05 09:30 发车，预定码 5A2B8C，凭身份证检票，来源：铁路12306",
+    "startTime": "2025-04-05 09:30:00",
+    "endTime": "2025-04-05 09:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-109",
+    "generation_source": "213-1",
+    "title": "晨跑 - 与高云飞",
+    "description": "地点：岳麓山南路\n备注：交流市场与科技行业观点",
+    "startTime": "2025-04-07 07:00:00",
+    "endTime": "2025-04-07 08:00:00",
+    "generation_source_continue": "213-a"
+  },
+  {
+    "id": "Calendar-110",
+    "generation_source": "9-1-2",
+    "title": "梳理薄弱模块知识点",
+    "description": "针对财务报表分析和股权投资等薄弱环节，集中梳理官方教材和笔记，归纳会计准则、估值模型等核心知识点，形成结构化复习提纲。",
+    "startTime": "2025-04-07 09:00:00",
+    "endTime": "2025-04-07 11:00:00",
+    "generation_source_continue": "9-a"
+  },
+  {
+    "id": "Calendar-111",
+    "generation_source": "209-3",
+    "title": "晨跑与高云飞交流",
+    "description": "分享策略调整逻辑，听取其对科技行业及宏观经济的看法",
+    "startTime": "2025-04-07 07:00:00",
+    "endTime": "2025-04-07 08:00:00",
+    "generation_source_continue": "209-c"
+  },
+  {
+    "id": "Calendar-112",
+    "generation_source": "16-6",
+    "title": "CFA三级学习",
+    "description": "复习教材、做习题、整理错题笔记",
+    "startTime": "2025-04-07 19:00:00",
+    "endTime": "2025-04-07 22:00:00",
+    "generation_source_continue": "16-f"
+  },
+  {
+    "id": "Calendar-113",
+    "generation_source": "",
+    "title": "CFA备考进度复盘与冲刺规划",
+    "description": "CFA备考进度复盘与四月冲刺计划制定，2025-04-07 19:40 开始，复盘三月学习记录和错题本，圈出财务报表分析和股权投资的薄弱环节，制定激进的四月冲刺表，计划每天额外增加1.5小时专攻薄弱模块并配套加倍习题量，来源：个人学习规划",
+    "startTime": "2025-04-07 19:40:00",
+    "endTime": "2025-04-07 21:40:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-114",
+    "generation_source": "9-1-1",
+    "title": "制定CFA四月学习计划",
+    "description": "评估三月备考不足，发现财务报表分析和股权投资等模块掌握不牢。重新规划四月详细学习计划，明确每日学习时长和模块目标。",
+    "startTime": "2025-04-07 20:00:00",
+    "endTime": "2025-04-07 21:30:00",
+    "generation_source_continue": "9-a"
+  },
+  {
+    "id": "Calendar-115",
+    "generation_source": "219-6",
+    "title": "与上司一对一反馈会议",
+    "description": "与上司钱永强进行一对一反馈会议，2025-04-08 13:30 开始，地点为钱永强总监办公室，来源：今日事件",
+    "startTime": "2025-04-08 13:30:00",
+    "endTime": "2025-04-08 15:00:00",
+    "generation_source_continue": "219-f"
+  },
+  {
+    "id": "Calendar-116",
+    "generation_source": "219-7",
+    "title": "与客户黄思琪视频会议",
+    "description": "与客户黄思琪进行视频会议，讨论比特币ETF配置兴趣，2025-04-10 13:30:00 开始，预计时长约2小时，地点：公司小会议室，来源：个人日程安排",
+    "startTime": "2025-04-10 13:30:00",
+    "endTime": "2025-04-10 15:30:00",
+    "generation_source_continue": "219-g"
+  },
+  {
+    "id": "Calendar-117",
+    "generation_source": "61-2-1",
+    "title": "天文台公众开放日活动",
+    "description": "湖南省天文台公众开放日活动，2025-04-11 18:10 开始，包含科普讲座《系外行星：寻找第二个地球》及望远镜观测环节，凭预约码入场，来源：湖南省天文台官网",
+    "startTime": "2025-04-11 18:10:00",
+    "endTime": "2025-04-11 21:30:00",
+    "generation_source_continue": "61-b"
+  },
+  {
+    "id": "Calendar-118",
+    "generation_source": "89-4-1",
+    "title": "车辆年检（长沙安通检测站）",
+    "description": "车辆年检，2025-04-12 10:05 开始，地点：长沙安通机动车检测站，需携带行驶证、交强险保单，来源：检测站预约确认",
+    "startTime": "2025-04-12 10:05:00",
+    "endTime": "2025-04-12 10:05:00",
+    "generation_source_continue": "89-d"
+  },
+  {
+    "id": "Calendar-119",
+    "generation_source": "217-2-1",
+    "title": "个人财务状况月度复盘",
+    "description": "个人财务状况月度复盘，2025-04-13 13:00 开始，预计时长2.5小时，需复盘4月至今的投资组合表现、现金流和应急储备金，记录关键数据和结论，来源：个人财务管理系统。",
+    "startTime": "2025-04-13 13:00:00",
+    "endTime": "2025-04-13 15:30:00",
+    "generation_source_continue": "217-b"
+  },
+  {
+    "id": "Calendar-120",
+    "generation_source": "217-2-3",
+    "title": "执行奖金分配操作",
+    "description": "执行奖金分配操作，2025-04-13 15:50 开始，预计时长0.5小时，需使用手机银行和证券APP将奖金按比例转入指数基金定投账户、货币基金账户和活期账户，并更新财务记录，来源：个人财务规划。",
+    "startTime": "2025-04-13 15:50:00",
+    "endTime": "2025-04-13 16:20:00",
+    "generation_source_continue": "217-b"
+  },
+  {
+    "id": "Calendar-121",
+    "generation_source": "10-1",
+    "title": "专注筹备明日客户会议",
+    "description": "与同事郑文博、孙晓雅进行会前沟通，同步信息并明确各自角色，主导拟定会议议程草案，重点构建比特币ETF的风险收益分析框架，来源：今日工作安排",
+    "startTime": "2025-04-14 13:40:00",
+    "endTime": "2025-04-14 15:10:00",
+    "generation_source_continue": "10-a"
+  },
+  {
+    "id": "Calendar-122",
+    "generation_source": "10-2-2",
+    "title": "黄思琪科技公司上市项目跟进",
+    "description": "撰写并发送《黄思琪科技公司上市服务项目关键会议纪要》给项目相关方，2025-04-15 09:15 开始，来源：今日工作安排",
+    "startTime": "2025-04-15 09:15:00",
+    "endTime": "2025-04-15 12:00:00",
+    "generation_source_continue": "10-b"
+  },
+  {
+    "id": "Calendar-123",
+    "generation_source": "215-2",
+    "title": "恒大雅苑健身中心私教体验课",
+    "description": "与王教练进行一对一体验与咨询，评估体能并制定四周训练计划，2025-04-15 18:10 开始，来源：健身中心预约",
+    "startTime": "2025-04-15 18:10:00",
+    "endTime": "2025-04-15 19:30:00",
+    "generation_source_continue": "215-b"
+  },
+  {
+    "id": "Calendar-124",
+    "generation_source": "10-3",
+    "title": "上午工作与汇报",
+    "description": "上午工作与汇报，2025-04-16 09:40 开始，地点：华泰证券办公室，向直属上司钱永强汇报昨日项目会议成果，来源：当日工作安排",
+    "startTime": "2025-04-16 09:40:00",
+    "endTime": "2025-04-16 12:00:00",
+    "generation_source_continue": "10-c"
+  },
+  {
+    "id": "Calendar-125",
+    "generation_source": "10-4",
+    "title": "黄思琪科技公司并购项目启动会",
+    "description": "09:00 至 10:30 在华泰证券办公室主持黄思琪科技公司并购项目启动会，与郑文博、孙晓雅讨论尽职调查重点、风险点和分工，制定时间表，来源：今日工作安排",
+    "startTime": "2025-04-17 09:00:00",
+    "endTime": "2025-04-17 10:30:00",
+    "generation_source_continue": "10-d"
+  },
+  {
+    "id": "Calendar-126",
+    "generation_source": "16-6",
+    "title": "CFA备考复习",
+    "description": "CFA备考复习，2025-04-16 20:10 开始，复习《另类投资》科目，结合实际案例加深理解，来源：个人学习计划",
+    "startTime": "2025-04-16 20:10:00",
+    "endTime": "2025-04-16 21:30:00",
+    "generation_source_continue": "16-f"
+  },
+  {
+    "id": "Calendar-127",
+    "generation_source": "215-5",
+    "title": "处理健康与家庭保险",
+    "description": "2025-04-20 10:20 开始，调整健康管理APP拉伸提醒时间，通过微信语音联系保险经纪人李华咨询中老年医疗险细节，请对方发送产品对比表，约定明天做最终决定，来源：当日事件记录",
+    "startTime": "2025-04-20 10:20:00",
+    "endTime": "2025-04-20 11:00:00",
+    "generation_source_continue": "215-e"
+  },
+  {
+    "id": "Calendar-128",
+    "generation_source": "13-1-1",
+    "title": "制定CFA冲刺计划",
+    "description": "2025-04-20 11:00 开始，摊开CFA三级教材和错题本，列出需强化的知识点和薄弱环节，在Excel中制作从4月25日到考试前的详细周计划表，同步到手机日历和Todoist软件，来源：当日事件记录",
+    "startTime": "2025-04-20 11:00:00",
+    "endTime": "2025-04-20 12:30:00",
+    "generation_source_continue": "13-a"
+  },
+  {
+    "id": "Calendar-129",
+    "generation_source": "91-2-3",
+    "title": "预联系广州客户",
+    "description": "2025-04-20 16:00 开始，致电两位广州潜在客户，自我介绍并说明华泰证券服务优势及出差拜访意愿，成功与客户A预约4月23日下午面谈，与客户B秘书确定4月24日上午会面，来源：当日事件记录",
+    "startTime": "2025-04-20 16:00:00",
+    "endTime": "2025-04-20 17:00:00",
+    "generation_source_continue": "91-b"
+  },
+  {
+    "id": "Calendar-130",
+    "generation_source": "10-6",
+    "title": "与客户黄思琪视频会议",
+    "description": "与客户黄思琪进行并购项目进展视频会议，2025-04-21 09:30开始，预计时长2.5小时，地点：公司小会议室，来源：工作日程安排",
+    "startTime": "2025-04-21 09:30:00",
+    "endTime": "2025-04-21 12:00:00",
+    "generation_source_continue": "10-f"
+  },
+  {
+    "id": "Calendar-131",
+    "generation_source": "91-3",
+    "title": "检查明日高铁及酒店行程",
+    "description": "确认明日G6113次高铁电子车票及广州酒店预订信息，2025-04-21 20:40开始，预计时长20分钟，来源：个人出行准备",
+    "startTime": "2025-04-21 20:40:00",
+    "endTime": "2025-04-21 21:00:00",
+    "generation_source_continue": "91-c"
+  },
+  {
+    "id": "Calendar-132",
+    "generation_source": "91-4-3",
+    "title": "拜访潜在客户（家族办公室）",
+    "description": "拜访潜在客户（家族办公室），2025-04-22 09:35:00 开始，地点：富力盈凯广场客户公司会议室，来源：今日事件安排",
+    "startTime": "2025-04-22 09:35:00",
+    "endTime": "2025-04-22 11:05:00",
+    "generation_source_continue": "91-d"
+  },
+  {
+    "id": "Calendar-133",
+    "generation_source": "",
+    "title": "与黄思琪深度投资汇报会议",
+    "description": "与客户黄思琪及其助理在广州市天河区珠江新城珠江西路5号广州国际金融中心（西塔）某会议室进行深度投资汇报会议，2025-04-23 13:20:00 开始，预计持续约3小时，来源：今日事件安排",
+    "startTime": "2025-04-23 13:20:00",
+    "endTime": "2025-04-23 16:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-134",
+    "generation_source": "92-2",
+    "title": "客户跟进计划制定",
+    "description": "为两位广州潜在客户制定长期跟进计划，包括每季度分享资讯、每半年电话/视频沟通以及适时推荐产品。",
+    "startTime": "2025-04-25 09:00:00",
+    "endTime": "2025-04-25 10:30:00",
+    "generation_source_continue": "92-b"
+  },
+  {
+    "id": "Calendar-135",
+    "generation_source": "148-1",
+    "title": "确定研究主题与范围",
+    "description": "明确本次研究聚焦于数字资产与加密货币的全球监管趋势及机构投资策略。需要关注的关键机构包括：IMF、贝莱德、SEC。",
+    "startTime": "2025-04-25 10:00:00",
+    "endTime": "2025-04-25 11:30:00",
+    "generation_source_continue": "148-a"
+  },
+  {
+    "id": "Calendar-136",
+    "generation_source": "10-8",
+    "title": "审阅法律尽职调查清单草案",
+    "description": "与郑文博一同审阅，基于客户黄思琪的商业诉求，重点关注知识产权和核心人员合同条款。",
+    "startTime": "2025-04-25 14:00:00",
+    "endTime": "2025-04-25 16:00:00",
+    "generation_source_continue": "10-h"
+  },
+  {
+    "id": "Calendar-137",
+    "generation_source": "92-3",
+    "title": "发送客户感谢邮件",
+    "description": "向广州两位潜在客户发送定制化感谢邮件，附行业动态摘要及简版市场展望，为后续跟进奠定基础，来源：个人工作安排",
+    "startTime": "2025-04-26 16:00:00",
+    "endTime": "2025-04-26 16:40:00",
+    "generation_source_continue": "92-c"
+  },
+  {
+    "id": "Calendar-138",
+    "generation_source": "218-4",
+    "title": "为父母办理线上投保",
+    "description": "为父母（冯建国、李秀英）办理线上医疗保险，2025-04-27 13:15 开始，需核对信息、完成身份验证与支付，来源：保险经纪人链接",
+    "startTime": "2025-04-27 13:15:00",
+    "endTime": "2025-04-27 13:15:00",
+    "generation_source_continue": "218-d"
+  },
+  {
+    "id": "Calendar-139",
+    "generation_source": "10-9",
+    "title": "主持黄思琪并购项目周会",
+    "description": "黄思琪并购项目周会，2025-04-28 09:30 开始，地点：华泰证券办公室3号会议室，需提前测试视频会议系统，来源：工作安排",
+    "startTime": "2025-04-28 09:30:00",
+    "endTime": "2025-04-28 11:10:00",
+    "generation_source_continue": "10-i"
+  },
+  {
+    "id": "Calendar-140",
+    "generation_source": "10-10",
+    "title": "在家办公：发送估值模型与邮件处理",
+    "description": "在家办公处理并购估值模型，2025-04-30 08:50 开始，完成模型校验、发送给客户黄思琪、处理邮件、与同事郑文博确认细节，来源：当日工作安排",
+    "startTime": "2025-04-30 08:50:00",
+    "endTime": "2025-04-30 10:00:00",
+    "generation_source_continue": "10-j"
+  },
+  {
+    "id": "Calendar-141",
+    "generation_source": "9-6",
+    "title": "公司办公：月度回顾与五月计划微调",
+    "description": "在公司进行四月工作与CFA备考回顾，微调五月冲刺计划，2025-04-30 13:15 开始，预计时长2小时15分钟，来源：个人工作计划",
+    "startTime": "2025-04-30 13:15:00",
+    "endTime": "2025-04-30 15:30:00",
+    "generation_source_continue": "9-f"
+  },
+  {
+    "id": "Calendar-142",
+    "generation_source": "15-1",
+    "title": "CFA三级五月复习总规划制定",
+    "description": "CFA三级五月复习总规划制定，2025-05-01 08:35:00 开始，使用Excel创建甘特图，划分基础强化、专题突破、模拟冲刺三阶段，导入番茄ToDo APP设置提醒，来源：当日事件规划",
+    "startTime": "2025-05-01 08:35:00",
+    "endTime": "2025-05-01 10:15:00",
+    "generation_source_continue": "15-a"
+  },
+  {
+    "id": "Calendar-143",
+    "generation_source": "13-9-1",
+    "title": "CFA三级全真模拟考试（上午场）",
+    "description": "CFA三级全真模拟考试（上午场），2025-05-03 09:00 开始，时长3.5小时，需严格遵守考试时间，来源：个人备考计划",
+    "startTime": "2025-05-03 09:00:00",
+    "endTime": "2025-05-03 12:30:00",
+    "generation_source_continue": "13-i"
+  },
+  {
+    "id": "Calendar-144",
+    "generation_source": "221-1-1",
+    "title": "优化客户方案与准备应对材料",
+    "description": "为深圳客户黄思琪公司优化动态资产配置模型并准备专项应对材料，2025-05-04 09:20 开始，来源：今日工作安排",
+    "startTime": "2025-05-04 09:20:00",
+    "endTime": "2025-05-04 12:30:00",
+    "generation_source_continue": "221-a"
+  },
+  {
+    "id": "Calendar-145",
+    "generation_source": "221-3-1",
+    "title": "关键客户方案视频汇报会",
+    "description": "关键客户方案视频汇报会，2025-05-06 09:30 开始，向黄思琪团队进行定制化财富管理方案汇报，来源：今日事件",
+    "startTime": "2025-05-06 09:30:00",
+    "endTime": "2025-05-06 12:30:00",
+    "generation_source_continue": "221-c"
+  },
+  {
+    "id": "Calendar-146",
+    "generation_source": "43-1",
+    "title": "上海金融科技峰会行程",
+    "description": "上海金融科技峰会，2025-05-08 09:00 开始，上海国际会议中心，凭电子票和身份证入场，已下载议程并标出重点演讲，来源：峰会官网",
+    "startTime": "2025-05-08 09:00:00",
+    "endTime": "2025-05-08 17:00:00",
+    "generation_source_continue": "43-a"
+  },
+  {
+    "id": "Calendar-147",
+    "generation_source": "43-2",
+    "title": "金融科技峰会上午场活动",
+    "description": "亚洲金融科技峰会上午场（上海国际会议中心），2025-05-08 09:05 开始，包含主旨演讲与专题论坛，来源：峰会日程",
+    "startTime": "2025-05-08 09:05:00",
+    "endTime": "2025-05-08 13:20:00",
+    "generation_source_continue": "43-b"
+  },
+  {
+    "id": "Calendar-148",
+    "generation_source": "43-2",
+    "title": "金融科技峰会下午场活动",
+    "description": "亚洲金融科技峰会下午场（上海国际会议中心），2025-05-08 13:30 开始，包含圆桌讨论与闭幕演讲，来源：峰会日程",
+    "startTime": "2025-05-08 13:30:00",
+    "endTime": "2025-05-08 17:00:00",
+    "generation_source_continue": "43-b"
+  },
+  {
+    "id": "Calendar-149",
+    "generation_source": "43-3",
+    "title": "亚洲金融科技峰会第二天",
+    "description": "亚洲金融科技峰会第二天活动，重点关注区块链专题，2025-05-09 08:35:00 开始，地点：上海国际会议中心，来源：峰会日程",
+    "startTime": "2025-05-09 08:35:00",
+    "endTime": "2025-05-09 12:00:00",
+    "generation_source_continue": "43-c"
+  },
+  {
+    "id": "Calendar-150",
+    "generation_source": "84-2-1",
+    "title": "高尔夫社交与商务午餐",
+    "description": "与客户林志豪及其商业伙伴在青竹湖国际高尔夫球会进行球叙及商务午餐，2025-05-10 10:20 开始，预计4小时，来源：今日日程安排",
+    "startTime": "2025-05-10 10:20:00",
+    "endTime": "2025-05-10 14:20:00",
+    "generation_source_continue": "84-b"
+  },
+  {
+    "id": "Calendar-151",
+    "generation_source": "84-1",
+    "title": "与林志豪高尔夫活动",
+    "description": "与客户林志豪高尔夫活动，开球时间 2025-05-10 09:00，地点：长沙某高尔夫俱乐部，着装要求：商务休闲，来源：微信沟通",
+    "startTime": "2025-05-10 09:00:00",
+    "endTime": "2025-05-10 09:00:00",
+    "generation_source_continue": "84-a"
+  },
+  {
+    "id": "Calendar-152",
+    "generation_source": "120-3-1",
+    "title": "照料阳台植物",
+    "description": "下班回家后，照料阳台植物。具体操作包括：使用消毒过的剪刀修剪薄荷过密和老化的叶片以改善通风，并轻轻扶正长高的小番茄苗苗杆。",
+    "startTime": "2025-05-14 18:30:00",
+    "endTime": "2025-05-14 19:00:00",
+    "generation_source_continue": "120-c"
+  },
+  {
+    "id": "Calendar-153",
+    "generation_source": "229-4",
+    "title": "深入探讨个人品牌建设",
+    "description": "与冯浩然、郑文博就峰会启发进行讨论，重点包括个人品牌、ENTJ特质和数字化内容策略。",
+    "startTime": "2025-05-14 15:00:00",
+    "endTime": "2025-05-14 16:30:00",
+    "generation_source_continue": "229-a"
+  },
+  {
+    "id": "Calendar-154",
+    "generation_source": "229-1",
+    "title": "午餐交流-郑文博",
+    "description": "地点：办公室附近餐厅\n备注：分享近期参会心得",
+    "startTime": "2025-05-14 12:00:00",
+    "endTime": "2025-05-14 13:00:00",
+    "generation_source_continue": "229-a"
+  },
+  {
+    "id": "Calendar-155",
+    "generation_source": "229-2",
+    "title": "午休：与郑文博去湘菜馆",
+    "description": "午休时间到，冯浩然与郑文博一同步行前往公司附近常去的湘菜馆，路上简单聊了聊上午的工作。",
+    "startTime": "2025-05-14 12:00:00",
+    "endTime": "2025-05-14 13:30:00",
+    "generation_source_continue": "229-a"
+  },
+  {
+    "id": "Calendar-156",
+    "generation_source": "229-6",
+    "title": "与同事讨论播客想法",
+    "description": "午餐后达成的约定，深入聊聊播客的想法。",
+    "startTime": "2025-05-16 15:00:00",
+    "endTime": "2025-05-16 16:00:00",
+    "generation_source_continue": "229-a"
+  },
+  {
+    "id": "Calendar-157",
+    "generation_source": "229-5",
+    "title": "播客合作讨论",
+    "description": "与郑文博就合作开设投资理财播客频道的提议进行初步讨论，探讨可行性、内容方向及潜在挑战，旨在建立专业影响力。",
+    "startTime": "2025-05-14 15:00:00",
+    "endTime": "2025-05-14 16:00:00",
+    "generation_source_continue": "229-a"
+  },
+  {
+    "id": "Calendar-158",
+    "generation_source": "225-2-1",
+    "title": "沉浸式话剧《时间旅行者的妻子》",
+    "description": "沉浸式话剧《时间旅行者的妻子》，2025-05-14 19:30 开演，地点：长沙市青少年宫小杜鹃梦想剧场，电子票码 T202505141745，凭二维码检票入场，来源：大麦网",
+    "startTime": "2025-05-14 19:30:00",
+    "endTime": "2025-05-14 21:10:00",
+    "generation_source_continue": "225-b"
+  },
+  {
+    "id": "Calendar-159",
+    "generation_source": "15-8",
+    "title": "年度体检报告查阅",
+    "description": "收到年度体检报告电子版推送，需查阅关键健康指标，时间：2025-05-15 14:00:00，来源：体检中心APP",
+    "startTime": "2025-05-15 14:00:00",
+    "endTime": "2025-05-15 14:00:00",
+    "generation_source_continue": "15-h"
+  },
+  {
+    "id": "Calendar-160",
+    "generation_source": "120-4",
+    "title": "小番茄发芽",
+    "description": "清晨发现小番茄种植盆冒出绿色嫩芽，拍照记录，并调整浇水策略为用喷壶轻柔喷洒。",
+    "startTime": "2025-05-17 07:00:00",
+    "endTime": "2025-05-17 07:30:00",
+    "generation_source_continue": "120-d"
+  },
+  {
+    "id": "Calendar-161",
+    "generation_source": "222-2",
+    "title": "与父母每周视频通话",
+    "description": "与在武汉的父母进行每周例行视频通话，2025-05-18 19:30 开始，预计持续约1小时，来源：家庭约定",
+    "startTime": "2025-05-18 19:30:00",
+    "endTime": "2025-05-18 20:30:00",
+    "generation_source_continue": "222-b"
+  },
+  {
+    "id": "Calendar-162",
+    "generation_source": "222-3-1",
+    "title": "早餐与处理体检报告",
+    "description": "早餐时查阅隔夜市场概览，随后收到体检报告通知，发现总胆固醇、低密度脂蛋白超标和轻度脂肪肝倾向。立即通过平安好医生平台预约当天13:30的在线视频咨询，并将预约加入日历，来源：体检机构通知与平安好医生APP",
+    "startTime": "2025-05-19 07:50:00",
+    "endTime": "2025-05-19 08:20:00",
+    "generation_source_continue": "222-c"
+  },
+  {
+    "id": "Calendar-163",
+    "generation_source": "14-1-1",
+    "title": "在线医疗咨询",
+    "description": "与医生进行视频咨询，通过屏幕共享展示体检报告，医生给出明确建议：调整饮食以减少外卖、增加纤维蛋白；保证每周150分钟有氧和力量运动；管理压力与作息，来源：平安好医生平台",
+    "startTime": "2025-05-19 13:10:00",
+    "endTime": "2025-05-19 13:50:00",
+    "generation_source_continue": "14-a"
+  },
+  {
+    "id": "Calendar-164",
+    "generation_source": "227-2-1",
+    "title": "购买医疗保险",
+    "description": "在书房打开电脑和保险平台APP，依次为父亲冯建国和母亲李秀英填写投保信息，仔细核对后使用信用卡完成两份保单支付，电子保单即时生成，来源：保险平台APP",
+    "startTime": "2025-05-19 20:00:00",
+    "endTime": "2025-05-19 20:40:00",
+    "generation_source_continue": "227-b"
+  },
+  {
+    "id": "Calendar-165",
+    "generation_source": "85-3",
+    "title": "接听客户林志豪关键电话",
+    "description": "客户林志豪主动致电探讨公司资本运作需求，时间 2025-05-20 09:00，来源：今日工作事件",
+    "startTime": "2025-05-20 09:00:00",
+    "endTime": "2025-05-20 09:00:00",
+    "generation_source_continue": "85-c"
+  },
+  {
+    "id": "Calendar-166",
+    "generation_source": "15-11-1",
+    "title": "CFA三级考试考前准备",
+    "description": "浏览CFA三级错题本和核心公式卡片，清点并放入准考证、计算器、身份证、文具等考试用品到背包，确认考场和交通路线，时间 2025-05-20 19:30，来源：今日学习事件",
+    "startTime": "2025-05-20 19:30:00",
+    "endTime": "2025-05-20 19:30:00",
+    "generation_source_continue": "15-k"
+  },
+  {
+    "id": "Calendar-167",
+    "generation_source": "16-6",
+    "title": "考后复盘与睡前准备",
+    "description": "CFA三级全真模拟考试结束后，2025-05-22 00:30至2025-05-22 01:00进行考后复盘与睡前准备，包括初步复盘、整理文具、睡前洗漱、在手机备忘录记录感受与规划明日重点，来源：当日事件",
+    "startTime": "2025-05-22 00:30:00",
+    "endTime": "2025-05-22 01:00:00",
+    "generation_source_continue": "16-f"
+  },
+  {
+    "id": "Calendar-168",
+    "generation_source": "15-12-1",
+    "title": "与彭雨晴晚餐聚餐",
+    "description": "与密友彭雨晴在坡子街日式拉面店晚餐聚餐谈心，2025-05-22 19:40至2025-05-22 21:10，倾诉健康焦虑与CFA备考压力，来源：当日事件",
+    "startTime": "2025-05-22 19:40:00",
+    "endTime": "2025-05-22 21:10:00",
+    "generation_source_continue": "15-l"
+  },
+  {
+    "id": "Calendar-169",
+    "generation_source": "",
+    "title": "父母保险产品对比",
+    "description": "对比两款中老年医疗险产品（平安e生保与泰康在线），2025-05-23 21:30 开始研究，要点已保存至备忘录，来源：保险产品官网",
+    "startTime": "2025-05-23 21:30:00",
+    "endTime": "2025-05-23 22:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-170",
+    "generation_source": "13-10-1",
+    "title": "周末专项强化练习",
+    "description": "根据周六复盘发现的薄弱环节，进行专项强化练习，重点攻克难点和易错题型，巩固知识点，提升解题熟练度和准确性。",
+    "startTime": "2025-05-25 09:00:00",
+    "endTime": "2025-05-25 12:00:00",
+    "generation_source_continue": "13-j"
+  },
+  {
+    "id": "Calendar-171",
+    "generation_source": "85-4",
+    "title": "草拟资本合作框架",
+    "description": "基于客户林志豪的反馈，草拟《关于XX集团潜在资本优化与资产证券化路径的初步合作框架》文档，时间 2025-05-25 09:00 开始，来源：今日工作计划",
+    "startTime": "2025-05-25 09:00:00",
+    "endTime": "2025-05-25 11:30:00",
+    "generation_source_continue": "85-d"
+  },
+  {
+    "id": "Calendar-172",
+    "generation_source": "13-15",
+    "title": "CFA三级模拟考试",
+    "description": "CFA三级下午题Item Set全真模拟，2025-05-26 20:00 开始，时长2小时，需准备答题卡、计时器，来源：个人备考计划",
+    "startTime": "2025-05-26 20:00:00",
+    "endTime": "2025-05-26 22:00:00",
+    "generation_source_continue": "13-o"
+  },
+  {
+    "id": "Calendar-173",
+    "generation_source": "230-5",
+    "title": "每日正念练习",
+    "description": "基于首次良好体验，决定将10分钟正念呼吸练习纳入每日学习间隙或睡前固定环节，以持续管理备考压力。",
+    "startTime": "2025-05-26 21:00:00",
+    "endTime": "2025-05-26 21:10:00",
+    "generation_source_continue": "230-a"
+  },
+  {
+    "id": "Calendar-174",
+    "generation_source": "125-3",
+    "title": "与父母视频沟通换房想法",
+    "description": "与武汉的父母冯建国、李秀英进行视频通话，沟通基于健康和职业发展考虑的换房想法，时间 2025-05-29 19:30，预计时长45分钟，来源：个人计划",
+    "startTime": "2025-05-29 19:30:00",
+    "endTime": "2025-05-29 20:15:00",
+    "generation_source_continue": "125-c"
+  },
+  {
+    "id": "Calendar-175",
+    "generation_source": "232-3-1",
+    "title": "与父母视频通话",
+    "description": "与父母冯建国和李秀英视频通话，2025-06-02 14:50开始，预计通话时长约80分钟，来源：个人安排",
+    "startTime": "2025-06-02 14:50:00",
+    "endTime": "2025-06-02 16:10:00",
+    "generation_source_continue": "232-c"
+  },
+  {
+    "id": "Calendar-176",
+    "generation_source": "85-5",
+    "title": "处理紧急客户报告",
+    "description": "处理客户林志豪的紧急投资报告，2025-06-03 09:00 开始，地点：华泰证券办公室，来源：今日工作安排",
+    "startTime": "2025-06-03 09:00:00",
+    "endTime": "2025-06-03 11:00:00",
+    "generation_source_continue": "85-e"
+  },
+  {
+    "id": "Calendar-177",
+    "generation_source": "",
+    "title": "与客户黄思琪沟通方案",
+    "description": "视频会议，提交并沟通《海外资产配置建议书》给客户黄思琪，2025-06-05 09:40 开始，来源：今日工作安排",
+    "startTime": "2025-06-05 09:40:00",
+    "endTime": "2025-06-05 11:10:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-178",
+    "generation_source": "234-4-1",
+    "title": "为父母预订机票",
+    "description": "为父母预订南方航空机票，支付并下载电子行程单，2025-06-05 19:40 开始，来源：个人家庭安排",
+    "startTime": "2025-06-05 19:40:00",
+    "endTime": "2025-06-05 19:40:00",
+    "generation_source_continue": "234-d"
+  },
+  {
+    "id": "Calendar-179",
+    "generation_source": "16-11-1",
+    "title": "CFA三级考试上午场",
+    "description": "CFA三级考试上午场（论述题和案例分析），2025-06-07 08:20 开始入场，地点湖南国际会展中心，凭准考证和身份证入场，来源：CFA协会考试安排",
+    "startTime": "2025-06-07 08:20:00",
+    "endTime": "2025-06-07 12:00:00",
+    "generation_source_continue": "16-k"
+  },
+  {
+    "id": "Calendar-180",
+    "generation_source": "16-11-1",
+    "title": "CFA三级考试下午场",
+    "description": "CFA三级考试下午场（选择题），2025-06-07 13:30 开始入场，地点湖南国际会展中心，凭准考证和身份证入场，来源：CFA协会考试安排",
+    "startTime": "2025-06-07 13:30:00",
+    "endTime": "2025-06-07 17:30:00",
+    "generation_source_continue": "16-k"
+  },
+  {
+    "id": "Calendar-181",
+    "generation_source": "16-11-2",
+    "title": "考后庆功聚餐",
+    "description": "考后庆功聚餐，2025-06-07 19:15 开始，地点西湖建新安置小区湘菜馆，与同事好友郑文博、孙晓雅、彭雨晴聚餐，来源：个人安排",
+    "startTime": "2025-06-07 19:15:00",
+    "endTime": "2025-06-07 22:00:00",
+    "generation_source_continue": "16-k"
+  },
+  {
+    "id": "Calendar-182",
+    "generation_source": "1-14-3",
+    "title": "与上司钱总一对一汇报",
+    "description": "向投资总监钱永强汇报CFA考试完成情况、上午工作成果和黄思琪方案进展，提交书面工作计划，接受反馈并讨论夏季市场风险对冲策略，来源：今日工作安排",
+    "startTime": "2025-06-09 13:30:00",
+    "endTime": "2025-06-09 14:30:00",
+    "generation_source_continue": "1-t"
+  },
+  {
+    "id": "Calendar-183",
+    "generation_source": "1-14-1",
+    "title": "下午工作：处理咨询与准备出差",
+    "description": "根据上司反馈优化客户方案的风险对冲部分，增加情景分析，并逐一回复上午标记的客户邮件，撰写个性化分析。同时登录差旅系统预订北京出差的机票和酒店，打印装订方案摘要，完成当日工作收尾和明日待办清单更新，来源：今日工作安排",
+    "startTime": "2025-06-09 14:30:00",
+    "endTime": "2025-06-09 17:30:00",
+    "generation_source_continue": "1-t"
+  },
+  {
+    "id": "Calendar-184",
+    "generation_source": "2-4-1",
+    "title": "远程办公周（武汉出差）",
+    "description": "已整理工作文件（笔记本电脑、移动电源、客户资料）并通知同事及部分客户。",
+    "startTime": "2025-06-10 09:00:00",
+    "endTime": "2025-06-16 18:00:00",
+    "generation_source_continue": "2-h"
+  },
+  {
+    "id": "Calendar-185",
+    "generation_source": "52-4-1",
+    "title": "上午集中工作与客户沟通",
+    "description": "上午集中工作与客户沟通，2025-06-10 08:30 开始，地点：华泰证券办公室，来源：当日事件描述",
+    "startTime": "2025-06-10 08:30:00",
+    "endTime": "2025-06-10 12:00:00",
+    "generation_source_continue": "52-d"
+  },
+  {
+    "id": "Calendar-186",
+    "generation_source": "2-9-1",
+    "title": "客户事务处理与出差准备",
+    "description": "与同事孙晓雅电话会议同步客户报告和明日会面细节，随后回复客户咨询并参加团队市场快评会，最终检查明日出差材料，来源：今日工作计划",
+    "startTime": "2025-06-11 13:40:00",
+    "endTime": "2025-06-11 17:45:00",
+    "generation_source_continue": "2-m"
+  },
+  {
+    "id": "Calendar-187",
+    "generation_source": "",
+    "title": "整理出差行李",
+    "description": "整理出差行李，包括西装、衬衫、领带等，核对证件、报告和电子设备，同时查看并回复晚间工作邮件，来源：今日工作计划",
+    "startTime": "2025-06-11 20:50:00",
+    "endTime": "2025-06-11 21:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-188",
+    "generation_source": "3-2",
+    "title": "撰写年度工作总结与业绩报告",
+    "description": "整理全年工作记录，梳理投资项目业绩、客户资产增长、市场分析报告产出及个人能力提升点。",
+    "startTime": "2025-06-13 00:00:00",
+    "endTime": "2025-06-13 23:59:59",
+    "generation_source_continue": "3-j"
+  },
+  {
+    "id": "Calendar-189",
+    "generation_source": "52-6",
+    "title": "明日聚餐与博物馆参观安排",
+    "description": "与好友彭雨晴明晚19:00在湘江36号V08包间聚餐，已确认。中国邮票博物馆明日开放时间09:00-17:00，有特展，凭身份证参观，来源：微信沟通与官网查询",
+    "startTime": "2025-06-13 19:00:00",
+    "endTime": "2025-06-13 19:00:00",
+    "generation_source_continue": "52-f"
+  },
+  {
+    "id": "Calendar-190",
+    "generation_source": "1-12",
+    "title": "与客户黄思琪视频会议",
+    "description": "与深圳客户黄思琪进行视频会议，通报市场波动及投资组合影响评估，讨论防御性调仓思路，来源：工作安排",
+    "startTime": "2025-06-12 13:30:00",
+    "endTime": "2025-06-12 14:15:00",
+    "generation_source_continue": "1-r"
+  },
+  {
+    "id": "Calendar-191",
+    "generation_source": "19-2-1",
+    "title": "调仓计划执行",
+    "description": "个人投资组合调仓操作，减持高估值科技股，增持消费ETF和医疗ETF，2025-06-13 09:30 开始，来源：个人投资计划",
+    "startTime": "2025-06-13 09:30:00",
+    "endTime": "2025-06-13 09:30:00",
+    "generation_source_continue": "19-b"
+  },
+  {
+    "id": "Calendar-192",
+    "generation_source": "3-1",
+    "title": "处理积压客户事务",
+    "description": "冯浩然回到长沙华泰证券办公室，集中精力处理因请假期间积压的客户邮件、咨询和交易指令，确保客户服务连续性和投资组合正常运作。",
+    "startTime": "2025-06-13 09:00:00",
+    "endTime": "2025-06-13 18:00:00",
+    "generation_source_continue": "3-i"
+  },
+  {
+    "id": "Calendar-193",
+    "generation_source": "3-4",
+    "title": "年底客户回访行程规划",
+    "description": "根据与上司沟通结果，开始具体规划年底对重点客户的回访行程。初步规划的重点客户名单包括：黄思琪、林志豪等。需要考虑客户的地域分布，合理安排行程路线。需要安排的大致时间段为2025年12月中下旬。",
+    "startTime": "2025-06-13 14:00:00",
+    "endTime": "2025-06-13 15:30:00",
+    "generation_source_continue": "3-l"
+  },
+  {
+    "id": "Calendar-194",
+    "generation_source": "3-5",
+    "title": "整理述职汇报材料",
+    "description": "加班整理总结报告、业绩数据图表、客户反馈至PPT，为年度述职评审会做准备。",
+    "startTime": "2025-06-14 09:00:00",
+    "endTime": "2025-06-14 18:00:00",
+    "generation_source_continue": "3-m"
+  },
+  {
+    "id": "Calendar-195",
+    "generation_source": "52-7-7",
+    "title": "整理出差物品",
+    "description": "整理次日返程行李，包括西装、衬衫、洗漱用品、会议资料和名片盒，核对并完成CA1343航班值机，来源：个人安排",
+    "startTime": "2025-06-14 20:30:00",
+    "endTime": "2025-06-14 21:30:00",
+    "generation_source_continue": "52-g"
+  },
+  {
+    "id": "Calendar-196",
+    "generation_source": "236-1",
+    "title": "职业发展面谈预约",
+    "description": "通过企业微信向上司钱永强发送职业发展面谈预约信息，提及CFA三级考试完成及近期工作成果，来源：企业微信",
+    "startTime": "2025-06-16 09:30:00",
+    "endTime": "2025-06-16 09:30:00",
+    "generation_source_continue": "236-a"
+  },
+  {
+    "id": "Calendar-197",
+    "generation_source": "4-8",
+    "title": "与客户黄思琪视频会议",
+    "description": "与客户黄思琪进行视频会议，讨论科技板块配置及新能源早期投资，明确下一步提供《新能源早期投资可行性分析报告》，来源：公司内部会议系统",
+    "startTime": "2025-06-16 14:30:00",
+    "endTime": "2025-06-16 16:10:00",
+    "generation_source_continue": "4-i"
+  },
+  {
+    "id": "Calendar-198",
+    "generation_source": "19-4",
+    "title": "个人投资组合调仓",
+    "description": "A股开盘后执行调仓计划，卖出部分高估值科技股，买入消费和医疗健康板块ETF，来源：个人交易系统",
+    "startTime": "2025-06-17 09:30:00",
+    "endTime": "2025-06-17 09:30:00",
+    "generation_source_continue": "19-d"
+  },
+  {
+    "id": "Calendar-199",
+    "generation_source": "236-2",
+    "title": "与钱总的职业发展面谈",
+    "description": "在钱总办公室进行一小时职业发展面谈，汇报CFA三级进展与客户成果，讨论投资总监发展路径，来源：与钱总预约",
+    "startTime": "2025-06-17 13:30:00",
+    "endTime": "2025-06-17 14:30:00",
+    "generation_source_continue": "236-b"
+  },
+  {
+    "id": "Calendar-200",
+    "generation_source": "19-5",
+    "title": "检查调仓资产表现",
+    "description": "调仓操作完成后，冯浩然更新了个人投资组合的记录，并设置了对新调入资产的定期跟踪提醒，以观察本次应对操作的中长期效果。",
+    "startTime": "2025-06-18 09:00:00",
+    "endTime": "2025-06-18 09:30:00",
+    "generation_source_continue": "19-e"
+  },
+  {
+    "id": "Calendar-201",
+    "generation_source": "239-1-2",
+    "title": "与发小视频通话",
+    "description": "从餐厅返回岳麓区家中，洗漱并换上家居服。检查Wi-Fi网络确保视频流畅，冲好手冲咖啡准备长谈。备注：已确认网络连接良好。",
+    "startTime": "2025-06-18 20:30:00",
+    "endTime": "2025-06-18 22:00:00",
+    "generation_source_continue": "239-a"
+  },
+  {
+    "id": "Calendar-202",
+    "generation_source": "237-1",
+    "title": "下午深度工作与项目立项",
+    "description": "客户黄思琪项目内部立项申请，2025-06-19 13:45 开始，需深度研读客户资料并撰写立项报告，来源：华泰证券内部工作安排",
+    "startTime": "2025-06-19 13:45:00",
+    "endTime": "2025-06-19 17:45:00",
+    "generation_source_continue": "237-a"
+  },
+  {
+    "id": "Calendar-203",
+    "generation_source": "20-2",
+    "title": "首次深度客户需求分析会议",
+    "description": "视频会议，与客户黄思琪进行首次深度需求分析，2025-06-20 10:00 开始，预计时长1.5小时，会议号 123456789，来源：公司日程系统",
+    "startTime": "2025-06-20 10:00:00",
+    "endTime": "2025-06-20 11:30:00",
+    "generation_source_continue": "20-b"
+  },
+  {
+    "id": "Calendar-204",
+    "generation_source": "5-2",
+    "title": "与露营伙伴敲定暑期计划",
+    "description": "视频连线，与朋友谢雨桐讨论并确定7月15日至18日丹霞山露营行程细节，2025-06-20 21:20 开始，预计时长40分钟，来源：个人约定",
+    "startTime": "2025-06-20 21:20:00",
+    "endTime": "2025-06-20 22:00:00",
+    "generation_source_continue": "5-b"
+  },
+  {
+    "id": "Calendar-205",
+    "generation_source": "237-4",
+    "title": "主导新客户视频会议",
+    "description": "与长沙某科技企业创始人的初步接洽视频会议，2025-06-23 13:30 开始，会议链接已通过王经理获取，来源：公司内部预约",
+    "startTime": "2025-06-23 13:30:00",
+    "endTime": "2025-06-23 15:00:00",
+    "generation_source_continue": "237-d"
+  },
+  {
+    "id": "Calendar-206",
+    "generation_source": "56-2",
+    "title": "预订澳门酒店",
+    "description": "预订澳门氹仔某酒店包含双早的套餐，2025-06-23 20:10 开始操作，预定码 CT12345678，备注要求安静高楼层房间，来源：携程APP",
+    "startTime": "2025-06-23 20:10:00",
+    "endTime": "2025-06-23 20:10:00",
+    "generation_source_continue": "56-b"
+  },
+  {
+    "id": "Calendar-207",
+    "generation_source": "237-6",
+    "title": "向上司汇报新客户进展",
+    "description": "向上司钱永强汇报长沙科技企业创始人接洽会议成果、客户反馈及跟进计划，2025-06-25 08:50 开始，地点：钱永强办公室，来源：今日工作安排",
+    "startTime": "2025-06-25 08:50:00",
+    "endTime": "2025-06-25 09:20:00",
+    "generation_source_continue": "237-f"
+  },
+  {
+    "id": "Calendar-208",
+    "generation_source": "56-3",
+    "title": "午休事务处理",
+    "description": "午休期间处理个人事务，包括预订长沙往返澳门航班、选座、支付，以及在线购买瑜伽季卡并支付，2025-06-25 12:00 开始，来源：个人安排",
+    "startTime": "2025-06-25 12:00:00",
+    "endTime": "2025-06-25 12:25:00",
+    "generation_source_continue": "56-c"
+  },
+  {
+    "id": "Calendar-209",
+    "generation_source": "20-5",
+    "title": "黄思琪项目内部策略会",
+    "description": "黄思琪项目内部策略会，2025-06-26 13:30 开始，地点：公司会议室，议题：家族信托架构、跨境税务筹划、美股配置策略，来源：工作安排",
+    "startTime": "2025-06-26 13:30:00",
+    "endTime": "2025-06-26 17:00:00",
+    "generation_source_continue": "20-e"
+  },
+  {
+    "id": "Calendar-210",
+    "generation_source": "152-2",
+    "title": "悦动瑜伽肩颈理疗课",
+    "description": "悦动瑜伽生活馆肩颈理疗体验课，2025-06-27 19:30 开始，需提前填写健康问卷，凭预约信息到店，来源：电话确认",
+    "startTime": "2025-06-27 19:30:00",
+    "endTime": "2025-06-27 19:30:00",
+    "generation_source_continue": "152-b"
+  },
+  {
+    "id": "Calendar-211",
+    "generation_source": "56-4",
+    "title": "《水舞间》演出门票预订",
+    "description": "澳门《水舞间》演出，2025-07-12 20:00 开场，B区中央座位，电子票确认码 WDSJ20250712B0890，凭电子票二维码入场，来源：水舞间官网",
+    "startTime": "2025-07-12 20:00:00",
+    "endTime": "2025-07-12 20:00:00",
+    "generation_source_continue": "56-d"
+  },
+  {
+    "id": "Calendar-212",
+    "generation_source": "7-8-1",
+    "title": "财务复盘与规划",
+    "description": "个人财务复盘与规划，2025-06-29 09:00 开始，预计持续3小时，需核对六月收支、评估调仓、制定七月预算及下半年规划，来源：个人日程安排",
+    "startTime": "2025-06-29 09:00:00",
+    "endTime": "2025-06-29 12:00:00",
+    "generation_source_continue": "7-l"
+  },
+  {
+    "id": "Calendar-213",
+    "generation_source": "7-8-1",
+    "title": "财务规划确认",
+    "description": "财务规划最终确认与归档，2025-06-29 18:10 开始，预计持续50分钟，需检查并确认下半年规划文档，打包存入云端，来源：个人日程安排",
+    "startTime": "2025-06-29 18:10:00",
+    "endTime": "2025-06-29 19:00:00",
+    "generation_source_continue": "7-l"
+  },
+  {
+    "id": "Calendar-214",
+    "generation_source": "79-1",
+    "title": "投资顾问部晨会",
+    "description": "投资顾问部晨会，2025-07-01 09:30 开始，地点：华泰证券办公室大会议室，主讲人：钱总，主题：个人养老金账户投资范围扩大政策解读，来源：部门日程",
+    "startTime": "2025-07-01 09:30:00",
+    "endTime": "2025-07-01 10:15:00",
+    "generation_source_continue": "79-a"
+  },
+  {
+    "id": "Calendar-215",
+    "generation_source": "7-9",
+    "title": "与父亲冯建国视频沟通财务规划",
+    "description": "与父亲冯建国微信视频沟通，2025-06-30 20:40 开始，重点讨论下半年财务规划及换房/装修专项储蓄账户设立计划，来源：微信预约",
+    "startTime": "2025-06-30 20:40:00",
+    "endTime": "2025-06-30 21:20:00",
+    "generation_source_continue": "7-m"
+  },
+  {
+    "id": "Calendar-216",
+    "generation_source": "22-1",
+    "title": "莽山露营视频讨论",
+    "description": "莽山露营视频讨论，2025-07-01 13:30 开始，地点：公司小型会议室，参与人：谢雨桐、高云飞等，平台：微信，来源：个人安排",
+    "startTime": "2025-07-01 13:30:00",
+    "endTime": "2025-07-01 14:00:00",
+    "generation_source_continue": "22-a"
+  },
+  {
+    "id": "Calendar-217",
+    "generation_source": "56-6",
+    "title": "中国银行兑换澳门币",
+    "description": "兑换澳门币现金用于周末旅行，2025-07-02 13:30 前往，地点：中国银行长沙市马栏山支行（会展路1号），凭身份证办理，来源：午休时间安排",
+    "startTime": "2025-07-02 13:30:00",
+    "endTime": "2025-07-02 13:30:00",
+    "generation_source_continue": "56-f"
+  },
+  {
+    "id": "Calendar-218",
+    "generation_source": "20-9",
+    "title": "上午工作与方案审阅",
+    "description": "与同事郑文博在公司小会议室审阅客户黄思琪的资产配置草案，2025-07-03 09:00 开始，讨论配置逻辑、行业轮动和风险，来源：今日工作安排",
+    "startTime": "2025-07-03 09:00:00",
+    "endTime": "2025-07-03 10:30:00",
+    "generation_source_continue": "20-i"
+  },
+  {
+    "id": "Calendar-219",
+    "generation_source": "22-2",
+    "title": "研究莽山路线与核对澳门行程",
+    "description": "研究莽山徒步路线并与谢雨桐在线沟通，核对周末澳门之行的机票、酒店和演出门票，2025-07-02 20:10 开始，来源：晚间家庭安排",
+    "startTime": "2025-07-02 20:10:00",
+    "endTime": "2025-07-02 21:20:00",
+    "generation_source_continue": "22-b"
+  },
+  {
+    "id": "Calendar-220",
+    "generation_source": "20-12",
+    "title": "CFA内部分享会",
+    "description": "下午3点主持CFA内部分享会，主题为另类投资在当前市场环境下的配置价值，地点华泰证券办公室，来源：今日事件",
+    "startTime": "2025-07-07 15:00:00",
+    "endTime": "2025-07-07 16:30:00",
+    "generation_source_continue": "20-l"
+  },
+  {
+    "id": "Calendar-221",
+    "generation_source": "20-13",
+    "title": "法务咨询预约",
+    "description": "与公司法务专员就私募基金、结构性产品合同关键条款（退出机制、费用结构）进行沟通，2025-07-09 10:00 开始，地点：公司会议室，来源：公司内部通讯软件",
+    "startTime": "2025-07-09 10:00:00",
+    "endTime": "2025-07-09 11:30:00",
+    "generation_source_continue": "20-m"
+  },
+  {
+    "id": "Calendar-222",
+    "generation_source": "20-14",
+    "title": "与产品部门会议确认产品细节",
+    "description": "与产品部刘经理会议，确认私募股权基金和基础设施公募REITs的可售额度、费率结构、认购流程等细节，为客户投资方案做准备，来源：公司内部会议通知",
+    "startTime": "2025-07-09 10:30:00",
+    "endTime": "2025-07-09 11:00:00",
+    "generation_source_continue": "20-n"
+  },
+  {
+    "id": "Calendar-223",
+    "generation_source": "64-4",
+    "title": "妹妹冯欣然八月行程确认",
+    "description": "与妹妹冯欣然确认八月来长沙的日期、高铁班次、酒店信息，已更新行程文档并发送，2025-07-08 20:00 完成沟通，来源：微信视频通话",
+    "startTime": "2025-07-08 20:00:00",
+    "endTime": "2025-07-08 20:00:00",
+    "generation_source_continue": "64-d"
+  },
+  {
+    "id": "Calendar-224",
+    "generation_source": "22-6",
+    "title": "午休与确认露营细节",
+    "description": "午休闭目养神，随后在微信群中最终确认明天莽山露营的行程、集合时间、分工和应急预案，来源：个人安排",
+    "startTime": "2025-07-09 13:00:00",
+    "endTime": "2025-07-09 13:30:00",
+    "generation_source_continue": "22-f"
+  },
+  {
+    "id": "Calendar-225",
+    "generation_source": "126-5",
+    "title": "委托房产中介留意新房源",
+    "description": "通过微信委托房产中介陆家明留意滨江板块的房源，重点确认产权、抵押、售房原因和报价情况，并请求关注急售优质房源，来源：个人委托",
+    "startTime": "2025-07-09 15:30:00",
+    "endTime": "2025-07-09 15:50:00",
+    "generation_source_continue": "126-e"
+  },
+  {
+    "id": "Calendar-226",
+    "generation_source": "",
+    "title": "晚间锻炼与露营准备",
+    "description": "晚间锻炼与露营准备，2025-07-10 19:40 开始，包括30分钟Keep全身舒缓拉伸和瑜伽，以及为周末莽山露营清点装备、清洁摄影器材，来源：个人规划",
+    "startTime": "2025-07-10 19:40:00",
+    "endTime": "2025-07-10 21:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-227",
+    "generation_source": "126-6",
+    "title": "整理评估房源清单",
+    "description": "汇总线上房源信息至Excel，根据通勤、物业、户型、价格等维度进行初步打分排序，形成优先看房清单",
+    "startTime": "2025-07-12 14:00:00",
+    "endTime": "2025-07-12 16:00:00",
+    "generation_source_continue": "126-f"
+  },
+  {
+    "id": "Calendar-228",
+    "generation_source": "20-16-1",
+    "title": "与黄思琪女士关键客户面签",
+    "description": "与客户黄思琪女士进行最终方案演示与协议签署，2025-07-16 13:00 开始，地点：深圳市南山区科苑北路6号科技园金融基地客户公司会议室，来源：客户预约确认邮件",
+    "startTime": "2025-07-16 13:00:00",
+    "endTime": "2025-07-16 14:15:00",
+    "generation_source_continue": "20-p"
+  },
+  {
+    "id": "Calendar-229",
+    "generation_source": "",
+    "title": "黄思琪资产配置方案完成",
+    "description": "客户黄思琪的资产配置最终版方案汇总校准完成，2025-07-15 12:00 前通过公司系统发送，来源：华泰证券工作系统",
+    "startTime": "2025-07-15 12:00:00",
+    "endTime": "2025-07-15 12:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-230",
+    "generation_source": "240-1",
+    "title": "接父母航班 MU1234",
+    "description": "航班 MU1234（武汉天河机场→长沙黄花机场），2025-07-19 19:30 抵达，接机口 T2，来源：与父母视频通话确认",
+    "startTime": "2025-07-19 19:30:00",
+    "endTime": "2025-07-19 19:30:00",
+    "generation_source_continue": "240-a"
+  },
+  {
+    "id": "Calendar-231",
+    "generation_source": "20-16-1",
+    "title": "CZ1234 航班（长沙 - 深圳）",
+    "description": "CZ1234 次航班（长沙黄花国际机场T2→深圳宝安国际机场T3），2025-07-16 09:45 起飞，座位号 12A，凭身份证与登机牌登机，来源：航旅纵横",
+    "startTime": "2025-07-16 09:45:00",
+    "endTime": "2025-07-16 09:45:00",
+    "generation_source_continue": "20-p"
+  },
+  {
+    "id": "Calendar-232",
+    "generation_source": "245-3",
+    "title": "客户危机处理视频会议",
+    "description": "与客户林志豪进行紧急视频会议，处理投资利空消息，时间 2025-07-17 10:00，来源：客户来电",
+    "startTime": "2025-07-17 10:00:00",
+    "endTime": "2025-07-17 11:30:00",
+    "generation_source_continue": "245-a"
+  },
+  {
+    "id": "Calendar-233",
+    "generation_source": "245-2",
+    "title": "紧急市场分析与持仓评估",
+    "description": "暂停手头工作，集中分析相关行业/公司市场动态与持仓策略",
+    "startTime": "2025-07-17 10:00:00",
+    "endTime": "2025-07-17 11:30:00",
+    "generation_source_continue": "245-a"
+  },
+  {
+    "id": "Calendar-234",
+    "generation_source": "23-1",
+    "title": "电影之夜",
+    "description": "地点：吴俊杰家\n备注：观看《星际归途》。分工：准备零食和饮料。",
+    "startTime": "2025-07-19 19:00:00",
+    "endTime": "2025-07-19 22:00:00",
+    "generation_source_continue": "23-a"
+  },
+  {
+    "id": "Calendar-235",
+    "generation_source": "54-1-1",
+    "title": "武汉怀旧之旅规划视频通话",
+    "description": "与发小张明轩视频通话，规划月底武汉怀旧之旅行程，时间 2025-07-17 19:40，来源：微信约定",
+    "startTime": "2025-07-17 19:40:00",
+    "endTime": "2025-07-17 20:20:00",
+    "generation_source_continue": "54-a"
+  },
+  {
+    "id": "Calendar-236",
+    "generation_source": "240-2",
+    "title": "与领导沟通并申请调休",
+    "description": "与领导钱永强沟通，申请调休三天（7月21-23日），用于陪伴来长沙的父母，已获口头批准，需提交OA申请，来源：今日事件",
+    "startTime": "2025-07-18 10:30:00",
+    "endTime": "2025-07-18 10:45:00",
+    "generation_source_continue": "240-b"
+  },
+  {
+    "id": "Calendar-237",
+    "generation_source": "153-4",
+    "title": "瑜伽体验课",
+    "description": "瑜伽体验课（长沙王府井购物中心写字楼瑜伽普拉提馆），2025-07-19 09:30 开始，首次体验哈他瑜伽，专注肩颈腰部拉伸，来源：瑜伽馆预约",
+    "startTime": "2025-07-19 09:30:00",
+    "endTime": "2025-07-19 11:00:00",
+    "generation_source_continue": "153-d"
+  },
+  {
+    "id": "Calendar-238",
+    "generation_source": "",
+    "title": "与父母视频通话确认接机",
+    "description": "与父母冯建国和李秀英视频通话，确认明日（2025-07-21）航班CZ1234（武汉-长沙）抵达时间为14:30，接机地点为长沙黄花国际机场T2航站楼国内到达口，沟通晚餐安排，来源：微信视频通话",
+    "startTime": "2025-07-20 22:00:00",
+    "endTime": "2025-07-20 22:20:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-239",
+    "generation_source": "20-17-1",
+    "title": "客户黄思琪大额资产配置执行",
+    "description": "客户黄思琪500万资金配置指令下达，2025-07-21 09:45:00 开始，需在交易系统中完成分笔购买操作，完成后向钱总汇报，来源：今日工作安排",
+    "startTime": "2025-07-21 09:45:00",
+    "endTime": "2025-07-21 11:15:00",
+    "generation_source_continue": "20-q"
+  },
+  {
+    "id": "Calendar-240",
+    "generation_source": "242-1",
+    "title": "长沙南站迎接父母",
+    "description": "G1001次列车（武汉站→长沙南站），预计2025-07-22 14:15抵达东出站口，已确认列车正点运行，来源：12306及家人通知",
+    "startTime": "2025-07-22 14:05:00",
+    "endTime": "2025-07-22 14:45:00",
+    "generation_source_continue": "242-a"
+  },
+  {
+    "id": "Calendar-241",
+    "generation_source": "242-2",
+    "title": "湘聚楼家庭聚餐预订",
+    "description": "湘聚楼（开福区）包间，2025-07-25 18:00 用餐，预点排骨藕汤、清蒸鲈鱼等菜品，预订码 XJL20250725，凭姓名确认，来源：电话预订",
+    "startTime": "2025-07-25 18:00:00",
+    "endTime": "2025-07-25 19:30:00",
+    "generation_source_continue": "242-b"
+  },
+  {
+    "id": "Calendar-242",
+    "generation_source": "240-7-2",
+    "title": "午后家庭时光与个人事务处理",
+    "description": "时间 2025-07-25 13:50:00 至 2025-07-25 17:30:00，核心要素 处理父母次日航班值机信息、送机专车预约、整理家庭照片、回复客户邮件、预约晚宴网约车，来源：个人日程安排",
+    "startTime": "2025-07-25 13:50:00",
+    "endTime": "2025-07-25 17:30:00",
+    "generation_source_continue": "240-g"
+  },
+  {
+    "id": "Calendar-243",
+    "generation_source": "240-7-2",
+    "title": "返程准备与睡前温馨时刻",
+    "description": "时间 2025-07-25 21:30:00 至 2025-07-25 22:50:00，核心要素 协同整理行李、确认送机专车、处理衣物褶皱、为父母热牛奶、最后道别，来源：个人日程安排",
+    "startTime": "2025-07-25 21:30:00",
+    "endTime": "2025-07-25 22:50:00",
+    "generation_source_continue": "240-g"
+  },
+  {
+    "id": "Calendar-244",
+    "generation_source": "54-2-2",
+    "title": "怀旧步行与探访旧地",
+    "description": "怀旧步行与探访旧地，2025-07-26 14:40 开始，地点包括永清街吉林社区、武汉新天地咖啡店、旧小学校址等，与发小张明轩同行，来源：今日行程安排",
+    "startTime": "2025-07-26 14:40:00",
+    "endTime": "2025-07-26 17:00:00",
+    "generation_source_continue": "54-b"
+  },
+  {
+    "id": "Calendar-245",
+    "generation_source": "126-9-1",
+    "title": "链家房产委托与出售会面",
+    "description": "与链家地产中介陆家明会面，2025-07-28 12:40 开始，地点：长沙市开福区福元西路链家地产(万科城店)，处理委托寻房与出售委托协议签署，来源：今日事件",
+    "startTime": "2025-07-28 12:40:00",
+    "endTime": "2025-07-28 12:40:00",
+    "generation_source_continue": "126-i"
+  },
+  {
+    "id": "Calendar-246",
+    "generation_source": "",
+    "title": "团队晨会",
+    "description": "团队晨会（公司小会议室），2025-07-29 09:05 开始，钱总部署本周重点，来源：今日工作安排",
+    "startTime": "2025-07-29 09:05:00",
+    "endTime": "2025-07-29 09:35:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-247",
+    "generation_source": "20-19",
+    "title": "团队晨会",
+    "description": "团队晨会，2025-08-01 09:00 开始，地点：华泰证券长沙分公司投资顾问部会议室，来源：今日事件",
+    "startTime": "2025-08-01 09:00:00",
+    "endTime": "2025-08-01 09:30:00",
+    "generation_source_continue": "20-s"
+  },
+  {
+    "id": "Calendar-248",
+    "generation_source": "24-6",
+    "title": "不动产登记中心房产过户办理",
+    "description": "房产过户手续办理，时间 2025-08-02 09:40 开始，地点长沙市不动产登记中心（岳麓区分中心），与中介陆家明及买方夫妇汇合，办理身份核验、资料审核、签字确认和缴费等环节，来源：与中介陆家明约定",
+    "startTime": "2025-08-02 09:40:00",
+    "endTime": "2025-08-02 11:10:00",
+    "generation_source_continue": "24-f"
+  },
+  {
+    "id": "Calendar-249",
+    "generation_source": "246-6",
+    "title": "岳麓山晨跑与数据复盘",
+    "description": "清晨，冯浩然与高云飞在岳麓山进行常规晨跑。他特意选择了包含上坡的路段，佩戴运动手环重点监测心率变化和体能消耗。跑后在山脚早餐店，两人不仅交流了训练数据，冯浩然还分享了近期利用数据分析优化个人事务的心得，讨论了如何将工作中的理性思维应用于生活决策。",
+    "startTime": "2025-08-03 06:30:00",
+    "endTime": "2025-08-03 08:00:00",
+    "generation_source_continue": "246-a"
+  },
+  {
+    "id": "Calendar-250",
+    "generation_source": "21-7-1",
+    "title": "岳麓山晨跑与数据复盘",
+    "description": "清晨，冯浩然与高云飞在岳麓山进行常规晨跑。他特意选择了包含上坡的路段，佩戴运动手环重点监测心率变化和体能消耗。跑后在山脚早餐店，两人不仅交流了训练数据，冯浩然还分享了近期利用数据分析优化个人事务的心得，讨论了如何将工作中的理性思维应用于生活决策。",
+    "startTime": "2025-08-03 06:30:00",
+    "endTime": "2025-08-03 08:00:00",
+    "generation_source_continue": "21-g"
+  },
+  {
+    "id": "Calendar-251",
+    "generation_source": "246-5",
+    "title": "岳麓山晨跑与数据复盘",
+    "description": "与高云飞在岳麓山进行常规晨跑，特意选择包含上坡的路段，佩戴运动手环重点监测心率变化和体能消耗。跑后在山脚早餐店，两人交流训练数据，并分享近期利用数据分析优化个人事务的心得，讨论如何将工作中的理性思维应用于生活决策。",
+    "startTime": "2025-08-03 06:30:00",
+    "endTime": "2025-08-03 08:00:00",
+    "generation_source_continue": "246-a"
+  },
+  {
+    "id": "Calendar-252",
+    "generation_source": "246-1",
+    "title": "岳麓山晨跑与数据复盘",
+    "description": "清晨，冯浩然与高云飞在岳麓山进行常规晨跑。他特意选择了包含上坡的路段，佩戴运动手环重点监测心率变化和体能消耗。跑后在山脚早餐店，两人不仅交流了训练数据，冯浩然还分享了近期利用数据分析优化个人事务的心得，讨论了如何将工作中的理性思维应用于生活决策。",
+    "startTime": "2025-08-03 06:30:00",
+    "endTime": "2025-08-03 08:00:00",
+    "generation_source_continue": "246-a"
+  },
+  {
+    "id": "Calendar-253",
+    "generation_source": "246-2",
+    "title": "岳麓山晨跑与数据复盘",
+    "description": "清晨，与高云飞在岳麓山进行常规晨跑。选择包含上坡的路段，佩戴运动手环重点监测心率变化和体能消耗。跑后在山脚早餐店交流训练数据，并分享近期利用数据分析优化个人事务的心得，讨论如何将工作中的理性思维应用于生活决策。",
+    "startTime": "2025-08-03 06:30:00",
+    "endTime": "2025-08-03 08:30:00",
+    "generation_source_continue": "246-a"
+  },
+  {
+    "id": "Calendar-254",
+    "generation_source": "246-4",
+    "title": "岳麓山晨跑与数据复盘",
+    "description": "清晨，冯浩然与高云飞在岳麓山进行常规晨跑。他特意选择了包含上坡的路段，佩戴运动手环重点监测心率变化和体能消耗。跑后在山脚早餐店，两人不仅交流了训练数据，冯浩然还分享了近期利用数据分析优化个人事务的心得，讨论了如何将工作中的理性思维应用于生活决策。",
+    "startTime": "2025-08-03 06:30:00",
+    "endTime": "2025-08-03 08:00:00",
+    "generation_source_continue": "246-a"
+  },
+  {
+    "id": "Calendar-255",
+    "generation_source": "246-3",
+    "title": "岳麓山晨跑与数据复盘",
+    "description": "与高云飞在岳麓山进行包含上坡路段的晨跑，佩戴运动手环监测心率与体能。跑后在早餐店交流训练数据，并讨论如何将数据分析应用于生活决策。",
+    "startTime": "2025-08-03 06:30:00",
+    "endTime": "2025-08-03 08:30:00",
+    "generation_source_continue": "246-a"
+  },
+  {
+    "id": "Calendar-256",
+    "generation_source": "21-7-2",
+    "title": "岳麓山晨跑与数据复盘",
+    "description": "与高云飞晨跑，监测心率与体能，早餐店讨论数据分析应用",
+    "startTime": "2025-08-03 06:30:00",
+    "endTime": "2025-08-03 08:30:00",
+    "generation_source_continue": "21-g"
+  },
+  {
+    "id": "Calendar-257",
+    "generation_source": "246-7",
+    "title": "岳麓山晨跑与数据复盘",
+    "description": "与高云飞晨跑，监测心率与体能，早餐后交流训练数据与数据分析应用心得",
+    "startTime": "2025-08-03 06:30:00",
+    "endTime": "2025-08-03 08:30:00",
+    "generation_source_continue": "246-a"
+  },
+  {
+    "id": "Calendar-258",
+    "generation_source": "24-7",
+    "title": "地铁通勤并完成售房资金划转",
+    "description": "地铁6号线换乘1号线通勤期间，利用手机银行APP将售房款按照50%换房储备、30%权益投资、20%流动备用金的方案分账户划转，来源：个人财务处理",
+    "startTime": "2025-08-04 07:35:00",
+    "endTime": "2025-08-04 07:35:00",
+    "generation_source_continue": "24-g"
+  },
+  {
+    "id": "Calendar-259",
+    "generation_source": "",
+    "title": "应对客户黄思琪紧急咨询",
+    "description": "客户黄思琪因市场波动发来咨询，需分析其资产组合和市场数据，通过微信语音给出理性建议，安抚客户情绪，来源：客户服务",
+    "startTime": "2025-08-04 19:50:00",
+    "endTime": "2025-08-04 20:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-260",
+    "generation_source": "126-11-2",
+    "title": "明日看房清单确定",
+    "description": "与房产中介陆家明确定次日看房清单，包含3个优先级最高的目标楼盘，约定2025-08-06 09:30在第一个楼盘售楼处汇合，来源：与陆家明的微信沟通",
+    "startTime": "2025-08-05 12:00:00",
+    "endTime": "2025-08-05 12:00:00",
+    "generation_source_continue": "126-k"
+  },
+  {
+    "id": "Calendar-261",
+    "generation_source": "25-5",
+    "title": "签订房屋买卖合同",
+    "description": "签订房屋买卖合同，2025-08-06 08:20:00 开始，地点华远国际中心，与中介陆家明及买家张先生、李女士会面，来源：今日事件",
+    "startTime": "2025-08-06 08:20:00",
+    "endTime": "2025-08-06 09:40:00",
+    "generation_source_continue": "25-e"
+  },
+  {
+    "id": "Calendar-262",
+    "generation_source": "62-2",
+    "title": "天文观测器材准备与路线确认",
+    "description": "检查天文摄影器材（索尼A7III、腾龙150-500mm镜头、三脚架等）并确认前往湖南省天文台的自驾路线，查看天气APP确认2025-08-06晚间为晴好天气，来源：个人准备",
+    "startTime": "2025-08-05 21:30:00",
+    "endTime": "2025-08-05 21:30:00",
+    "generation_source_continue": "62-b"
+  },
+  {
+    "id": "Calendar-263",
+    "generation_source": "25-6-3",
+    "title": "二手房C实地考察（万科城市花园）",
+    "description": "考察万科城市花园精装三房，与房东王先生交流，2025-08-07 13:45 开始，预计时长1.5小时，地址：枫林三路889号，来源：房产中介陆家明预约",
+    "startTime": "2025-08-07 13:45:00",
+    "endTime": "2025-08-07 15:15:00",
+    "generation_source_continue": "25-f"
+  },
+  {
+    "id": "Calendar-264",
+    "generation_source": "65-1",
+    "title": "妹妹冯欣然来访行程",
+    "description": "妹妹冯欣然来访，行程包括：2025-08-09 10:30 长沙南站接站，随后前往岳麓山爱晚亭、麓山南路小吃街、湖南省博物馆，晚上家宴，来源：微信沟通",
+    "startTime": "2025-08-09 10:30:00",
+    "endTime": "2025-08-09 10:30:00",
+    "generation_source_continue": "65-a"
+  },
+  {
+    "id": "Calendar-265",
+    "generation_source": "49-3-1",
+    "title": "购买摄影装备",
+    "description": "前往王府井购物中心摄影器材店购买全画幅微单相机及定焦镜头，2025-08-10 13:40 出发，来源：个人计划",
+    "startTime": "2025-08-10 13:40:00",
+    "endTime": "2025-08-10 13:40:00",
+    "generation_source_continue": "49-c"
+  },
+  {
+    "id": "Calendar-266",
+    "generation_source": "249-2-3",
+    "title": "上午工作：会议闭环与客户跟进",
+    "description": "上午工作：会议闭环与客户跟进，2025-08-12 09:30 开始，地点华泰证券办公室，需撰写会议纪要、提交合规审核、向钱总汇报、处理客户邮件，来源：当日工作安排",
+    "startTime": "2025-08-12 09:30:00",
+    "endTime": "2025-08-12 12:00:00",
+    "generation_source_continue": "249-b"
+  },
+  {
+    "id": "Calendar-267",
+    "generation_source": "24-9-1",
+    "title": "房产过户申请办理",
+    "description": "房产过户申请办理，2025-08-13 13:20 开始，地点长沙市不动产登记中心，与中介陆家明汇合，来源：当日事件安排",
+    "startTime": "2025-08-13 13:20:00",
+    "endTime": "2025-08-13 15:50:00",
+    "generation_source_continue": "24-i"
+  },
+  {
+    "id": "Calendar-268",
+    "generation_source": "25-9",
+    "title": "外出办理购房贷款预审",
+    "description": "前往渤海银行（长沙河西支行）办理购房贷款预审，2025-08-14 13:35 出发，需携带身份证、收入证明、购房合同等材料，与客户经理沟通方案，来源：个人安排",
+    "startTime": "2025-08-14 13:35:00",
+    "endTime": "2025-08-14 13:35:00",
+    "generation_source_continue": "25-i"
+  },
+  {
+    "id": "Calendar-269",
+    "generation_source": "25-10",
+    "title": "渤海银行提交贷款申请",
+    "description": "渤海银行提交新房贷款申请文件，2025-08-16 08:45 开始面签，客户经理张经理，地点湘腾城市广场渤海银行网点，来源：当日事件",
+    "startTime": "2025-08-16 08:45:00",
+    "endTime": "2025-08-16 08:45:00",
+    "generation_source_continue": "25-j"
+  },
+  {
+    "id": "Calendar-270",
+    "generation_source": "250-3",
+    "title": "与彭雨晴晚餐策划国庆自驾游",
+    "description": "与好友彭雨晴在金鹰路兰州拉面馆晚餐，详细策划国庆湘西黔东南7天自驾行程，2025-08-16 19:20 开始，来源：当日事件",
+    "startTime": "2025-08-16 19:20:00",
+    "endTime": "2025-08-16 21:10:00",
+    "generation_source_continue": "250-c"
+  },
+  {
+    "id": "Calendar-271",
+    "generation_source": "27-1",
+    "title": "系统打包露营装备",
+    "description": "打包周末露营所需装备，包括帐篷、睡袋、防潮垫、折叠桌椅、炊具炉头、食材、备用衣物、摄影器材等，并检查确认摄影器材包内物品无误，来源：个人安排",
+    "startTime": "2025-08-17 22:00:00",
+    "endTime": "2025-08-17 22:40:00",
+    "generation_source_continue": "27-a"
+  },
+  {
+    "id": "Calendar-272",
+    "generation_source": "27-2-1",
+    "title": "国庆自驾游行程规划",
+    "description": "国庆自驾游详细路线规划，包括每日行程、露营点坐标和住宿建议，已整理成PDF行程规划书并分享到微信群，来源：个人规划",
+    "startTime": "2025-08-18 19:30:00",
+    "endTime": "2025-08-18 20:40:00",
+    "generation_source_continue": "27-b"
+  },
+  {
+    "id": "Calendar-273",
+    "generation_source": "25-12",
+    "title": "房产过户与抵押贷款手续办理",
+    "description": "前往长沙市不动产登记中心办理房产过户并领取《不动产权证书》，随后前往渤海银行网点签署抵押贷款合同，2025-08-19 14:20 出发，需携带身份证、购房合同等相关文件，来源：个人事务安排",
+    "startTime": "2025-08-19 14:20:00",
+    "endTime": "2025-08-19 14:20:00",
+    "generation_source_continue": "25-l"
+  },
+  {
+    "id": "Calendar-274",
+    "generation_source": "25-13",
+    "title": "工作开始与首次建仓",
+    "description": "2025-08-20 08:55 开始工作，确认旧房尾款约25万元到账，股市开盘后执行首次追加建仓，分三笔买入消费板块股票，记录交易日志并设置止损位，来源：当日工作记录",
+    "startTime": "2025-08-20 08:55:00",
+    "endTime": "2025-08-20 08:55:00",
+    "generation_source_continue": "25-m"
+  },
+  {
+    "id": "Calendar-275",
+    "generation_source": "59-1-1",
+    "title": "心怡咖啡馆咖啡豆品鉴会",
+    "description": "地点：心怡手冲咖啡馆\n备注：沈老板邀请，将品尝稀有豆种",
+    "startTime": "2025-08-23 14:00:00",
+    "endTime": "2025-08-23 16:00:00",
+    "generation_source_continue": "59-a"
+  },
+  {
+    "id": "Calendar-276",
+    "generation_source": "80-12",
+    "title": "养老金报告撰写",
+    "description": "2025-08-21 08:30:00 开始，在华泰证券办公室完成养老金报告核心结论部分撰写，来源：今日工作安排",
+    "startTime": "2025-08-21 08:30:00",
+    "endTime": "2025-08-21 10:30:00",
+    "generation_source_continue": "80-l"
+  },
+  {
+    "id": "Calendar-277",
+    "generation_source": "143-1",
+    "title": "启动邮票整理项目",
+    "description": "2025-08-20 20:30 在书房开始为期三天的邮票整理项目，进行初步分类（按国家、题材等），理清收藏结构和体量，来源：个人计划",
+    "startTime": "2025-08-20 20:30:00",
+    "endTime": "2025-08-20 20:30:00",
+    "generation_source_continue": "143-a"
+  },
+  {
+    "id": "Calendar-278",
+    "generation_source": "251-1-1",
+    "title": "线上新房财产保险确认",
+    "description": "2025-08-21 13:30:00 开始，与保险经纪人视频会议，确认并签署新房财产保险电子保单，来源：今日事件安排",
+    "startTime": "2025-08-21 13:30:00",
+    "endTime": "2025-08-21 14:30:00",
+    "generation_source_continue": "251-a"
+  },
+  {
+    "id": "Calendar-279",
+    "generation_source": "154-2",
+    "title": "瑜伽体验课",
+    "description": "地点：静心瑜伽工作室（地址：上海市浦东新区东方路123号）。备注：已购买三个月会员课程包。",
+    "startTime": "2025-08-22 18:00:00",
+    "endTime": "2025-08-22 19:30:00",
+    "generation_source_continue": "154-b"
+  },
+  {
+    "id": "Calendar-280",
+    "generation_source": "",
+    "title": "视频会议（客户黄思琪咨询）",
+    "description": "与客户黄思琪进行视频会议，分析其美元资产是否应转换为欧元以对冲风险，时间 2025-08-22 15:00 开始，来源：客户紧急咨询",
+    "startTime": "2025-08-22 15:00:00",
+    "endTime": "2025-08-22 16:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-281",
+    "generation_source": "255-1",
+    "title": "周末露营活动最终确认",
+    "description": "与跑友高云飞和露营伙伴谢雨桐通过微信进行最终确认，敲定周六集合时间、装备清单和物资分工，并分享山区天气预报，时间 2025-08-22 19:00 开始，来源：朋友约定",
+    "startTime": "2025-08-22 19:00:00",
+    "endTime": "2025-08-22 19:30:00",
+    "generation_source_continue": "255-a"
+  },
+  {
+    "id": "Calendar-282",
+    "generation_source": "",
+    "title": "部门周例会",
+    "description": "华泰证券部门周例会，2025-08-25 09:00 开始，由钱总主持，汇报工作进展并听取三季度市场研判，地点：华泰证券小会议室，来源：公司OA系统",
+    "startTime": "2025-08-25 09:00:00",
+    "endTime": "2025-08-25 09:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-283",
+    "generation_source": "252-1-1",
+    "title": "核对奖金到账",
+    "description": "核对绩效奖金到账，2025-08-25 09:30 开始，查看OA系统邮件并登录手机银行APP核实，来源：公司OA系统及银行通知",
+    "startTime": "2025-08-25 09:30:00",
+    "endTime": "2025-08-25 10:00:00",
+    "generation_source_continue": "252-a"
+  },
+  {
+    "id": "Calendar-284",
+    "generation_source": "252-1-4",
+    "title": "规划奖金用途",
+    "description": "在财务软件中为奖金创建分配计划：1. 划拨部分资金至“国庆自驾游”储蓄账户；2. 将一部分转入货币基金作为应急备用金；3. 预留一部分作为股票投资的追加资金，并标注了9月份寻找合适时机。",
+    "startTime": "2025-08-25 10:00:00",
+    "endTime": "2025-08-25 10:30:00",
+    "generation_source_continue": "252-a"
+  },
+  {
+    "id": "Calendar-285",
+    "generation_source": "252-1-3",
+    "title": "规划资金用途",
+    "description": "晚上，在书房处理奖金分配。计划：40%国庆自驾游储蓄，30%货币基金，30%股票投资（9月建仓）。",
+    "startTime": "2025-08-25 20:00:00",
+    "endTime": "2025-08-25 21:00:00",
+    "generation_source_continue": "252-a"
+  },
+  {
+    "id": "Calendar-286",
+    "generation_source": "252-2",
+    "title": "9月追加投资观察期标记",
+    "description": "2025年9月，追加投资观察期，需密切关注市场动态与自选股表现，来源：个人工作安排",
+    "startTime": "2025-09-01 00:00:00",
+    "endTime": "2025-09-30 23:59:59",
+    "generation_source_continue": "252-b"
+  },
+  {
+    "id": "Calendar-287",
+    "generation_source": "26-4",
+    "title": "投资操作与客户沟通",
+    "description": "2025-08-28 08:55 至 10:15，在公司办公室登录交易系统，执行第二次追加投资操作，买入医药龙头公司股票，并更新投资记录。随后处理客户即时问询，跟进市场波动和持仓表现，来源：当日工作安排",
+    "startTime": "2025-08-28 08:55:00",
+    "endTime": "2025-08-28 10:15:00",
+    "generation_source_continue": "26-d"
+  },
+  {
+    "id": "Calendar-288",
+    "generation_source": "90-2-3",
+    "title": "车辆保养维护",
+    "description": "2025-08-28 10:15 至 11:00，从公司驾车送车辆到4S店进行专项保养，为国庆长途出行做准备，包括检查刹车系统、轮胎、灯光等，来源：当日安排",
+    "startTime": "2025-08-28 10:15:00",
+    "endTime": "2025-08-28 11:00:00",
+    "generation_source_continue": "90-b"
+  },
+  {
+    "id": "Calendar-289",
+    "generation_source": "80-15",
+    "title": "月末工作复盘与规划会议",
+    "description": "月末工作复盘与规划会议，2025-08-29 16:30:00 开始，地点：华泰证券会议室，参会人：钱永强、郑文博、孙晓雅（远程），来源：公司内部日程",
+    "startTime": "2025-08-29 16:30:00",
+    "endTime": "2025-08-29 17:20:00",
+    "generation_source_continue": "80-o"
+  },
+  {
+    "id": "Calendar-290",
+    "generation_source": "253-4",
+    "title": "新家软装下单",
+    "description": "新家软装下单，2025-08-29 18:40:00 开始，需完成人体工学椅、智能书架、意式咖啡机等商品的最终比价与支付，来源：个人计划",
+    "startTime": "2025-08-29 18:40:00",
+    "endTime": "2025-08-29 20:10:00",
+    "generation_source_continue": "253-d"
+  },
+  {
+    "id": "Calendar-291",
+    "generation_source": "264-1-2",
+    "title": "8月支出复盘会议",
+    "description": "详细核对8月每一笔支出，重点分析软装采购与视频课程的超支原因，评估预算执行情况。",
+    "startTime": "2025-09-01 00:00:00",
+    "endTime": "2025-09-01 23:59:59",
+    "generation_source_continue": "264-a"
+  },
+  {
+    "id": "Calendar-292",
+    "generation_source": "",
+    "title": "咖啡厅工作预演",
+    "description": "前往一丹咖啡厅（浏阳河店）预演下周工作重点，包括客户跟进、会议准备和检查团队日历，来源：个人规划",
+    "startTime": "2025-08-31 15:30:00",
+    "endTime": "2025-08-31 17:15:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-293",
+    "generation_source": "267-1",
+    "title": "客户资产分析项目启动会",
+    "description": "客户资产分析项目启动会，2025-09-01 09:30 开始，地点：华泰证券会议室，参会人：冯浩然、郑文博、孙晓雅（视频），来源：今日事件",
+    "startTime": "2025-09-01 09:30:00",
+    "endTime": "2025-09-01 10:30:00",
+    "generation_source_continue": "267-a"
+  },
+  {
+    "id": "Calendar-294",
+    "generation_source": "253-5-1",
+    "title": "与父母视频通话",
+    "description": "通过微信视频连线向父母展示新家软装规划PPT，交流意见，来源：家庭约定",
+    "startTime": "2025-08-31 19:30:00",
+    "endTime": "2025-08-31 20:30:00",
+    "generation_source_continue": "253-e"
+  },
+  {
+    "id": "Calendar-295",
+    "generation_source": "143-8",
+    "title": "拟定邮票收藏清单",
+    "description": "围绕“人类探索与文明传承”主题，在线搜索和比价邮票，拟定15枚邮票的优先级收藏清单，来源：个人兴趣",
+    "startTime": "2025-08-31 20:30:00",
+    "endTime": "2025-08-31 21:30:00",
+    "generation_source_continue": "143-h"
+  },
+  {
+    "id": "Calendar-296",
+    "generation_source": "30-3",
+    "title": "个人投资资金注入",
+    "description": "个人投资资金注入，2025-09-02 09:30 开始操作，从储蓄账户向华泰证券投资账户转账，用于规划9月投资策略，来源：个人网上银行和证券APP",
+    "startTime": "2025-09-02 09:30:00",
+    "endTime": "2025-09-02 09:30:00",
+    "generation_source_continue": "30-c"
+  },
+  {
+    "id": "Calendar-297",
+    "generation_source": "267-3",
+    "title": "客户资产分析会议",
+    "description": "客户林志豪资产分析会议，2025-09-03 09:45 开始，地点：公司小会议室，与同事郑文博共同进行，来源：今日工作安排",
+    "startTime": "2025-09-03 09:45:00",
+    "endTime": "2025-09-03 11:15:00",
+    "generation_source_continue": "267-c"
+  },
+  {
+    "id": "Calendar-298",
+    "generation_source": "121-5",
+    "title": "晨跑后浇水",
+    "description": "为种植箱浇水，观察种子萌芽情况，保持土壤湿润",
+    "startTime": "2025-09-03 07:30:00",
+    "endTime": "2025-09-03 07:45:00",
+    "generation_source_continue": "121-e"
+  },
+  {
+    "id": "Calendar-299",
+    "generation_source": "266-1-2",
+    "title": "构思体能提升方案",
+    "description": "基于数据分析，草拟增加强度、调整频率、加入新项目等关键点。",
+    "startTime": "2025-09-03 00:00:00",
+    "endTime": "2025-09-03 23:59:59",
+    "generation_source_continue": "266-a"
+  },
+  {
+    "id": "Calendar-300",
+    "generation_source": "28-2",
+    "title": "咖啡厅处理个人规划事务",
+    "description": "在圣爵菲斯咖啡厅处理国庆湘黔自驾游行程草案与预算，2025-09-04 13:10 开始，来源：个人安排",
+    "startTime": "2025-09-04 13:10:00",
+    "endTime": "2025-09-04 13:10:00",
+    "generation_source_continue": "28-b"
+  },
+  {
+    "id": "Calendar-301",
+    "generation_source": "48-1",
+    "title": "岳麓山晨跑与助人事件",
+    "description": "早晨在岳麓山风景名胜区晨跑摄影时，遇到迷路老人李大爷，协助联系家属并报警，陪伴至家属和民警赶到，2025-09-05 06:00 开始，来源：亲身经历",
+    "startTime": "2025-09-05 06:00:00",
+    "endTime": "2025-09-05 06:00:00",
+    "generation_source_continue": "48-a"
+  },
+  {
+    "id": "Calendar-302",
+    "generation_source": "256-3",
+    "title": "向客户黄思琪季度视频汇报",
+    "description": "通过视频会议向客户黄思琪汇报投资组合Q3表现分析初稿及资产再平衡思路，2025-09-05 15:00 开始，来源：Teams会议邀请",
+    "startTime": "2025-09-05 15:00:00",
+    "endTime": "2025-09-05 17:00:00",
+    "generation_source_continue": "256-c"
+  },
+  {
+    "id": "Calendar-303",
+    "generation_source": "259-1",
+    "title": "与钱总谈话获得晋升信号",
+    "description": "在钱永强总监办公室进行谈话，获得年底晋升投资总监岗位的重点考虑信号，2025-09-05 14:30 开始，来源：工作安排",
+    "startTime": "2025-09-05 14:30:00",
+    "endTime": "2025-09-05 15:00:00",
+    "generation_source_continue": "259-a"
+  },
+  {
+    "id": "Calendar-304",
+    "generation_source": "259-2",
+    "title": "个人财务里程碑确认与健康计划制定",
+    "description": "确认个人投资组合总市值突破100万元，达成年度财务目标。同时，结合近期瑜伽体验，在日历中设定固定每周瑜伽时段，确保每周至少完成2次练习，来源：个人财务APP及健康管理规划。",
+    "startTime": "2025-09-06 22:00:00",
+    "endTime": "2025-09-06 22:25:00",
+    "generation_source_continue": "259-b"
+  },
+  {
+    "id": "Calendar-305",
+    "generation_source": "30-4",
+    "title": "部门周会与汇报",
+    "description": "部门例行周会，会后向上司钱永强总监汇报市场观察和新资金布局思路，来源：公司日程",
+    "startTime": "2025-09-08 11:00:00",
+    "endTime": "2025-09-08 11:50:00",
+    "generation_source_continue": "30-d"
+  },
+  {
+    "id": "Calendar-306",
+    "generation_source": "259-3",
+    "title": "与父母视频通话",
+    "description": "与在武汉的父母视频通话，时间 2025-09-07 18:20:00，计划分享晋升信号与投资进展，并询问父母近况，来源：家庭约定",
+    "startTime": "2025-09-07 18:20:00",
+    "endTime": "2025-09-07 19:20:00",
+    "generation_source_continue": "259-c"
+  },
+  {
+    "id": "Calendar-307",
+    "generation_source": "267-5-3",
+    "title": "客户项目团队会议",
+    "description": "客户项目第二次团队会议，汇总展示客户资产分析初步结论，明确下一阶段目标，来源：项目计划",
+    "startTime": "2025-09-08 15:30:00",
+    "endTime": "2025-09-08 17:00:00",
+    "generation_source_continue": "267-e"
+  },
+  {
+    "id": "Calendar-308",
+    "generation_source": "265-3",
+    "title": "父母体检套餐购买",
+    "description": "武汉同济医院父母深度体检套餐在线支付完成，2025-09-09 20:50 完成支付，电子预约凭证已发送至家庭微信群，来源：武汉同济医院官方平台",
+    "startTime": "2025-09-09 20:50:00",
+    "endTime": "2025-09-09 20:50:00",
+    "generation_source_continue": "265-c"
+  },
+  {
+    "id": "Calendar-309",
+    "generation_source": "156-1-2",
+    "title": "与李哲月度交流（一丹咖啡厅）",
+    "description": "与科技创业者李哲在一丹咖啡厅进行月度交流，讨论智能投顾工具与顾问服务混合模式，2025-09-10 19:10 开始，来源：今日事件",
+    "startTime": "2025-09-10 19:10:00",
+    "endTime": "2025-09-10 20:50:00",
+    "generation_source_continue": "156-a"
+  },
+  {
+    "id": "Calendar-310",
+    "generation_source": "26-5-1",
+    "title": "个人投资组合建仓操作",
+    "description": "个人投资组合建仓操作，2025-09-11 09:00 开始，动用资金约7万元，分两笔买入高端制造板块龙头公司股票，来源：个人投资计划",
+    "startTime": "2025-09-11 09:00:00",
+    "endTime": "2025-09-11 09:00:00",
+    "generation_source_continue": "26-e"
+  },
+  {
+    "id": "Calendar-311",
+    "generation_source": "26-5-2",
+    "title": "客户黄思琪视频会议",
+    "description": "与客户黄思琪每周例行视频会议，2025-09-11 14:00 开始，汇报投资组合近况，分享个人投资操作逻辑作为案例，来源：工作安排",
+    "startTime": "2025-09-11 14:00:00",
+    "endTime": "2025-09-11 15:30:00",
+    "generation_source_continue": "26-e"
+  },
+  {
+    "id": "Calendar-312",
+    "generation_source": "267-8-1",
+    "title": "向客户林志豪视频汇报方案",
+    "description": "与客户林志豪进行视频会议，汇报资产配置优化方案，时间 2025-09-12 09:00:00，地点 公司3号视频会议室，来源：今日事件日程",
+    "startTime": "2025-09-12 09:00:00",
+    "endTime": "2025-09-12 10:30:00",
+    "generation_source_continue": "267-h"
+  },
+  {
+    "id": "Calendar-313",
+    "generation_source": "154-7",
+    "title": "参加阴瑜伽课程",
+    "description": "参加75分钟阴瑜伽课程，2025-09-11 19:10 开始，在王府井写字楼瑜伽普拉提馆，进行髋部、肩颈和下背的深度拉伸与放松，来源：课程预约",
+    "startTime": "2025-09-11 19:10:00",
+    "endTime": "2025-09-11 20:25:00",
+    "generation_source_continue": "154-g"
+  },
+  {
+    "id": "Calendar-314",
+    "generation_source": "139-13-1",
+    "title": "处理摄影合作邀约",
+    "description": "登录图虫网APP，回复摄影师@长沙扫街客的合作私信，约定周日岳麓山爱晚亭见面交流，来源：今日事件日程",
+    "startTime": "2025-09-12 10:30:00",
+    "endTime": "2025-09-12 10:50:00",
+    "generation_source_continue": "139-m"
+  },
+  {
+    "id": "Calendar-315",
+    "generation_source": "28-3",
+    "title": "自驾游最终线上筹备会",
+    "description": "自驾游最终线上筹备会，2025-09-13 09:40 开始，预计时长70分钟，通过视频会议软件进行，来源：今日事件",
+    "startTime": "2025-09-13 09:40:00",
+    "endTime": "2025-09-13 10:50:00",
+    "generation_source_continue": "28-c"
+  },
+  {
+    "id": "Calendar-316",
+    "generation_source": "",
+    "title": "梅溪湖次新房考察",
+    "description": "梅溪湖次新房考察，2025-09-13 19:30 开始，与中介陆家明在小区门口汇合，来源：今日事件",
+    "startTime": "2025-09-13 19:30:00",
+    "endTime": "2025-09-13 20:50:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-317",
+    "generation_source": "127-2-5",
+    "title": "学习总结与项目规划",
+    "description": "回顾本周剪辑教程学习，整理笔记。确定十月份湘黔自驾游的拍摄素材为首个实战项目，目标为制作高水准的旅行短片。",
+    "startTime": "2025-09-14 20:00:00",
+    "endTime": "2025-09-14 21:30:00",
+    "generation_source_continue": "127-b"
+  },
+  {
+    "id": "Calendar-318",
+    "generation_source": "32-2",
+    "title": "国庆湘黔自驾游初步沟通",
+    "description": "与好友彭雨晴、吴俊杰等视频通话，讨论国庆7天湘黔自驾游构想，包括目的地偏好（凤凰古城、梵净山、镇远古镇）、车辆安排、住宿标准、初步时间框架和人均预算范围，约定各自确认假期后细化行程，来源：湘黔行者微信群视频通话",
+    "startTime": "2025-09-16 20:50:00",
+    "endTime": "2025-09-16 21:30:00",
+    "generation_source_continue": "32-b"
+  },
+  {
+    "id": "Calendar-319",
+    "generation_source": "27-9",
+    "title": "预订梵净山门票",
+    "description": "预订10月3日梵净山景区门票及往返索道票，电子凭证已截图发至湘黔自驾小分队微信群，来源：一码游贵州小程序",
+    "startTime": "2025-09-17 08:30:00",
+    "endTime": "2025-09-17 08:30:00",
+    "generation_source_continue": "27-i"
+  },
+  {
+    "id": "Calendar-320",
+    "generation_source": "149-3",
+    "title": "与林总视频会议",
+    "description": "与高净值客户林总进行紧急视频会议，讨论近期市场波动及客户持仓调整建议，来源：钱总通知",
+    "startTime": "2025-09-17 18:30:00",
+    "endTime": "2025-09-17 20:10:00",
+    "generation_source_continue": "149-c"
+  },
+  {
+    "id": "Calendar-321",
+    "generation_source": "30-7-1",
+    "title": "A股收盘与达成百万资产里程碑",
+    "description": "A股收盘后，汇总股票、基金及现金账户，总资产达到1,000,128元，提前达成年度核心财务目标，来源：个人账户盘点",
+    "startTime": "2025-09-18 15:30:00",
+    "endTime": "2025-09-18 15:30:00",
+    "generation_source_continue": "30-g"
+  },
+  {
+    "id": "Calendar-322",
+    "generation_source": "30-7-2",
+    "title": "与父母视频分享喜悦",
+    "description": "与父母视频通话，分享达成最重要的职业发展目标，强调这是专业能力的里程碑，来源：家庭约定",
+    "startTime": "2025-09-18 20:50:00",
+    "endTime": "2025-09-18 21:20:00",
+    "generation_source_continue": "30-g"
+  },
+  {
+    "id": "Calendar-323",
+    "generation_source": "30-8",
+    "title": "与好友庆祝晚餐",
+    "description": "与好友彭雨晴、吴俊杰在银双路湘菜馆聚餐，庆祝达成百万资产投资目标，2025-09-19 18:00 开始，来源：今日事件",
+    "startTime": "2025-09-19 18:00:00",
+    "endTime": "2025-09-19 20:00:00",
+    "generation_source_continue": "30-h"
+  },
+  {
+    "id": "Calendar-324",
+    "generation_source": "258-2-1",
+    "title": "与彭雨晴敲定自驾游细节",
+    "description": "与好友彭雨晴在一丹咖啡厅会面，最终敲定国庆自驾游全部行程、预算与分工，时间2025-09-20 13:10至16:10，来源：与彭雨晴约定",
+    "startTime": "2025-09-20 13:10:00",
+    "endTime": "2025-09-20 16:10:00",
+    "generation_source_continue": "258-b"
+  },
+  {
+    "id": "Calendar-325",
+    "generation_source": "258-3",
+    "title": "预订川西自驾租车",
+    "description": "预订丰田RAV4（川西路况适用），2025-09-22 13:15 下单，订单号 RZ202509221315，已购全险，取车时间待定，来源：租车APP",
+    "startTime": "2025-09-22 13:15:00",
+    "endTime": "2025-09-22 13:15:00",
+    "generation_source_continue": "258-c"
+  },
+  {
+    "id": "Calendar-326",
+    "generation_source": "149-4-2",
+    "title": "执行比特币ETF买入操作",
+    "description": "执行比特币现货ETF第一批买入，2025-09-22 15:35 下单，交易系统确认，价格已记录，来源：公司合规交易系统",
+    "startTime": "2025-09-22 15:35:00",
+    "endTime": "2025-09-22 15:35:00",
+    "generation_source_continue": "149-d"
+  },
+  {
+    "id": "Calendar-327",
+    "generation_source": "258-4",
+    "title": "国庆自驾游旅行保险生效",
+    "description": "国庆自驾游旅行保险生效，保障期限2025-10-01至2025-10-07，包含高原病保障、自驾意外高额保额等条款，保单号TB20250923001，已在线支付并转发给同行好友彭雨晴，来源：某保险公司官网",
+    "startTime": "2025-10-01 00:00:00",
+    "endTime": "2025-10-01 00:00:00",
+    "generation_source_continue": "258-d"
+  },
+  {
+    "id": "Calendar-328",
+    "generation_source": "29-1",
+    "title": "季度汇报材料完善（上午）",
+    "description": "上午集中完善季度汇报材料，重新梳理故事线，从宏观环境到客户组合表现，再到关键案例，确保逻辑清晰，突出个人贡献，并据此调整PPT结构，来源：今日工作计划",
+    "startTime": "2025-09-24 09:05:00",
+    "endTime": "2025-09-24 12:00:00",
+    "generation_source_continue": "29-a"
+  },
+  {
+    "id": "Calendar-329",
+    "generation_source": "29-1",
+    "title": "季度汇报材料完善（下午）",
+    "description": "下午继续工作，重点打磨PPT数据部分，核对图表数据，优化可视化，突出个人建议贡献。16:00在小会议室进行汇报模拟演练，完整陈述并控制时间，记录需优化点，最后微调材料并定稿，来源：今日工作计划",
+    "startTime": "2025-09-24 13:15:00",
+    "endTime": "2025-09-24 17:30:00",
+    "generation_source_continue": "29-a"
+  },
+  {
+    "id": "Calendar-330",
+    "generation_source": "29-2-1",
+    "title": "季度工作汇报",
+    "description": "季度工作汇报《新周期下的资产配置策略与客户价值深化》，2025-09-25 13:30 开始，地点公司大会议室，需提前调试设备，来源：团队日程",
+    "startTime": "2025-09-25 13:30:00",
+    "endTime": "2025-09-25 14:45:00",
+    "generation_source_continue": "29-b"
+  },
+  {
+    "id": "Calendar-331",
+    "generation_source": "29-1",
+    "title": "睡前阅读与明日规划",
+    "description": "睡前阅读《国家地理》中文版关于冰岛极光拍摄的文章放松。随后在手机备忘录列出明日汇报前最后事项，如提前到公司测试投影、打印备用讲稿、准备Q&A要点笔记，来源：个人习惯",
+    "startTime": "2025-09-24 21:15:00",
+    "endTime": "2025-09-24 22:00:00",
+    "generation_source_continue": "29-a"
+  },
+  {
+    "id": "Calendar-332",
+    "generation_source": "29-2-2",
+    "title": "职业发展谈话",
+    "description": "与钱永强总监进行职业发展谈话，2025-09-25 14:45 开始，地点圣爵菲斯咖啡厅，讨论晋升与CFA备考建议，来源：钱总邀约",
+    "startTime": "2025-09-25 14:45:00",
+    "endTime": "2025-09-25 15:30:00",
+    "generation_source_continue": "29-b"
+  },
+  {
+    "id": "Calendar-333",
+    "generation_source": "150-1",
+    "title": "分析比特币相关性",
+    "description": "使用彭博终端和Wind金融数据库进行数据分析，评估比特币在投资组合中的风险分散效果",
+    "startTime": "2025-09-26 00:00:00",
+    "endTime": "2025-09-26 23:59:59",
+    "generation_source_continue": "150-a"
+  },
+  {
+    "id": "Calendar-334",
+    "generation_source": "29-3",
+    "title": "客户沟通与晋升计划制定",
+    "description": "与高净值客户王先生进行电话会议沟通资产配置调整思路，随后专注构建年底晋升冲刺计划框架，包括CFA学习任务、客户维护节点和业绩亮点梳理，来源：今日工作安排",
+    "startTime": "2025-09-26 09:20:00",
+    "endTime": "2025-09-26 12:00:00",
+    "generation_source_continue": "29-c"
+  },
+  {
+    "id": "Calendar-335",
+    "generation_source": "258-6",
+    "title": "整理自驾游装备与设备检查",
+    "description": "整理户外衣物、徒步鞋和露营装备放入行李箱，检查睡袋蓬松度和灯具电量。清洁相机传感器和镜头，检查三脚架云台，并对照清单确认所有导航和摄影设备准备就绪，来源：今日晚间安排",
+    "startTime": "2025-09-26 20:30:00",
+    "endTime": "2025-09-26 21:35:00",
+    "generation_source_continue": "258-f"
+  },
+  {
+    "id": "Calendar-336",
+    "generation_source": "258-8",
+    "title": "行前物品核对：证件与财务",
+    "description": "川西自驾旅行证件与财务核对，2025-09-28 16:20 开始，需核对身份证、驾驶证、行驶证、银行卡、现金、旅行保险单，放入随身背包防水文件袋，来源：个人行李核对清单",
+    "startTime": "2025-09-28 16:20:00",
+    "endTime": "2025-09-28 16:20:00",
+    "generation_source_continue": "258-h"
+  },
+  {
+    "id": "Calendar-337",
+    "generation_source": "258-8",
+    "title": "行前物品核对：装备打包",
+    "description": "川西自驾旅行装备打包核对，2025-09-28 18:00 开始，需核对并打包冲锋衣、摄影包、电子设备包等物品，分门别类放入行李箱，来源：个人行李核对清单",
+    "startTime": "2025-09-28 18:00:00",
+    "endTime": "2025-09-28 18:00:00",
+    "generation_source_continue": "258-h"
+  },
+  {
+    "id": "Calendar-338",
+    "generation_source": "32-6",
+    "title": "“川西小分队”行前最终线上会议",
+    "description": "川西自驾旅行行前最终线上会议，2025-09-28 19:00 开始，预计30分钟，通过微信群语音进行，需确认明早集合时间、车辆状态、公共资金池和行程安排，来源：微信群约定",
+    "startTime": "2025-09-28 19:00:00",
+    "endTime": "2025-09-28 19:30:00",
+    "generation_source_continue": "32-f"
+  },
+  {
+    "id": "Calendar-339",
+    "generation_source": "258-9",
+    "title": "下班通勤、加油与车辆检查",
+    "description": "下班后驾车前往中国石化金桥加油站，将油箱加满，并检查SUV轮胎胎压，确认一切正常，为明日长途驾驶做准备，来源：个人安排",
+    "startTime": "2025-09-29 17:30:00",
+    "endTime": "2025-09-29 18:10:00",
+    "generation_source_continue": "258-i"
+  },
+  {
+    "id": "Calendar-340",
+    "generation_source": "",
+    "title": "川西之旅出发集合",
+    "description": "川西光影之旅自驾游出发，2025-10-01 06:30 在小区门口集合，车辆满油，物资齐备，旅伴彭雨晴和吴俊杰已确认，来源：微信群确认",
+    "startTime": "2025-10-01 06:30:00",
+    "endTime": "2025-10-01 06:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-341",
+    "generation_source": "32-7",
+    "title": "自驾后半程（泸溪服务区 - 凤凰）",
+    "description": "自驾后半程，从杭瑞高速泸溪服务区出发，前往凤凰古城，预计2025-10-01 16:40出发，18:00抵达，已与凤凰记忆临江客栈确认当晚入住，来源：行程规划",
+    "startTime": "2025-10-01 16:40:00",
+    "endTime": "2025-10-01 18:00:00",
+    "generation_source_continue": "32-g"
+  },
+  {
+    "id": "Calendar-342",
+    "generation_source": "129-2",
+    "title": "晨雾摄影创作",
+    "description": "晨雾摄影创作（凤凰古城沱江上游沿岸），2025-10-02 06:00:00 开始，与徐佳宁、谢雨桐汇合，使用相机和无人机，来源：团队计划",
+    "startTime": "2025-10-02 06:00:00",
+    "endTime": "2025-10-02 08:30:00",
+    "generation_source_continue": "129-b"
+  },
+  {
+    "id": "Calendar-343",
+    "generation_source": "32-9-1",
+    "title": "梵净山核心区攀登与拍摄",
+    "description": "梵净山核心区（蘑菇石、红云金顶）攀登与拍摄，2025-10-05 11:00 开始，需携带索尼相机、长焦镜头、无人机、三脚架，来源：当日行程规划",
+    "startTime": "2025-10-05 11:00:00",
+    "endTime": "2025-10-05 11:00:00",
+    "generation_source_continue": "32-i"
+  },
+  {
+    "id": "Calendar-344",
+    "generation_source": "32-9-2",
+    "title": "西江千户苗寨守候与拍摄万家灯火",
+    "description": "西江千户苗寨一号观景台守候与拍摄万家灯火，2025-10-05 20:30 开始，需携带相机、三脚架、ND滤镜、无人机，来源：当日行程规划",
+    "startTime": "2025-10-05 20:30:00",
+    "endTime": "2025-10-05 20:30:00",
+    "generation_source_continue": "32-i"
+  },
+  {
+    "id": "Calendar-345",
+    "generation_source": "32-10",
+    "title": "高速爆胎处理与换胎",
+    "description": "G60沪昆高速邵阳段突发爆胎，2025-10-06 12:40 发生，更换备胎后于宝庆东路轮胎店更换新胎，来源：亲身经历",
+    "startTime": "2025-10-06 12:40:00",
+    "endTime": "2025-10-06 12:40:00",
+    "generation_source_continue": "32-j"
+  },
+  {
+    "id": "Calendar-346",
+    "generation_source": "270-2-2",
+    "title": "中秋家庭视频通话",
+    "description": "与武汉父母及上海妹妹进行中秋视频通话，2025-10-06 20:00 开始，持续约80分钟，来源：微信视频",
+    "startTime": "2025-10-06 20:00:00",
+    "endTime": "2025-10-06 21:20:00",
+    "generation_source_continue": "270-b"
+  },
+  {
+    "id": "Calendar-347",
+    "generation_source": "31-3-1",
+    "title": "父亲体检预约与分工确认",
+    "description": "与妹妹冯欣然视频通话，确认父亲体检分工：冯欣然负责情感劝说，冯浩然负责锁定武汉协和医院神经内科专家号源、预约及必要时陪同，来源：家庭视频通话",
+    "startTime": "2025-10-07 14:30:00",
+    "endTime": "2025-10-07 15:15:00",
+    "generation_source_continue": "31-c"
+  },
+  {
+    "id": "Calendar-348",
+    "generation_source": "",
+    "title": "部门晨会",
+    "description": "投资顾问部周三例行晨会，2025-10-08 10:00 开始，由总监钱永强主持，冯浩然需分享节后市场流动性观点，来源：今日事件",
+    "startTime": "2025-10-08 10:00:00",
+    "endTime": "2025-10-08 10:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-349",
+    "generation_source": "31-4",
+    "title": "午休事务处理",
+    "description": "午休期间处理个人事务，2025-10-08 12:50 开始，包括为父母预约体检、联系摄影伙伴，来源：今日事件",
+    "startTime": "2025-10-08 12:50:00",
+    "endTime": "2025-10-08 13:40:00",
+    "generation_source_continue": "31-d"
+  },
+  {
+    "id": "Calendar-350",
+    "generation_source": "276-3",
+    "title": "与父母视频通话（体检确认）",
+    "description": "与武汉的父母冯建国、李秀英进行微信视频通话，详细确认次日体检流程、空腹要求和医院路线，安抚父亲情绪，母亲表示会陪同前往，来源：家庭沟通",
+    "startTime": "2025-10-09 21:05:00",
+    "endTime": "2025-10-09 21:40:00",
+    "generation_source_continue": "276-c"
+  },
+  {
+    "id": "Calendar-351",
+    "generation_source": "135-5",
+    "title": "与发小董浩然的深度视频交流",
+    "description": "与在深圳的发小董浩然进行视频交流，分享摄影包失而复得经历和镇远照片，讨论金融行业压力、童年友谊影响等话题，进行深入对话，来源：当日事件",
+    "startTime": "2025-10-10 19:30:00",
+    "endTime": "2025-10-10 20:45:00",
+    "generation_source_continue": "135-e"
+  },
+  {
+    "id": "Calendar-352",
+    "generation_source": "",
+    "title": "客户资产配置策略终审会",
+    "description": "客户资产配置策略终审会，2025-10-12 13:30 开始，与郑文博、远程客户经理孙晓雅共同审议方案，来源：工作日程",
+    "startTime": "2025-10-12 13:30:00",
+    "endTime": "2025-10-12 15:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-353",
+    "generation_source": "272-1-2",
+    "title": "与上司钱永强策略方向沟通",
+    "description": "与上司钱永强就客户黄思琪Q4投资策略进行沟通，2025-10-13 15:00 开始，地点：钱永强办公室，来源：工作日程",
+    "startTime": "2025-10-13 15:00:00",
+    "endTime": "2025-10-13 15:45:00",
+    "generation_source_continue": "272-a"
+  },
+  {
+    "id": "Calendar-354",
+    "generation_source": "272-3",
+    "title": "致电客户黄思琪会议跟进",
+    "description": "2025-10-16 10:00 在小型会议室致电客户黄思琪，就前日季度投资回顾会后的资产配置方案征求最终反馈，客户认可并约定下月初专题视频沟通，来源：今日工作日程",
+    "startTime": "2025-10-16 10:00:00",
+    "endTime": "2025-10-16 10:30:00",
+    "generation_source_continue": "272-c"
+  },
+  {
+    "id": "Calendar-355",
+    "generation_source": "",
+    "title": "处理客户紧急邮件",
+    "description": "2025-10-16 23:00 在家中书房处理重要客户关于市场异动的紧急邮件咨询，需查阅行情并撰写回复，提供简要分析及持续观察建议，来源：临时工作安排",
+    "startTime": "2025-10-16 23:00:00",
+    "endTime": "2025-10-16 23:20:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-356",
+    "generation_source": "",
+    "title": "临时季度业绩冲刺会议",
+    "description": "华泰证券投资顾问部季度业绩冲刺会，2025-10-17 15:30 开始，投资总监钱永强紧急召集，分析团队业绩与目标差距，部署最后两周重点工作，来源：公司内部通知",
+    "startTime": "2025-10-17 15:30:00",
+    "endTime": "2025-10-17 16:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-357",
+    "generation_source": "132-6",
+    "title": "与客户黄思琪视频会议",
+    "description": "与客户黄思琪进行月度视频会议，回顾其公司现金管理配置，深入讨论数字人民币特性对未来金融产品的影响，来源：华泰证券内部日程安排",
+    "startTime": "2025-10-21 10:30:00",
+    "endTime": "2025-10-21 12:00:00",
+    "generation_source_continue": "132-f"
+  },
+  {
+    "id": "Calendar-358",
+    "generation_source": "275-2-2",
+    "title": "研读数字人民币白皮书核心架构",
+    "description": "重点分析数字人民币的双层运营体系设计，并探讨可控匿名性、双离线支付等关键技术特性的实现原理。",
+    "startTime": "2025-10-21 00:00:00",
+    "endTime": "2025-10-21 23:59:59",
+    "generation_source_continue": "275-b"
+  },
+  {
+    "id": "Calendar-359",
+    "generation_source": "276-5",
+    "title": "解读父母体检报告",
+    "description": "时间 2025-10-22 20:30，核心要素 获取并解读父母电子版体检报告，重点关注父亲冯建国的低密度脂蛋白胆固醇和同型半胱氨酸指标，来源 父母微信发送",
+    "startTime": "2025-10-22 20:30:00",
+    "endTime": "2025-10-22 21:15:00",
+    "generation_source_continue": "276-e"
+  },
+  {
+    "id": "Calendar-360",
+    "generation_source": "",
+    "title": "客户报告撰写与内部分享会准备",
+    "description": "为重要客户林志豪撰写季度资产配置报告，调整行业建议。随后专注准备明日团队内部分享PPT，打磨数字人民币投资机遇内容，增加市场案例，完成后发送给上司预览，来源：今日工作安排",
+    "startTime": "2025-10-23 09:00:00",
+    "endTime": "2025-10-23 12:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-361",
+    "generation_source": "74-3",
+    "title": "线上分享会",
+    "description": "提前调试网络和视频会议软件，检查麦克风和摄像头，准备好笔记本和笔",
+    "startTime": "2025-10-23 14:00:00",
+    "endTime": "2025-10-23 16:00:00",
+    "generation_source_continue": "74-c"
+  },
+  {
+    "id": "Calendar-362",
+    "generation_source": "271-1",
+    "title": "生日聚餐邀请确认",
+    "description": "下周二（2025-10-28）18:30，湘味人家（解放西路店）包间，已邀请彭雨晴、吴俊杰、郑文博，预订码：XY20251028，凭手机号确认，来源：电话预订",
+    "startTime": "2025-10-28 18:30:00",
+    "endTime": "2025-10-28 20:30:00",
+    "generation_source_continue": "271-a"
+  },
+  {
+    "id": "Calendar-363",
+    "generation_source": "277-3-1",
+    "title": "岳麓山露营活动",
+    "description": "岳麓山后山露营基地，2025-10-25 17:20 开始，与高云飞、谢雨桐同行，活动包括搭建帐篷、晚餐、观星畅谈与星空摄影，来源：朋友约定",
+    "startTime": "2025-10-25 17:20:00",
+    "endTime": "2025-10-25 22:30:00",
+    "generation_source_continue": "277-c"
+  },
+  {
+    "id": "Calendar-364",
+    "generation_source": "",
+    "title": "部门晨会",
+    "description": "部门晨会，2025-10-27 09:10 开始，钱总主持，分享宏观动态与板块看法，来源：今日工作安排",
+    "startTime": "2025-10-27 09:10:00",
+    "endTime": "2025-10-27 10:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-365",
+    "generation_source": "271-2-2",
+    "title": "生日前夕好友聚餐",
+    "description": "与好友彭雨晴、吴俊杰和郑文博在壹盏灯(蚂蚁工房店)聚餐，预祝生日，2025-10-28 18:00 开始，来源：今日事件",
+    "startTime": "2025-10-28 18:00:00",
+    "endTime": "2025-10-28 20:30:00",
+    "generation_source_continue": "271-b"
+  },
+  {
+    "id": "Calendar-366",
+    "generation_source": "153-11",
+    "title": "体验瑜伽课",
+    "description": "下班后，经同事推荐，冯浩然首次来到公司附近的一家瑜伽工作室。在一节哈他瑜伽入门课上，他专注于呼吸与拉伸，课后特意向教练请教了久坐办公族常见的肩颈不适缓解方法，感觉身体得到了久违的舒展。",
+    "startTime": "2025-10-29 19:00:00",
+    "endTime": "2025-10-29 20:00:00",
+    "generation_source_continue": "153-k"
+  },
+  {
+    "id": "Calendar-367",
+    "generation_source": "276-7",
+    "title": "与父母视频通话",
+    "description": "与在武汉的父母进行视频通话，关心父亲健康状况，约定下周再联系，如有必要复查，来源：家庭日常安排",
+    "startTime": "2025-10-29 20:10:00",
+    "endTime": "2025-10-29 20:10:00",
+    "generation_source_continue": "276-g"
+  },
+  {
+    "id": "Calendar-368",
+    "generation_source": "",
+    "title": "赛前准备与前往起点",
+    "description": "赛前准备与前往起点，2025-11-02 05:20 开始，从岳麓区双塘路99号岳麓区机关金星住宅小区前往贺龙体育中心，进行动态拉伸、早餐、网约车出行，来源：当日事件",
+    "startTime": "2025-11-02 05:20:00",
+    "endTime": "2025-11-02 05:20:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-369",
+    "generation_source": "44-10-1",
+    "title": "挑战长沙半程马拉松",
+    "description": "挑战长沙半程马拉松，2025-11-02 07:30 开始，在贺龙体育中心起跑，预计完赛时间约1小时52分，来源：当日事件",
+    "startTime": "2025-11-02 07:30:00",
+    "endTime": "2025-11-02 07:30:00",
+    "generation_source_continue": "44-j"
+  },
+  {
+    "id": "Calendar-370",
+    "generation_source": "",
+    "title": "启动金融科技项目提案",
+    "description": "智能投顾工具市场分析项目启动，2025-11-03 19:30 开始，为期三天，需搭建报告框架并完成市场概述与竞争格局分析部分，来源：个人工作计划",
+    "startTime": "2025-11-03 19:30:00",
+    "endTime": "2025-11-03 21:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-371",
+    "generation_source": "278-2",
+    "title": "团队投资复盘会议及会后沟通",
+    "description": "团队十月投资复盘会议，2025-11-04 09:15 开始，华泰证券会议室，会后与钱总沟通项目进展，来源：公司日程",
+    "startTime": "2025-11-04 09:15:00",
+    "endTime": "2025-11-04 11:45:00",
+    "generation_source_continue": "278-b"
+  },
+  {
+    "id": "Calendar-372",
+    "generation_source": "278-3",
+    "title": "撰写客户投资策略",
+    "description": "为核心客户黄思琪和林志豪撰写Q4投资策略建议，时间2025-11-05 10:00开始，结合行业研报和估值模型，强调科技龙头精选和稳健资产配置，来源：今日工作安排",
+    "startTime": "2025-11-05 10:00:00",
+    "endTime": "2025-11-05 12:00:00",
+    "generation_source_continue": "278-c"
+  },
+  {
+    "id": "Calendar-373",
+    "generation_source": "278-3",
+    "title": "与客户经理视频会议",
+    "description": "与远程客户经理孙晓雅进行视频会议，时间2025-11-05 13:30开始，通过屏幕共享展示客户策略，同步沟通技巧和时间表，会议高效务实，来源：今日工作安排",
+    "startTime": "2025-11-05 13:30:00",
+    "endTime": "2025-11-05 14:30:00",
+    "generation_source_continue": "278-c"
+  },
+  {
+    "id": "Calendar-374",
+    "generation_source": "",
+    "title": "上午工作与项目提案会议",
+    "description": "智能投顾工具项目提案会议，2025-11-06 09:30 开始，与上司钱总在3号小会议室过审，来源：今日工作安排",
+    "startTime": "2025-11-06 09:30:00",
+    "endTime": "2025-11-06 11:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-375",
+    "generation_source": "278-4",
+    "title": "与核心客户黄思琪Q4策略视频会议",
+    "description": "Q4投资策略视频会议，2025-11-06 12:00 开始，基于科技行业监管动态调整策略，建议转向云计算和企业服务板块，来源：客户预约",
+    "startTime": "2025-11-06 12:00:00",
+    "endTime": "2025-11-06 12:50:00",
+    "generation_source_continue": "278-d"
+  },
+  {
+    "id": "Calendar-376",
+    "generation_source": "34-1",
+    "title": "突发家庭危机处理",
+    "description": "父亲冯建国突发急性脑梗，在武汉同济医院抢救，2025-11-08 10:30 接到母亲电话，紧急请假并购买高铁票，来源：母亲李秀英视频通话",
+    "startTime": "2025-11-08 10:30:00",
+    "endTime": "2025-11-08 11:40:00",
+    "generation_source_continue": "34-a"
+  },
+  {
+    "id": "Calendar-377",
+    "generation_source": "",
+    "title": "医院沟通与夜间陪护安排",
+    "description": "与主治医生沟通父亲病情，安排母亲回酒店休息，与妹妹冯欣然商议夜间轮换陪护计划，2025-11-08 19:00 开始，来源：医院现场沟通",
+    "startTime": "2025-11-08 19:00:00",
+    "endTime": "2025-11-08 22:40:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-378",
+    "generation_source": "34-2-1",
+    "title": "办理住院手续与医生沟通",
+    "description": "办理父亲冯建国住院手续，并与主治医生王主任沟通治疗方案，2025-11-10 08:10 开始，来源：今日事件",
+    "startTime": "2025-11-10 08:10:00",
+    "endTime": "2025-11-10 09:40:00",
+    "generation_source_continue": "34-b"
+  },
+  {
+    "id": "Calendar-379",
+    "generation_source": "35-3-2",
+    "title": "午餐与家庭会议",
+    "description": "与母亲李秀英共进午餐并主持三方视频会议，与妹妹冯欣然敲定陪护排班与财务方案，2025-11-10 11:30 开始，来源：今日事件",
+    "startTime": "2025-11-10 11:30:00",
+    "endTime": "2025-11-10 13:30:00",
+    "generation_source_continue": "35-c"
+  },
+  {
+    "id": "Calendar-380",
+    "generation_source": "34-3",
+    "title": "主治医生查房与病情沟通",
+    "description": "主治医生王主任查房，2025-11-11 07:40 开始，地点神经内科病房及医生办公室，需汇报父亲状况并讨论后续治疗方案，来源：当日事件安排",
+    "startTime": "2025-11-11 07:40:00",
+    "endTime": "2025-11-11 09:10:00",
+    "generation_source_continue": "34-c"
+  },
+  {
+    "id": "Calendar-381",
+    "generation_source": "",
+    "title": "陪同父亲康复科会诊",
+    "description": "陪同父亲前往康复医学科门诊会诊，2025-11-11 15:40 开始，与张医生评估状况并学习康复动作，来源：当日事件安排",
+    "startTime": "2025-11-11 15:40:00",
+    "endTime": "2025-11-11 17:10:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-382",
+    "generation_source": "34-4",
+    "title": "晚餐与家庭核心会议",
+    "description": "与母亲李秀英在楚湘阁餐馆晚餐并进行家庭会议，商讨父亲出院后护理计划、护工安排、适老化改造和妹妹行程，2025-11-12 17:00开始，来源：家庭约定",
+    "startTime": "2025-11-12 17:00:00",
+    "endTime": "2025-11-12 18:30:00",
+    "generation_source_continue": "34-d"
+  },
+  {
+    "id": "Calendar-383",
+    "generation_source": "279-6",
+    "title": "通勤陪同父亲完成CT增强扫描与缴费",
+    "description": "陪同父亲冯建国前往华中科技大学同济医学院附属同济医院(汉口院区)影像中心完成CT增强扫描，并完成缴费，2025-11-14 08:15:00 开始，来源：当日事件",
+    "startTime": "2025-11-14 08:15:00",
+    "endTime": "2025-11-14 08:15:00",
+    "generation_source_continue": "279-f"
+  },
+  {
+    "id": "Calendar-384",
+    "generation_source": "36-4",
+    "title": "与主治医生王主任阶段性沟通",
+    "description": "与父亲的主治医生王主任进行阶段性沟通，复盘一周治疗并查看CT影像，2025-11-14 11:30:00 开始，来源：当日事件",
+    "startTime": "2025-11-14 11:30:00",
+    "endTime": "2025-11-14 12:30:00",
+    "generation_source_continue": "36-d"
+  },
+  {
+    "id": "Calendar-385",
+    "generation_source": "",
+    "title": "迎接妹妹冯欣然并进行事务交接",
+    "description": "在华中科技大学同济医学院附属同济医院(汉口院区)迎接妹妹冯欣然，并进行全面护理与医疗事务交接，2025-11-14 19:40:00 开始，来源：当日事件",
+    "startTime": "2025-11-14 19:40:00",
+    "endTime": "2025-11-14 20:40:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-386",
+    "generation_source": "34-7",
+    "title": "家庭健康会议",
+    "description": "家庭健康会议（同济医院病房），2025-11-15 17:00 开始，讨论父亲康复计划与家庭健康管理方案，来源：家庭安排",
+    "startTime": "2025-11-15 17:00:00",
+    "endTime": "2025-11-15 18:30:00",
+    "generation_source_continue": "34-g"
+  },
+  {
+    "id": "Calendar-387",
+    "generation_source": "34-8",
+    "title": "医院上午：与父亲及医生沟通",
+    "description": "上午8:05至9:40，在华中科技大学同济医学院附属同济医院神经内科病房和医生办公室，与父亲冯建国交流，并与主治医生王主任进行出院细节沟通，确认用药方案、饮食标准、康复阶段、复查节点和风险预警，来源：当日事件",
+    "startTime": "2025-11-16 08:05:00",
+    "endTime": "2025-11-16 09:40:00",
+    "generation_source_continue": "34-h"
+  },
+  {
+    "id": "Calendar-388",
+    "generation_source": "36-6",
+    "title": "家庭核心决策会议",
+    "description": "家庭核心决策会议（讨论父亲康复路径、护工配置、责任分工与财务安排），2025-11-17 13:30:00 开始，地点：同济医院住院部病房，来源：家庭内部约定",
+    "startTime": "2025-11-17 13:30:00",
+    "endTime": "2025-11-17 15:10:00",
+    "generation_source_continue": "36-f"
+  },
+  {
+    "id": "Calendar-389",
+    "generation_source": "36-7-1",
+    "title": "医院出院手续与处理",
+    "description": "华中科技大学同济医学院附属同济医院，2025-11-19 07:30 开始办理出院结算、领取出院带药和复查预约单，来源：当日事件",
+    "startTime": "2025-11-19 07:30:00",
+    "endTime": "2025-11-19 10:30:00",
+    "generation_source_continue": "36-g"
+  },
+  {
+    "id": "Calendar-390",
+    "generation_source": "2-11",
+    "title": "发送工作邮件",
+    "description": "向上司钱永强发送邮件，附上关于近期市场波动下客户策略调整的思考。",
+    "startTime": "2025-11-19 10:30:00",
+    "endTime": "2025-11-19 10:45:00",
+    "generation_source_continue": "2-o"
+  },
+  {
+    "id": "Calendar-391",
+    "generation_source": "279-9-1",
+    "title": "确认事项与家庭告别",
+    "description": "父母家，2025-11-19 17:00 开始确认所有出院和家庭事项完成，预订返程高铁票，与父母共进告别晚餐，来源：当日事件",
+    "startTime": "2025-11-19 17:00:00",
+    "endTime": "2025-11-19 18:00:00",
+    "generation_source_continue": "279-i"
+  },
+  {
+    "id": "Calendar-392",
+    "generation_source": "",
+    "title": "G1109 次高铁（武汉 - 长沙）",
+    "description": "G1109 次高铁（武汉站→长沙南站），2025-11-19 19:40 发车，订单号 WH20251119G1109，凭身份证检票，来源：12306",
+    "startTime": "2025-11-19 19:40:00",
+    "endTime": "2025-11-19 21:39:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-393",
+    "generation_source": "115-4",
+    "title": "整理机构信息并初步决策",
+    "description": "将几天来搜集到的机构信息、价格对比、咨询反馈整理成笔记或电子表格。结合自己的时间安排、预算和机构专业度，初步确定1-2家最合适的机构作为返回长沙后的首选考察目标。",
+    "startTime": "2025-11-21 14:00:00",
+    "endTime": "2025-11-21 16:00:00",
+    "generation_source_continue": "115-d"
+  },
+  {
+    "id": "Calendar-394",
+    "generation_source": "2-12",
+    "title": "与上司钱永强总监工作汇报会议",
+    "description": "与上司钱永强总监进行工作汇报，2025-11-20 10:15:00 开始，地点：钱永强总监办公室，来源：今日事件",
+    "startTime": "2025-11-20 10:15:00",
+    "endTime": "2025-11-20 10:45:00",
+    "generation_source_continue": "2-p"
+  },
+  {
+    "id": "Calendar-395",
+    "generation_source": "53-1",
+    "title": "参观中国邮政邮票博物馆",
+    "description": "规划周末个人休闲活动，如果天气好就去参观中国邮政邮票博物馆（假设在长沙有分馆或特展）。",
+    "startTime": "2025-11-22 10:00:00",
+    "endTime": "2025-11-22 16:00:00",
+    "generation_source_continue": "53-a"
+  },
+  {
+    "id": "Calendar-396",
+    "generation_source": "280-4",
+    "title": "家庭沟通与责任分工视频会议",
+    "description": "与妹妹及父母进行家庭视频会议，敲定护工筛选、适老化改造分工及探望时间表，2025-11-20 19:00:00 开始，来源：今日事件",
+    "startTime": "2025-11-20 19:00:00",
+    "endTime": "2025-11-20 20:30:00",
+    "generation_source_continue": "280-d"
+  },
+  {
+    "id": "Calendar-397",
+    "generation_source": "34-10",
+    "title": "创建家庭健康沟通群",
+    "description": "为父母建立微信群，用于分享血压、血糖数据和健康提醒",
+    "startTime": "2025-11-20 19:00:00",
+    "endTime": "2025-11-20 19:30:00",
+    "generation_source_continue": "34-j"
+  },
+  {
+    "id": "Calendar-398",
+    "generation_source": "279-10",
+    "title": "家庭财务安全网升级方案制定",
+    "description": "家庭财务风险防御规划制定，2025-11-22 21:00 开始，预计时长1.5小时，内容涵盖风险识别、保险配置、备用金计划、资产检视与行动路线图，来源：个人规划",
+    "startTime": "2025-11-22 21:00:00",
+    "endTime": "2025-11-22 22:30:00",
+    "generation_source_continue": "279-j"
+  },
+  {
+    "id": "Calendar-399",
+    "generation_source": "",
+    "title": "保险顾问线上会议",
+    "description": "与保险顾问进行线上会议，就为父母筛选的医疗保险产品进行最终条款确认，预约本周签约，确保家庭财务安全，来源：今日事件",
+    "startTime": "2025-11-24 13:10:00",
+    "endTime": "2025-11-24 13:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-400",
+    "generation_source": "81-5",
+    "title": "养老金账户开户与缴存",
+    "description": "通过招商银行手机银行完成个人养老金账户开户，并缴存年度上限资金，选择养老目标日期基金，2025-11-25 15:30 完成操作，来源：招商银行App",
+    "startTime": "2025-11-25 15:30:00",
+    "endTime": "2025-11-25 15:30:00",
+    "generation_source_continue": "81-e"
+  },
+  {
+    "id": "Calendar-401",
+    "generation_source": "116-1",
+    "title": "年度体检报告查阅提醒",
+    "description": "收到年度体检报告邮件，发现颈椎生理曲度变直的异常提示，2025-11-25 17:25 收到邮件，来源：湘雅医院健康管理中心",
+    "startTime": "2025-11-25 17:25:00",
+    "endTime": "2025-11-25 17:25:00",
+    "generation_source_continue": "116-a"
+  },
+  {
+    "id": "Calendar-402",
+    "generation_source": "158-4-2",
+    "title": "与冯浩然沟通产品迭代反馈",
+    "description": "讨论新版本评估、长期战略建议及推广策略。李哲根据前期反馈完成了产品迭代，再次与冯浩然进行线上沟通。冯浩然评估了新版本，肯定了改进之处，并从长期战略角度，就产品上线后的推广策略和可能的商业模式给出了建议。",
+    "startTime": "2025-11-27 14:00:00",
+    "endTime": "2025-11-27 15:30:00",
+    "generation_source_continue": "158-d"
+  },
+  {
+    "id": "Calendar-403",
+    "generation_source": "158-4-1",
+    "title": "与李哲视频会议（产品合规）",
+    "description": "与深圳朋友李哲进行产品合规专题视频会议，2025-11-27 09:30 开始，预计持续约1.5小时，会议链接已通过企业微信发送，来源：内部工作安排",
+    "startTime": "2025-11-27 09:30:00",
+    "endTime": "2025-11-27 11:00:00",
+    "generation_source_continue": "158-d"
+  },
+  {
+    "id": "Calendar-404",
+    "generation_source": "3-3",
+    "title": "与上司钱永强述职沟通",
+    "description": "与投资总监钱永强进行年度述职前瞻沟通，2025-11-27 15:00 开始，预计持续1小时，地点为钱总办公室，需准备全年工作汇报材料，来源：直属上司预约",
+    "startTime": "2025-11-27 15:00:00",
+    "endTime": "2025-11-27 16:00:00",
+    "generation_source_continue": "3-k"
+  },
+  {
+    "id": "Calendar-405",
+    "generation_source": "116-2",
+    "title": "优动运动康复中心初次评估",
+    "description": "优动运动康复中心初次评估，2025-12-02 19:00 开始，预约码 YD2025112801，凭身份证和预约码签到，来源：电话预约",
+    "startTime": "2025-12-02 19:00:00",
+    "endTime": "2025-12-02 20:30:00",
+    "generation_source_continue": "116-b"
+  },
+  {
+    "id": "Calendar-406",
+    "generation_source": "",
+    "title": "年度投资策略报告提交",
+    "description": "年度投资策略报告提交，2025-11-28 12:00 提交，报告名称《2026年度投资策略报告（终版）》，提交对象：钱永强，来源：内部系统",
+    "startTime": "2025-11-28 12:00:00",
+    "endTime": "2025-11-28 12:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-407",
+    "generation_source": "3-4",
+    "title": "年底重点客户回访行程规划",
+    "description": "年底重点客户回访行程规划，2025-11-28 13:15 开始，涉及客户：黄思琪（深圳）、林志豪（上海），规划内容：时间窗口、拜访议程，来源：个人工作安排",
+    "startTime": "2025-11-28 13:15:00",
+    "endTime": "2025-11-28 14:30:00",
+    "generation_source_continue": "3-l"
+  },
+  {
+    "id": "Calendar-408",
+    "generation_source": "81-7",
+    "title": "重要沟通会议（父母与客户）",
+    "description": "视频会议，2025-11-29 09:15 开始，先与父母沟通商业健康保险方案，再与客户黄思琪讨论投资组合与体检资源，来源：今日事件",
+    "startTime": "2025-11-29 09:15:00",
+    "endTime": "2025-11-29 11:00:00",
+    "generation_source_continue": "81-g"
+  },
+  {
+    "id": "Calendar-409",
+    "generation_source": "53-5-1",
+    "title": "客户黄思琪视频会议",
+    "description": "与客户黄思琪进行投资策略调整视频会议，2025-12-02 09:45 开始，讨论科技与消费板块机会及风险对冲方案，来源：华泰证券日程安排",
+    "startTime": "2025-12-02 09:45:00",
+    "endTime": "2025-12-02 11:30:00",
+    "generation_source_continue": "53-e"
+  },
+  {
+    "id": "Calendar-410",
+    "generation_source": "",
+    "title": "家庭保险方案沟通（视频）",
+    "description": "与父母进行三方视频通话，沟通已签署的家庭保险方案，解释保障责任、受益人信息、缴费期限等核心内容，发送《家庭保险要点摘要》PDF文件，来源：个人整理",
+    "startTime": "2025-12-01 19:00:00",
+    "endTime": "2025-12-01 19:40:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-411",
+    "generation_source": "116-3",
+    "title": "跃动康复中心评估治疗",
+    "description": "在跃动运动康复中心进行肩颈康复评估与治疗，2025-12-02 18:20 开始，接受王老师手法松解和学习纠正性练习，来源：康复中心预约",
+    "startTime": "2025-12-02 18:20:00",
+    "endTime": "2025-12-02 20:25:00",
+    "generation_source_continue": "116-c"
+  },
+  {
+    "id": "Calendar-412",
+    "generation_source": "",
+    "title": "团队晨会与报告撰写",
+    "description": "2025-12-03 09:00 开始，在华泰证券办公室会议室和个人工位进行团队晨会，向钱总汇报年底投资报告进展，之后专注撰写报告核心部分，来源：今日工作安排",
+    "startTime": "2025-12-03 09:00:00",
+    "endTime": "2025-12-03 10:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-413",
+    "generation_source": "288-4",
+    "title": "客户面谈：年度投资回顾",
+    "description": "客户面谈：年度投资回顾，与客户林志豪先生会面，2025-12-05 14:50 开始，预计17:05结束，地点：圣爵菲斯咖啡厅，来源：客户预约",
+    "startTime": "2025-12-05 14:50:00",
+    "endTime": "2025-12-05 17:05:00",
+    "generation_source_continue": "288-d"
+  },
+  {
+    "id": "Calendar-414",
+    "generation_source": "",
+    "title": "肩颈专项运动康复治疗",
+    "description": "肩颈专项运动康复治疗，在TYPES运动康复空间进行，2025-12-05 18:30 开始，预计19:30结束，治疗师指导，来源：康复中心预约",
+    "startTime": "2025-12-05 18:30:00",
+    "endTime": "2025-12-05 19:30:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-415",
+    "generation_source": "288-4",
+    "title": "上午工作：完成年度投资总结报告",
+    "description": "上午工作：预热和完成年度投资总结报告，2025-12-05 09:26 开始，预计12:00前完成并提交给投资总监钱永强，来源：当日工作计划",
+    "startTime": "2025-12-05 09:26:00",
+    "endTime": "2025-12-05 12:00:00",
+    "generation_source_continue": "288-d"
+  },
+  {
+    "id": "Calendar-416",
+    "generation_source": "",
+    "title": "研究父亲健康保险方案",
+    "description": "研究父亲健康保险方案，2025-12-06 13:20 开始，对比A、B两款产品核心条款、保费、保障范围及公司服务评级，结合父亲体检情况制作优劣势分析表，来源：个人安排",
+    "startTime": "2025-12-06 13:20:00",
+    "endTime": "2025-12-06 14:20:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-417",
+    "generation_source": "106-4",
+    "title": "与父母视频通话讨论健康设备",
+    "description": "与父母冯建国和李秀英视频通话，讨论智能健康监测设备购买方案，2025-12-07 20:00 开始，来源：家庭约定",
+    "startTime": "2025-12-07 20:00:00",
+    "endTime": "2025-12-07 21:00:00",
+    "generation_source_continue": "106-d"
+  },
+  {
+    "id": "Calendar-418",
+    "generation_source": "37-3-1",
+    "title": "CFA成绩查询与分享喜讯",
+    "description": "登录CFA协会官网查询三级考试成绩，结果显示通过，随后在家庭微信群分享喜讯，来源：CFA协会官网",
+    "startTime": "2025-12-08 08:30:00",
+    "endTime": "2025-12-08 08:30:00",
+    "generation_source_continue": "37-c"
+  },
+  {
+    "id": "Calendar-419",
+    "generation_source": "37-3-1",
+    "title": "工作准备与向钱总汇报",
+    "description": "抵达公司办公室，处理积压邮件，查阅宏观经济数据简报和行业研报，随后向钱总正式汇报CFA通过的消息并致谢，来源：华泰证券办公室",
+    "startTime": "2025-12-08 10:05:00",
+    "endTime": "2025-12-08 10:05:00",
+    "generation_source_continue": "37-c"
+  },
+  {
+    "id": "Calendar-420",
+    "generation_source": "157-5",
+    "title": "午餐庆祝与同事",
+    "description": "与钱总、郑文博在湘菜馆共进午餐，举杯感谢支持，点剁椒鱼头、小炒黄牛肉等经典湘菜，分享证书经历和趣事，来源：金鹰路湘菜馆",
+    "startTime": "2025-12-08 12:20:00",
+    "endTime": "2025-12-08 12:20:00",
+    "generation_source_continue": "157-e"
+  },
+  {
+    "id": "Calendar-421",
+    "generation_source": "",
+    "title": "与孙晓雅视频会议",
+    "description": "与杭州同事孙晓雅视频会议，2025-12-09 10:30 开始，同步重点客户资产状况、风险偏好变化和第四季度收益回顾，来源：今日工作日程",
+    "startTime": "2025-12-09 10:30:00",
+    "endTime": "2025-12-09 11:45:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-422",
+    "generation_source": "",
+    "title": "晚餐庆祝与好友",
+    "description": "与好友彭雨晴、吴俊杰在居酒屋聚餐，点刺身、招牌烧肉和清酒，举杯祝贺，约20:00与在深圳的董浩然视频连线，来源：焱魔胡同烧肉居酒屋",
+    "startTime": "2025-12-08 19:10:00",
+    "endTime": "2025-12-08 19:10:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-423",
+    "generation_source": "116-4-3",
+    "title": "肩颈康复课程",
+    "description": "了凡乐享运动康复中心肩颈康复课程，2025-12-09 18:10 开始，进行手法松解和针对性训练，来源：康复中心预约确认",
+    "startTime": "2025-12-09 18:10:00",
+    "endTime": "2025-12-09 19:10:00",
+    "generation_source_continue": "116-d"
+  },
+  {
+    "id": "Calendar-424",
+    "generation_source": "39-1-1",
+    "title": "肩颈专项复查预约",
+    "description": "预约中南大学湘雅二医院骨科门诊肩颈专项复查，2025-12-10 08:30 开始，预约码 XY20251210001，凭身份证和医保卡就诊，来源：医院公众号",
+    "startTime": "2025-12-10 08:30:00",
+    "endTime": "2025-12-10 09:30:00",
+    "generation_source_continue": "39-a"
+  },
+  {
+    "id": "Calendar-425",
+    "generation_source": "288-8",
+    "title": "报告定稿与系统提交",
+    "description": "年度策略报告最终润色与格式统一，2025-12-12 09:10 开始，通过内部协作系统正式提交，并抄送钱总及项目组，来源：工作安排",
+    "startTime": "2025-12-12 09:10:00",
+    "endTime": "2025-12-12 09:10:00",
+    "generation_source_continue": "288-h"
+  },
+  {
+    "id": "Calendar-426",
+    "generation_source": "288-8",
+    "title": "向上司汇报年度策略",
+    "description": "向钱总汇报年度策略报告框架，2025-12-12 10:00 开始，重点阐述经济周期下的资产配置逻辑，回应关键假设和风险分析，来源：工作安排",
+    "startTime": "2025-12-12 10:00:00",
+    "endTime": "2025-12-12 10:45:00",
+    "generation_source_continue": "288-h"
+  },
+  {
+    "id": "Calendar-427",
+    "generation_source": "141-4",
+    "title": "汉口历史街区摄影采风",
+    "description": "与发小张明轩在黎黄陂路、鄱阳街等区域拍摄历史建筑和街景，重点参观汉口美国领事馆旧址，捕捉阴天光线下的建筑细节，来源：与张明轩微信约定",
+    "startTime": "2025-12-14 09:30:00",
+    "endTime": "2025-12-14 12:00:00",
+    "generation_source_continue": "141-d"
+  },
+  {
+    "id": "Calendar-428",
+    "generation_source": "",
+    "title": "下午深度客户沟通",
+    "description": "与客户黄思琪视频会议（13:45-14:35）及与客户林志豪电话会议（14:40-15:20），地点为公司会议室，来源：今日工作安排",
+    "startTime": "2025-12-15 13:45:00",
+    "endTime": "2025-12-15 16:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-429",
+    "generation_source": "290-2-2",
+    "title": "观看沉浸式话剧《时间旅行者的妻子》",
+    "description": "冯浩然在剧场内观看了这场沉浸式话剧。他被演员近距离的表演、精巧的舞台设计和互动式的观演体验深深吸引，完全沉浸在剧情中，暂时忘却了工作的烦恼。备注：期待已久的沉浸式体验，剧场地址：上海大剧院",
+    "startTime": "2025-12-18 19:30:00",
+    "endTime": "2025-12-18 22:00:00",
+    "generation_source_continue": "290-b"
+  },
+  {
+    "id": "Calendar-430",
+    "generation_source": "286-1",
+    "title": "与妹妹视频讨论父母健康",
+    "description": "与妹妹冯欣然视频连线，共享屏幕展示体检机构对比分析表，讨论父母年度体检安排及康复期日常监测需求，一致认为需购置远程智能血压计和血氧仪，来源：个人安排",
+    "startTime": "2025-12-16 20:00:00",
+    "endTime": "2025-12-16 20:45:00",
+    "generation_source_continue": "286-a"
+  },
+  {
+    "id": "Calendar-431",
+    "generation_source": "290-1-1",
+    "title": "话剧《时间旅行者的妻子》观演",
+    "description": "沉浸式话剧《时间旅行者的妻子》，0731实验剧场，座位中区第五排靠过道，2025-12-18 19:30开演，订单号DM202512161234，凭电子票二维码入场，来源：大麦APP",
+    "startTime": "2025-12-18 19:30:00",
+    "endTime": "2025-12-18 22:00:00",
+    "generation_source_continue": "290-a"
+  },
+  {
+    "id": "Calendar-432",
+    "generation_source": "158-6",
+    "title": "与李哲咖啡交流",
+    "description": "与金融科技创业者李哲在圣爵菲斯咖啡厅进行年末交流，2025-12-17 12:00 开始，来源：当日约定",
+    "startTime": "2025-12-17 12:00:00",
+    "endTime": "2025-12-17 13:00:00",
+    "generation_source_continue": "158-f"
+  },
+  {
+    "id": "Calendar-433",
+    "generation_source": "117-2-2",
+    "title": "前往康复中心治疗",
+    "description": "下班后前往7K运动体能康复训练馆进行第二次运动康复治疗，2025-12-17 17:30 开始，来源：康复中心预约",
+    "startTime": "2025-12-17 17:30:00",
+    "endTime": "2025-12-17 19:00:00",
+    "generation_source_continue": "117-b"
+  },
+  {
+    "id": "Calendar-434",
+    "generation_source": "38-1",
+    "title": "年终绩效面谈材料准备",
+    "description": "准备年终绩效面谈材料，2025-12-18 09:30:00 开始，梳理全年业绩、资产规模增长、客户满意度，撰写从执行者向管理者转变的论证部分，量化投研分享和带教新人贡献，来源：当日工作计划",
+    "startTime": "2025-12-18 09:30:00",
+    "endTime": "2025-12-18 12:00:00",
+    "generation_source_continue": "38-a"
+  },
+  {
+    "id": "Calendar-435",
+    "generation_source": "",
+    "title": "客户紧急需求处理会议",
+    "description": "与郑文博、孙晓雅召开客户紧急需求处理会议，2025-12-19 09:30 开始，地点：湖南广电中心写字楼，来源：与同事郑文博约定",
+    "startTime": "2025-12-19 09:30:00",
+    "endTime": "2025-12-19 11:00:00",
+    "generation_source_continue": ""
+  },
+  {
+    "id": "Calendar-436",
+    "generation_source": "38-2",
+    "title": "年终绩效面谈",
+    "description": "与直属上司钱永强进行年终绩效面谈，2025-12-20 13:45 开始，地点：华泰证券办公室，来源：公司日程安排",
+    "startTime": "2025-12-20 13:45:00",
+    "endTime": "2025-12-20 15:30:00",
+    "generation_source_continue": "38-b"
+  },
+  {
+    "id": "Calendar-437",
+    "generation_source": "107-2-1",
+    "title": "家庭体检计划制定",
+    "description": "与父母视频通话，制定家庭体检计划，选择瑞慈医疗，时间框定2026年3-4月，来源：与父母约定",
+    "startTime": "2025-12-19 21:40:00",
+    "endTime": "2025-12-19 22:30:00",
+    "generation_source_continue": "107-b"
+  },
+  {
+    "id": "Calendar-438",
+    "generation_source": "287-2-2",
+    "title": "与上司咖啡谈心",
+    "description": "与钱总在巷往咖啡(Alley coffee)进行非正式交流，2025-12-20 15:30 开始，地点：凤凰台巷22号，来源：钱总邀请",
+    "startTime": "2025-12-20 15:30:00",
+    "endTime": "2025-12-20 16:50:00",
+    "generation_source_continue": "287-b"
+  },
+  {
+    "id": "Calendar-439",
+    "generation_source": "87-2",
+    "title": "团队聚餐预订确认",
+    "description": "下周四（12月25日）晚团队聚餐，地点为预订的杭帮菜馆包间，已确认最低消费及菜单，来源：与餐厅电话确认",
+    "startTime": "2025-12-25 18:30:00",
+    "endTime": "2025-12-25 20:30:00",
+    "generation_source_continue": "87-b"
+  },
+  {
+    "id": "Calendar-440",
+    "generation_source": "285-2-3",
+    "title": "家庭视频聚餐",
+    "description": "与父母及妹妹进行家庭视频聚餐，时间为2025-12-21 18:10至20:00，已预订外卖并调试设备，来源：家庭约定",
+    "startTime": "2025-12-21 18:10:00",
+    "endTime": "2025-12-21 20:00:00",
+    "generation_source_continue": "285-b"
+  },
+  {
+    "id": "Calendar-441",
+    "generation_source": "117-5",
+    "title": "第三次运动康复治疗",
+    "description": "第三次运动康复治疗（锐动运动康复中心），2025-12-24 18:20 开始，治疗师刘医生，来源：康复中心预约",
+    "startTime": "2025-12-24 18:20:00",
+    "endTime": "2025-12-24 19:10:00",
+    "generation_source_continue": "117-e"
+  },
+  {
+    "id": "Calendar-442",
+    "generation_source": "86-2-1",
+    "title": "与上司钱永强探讨职业发展",
+    "description": "与上司钱永强探讨职业发展，2025-12-25 10:40 开始，地点为钱永强总监办公室，来源：当日工作安排",
+    "startTime": "2025-12-25 10:40:00",
+    "endTime": "2025-12-25 11:30:00",
+    "generation_source_continue": "86-b"
+  },
+  {
+    "id": "Calendar-443",
+    "generation_source": "156-3",
+    "title": "年末聚会 - 与李哲公司探讨合作",
+    "description": "在年末的最后一次聚会中，双方回顾了近半年的交流成果。冯浩然评估了未来在客户解决方案中引入李哲公司技术的可能性，并探讨了初步的非正式合作意向。",
+    "startTime": "2025-12-28 18:00:00",
+    "endTime": "2025-12-28 20:30:00",
+    "generation_source_continue": "156-c"
+  },
+  {
+    "id": "Calendar-444",
+    "generation_source": "86-2-2",
+    "title": "圣诞节好友聚餐",
+    "description": "圣诞节好友聚餐，2025-12-25 18:50 开始，地点为银双路西湖建新安置小区湘菜馆包间，来源：朋友邀约",
+    "startTime": "2025-12-25 18:50:00",
+    "endTime": "2025-12-25 21:15:00",
+    "generation_source_continue": "86-b"
+  },
+  {
+    "id": "Calendar-445",
+    "generation_source": "87-4-1",
+    "title": "团队聚餐庆祝晋升",
+    "description": "团队聚餐庆祝孙晓雅晋升，2025-12-27 18:30 开始，地点醴陵土菜馆(芙蓉中路店)，来源：团队群通知",
+    "startTime": "2025-12-27 18:30:00",
+    "endTime": "2025-12-27 21:45:00",
+    "generation_source_continue": "87-d"
+  },
+  {
+    "id": "Calendar-446",
+    "generation_source": "42-2-2",
+    "title": "构思2026年目标",
+    "description": "基于复盘结论，开始构思2026年的核心目标方向。需要规划职业发展（如团队管理能力提升）、家庭事务（具体落实家庭规划）以及资产学习方向（如家庭资产配置等新知识领域的学习）。",
+    "startTime": "2025-12-28 09:00:00",
+    "endTime": "2025-12-28 10:30:00",
+    "generation_source_continue": "42-b"
+  },
+  {
+    "id": "Calendar-447",
+    "generation_source": "108-2-1",
+    "title": "家庭健康讨论会（视频）",
+    "description": "家庭健康讨论会（微信视频群聊），2025-12-28 19:00 开始，与父母及妹妹沟通深度体检事宜，来源：自行安排",
+    "startTime": "2025-12-28 19:00:00",
+    "endTime": "2025-12-28 20:15:00",
+    "generation_source_continue": "108-b"
+  },
+  {
+    "id": "Calendar-448",
+    "generation_source": "108-2-4",
+    "title": "家庭体检初步安排",
+    "description": "与家人通话商定，体检时间初步安排在2026年春节后气候适宜的时段。具体日期和机构待定。",
+    "startTime": "2026-02-10 09:00:00",
+    "endTime": "2026-02-10 10:00:00",
+    "generation_source_continue": "108-b"
+  },
+  {
+    "id": "Calendar-449",
+    "generation_source": "108-2-3",
+    "title": "全家深度体检",
+    "description": "这是与父母沟通后达成共识的重要家庭事务，计划在2026年上半年完成。",
+    "startTime": "2026-06-30 09:00:00",
+    "endTime": "2026-06-30 12:00:00",
+    "generation_source_continue": "108-b"
+  },
+  {
+    "id": "Calendar-450",
+    "generation_source": "158-9-1",
+    "title": "与李哲公司年末复盘与展望会议",
+    "description": "与创业者李哲及其助理在圣爵菲斯咖啡厅进行年末复盘与展望会议，2025-12-29 10:00 开始，探讨Pre-IPO合作切入点，来源：今日事件日程",
+    "startTime": "2025-12-29 10:00:00",
+    "endTime": "2025-12-29 12:10:00",
+    "generation_source_continue": "158-i"
+  },
+  {
+    "id": "Calendar-451",
+    "generation_source": "117-7",
+    "title": "前往康复中心并完成治疗",
+    "description": "前往恒大雅苑健身中心康复理疗部进行治疗，2025-12-29 17:00 开始，治疗师王医生进行手法松解和动作测试，来源：今日事件日程",
+    "startTime": "2025-12-29 17:00:00",
+    "endTime": "2025-12-29 18:35:00",
+    "generation_source_continue": "117-g"
+  },
+  {
+    "id": "Calendar-452",
+    "generation_source": "158-10",
+    "title": "向上司汇报外部项目观察",
+    "description": "向钱永强总监汇报对金融科技创业者李哲项目的观察、商业模式、风险及协同价值，2025-12-30 09:30 开始，需准备材料，来源：今日工作安排",
+    "startTime": "2025-12-30 09:30:00",
+    "endTime": "2025-12-30 10:45:00",
+    "generation_source_continue": "158-j"
+  },
+  {
+    "id": "Calendar-453",
+    "generation_source": "284-4",
+    "title": "杜甫江阁跨年烟花拍摄",
+    "description": "跨年夜在杜甫江阁西侧观景平台拍摄烟花倒影，2025-12-31 18:50:00 抵达，需携带长焦镜头、三脚架、备用电池、暖宝宝，来源：个人摄影计划",
+    "startTime": "2025-12-31 18:50:00",
+    "endTime": "2025-12-31 23:50:00",
+    "generation_source_continue": "284-a"
+  },
+  {
+    "id": "Calendar-454",
+    "generation_source": "284-6",
+    "title": "跨年视频祝福与静思许愿",
+    "description": "在湘江边与好友吴俊杰、彭雨晴视频群聊互道新年快乐，随后独自静思许愿，2025-12-31 23:50:00 开始，来源：个人安排",
+    "startTime": "2025-12-31 23:50:00",
+    "endTime": "2026-01-01 00:40:00",
+    "generation_source_continue": "284-a"
+  }
+]

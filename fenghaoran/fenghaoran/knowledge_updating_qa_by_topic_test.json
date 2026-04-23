@@ -1,0 +1,1123 @@
+[
+  {
+    "question": "我最近设定的跑步目标是什么？",
+    "answer": "我最近设定了1月跑量80公里的目标，并开始有计划地训练。",
+    "ask_time": "2025-01",
+    "node_ids": [
+      0
+    ],
+    "required_events_id": [
+      "12"
+    ],
+    "evidence": [
+      {
+        "type": "note",
+        "data": {
+          "type": "note",
+          "title": "晚间放松与休息待办清单",
+          "content": "一、规划与整理：1. 规划1月跑步日程，分解80公里跑量并设定提醒；2. 整理下午潮宗街拍摄的照片，导入Lightroom进行初步调整；二、学习与放松：1. 观看金融纪录片《金融危机真相》，记录监管滞后与金融创新博弈等关键点；2. 睡前阅读《行为投资学》关于过度自信和损失厌恶的章节，做笔记；三、休息准备：1. 进行正念呼吸练习后入睡。",
+          "datetime": "2025-01-01 20:05:00",
+          "summarized_info": "冯浩然记录了晚间放松与休息的待办清单，内容包括一、规划与整理：1. 规划1月跑步日程，分解80公里跑量并设定提醒；2. 整理下午潮宗街拍摄的照片，导入Lightroom进行初步调整；二、学习与放松：1. 观看金融纪录片《金融危机真相》，记录监管滞后与金融创新博弈等关键点；2. 睡前阅读《行为投资学》关于过度自信和损失厌恶的章节，做笔记；三、休息准备：1. 进行正念呼吸练习后入睡。",
+          "daily_event_id": "12",
+          "event_id": [
+            "2-1",
+            "159-3"
+          ],
+          "phone_id": 0
+        }
+      },
+      {
+        "type": "photo",
+        "data": {
+          "type": "photo",
+          "caption": "冯浩然拍摄的iPad屏幕上显示的《行为投资学》关于过度自信和损失厌恶的章节内容",
+          "title": "IMG_20250101_221015",
+          "datetime": "2025-01-01 22:10:15",
+          "location": {
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "岳麓区",
+            "streetName": "双塘路",
+            "streetNumber": "99号",
+            "poi": "岳麓区机关金星住宅小区"
+          },
+          "faceRecognition": "无",
+          "imageTag": [
+            "iPad屏幕",
+            "行为投资学",
+            "书籍",
+            "笔记",
+            "文档扫描",
+            "学习"
+          ],
+          "ocrText": "行为投资学 - 第5章 过度自信与损失厌恶 - 过度自信导致投资者高估自己的知识、低估风险并夸大控制事件的能力。",
+          "shoot_mode": "正常拍照",
+          "image_size": "1536×2048",
+          "summarized_info": "冯浩然拍摄了一张学习照片，里面的主要内容为iPad屏幕上显示的《行为投资学》书籍章节内容",
+          "daily_event_id": "12",
+          "event_id": [
+            "2-1",
+            "159-3"
+          ],
+          "phone_id": 47
+        }
+      },
+      {
+        "type": "push",
+        "data": {
+          "type": "push",
+          "title": "中国移动：套餐余量提醒",
+          "content": "【中国移动】截至10月1日，您本月套餐内国内通用流量剩余8.2GB，国内通话剩余120分钟。",
+          "datetime": "2023-10-01 09:00:00",
+          "source": "中国移动",
+          "push_status": "已读",
+          "jump_path": "中国移动→我的→套餐余量查询",
+          "summarized_info": "中国移动提醒我本月套餐流量剩余8.2GB，通话剩余120分钟",
+          "daily_event_id": "12",
+          "phone_id": 10
+        }
+      },
+      {
+        "type": "sms",
+        "data": {
+          "type": "sms",
+          "message_content": "【招商银行】尊敬的客户，您尾号8899的信用卡本月账单已出，应还金额为2，568.90元，还款日为01月15日。登录掌上生活App可便捷还款。",
+          "contactName": "招商银行",
+          "phoneNumber": "10655020095555",
+          "datetime": "2025-01-01 20:15:00",
+          "message_type": "接收",
+          "daily_event_id": "12",
+          "event_id": [
+            "2-1",
+            "159-3"
+          ],
+          "phone_id": 3
+        }
+      }
+    ],
+    "question_type": "Knowledge_Update"
+  },
+  {
+    "question": "我最近设定的跑步目标是什么？",
+    "answer": "我最近与跑友组队报名了春季100公里跑步挑战赛，并启动了挑战计划。",
+    "ask_time": "2025-03",
+    "node_ids": [
+      6
+    ],
+    "required_events_id": [
+      "778",
+      "775",
+      "777"
+    ],
+    "evidence": [
+      {
+        "type": "call",
+        "data": {
+          "type": "call",
+          "phoneNumber": "+8613787012345",
+          "contactName": "吴俊杰",
+          "datetime": "2025-03-01 14:30:00",
+          "datetime_end": "2025-03-01 14:35:45",
+          "direction": 1,
+          "call_result": "接通",
+          "daily_event_id": "775",
+          "event_id": [],
+          "phone_id": 188
+        }
+      },
+      {
+        "type": "call",
+        "data": {
+          "type": "call",
+          "phoneNumber": "+8613787012345",
+          "contactName": "高云飞",
+          "datetime": "2025-03-01 16:45:00",
+          "datetime_end": "2025-03-01 16:50:30",
+          "direction": 1,
+          "call_result": "接通",
+          "daily_event_id": "777",
+          "event_id": [
+            "102-2-1"
+          ],
+          "phone_id": 189
+        }
+      },
+      {
+        "type": "perception",
+        "data": {
+          "dataname": "跑步",
+          "inTimestamp": "2025-03-01 17:10:00",
+          "outTimestamp": "2025-03-01 18:20:00",
+          "location": {
+            "country": "中国",
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "岳麓区",
+            "streetName": "登高路",
+            "streetNumber": "58号",
+            "POI": "岳麓山风景名胜区"
+          },
+          "date": "2025-03-01",
+          "type": "perception",
+          "daily_event_id": "777",
+          "event_id": [
+            "102-2-1"
+          ],
+          "phone_id": 459
+        }
+      },
+      {
+        "type": "perception",
+        "data": {
+          "dataname": "户外步行",
+          "inTimestamp": "2025-03-01 18:20:00",
+          "outTimestamp": "2025-03-01 18:40:00",
+          "location": {
+            "country": "中国",
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "岳麓区",
+            "streetName": "登高路",
+            "streetNumber": "",
+            "POI": "岳麓山脚便利店"
+          },
+          "date": "2025-03-01",
+          "type": "perception",
+          "daily_event_id": "778",
+          "event_id": [
+            "102-2-1"
+          ],
+          "phone_id": 460
+        }
+      },
+      {
+        "type": "photo",
+        "data": {
+          "type": "photo",
+          "caption": "冯浩然与跑友高云飞在岳麓山南门入口处合影，两人穿着运动装，身后是岳麓山景区入口和游客。",
+          "title": "IMG_20250301_171530",
+          "datetime": "2025-03-01 17:15:30",
+          "location": {
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "岳麓区",
+            "streetName": "登高路",
+            "streetNumber": "58号",
+            "poi": "岳麓山风景名胜区南门"
+          },
+          "faceRecognition": [
+            "冯浩然",
+            "高云飞"
+          ],
+          "imageTag": [
+            "人物合影",
+            "跑友",
+            "岳麓山",
+            "景区入口",
+            "运动装",
+            "启动跑步"
+          ],
+          "ocrText": "无",
+          "shoot_mode": "人像",
+          "image_size": "3024×4032",
+          "summarized_info": "冯浩然拍摄了一张合影照片，里面的主要内容为冯浩然与跑友高云飞在岳麓山南门入口处的合影。",
+          "daily_event_id": "777",
+          "event_id": [
+            "102-2-1"
+          ],
+          "phone_id": 275
+        }
+      },
+      {
+        "type": "push",
+        "data": {
+          "type": "push",
+          "title": "Keep：跑步挑战赛报名成功提醒",
+          "content": "【Keep】恭喜您已成功报名春日焕新100公里挑战赛！队伍【岳麓跑者】已创建，邀请队友高云飞加入。点击查看详细赛程与训练计划。",
+          "datetime": "2025-03-01 13:45:00",
+          "source": "Keep",
+          "push_status": "已读",
+          "jump_path": "Keep→我的活动→挑战赛#春日焕新",
+          "summarized_info": "我收到Keep跑步挑战赛报名成功的通知，队伍名称为岳麓跑者。",
+          "daily_event_id": "775",
+          "event_id": [
+            "102-1",
+            "100-1",
+            "100-2"
+          ],
+          "phone_id": 503
+        }
+      },
+      {
+        "type": "push",
+        "data": {
+          "type": "push",
+          "title": "Keep：傍晚跑步集合提醒",
+          "content": "【Keep】您与跑友高云飞约定的岳麓山南门跑步计划即将开始，集合时间17:30，请提前做好热身准备。",
+          "datetime": "2025-03-01 16:55:00",
+          "source": "Keep",
+          "push_status": "已读",
+          "jump_path": "Keep→我的活动→挑战赛#春日焕新",
+          "summarized_info": "我收到Keep关于傍晚17:30在岳麓山南门集合跑步的提醒。",
+          "daily_event_id": "775",
+          "event_id": [],
+          "phone_id": 504
+        }
+      },
+      {
+        "type": "sms",
+        "data": {
+          "type": "sms",
+          "message_content": "云飞，刚跑完拉伸完，感觉不错。关于100公里挑战赛，我初步想我们每人每周至少完成15公里，周末合练一次长距离，你看怎么样？",
+          "contactName": "高云飞",
+          "phoneNumber": "+8613787012345",
+          "datetime": "2025-03-01 18:25:00",
+          "message_type": "发送",
+          "daily_event_id": "778",
+          "event_id": [
+            "102-2-1"
+          ],
+          "phone_id": 317
+        }
+      },
+      {
+        "type": "sms",
+        "data": {
+          "type": "sms",
+          "message_content": "我觉得可以，周末合练时间可以定在周六早上7点，地点还是岳麓山南门。另外，要不要拉个微信群，把跑友会其他几个想参加的人也加进来一起规划？",
+          "contactName": "高云飞",
+          "phoneNumber": "+8613787012345",
+          "datetime": "2025-03-01 18:32:00",
+          "message_type": "接收",
+          "daily_event_id": "778",
+          "event_id": [
+            "102-2-1"
+          ],
+          "phone_id": 318
+        }
+      }
+    ],
+    "question_type": "Knowledge_Update"
+  },
+  {
+    "question": "我累计完成了哪些跑步里程碑？",
+    "answer": "我累计完成了1月80公里跑量目标这个里程碑。",
+    "ask_time": "2025-01",
+    "node_ids": [
+      0,
+      3
+    ],
+    "required_events_id": [
+      "324",
+      "12"
+    ],
+    "evidence": [
+      {
+        "type": "calendar",
+        "data": {
+          "type": "calendar",
+          "title": "月度目标晨跑与庆祝",
+          "description": "与跑友高云飞、吴俊杰在湘江风光带汇合进行节奏跑，完成6公里使月度累计跑量达到82公里，超额完成目标，2025-01-25 07:45:00 开始，来源：当日事件",
+          "start_time": "2025-01-25 07:45:00",
+          "end_time": "2025-01-25 07:45:00",
+          "datetime": "2025-01-24 21:30:00",
+          "summarized_info": "冯浩然设定了一个日程，为月度目标晨跑与庆祝，与跑友高云飞、吴俊杰在湘江风光带汇合进行节奏跑，完成6公里使月度累计跑量达到82公里，超额完成目标，2025-01-25 07:45:00 开始，来源：当日事件",
+          "daily_event_id": "324",
+          "event_id": [
+            "2-8"
+          ],
+          "phone_id": 28
+        }
+      },
+      {
+        "type": "call",
+        "data": {
+          "type": "call",
+          "phoneNumber": "+8613787012345",
+          "contactName": "高云飞",
+          "datetime": "2025-01-25 08:30:00",
+          "datetime_end": "2025-01-25 08:35:15",
+          "direction": 0,
+          "call_result": "接通",
+          "daily_event_id": "324",
+          "event_id": [
+            "2-8"
+          ],
+          "phone_id": 81
+        }
+      },
+      {
+        "type": "note",
+        "data": {
+          "type": "note",
+          "title": "晚间放松与休息待办清单",
+          "content": "一、规划与整理：1. 规划1月跑步日程，分解80公里跑量并设定提醒；2. 整理下午潮宗街拍摄的照片，导入Lightroom进行初步调整；二、学习与放松：1. 观看金融纪录片《金融危机真相》，记录监管滞后与金融创新博弈等关键点；2. 睡前阅读《行为投资学》关于过度自信和损失厌恶的章节，做笔记；三、休息准备：1. 进行正念呼吸练习后入睡。",
+          "datetime": "2025-01-01 20:05:00",
+          "summarized_info": "冯浩然记录了晚间放松与休息的待办清单，内容包括一、规划与整理：1. 规划1月跑步日程，分解80公里跑量并设定提醒；2. 整理下午潮宗街拍摄的照片，导入Lightroom进行初步调整；二、学习与放松：1. 观看金融纪录片《金融危机真相》，记录监管滞后与金融创新博弈等关键点；2. 睡前阅读《行为投资学》关于过度自信和损失厌恶的章节，做笔记；三、休息准备：1. 进行正念呼吸练习后入睡。",
+          "daily_event_id": "12",
+          "event_id": [
+            "2-1",
+            "159-3"
+          ],
+          "phone_id": 0
+        }
+      },
+      {
+        "type": "perception",
+        "data": {
+          "dataname": "跑步",
+          "inTimestamp": "2025-01-25 07:45:00",
+          "outTimestamp": "2025-01-25 08:45:00",
+          "location": {
+            "country": "中国",
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "开福区",
+            "streetName": "",
+            "streetNumber": "",
+            "POI": "湘江风光带南侧步道（银盆岭大桥至风帆广场段）"
+          },
+          "date": "2025-01-25",
+          "type": "perception",
+          "daily_event_id": "324",
+          "event_id": [
+            "2-8"
+          ],
+          "phone_id": 224
+        }
+      },
+      {
+        "type": "photo",
+        "data": {
+          "type": "photo",
+          "caption": "冯浩然拍摄的iPad屏幕上显示的《行为投资学》关于过度自信和损失厌恶的章节内容",
+          "title": "IMG_20250101_221015",
+          "datetime": "2025-01-01 22:10:15",
+          "location": {
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "岳麓区",
+            "streetName": "双塘路",
+            "streetNumber": "99号",
+            "poi": "岳麓区机关金星住宅小区"
+          },
+          "faceRecognition": "无",
+          "imageTag": [
+            "iPad屏幕",
+            "行为投资学",
+            "书籍",
+            "笔记",
+            "文档扫描",
+            "学习"
+          ],
+          "ocrText": "行为投资学 - 第5章 过度自信与损失厌恶 - 过度自信导致投资者高估自己的知识、低估风险并夸大控制事件的能力。",
+          "shoot_mode": "正常拍照",
+          "image_size": "1536×2048",
+          "summarized_info": "冯浩然拍摄了一张学习照片，里面的主要内容为iPad屏幕上显示的《行为投资学》书籍章节内容",
+          "daily_event_id": "12",
+          "event_id": [
+            "2-1",
+            "159-3"
+          ],
+          "phone_id": 47
+        }
+      },
+      {
+        "type": "push",
+        "data": {
+          "type": "push",
+          "title": "中国移动：套餐余量提醒",
+          "content": "【中国移动】截至10月1日，您本月套餐内国内通用流量剩余8.2GB，国内通话剩余120分钟。",
+          "datetime": "2023-10-01 09:00:00",
+          "source": "中国移动",
+          "push_status": "已读",
+          "jump_path": "中国移动→我的→套餐余量查询",
+          "summarized_info": "中国移动提醒我本月套餐流量剩余8.2GB，通话剩余120分钟",
+          "daily_event_id": "12",
+          "phone_id": 10
+        }
+      },
+      {
+        "type": "push",
+        "data": {
+          "type": "push",
+          "title": "Keep：跑步记录同步成功",
+          "content": "【Keep】您于07:45开始的跑步已记录完成，距离6.00公里，本月累计跑量已达82公里，超额完成目标！",
+          "datetime": "2025-01-25 08:47:00",
+          "source": "Keep",
+          "push_status": "已读",
+          "jump_path": "Keep→运动→跑步记录#202501250745",
+          "summarized_info": "我收到Keep通知，今日晨跑6公里记录成功，本月累计跑量达82公里。",
+          "daily_event_id": "324",
+          "event_id": [
+            "2-8"
+          ],
+          "phone_id": 263
+        }
+      },
+      {
+        "type": "sms",
+        "data": {
+          "type": "sms",
+          "message_content": "【招商银行】尊敬的客户，您尾号8899的信用卡本月账单已出，应还金额为2，568.90元，还款日为01月15日。登录掌上生活App可便捷还款。",
+          "contactName": "招商银行",
+          "phoneNumber": "10655020095555",
+          "datetime": "2025-01-01 20:15:00",
+          "message_type": "接收",
+          "daily_event_id": "12",
+          "event_id": [
+            "2-1",
+            "159-3"
+          ],
+          "phone_id": 3
+        }
+      }
+    ],
+    "question_type": "Knowledge_Update"
+  },
+  {
+    "question": "我累计完成了哪些跑步里程碑？",
+    "answer": "我累计完成了1月80公里跑量目标、与跑友完成100公里挑战赛目标（累计里程突破100公里）这两个里程碑。",
+    "ask_time": "2025-03",
+    "node_ids": [
+      0,
+      3,
+      6,
+      10
+    ],
+    "required_events_id": [
+      "1122",
+      "778",
+      "324",
+      "775",
+      "12",
+      "777"
+    ],
+    "evidence": [
+      {
+        "type": "agent_chat",
+        "data": {
+          "date": "2025-03-27",
+          "type": "agent_chat",
+          "conversation": {
+            "turn 1": {
+              "user": {
+                "action": "topic query",
+                "content": "嘿，今天真是个值得纪念的日子！我和跑友高云飞一起，终于完成了我们设定的团队累计100公里跑步挑战，刚刚在岳麓山环湖路跑道上突破了100.5公里！"
+              },
+              "assistant": {
+                "action": "need inference",
+                "content": "听得出你非常兴奋！这确实是一个了不起的里程碑。你不仅想分享这个成就，还想回顾一下和跑友一起努力的过程，对吗？"
+              }
+            },
+            "turn 2": {
+              "user": {
+                "action": "need confirmation",
+                "content": "完全正确！看到APP弹出“挑战成功”的提示时，我们俩都激动地击掌欢呼，还特意停下来拍照留念。这100公里是我们利用周末和下班后时间，一点点累积起来的，过程虽然辛苦但特别充实。"
+              },
+              "assistant": {
+                "action": "talk",
+                "content": "这太棒了，冯浩然！首先要热烈祝贺你和你的跑友高云飞！从点滴累积到突破100公里，这背后是强大的毅力和对目标的执着。ENTJ的你，果然说到做到。能和志同道合的朋友一起完成挑战，这份共同的记忆和成就感，比单纯的数字更有意义。"
+              }
+            },
+            "turn 3": {
+              "user": {
+                "action": "topic query",
+                "content": "谢谢你的肯定！晚餐时我们还小小庆祝了一下。现在挑战完成了，我确实已经开始琢磨下一步了。作为一个习惯设定目标的人，你觉得我接下来是应该挑战半程马拉松，还是先专注于提升5公里的配速呢？"
+              },
+              "assistant": {
+                "action": "solution discussion",
+                "content": "这是一个很棒的规划思路！考虑到你刚刚完成100公里累积，身体已经具备了不错的基础耐力。如果目标是半程马拉松（21.0975公里），这是一个质的飞跃，需要更系统、更长周期的训练计划，包括长距离拉练。如果目标是提升5公里配速，则更侧重于速度、间歇跑和核心力量训练。你更享受挑战距离带来的征服感，还是突破速度极限的畅快感？"
+              }
+            },
+            "turn 4": {
+              "user": {
+                "action": "clarification",
+                "content": "嗯……征服新距离听起来很有吸引力，半马是一个公认的里程碑。不过，我也想知道，以我目前每周规律跑步的基础，如果科学地准备一个半马，大概需要多久？有没有需要特别注意的地方？"
+              },
+              "assistant": {
+                "action": "information provision",
+                "content": "对于有规律跑步习惯的跑者，准备首个半马通常需要12-16周的系统训练。关键点在于：1. 循序渐进增加周跑量和单次长距离（建议每周增幅不超过10%）；2. 必须安排休息日和交叉训练（如力量训练），预防损伤；3. 进行几次15-18公里的长距离慢跑（LSD）来适应；4. 注意跑姿、营养和睡眠恢复。你可以考虑找一个半马训练计划模板，然后根据你和高云飞的时间进行调整。"
+              }
+            },
+            "turn 5": {
+              "user": {
+                "action": "solution feedback",
+                "content": "非常清晰专业的建议！12-16周，差不多是3到4个月，时间上很合理。看来下一步可以和高云飞商量，把目标定为今年夏天完成一个半马。有了这次100公里合作的基础，我们对彼此的步伐和节奏更了解了，一起训练会更有动力。"
+              },
+              "assistant": {
+                "action": "confirmation",
+                "content": "完美的计划！从100公里团队挑战到共同征战半程马拉松，这将是你们友谊和跑步旅程的又一次升华。期待听到你们下一步的训练进展和再次成功的好消息！再次祝贺你们今天的成就！"
+              }
+            }
+          },
+          "daily_event_id": "1122",
+          "event_id": [
+            "102-2-7"
+          ],
+          "phone_id": 187
+        }
+      },
+      {
+        "type": "calendar",
+        "data": {
+          "type": "calendar",
+          "title": "月度目标晨跑与庆祝",
+          "description": "与跑友高云飞、吴俊杰在湘江风光带汇合进行节奏跑，完成6公里使月度累计跑量达到82公里，超额完成目标，2025-01-25 07:45:00 开始，来源：当日事件",
+          "start_time": "2025-01-25 07:45:00",
+          "end_time": "2025-01-25 07:45:00",
+          "datetime": "2025-01-24 21:30:00",
+          "summarized_info": "冯浩然设定了一个日程，为月度目标晨跑与庆祝，与跑友高云飞、吴俊杰在湘江风光带汇合进行节奏跑，完成6公里使月度累计跑量达到82公里，超额完成目标，2025-01-25 07:45:00 开始，来源：当日事件",
+          "daily_event_id": "324",
+          "event_id": [
+            "2-8"
+          ],
+          "phone_id": 28
+        }
+      },
+      {
+        "type": "calendar",
+        "data": {
+          "type": "calendar",
+          "title": "岳麓山跑步合练",
+          "description": "与跑友高云飞在岳麓山环湖路跑道进行5公里合练，2025-03-27 18:10开始，来源：今日事件",
+          "start_time": "2025-03-27 18:10:00",
+          "end_time": "2025-03-27 18:10:00",
+          "datetime": "2025-03-27 17:45:00",
+          "summarized_info": "冯浩然设定了一个日程，为与跑友高云飞在岳麓山环湖路跑道进行5公里合练，2025-03-27 18:10开始，来源：今日事件",
+          "daily_event_id": "1122",
+          "event_id": [
+            "102-2-7"
+          ],
+          "phone_id": 85
+        }
+      },
+      {
+        "type": "call",
+        "data": {
+          "type": "call",
+          "phoneNumber": "+8613787012345",
+          "contactName": "高云飞",
+          "datetime": "2025-01-25 08:30:00",
+          "datetime_end": "2025-01-25 08:35:15",
+          "direction": 0,
+          "call_result": "接通",
+          "daily_event_id": "324",
+          "event_id": [
+            "2-8"
+          ],
+          "phone_id": 81
+        }
+      },
+      {
+        "type": "call",
+        "data": {
+          "type": "call",
+          "phoneNumber": "+8613787012345",
+          "contactName": "吴俊杰",
+          "datetime": "2025-03-01 14:30:00",
+          "datetime_end": "2025-03-01 14:35:45",
+          "direction": 1,
+          "call_result": "接通",
+          "daily_event_id": "775",
+          "event_id": [],
+          "phone_id": 188
+        }
+      },
+      {
+        "type": "call",
+        "data": {
+          "type": "call",
+          "phoneNumber": "+8613787012345",
+          "contactName": "高云飞",
+          "datetime": "2025-03-01 16:45:00",
+          "datetime_end": "2025-03-01 16:50:30",
+          "direction": 1,
+          "call_result": "接通",
+          "daily_event_id": "777",
+          "event_id": [
+            "102-2-1"
+          ],
+          "phone_id": 189
+        }
+      },
+      {
+        "type": "call",
+        "data": {
+          "type": "call",
+          "phoneNumber": "+8613787012345",
+          "contactName": "高云飞",
+          "datetime": "2025-03-27 19:05:00",
+          "datetime_end": "2025-03-27 19:10:30",
+          "direction": 0,
+          "call_result": "接通",
+          "daily_event_id": "1122",
+          "event_id": [
+            "102-2-7"
+          ],
+          "phone_id": 284
+        }
+      },
+      {
+        "type": "note",
+        "data": {
+          "type": "note",
+          "title": "晚间放松与休息待办清单",
+          "content": "一、规划与整理：1. 规划1月跑步日程，分解80公里跑量并设定提醒；2. 整理下午潮宗街拍摄的照片，导入Lightroom进行初步调整；二、学习与放松：1. 观看金融纪录片《金融危机真相》，记录监管滞后与金融创新博弈等关键点；2. 睡前阅读《行为投资学》关于过度自信和损失厌恶的章节，做笔记；三、休息准备：1. 进行正念呼吸练习后入睡。",
+          "datetime": "2025-01-01 20:05:00",
+          "summarized_info": "冯浩然记录了晚间放松与休息的待办清单，内容包括一、规划与整理：1. 规划1月跑步日程，分解80公里跑量并设定提醒；2. 整理下午潮宗街拍摄的照片，导入Lightroom进行初步调整；二、学习与放松：1. 观看金融纪录片《金融危机真相》，记录监管滞后与金融创新博弈等关键点；2. 睡前阅读《行为投资学》关于过度自信和损失厌恶的章节，做笔记；三、休息准备：1. 进行正念呼吸练习后入睡。",
+          "daily_event_id": "12",
+          "event_id": [
+            "2-1",
+            "159-3"
+          ],
+          "phone_id": 0
+        }
+      },
+      {
+        "type": "perception",
+        "data": {
+          "dataname": "跑步",
+          "inTimestamp": "2025-01-25 07:45:00",
+          "outTimestamp": "2025-01-25 08:45:00",
+          "location": {
+            "country": "中国",
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "开福区",
+            "streetName": "",
+            "streetNumber": "",
+            "POI": "湘江风光带南侧步道（银盆岭大桥至风帆广场段）"
+          },
+          "date": "2025-01-25",
+          "type": "perception",
+          "daily_event_id": "324",
+          "event_id": [
+            "2-8"
+          ],
+          "phone_id": 224
+        }
+      },
+      {
+        "type": "perception",
+        "data": {
+          "dataname": "跑步",
+          "inTimestamp": "2025-03-01 17:10:00",
+          "outTimestamp": "2025-03-01 18:20:00",
+          "location": {
+            "country": "中国",
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "岳麓区",
+            "streetName": "登高路",
+            "streetNumber": "58号",
+            "POI": "岳麓山风景名胜区"
+          },
+          "date": "2025-03-01",
+          "type": "perception",
+          "daily_event_id": "777",
+          "event_id": [
+            "102-2-1"
+          ],
+          "phone_id": 459
+        }
+      },
+      {
+        "type": "perception",
+        "data": {
+          "dataname": "户外步行",
+          "inTimestamp": "2025-03-01 18:20:00",
+          "outTimestamp": "2025-03-01 18:40:00",
+          "location": {
+            "country": "中国",
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "岳麓区",
+            "streetName": "登高路",
+            "streetNumber": "",
+            "POI": "岳麓山脚便利店"
+          },
+          "date": "2025-03-01",
+          "type": "perception",
+          "daily_event_id": "778",
+          "event_id": [
+            "102-2-1"
+          ],
+          "phone_id": 460
+        }
+      },
+      {
+        "type": "perception",
+        "data": {
+          "dataname": "跑步",
+          "inTimestamp": "2025-03-27 18:10:00",
+          "outTimestamp": "2025-03-27 19:15:00",
+          "location": {
+            "country": "中国",
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "岳麓区",
+            "streetName": "登高路",
+            "streetNumber": "58号",
+            "POI": "岳麓山风景名胜区环湖路跑道"
+          },
+          "date": "2025-03-27",
+          "type": "perception",
+          "daily_event_id": "1122",
+          "event_id": [
+            "102-2-7"
+          ],
+          "phone_id": 681
+        }
+      },
+      {
+        "type": "photo",
+        "data": {
+          "type": "photo",
+          "caption": "冯浩然拍摄的iPad屏幕上显示的《行为投资学》关于过度自信和损失厌恶的章节内容",
+          "title": "IMG_20250101_221015",
+          "datetime": "2025-01-01 22:10:15",
+          "location": {
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "岳麓区",
+            "streetName": "双塘路",
+            "streetNumber": "99号",
+            "poi": "岳麓区机关金星住宅小区"
+          },
+          "faceRecognition": "无",
+          "imageTag": [
+            "iPad屏幕",
+            "行为投资学",
+            "书籍",
+            "笔记",
+            "文档扫描",
+            "学习"
+          ],
+          "ocrText": "行为投资学 - 第5章 过度自信与损失厌恶 - 过度自信导致投资者高估自己的知识、低估风险并夸大控制事件的能力。",
+          "shoot_mode": "正常拍照",
+          "image_size": "1536×2048",
+          "summarized_info": "冯浩然拍摄了一张学习照片，里面的主要内容为iPad屏幕上显示的《行为投资学》书籍章节内容",
+          "daily_event_id": "12",
+          "event_id": [
+            "2-1",
+            "159-3"
+          ],
+          "phone_id": 47
+        }
+      },
+      {
+        "type": "photo",
+        "data": {
+          "type": "photo",
+          "caption": "冯浩然与跑友高云飞在岳麓山南门入口处合影，两人穿着运动装，身后是岳麓山景区入口和游客。",
+          "title": "IMG_20250301_171530",
+          "datetime": "2025-03-01 17:15:30",
+          "location": {
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "岳麓区",
+            "streetName": "登高路",
+            "streetNumber": "58号",
+            "poi": "岳麓山风景名胜区南门"
+          },
+          "faceRecognition": [
+            "冯浩然",
+            "高云飞"
+          ],
+          "imageTag": [
+            "人物合影",
+            "跑友",
+            "岳麓山",
+            "景区入口",
+            "运动装",
+            "启动跑步"
+          ],
+          "ocrText": "无",
+          "shoot_mode": "人像",
+          "image_size": "3024×4032",
+          "summarized_info": "冯浩然拍摄了一张合影照片，里面的主要内容为冯浩然与跑友高云飞在岳麓山南门入口处的合影。",
+          "daily_event_id": "777",
+          "event_id": [
+            "102-2-1"
+          ],
+          "phone_id": 275
+        }
+      },
+      {
+        "type": "photo",
+        "data": {
+          "type": "photo",
+          "caption": "冯浩然与跑友高云飞在岳麓山环湖路跑道边兴奋击掌庆祝，两人面带笑容，身后是跑道和树木，手机屏幕显示跑步APP里程突破100公里。",
+          "title": "IMG_20250327_184520",
+          "datetime": "2025-03-27 18:45:20",
+          "location": {
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "岳麓区",
+            "streetName": "登高路",
+            "streetNumber": "58号",
+            "poi": "岳麓山风景名胜区环湖路跑道"
+          },
+          "faceRecognition": [
+            "冯浩然",
+            "高云飞"
+          ],
+          "imageTag": [
+            "人物合影",
+            "跑步庆祝",
+            "击掌",
+            "岳麓山",
+            "环湖路",
+            "运动APP",
+            "团队目标"
+          ],
+          "ocrText": "无",
+          "shoot_mode": "人像",
+          "image_size": "3024×4032",
+          "summarized_info": "冯浩然与高云飞拍摄了一张合影照片，里面的主要内容为两人在岳麓山环湖路击掌庆祝跑步团队里程突破100公里。",
+          "daily_event_id": "1122",
+          "event_id": [
+            "102-2-7"
+          ],
+          "phone_id": 390
+        }
+      },
+      {
+        "type": "push",
+        "data": {
+          "type": "push",
+          "title": "中国移动：套餐余量提醒",
+          "content": "【中国移动】截至10月1日，您本月套餐内国内通用流量剩余8.2GB，国内通话剩余120分钟。",
+          "datetime": "2023-10-01 09:00:00",
+          "source": "中国移动",
+          "push_status": "已读",
+          "jump_path": "中国移动→我的→套餐余量查询",
+          "summarized_info": "中国移动提醒我本月套餐流量剩余8.2GB，通话剩余120分钟",
+          "daily_event_id": "12",
+          "phone_id": 10
+        }
+      },
+      {
+        "type": "push",
+        "data": {
+          "type": "push",
+          "title": "Keep：跑步记录同步成功",
+          "content": "【Keep】您于07:45开始的跑步已记录完成，距离6.00公里，本月累计跑量已达82公里，超额完成目标！",
+          "datetime": "2025-01-25 08:47:00",
+          "source": "Keep",
+          "push_status": "已读",
+          "jump_path": "Keep→运动→跑步记录#202501250745",
+          "summarized_info": "我收到Keep通知，今日晨跑6公里记录成功，本月累计跑量达82公里。",
+          "daily_event_id": "324",
+          "event_id": [
+            "2-8"
+          ],
+          "phone_id": 263
+        }
+      },
+      {
+        "type": "push",
+        "data": {
+          "type": "push",
+          "title": "Keep：跑步挑战赛报名成功提醒",
+          "content": "【Keep】恭喜您已成功报名春日焕新100公里挑战赛！队伍【岳麓跑者】已创建，邀请队友高云飞加入。点击查看详细赛程与训练计划。",
+          "datetime": "2025-03-01 13:45:00",
+          "source": "Keep",
+          "push_status": "已读",
+          "jump_path": "Keep→我的活动→挑战赛#春日焕新",
+          "summarized_info": "我收到Keep跑步挑战赛报名成功的通知，队伍名称为岳麓跑者。",
+          "daily_event_id": "775",
+          "event_id": [
+            "102-1",
+            "100-1",
+            "100-2"
+          ],
+          "phone_id": 503
+        }
+      },
+      {
+        "type": "push",
+        "data": {
+          "type": "push",
+          "title": "Keep：傍晚跑步集合提醒",
+          "content": "【Keep】您与跑友高云飞约定的岳麓山南门跑步计划即将开始，集合时间17:30，请提前做好热身准备。",
+          "datetime": "2025-03-01 16:55:00",
+          "source": "Keep",
+          "push_status": "已读",
+          "jump_path": "Keep→我的活动→挑战赛#春日焕新",
+          "summarized_info": "我收到Keep关于傍晚17:30在岳麓山南门集合跑步的提醒。",
+          "daily_event_id": "775",
+          "event_id": [],
+          "phone_id": 504
+        }
+      },
+      {
+        "type": "push",
+        "data": {
+          "type": "push",
+          "title": "悦跑圈：团队里程碑达成",
+          "content": "【悦跑圈】恭喜您与跑友高云飞共同完成的团队累计里程已突破100公里大关！当前里程100.5公里，点击查看团队荣誉徽章和排行榜。",
+          "datetime": "2025-03-27 19:10:00",
+          "source": "悦跑圈",
+          "push_status": "已读",
+          "jump_path": "悦跑圈→我的团队→里程碑#100KM",
+          "summarized_info": "我收到悦跑圈的团队里程碑通知，内容为：与高云飞的团队累计里程突破100公里，达100.5公里",
+          "daily_event_id": "1122",
+          "event_id": [
+            "102-2-7"
+          ],
+          "phone_id": 696
+        }
+      },
+      {
+        "type": "sms",
+        "data": {
+          "type": "sms",
+          "message_content": "【招商银行】尊敬的客户，您尾号8899的信用卡本月账单已出，应还金额为2，568.90元，还款日为01月15日。登录掌上生活App可便捷还款。",
+          "contactName": "招商银行",
+          "phoneNumber": "10655020095555",
+          "datetime": "2025-01-01 20:15:00",
+          "message_type": "接收",
+          "daily_event_id": "12",
+          "event_id": [
+            "2-1",
+            "159-3"
+          ],
+          "phone_id": 3
+        }
+      },
+      {
+        "type": "sms",
+        "data": {
+          "type": "sms",
+          "message_content": "云飞，刚跑完拉伸完，感觉不错。关于100公里挑战赛，我初步想我们每人每周至少完成15公里，周末合练一次长距离，你看怎么样？",
+          "contactName": "高云飞",
+          "phoneNumber": "+8613787012345",
+          "datetime": "2025-03-01 18:25:00",
+          "message_type": "发送",
+          "daily_event_id": "778",
+          "event_id": [
+            "102-2-1"
+          ],
+          "phone_id": 317
+        }
+      },
+      {
+        "type": "sms",
+        "data": {
+          "type": "sms",
+          "message_content": "我觉得可以，周末合练时间可以定在周六早上7点，地点还是岳麓山南门。另外，要不要拉个微信群，把跑友会其他几个想参加的人也加进来一起规划？",
+          "contactName": "高云飞",
+          "phoneNumber": "+8613787012345",
+          "datetime": "2025-03-01 18:32:00",
+          "message_type": "接收",
+          "daily_event_id": "778",
+          "event_id": [
+            "102-2-1"
+          ],
+          "phone_id": 318
+        }
+      }
+    ],
+    "question_type": "Knowledge_Update"
+  },
+  {
+    "question": "我当前正在进行的跑步挑战是什么？",
+    "answer": "我当前正在进行的跑步挑战是完成1月80公里跑量目标。",
+    "ask_time": "2025-01",
+    "node_ids": [
+      0
+    ],
+    "required_events_id": [
+      "12"
+    ],
+    "evidence": [
+      {
+        "type": "note",
+        "data": {
+          "type": "note",
+          "title": "晚间放松与休息待办清单",
+          "content": "一、规划与整理：1. 规划1月跑步日程，分解80公里跑量并设定提醒；2. 整理下午潮宗街拍摄的照片，导入Lightroom进行初步调整；二、学习与放松：1. 观看金融纪录片《金融危机真相》，记录监管滞后与金融创新博弈等关键点；2. 睡前阅读《行为投资学》关于过度自信和损失厌恶的章节，做笔记；三、休息准备：1. 进行正念呼吸练习后入睡。",
+          "datetime": "2025-01-01 20:05:00",
+          "summarized_info": "冯浩然记录了晚间放松与休息的待办清单，内容包括一、规划与整理：1. 规划1月跑步日程，分解80公里跑量并设定提醒；2. 整理下午潮宗街拍摄的照片，导入Lightroom进行初步调整；二、学习与放松：1. 观看金融纪录片《金融危机真相》，记录监管滞后与金融创新博弈等关键点；2. 睡前阅读《行为投资学》关于过度自信和损失厌恶的章节，做笔记；三、休息准备：1. 进行正念呼吸练习后入睡。",
+          "daily_event_id": "12",
+          "event_id": [
+            "2-1",
+            "159-3"
+          ],
+          "phone_id": 0
+        }
+      },
+      {
+        "type": "photo",
+        "data": {
+          "type": "photo",
+          "caption": "冯浩然拍摄的iPad屏幕上显示的《行为投资学》关于过度自信和损失厌恶的章节内容",
+          "title": "IMG_20250101_221015",
+          "datetime": "2025-01-01 22:10:15",
+          "location": {
+            "province": "湖南省",
+            "city": "长沙市",
+            "district": "岳麓区",
+            "streetName": "双塘路",
+            "streetNumber": "99号",
+            "poi": "岳麓区机关金星住宅小区"
+          },
+          "faceRecognition": "无",
+          "imageTag": [
+            "iPad屏幕",
+            "行为投资学",
+            "书籍",
+            "笔记",
+            "文档扫描",
+            "学习"
+          ],
+          "ocrText": "行为投资学 - 第5章 过度自信与损失厌恶 - 过度自信导致投资者高估自己的知识、低估风险并夸大控制事件的能力。",
+          "shoot_mode": "正常拍照",
+          "image_size": "1536×2048",
+          "summarized_info": "冯浩然拍摄了一张学习照片，里面的主要内容为iPad屏幕上显示的《行为投资学》书籍章节内容",
+          "daily_event_id": "12",
+          "event_id": [
+            "2-1",
+            "159-3"
+          ],
+          "phone_id": 47
+        }
+      },
+      {
+        "type": "push",
+        "data": {
+          "type": "push",
+          "title": "中国移动：套餐余量提醒",
+          "content": "【中国移动】截至10月1日，您本月套餐内国内通用流量剩余8.2GB，国内通话剩余120分钟。",
+          "datetime": "2023-10-01 09:00:00",
+          "source": "中国移动",
+          "push_status": "已读",
+          "jump_path": "中国移动→我的→套餐余量查询",
+          "summarized_info": "中国移动提醒我本月套餐流量剩余8.2GB，通话剩余120分钟",
+          "daily_event_id": "12",
+          "phone_id": 10
+        }
+      },
+      {
+        "type": "sms",
+        "data": {
+          "type": "sms",
+          "message_content": "【招商银行】尊敬的客户，您尾号8899的信用卡本月账单已出，应还金额为2，568.90元，还款日为01月15日。登录掌上生活App可便捷还款。",
+          "contactName": "招商银行",
+          "phoneNumber": "10655020095555",
+          "datetime": "2025-01-01 20:15:00",
+          "message_type": "接收",
+          "daily_event_id": "12",
+          "event_id": [
+            "2-1",
+            "159-3"
+          ],
+          "phone_id": 3
+        }
+      }
+    ],
+    "question_type": "Knowledge_Update"
+  }
+]

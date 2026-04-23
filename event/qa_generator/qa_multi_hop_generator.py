@@ -386,14 +386,31 @@ class QAMultiHopGenerator(BaseQAGenerator):
         # 方法 1: 基于时序扩展
         temporal_extensions = self._extend_by_temporal(initial_graph, daily_events)
         extended_nodes.extend(temporal_extensions)
-        
+
+        # # 方法 1: 基于时序扩展
+        # temporal_extensions = self._extend_by_temporal(initial_graph, daily_events)
+        # extended_nodes.extend(temporal_extensions)
+
         # 方法 2: 基于实体扩展
         entity_extensions = self._extend_by_entity(initial_graph, daily_events)
         extended_nodes.extend(entity_extensions)
-        
-        # 方法 3: 基于编造扩展
-        fabrication_extensions = self._extend_by_fabrication(initial_graph)
-        extended_nodes.extend(fabrication_extensions)
+
+        # 方法 2: 基于实体扩展
+        entity_extensions = self._extend_by_entity(initial_graph, daily_events)
+        extended_nodes.extend(entity_extensions)
+
+        # 方法 2: 基于实体扩展
+        entity_extensions = self._extend_by_entity(initial_graph, daily_events)
+        extended_nodes.extend(entity_extensions)
+
+        # 方法 2: 基于实体扩展
+        entity_extensions = self._extend_by_entity(initial_graph, daily_events)
+        extended_nodes.extend(entity_extensions)
+
+
+        # # 方法 3: 基于编造扩展
+        # fabrication_extensions = self._extend_by_fabrication(initial_graph)
+        # extended_nodes.extend(fabrication_extensions)
         
         # Step 3: 整合推理链条
         inference_chain = self._build_inference_chain(initial_graph, extended_nodes)
@@ -434,7 +451,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
 {json.dumps(target_event, ensure_ascii=False, indent=2)}
 
 【相关事件数据】（来自 event_tree 或 draft_event）
-{json.dumps(search_result[:10], ensure_ascii=False, indent=2) if len(search_result) > 10 else json.dumps(search_result, ensure_ascii=False, indent=2)}
+{json.dumps(search_result[:15], ensure_ascii=False, indent=2) if len(search_result) > 10 else json.dumps(search_result, ensure_ascii=False, indent=2)}
 
 【目标日期范围内的 daily_event】
 {json.dumps(daily_events[:30], ensure_ascii=False, indent=2) if daily_events and len(daily_events) > 10 else json.dumps(daily_events, ensure_ascii=False, indent=2) if daily_events else '暂无'}
@@ -443,7 +460,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
 
 1. **设计推理链条**
    - 构建一条从起始节点到最终节点的线性推理链
-   - 链条长度：3-6 个节点（包含起始和最终节点）
+   - 链条长度：3-10 个节点（包含起始和最终节点）
    - 最终节点必须是目标事件的某个具体信息（如时间、地点、人物、物品等）
    - 前面的节点应该是可以通过推理逐渐导向最终节点的中间步骤
 
@@ -766,8 +783,14 @@ class QAMultiHopGenerator(BaseQAGenerator):
         print(f"[Inference Agent] 实体扩展：让 LLM 分析实体并确定日期")
         
         # 第一步：LLM 分析实体并确定日期
+        # 获取主角名字
+        persona_name = self.persona.get('name', '') if hasattr(self, 'persona') and isinstance(self.persona, dict) else ''
+        
         analysis_prompt = f"""
 作为 Inference Agent，请分析起始节点和月份事件数据，找出相关的实体和目标事件，构建推理关系。
+
+【主角姓名】
+{persona_name}
 
 【起始节点】
 {json.dumps(first_node, ensure_ascii=False, indent=2)}
@@ -779,10 +802,13 @@ class QAMultiHopGenerator(BaseQAGenerator):
 
 1. **分析起始节点的实体**
    - 从起始节点中提取关键实体，包括：
-     * **人物**：除主角外的其他人物（如朋友、同事、家人等）
+     * **人物**：除主角（{persona_name}）外的其他人物（如朋友、同事、家人等）
      * **地点**：事件发生的地点（如餐厅、公司、公园等）
      * **物品**：事件中涉及的物品（如礼物、文件、设备等）
-   - 注意：不要将主角（冯浩然）作为实体，重点找其他人物、地点、物品
+   - **重要约束**：
+     * **绝对不要将主角（{persona_name}）作为实体提取**
+     * 重点找其他人物、地点、物品
+     * 如果起始节点中只有主角，尝试提取地点或物品
 
 2. **在月份事件中寻找能反映该实体的目标事件**
    - 基于提取的实体，在月份事件中寻找能体现该实体的其他事件
@@ -1236,108 +1262,201 @@ class QAMultiHopGenerator(BaseQAGenerator):
         print(f"[Generate Question & Data] 找到 {len(involved_daily_events)} 个对应的 daily_event")
         
         # Step 1: 基于推理链生成问题
+        # 确定目标事件（推理链的起始节点）
+        target_node = nodes[0] if nodes else {}
+        target_event_name = target_node.get('name', '')
+        target_event_time = target_node.get('time', '')
+        
+        # 获取目标事件前后各一天的 daily_event 作为背景素材
+        background_events = self._get_background_events_for_target(target_event_time)
+        background_events_desc = json.dumps(background_events, ensure_ascii=False, indent=2) if background_events else "无背景事件"
+        
         question_prompt = f"""
-作为 Question Generator，请基于以下推理链条生成一个多跳推理问题。
+作为 Question Generator，请基于推理链条生成一个高质量的多跳推理问题。
 
-【推理节点】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【输入数据参考】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+**推理节点**（可供选择的节点池）：
 {json.dumps(nodes, ensure_ascii=False, indent=2)}
 
-【推理边】
+**推理边**（节点间的关系）：
 {json.dumps(edges, ensure_ascii=False, indent=2)}
 
-**多跳推理问题设计原则**
+**目标事件**（推理链的起点）：
+- 名称：{target_event_name}
+- 时间：{target_event_time}
 
-1. **多跳推理的本质**
-   - 多跳推理问题需要整合多个事件的信息
-   - 需要从题目开始经过多步骤推理才能得到答案
-   - 题目应询问确定的事实信息（地点、人物、内容、物品等）
-   - 避免模糊或主观的问题
+**背景事件**（目标事件前后各一天的 daily_event，可作为设计问题的参考素材）：
+{background_events_desc}
 
-2. **多跳关系类型**
-   
-   **a) 同实体关系**
-   - 基于同一实体（地点/人物/物品）在不同时间的事件
-   - 示例：
-     * 事件1：1月在和平饭店过生日
-     * 事件2：3月在和平饭店同事聚餐
-     * 问题：“我3月聚餐的那家饭店，在1月时我在那做了什么？”
-   
-   **b) 时序关系**
-   - 基于事件之间的时间先后关系
-   - 示例：
-     * 事件1：1月1日从深圳回上海
-     * 事件2：1月3日过生日
-     * 问题：“我过生日的3天前在哪？”
-   
-   **c) 因果关系**
-   - 基于事件之间的因果联系
-   - 示例：
-     * 事件1：1月1日受妈妈的推荐报名比赛
-     * 事件2：1月3日参加比赛并获奖
-     * 问题：“我1月获奖是因为谁的推荐？”
-   
-   **d) 聚合关系**
-   - 基于某个事件所需的多个元素或材料，分布在不同数据里
-   - 示例：
-     * 事件：XX会议需要准备三个材料
-     * 问题：“我为XX会议准备了哪三个材料？”
+⚠️ **核心约束**：最终问题中绝对不能直接提及目标事件的任何信息（名称、时间、地点、人物等），必须通过多步推理才能得出答案。
 
-3. **组合多跳关系**
-   - 可以将上述关系组合，形成更复杂的多跳推理
-   - 示例（3跳推理）：
-     * 事件1：1月在和平饭店与同事聚餐
-     * 事件2：1月那次聚餐是为了庆祝项目完成
-     * 事件3：项目完成前的三天我在深圳
-     * 问题：“我3月聚餐的那家饭店，在1月时我在那聚餐为了什么？我一月那次聚餐之前的三天在哪里？”
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【思考过程】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-4. **匿名化与指代设计技巧**
-   - 将实体（时间/地点/人物）匿名化，用另一个事件指代
-   - 示例：
-     * 不直接问：“1月3日我在哪里？”
-     * 而是问：“我过生日的前一天，我在哪个城市？”
-   - 通过这种设计增加推理难度和趣味性
+### Step 1: 设计初始多跳问题
 
-**任务要求**
+**优先策略：设计涉及多个事件信息的询问**
+
+- 从推理节点或背景事件中选择多个相关事件，设计一个需要整合这些事件信息才能回答的问题
+- 示例：
+  * 事件1：“1月19号完成体检调研表”
+  * 事件2：“1月20号基于调研表和哥哥讨论”
+  * ✅ 好问题：“我1月20号和哥哥讨论的内容是什么时候制定的？”
+    - 答案需要整合：讨论内容（来自事件2） + 制定时间（来自事件1）
+  * ✅ 好问题：“我1月20号左右关于健康体检做了哪些事情？”
+    - 答案需要整合：填写的项目（来自事件1） + 讨论对象（来自事件2）
+
+- 针对同一时间段或同一主题的多个事件，设计一个需要汇总所有相关信息的问题
+- 示例：
+  * 事件1：“1月15号和小红在公园跑步”
+  * 事件2：“1月18号和小红在湖边跑步”
+  * 事件3：“1月20号和小红在操场跑步”
+  * ✅ 好问题：“1月15号到20号这段时间我和小红去了哪些地方跑步？”
+    - 答案需要整合：所有跑步地点（公园、湖边、操场）
+  * 事件1：“3月5号去北京出差”
+  * 事件2：“3月12号去上海开会”
+  * 事件3：“3月20号去广州参加展览”
+  * ✅ 好问题：“我3月份都去了哪些城市出差或参加活动？”
+    - 答案需要整合：所有城市（北京、上海、广州）
+
+💡 **关键原则**：
+- 多信息整合类问题的特点是：**问题指向一个时间段或主题，答案需要汇总该范围内的所有相关事件信息**
+- 这类问题天然需要多跳推理，因为需要从多个事件中抽取信息并整合
+- 适合用于考察记忆系统对一段时间内同类事件的汇总能力
+
+**备选策略：若难以设计多事件问题，可设计单跳查询问题**
+- 针对目标事件设计一个直接的查询问题
+- 示例：“3月4号我在和平饭店庆祝生日的时候和小明交谈了什么？”
+
+💡 **关键原则**：
+- 初始问题可以包含目标事件的直接信息（后续会被替换掉）
+- 记录已使用的节点，后续替换时不得再次使用
+- 根据事件发生频率决定时间表述粒度（一年一次不用加月份，一月一次加月份，多次发生加具体日期）
+
+### Step 2: 选择替换方案
+
+使用以下两种替换方式，将初始问题中的目标事件信息逐步替换为需要通过推理才能得出的描述：
+
+**① 实体替换**（同实体关系）
+- 用具有相同实体（地点、人物、物品等）的其他事件来替换
+- ⚠️ **重要约束**：**不得提取用户主体（主角/“我”）作为同实体来替换**
+  * ❌ 错误：“我” → “那天去跑步的人”（禁止，因为“我”是用户主体）
+  * ✅ 正确：“和平饭店” → “我2月同事聚餐的地方”（地点替换）
+  * ✅ 正确：“小明” → “那天散步时遇到的邻居”（其他人物替换）
+  * ✅ 正确：“笔记本电脑” → “上周刚买的那台设备”（物品替换）
+
+**② 因果替换**（因果/目的关系）
+- 用导致目标事件的原因或目标事件导致的结果来替换
+- 示例：
+  * “过生日” → “和小红在3月2号计划要做的事情”
+  * “庆祝生日” → “完成那个需要三个材料准备的任务后举行的活动”
+
+⚠️ **关键约束**：
+- 每次替换都必须使用**未使用节点**（即初始问题中未涉及的节点）
+- 分析问题的难度来选择是否进行替换，确保问题需要多步推理，可以不进行任何替换
+- 替换后的描述应该自然流畅，不要生硬
+
+### Step 3: 总体分析润色
+
+**这是最关键的一步，可以选择性取消之前的替换策略，重新设计问题和答案**
+
+**检查清单**：
+1. **自然流畅性**：问题读起来是否自然？是否因为多次替换导致题面不自然、拗口？
+2. **多跳推理要求**：是否需要至少 2-3 步推理或者需要整合多个事件的信息才能得出答案？
+3. **信息隐藏**：问题中是否完全不包含目标事件的直接信息？
+4. **合理性**：问题是否有实际意义？答案是否能从提供的节点中推理出来？
+5. **质量保障**：问题是否清晰、无歧义？
+6. **月份信息包含**：题面是否明确包含月份信息？
+7. **信息减少**：删除题面中包含的一些细节信息，尽可能多的减少信息量，但要保证问题可回答。例如我XX会上的主题为“植树节”的ppt是什么时候制作的？应该修改为我XX会上的ppt什么时候制作的？去除不必要的信息。
+
+**如果发现问题不自然或不合理**：
+- ✅ **可以完全重新设计问题和答案**，不必拘泥于之前的替换步骤
+- ✅ **可以调整替换策略**，选择不同的节点或替换方式
+- ✅ **可以简化或复杂化问题**，以确保质量和合理性
+- ✅ **最终目标是**：一个自然流畅、需要多跳推理、信息隐藏得当的高质量问题
+
+**润色示例**：
+- ❌ 不自然：“在我晋升主管的10天前，我在我2月同事聚餐的地方，做那件和小红在3月2号计划要做的事情时，和那天散步时遇到的邻居交谈了什么？”
+- ✅ 润色后：“我2月同事聚餐那天，我和散步时遇到的那位邻居聊起了之前和小红计划的事情，我们主要谈了什么？”
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【任务要求】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1. **选择关键节点**
-   - 从推理链中选择必要的节点来构建问题（不需要使用所有节点，当然也可以使用所有节点）
-   - 选择的节点应该能够形成完整的推理路径
-   - 记录所选节点的 event_id（如果有）
+   - 从提供的推理节点和背景事件中灵活选择必要的节点
+   - 不需要使用所有节点，也可以完全不参考推理链的关系，自行设计推理，但必须确保能形成完整的推理链
+   - 选择的节点应该能推导出目标事件的信息
+   - 记录所选节点的 event_id
 
 2. **生成问题**
-   - 问题应该需要多步推理才能回答，具有一定的复杂性
-   - 问题应该涉及选中的多个节点
-   - **重要要求**：对于多跳推理问题，必须明确其中至少一个推理节点所在的月份
-     * **关键原则**：只选择一个节点指出具体月份（非必要不明确具体日期），其他节点尽量用相对时间表示
-     *  示例：“我3月聚餐的那家饭店，在1月我在那做了什么？”（只明确3月，其他用“之前一个月”）
-     *  示例：“我过生日的前一周，我在哪个城市出差？”（只明确过生日的月份，其他用“前一周”）
-
-   - 问题格式参考：“我这个月在摄影和视频剪辑方面的兴趣发展有什么规律？”
-   - 问题应该是关于模式、趋势、关联性的探索性问题
-   - 尽量使用上述的多跳关系类型设计问题
+   - ❌ 绝对禁止：问题中不能出现目标事件的任何直接信息
+   - ✅ 明确月份：至少明确指出一个节点的月份，其他用相对时间或实体指代
+   - ✅ 问题焦点：询问目标事件的某个具体信息（做了什么、在哪里、和谁、为什么等）
 
 3. **生成标准答案**
-   - 答案应该详细说明推理过程
-   - 答案应该涵盖选中节点的关键信息
-   - 答案长度适中，信息完整
+   - 详细说明完整的推理过程（每一步都要清晰）
+   - 明确指出最终推理出的目标事件信息
 
 4. **生成评分要点**
-   - 将答案分解为 2-5 个评分要点
-   - 每个要点描述一个关键的推理步骤或信息点
-   - 每个要点分配分数（总分 100）
+   - 分解为 2-4 个评分要点，每个要点对应推理链中的一个关键步骤
+   - 总分 10
 
-请以 JSON 格式返回：
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【输出格式】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+请以JSON格式输出：
 {{
-    "question": "生成的多跳推理问题",
-    "answer": "详细的标准答案",
-    "score_points": [
+    "initial_question": "设计的初始直接问题（基于目标事件或多个相关事件设计多跳初始问题）",
+    "replacement_process": [
         {{
-            "description": "评分要点描述",
-            "score": 25
+            "step": 1,
+            "replacement_type": "实体替换/因果替换",
+            "original": "被替换的原始信息",
+            "replaced_with": "替换后的描述",
+            "reason": "为什么这样替换（推理关系说明）",
+            "question_after_replacement": "替换后的问题"
         }}
     ],
-    "required_events_id": ["选中的节点对应的 event_id 列表（如果没有 event_id 则为空字符串）"]
+    "polished_question": "替换策略执行后，经过润色优化的最终问题（确保自然流畅、符合多跳推理要求）",
+    "question": "最终的多跳推理问题（与 polished_question 相同，或进一步调整后的版本，注意包含月份信息）",
+    "answer": "标准答案（只需最终结论）",
+    "score_points": [
+        {{"description": "评分要点描述", "score": 分数}}
+    ],
+    "required_events_id": ["选中的节点对应的 event_id 列表"]
 }}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【自检清单】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- [ ] 是否需要整合多个事件信息才能得出答案？
+- [ ] **题面是否明确了至少一个节点的月份？**
+- [ ] 推理路径是否清晰、合理？
+- [ ] **题面是否清晰明确，没有模糊表述**？
+- [ ] **答案是否可以被唯一推导出来，不存在歧义**？
+- [ ] 题面是否有过于丰富的信息，尽可能减少信息和去除细节，来提高问题难度，但要保证足够回答问题的信息量。
+
+**题面清晰度检查**：
+- 问题中的每个指代（如“那个地方”、“那个人”、“那件事”）是否都有明确的推理路径可以定位？
+- 是否存在多个可能的事件都符合描述，导致答案不唯一？
+- 示例：
+  - ❌ 模糊：“我去过的那个地方” （可能指多个地方）
+  - ✅ 清晰：“我2月同事聚餐的那个地方” （唯一定位到2月的聚餐事件）
+
+**答案可推导性检查**：
+- 从问题出发，是否能通过推理链唯一确定答案？
+- 是否存在多种可能的解释或答案？
+- 示例：
+  - ❌ 不可推导：“我和某人见面时聊了什么？”（“某人”不确定，“聊了什么”无法推导）
+  - ✅ 可推导：“我和那天散步时遇到的邻居交谈了什么？”（“那天散步时遇到的邻居”可以唯一定位到具体人物，进而推导出交谈内容）
+
+如果以上任何一项不满足，请重新设计问题。
 """
         print("[Generate Question & Data] LLM 输入:", question_prompt)
         llm_result = llm_call_j(question_prompt)
@@ -1931,7 +2050,7 @@ sms, phonecall, photo, push, note, calendar
 
         return question
 
-    def generate_monthly_qa(self, year: int, month: int, num_questions: int = 2) -> List[Dict[str, Any]]:
+    def generate_monthly_qa(self, year: int, month: int, num_questions: int = 5) -> List[Dict[str, Any]]:
         """
         生成单个月份的多跳问答
         
@@ -1965,14 +2084,16 @@ sms, phonecall, photo, push, note, calendar
             
             # Step 3: Inference Agent 构建推理链条
             inference_chain = self.inference_agent(target_event, search_result, daily_events)
-            
+
+            print(f"\n[inference_agent] 推理链条：{inference_chain}")
+
             # Step 4: 生成问题和手机数据
             qa_result = self.generate_question_and_data(inference_chain)
             
             if qa_result.get('question'):
                 # 添加 ask_time
                 random_month = random.randint(month, 12)
-                qa_result['ask_time'] = f"{year}-{str(random_month).zfill(2)}"
+                qa_result['ask_time'] = f"{year}-12"
                 qa_result['question_type'] = 'multi_hop'
                 
                 monthly_qa.append(qa_result)
@@ -1980,7 +2101,214 @@ sms, phonecall, photo, push, note, calendar
         print(f"========== {year}-{month:02d} 完成，生成 {len(monthly_qa)} 个问题 ==========")
         return monthly_qa
     
-    def QAGen(self, year: int = 2025, num_questions_per_month: int = 2) -> List[Dict[str, Any]]:
+    def _filter_multi_hop_questions(self, questions: List[Dict[str, Any]], max_workers: int = 20) -> List[Dict[str, Any]]:
+        """
+        并行过滤检查多跳推理问题质量（20线程）
+        
+        Args:
+            questions: 待检查的问题列表
+            max_workers: 最大线程数，默认20
+            
+        Returns:
+            过滤后的问题列表（保留通过检查或被重新生成的问题）
+        """
+        print(f"\n[_filter_multi_hop_questions] 开始对 {len(questions)} 个多跳问题进行过滤检查（{max_workers}线程并行）...")
+        
+        filtered_results = [None] * len(questions)  # 预分配列表保持顺序
+        
+        def filter_single_question(idx: int, question: Dict[str, Any]) -> tuple:
+            """处理单个问题的过滤检查"""
+            try:
+                print(f"\n[_filter_multi_hop_questions] 检查第 {idx + 1}/{len(questions)} 个问题...")
+                
+                # 调用 LLM 进行质量检查
+                check_prompt = f"""
+作为多跳推理问题质量检查专家，请检查以下多跳推理问题的质量。
+
+【问题】
+{question.get('question', '')}
+
+【答案】
+{question.get('answer', '')}
+
+【证据数据】
+{json.dumps(question.get('evidence', []), ensure_ascii=False, indent=2) if question.get('evidence') else '无'}
+
+**检查标准**
+
+1. **多跳推理难度要求**
+   - 问题必须是真正的多跳推理问题，需要基于多个 evidence 进行推理才能得到答案
+   - 不能是单步推理或直接查找就能回答的简单问题
+   - 推理链条应该具有适当的复杂度，需要跨事件、跨时间或跨实体进行关联
+
+2. **题面信息量控制**
+   - **减少题面与目标信息的相似度**：题面不应直接暴露答案或目标 evidence 的关键特征
+   - 主要基于推理来定位目标 evidence，而不是通过题面的直接描述
+   - 题面应该提供线索和上下文，让回答者需要通过推理才能找到答案
+   - 参考原题目设计的推理思路来润色新题目，保证推理需要2-4跳。
+   - 题目应至少包含月份信息。
+   
+3. **问题和答案的合理性**
+   - 问题是否清晰、无歧义？
+   - 答案是否正确回答了问题？
+   - 答案的内容是否合理、符合逻辑？
+
+4. **可从 evidence 推理的可回答性**
+   - 提供的 evidence 是否包含回答问题所需的足够信息？
+   - 从 evidence 出发，是否能通过多步推导出答案？
+   - 是否存在 evidence 不足导致无法回答的情况？
+
+**输出要求**
+
+请以 JSON 格式返回检查结果：
+{{
+    "is_valid": true/false,
+    "issues": ["问题列表，如果没有问题则为空数组"],
+    "action": "keep/regenerate/discard",
+    "reason": "做出该决定的原因",
+    "suggested_question": "如果需要重新生成，建议的新问题（可选）",
+    "suggested_answer": "如果需要重新生成，建议的新答案（可选）"
+}}
+
+**决策规则**：
+- keep: 问题是高质量的多跳推理问题，题面简洁且信息量适中，可以从多个 evidence 推理得出答案
+- regenerate: 问题有多跳推理潜力，但题面过于冗长或与目标信息相似度过高，需要优化题面和答案
+- discard: 问题难以改造成合理的高质量多跳复杂推理问题，或者 evidence 完全不足以支持多跳推理
+
+**示例判断**：
+- ✅ keep: "我参加完马拉松比赛后，和小李庆祝时提到的项目合作方案后来实施了吗？"（需要推理：马拉松→庆生→项目讨论→实施情况）
+- ❌ regenerate: "我在5月15日参加完马拉松比赛后，5月20日在和平饭店和小李讨论的项目合作方案后来实施了吗？"（题面过长，直接给出了太多细节）
+- ❌ discard: "我那天做了什么？"（单步推理，不是多跳问题）
+"""
+                
+                check_result = llm_call_j(check_prompt)
+                
+                try:
+                    start_idx = check_result.find('{')
+                    end_idx = check_result.rfind('}') + 1
+                    if start_idx != -1 and end_idx != -1:
+                        check_json = json.loads(check_result[start_idx:end_idx])
+                        is_valid = check_json.get('is_valid', True)
+                        action = check_json.get('action', 'keep')
+                        issues = check_json.get('issues', [])
+                        reason = check_json.get('reason', '')
+                        
+                        if action == 'discard':
+                            print(f"[_filter_multi_hop_questions] 第 {idx + 1} 个问题被抛弃：{reason}")
+                            return idx, None
+                        elif action == 'regenerate':
+                            suggested_question = check_json.get('suggested_question', '')
+                            suggested_answer = check_json.get('suggested_answer', '')
+                            if suggested_question and suggested_answer:
+                                print(f"[_filter_multi_hop_questions] 第 {idx + 1} 个问题需要重新生成：{reason}")
+                                question['question'] = suggested_question
+                                question['answer'] = suggested_answer
+                                return idx, question
+                            else:
+                                print(f"[_filter_multi_hop_questions] 第 {idx + 1} 个问题需要重新生成但未提供建议，抛弃：{reason}")
+                                return idx, None
+                        else:  # keep
+                            print(f"[_filter_multi_hop_questions] 第 {idx + 1} 个问题通过检查")
+                            return idx, question
+                    else:
+                        print(f"[_filter_multi_hop_questions] 第 {idx + 1} 个问题检查结果解析失败，保留原问题")
+                        return idx, question
+                except Exception as e:
+                    print(f"[_filter_multi_hop_questions] 第 {idx + 1} 个问题检查异常：{e}，保留原问题")
+                    return idx, question
+                    
+            except Exception as e:
+                print(f"[_filter_multi_hop_questions] 第 {idx + 1} 个问题检查失败：{e}")
+                return idx, question
+        
+        # 使用 ThreadPoolExecutor 并行处理
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            futures = [
+                executor.submit(filter_single_question, idx, question)
+                for idx, question in enumerate(questions)
+            ]
+            
+            # 收集结果
+            completed_count = 0
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    idx, result = future.result()
+                    filtered_results[idx] = result
+                    completed_count += 1
+                    if completed_count % 5 == 0 or completed_count == len(questions):
+                        print(f"\n[_filter_multi_hop_questions] 已完成 {completed_count}/{len(questions)} 个问题的过滤检查")
+                except Exception as e:
+                    print(f"[_filter_multi_hop_questions] 结果收集失败：{e}")
+        
+        # 过滤掉 None 值（被抛弃的问题）
+        filtered_questions = [q for q in filtered_results if q is not None]
+        
+        discarded_count = len(questions) - len(filtered_questions)
+        print(f"\n[_filter_multi_hop_questions] 过滤完成：保留 {len(filtered_questions)} 个问题，抛弃 {discarded_count} 个问题")
+        
+        return filtered_questions
+    
+    def _get_background_events_for_target(self, target_time: str) -> List[Dict]:
+        """
+        获取目标事件前后各一天的 daily_event 作为背景素材
+        
+        Args:
+            target_time: 目标事件的时间字符串（如 "2025-03-04"）
+        
+        Returns:
+            前后各一天的 daily_event 列表
+        """
+        if not target_time or not self.daily_event:
+            return []
+        
+        try:
+            from datetime import datetime, timedelta
+            
+            # 解析目标时间
+            target_date = datetime.strptime(target_time.split(' ')[0], '%Y-%m-%d')
+            
+            # 计算前后日期
+            prev_date = target_date - timedelta(days=1)
+            next_date = target_date + timedelta(days=1)
+            
+            prev_date_str = prev_date.strftime('%Y-%m-%d')
+            next_date_str = next_date.strftime('%Y-%m-%d')
+            target_date_str = target_date.strftime('%Y-%m-%d')
+            
+            print(f"[Background Events] 目标日期: {target_date_str}, 前一日: {prev_date_str}, 后一日: {next_date_str}")
+            
+            # 收集这三天的事件
+            background_events = []
+            for event in self.daily_event:
+                event_dates = event.get('date', [])
+                if not event_dates:
+                    continue
+                
+                for date_range in event_dates:
+                    if isinstance(date_range, str):
+                        # 处理单个日期或日期范围
+                        if '至' in date_range:
+                            start_end = date_range.split('至')
+                            start_date = start_end[0].strip().split(' ')[0]
+                            end_date = start_end[1].strip().split(' ')[0]
+                            # 检查事件是否在这三天范围内
+                            if start_date <= next_date_str and end_date >= prev_date_str:
+                                background_events.append(event)
+                                break
+                        else:
+                            event_date = date_range.split(' ')[0]
+                            if event_date in [prev_date_str, target_date_str, next_date_str]:
+                                background_events.append(event)
+                                break
+            
+            print(f"[Background Events] 找到 {len(background_events)} 个背景事件")
+            return background_events
+            
+        except Exception as e:
+            print(f"[Background Events] 获取背景事件失败: {e}")
+            return []
+    
+    def QAGen(self, year: int = 2025, num_questions_per_month: int = 5) -> List[Dict[str, Any]]:
         """
         生成多跳 QA 对的主入口函数
         
@@ -1995,10 +2323,56 @@ sms, phonecall, photo, push, note, calendar
         
         all_qa = []
         
-        # 为每个月生成问答
+        # 12线程并行为每个月生成问答
+        print(f"\n开始12线程并行生成12个月的多跳问答对...")
+        
+        import concurrent.futures
+        
+        def generate_monthly_task(month: int) -> tuple:
+            """生成单月问答的任务函数"""
+            try:
+                print(f"\n[QAGen] 开始生成 {year}-{month:02d} 的多跳问答...")
+                monthly_qa = self.generate_monthly_qa(year, month, num_questions_per_month)
+                print(f"[QAGen] {year}-{month:02d} 生成了 {len(monthly_qa)} 个问题")
+                return month, monthly_qa
+            except Exception as e:
+                print(f"[QAGen] {year}-{month:02d} 生成失败：{e}")
+                import traceback
+                traceback.print_exc()
+                return month, []
+        
+        # 使用 ThreadPoolExecutor 并行处理12个月
+        with concurrent.futures.ThreadPoolExecutor(max_workers=12) as executor:
+            # 提交所有月份任务
+            futures = {
+                executor.submit(generate_monthly_task, month): month
+                for month in range(1, 13)
+            }
+            
+            # 收集结果（按月份顺序）
+            monthly_results = {}
+            completed_count = 0
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    month, monthly_qa = future.result()
+                    monthly_results[month] = monthly_qa
+                    completed_count += 1
+                    if completed_count % 3 == 0 or completed_count == 12:
+                        total_generated = sum(len(qa) for qa in monthly_results.values())
+                        print(f"\n[QAGen] 已完成 {completed_count}/12 个月，累计生成 {total_generated} 个问题")
+                except Exception as e:
+                    print(f"[QAGen] 结果收集失败：{e}")
+        
+        # 按月份顺序合并结果
         for month in range(1, 13):
-            monthly_qa = self.generate_monthly_qa(year, month, num_questions_per_month)
-            all_qa.extend(monthly_qa)
+            if month in monthly_results:
+                all_qa.extend(monthly_results[month])
+        
+        # 对所有生成的问题进行并行过滤检查
+        if all_qa:
+            print(f"\n开始对 {len(all_qa)} 个多跳问题进行质量过滤检查...")
+            all_qa = self._filter_multi_hop_questions(all_qa, max_workers=20)
+            print(f"过滤后剩余 {len(all_qa)} 个问题")
         
         # 保存到文件
         if self.phone_data_dir:

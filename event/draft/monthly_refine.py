@@ -153,38 +153,55 @@ class MonthlyRefiner:
     
     def _initialize_monthly_events_map(self) -> Dict[str, List[Dict]]:
         """
-        从图谱数据初始化月份事件映射表
+        从图谱数据初始化月份事件映射表，如果没有图谱文件则基于 timeline_data 构建
         
         Returns:
             月份到事件列表的映射字典
         """
         monthly_events_map = {}
         
-        # 遍历图谱中的所有节点（事件）
-        for node in self.event_graph.get("nodes", []):
-            time_data = node.get("time", [])
-            if isinstance(time_data, list) and time_data:
-                # 获取事件的开始时间
-                first_time = time_data[0]
-                if "至" in first_time:
-                    start_date = first_time.split("至")[0]
-                else:
-                    start_date = first_time
+        # 优先尝试从图谱中加载事件
+        if self.event_graph and self.event_graph.get("nodes"):
+            self._print("✓ 从事件图谱初始化月份事件映射表...")
+            # 遍历图谱中的所有节点（事件）
+            for node in self.event_graph.get("nodes", []):
+                time_data = node.get("time", [])
+                if isinstance(time_data, list) and time_data:
+                    # 获取事件的开始时间
+                    first_time = time_data[0]
+                    if "至" in first_time:
+                        start_date = first_time.split("至")[0]
+                    else:
+                        start_date = first_time
+                    
+                    # 提取月份（YYYY-MM）
+                    if len(start_date) >= 7:
+                        month = start_date[:7]
+                        
+                        # 如果该月份还没有列表，创建一个
+                        if month not in monthly_events_map:
+                            monthly_events_map[month] = []
+                        
+                        # 将事件添加到对应月份
+                        monthly_events_map[month].append(node)
+        else:
+            # 如果没有图谱数据，则基于 timeline_data 构建
+            self._print("⚠️  事件图谱为空，基于 timeline_data 初始化月份事件映射表...")
+            
+            # 从 timeline_data 中提取每月事件
+            monthly_details = self.timeline_data.get("monthly_details", [])
+            
+            for month_detail in monthly_details:
+                month = month_detail.get("month", "")
+                events = month_detail.get("events", [])
                 
-                # 提取月份（YYYY-MM）
-                if len(start_date) >= 7:
-                    month = start_date[:7]
-                    
-                    # 如果该月份还没有列表，创建一个
-                    if month not in monthly_events_map:
-                        monthly_events_map[month] = []
-                    
-                    # 将事件添加到对应月份
-                    monthly_events_map[month].append(node)
+                if month and events:
+                    monthly_events_map[month] = events
         
         # 按月份排序
         sorted_months = sorted(monthly_events_map.keys())
-        self._print(f"✓ 初始化月份事件映射表完成，共 {len(sorted_months)} 个月份")
+        total_events = sum(len(events) for events in monthly_events_map.values())
+        self._print(f"✓ 初始化月份事件映射表完成，共 {len(sorted_months)} 个月份，{total_events} 个事件")
         for month in sorted_months:
             self._print(f"  - {month}: {len(monthly_events_map[month])} 个事件")
         
@@ -297,7 +314,7 @@ class MonthlyRefiner:
                 }
                 monthly_highlights.append(highlight)
         
-        prompt = refine_trends_template(initial_trends, monthly_highlights)
+        prompt = refine_trends_template(initial_trends, monthly_highlights, self.persona)
         
         try:
             result_str = llm_call_reason_j(prompt)
@@ -347,7 +364,7 @@ class MonthlyRefiner:
         prompt = all_months_issues_template(successful_summaries, refined_trends)
         
         try:
-            result_str = llm_call_j(prompt)
+            result_str = llm_call_reason_j(prompt)
             # 匹配字符串的第一个和最后一个{}，确保解析完整的JSON对象
             start_idx = result_str.find('{')
             end_idx = result_str.rfind('}')

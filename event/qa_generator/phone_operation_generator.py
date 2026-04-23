@@ -5,7 +5,7 @@
 
 import json
 from typing import List, Dict, Any
-from utils.llm_call import llm_call
+from utils.llm_call import llm_call, llm_call_j
 
 
 class PhoneOperationGenerator:
@@ -49,7 +49,7 @@ class PhoneOperationGenerator:
         )
         
         # 调用 LLM 生成
-        result = llm_call(prompt)
+        result = llm_call_j(prompt)
         
         # 解析结果
         operations = self._parse_result(result, operation_type, original_event)

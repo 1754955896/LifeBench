@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime, timedelta
 import holidays
+import json
 from typing import List, Dict, Optional
 from event.templates.templates import template_event_update, template_biweekly_event_schedule_analysis
 from event.templates.template_refiner import template_daily_event_refine, template_daily_diversity_optimization, template_format_validation, template_monthly_health_report

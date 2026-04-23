@@ -1,0 +1,213 @@
+[
+  {
+    "type": "push",
+    "title": "Keep：跑后拉伸课程推荐",
+    "content": "【Keep】为您推荐跑后全身拉伸课程，时长12分钟，有效缓解肌肉酸痛，点击开始训练。",
+    "datetime": "2025-01-01 07:55:00",
+    "source": "Keep",
+    "push_status": "已读",
+    "jump_path": "Keep→推荐→课程详情",
+    "summarized_info": "Keep推荐跑后全身拉伸课程，时长12分钟。",
+    "daily_event_id": "3",
+    "event_id": [
+      "159-1"
+    ],
+    "phone_id": 0
+  },
+  {
+    "type": "push",
+    "title": "墨迹天气：今日天气提醒",
+    "content": "【墨迹天气】长沙市今日（1月1日）全天晴朗，气温5-12℃，西北风2级，空气质量优，适宜出行。",
+    "datetime": "2025-01-01 09:02:00",
+    "source": "墨迹天气",
+    "push_status": "已读",
+    "jump_path": "墨迹天气→长沙天气",
+    "summarized_info": "墨迹天气提醒长沙市今日全天晴朗，气温5-12℃，适宜出行。",
+    "daily_event_id": "5",
+    "event_id": [],
+    "phone_id": 1
+  },
+  {
+    "type": "push",
+    "title": "大众点评：餐厅推荐",
+    "content": "【大众点评】根据您的口味，为您推荐西湖公园附近评分4.8的【湘味小厨】，主打地道湘菜。",
+    "datetime": "2025-01-01 12:15:00",
+    "source": "大众点评",
+    "push_status": "未读",
+    "jump_path": "大众点评→推荐→餐厅详情",
+    "summarized_info": "大众点评推荐西湖公园附近评分4.8的湘味小厨餐厅。",
+    "daily_event_id": "7",
+    "event_id": [
+      "159-5"
+    ],
+    "phone_id": 2
+  },
+  {
+    "type": "push",
+    "title": "支付宝：餐厅支付成功提醒",
+    "content": "【支付宝】支付成功，未里创意融合菜餐厅订单金额328元，账单已同步。",
+    "datetime": "2025-01-01 13:05:00",
+    "source": "支付宝",
+    "push_status": "已读",
+    "jump_path": "支付宝→我的账单→订单详情",
+    "summarized_info": "我收到支付宝支付未里创意融合菜餐厅订单，金额328元。",
+    "daily_event_id": "7",
+    "event_id": [
+      "159-5"
+    ],
+    "phone_id": 3
+  },
+  {
+    "type": "push",
+    "title": "雪球：热门财经快讯",
+    "content": "【雪球】快讯：央行发布2025年货币政策展望，强调精准有力。特斯拉Q4交付量超预期，股价盘前上涨。",
+    "datetime": "2025-01-01 17:15:00",
+    "source": "雪球",
+    "push_status": "已读",
+    "jump_path": "雪球→资讯→快讯详情",
+    "summarized_info": "雪球推送财经快讯，内容涉及央行货币政策展望和特斯拉Q4交付量。",
+    "daily_event_id": "9",
+    "event_id": [
+      "159-3"
+    ],
+    "phone_id": 4
+  },
+  {
+    "type": "push",
+    "title": "盒马：生鲜食材优惠提醒",
+    "content": "【盒马】您常买的澳洲牛腩、三文鱼段、精品蔬菜组合现有会员专享价，满99元免配送费。",
+    "datetime": "2025-01-01 17:50:00",
+    "source": "盒马",
+    "push_status": "未读",
+    "jump_path": "盒马→我的→优惠券",
+    "summarized_info": "盒马推送生鲜食材优惠信息，涉及澳洲牛腩、三文鱼段等。",
+    "daily_event_id": "10",
+    "event_id": [],
+    "phone_id": 5
+  },
+  {
+    "type": "push",
+    "title": "系统：存储空间不足提醒",
+    "content": "【系统通知】手机存储空间不足10%，建议清理照片、视频或卸载不常用应用。",
+    "datetime": "2025-01-01 22:30:00",
+    "source": "系统存储管理",
+    "push_status": "未读",
+    "jump_path": "设置→存储",
+    "summarized_info": "系统存储管理提醒手机存储空间不足10%。",
+    "daily_event_id": "0",
+    "event_id": [],
+    "phone_id": 6
+  },
+  {
+    "type": "push",
+    "title": "高德地图：通勤路况提醒",
+    "content": "【高德地图】您常走的芙蓉中路至开福区路段早高峰拥堵，建议提前规划路线或错峰出行。",
+    "datetime": "2025-01-02 07:55:00",
+    "source": "高德地图",
+    "push_status": "已读",
+    "jump_path": "高德地图→我的→通勤路线",
+    "summarized_info": "我收到高德地图的通勤路况提醒，提示芙蓉中路至开福区路段早高峰拥堵。",
+    "daily_event_id": "14",
+    "event_id": [
+      "160-1"
+    ],
+    "phone_id": 7
+  },
+  {
+    "type": "push",
+    "title": "雪球：市场早报",
+    "content": "【雪球】早间市场动态：隔夜美股科技股普涨，今日关注A股科技板块轮动机会。",
+    "datetime": "2025-01-02 08:40:00",
+    "source": "雪球",
+    "push_status": "已读",
+    "jump_path": "雪球→行情→自选",
+    "summarized_info": "我收到雪球的市场早报，内容涉及隔夜美股科技股普涨及A股科技板块轮动机会。",
+    "daily_event_id": "15",
+    "event_id": [
+      "160-1"
+    ],
+    "phone_id": 8
+  },
+  {
+    "type": "push",
+    "title": "系统：存储空间不足提醒",
+    "content": "【系统通知】手机存储空间已使用超过90%，建议清理缓存或卸载不常用应用。",
+    "datetime": "2025-01-02 09:05:00",
+    "source": "系统存储管理",
+    "push_status": "未读",
+    "jump_path": "设置→存储",
+    "summarized_info": "系统存储管理提醒手机存储空间已使用超过90%。",
+    "daily_event_id": "15",
+    "event_id": [],
+    "phone_id": 9
+  },
+  {
+    "type": "push",
+    "title": "印象笔记：年度总结模板推荐",
+    "content": "【印象笔记】为您推荐金融从业者年度总结模板，助您高效复盘与规划。",
+    "datetime": "2025-01-02 09:15:00",
+    "source": "印象笔记",
+    "push_status": "已读",
+    "jump_path": "印象笔记→模板→工作",
+    "summarized_info": "我收到印象笔记的年度总结模板推荐，针对金融从业者。",
+    "daily_event_id": "16",
+    "event_id": [
+      "160-1"
+    ],
+    "phone_id": 10
+  },
+  {
+    "type": "push",
+    "title": "大众点评：湘菜馆推荐",
+    "content": "【大众点评】根据您的喜好，为您推荐金鹰路附近评分4.8的湘菜馆，人均约60元。",
+    "datetime": "2025-01-02 11:55:00",
+    "source": "大众点评",
+    "push_status": "已读",
+    "jump_path": "大众点评→推荐→附近美食",
+    "summarized_info": "我收到大众点评的湘菜馆推荐，位于金鹰路附近，评分4.8，人均约60元。",
+    "daily_event_id": "17",
+    "event_id": [],
+    "phone_id": 11
+  },
+  {
+    "type": "push",
+    "title": "美年大健康：体检预约成功通知",
+    "content": "【美年大健康】体检预约成功！预约号：MN20250102001，时间：2025-01-09 08:30，地点：长沙分院，请空腹前往。",
+    "datetime": "2025-01-02 12:08:00",
+    "source": "美年大健康",
+    "push_status": "已读",
+    "jump_path": "美年大健康→我的预约→订单#MN20250102001",
+    "summarized_info": "我收到美年大健康的体检预约成功通知，预约号MN20250102001，时间2025-01-09 08:30，需空腹。",
+    "daily_event_id": "17",
+    "event_id": [
+      "161-1"
+    ],
+    "phone_id": 12
+  },
+  {
+    "type": "push",
+    "title": "小红书：摄影构图技巧分享",
+    "content": "【小红书】街拍达人分享：如何利用咖啡厅光影拍出氛围感大片，点击查看教程。",
+    "datetime": "2025-01-02 18:15:00",
+    "source": "小红书",
+    "push_status": "未读",
+    "jump_path": "小红书→发现→摄影",
+    "summarized_info": "我收到小红书的摄影构图技巧分享，内容关于利用咖啡厅光影拍出氛围感大片。",
+    "daily_event_id": "20",
+    "event_id": [],
+    "phone_id": 13
+  },
+  {
+    "type": "push",
+    "title": "CFA Institute：学习进度提醒",
+    "content": "【CFA Institute】您已连续学习CFA三级道德科目3天，今日建议完成习题巩固，保持进度。",
+    "datetime": "2025-01-02 20:35:00",
+    "source": "CFA Institute",
+    "push_status": "已读",
+    "jump_path": "CFA Institute→我的学习→进度",
+    "summarized_info": "我收到CFA Institute的学习进度提醒，建议今日完成CFA三级道德科目习题巩固。",
+    "daily_event_id": "22",
+    "event_id": [],
+    "phone_id": 14
+  }
+]

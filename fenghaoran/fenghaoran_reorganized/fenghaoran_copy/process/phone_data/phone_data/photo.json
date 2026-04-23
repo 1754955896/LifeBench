@@ -1,0 +1,307 @@
+[
+  {
+    "type": "photo",
+    "caption": "湘江江面朝阳映照，晨跑者沿江步道慢跑",
+    "title": "IMG_20250101_071520",
+    "datetime": "2025-01-01 07:15:20",
+    "location": {
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "潇湘北路",
+      "streetNumber": "XX号",
+      "poi": "湘江风光带（岳麓区段）"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "湘江",
+      "晨光",
+      "江面",
+      "晨跑",
+      "步道"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "冯浩然拍摄了一张湘江风光带照片，里面的主要内容为朝阳映照下的湘江江面、沿江步道和远处的城市轮廓",
+    "daily_event_id": "2",
+    "event_id": [
+      "159-1",
+      "159-3"
+    ],
+    "phone_id": 0
+  },
+  {
+    "type": "photo",
+    "caption": "手冲咖啡壶向杯中注水，木质桌面摆放燕麦粥和煎蛋",
+    "title": "IMG_20250101_080510",
+    "datetime": "2025-01-01 08:05:10",
+    "location": {
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "双塘路",
+      "streetNumber": "99号",
+      "poi": "岳麓区机关金星住宅小区（家中厨房）"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "手冲咖啡",
+      "咖啡壶",
+      "燕麦粥",
+      "煎蛋",
+      "早餐"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "正常拍照",
+    "image_size": "3024×4032",
+    "summarized_info": "冯浩然拍摄了一张早餐准备照片，里面的主要内容为正在制作的手冲咖啡、桌上的燕麦粥和煎鸡蛋",
+    "daily_event_id": "3",
+    "event_id": [
+      "159-1"
+    ],
+    "phone_id": 1
+  },
+  {
+    "type": "photo",
+    "caption": "彭雨晴与冯浩然共进午餐，餐桌上摆放香煎银鳕鱼和黑松露野菌饭",
+    "title": "IMG_20250101_123045",
+    "datetime": "2025-01-01 12:30:45",
+    "location": {
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "西湖公园路",
+      "streetNumber": "XX号",
+      "poi": "未里创意融合菜餐厅"
+    },
+    "faceRecognition": [
+      "冯浩然",
+      "彭雨晴"
+    ],
+    "imageTag": [
+      "银鳕鱼",
+      "黑松露饭",
+      "餐厅",
+      "好友聚餐",
+      "美食"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "冯浩然拍摄了一张午餐照片，里面的主要内容为好友彭雨晴、餐桌上的香煎银鳕鱼和黑松露野菌饭",
+    "daily_event_id": "7",
+    "event_id": [
+      "159-5"
+    ],
+    "phone_id": 2
+  },
+  {
+    "type": "photo",
+    "caption": "西湖公园湖面倒映树木，冬日阳光洒在步道上",
+    "title": "IMG_20250101_134015",
+    "datetime": "2025-01-01 13:40:15",
+    "location": {
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "西湖公园路",
+      "streetNumber": "XX号",
+      "poi": "西湖公园"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "西湖公园",
+      "湖面",
+      "倒影",
+      "步道",
+      "冬日阳光"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "冯浩然拍摄了一张西湖公园照片，里面的主要内容为平静的湖面倒影、岸边的树木和阳光下的步道",
+    "daily_event_id": "7",
+    "event_id": [
+      "159-5"
+    ],
+    "phone_id": 3
+  },
+  {
+    "type": "photo",
+    "caption": "潮宗街历史建筑外墙光影斑驳，青石板路延伸",
+    "title": "IMG_20250101_150230",
+    "datetime": "2025-01-01 15:02:30",
+    "location": {
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "开福区",
+      "streetName": "通泰街",
+      "streetNumber": "XX号",
+      "poi": "潮宗街历史文化街区"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "潮宗街",
+      "历史建筑",
+      "光影",
+      "青石板路",
+      "街拍"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "冯浩然拍摄了一张潮宗街照片，里面的主要内容为历史建筑外墙的光影对比和延伸的青石板路",
+    "daily_event_id": "8",
+    "event_id": [],
+    "phone_id": 4
+  },
+  {
+    "type": "photo",
+    "caption": "长沙十二时辰书店门口读者剪影，玻璃门映出街道",
+    "title": "IMG_20250101_154520",
+    "datetime": "2025-01-01 15:45:20",
+    "location": {
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "开福区",
+      "streetName": "通泰街",
+      "streetNumber": "XX号",
+      "poi": "长沙十二时辰书店"
+    },
+    "faceRecognition": "读者若干",
+    "imageTag": [
+      "书店",
+      "读者",
+      "剪影",
+      "玻璃门",
+      "光影"
+    ],
+    "ocrText": "长沙十二时辰 - 24小时阅读空间 2025-01-01",
+    "shoot_mode": "正常拍照",
+    "image_size": "3024×4032",
+    "summarized_info": "冯浩然拍摄了一张书店门口照片，里面的主要内容为长沙十二时辰书店的导视牌、门口阅读的读者剪影和玻璃门上的街道倒影",
+    "daily_event_id": "8",
+    "event_id": [],
+    "phone_id": 5
+  },
+  {
+    "type": "photo",
+    "caption": "冯浩然拍摄年度总结报告，电脑屏幕显示文档，办公室环境",
+    "title": "IMG_20250102_113025",
+    "datetime": "2025-01-02 11:30:25",
+    "location": {
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "开福区",
+      "streetName": "芙蓉中路",
+      "streetNumber": "88号",
+      "poi": "华泰证券股份有限公司"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "年度总结",
+      "电脑屏幕",
+      "文档扫描",
+      "办公桌"
+    ],
+    "ocrText": "冯浩然 2024年度工作总结 - 客户资产配置复盘 2025-01-02",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "冯浩然拍摄了一张年度总结报告的照片，里面的主要内容为电脑屏幕上显示的年度工作总结文档、办公室环境",
+    "daily_event_id": "16",
+    "event_id": [
+      "160-1"
+    ],
+    "phone_id": 6
+  },
+  {
+    "type": "photo",
+    "caption": "冯浩然与郑文博品尝小炒黄牛肉，湘菜摆盘，快餐店环境",
+    "title": "IMG_20250102_121540",
+    "datetime": "2025-01-02 12:15:40",
+    "location": {
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "开福区",
+      "streetName": "金鹰路",
+      "streetNumber": "XX号",
+      "poi": "某小炒黄牛肉快餐店"
+    },
+    "faceRecognition": [
+      "冯浩然",
+      "郑文博"
+    ],
+    "imageTag": [
+      "小炒黄牛肉",
+      "湘菜",
+      "午餐",
+      "同事聚餐"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "人像",
+    "image_size": "3024×4032",
+    "summarized_info": "冯浩然与同事郑文博拍摄了一张午餐照片，里面的主要内容为湘菜小炒黄牛肉、快餐店环境",
+    "daily_event_id": "17",
+    "event_id": [],
+    "phone_id": 7
+  },
+  {
+    "type": "photo",
+    "caption": "冯浩然准备番茄鸡蛋面，晚餐摆盘，家中厨房环境",
+    "title": "IMG_20250102_200815",
+    "datetime": "2025-01-02 20:08:15",
+    "location": {
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "双塘路",
+      "streetNumber": "99号",
+      "poi": "岳麓区机关金星住宅小区"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "番茄鸡蛋面",
+      "晚餐",
+      "居家美食",
+      "厨房"
+    ],
+    "ocrText": "无",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "冯浩然拍摄了一张晚餐照片，里面的主要内容为家中厨房准备的番茄鸡蛋面",
+    "daily_event_id": "21",
+    "event_id": [],
+    "phone_id": 8
+  },
+  {
+    "type": "photo",
+    "caption": "冯浩然拍摄CFA学习资料，书本和笔记，书房书桌",
+    "title": "IMG_20250102_211230",
+    "datetime": "2025-01-02 21:12:30",
+    "location": {
+      "province": "湖南省",
+      "city": "长沙市",
+      "district": "岳麓区",
+      "streetName": "双塘路",
+      "streetNumber": "99号",
+      "poi": "岳麓区机关金星住宅小区"
+    },
+    "faceRecognition": "无",
+    "imageTag": [
+      "CFA教材",
+      "学习笔记",
+      "备考",
+      "书房"
+    ],
+    "ocrText": "CFA Level III - Ethical and Professional Standards - 2025 Curriculum",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "冯浩然拍摄了一张学习资料的照片，里面的主要内容为CFA教材、学习笔记和书房书桌",
+    "daily_event_id": "22",
+    "event_id": [
+      "a_1"
+    ],
+    "phone_id": 9
+  }
+]
