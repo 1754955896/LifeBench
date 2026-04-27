@@ -230,7 +230,6 @@ class PhoneOperationGenerator:
             "ocrText": "OCR 识别文字",
             "shoot_mode": "拍摄模式",
             "image_size": "图片尺寸",
-            "summarized_info": "照片内容总结",
             "daily_event_id": "输入事件的 id",
             "event_id": []
         }}
@@ -245,7 +244,6 @@ class PhoneOperationGenerator:
             "source": "应用名称",
             "push_status": "已读/未读",
             "jump_path": "跳转路径",
-            "summarized_info": "推送内容总结",
             "daily_event_id": "输入事件的 id",
             "event_id": []
         }}
@@ -257,7 +255,6 @@ class PhoneOperationGenerator:
             "title": "笔记标题（应与{event_type}事件相关）",
             "content": "笔记内容",
             "datetime": "2025-03-15 14:30:00",
-            "summarized_info": "笔记内容总结",
             "daily_event_id": "输入事件的 id",
             "event_id": []
         }}
@@ -271,7 +268,6 @@ class PhoneOperationGenerator:
             "start_time": "开始时间 YYYY-MM-DD HH:MM:SS",
             "end_time": "结束时间 YYYY-MM-DD HH:MM:SS",
             "datetime": "2025-03-15 14:30:00",
-            "summarized_info": "日程内容总结",
             "daily_event_id": "输入事件的 id",
             "event_id": []
         }}
@@ -410,10 +406,10 @@ class PhoneOperationGenerator:
         field_specs = {
             'sms': ["type", "message_content", "contactName", "phoneNumber", "datetime", "message_type"],
             'call': ["type", "phoneNumber", "contactName", "datetime", "datetime_end", "direction", "call_result"],
-            'photo': ["type", "caption", "title", "datetime", "location", "faceRecognition", "imageTag", "ocrText", "shoot_mode", "image_size", "summarized_info"],
-            'push': ["type", "title", "content", "datetime", "source", "push_status", "jump_path", "summarized_info"],
-            'note': ["type", "title", "content", "datetime", "summarized_info"],
-            'calendar': ["type", "title", "description", "start_time", "end_time", "datetime", "summarized_info"]
+            'photo': ["type", "caption", "title", "datetime", "location", "faceRecognition", "imageTag", "ocrText", "shoot_mode", "image_size"],
+            'push': ["type", "title", "content", "datetime", "source", "push_status", "jump_path"],
+            'note': ["type", "title", "content", "datetime"],
+            'calendar': ["type", "title", "description", "start_time", "end_time", "datetime"]
         }
 
         required_fields = field_specs.get(operation_type, [])
@@ -581,7 +577,6 @@ class PhoneOperationGenerator:
 - ocrText: OCR 识别文字，无则填 "无"
 - shoot_mode: 只能是 "正常拍照"、"夜景"、"人像" 或 "微距"
 - image_size: 只能是 "4032×3024"、"3024×4032"、"2048×1536" 或 "1536×2048"
-- summarized_info: 照片内容总结
 示例：
 {{
     "type": "photo",
@@ -600,8 +595,7 @@ class PhoneOperationGenerator:
     "imageTag": ["标签1", "标签2"],
     "ocrText": "无",
     "shoot_mode": "正常拍照",
-    "image_size": "4032×3024",
-    "summarized_info": "照片内容总结"
+    "image_size": "4032×3024"
 }}
 ''',
             'push': '''
@@ -613,7 +607,6 @@ class PhoneOperationGenerator:
 - source: 应用名称
 - push_status: 只能是 "已读"、"未读" 或 "已删除"
 - jump_path: 跳转路径
-- summarized_info: 推送内容总结
 示例：
 {{
     "type": "push",
@@ -622,8 +615,7 @@ class PhoneOperationGenerator:
     "datetime": "2025-03-15 14:30:00",
     "source": "应用名称",
     "push_status": "未读",
-    "jump_path": "路径",
-    "summarized_info": "推送内容总结"
+    "jump_path": "路径"
 }}
 ''',
             'note': '''
@@ -632,14 +624,12 @@ class PhoneOperationGenerator:
 - title: 笔记标题
 - content: 笔记内容
 - datetime: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025
-- summarized_info: 笔记内容总结
 示例：
 {{
     "type": "note",
     "title": "笔记标题",
     "content": "笔记内容",
-    "datetime": "2025-03-15 14:30:00",
-    "summarized_info": "笔记内容总结"
+    "datetime": "2025-03-15 14:30:00"
 }}
 ''',
             'calendar': '''
@@ -650,7 +640,6 @@ class PhoneOperationGenerator:
 - start_time: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025
 - end_time: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025，必须不早于 start_time
 - datetime: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025
-- summarized_info: 日程内容总结
 示例：
 {{
     "type": "calendar",
@@ -658,8 +647,7 @@ class PhoneOperationGenerator:
     "description": "详细描述",
     "start_time": "2025-03-15 14:00:00",
     "end_time": "2025-03-15 15:00:00",
-    "datetime": "2025-03-15 14:30:00",
-    "summarized_info": "日程内容总结"
+    "datetime": "2025-03-15 14:30:00"
 }}
 '''
         }

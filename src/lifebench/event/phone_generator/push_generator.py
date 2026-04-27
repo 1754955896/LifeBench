@@ -63,14 +63,13 @@ class PushOperationGenerator:
   "datetime": "2025-10-01 12:03:00",
   "source": "支付宝",
   "push_status": "未读",
-  "jump_path": "支付宝→我的账单→订单#8765",
-  "summarized_info": "我收到支付宝支付美团外卖订单#8765，金额 58 元"
+  "jump_path": "支付宝→我的账单→订单#8765"
 }'''
             
             analysis_prompt = f"""请分析以下手机推送数据的合理性，检查是否存在以下问题：
 
 ### 检查项
-1. **必填字段缺失**：是否缺少 event_id、type、title、content、datetime、source、push_status、jump_path、summarized_info
+1. **必填字段缺失**：是否缺少 event_id、type、title、content、datetime、source、push_status、jump_path
 2. **时间逻辑错误**：datetime 年份是否为 2025 年
 3. **内容不合理**：title 和 content 是否贴合 APP 话术，是否合理
 4. **格式错误**：数据是否符合输出格式示例
@@ -146,7 +145,7 @@ class PushOperationGenerator:
         try:
             required_fields = [
                 "event_id", "type", "title", "content", "datetime",
-                "source", "push_status", "jump_path", "summarized_info"
+                "source", "push_status", "jump_path"
             ]
             missing_fields = [f for f in required_fields if f not in data]
             if missing_fields:
@@ -328,7 +327,6 @@ class PushOperationGenerator:
 - source：具体来源 APP/系统模块（从建模结果 source_app_candidate 中选择）
 - push_status：已读/未读/已删除（未读占比≤40%，随机分配）
 - jump_path：APP 内跳转路径，例："支付宝→我的账单→订单#8765""美团→我的→预定订单"
-- summarized_info：操作核心描述摘要，例："XX 收到来自 XX 的通知，内容为：美团订单#8765 金额 58 元""预定码 123456"
 ### 三、待生成清单（基于概率建模筛选，仅生成以下内容）
 {instruct}
 
@@ -343,8 +341,7 @@ class PushOperationGenerator:
     "datetime": "2023-10-01 12:03:00",
     "source": "支付宝",
     "push_status": "未读",
-    "jump_path": "支付宝→我的账单→订单#8765",
-    "summarized_info": "我收到支付宝支付美团外卖订单#8765，金额 58 元"
+    "jump_path": "支付宝→我的账单→订单#8765"
   }},
   {{
     "type": "push",
@@ -354,8 +351,7 @@ class PushOperationGenerator:
     "datetime": "2023-10-01 12:10:00",
     "source": "美团外卖",
     "push_status": "未读",
-    "jump_path": "美团外卖→我的订单→订单#8765",
-    "summarized_info": "我到美团外卖订单#8765 正在备餐，预计 12:30 送达"
+    "jump_path": "美团外卖→我的订单→订单#8765"
   }},
   {{
     "type": "push",
@@ -365,8 +361,7 @@ class PushOperationGenerator:
     "datetime": "2023-10-01 16:45:00",
     "source": "系统电池管理",
     "push_status": "已读",
-    "jump_path": "设置→电池",
-    "summarized_info": "系统电池管理提醒电量低于 20%"
+    "jump_path": "设置→电池"
   }}
 ]
 

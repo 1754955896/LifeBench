@@ -74,14 +74,13 @@ class GalleryOperationGenerator:
   "imageTag": ["西湖", "断桥", "游船", "雷峰塔"],
   "ocrText": "西湖断桥 - 国家 5A 级旅游景区",
   "shoot_mode": "正常拍照",
-  "image_size": "4032×3024",
-  "summarized_info": "李华拍摄了一张西湖照片，里面的主要内容为西湖断桥景区、湖面游船、雷峰塔"
+  "image_size": "4032×3024"
 }'''
             
             analysis_prompt = f"""请分析以下手机相册数据的合理性，检查是否存在以下问题：
 
 ### 检查项
-1. **必填字段缺失**：是否缺少 event_id、type、caption、title、datetime、location、faceRecognition、imageTag、ocrText、shoot_mode、image_size、summarized_info
+1. **必填字段缺失**：是否缺少 event_id、type、caption、title、datetime、location、faceRecognition、imageTag、ocrText、shoot_mode、image_size
 2. **字段名错误**：是否有拼写错误或字段名不符合要求
 3. **时间逻辑错误**：datetime 年份是否为 2025 年
 4. **地点信息错误**：location 是否包含完整的层级信息（province、city、district、streetName、streetNumber、poi）
@@ -165,7 +164,7 @@ class GalleryOperationGenerator:
             # 1. 校验必填字段是否存在，并删除多余字段
             required_fields = [
                 "event_id", "type", "caption", "title", "datetime", "location",
-                "faceRecognition", "imageTag", "ocrText", "shoot_mode", "image_size", "summarized_info"
+                "faceRecognition", "imageTag", "ocrText", "shoot_mode", "image_size"
             ]
             missing_fields = [f for f in required_fields if f not in data]
             if missing_fields:
@@ -392,7 +391,6 @@ class GalleryOperationGenerator:
 - ocrText：图片中真实文字（门票/海报/导视牌含"名称 + 时间 + 价格"），无则填"无"
 - shoot_mode：正常拍照/夜景/人像/微距（人像模式必须对应 faceRecognition 非"无"）
 - image_size：四种格式之一（"4032×3024""3024×4032""2048×1536""1536×2048"）
-- summarized_info：对操作的简要描述，例："XX 拍摄了一张西湖照片，里面的主要内容为西湖断桥景区、湖面游船、雷峰塔"
 ### 三、待生成清单（事件生成指令，仅生成以下内容）
 {instruct}
 
@@ -417,10 +415,9 @@ class GalleryOperationGenerator:
     "imageTag": ["西湖", "断桥", "游船", "雷峰塔", "秋日", "湖面"],
     "ocrText": "西湖断桥 - 国家 5A 级旅游景区",
     "shoot_mode": "正常拍照",
-    "image_size": "4032×3024",
-    "summarized_info": "李华拍摄了一张西湖照片，里面的主要内容为西湖断桥景区、湖面游船、雷峰塔"
+    "image_size": "4032×3024"
   }},
-  {{ 
+  {{
     "event_id": "1",
     "type": "photo",
     "caption": "李华和张明西湖边一家餐厅品尝东坡肉，背景包括青花瓷碗木质餐桌，东坡肉米饭",
@@ -438,8 +435,7 @@ class GalleryOperationGenerator:
     "imageTag": ["东坡肉", "青花瓷碗", "木质餐桌", "杭州美食", "聚餐"],
     "ocrText": "楼外楼 - 东坡肉 68 元/份 2023-10-01",
     "shoot_mode": "人像",
-    "image_size": "3024×4032",
-    "summarized_info": "李华与张明拍摄了一张聚餐照片，里面的主要内容为西湖孤山路楼外楼餐厅、青花瓷碗中的东坡肉、木质餐桌"
+    "image_size": "3024×4032"
   }}
 ]
 

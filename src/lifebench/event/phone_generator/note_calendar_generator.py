@@ -158,7 +158,7 @@ class NoteCalendarOperationGenerator:
             if data.get("type") == "calendar":
                 required_fields = [
                     "event_id", "type", "title", "description", 
-                    "start_time", "end_time", "datetime", "summarized_info"
+                    "start_time", "end_time", "datetime"
                 ]
                 missing_fields = [f for f in required_fields if f not in data]
                 if missing_fields:
@@ -172,7 +172,7 @@ class NoteCalendarOperationGenerator:
             elif data.get("type") == "note":
                 required_fields = [
                     "event_id", "type", "title", "content", 
-                    "datetime", "summarized_info"
+                    "datetime"
                 ]
                 missing_fields = [f for f in required_fields if f not in data]
                 if missing_fields:
@@ -316,7 +316,6 @@ class NoteCalendarOperationGenerator:
 - start_time：事件时间（格式 YYYY-MM-DD HH:MM:SS）
 - end_time：出行类=start_time；会议/预约类=合理时长后（如 1.5 小时）
 - datetime：创建该日程数据的时间，格式 YYYY-MM-DD HH:MM:SS，合理确定
-- summarized_info：**必须包含**，操作核心信息和动作总结，如"XX 设定了一个日程，为 G1234 次列车（北京南站→上海虹桥站），2023-10-05 08:00 发车，预定码 E12345，凭身份证检票，来源：12306"
 
 #### （二）事件相关笔记（item_type=note_related）
 - event_id：**必须来自生成项清单中的 event_id**，不得自行生成
@@ -324,7 +323,6 @@ class NoteCalendarOperationGenerator:
 - title：事件名称 + 记录类型，例："Q4 项目会议待办清单"
 - content：简洁明确，完整反映事件核心信息，可包含一些细节，结构化分点，例："一、会议前准备：1. 预算报表；2. PPT 优化；二、核心议题：1. 资源调配；2. 节点确认"
 - datetime：创建该笔记的时间，合理确定（格式 YYYY-MM-DD HH:MM:SS）
-- summarized_info：**必须包含**，操作核心信息和动作总结，如"XX 记录了 Q4 项目会议待办清单，内容包括一、会议前准备：1. 预算报表；2. PPT 优化；二、核心议题：1. 资源调配；2. 节点确认"
 
 #### （三）非事件相关笔记（item_type=note_unrelated）
 - event_id：固定为 0
@@ -332,17 +330,16 @@ class NoteCalendarOperationGenerator:
 - title：兴趣主题 + 记录类型，例："喜爱诗词记录"、"手冲咖啡知识点"
 - content：简洁明确，完整反映事件核心信息，结构化分点，例："一、诗句：人生若只如初见；二、作者：纳兰性德；三、赏析：情感细腻，适合文案灵感"
 - datetime：当日合理时间（8:00-21:00，格式 YYYY-MM-DD HH:MM:SS）
-- summarized_info：**必须包含**，操作核心信息和动作总结，如"XX 记录了喜爱的诗词，内容包括一、诗句：人生若只如初见；二、作者：纳兰性德；三、赏析：情感细腻，适合文案灵感"
 
 
 ### 三、生成项清单（**仅生成以下项目，不新增**）
 {instruct}
 
 ### 四、输出格式要求
-仅输出 JSON 数组，严格遵循下面的格式，不添加任何额外文本/注释/代码块。每个条目**必须包含 summarized_info 字段**，event_id 必须来自生成项清单。示例：
+仅输出 JSON 数组，严格遵循下面的格式，不添加任何额外文本/注释/代码块。示例：
 [
-{{"type":"calendar","event_id":"1","title":"G1234 次列车（北京 - 上海）","description":"G1234 次列车（北京南站→上海虹桥站），08:00 发车，预定码 E12345，凭身份证检票，来源 12306","start_time":"2023-10-05 08:00:00","end_time":"2023-10-05 08:00:00","datetime":"2023-10-04 15:30:00","summarized_info":"XX 设定了一个日程，为 G1234 次列车（北京南站→上海虹桥站），08:00 发车，预定码 E12345，凭身份证检票，来源 12306"}},
-{{"type":"note","event_id":"2","title":"Q4 项目会议待办清单","content":"一、会议前准备：1. 整理 Q4 预算明细；2. 优化项目进度 PPT；3. 预约会议室设备；二、核心议题：1. 预算审批；2. 资源调配；3. 里程碑节点确认","datetime":"2023-10-08 13:45:00","summarized_info":"XX 记录了 Q4 项目会议待办清单，内容包括一、会议前准备：1. 整理 Q4 预算明细；2. 优化项目进度 PPT；3. 预约会议室设备；二、核心议题：1. 预算审批；2. 资源调配；3. 里程碑节点确认"}}
+{{"type":"calendar","event_id":"1","title":"G1234 次列车（北京 - 上海）","description":"G1234 次列车（北京南站→上海虹桥站），08:00 发车，预定码 E12345，凭身份证检票，来源 12306","start_time":"2023-10-05 08:00:00","end_time":"2023-10-05 08:00:00","datetime":"2023-10-04 15:30:00"}},
+{{"type":"note","event_id":"2","title":"Q4 项目会议待办清单","content":"一、会议前准备：1. 整理 Q4 预算明细；2. 优化项目进度 PPT；3. 预约会议室设备；二、核心议题：1. 预算审批；2. 资源调配；3. 里程碑节点确认","datetime":"2023-10-08 13:45:00"}}
 ]
 
 ### 五、今日事件背景参考
