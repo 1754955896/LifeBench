@@ -1,5 +1,5 @@
 
-from persona.persona_gen import *
+from src.lifebench.persona.persona_gen import *
 import argparse
 
 # 命令行参数解析

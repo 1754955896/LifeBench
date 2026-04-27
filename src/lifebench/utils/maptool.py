@@ -970,7 +970,7 @@ class MapMaintenanceTool:
 if __name__ == "__main__":
     # 从配置文件读取API密钥
     import json
-    with open('../config/config.json', 'r', encoding='utf-8') as f:
+    with open('../../../config/config.json', 'r', encoding='utf-8') as f:
         config = json.load(f)
     # 获取地图工具配置
     map_config = config.get('map_tool', {})

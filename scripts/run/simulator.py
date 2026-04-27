@@ -1,8 +1,8 @@
 import argparse
-from event.daily_simulator import *
-from event.event_formatter import EventFormatter
-from event.tools.persona_address_generator import PersonaAddressGenerator
-from utils.IO import *
+from src.lifebench.event.daily_simulator import *
+from src.lifebench.event.event_formatter import EventFormatter
+from src.lifebench.event.tools.persona_address_generator import PersonaAddressGenerator
+from src.lifebench.utils.IO import *
 
 # 命令行参数解析
 parser = argparse.ArgumentParser(description='模拟生成模块')

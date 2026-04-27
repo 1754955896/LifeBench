@@ -7,7 +7,7 @@ import json
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # 导入 qa_generator 模块（直接从 event 目录导入 QaGenerator.py 文件）
-from event import qa_generator
+from src.lifebench.event import qa_generator
 
 QAGenerator = qa_generator.QAGenerator
 

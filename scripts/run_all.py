@@ -211,7 +211,7 @@ def main():
         
         # 创建文件夹名称
         persona_folder_name = f"{pinyin_name}_{i+1}"
-        persona_folder = os.path.join("output", persona_folder_name)
+        persona_folder = os.path.join("../output", persona_folder_name)
         
         # 执行流程
         if run_for_persona(persona, persona_folder, i+1, args):

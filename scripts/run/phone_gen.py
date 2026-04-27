@@ -1,14 +1,13 @@
 import json
 import os.path
-from event.phone_data_gen import (
+from src.lifebench.event.phone_data_gen import (
     PhoneEventMatcher,
     extool,
-    iterate_dates,
     remove_json_wrapper,
     parallel_process_dates_dynamic
 )
 
-from utils.IO import read_json_file
+from src.lifebench.utils.IO import read_json_file
 
 def process_phone_data(file_path):
     """
@@ -127,7 +126,7 @@ if __name__ == "__main__":
     if os.path.exists(file_path + "phone_data/contact.json"):
         contact = read_json_file(file_path + "phone_data/contact.json")
     else:
-        from event.phone_data_gen import contact_gen
+        from src.lifebench.event.phone_data_gen import contact_gen
         contact = contact_gen(persona)
         contact = remove_json_wrapper(contact, json_type='array')
         contact = json.loads(contact)

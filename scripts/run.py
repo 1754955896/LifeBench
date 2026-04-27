@@ -201,7 +201,7 @@ if __name__ == '__main__':
             
             try:
                 # 导入EventRefiner类
-                from event.draft.event_refiner import EventRefiner
+                from src.lifebench.event.draft.event_refiner import EventRefiner
                 import json
                 
                 # 加载persona数据

@@ -1,37 +1,36 @@
-# Contributing to LifeBench
+# LifeBench 贡献指南
 
-Thanks for your interest in contributing to LifeBench!
+感谢您对 LifeBench 项目的关注！
 
-## Development Setup
+## 开发环境设置
 
-1. Clone the repository
-2. Create a virtual environment:
+1. 克隆仓库
+2. 创建 conda 环境：
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # Linux/macOS
-   venv\Scripts\activate     # Windows
+   conda create -n lifebench python=3.9
+   conda activate lifebench
    ```
-3. Install dependencies:
+3. 安装依赖：
    ```bash
    pip install -r requirements.txt
    ```
 
-## Code Style
+## 代码规范
 
-- Follow PEP 8 guidelines
-- Use meaningful variable and function names
-- Add docstrings for public functions
+- 遵循 PEP 8 规范
+- 使用有意义的变量名和函数名
+- 为公共函数添加文档字符串（docstrings）
 
-## Pull Request Process
+## 提交 Pull Request 流程
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+1. Fork 本仓库
+2. 创建功能分支
+3. 进行代码修改
+4. 提交 Pull Request
 
-## Reporting Issues
+## 问题报告
 
-Please report issues on GitHub with:
-- Clear description of the problem
-- Steps to reproduce
-- Expected vs actual behavior
+请在 GitHub 上报告问题时提供以下信息：
+- 问题的清晰描述
+- 复现步骤
+- 预期行为与实际行为的对比

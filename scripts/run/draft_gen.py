@@ -1,12 +1,10 @@
-from event.scheduler import Scheduler
-from utils import IO
+from src.lifebench.event.scheduler import Scheduler
 import os
 import json
 import argparse
 import multiprocessing
 import time
-from datetime import datetime, timedelta
-import sys
+from datetime import timedelta
 
 
 def ensure_directory_exists(directory):

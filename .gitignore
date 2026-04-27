@@ -74,13 +74,10 @@ venv.bak/
 .LSOverride
 
 # Data & generated outputs
-data/
 tests/
-fenghaoran/
-memory_file/
-config.json
+config/config.json
 # 模型权重
-event/local_models/
+src/lifebench/event/local_models/
 
 # Local libraries
 lib/

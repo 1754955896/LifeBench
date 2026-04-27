@@ -1,9 +1,8 @@
 import json
 import re
-import os
-from utils.llm_call import llm_call, llm_call_reason
+from src.lifebench.utils.llm_call import llm_call, llm_call_reason
 from persona.gen_utils.template import template, template_refine, template_relation_1, template_person
-from utils.random_ref import JSONRandomSelector, convert_list_to_string
+from src.lifebench.utils.random_ref import JSONRandomSelector, convert_list_to_string
 
 
 class PersonaGenerator:

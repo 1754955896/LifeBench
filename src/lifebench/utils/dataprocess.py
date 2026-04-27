@@ -1,6 +1,5 @@
-import json
 from collections import defaultdict
-from utils.IO import *
+from src.lifebench.utils.IO import *
 from datetime import datetime, timedelta
 
 
@@ -63,7 +62,7 @@ def convert_schedule(input_data):
 
 if __name__ == "__main__":
     # 示例日程数据
-    schedule_json = read_json_file('../utils/event_final_all.json')
+    schedule_json = read_json_file('/event_final_all.json')
 
     # 转换并打印结果
     converted = convert_schedule(schedule_json)
