@@ -21,40 +21,81 @@ class PhoneOperationGenerator:
     def __init__(self):
         self.operation_types = ['sms', 'call', 'calendar', 'note', 'gallery', 'contact']
     
-    def generate(self, 
-                 operation_type: str, 
-                 original_event: Dict[str, Any], 
+    def generate(self,
+                 operation_type: str,
+                 original_event: Dict[str, Any],
                  question: str,
                  generation_hint: str = None) -> List[Dict[str, Any]]:
         """
         生成手机操作数据
-        
+
         Args:
             operation_type: 操作类型（sms/call/calendar 等）
             original_event: 原始事件数据
             question: 相关问题
             generation_hint: 生成提示/要求
-            
+
         Returns:
             手机操作数据列表
         """
         print(f"[PhoneOperationGenerator] 生成 {operation_type} 类型数据")
-        
-        # 构建生成提示
-        prompt = self._build_generation_prompt(
-            operation_type, 
-            original_event, 
-            question, 
-            generation_hint
-        )
-        
-        # 调用 LLM 生成
-        result = llm_call_j(prompt)
-        
-        # 解析结果
-        operations = self._parse_result(result, operation_type, original_event)
-        
-        return operations
+
+        max_fix_attempts = 2  # 最多修正2次
+
+        for fix_attempt in range(max_fix_attempts):
+            # 构建生成提示
+            prompt = self._build_generation_prompt(
+                operation_type,
+                original_event,
+                question,
+                generation_hint
+            )
+
+            # 调用 LLM 生成
+            result = llm_call_j(prompt)
+
+            # 解析结果
+            operations = self._parse_result(result, operation_type, original_event)
+
+            # 格式硬校验
+            if not operations:
+                if fix_attempt < max_fix_attempts - 1:
+                    print(f"[PhoneOperationGenerator] 生成数据为空，开始第 {fix_attempt + 2} 轮生成...")
+                    continue
+                else:
+                    return []
+
+            valid_ops, invalid_data, invalid_reasons = self._validate_format(operations, operation_type)
+
+            if not invalid_data:
+                # 所有数据格式都正确
+                print(f"[PhoneOperationGenerator] 格式校验通过，共 {len(valid_ops)} 条数据")
+                return valid_ops
+
+            # 格式不正确，尝试逐条修正
+            if fix_attempt < max_fix_attempts - 1:
+                print(f"[PhoneOperationGenerator] 格式校验失败，共 {len(invalid_data)} 条格式错误，开始修正...")
+                for idx, invalid_op in invalid_data:
+                    error_reason = invalid_reasons.get(idx, "未知错误")
+                    fixed_op = self._fix_single_format(
+                        invalid_op, error_reason, operation_type, original_event
+                    )
+                    if fixed_op:
+                        valid_ops.append(fixed_op)
+                        print(f"  [修正成功] 索引 {idx}: {error_reason}")
+
+                # 修正后再次校验
+                valid_ops, invalid_data, _ = self._validate_format(valid_ops, operation_type)
+                if not invalid_data:
+                    print(f"[PhoneOperationGenerator] 修正后格式校验通过，共 {len(valid_ops)} 条数据")
+                    return valid_ops
+                else:
+                    print(f"[PhoneOperationGenerator] 修正后仍有 {len(invalid_data)} 条格式错误数据，继续修正...")
+            else:
+                print(f"[PhoneOperationGenerator] 格式校验失败，抛弃 {len(invalid_data)} 条格式错误数据")
+                return valid_ops if valid_ops else []
+
+        return valid_ops if valid_ops else []
     
     def _build_generation_prompt(self,
                                   operation_type: str,
@@ -331,7 +372,343 @@ class PhoneOperationGenerator:
             return f"\n【{event_type}事件的{operation_type}数据特点】\n{specific_guidance}"
         else:
             return f"\n【通用建议】\n- 确保{operation_type}数据与{event_type}事件场景相符\n- 保持时间和内容的合理性"
-    
+
+    def _validate_format(self, operations: List[Dict[str, Any]], operation_type: str) -> tuple:
+        """
+        校验操作数据格式
+
+        Args:
+            operations: 操作数据列表
+            operation_type: 操作类型
+
+        Returns:
+            (valid_ops: List, invalid_data: List, invalid_reasons: Dict) - 有效数据列表、无效数据列表、无效数据的错误原因
+        """
+        from datetime import datetime
+
+        valid_ops = []
+        invalid_data = []  # [(index, op_dict), ...]
+        invalid_reasons = {}  # {index: error_message}
+
+        # 定义各类型的必填字段
+        field_specs = {
+            'sms': ["type", "message_content", "contactName", "phoneNumber", "datetime", "message_type"],
+            'call': ["type", "phoneNumber", "contactName", "datetime", "datetime_end", "direction", "call_result"],
+            'photo': ["type", "caption", "title", "datetime", "location", "faceRecognition", "imageTag", "ocrText", "shoot_mode", "image_size", "summarized_info"],
+            'push': ["type", "title", "content", "datetime", "source", "push_status", "jump_path", "summarized_info"],
+            'note': ["type", "title", "content", "datetime", "summarized_info"],
+            'calendar': ["type", "title", "description", "start_time", "end_time", "datetime", "summarized_info"]
+        }
+
+        required_fields = field_specs.get(operation_type, [])
+        location_fields = ["province", "city", "district", "streetName", "streetNumber", "poi"]
+
+        for idx, op in enumerate(operations):
+            if not isinstance(op, dict):
+                invalid_reasons[idx] = f"数据不是字典类型: {type(op)}"
+                invalid_data.append((idx, op))
+                continue
+
+            # 1. 校验必填字段
+            missing_fields = [f for f in required_fields if f not in op]
+            if missing_fields:
+                invalid_reasons[idx] = f"缺少必填字段: {missing_fields}"
+                invalid_data.append((idx, op))
+                continue
+
+            # 2. 校验 type 字段
+            if op.get('type') != operation_type:
+                invalid_reasons[idx] = f"type 字段错误: 期望 '{operation_type}', 实际 '{op.get('type')}'"
+                invalid_data.append((idx, op))
+                continue
+
+            # 3. 校验 datetime 格式
+            try:
+                dt = datetime.strptime(op["datetime"], "%Y-%m-%d %H:%M:%S")
+                if dt.year != 2025:
+                    invalid_reasons[idx] = f"datetime 年份不是 2025: {op['datetime']}"
+                    invalid_data.append((idx, op))
+                    continue
+            except ValueError as e:
+                invalid_reasons[idx] = f"datetime 格式错误: {op['datetime']}, 应为 'YYYY-MM-DD HH:MM:SS'"
+                invalid_data.append((idx, op))
+                continue
+
+            # 4. 校验 location 嵌套字段（仅 photo 类型）
+            if operation_type == 'photo':
+                location = op.get('location')
+                if not isinstance(location, dict):
+                    invalid_reasons[idx] = f"location 格式错误，应为字典"
+                    invalid_data.append((idx, op))
+                    continue
+                missing_location = [f for f in location_fields if f not in location]
+                if missing_location:
+                    invalid_reasons[idx] = f"location 缺少字段: {missing_location}"
+                    invalid_data.append((idx, op))
+                    continue
+
+            # 5. 校验 call 类型特有字段
+            if operation_type == 'call':
+                direction = op.get('direction')
+                if direction not in [0, 1]:
+                    invalid_reasons[idx] = f"direction 取值错误: {direction}, 应为 0 或 1"
+                    invalid_data.append((idx, op))
+                    continue
+                call_result = op.get('call_result')
+                if call_result not in ["接通", "未接通", "已挂断", "拒接"]:
+                    invalid_reasons[idx] = f"call_result 取值错误: {call_result}"
+                    invalid_data.append((idx, op))
+                    continue
+                try:
+                    datetime_end = datetime.strptime(op["datetime_end"], "%Y-%m-%d %H:%M:%S")
+                    if datetime_end <= dt:
+                        invalid_reasons[idx] = f"datetime_end 早于或等于 datetime"
+                        invalid_data.append((idx, op))
+                        continue
+                except ValueError:
+                    invalid_reasons[idx] = f"datetime_end 格式错误: {op['datetime_end']}"
+                    invalid_data.append((idx, op))
+                    continue
+
+            # 6. 校验 calendar 类型特有字段
+            if operation_type == 'calendar':
+                try:
+                    start_dt = datetime.strptime(op["start_time"], "%Y-%m-%d %H:%M:%S")
+                    end_dt = datetime.strptime(op["end_time"], "%Y-%m-%d %H:%M:%S")
+                    if end_dt < start_dt:
+                        invalid_reasons[idx] = f"end_time 早于 start_time"
+                        invalid_data.append((idx, op))
+                        continue
+                except ValueError as e:
+                    invalid_reasons[idx] = f"start_time 或 end_time 格式错误: {str(e)}"
+                    invalid_data.append((idx, op))
+                    continue
+
+            # 7. 校验 push 类型特有字段
+            if operation_type == 'push':
+                push_status = op.get('push_status')
+                if push_status not in ["已读", "未读", "已删除"]:
+                    invalid_reasons[idx] = f"push_status 取值错误: {push_status}"
+                    invalid_data.append((idx, op))
+                    continue
+
+            # 8. 校验 sms 类型特有字段
+            if operation_type == 'sms':
+                message_type = op.get('message_type')
+                if message_type not in ["发送", "接收"]:
+                    invalid_reasons[idx] = f"message_type 取值错误: {message_type}"
+                    invalid_data.append((idx, op))
+                    continue
+
+            valid_ops.append(op)
+
+        return valid_ops, invalid_data, invalid_reasons
+
+    def _get_type_spec(self, operation_type: str) -> str:
+        """
+        获取指定操作类型的格式规范
+
+        Args:
+            operation_type: 操作类型
+
+        Returns:
+            格式规范字符串
+        """
+        type_specs = {
+            'sms': '''
+字段格式：
+- type: 固定 "sms"
+- message_content: 短信内容
+- contactName: 联系人姓名
+- phoneNumber: 电话号码
+- datetime: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025
+- message_type: 只能是 "发送" 或 "接收"
+示例：
+{{
+    "type": "sms",
+    "message_content": "短信内容",
+    "contactName": "联系人姓名",
+    "phoneNumber": "+8613912345678",
+    "datetime": "2025-03-15 14:30:00",
+    "message_type": "发送"
+}}
+''',
+            'call': '''
+字段格式：
+- type: 固定 "call"
+- phoneNumber: 电话号码
+- contactName: 联系人姓名
+- datetime: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025
+- datetime_end: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025，必须晚于 datetime
+- direction: 只能是 0 或 1
+- call_result: 只能是 "接通"、"未接通"、"已挂断" 或 "拒接"
+示例：
+{{
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "联系人姓名",
+    "datetime": "2025-03-15 14:30:00",
+    "datetime_end": "2025-03-15 14:35:00",
+    "direction": 1,
+    "call_result": "接通"
+}}
+''',
+            'photo': '''
+字段格式：
+- type: 固定 "photo"
+- caption: 照片描述
+- title: 格式 "IMG_YYYYMMDD_HHMMSS"，如 "IMG_20250315_143025"
+- datetime: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025
+- location: 嵌套对象，包含 province, city, district, streetName, streetNumber, poi
+- faceRecognition: 数组，如 ["人物1", "人物2"] 或 "无"
+- imageTag: 数组，如 ["标签1", "标签2"]
+- ocrText: OCR 识别文字，无则填 "无"
+- shoot_mode: 只能是 "正常拍照"、"夜景"、"人像" 或 "微距"
+- image_size: 只能是 "4032×3024"、"3024×4032"、"2048×1536" 或 "1536×2048"
+- summarized_info: 照片内容总结
+示例：
+{{
+    "type": "photo",
+    "caption": "照片描述",
+    "title": "IMG_20250315_143025",
+    "datetime": "2025-03-15 14:30:00",
+    "location": {{
+        "province": "省份",
+        "city": "城市",
+        "district": "区域",
+        "streetName": "街道名",
+        "streetNumber": "门牌号",
+        "poi": "地点名称"
+    }},
+    "faceRecognition": ["人物姓名"],
+    "imageTag": ["标签1", "标签2"],
+    "ocrText": "无",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024",
+    "summarized_info": "照片内容总结"
+}}
+''',
+            'push': '''
+字段格式：
+- type: 固定 "push"
+- title: 推送标题
+- content: 推送内容
+- datetime: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025
+- source: 应用名称
+- push_status: 只能是 "已读"、"未读" 或 "已删除"
+- jump_path: 跳转路径
+- summarized_info: 推送内容总结
+示例：
+{{
+    "type": "push",
+    "title": "推送标题",
+    "content": "推送内容",
+    "datetime": "2025-03-15 14:30:00",
+    "source": "应用名称",
+    "push_status": "未读",
+    "jump_path": "路径",
+    "summarized_info": "推送内容总结"
+}}
+''',
+            'note': '''
+字段格式：
+- type: 固定 "note"
+- title: 笔记标题
+- content: 笔记内容
+- datetime: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025
+- summarized_info: 笔记内容总结
+示例：
+{{
+    "type": "note",
+    "title": "笔记标题",
+    "content": "笔记内容",
+    "datetime": "2025-03-15 14:30:00",
+    "summarized_info": "笔记内容总结"
+}}
+''',
+            'calendar': '''
+字段格式：
+- type: 固定 "calendar"
+- title: 日程标题
+- description: 详细描述
+- start_time: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025
+- end_time: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025，必须不早于 start_time
+- datetime: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025
+- summarized_info: 日程内容总结
+示例：
+{{
+    "type": "calendar",
+    "title": "日程标题",
+    "description": "详细描述",
+    "start_time": "2025-03-15 14:00:00",
+    "end_time": "2025-03-15 15:00:00",
+    "datetime": "2025-03-15 14:30:00",
+    "summarized_info": "日程内容总结"
+}}
+'''
+        }
+        return type_specs.get(operation_type, "")
+
+    def _fix_single_format(self, invalid_op: Dict, error_reason: str, operation_type: str,
+                            original_event: Dict[str, Any]) -> Dict:
+        """
+        调用 LLM 修正单条格式错误的数据
+
+        Args:
+            invalid_op: 格式错误的数据
+            error_reason: 错误原因
+            operation_type: 操作类型
+            original_event: 原始事件数据
+
+        Returns:
+            修正后的数据，如果修正失败返回 None
+        """
+        event_info = json.dumps(original_event, ensure_ascii=False, indent=2)
+        type_spec = self._get_type_spec(operation_type)
+
+        fix_prompt = f"""
+作为数据修正专家，请修正以下 {operation_type} 类型数据的格式错误。
+
+【错误原因】
+{error_reason}
+
+【原始事件】
+{event_info}
+
+【正确格式】
+{type_spec}
+
+【待修正数据】
+{json.dumps(invalid_op, ensure_ascii=False, indent=2)}
+
+【修正要求】
+1. 仅修正格式问题，不要大幅改变数据的核心内容
+2. 确保所有必填字段存在且格式正确
+3. datetime 相关字段年份必须为 2025
+4. 字段取值必须在允许范围内
+5. 只返回修正后的 JSON 对象，不要其他说明文字
+
+请直接输出修正后的 JSON：
+"""
+        result = llm_call_j(fix_prompt)
+
+        try:
+            start_idx = result.find('{')
+            end_idx = result.rfind('}') + 1
+            if start_idx != -1 and end_idx != -1:
+                fixed_op = json.loads(result[start_idx:end_idx])
+                # 设置必填字段
+                event_id_str = str(original_event.get('event_id', ''))
+                fixed_op['daily_event_id'] = event_id_str
+                fixed_op['event_id'] = []
+                if 'phone_id' in fixed_op:
+                    del fixed_op['phone_id']
+                return fixed_op
+        except Exception as e:
+            print(f"[PhoneOperationGenerator] 修正解析失败: {e}")
+
+        return None
+
     def _parse_result(self, result: str, operation_type: str, original_event: Dict[str, Any]) -> List[Dict[str, Any]]:
         """
         解析 LLM 返回结果
