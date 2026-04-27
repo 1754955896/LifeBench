@@ -9,7 +9,7 @@ import threading
 from typing import List, Dict, Tuple, Any
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from .base_generator import BaseQAGenerator
-from phone_operation_generator import PhoneOperationGenerator
+from .phone_operation_generator import PhoneOperationGenerator
 from src.lifebench.utils.llm_call import llm_call, llm_call_j
 
 class QACausalGenerator(BaseQAGenerator):

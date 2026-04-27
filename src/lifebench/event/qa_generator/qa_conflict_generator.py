@@ -7,8 +7,8 @@ import threading
 import concurrent.futures
 
 from src.lifebench.utils.llm_call import llm_call, llm_call_j
-from base_generator import BaseQAGenerator
-from phone_operation_generator import PhoneOperationGenerator
+from .base_generator import BaseQAGenerator
+from .phone_operation_generator import PhoneOperationGenerator
 
 
 class QAConflictGenerator(BaseQAGenerator):
