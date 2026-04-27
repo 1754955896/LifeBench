@@ -9,6 +9,7 @@ import random
 import threading
 from typing import Dict, List, Any, Tuple
 from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 from src.lifebench.event.templates.template_qa import (
     EVENT_QUESTION_TEMPLATE,
     QUESTION_SCREENING_OPTIMIZATION_TEMPLATE,
@@ -721,29 +722,20 @@ class QASingleGenerator(BaseQAGenerator):
             'suggestions': '重新设计问题'
         }
     
-    def _build_generate_prompt(self, question: Dict[str, Any], feedback: str, current_month: int = None) -> str:
+    def _build_generate_prompt(self, question: Dict[str, Any], feedback: str) -> str:
         """
         构建生成模式的 prompt
-            
+
         Args:
             question: 当前问题
             feedback: 检索总结
-            current_month: 当前月份（格式：YYYY-MM），用于计算用户提问时间
-                
+
         Returns:
             生成模式的 prompt
         """
-        # 计算用户发起问题的时间（当前月份后一月的 1 号）
-        ask_time_description = ''
-        if current_month:
-            try:
-                month = int(current_month)
-                next_month = month + 1
-                if next_month > 12:
-                    next_month = 1
-                ask_time_description = f"\n\n【用户提问时间】{next_month:02d}月 1 日（用户正在回顾过去的生活记录）"
-            except:
-                ask_time_description = '\n\n'
+        # 根据 required_events_id 对应事件的最晚日期，随机选取其后的月份作为提问时间
+        # current_month 在此仅作保底，不再生效
+        ask_time_description = '\n\n【用户提问时间】LLM 需根据 required_events_id 中所有事件的发生月份，随机选取其中最晚月份之后的某个月（最晚为 2025-12）作为 ask_time。例如若最晚事件在 3 月，则 ask_time 可选 4~12 月中的任意一个月。'
         
         return f"""
         你是 Design Agent（生成模式），需要模拟真实用户向手机智能体提问的场景。
@@ -763,9 +755,10 @@ class QASingleGenerator(BaseQAGenerator):
         {json.dumps(question.get('evidence', []), ensure_ascii=False, indent=2) if question.get('evidence') else '暂无'}
             
         **任务要求**
-        
-        0. **问题设计 **
+
+        0. **问题设计**
           - 注意，问题只得针对目标事件设计，答案的信息应在目标事件里，不要涉及对其他事件的提问。
+          - **重要约束（ask_time 时间一致性）**：所有引用的必需事件（required_events_id）其发生日期必须在提问时间（ask_time）之前。如果设计的问题中引用的最晚事件发生在 ask_time 之后，LLM 应主动将 ask_time 调整到该事件所在月份之后（YYYY-MM 格式，最晚为 2025-12），以确保时间逻辑一致。
         
         1. **模拟真实用户的提问口吻**
            - 像普通人在日常生活中询问自己的手机助手
@@ -963,7 +956,71 @@ class QASingleGenerator(BaseQAGenerator):
             "revision_notes": "具体的修改说明，包括改了哪里、为什么这样改、手机数据如何调整的"
         }}
         """
-    
+
+    def _adjust_ask_time_if_needed(self, required_events_id: List[str], ask_time: str) -> str:
+        """
+        检查 required_events_id 对应的事件日期是否都在 ask_time 之前，
+        若不是，则将 ask_time 调整到最晚事件日期之后的月份（最晚为 2025-12）。
+
+        Args:
+            required_events_id: 问题引用的必需事件 ID 列表
+            ask_time: 当前提问时间，格式 YYYY-MM
+
+        Returns:
+            调整后的提问时间（格式 YYYY-MM）
+        """
+        if not required_events_id or not ask_time:
+            return ask_time
+
+        # 构建 event_id -> date 的映射
+        event_id_to_date = {}
+        for event in self.daily_event:
+            if isinstance(event, dict):
+                eid = str(event.get('event_id', ''))
+                event_id_to_date[eid] = event.get('date', [])
+
+        # 找到所有引用的最早日期
+        latest_date_str = None
+        latest_dt = None
+
+        for eid in required_events_id:
+            dates = event_id_to_date.get(str(eid), [])
+            for date_range in dates:
+                if isinstance(date_range, str) and '至' in date_range:
+                    start_part = date_range.split('至')[0].strip()
+                    try:
+                        dt = datetime.strptime(start_part, "%Y-%m-%d %H:%M:%S")
+                        if latest_dt is None or dt > latest_dt:
+                            latest_dt = dt
+                            latest_date_str = start_part
+                    except ValueError:
+                        pass
+
+        if latest_dt is None:
+            return ask_time
+
+        # 将 ask_time 解析为该月最后一天
+        try:
+            ask_year, ask_month = ask_time.split('-')
+            ask_dt = datetime(int(ask_year), int(ask_month), 1)
+            ask_dt = ask_dt + relativedelta(months=1) - timedelta(days=1)  # 该月最后一天
+        except (ValueError, AttributeError):
+            return ask_time
+
+        # 如果最晚事件日期在 ask_time 之后，调整 ask_time
+        if latest_dt > ask_dt:
+            # 取最晚事件日期的下一个月
+            adjusted_dt = latest_dt + relativedelta(months=1)
+            # 如果超过 2025-12，则用 2025-12
+            max_dt = datetime(2025, 12, 1)
+            if adjusted_dt > max_dt:
+                adjusted_dt = max_dt
+            adjusted_ask_time = adjusted_dt.strftime("%Y-%m")
+            print(f"[ask_time 调整] 事件日期 {latest_date_str} 晚于当前 ask_time {ask_time}，已调整为 {adjusted_ask_time}")
+            return adjusted_ask_time
+
+        return ask_time
+
     def design_agent(self, question: Dict[str, Any], feedback: str, mode: str = 'generate', current_month: str = None) -> Tuple[Dict[str, Any], bool]:
         """
         Design Agent: 基于反馈信息重新设计问题（包含规划和执行两个阶段）
@@ -981,7 +1038,7 @@ class QASingleGenerator(BaseQAGenerator):
             
         # ========== Stage 1: Plan Prompt ==========
         if mode == 'generate':
-            plan_prompt = self._build_generate_prompt(question, feedback, current_month)
+            plan_prompt = self._build_generate_prompt(question, feedback)
         else:  # mode == 'revise'
             plan_prompt = self._build_revise_prompt(question, feedback)
         if self.is_print:
@@ -1428,6 +1485,11 @@ class QASingleGenerator(BaseQAGenerator):
             import random
             random_month = random.randint(month, 12)
             final_question['ask_time'] = f"{year}-{str(random_month).zfill(2)}"
+            # 检查 ask_time 是否在所有引用事件日期之后，若不是则调整
+            final_question['ask_time'] = self._adjust_ask_time_if_needed(
+                final_question.get('required_events_id', []),
+                final_question['ask_time']
+            )
             final_question['question_type'] = 'single_hop'
             
             # 删除内部使用字段

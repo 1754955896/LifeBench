@@ -54,3 +54,7 @@
 ### 硬路径地址修改
 - 更新代码中所有硬路径地址为相对路径，提升代码的可移植性和环境适应性
 
+### singlehopQA的asktime约束
+- 在`qa_single_generator.py`中添加逻辑，确保生成的单跳问题（single-hop question）的提问时间（ask_time）满足以下约束：
+  - 所有引用的必需事件（required_events_id）其发生日期必须在提问时间之前。
+  - 如果设计的问题中引用的最晚事件发生在 ask_time 之后，LLM 应主动将 ask_time 调整到该事件所在月份之后（YYYY-MM 格式，最晚为 2025-12），以确保时间逻辑一致。
