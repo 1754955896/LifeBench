@@ -395,7 +395,3 @@ class EventTreeClassifier:
         print(f"Classification completed. Results saved to {output_path}")
         return event_tree
 
-if __name__ == "__main__":
-    classifier = EventTreeClassifier()
-    input_file = r"D:\pyCharmProjects\pythonProject4\data\fenghaoran\event_tree2.json"
-    classifier.process_events(input_file)

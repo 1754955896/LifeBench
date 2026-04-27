@@ -324,29 +324,3 @@ class QAUnanswerableGenerator(BaseQAGenerator):
             print(f"成功保存 {len(questions)} 个问题到：{output_path}")
         except Exception as e:
             print(f"保存问题失败：{e}")
-
-
-if __name__ == "__main__":
-    # 测试代码
-    generator = QAUnanswerableGenerator()
-    
-    # 加载数据
-    data_path = r"D:\pyCharmProjects\pythonProject4\fenghaoran\fenghaoran"
-    generator.load_data_from_path(data_path)
-    
-    # 生成问题
-    questions = generator.QAGen(year=2025, num_questions_per_month=5)
-    
-    # 保存结果
-    output_path = r"D:\pyCharmProjects\pythonProject4\result\unanswerable_questions.json"
-    generator.save_questions(questions, output_path)
-    
-    # 打印示例
-    if questions:
-        print("\n示例问题：")
-        for i, q in enumerate(questions[:3], 1):
-            print(f"\n问题 {i}:")
-            print(f"  问题：{q.get('question', '')}")
-            print(f"  类型：{q.get('type', '')}")
-            print(f"  答案：{q.get('answer', '')}")
-            print(f"  提问时间：{q.get('ask_time', '')}")

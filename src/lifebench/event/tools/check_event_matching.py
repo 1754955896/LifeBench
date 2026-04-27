@@ -20,14 +20,16 @@ def is_date_in_range(date_str):
 # 读取事件树数据
 def load_event_decompose_dfs(file_path=None):
     if file_path is None:
-        file_path = r"D:\pyCharmProjects\pythonProject4\data\fenghaoran\event_tree.json"
+        print("错误: file_path 不能为 None，请提供 event_tree.json 文件路径")
+        exit(1)
     with open(file_path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 # 读取每日草稿数据
 def load_daily_draft(file_path=None):
     if file_path is None:
-        file_path = r"D:\pyCharmProjects\pythonProject4\data\fenghaoran\daily_draft.json"
+        print("错误: file_path 不能为 None，请提供 daily_draft.json 文件路径")
+        exit(1)
     with open(file_path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
@@ -593,7 +595,8 @@ def main(event_decompose_dfs_path=None, daily_draft_path=None, output_path=None)
     if output_path:
         output_tree_file = os.path.join(output_path, "event_tree.json")
     else:
-        output_tree_file = r"D:\pyCharmProjects\pythonProject4\data\fenghaoran\event_tree2.json"
+        print("错误: output_path 不能为 None，请指定输出目录")
+        exit(1)
     with open(output_tree_file, 'w', encoding='utf-8') as f:
         json.dump(updated_event_tree, f, ensure_ascii=False, indent=2)
     
@@ -713,7 +716,8 @@ def main(event_decompose_dfs_path=None, daily_draft_path=None, output_path=None)
     if output_path:
         output_file = os.path.join(output_path, "daily_draft.json")
     else:
-        output_file = r"D:\pyCharmProjects\pythonProject4\data\fenghaoran\daily_draft_id.json"
+        print("错误: output_path 不能为 None，请指定输出目录")
+        exit(1)
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(updated_daily_data, f, ensure_ascii=False, indent=2)
     

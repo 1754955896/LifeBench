@@ -350,26 +350,3 @@ class PersonaGenerator:
         
         return complete_profiles
 
-
-
-# 使用示例
-if __name__ == "__main__":
-    generator = PersonaGenerator()
-    # 示例调用：生成基础画像（并行处理）
-    # generator.generate_basic_profile(
-    #     start_id=0, 
-    #     end_id=5, 
-    #     in_file_path="../data/person.json", 
-    #     basic_out_file_path="../persona/persona_file/basic_profiles.json",
-    #     max_workers=3  # 使用3个线程并行处理
-    # )
-    
-    # 示例调用：完整流程（支持并行）
-    generator.gen_profile(
-        start_id=0,
-        end_id=5,
-        in_file_path=r"D:\pyCharmProjects\pythonProject4\persona\persona_file\persona_ref.json",
-        out_file_path="../persona/persona_file/complete_profiles.json",
-        median_path="../persona/persona_file/temp_basic_profiles.json",
-        max_workers=3  # 使用3个线程并行处理基础画像生成
-    )

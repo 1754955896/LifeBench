@@ -18,19 +18,20 @@ from writing_agent import WritingAgent
 
 def get_base_path():
     """获取基础路径"""
-    # 默认路径 - 使用绝对路径
-    default_path = r"D:\pyCharmProjects\pythonProject4\test"
-    
+    # 默认路径 - 项目根目录下的 output 文件夹
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
+    default_path = os.path.join(project_root, 'output')
+
     # 检查默认路径是否存在
     if os.path.exists(default_path):
         return default_path
-    
+
     # 如果不存在，提示用户输入
     print(f"默认基础路径不存在: {default_path}")
     user_input = input("请输入基础路径: ").strip()
     if user_input and os.path.exists(user_input):
         return user_input
-    
+
     # 如果用户输入的路径也不存在，使用默认路径
     print("使用默认路径，可能会导致错误")
     return default_path

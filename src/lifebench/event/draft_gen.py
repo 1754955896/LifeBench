@@ -38,7 +38,7 @@ class DraftGen:
         print("\n=== 步骤2: 唤起writing agent ===")
         
         # 获取基础路径
-        base_path = self._get_base_path()
+        base_path = meidan_path
         print(f"使用基础路径: {base_path}")
         
         # 初始化WritingAgent
@@ -369,20 +369,3 @@ class DraftGen:
         
         print("\n🎉 Draft生成完成！")
         return optimized_outline
-    
-    def _get_base_path(self):
-        """获取基础路径"""
-        # 默认路径 - 使用绝对路径
-        default_path = r"D:\pyCharmProjects\pythonProject4\test"
-        
-        # 检查默认路径是否存在
-        if os.path.exists(default_path):
-            return default_path
-        
-        # 如果不存在，使用项目根目录
-        project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-        test_path = os.path.join(project_root, 'test')
-        
-        # 确保test目录存在
-        os.makedirs(test_path, exist_ok=True)
-        return test_path
