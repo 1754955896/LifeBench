@@ -114,6 +114,8 @@ if __name__ == "__main__":
     parser.add_argument('--start-time', type=str, default='2025-01-01', help='开始日期')
     parser.add_argument('--end-time', type=str, default='2025-01-31', help='结束日期')
     parser.add_argument('--max-workers', type=int, default=40, help='最大并行线程数')
+    parser.add_argument('--phone-count-min', type=int, default=5, help='每天手机数据最小条数')
+    parser.add_argument('--phone-count-max', type=int, default=5, help='每天手机数据最大条数')
     parser.add_argument('--process-only', action='store_true', help='仅执行数据后处理操作，不生成新数据')
     args = parser.parse_args()
 
@@ -175,7 +177,8 @@ if __name__ == "__main__":
             file_path=file_path,
             generators_initial_data=generators_initial_data,
             matcher=matcher,
-            max_workers=args.max_workers  # 可根据实际情况调整
+            phone_count_control={"min": args.phone_count_min, "max": args.phone_count_max},
+            max_workers=args.max_workers
         )
 
         # 执行数据后处理操作（调用 phone_data_gen.py 中的函数）

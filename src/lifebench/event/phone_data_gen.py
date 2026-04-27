@@ -1,4 +1,5 @@
 import re
+import random
 from datetime import timedelta
 from src.lifebench.utils.llm_call import *
 from src.lifebench.event.memory_structure.memory import *
@@ -558,17 +559,21 @@ def run_generator_task(generator_name, generator_info, date, contact, file_path,
         return []
 
 
-def process_single_date_dynamic(date, contact, file_path, generators_data, matcher):
+def process_single_date_dynamic(date, contact, file_path, generators_data, matcher,
+                               phone_count_control=None):
     """
     处理单个日期的所有数据生成（动态版本）
-    
+
     参数:
         date: 要处理的日期
         contact: 联系人信息
         file_path: 文件保存路径
         generators_data: 生成器数据字典 {generator_name: initial_data}
         matcher: PhoneEventMatcher 实例
-        
+        phone_count_control: 每日手机数据数目控制字典 {min: int, max: int}，默认 {5, 5}
+            - min: 每天最少手机数据条数
+            - max: 每天最多手机数据条数
+
     返回:
         (success, date, generated_data_dict)
     """
@@ -682,6 +687,69 @@ def process_single_date_dynamic(date, contact, file_path, generators_data, match
                     if 'atomic_id' in item:
                         item['event_id'] = item.pop('atomic_id')
         
+        # 手机数据采样阶段：控制每日数据条数
+        if phone_count_control is None:
+            phone_count_control = {"min": 5, "max": 5}
+
+        min_count = phone_count_control.get("min", 5)
+        max_count = phone_count_control.get("max", 5)
+        target_count = random.randint(min_count, max_count)
+
+        # 需要采样的文件类型（排除 event_fitness_health.json）
+        sample_exclude = {"event_fitness_health.json"}
+        # agent_chat 和 perception 类型不参与采样但需保留
+        preserved_items = []
+
+        # 收集所有参与采样的手机数据项
+        all_sampleable = []
+        for filename, data_list in generated_data.items():
+            if filename in sample_exclude or not data_list:
+                continue
+            for item in data_list:
+                item_type = item.get("type", "")
+                # agent_chat 和 perception 类型不参与采样，但需保留
+                if "agent_chat" in item_type or item_type == "perception":
+                    preserved_items.append((filename, item))
+                    continue
+                all_sampleable.append((filename, item))
+
+        total_count = len(all_sampleable)
+        if total_count == 0:
+            print(f"成功处理日期：{date}（无手机数据，跳过采样）")
+            return (True, date, generated_data)
+
+        # 采样
+        if total_count <= target_count:
+            sampled = all_sampleable
+            print(f"[手机数据采样] 日期 {date}：原始 {total_count} 条 <= 目标 {target_count} 条，全部保留")
+        else:
+            # 第一优先：按覆盖 atomic_event 数量降序（event_id 字段）
+            # 第二优先：按覆盖 daily_event_id 数量降序
+            def sample_key(item):
+                _, op = item
+                # 第一优先：event_id 覆盖数量
+                event_ids = op.get("event_id", [])
+                event_coverage = len(event_ids) if isinstance(event_ids, list) else 0
+                # 第二优先：daily_event_id 覆盖数量
+                daily_event_ids = op.get("daily_event_id", [])
+                daily_coverage = len(daily_event_ids) if isinstance(daily_event_ids, list) else 0
+                return (-event_coverage, -daily_coverage)
+
+            all_sampleable.sort(key=sample_key)
+            sampled = all_sampleable[:target_count]
+            print(f"[手机数据采样] 日期 {date}：原始 {total_count} 条，目标 {target_count} 条，已按优先级采样")
+
+        # 用采样结果替换 generated_data
+        sampled_set = set((fn, id(item)) for fn, item in sampled)
+        sampled_set.update((fn, id(item)) for fn, item in preserved_items)
+        for filename, data_list in generated_data.items():
+            if filename in sample_exclude:
+                continue
+            generated_data[filename] = [
+                item for item in data_list
+                if (filename, id(item)) in sampled_set
+            ]
+
         print(f"成功处理日期：{date}")
         return (True, date, generated_data)
     
@@ -692,7 +760,8 @@ def process_single_date_dynamic(date, contact, file_path, generators_data, match
         return (False, date, None)
 
 
-def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, generators_initial_data, matcher, max_workers=8):
+def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, generators_initial_data, matcher,
+                              phone_count_control=None, max_workers=8):
     """
     多线程并行处理所有日期（动态版本）
     
@@ -703,8 +772,9 @@ def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, gen
         file_path: 文件保存路径
         generators_initial_data: 生成器初始数据字典 {generator_name: initial_data}
         matcher: PhoneEventMatcher 实例
+        phone_count_control: 每日手机数据数目控制字典 {min: int, max: int}，默认 {5, 5}
         max_workers: 最大并行线程数
-        
+
     返回:
         处理统计结果
     """
@@ -727,7 +797,8 @@ def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, gen
                 contact=contact,
                 file_path=file_path,
                 generators_data=generators_initial_data,
-                matcher=matcher
+                matcher=matcher,
+                phone_count_control=phone_count_control
             )
             futures.append(future)
         
