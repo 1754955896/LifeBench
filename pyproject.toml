@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lifebench"
+version = "0.1.0"
+description = "A Benchmark for Long-Horizon Multi-Source Memory"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.8"
+dependencies = [
+    "openai",
+    "holidays",
+    "numpy",
+    "pandas",
+    "sentence_transformers",
+    "transformers==4.37.0",
+    "pyarrow",
+    "pypinyin",
+    "pyvis",
+]
+
+[project.scripts]
+lifebench-generate = "run_all:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["event*", "persona*", "utils*", "run*"]
