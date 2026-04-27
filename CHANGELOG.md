@@ -51,4 +51,6 @@
 ### contactName字段硬校验
 - 添加对`phone_generator/communication_generator.py`中contactName字段的硬校验，确保数据一致性
 
+### 硬路径地址修改
+- 更新代码中所有硬路径地址为相对路径，提升代码的可移植性和环境适应性
 
