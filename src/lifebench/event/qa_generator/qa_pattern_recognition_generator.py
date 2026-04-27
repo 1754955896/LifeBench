@@ -394,7 +394,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
         # Step 4: 设置所有问题的 question_type 为"ND"
         print("\n[QAGen] 设置所有问题的 question_type 为'ND'...")
         for question in all_questions:
-            question['question_type'] = 'ND'
+            question['question_type'] = 'Non-declarative'
         
         # Step 5: 并行过滤和优化问题
         print("\n[QAGen] 开始并行过滤和优化问题...")
@@ -734,7 +734,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
             if isinstance(llm_result, list):
                 # 添加年度标识
                 for q in llm_result:
-                    q['ask_time'] = f"{year}-12"  # 年度问题标记为 12 月
+                    q['ask_time'] = f"{year}-12-31"  # 年度问题标记为 12 月
                     q['is_yearly'] = True
                 return llm_result
             
@@ -970,14 +970,14 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
             if isinstance(llm_result, list):
                 # 添加月份信息
                 for q in llm_result:
-                    q['ask_time'] = month_key
+                    q['ask_time'] = '2025-12-31'
                 return llm_result
             elif isinstance(llm_result, dict) and 'questions' in llm_result:
                 # 如果返回的是包含 questions 字段的字典
                 questions = llm_result['questions']
                 if isinstance(questions, list):
                     for q in questions:
-                        q['ask_time'] = month_key
+                        q['ask_time'] = '2025-12-31'
                     return questions
             
             print(f"[LLM Call] {month_key} - {question_type} 返回格式错误：{type(llm_result)}")

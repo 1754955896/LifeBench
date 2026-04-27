@@ -9,7 +9,7 @@ import random
 import threading
 from typing import Dict, List, Any, Tuple
 from datetime import datetime, timedelta
-from dateutil.relativedelta import relativedelta
+import calendar
 from src.lifebench.event.templates.template_qa import (
     EVENT_QUESTION_TEMPLATE,
     QUESTION_SCREENING_OPTIMIZATION_TEMPLATE,
@@ -959,19 +959,22 @@ class QASingleGenerator(BaseQAGenerator):
 
     def _adjust_ask_time_if_needed(self, required_events_id: List[str], ask_time: str) -> str:
         """
-        检查 required_events_id 对应的事件日期是否都在 ask_time 之前，
-        若不是，则将 ask_time 调整到最晚事件日期之后的月份（最晚为 2025-12）。
+        根据 required_events_id 对应的最晚事件日期，随机选取其之后某天作为提问时间，
+        返回 YYYY-MM-DD 格式。
+
+        流程：
+        1. 找到 required_events_id 对应事件的最晚日期
+        2. 从该最晚日期的下一天开始，随机选一个月
+        3. 在该月内随机选一天
+        4. 上限为 2025-12-31
 
         Args:
             required_events_id: 问题引用的必需事件 ID 列表
-            ask_time: 当前提问时间，格式 YYYY-MM
+            ask_time: 当前提问时间（仅作保底，格式 YYYY-MM 或 YYYY-MM-DD）
 
         Returns:
-            调整后的提问时间（格式 YYYY-MM）
+            提问时间（格式 YYYY-MM-DD）
         """
-        if not required_events_id or not ask_time:
-            return ask_time
-
         # 构建 event_id -> date 的映射
         event_id_to_date = {}
         for event in self.daily_event:
@@ -979,10 +982,8 @@ class QASingleGenerator(BaseQAGenerator):
                 eid = str(event.get('event_id', ''))
                 event_id_to_date[eid] = event.get('date', [])
 
-        # 找到所有引用的最早日期
-        latest_date_str = None
+        # 找到所有引用的最晚事件日期
         latest_dt = None
-
         for eid in required_events_id:
             dates = event_id_to_date.get(str(eid), [])
             for date_range in dates:
@@ -992,34 +993,42 @@ class QASingleGenerator(BaseQAGenerator):
                         dt = datetime.strptime(start_part, "%Y-%m-%d %H:%M:%S")
                         if latest_dt is None or dt > latest_dt:
                             latest_dt = dt
-                            latest_date_str = start_part
                     except ValueError:
                         pass
 
+        # 从最晚日期的下一天开始
         if latest_dt is None:
-            return ask_time
+            # 保底：使用 ask_time 解析为下一个月
+            try:
+                if ask_time.count('-') == 2:
+                    base_dt = datetime.strptime(ask_time, "%Y-%m-%d")
+                else:
+                    base_dt = datetime.strptime(ask_time, "%Y-%m")
+            except ValueError:
+                base_dt = datetime(2025, 12, 1)
+        else:
+            base_dt = latest_dt + timedelta(days=1)
 
-        # 将 ask_time 解析为该月最后一天
-        try:
-            ask_year, ask_month = ask_time.split('-')
-            ask_dt = datetime(int(ask_year), int(ask_month), 1)
-            ask_dt = ask_dt + relativedelta(months=1) - timedelta(days=1)  # 该月最后一天
-        except (ValueError, AttributeError):
-            return ask_time
+        max_dt = datetime(2025, 12, 31)
+        if base_dt > max_dt:
+            return "2025-12-31"
 
-        # 如果最晚事件日期在 ask_time 之后，调整 ask_time
-        if latest_dt > ask_dt:
-            # 取最晚事件日期的下一个月
-            adjusted_dt = latest_dt + relativedelta(months=1)
-            # 如果超过 2025-12，则用 2025-12
-            max_dt = datetime(2025, 12, 1)
-            if adjusted_dt > max_dt:
-                adjusted_dt = max_dt
-            adjusted_ask_time = adjusted_dt.strftime("%Y-%m")
-            print(f"[ask_time 调整] 事件日期 {latest_date_str} 晚于当前 ask_time {ask_time}，已调整为 {adjusted_ask_time}")
-            return adjusted_ask_time
+        # 计算可选月份范围（从 base_dt 月到 2025-12）
+        months_range = (max_dt.year - base_dt.year) * 12 + (max_dt.month - base_dt.month)
+        if months_range <= 0:
+            return max_dt.strftime("%Y-%m-%d")
 
-        return ask_time
+        # 随机选一个偏移月
+        random_offset = random.randint(0, months_range)
+        target_month_num = base_dt.month + random_offset
+        target_year = base_dt.year + (target_month_num - 1) // 12
+        target_month = (target_month_num - 1) % 12 + 1
+
+        # 在该月内随机选一天
+        _, last_day = calendar.monthrange(target_year, target_month)
+        random_day = random.randint(1, last_day)
+
+        return f"{target_year}-{target_month:02d}-{random_day:02d}"
 
     def design_agent(self, question: Dict[str, Any], feedback: str, mode: str = 'generate', current_month: str = None) -> Tuple[Dict[str, Any], bool]:
         """
@@ -1480,15 +1489,11 @@ class QASingleGenerator(BaseQAGenerator):
                 iteration_count += 1
             
             final_question = current_question
-            
-            # 添加 ask_time
-            import random
-            random_month = random.randint(month, 12)
-            final_question['ask_time'] = f"{year}-{str(random_month).zfill(2)}"
-            # 检查 ask_time 是否在所有引用事件日期之后，若不是则调整
+
+            # 添加 ask_time（YYYY-MM-DD 格式，由 _adjust_ask_time_if_needed 随机选取最晚事件日期之后的某天）
             final_question['ask_time'] = self._adjust_ask_time_if_needed(
                 final_question.get('required_events_id', []),
-                final_question['ask_time']
+                f"{year}-{month:02d}"
             )
             final_question['question_type'] = 'single_hop'
             

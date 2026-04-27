@@ -5,6 +5,8 @@
 答案为"无法回答"
 """
 
+import calendar
+
 import json
 import os
 import random
@@ -223,47 +225,48 @@ class QAUnanswerableGenerator(BaseQAGenerator):
     
     def _generate_ask_time(self, event_date: str, year: int, month: int) -> str:
         """
-        生成问题的提问时间
-        
+        生成问题的提问时间（具体到日期）
+
         Args:
             event_date: 事件日期 (YYYY-MM-DD)
             year: 年份
             month: 月份
-            
+
         Returns:
-            提问时间 (YYYY-MM)
+            提问时间 (YYYY-MM-DD)
         """
         # 解析事件日期
         event_dt = datetime.strptime(event_date, "%Y-%m-%d")
-        
-        # 提问时间应该在事件日期之后，最大为 2025-12
-        max_month = datetime(2025, 12, 1)
-        
+
+        # 提问时间应该在事件日期之后，最大为 2025-12-31
+        max_date = datetime(2025, 12, 31)
+
         # 从事件日期的下一个月开始
         if event_dt.month == 12:
-            next_month = datetime(event_dt.year + 1, 1, 1)
+            next_month_dt = datetime(event_dt.year + 1, 1, 1)
         else:
-            next_month = datetime(event_dt.year, event_dt.month + 1, 1)
-        
-        # 如果下一个月超过 2025-12，则使用 2025-12
-        if next_month > max_month:
-            return "2025-12"
-        
+            next_month_dt = datetime(event_dt.year, event_dt.month + 1, 1)
+
+        # 如果下一个月超过 2025-12，则使用 2025-12-31
+        if next_month_dt > max_date:
+            return "2025-12-31"
+
         # 计算可选的月份范围（从 next_month 到 2025-12）
-        months_diff = (max_month.year - next_month.year) * 12 + (max_month.month - next_month.month)
-        
-        if months_diff < 0:
-            return "2025-12"
-        
-        # 随机选择一个偏移量（0 到 months_diff）
+        months_diff = (max_date.year - next_month_dt.year) * 12 + (max_date.month - next_month_dt.month)
+
+        # 随机选择一个偏移月（0 到 months_diff）
         random_offset = random.randint(0, months_diff)
-        
-        # 计算最终的年月
-        target_month_num = next_month.month + random_offset
-        ask_year = next_month.year + (target_month_num - 1) // 12
-        ask_month = (target_month_num - 1) % 12 + 1
-        
-        return f"{ask_year}-{ask_month:02d}"
+
+        # 计算目标年月
+        target_month_num = next_month_dt.month + random_offset
+        target_year = next_month_dt.year + (target_month_num - 1) // 12
+        target_month = (target_month_num - 1) % 12 + 1
+
+        # 在该月内随机选择一天（1 到该月最大天数）
+        _, last_day = calendar.monthrange(target_year, target_month)
+        random_day = random.randint(1, last_day)
+
+        return f"{target_year}-{target_month:02d}-{random_day:02d}"
     
     def QAGen(self, year: int = 2025, num_questions_per_month: int = 5) -> List[Dict[str, Any]]:
         """

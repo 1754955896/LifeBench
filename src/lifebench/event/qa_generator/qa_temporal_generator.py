@@ -491,7 +491,7 @@ class QATemporalGenerator(BaseQAGenerator):
         
         # 为所有问题添加 ask_time 字段
         for question in filtered_questions:
-            question['ask_time'] = '2025-12'
+            question['ask_time'] = '2025-12-31'
         
         print(f"[Temporal Sequence Agent] 已为 {len(filtered_questions)} 个问题添加 ask_time 字段")
         # 6. 为每个问题调用 evidence_refine 补充手机数据证据（20线程并行）

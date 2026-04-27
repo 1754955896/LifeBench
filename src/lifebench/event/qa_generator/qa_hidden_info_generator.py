@@ -139,7 +139,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
                 qa["evidence"] = evidence_data
             else:
                 qa["evidence"] = []
-            qa['ask_time'] = '2025-12'
+            qa['ask_time'] = '2025-12-31'
         return questions
     
     def _analyze_hidden_needs_for_month(self, month: str, month_data: List[Dict]) -> List[Dict]:

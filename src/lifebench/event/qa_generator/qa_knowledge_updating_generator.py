@@ -6,6 +6,7 @@ import os
 import json
 import random
 import threading
+from datetime import datetime, timedelta
 from typing import List, Dict, Any, Tuple
 from .base_generator import BaseQAGenerator
 from .phone_operation_generator import PhoneOperationGenerator
@@ -827,6 +828,10 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                         # 去重
                         all_event_ids = list(set(all_event_ids))
                         qa["required_events_id"] = all_event_ids
+
+                        # 校验并调整 ask_time：若 ask_time 在所有引用事件最晚日期之前，则调整为最晚日期 + 1 天
+                        if all_event_ids and qa.get('ask_time'):
+                            qa['ask_time'] = self._adjust_ask_time_for_knowledge(all_event_ids, qa['ask_time'])
                         
                         # 基于 required_events_id 获取对应的手机数据作为 evidence
                         if all_event_ids:
@@ -852,7 +857,67 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
             print(f"[KnowledgeGen] ✓ 完成，共生成 {len(all_questions)} 个问题")
         
         return all_questions
-    
+
+    def _adjust_ask_time_for_knowledge(self, required_events_id: List[str], ask_time: str) -> str:
+        """
+        校验 ask_time 是否在 required_events_id 所有事件最晚日期之后，
+        若不是，则调整为最晚日期的下一天（YYYY-MM-DD 格式）。
+
+        Args:
+            required_events_id: 问题引用的必需事件 ID 列表
+            ask_time: 当前提问时间（格式 YYYY-MM-DD 或 YYYY-MM）
+
+        Returns:
+            调整后的提问时间（YYYY-MM-DD）
+        """
+        if not required_events_id or not ask_time:
+            return ask_time
+
+        # 构建 event_id -> date 的映射
+        event_id_to_date = {}
+        for event in self.daily_event:
+            if isinstance(event, dict):
+                eid = str(event.get('event_id', ''))
+                event_id_to_date[eid] = event.get('date', [])
+
+        # 找到所有引用的最晚事件日期
+        latest_dt = None
+        for eid in required_events_id:
+            dates = event_id_to_date.get(str(eid), [])
+            for date_range in dates:
+                if isinstance(date_range, str) and '至' in date_range:
+                    start_part = date_range.split('至')[0].strip()
+                    try:
+                        dt = datetime.strptime(start_part, "%Y-%m-%d %H:%M:%S")
+                        if latest_dt is None or dt > latest_dt:
+                            latest_dt = dt
+                    except ValueError:
+                        pass
+
+        if latest_dt is None:
+            return ask_time
+
+        # 解析 ask_time（兼容 YYYY-MM 和 YYYY-MM-DD 格式）
+        try:
+            if ask_time.count('-') == 2:
+                ask_dt = datetime.strptime(ask_time, "%Y-%m-%d")
+            else:
+                ask_dt = datetime.strptime(ask_time, "%Y-%m")
+        except ValueError:
+            return ask_time
+
+        # 若 ask_time 在最晚事件日期之前或当天，调整为最晚日期 + 1 天
+        if ask_dt <= latest_dt:
+            adjusted_dt = latest_dt + timedelta(days=1)
+            # 若超过 2025-12-31，则用 2025-12-31
+            max_dt = datetime(2025, 12, 31)
+            if adjusted_dt > max_dt:
+                adjusted_dt = max_dt
+            print(f"[ask_time 调整] 原 ask_time {ask_time} 早于最晚事件日期 {latest_dt.strftime('%Y-%m-%d')}, 已调整为 {adjusted_dt.strftime('%Y-%m-%d')}")
+            return adjusted_dt.strftime("%Y-%m-%d")
+
+        return ask_time
+
     def _generate_questions_for_topic(self, topic_group_id: str, state_name: str, 
                                       refined_topic: str, nodes_summary: List[Dict],
                                       max_questions: int) -> List[Dict]:
@@ -900,10 +965,12 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         
         2. **ask_time 设计与事件参考范围**：
            - 每个问题必须包含 `ask_time` 字段，表示提问的时间点
-           - **重要**：`ask_time` 必须是 "YYYY-MM" 格式（如 "2025-01"、"2025-03"），只输出到月份
-           - **语义说明**：`ask_time` 代表在该月的最后一天进行提问
-             * 例如：`ask_time: "2025-01"` 表示在 2025年1月31日 提问
-             * 例如：`ask_time: "2025-03"` 表示在 2025年3月31日 提问
+           - **重要约束**：`ask_time` 必须是 "YYYY-MM-DD" 格式（如 "2025-01-10"、"2025-03-31"），具体到天
+           - **时间顺序强制要求**：`ask_time` 必须在所引用节点的所有事件日期之后（包含当天），否则会导致时间逻辑矛盾
+             * 如果节点的最新事件发生在 2025-03-15，则 `ask_time` 必须 >= 2025-03-15
+             * 例如：`ask_time: "2025-03-16"` 表示在 2025年3月16日 提问
+             * 例如：`ask_time: "2025-04-01"` 表示在 2025年4月1日 提问
+           - **上限约束**：`ask_time` 最晚不得超过 2025-12-31
            - **时间偏移原则**：`ask_time` 应该与状态变化节点的时间有合理的间隔
              * 如果节点发生在某月中旬，`ask_time` 可以是该月或下个月
              * 避免 `ask_time` 与节点日期过于接近，应该有足够的时间让状态稳定
@@ -952,13 +1019,13 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
             {{
                 "question": "问题内容",
                 "answer": "答案内容",
-                "ask_time": "提问时间点（具体日期或时间段）",
+                "ask_time": "提问时间点（YYYY-MM-DD 格式，如 2025-03-16）",
                 "node_ids": [0, 1]
             }},
             {{
                 "question": "问题内容（与上一个问题相同或类似）",
                 "answer": "答案内容（与上一个答案不同）",
-                "ask_time": "提问时间点（与上一个时间不同）",
+                "ask_time": "提问时间点（YYYY-MM-DD 格式，与上一个时间不同，且在节点事件日期之后）",
                 "node_ids": [0, 1]
             }}
         ]
@@ -993,7 +1060,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         
         **注意**：
         - 必须输出偶数个问题（至少2个）
-        - `ask_time` 必须是合理的时间点，应该与节点的时间相关
+        - `ask_time` 格式必须为 "YYYY-MM-DD"，且必须在所引用节点的所有事件日期之后，最晚不得超过 2025-12-31
         - `node_ids` 必须引用输入中存在的节点 ID
         - 问题的答案应该反映在 `ask_time` 这个时间点的状态
         - 每对问题的核心问题应该相同或非常相似，但答案不同
@@ -1461,10 +1528,14 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
             try:
                 print(f"\n[Filter Thread {idx + 1}/{len(questions)}] 开始处理问题...")
 
+                # 过滤 evidence 中时间晚于 ask_time 的数据项
+                filtered_evidence = self._filter_evidence_by_ask_time(question)
+                question['evidence'] = filtered_evidence
+
                 # 构建评估 prompt
                 eval_prompt = f"""
                 作为 QA 质量评估专家，请仔细分析以下问答对的质量。
-                
+
                 **重要说明**：
                 - 提供的 evidence 并非全量数据，只是部分相关事件
                 - 只要 evidence 中有能够体现答案的事件即可，不需要考虑时序、潜在幻觉、不充分等问题
@@ -1663,3 +1734,55 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         print(f"{'=' * 80}")
 
         return filtered_questions
+
+    def _filter_evidence_by_ask_time(self, question: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """
+        过滤 question 中 evidence 里时间晚于 ask_time 的数据项
+
+        Args:
+            question: 问题对象，包含 evidence 和 ask_time
+
+        Returns:
+            过滤后的证据列表
+        """
+        ask_time_str = question.get('ask_time', '')
+        if not ask_time_str:
+            return question.get('evidence', [])
+
+        # 解析 ask_time（兼容 YYYY-MM-DD 和 YYYY-MM 格式）
+        try:
+            if ask_time_str.count('-') == 2:
+                ask_dt = datetime.strptime(ask_time_str, "%Y-%m-%d")
+            else:
+                ask_dt = datetime.strptime(ask_time_str, "%Y-%m-%d")  # 视为该月最后一天
+        except ValueError:
+            return question.get('evidence', [])
+
+        evidence = question.get('evidence', [])
+        filtered = []
+        for item in evidence:
+            if not isinstance(item, dict):
+                continue
+            data = item.get('data', {})
+            if not isinstance(data, dict):
+                filtered.append(item)
+                continue
+            # 取 datetime 字段判断时间
+            dt_str = data.get('datetime', '')
+            if not dt_str:
+                filtered.append(item)
+                continue
+            try:
+                # datetime 格式：YYYY-MM-DD HH:MM:SS 或 YYYY-MM-DD
+                dt_parts = dt_str.split(' ')
+                if len(dt_parts) >= 2:
+                    dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M:%S")
+                else:
+                    dt = datetime.strptime(dt_str, "%Y-%m-%d")
+                if dt <= ask_dt:
+                    filtered.append(item)
+            except ValueError:
+                # 无法解析时间则保留
+                filtered.append(item)
+
+        return filtered

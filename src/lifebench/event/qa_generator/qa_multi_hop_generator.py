@@ -2093,7 +2093,7 @@ sms, phonecall, photo, push, note, calendar
             if qa_result.get('question'):
                 # 添加 ask_time
                 random_month = random.randint(month, 12)
-                qa_result['ask_time'] = f"{year}-12"
+                qa_result['ask_time'] = f"{year}-12-31"
                 qa_result['question_type'] = 'multi_hop'
                 
                 monthly_qa.append(qa_result)

@@ -363,7 +363,7 @@ class QACausalGenerator(BaseQAGenerator):
             all_ids = [effect_ev.get('event_id')] + [e.get('event_id') for e in cause_evs]
             res['required_events_id'] = [str(eid) for eid in all_ids if eid]
             res['question_type'] = 'Causal'
-            res['ask_time'] = '2025-12'
+            res['ask_time'] = '2025-12-31'
             
             return res
         except Exception as e:

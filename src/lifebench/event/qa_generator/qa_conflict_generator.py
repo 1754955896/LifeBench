@@ -1173,7 +1173,7 @@ class QAConflictGenerator(BaseQAGenerator):
         print("\n[Step 6] 为所有问题设置 question_type 为 'Conflict'...")
         for qa in qa_pairs:
             qa['question_type'] = 'Conflict'
-            qa['ask_time'] = '2025-12'
+            qa['ask_time'] = '2025-12-31'
         print(f"✓ 已为 {len(qa_pairs)} 个问题设置 question_type")
         
         # 保存到文件
