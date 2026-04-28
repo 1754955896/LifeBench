@@ -44,11 +44,18 @@ For the convenience of conducting memory benchmark tests on existing memory syst
 ![Data Synthesis Framework](pic/pic.png)
 1. **Environment Configuration**: 
    - Run `pip install -r requirements.txt` to install dependencies
-   - Configure LLM API and map API keys in `config.json`
+   - Create `config/config.json` by copying from `config.example.json`
+   - Configure LLM API and map API keys in `config/config.json`
 
-2. **Prepare Persona Data**: 
+2. **Prepare Persona Data**:
    - Create a persona array (supports multiple users and custom formats)
-   - Save it as `data/person.json`
+   - Save it as `input/person.json`
 
-3. **Generate Data**: 
-   - Execute `python run_all.py` to start the data synthesis process
+3. **Generate Data**:
+   - Execute `python scripts/run_all.py` to start the data synthesis process
+   - Or run individual scripts in `scripts/run/`:
+     - `python scripts/run/persona_gen.py` - Generate persona data
+     - `python scripts/run/draft_gen.py` - Generate daily event drafts
+     - `python scripts/run/simulator.py` - Simulate daily activities
+     - `python scripts/run/phone_gen.py` - Generate phone operation data
+     - `python scripts/run/QA_gen.py` - Generate question-answer pairs

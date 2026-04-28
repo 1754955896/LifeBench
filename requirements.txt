@@ -1,9 +1,9 @@
-openai
-holidays
-numpy
-pandas
-sentence_transformers
+openai==2.6.0
+holidays==0.86
+numpy==1.24.4
+pandas==2.0.3
+sentence_transformers==4.1.0
 transformers==4.37.0
-pyarrow
-pypinyin
-pyvis
+pyarrow==21.0.0
+pypinyin==0.55.0
+pyvis==0.3.2
