@@ -1177,15 +1177,116 @@ class QAConflictGenerator(BaseQAGenerator):
             qa['question_type'] = 'Conflict'
             qa['ask_time'] = self.default_ask_time
         print(f"✓ 已为 {len(qa_pairs)} 个问题设置 question_type")
-        
+
+        # Step 7: 过滤不可回答的问题（20线程并行）
+        print("\n[Step 7] 过滤不可回答的问题，不通过的需要重新设计...")
+
+        def validate_single_qa(idx: int, qa: Dict) -> tuple:
+            """验证单个 QA 对"""
+            try:
+                filter_prompt = f"""
+作为问答质量审核员，请验证以下问题是否可以通过现有证据回答。
+
+【问题】
+{qa.get('question', '')}
+
+【答案】
+{qa.get('answer', '')}
+
+【证据列表】（共 {len(qa.get('evidence', []))} 条）
+{json.dumps([{'type': e.get('type', 'unknown'), 'summary': str(e)[:300]} for e in qa.get('evidence', [])], ensure_ascii=False, indent=2)}
+
+**任务要求**
+1. 分析问题、答案和证据之间的关系
+2. 判断证据是否足以支撑生成正确的问题和答案
+3. 如果证据不足以回答问题，返回 pass=False，并说明原因
+4. 如果证据可以回答问题，返回 pass=True
+
+**重要约束**
+- 问题必须是具体、可回答的
+- 答案必须与问题匹配
+- 证据必须能支撑答案的推理过程
+
+**输出要求**
+请以 JSON 格式返回：
+{{
+    "pass": true/false,
+    "reason": "验证通过/不通过的原因",
+    "revised_question": "如果 pass=false，给出重新设计的问题",
+    "revised_answer": "如果 pass=false，给出重新设计的答案",
+    "revised_score_points": "如果 pass=false，给出重新设计的评分点，格式为 [{{"description": "...", "score": N}}]"
+}}
+"""
+                llm_result = llm_call_j(filter_prompt)
+
+                if isinstance(llm_result, str):
+                    start_idx = llm_result.find('{')
+                    end_idx = llm_result.rfind('}') + 1
+                    if start_idx != -1 and end_idx != -1:
+                        llm_result = json.loads(llm_result[start_idx:end_idx])
+
+                if isinstance(llm_result, dict):
+                    is_pass = llm_result.get('pass', True)
+                    reason = llm_result.get('reason', '')
+
+                    if is_pass:
+                        print(f"[Step 7] ✓ 第 {idx + 1} 个问题通过验证")
+                        return idx, qa, True, reason, None, None, None
+                    else:
+                        print(f"[Step 7] ✗ 第 {idx + 1} 个问题未通过验证：{reason}")
+                        revised_question = llm_result.get('revised_question', '')
+                        revised_answer = llm_result.get('revised_answer', '')
+                        revised_score_points = llm_result.get('revised_score_points', [])
+
+                        if revised_question and revised_answer:
+                            print(f"[Step 7] 重新设计第 {idx + 1} 个问题")
+                            return idx, qa, False, reason, revised_question, revised_answer, revised_score_points
+                        else:
+                            print(f"[Step 7] 跳过无法重新设计的问题")
+                            return idx, qa, False, reason, None, None, None
+                else:
+                    print(f"[Step 7] LLM 返回格式错误")
+                    return idx, qa, True, "LLM 返回格式错误", None, None, None
+
+            except Exception as e:
+                print(f"[Step 7] 验证失败：{e}")
+                return idx, qa, True, str(e), None, None, None
+
+        # 20线程并行验证
+        filtered_results = [None] * len(qa_pairs)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            futures = [
+                executor.submit(validate_single_qa, idx, qa)
+                for idx, qa in enumerate(qa_pairs)
+            ]
+
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    idx, qa, is_pass, reason, revised_question, revised_answer, revised_score_points = future.result()
+                    if is_pass:
+                        filtered_results[idx] = qa
+                    else:
+                        if revised_question and revised_answer:
+                            qa['question'] = revised_question
+                            qa['answer'] = revised_answer
+                            if revised_score_points:
+                                qa['score_points'] = revised_score_points
+                        filtered_results[idx] = qa if revised_question else None
+                except Exception as e:
+                    print(f"[Step 7] 结果收集失败：{e}")
+
+        # 过滤掉 None 值
+        filtered_qa_pairs = [r for r in filtered_results if r is not None]
+        print(f"\n[Step 7] 完成，通过验证的问题数量：{len(filtered_qa_pairs)}/{len(qa_pairs)}")
+
         # 保存到文件
         if self.phone_data_dir:
             parent_dir = os.path.dirname(self.phone_data_dir)
             output_path = os.path.join(parent_dir, "conflict_qa.json")
-            
+
             with open(output_path, "w", encoding="utf-8") as f:
-                json.dump(qa_pairs, f, ensure_ascii=False, indent=2)
-            
+                json.dump(filtered_qa_pairs, f, ensure_ascii=False, indent=2)
+
             print(f"\n问答对已成功写入文件：{output_path}")
         
         print(f"\n========== 完成，共生成 {len(qa_pairs)} 个冲突问答对 ==========")

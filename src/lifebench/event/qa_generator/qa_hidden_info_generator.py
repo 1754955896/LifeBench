@@ -89,7 +89,91 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
         
         if self.is_print:
             print(f"[HiddenInfoGen] ✓ 完成，共生成 {len(all_questions)} 个隐藏信息问题")
-        
+
+        # 过滤不可回答的问题（20线程并行）
+        if self.is_print:
+            print("\n[HiddenInfoGen] 开始过滤不可回答的问题...")
+
+        from src.lifebench.utils.llm_call import llm_call_j
+
+        def validate_single_qa(idx: int, qa: Dict) -> tuple:
+            """验证单个 QA 对"""
+            try:
+                filter_prompt = f"""
+作为问答质量审核员，请验证以下问题是否可以通过现有证据回答。
+
+【问题】
+{qa.get('question', '')}
+
+【答案】
+{qa.get('correct_answer', '')}（选择题答案）
+
+【选项】
+{json.dumps(qa.get('options', []), ensure_ascii=False, indent=2)}
+
+【证据列表】（共 {len(qa.get('evidence', []))} 条）
+{json.dumps([{'type': e.get('type', 'unknown'), 'summary': str(e)[:300]} for e in qa.get('evidence', [])], ensure_ascii=False, indent=2)}
+
+**任务要求**
+1. 分析问题、答案和证据之间的关系
+2. 判断证据是否足以支撑选出正确的选项
+3. 如果证据不足以回答问题，返回 pass=False，并说明原因
+4. 如果证据可以回答问题，返回 pass=True
+
+**重要约束**
+- 问题必须是具体、可回答的
+- 选项必须与问题匹配
+- 证据必须能支撑答案的推理过程
+
+**输出要求**
+请以 JSON 格式返回：
+{{
+    "pass": true/false,
+    "reason": "验证通过/不通过的原因"
+}}
+"""
+                llm_result = llm_call_j(filter_prompt)
+
+                if isinstance(llm_result, str):
+                    start_idx = llm_result.find('{')
+                    end_idx = llm_result.rfind('}') + 1
+                    if start_idx != -1 and end_idx != -1:
+                        llm_result = json.loads(llm_result[start_idx:end_idx])
+
+                if isinstance(llm_result, dict):
+                    is_pass = llm_result.get('pass', True)
+                    reason = llm_result.get('reason', '')
+                    print(f"[HiddenInfoGen] 第 {idx + 1} 个问题: {'✓ 通过' if is_pass else '✗ 未通过'} - {reason}")
+                    return idx, qa, is_pass
+                else:
+                    return idx, qa, True
+
+            except Exception as e:
+                print(f"[HiddenInfoGen] 第 {idx + 1} 个问题验证失败：{e}")
+                return idx, qa, True
+
+        # 20线程并行验证
+        filtered_results = [None] * len(all_questions)
+        with ThreadPoolExecutor(max_workers=20) as executor:
+            futures = [
+                executor.submit(validate_single_qa, idx, qa)
+                for idx, qa in enumerate(all_questions)
+            ]
+
+            for future in as_completed(futures):
+                try:
+                    idx, qa, is_pass = future.result()
+                    if is_pass:
+                        filtered_results[idx] = qa
+                except Exception as e:
+                    print(f"[HiddenInfoGen] 结果收集失败：{e}")
+
+        # 过滤掉 None 值
+        all_questions = [r for r in filtered_results if r is not None]
+
+        if self.is_print:
+            print(f"[HiddenInfoGen] ✓ 过滤完成，通过验证的问题数量：{len(all_questions)}")
+
         return all_questions
     
     def _generate_questions_for_month(self, month: str) -> List[Dict]:
