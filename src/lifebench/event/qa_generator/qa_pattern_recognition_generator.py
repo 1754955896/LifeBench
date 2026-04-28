@@ -11,7 +11,7 @@ from src.lifebench.event.templates.template_qa import (
     PATTERN_RECOGNITION_TEMPLATE,
     EVENT_TRACING_ENHANCED_TEMPLATE
 )
-from src.lifebench.event.templates.template_ND import (
+from src.lifebench.event.templates.template_nd import (
     get_preference_template,
     get_interest_template,
     get_emotional_template,

@@ -7,7 +7,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 import holidays
 from src.lifebench.utils.llm_call import llm_call_j, llm_call, llm_call_reason_j
-from src.lifebench.event.templates.template_MR import (
+from src.lifebench.event.templates.template_mr import (
     habit_summary_template,
     health_summary_template,
     event_summary_template,

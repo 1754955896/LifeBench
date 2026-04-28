@@ -17,4 +17,4 @@
 
 | 文件 | 说明 |
 |------|------|
-| `Interface_1.py` / `Interface_2.py` | 两条不同的编辑管线接口 |
+| `draft_edit_interface.py` / `phone_edit_interface.py` | 两条不同的编辑管线接口 |

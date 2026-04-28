@@ -70,7 +70,7 @@ class Scheduler:
         3. 采样事件
         4. 调用 insert_events 插入事件到图谱
         """
-        from src.lifebench.event.draft.GraphGenerator import EventGraphGenerator
+        from src.lifebench.event.draft.graph_generator import EventGraphGenerator
         import random
         
         print("="*60)

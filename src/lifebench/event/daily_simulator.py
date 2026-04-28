@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import holidays
 import copy
-from src.lifebench.utils.IO import *
+from src.lifebench.utils.utils_io import *
 from datetime import timedelta
 from src.lifebench.utils.llm_call import *
 from src.lifebench.utils.maptool import *
@@ -1339,7 +1339,7 @@ class MindController:
         self.data_dir = data_dir
         self.instance_id = instance_id
         # 从文件加载初始数据
-        from src.lifebench.utils.IO import read_json_file
+        from src.lifebench.utils.utils_io import read_json_file
         try:
             # 加载事件数据
             self.events = read_json_file(event_file)

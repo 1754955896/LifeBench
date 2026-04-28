@@ -10,4 +10,4 @@
 | `event_tree_classify.py` | 事件树分类工具 |
 | `persona_address_generator.py` | Persona 地址生成工具 |
 | `xlsx_to_csv.py` | Excel 转 CSV 工具 |
-| `Prob_Model.py` | 概率模型相关工具 |
+| `prob_model.py` | 概率模型相关工具 |

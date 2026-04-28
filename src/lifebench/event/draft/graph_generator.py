@@ -1047,7 +1047,7 @@ class EventGraphGenerator:
             更新后的事件图谱
         """
         # 使用 GraphRefiner 执行事件插入流程
-        from GraphRefiner import GraphRefiner
+        from graph_refiner import GraphRefiner
         
         refiner = GraphRefiner(
             event_graph=self.event_graph,

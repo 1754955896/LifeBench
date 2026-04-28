@@ -6,8 +6,8 @@
 
 | 文件 | 说明 |
 |------|------|
-| `GraphGenerator.py` | 事件关系图生成 |
-| `GraphRefiner.py` | 事件关系图细化 |
+| `graph_generator.py` | 事件关系图生成 |
+| `graph_refiner.py` | 事件关系图细化 |
 | `timeline_gen.py` | 时间线生成 |
 | `daily_refine.py` | 每日大纲细化 |
 | `monthly_refine.py` | 月度大纲细化 |

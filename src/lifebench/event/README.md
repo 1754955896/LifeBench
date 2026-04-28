@@ -8,7 +8,7 @@
 |------|------|
 | `daily_simulator.py` | 每日生活事件模拟器（核心调度） |
 | `phone_data_gen.py` | 手机操作数据生成 |
-| `QaGenerator.py` | 问答对生成器 |
+| `all_qa_generator.py` | 问答对生成器 |
 | `draft_gen.py` | 每日大纲（daily draft）生成 |
 | `scheduler.py` | 日程调度相关逻辑 |
 | `data_edit.py` | 数据编辑与修正工具 |

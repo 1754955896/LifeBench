@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from typing import List, Dict
 
-from src.lifebench.utils.IO import write_json_file
+from src.lifebench.utils.utils_io import write_json_file
 from src.lifebench.utils.llm_call import llm_call
 
 class FuzzyMemoryBuilder:

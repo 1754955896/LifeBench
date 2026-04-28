@@ -7,7 +7,7 @@ from src.lifebench.event.phone_data_gen import (
     parallel_process_dates_dynamic
 )
 
-from src.lifebench.utils.IO import read_json_file
+from src.lifebench.utils.utils_io import read_json_file
 
 def process_phone_data(file_path):
     """

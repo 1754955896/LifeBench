@@ -176,7 +176,7 @@ class OutlineOptimizer:
         Returns:
             该月份的总结
         """
-        from src.lifebench.event.templates.template_MR import generate_monthly_summary_template
+        from src.lifebench.event.templates.template_mr import generate_monthly_summary_template
         
         prompt = generate_monthly_summary_template(
             month=month,
@@ -229,7 +229,7 @@ class OutlineOptimizer:
         self._print(f"开始全年一致性分析")
         self._print(f"{'='*60}")
         
-        from src.lifebench.event.templates.template_MR import yearly_consistency_analysis_template
+        from src.lifebench.event.templates.template_mr import yearly_consistency_analysis_template
         
         prompt = yearly_consistency_analysis_template(
             year=self.year,
@@ -367,7 +367,7 @@ class OutlineOptimizer:
             prompt 构建函数，输入 month，输出 prompt 字符串
         """
         def prompt_builder(month: str) -> str:
-            from src.lifebench.event.templates.template_MR import consistency_based_monthly_analysis_template
+            from src.lifebench.event.templates.template_mr import consistency_based_monthly_analysis_template
             
             # 从 daily_draft 读取对应月份的数据
             month_data = self.daily_draft.get(month, [])
@@ -401,7 +401,7 @@ class OutlineOptimizer:
         Returns:
             构建好的 prompt 字符串
         """
-        from src.lifebench.event.templates.template_MR import monthly_reasonableness_analysis_template
+        from src.lifebench.event.templates.template_mr import monthly_reasonableness_analysis_template
         
         # 从 daily_draft 读取对应月份的数据
         month_data = self.daily_draft.get(month, [])
@@ -427,7 +427,7 @@ class OutlineOptimizer:
             重新生成后的月份数据
         """
         from concurrent.futures import ThreadPoolExecutor, as_completed
-        from src.lifebench.event.templates.template_MR import parse_modification_instructions_template
+        from src.lifebench.event.templates.template_mr import parse_modification_instructions_template
         
         # 使用传入的 prompt 构建函数生成 prompt
         prompt = prompt_builder(month)
