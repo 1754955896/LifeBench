@@ -138,23 +138,7 @@ if __name__ == "__main__":
         with open(os.path.join(phone_data_dir, "contact.json"), "w", encoding="utf-8") as f:
             json.dump(contact, f, ensure_ascii=False, indent=2)
 
-    # 准备所有生成器的初始数据
-    generators_initial_data = {}
-    if os.path.exists(file_path + "phone_data/event_gallery.json"):
-        generators_initial_data['gallery'] = read_json_file(file_path + "phone_data/event_gallery.json")
-    if os.path.exists(file_path + "phone_data/event_push.json"):
-        generators_initial_data['push'] = read_json_file(file_path + "phone_data/event_push.json")
-    if os.path.exists(file_path + "phone_data/event_call.json"):
-        generators_initial_data['communication'] = read_json_file(file_path + "phone_data/event_call.json")
-    if os.path.exists(file_path + "phone_data/event_note.json"):
-        generators_initial_data['note_calendar'] = read_json_file(file_path + "phone_data/event_note.json")
-    if os.path.exists(file_path + "phone_data/event_fitness_health.json"):
-        generators_initial_data['fitness_health'] = read_json_file(file_path + "phone_data/event_fitness_health.json")
-    if os.path.exists(file_path + "phone_data/event_chat.json"):
-        generators_initial_data['chat'] = read_json_file(file_path + "phone_data/event_chat.json")
-    if os.path.exists(file_path + "phone_data/event_perception.json"):
-        generators_initial_data['perception'] = read_json_file(file_path + "phone_data/event_perception.json")
-    
+    # 初始化 extool
     extool.load_from_json(read_json_file(file_path + 'daily_event.json'), persona,
                           read_json_file(file_path + 'daily_draft.json'))
     
@@ -175,7 +159,6 @@ if __name__ == "__main__":
             end_time=end_time,
             contact=contact,
             file_path=file_path,
-            generators_initial_data=generators_initial_data,
             matcher=matcher,
             phone_count_control={"min": args.phone_count_min, "max": args.phone_count_max},
             max_workers=args.max_workers

@@ -34,18 +34,11 @@ class Data_extract:
 
         self.bottom_events = recursive_extract(self.events)
         return self.bottom_events
-    def update_bottom_level_events(self):
-        def recursive_extract(events: List[Dict]) -> List[Dict]:
-            result = []
-            for event in events:
-                subevents = event.get("subevent", [])
-                if not subevents:
-                    result.append(event)
-                else:
-                    result.extend(recursive_extract(subevents))
-            return result
 
-        self.bottom_events = recursive_extract(self.events)
+    def update_bottom_level_events(self):
+        """更新底层事件缓存，委托给 _get_bottom_level_events"""
+        self.atomic_events = None  # 重置缓存，触发重新计算
+        self._get_bottom_level_events()
         return self.bottom_events
     @staticmethod
     def is_date_match(target_date_str: str, event_date_str: str) -> bool:
@@ -466,60 +459,60 @@ def get_registered_generators(file_path=None):
             'method': 'phone_gen_callandmsm',
             'filename': 'event_call.json',
             'init_args': {},
-            'method_args': ['date', 'contact', 'file_path', 'initial_data']
+            'method_args': ['date', 'contact', 'file_path']
         },
         'note_calendar': {
             'class': NoteCalendarOperationGenerator,
             'method': 'phone_gen_noteandcalendar',
             'filename': 'event_note.json',
             'init_args': {'random_seed': 42},
-            'method_args': ['date', 'contact', 'file_path', 'initial_data']
+            'method_args': ['date', 'contact', 'file_path']
         },
         'gallery': {
             'class': GalleryOperationGenerator,
             'method': 'phone_gen_gallery',
             'filename': 'event_gallery.json',
             'init_args': {'random_seed': 42},
-            'method_args': ['date', 'contact', 'file_path', 'initial_data']
+            'method_args': ['date', 'contact', 'file_path']
         },
         'fitness_health': {
             'class': FitnessHealthOperationGenerator,
             'method': 'phone_gen_fitness_health',
             'filename': 'event_fitness_health.json',
             'init_args': {'random_seed': 42},
-            'method_args': ['date', 'contact', 'file_path', 'initial_data']
+            'method_args': ['date', 'contact', 'file_path']
         },
         'chat': {
             'class': ChatOperationGenerator,
             'method': 'phone_gen_agent_chat',
             'filename': 'event_chat.json',
             'init_args': {'random_seed': 42},
-            'method_args': ['date', 'contact', 'file_path', 'initial_data']
+            'method_args': ['date', 'contact', 'file_path']
         },
         'push': {
             'class': PushOperationGenerator,
             'method': 'phone_gen_push',
             'filename': 'event_push.json',
             'init_args': {'random_seed': 42},
-            'method_args': ['date', 'contact', 'file_path', 'initial_data']
+            'method_args': ['date', 'contact', 'file_path']
         }
     }
     
     return generators
 
 
-def run_generator_task(generator_name, generator_info, date, contact, file_path, initial_data):
+def run_generator_task(generator_name, generator_info, date, contact, file_path, extool=None):
     """
     运行单个生成器任务
-    
+
     参数:
         generator_name: 生成器名称
         generator_info: 生成器配置信息
         date: 日期
         contact: 联系人信息
         file_path: 文件路径
-        initial_data: 初始数据
-        
+        extool: Data_extract 实例，用于提供事件数据
+
     返回:
         生成的数据列表
     """
@@ -527,31 +520,42 @@ def run_generator_task(generator_name, generator_info, date, contact, file_path,
         # 实例化生成器
         generator_class = generator_info['class']
         init_args = generator_info.get('init_args', {})
-        
+
         if init_args:
             generator = generator_class(**init_args)
         else:
             generator = generator_class()
-        
+
         # 获取方法名和参数
         method_name = generator_info['method']
         method = getattr(generator, method_name)
-        
+
         # 根据方法签名调用
         method_args = generator_info.get('method_args', [])
-        
+
         if 'extool' in method_args:
-            # perception 生成器
+            # perception 生成器 - 传入 extool 实例
             result = method(date, extool)
         elif 'contact' in method_args:
-            # 其他生成器
-            result = method(date, contact, file_path, initial_data)
+            # 其他生成器 - 检查方法是否接受 extool 参数
+            try:
+                # 获取方法参数名
+                import inspect
+                sig = inspect.signature(method)
+                param_names = list(sig.parameters.keys())
+                if 'extool' in param_names:
+                    result = method(date, contact, file_path, extool)
+                else:
+                    result = method(date, contact, file_path)
+            except (ValueError, TypeError):
+                # 如果无法获取签名，使用默认方式
+                result = method(date, contact, file_path)
         else:
             result = method(date)
-        
+
         print(f"✅ {generator_name} 生成器成功处理日期：{date}")
         return result
-        
+
     except Exception as e:
         print(f"❌ {generator_name} 生成器处理日期 {date} 时出错：{str(e)}")
         import traceback
@@ -559,7 +563,7 @@ def run_generator_task(generator_name, generator_info, date, contact, file_path,
         return []
 
 
-def process_single_date_dynamic(date, contact, file_path, generators_data, matcher,
+def process_single_date_dynamic(date, contact, file_path, matcher,
                                phone_count_control=None):
     """
     处理单个日期的所有数据生成（动态版本）
@@ -568,7 +572,6 @@ def process_single_date_dynamic(date, contact, file_path, generators_data, match
         date: 要处理的日期
         contact: 联系人信息
         file_path: 文件保存路径
-        generators_data: 生成器数据字典 {generator_name: initial_data}
         matcher: PhoneEventMatcher 实例
         phone_count_control: 每日手机数据数目控制字典 {min: int, max: int}，默认 {5, 5}
             - min: 每天最少手机数据条数
@@ -580,14 +583,13 @@ def process_single_date_dynamic(date, contact, file_path, generators_data, match
     try:
         # 获取所有注册的生成器
         registered_generators = get_registered_generators(file_path)
-        
+
         # 内部并行执行所有生成器任务
         num_generators = len(registered_generators)
         with ThreadPoolExecutor(max_workers=num_generators) as inner_executor:
             # 提交所有生成器任务
             futures = {}
             for gen_name, gen_info in registered_generators.items():
-                initial_data = generators_data.get(gen_name, [])
                 future = inner_executor.submit(
                     run_generator_task,
                     gen_name,
@@ -595,10 +597,10 @@ def process_single_date_dynamic(date, contact, file_path, generators_data, match
                     date,
                     contact,
                     file_path,
-                    initial_data
+                    extool  # 传入 extool 实例以支持线程安全
                 )
                 futures[future] = gen_name
-            
+
             # 收集结果
             generated_data = {}
             for future in as_completed(futures):
@@ -607,7 +609,7 @@ def process_single_date_dynamic(date, contact, file_path, generators_data, match
                 filename = gen_info['filename']
                 result = future.result()
                 generated_data[filename] = result
-        
+
         # 调用 PhoneEventMatcher 进行原子事件匹配分析
         try:
             # 汇总该日数据（除了 event_fitness_health.json）
@@ -760,17 +762,16 @@ def process_single_date_dynamic(date, contact, file_path, generators_data, match
         return (False, date, None)
 
 
-def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, generators_initial_data, matcher,
+def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, matcher,
                               phone_count_control=None, max_workers=8):
     """
     多线程并行处理所有日期（动态版本）
-    
+
     参数:
         start_time: 开始时间
         end_time: 结束时间
         contact: 联系人信息
         file_path: 文件保存路径
-        generators_initial_data: 生成器初始数据字典 {generator_name: initial_data}
         matcher: PhoneEventMatcher 实例
         phone_count_control: 每日手机数据数目控制字典 {min: int, max: int}，默认 {5, 5}
         max_workers: 最大并行线程数
@@ -781,11 +782,11 @@ def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, gen
     # 收集所有处理结果
     success_dates = []
     failed_dates = []
-    
+
     # 收集所有生成的数据
     registered_generators = get_registered_generators(file_path)
     data_collector = {gen_info['filename']: [] for gen_info in registered_generators.values()}
-    
+
     # 创建线程池，并行处理所有日期
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         # 提交所有日期的处理任务
@@ -796,7 +797,6 @@ def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, gen
                 date=date,
                 contact=contact,
                 file_path=file_path,
-                generators_data=generators_initial_data,
                 matcher=matcher,
                 phone_count_control=phone_count_control
             )
@@ -974,28 +974,37 @@ class PhoneEventMatcher:
     手机事件与原子事件匹配器
     功能：基于当日事件的atomic_id，为手机操作数据匹配对应的原子事件
     """
-    
+
     def __init__(self, atomic_events_file: str):
         self.context = "你是一位事件匹配专家，擅长分析手机操作与原子事件之间的关联性"
         self.atomic_events_file = atomic_events_file
+        # PhoneDataGenerator 在第一次使用时创建（确保 extool 已加载数据）
+        self._phone_data_generator = None
     
+    @property
+    def phone_data_generator(self):
+        """延迟初始化 PhoneDataGenerator，确保 extool 已加载数据"""
+        if self._phone_data_generator is None:
+            self._phone_data_generator = PhoneDataGenerator(extool)
+        return self._phone_data_generator
+
     def match_phone_events_with_atomic_events(self, phone_operations: List[Dict], date: str, generate_unmatched: bool = False) -> Dict:
         """
         匹配手机操作数据与原子事件
-        
+
         参数:
             phone_operations: 手机操作数据列表
             date: 要匹配的日期，格式为YYYY-MM-DD
             generate_unmatched: 是否为未匹配的原子事件生成手机操作数据，默认值为True
-            
+
         返回:
             Dict: 包含两个字段：
                 - matched_phone_events: 匹配后的手机操作数据，每个事件包含atomic_id字段
                 - unmatched_atomic_events: 当日未被手机数据体现的原子事件
         """
         try:
-            # 初始化PhoneDataGenerator
-            phone_data_generator = PhoneDataGenerator(extool)
+            # 使用延迟初始化的 PhoneDataGenerator
+            phone_data_generator = self.phone_data_generator
             
             # 步骤1：加载原子事件数据
             atomic_events_data = self._load_atomic_events(self.atomic_events_file)
@@ -1340,7 +1349,7 @@ class PhoneEventMatcher:
                 # 尝试为未匹配的原子事件生成手机操作数据
                 if generate_unmatched:
                     try:
-                        phone_data_generator = PhoneDataGenerator(extool)
+                        phone_data_generator = self.phone_data_generator
                         for atomic_id in all_relevant_atomic_ids:
                             atomic_events_data = self._load_atomic_events(self.atomic_events_file)
                             all_atomic_events = atomic_events_data.get("all_atomic_events", {})

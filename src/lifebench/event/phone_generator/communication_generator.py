@@ -514,19 +514,22 @@ class CommunicationOperationGenerator:
             print(f"LLM 格式修正失败: {str(e)}")
             return []
     
-    def phone_gen_callandmsm(self, date, contact, file_path, c):
+    def phone_gen_callandmsm(self, date, contact, file_path, extool=None):
         """
         生成通话和短信数据的主方法
-        
+
         Args:
             date: 日期
             contact: 联系人列表
             file_path: 文件路径
-            c: 结果列表
-            
+            extool: Data_extract 实例，如果为 None 则从模块导入
+
         Returns:
             生成的通信数据列表
         """
+        if extool is None:
+            from src.lifebench.event.phone_data_gen import extool
+
         c = []
         event_classify = '''
                请基于用户提供的{{当日事件}}和{{个人画像}}，逐一对每个事件进行独立分析，输出精简后的核心属性及通信概率（无需方向字段），按真实场景常识判断多短信个数概率。分析需严格遵循以下要求，可结合事件细节灵活微调概率（±5% 内），确保概率逻辑自洽、贴合现实生活规律：

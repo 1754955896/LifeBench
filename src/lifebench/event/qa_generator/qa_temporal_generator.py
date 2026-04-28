@@ -484,10 +484,10 @@ class QATemporalGenerator(BaseQAGenerator):
         # 
         # print(f"[Temporal Sequence Agent] 总共生成 {len(all_questions)} 个时序问题")
         # 
-        # # 5. 并行20线程对生成的问题进行过滤检查
-        # filtered_questions = self._filter_questions_parallel(all_questions)
-        #
-        filtered_questions = all_questions
+        # 5. 并行20线程对生成的问题进行过滤检查
+        filtered_questions = self._filter_questions_parallel(all_questions)
+        
+        # filtered_questions = all_questions
         
         # 为所有问题添加 ask_time 字段
         for question in filtered_questions:

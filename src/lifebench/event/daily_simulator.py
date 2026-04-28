@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import calendar
 import holidays
 import copy
 from src.lifebench.utils.utils_io import *
@@ -751,11 +752,28 @@ class Mind:
 
             # 2. 计算上个月同日（处理当月无同日场景）
             def _get_last_month_same_day(date: datetime) -> datetime:
+                """
+                计算上个月的同日
+                正确处理月份边界（1月→上年12月）
+                """
+                year = date.year
+                month = date.month
+                day = date.day
+
+                if month == 1:
+                    # 1月减1变成去年12月
+                    year -= 1
+                    month = 12
+                else:
+                    month -= 1
+
+                # 检查目标月份是否有该日期（如3月31日→2月无31日）
                 try:
-                    return date.replace(month=date.month - 1)
+                    return date.replace(year=year, month=month, day=day)
                 except ValueError:
-                    # 当月无该日期（如3月31日），返回上月最后一天
-                    return date.replace(day=1) - timedelta(days=1)
+                    # 目标月份天数不足（如3月31日→2月），取目标月份最后一天
+                    last_day_of_month = calendar.monthrange(year, month)[1]
+                    return date.replace(year=year, month=month, day=last_day_of_month)
 
             last_month_day = _get_last_month_same_day(current_date).strftime(date_format)
 

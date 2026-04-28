@@ -174,21 +174,22 @@ class PushOperationGenerator:
         except Exception as e:
             return False, f"格式校验异常: {str(e)}"
     
-    def phone_gen_push(self, date, contact, file_path, c):
+    def phone_gen_push(self, date, contact, file_path, extool=None):
         """
         生成指定日期的推送通知数据
-        
+
         Args:
             date: 日期
             contact: 联系人列表
             file_path: 文件路径
-            c: 结果列表
-            
+            extool: Data_extract 实例，如果为 None 则从模块导入
+
         Returns:
             生成的推送通知数据列表
         """
-        from src.lifebench.event.phone_data_gen import extool
-        
+        if extool is None:
+            from src.lifebench.event.phone_data_gen import extool
+
         c = []
         res1 = extool.filter_by_date(date)
         res = []
