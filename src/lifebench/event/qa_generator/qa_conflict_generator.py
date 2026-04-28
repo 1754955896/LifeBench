@@ -13,19 +13,20 @@ from .phone_operation_generator import PhoneOperationGenerator
 
 class QAConflictGenerator(BaseQAGenerator):
     """冲突问题生成器 - 基于记忆错误、计划突变等场景生成包含矛盾证据的问题"""
-    
-    def __init__(self, daily_event: List[Dict], draft_event: Dict[str, List], 
-                 phonedata: Dict[str, List], phone_data_dir: str = None, 
-                 is_print: bool = True):
+
+    def __init__(self, daily_event: List[Dict], draft_event: Dict[str, List],
+                 phonedata: Dict[str, List], phone_data_dir: str = None,
+                 is_print: bool = True, year: int = 2025):
         """
         初始化冲突问题生成器
-        
+
         Args:
             daily_event: daily_event 数据列表
             draft_event: draft_event 数据字典（按月份组织）
             phonedata: 手机操作数据字典
             phone_data_dir: 手机数据目录路径
             is_print: 是否打印调试信息
+            year: 年份，默认 2025
         """
         super().__init__()
         self.daily_event = daily_event
@@ -33,11 +34,12 @@ class QAConflictGenerator(BaseQAGenerator):
         self.phonedata = phonedata
         self.phone_data_dir = phone_data_dir
         self.is_print = is_print
-        
+
         # 线程锁
         self.phonedata_lock = threading.Lock()
         self.phone_id_counters = {}
-        
+        self.default_ask_time = f"{year}-12-31"
+
         # 手机操作生成器
         self.phone_op_generator = PhoneOperationGenerator()
     
@@ -1173,7 +1175,7 @@ class QAConflictGenerator(BaseQAGenerator):
         print("\n[Step 6] 为所有问题设置 question_type 为 'Conflict'...")
         for qa in qa_pairs:
             qa['question_type'] = 'Conflict'
-            qa['ask_time'] = '2025-12-31'
+            qa['ask_time'] = self.default_ask_time
         print(f"✓ 已为 {len(qa_pairs)} 个问题设置 question_type")
         
         # 保存到文件

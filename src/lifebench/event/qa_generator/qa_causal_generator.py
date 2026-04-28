@@ -13,12 +13,13 @@ from .phone_operation_generator import PhoneOperationGenerator
 from src.lifebench.utils.llm_call import llm_call, llm_call_j
 
 class QACausalGenerator(BaseQAGenerator):
-    def __init__(self, daily_event: List[Dict], event_tree: List[Dict], 
+    def __init__(self, daily_event: List[Dict], event_tree: List[Dict],
                  draft_event: Dict[str, List], phonedata: Dict[str, List],
-                 phone_data_dir: str = None, is_print: bool = True):
+                 phone_data_dir: str = None, is_print: bool = True,
+                 year: int = 2025):
         """
         初始化因果问题生成器
-        
+
         Args:
             daily_event: daily_event 数据列表
             event_tree: event_tree 数据列表
@@ -38,7 +39,8 @@ class QACausalGenerator(BaseQAGenerator):
         # 线程锁
         self.phonedata_lock = threading.Lock()
         self.phone_id_counters = {}
-        
+        self.default_ask_time = f"{year}-12-31"
+
         self.causal_pairs = []
         self.daily_events_map = {}  # {atomic_id: daily_event}
         self.atomic_to_event_id_map = {}  # {atomic_id: event_id}
@@ -363,7 +365,7 @@ class QACausalGenerator(BaseQAGenerator):
             all_ids = [effect_ev.get('event_id')] + [e.get('event_id') for e in cause_evs]
             res['required_events_id'] = [str(eid) for eid in all_ids if eid]
             res['question_type'] = 'Causal'
-            res['ask_time'] = '2025-12-31'
+            res['ask_time'] = self.default_ask_time
 
             # 确保有 score_points
             if 'score_points' not in res or not res['score_points']:

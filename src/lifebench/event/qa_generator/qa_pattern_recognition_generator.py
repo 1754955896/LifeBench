@@ -28,13 +28,13 @@ from .phone_operation_generator import PhoneOperationGenerator
 
 
 class QAPatternRecognitionGenerator(BaseQAGenerator):
-    def __init__(self, persona_data: Dict[str, Any] = None, event_tree: Dict[str, Any] = None, 
-                 daily_event: Dict[str, Any] = None, draft_event: Dict[str, Any] = None, 
-                 special_event: Dict[str, Any] = None, phone_data_dir: str = None, 
-                 is_print: bool = True):
+    def __init__(self, persona_data: Dict[str, Any] = None, event_tree: Dict[str, Any] = None,
+                 daily_event: Dict[str, Any] = None, draft_event: Dict[str, Any] = None,
+                 special_event: Dict[str, Any] = None, phone_data_dir: str = None,
+                 is_print: bool = True, year: int = 2025):
         """
         初始化模式识别 QA 生成器
-        
+
         Args:
             persona_data: 用户画像数据
             event_tree: 事件树数据
@@ -43,16 +43,18 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
             special_event: 特殊事件数据
             phone_data_dir: 手机数据目录路径
             is_print: 是否打印调试信息
+            year: 年份，默认 2025
         """
-        super().__init__(persona_data=persona_data, event_tree=event_tree, 
-                        daily_event=daily_event, draft_event=draft_event, 
+        super().__init__(persona_data=persona_data, event_tree=event_tree,
+                        daily_event=daily_event, draft_event=draft_event,
                         special_event=special_event, phone_data_dir=phone_data_dir)
         self.is_print = is_print
-        
+        self.default_ask_time = f"{year}-12-31"
+
         # 线程锁
         self.phonedata_lock = threading.Lock()
         self.phone_id_counters = {}
-        
+
         # 手机操作生成器
         self.phone_op_generator = PhoneOperationGenerator()
     
@@ -734,7 +736,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
             if isinstance(llm_result, list):
                 # 添加年度标识
                 for q in llm_result:
-                    q['ask_time'] = f"{year}-12-31"  # 年度问题标记为 12 月
+                    q['ask_time'] = self.default_ask_time  # 年度问题标记为 12 月
                     q['is_yearly'] = True
                 return llm_result
             
@@ -970,14 +972,14 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
             if isinstance(llm_result, list):
                 # 添加月份信息
                 for q in llm_result:
-                    q['ask_time'] = '2025-12-31'
+                    q['ask_time'] = self.default_ask_time
                 return llm_result
             elif isinstance(llm_result, dict) and 'questions' in llm_result:
                 # 如果返回的是包含 questions 字段的字典
                 questions = llm_result['questions']
                 if isinstance(questions, list):
                     for q in questions:
-                        q['ask_time'] = '2025-12-31'
+                        q['ask_time'] = self.default_ask_time
                     return questions
             
             print(f"[LLM Call] {month_key} - {question_type} 返回格式错误：{type(llm_result)}")

@@ -218,7 +218,9 @@ class QAGenerator:
                         init_kwargs['draft_event'] = draft_event
                     if 'phonedata' in params:
                         init_kwargs['phonedata'] = phonedata
-                    
+                    if 'year' in params:
+                        init_kwargs['year'] = year
+
                     # 初始化生成器
                     generator = generator_class(**init_kwargs)
                     
