@@ -1577,7 +1577,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
                     'score_points': score_points,
                     'required_events_id': required_events_id,
                     'evidence':[],
-                    'question_type':'MH'
+                    'question_type': 'Multi_hop'
                 }
                 
                 # Step 2: 调用 evidence_refine 进行证据优化
@@ -2094,7 +2094,7 @@ sms, phonecall, photo, push, note, calendar
                 # 添加 ask_time
                 random_month = random.randint(month, 12)
                 qa_result['ask_time'] = f"{year}-12-31"
-                qa_result['question_type'] = 'multi_hop'
+                qa_result['question_type'] = 'Multi_hop'
                 
                 monthly_qa.append(qa_result)
         

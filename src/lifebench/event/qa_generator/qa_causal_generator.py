@@ -364,7 +364,14 @@ class QACausalGenerator(BaseQAGenerator):
             res['required_events_id'] = [str(eid) for eid in all_ids if eid]
             res['question_type'] = 'Causal'
             res['ask_time'] = '2025-12-31'
-            
+
+            # 确保有 score_points
+            if 'score_points' not in res or not res['score_points']:
+                res['score_points'] = [{
+                    "description": "准确回答出答案",
+                    "score": 10
+                }]
+
             return res
         except Exception as e:
             if self.is_print:

@@ -121,10 +121,27 @@ class PhoneOperationGenerator:
         event_name = original_event.get('name', original_event.get('event_name', '未命名事件')) if isinstance(original_event, dict) else '未命名事件'
         
         hint_text = f"\n生成要求：{generation_hint}" if generation_hint else ""
-        
+
+        # 统一外部操作类型到内部标准类型
+        # phonecall 和 call 都统一为 call
+        normalized_type = operation_type
+        if operation_type == 'phonecall':
+            normalized_type = 'call'
+
+        # operation_type 到 type_spec key 的映射
+        type_spec_key_map = {
+            'call': 'phonecall',
+            'sms': 'sms',
+            'photo': 'photo',
+            'push': 'push',
+            'note': 'note',
+            'calendar': 'calendar'
+        }
+        type_spec_key = type_spec_key_map.get(normalized_type, normalized_type)
+
         # 根据事件类型提供特定的生成指导
         event_type_guidance = self._get_event_type_guidance(event_type, type_spec_key)
-        
+
         prompt = f"""
         作为手机操作数据生成器，请根据以下信息生成{operation_type}类型的操作数据。
         
@@ -164,23 +181,6 @@ class PhoneOperationGenerator:
         
         【不同类型的数据结构】
         """
-
-        # 统一外部操作类型到内部标准类型
-        # phonecall 和 call 都统一为 call
-        normalized_type = operation_type
-        if operation_type == 'phonecall':
-            normalized_type = 'call'
-
-        # operation_type 到 type_spec key 的映射
-        type_spec_key_map = {
-            'call': 'phonecall',
-            'sms': 'sms',
-            'photo': 'photo',
-            'push': 'push',
-            'note': 'note',
-            'calendar': 'calendar'
-        }
-        type_spec_key = type_spec_key_map.get(normalized_type, normalized_type)
 
         type_specs = {
             'sms': """

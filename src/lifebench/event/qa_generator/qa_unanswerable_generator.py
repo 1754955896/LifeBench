@@ -199,11 +199,14 @@ class QAUnanswerableGenerator(BaseQAGenerator):
                         
                         # 确保问题有必要的字段
                         if 'question_type' not in question:
-                            question['question_type'] = 'unanswerable'
+                            question['question_type'] = 'Unanswerable'
                         if 'answer' not in question:
                             question['answer'] = '无法回答'
                         if 'score_points' not in question:
-                            question['score_points'] = []
+                            question['score_points'] = [{
+                                "description": "准确回答出答案",
+                                "score": 10
+                            }]
                         if 'required_events' not in question:
                             question['required_events'] = []
                         if 'ask_time' not in question:

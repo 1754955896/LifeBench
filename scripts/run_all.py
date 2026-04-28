@@ -103,7 +103,8 @@ def run_for_persona(persona_data, persona_folder, instance_id, args):
     # 检查是否需要运行run.py（基于关键输出文件的存在性）
     # run.py会自动检查其内部各个模块是否需要运行
     # 这里我们可以基于最终合并的QA文件来判断是否需要运行整个流程
-    merged_qa_path = os.path.join(persona_folder, "QA", "QA.json")
+    # 注意: all_qa_generator.py 输出到 {data_path}/QA_all/QA.json
+    merged_qa_path = os.path.join(persona_folder, "QA_all", "QA.json")
     need_run = not os.path.exists(merged_qa_path)
     
     if need_run:

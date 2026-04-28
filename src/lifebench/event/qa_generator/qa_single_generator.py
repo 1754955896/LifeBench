@@ -1495,7 +1495,7 @@ class QASingleGenerator(BaseQAGenerator):
                 final_question.get('required_events_id', []),
                 f"{year}-{month:02d}"
             )
-            final_question['question_type'] = 'single_hop'
+            final_question['question_type'] = 'Single_hop'
             
             # 删除内部使用字段
             final_question.pop('design_rationale', None)

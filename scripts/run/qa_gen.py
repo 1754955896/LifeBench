@@ -4,12 +4,13 @@ import argparse
 import json
 
 # 添加项目根目录到 Python 路径
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# __file__ = scripts/run/qa_gen.py，项目根目录是上层目录的上层
+# src.lifebench.event 在项目根目录下，所以项目根目录需要加入 sys.path
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, project_root)
 
 # 导入 qa_generator 模块（直接从 event 目录导入 QaGenerator.py 文件）
-from src.lifebench.event import qa_generator
-
-QAGenerator = qa_generator.QAGenerator
+from src.lifebench.event.all_qa_generator import QAGenerator
 
 def main():
     # 创建参数解析器
@@ -23,12 +24,18 @@ def main():
     args = parser.parse_args()
     
     try:
+        # 转换 data_path 为绝对路径（相对于项目根目录）
+        if not os.path.isabs(args.data_path):
+            data_path = os.path.join(project_root, args.data_path)
+        else:
+            data_path = args.data_path
+
         # 初始化问答生成器
-        print(f"正在初始化问答生成器，数据路径：{args.data_path}")
-        qa_generator = QAGenerator(data_path=args.data_path)
-        
+        print(f"正在初始化问答生成器，数据路径：{data_path}")
+        qa_generator = QAGenerator(data_path=data_path)
+
         # 从rich_timeline.json文件中加载themes和event_id_groups数据
-        rich_timeline_path = os.path.join(args.data_path, "process", "rich_timeline.json")
+        rich_timeline_path = os.path.join(data_path, "process", "rich_timeline.json")
         themes = None
         event_id_groups = None
         

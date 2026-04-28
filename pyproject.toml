@@ -25,5 +25,5 @@ dependencies = [
 lifebench-generate = "run_all:main"
 
 [tool.setuptools.packages.find]
-where = ["."]
-include = ["event*", "persona*", "utils*", "run*"]
+where = ["src"]
+include = ["lifebench*"]

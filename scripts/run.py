@@ -29,7 +29,11 @@ def parse_args():
                         help='是否生成手机数据（默认：1）')
     parser.add_argument('--generate-monthly-report', type=int, default=1,
                         help='是否执行月度报告的生成（默认：1）')
-    
+    parser.add_argument('--generate-qa', type=int, default=1,
+                        help='是否生成QA（默认：1）')
+    parser.add_argument('--year', type=int, default=2025,
+                        help='生成数据的年份（默认：2025）')
+
     return parser.parse_args()
 
 
@@ -125,6 +129,53 @@ def run_simulator(args):
     except Exception as e:
         print(f"\n{'='*60}")
         print(f"错误: 运行模拟器系统时发生异常!")
+        print(f"错误信息: {str(e)}")
+        print(f"{'='*60}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+def run_qa_gen(args):
+    """
+    运行QA生成系统
+    :param args: 命令行参数
+    :return: 是否成功运行
+    """
+    print(f"\n{'='*60}")
+    print(f"开始运行: QA生成系统")
+    print(f"开始时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"{'='*60}")
+
+    try:
+        # 构建命令行参数
+        cmd = [
+            sys.executable,
+            '-u',  # 强制无缓冲输出
+            os.path.join(os.path.dirname(__file__), 'run', 'qa_gen.py'),
+            '--data-path', args.base_path,
+            '--year', str(args.year)
+        ]
+
+        print(f"执行命令: {' '.join(cmd)}")
+
+        # 运行脚本
+        result = subprocess.run(cmd, check=True, stdout=None, stderr=None)
+
+        print(f"\n{'='*60}")
+        print(f"QA生成系统运行成功!")
+        print(f"结束时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"{'='*60}")
+        return True
+    except subprocess.CalledProcessError as e:
+        print(f"\n{'='*60}")
+        print(f"错误: QA生成系统运行失败!")
+        print(f"退出码: {e.returncode}")
+        print(f"{'='*60}")
+        return False
+    except Exception as e:
+        print(f"\n{'='*60}")
+        print(f"错误: 运行QA生成系统时发生异常!")
         print(f"错误信息: {str(e)}")
         print(f"{'='*60}")
         import traceback
@@ -285,7 +336,23 @@ if __name__ == '__main__':
             print(f"\n{'='*60}")
             print(f"跳过生成手机数据")
             print(f"{'='*60}")
-        
+
+        # 根据参数决定是否生成QA
+        if args.generate_qa == 1:
+            print(f"\n{'='*60}")
+            print(f"开始生成QA...")
+            print(f"{'='*60}")
+
+            if not run_qa_gen(args):
+                print(f"\n{'='*60}")
+                print(f"错误: QA生成系统运行失败!")
+                print(f"{'='*60}")
+                sys.exit(1)
+        else:
+            print(f"\n{'='*60}")
+            print(f"跳过生成QA")
+            print(f"{'='*60}")
+
         sys.exit(0)
     else:
         sys.exit(1)

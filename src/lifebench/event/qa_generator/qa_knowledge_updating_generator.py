@@ -842,7 +842,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                     else:
                         qa["required_events_id"] = []
                         qa["evidence"] = []
-                    qa['question_type'] = 'Knowledge_Update'
+                    qa['question_type'] = 'Knowledge_update'
                     qa['score_points'] = [{
         "description": f"正确回答出答案:{qa['answer']}",
         "score": 10

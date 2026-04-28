@@ -77,7 +77,7 @@ def llm_call(prompt, context="你是一个人物分析师、故事创作者、�
     
     # 调用LLM
     response = client.chat.completions.create(
-        model="deepseek-chat",
+        model="deepseek-v4-flash",
         messages=messages,
         stream=False
     )
@@ -125,7 +125,7 @@ def llm_call_reason(prompt, context="你是一个人物分析师、故事创作�
     
     # 调用LLM
     response = client.chat.completions.create(
-        model="deepseek-reasoner",
+        model="deepseek-v4-pro",
         messages=messages,
         stream=False
     )
@@ -171,7 +171,7 @@ def llm_call_j(prompt,record=0):
     
     # 调用LLM，增加response_format参数以确保返回JSON格式
     response = client.chat.completions.create(
-        model="deepseek-chat",
+        model="deepseek-v4-flash",
         messages=messages,
         stream=False,
         response_format={'type': 'json_object'}
@@ -220,7 +220,7 @@ def llm_call_reason_j(prompt,record=0):
     
     # 调用LLM，增加response_format参数以确保返回JSON格式
     response = client.chat.completions.create(
-        model="deepseek-reasoner",
+        model="deepseek-v4-pro",
         messages=messages,
         stream=False,
         response_format={'type': 'json_object'}

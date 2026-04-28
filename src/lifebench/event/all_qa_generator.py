@@ -1,5 +1,6 @@
 import json
 import os
+import copy
 import importlib
 from typing import List, Dict, Any
 from src.lifebench.event.qa_generator.base_generator import BaseQAGenerator
@@ -164,7 +165,7 @@ class QAGenerator:
         
         # 尝试从 event.qa_generator 包的__init__.py 中获取所有导出类
         try:
-            import event.qa_generator as qa_pkg
+            import src.lifebench.event.qa_generator as qa_pkg
             print(f"\n[Step 3] 导入 event.qa_generator 包")
             
             # 检查是否有__all__定义
@@ -192,8 +193,8 @@ class QAGenerator:
                 
                 try:
                     # 动态导入模块
-                    print(f"\n正在导入模块：event.qa_generator.{module_name}")
-                    module = importlib.import_module(f'event.qa_generator.{module_name}')
+                    print(f"\n正在导入模块：src.lifebench.event.qa_generator.{module_name}")
+                    module = importlib.import_module(f'src.lifebench.event.qa_generator.{module_name}')
                     # 获取类
                     generator_class = getattr(module, class_name)
                     print(f"✓ 找到类：{class_name}")
@@ -375,6 +376,10 @@ class QAGenerator:
             print("\n问题类型统计:")
             for q_type, count in sorted(type_count.items()):
                 print(f"  - {q_type}: {count} 个问题")
+
+            # 转换 hidden_info 选择题为问答题格式
+            print("\n开始转换 hidden_info 选择题为问答题格式...")
+            self._convert_hidden_info_to_qa()
         else:
             print("\n⚠️ 未生成任何问题")
         
@@ -387,7 +392,53 @@ class QAGenerator:
             first_generator = next(iter(self.generators.values()))['instance']
             first_generator.save_phone_data_to_dir(new_phone_data_dir)
             print(f"所有手机数据已保存到：{new_phone_data_dir}！")
-    
+
+    def _convert_hidden_info_to_qa(self):
+        """
+        将 hidden_info 选择题转换为问答题格式
+
+        将 options 和 correct_answer 转换为：
+        - question: 原题 + 选项列表
+        - answer: correct_answer（字母如 "C"）
+        - score_points: 评分点
+        """
+        input_path = os.path.join(self.data_path, "QA_all", "hidden_info.json")
+
+        if not os.path.exists(input_path):
+            print(f"⚠️ hidden_info.json 不存在，跳过转换")
+            return
+
+        try:
+            with open(input_path, 'r', encoding='utf-8') as f:
+                questions = json.load(f)
+
+            if not isinstance(questions, list):
+                print(f"⚠️ hidden_info.json 格式错误，期望列表类型")
+                return
+
+            converted_count = 0
+            for qa in questions:
+                if 'options' in qa and 'correct_answer' in qa:
+                    options = qa.get('options', [])
+                    correct_answer = qa.get('correct_answer', '')
+
+                    # 将选项拼接到 question
+                    options_text = '\n' + '\n'.join(options)
+                    qa['question'] = qa.get('question', '') + options_text
+                    qa['answer'] = correct_answer
+                    qa['score_points'] = [{
+                        "description": "准确回答出答案",
+                        "score": 10
+                    }]
+                    converted_count += 1
+
+            with open(input_path, 'w', encoding='utf-8') as f:
+                json.dump(questions, f, ensure_ascii=False, indent=2)
+
+            print(f"✓ hidden_info 转换完成: {converted_count} 个问题已添加 answer 和 score_points")
+        except Exception as e:
+            print(f"⚠️ hidden_info 转换失败: {e}")
+
     def get_registered_generators(self) -> List[str]:
         """
         获取所有已注册的生成器名称列表
@@ -490,8 +541,8 @@ class QAGenerator:
             for other_name, other_data in self.generators.items():
                 other_gen = other_data['instance']
                 if other_gen != source_gen:
-                    other_gen.phonedata = source_gen.phonedata.copy()
-                    other_gen.phone_id_counters = source_gen.phone_id_counters.copy()
+                    other_gen.phonedata = copy.deepcopy(source_gen.phonedata)
+                    other_gen.phone_id_counters = copy.deepcopy(source_gen.phone_id_counters)
             
             # 重置更新标记
             source_gen._data_updated = False

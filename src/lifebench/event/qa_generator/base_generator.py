@@ -8,6 +8,7 @@ QA 生成器基类
 import json
 import os
 import random
+import copy
 import threading
 from typing import List, Dict, Any, Tuple
 from abc import ABC, abstractmethod
@@ -220,38 +221,39 @@ class BaseQAGenerator(ABC):
     def get_phone_operations_by_event_id(self, event_id: str) -> List[Dict[str, Any]]:
         """根据事件 ID 获取相关手机操作"""
         phone_operations = []
-        
+
         if not self.phonedata:
             print("手机数据未加载")
             return phone_operations
-        
+
         for data_type, data_list in self.phonedata.items():
             if isinstance(data_list, list):
                 for item in data_list:
                     if isinstance(item, dict):
-                        if "event_id" in item and item["event_id"] == event_id:
+                        # 优先匹配 daily_event_id（重命名前的 event_id）
+                        if "daily_event_id" in item and item["daily_event_id"] == event_id:
                             phone_operations.append(item)
                         elif "related_event" in item and item["related_event"] == event_id:
                             phone_operations.append(item)
-        
+
         return phone_operations
     
     def sync_data_from(self, other_generator: 'BaseQAGenerator'):
         """
         从另一个生成器同步数据
-        
+
         Args:
             other_generator: 数据来源的生成器实例
         """
         with self.phonedata_lock:
-            self.phonedata = other_generator.phonedata.copy()
+            self.phonedata = copy.deepcopy(other_generator.phonedata)
         with self.phone_id_lock:
-            self.phone_id_counters = other_generator.phone_id_counters.copy()
-        self.persona_data = other_generator.persona_data.copy()
-        self.event_tree = other_generator.event_tree.copy()
-        self.daily_event = other_generator.daily_event.copy()
-        self.draft_event = other_generator.draft_event.copy()
-        self.special_event = other_generator.special_event.copy()
+            self.phone_id_counters = copy.deepcopy(other_generator.phone_id_counters)
+        self.persona_data = copy.deepcopy(other_generator.persona_data)
+        self.event_tree = copy.deepcopy(other_generator.event_tree)
+        self.daily_event = copy.deepcopy(other_generator.daily_event)
+        self.draft_event = copy.deepcopy(other_generator.draft_event)
+        self.special_event = copy.deepcopy(other_generator.special_event)
     
     def clear_phonedata(self):
         """清空手机数据"""

@@ -371,7 +371,7 @@ class QATemporalGenerator(BaseQAGenerator):
         print("\n[QAGen] 设置所有问题的 question_type...")
         for question in all_questions:
             if 'question_type' not in question:
-                question['question_type'] = 'temporal'
+                question['question_type'] = 'Temporal'
         
         # Step 4: 保存结果
         if all_questions:
