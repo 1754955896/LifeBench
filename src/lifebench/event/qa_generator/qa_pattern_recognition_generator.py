@@ -1046,27 +1046,28 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
     
     def _save_questions(self, questions: List[Dict[str, Any]], year: str):
         """
-        保存问题到文件
-        
+        保存问题到文件（已移至 all_qa_generator 统一处理，注释掉）
+
         Args:
             questions: 问题列表
             year: 年份
         """
-        if not self.phone_data_dir:
-            print("[Save] phone_data_dir 未设置，跳过保存")
-            return
-        
-        try:
-            parent_dir = os.path.dirname(self.phone_data_dir)
-            file_path = os.path.join(parent_dir, f"pattern_recognition_qa_{year}.json")
-            
-            with open(file_path, 'w', encoding='utf-8') as f:
-                json.dump(questions, f, ensure_ascii=False, indent=2)
-            
-            print(f"\n[Save] 问题已保存到：{file_path}")
-            print(f"[Save] 共保存{len(questions)}个问题")
-        except Exception as e:
-            print(f"[Save] 保存失败：{e}")
+        # # 保存逻辑已移至 all_qa_generator 统一处理
+        # if not self.phone_data_dir:
+        #     print("[Save] phone_data_dir 未设置，跳过保存")
+        #     return
+        #
+        # try:
+        #     parent_dir = os.path.dirname(self.phone_data_dir)
+        #     file_path = os.path.join(parent_dir, f"pattern_recognition_qa_{year}.json")
+        #
+        #     with open(file_path, 'w', encoding='utf-8') as f:
+        #         json.dump(questions, f, ensure_ascii=False, indent=2)
+        #
+        #     print(f"\n[Save] 问题已保存到：{file_path}")
+        #     print(f"[Save] 共保存{len(questions)}个问题")
+        # except Exception as e:
+        #     print(f"[Save] 保存失败：{e}")
     
     def _parallel_filter_and_refine(self, questions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """

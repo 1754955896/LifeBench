@@ -1918,35 +1918,36 @@ class QATemporalGenerator(BaseQAGenerator):
 
     def _save_questions(self, questions: List[Dict[str, Any]], year: str):
         """
-        保存问题到文件
-        
+        保存问题到文件（已移至 all_qa_generator 统一处理，注释掉）
+
         Args:
             questions: 问题列表
             year: 年份
         """
-        if not self.phone_data_dir:
-            print("[Save] phone_data_dir 未设置，跳过保存")
-            return
-        
-        try:
-            parent_dir = os.path.dirname(self.phone_data_dir)
-            file_path = os.path.join(parent_dir, f"temporal_qa_{year}.json")
-            
-            with open(file_path, 'w', encoding='utf-8') as f:
-                json.dump(questions, f, ensure_ascii=False, indent=2)
-            
-            print(f"\n[Save] 问题已保存到：{file_path}")
-            print(f"[Save] 共保存{len(questions)}个问题")
-            
-            # 统计各类问题数量
-            type_counts = {}
-            for q in questions:
-                qtype = q.get('question_type', 'unknown')
-                type_counts[qtype] = type_counts.get(qtype, 0) + 1
-            
-            print(f"[Save] 问题类型分布：{type_counts}")
-        except Exception as e:
-            print(f"[Save] 保存失败：{e}")
+        # # 保存逻辑已移至 all_qa_generator 统一处理
+        # if not self.phone_data_dir:
+        #     print("[Save] phone_data_dir 未设置，跳过保存")
+        #     return
+        #
+        # try:
+        #     parent_dir = os.path.dirname(self.phone_data_dir)
+        #     file_path = os.path.join(parent_dir, f"temporal_qa_{year}.json")
+        #
+        #     with open(file_path, 'w', encoding='utf-8') as f:
+        #         json.dump(questions, f, ensure_ascii=False, indent=2)
+        #
+        #     print(f"\n[Save] 问题已保存到：{file_path}")
+        #     print(f"[Save] 共保存{len(questions)}个问题")
+        #
+        #     # 统计各类问题数量
+        #     type_counts = {}
+        #     for q in questions:
+        #         qtype = q.get('question_type', 'unknown')
+        #         type_counts[qtype] = type_counts.get(qtype, 0) + 1
+        #
+        #     print(f"[Save] 问题类型分布：{type_counts}")
+        # except Exception as e:
+        #     print(f"[Save] 保存失败：{e}")
     
     def _generate_frequency_count_questions(self, event_groups: Dict[str, Any], year: int) -> List[Dict[str, Any]]:
         """

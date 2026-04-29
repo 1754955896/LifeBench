@@ -383,12 +383,13 @@ class QACausalGenerator(BaseQAGenerator):
     def run(self, output_path: str = "output/causal_qa.json"):
         """执行完整的因果问题生成流程"""
         questions = self.generate_questions()
-        
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(questions, f, ensure_ascii=False, indent=2)
-        if self.is_print:
-            print(f"[CausalGen] ✓ 完成！结果已保存至: {output_path}")
+
+        # # 保存结果到文件（已移至 all_qa_generator 统一处理）
+        # os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        # with open(output_path, 'w', encoding='utf-8') as f:
+        #     json.dump(questions, f, ensure_ascii=False, indent=2)
+        # if self.is_print:
+        #     print(f"[CausalGen] ✓ 完成！结果已保存至: {output_path}")
         return questions
 
     def QAGen(self, **kwargs):

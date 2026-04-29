@@ -2377,16 +2377,15 @@ sms, phonecall, photo, push, note, calendar
             all_qa = self._filter_multi_hop_questions(all_qa, max_workers=20)
             print(f"过滤后剩余 {len(all_qa)} 个问题")
         
-        # 保存到文件
-        if self.phone_data_dir:
-            parent_dir = os.path.dirname(self.phone_data_dir)
-            output_path = os.path.join(parent_dir, "multi_hop_qa.json")
-            
-            with open(output_path, "w", encoding="utf-8") as f:
-                json.dump(all_qa, f, ensure_ascii=False, indent=2)
-            
-            print(f"\n问答对已成功写入文件：{output_path}")
-        
+        # # 保存到文件（已移至 all_qa_generator 统一处理）
+        # if self.phone_data_dir:
+        #     parent_dir = os.path.dirname(self.phone_data_dir)
+        #     output_path = os.path.join(parent_dir, "multi_hop_qa.json")
+        #
+        #     with open(output_path, "w", encoding="utf-8") as f:
+        #         json.dump(all_qa, f, ensure_ascii=False, indent=2)
+        #
+        #     print(f"\n问答对已成功写入文件：{output_path}")
         print(f"共生成 {len(all_qa)} 个问答对\n")
         
         return all_qa
