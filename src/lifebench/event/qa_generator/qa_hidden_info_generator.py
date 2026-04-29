@@ -183,47 +183,106 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
 
     def _convert_to_qa_format(self, questions: List[Dict]) -> List[Dict]:
         """
-        将选择题格式转换为问答题格式
+        将选择题格式转换为问答题格式（使用 LLM 并行重写）
 
         将 options 和 correct_answer 转换为：
-        - question: 原题 + 选项列表
+        - question: 改写为问答题格式
         - answer: correct_answer（字母如 "C"）
         - score_points: 评分点
         """
-        converted_count = 0
-        new_questions = []
-
-        # 调试：检查有多少问题包含 options 和 correct_answer
-        debug_count = sum(1 for qa in questions if 'options' in qa and 'correct_answer' in qa)
-        print(f"[HiddenInfoGen] 调试: 共 {len(questions)} 个问题，其中 {debug_count} 个包含 options 和 correct_answer")
-
+        # 找出需要转换的问题
+        questions_to_convert = []
+        questions_to_keep = []
         for qa in questions:
             if 'options' in qa and 'correct_answer' in qa:
-                options = qa.get('options', [])
-                correct_answer = qa.get('correct_answer', '')
-
-                # 将选项转字符串拼接
-                options_text = str(options)
-
-                # 先复制所有字段
-                new_qa = dict(qa)
-                # 删除 options 和 correct_answer
-                new_qa.pop('options', None)
-                new_qa.pop('correct_answer', None)
-                # 修改 question 和 answer
-                new_qa['question'] = new_qa.get('question', '') + options_text
-                new_qa['answer'] = correct_answer
-                new_qa['score_points'] = [{"description": "准确回答出答案", "score": 10}]
-
-                new_questions.append(new_qa)
-                converted_count += 1
+                questions_to_convert.append(qa)
             else:
-                new_questions.append(qa)
+                questions_to_keep.append(qa)
 
-        if converted_count > 0:
-            print(f"[HiddenInfoGen] ✓ 格式转换完成: {converted_count} 个问题已转换为问答题格式")
+        if not questions_to_convert:
+            print(f"[HiddenInfoGen] 无需转换的问题")
+            return questions
 
-        return new_questions
+        print(f"[HiddenInfoGen] 需要使用 LLM 重写 {len(questions_to_convert)} 个选择题为问答题")
+
+        # 使用 ThreadPoolExecutor 并行重写
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+
+        def rewrite_single_qa(qa: Dict) -> Dict:
+            """使用 LLM 将选择题重写为问答题"""
+            options = qa.get('options', [])
+            correct_answer = qa.get('correct_answer', '')
+
+            prompt = f"""请将以下选择题改写为问答题格式。
+
+【原始选择题】
+问题：{qa.get('question', '')}
+选项：
+{json.dumps(options, ensure_ascii=False, indent=2)}
+正确答案：{correct_answer}
+
+【要求】
+1. 将选择题改写为自然流畅的问答题
+2. 将选项内容融入到问题中（不要只保留字母）
+3. 保持问题的意图和意义不变
+4. 问题应该像用户在询问一个真实的问题
+
+请以 JSON 格式返回：
+{{
+    "question": "改写后的问题（选项内容融入问题中）",
+    "answer": "对应的选项内容",
+    "score_points": [{{"description": "准确回答出答案", "score": 10}}]
+}}
+"""
+            try:
+                result = llm_call_j(prompt)
+                if isinstance(result, str):
+                    start_idx = result.find('{')
+                    end_idx = result.rfind('}') + 1
+                    if start_idx != -1 and end_idx != -1:
+                        result = json.loads(result[start_idx:end_idx])
+
+                if isinstance(result, dict) and 'question' in result:
+                    # 复制其他字段
+                    new_qa = dict(qa)
+                    new_qa.pop('options', None)
+                    new_qa.pop('correct_answer', None)
+                    new_qa['question'] = result['question']
+                    new_qa['answer'] = result.get('answer', correct_answer)
+                    new_qa['score_points'] = result.get('score_points', [{"description": "准确回答出答案", "score": 10}])
+                    print(f"[HiddenInfoGen] ✓ 成功重写问题")
+                    return new_qa
+            except Exception as e:
+                print(f"[HiddenInfoGen] 重写失败: {e}")
+
+            # 失败时使用规则重写方式
+            options_text = '\n' + '\n'.join(options) if isinstance(options, list) else str(options)
+            new_qa = dict(qa)
+            new_qa.pop('options', None)
+            new_qa.pop('correct_answer', None)
+            new_qa['question'] = new_qa.get('question', '') + options_text
+            new_qa['answer'] = correct_answer
+            new_qa['score_points'] = [{"description": "准确回答出答案", "score": 10}]
+            return new_qa
+
+        # 并行重写
+        rewritten_questions = [None] * len(questions_to_convert)
+        with ThreadPoolExecutor(max_workers=20) as executor:
+            futures = {
+                executor.submit(rewrite_single_qa, qa): i
+                for i, qa in enumerate(questions_to_convert)
+            }
+            for future in as_completed(futures):
+                i = futures[future]
+                try:
+                    rewritten_questions[i] = future.result()
+                except Exception as e:
+                    print(f"[HiddenInfoGen] 重写任务异常: {e}")
+                    rewritten_questions[i] = questions_to_convert[i]
+
+        print(f"[HiddenInfoGen] ✓ 格式转换完成: {len(rewritten_questions)} 个问题已使用 LLM 重写")
+
+        return questions_to_keep + rewritten_questions
     
     def _generate_questions_for_month(self, month: str) -> List[Dict]:
         """
