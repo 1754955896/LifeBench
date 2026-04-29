@@ -67,7 +67,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
             print(f"  - 共 {len(months)} 个月份需要处理")
         
         # 并行处理每个月
-        with ThreadPoolExecutor(max_workers=6) as executor:
+        with ThreadPoolExecutor(max_workers=20) as executor:
             future_to_month = {}
             for month in months:
                 future = executor.submit(
@@ -176,7 +176,58 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
         if self.is_print:
             print(f"[HiddenInfoGen] ✓ 过滤完成，通过验证的问题数量：{len(all_questions)}")
 
+        # 转换选择题格式为问答题格式
+        all_questions = self._convert_to_qa_format(all_questions)
+
         return all_questions
+
+    def _convert_to_qa_format(self, questions: List[Dict]) -> List[Dict]:
+        """
+        将选择题格式转换为问答题格式
+
+        将 options 和 correct_answer 转换为：
+        - question: 原题 + 选项列表
+        - answer: correct_answer（字母如 "C"）
+        - score_points: 评分点
+        """
+        converted_count = 0
+        new_questions = []
+
+        # 调试：检查有多少问题包含 options 和 correct_answer
+        debug_count = sum(1 for qa in questions if 'options' in qa and 'correct_answer' in qa)
+        print(f"[HiddenInfoGen] 调试: 共 {len(questions)} 个问题，其中 {debug_count} 个包含 options 和 correct_answer")
+
+        for qa in questions:
+            if 'options' in qa and 'correct_answer' in qa:
+                options = qa.get('options', [])
+                correct_answer = qa.get('correct_answer', '')
+                #print(options)
+                
+                # 将选项转字符串拼接
+                options_text = str(options)
+                #print(options_text)
+                # 构建新的问题字典，只保留需要的字段
+                new_qa = {
+                    'question': qa.get('question', '') + options_text,
+                    'answer': correct_answer,
+                    'score_points': [{"description": "准确回答出答案", "score": 10}]
+                }
+                #print(new_qa)
+                
+                # 复制其他字段
+                for key in qa:
+                    if key not in ['options', 'correct_answer']:
+                        new_qa[key] = qa[key]
+
+                new_questions.append(new_qa)
+                converted_count += 1
+            else:
+                new_questions.append(qa)
+
+        if converted_count > 0:
+            print(f"[HiddenInfoGen] ✓ 格式转换完成: {converted_count} 个问题已转换为问答题格式")
+
+        return new_questions
     
     def _generate_questions_for_month(self, month: str) -> List[Dict]:
         """

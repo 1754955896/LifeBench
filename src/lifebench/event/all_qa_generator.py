@@ -379,12 +379,8 @@ class QAGenerator:
             for q_type, count in sorted(type_count.items()):
                 print(f"  - {q_type}: {count} 个问题")
 
-            # 转换 hidden_info 选择题为问答题格式
-            print("\n开始转换 hidden_info 选择题为问答题格式...")
-            self._convert_hidden_info_to_qa()
-        else:
-            print("\n⚠️ 未生成任何问题")
-        
+            # hidden_info 格式转换已移至 qa_hidden_info_generator.py 的 QAGen 方法中
+
         # 保存所有手机数据到新目录
         print("\n开始保存所有手机数据...")
         new_phone_data_dir = os.path.join(self.phone_data_dir, "new")
@@ -394,52 +390,6 @@ class QAGenerator:
             first_generator = next(iter(self.generators.values()))['instance']
             first_generator.save_phone_data_to_dir(new_phone_data_dir)
             print(f"所有手机数据已保存到：{new_phone_data_dir}！")
-
-    def _convert_hidden_info_to_qa(self):
-        """
-        将 hidden_info 选择题转换为问答题格式
-
-        将 options 和 correct_answer 转换为：
-        - question: 原题 + 选项列表
-        - answer: correct_answer（字母如 "C"）
-        - score_points: 评分点
-        """
-        input_path = os.path.join(self.data_path, "QA_all", "hidden_info.json")
-
-        if not os.path.exists(input_path):
-            print(f"⚠️ hidden_info.json 不存在，跳过转换")
-            return
-
-        try:
-            with open(input_path, 'r', encoding='utf-8') as f:
-                questions = json.load(f)
-
-            if not isinstance(questions, list):
-                print(f"⚠️ hidden_info.json 格式错误，期望列表类型")
-                return
-
-            converted_count = 0
-            for qa in questions:
-                if 'options' in qa and 'correct_answer' in qa:
-                    options = qa.get('options', [])
-                    correct_answer = qa.get('correct_answer', '')
-
-                    # 将选项拼接到 question
-                    options_text = '\n' + '\n'.join(options)
-                    qa['question'] = qa.get('question', '') + options_text
-                    qa['answer'] = correct_answer
-                    qa['score_points'] = [{
-                        "description": "准确回答出答案",
-                        "score": 10
-                    }]
-                    converted_count += 1
-
-            with open(input_path, 'w', encoding='utf-8') as f:
-                json.dump(questions, f, ensure_ascii=False, indent=2)
-
-            print(f"✓ hidden_info 转换完成: {converted_count} 个问题已添加 answer 和 score_points")
-        except Exception as e:
-            print(f"⚠️ hidden_info 转换失败: {e}")
 
     def get_registered_generators(self) -> List[str]:
         """

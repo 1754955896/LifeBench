@@ -444,8 +444,20 @@ class QACausalGenerator(BaseQAGenerator):
         
         if self.is_print:
             print(f"[QAGen] ✓ 问题过滤完成，保留 {len(filtered_questions)}/{len(refined_questions)} 个问题")
-        
-        return filtered_questions
+
+        # 扁平化数据结构：将 question['data'] 中的内容提到顶层
+        flattened_questions = []
+        for q in filtered_questions:
+            if 'data' in q:
+                flat_q = q['data'].copy()
+                # 确保 evidence 直接在顶层
+                if 'evidence' not in flat_q and 'data' in q and 'evidence' in q['data']:
+                    flat_q['evidence'] = q['data']['evidence']
+                flattened_questions.append(flat_q)
+            else:
+                flattened_questions.append(q)
+
+        return flattened_questions
 
     def _analyze_and_filter_question(self, question: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -663,7 +675,7 @@ class QACausalGenerator(BaseQAGenerator):
         {json.dumps(event_details, ensure_ascii=False, indent=2)}
                     
         【现有手机数据证据】（共{len(all_existing_evidence)}条）
-        {json.dumps([{'event_id': ev['event_id'], 'type': ev['type'], 'phone_id': ev['phone_id'], 'data_summary': str(ev['data'])[:200]} for ev in all_existing_evidence], ensure_ascii=False, indent=2)}
+        {json.dumps([{'type': ev.get('type', ''), 'phone_id': ev.get('phone_id', ''), 'data_summary': str(ev)[:200]} for ev in all_existing_evidence], ensure_ascii=False, indent=2)}
                     
         【可生成的数据类型】
         sms, phonecall, photo, push, note, calendar
