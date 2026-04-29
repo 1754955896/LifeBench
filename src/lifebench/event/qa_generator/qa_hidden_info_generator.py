@@ -20,7 +20,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
     def __init__(self, daily_event: List[Dict], event_tree: List[Dict],
                  draft_event: Dict[str, List], phonedata: Dict[str, List],
                  phone_data_dir: str = None, is_print: bool = True,
-                 persona: Dict = None, year: int = 2025):
+                 persona_data: Dict = None, year: int = 2025):
         """
         初始化隐藏信息 QA 生成器
 
@@ -31,7 +31,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
             phonedata: 手机操作数据字典
             phone_data_dir: 手机数据目录路径
             is_print: 是否打印调试信息
-            persona: 用户画像数据
+            persona_data: 用户画像数据
             year: 年份，默认 2025
         """
         super().__init__()
@@ -42,7 +42,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
         self.phone_data_dir = phone_data_dir
         self.is_print = is_print
         self.year = year
-        self.persona = persona
+        self.persona_data = persona_data
     
     def QAGen(self, **kwargs) -> List[Dict]:
         """
@@ -609,7 +609,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
             })
         
         # 准备 persona 数据
-        persona_info = json.dumps(self.persona, ensure_ascii=False, indent=2) if self.persona else "无用户画像数据"
+        persona_info = json.dumps(self.persona_data, ensure_ascii=False, indent=2) if self.persona_data else "无用户画像数据"
         
         # 准备月度总结数据
         month_summary_info = json.dumps(month_summary, ensure_ascii=False, indent=2) if month_summary else "无月度总结"
