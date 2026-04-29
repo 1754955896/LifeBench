@@ -1,5 +1,12 @@
+import os
+import sys
 import json
-import os.path
+import random
+
+# 添加项目根目录到 Python 路径
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, project_root)
+
 from src.lifebench.event.phone_data_gen import (
     PhoneEventMatcher,
     extool,
@@ -114,8 +121,9 @@ if __name__ == "__main__":
     parser.add_argument('--start-time', type=str, default='2025-01-01', help='开始日期')
     parser.add_argument('--end-time', type=str, default='2025-01-31', help='结束日期')
     parser.add_argument('--max-workers', type=int, default=40, help='最大并行线程数')
-    parser.add_argument('--phone-count-min', type=int, default=5, help='每天手机数据最小条数')
-    parser.add_argument('--phone-count-max', type=int, default=5, help='每天手机数据最大条数')
+    parser.add_argument('--phone-count-min', type=int, default=2, help='每天手机数据最小条数')
+    parser.add_argument('--phone-count-max', type=int, default=7, help='每天手机数据最大条数')
+    parser.add_argument('--phone-count-weekly-max', type=int, default=30, help='每周手机数据最大条数')
     parser.add_argument('--process-only', action='store_true', help='仅执行数据后处理操作，不生成新数据')
     args = parser.parse_args()
 
@@ -152,15 +160,67 @@ if __name__ == "__main__":
         atomic_events_file = os.path.join(file_path, "event_tree.json")
         matcher = PhoneEventMatcher(atomic_events_file=atomic_events_file)
 
+        # 计算每天应该生成的随机数据量
+        from datetime import datetime, timedelta
+
+        def generate_daily_counts(start_time, end_time, daily_min, daily_max, weekly_max):
+            """生成每天的随机数据量，满足周约束"""
+            daily_counts = {}
+            current_date = datetime.strptime(start_time, "%Y-%m-%d")
+            end_date = datetime.strptime(end_time, "%Y-%m-%d")
+
+            while current_date <= end_date:
+                # 计算这天的基础随机值
+                base_count = random.randint(daily_min, daily_max)
+                daily_counts[current_date.strftime("%Y-%m-%d")] = base_count
+                current_date += timedelta(days=1)
+
+            # 如果周总量超过限制，进行调整
+            # 按周分组
+            weeks = {}
+            for date_str, count in daily_counts.items():
+                date_obj = datetime.strptime(date_str, "%Y-%m-%d")
+                week_num = date_obj.isocalendar()[1]
+                year = date_obj.year
+                week_key = f"{year}-W{week_num:02d}"
+                if week_key not in weeks:
+                    weeks[week_key] = []
+                weeks[week_key].append((date_str, count))
+
+            # 调整超过 weekly_max 的周
+            for week_key, day_counts in weeks.items():
+                total = sum(c for _, c in day_counts)
+                if total > weekly_max:
+                    # 按比例压缩
+                    ratio = weekly_max / total
+                    for i, (date_str, count) in enumerate(day_counts):
+                        new_count = max(1, int(count * ratio))
+                        daily_counts[date_str] = new_count
+
+            return daily_counts
+
+        # 生成每天的数据量
+        daily_counts = generate_daily_counts(
+            start_time, end_time,
+            args.phone_count_min, args.phone_count_max,
+            args.phone_count_weekly_max
+        )
+
+        print(f"\n每天计划生成的数据量：")
+        for date_str in sorted(daily_counts.keys())[:7]:
+            print(f"  {date_str}: {daily_counts[date_str]} 条")
+        if len(daily_counts) > 7:
+            print(f"  ... 共 {len(daily_counts)} 天")
+
         # 执行全部数据生成任务（使用 dynamic 版本）
-        print(f"开始生成所有类型的手机数据，日期范围：{start_time} 到 {end_time}")
+        print(f"\n开始生成所有类型的手机数据，日期范围：{start_time} 到 {end_time}")
         result = parallel_process_dates_dynamic(
             start_time=start_time,
             end_time=end_time,
             contact=contact,
             file_path=file_path,
             matcher=matcher,
-            phone_count_control={"min": args.phone_count_min, "max": args.phone_count_max},
+            daily_counts=daily_counts,
             max_workers=args.max_workers
         )
 

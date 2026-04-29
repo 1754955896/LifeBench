@@ -1,10 +1,16 @@
-from src.lifebench.event.scheduler import Scheduler
 import os
+import sys
 import json
 import argparse
 import multiprocessing
 import time
 from datetime import timedelta
+
+# 添加项目根目录到 Python 路径
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, project_root)
+
+from src.lifebench.event.draft_gen import DraftGen
 
 
 def ensure_directory_exists(directory):
@@ -60,11 +66,6 @@ def main():
         # 将median_path设置为process_path
         meidan_path = process_file_path
 
-        # 初始化时间记录字典
-        execution_times = {
-            'yearly_draft_gen': 0
-        }
-
         # 计算默认线程数
         cpu_count = multiprocessing.cpu_count()
         default_workers = cpu_count * 2
@@ -78,7 +79,7 @@ def main():
         print(f"- 最大工作线程数: {max_workers}")
         print(f"- 基础数据路径: {base_file_path}")
         print(f"- 处理文件路径: {process_file_path}")
-        print(f"- 除每日状态外的其他数据输出路径: {meidan_path}")
+        print(f"- 中间数据路径: {meidan_path}")
 
         # 确保目录存在
         ensure_directory_exists(process_file_path)
@@ -87,25 +88,16 @@ def main():
         persona_file = os.path.join(base_file_path, 'persona.json')
         persona = read_json_file(persona_file)
 
-        # 初始化调度器
-        scheduler = Scheduler(persona, base_file_path)
+        # 初始化 DraftGen
+        draft_gen = DraftGen(persona, base_file_path)
 
-        # 配置线程数
-        if hasattr(scheduler, 'max_workers'):
-            scheduler.max_workers = max_workers
-
-        # 生成年度时间线草稿
-        daily_status_file = os.path.join(base_file_path, 'daily_status.json')
-        if not os.path.exists(daily_status_file):
-            print('\n开始生成年度时间线草稿...')
-            draft_start_time = time.time()
-            scheduler.generate_yearly_timeline_draft(persona, base_file_path, meidan_path)
-            draft_end_time = time.time()
-            execution_times['yearly_draft_gen'] = draft_end_time - draft_start_time
-            print(
-                f'年度时间线草稿生成完成-------------------------- (耗时: {timedelta(seconds=execution_times["yearly_draft_gen"])})')
-        else:
-            print(f'\n跳过年度时间线草稿生成步骤 - 输出文件 {daily_status_file} 已存在')
+        # 调用 generate_draft 生成草稿
+        print('\n开始生成年度时间线草稿...')
+        draft_start_time = time.time()
+        draft_gen.generate_draft(output_path=base_file_path, meidan_path=meidan_path)
+        draft_end_time = time.time()
+        draft_execution_time = draft_end_time - draft_start_time
+        print(f'年度时间线草稿生成完成-------------------------- (耗时: {timedelta(seconds=draft_execution_time)})')
 
         # 记录总结束时间
         total_end_time = time.time()
@@ -114,8 +106,7 @@ def main():
         # 打印执行时间汇总
         print('\n执行时间汇总：')
         print(f'- 总执行时间: {timedelta(seconds=total_execution_time)}')
-        if 'yearly_draft_gen' in execution_times and execution_times['yearly_draft_gen'] > 0:
-            print(f'- 年度时间线草稿生成时间: {timedelta(seconds=execution_times["yearly_draft_gen"])})')
+        print(f'- Draft生成时间: {timedelta(seconds=draft_execution_time)}')
 
         print('\n所有操作完成！')
 

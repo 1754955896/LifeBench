@@ -1,4 +1,13 @@
+import os
+import sys
 import argparse
+import time
+import json
+
+# 添加项目根目录到 Python 路径
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, project_root)
+
 from src.lifebench.event.daily_simulator import *
 from src.lifebench.event.event_formatter import EventFormatter
 from src.lifebench.event.tools.persona_address_generator import PersonaAddressGenerator
