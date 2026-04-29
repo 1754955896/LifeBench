@@ -47,10 +47,11 @@ def run_draft_gen(args):
     print(f"开始运行: 年度时间线草稿生成系统")
     print(f"开始时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{'='*60}")
-    
+
     try:
         # 构建命令行参数
-        cmd = [sys.executable, os.path.join('run', 'draft_gen.py')]
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        cmd = [sys.executable, os.path.join(script_dir, 'run', 'draft_gen.py')]
         
         # 添加参数
         if args.base_path:
@@ -98,10 +99,11 @@ def run_simulator(args):
     print(f"开始运行: 模拟器系统")
     print(f"开始时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{'='*60}")
-    
+
     try:
         # 构建命令行参数
-        cmd = [sys.executable, os.path.join('run', 'simulator.py')]
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        cmd = [sys.executable, os.path.join(script_dir, 'run', 'simulator.py')]
         
         # 添加参数（根据simulator.py的需求）
         if args.base_path:
