@@ -219,7 +219,7 @@ class QAGenerator:
                     if 'phonedata' in params:
                         init_kwargs['phonedata'] = phonedata
                     if 'year' in params:
-                        init_kwargs['year'] = year
+                        init_kwargs['year'] = config['qagen_params'].get('year', 2025)
 
                     # 初始化生成器
                     generator = generator_class(**init_kwargs)

@@ -824,7 +824,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                                                         event_id = event.get("event_id") or event.get("id")
                                                         if event_id:
                                                             all_event_ids.append(str(event_id))
-                        
+
                         # 去重
                         all_event_ids = list(set(all_event_ids))
                         qa["required_events_id"] = all_event_ids
@@ -832,7 +832,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                         # 校验并调整 ask_time：若 ask_time 在所有引用事件最晚日期之前，则调整为最晚日期 + 1 天
                         if all_event_ids and qa.get('ask_time'):
                             qa['ask_time'] = self._adjust_ask_time_for_knowledge(all_event_ids, qa['ask_time'])
-                        
+
                         # 基于 required_events_id 获取对应的手机数据作为 evidence
                         if all_event_ids:
                             phone_evidence = self._get_phone_data_by_event_ids(all_event_ids)
@@ -842,6 +842,10 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                     else:
                         qa["required_events_id"] = []
                         qa["evidence"] = []
+
+                    # 删除 node_ids 字段
+                    qa.pop("node_ids", None)
+
                     qa['question_type'] = 'Knowledge_update'
                     qa['score_points'] = [{
         "description": f"正确回答出答案:{qa['answer']}",
@@ -1251,38 +1255,38 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
     def _get_phone_data_by_event_ids(self, event_ids: List[str]) -> List[Dict]:
         """
         根据事件 ID 列表获取对应的手机数据
-        
+
         Args:
             event_ids: 事件 ID 列表
-        
+
         Returns:
-            手机数据列表
+            手机数据列表（直接返回原始数据，不包装 type 和 data）
         """
         phone_data_list = []
-        
+
         if not self.phonedata or not event_ids:
             return phone_data_list
-        
+
         event_id_set = set(str(eid) for eid in event_ids)
-        
+
         for data_type, data_items in self.phonedata.items():
             if not isinstance(data_items, list):
                 continue
-            
+
             for item in data_items:
                 if not isinstance(item, dict):
                     continue
-                
+
                 # 检查 daily_event_id 或 related_event 字段
                 item_event_id = str(item.get('daily_event_id', ''))
                 related_event = str(item.get('related_event', ''))
-                
+
                 if item_event_id in event_id_set or related_event in event_id_set:
-                    phone_data_list.append({
-                        'type': data_type,
-                        'data': item
-                    })
-        
+                    # 直接返回原始数据，添加 type 字段
+                    item_copy = item.copy()
+                    item_copy['type'] = data_type
+                    phone_data_list.append(item_copy)
+
         return phone_data_list
     
     def _check_if_phone_data_reflects_node(self, phone_data: List[Dict], new_state: str, date: str) -> bool:
@@ -1639,18 +1643,17 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                     print(f"[Filter Thread {idx + 1}] ✓ 问题质量良好，通过")
                     return idx, question, True
 
-                elif decision == 'redesign':
-                    # 情况 B：重新设计
-                    modified_question = llm_result.get('modified_question', '')
+                elif decision == 'redesign_answer':
+                    # 情况 B：重新设计答案
                     modified_answer = llm_result.get('modified_answer', '')
 
-                    if modified_question and modified_answer:
-                        # 验证新问题是否真的可以从 evidence 中推理出来
+                    if modified_answer:
+                        # 验证新答案是否真的可以从 evidence 中推理出来
                         verification_prompt = f"""
-                        请验证以下新问题是否可以从提供的 evidence 中推理出来。
+                        请验证以下答案是否可以从提供的 evidence 中推理出来。
 
-                        【新问题】
-                        {modified_question}
+                        【原问题】
+                        {question.get('question', '')}
 
                         【新答案】
                         {modified_answer}
@@ -1659,9 +1662,8 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                         {json.dumps(question.get('evidence', []), ensure_ascii=False, indent=2)}
 
                         **验证要求**
-                        1. 新问题是否能从 evidence 中推理出来？
-                        2. 新答案是否能完全从 evidence 中推理出来？
-                        3. 是否存在幻觉或编造的信息？
+                        1. 新答案是否能完全从 evidence 中推理出来？
+                        2. 是否存在幻觉或编造的信息？
 
                         请以 JSON 格式返回：
                         {{
@@ -1679,15 +1681,14 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                                 verify_result = json.loads(verify_result[start_idx:end_idx])
 
                         if isinstance(verify_result, dict) and verify_result.get('is_valid', False):
-                            question['question'] = modified_question
                             question['answer'] = modified_answer
-                            print(f"[Filter Thread {idx + 1}] ✓ 问题已重新设计并通过验证")
+                            print(f"[Filter Thread {idx + 1}] ✓ 答案已重新设计并通过验证")
                             return idx, question, True
                         else:
-                            print(f"[Filter Thread {idx + 1}] ✗ 重新设计的问题未通过验证，抛弃")
+                            print(f"[Filter Thread {idx + 1}] ✗ 重新设计的答案未通过验证，抛弃")
                             return idx, None, False
                     else:
-                        print(f"[Filter Thread {idx + 1}] ✗ 需要重新设计但未提供新问题或答案，抛弃")
+                        print(f"[Filter Thread {idx + 1}] ✗ 需要重新设计答案但未提供，抛弃")
                         return idx, None, False
 
                 elif decision == 'discard':

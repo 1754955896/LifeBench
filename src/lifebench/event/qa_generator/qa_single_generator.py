@@ -1077,7 +1077,7 @@ class QASingleGenerator(BaseQAGenerator):
                     'answer': designed_question.get('answer', ''),
                     'score_points': designed_question.get('score_points', []),
                     'required_events_id': designed_question.get('required_events_id', []),
-                    'question_type': 'single_hop',
+                    'question_type': 'Single_hop',
                     'evidence': [],  # 将在生成数据后填充
                     'design_rationale': plan_json.get('design_rationale', ''),
                     'strategy_narrative': question.get('strategy_narrative', ''),

@@ -695,11 +695,14 @@ def process_single_date_dynamic(date, contact, file_path, matcher,
 
         min_count = phone_count_control.get("min", 5)
         max_count = phone_count_control.get("max", 5)
+        # fitness_health 不参与采样但需保留，所以 min/max 减1
+        min_count = max(1, min_count - 1)
+        max_count = max(1, max_count - 1)
         target_count = random.randint(min_count, max_count)
 
         # 需要采样的文件类型（排除 event_fitness_health.json）
         sample_exclude = {"event_fitness_health.json"}
-        # agent_chat 和 perception 类型不参与采样但需保留
+        # agent_chat 类型不参与采样但需保留
         preserved_items = []
 
         # 收集所有参与采样的手机数据项
@@ -709,8 +712,8 @@ def process_single_date_dynamic(date, contact, file_path, matcher,
                 continue
             for item in data_list:
                 item_type = item.get("type", "")
-                # agent_chat 和 perception 类型不参与采样，但需保留
-                if "agent_chat" in item_type or item_type == "perception":
+                # agent_chat 类型不参与采样，但需保留
+                if "agent_chat" in item_type:
                     preserved_items.append((filename, item))
                     continue
                 all_sampleable.append((filename, item))
@@ -763,7 +766,7 @@ def process_single_date_dynamic(date, contact, file_path, matcher,
 
 
 def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, matcher,
-                              phone_count_control=None, max_workers=8):
+                              daily_counts=None, max_workers=8):
     """
     多线程并行处理所有日期（动态版本）
 
@@ -773,7 +776,7 @@ def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, mat
         contact: 联系人信息
         file_path: 文件保存路径
         matcher: PhoneEventMatcher 实例
-        phone_count_control: 每日手机数据数目控制字典 {min: int, max: int}，默认 {5, 5}
+        daily_counts: 每天计划生成的数据量字典 {date: count}，默认 None（随机 2-7）
         max_workers: 最大并行线程数
 
     返回:
@@ -792,13 +795,19 @@ def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, mat
         # 提交所有日期的处理任务
         futures = []
         for date in iterate_dates(start_time, end_time):
+            # 获取该天的计划数据量，没有则随机生成
+            if daily_counts and date in daily_counts:
+                target_count = daily_counts[date]
+            else:
+                target_count = random.randint(2, 7)
+
             future = executor.submit(
                 process_single_date_dynamic,
                 date=date,
                 contact=contact,
                 file_path=file_path,
                 matcher=matcher,
-                phone_count_control=phone_count_control
+                phone_count_control={"min": target_count, "max": target_count}
             )
             futures.append(future)
         

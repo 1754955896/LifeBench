@@ -22,13 +22,13 @@ from .phone_operation_generator import PhoneOperationGenerator
 
 
 class QATemporalGenerator(BaseQAGenerator):
-    def __init__(self, persona_data: Dict[str, Any] = None, event_tree: Dict[str, Any] = None, 
-                 daily_event: Dict[str, Any] = None, draft_event: Dict[str, Any] = None, 
-                 special_event: Dict[str, Any] = None, phone_data_dir: str = None, 
-                 is_print: bool = True):
+    def __init__(self, persona_data: Dict[str, Any] = None, event_tree: Dict[str, Any] = None,
+                 daily_event: Dict[str, Any] = None, draft_event: Dict[str, Any] = None,
+                 special_event: Dict[str, Any] = None, phone_data_dir: str = None,
+                 is_print: bool = True, year: int = 2025):
         """
         初始化时序 QA 生成器
-        
+
         Args:
             persona_data: 用户画像数据
             event_tree: 事件树数据
@@ -37,11 +37,13 @@ class QATemporalGenerator(BaseQAGenerator):
             special_event: 特殊事件数据
             phone_data_dir: 手机数据目录路径
             is_print: 是否打印调试信息
+            year: 年份，默认 2025
         """
-        super().__init__(persona_data=persona_data, event_tree=event_tree, 
-                        daily_event=daily_event, draft_event=draft_event, 
+        super().__init__(persona_data=persona_data, event_tree=event_tree,
+                        daily_event=daily_event, draft_event=draft_event,
                         special_event=special_event, phone_data_dir=phone_data_dir)
         self.is_print = is_print
+        self.year = year
     
     def _generate_monthly_summary(self, year: int, month: int) -> Dict[str, Any]:
         """
@@ -491,7 +493,7 @@ class QATemporalGenerator(BaseQAGenerator):
         
         # 为所有问题添加 ask_time 字段
         for question in filtered_questions:
-            question['ask_time'] = '2025-12-31'
+            question['ask_time'] = f'{self.year}-12-31'
         
         print(f"[Temporal Sequence Agent] 已为 {len(filtered_questions)} 个问题添加 ask_time 字段")
         # 6. 为每个问题调用 evidence_refine 补充手机数据证据（20线程并行）

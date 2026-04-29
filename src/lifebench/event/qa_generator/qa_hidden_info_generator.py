@@ -20,10 +20,10 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
     def __init__(self, daily_event: List[Dict], event_tree: List[Dict],
                  draft_event: Dict[str, List], phonedata: Dict[str, List],
                  phone_data_dir: str = None, is_print: bool = True,
-                 persona: Dict = None):
+                 persona: Dict = None, year: int = 2025):
         """
         初始化隐藏信息 QA 生成器
-        
+
         Args:
             daily_event: daily_event 数据列表
             event_tree: event_tree 数据列表
@@ -32,6 +32,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
             phone_data_dir: 手机数据目录路径
             is_print: 是否打印调试信息
             persona: 用户画像数据
+            year: 年份，默认 2025
         """
         super().__init__()
         self.daily_event = daily_event
@@ -40,6 +41,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
         self.phonedata = phonedata
         self.phone_data_dir = phone_data_dir
         self.is_print = is_print
+        self.year = year
         self.persona = persona
     
     def QAGen(self, **kwargs) -> List[Dict]:
@@ -223,7 +225,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
                 qa["evidence"] = evidence_data
             else:
                 qa["evidence"] = []
-            qa['ask_time'] = '2025-12-31'
+            qa['ask_time'] = f'{self.year}-12-31'
         return questions
     
     def _analyze_hidden_needs_for_month(self, month: str, month_data: List[Dict]) -> List[Dict]:
