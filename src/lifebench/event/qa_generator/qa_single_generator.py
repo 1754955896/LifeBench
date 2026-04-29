@@ -1175,11 +1175,7 @@ class QASingleGenerator(BaseQAGenerator):
                                         if item_event_id == str(event_id) or related_event == str(event_id):
                                             updated_evidence.append(item)
                 
-                # 如果没有 required_events_id 或没找到证据，保留所有 phonedata 中的数据
-                if not required_events_ids:
-                    for data_type, data_list in self.phonedata.items():
-                        if isinstance(data_list, list):
-                            updated_evidence.extend(data_list)
+                # 如果 required_events_id 为空，则不添加
                 
                 new_question_obj['evidence'] = updated_evidence
                 

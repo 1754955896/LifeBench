@@ -486,39 +486,29 @@ class QATemporalGenerator(BaseQAGenerator):
         # 
         # print(f"[Temporal Sequence Agent] 总共生成 {len(all_questions)} 个时序问题")
         # 
-        # 5. 并行20线程对生成的问题进行过滤检查
-        filtered_questions = self._filter_questions_parallel(all_questions)
-        
-        # filtered_questions = all_questions
-        
-        # 为所有问题添加 ask_time 字段
-        for question in filtered_questions:
-            question['ask_time'] = f'{self.year}-12-31'
-        
-        print(f"[Temporal Sequence Agent] 已为 {len(filtered_questions)} 个问题添加 ask_time 字段")
         # 6. 为每个问题调用 evidence_refine 补充手机数据证据（20线程并行）
-        print(f"\n[Temporal Sequence Agent] 开始为 {len(filtered_questions)} 个问题补充手机数据证据（20线程并行）...")
-        
+        print(f"\n[Temporal Sequence Agent] 开始为 {len(all_questions)} 个问题补充手机数据证据（20线程并行）...")
+
         import concurrent.futures
-        refined_questions = [None] * len(filtered_questions)  # 预分配列表保持顺序
-        
+        refined_questions = [None] * len(all_questions)  # 预分配列表保持顺序
+
         def refine_single_question(idx: int, question: Dict[str, Any]) -> tuple:
             """处理单个问题的证据补充"""
             try:
-                print(f"\n[Temporal Sequence Agent] 处理第 {idx + 1}/{len(filtered_questions)} 个问题...")
+                print(f"\n[Temporal Sequence Agent] 处理第 {idx + 1}/{len(all_questions)} 个问题...")
                 refined_question = self.evidence_refine(question)
                 return idx, refined_question
             except Exception as e:
                 print(f"[Temporal Sequence Agent] 第 {idx + 1} 个问题证据补充失败：{e}")
                 return idx, question
-        
+
         # 使用 ThreadPoolExecutor 并行处理，最多20线程
         with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
             futures = [
                 executor.submit(refine_single_question, idx, question)
-                for idx, question in enumerate(filtered_questions)
+                for idx, question in enumerate(all_questions)
             ]
-            
+
             # 收集结果
             completed_count = 0
             for future in concurrent.futures.as_completed(futures):
@@ -526,16 +516,26 @@ class QATemporalGenerator(BaseQAGenerator):
                     idx, refined_question = future.result()
                     refined_questions[idx] = refined_question
                     completed_count += 1
-                    if completed_count % 5 == 0 or completed_count == len(filtered_questions):
-                        print(f"\n[Temporal Sequence Agent] 已完成 {completed_count}/{len(filtered_questions)} 个问题的证据补充")
+                    if completed_count % 5 == 0 or completed_count == len(all_questions):
+                        print(f"\n[Temporal Sequence Agent] 已完成 {completed_count}/{len(all_questions)} 个问题的证据补充")
                 except Exception as e:
                     print(f"[Temporal Sequence Agent] 结果收集失败：{e}")
-        
+
         # 过滤掉 None 值（如果有）
         refined_questions = [q for q in refined_questions if q is not None]
-        
-        print(f"\n[Temporal Sequence Agent] 总共生成 {len(refined_questions)} 个时序问题（已完成过滤和证据补充）")
-        return refined_questions
+
+        # 为所有问题添加 ask_time 字段
+        for question in refined_questions:
+            question['ask_time'] = f'{self.year}-12-31'
+
+        print(f"[Temporal Sequence Agent] 已为 {len(refined_questions)} 个问题添加 ask_time 字段")
+
+        # 7. 并行20线程对已完成证据补充的问题进行过滤检查
+        print(f"\n[Temporal Sequence Agent] 开始对 {len(refined_questions)} 个问题进行过滤检查（20线程并行）...")
+        filtered_questions = self._filter_questions_parallel(refined_questions)
+
+        print(f"\n[Temporal Sequence Agent] 总共生成 {len(filtered_questions)} 个时序问题（已完成过滤和证据补充）")
+        return filtered_questions
     
     # ========== 公共辅助方法 ==========
     
