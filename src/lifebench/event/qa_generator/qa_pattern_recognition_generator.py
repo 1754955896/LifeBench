@@ -393,10 +393,13 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
         
         print(f"\n========== 问题生成完成，共{len(all_questions)}个问题 ==========")
         
-        # Step 4: 设置所有问题的 question_type 为"ND"
+        # Step 4: 设置所有问题的 question_type 为"ND"，并确保 ask_time 字段存在
         print("\n[QAGen] 设置所有问题的 question_type 为'ND'...")
         for question in all_questions:
             question['question_type'] = 'Non-declarative'
+            # 确保 ask_time 字段存在
+            if 'ask_time' not in question:
+                question['ask_time'] = self.default_ask_time
         
         # Step 5: 并行过滤和优化问题
         print("\n[QAGen] 开始并行过滤和优化问题...")
@@ -1358,9 +1361,13 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
         print(f"\n[Check Agent] 开始为优化后的问题生成证据...")
         refined_question = self.evidence_refine(optimized_question, month_key)
         print(f"[Check Agent] 完成证据生成")
-            
+
+        # 确保返回的问题有 ask_time 字段
+        if 'ask_time' not in refined_question and 'ask_time' in question:
+            refined_question['ask_time'] = question['ask_time']
+
         return refined_question
-    
+
     def _split_events_into_windows(self, events: List[Dict]) -> List[Dict]:
         """
         将事件按 5 天为一个窗口分割
@@ -1703,6 +1710,9 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                     return None  # 返回 None 表示应该跳过该问题
                 elif 'question' in result:
                     print(f"[Check Agent] 成功优化问题")
+                    # 保留原始 ask_time 字段
+                    if 'ask_time' not in result and 'ask_time' in question:
+                        result['ask_time'] = question['ask_time']
                     return result
                 else:
                     print("[Check Agent] 优化结果格式错误")
