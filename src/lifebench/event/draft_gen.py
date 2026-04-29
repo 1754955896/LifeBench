@@ -49,7 +49,7 @@ class DraftGen:
             print("\n=== 步骤2: 唤起writing agent ===")
 
             # 获取基础路径
-            base_path = meidan_path
+            base_path = output_path
             print(f"使用基础路径: {base_path}")
 
             # 初始化WritingAgent
