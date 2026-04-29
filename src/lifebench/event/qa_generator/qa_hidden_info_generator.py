@@ -201,23 +201,19 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
             if 'options' in qa and 'correct_answer' in qa:
                 options = qa.get('options', [])
                 correct_answer = qa.get('correct_answer', '')
-                #print(options)
-                
+
                 # 将选项转字符串拼接
                 options_text = str(options)
-                #print(options_text)
-                # 构建新的问题字典，只保留需要的字段
-                new_qa = {
-                    'question': qa.get('question', '') + options_text,
-                    'answer': correct_answer,
-                    'score_points': [{"description": "准确回答出答案", "score": 10}]
-                }
-                #print(new_qa)
-                
-                # 复制其他字段
-                for key in qa:
-                    if key not in ['options', 'correct_answer']:
-                        new_qa[key] = qa[key]
+
+                # 先复制所有字段
+                new_qa = dict(qa)
+                # 删除 options 和 correct_answer
+                new_qa.pop('options', None)
+                new_qa.pop('correct_answer', None)
+                # 修改 question 和 answer
+                new_qa['question'] = new_qa.get('question', '') + options_text
+                new_qa['answer'] = correct_answer
+                new_qa['score_points'] = [{"description": "准确回答出答案", "score": 10}]
 
                 new_questions.append(new_qa)
                 converted_count += 1
