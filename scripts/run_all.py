@@ -102,10 +102,14 @@ def run_for_persona(persona_data, persona_folder, instance_id, args):
     
     # 检查是否需要运行run.py（基于关键输出文件的存在性）
     # run.py会自动检查其内部各个模块是否需要运行
-    # 这里我们可以基于最终合并的QA文件来判断是否需要运行整个流程
-    # 注意: all_qa_generator.py 输出到 {data_path}/QA_all/QA.json
-    merged_qa_path = os.path.join(persona_folder, "QA_all", "QA.json")
-    need_run = not os.path.exists(merged_qa_path)
+    if args.generate_qa == 1:
+        # QA模式：检查 merged_qa_path
+        merged_qa_path = os.path.join(persona_folder, "QA_all", "QA.json")
+        need_run = not os.path.exists(merged_qa_path)
+    else:
+        # 非QA模式：检查 contact.json
+        contact_path = os.path.join(persona_folder, "phone_data", "contact.json")
+        need_run = not os.path.exists(contact_path)
     
     if need_run:
         # 构建run.py的命令行参数
@@ -130,7 +134,10 @@ def run_for_persona(persona_data, persona_folder, instance_id, args):
             "args": run_args
         }]
     else:
-        print(f"检测到合并后的QA文件: {merged_qa_path}")
+        if args.generate_qa == 1:
+            print(f"检测到合并后的QA文件: {merged_qa_path}")
+        else:
+            print(f"检测到 contact.json 文件: {contact_path}")
         print(f"跳过运行集成生成模块")
         scripts = []
 
