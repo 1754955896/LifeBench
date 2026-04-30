@@ -1279,16 +1279,16 @@ class QAConflictGenerator(BaseQAGenerator):
         filtered_qa_pairs = [r for r in filtered_results if r is not None]
         print(f"\n[Step 7] 完成，通过验证的问题数量：{len(filtered_qa_pairs)}/{len(qa_pairs)}")
 
-        # 保存到文件
-        if self.phone_data_dir:
-            parent_dir = os.path.dirname(self.phone_data_dir)
-            output_path = os.path.join(parent_dir, "conflict_qa.json")
+        # 保存到文件 - 已移除，统一由调用方处理
+        # if self.phone_data_dir:
+        #     parent_dir = os.path.dirname(self.phone_data_dir)
+        #     output_path = os.path.join(parent_dir, "conflict_qa.json")
+        #
+        #     with open(output_path, "w", encoding="utf-8") as f:
+        #         json.dump(filtered_qa_pairs, f, ensure_ascii=False, indent=2)
+        #
+        #     print(f"\n问答对已成功写入文件：{output_path}")
 
-            with open(output_path, "w", encoding="utf-8") as f:
-                json.dump(filtered_qa_pairs, f, ensure_ascii=False, indent=2)
-
-            print(f"\n问答对已成功写入文件：{output_path}")
-        
         print(f"\n========== 完成，共生成 {len(qa_pairs)} 个冲突问答对 ==========")
         return qa_pairs
     

@@ -1562,18 +1562,18 @@ class QASingleGenerator(BaseQAGenerator):
         # 过滤和优化生成的问题
         print("\n[QAGen] 开始过滤和优化生成的问题...")
         filtered_qa = self._filter_and_refine_questions(all_qa)
-        
-        # 保存到文件
-        if output_path is None:
-            parent_dir = os.path.dirname(self.phone_data_dir)
-            output_path = os.path.join(parent_dir, "single_hop_qa.json")
-        
-        with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(filtered_qa, f, ensure_ascii=False, indent=2)
-        
-        print(f"\n问答对已成功写入文件：{output_path}")
-        print(f"共生成 {len(filtered_qa)} 个问答对（过滤前：{len(all_qa)}）\n")
-        
+
+        # 保存到文件 - 已移除，统一由调用方处理
+        # if output_path is None:
+        #     parent_dir = os.path.dirname(self.phone_data_dir)
+        #     output_path = os.path.join(parent_dir, "single_hop_qa.json")
+        #
+        # with open(output_path, "w", encoding="utf-8") as f:
+        #     json.dump(filtered_qa, f, ensure_ascii=False, indent=2)
+        #
+        # print(f"\n问答对已成功写入文件：{output_path}")
+        print(f"\n共生成 {len(filtered_qa)} 个问答对（过滤前：{len(all_qa)}）\n")
+
         return filtered_qa
     
     def _filter_and_refine_questions(self, questions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
