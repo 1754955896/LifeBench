@@ -3,7 +3,9 @@ import os
 import copy
 import importlib
 from typing import List, Dict, Any
+from concurrent.futures import ThreadPoolExecutor
 from src.lifebench.event.qa_generator.base_generator import BaseQAGenerator
+from src.lifebench.utils.llm_call import llm_call_j
 
 
 class QAGenerator:
@@ -360,21 +362,29 @@ class QAGenerator:
                 traceback.print_exc()
         
         print("\n所有问答对生成完成！")
-        
+
         # 整合所有问题到 QA.json
         if all_questions:
+            # 对所有问题进行类型重新分类（并行 LLM 调用）
+            all_questions = self._classify_qa_types_parallel(all_questions)
+
             final_output_path = os.path.join(qa_all_dir, "QA.json")
             with open(final_output_path, 'w', encoding='utf-8') as f:
                 json.dump(all_questions, f, ensure_ascii=False, indent=2)
             print(f"\n✓ 所有问题已整合保存到: {final_output_path}")
             print(f"✓ 总计 {len(all_questions)} 个问题")
-            
+
             # 统计各类型问题数量
             type_count = {}
             for qa in all_questions:
-                q_type = qa.get('question_type', 'unknown')
-                type_count[q_type] = type_count.get(q_type, 0) + 1
-            
+                q_types = qa.get('question_type', [])
+                if isinstance(q_types, list):
+                    for q_type in q_types:
+                        type_count[q_type] = type_count.get(q_type, 0) + 1
+                else:
+                    q_type = q_types
+                    type_count[q_type] = type_count.get(q_type, 0) + 1
+
             print("\n问题类型统计:")
             for q_type, count in sorted(type_count.items()):
                 print(f"  - {q_type}: {count} 个问题")
@@ -500,3 +510,101 @@ class QAGenerator:
             source_gen._data_updated = False
         else:
             print("没有检测到数据更新，无需同步")
+
+    def _classify_qa_types_parallel(self, qa_list: List[Dict[str, Any]], max_workers: int = 20) -> List[Dict[str, Any]]:
+        """
+        并行调用 LLM 对每个问答对进行类型重新分类
+
+        Args:
+            qa_list: 问答对列表
+            max_workers: 最大并行线程数
+
+        Returns:
+            更新类型后的问答对列表
+        """
+        def classify_single_qa(qa: Dict[str, Any]) -> Dict[str, Any]:
+            """对单个问答对进行类型分类"""
+            # 如果原类型已经是 Unanswerable，直接保留
+            original_type = qa.get('question_type', '')
+            if original_type == 'Unanswerable':
+                qa['question_type'] = ['Unanswerable']
+                return qa
+
+            question = qa.get('question', '')
+            answer = qa.get('answer', '')
+            evidence = qa.get('evidence', [])
+
+            prompt = f"""请分析以下问答对的问题、答案和证据，判断该问题最适合的分类类型。
+
+### 问题类型说明
+- Single_hop: 单跳问题，可以从单个事件/证据直接回答
+- Multi_hop: 多跳问题，需要结合多个事件/证据才能回答
+- Temporal: 时间推理问题，涉及日期、时间顺序的问题
+- Causal: 因果推理问题，涉及事件原因和结果的问题
+- Comparison: 比较问题，需要对比多个选项或实体的问题
+- Summary: 总结概括问题，需要对信息进行总结的问题
+- Inference: 推理问题，需要基于现有信息进行推断的问题
+- Knowledge_update: 知识更新问题，涉及认知或知识更新的问题
+- Unanswerable: 不可回答的问题，目前证据不足以回答的问题
+- Conflict: 冲突问题，证据之间存在矛盾的问题
+- Pattern_recognition: 模式识别问题，需要识别数据中模式的问题
+- Hidden_info: 隐藏信息问题，需要从隐含信息中推断的问题
+
+### 输出要求
+分析问题特点，从上述类型中选择最匹配的 1-3 个类型标签，按匹配程度从高到低排列。
+只输出 JSON 数组格式，不要添加任何解释文字。
+
+### 问答对信息
+问题：{question}
+答案：{answer}
+证据：{json.dumps(evidence, ensure_ascii=False, indent=2) if evidence else '无证据'}
+
+请直接输出类型标签数组，格式如：["Single_hop", "Temporal"]
+"""
+            try:
+                result = llm_call_j(prompt)
+                result = result.strip()
+
+                # 尝试解析 LLM 返回的 JSON 数组
+                # 移除可能的 ```json 包装
+                if result.startswith('```'):
+                    import re
+                    result = re.sub(r'```json\s*|\s*```', '', result, flags=re.MULTILINE)
+
+                result = result.strip()
+                if result.startswith('['):
+                    types = json.loads(result)
+                    if isinstance(types, list) and all(isinstance(t, str) for t in types):
+                        qa['question_type'] = types[:3]  # 最多保留3个类型
+                        return qa
+            except Exception as e:
+                print(f"类型分类失败: {str(e)}, 保持原类型")
+
+            # 如果失败，保持原类型（可能是单个字符串）
+            original_type = qa.get('question_type', 'Unknown')
+            if isinstance(original_type, str):
+                qa['question_type'] = [original_type]
+            return qa
+
+        print(f"\n开始并行分类 QA 类型，共 {len(qa_list)} 个问题...")
+
+        updated_qa_list = []
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            results = list(executor.map(classify_single_qa, qa_list))
+            updated_qa_list = results
+
+        # 统计新类型分布
+        type_count = {}
+        for qa in updated_qa_list:
+            types = qa.get('question_type', [])
+            if isinstance(types, list):
+                for t in types:
+                    type_count[t] = type_count.get(t, 0) + 1
+            else:
+                type_count[str(types)] = type_count.get(str(types), 0) + 1
+
+        print(f"类型分类完成，新类型统计:")
+        for t, count in sorted(type_count.items()):
+            print(f"  - {t}: {count} 个问题")
+
+        return updated_qa_list

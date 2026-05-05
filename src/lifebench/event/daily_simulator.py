@@ -2,6 +2,8 @@
 import calendar
 import holidays
 import copy
+import os
+import re
 from src.lifebench.utils.utils_io import *
 from datetime import timedelta
 from src.lifebench.utils.llm_call import *
@@ -10,14 +12,34 @@ from src.lifebench.event.templates.templates import *
 from src.lifebench.event.memory_structure.memory import *
 from src.lifebench.event.memory_structure.fuzzy_memory_builder import FuzzyMemoryBuilder
 from typing import List, Dict, Optional
+
+
+def convert_chinese_to_pinyin(chinese_str: str) -> str:
+    """将中文转换为拼音，去除空格和特殊字符"""
+    try:
+        from pypinyin import lazy_pinyin
+        # 获取拼音列表并连接
+        pinyin_list = lazy_pinyin(chinese_str)
+        pinyin = ''.join(pinyin_list)
+        # 去除空格和特殊字符，只保留字母和数字
+        pinyin = re.sub(r'[^a-zA-Z0-9]', '', pinyin)
+        return pinyin if pinyin else chinese_str
+    except ImportError:
+        # 如果没有安装 pypinyin，返回原始字符串
+        return chinese_str
+
+
 class Mind:
     def __init__(self,file_path, instance_id=0, persona=None, event=None, daily_state=None, persona_address_data=None, daily_draft=None):
         self.events = event if event is not None else []
         self.persona = persona if persona is not None else ""
         self.persona_withoutrl = ""
         # 创建独立的记忆模块实例，使用基于人物标识的记忆文件
-        # 使用instance_id作为人物唯一标识，确保每个人只有一个memory文件
-        memory_file_name = f"personal_memories_{instance_id}.json"
+        # 使用instance_id和人物姓名的拼音作为文件名，确保每个人只有一个memory文件
+        persona_name = ""
+        if isinstance(persona, dict) and "name" in persona:
+            persona_name = convert_chinese_to_pinyin(persona["name"])
+        memory_file_name = f"personal_memories_{instance_id}_{persona_name}.json"
         memory_file_path = os.path.join("memory_file", memory_file_name)
         self.mem_module = MemoryModule.get_instance(str(instance_id), memory_file=memory_file_path)
         self.context = ""
@@ -26,8 +48,11 @@ class Mind:
         self.short_memory = ""  # 主要存储近期所有详细事件和相关检索事件
         self.thought = ""  # 记录个人的感受、想法，包括情绪、想法、需求及思考过程中的打算
         self.bottom_events : Optional[List[Dict]] = None
-        # 读取配置文件
-        with open('config.json', 'r', encoding='utf-8') as f:
+        # 读取配置文件，使用项目根目录下的 config.json
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(os.path.dirname(os.path.dirname(script_dir)))
+        config_path = os.path.join(project_root, 'config', 'config.json')
+        with open(config_path, 'r', encoding='utf-8') as f:
             config = json.load(f)
         # 获取地图工具配置
         map_config = config.get('map_tool', {})
@@ -261,7 +286,7 @@ class Mind:
     def initialize(self, event, persona, date, daily_state=None, daily_draft=None):
         """
         初始化Mind对象
-        
+
         参数:
             event: 事件数据
             persona: 人物画像数据
@@ -269,6 +294,13 @@ class Mind:
             daily_state: 每日状态数据，格式与test_daily_state.json相同
             daily_draft: 每日草稿数据
         """
+        print("[DEBUG] date=" + str(date))
+        print("[DEBUG] event type=" + str(type(event)))
+        print("[DEBUG] persona type=" + str(type(persona)))
+        if isinstance(persona, dict):
+            print("[DEBUG] persona keys=" + str(list(persona.keys())))
+        print("[DEBUG] daily_draft type=" + str(type(daily_draft)))
+
         self.persona = copy.deepcopy(persona)
         self.events = event
         self.current_date = date
@@ -282,14 +314,14 @@ class Mind:
             print("未提供daily_draft，将使用默认值。")
         # 初始化FuzzyMemoryBuilder
         self.fuzzy_memory_builder = FuzzyMemoryBuilder.get_instance(event, persona, self.file_path)
-        
+
         # 检查fuzzymemory文件是否存在，如果不存在则生成
         year = int(date[:4])
         monthly_file = os.path.join(self.file_path, "monthly_summaries.json")
         cumulative_file = os.path.join(self.file_path, "cumulative_summaries.json")
-        
+
         if not (os.path.exists(monthly_file) and os.path.exists(cumulative_file)):
-            print(f"未找到fuzzymemory文件，开始生成{year}年的月度总结和累积总结...")
+            print("未找到fuzzymemory文件，开始生成" + str(year) + "年的月度总结和累积总结...")
             self.fuzzy_memory_builder.build_all_summaries(year)
             print("fuzzymemory生成完成！")
         else:
@@ -305,29 +337,29 @@ class Mind:
         # 生成cognition和context
         t1 = '''
         请你基于下面的个人画像和详细地址信息，以第一人称视角描述你对自己的自我认知，包括1）个人基本信息。2）工作的主要特征、内容、方式、习惯、主要人物。3）家庭的主要特征、内容、方式、习惯、主要人物。4）其他生活的主要特征、内容、方式、习惯、主要人物。5）平常工作日的常见安排，目前的主要每天安排。描述要全面覆盖个人信息，地址相关数据请优先参考详细地址信息而非画像信息。
-        
+
         个人画像：{persona}
         详细地址信息：{persona_address_data}
         '''
 
         t2 = '''
-        请你基于下面的个人画像，设计一句让大模型扮演该角色的context，以”你是一位“开头。不超过50个字，只保留重要信息。
+        请你基于下面的个人画像，设计一句让大模型扮演该角色的context，以"你是一位"开头。不超过50个字，只保留重要信息。
         个人画像：{persona}
         '''
 
+        print("[DEBUG initialize] self.persona type=" + str(type(self.persona)))
+        print("[DEBUG initialize] self.persona_address_data type=" + str(type(self.persona_address_data)))
         prompt = t1.format(persona=self.persona, persona_address_data=self.persona_address_data)
         res = self.llm_call_s(prompt)
-        #print(res)
         self.cognition = res
 
         prompt = t2.format(persona=self.persona)
         res = self.llm_call_s(prompt)
-        #print(res)
         self.context = res
-        
-        # 初始化persona_withoutrl
-        self.persona_withoutrl = persona.copy()  # 创建副本以避免修改原始persona
-        del self.persona_withoutrl["relation"]  # 在副本上删除relation键
+
+        self.persona_withoutrl = persona.copy()
+        if "relation" in self.persona_withoutrl:
+            del self.persona_withoutrl["relation"]
 
     def load_from_json(self, event, persona):
         """
@@ -542,9 +574,23 @@ class Mind:
         返回:
             str: 大模型返回结果
         """
-        res = llm_call(prompt,self.context,record=record)
+        res = llm_call(prompt,self.context)
         return res
 
+    def llm_call_j(self, prompt, record=0):
+        """
+        调用大模型进行JSON格式返回
+        
+        参数:
+            prompt: 提示词
+            record: 是否记录调用（默认0：不记录）
+        
+        返回:
+            dict: 大模型返回的JSON解析结果
+        """
+        res = llm_call_j(prompt,self.context)
+        return res
+    
     def get_next_n_day(self,date_str: str,n) -> str:
         """
         获取字符串日期的一天后日期（格式保持一致：YYYY-MM-DD）
@@ -575,12 +621,13 @@ class Mind:
         # 直接从self.daily_draft获取数据
         try:
             data = self.daily_draft
+            print("[DEBUG get_plan4] self.daily_draft type=" + str(type(data)) + ", date=" + str(date) + ", i=" + str(i))
             # 从目标日期中提取年月，例如 "2025-01-05" -> "2025-01"
             year_month = "-".join(target_date_str.split("-")[:2])
 
             # 检查年月数据是否存在
             if year_month not in data:
-                print(f"警告: 年月 {year_month} 的数据在文件中不存在")
+                print("警告: 年月 " + year_month + " 的数据在文件中不存在")
                 return {}
 
             # 在对应的月份数据中查找指定日期
@@ -592,13 +639,15 @@ class Mind:
                         return day_data
 
                 # 如果指定日期不存在，返回空字典
-            print(f"警告: 日期 {target_date_str} 的数据在文件中不存在")
+            print("警告: 日期 " + target_date_str + " 的数据在文件中不存在")
             return {}
         except json.JSONDecodeError:
-            print(f"错误: daily_draft 不是有效的JSON格式")
+            print("错误: daily_draft 不是有效的JSON格式")
             return {}
         except Exception as e:
-            print(f"读取daily_draft时发生错误: {str(e)}")
+            print("读取daily_draft时发生错误: " + str(e))
+            import traceback
+            traceback.print_exc()
             return {}
 
     def delete_top_event(self,events, target_id):
@@ -813,6 +862,8 @@ class Mind:
         return
     def get_fuzzy_short_memory(self,date):
         date_events = self.get_plan4(date)
+        if not date_events:
+            return ""
         #print('here')
         #print(date_events)
         res = "我在"+date+"做了下面这些事："
@@ -965,7 +1016,7 @@ class Mind:
     def map(self,pt):
         #获取真实poi数据和通行信息
         prompt = template_poi_real_location_assign.format(persona = self.persona, data = pt, persona_address_data=self.maptools.persona_address_data)
-        res = llm_call_skip(prompt,self.context)
+        res = llm_call_j(prompt)
         print("poi分析-----------------------------------------------------------------------")
         #print(res)
         #res = self.remove_json_wrapper(res)
@@ -982,7 +1033,8 @@ class Mind:
             # with open(self.txt_file_path, "a", encoding="utf-8") as file:  # 记录，防止丢失
             #         file.write("-----------------------poi\n"+instr + "\n")  # 每个字符串后加换行符，实现分行存储
             return instr
-        except json.JSONDecodeError:
+        except Exception as e:
+            print(f"map函数出错: {str(e)}")
             return ""
 
     def daily_event_gen1(self, date):
@@ -999,6 +1051,9 @@ class Mind:
             self._log_event(f"\n=== 开始生成 {date} 的事件 ===")
             # 1. 生成主观思考
             plan = self.get_plan4(date)
+            print("[DEBUG daily_event_gen1] plan type=" + str(type(plan)) + ", keys=" + str(list(plan.keys()) if isinstance(plan, dict) else "N/A"))
+            if isinstance(plan, dict) and "events" in plan:
+                print("[DEBUG daily_event_gen1] plan events count=" + str(len(plan.get("events", []))))
             subjective_thought = self._generate_subjective_thought(plan, date)
 
             # 2. 生成客观事件
@@ -1196,7 +1251,12 @@ class Mind:
                     "description": address.get("description", "")
                 }
                 simplified_address_data.append(simplified_address)
-        
+
+        print("[DEBUG _adjust_event_trajectory] daily_event_reference type=" + str(type(daily_event_reference)))
+        print("[DEBUG _adjust_event_trajectory] daily_event_reference content=" + str(daily_event_reference))
+        if isinstance(daily_event_reference, dict):
+            print("[DEBUG _adjust_event_trajectory] daily_event_reference keys=" + str(list(daily_event_reference.keys())))
+
         prompt = template_event_traffic_adjust.format(poi=poi_data, event=event, daily_event_reference=daily_event_reference,history=history,persona=self.cognition,persona_address_data=simplified_address_data)
         #print(prompt)
         adjusted_events = self.llm_call_s(prompt, 0)
@@ -1251,7 +1311,7 @@ class Mind:
             date=self.get_date_string(date)
         )
         #print(prompt)
-        reflection = self.llm_call_s(prompt, 0)
+        reflection = llm_call_j(prompt)
         self._log_event("反思（真实情绪，自我洞察，事件记忆，总结反思，未来期望）-----------------------------------------------------------------------")
         
         cleaned_reflection = self.remove_json_wrapper(reflection)
@@ -1287,7 +1347,7 @@ class Mind:
             date=self.get_date_string(date)
         )
         #print( prompt)
-        updated_memory = self.llm_call_s(prompt)
+        updated_memory = llm_call_j(prompt)
         cleaned_memory = self.remove_json_wrapper(updated_memory)
         
         self._log_event("更新（客观事实与固定偏好，IMO记忆的关键事件，重复多次进行的事件，对过去总结）-----------------------------------------------------------------------")
@@ -1390,7 +1450,15 @@ class MindController:
         """
         # 使用人物的instance_id作为标识，确保每个人只有一个memory文件
         # 不再使用thread_id，避免每个线程创建一个独立的memory文件
-        return Mind(file_path=self.data_dir, instance_id=self.instance_id, persona=self.persona, event=self.events, daily_state={},persona_address_data=self.loc_data,daily_draft=self.daily_state)
+        # 注意：不传daily_draft参数，让initialize方法来设置正确的daily_draft数据
+        return Mind(
+            file_path=self.data_dir,
+            instance_id=self.instance_id,
+            persona=self.persona,
+            event=self.events,
+            daily_state=None,
+            persona_address_data=self.loc_data
+        )
     
     def run_daily_event_with_threading(self, start_date, end_date, max_workers=5, interval_days=2):
         """
@@ -1425,22 +1493,36 @@ class MindController:
             # 为每个区间创建独立的Mind实例，避免共享状态
             mind_instance = self.create_mind_instance()
             # 正确初始化Mind实例，传入事件数据、人物画像和起始日期
-            mind_instance.initialize(self.events, self.persona, interval_dates[0], None,self.daily_state)
+            # 注意：使用关键字参数确保传递的是MindController的self.daily_state，而不是mind_instance的
+            mind_instance.initialize(self.events, self.persona, interval_dates[0], daily_state=None, daily_draft=self.daily_state)
             interval_results = []
-            
+
             print(f"  开始处理区间：{interval_dates[0]} 到 {interval_dates[-1]}")
-            
+
             # 区间内串行执行
             for date in interval_dates:
-                try:
-                    success = mind_instance.daily_event_gen1(date)
-                    interval_results.append((date, True, None, None))
-                except Exception as e:
-                    error_type = type(e).__name__
-                    error_msg = str(e)
-                    print(f"    处理日期 {date} 时出错 ({error_type}): {error_msg}")
-                    interval_results.append((date, False, error_type, error_msg))
-            
+                max_retries = 2
+                success = False
+                last_error = None
+                for attempt in range(max_retries):
+                    try:
+                        success = mind_instance.daily_event_gen1(date)
+                        if success:
+                            interval_results.append((date, True, None, None))
+                            print(f"    {date} 处理成功")
+                            break
+                    except Exception as e:
+                        last_error = e
+                        error_type = type(e).__name__
+                        error_msg = str(e)
+                        if attempt < max_retries - 1:
+                            print(f"    处理日期 {date} 时出错 ({error_type}): {error_msg}，第 {attempt + 1} 次重试")
+                        else:
+                            print(f"    处理日期 {date} 时出错 ({error_type}): {error_msg}，重试次数已用尽")
+                            interval_results.append((date, False, error_type, error_msg))
+                if success and attempt > 0:
+                    print(f"    {date} 重试后成功")
+
             print(f"  区间处理完成：{interval_dates[0]} 到 {interval_dates[-1]}")
             return interval_results
         

@@ -650,7 +650,7 @@ class OutlineOptimizer:
         yearly_results = self.optimize_yearly(output_dir=output_dir)
         
         # 保存优化后的 daily_draft
-        optimized_draft_path = os.path.join(self.filepath, "daily_draft_optimized.json")
+        optimized_draft_path = os.path.join(self.filepath, "daily_draft.json")
         try:
             with open(optimized_draft_path, 'w', encoding='utf-8') as f:
                 json.dump(self.daily_draft, f, ensure_ascii=False, indent=2)

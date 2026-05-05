@@ -26,7 +26,10 @@ parser.add_argument('--instance-id', type=int, default=0, help='人物实例ID')
 args = parser.parse_args()
 
 # 配置参数
+# 确保 file_path 以 / 结尾，保证拼接路径正确
 file_path = args.file_path
+if not file_path.endswith('/'):
+    file_path += '/'
 start_date = args.start_date
 end_date = args.end_date
 

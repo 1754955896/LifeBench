@@ -186,11 +186,33 @@ def run_qa_gen(args):
 
 
 if __name__ == '__main__':
-    # 设置工作目录为脚本所在目录
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    
     # 解析命令行参数
     args = parse_args()
+
+    # 将 base-path 转换为绝对路径
+    # 规则：
+    # - 绝对路径：直接使用
+    # - 相对路径 .. 开头：相对于 scripts/ 解析
+    # - 其他相对路径：相对于项目根目录解析
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(script_dir)
+    if args.base_path:
+        if os.path.isabs(args.base_path):
+            pass  # 绝对路径直接使用
+        elif args.base_path.startswith('..'):
+            # ../ 开头，相对于 scripts/ 解析
+            args.base_path = os.path.join(script_dir, args.base_path)
+        else:
+            # 其他相对路径，相对于项目根目录解析
+            args.base_path = os.path.join(project_root, args.base_path)
+
+    # 设置工作目录为脚本所在目录
+    os.chdir(script_dir)
+
+    # 将项目根目录添加到 sys.path，确保可以导入 src 模块
+    project_root = os.path.dirname(script_dir)
+    if project_root not in sys.path:
+        sys.path.insert(0, project_root)
     
     # 检查对应文件夹中是否存在daily_draft.json文件
     daily_draft_path = os.path.join(args.base_path, 'daily_draft.json')
@@ -316,7 +338,7 @@ if __name__ == '__main__':
             phone_gen_cmd = [
                 sys.executable,
                 os.path.join(os.path.dirname(__file__), 'run', 'phone_gen.py'),
-                '--file-path', args.base_path,
+                '--file-path', args.base_path + '/',
                 '--start-time', '2025-01-01',  # 使用默认开始日期
                 '--end-time', '2025-12-31',    # 使用默认结束日期
                 '--max-workers', '40',          # 使用默认线程数

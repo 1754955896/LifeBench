@@ -14,6 +14,10 @@ class MemoryModule:
     _instances: Dict[str, "MemoryModule"] = {}
     _lock = threading.Lock()
 
+    def __init__(self):
+        """初始化记忆模块实例"""
+        self.mem_mgr = None  # 延迟初始化，通过 get_instance 或手动调用 _init_memory_manager
+
     @classmethod
     def get_instance(cls, instance_id: str = "default", memory_file: Optional[str] = None) -> "MemoryModule":
         with cls._lock:
@@ -49,10 +53,19 @@ class MemoryModule:
 class PersonalMemoryManager:
     def __init__(self,
                  memory_file: str = os.path.join("memory_file", "personal_memories.json"),
-                 model_path: str = "event/local_models/all-MiniLM-L6-v2"):
+                 model_path: str = None):
         os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
 
         self.memory_file = memory_file
+        # 使用项目根目录下的 model_path
+        if model_path is None:
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            # src/lifebench/event/memory_structure -> 1层
+            # src/lifebench/event -> 2层
+            # src/lifebench -> 3层
+            # src -> 4层 = 项目根目录
+            project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(script_dir))))
+            model_path = os.path.join(project_root, "src", "lifebench", "event", "local_models", "all-MiniLM-L6-v2")
         self.model_path = os.path.abspath(model_path)
         self.memories = {}  # {日期(XX-XX-XX): [记忆对象列表]}
         self.embeddings = {}  # {事件ID: 向量}

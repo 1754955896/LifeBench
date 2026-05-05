@@ -741,8 +741,58 @@ def process_single_date_dynamic(date, contact, file_path, matcher,
                 return (-event_coverage, -daily_coverage)
 
             all_sampleable.sort(key=sample_key)
-            sampled = all_sampleable[:target_count]
-            print(f"[手机数据采样] 日期 {date}：原始 {total_count} 条，目标 {target_count} 条，已按优先级采样")
+
+            # 第三优先：按类型均匀采样（优先选择不同类型的手机操作）
+            # 先按类型分组
+            type_groups = {}
+            for fn, op in all_sampleable:
+                op_type = op.get("type", "unknown")
+                if op_type not in type_groups:
+                    type_groups[op_type] = []
+                type_groups[op_type].append((fn, op))
+
+            # 计算每种类型需要选几个（均匀分配）
+            num_types = len(type_groups)
+            base_per_type = target_count // num_types
+            remainder = target_count % num_types
+
+            selected = []
+            selected_set = set()
+            type_counts = {t: 0 for t in type_groups}
+
+            # 轮流从每种类型中选择，直到选够 target_count
+            # 优先选择每种类型中 coverage 较高的
+            for t in sorted(type_groups.keys()):
+                type_groups[t].sort(key=sample_key)
+
+            round = 0
+            while len(selected) < target_count and round < 100:
+                for t in sorted(type_groups.keys()):
+                    if len(selected) >= target_count:
+                        break
+                    # 每轮从该类型中选一个
+                    start_idx = type_counts[t]
+                    if start_idx < len(type_groups[t]):
+                        fn, op = type_groups[t][start_idx]
+                        item_key = (fn, id(op))
+                        if item_key not in selected_set:
+                            selected.append((fn, op))
+                            selected_set.add(item_key)
+                            type_counts[t] += 1
+                round += 1
+
+            # 如果均匀采样没选够，从剩余的中按 coverage 补齐
+            if len(selected) < target_count:
+                for fn, op in all_sampleable:
+                    if len(selected) >= target_count:
+                        break
+                    item_key = (fn, id(op))
+                    if item_key not in selected_set:
+                        selected.append((fn, op))
+                        selected_set.add(item_key)
+
+            sampled = selected
+            print(f"[手机数据采样] 日期 {date}：原始 {total_count} 条，目标 {target_count} 条，已按优先级采样（含类型均匀采样）")
 
         # 用采样结果替换 generated_data
         sampled_set = set((fn, id(item)) for fn, item in sampled)

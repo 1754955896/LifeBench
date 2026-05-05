@@ -110,7 +110,12 @@ class PersonaAddressGenerator:
     def _load_config(self) -> Dict:
         """加载配置文件"""
         try:
-            with open('config.json', 'r', encoding='utf-8') as f:
+            # 使用项目根目录下的 config.json
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            # src/lifebench/event/tools -> src/lifebench/event -> src/lifebench -> 项目根目录
+            project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(script_dir))))
+            config_path = os.path.join(project_root, 'config', 'config.json')
+            with open(config_path, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except Exception as e:
             print(f"加载配置文件失败: {str(e)}")
