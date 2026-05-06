@@ -18,9 +18,82 @@ class PhoneOperationGenerator:
     - 确保生成的数据能够支撑问题的回答
     """
     
+    # 支持的手机数据类型（与 type_specs 中的键保持一致）
+    SUPPORTED_TYPES = {'sms', 'call', 'photo', 'push', 'note', 'calendar'}
+
     def __init__(self):
         self.operation_types = ['sms', 'call', 'calendar', 'note', 'gallery', 'contact']
-    
+
+    def _convert_unsupported_type(self, operation_type: str, generation_hint: str, original_event: Dict[str, Any]) -> tuple:
+        """
+        将不支持的操作类型转换为支持的操作类型，同时保留 generation_hint 的核心信息
+
+        Args:
+            operation_type: 不支持的操作类型
+            generation_hint: 原始的生成提示
+            original_event: 原始事件数据
+
+        Returns:
+            tuple: (转换后的操作类型, 转换后的生成提示)
+        """
+        event_info = json.dumps(original_event, ensure_ascii=False, indent=2) if isinstance(original_event, dict) else str(original_event)
+
+        convert_prompt = f"""
+作为手机操作类型转换专家，请将不支持的操作类型转换为支持的操作类型，并调整生成要求。
+
+【背景】
+当前系统支持以下手机操作类型：
+- sms（短信）
+- call（通话）
+- photo（照片）
+- push（推送通知）
+- note（笔记）
+- calendar（日程）
+
+【原始请求】
+- 操作类型：{operation_type}
+- 原始事件全部信息：
+{event_info}
+- 生成要求：{generation_hint if generation_hint else '无特殊要求'}
+
+【转换要求】
+1. 分析原始请求中 operation_type 和 generation_hint 要表达的核心信息和意图
+2. 从支持的类型中选择最合适的一种或多种来表达这个意图
+3. 调整 generation_hint，使其符合转换后操作类型的特点，同时保留原始核心信息
+4. 如果原始类型已是支持类型，直接返回
+
+【输出格式】
+请以 JSON 格式返回：
+{{
+    "converted_type": "转换后的操作类型（如 sms/call/photo/push/note/calendar）",
+    "converted_hint": "调整后的生成要求，保留原始核心信息，符合新类型特点",
+    "reason": "转换理由"
+}}
+
+请直接输出 JSON，不要其他说明文字：
+"""
+        try:
+            result = llm_call_j(convert_prompt)
+            start_idx = result.find('{')
+            end_idx = result.rfind('}') + 1
+            if start_idx != -1 and end_idx != -1:
+                converted = json.loads(result[start_idx:end_idx])
+                converted_type = converted.get('converted_type', 'sms')
+                converted_hint = converted.get('converted_hint', generation_hint)
+
+                # 确保转换后的类型是支持的
+                if converted_type not in self.SUPPORTED_TYPES:
+                    converted_type = 'sms'
+
+                print(f"[PhoneOperationGenerator] 类型转换: {operation_type} -> {converted_type}")
+                print(f"[PhoneOperationGenerator] 转换理由: {converted.get('reason', 'N/A')}")
+
+                return converted_type, converted_hint
+        except Exception as e:
+            print(f"[PhoneOperationGenerator] 类型转换失败: {e}，使用默认类型 sms")
+
+        return 'sms', generation_hint
+
     def generate(self,
                  operation_type: str,
                  original_event: Dict[str, Any],
@@ -39,6 +112,23 @@ class PhoneOperationGenerator:
             手机操作数据列表
         """
         print(f"[PhoneOperationGenerator] 生成 {operation_type} 类型数据")
+
+        # 统一外部操作类型到内部标准类型
+        normalized_type = operation_type
+        if operation_type == 'phonecall':
+            normalized_type = 'call'
+        if operation_type in {'gallery', 'contact'}:
+            normalized_type = 'photo'  # gallery 和 contact 归类为 photo
+
+        # 检查操作类型是否支持，如果不支持则进行类型转换
+        if normalized_type not in self.SUPPORTED_TYPES:
+            print(f"[PhoneOperationGenerator] 检测到不支持的操作类型: {operation_type}，正在进行类型转换...")
+            normalized_type, generation_hint = self._convert_unsupported_type(
+                normalized_type, generation_hint, original_event
+            )
+            print(f"[PhoneOperationGenerator] 转换后的类型: {normalized_type}")
+
+        operation_type = normalized_type
 
         max_fix_attempts = 2  # 最多修正2次
 
