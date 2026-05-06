@@ -266,7 +266,31 @@ if __name__ == '__main__':
         print(f"\n{'='*60}")
         print(f"文件移动完成")
         print(f"{'='*60}")
-        
+
+        # 调用 check_event_matching 进行事件匹配，为 daily_event 等文件添加匹配字段
+        print(f"\n{'='*60}")
+        print(f"开始执行事件匹配分析")
+        print(f"{'='*60}")
+
+        try:
+            from src.lifebench.event.tools.check_event_matching import main as check_event_matching_main
+
+            # 使用 process_folder 作为数据路径进行事件匹配
+            # match_main 会更新 event_tree.json、daily_draft.json、daily_event.json
+            check_event_matching_main(base_path=args.base_path, output_path=args.base_path)
+
+            print(f"\n{'='*60}")
+            print(f"事件匹配分析完成")
+            print(f"{'='*60}")
+        except Exception as e:
+            print(f"\n{'='*60}")
+            print(f"错误: 事件匹配分析时发生异常!")
+            print(f"错误信息: {str(e)}")
+            print(f"{'='*60}")
+            import traceback
+            traceback.print_exc()
+            sys.exit(1)
+
         # 根据参数决定是否执行月度报告生成
         if args.generate_monthly_report == 1:
             # 调用parallel_monthly_health_report_generation生成月度健康报告
