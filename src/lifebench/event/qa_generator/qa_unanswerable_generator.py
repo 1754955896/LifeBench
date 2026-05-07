@@ -199,7 +199,7 @@ class QAUnanswerableGenerator(BaseQAGenerator):
                     
                     if questions:
                         question = questions[0]  # 只取第一个问题
-                        
+
                         # 确保问题有必要的字段
                         if 'question_type' not in question:
                             question['question_type'] = 'Unanswerable'
@@ -210,12 +210,13 @@ class QAUnanswerableGenerator(BaseQAGenerator):
                                 "description": "准确回答出答案",
                                 "score": 10
                             }]
-                        if 'required_events' not in question:
-                            question['required_events'] = []
+                        # 直接设置 required_events_id，不使用 required_events
+                        question['required_events_id'] = []
+
                         if 'ask_time' not in question:
                             # 随机分配 ask_time，在选定日期之后
                             question['ask_time'] = self._generate_ask_time(selected_date, year, month)
-                        
+
                         all_questions.append(question)
                         print(f"[不可回答问题生成] ✓ 成功生成第 {i+1} 个问题")
                     else:
