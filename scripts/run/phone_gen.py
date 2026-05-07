@@ -117,9 +117,9 @@ if __name__ == "__main__":
 
     # 命令行参数解析
     parser = argparse.ArgumentParser(description='手机操作生成模块')
-    parser.add_argument('--file-path', type=str, default='fenghaoran/', help='数据文件路径')
+    parser.add_argument('--file-path', type=str, default='D:\\pyCharmProjects\\pythonProject4\\tests/data_output/fenghaoran/fenghaoran/', help='数据文件路径')
     parser.add_argument('--start-time', type=str, default='2025-01-01', help='开始日期')
-    parser.add_argument('--end-time', type=str, default='2025-01-31', help='结束日期')
+    parser.add_argument('--end-time', type=str, default='2025-01-01', help='结束日期')
     parser.add_argument('--max-workers', type=int, default=40, help='最大并行线程数')
     parser.add_argument('--phone-count-min', type=int, default=2, help='每天手机数据最小条数')
     parser.add_argument('--phone-count-max', type=int, default=7, help='每天手机数据最大条数')
