@@ -622,7 +622,7 @@ def process_single_date_dynamic(date, contact, file_path, matcher,
             match_result = matcher.match_phone_events_with_atomic_events(
                 phone_operations=all_phone_operations,
                 date=date,
-                generate_unmatched=True
+                generate_unmatched=False
             )
             
             # 将匹配结果更新回 generated_data
