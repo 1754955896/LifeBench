@@ -299,9 +299,19 @@ def analyze_daily_event_matching(daily_event, daily_draft_events, original_date)
         3. **当日计划事件集合**：
            {daily_draft_events_json}
 
-        ## 分析标准
-        - **匹配条件**：在计划事件集合中存在与需要匹配的事件在**核心内容、主要人物、关键活动**等核心要素上相似或相关联的事件
-        - 可以忽略**具体的执行时间**和**执行方式**的差异
+        ## 分析标准（宽松匹配原则）
+        - **匹配条件**：只要计划事件集合中存在与需要匹配的事件**类型相似、主题相关**的事件，就可以认为是匹配
+        - **核心判断**：关注事件的**核心活动类型**（如去医院看病、去超市购物、运动健身等），而不是具体细节
+        - **可以忽略的差异**：
+          - 具体人物不同（如都是去医院，但一个是"陪父亲看病"一个是"自己看病"）
+          - 具体地点不同（如都是去超市，但一个是"永辉超市"一个是"沃尔玛"）
+          - 具体时间不同
+          - 具体执行方式细节不同（如都是运动，一个是"健身房跑步"一个是"户外跑步"）
+        - **示例**：
+          - ✓ 匹配："去医院看病" 可以匹配 "陪母亲去医院体检"
+          - ✓ 匹配："去超市购物" 可以匹配 "在沃尔玛买食材"
+          - ✓ 匹配："和朋友吃饭" 可以匹配 "与同事聚餐"
+          - ✗ 不匹配：去医院看病 vs 去银行办业务（类型完全不同）
 
         ## 输出要求
         请以JSON格式返回分析结果：
@@ -464,6 +474,11 @@ def main(base_path=None, output_path=None, resume=True):
     event_data = load_event_decompose_dfs(event_decompose_dfs_path)
     daily_data = load_daily_draft(daily_draft_path)
     daily_event_data = load_daily_event(daily_event_path)
+
+    # 检查daily_event是否已经包含atomic_id字段，如果是则跳过所有处理
+    if daily_event_data and len(daily_event_data) > 0 and 'atomic_id' in daily_event_data[0]:
+        print(f"daily_event数据已包含atomic_id字段，跳过所有处理流程")
+        return
 
     # 提取最底层事件
     bottom_events = extract_bottom_events(event_data)

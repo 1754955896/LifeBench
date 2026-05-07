@@ -39,6 +39,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         # 初始化线程锁
         self.phonedata_lock = threading.Lock()
         self.phone_id_lock = threading.Lock()
+        self.phone_id_counters = {}
         
         # 初始化手机操作生成器
         self.phone_op_generator = PhoneOperationGenerator()
@@ -1321,8 +1322,8 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         
         **判断标准**：
         - 手机数据应该直接或间接反映了状态的变化
-        - 例如：如果状态是“换了新工作”，手机数据中应该有与新工作相关的通讯、日程等
-        - 如果状态是“去了某地旅游”，手机数据中应该有与旅行相关的照片、导航、预订等
+        - 例如：如果状态是"换了新工作"，手机数据中应该有与新工作相关的通讯、日程等
+        - 如果状态是"去了某地旅游"，手机数据中应该有与旅行相关的照片、导航、预订等
         
         **输出格式**：
         请以 JSON 格式返回：
@@ -1346,128 +1347,134 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
     
     def _generate_phone_data_for_node(self, node_info: Dict, event_ids: List[str]) -> List[Dict]:
         """
-        为节点生成手机数据
-        
+        为节点生成手机数据（使用 PhoneOperationGenerator）
+
         Args:
             node_info: 节点信息
             event_ids: 相关事件 ID 列表
-        
+
         Returns:
             生成的手机数据列表
         """
         date = node_info.get("date", "")
         new_state = node_info.get("new_state", "")
         state_name = node_info.get("state_name", "")
-        
-        prompt = f"""
-        你是一位手机数据生成专家。请基于用户的状态变化，生成合理的手机操作数据。
-        
-        【状态变化】
-        - 日期: {date}
-        - 状态类型: {state_name}
-        - 新状态: {new_state}
-        
-        【相关事件 ID】
-        {json.dumps(event_ids, ensure_ascii=False)}
-        
-        【任务要求】
-        请生成 2-5 条能够反映该状态变化的手机数据。
-        
-        **生成原则**：
-        1. **相关性**：手机数据必须与状态变化直接相关
-        2. **真实性**：数据应该符合真实用户的手机使用习惯
-        3. **多样性**：可以包含不同类型的手机数据（短信、通话、笔记、日历、照片等）
-        4. **时间合理**：数据的时间应该在 {date} 当天或前后
-        
-        **可选的数据类型**：
-        - sms: 短信
-        - call: 通话记录
-        - note: 笔记
-        - calendar: 日历事件
-        - photo: 照片元数据
-        - app_usage: APP 使用记录
-        
-        **输出格式**：
-        请以 JSON 数组格式返回：
-        [
-            {{
-                "type": "sms",
-                "data": {{
-                    "content": "短信内容",
-                    "timestamp": "{date} 10:30:00",
-                    "direction": "received",
-                    "contact": "联系人姓名"
-                }},
-                "related_event_id": "事件ID"
-            }},
-            ...
-        ]
-        
-        **示例**（假设状态是“换了新工作”）：
-        [
-            {{
-                "type": "sms",
-                "data": {{
-                    "content": "欢迎加入我们的团队！明天上午9点到公司报到。",
-                    "timestamp": "{date} 18:00:00",
-                    "direction": "received",
-                    "contact": "HR李经理"
-                }},
-                "related_event_id": "{event_ids[0] if event_ids else ''}" 
-            }},
-            {{
-                "type": "calendar",
-                "data": {{
-                    "title": "新员工入职培训",
-                    "start_time": "{date} 09:00:00",
-                    "end_time": "{date} 17:00:00",
-                    "location": "公司会议室A"
-                }},
-                "related_event_id": "{event_ids[0] if event_ids else ''}" 
-            }}
-        ]
-        """
-        
+
+        # 构建原始事件信息
+        original_event = {
+            "name": state_name,
+            "type": state_name,
+            "date": date,
+            "description": new_state,
+            "event_id": event_ids[0] if event_ids else "",
+            "related_events": event_ids
+        }
+
+        # LLM 只生成操作类型和生成要求
+        plan_prompt = f"""你是一位手机数据生成规划专家。请为以下状态变化规划手机操作数据的生成方案。
+
+【状态变化】
+- 日期: {date}
+- 状态类型: {state_name}
+- 新状态: {new_state}
+
+【任务要求】
+请生成 2-5 条能够反映该状态变化的手机操作规划。
+
+【支持的类型（必须使用以下类型之一）】
+- sms: 短信
+- call: 通话记录
+- note: 笔记
+- calendar: 日程事件
+- photo: 照片
+- push: 推送通知
+
+【规划要求】
+1. 选择合适的手机数据类型组合
+2. 对每种类型说明具体的生成要求（内容、要点等）
+3. 确保多样性和真实性
+
+【输出格式】
+请以 JSON 数组格式返回：
+[
+    {{
+        "operation_type": "sms/call/note/calendar/photo/push 之一",
+        "generation_hint": "具体的生成要求，说明需要什么内容"
+    }},
+    ...
+]
+"""
+
         try:
-            res = llm_call_j(prompt)
+            res = llm_call_j(plan_prompt)
             if isinstance(res, str):
                 res = json.loads(res)
-            
-            if isinstance(res, list):
-                return res
-            else:
+
+            if not isinstance(res, list):
                 return []
-        
+
+            # 使用 PhoneOperationGenerator 生成实际的手机数据
+            all_generated_data = []
+            for plan in res:
+                operation_type = plan.get("operation_type", "")
+                generation_hint = plan.get("generation_hint", "")
+
+                # 调用 PhoneOperationGenerator 生成
+                generated = self.phone_op_generator.generate(
+                    operation_type=operation_type,
+                    original_event=original_event,
+                    question="状态变化: " + new_state,
+                    generation_hint=generation_hint
+                )
+
+                # 直接使用 PhoneOperationGenerator 返回的数据，不做额外包装
+                if generated:
+                    all_generated_data.extend(generated)
+
+            return all_generated_data
+
         except Exception as e:
             if self.is_print:
-                print(f"      ⚠️ LLM 生成手机数据失败: {e}")
+                print(f"      warning: 生成手机数据失败: {e}")
             return []
     
+    # 支持的手机数据类型（与 PhoneOperationGenerator 保持一致）
+    SUPPORTED_PHONE_TYPES = {'sms', 'call', 'photo', 'push', 'note', 'calendar'}
+
     def _add_generated_phone_data(self, generated_data: List[Dict]):
         """
-        将生成的手机数据添加到 phonedata 中
-        
+        将生成的手机数据添加到 phonedata 中（只保存支持的类型）
+
         Args:
-            generated_data: 生成的手机数据列表
+            generated_data: 生成的手机数据列表（直接是 PhoneOperationGenerator 返回的格式）
         """
         if not self.phonedata:
             self.phonedata = {}
-        
-        for item in generated_data:
-            data_type = item.get("type", "unknown")
-            data_content = item.get("data", {})
-            related_event_id = item.get("related_event_id", "")
-            
-            # 添加 related_event 字段
-            if isinstance(data_content, dict):
-                data_content["related_event"] = related_event_id
-            
-            # 添加到对应的数据类型列表中
-            if data_type not in self.phonedata:
-                self.phonedata[data_type] = []
-            
-            self.phonedata[data_type].append(data_content)
-        
+
+        with self.phone_id_lock:
+            for item in generated_data:
+                # 直接使用 item，因为 PhoneOperationGenerator 返回的数据已经包含 type 字段
+                data_type = item.get("type", "unknown")
+
+                # 过滤不支持的数据类型
+                if data_type not in self.SUPPORTED_PHONE_TYPES:
+                    if self.is_print:
+                        print(f"      - 跳过不支持的数据类型: {data_type}")
+                    continue
+
+                # 分配 phone_id
+                if data_type not in self.phone_id_counters:
+                    self.phone_id_counters[data_type] = 1
+                if 'phone_id' not in item:
+                    item['phone_id'] = str(self.phone_id_counters[data_type])
+                self.phone_id_counters[data_type] += 1
+
+                # 添加到对应的数据类型列表中
+                if data_type not in self.phonedata:
+                    self.phonedata[data_type] = []
+
+                self.phonedata[data_type].append(item)
+
         if self.is_print:
             print(f"      - 已添加 {len(generated_data)} 条手机数据到 phonedata")
 

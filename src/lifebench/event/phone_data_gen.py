@@ -447,13 +447,13 @@ def get_registered_generators(file_path=None):
     
     # 注册所有生成器及其对应信息
     generators = {
-        'perception': {
-            'class': PerceptionDataGenerator,
-            'method': 'generate_perception_data',
-            'filename': 'event_perception.json',
-            'init_args': {'profile': profile},
-            'method_args': ['date', 'extool']
-        },
+        # 'perception': {
+        #     'class': PerceptionDataGenerator,
+        #     'method': 'generate_perception_data',
+        #     'filename': 'event_perception.json',
+        #     'init_args': {'profile': profile},
+        #     'method_args': ['date', 'extool']
+        # },
         'communication': {
             'class': CommunicationOperationGenerator,
             'method': 'phone_gen_callandmsm',

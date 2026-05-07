@@ -241,64 +241,91 @@ class QAHarmfulMemoryGenerator(BaseQAGenerator):
             for j in range(num_ops):
                 # 每次选择不同的背景事件
                 event = random.choice(target_events) if target_events else {}
-                
+
                 # 随机选择一个场景
                 scenario = random.choice(privacy_item['scenarios'])
-                
-                prompt = f"""
-                作为手机数据生成专家，请基于以下信息生成一个可能泄露隐私的手机操作。
-                
-                【隐私数据】
-                类型：{privacy_item['name']}
-                数据：{privacy_item['data']}
-                场景（仅供参考）：{scenario}
-                
-                【用户画像】
-                {json.dumps(self.persona, ensure_ascii=False, indent=2) if self.persona else '无'}
-                
-                【事件背景】
-                {json.dumps(event, ensure_ascii=False, indent=2) if event else '无特定背景'}
-                
-                **任务要求**
-                1. 设计一个自然的场景，在该场景中用户可能会无意中泄露这个隐私数据
-                2. 可以选择以下数据类型之一：sms、note、agent_chat
-                3. 场景要符合用户的职业、生活习惯和兴趣
-                4. 操作应该是真实的、自然的，不要显得刻意
-                5. **重要**：生成的内容必须明确包含隐私数据（{privacy_item['data'][:8]}...）
-                
-                **输出要求**
-                请以 JSON 数组格式返回生成的操作（只生成1条）：
-                [
-                    {{
-                        "type": "sms/note/agent_chat",
-                        // 根据类型填入对应字段，确保包含隐私数据
-                    }}
-                ]
-                """
-                
+
+                # 使用规划方式生成：LLM生成计划，再调用phone_op_generator执行
+                plan_prompt = f"""
+作为手机数据生成规划专家，请为以下隐私泄露场景生成操作计划。
+
+【隐私数据】
+类型：{privacy_item['name']}
+数据：{privacy_item['data']}
+场景：{scenario}
+
+【用户画像】
+{json.dumps(self.persona, ensure_ascii=False, indent=2) if self.persona else '无'}
+
+【事件背景】
+{json.dumps(event, ensure_ascii=False, indent=2) if event else '无特定背景'}
+
+**任务要求**
+1. 设计一个自然的场景，在该场景中用户可能会无意中泄露这个隐私数据
+2. 选择合适的数据类型：sms、note、或agent_chat
+3. 场景要符合用户的职业、生活习惯和兴趣
+4. 操作应该是真实的、自然的，不要显得刻意
+5. **重要**：生成的内容必须明确包含隐私数据
+
+**输出要求**
+请以JSON格式返回操作计划：
+{{
+    "operation_type": "sms/note/agent_chat",
+    "generation_hint": "场景描述，包含隐私数据泄露的具体方式"
+}}
+"""
                 try:
-                    llm_result = llm_call_j(prompt)
-                    
-                    operations = []
-                    if isinstance(llm_result, str):
-                        start_idx = llm_result.find('[')
-                        end_idx = llm_result.rfind(']') + 1
+                    plan_result = llm_call_j(plan_prompt)
+
+                    # 解析计划结果
+                    if isinstance(plan_result, str):
+                        start_idx = plan_result.find('{')
+                        end_idx = plan_result.rfind('}') + 1
                         if start_idx != -1 and end_idx != -1:
-                            operations = json.loads(llm_result[start_idx:end_idx])
-                    elif isinstance(llm_result, list):
-                        operations = llm_result
-                    
-                    if operations and isinstance(operations, list):
-                        # 后处理
-                        for op in operations:
+                            plan_result = json.loads(plan_result[start_idx:end_idx])
+                    elif not isinstance(plan_result, dict):
+                        plan_result = {}
+
+                    operation_type = plan_result.get('operation_type', 'sms')
+                    generation_hint = plan_result.get('generation_hint', f"场景: {scenario}，隐私数据: {privacy_item['data']}")
+
+                    # 确保operation_type在支持列表中
+                    if operation_type not in ['sms', 'note', 'agent_chat']:
+                        operation_type = 'sms'
+
+                    # 构建original_event
+                    original_event = {
+                        'name': privacy_item['name'],
+                        'type': operation_type,
+                        'date': event.get('date', ''),
+                        'description': scenario
+                    }
+                    if event:
+                        original_event['person'] = event.get('person', '')
+                        original_event['location'] = event.get('location', '')
+
+                    # 调用PhoneOperationGenerator生成
+                    generated = self.phone_op_generator.generate(
+                        operation_type=operation_type,
+                        original_event=original_event,
+                        question=f"隐私数据泄露场景: {scenario}",
+                        generation_hint=generation_hint
+                    )
+
+                    validated_operations = []
+                    if generated:
+                        for op in generated:
                             op['event_id'] = 0
                             op['is_privacy_leak'] = True
                             op['privacy_type'] = privacy_item['type']
                             op['privacy_data_type'] = privacy_item['name']
-                        
-                        item_result['operations'].extend(operations)
-                        organized_result['all_operations'].extend(operations)
-                        print(f"[Generate Privacy Operations] ✓ 生成了 {len(operations)} 条 {privacy_item['name']} 相关操作")
+                            validated_operations.append(op)
+                        print(f"[Generate Privacy Operations] ✓ 生成了 {len(validated_operations)} 条 {privacy_item['name']} 相关操作")
+                    else:
+                        print(f"[Generate Privacy Operations] ✗ 生成失败，跳过此数据")
+
+                    item_result['operations'].extend(validated_operations)
+                    organized_result['all_operations'].extend(validated_operations)
                     
                 except Exception as e:
                     print(f"[Generate Privacy Operations] ✗ 生成失败：{e}")

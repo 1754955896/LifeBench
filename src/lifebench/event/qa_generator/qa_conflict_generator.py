@@ -627,206 +627,126 @@ class QAConflictGenerator(BaseQAGenerator):
     def _generate_phone_data_for_plot(self, conflict_plot: Dict, target_event: Dict) -> List[Dict]:
         """
         为冲突情节生成对应的手机数据（支持 sms、note、calendar、agent_chat）
-        注意：只生成与冲突情节相关的操作，不生成原事件的手机数据
-        
+        使用 PhoneOperationGenerator 进行实际生成，LLM 只生成规划指令
+
         Args:
             conflict_plot: 完整的冲突情节数据（包含 new_plots 数组）
             target_event: 目标事件（仅用于获取人物画像）
-            
+
         Returns:
             生成的手机数据列表
         """
         new_plots = conflict_plot.get('new_plots', [])
-        
+
         if not new_plots:
             print(f"[Generate Phone Data] 警告：new_plots 为空")
             return []
-        
+
         all_operations = []
-        
+
         # 遍历每个情节，生成对应的手机数据
         for i, plot in enumerate(new_plots, 1):
             print(f"[Generate Phone Data] 处理第 {i}/{len(new_plots)} 个情节...")
-            
+
             data_type = plot.get('data_type', 'sms')
             plot_date = plot.get('date', '')
             content_hint = plot.get('content_hint', '')
             plot_role = plot.get('plot_role', '')
-            
+
             # 只支持这四种类型
             if data_type not in ['sms', 'note', 'calendar', 'agent_chat']:
                 print(f"[Generate Phone Data] 不支持的数据类型：{data_type}，跳过")
                 continue
-            
+
             try:
-                # 获取人物画像信息
-                persona_info = self.persona if hasattr(self, 'persona') else ''
-                
-                # 根据 data_type 动态拼接对应的数据格式要求
-                format_requirements = {
-                    'sms': """
-            ### SMS (短信) 格式要求
-            - type: 固定为 "sms"
-            - message_content: 短信内容，体现冲突情节（如发错的信息或纠正信息）
-            - contactName: 联系人姓名（对方）
-            - phoneNumber: 电话号码
-            - datetime: 发送时间，格式 YYYY-MM-DD HH:MM:SS，日期使用 {plot_date}
-            - message_type: "发送" 或 "接收"
-            - daily_event_id: 字符串类型的事件ID
-            """,
-                    'note': """
-            ### Note (笔记) 格式要求
-            - type: 固定为 "note"
-            - title: 笔记标题，简洁明确
-            - content: 笔记内容，结构化分点，体现冲突情节相关信息
-            - datetime: 创建时间，格式 YYYY-MM-DD HH:MM:SS，日期使用 {plot_date}
-            - summarized_info: 笔记内容的摘要总结
-            """,
-                    'calendar': """
-            ### Calendar (日历) 格式要求
-            - event_id: 固定为 0
-            - type: 固定为 "calendar"
-            - title: 日程标题，简洁明确
-            - description: 日程描述，包含时间、地点、核心信息
-            - start_time: 开始时间，格式 YYYY-MM-DD HH:MM:SS
-            - end_time: 结束时间，格式 YYYY-MM-DD HH:MM:SS
-            - datetime: 创建时间，格式 YYYY-MM-DD HH:MM:SS
-            - summarized_info: 日历内容的摘要总结
-            """,
-                    'agent_chat': """
-            ### Agent Chat (智能体对话) 格式要求
-            - event_id: 固定为 0
-            - type: 固定为 "agent_chat"
-            - date: 日期，格式 YYYY-MM-DD，使用 {plot_date}
-            - conversation: 对话内容对象，最多包含两轮对话（turn 1, turn 2）
-              - 每轮对话包含 user 和 assistant 两个对象
-              - user 包含 action 和 content 字段
-              - assistant 包含 action 和 content 字段
-              - action 可选值：topic query, need inference, need confirmation, solution discussion 等
-                        
-            **示例**
-            {{
-                "date": "{plot_date}",
-                "type": "agent_chat",
-                "conversation": {{
-                    "turn 1": {{
-                        "user": {{
-                            "action": "topic query",
-                            "content": "用户的问题或咨询内容"
-                        }},
-                        "assistant": {{
-                            "action": "need inference",
-                            "content": "AI 助手的回复内容"
-                        }}
-                    }},
-                    "turn 2": {{
-                        "user": {{
-                            "action": "need confirmation",
-                            "content": "用户的进一步询问"
-                        }},
-                        "assistant": {{
-                            "action": "solution discussion",
-                            "content": "AI 助手的建议或解答"
-                        }}
-                    }}
-                }}
-            }}
-            """
+                # 构建原始事件信息
+                original_event = {
+                    'name': plot.get('description', ''),
+                    'type': data_type,
+                    'date': plot_date,
+                    'description': content_hint
                 }
-                
-                # 获取当前类型的格式要求
-                current_format = format_requirements.get(data_type, '')
-                
-                # 构建完整的 prompt，让 LLM 直接生成手机数据
-                generation_prompt = f"""
-                作为手机数据生成专家，请基于以下冲突情节和人物画像，直接生成手机数据。
-                
-                【情节描述】
-                {plot.get('description', '')}
-                
-                【情节角色】
-                {plot_role}
-                
-                【内容提示】
-                {content_hint}
-                
-                【人物画像】
-                {persona_info if persona_info else '无特定画像信息'}
-                
-                【数据类型】
-                {data_type}
-                
-                【任务要求】
-                1. 严格按照【内容提示】中的具体要求生成数据
-                2. 结合人物画像，确定合适的表达方式和语气
-                3. **只生成与冲突情节直接相关的内容**，不要生成原事件的常规提醒
-                4. 生成的数据必须符合指定类型的格式要求
-                5. **只生成一条数据**，精确反映情节的核心内容
-                
-                **数据格式要求**
-                {current_format}
-                
-                **输出要求**
-                请以 JSON 数组格式返回生成的数据（**必须且只能包含一条数据**）：
-                [
-                    {{
-                        // 根据数据类型填入对应字段
-                    }}
-                ]
-                
-                **重要约束**
-                - 所有数据的 event_id 必须为 0
-                - 内容必须严格基于【内容提示】，不得编造与原事件无关的内容
-                - 时间字段的日期部分必须使用 {plot_date}
-                - 语气和表达方式要符合人物画像特征
-                - **数组中必须且只能包含一个对象**
-                """
-                
-                # 调用 LLM 直接生成手机数据
-                llm_result = llm_call_j(generation_prompt)
-                
-                # 解析结果
-                operations = []
-                if isinstance(llm_result, str):
-                    start_idx = llm_result.find('[')
-                    end_idx = llm_result.rfind(']') + 1
+
+                # LLM 只生成操作类型和生成要求
+                plan_prompt = f"""你是一位手机数据生成规划专家。请为以下冲突情节规划手机操作数据的生成方案。
+
+【冲突情节】
+- 情节描述: {plot.get('description', '')}
+- 情节角色: {plot_role}
+- 内容提示: {content_hint}
+- 日期: {plot_date}
+
+【支持的类型（必须使用以下类型之一）】
+- sms: 短信
+- call: 通话记录
+- note: 笔记
+- calendar: 日程事件
+- photo: 照片
+- push: 推送通知
+- agent_chat: 智能体对话
+
+【任务要求】
+请为这个冲突情节生成手机操作规划。
+
+【规划要求】
+1. 选择合适的手机数据类型（当前情节指定了 {data_type}）
+2. 说明具体的生成要求（内容、要点等）
+3. 生成要求应能精确反映冲突情节的核心内容
+
+【输出格式】
+请以 JSON 数组格式返回：
+[
+    {{
+        "operation_type": "sms/call/note/calendar/photo/push/agent_chat 之一",
+        "generation_hint": "具体的生成要求，说明需要什么内容"
+    }}
+]
+"""
+
+                # 调用 LLM 生成规划
+                plan_result = llm_call_j(plan_prompt)
+
+                plan_list = []
+                if isinstance(plan_result, str):
+                    start_idx = plan_result.find('[')
+                    end_idx = plan_result.rfind(']') + 1
                     if start_idx != -1 and end_idx != -1:
-                        operations = json.loads(llm_result[start_idx:end_idx])
+                        plan_list = json.loads(plan_result[start_idx:end_idx])
+                elif isinstance(plan_result, list):
+                    plan_list = plan_result
+
+                if not plan_list:
+                    print(f"[Generate Phone Data] LLM 生成规划为空，跳过")
+                    continue
+
+                # 使用 PhoneOperationGenerator 生成实际的手机数据
+                for plan in plan_list:
+                    operation_type = plan.get("operation_type", data_type)
+                    generation_hint = plan.get("generation_hint", content_hint)
+
+                    # 构建 question
+                    question = f"冲突情节: {plot_role} - {content_hint}"
+
+                    # 调用 PhoneOperationGenerator 生成
+                    generated = self.phone_op_generator.generate(
+                        operation_type=operation_type,
+                        original_event=original_event,
+                        question=question,
+                        generation_hint=generation_hint
+                    )
+
+                    if generated:
+                        all_operations.extend(generated)
+                        print(f"[Generate Phone Data] 成功生成 {len(generated)} 条 {operation_type} 数据")
                     else:
-                        print(f"[Generate Phone Data] LLM 返回格式错误")
-                        continue
-                elif isinstance(llm_result, list):
-                    operations = llm_result
-                else:
-                    print(f"[Generate Phone Data] LLM 返回格式错误")
-                    continue
-                
-                if not isinstance(operations, list):
-                    print(f"[Generate Phone Data] LLM 返回不是数组")
-                    continue
-                
-                # 后处理：确保所有必要字段存在
-                for op in operations:
-                    # 强制设置 event_id 为 0
-                    op['event_id'] = 0
-                    
-                    # 确保 type 字段正确
-                    if 'type' not in op:
-                        op['type'] = data_type
-                    
-                    # 如果没有 datetime，设置默认值
-                    if 'datetime' not in op and plot_date:
-                        op['datetime'] = f"{plot_date} 10:00:00"
-                
-                all_operations.extend(operations)
-                print(f"[Generate Phone Data] 成功生成 {len(operations)} 条 {data_type} 数据（{plot_role}）")
-                    
+                        print(f"[Generate Phone Data] {operation_type} 类型生成失败")
+
             except Exception as e:
                 print(f"[Generate Phone Data] 生成失败：{e}")
                 import traceback
                 traceback.print_exc()
                 continue
-        
+
         print(f"[Generate Phone Data] 总共生成 {len(all_operations)} 条手机数据")
         return all_operations
     

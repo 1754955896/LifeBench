@@ -19,7 +19,18 @@ class PhoneOperationGenerator:
     """
     
     # 支持的手机数据类型（与 type_specs 中的键保持一致）
-    SUPPORTED_TYPES = {'sms', 'call', 'photo', 'push', 'note', 'calendar'}
+    SUPPORTED_TYPES = {'sms', 'call', 'photo', 'push', 'note', 'calendar', 'agent_chat'}
+
+    # 各数据类型允许的字段（用于清理多余字段）
+    ALLOWED_FIELDS = {
+        'sms': {'type', 'message_content', 'contactName', 'phoneNumber', 'datetime', 'message_type', 'daily_event_id', 'event_id'},
+        'call': {'type', 'phoneNumber', 'contactName', 'datetime', 'datetime_end', 'direction', 'call_result', 'daily_event_id', 'event_id'},
+        'photo': {'type', 'caption', 'title', 'datetime', 'location', 'faceRecognition', 'imageTag', 'ocrText', 'shoot_mode', 'image_size', 'daily_event_id', 'event_id'},
+        'push': {'type', 'title', 'content', 'datetime', 'source', 'push_status', 'jump_path', 'daily_event_id', 'event_id'},
+        'note': {'type', 'title', 'content', 'datetime', 'daily_event_id', 'event_id'},
+        'calendar': {'type', 'title', 'description', 'start_time', 'end_time', 'datetime', 'daily_event_id', 'event_id'},
+        'agent_chat': {'type', 'date', 'conversation', 'daily_event_id', 'event_id'}
+    }
 
     def __init__(self):
         self.operation_types = ['sms', 'call', 'calendar', 'note', 'gallery', 'contact']
@@ -361,9 +372,40 @@ class PhoneOperationGenerator:
             "daily_event_id": "输入事件的 id",
             "event_id": []
         }}
+        """,
+            'agent_chat': """
+        Agent Chat 智能体对话：
+        {{
+            "type": "agent_chat",
+            "date": "2025-03-15",
+            "conversation": {{
+                "turn 1": {{
+                    "user": {{
+                        "action": "topic query / need inference / need confirmation / solution discussion",
+                        "content": "用户的问题或内容"
+                    }},
+                    "assistant": {{
+                        "action": "topic query / need inference / need confirmation / solution discussion",
+                        "content": "AI 助手的回复"
+                    }}
+                }},
+                "turn 2": {{
+                    "user": {{
+                        "action": "topic query / need inference / need confirmation / solution discussion",
+                        "content": "用户的进一步询问"
+                    }},
+                    "assistant": {{
+                        "action": "topic query / need inference / need confirmation / solution discussion",
+                        "content": "AI 助手的建议或解答"
+                    }}
+                }}
+            }},
+            "daily_event_id": "输入事件的 id",
+            "event_id": []
+        }}
         """
         }
-        
+
         prompt += type_specs.get(type_spec_key, "").format(event_type=event_type)
         
         prompt += """
@@ -499,7 +541,8 @@ class PhoneOperationGenerator:
             'photo': ["type", "caption", "title", "datetime", "location", "faceRecognition", "imageTag", "ocrText", "shoot_mode", "image_size"],
             'push': ["type", "title", "content", "datetime", "source", "push_status", "jump_path"],
             'note': ["type", "title", "content", "datetime"],
-            'calendar': ["type", "title", "description", "start_time", "end_time", "datetime"]
+            'calendar': ["type", "title", "description", "start_time", "end_time", "datetime"],
+            'agent_chat': ["type", "date", "conversation"]
         }
 
         required_fields = field_specs.get(operation_type, [])
@@ -601,6 +644,33 @@ class PhoneOperationGenerator:
                     invalid_reasons[idx] = f"message_type 取值错误: {message_type}"
                     invalid_data.append((idx, op))
                     continue
+
+            # 9. 校验 agent_chat 类型特有字段
+            if operation_type == 'agent_chat':
+                conversation = op.get('conversation')
+                if not isinstance(conversation, dict):
+                    invalid_reasons[idx] = f"conversation 格式错误，应为字典"
+                    invalid_data.append((idx, op))
+                    continue
+                # 检查 turn 1 和 turn 2
+                for turn_key in ['turn 1', 'turn 2']:
+                    if turn_key in conversation:
+                        turn = conversation[turn_key]
+                        if not isinstance(turn, dict):
+                            invalid_reasons[idx] = f"conversation.{turn_key} 格式错误，应为字典"
+                            invalid_data.append((idx, op))
+                            continue
+                        for role in ['user', 'assistant']:
+                            if role in turn:
+                                role_data = turn[role]
+                                if not isinstance(role_data, dict):
+                                    invalid_reasons[idx] = f"conversation.{turn_key}.{role} 格式错误，应为字典"
+                                    invalid_data.append((idx, op))
+                                    continue
+                                if 'action' not in role_data or 'content' not in role_data:
+                                    invalid_reasons[idx] = f"conversation.{turn_key}.{role} 缺少 action 或 content 字段"
+                                    invalid_data.append((idx, op))
+                                    continue
 
             valid_ops.append(op)
 
@@ -739,6 +809,44 @@ class PhoneOperationGenerator:
     "end_time": "2025-03-15 15:00:00",
     "datetime": "2025-03-15 14:30:00"
 }}
+''',
+            'agent_chat': '''
+字段格式：
+- type: 固定 "agent_chat"
+- date: 格式 "YYYY-MM-DD"，年份为 2025
+- conversation: 对话对象，包含 turn 1 和 turn 2
+  - turn 1: 第一轮对话，包含 user 和 assistant
+    - user: 包含 action 和 content 字段
+    - assistant: 包含 action 和 content 字段
+  - turn 2: 第二轮对话（可选），格式同 turn 1
+  - action 可选值：topic query, need inference, need confirmation, solution discussion
+示例：
+{{
+    "type": "agent_chat",
+    "date": "2025-03-15",
+    "conversation": {{
+        "turn 1": {{
+            "user": {{
+                "action": "topic query",
+                "content": "用户的问题"
+            }},
+            "assistant": {{
+                "action": "need inference",
+                "content": "AI 的回复"
+            }}
+        }},
+        "turn 2": {{
+            "user": {{
+                "action": "need confirmation",
+                "content": "用户的确认"
+            }},
+            "assistant": {{
+                "action": "solution discussion",
+                "content": "AI 的解答"
+            }}
+        }}
+    }}
+}}
 '''
         }
         return type_specs.get(operation_type, "")
@@ -797,6 +905,12 @@ class PhoneOperationGenerator:
                 fixed_op['event_id'] = []
                 if 'phone_id' in fixed_op:
                     del fixed_op['phone_id']
+                # 清理多余字段
+                allowed_fields = self.ALLOWED_FIELDS.get(operation_type, set())
+                if allowed_fields:
+                    extra_fields = [k for k in fixed_op.keys() if k not in allowed_fields]
+                    for extra_field in extra_fields:
+                        del fixed_op[extra_field]
                 return fixed_op
         except Exception as e:
             print(f"[PhoneOperationGenerator] 修正解析失败: {e}")
@@ -832,20 +946,27 @@ class PhoneOperationGenerator:
                 
                 # 验证和规范化
                 validated_ops = []
+                allowed_fields = self.ALLOWED_FIELDS.get(operation_type, set())
                 for i, op in enumerate(operations):
                     if isinstance(op, dict):
                         # 确保必需字段存在
                         if 'type' not in op:
                             op['type'] = operation_type
-                        
+
                         # **强制设置** daily_event_id 和 event_id，保障正确性
                         op['daily_event_id'] = event_id_str
                         op['event_id'] = []
-                        
+
                         # 移除 phone_id 如果存在
                         if 'phone_id' in op:
                             del op['phone_id']
-                        
+
+                        # 清理多余字段，只保留允许的字段
+                        if allowed_fields:
+                            extra_fields = [k for k in op.keys() if k not in allowed_fields]
+                            for extra_field in extra_fields:
+                                del op[extra_field]
+
                         validated_ops.append(op)
                 
                 print(f"[PhoneOperationGenerator] 成功生成 {len(validated_ops)} 条{operation_type}数据")
