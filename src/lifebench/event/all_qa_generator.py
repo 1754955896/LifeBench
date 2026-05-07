@@ -308,13 +308,13 @@ class QAGenerator:
             single_output_path = os.path.join(qa_all_dir, f"{gen_name}.json")
             if os.path.exists(single_output_path):
                 print(f"\n{idx}. 跳过 {gen_name}（文件已存在: {single_output_path}）")
-                # 加载已有文件并添加到总列表
+                # 加载已有文件并添加到总列表，后续会统一经过分类处理
                 try:
                     with open(single_output_path, 'r', encoding='utf-8') as f:
                         existing_questions = json.load(f)
                     if isinstance(existing_questions, list):
                         all_questions.extend(existing_questions)
-                        print(f"   ✓ 已加载 {len(existing_questions)} 个已有问题")
+                        print(f"   ✓ 已加载 {len(existing_questions)} 个已有问题，将统一经过分类处理")
                 except Exception as e:
                     print(f"   ⚠️ 加载已有文件失败: {e}")
                 continue
