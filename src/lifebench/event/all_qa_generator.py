@@ -541,14 +541,10 @@ class QAGenerator:
 - Multi_hop: 多跳问题，需要结合多个事件/证据才能回答
 - Temporal: 时间推理问题，涉及日期、时间顺序的问题
 - Causal: 因果推理问题，涉及事件原因和结果的问题
-- Comparison: 比较问题，需要对比多个选项或实体的问题
-- Summary: 总结概括问题，需要对信息进行总结的问题
-- Inference: 推理问题，需要基于现有信息进行推断的问题
 - Knowledge_update: 知识更新问题，涉及认知或知识更新的问题
-- Unanswerable: 不可回答的问题，目前证据不足以回答的问题
 - Conflict: 冲突问题，证据之间存在矛盾的问题
-- Pattern_recognition: 模式识别问题，需要识别数据中模式的问题
-- Hidden_info: 隐藏信息问题，需要从隐含信息中推断的问题
+- Pattern_recognition: 模式识别问题，关注个人习惯，偏好，行为模式，一段时间的总结等方面
+- Hidden_info: 隐藏信息问题，需要从信息中推断隐含的用户画像信息，偏好的问题
 
 ### 输出要求
 分析问题特点，从上述类型中选择最匹配的 1-3 个类型标签，按匹配程度从高到低排列。
@@ -574,6 +570,7 @@ class QAGenerator:
                 result = result.strip()
                 if result.startswith('['):
                     types = json.loads(result)
+                    print(f"LLM 分类结果: {types} for question: {question}")
                     if isinstance(types, list) and all(isinstance(t, str) for t in types):
                         qa['question_type'] = types[:3]  # 最多保留3个类型
                         return qa
