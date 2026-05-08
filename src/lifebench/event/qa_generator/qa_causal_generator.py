@@ -920,12 +920,20 @@ class QACausalGenerator(BaseQAGenerator):
     def _add_operations_to_phonedata(self, operations: List[Dict]):
         """
         将生成的手机操作数据添加到 phonedata 中
-        
+
         Args:
             operations: 生成的操作数据列表
         """
         with self.phonedata_lock:
             for op in operations:
                 op_type = op.get('type', '')
+
+                # 分配 phone_id
+                if op_type not in self.phone_id_counters:
+                    self.phone_id_counters[op_type] = 1
+                if 'phone_id' not in op:
+                    op['phone_id'] = str(self.phone_id_counters[op_type])
+                self.phone_id_counters[op_type] += 1
+
                 if op_type and op_type in self.phonedata:
                     self.phonedata[op_type].append(op)
