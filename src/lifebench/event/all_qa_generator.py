@@ -526,6 +526,8 @@ class QAGenerator:
             """对单个问答对进行类型分类"""
             # 如果原类型已经是 Unanswerable，直接保留
             original_type = qa.get('question_type', '')
+            is_knowledge_update = original_type == 'Knowledge_update'
+
             if original_type == 'Unanswerable':
                 qa['question_type'] = ['Unanswerable']
                 return qa
@@ -534,15 +536,15 @@ class QAGenerator:
             answer = qa.get('answer', '')
             evidence = qa.get('evidence', [])
 
-            prompt = f"""请分析以下问答对的问题、答案和证据，判断该问题最适合的分类类型。
+            prompt = f"""请分析以下问答对的问题、答案和证据，判断该问题最适合的分类类型有哪些。
 
 ### 问题类型说明
 - Single_hop: 单跳问题，可以从单个事件/证据直接回答
 - Multi_hop: 多跳问题，需要结合多个事件/证据才能回答
 - Temporal: 时间推理问题，涉及日期、时间顺序的问题
-- Causal: 因果推理问题，涉及事件原因和结果的问题
-- Knowledge_update: 知识更新问题，涉及认知或知识更新的问题
-- Conflict: 冲突问题，证据之间存在矛盾的问题
+- Causal: 因果推理问题，涉及询问原因和结果的问题
+- Knowledge_update: 知识更新问题，涉及认知或知识更新的问题。
+- Conflict: 冲突问题，部分证据之间存在冲突，如"A说C发生在7月，B说C发生在8月"，涉及安排修改，回忆错误等产生矛盾信息的场景。
 - Pattern_recognition: 模式识别问题，关注个人习惯，偏好，行为模式，一段时间的总结等方面
 - Hidden_info: 隐藏信息问题，需要从信息中推断隐含的用户画像信息，偏好的问题
 
@@ -573,6 +575,9 @@ class QAGenerator:
                     print(f"LLM 分类结果: {types} for question: {question}")
                     if isinstance(types, list) and all(isinstance(t, str) for t in types):
                         qa['question_type'] = types[:3]  # 最多保留3个类型
+                        # 如果原类型是 Knowledge_update，确保它在结果中
+                        if is_knowledge_update and 'Knowledge_update' not in qa['question_type']:
+                            qa['question_type'].append('Knowledge_update')
                         return qa
             except Exception as e:
                 print(f"类型分类失败: {str(e)}, 保持原类型")
