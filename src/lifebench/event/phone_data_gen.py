@@ -685,9 +685,11 @@ def process_single_date_dynamic(date, contact, file_path, matcher,
                     # 先重命名 event_id 为 daily_event_id
                     if 'event_id' in item and 'daily_event_id' not in item:
                         item['daily_event_id'] = item.pop('event_id')
+                    # 如果没有 atomic_id，补充为空数组
+                    if 'atomic_id' not in item:
+                        item['atomic_id'] = []
                     # 再重命名 atomic_id 为 event_id
-                    if 'atomic_id' in item:
-                        item['event_id'] = item.pop('atomic_id')
+                    item['event_id'] = item.pop('atomic_id')
         
         # 手机数据采样阶段：控制每日数据条数
         if phone_count_control is None:
@@ -1211,6 +1213,7 @@ class PhoneEventMatcher:
                         # 将生成的数据添加到matched_phone_events中
                         for data_type, data_list in generated_data.items():
                             for data in data_list:
+                                data['atomic_id'] = [atomic_id]
                                 matched_phone_events.append(data)
                 # 清空未匹配原子事件列表，因为已经生成了对应的数据
                 unmatched_atomic_events = []
