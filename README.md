@@ -62,36 +62,41 @@ For the convenience of conducting memory benchmark tests on existing memory syst
 
 ## Usage
 
+### Enter Workspace
+```bash
+cd scripts
+```
+
 ### Full Pipeline
 
 ```bash
 # Run the complete generation pipeline for all personas in input/person.json
-python scripts/run_all.py
+python run_all.py
 
 # Specify persona ID range
-python scripts/run_all.py --start-id 1 --end-id 5
+python run_all.py --start-id 1 --end-id 5
 
 # Generate phone data only, skip QA generation
-python scripts/run_all.py --generate-qa 0
+python run_all.py --generate-qa 0
 ```
 
 ### Step-by-Step
 
 ```bash
 # 1. Generate persona data
-python scripts/run/persona_gen.py --base-path <path>
+python run/persona_gen.py --base-path <path>
 
 # 2. Generate daily event drafts
-python scripts/run/draft_gen.py --base-path <path>
+python run/draft_gen.py --base-path <path>
 
 # 3. Simulate daily activities
-python scripts/run/simulator.py --base-path <path>
+python run/simulator.py --base-path <path>
 
 # 4. Generate phone operation data
-python scripts/run/phone_gen.py --base-path <path>
+python run/phone_gen.py --base-path <path>
 
 # 5. Generate QA data
-python scripts/run/qa_gen.py --base-path <path>
+python run/qa_gen.py --base-path <path>
 ```
 
 ### Command Line Arguments
