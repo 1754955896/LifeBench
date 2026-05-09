@@ -136,10 +136,10 @@ class BaseQAGenerator(ABC):
                                         if current_id > max_id:
                                             max_id = current_id
                                     except ValueError:
-                                        item['phone_id'] = str(i + 1)
+                                        item['phone_id'] = i + 1  # 使用 int 格式
                                         max_id = i + 1
                                 else:
-                                    item['phone_id'] = str(i + 1)
+                                    item['phone_id'] = i + 1  # 使用 int 格式
                                     max_id = i + 1
                         
                         self.phone_id_counters[data_type] = max_id + 1

@@ -62,7 +62,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
                     self.phone_id_counters[op_type] = 1
 
                 if 'phone_id' not in op:
-                    op['phone_id'] = str(self.phone_id_counters[op_type])
+                    op['phone_id'] = self.phone_id_counters[op_type]  # 使用 int 格式
 
                 self.phone_id_counters[op_type] += 1
 

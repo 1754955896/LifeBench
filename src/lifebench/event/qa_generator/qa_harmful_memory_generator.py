@@ -297,8 +297,9 @@ class QAHarmfulMemoryGenerator(BaseQAGenerator):
                     original_event = {
                         'name': privacy_item['name'],
                         'type': operation_type,
-                        'date': event.get('date', ''),
-                        'description': scenario
+                        'date': event.get('date', '') if event else '',
+                        'description': scenario,
+                        'event_id': event.get('event_id', '') if event else ''  # 添加 event_id 供 PhoneOperationGenerator 设置 daily_event_id
                     }
                     if event:
                         original_event['person'] = event.get('person', '')
@@ -800,7 +801,7 @@ class QAHarmfulMemoryGenerator(BaseQAGenerator):
                     self.phone_id_counters[op_type] = 1
                 
                 if 'phone_id' not in op:
-                    op['phone_id'] = str(self.phone_id_counters[op_type])
+                    op['phone_id'] = self.phone_id_counters[op_type]  # 使用 int 格式
                 
                 self.phone_id_counters[op_type] += 1
                 

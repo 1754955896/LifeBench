@@ -1466,7 +1466,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                 if data_type not in self.phone_id_counters:
                     self.phone_id_counters[data_type] = 1
                 if 'phone_id' not in item:
-                    item['phone_id'] = str(self.phone_id_counters[data_type])
+                    item['phone_id'] = self.phone_id_counters[data_type]  # 使用 int 格式
                 self.phone_id_counters[data_type] += 1
 
                 # 添加到对应的数据类型列表中

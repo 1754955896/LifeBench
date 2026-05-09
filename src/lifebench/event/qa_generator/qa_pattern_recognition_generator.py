@@ -77,7 +77,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                     self.phone_id_counters[op_type] = 1
                 
                 if 'phone_id' not in op:
-                    op['phone_id'] = str(self.phone_id_counters[op_type])
+                    op['phone_id'] = self.phone_id_counters[op_type]  # 使用 int 格式
                 
                 self.phone_id_counters[op_type] += 1
                 
@@ -2012,7 +2012,8 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                 # 创建临时事件用于生成
                 temp_event = {
                     'question': question.get('question', ''),
-                    'target_event': target_event or {}
+                    'target_event': target_event or {},
+                    'event_id': target_event_id  # 添加 event_id 供 PhoneOperationGenerator 设置 daily_event_id
                 }
                 
                 # 使用 content_summary 作为 generation_hint

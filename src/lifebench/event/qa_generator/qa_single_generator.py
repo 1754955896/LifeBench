@@ -117,10 +117,10 @@ class QASingleGenerator(BaseQAGenerator):
                                         if current_id > max_id:
                                             max_id = current_id
                                     except ValueError:
-                                        item['phone_id'] = str(i + 1)
+                                        item['phone_id'] = i + 1  # 使用 int 格式
                                         max_id = i + 1
                                 else:
-                                    item['phone_id'] = str(i + 1)
+                                    item['phone_id'] = i + 1  # 使用 int 格式
                                     max_id = i + 1
                         
                         self.phone_id_counters[data_type] = max_id + 1
@@ -1240,9 +1240,11 @@ class QASingleGenerator(BaseQAGenerator):
             """
             
             # 创建临时事件用于生成
+            target_event = question.get('target_event', {})
             temp_event = {
                 'question': question.get('question', ''),
-                'target_event': question.get('target_event', {})
+                'target_event': target_event,
+                'event_id': target_event.get('event_id', '')  # 添加 event_id 供 PhoneOperationGenerator 设置 daily_event_id
             }
             
             # 使用 PhoneOperationGenerator 生成
@@ -1316,7 +1318,7 @@ class QASingleGenerator(BaseQAGenerator):
                     self.phone_id_counters[op_type] = 1
                 
                 if 'phone_id' not in op:
-                    op['phone_id'] = str(self.phone_id_counters[op_type])
+                    op['phone_id'] = self.phone_id_counters[op_type]  # 使用 int 格式
                 
                 self.phone_id_counters[op_type] += 1
                 
