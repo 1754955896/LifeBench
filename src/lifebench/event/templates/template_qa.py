@@ -104,8 +104,7 @@ UNANSWERABLE_QUESTION_TEMPLATE = """基于以下用户画像数据和事件数�
           "description": "准确回答出答案为'无法回答'",
           "score": 10
         }}
-      ],
-      "required_events": []
+      ]
     }}
   ]
 }}

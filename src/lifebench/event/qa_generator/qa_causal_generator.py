@@ -755,14 +755,15 @@ class QACausalGenerator(BaseQAGenerator):
         if can_answer and not to_generate:
             if self.is_print:
                 print(f"[Evidence Refine] 现有证据已足够，无需补充")
-            
-            # 更新问题的 evidence 字段
-            question['data']['evidence'] = all_existing_evidence
+
+            # 扁平化证据：直接使用 raw item，不再嵌套 event_id/type/data 结构
+            flat_evidence = [ev['data'] for ev in all_existing_evidence]
+            question['data']['evidence'] = flat_evidence
             if self.is_print:
                 print(f"\n[Evidence Refine] 证据优化完成")
-                print(f"  - 最终证据：{len(all_existing_evidence)} 条")
+                print(f"  - 最终证据：{len(flat_evidence)} 条")
             return question
-        
+
         # 执行生成操作
         generated_operations = []
         if to_generate:
@@ -910,7 +911,7 @@ class QACausalGenerator(BaseQAGenerator):
         
         # 更新问题的 evidence 字段
         question['data']['evidence'] = updated_evidence
-        
+
         if self.is_print:
             print(f"\n[Evidence Refine] 证据优化完成")
             print(f"  - 最终证据：{len(updated_evidence)} 条")

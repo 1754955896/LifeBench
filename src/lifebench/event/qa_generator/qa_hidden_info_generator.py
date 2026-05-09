@@ -890,38 +890,34 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
     def _get_phone_evidence_by_event_ids(self, event_ids: List[str]) -> List[Dict]:
         """
         根据事件ID列表，从手机数据中提取对应的证据
-        
+
         Args:
             event_ids: 事件ID列表
-        
+
         Returns:
-            对应的手机数据证据列表
+            对应的手机数据证据列表（直接返回数据，不嵌套type/data结构）
         """
         if not event_ids or not self.phonedata:
             return []
-        
+
         evidence_list = []
         event_id_set = set(str(eid) for eid in event_ids)
-        
+
         # 遍历所有类型的手机数据
         for data_type, data_items in self.phonedata.items():
             if not isinstance(data_items, list):
                 continue
-            
+
             for item in data_items:
                 if not isinstance(item, dict):
                     continue
-                
+
                 # 检查 daily_event_id 或 related_event 字段
                 item_event_id = str(item.get('daily_event_id', ''))
                 related_event = str(item.get('related_event', ''))
-                
-                # 如果匹配，添加完整的操作数据
+
+                # 如果匹配，添加完整操作数据（不嵌套type/data）
                 if item_event_id in event_id_set or related_event in event_id_set:
-                    evidence_list.append({
-                        'type': data_type,
-                        'data': item,
-                        'phone_id': item.get('phone_id', '')
-                    })
-        
+                    evidence_list.append(item)
+
         return evidence_list

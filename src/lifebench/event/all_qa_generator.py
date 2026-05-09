@@ -541,12 +541,12 @@ class QAGenerator:
 ### 问题类型说明
 - Single_hop: 单跳问题，可以从单个事件/证据直接回答
 - Multi_hop: 多跳问题，需要结合多个事件/证据才能回答
-- Temporal: 时间推理问题，涉及日期、时间顺序的问题
+- Temporal: 时间推理问题，涉及排序，持续时间长推理,时序推理、时间顺序，日期/时间计算的问题。当题目明确给出时间且不需要时间的推理时，不算 Temporal 类型
 - Causal: 因果推理问题，涉及询问原因和结果的问题
-- Knowledge_update: 知识更新问题，涉及认知或知识更新的问题。
-- Conflict: 冲突问题，部分证据之间存在冲突，如"A说C发生在7月，B说C发生在8月"，涉及安排修改，回忆错误等产生矛盾信息的场景。
-- Pattern_recognition: 模式识别问题，关注个人习惯，偏好，行为模式，一段时间的总结等方面
-- Hidden_info: 隐藏信息问题，需要从信息中推断隐含的用户画像信息，偏好的问题
+- Knowledge_update: 知识更新问题，涉及认知或知识更新的问题,或者体现用户变化，对用户的变化进行询问的问题。
+- Conflict: 冲突问题，部分证据之间存在冲突，如"A说C发生在7月，B说C发生在8月"，涉及安排修改，回忆错误等产生矛盾信息的场景。请你仔细分析证据字段是否出现过描述不一致的信息，即使证据包含纠正信息，也把该问题归类为Conflict类型。
+- Pattern_recognition(Non-declarative): 模式识别问题，关注个人习惯，偏好，行为模式，一段时间的总结等方面
+- Hidden_info: 隐式偏好挖掘问题，需要从证据信息中推断隐含的用户画像信息，用户个人偏好的问题，可能涉及物品推荐场景，偏好询问场景。
 
 ### 输出要求
 分析问题特点，从上述类型中选择最匹配的 1-3 个类型标签，按匹配程度从高到低排列。
@@ -557,7 +557,7 @@ class QAGenerator:
 答案：{answer}
 证据：{json.dumps(evidence, ensure_ascii=False, indent=2) if evidence else '无证据'}
 
-请直接输出类型标签数组，格式如：["Single_hop", "Temporal"]
+请直接输出类型标签数组，格式如：["Single_hop", "Pattern_recognition(Non-declarative)"]
 """
             try:
                 result = llm_call_j(prompt)
