@@ -2,7 +2,7 @@ import json
 import os
 import random
 from datetime import datetime, timedelta
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any, Tuple, Optional
 import threading
 import concurrent.futures
 
@@ -73,34 +73,34 @@ class QAMultiHopGenerator(BaseQAGenerator):
     def select_agent(self, year: int, target_month: int) -> List[Dict[str, Any]]:
         """
         Select Agent: 从目标月份随机抽样一天，往后扩展两天，基于事件选择目标事件
-        
+
         Args:
             year: 年份
             target_month: 目标月份
-            
+
         Returns:
             包含采样日期和目标事件信息的列表
         """
         print(f"\n[Select Agent] 处理月份：{year}-{target_month:02d}")
-        
+
         # 1. 收集所有可用日期
         all_available_dates = []
         if target_month == 12:
             last_day = datetime(year + 1, 1, 1) - timedelta(days=1)
         else:
             last_day = datetime(year, target_month + 1, 1) - timedelta(days=1)
-        
+
         first_day = datetime(year, target_month, 1)
         month_dates = [first_day + timedelta(days=i) for i in range((last_day - first_day).days + 1)]
         all_available_dates.extend(month_dates)
-        
+
         # 2. 随机选择 1 个起始日期
         selected_start = random.choice(all_available_dates)
-        
+
         # 3. 往后扩展 2 天（共 3 天）
         consecutive_dates = [selected_start + timedelta(days=i) for i in range(3)]
         date_strs = [d.strftime("%Y-%m-%d") for d in consecutive_dates]
-        
+
         # 4. 获取这 3 天的 daily event 数据
         daily_events_in_range = []
         if isinstance(self.daily_event, list):
@@ -114,126 +114,236 @@ class QAMultiHopGenerator(BaseQAGenerator):
                                 event_date = start_time_str[:10]
                             else:
                                 event_date = time_range[:10]
-                            
+
                             if event_date in date_strs:
                                 daily_events_in_range.append(event)
                                 break
-        
+
         print(f"[Select Agent] 获取 {date_strs[0]} 到 {date_strs[-1]} 的 daily event 数据：{len(daily_events_in_range)} 条")
-        
+
         # 5. 基于事件数据来选择目标事件并分析
         design_prompt = f"""
         作为 Select Agent，请仔细分析以下 daily event 数据，选择一个适合构建多跳推理问题的目标事件。
-        
+
         日期范围：{date_strs[0]} 到 {date_strs[-1]}
-        
+
         该时间段内的 daily event 数据：
         {json.dumps(daily_events_in_range, ensure_ascii=False, indent=2)}
-        
+
         请完成以下任务：
-        
+
         **1. 选择目标事件**
            - 选择具有重要价值或复杂关联的事件
            - 优先选择涉及多个人物、地点、物品的事件
            - 优先选择有时间跨度或因果关系的事件
-        
+
         **2. 结构化分析**
            a) **主要人物**：事件中涉及哪些关键人物？
            b) **地点信息**：事件发生在哪里？是否有多个相关地点？
            c) **过程描述**：事件的完整过程是怎样的？
            d) **相关实体**：涉及哪些重要的物品、文件、活动？
            e) **可推理点**：从时间、地点、人物、因果等角度可以设计哪些推理链条？
-        
+
         请以 JSON 格式返回：
         {{
             "target_event": {{
-                "event_id": "事件 ID",
+                "event_id": "事件 ID（必须使用上面数据中的 event_id 字段值，直接复制，不要修改或重新生成）",
                 "event_name": "事件名称",
                 "event_type": "事件类型",
                 "date": "事件日期"
             }},
             "analysis_text": "对该事件的详细分析文本"
         }}
+
+        【重要提醒】
+        - event_id 必须从上面的 daily event 数据中直接提取
+        - 不要自行生成、修改或编造 event_id
+        - 如果数据中没有合适的 event_id，请从数据中选择最匹配的事件并使用其原始 event_id
         """
-        
+
         design_result = llm_call(design_prompt)
-        
+
         if self.is_print:
             print("\n[Select Agent] LLM 输出:")
             print(design_result)
-        
-        try:
-            start_idx = design_result.find('{')
-            end_idx = design_result.rfind('}') + 1
-            if start_idx != -1 and end_idx != -1:
-                design_json = json.loads(design_result[start_idx:end_idx])
-                
-                target_event_simple = design_json.get('target_event', {})
-                event_id = target_event_simple.get('event_id', '')
-                
-                # 根据 event_id 从 daily_events_in_range 中获取完整的事件数据
-                target_event_full = None
-                if event_id and daily_events_in_range:
-                    for event in daily_events_in_range:
-                        if isinstance(event, dict) and str(event.get('event_id', '')) == str(event_id):
-                            target_event_full = event
-                            break
-                
-                if not target_event_full:
-                    print(f"[Select Agent] 警告：未找到 event_id={event_id} 的完整事件数据")
-                    target_event_full = target_event_simple
-                
-                analysis_text = design_json.get('analysis_text', '')
-            else:
-                target_event_full = {}
-                analysis_text = ''
-        except Exception as e:
-            print(f"[Select Agent] 解析失败：{e}")
-            target_event_full = {}
-            analysis_text = ''
-        
+
+        # 6. 解析 LLM 返回，查找或随机选择目标事件
+        target_event_full, analysis_text = self._find_or_sample_target_event(
+            design_result, daily_events_in_range
+        )
+
         sampling_results = [{
             'dates': date_strs,
             'target_event': target_event_full,
             'analysis_text': analysis_text,
             'daily_events_in_range': daily_events_in_range
         }]
-        
+
         print(f"[Select Agent] 完成，选择了 {len(sampling_results)} 个时间段")
         return sampling_results
-    
+
+    def _find_or_sample_target_event(self, design_result: str, daily_events_in_range: List[Dict]) -> Tuple[Dict, str]:
+        """
+        根据 LLM 返回查找目标事件，如果找不到则随机选择一个
+
+        Args:
+            design_result: LLM 返回的原始字符串
+            daily_events_in_range: 日期范围内的所有事件
+
+        Returns:
+            (target_event_full, analysis_text)
+        """
+        # 如果 LLM 返回无效，随机选择
+        if not design_result:
+            return self._sample_random_event(daily_events_in_range, "LLM 返回为空")
+
+        try:
+            start_idx = design_result.find('{')
+            end_idx = design_result.rfind('}') + 1
+            if start_idx == -1 or end_idx == 0:
+                return self._sample_random_event(daily_events_in_range, "LLM 返回中找不到 JSON")
+
+            design_json = json.loads(design_result[start_idx:end_idx])
+
+            # 安全获取 target_event，处理 null 情况
+            target_event = design_json.get('target_event')
+            if target_event is None:
+                target_event = {}
+
+            # 优先从 target_event 获取 event_id，也支持从 design_json 顶层获取
+            event_id = design_json.get('event_id') or target_event.get('event_id', '')
+
+            # 根据 event_id 查找完整事件
+            target_event_full = self._find_event_by_id(event_id, daily_events_in_range)
+
+            # 找不到则随机选择
+            if not target_event_full:
+                return self._sample_random_event(daily_events_in_range, f"未找到 event_id={event_id}")
+
+            analysis_text = design_json.get('analysis_text', '')
+            return target_event_full, analysis_text
+
+        except Exception as e:
+            print(f"[Select Agent] 解析失败：{e}")
+            return self._sample_random_event(daily_events_in_range, f"解析异常: {e}")
+
+    def _find_event_by_id(self, event_id: str, events: List[Dict]) -> Optional[Dict]:
+        """根据 event_id 在事件列表中查找匹配的事件"""
+        if not event_id:
+            return None
+
+        for event in events:
+            if isinstance(event, dict) and str(event.get('event_id', '')) == str(event_id):
+                return event
+
+        return None
+
+    def _sample_random_event(self, events: List[Dict], reason: str) -> Tuple[Dict, str]:
+        """随机选择一个事件，优先选择 event_id 不为空的事件"""
+        if not events:
+            print(f"[Select Agent] {reason}，但事件列表为空")
+            return {}, ''
+
+        # 优先选择 event_id 不为空的事件
+        valid_events = [e for e in events if e.get('event_id')]
+        sample_pool = valid_events if valid_events else events
+
+        sampled = random.choice(sample_pool)
+        print(f"[Select Agent] {reason}，随机选择：event_id={sampled.get('event_id')}")
+        return sampled, ''
+
+    def _validate_and_cleanup_nodes(self, nodes: List[Dict], edges: List[Dict]) -> Tuple[List[Dict], List[Dict]]:
+        """
+        验证并清理 event_id 无效的节点，同时删除关联的边
+
+        Args:
+            nodes: 节点列表
+            edges: 边列表
+
+        Returns:
+            (清理后的节点列表, 清理后的边列表)
+        """
+        if not self.daily_event:
+            return nodes, edges
+
+        # 构建有效的 event_id 集合
+        valid_event_ids = set()
+        for event in self.daily_event:
+            eid = str(event.get('event_id', ''))
+            if eid:
+                valid_event_ids.add(eid)
+
+        # 获取所有有效的 node_id（event_id 有效的节点）
+        valid_node_ids = set()
+        invalid_nodes_info = []
+        for node in nodes:
+            event_id = str(node.get('event_id', ''))
+            # 检查：event_id 有效或者是空字符串（空字符串表示来自编造扩展，允许保留）
+            if event_id and event_id not in valid_event_ids:
+                invalid_nodes_info.append({
+                    'node_id': node.get('id'),
+                    'name': node.get('name'),
+                    'event_id': event_id
+                })
+            elif event_id:
+                valid_node_ids.add(node.get('id'))
+
+        if invalid_nodes_info:
+            print(f"[Inference Agent] 发现 {len(invalid_nodes_info)} 个节点 event_id 无效:")
+            for info in invalid_nodes_info:
+                print(f"  - {info['node_id']}: {info['name']}, event_id={info['event_id']}")
+
+        # 过滤节点：只保留 event_id 有效或为空字符串的节点
+        # 注意：空字符串的节点可能来自编造扩展，保留作为中间推理节点
+        valid_nodes = []
+        for node in nodes:
+            event_id = str(node.get('event_id', ''))
+            # 保留：event_id 有效 或 event_id 为空（来自编造扩展等）
+            if not event_id or event_id in valid_event_ids:
+                valid_nodes.append(node)
+
+        # 过滤边：只保留两端节点都在有效节点列表中的边
+        valid_node_ids = set(n.get('id') for n in valid_nodes)
+        valid_edges = []
+        for edge in edges:
+            if edge.get('from') in valid_node_ids and edge.get('to') in valid_node_ids:
+                valid_edges.append(edge)
+
+        if len(invalid_nodes_info) > 0:
+            print(f"[Inference Agent] 清理完成: {len(valid_nodes)} 个节点, {len(valid_edges)} 条边")
+
+        return valid_nodes, valid_edges
+
     def search_agent(self, dates: List[str], target_event: Dict[str, Any]):
         """
         Search Agent: 搜索目标事件对应的 event_tree
-        
+
         Args:
             dates: 日期范围列表
             target_event: 目标事件信息
-            
+
         Returns:
             搜索到的事件树数据和总结
         """
         event_id = target_event.get('atomic_id')
-        
+
         # 模式 1: 基于 atomic_id 搜索 event_tree
         if event_id and isinstance(self.event_tree, list):
             print(f"[Search Agent - 模式 1] 基于 atomic_id 搜索 event_tree")
             return self._search_by_atomic_id(event_id, target_event)
-        
+
         # 模式 2: 基于月份的 draft_event 分析
         else:
-            # print(f"[Search Agent - 模式 2] 基于月份搜索 draft_event")
-            # return self._search_by_draft_event(dates, target_event)
             return []
-    
+
     def _search_by_atomic_id(self, atomic_id: str, target_event: Dict[str, Any]) -> List[Dict]:
         """
         模式 1: 基于 atomic_id 提取最前面的父节点序号，然后从 daily_event 中筛选匹配的事件
-            
+
         Args:
             atomic_id: 事件的 atomic_id（可能是字符串或列表）
             target_event: 目标事件信息
-                
+
         Returns:
             daily_event 中匹配的事件列表
         """
@@ -254,21 +364,21 @@ class QAMultiHopGenerator(BaseQAGenerator):
                 parent_id = atomic_id_str.split('-')[0]
             else:
                 parent_id = atomic_id_str
-        
+
         if not parent_id:
             print(f"[Search Agent] 无法提取父节点 ID")
             return []
-        
+
         print(f"[Search Agent] 提取父节点 ID: {parent_id}")
-        
+
         # 构建前缀匹配字符串：parent_id + "-"
         prefix = parent_id + "-"
-        
+
         # 从 daily_event 中筛选 atomic_id 以 prefix 开头或等于 parent_id 的事件
         matched_daily_events = []
         for event in self.daily_event:
             event_atomic_id = event.get('atomic_id', '')
-            
+
             # 检查 daily_event 的 atomic_id 是否匹配
             is_match = False
             if isinstance(event_atomic_id, str):
@@ -283,12 +393,12 @@ class QAMultiHopGenerator(BaseQAGenerator):
                     if aid_str == parent_id or aid_str.startswith(prefix):
                         is_match = True
                         break
-            
+
             if is_match:
                 matched_daily_events.append(event)
-        
+
         print(f"[Search Agent] 从 daily_event 中找到 {len(matched_daily_events)} 个匹配事件")
-        
+
         return matched_daily_events
     
     def _extract_leaf_events(self, nodes: List[Dict]) -> List[Dict]:
@@ -505,6 +615,14 @@ class QAMultiHopGenerator(BaseQAGenerator):
     "reasoning_summary": "简要说明整个推理链条的逻辑"
 }}
 
+**【关键约束】event_id 填写规则（必须严格遵守）**：
+- **必须**从上面的 daily_event 数据中获取真实的 event_id
+- **禁止**填写 node_1、node_2 等内部节点 ID
+- **禁止**填写自行编造的 event_id（如"出门事件"、"早晨事件"等描述性文字）
+- **禁止**填写在 daily_event 中不存在的 event_id
+- 如果该节点没有对应的真实 daily_event 事件，event_id 字段填写**空字符串 ""**
+- 每个节点的 event_id 必须是数字或字符串，必须能在 daily_event 中找到对应记录
+
 **注意**：
 - 确保链条是线性的，每个节点只指向下一个节点
 - 关系类型必须从上述 5 种中选择
@@ -556,9 +674,12 @@ class QAMultiHopGenerator(BaseQAGenerator):
                             'relation': relation,
                             'description': description
                         })
-                
+
+                # 验证并清理 event_id 无效的节点
+                nodes, edges = self._validate_and_cleanup_nodes(nodes, edges)
+
                 print(f"[Inference Agent] 推理链条生成完成，包含 {len(nodes)} 个节点和 {len(edges)} 条边")
-                
+
                 return {
                     'nodes': nodes,
                     'edges': edges,
@@ -692,7 +813,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
         "time": "时间信息",
         "entity": "主要涉及的实体",
         "source": "来源",
-        "event_id": "事件 ID（从候选事件中获取）"
+        "event_id": "事件 ID（必须从候选事件中获取真实 ID，禁止自行编造或填写不存在于候选事件中的 ID）"
     }},
     "temporal_relation": "与起始节点的时间关系（如'3天后'、'5天前'）",
     "importance_reason": "为什么选择这个事件，它对推理的重要性"
@@ -945,7 +1066,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
         "time": "时间信息",
         "entity": "主要涉及的实体",
         "source": "来源",
-        "event_id": "事件 ID（从候选事件中获取）"
+        "event_id": "事件 ID（必须从候选事件中获取真实 ID，禁止自行编造或填写不存在于候选事件中的 ID）"
     }},
     "entity_relation": "实体关系描述（如'同一人物'、'相关地点'等）",
     "relation_description": "详细说明两个事件如何通过实体关联"
@@ -1431,8 +1552,14 @@ class QAMultiHopGenerator(BaseQAGenerator):
     "score_points": [
         {{"description": "评分要点描述", "score": 分数}}
     ],
-    "required_events_id": ["选中的节点对应的 event_id 列表"]
+    "required_events_id": ["选中的节点对应的 event_id 列表（必须是 daily_event 中的真实 event_id，不能使用 node_1、node_2 等内部节点 ID）"]
 }}
+
+**【关键约束】required_events_id 格式要求：
+- 必须填写 daily_event 中真实存在的 event_id 字符串
+- 禁止使用 node_1、node_2、node_3 等推理图内部节点 ID
+- 禁止使用空字符串或自行编造的 event_id
+- 如果节点没有真实的 event_id，请从节点的 source 字段判断其来源，填写对应 daily_event 的 event_id
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 【自检清单】
@@ -1582,6 +1709,28 @@ class QAMultiHopGenerator(BaseQAGenerator):
                     'evidence':[],
                     'question_type': 'Multi_hop'
                 }
+
+                # 验证 required_events_id，过滤无效的 event_id（如 node_1, node_2 等）
+                validated_ids = []
+                for rid in required_events_id:
+                    rid_str = str(rid)
+                    # 检查是否是有效的 event_id（必须是数字或匹配 daily_event 中存在的 event_id）
+                    if rid_str.startswith('node_'):
+                        print(f"[Generate Question & Data] 警告：required_events_id={rid_str} 是无效的节点ID，已跳过")
+                        continue
+                    # 检查是否在 daily_event 中存在
+                    found = False
+                    for event in self.daily_event:
+                        if str(event.get('event_id', '')) == rid_str:
+                            found = True
+                            break
+                    if found:
+                        validated_ids.append(rid_str)
+                    else:
+                        print(f"[Generate Question & Data] 警告：required_events_id={rid_str} 在 daily_event 中未找到，已跳过")
+                        validated_ids.append(rid_str)  # 保留以便追踪
+
+                qa_result['required_events_id'] = validated_ids
                 
                 # Step 2: 调用 evidence_refine 进行证据优化
                 month_key = f"{datetime.now().year}-{datetime.now().month:02d}"
@@ -1809,6 +1958,22 @@ sms, phonecall, photo, push, note, calendar
                 for event_analysis in events_analysis:
                     event_id = event_analysis.get('event_id', '')
                     sufficiency = event_analysis.get('sufficiency_analysis', '')
+
+                    # 验证 event_id 是否有效（必须是 daily_event 中存在的 ID）
+                    if not event_id or event_id.startswith('node_'):
+                        print(f"[Evidence Refine] 警告：event_id={event_id} 无效，跳过生成")
+                        continue
+
+                    # 检查是否在 daily_event 中存在
+                    event_exists = False
+                    if isinstance(self.daily_event, list):
+                        for evt in self.daily_event:
+                            if str(evt.get('event_id', '')) == str(event_id):
+                                event_exists = True
+                                break
+                    if not event_exists:
+                        print(f"[Evidence Refine] 警告：event_id={event_id} 在 daily_event 中未找到，跳过生成")
+                        continue
 
                     # 收集需要生成的数据
                     for gen_item in event_analysis.get('to_generate', []):
@@ -2041,9 +2206,11 @@ sms, phonecall, photo, push, note, calendar
                         break
 
             if not target_event:
+                print(f"[Evidence Refine] 警告：event_id={event_id} 在 daily_event 中未找到匹配，跳过证据收集")
                 continue
 
             # 从手机数据中查找与该事件对应的数据（基于 event_id 匹配）
+            found_count = 0
             if self.phonedata:
                 for data_type, data_list in self.phonedata.items():
                     if isinstance(data_list, list):
@@ -2056,6 +2223,9 @@ sms, phonecall, photo, push, note, calendar
                                 # 如果匹配，添加到 updated_evidence
                                 if item_event_id == str(event_id) or related_event == str(event_id):
                                     updated_evidence.append(item)
+                                    found_count += 1
+
+            print(f"[Evidence Refine - {event_id}] 收集到 {found_count} 条证据")
 
         # 更新问题的 evidence 字段
         question['evidence'] = updated_evidence
