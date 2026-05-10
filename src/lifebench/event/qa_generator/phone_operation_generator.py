@@ -196,7 +196,23 @@ class PhoneOperationGenerator:
                 print(f"[PhoneOperationGenerator] 格式校验失败，抛弃 {len(invalid_data)} 条格式错误数据")
                 return valid_ops if valid_ops else []
 
-        return valid_ops if valid_ops else []
+        # 生成结束后校验并修正 daily_event_id 和 event_id
+        final_valid_ops = []
+        for op in valid_ops:
+            # 校验 daily_event_id：不存在、非正整数、非数字字符串则默认为 0
+            deid = op.get('daily_event_id')
+            if isinstance(deid, int):
+                pass  # 有效
+            elif isinstance(deid, str) and deid.isdigit():
+                pass  # 有效
+            else:
+                op['daily_event_id'] = "0"
+            # 确保 event_id 字段存在（至少为空数组）
+            if 'event_id' not in op:
+                op['event_id'] = []
+            final_valid_ops.append(op)
+
+        return final_valid_ops
     
     def _build_generation_prompt(self,
                                   operation_type: str,

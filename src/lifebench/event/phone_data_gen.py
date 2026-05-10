@@ -690,6 +690,18 @@ def process_single_date_dynamic(date, contact, file_path, matcher,
                         item['atomic_id'] = []
                     # 再重命名 atomic_id 为 event_id
                     item['event_id'] = item.pop('atomic_id')
+
+                # 重命名字段后：检查 daily_event_id 是否为有效数字/字符串数字，若无效则抛弃该数据
+                valid_data = []
+                for item in data_list:
+                    deid = item.get('daily_event_id')
+                    if isinstance(deid, int):
+                        valid_data.append(item)
+                    elif isinstance(deid, str) and deid.isdigit():
+                        valid_data.append(item)
+                    else:
+                        print(f"  警告: {filename} 中一条数据因 daily_event_id='{deid}' 无效被抛弃")
+                generated_data[filename] = valid_data
         
         # 手机数据采样阶段：控制每日数据条数
         if phone_count_control is None:
