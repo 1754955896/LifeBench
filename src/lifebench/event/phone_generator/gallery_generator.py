@@ -84,8 +84,14 @@ class GalleryOperationGenerator:
 2. **字段名错误**：是否有拼写错误或字段名不符合要求
 3. **时间逻辑错误**：datetime 年份是否为 2025 年
 4. **地点信息错误**：location 是否包含完整的层级信息（province、city、district、streetName、streetNumber、poi）
+5. **event_id 格式错误**：event_id 是否为数字字符串（如 "1"、"123"），不能是非数字字符串（如 "event_001"、"daily_20250228"），如果格式错误必须修正
 
 ### 重要说明
+- **event_id 修正规则**（重点）：
+  - event_id 必须是数字字符串，如 "1"、"123"
+  - **禁止**使用非数字字符串，如 "event_001"、"daily_20250228"、"event_id" 等
+  - 必须从当天事件的 event_id 列表中选择真实存在的数字字符串
+  - 如果当前 event_id 格式错误，必须修正为有效的数字字符串
 - **重点分析**：输入的手机数据的 event_id 所指示的事件为对应的场景，应重点分析该事件与相册数据的匹配度
 - **允许合理扩展**：基于 event_id 对应的事件场景，允许合理的扩展生成（如事件是“西湖游览”，可以拍摄断桥、游船、雷峰塔等相关场景）
 - 该相册数据可能是与当日事件无明显关联的**噪声事件**（如随手拍的风景、无关的物品等）
@@ -114,6 +120,7 @@ class GalleryOperationGenerator:
 {format_example}
 
 注意：
+- **event_id 必须是有效的数字字符串**，如 "1"、"123"，不能是 "event_001" 等
 - fixed_data 必须是完整的相册数据对象，包含所有必填字段
 - 如果修正了数据，必须确保修正后的数据符合原始事件的背景和逻辑
 - datetime 格式必须为 "YYYY-MM-DD HH:MM:SS"，年份必须为 2025
@@ -174,7 +181,20 @@ class GalleryOperationGenerator:
             extra_fields = [k for k in data.keys() if k not in required_fields]
             for field in extra_fields:
                 del data[field]
-            
+
+            # 1.5. 校验 event_id 格式（必须是数字字符串或数字）
+            event_id = data.get("event_id")
+            if event_id is None:
+                return False, "event_id 字段不存在"
+            if isinstance(event_id, str):
+                if not event_id.isdigit():
+                    return False, f"event_id 不是有效的数字字符串: '{event_id}'"
+            elif isinstance(event_id, int):
+                if event_id <= 0:
+                    return False, f"event_id 不是有效的正整数: {event_id}"
+            else:
+                return False, f"event_id 类型错误: {type(event_id).__name__}"
+
             # 2. 校验 location 嵌套字段
             location_required = ["province", "city", "district", "streetName", "streetNumber", "poi"]
             if isinstance(data.get("location"), dict):
