@@ -7,7 +7,7 @@ import json
 import os
 import random
 import threading
-from typing import Dict, List, Any, Tuple
+from typing import Dict, List, Any, Tuple, Optional
 from datetime import datetime, timedelta
 import calendar
 from src.lifebench.event.templates.template_qa import (
@@ -48,7 +48,10 @@ class QASingleGenerator(BaseQAGenerator):
         self.daily_event = daily_event
         self.event_tree = event_tree
         self.draft_event = draft_event
-        self.phonedata = phonedata
+        # 如果传入了 phone_data_dir，则使用父类加载的数据（不要覆盖）
+        # 如果没有传入 phone_data_dir，才使用传入的 phonedata
+        if not phone_data_dir:
+            self.phonedata = phonedata
         # 初始化 QASingleGenerator 特有的属性
         self.phonedata_lock = threading.Lock()
         self.phone_id_lock = threading.Lock()
@@ -135,477 +138,260 @@ class QASingleGenerator(BaseQAGenerator):
     def select_agent(self, year: int, target_month: int) -> List[Dict[str, Any]]:
         """
         Select Agent: 从本月和之前月份随机抽样一天，往后扩展两天，基于事件设计问题
-        
+
         Args:
             year: 年份
             target_month: 目标月份（问题提问的月份）
-            
+
         Returns:
             包含采样日期和问题设计信息的列表
         """
         print(f"\n[Select Agent] 处理月份：{year}-{target_month:02d}")
-        
-        # 1. 收集所有可用日期（从 1 月到目标月份）
+
+        # Step 1: 获取 3 天的 daily event 数据
+        date_strs = self._get_consecutive_dates(year, target_month)
+        daily_events_in_range = self._filter_events_by_dates(date_strs)
+
+        print(f"[Select Agent] 获取 {date_strs[0]} 到 {date_strs[-1]} 的 daily event 数据：")
+        print(daily_events_in_range)
+
+        # Step 2: 调用 LLM 选择目标事件并分析
+        design_json = self._call_llm_for_target_event(daily_events_in_range, date_strs)
+
+        # Step 3: 根据 LLM 返回查找或随机选择事件
+        target_event_full, daily_events_on_target_date = self._find_or_sample_target_event(
+            design_json, daily_events_in_range
+        )
+
+        # Step 4: 构造结果并返回
+        sampling_results = [{
+            'dates': date_strs,
+            'target_event': target_event_full,
+            'structure_analysis': design_json.get('structure_analysis', {}) if design_json else {},
+            'daily_events_in_range': daily_events_on_target_date or daily_events_in_range
+        }]
+
+        print(f"[Select Agent] 完成，选择了 {len(sampling_results)} 个时间段")
+        return sampling_results
+
+    def _get_consecutive_dates(self, year: int, target_month: int) -> List[str]:
+        """收集从 1 月到目标月份的所有可用日期，随机选择连续 3 天"""
         all_available_dates = []
         for month in range(1, target_month + 1):
             if month == 12:
                 last_day = datetime(year + 1, 1, 1) - timedelta(days=1)
             else:
                 last_day = datetime(year, month + 1, 1) - timedelta(days=1)
-            
+
             first_day = datetime(year, month, 1)
             month_dates = [first_day + timedelta(days=i) for i in range((last_day - first_day).days + 1)]
             all_available_dates.extend(month_dates)
-        
-        # 2. 随机选择 1 个起始日期
+
         selected_start = random.choice(all_available_dates)
-        
-        # 3. 往后扩展 2 天（共 3 天）
         consecutive_dates = [selected_start + timedelta(days=i) for i in range(3)]
-        date_strs = [d.strftime("%Y-%m-%d") for d in consecutive_dates]
-        
-        # 获取这 3 天的 daily event 数据
-        daily_events_in_range = []
-        if isinstance(self.daily_event, list):
-            for event in self.daily_event:
-                if isinstance(event, dict) and 'date' in event:
-                    event_dates = event.get('date', [])  # date 是数组
-                    if isinstance(event_dates, list):
-                        # 检查每个时间范围
-                        for time_range in event_dates:
-                            # 时间范围格式："2025-01-01 07:00:00 至 2025-01-01 07:50:00"
-                            # 提取开始日期
-                            if '至' in time_range:
-                                start_time_str = time_range.split('至')[0].strip()
-                                event_date = start_time_str[:10]  # 提取 "2025-01-01"
-                            else:
-                                event_date = time_range[:10]
-                            
-                            # 检查是否在选定的日期范围内
-                            if event_date in date_strs:
-                                daily_events_in_range.append(event)
-                                break  # 已经添加，跳出循环
+        return [d.strftime("%Y-%m-%d") for d in consecutive_dates]
 
-        print(f"[Select Agent] 获取 {date_strs[0]} 到 {date_strs[-1]} 的 daily event 数据：")
-        print(daily_events_in_range)
+    def _filter_events_by_dates(self, date_strs: List[str]) -> List[Dict[str, Any]]:
+        """根据日期范围筛选 daily_event 数据"""
+        filtered_events = []
+        for event in self.daily_event:
+            if not isinstance(event, dict) or 'date' not in event:
+                continue
 
-        # 4. 基于事件数据来选择目标事件并分析
-        design_prompt = f"""
-        作为 Select Agent，请仔细分析以下 daily event 数据，选择值得提问的目标事件并进行结构化分析。
-        
-        日期范围：{date_strs[0]} 到 {date_strs[-1]}
-        
-        该时间段内的 daily event 数据：
-        {json.dumps(daily_events_in_range, ensure_ascii=False, indent=2)}
-        
-        请完成以下任务：
-        
-        **1. 选择目标事件**
-           - 选择具有重要价值或值得回忆的事件（如重要会议、特殊活动、关键决策等）
-           - 优先选择包含复杂时间、地点、人物关系的事件
-           - 优先选择涉及多个相关方或跨多个时间段的事件
-        
-        **2. 结构化分析**（重点）
-           对选定的目标事件进行详细分析：
-           
-           a) **主要人物**：
-              - 事件中涉及哪些关键人物？
-              - 他们的角色和关系是什么？
-           
-           b) **地点信息**：
-              - 事件发生在哪里？
-              - 是否有多个相关地点？
-           
-           c) **过程描述**：
-              - 事件的完整过程是怎样的？
-              - 有哪些关键节点或转折点？
-           
-           d) **相关操作**：
-              - 可能产生哪些手机操作数据？（短信、通话、照片、日历、笔记、推送等）
-              - 这些操作数据的特点是什么？
-           
-           e) **可提问点**：
-              - 从时间角度可以问什么？（何时发生、持续时间、时间顺序等）
-              - 从地点角度可以问什么？（发生地点、多个地点的顺序等）
-              - 从人物角度可以问什么？（参与者、人物关系、互动对象等）
-              - 从事件角度可以问什么？（事件内容、主题、结果、影响等）
-              - 从原因角度可以问什么？（动机、目的、触发因素等）
-              - 从方式角度可以问什么？（如何实现的、使用的方法等）
-        
-        请以 JSON 格式返回：
-        {{
-            "target_event": {{  // 选定的目标事件（只包含基本信息）
-                "event_id": "事件 ID",
-                "event_name": "事件名称",
-                "event_type": "事件类型",
-                "date": "事件日期"
-            }},
-            "analysis_text": "对该事件的详细分析文本，包括主要人物、地点、过程、相关操作和可提问点等的连贯叙述"
-        }}
-        """
-        design_result = llm_call(design_prompt)
-        
-        # 打印 Select Agent 的输出
+            event_dates = event.get('date', [])
+            if not isinstance(event_dates, list):
+                continue
+
+            for time_range in event_dates:
+                event_date = self._extract_date_from_time_range(time_range)
+                if event_date and event_date in date_strs:
+                    filtered_events.append(event)
+                    break
+
+        return filtered_events
+
+    def _extract_date_from_time_range(self, time_range: str) -> str:
+        """从时间范围字符串中提取日期"""
+        if '至' in time_range:
+            return time_range.split('至')[0].strip()[:10]
+        return time_range[:10]
+
+    def _call_llm_for_target_event(self, daily_events_in_range: List[Dict], date_strs: List[str]) -> Dict:
+        """调用 LLM 选择目标事件并分析"""
+        prompt = self._build_selection_prompt(daily_events_in_range, date_strs)
+        result = llm_call_j(prompt)
+
         if self.is_print:
             print("\n[Select Agent] LLM 输出:")
-            print(design_result)
-        
+            print(result)
+
         try:
-            start_idx = design_result.find('{')
-            end_idx = design_result.rfind('}') + 1
+            start_idx = result.find('{')
+            end_idx = result.rfind('}') + 1
             if start_idx != -1 and end_idx != -1:
-                design_json = json.loads(design_result[start_idx:end_idx])
-                
-                # 解析 LLM 返回的目标事件（只包含基本信息）
-                target_event_simple = design_json.get('target_event', {})
-                event_id = target_event_simple.get('event_id', '')
-                event_name = target_event_simple.get('event_name', '')
-                event_type = target_event_simple.get('event_type', '')
-                event_date = target_event_simple.get('date', '')
-                
-                # 根据 event_id 从 daily_events_in_range 中获取完整的事件数据
-                target_event_full = None
-                if event_id and daily_events_in_range:
-                    for event in daily_events_in_range:
-                        if isinstance(event, dict) and str(event.get('event_id', '')) == str(event_id):
-                            target_event_full = event
-                            break
-                
-                # 如果没找到完整事件，使用简化版本
-                if not target_event_full:
-                    print(f"[Select Agent] 警告：未找到 event_id={event_id} 的完整事件数据，使用简化版本")
-                    target_event_full = target_event_simple
-                else:
-                    # 解析目标事件的日期，提取该日期的所有 daily_event
-                    target_date_str = ''
-                    event_date = target_event_full.get('date', [])
-                    
-                    # 处理 date 字段：可能是字符串或数组
-                    if isinstance(event_date, str):
-                        # date 是字符串，如 "2025-02-27 18:20:00 至 2025-02-27 19:40:00"
-                        if '至' in event_date:
-                            target_date_str = event_date.split('至')[0].strip()[:10]
-                        else:
-                            target_date_str = event_date[:10]
-                    elif isinstance(event_date, list) and len(event_date) > 0:
-                        # date 是数组，提取第一个时间范围的日期
-                        first_time_range = event_date[0]
-                        if isinstance(first_time_range, str):
-                            if '至' in first_time_range:
-                                target_date_str = first_time_range.split('至')[0].strip()[:10]
-                            else:
-                                target_date_str = first_time_range[:10]
-                    
-                    print(f"[Select Agent] 获取 {target_date_str} 的 daily event 数据：")
-                    # 从 daily_events_in_range 中筛选出目标日期的所有事件
-                    daily_events_on_target_date = []
-                    if target_date_str and daily_events_in_range:
-                        for event in daily_events_in_range:
-                            if isinstance(event, dict) and 'date' in event:
-                                event_dates = event.get('date', [])
-                                # 同样处理 date 可能是字符串或数组的情况
-                                if isinstance(event_dates, str):
-                                    event_date_str_list = [event_dates]
-                                elif isinstance(event_dates, list):
-                                    event_date_str_list = event_dates
-                                else:
-                                    continue
-                                
-                                for time_range in event_date_str_list:
-                                    if isinstance(time_range, str):
-                                        if '至' in time_range:
-                                            event_date_str = time_range.split('至')[0].strip()[:10]
-                                        else:
-                                            event_date_str = time_range[:10]
-                                        
-                                        if event_date_str == target_date_str:
-                                            daily_events_on_target_date.append(event)
-                                            break
-                    
-                    print(f"[Select Agent] 目标事件日期：{target_date_str}")
-                    print(f"[Select Agent] 该日期的 daily_event 数量：{len(daily_events_on_target_date)}")
-                
-                # 获取结构化分析结果
-                structure_analysis = design_json.get('structure_analysis', {})
-            else:
-                target_event_full = {}
-                structure_analysis = {}
-                daily_events_on_target_date = []
+                return json.loads(result[start_idx:end_idx])
         except Exception as e:
-            print(f"[Select Agent] 解析失败：{e}")
-            target_event_full = {}
-            structure_analysis = {}
-            daily_events_on_target_date = []
-        
-        sampling_results = [{
-            'dates': date_strs,
-            'target_event': target_event_full,  # 返回完整的事件数据
-            'structure_analysis': structure_analysis,  # 结构化分析结果
-            'daily_events_in_range': daily_events_on_target_date if daily_events_on_target_date else daily_events_in_range  # 优先返回目标日期的数据，若无则返回 3 天范围的数据
-        }]
-        
-        print(f"[Select Agent] 完成，选择了 {len(sampling_results)} 个时间段")
-        return sampling_results
-    
-    def search_agent(self, dates: List[str], target_event: Dict[str, Any], question_draft: str) -> Dict[str, Any]:
+            print(f"[Select Agent] LLM 返回解析失败：{e}")
+
+        return None
+
+    def _build_selection_prompt(self, daily_events: List[Dict], date_strs: List[str]) -> str:
+        """构建选择目标事件的 prompt"""
+        return f"""
+作为 Select Agent，请仔细分析以下 daily event 数据，选择值得提问的目标事件并进行结构化分析。
+
+日期范围：{date_strs[0]} 到 {date_strs[-1]}
+
+该时间段内的 daily event 数据：
+{json.dumps(daily_events, ensure_ascii=False, indent=2)}
+
+请完成以下任务：
+
+**1. 选择目标事件**
+   - 选择具有重要价值或值得回忆的事件（如重要会议、特殊活动、关键决策等）
+   - 优先选择包含复杂时间、地点、人物关系的事件
+   - 优先选择涉及多个相关方或跨多个时间段的事件
+
+**2. 结构化分析**（重点）
+   对选定的目标事件进行详细分析：
+
+   a) **主要人物**：
+      - 事件中涉及哪些关键人物？
+      - 他们的角色和关系是什么？
+
+   b) **地点信息**：
+      - 事件发生在哪里？
+      - 是否有多个相关地点？
+
+   c) **过程描述**：
+      - 事件的完整过程是怎样的？
+      - 有哪些关键节点或转折点？
+
+   d) **相关操作**：
+      - 可能产生哪些手机操作数据？（短信、通话、照片、日历、笔记、推送等）
+      - 这些操作数据的特点是什么？
+
+   e) **可提问点**：
+      - 从时间角度可以问什么？（何时发生、持续时间、时间顺序等）
+      - 从地点角度可以问什么？（发生地点、多个地点的顺序等）
+      - 从人物角度可以问什么？（参与者、人物关系、互动对象等）
+      - 从事件角度可以问什么？（事件内容、主题、结果、影响等）
+      - 从原因角度可以问什么？（动机、目的、触发因素等）
+      - 从方式角度可以问什么？（如何实现的、使用的方法等）
+
+请以 JSON 格式返回：
+{{
+    "target_event": {{  // 选定的目标事件（必须从上述数据中选取，不要编造）
+        "event_id": "事件 ID（必须使用上面数据中的 event_id 字段值，直接复制，不要修改或重新生成）",
+        "event_name": "事件名称",
+        "event_type": "事件类型",
+        "date": "事件日期（从上面数据中复制）"
+    }},
+    "analysis_text": "对该事件的详细分析文本，包括主要人物、地点、过程、相关操作和可提问点等的连贯叙述"
+}}
+
+【重要提醒】
+- event_id 必须从上面的 daily event 数据中直接提取
+- 不要自行生成、修改或编造 event_id
+- 如果数据中没有合适的 event_id，请从数据中选择最匹配的事件并使用其原始 event_id
+"""
+
+    def _find_or_sample_target_event(self, design_json: Dict, daily_events_in_range: List[Dict]) -> Tuple[Dict, List[Dict]]:
         """
-        Search Agent: 搜索相关事件数据（两种模式）
-        
-        Args:
-            dates: 日期范围列表
-            target_event: 目标事件信息
-            question_draft: 问题初稿
-            
+        根据 LLM 返回查找目标事件，如果找不到则随机选择一个
+
         Returns:
-            搜索到的相关数据和总结
+            (target_event_full, daily_events_on_target_date)
         """
-        event_id = target_event.get('atomic_id')
-        
-        # # 模式 1: 基于 atomic_id 搜索 event_tree
-        # if event_id and isinstance(self.event_tree, list):
-        #     print(f"[Search Agent - 模式 1] 基于 atomic_id 搜索 event_tree")
-        #     return self._search_by_atomic_id(event_id, target_event, question_draft)
-        #
-        # # 模式 2: 基于月份的 draft_event 分析
-        # else:
-        #     print(f"[Search Agent - 模式 2] 基于月份搜索 draft_event")
-        #     return self._search_by_month(dates, target_event, question_draft)
-        #
-        return {}
-    def _search_by_atomic_id(self, atomic_id: str, target_event: Dict[str, Any], question_draft: str) -> Dict[str, Any]:
-        """
-        模式 1: 基于 atomic_id 找到 event_tree 的对应事件树并分析
-            
-        Args:
-            atomic_id: 事件的 atomic_id（可能是字符串或列表）
-            target_event: 目标事件信息
-            question_draft: 问题初稿
-                
-        Returns:
-            搜索结果
-        """
-        # 处理 atomic_id：如果是列表，提取所有父节点 ID
-        parent_ids = set()
-        if isinstance(atomic_id, list):
-            # 列表中可能有多个子节点 ID，提取所有父节点 ID
-            for item in atomic_id:
-                if item and '-' in str(item):
-                    parent_id = str(item).split('-')[0]
-                    parent_ids.add(parent_id)
-                elif item:
-                    parent_ids.add(str(item))
-        elif atomic_id:
-            # 单个 atomic_id
-            if '-' in str(atomic_id):
-                parent_id = str(atomic_id).split('-')[0]
-                parent_ids.add(parent_id)
-            else:
-                parent_ids.add(str(atomic_id))
-            
-        print(f"[Search Agent] 提取父节点 ID 列表：{parent_ids}")
-            
-        # 查找所有匹配的事件树
-        matching_trees = []
-        for tree in self.event_tree:
-            if isinstance(tree, dict):
-                tree_id = tree.get('atomic_id', tree.get('event_id', ''))
-                    
-                # 支持字符串和 int 的转换匹配
-                try:
-                    tree_id_str = str(tree_id)
-                    for parent_id in parent_ids:
-                        # 尝试将两个值都转换为整数进行比较
-                        tree_id_int = int(tree_id_str) if tree_id_str else None
-                        parent_id_int = int(parent_id) if parent_id else None
-                            
-                        if tree_id_int is not None and parent_id_int is not None:
-                            # 都是整数，直接比较
-                            if tree_id_int == parent_id_int:
-                                matching_trees.append(tree)
-                                break
-                        else:
-                            # 至少有一个不是整数，使用字符串比较
-                            if tree_id_str == parent_id:
-                                matching_trees.append(tree)
-                                break
-                except (ValueError, TypeError):
-                    # 转换失败，使用字符串比较
-                    for parent_id in parent_ids:
-                        if str(tree_id) == parent_id:
-                            matching_trees.append(tree)
-                            break
-            
-        print(f"[Search Agent] 找到 {len(matching_trees)} 个匹配的事件树")
-        
-        if not matching_trees:
-            print(f"[Search Agent] 未找到匹配的事件树")
-            return {'events': [], 'summary': '未找到相关事件树'}
-        
-        # 调用 LLM 分析总结所有匹配的事件树
-        analysis_prompt = f"""
-        作为 Search Agent，请分析以下事件树数据，为后续的问题设计提供信息支持。
-        
-        【目标事件】
-        {json.dumps(target_event, ensure_ascii=False, indent=2)}
-        
-        【匹配的事件树数据】（共{len(matching_trees)}个）
-        {json.dumps(matching_trees, ensure_ascii=False, indent=2)}
-        
-        请完成以下分析任务：
-        
-        **1. 事件树总结**
-           - 这个事件树的主要内容和结构是什么？
-           - 包含哪些关键节点和重要信息？
-           - 事件之间的时间顺序和关联性如何？
-        
-        **2. 与目标事件的关联分析**
-           - 这些事件树数据与目标事件有什么关系？
-           - 是否提供了背景信息、前因后果或补充细节？
-           - 基于这些事件，可以提取哪些用于问题设计的信息点？
-        
-        请以 JSON 格式返回：
-        {{
-            "tree_summary": "事件树的总体描述（详细）",
-            "key_nodes": ["关键节点列表（简要）"],
-            "analysis": "与目标事件的关联分析和可用于问题设计的信息"
-        }}
-        """
-        
-        llm_result = llm_call(analysis_prompt)
-        
-        # 打印 Search Agent (模式 1) 的输出
-        if self.is_print:
-            print("\n[Search Agent - 模式 1] LLM 输出:")
-            print(llm_result[:500] + "..." if len(llm_result) > 500 else llm_result)
-        
-        try:
-            start_idx = llm_result.find('{')
-            end_idx = llm_result.rfind('}') + 1
-            if start_idx != -1 and end_idx != -1:
-                summary_json = json.loads(llm_result[start_idx:end_idx])
-                print(f"[Search Agent] 事件树分析完成")
-                
-                return {
-                    'tree_summary': summary_json.get('tree_summary', ''),
-                    'key_nodes': summary_json.get('key_nodes', []),
-                    'analysis': summary_json.get('analysis', '')
-                }
-        except:
-            print("[Search Agent] 事件树分析失败")
-        
-        return {'events': matching_trees, 'summary': '事件树分析失败'}
-    
-    def _search_by_month(self, dates: List[str], target_event: Dict[str, Any], question_draft: str) -> Dict[str, Any]:
-        """
-        模式 2: 基于月份的 draft_event 并行分析
-        
-        Args:
-            dates: 日期范围列表
-            target_event: 目标事件信息
-            question_draft: 问题初稿
-            
-        Returns:
-            搜索结果
-        """
-        import concurrent.futures
-        
-        # 提取月份信息
-        target_month = dates[0][:7]  # YYYY-MM
-        year = int(dates[0][:4])
-        month_num = int(dates[0][5:7])
-        
-        # 获取当前月份之前的所有月份
-        previous_months = []
-        for m in range(1, month_num):
-            prev_month = f"{year}-{str(m).zfill(2)}"
-            if prev_month in self.draft_event:
-                previous_months.append(prev_month)
-        
-        print(f"[Search Agent] 将分析 {len(previous_months)} 个历史月份的数据")
-        
-        # 定义单个月份的分析函数
-        def analyze_month(month_key: str) -> Dict[str, Any]:
-            month_events = self.draft_event[month_key]
-            if not isinstance(month_events, list):
-                return None
-            
-            # 过滤掉 state 字段
-            clean_events = []
-            for event in month_events:
-                if isinstance(event, dict):
-                    clean_event = {k: v for k, v in event.items() if k != 'state'}
-                    clean_events.append(clean_event)
-            
-            # 调用 LLM 分析
-            analysis_prompt = f"""
-            请分析以下历史月份的事件数据，并与当月目标事件和问题进行关联分析。
-            
-            历史月份：{month_key}
-            该月份的事件数据：
-            {json.dumps(clean_events, ensure_ascii=False, indent=2)[:3000]}  // 限制长度避免超长
-            
-            当月目标事件：{json.dumps(target_event, ensure_ascii=False, indent=2)}
-            当月设计的问题：{question_draft}
-            
-            请分析：
-            1. 这个历史月份中哪些事件与当月目标事件有关联？
-            2. 这些历史事件如何影响或导致当月事件的发生？
-            3. 从历史到当月的Time progression和因果关系
-            4. 对于回答当月问题，这些历史事件提供了什么背景或线索？
-            
-            请以 JSON 格式返回：
-            {{
-                "month": "{month_key}",
-                "related_events": [{{  // 相关事件列表
-                    "event_id": "事件 ID",
-                    "event_name": "事件名称",
-                    "relevance_reason": "与当月事件的关联性说明"
-                }}],
-                "causal_relationship": "因果关系分析",
-                "background_for_question": "对回答当月问题的价值"
-            }}
-            """
-            
-            try:
-                llm_result = llm_call(analysis_prompt)
-                
-                # 打印 Search Agent (模式 2) 的输出
-                if self.is_print:
-                    print(f"\n[Search Agent - 模式 2] 月份 {month_key} LLM 输出:")
-                    print(llm_result[:300] + "..." if len(llm_result) > 300 else llm_result)
-                
-                start_idx = llm_result.find('{')
-                end_idx = llm_result.rfind('}') + 1
-                if start_idx != -1 and end_idx != -1:
-                    result_json = json.loads(llm_result[start_idx:end_idx])
-                    return result_json
-            except:
-                print(f"[Search Agent] 分析月份 {month_key} 失败")
-            
+        # 如果 LLM 返回无效，随机选择
+        if not design_json:
+            return self._sample_random_event(daily_events_in_range, "LLM 返回为空")
+
+        # 直接获取 event_id，不获取整个 target_event
+        target_event = design_json.get('target_event')
+        if target_event is None:
+            target_event = {}
+        event_id = design_json.get('event_id') or target_event.get('event_id', '')
+
+        # 根据 event_id 查找完整事件
+        target_event_full = self._find_event_by_id(event_id, daily_events_in_range)
+
+        # 找不到则随机选择
+        if not target_event_full:
+            return self._sample_random_event(daily_events_in_range, f"未找到 event_id={event_id}")
+
+        # 提取目标日期的事件列表
+        daily_events_on_target_date = self._get_events_on_date(target_event_full, daily_events_in_range)
+
+        return target_event_full, daily_events_on_target_date
+
+    def _find_event_by_id(self, event_id: str, events: List[Dict]) -> Optional[Dict]:
+        """根据 event_id 在事件列表中查找匹配的事件"""
+        if not event_id:
             return None
-        
-        # 并行处理所有历史月份
-        all_analyses = []
-        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
-            futures = {executor.submit(analyze_month, month): month for month in previous_months}
-            
-            for future in concurrent.futures.as_completed(futures):
-                try:
-                    result = future.result()
-                    if result:
-                        all_analyses.append(result)
-                except Exception as e:
-                    print(f"[Search Agent] 月份分析异常：{e}")
-        
-        print(f"[Search Agent] 完成了 {len(all_analyses)} 个月份的历史分析")
-        
-        # 整合所有分析结果
-        return {
-            'month_analyses': all_analyses,
-            'total_months_analyzed': len(all_analyses),
-            'target_month': target_month
-        }
-    
+
+        for event in events:
+            if isinstance(event, dict) and str(event.get('event_id', '')) == str(event_id):
+                return event
+
+        return None
+
+    def _sample_random_event(self, events: List[Dict], reason: str) -> Tuple[Dict, List[Dict]]:
+        """随机选择一个事件"""
+        if not events:
+            print(f"[Select Agent] {reason}，但事件列表为空")
+            return {}, []
+
+        sampled = random.choice(events)
+        print(f"[Select Agent] {reason}，随机选择：event_id={sampled.get('event_id')}")
+        return sampled, events
+
+    def _get_events_on_date(self, target_event: Dict, all_events: List[Dict]) -> List[Dict]:
+        """获取与目标事件同一天的所有事件"""
+        event_date = target_event.get('date', [])
+        target_date_str = self._extract_target_date_str(event_date)
+
+        if not target_date_str:
+            return all_events
+
+        print(f"[Select Agent] 获取 {target_date_str} 的 daily event 数据：")
+
+        events_on_date = []
+        for event in all_events:
+            if not isinstance(event, dict) or 'date' not in event:
+                continue
+
+            event_dates = event.get('date', [])
+            event_date_str_list = self._normalize_date_field(event_dates)
+
+            for time_range in event_date_str_list:
+                event_date_str = self._extract_date_from_time_range(time_range)
+                if event_date_str == target_date_str:
+                    events_on_date.append(event)
+                    break
+
+        print(f"[Select Agent] 目标事件日期：{target_date_str}")
+        print(f"[Select Agent] 该日期的 daily_event 数量：{len(events_on_date)}")
+        return events_on_date
+
+    def _extract_target_date_str(self, event_date) -> str:
+        """从目标事件的 date 字段提取日期字符串"""
+        if isinstance(event_date, str):
+            return self._extract_date_from_time_range(event_date)
+        elif isinstance(event_date, list) and len(event_date) > 0:
+            first_time_range = event_date[0]
+            if isinstance(first_time_range, str):
+                return self._extract_date_from_time_range(first_time_range)
+        return ''
+
+    def _normalize_date_field(self, date_field) -> List[str]:
+        """规范化 date 字段为字符串列表"""
+        if isinstance(date_field, str):
+            return [date_field]
+        elif isinstance(date_field, list):
+            return date_field
+        return []
+
     def evaluation_agent(self, question: Dict[str, Any], search_result: Dict[str, Any], daily_events_on_target_date: List[Dict[str, Any]] = None, current_month: str = None) -> Dict[str, Any]:
         """
         Evaluation Agent: 评估问题质量
@@ -647,37 +433,36 @@ class QASingleGenerator(BaseQAGenerator):
         【问题策略】
         {question.get('strategy_narrative', '')}
         
-        【已有证据（evidence）】
+        【已有证据（evidence）—— 回答问题的唯一依据】
         {json.dumps(question.get('evidence', []), ensure_ascii=False, indent=2)}
-        
-        【目标事件附近三天的 daily_event】
-        {json.dumps(daily_events_on_target_date, ensure_ascii=False, indent=2) if daily_events_on_target_date else '暂无'}
-        
+        注意：evidence 是手机数据（短信、通话、笔记、日历等），是回答问题的**唯一**依据。
+
         请从以下维度进行深入评估：
-        
+
         ## 1. 题面合理性检查
         - **场景真实性**：问题描述的场景是否符合真实生活？
         - **逻辑连贯性**：问题表述是否逻辑清晰、无矛盾？
         - **信息合理性**：题目的信息是否足够定位回答问题，手机数据是否能推理出问题的答案？是否需要补充信息/去除冗余信息？题面的提供的信息符合一般人提问时会提供的信息吗（时间or地点or人物or描述）？
         - **信息适度性**：提供的信息量是否合理？是否过多或过少，是否有冗余信息？
-        
+        - **检索困难性**：题面和证据之间的相似性是否过高，导致检索证据回答问题很容易。在保证问题可从 evidence 中回答的前提下，检减少题面和证据的相似度。（可以减少一些题面描述的细节信息内容，只保留可回答的最小信息即可。）
+
         ## 2. 答案合理性正确性检查
         - **答案完整性**：答案是否完整回答了问题？
-        - **答案正确性**：答案与 evidence 和 daily_event 中的数据是否一致？是否存在矛盾？
+        - **答案正确性**：答案与 evidence 中的数据是否一致？是否存在矛盾？
         - **逻辑自洽**：答案内部逻辑是否自洽？有无自相矛盾之处？
-        - **事实准确性**：答案中的事实（时间、地点、人物、事件）是否与输入数据匹配？
-        
-        ## 3. 手机数据合理性检查
-        - **数据充分性**：现有手机数据是否足以支持问题和答案？
-        - **数据一致性**：各条手机数据之间是否一致？有无相互矛盾的地方？
+        - **事实准确性**：答案中的事实（时间、地点、人物、事件）是否与 evidence 手机数据匹配？
+
+        ## 3. 手机数据合理性检查（基于 evidence）
+        - **数据充分性**：现有 evidence 手机数据是否足以支持问题和答案？
+        - **数据一致性**：各条 evidence 手机数据之间是否一致？有无相互矛盾的地方？
         - **数据真实性**：手机数据是否符合真实使用场景？是否过于人工痕迹明显？
         - **证据链完整性**：关键证据是否齐全？是否需要补充其他类型的手机数据？
-        
-        ## 4. 问题可回答性检查（基于手机数据推理）
-        - **证据充分性**：基于现有 evidence 和 daily_event，能否准确回答问题？
-        - **信息完整性**：关键信息（时间、地点、人物、事件）是否齐全？
+
+        ## 4. 问题可回答性检查（仅基于 evidence 手机数据）
+        - **证据充分性**：基于现有 evidence 手机数据，能否准确回答问题？
+        - **信息完整性**：evidence 中关键信息（时间、地点、人物、事件）是否齐全？
         - **答案唯一性**：是否存在多个可能的答案？是否有歧义？
-        - **检索可行性**：能否通过手机数据有效检索并推理出答案？
+        - **检索可行性**：能否通过 evidence 手机数据有效检索并推理出答案？
         - **推理链条**：是否需要多步推理？推理过程是否合理？
         
         请以 JSON 格式返回评估结果：
@@ -753,6 +538,14 @@ class QASingleGenerator(BaseQAGenerator):
             
         【已有的手机数据】
         {json.dumps(question.get('evidence', []), ensure_ascii=False, indent=2) if question.get('evidence') else '暂无'}
+
+         **重要约束（可回答性）**
+        - 设计的问题必须能从【已有的手机数据】中推断出答案
+        - 如果【已有的手机数据】不足以回答问题，你需要在 phone_data_plan 中规划生成新的手机数据
+        - 生成的手机数据必须包含能够回答问题的关键信息
+        - 生成的证据数据将用于验证问题的可回答性
+        - 请你合理设计问题和证据，使得问题具有一定的难度，题面不是完全和证据一样的描述，减少问题和证据的表面相似度，但又能通过合理推理从证据中得出答案
+            
             
         **任务要求**
 
@@ -825,7 +618,7 @@ class QASingleGenerator(BaseQAGenerator):
            - **干扰数据例外**：只有为了增加检索难度的干扰/迷惑性数据才值得新增（这种数据不包含能回答问题的信息）
            - **删除不合理数据**：当发现手机数据与问题不匹配、相互矛盾或明显冗余时，应该删除
            - **精简优先**：保持手机数据的精简性和合理性，宁缺毋滥
-            
+           - **类别多样性**：优先考虑增加不同类型的手机数据（如短信、通话、照片、日历等），而不是在同一类型中增加大量数据
         **好的问题示例**
             
         ✅ "我晋升主管后第一次带团队去聚餐，当时选的地方是哪里？我记得有个同事还迟到了"
@@ -901,6 +694,14 @@ class QASingleGenerator(BaseQAGenerator):
         【已有手机数据】
         {json.dumps(question.get('evidence', []), ensure_ascii=False, indent=2) if question.get('evidence') else '暂无'}
         
+         **重要约束（可回答性）**
+        - 设计的问题必须能从【已有的手机数据】中推断出答案
+        - 如果【已有的手机数据】不足以回答问题，你需要在 phone_data_plan 中规划生成新的手机数据
+        - 生成的手机数据必须包含能够回答问题的关键信息
+        - 生成的证据数据将用于验证问题的可回答性
+        - 请你合理设计问题和证据，使得问题具有一定的难度，题面不是完全和证据一样的描述，减少问题和证据的表面相似度，但又能通过合理推理从证据中得出答案
+            
+        
         **任务要求**
         1. **评估优先**：如果评估认为题面和答案已经合理，可以不做修改，只关注手机数据的优化
         2. **针对性润色题面**：根据反馈中提到的不足，优化问题表述，使其更自然、更符合真实用户的提问方式
@@ -921,7 +722,7 @@ class QASingleGenerator(BaseQAGenerator):
         - 如果润色后的问题需要新的证据支持，可以补充生成
         - 如果某些手机数据与润色后的问题不匹配，可以删除或修改
         - 确保手机数据与问题和答案保持一致性和逻辑连贯性
-        
+        - **类别多样性**：优先考虑增加不同类型的手机数据（如短信、通话、照片、日历等），而不是在同一类型中增加大量数据
         
         请以 JSON 格式返回：
         {{
@@ -1051,8 +852,8 @@ class QASingleGenerator(BaseQAGenerator):
         else:  # mode == 'revise'
             plan_prompt = self._build_revise_prompt(question, feedback)
         if self.is_print:
-
-            print("[Design Agent] 规划提示：", plan_prompt)
+            # print("[Design Agent] 规划提示：", plan_prompt)
+            pass
         plan_result = llm_call(plan_prompt)
         
         # 打印 Design Agent Plan 阶段的输出
@@ -1072,18 +873,33 @@ class QASingleGenerator(BaseQAGenerator):
                 
                 # 1. 解析问题部分
                 designed_question = plan_json.get('designed_question', {})
+
+                # 验证 required_events_id 是否与 target_event.event_id 一致
+                target_event_id = str(question.get('target_event', {}).get('event_id', ''))
+                validated_required_ids = []
+                if target_event_id:
+                    required_ids = designed_question.get('required_events_id', [])
+                    for rid in required_ids:
+                        if str(rid) == target_event_id:
+                            validated_required_ids.append(rid)
+                        else:
+                            print(f"[Design Agent] 警告：required_events_id={rid} 与 target_event.event_id={target_event_id} 不一致，已替换")
+                            validated_required_ids.append(target_event_id)
+                else:
+                    validated_required_ids = designed_question.get('required_events_id', [])
+
                 new_question_obj = {
                     'question': designed_question.get('question', ''),
                     'answer': designed_question.get('answer', ''),
                     'score_points': designed_question.get('score_points', []),
-                    'required_events_id': designed_question.get('required_events_id', []),
+                    'required_events_id': validated_required_ids,  # 使用验证后的 ID
                     'question_type': 'Single_hop',
                     'evidence': [],  # 将在生成数据后填充
                     'design_rationale': plan_json.get('design_rationale', ''),
                     'strategy_narrative': question.get('strategy_narrative', ''),
                     'target_event': question.get('target_event', {})
                 }
-                
+
                 # 2. 解析手机数据规划
                 phone_data_plan = plan_json.get('phone_data_plan', {})
                 to_generate = phone_data_plan.get('to_generate', [])
@@ -1155,28 +971,25 @@ class QASingleGenerator(BaseQAGenerator):
                         self._add_operations_to_phonedata(generated_operations)
                 
                 # 5. 构建 updated_evidence（基于 new_question_obj 的 evidence，删除旧的，添加新的）
-                # 注意：new_question_obj['evidence'] 已经在上面生成数据后被 phonedata 更新
-                # 所以这里直接从 phonedata 中重新收集与 required_events_id 相关的证据
+                # 注意：直接使用 target_event.event_id 来收集证据，避免 required_events_id 被伪造的问题
                 updated_evidence = []
-                required_events_ids = new_question_obj.get('required_events_id', [])
-                
-                # 遍历所有必需的事件 ID，从 phonedata 中收集最新的证据
-                for event_id in required_events_ids:
-                    if self.phonedata:
-                        for data_type, data_list in self.phonedata.items():
-                            if isinstance(data_list, list):
-                                for item in data_list:
-                                    if isinstance(item, dict):
-                                        # 检查 daily_event_id 或 related_event 字段
-                                        item_event_id = str(item.get('daily_event_id', ''))
-                                        related_event = str(item.get('related_event', ''))
-                                                
-                                        # 如果匹配，添加到 updated_evidence
-                                        if item_event_id == str(event_id) or related_event == str(event_id):
-                                            updated_evidence.append(item)
-                
-                # 如果 required_events_id 为空，则不添加
-                
+                target_event = new_question_obj.get('target_event', {})
+                target_event_id = str(target_event.get('event_id', ''))
+
+                # 直接使用 target_event_id 收集证据
+                if target_event_id and self.phonedata:
+                    for _, data_list in self.phonedata.items():
+                        if isinstance(data_list, list):
+                            for item in data_list:
+                                if isinstance(item, dict):
+                                    # 检查 daily_event_id 或 related_event 字段
+                                    item_event_id = str(item.get('daily_event_id', ''))
+                                    related_event = str(item.get('related_event', ''))
+
+                                    # 如果匹配，添加到 updated_evidence
+                                    if item_event_id == target_event_id or related_event == target_event_id:
+                                        updated_evidence.append(item)
+
                 new_question_obj['evidence'] = updated_evidence
                 
                 print("[Design Agent] 问题重新设计完成，已生成/删除手机操作数据")
@@ -1190,79 +1003,6 @@ class QASingleGenerator(BaseQAGenerator):
         
         # 失败情况下返回原问题，不继续迭代
         return question, False
-    
-    def _generate_phone_operations(self, question: Dict[str, Any], search_result: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """
-        为问题生成对应的手机操作数据
-        
-        Args:
-            question: 问题对象
-            search_result: 搜索结果
-            
-        Returns:
-            手机操作数据列表
-        """
-        print("[Design Agent] 生成手机操作数据")
-        
-        # 使用 PhoneOperationGenerator 生成
-        operations = self.phone_op_generator.generate_for_question(question, search_result)
-        
-        return operations
-    
-    def _generate_planned_operations(self, to_generate: List[Dict[str, Any]], question: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """
-        根据规划生成手机操作数据
-        
-        Args:
-            to_generate: 需要生成的数据规划列表
-            question: 问题对象
-            
-        Returns:
-            生成的操作数据列表
-        """
-        all_generated = []
-        
-        for item in to_generate:
-            op_type = item.get('type', 'sms')
-            content_summary = item.get('content_summary', '')
-            key_info = item.get('key_info', '')
-            time_range = item.get('time_range', '')
-            participants = item.get('participants', [])
-            purpose = item.get('purpose', '')
-            
-            # 构建详细的生成提示
-            generation_hint = f"""
-            【内容概要】{content_summary}
-            【关键信息】{key_info}
-            【时间范围】{time_range}
-            【参与者】{', '.join(participants) if participants else '无'}
-            【用途】{purpose}
-            """
-            
-            # 创建临时事件用于生成
-            target_event = question.get('target_event', {})
-            temp_event = {
-                'question': question.get('question', ''),
-                'target_event': target_event,
-                'event_id': target_event.get('event_id', '')  # 添加 event_id 供 PhoneOperationGenerator 设置 daily_event_id
-            }
-            
-            # 使用 PhoneOperationGenerator 生成
-            operations = self.phone_op_generator.generate(
-                operation_type=op_type,
-                original_event=temp_event,
-                question=question.get('question', ''),
-                generation_hint=generation_hint
-            )
-            
-            if operations:
-                all_generated.extend(operations)
-        
-        # 添加到 phonedata
-        if all_generated:
-            self._add_operations_to_phonedata(all_generated)
-        
-        return all_generated
     
     def _delete_phone_operations(self, to_delete: List[Dict[str, Any]]) -> bool:
         """
@@ -1340,7 +1080,7 @@ class QASingleGenerator(BaseQAGenerator):
         event_id = target_event.get('event_id', '')
         
         if self.phonedata:
-            for data_type, data_list in self.phonedata.items():
+            for _, data_list in self.phonedata.items():
                 if isinstance(data_list, list):
                     for item in data_list:
                         if isinstance(item, dict):
@@ -1373,18 +1113,14 @@ class QASingleGenerator(BaseQAGenerator):
         monthly_qa = []
         
         for select_result in select_results:
-            dates = select_result['dates']
             target_event = select_result.get('target_event', {})
             question_draft = select_result.get('question_draft', '')
             daily_events_on_target_date = select_result.get('daily_events_in_range', [])  # 直接使用 select_agent 返回的数据
 
             
-            # Step 2: Search Agent
-            search_result = self.search_agent(dates, target_event, question_draft)
-            
-            # 不再检查搜索结果，直接继续生成（即使搜索结果为空）
-            # 这样可以基于当日 daily_event 继续生成问题
-            
+            # Step 2: Search Agent (已禁用，始终返回空字典)
+            search_result = {}
+
             # 生成初始问题（只生成一个）
             initial_question = {
                 'question': question_draft,  # 使用 Select Agent 生成的问题草稿
@@ -1401,7 +1137,7 @@ class QASingleGenerator(BaseQAGenerator):
             related_phone_data = []
             if event_id and self.phonedata:
                 # 遍历所有类型的 phone_data
-                for data_type, data_list in self.phonedata.items():
+                for _, data_list in self.phonedata.items():
                     if isinstance(data_list, list):
                         for item in data_list:
                             if isinstance(item, dict):
