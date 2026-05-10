@@ -1366,7 +1366,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
             "type": state_name,
             "date": date,
             "description": new_state,
-            "event_id": event_ids[0] if event_ids else "",
+            "event_id": event_ids[0] if event_ids else "0",
             "related_events": event_ids
         }
 

@@ -900,7 +900,7 @@ class PhoneOperationGenerator:
             if start_idx != -1 and end_idx != -1:
                 fixed_op = json.loads(result[start_idx:end_idx])
                 # 设置必填字段
-                event_id_str = str(original_event.get('event_id', ''))
+                event_id_str = str(original_event.get('event_id', '0') or '0')
                 fixed_op['daily_event_id'] = event_id_str
                 fixed_op['event_id'] = []
                 if 'phone_id' in fixed_op:
@@ -938,11 +938,8 @@ class PhoneOperationGenerator:
                 operations = json.loads(result[start_idx:end_idx])
                 
                 # 获取原始事件的 id（转换为字符串）
-                event_id_value = original_event.get('event_id', '')
-                if event_id_value is not None:
-                    event_id_str = str(event_id_value)
-                else:
-                    event_id_str = ''
+                event_id_value = original_event.get('event_id', '0')
+                event_id_str = str(event_id_value) if event_id_value else '0'
                 
                 # 验证和规范化
                 validated_ops = []
