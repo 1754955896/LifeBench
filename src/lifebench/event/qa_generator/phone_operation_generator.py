@@ -342,7 +342,7 @@ class PhoneOperationGenerator:
                 "streetNumber": "门牌号",
                 "poi": "地点名称"
             }},
-            "faceRecognition": ["人物姓名"],
+            "faceRecognition": "人物姓名",
             "imageTag": ["标签 1", "标签 2"],
             "ocrText": "OCR 识别文字",
             "shoot_mode": "拍摄模式",
@@ -748,7 +748,7 @@ class PhoneOperationGenerator:
 - title: 格式 "IMG_YYYYMMDD_HHMMSS"，如 "IMG_20250315_143025"
 - datetime: 格式 "YYYY-MM-DD HH:MM:SS"，年份为 2025
 - location: 嵌套对象，包含 province, city, district, streetName, streetNumber, poi
-- faceRecognition: 数组，如 ["人物1", "人物2"] 或 "无"
+- faceRecognition: 字符串，如 "人物姓名" 或 "无"
 - imageTag: 数组，如 ["标签1", "标签2"]
 - ocrText: OCR 识别文字，无则填 "无"
 - shoot_mode: 只能是 "正常拍照"、"夜景"、"人像" 或 "微距"
@@ -767,7 +767,7 @@ class PhoneOperationGenerator:
         "streetNumber": "门牌号",
         "poi": "地点名称"
     }},
-    "faceRecognition": ["人物姓名"],
+    "faceRecognition": "人物姓名",
     "imageTag": ["标签1", "标签2"],
     "ocrText": "无",
     "shoot_mode": "正常拍照",

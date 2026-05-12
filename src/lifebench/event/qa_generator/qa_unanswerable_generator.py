@@ -212,6 +212,9 @@ class QAUnanswerableGenerator(BaseQAGenerator):
                             }]
                         # 直接设置 required_events_id，不使用 required_events
                         question['required_events_id'] = []
+                        # 确保 evidence 字段存在
+                        if 'evidence' not in question:
+                            question['evidence'] = []
 
                         if 'ask_time' not in question:
                             # 随机分配 ask_time，在选定日期之后
