@@ -1,0 +1,4222 @@
+[
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-01-01 17:45:00",
+    "datetime_end": "2025-01-01 17:48:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "9",
+    "event_id": [],
+    "phone_id": 0
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-01-03 14:30:00",
+    "datetime_end": "2025-01-03 14:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "41",
+    "event_id": [
+      "2-1-2"
+    ],
+    "phone_id": 1
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-01-04 12:15:00",
+    "datetime_end": "2025-01-04 12:17:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "55",
+    "event_id": [],
+    "phone_id": 2
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937117890",
+    "contactName": "苏雅",
+    "datetime": "2025-01-05 17:10:00",
+    "datetime_end": "2025-01-05 17:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "67",
+    "event_id": [
+      "3-3",
+      "3-4"
+    ],
+    "phone_id": 3
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-01-07 10:30:00",
+    "datetime_end": "2025-01-07 10:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "89",
+    "event_id": [],
+    "phone_id": 4
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-01-08 17:45:00",
+    "datetime_end": "2025-01-08 17:47:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "103",
+    "event_id": [],
+    "phone_id": 5
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-01-09 07:50:00",
+    "datetime_end": "2025-01-09 07:52:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "117",
+    "event_id": [],
+    "phone_id": 6
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937111234",
+    "contactName": "王芳",
+    "datetime": "2025-01-12 12:20:00",
+    "datetime_end": "2025-01-12 12:22:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "168",
+    "event_id": [
+      "84-2"
+    ],
+    "phone_id": 7
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-01-13 08:00:00",
+    "datetime_end": "2025-01-13 08:05:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "177",
+    "event_id": [],
+    "phone_id": 8
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937112345",
+    "contactName": "刘强",
+    "datetime": "2025-01-14 17:40:00",
+    "datetime_end": "2025-01-14 17:45:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "204",
+    "event_id": [
+      "175-1"
+    ],
+    "phone_id": 9
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937111234",
+    "contactName": "王芳",
+    "datetime": "2025-01-15 08:15:00",
+    "datetime_end": "2025-01-15 08:16:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "216",
+    "event_id": [
+      "175-2"
+    ],
+    "phone_id": 10
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-01-16 10:30:00",
+    "datetime_end": "2025-01-16 10:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "234",
+    "event_id": [],
+    "phone_id": 11
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-01-17 10:30:00",
+    "datetime_end": "2025-01-17 10:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "246",
+    "event_id": [],
+    "phone_id": 12
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937951234",
+    "contactName": "于建国",
+    "datetime": "2025-01-18 09:10:00",
+    "datetime_end": "2025-01-18 09:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "262",
+    "event_id": [
+      "4-4",
+      "4-5"
+    ],
+    "phone_id": 13
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937111234",
+    "contactName": "王芳",
+    "datetime": "2025-01-20 18:30:00",
+    "datetime_end": "2025-01-20 18:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "298",
+    "event_id": [
+      "176-2",
+      "176-3"
+    ],
+    "phone_id": 14
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13757112345",
+    "contactName": "李雅琴",
+    "datetime": "2025-01-21 19:30:00",
+    "datetime_end": "2025-01-21 21:00:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "317",
+    "event_id": [
+      "8-2"
+    ],
+    "phone_id": 15
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-01-22 15:10:00",
+    "datetime_end": "2025-01-22 15:13:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "329",
+    "event_id": [
+      "5-2"
+    ],
+    "phone_id": 16
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-01-23 09:00:00",
+    "datetime_end": "2025-01-23 09:02:00",
+    "direction": 2,
+    "call_result": "接通",
+    "daily_event_id": "343",
+    "event_id": [],
+    "phone_id": 17
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937114567",
+    "contactName": "吴敏",
+    "datetime": "2025-01-23 10:30:00",
+    "datetime_end": "2025-01-23 10:33:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "344",
+    "event_id": [],
+    "phone_id": 18
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-01-24 17:45:00",
+    "datetime_end": "2025-01-24 18:25:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "363",
+    "event_id": [
+      "5-4"
+    ],
+    "phone_id": 19
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937115678",
+    "contactName": "林薇",
+    "datetime": "2025-01-25 15:00:00",
+    "datetime_end": "2025-01-25 15:03:20",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "375",
+    "event_id": [
+      "168-7"
+    ],
+    "phone_id": 20
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612963456",
+    "contactName": "于晓峰",
+    "datetime": "2025-01-27 12:15:00",
+    "datetime_end": "2025-01-27 12:20:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "402",
+    "event_id": [],
+    "phone_id": 21
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937124567",
+    "contactName": "张静",
+    "datetime": "2025-01-30 08:45:00",
+    "datetime_end": "2025-01-30 08:47:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "424",
+    "event_id": [
+      "2-3-3"
+    ],
+    "phone_id": 22
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937111234",
+    "contactName": "王芳",
+    "datetime": "2025-01-31 08:10:00",
+    "datetime_end": "2025-01-31 08:12:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "439",
+    "event_id": [],
+    "phone_id": 23
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-02-01 08:10:00",
+    "datetime_end": "2025-02-01 08:12:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "458",
+    "event_id": [
+      "5-1"
+    ],
+    "phone_id": 24
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937111234",
+    "contactName": "王芳",
+    "datetime": "2025-02-02 20:00:00",
+    "datetime_end": "2025-02-02 20:10:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "484",
+    "event_id": [
+      "9-2-1"
+    ],
+    "phone_id": 25
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-02-03 13:00:00",
+    "datetime_end": "2025-02-03 13:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "495",
+    "event_id": [
+      "2-3-7"
+    ],
+    "phone_id": 26
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937114567",
+    "contactName": "吴敏",
+    "datetime": "2025-02-05 17:00:00",
+    "datetime_end": "2025-02-05 17:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "535",
+    "event_id": [
+      "135-5"
+    ],
+    "phone_id": 27
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-02-08 10:35:00",
+    "datetime_end": "2025-02-08 10:55:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "578",
+    "event_id": [],
+    "phone_id": 28
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "于建国",
+    "datetime": "2025-02-09 19:40:00",
+    "datetime_end": "2025-02-09 20:50:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "597",
+    "event_id": [
+      "189-2"
+    ],
+    "phone_id": 29
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937124567",
+    "contactName": "张静",
+    "datetime": "2025-02-10 18:45:00",
+    "datetime_end": "2025-02-10 19:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "614",
+    "event_id": [
+      "10-2",
+      "13-4",
+      "14-1"
+    ],
+    "phone_id": 30
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-02-11 08:10:00",
+    "datetime_end": "2025-02-11 08:13:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "622",
+    "event_id": [],
+    "phone_id": 31
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-02-12 14:15:00",
+    "datetime_end": "2025-02-12 14:17:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "638",
+    "event_id": [],
+    "phone_id": 32
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-02-13 09:00:00",
+    "datetime_end": "2025-02-13 09:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "650",
+    "event_id": [
+      "184-1"
+    ],
+    "phone_id": 33
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-02-14 14:25:00",
+    "datetime_end": "2025-02-14 14:28:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "670",
+    "event_id": [
+      "10-3"
+    ],
+    "phone_id": 34
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-02-15 10:30:00",
+    "datetime_end": "2025-02-15 10:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "679",
+    "event_id": [
+      "11-2"
+    ],
+    "phone_id": 35
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937913456",
+    "contactName": "张磊",
+    "datetime": "2025-02-16 08:25:00",
+    "datetime_end": "2025-02-16 08:27:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "690",
+    "event_id": [],
+    "phone_id": 36
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-02-18 16:30:00",
+    "datetime_end": "2025-02-18 16:31:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "731",
+    "event_id": [
+      "185-2",
+      "185-3"
+    ],
+    "phone_id": 37
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-02-19 20:00:00",
+    "datetime_end": "2025-02-19 20:02:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "735",
+    "event_id": [],
+    "phone_id": 38
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-02-21 09:30:00",
+    "datetime_end": "2025-02-21 09:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "773",
+    "event_id": [],
+    "phone_id": 39
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-02-22 12:45:00",
+    "datetime_end": "2025-02-22 12:47:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "785",
+    "event_id": [
+      "85-3"
+    ],
+    "phone_id": 40
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-02-22 18:20:00",
+    "datetime_end": "2025-02-22 18:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "790",
+    "event_id": [
+      "85-5"
+    ],
+    "phone_id": 41
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937951234",
+    "contactName": "于建国",
+    "datetime": "2025-02-24 11:00:00",
+    "datetime_end": "2025-02-24 11:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "812",
+    "event_id": [],
+    "phone_id": 42
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937111234",
+    "contactName": "王芳",
+    "datetime": "2025-02-25 11:45:00",
+    "datetime_end": "2025-02-25 11:46:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "823",
+    "event_id": [],
+    "phone_id": 43
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937112345",
+    "contactName": "刘强",
+    "datetime": "2025-02-26 08:35:00",
+    "datetime_end": "2025-02-26 08:36:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "835",
+    "event_id": [],
+    "phone_id": 44
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-03-03 18:45:00",
+    "datetime_end": "2025-03-03 19:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "899",
+    "event_id": [
+      "109-3"
+    ],
+    "phone_id": 45
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-03-04 08:10:00",
+    "datetime_end": "2025-03-04 08:12:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "0",
+    "event_id": [],
+    "phone_id": 46
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612985678",
+    "contactName": "刘洋",
+    "datetime": "2025-03-05 13:00:00",
+    "datetime_end": "2025-03-05 13:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "928",
+    "event_id": [
+      "17-2",
+      "17-3"
+    ],
+    "phone_id": 47
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937112345",
+    "contactName": "刘强",
+    "datetime": "2025-03-06 15:20:00",
+    "datetime_end": "2025-03-06 15:25:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "945",
+    "event_id": [],
+    "phone_id": 48
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-03-07 10:15:00",
+    "datetime_end": "2025-03-07 10:20:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "966",
+    "event_id": [
+      "194-5"
+    ],
+    "phone_id": 49
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-03-08 07:45:00",
+    "datetime_end": "2025-03-08 07:47:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "978",
+    "event_id": [
+      "22-2"
+    ],
+    "phone_id": 50
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937120123",
+    "contactName": "王明远",
+    "datetime": "2025-03-09 20:00:00",
+    "datetime_end": "2025-03-09 20:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1001",
+    "event_id": [],
+    "phone_id": 51
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-03-10 17:30:00",
+    "datetime_end": "2025-03-10 17:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1010",
+    "event_id": [
+      "191-1",
+      "22-6"
+    ],
+    "phone_id": 52
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612963456",
+    "contactName": "于晓峰",
+    "datetime": "2025-03-11 14:35:00",
+    "datetime_end": "2025-03-11 14:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1024",
+    "event_id": [
+      "110-2",
+      "110-3",
+      "109-7"
+    ],
+    "phone_id": 53
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-03-12 11:55:00",
+    "datetime_end": "2025-03-12 12:00:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1038",
+    "event_id": [],
+    "phone_id": 54
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937114567",
+    "contactName": "吴敏",
+    "datetime": "2025-03-13 09:00:00",
+    "datetime_end": "2025-03-13 09:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1051",
+    "event_id": [],
+    "phone_id": 55
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937128901",
+    "contactName": "孙悦",
+    "datetime": "2025-03-14 17:40:00",
+    "datetime_end": "2025-03-14 17:42:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1073",
+    "event_id": [],
+    "phone_id": 56
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937113456",
+    "contactName": "张磊",
+    "datetime": "2025-03-15 06:30:00",
+    "datetime_end": "2025-03-15 06:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1083",
+    "event_id": [
+      "18-2",
+      "18-3"
+    ],
+    "phone_id": 57
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-03-16 16:30:00",
+    "datetime_end": "2025-03-16 16:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1108",
+    "event_id": [],
+    "phone_id": 58
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937124567",
+    "contactName": "张静",
+    "datetime": "2025-03-17 16:25:00",
+    "datetime_end": "2025-03-17 16:27:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1123",
+    "event_id": [
+      "18-5"
+    ],
+    "phone_id": 59
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-03-18 13:40:00",
+    "datetime_end": "2025-03-18 13:45:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1136",
+    "event_id": [
+      "196-2"
+    ],
+    "phone_id": 60
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937120123",
+    "contactName": "王明远",
+    "datetime": "2025-03-19 12:00:00",
+    "datetime_end": "2025-03-19 12:02:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1153",
+    "event_id": [
+      "191-4-4"
+    ],
+    "phone_id": 61
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937120123",
+    "contactName": "王明远",
+    "datetime": "2025-03-20 19:35:00",
+    "datetime_end": "2025-03-20 19:45:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1172",
+    "event_id": [
+      "191-4-3"
+    ],
+    "phone_id": 62
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-03-21 06:45:00",
+    "datetime_end": "2025-03-21 07:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1179",
+    "event_id": [
+      "18-4-6"
+    ],
+    "phone_id": 63
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-03-22 17:55:00",
+    "datetime_end": "2025-03-22 17:57:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1203",
+    "event_id": [
+      "197-3",
+      "197-4"
+    ],
+    "phone_id": 64
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937951234",
+    "contactName": "于建国",
+    "datetime": "2025-03-23 16:30:00",
+    "datetime_end": "2025-03-23 17:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1218",
+    "event_id": [
+      "191-5"
+    ],
+    "phone_id": 65
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613901234567",
+    "contactName": "张先生",
+    "datetime": "2025-03-24 10:00:00",
+    "datetime_end": "2025-03-24 10:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1228",
+    "event_id": [],
+    "phone_id": 66
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-03-25 10:00:00",
+    "datetime_end": "2025-03-25 10:10:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1242",
+    "event_id": [
+      "195-2-4"
+    ],
+    "phone_id": 67
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-03-25 13:30:00",
+    "datetime_end": "2025-03-25 13:50:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1246",
+    "event_id": [],
+    "phone_id": 68
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-03-26 09:00:00",
+    "datetime_end": "2025-03-26 09:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1262",
+    "event_id": [],
+    "phone_id": 69
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937113456",
+    "contactName": "张磊",
+    "datetime": "2025-03-27 08:35:00",
+    "datetime_end": "2025-03-27 08:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1279",
+    "event_id": [],
+    "phone_id": 70
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-03-29 16:00:00",
+    "datetime_end": "2025-03-29 16:05:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1299",
+    "event_id": [],
+    "phone_id": 71
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-03-30 19:00:00",
+    "datetime_end": "2025-03-30 20:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1320",
+    "event_id": [
+      "27-1"
+    ],
+    "phone_id": 72
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-03-31 08:35:00",
+    "datetime_end": "2025-03-31 08:38:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1326",
+    "event_id": [],
+    "phone_id": 73
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-04-01 12:35:00",
+    "datetime_end": "2025-04-01 12:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1349",
+    "event_id": [
+      "26-2"
+    ],
+    "phone_id": 74
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937111234",
+    "contactName": "王芳",
+    "datetime": "2025-04-02 21:35:00",
+    "datetime_end": "2025-04-02 21:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1370",
+    "event_id": [],
+    "phone_id": 75
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-04-03 17:30:00",
+    "datetime_end": "2025-04-03 17:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1385",
+    "event_id": [
+      "31-1"
+    ],
+    "phone_id": 76
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612963456",
+    "contactName": "于晓峰",
+    "datetime": "2025-04-04 09:10:00",
+    "datetime_end": "2025-04-04 09:12:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1394",
+    "event_id": [
+      "31-2"
+    ],
+    "phone_id": 77
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937113456",
+    "contactName": "张磊",
+    "datetime": "2025-04-05 10:25:00",
+    "datetime_end": "2025-04-05 10:28:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1414",
+    "event_id": [
+      "28-1",
+      "26-6"
+    ],
+    "phone_id": 78
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-04-07 19:20:00",
+    "datetime_end": "2025-04-07 19:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1461",
+    "event_id": [
+      "28-3-1"
+    ],
+    "phone_id": 79
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-04-08 12:10:00",
+    "datetime_end": "2025-04-08 12:12:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1471",
+    "event_id": [],
+    "phone_id": 80
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-04-09 13:05:00",
+    "datetime_end": "2025-04-09 13:07:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1487",
+    "event_id": [
+      "33-3"
+    ],
+    "phone_id": 81
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-04-10 13:20:00",
+    "datetime_end": "2025-04-10 13:25:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1508",
+    "event_id": [
+      "29-5"
+    ],
+    "phone_id": 82
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937114567",
+    "contactName": "吴敏",
+    "datetime": "2025-04-11 15:58:00",
+    "datetime_end": "2025-04-11 15:59:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1523",
+    "event_id": [],
+    "phone_id": 83
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937117890",
+    "contactName": "苏雅",
+    "datetime": "2025-04-12 16:40:00",
+    "datetime_end": "2025-04-12 16:43:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1542",
+    "event_id": [],
+    "phone_id": 84
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-04-13 09:45:00",
+    "datetime_end": "2025-04-13 09:50:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1556",
+    "event_id": [
+      "113-5"
+    ],
+    "phone_id": 85
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-04-15 16:00:00",
+    "datetime_end": "2025-04-15 16:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1593",
+    "event_id": [
+      "28-3-2"
+    ],
+    "phone_id": 87
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-04-16 09:30:00",
+    "datetime_end": "2025-04-16 09:33:15",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1603",
+    "event_id": [],
+    "phone_id": 88
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-04-17 20:35:00",
+    "datetime_end": "2025-04-17 20:38:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1628",
+    "event_id": [
+      "204-6"
+    ],
+    "phone_id": 89
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937128901",
+    "contactName": "孙悦",
+    "datetime": "2025-04-18 12:45:00",
+    "datetime_end": "2025-04-18 12:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1639",
+    "event_id": [
+      "86-1",
+      "86-2"
+    ],
+    "phone_id": 90
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀兰",
+    "datetime": "2025-04-20 19:05:00",
+    "datetime_end": "2025-04-20 19:20:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1671",
+    "event_id": [
+      "32-1",
+      "32-2"
+    ],
+    "phone_id": 91
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937112345",
+    "contactName": "刘强",
+    "datetime": "2025-04-22 07:35:00",
+    "datetime_end": "2025-04-22 07:36:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1697",
+    "event_id": [],
+    "phone_id": 92
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-04-23 12:05:00",
+    "datetime_end": "2025-04-23 12:05:25",
+    "direction": 0,
+    "call_result": "未接通",
+    "daily_event_id": "1713",
+    "event_id": [],
+    "phone_id": 93
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937114567",
+    "contactName": "吴敏",
+    "datetime": "2025-04-24 13:00:00",
+    "datetime_end": "2025-04-24 13:02:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1726",
+    "event_id": [],
+    "phone_id": 94
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937128901",
+    "contactName": "孙悦",
+    "datetime": "2025-04-25 19:35:00",
+    "datetime_end": "2025-04-25 19:45:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1743",
+    "event_id": [
+      "30-2"
+    ],
+    "phone_id": 95
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀兰",
+    "datetime": "2025-04-27 11:40:00",
+    "datetime_end": "2025-04-27 11:42:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1752",
+    "event_id": [
+      "114-3",
+      "114-5"
+    ],
+    "phone_id": 96
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-04-28 11:45:00",
+    "datetime_end": "2025-04-28 11:48:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1772",
+    "event_id": [],
+    "phone_id": 97
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-04-29 08:00:00",
+    "datetime_end": "2025-04-29 08:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1788",
+    "event_id": [],
+    "phone_id": 98
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937123456",
+    "contactName": "张先生",
+    "datetime": "2025-04-30 16:30:00",
+    "datetime_end": "2025-04-30 16:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1807",
+    "event_id": [],
+    "phone_id": 99
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-05-01 11:45:00",
+    "datetime_end": "2025-05-01 11:48:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1820",
+    "event_id": [
+      "140-4"
+    ],
+    "phone_id": 100
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-05-03 08:00:00",
+    "datetime_end": "2025-05-03 08:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1842",
+    "event_id": [],
+    "phone_id": 101
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-05-04 12:05:00",
+    "datetime_end": "2025-05-04 12:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1865",
+    "event_id": [
+      "27-3-7"
+    ],
+    "phone_id": 102
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-05-07 12:25:00",
+    "datetime_end": "2025-05-07 12:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1908",
+    "event_id": [],
+    "phone_id": 104
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-05-08 10:20:00",
+    "datetime_end": "2025-05-08 10:30:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1920",
+    "event_id": [
+      "27-3-8"
+    ],
+    "phone_id": 105
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-05-10 18:25:00",
+    "datetime_end": "2025-05-10 18:28:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1940",
+    "event_id": [
+      "138-1-2"
+    ],
+    "phone_id": 106
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-05-11 08:00:00",
+    "datetime_end": "2025-05-11 08:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1946",
+    "event_id": [],
+    "phone_id": 107
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-05-12 18:40:00",
+    "datetime_end": "2025-05-12 18:44:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1967",
+    "event_id": [
+      "36-2"
+    ],
+    "phone_id": 108
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937951234",
+    "contactName": "于建国",
+    "datetime": "2025-05-13 17:20:00",
+    "datetime_end": "2025-05-13 17:22:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1982",
+    "event_id": [
+      "36-4"
+    ],
+    "phone_id": 109
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-05-14 12:50:00",
+    "datetime_end": "2025-05-14 12:55:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1999",
+    "event_id": [],
+    "phone_id": 110
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-05-15 12:05:00",
+    "datetime_end": "2025-05-15 12:08:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2012",
+    "event_id": [],
+    "phone_id": 111
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-05-16 07:55:00",
+    "datetime_end": "2025-05-16 07:56:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2027",
+    "event_id": [],
+    "phone_id": 112
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937111234",
+    "contactName": "王芳",
+    "datetime": "2025-05-17 09:00:00",
+    "datetime_end": "2025-05-17 09:03:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2043",
+    "event_id": [
+      "217-1"
+    ],
+    "phone_id": 113
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937115678",
+    "contactName": "林薇",
+    "datetime": "2025-05-18 08:30:00",
+    "datetime_end": "2025-05-18 08:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2058",
+    "event_id": [
+      "208-4"
+    ],
+    "phone_id": 114
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937111234",
+    "contactName": "王芳",
+    "datetime": "2025-05-19 09:30:00",
+    "datetime_end": "2025-05-19 09:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2076",
+    "event_id": [],
+    "phone_id": 115
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937115678",
+    "contactName": "林薇",
+    "datetime": "2025-05-20 07:20:00",
+    "datetime_end": "2025-05-20 07:22:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2090",
+    "event_id": [],
+    "phone_id": 116
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-05-22 07:45:00",
+    "datetime_end": "2025-05-22 07:47:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2115",
+    "event_id": [],
+    "phone_id": 117
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-05-23 10:30:00",
+    "datetime_end": "2025-05-23 10:36:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2134",
+    "event_id": [
+      "115-2-2"
+    ],
+    "phone_id": 118
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937120123",
+    "contactName": "王明远",
+    "datetime": "2025-05-25 13:50:00",
+    "datetime_end": "2025-05-25 13:55:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2171",
+    "event_id": [
+      "210-3"
+    ],
+    "phone_id": 119
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937114567",
+    "contactName": "吴敏",
+    "datetime": "2025-05-26 10:30:00",
+    "datetime_end": "2025-05-26 10:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2182",
+    "event_id": [],
+    "phone_id": 120
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-05-27 08:45:00",
+    "datetime_end": "2025-05-27 08:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2198",
+    "event_id": [],
+    "phone_id": 121
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-05-27 13:45:00",
+    "datetime_end": "2025-05-27 13:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2203",
+    "event_id": [
+      "219-1"
+    ],
+    "phone_id": 122
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-05-28 14:20:00",
+    "datetime_end": "2025-05-28 14:23:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2221",
+    "event_id": [
+      "219-2"
+    ],
+    "phone_id": 123
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937128901",
+    "contactName": "孙悦",
+    "datetime": "2025-05-29 12:30:00",
+    "datetime_end": "2025-05-29 12:40:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2232",
+    "event_id": [],
+    "phone_id": 124
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937951234",
+    "contactName": "于建国",
+    "datetime": "2025-05-31 09:30:00",
+    "datetime_end": "2025-05-31 09:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2265",
+    "event_id": [
+      "206-2"
+    ],
+    "phone_id": 125
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "刘先生",
+    "datetime": "2025-06-01 15:30:00",
+    "datetime_end": "2025-06-01 15:38:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2283",
+    "event_id": [
+      "87-3"
+    ],
+    "phone_id": 126
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-06-02 19:15:00",
+    "datetime_end": "2025-06-02 20:00:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2297",
+    "event_id": [
+      "43-6"
+    ],
+    "phone_id": 127
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-06-03 07:10:00",
+    "datetime_end": "2025-06-03 07:13:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2300",
+    "event_id": [],
+    "phone_id": 128
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-06-04 06:45:00",
+    "datetime_end": "2025-06-04 06:46:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2314",
+    "event_id": [],
+    "phone_id": 129
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-06-04 18:15:00",
+    "datetime_end": "2025-06-04 18:17:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2325",
+    "event_id": [],
+    "phone_id": 130
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-06-05 18:52:30",
+    "datetime_end": "2025-06-05 18:55:10",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2343",
+    "event_id": [
+      "225-1"
+    ],
+    "phone_id": 131
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937112345",
+    "contactName": "刘强",
+    "datetime": "2025-06-06 14:00:00",
+    "datetime_end": "2025-06-06 14:02:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2360",
+    "event_id": [],
+    "phone_id": 132
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937951234",
+    "contactName": "于建国",
+    "datetime": "2025-06-07 08:30:00",
+    "datetime_end": "2025-06-07 08:35:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2372",
+    "event_id": [],
+    "phone_id": 133
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-06-10 14:30:00",
+    "datetime_end": "2025-06-10 14:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2433",
+    "event_id": [
+      "223-2"
+    ],
+    "phone_id": 134
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-06-11 21:00:00",
+    "datetime_end": "2025-06-11 21:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2456",
+    "event_id": [
+      "115-3-1"
+    ],
+    "phone_id": 135
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-06-12 08:10:00",
+    "datetime_end": "2025-06-12 08:12:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2462",
+    "event_id": [
+      "141-1"
+    ],
+    "phone_id": 136
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937951234",
+    "contactName": "于建国",
+    "datetime": "2025-06-14 08:30:00",
+    "datetime_end": "2025-06-14 08:32:15",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2474",
+    "event_id": [],
+    "phone_id": 137
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937124567",
+    "contactName": "张静",
+    "datetime": "2025-06-14 13:05:00",
+    "datetime_end": "2025-06-14 13:08:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2479",
+    "event_id": [
+      "89-2"
+    ],
+    "phone_id": 138
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-06-16 08:00:00",
+    "datetime_end": "2025-06-16 08:02:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2501",
+    "event_id": [],
+    "phone_id": 139
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-06-17 07:35:00",
+    "datetime_end": "2025-06-17 07:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2521",
+    "event_id": [],
+    "phone_id": 140
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937117890",
+    "contactName": "苏雅",
+    "datetime": "2025-06-18 20:25:00",
+    "datetime_end": "2025-06-18 20:55:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2547",
+    "event_id": [
+      "42-4"
+    ],
+    "phone_id": 141
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-06-19 08:05:00",
+    "datetime_end": "2025-06-19 08:07:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2552",
+    "event_id": [],
+    "phone_id": 142
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937115678",
+    "contactName": "林薇",
+    "datetime": "2025-06-20 17:50:00",
+    "datetime_end": "2025-06-20 17:51:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2577",
+    "event_id": [
+      "16-2"
+    ],
+    "phone_id": 143
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937951234",
+    "contactName": "于建国",
+    "datetime": "2025-06-21 14:30:00",
+    "datetime_end": "2025-06-21 14:45:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2591",
+    "event_id": [],
+    "phone_id": 144
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937118901",
+    "contactName": "郑国栋",
+    "datetime": "2025-06-21 15:45:00",
+    "datetime_end": "2025-06-21 15:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2599",
+    "event_id": [],
+    "phone_id": 145
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13612963456",
+    "contactName": "于晓峰",
+    "datetime": "2025-06-22 10:20:00",
+    "datetime_end": "2025-06-22 10:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2602",
+    "event_id": [
+      "46-3",
+      "46-4"
+    ],
+    "phone_id": 146
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937114567",
+    "contactName": "吴敏",
+    "datetime": "2025-06-23 15:00:00",
+    "datetime_end": "2025-06-23 15:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2615",
+    "event_id": [],
+    "phone_id": 147
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-06-24 20:10:00",
+    "datetime_end": "2025-06-24 20:11:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2632",
+    "event_id": [],
+    "phone_id": 148
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-06-25 08:30:00",
+    "datetime_end": "2025-06-25 08:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2639",
+    "event_id": [],
+    "phone_id": 149
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937114567",
+    "contactName": "吴敏",
+    "datetime": "2025-06-26 08:30:00",
+    "datetime_end": "2025-06-26 08:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2654",
+    "event_id": [],
+    "phone_id": 150
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+861383792345",
+    "contactName": "李秀英",
+    "datetime": "2025-06-28 07:55:00",
+    "datetime_end": "2025-06-28 07:57:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2671",
+    "event_id": [],
+    "phone_id": 151
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612963456",
+    "contactName": "于晓峰",
+    "datetime": "2025-06-29 20:30:00",
+    "datetime_end": "2025-06-29 21:30:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2697",
+    "event_id": [
+      "228-2"
+    ],
+    "phone_id": 152
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-07-01 07:45:00",
+    "datetime_end": "2025-07-01 07:47:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2720",
+    "event_id": [
+      "90-7"
+    ],
+    "phone_id": 153
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-07-02 19:00:00",
+    "datetime_end": "2025-07-02 19:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2741",
+    "event_id": [],
+    "phone_id": 154
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-07-03 11:50:00",
+    "datetime_end": "2025-07-03 11:52:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2749",
+    "event_id": [
+      "146-5-3"
+    ],
+    "phone_id": 155
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-07-05 08:25:00",
+    "datetime_end": "2025-07-05 08:27:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2764",
+    "event_id": [
+      "138-2-1"
+    ],
+    "phone_id": 156
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-07-06 08:15:00",
+    "datetime_end": "2025-07-06 08:17:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2775",
+    "event_id": [],
+    "phone_id": 157
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-07-07 18:40:00",
+    "datetime_end": "2025-07-07 18:42:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2794",
+    "event_id": [],
+    "phone_id": 158
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-07-08 16:45:00",
+    "datetime_end": "2025-07-08 16:50:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2809",
+    "event_id": [],
+    "phone_id": 159
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-07-09 07:00:00",
+    "datetime_end": "2025-07-09 07:02:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2819",
+    "event_id": [],
+    "phone_id": 160
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-07-10 07:50:00",
+    "datetime_end": "2025-07-10 07:53:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2835",
+    "event_id": [
+      "47-2-4"
+    ],
+    "phone_id": 161
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-07-11 07:30:00",
+    "datetime_end": "2025-07-11 07:31:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2848",
+    "event_id": [],
+    "phone_id": 162
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612963456",
+    "contactName": "于晓峰",
+    "datetime": "2025-07-12 13:55:00",
+    "datetime_end": "2025-07-12 13:58:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2870",
+    "event_id": [
+      "50-1"
+    ],
+    "phone_id": 163
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-07-13 16:05:00",
+    "datetime_end": "2025-07-13 16:07:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2890",
+    "event_id": [],
+    "phone_id": 164
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937124567",
+    "contactName": "张静",
+    "datetime": "2025-07-14 17:05:00",
+    "datetime_end": "2025-07-14 17:10:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2907",
+    "event_id": [
+      "47-2-7"
+    ],
+    "phone_id": 165
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-07-15 06:40:00",
+    "datetime_end": "2025-07-15 06:42:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2916",
+    "event_id": [
+      "47-3"
+    ],
+    "phone_id": 166
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-07-16 07:40:00",
+    "datetime_end": "2025-07-16 07:44:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2936",
+    "event_id": [
+      "47-4-1"
+    ],
+    "phone_id": 167
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937124567",
+    "contactName": "张静",
+    "datetime": "2025-07-18 18:05:00",
+    "datetime_end": "2025-07-18 18:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2975",
+    "event_id": [
+      "166-1",
+      "51-1"
+    ],
+    "phone_id": 168
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-07-19 19:30:00",
+    "datetime_end": "2025-07-19 19:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2994",
+    "event_id": [
+      "166-2"
+    ],
+    "phone_id": 169
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937123456",
+    "contactName": "林婉清",
+    "datetime": "2025-07-20 20:00:00",
+    "datetime_end": "2025-07-20 20:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3013",
+    "event_id": [
+      "52-3-1"
+    ],
+    "phone_id": 170
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-07-21 08:20:00",
+    "datetime_end": "2025-07-21 08:23:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3020",
+    "event_id": [],
+    "phone_id": 171
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-07-22 08:30:00",
+    "datetime_end": "2025-07-22 08:35:20",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3036",
+    "event_id": [],
+    "phone_id": 172
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937112345",
+    "contactName": "刘强",
+    "datetime": "2025-07-25 15:00:00",
+    "datetime_end": "2025-07-25 15:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3093",
+    "event_id": [],
+    "phone_id": 173
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-07-26 19:20:00",
+    "datetime_end": "2025-07-26 19:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3114",
+    "event_id": [],
+    "phone_id": 174
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-07-27 14:10:00",
+    "datetime_end": "2025-07-27 14:12:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3128",
+    "event_id": [
+      "52-3-2"
+    ],
+    "phone_id": 175
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-07-27 17:58:00",
+    "datetime_end": "2025-07-27 17:59:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3132",
+    "event_id": [],
+    "phone_id": 176
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-07-28 07:55:00",
+    "datetime_end": "2025-07-28 07:57:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3141",
+    "event_id": [
+      "233-1",
+      "233-2"
+    ],
+    "phone_id": 177
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613801234567",
+    "contactName": "张建平",
+    "datetime": "2025-07-29 15:00:00",
+    "datetime_end": "2025-07-29 15:08:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3169",
+    "event_id": [
+      "53-1-3"
+    ],
+    "phone_id": 178
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-07-30 01:30:00",
+    "datetime_end": "2025-07-30 01:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3175",
+    "event_id": [],
+    "phone_id": 179
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937113456",
+    "contactName": "张磊",
+    "datetime": "2025-07-31 16:30:00",
+    "datetime_end": "2025-07-31 16:35:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3203",
+    "event_id": [],
+    "phone_id": 180
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937117890",
+    "contactName": "苏雅",
+    "datetime": "2025-08-01 18:05:00",
+    "datetime_end": "2025-08-01 18:08:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3224",
+    "event_id": [
+      "167-2"
+    ],
+    "phone_id": 181
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937123456",
+    "contactName": "林医生",
+    "datetime": "2025-08-02 08:35:00",
+    "datetime_end": "2025-08-02 08:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3234",
+    "event_id": [
+      "115-4-1"
+    ],
+    "phone_id": 182
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937951234",
+    "contactName": "于建国",
+    "datetime": "2025-08-03 15:30:00",
+    "datetime_end": "2025-08-03 15:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3252",
+    "event_id": [
+      "236-1"
+    ],
+    "phone_id": 183
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-08-04 19:50:00",
+    "datetime_end": "2025-08-04 19:54:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3268",
+    "event_id": [
+      "238-1-1"
+    ],
+    "phone_id": 184
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-08-06 08:10:00",
+    "datetime_end": "2025-08-06 08:12:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3296",
+    "event_id": [],
+    "phone_id": 185
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-08-07 07:55:00",
+    "datetime_end": "2025-08-07 07:56:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3316",
+    "event_id": [],
+    "phone_id": 186
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-08-08 07:45:00",
+    "datetime_end": "2025-08-08 07:47:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3331",
+    "event_id": [
+      "115-4-4"
+    ],
+    "phone_id": 187
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937115678",
+    "contactName": "林薇",
+    "datetime": "2025-08-09 10:10:00",
+    "datetime_end": "2025-08-09 10:11:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3344",
+    "event_id": [
+      "237-1"
+    ],
+    "phone_id": 188
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-08-10 09:15:00",
+    "datetime_end": "2025-08-10 09:20:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3365",
+    "event_id": [],
+    "phone_id": 189
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀兰",
+    "datetime": "2025-08-11 11:35:00",
+    "datetime_end": "2025-08-11 11:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3385",
+    "event_id": [
+      "53-3-1"
+    ],
+    "phone_id": 190
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-08-13 08:05:00",
+    "datetime_end": "2025-08-13 08:07:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3417",
+    "event_id": [],
+    "phone_id": 191
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-08-14 15:30:00",
+    "datetime_end": "2025-08-14 15:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3438",
+    "event_id": [
+      "156-2-1"
+    ],
+    "phone_id": 192
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-08-15 20:00:00",
+    "datetime_end": "2025-08-15 20:50:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3462",
+    "event_id": [
+      "55-2"
+    ],
+    "phone_id": 193
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937124567",
+    "contactName": "张静",
+    "datetime": "2025-08-16 10:35:00",
+    "datetime_end": "2025-08-16 10:40:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3469",
+    "event_id": [
+      "116-3-1"
+    ],
+    "phone_id": 194
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937114567",
+    "contactName": "吴敏",
+    "datetime": "2025-08-18 10:35:00",
+    "datetime_end": "2025-08-18 10:45:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3489",
+    "event_id": [
+      "156-3"
+    ],
+    "phone_id": 195
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-08-19 11:55:00",
+    "datetime_end": "2025-08-19 11:57:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3507",
+    "event_id": [],
+    "phone_id": 196
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-08-20 08:55:00",
+    "datetime_end": "2025-08-20 08:57:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3523",
+    "event_id": [
+      "156-4"
+    ],
+    "phone_id": 197
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612963456",
+    "contactName": "于晓峰",
+    "datetime": "2025-08-21 19:30:00",
+    "datetime_end": "2025-08-21 19:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3547",
+    "event_id": [
+      "243-2"
+    ],
+    "phone_id": 198
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937114567",
+    "contactName": "吴敏",
+    "datetime": "2025-08-22 13:28:00",
+    "datetime_end": "2025-08-22 13:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3558",
+    "event_id": [
+      "156-5"
+    ],
+    "phone_id": 199
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937117890",
+    "contactName": "苏雅",
+    "datetime": "2025-08-23 17:05:00",
+    "datetime_end": "2025-08-23 17:08:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3576",
+    "event_id": [
+      "152-1"
+    ],
+    "phone_id": 200
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-08-24 13:30:00",
+    "datetime_end": "2025-08-24 13:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3589",
+    "event_id": [
+      "238-3-7"
+    ],
+    "phone_id": 201
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-08-25 07:20:00",
+    "datetime_end": "2025-08-25 07:23:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3603",
+    "event_id": [],
+    "phone_id": 202
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-08-26 08:30:00",
+    "datetime_end": "2025-08-26 08:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3620",
+    "event_id": [],
+    "phone_id": 203
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-08-27 10:35:00",
+    "datetime_end": "2025-08-27 10:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3641",
+    "event_id": [
+      "244-2"
+    ],
+    "phone_id": 204
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937112345",
+    "contactName": "刘强",
+    "datetime": "2025-08-28 06:30:00",
+    "datetime_end": "2025-08-28 06:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3650",
+    "event_id": [
+      "156-2-3"
+    ],
+    "phone_id": 205
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937114567",
+    "contactName": "吴敏",
+    "datetime": "2025-08-29 15:30:00",
+    "datetime_end": "2025-08-29 15:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3678",
+    "event_id": [],
+    "phone_id": 206
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613900000001",
+    "contactName": "领队",
+    "datetime": "2025-08-30 15:00:00",
+    "datetime_end": "2025-08-30 15:03:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3694",
+    "event_id": [
+      "153-2"
+    ],
+    "phone_id": 207
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-08-31 16:35:00",
+    "datetime_end": "2025-08-31 16:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3710",
+    "event_id": [],
+    "phone_id": 208
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937112345",
+    "contactName": "刘强",
+    "datetime": "2025-09-01 17:20:00",
+    "datetime_end": "2025-09-01 17:23:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3723",
+    "event_id": [],
+    "phone_id": 209
+  },
+  {
+    "type": "call",
+    "contactName": "张静",
+    "phoneNumber": "+8613937124567",
+    "datetime": "2025-09-02 10:15:00",
+    "datetime_end": "2025-09-02 10:17:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3733",
+    "event_id": [
+      "117-4-3"
+    ],
+    "phone_id": 210
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-09-03 08:10:00",
+    "datetime_end": "2025-09-03 08:15:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3747",
+    "event_id": [],
+    "phone_id": 211
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-09-04 07:20:00",
+    "datetime_end": "2025-09-04 07:20:45",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3760",
+    "event_id": [
+      "156-2-4"
+    ],
+    "phone_id": 212
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-09-05 07:05:00",
+    "datetime_end": "2025-09-05 07:06:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3776",
+    "event_id": [
+      "250-2-2",
+      "250-2-3"
+    ],
+    "phone_id": 213
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613800138000",
+    "contactName": "陈明",
+    "datetime": "2025-09-05 10:35:00",
+    "datetime_end": "2025-09-05 10:37:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3781",
+    "event_id": [
+      "117-4-7",
+      "117-4-6"
+    ],
+    "phone_id": 214
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937117890",
+    "contactName": "苏雅",
+    "datetime": "2025-09-06 09:00:00",
+    "datetime_end": "2025-09-06 09:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3796",
+    "event_id": [
+      "138-2-3"
+    ],
+    "phone_id": 215
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-09-07 18:15:00",
+    "datetime_end": "2025-09-07 18:55:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3819",
+    "event_id": [],
+    "phone_id": 216
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-09-08 08:00:00",
+    "datetime_end": "2025-09-08 08:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3830",
+    "event_id": [],
+    "phone_id": 217
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-09-09 07:20:00",
+    "datetime_end": "2025-09-09 07:22:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3845",
+    "event_id": [
+      "156-2-5"
+    ],
+    "phone_id": 218
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-09-10 09:00:00",
+    "datetime_end": "2025-09-10 09:03:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3865",
+    "event_id": [],
+    "phone_id": 219
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-09-12 08:10:00",
+    "datetime_end": "2025-09-12 08:15:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3898",
+    "event_id": [
+      "250-2-5",
+      "250-2-6"
+    ],
+    "phone_id": 220
+  },
+  {
+    "type": "call",
+    "phoneNumber": "0371-12345678",
+    "contactName": "郑州中心医院中医科",
+    "datetime": "2025-09-14 11:20:00",
+    "datetime_end": "2025-09-14 11:22:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3935",
+    "event_id": [
+      "117-6"
+    ],
+    "phone_id": 221
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937115678",
+    "contactName": "林薇",
+    "datetime": "2025-09-14 14:30:00",
+    "datetime_end": "2025-09-14 14:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3938",
+    "event_id": [
+      "154-2-2"
+    ],
+    "phone_id": 222
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-09-16 07:55:00",
+    "datetime_end": "2025-09-16 07:57:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3963",
+    "event_id": [],
+    "phone_id": 223
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-09-17 14:20:00",
+    "datetime_end": "2025-09-17 14:23:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3986",
+    "event_id": [],
+    "phone_id": 224
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-09-19 08:15:00",
+    "datetime_end": "2025-09-19 08:18:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4018",
+    "event_id": [],
+    "phone_id": 225
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-09-20 10:15:30",
+    "datetime_end": "2025-09-20 10:18:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4037",
+    "event_id": [
+      "94-4"
+    ],
+    "phone_id": 226
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-09-21 17:25:00",
+    "datetime_end": "2025-09-21 17:28:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4061",
+    "event_id": [],
+    "phone_id": 227
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-09-22 09:55:00",
+    "datetime_end": "2025-09-22 10:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4071",
+    "event_id": [
+      "59-2"
+    ],
+    "phone_id": 228
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937124567",
+    "contactName": "张静",
+    "datetime": "2025-09-23 10:45:00",
+    "datetime_end": "2025-09-23 10:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4088",
+    "event_id": [],
+    "phone_id": 229
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-09-24 16:30:00",
+    "datetime_end": "2025-09-24 16:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4108",
+    "event_id": [],
+    "phone_id": 230
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937120123",
+    "contactName": "王明远",
+    "datetime": "2025-09-25 12:00:00",
+    "datetime_end": "2025-09-25 12:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4121",
+    "event_id": [
+      "160-2",
+      "60-3"
+    ],
+    "phone_id": 231
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937966789",
+    "contactName": "陈思雨",
+    "datetime": "2025-09-27 11:35:00",
+    "datetime_end": "2025-09-27 12:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4148",
+    "event_id": [
+      "61-2"
+    ],
+    "phone_id": 232
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-09-29 08:20:00",
+    "datetime_end": "2025-09-29 08:23:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4179",
+    "event_id": [],
+    "phone_id": 233
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937128901",
+    "contactName": "孙悦",
+    "datetime": "2025-09-30 06:35:00",
+    "datetime_end": "2025-09-30 06:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4197",
+    "event_id": [
+      "126-2-3",
+      "254-1-1"
+    ],
+    "phone_id": 234
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-10-01 09:15:00",
+    "datetime_end": "2025-10-01 09:18:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4214",
+    "event_id": [],
+    "phone_id": 235
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612963456",
+    "contactName": "于晓峰",
+    "datetime": "2025-10-02 07:45:00",
+    "datetime_end": "2025-10-02 07:47:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4232",
+    "event_id": [],
+    "phone_id": 236
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937115678",
+    "contactName": "林薇",
+    "datetime": "2025-10-03 12:10:00",
+    "datetime_end": "2025-10-03 12:11:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4253",
+    "event_id": [
+      "65-1"
+    ],
+    "phone_id": 237
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612963456",
+    "contactName": "于晓峰",
+    "datetime": "2025-10-04 12:35:00",
+    "datetime_end": "2025-10-04 12:38:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4268",
+    "event_id": [
+      "66-1"
+    ],
+    "phone_id": 238
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612963456",
+    "contactName": "于晓峰",
+    "datetime": "2025-10-05 09:30:00",
+    "datetime_end": "2025-10-05 09:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4278",
+    "event_id": [],
+    "phone_id": 239
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937111234",
+    "contactName": "王芳",
+    "datetime": "2025-10-06 07:15:00",
+    "datetime_end": "2025-10-06 07:17:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4292",
+    "event_id": [],
+    "phone_id": 240
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-10-07 20:30:00",
+    "datetime_end": "2025-10-07 20:45:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4320",
+    "event_id": [],
+    "phone_id": 241
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-10-08 09:30:00",
+    "datetime_end": "2025-10-08 09:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4325",
+    "event_id": [],
+    "phone_id": 242
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937951234",
+    "contactName": "于建国",
+    "datetime": "2025-10-09 18:40:00",
+    "datetime_end": "2025-10-09 18:43:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4348",
+    "event_id": [
+      "132-1"
+    ],
+    "phone_id": 243
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937120123",
+    "contactName": "王明远",
+    "datetime": "2025-10-10 08:30:00",
+    "datetime_end": "2025-10-10 08:32:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4357",
+    "event_id": [
+      "64-4"
+    ],
+    "phone_id": 244
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-10-11 13:30:00",
+    "datetime_end": "2025-10-11 13:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4376",
+    "event_id": [
+      "258-2"
+    ],
+    "phone_id": 245
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937111234",
+    "contactName": "王芳",
+    "datetime": "2025-10-13 07:55:00",
+    "datetime_end": "2025-10-13 07:57:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4396",
+    "event_id": [],
+    "phone_id": 246
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937124567",
+    "contactName": "张静",
+    "datetime": "2025-10-14 20:00:00",
+    "datetime_end": "2025-10-14 20:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4419",
+    "event_id": [
+      "138-3-1"
+    ],
+    "phone_id": 247
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937111234",
+    "contactName": "王芳",
+    "datetime": "2025-10-15 07:55:00",
+    "datetime_end": "2025-10-15 07:56:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4427",
+    "event_id": [
+      "62-1"
+    ],
+    "phone_id": 248
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-10-16 08:28:00",
+    "datetime_end": "2025-10-16 08:29:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4446",
+    "event_id": [],
+    "phone_id": 249
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-10-17 08:10:00",
+    "datetime_end": "2025-10-17 08:12:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4461",
+    "event_id": [],
+    "phone_id": 250
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937120123",
+    "contactName": "王明远",
+    "datetime": "2025-10-20 21:40:00",
+    "datetime_end": "2025-10-20 21:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4519",
+    "event_id": [
+      "160-6"
+    ],
+    "phone_id": 251
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-10-21 07:05:00",
+    "datetime_end": "2025-10-21 07:06:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4524",
+    "event_id": [],
+    "phone_id": 252
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613901234567",
+    "contactName": "急诊科值班医生",
+    "datetime": "2025-10-22 19:30:00",
+    "datetime_end": "2025-10-22 19:31:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4552",
+    "event_id": [
+      "259-1"
+    ],
+    "phone_id": 253
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-10-24 09:30:00",
+    "datetime_end": "2025-10-24 09:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4580",
+    "event_id": [],
+    "phone_id": 254
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613712345678",
+    "contactName": "摄影群友",
+    "datetime": "2025-10-25 07:40:00",
+    "datetime_end": "2025-10-25 07:41:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4594",
+    "event_id": [
+      "153-3-4"
+    ],
+    "phone_id": 255
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-10-28 08:12:00",
+    "datetime_end": "2025-10-28 08:14:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4636",
+    "event_id": [],
+    "phone_id": 257
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612974567",
+    "contactName": "王丽娜",
+    "datetime": "2025-10-29 18:45:00",
+    "datetime_end": "2025-10-29 18:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4662",
+    "event_id": [
+      "153-4-5"
+    ],
+    "phone_id": 258
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937117890",
+    "contactName": "苏雅",
+    "datetime": "2025-10-30 20:00:00",
+    "datetime_end": "2025-10-30 20:08:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4678",
+    "event_id": [
+      "138-5"
+    ],
+    "phone_id": 259
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-10-31 16:10:00",
+    "datetime_end": "2025-10-31 16:12:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4688",
+    "event_id": [],
+    "phone_id": 260
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-11-02 11:35:00",
+    "datetime_end": "2025-11-02 11:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4718",
+    "event_id": [
+      "154-2-6"
+    ],
+    "phone_id": 261
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-11-03 08:00:00",
+    "datetime_end": "2025-11-03 08:03:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4736",
+    "event_id": [],
+    "phone_id": 262
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-11-06 07:20:00",
+    "datetime_end": "2025-11-06 07:22:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4773",
+    "event_id": [],
+    "phone_id": 263
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-11-07 17:30:00",
+    "datetime_end": "2025-11-07 17:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4802",
+    "event_id": [
+      "144-4-2"
+    ],
+    "phone_id": 264
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-11-10 10:00:00",
+    "datetime_end": "2025-11-10 10:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4844",
+    "event_id": [
+      "69-1"
+    ],
+    "phone_id": 265
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-11-12 10:00:00",
+    "datetime_end": "2025-11-12 10:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4876",
+    "event_id": [
+      "144-4-7"
+    ],
+    "phone_id": 266
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937112345",
+    "contactName": "刘强",
+    "datetime": "2025-11-13 08:15:00",
+    "datetime_end": "2025-11-13 08:17:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4885",
+    "event_id": [],
+    "phone_id": 267
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937124567",
+    "contactName": "张静",
+    "datetime": "2025-11-14 17:50:00",
+    "datetime_end": "2025-11-14 17:51:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4912",
+    "event_id": [
+      "272-3"
+    ],
+    "phone_id": 268
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-11-15 08:15:00",
+    "datetime_end": "2025-11-15 08:16:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4918",
+    "event_id": [
+      "144-5",
+      "69-4"
+    ],
+    "phone_id": 269
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-11-16 08:15:00",
+    "datetime_end": "2025-11-16 08:17:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4938",
+    "event_id": [],
+    "phone_id": 270
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-11-17 12:00:00",
+    "datetime_end": "2025-11-17 12:05:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4959",
+    "event_id": [],
+    "phone_id": 271
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937966789",
+    "contactName": "陈思雨",
+    "datetime": "2025-11-18 21:40:00",
+    "datetime_end": "2025-11-18 21:41:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4979",
+    "event_id": [
+      "74-2"
+    ],
+    "phone_id": 272
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-11-20 08:00:00",
+    "datetime_end": "2025-11-20 08:03:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4994",
+    "event_id": [],
+    "phone_id": 273
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-11-21 07:55:00",
+    "datetime_end": "2025-11-21 07:56:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5012",
+    "event_id": [],
+    "phone_id": 274
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937120000",
+    "contactName": "张志强",
+    "datetime": "2025-11-22 15:10:00",
+    "datetime_end": "2025-11-22 15:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5026",
+    "event_id": [
+      "70-3-2"
+    ],
+    "phone_id": 275
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "李秀芳",
+    "datetime": "2025-11-23 20:10:00",
+    "datetime_end": "2025-11-23 20:50:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5046",
+    "event_id": [
+      "127-3",
+      "127-4",
+      "127-6",
+      "105-3"
+    ],
+    "phone_id": 276
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937114567",
+    "contactName": "吴敏",
+    "datetime": "2025-11-25 14:55:00",
+    "datetime_end": "2025-11-25 14:56:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5057",
+    "event_id": [
+      "71-1"
+    ],
+    "phone_id": 277
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-11-26 08:05:00",
+    "datetime_end": "2025-11-26 08:07:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5071",
+    "event_id": [],
+    "phone_id": 278
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937111234",
+    "contactName": "王芳",
+    "datetime": "2025-11-27 10:15:00",
+    "datetime_end": "2025-11-27 10:17:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5092",
+    "event_id": [
+      "71-4"
+    ],
+    "phone_id": 279
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612963456",
+    "contactName": "于晓峰",
+    "datetime": "2025-12-01 11:00:00",
+    "datetime_end": "2025-12-01 11:10:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5157",
+    "event_id": [],
+    "phone_id": 281
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-12-02 10:00:00",
+    "datetime_end": "2025-12-02 10:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5170",
+    "event_id": [
+      "154-4-1"
+    ],
+    "phone_id": 282
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-12-03 07:20:00",
+    "datetime_end": "2025-12-03 07:22:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5184",
+    "event_id": [],
+    "phone_id": 283
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937124567",
+    "contactName": "张静",
+    "datetime": "2025-12-04 08:30:00",
+    "datetime_end": "2025-12-04 08:33:15",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5202",
+    "event_id": [],
+    "phone_id": 284
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-12-05 08:25:00",
+    "datetime_end": "2025-12-05 08:27:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5219",
+    "event_id": [],
+    "phone_id": 285
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-12-06 13:35:00",
+    "datetime_end": "2025-12-06 13:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5244",
+    "event_id": [],
+    "phone_id": 286
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837952345",
+    "contactName": "宋玉梅",
+    "datetime": "2025-12-08 20:40:00",
+    "datetime_end": "2025-12-08 20:44:00",
+    "direction": 2,
+    "call_result": "接通",
+    "daily_event_id": "5262",
+    "event_id": [
+      "105-4"
+    ],
+    "phone_id": 287
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937112345",
+    "contactName": "王芳",
+    "datetime": "2025-12-09 07:40:00",
+    "datetime_end": "2025-12-09 07:43:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5267",
+    "event_id": [],
+    "phone_id": 288
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612963456",
+    "contactName": "于晓峰",
+    "datetime": "2025-12-10 08:30:00",
+    "datetime_end": "2025-12-10 08:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5282",
+    "event_id": [],
+    "phone_id": 289
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937951234",
+    "contactName": "于建国",
+    "datetime": "2025-12-11 13:00:00",
+    "datetime_end": "2025-12-11 13:03:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5300",
+    "event_id": [
+      "76-1"
+    ],
+    "phone_id": 290
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-12-12 09:32:00",
+    "datetime_end": "2025-12-12 09:37:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5313",
+    "event_id": [
+      "278-2"
+    ],
+    "phone_id": 291
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-12-15 13:30:00",
+    "datetime_end": "2025-12-15 13:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5352",
+    "event_id": [
+      "76-3",
+      "82-3"
+    ],
+    "phone_id": 292
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-12-16 08:00:00",
+    "datetime_end": "2025-12-16 08:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5364",
+    "event_id": [],
+    "phone_id": 293
+  },
+  {
+    "type": "call",
+    "phoneNumber": "400-123-4567",
+    "contactName": "保险公司客服",
+    "datetime": "2025-12-17 13:35:00",
+    "datetime_end": "2025-12-17 14:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5379",
+    "event_id": [
+      "133-2"
+    ],
+    "phone_id": 294
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937110123",
+    "contactName": "李伟",
+    "datetime": "2025-12-18 06:30:00",
+    "datetime_end": "2025-12-18 06:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5386",
+    "event_id": [
+      "133-3"
+    ],
+    "phone_id": 295
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13937124567",
+    "contactName": "张静",
+    "datetime": "2025-12-22 12:05:00",
+    "datetime_end": "2025-12-22 12:08:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5442",
+    "event_id": [
+      "155-7-2"
+    ],
+    "phone_id": 296
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-12-25 15:15:00",
+    "datetime_end": "2025-12-25 15:20:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5497",
+    "event_id": [
+      "276-3",
+      "276-4"
+    ],
+    "phone_id": 297
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937110123",
+    "contactName": "李伟",
+    "datetime": "2025-12-26 14:00:00",
+    "datetime_end": "2025-12-26 14:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5514",
+    "event_id": [
+      "274-5-5"
+    ],
+    "phone_id": 298
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13612963456",
+    "contactName": "于晓峰",
+    "datetime": "2025-12-27 14:50:00",
+    "datetime_end": "2025-12-27 14:53:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5527",
+    "event_id": [],
+    "phone_id": 299
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613937113456",
+    "contactName": "张磊",
+    "datetime": "2025-12-28 14:30:00",
+    "datetime_end": "2025-12-28 14:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5542",
+    "event_id": [],
+    "phone_id": 300
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757112345",
+    "contactName": "李雅琴",
+    "datetime": "2025-12-29 20:45:00",
+    "datetime_end": "2025-12-29 20:50:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5564",
+    "event_id": [
+      "80-4"
+    ],
+    "phone_id": 302
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613837952345",
+    "contactName": "李秀英",
+    "datetime": "2025-12-31 22:05:00",
+    "datetime_end": "2025-12-31 22:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5594",
+    "event_id": [
+      "78-4",
+      "78-3",
+      "145-3",
+      "78-1",
+      "78-5",
+      "78-2",
+      "163-2"
+    ],
+    "phone_id": 303
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "宋玉梅",
+    "datetime": "2025-02-09 09:10:00",
+    "datetime_end": "2025-02-09 09:22:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "590",
+    "event_id": [],
+    "phone_id": 304
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13851786432",
+    "contactName": "李秀英",
+    "datetime": "2025-03-23 17:35:00",
+    "datetime_end": "2025-03-23 17:37:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1218",
+    "event_id": [],
+    "phone_id": 305
+  },
+  {
+    "type": "call",
+    "phoneNumber": "138****5678",
+    "contactName": "张静",
+    "datetime": "2025-02-21 15:45:00",
+    "datetime_end": "2025-02-21 15:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "775",
+    "event_id": [],
+    "phone_id": 306
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "李伟（主治医师）",
+    "datetime": "2025-03-15 01:45:00",
+    "datetime_end": "2025-03-15 01:49:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1081",
+    "event_id": [],
+    "phone_id": 307
+  },
+  {
+    "type": "call",
+    "phoneNumber": "0379-1234567",
+    "contactName": "于建国",
+    "datetime": "2025-09-27 13:02:00",
+    "datetime_end": "2025-09-27 13:57:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4150",
+    "event_id": [],
+    "phone_id": 308
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13838384381",
+    "contactName": "李伟",
+    "datetime": "2025-03-12 14:23:00",
+    "datetime_end": "2025-03-12 14:25:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1036",
+    "event_id": [],
+    "phone_id": 309
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "孙悦",
+    "datetime": "2025-07-28 18:30:00",
+    "datetime_end": "2025-07-28 18:58:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3143",
+    "event_id": [],
+    "phone_id": 310
+  },
+  {
+    "type": "call",
+    "phoneNumber": "138****5678",
+    "contactName": "于建国",
+    "datetime": "2025-08-14 20:00:00",
+    "datetime_end": "2025-08-14 20:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3443",
+    "event_id": [],
+    "phone_id": 311
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13837129001",
+    "contactName": "于建国",
+    "datetime": "2025-07-12 14:50:00",
+    "datetime_end": "2025-07-12 15:10:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2871",
+    "event_id": [],
+    "phone_id": 312
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "李秀兰",
+    "datetime": "2025-04-27 12:00:00",
+    "datetime_end": "2025-04-27 14:00:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1753",
+    "event_id": [],
+    "phone_id": 313
+  },
+  {
+    "type": "call",
+    "phoneNumber": "微信视频",
+    "contactName": "于建国",
+    "datetime": "2025-08-14 20:00:00",
+    "datetime_end": "2025-08-14 20:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3443",
+    "event_id": [],
+    "phone_id": 314
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "林婉清",
+    "datetime": "2025-10-23 13:15:00",
+    "datetime_end": "2025-10-23 13:45:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4564",
+    "event_id": [],
+    "phone_id": 315
+  },
+  {
+    "type": "call",
+    "phoneNumber": "",
+    "contactName": "李秀英",
+    "datetime": "2025-03-11 19:30:00",
+    "datetime_end": "2025-03-11 20:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1030",
+    "event_id": [],
+    "phone_id": 316
+  },
+  {
+    "type": "call",
+    "phoneNumber": "15000000000",
+    "contactName": "家庭群",
+    "datetime": "2025-11-15 19:30:00",
+    "datetime_end": "2025-11-15 20:28:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4931",
+    "event_id": [],
+    "phone_id": 317
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13803791234",
+    "contactName": "李秀英",
+    "datetime": "2025-10-21 21:15:00",
+    "datetime_end": "2025-10-21 21:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4534",
+    "event_id": [],
+    "phone_id": 318
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800000000",
+    "contactName": "父母",
+    "datetime": "2025-06-08 18:30:00",
+    "datetime_end": "2025-06-08 19:10:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2399",
+    "event_id": [],
+    "phone_id": 319
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13803711234",
+    "contactName": "母亲",
+    "datetime": "2025-03-08 11:05:00",
+    "datetime_end": "2025-03-08 11:08:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "979",
+    "event_id": [],
+    "phone_id": 320
+  },
+  {
+    "type": "call",
+    "phoneNumber": "138xxxx1234",
+    "contactName": "于建国",
+    "datetime": "2025-10-10 12:30:00",
+    "datetime_end": "2025-10-10 12:50:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4360",
+    "event_id": [],
+    "phone_id": 321
+  },
+  {
+    "type": "call",
+    "phoneNumber": "138****1234",
+    "contactName": "于建国",
+    "datetime": "2025-10-10 19:30:00",
+    "datetime_end": "2025-10-10 20:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4367",
+    "event_id": [],
+    "phone_id": 322
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800000000",
+    "contactName": "妈妈",
+    "datetime": "2025-04-27 17:30:00",
+    "datetime_end": "2025-04-27 17:45:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1758",
+    "event_id": [],
+    "phone_id": 323
+  },
+  {
+    "type": "call",
+    "phoneNumber": "138****8888",
+    "contactName": "李秀兰",
+    "datetime": "2025-04-27 08:30:00",
+    "datetime_end": "2025-04-27 09:00:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1750",
+    "event_id": [],
+    "phone_id": 324
+  },
+  {
+    "type": "call",
+    "phoneNumber": "138-3816-5927",
+    "contactName": "李伟老师",
+    "datetime": "2025-07-24 06:50:00",
+    "datetime_end": "2025-07-24 07:10:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3077",
+    "event_id": [],
+    "phone_id": 325
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "李秀英",
+    "datetime": "2025-09-25 20:35:00",
+    "datetime_end": "2025-09-25 21:00:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4127",
+    "event_id": [],
+    "phone_id": 326
+  }
+]
