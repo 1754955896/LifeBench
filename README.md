@@ -26,7 +26,7 @@ Existing benchmarks mainly focus on dialogue scenarios and lack diverse digital 
 
 ## Dataset
 
-The dataset can be found in the `life_bench_data` folder, available in both English and Chinese versions. The dataset contains data from 10 users, with each user having the following files:
+The dataset can be found in the `life_bench_data/version1` folder, available in both English and Chinese versions. The dataset contains data from 10 users, with each user having the following files:
 
 - **`phone_data`**: Mobile phone operation data
 - **`QA`**: Question-answering data
@@ -40,37 +40,75 @@ The dataset can be found in the `life_bench_data` folder, available in both Engl
 
 For the convenience of conducting memory benchmark tests on existing memory systems (primarily for locomo), we have converted the QA data into the locomo input format. The converted data can be found in `our.json`.
 
-## Data Synthesis Framework Usage
-![Data Synthesis Framework](pic/pic.png)
-1. **Environment Configuration**: 
-   - Run `pip install -r requirements.txt` to install dependencies
-   - Create `config/config.json` by copying from `config.example.json`
-   - Configure LLM API and map API keys in `config/config.json`
-
-2. **Prepare Persona Data**:
-   - Create a persona array (supports multiple users and custom formats)
-   - Save it as `input/person.json`
-
-3. **Generate Data**:
-   - Execute `python scripts/run_all.py` to start the data synthesis process
-   - Or run individual scripts in `scripts/run/`:
-     - `python scripts/run/persona_gen.py` - Generate persona data
-     - `python scripts/run/draft_gen.py` - Generate daily event drafts
-     - `python scripts/run/simulator.py` - Simulate daily activities
-     - `python scripts/run/phone_gen.py` - Generate phone operation data
-     - `python scripts/run/qa_gen.py` - Generate question-answer pairs
-
 ## Usage
+![Data Synthesis Framework](pic/pic.png)
 
-### Enter Workspace
-```bash
-cd scripts
+### Environment Configuration
+
+1. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Configuration File**
+   - Create `config/config.json` (copy from `config.example.json`)
+   - Configure LLM API and map API keys
+
+   ```json
+   {
+     "llm": {
+       "api_key": "your_api_key_here",
+       "base_url": "https://api.deepseek.com"
+     },
+     "map_tool": {
+       "api_key": "your_map_api_key_here"
+     }
+   }
+   ```
+
+   | Config Key | Description | Required |
+   |------------|-------------|----------|
+   | `llm.api_key` | LLM API key | Yes |
+   | `llm.base_url` | LLM API endpoint | Yes |
+   | `map_tool.api_key` | Map API key (for address generation) | No |
+
+### Data Preparation
+
+#### Batch Mode Data Preparation
+
+Merge all persona data into an array and save to `input/person.json`:
+
+```json
+[
+  {
+    "name": "Zhang San",
+    "age": 30,
+    ...
+  },
+  {
+    "name": "Li Si",
+    "age": 25,
+    ...
+  }
+]
 ```
 
-### Full Pipeline
+#### Single Persona Data Preparation
+
+Create a persona folder under `output` and place the persona data:
+
+```
+output/
+└── fenghaoran/           # Persona folder
+    └── persona.json      # Persona data
+```
+
+### Running
+
+#### Batch Mode
 
 ```bash
-# Run the complete generation pipeline for all personas in input/person.json
+# Run the complete generation pipeline (process all personas in input/person.json)
 python run_all.py
 
 # Specify persona ID range
@@ -80,24 +118,33 @@ python run_all.py --start-id 1 --end-id 5
 python run_all.py --generate-qa 0
 ```
 
-### Step-by-Step
+#### Single Persona Mode
+
+**Run all at once with run.py:**
 
 ```bash
-# 1. Generate persona data
-python run/persona_gen.py --base-path <path>
-
-# 2. Generate daily event drafts
-python run/draft_gen.py --base-path <path>
-
-# 3. Simulate daily activities
-python run/simulator.py --base-path <path>
-
-# 4. Generate phone operation data
-python run/phone_gen.py --base-path <path>
-
-# 5. Generate QA data
-python run/qa_gen.py --base-path <path>
+cd scripts
+python run.py --base-path output/fenghaoran
 ```
+
+**Run step by step:**
+
+```bash
+cd scripts
+
+# 1. Generate daily event drafts
+python run/draft_gen.py --base-path output/fenghaoran
+
+# 2. Simulate daily activities
+python run/simulator.py --base-path output/fenghaoran
+
+# 3. Generate phone operation data
+python run/phone_gen.py --base-path output/fenghaoran
+
+# 4. Generate question-answer pairs
+python run/qa_gen.py --base-path output/fenghaoran
+```
+
 
 ### Command Line Arguments
 
@@ -111,28 +158,6 @@ python run/qa_gen.py --base-path <path>
 | `--generate-monthly-report` | Generate monthly reports (0/1) | `1` |
 | `--generate-qa` | Generate QA data (0/1) | `1` |
 | `--year` | Year for generated data | `2025` |
-
-## Configuration
-
-Create `config/config.json` from `config.example.json`:
-
-```json
-{
-  "llm": {
-    "api_key": "your_api_key_here",
-    "base_url": "https://api.deepseek.com"
-  },
-  "map_tool": {
-    "api_key": "your_map_api_key_here"
-  }
-}
-```
-
-| Config Key | Description | Required |
-|------------|-------------|----------|
-| `llm.api_key` | LLM API key | Yes |
-| `llm.base_url` | LLM API endpoint | Yes |
-| `map_tool.api_key` | Map API key (for address generation) | No |
 
 ## Directory Structure
 
@@ -189,7 +214,7 @@ lifebench/
 
 ## Checkpoint
 
-The pipeline supports resumable execution. Intermediate results are saved to `process/` directory.
+The pipeline supports resumable execution. Intermediate results are saved to base_path directory.
 
 ### Checkpoints by Stage
 
@@ -203,6 +228,6 @@ The pipeline supports resumable execution. Intermediate results are saved to `pr
 
 ### Resume Mechanism
 
-- `run_all.py` automatically checks for existing files in `process/`
+- `run.py` automatically checks for existing files in `base_path/`
 - If critical files exist, the corresponding stage is skipped
 - To force regeneration, delete the files in the corresponding directory
