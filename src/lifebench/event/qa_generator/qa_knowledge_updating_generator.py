@@ -804,15 +804,19 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
             if questions:
                 # 验证并补充该主题组涉及的节点的手机数据
                 questions = self.validate_and_generate_phone_data_for_nodes(questions)
-                
+
                 # 为每个问题添加 required_events_id 和 evidence 字段
                 for qa in questions:
                     node_ids = qa.get("node_ids", [])
                     if isinstance(node_ids, list) and node_ids:
-                        # 收集所有相关节点的证据事件ID
+                        # 构建当前 topic_group 的 node_id -> node_info 映射（只包含当前 topic 的节点）
+                        # 这样可以确保跨 topic 的重复 node_id 不会导致错误匹配
+                        current_topic_nodes = {node.get("node_id"): node for node in nodes}
+
+                        # 收集所有相关节点的证据事件ID（只在当前 topic_group 内查找）
                         all_event_ids = []
                         for nid in node_ids:
-                            node_info = self._get_node_by_id(nid)
+                            node_info = current_topic_nodes.get(nid)
                             if node_info:
                                 evidence = node_info.get("evidence", [])
                                 if evidence and isinstance(evidence, list):
