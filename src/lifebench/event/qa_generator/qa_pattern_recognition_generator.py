@@ -414,74 +414,237 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
     def _generate_monthly_questions(self, monthly_summary: Dict[str, Any]) -> List[Dict[str, Any]]:
         """
         基于月份总结生成该月的所有问题
-        
+
         Args:
             monthly_summary: 月份总结数据
-            
+
         Returns:
             该月生成的所有问题列表
         """
         month_key = monthly_summary.get('month', '')
         print(f"\n[Monthly Questions] 开始为 {month_key} 生成问题...")
-        
+
         all_questions = []
-        
+
+        # 获取该月的每日详细数据
+        daily_draft_data = self.draft_event.get(month_key, [])
+
         # 准备各类问题的输入数据
         major_events_summary = monthly_summary.get('major_events', '') or ''
-        
+
         # 1. 习惯与偏好问题（2-3 个）
         preference_input = {
             'preference_changes': monthly_summary.get('preference_changes', '') or '',
             'new_habits': monthly_summary.get('new_habits', []) or [],
             'changed_habits': monthly_summary.get('changed_habits', []) or [],
-            'major_events': major_events_summary
+            'major_events': major_events_summary,
+            'daily_draft_data': daily_draft_data
         }
         preference_questions = self._generate_preference_questions(preference_input, month_key)
         all_questions.extend(preference_questions)
-        
+
         # 2. 兴趣问题（2-3 个）
         interest_input = {
             'interest_changes': monthly_summary.get('interest_changes', '') or '',
             'focus_areas': monthly_summary.get('focus_areas', []) or [],
             'learning_focus': monthly_summary.get('learning_focus', '') or '',
-            'major_events': major_events_summary
+            'major_events': major_events_summary,
+            'daily_draft_data': daily_draft_data
         }
         interest_questions = self._generate_interest_questions(interest_input, month_key)
         all_questions.extend(interest_questions)
-        
+
         # 3. 主要情感事件问题（2-3 个）
         emotional_input = {
             'emotional_events': monthly_summary.get('emotional_events', []) or [],
             'emotional_summary': monthly_summary.get('emotional_summary', '') or '',
-            'major_events': major_events_summary
+            'major_events': major_events_summary,
+            'daily_draft_data': daily_draft_data
         }
         emotional_questions = self._generate_emotional_questions(emotional_input, month_key)
         all_questions.extend(emotional_questions)
-        
+
         # 4. 运动健康问题（2-3 个）
         health_input = {
             'health_fitness_changes': monthly_summary.get('health_fitness_changes', '') or '',
             'exercise_changes': monthly_summary.get('exercise_changes', '') or '',
             'health_status': monthly_summary.get('health_status', '') or '',
             'lifestyle_adjustments': monthly_summary.get('lifestyle_adjustments', '') or '',
-            'major_events': major_events_summary
+            'major_events': major_events_summary,
+            'daily_draft_data': daily_draft_data
         }
         health_questions = self._generate_health_questions(health_input, month_key)
         all_questions.extend(health_questions)
         print(f"[Monthly Questions] {month_key} 问题生成完成，共{len(all_questions)}个问题", all_questions)
         # Step 5: LLM 过滤
         filtered_questions = self._filter_questions_by_llm(all_questions, month_key)
-        
+
         print(f"[Monthly Questions] {month_key} 最终保留{len(filtered_questions)}个问题")
-        
-        # Step 6: 并行调用 check_agent 对所有问题进行完善（最多 20 线程）
+
+        # Step 6: 并行调用 LLM 优化过滤后的问题
         if filtered_questions:
+            print(f"\n[Monthly Questions] 开始并行调用 LLM 优化问题...")
+            optimized_questions = self._parallel_optimize_questions(filtered_questions, month_key)
+            print(f"[Monthly Questions] LLM 优化完成，共{len(optimized_questions)}个问题")
+        else:
+            optimized_questions = filtered_questions
+
+        # Step 7: 并行调用 check_agent 对所有问题进行完善（最多 20 线程）
+        if optimized_questions:
             print(f"\n[Monthly Questions] 开始并行调用 Check Agent 优化问题...")
-            refined_questions = self._parallel_check_agent(filtered_questions, month_key)
+            refined_questions = self._parallel_check_agent(optimized_questions, month_key)
             print(f"[Monthly Questions] Check Agent 优化完成，共{len(refined_questions)}个问题")
             return refined_questions
-        
-        return filtered_questions
+
+        return optimized_questions
+
+    def _parallel_optimize_questions(self, questions: List[Dict[str, Any]], month_key: str) -> List[Dict[str, Any]]:
+        """
+        并行调用 LLM 优化过滤后的问题（最多 20 线程）
+
+        对过滤后的问题进行深度分析，检查问题的合理性、题面的合理与困难性、答案的正确性，
+        并进行优化重新输出。
+
+        Args:
+            questions: 过滤后的问题列表
+            month_key: 月份标识，格式为 "YYYY-MM"
+
+        Returns:
+            优化后的问题列表
+        """
+        import concurrent.futures
+
+        # 获取该月的每日详细数据
+        daily_draft_data = self.draft_event.get(month_key, [])
+
+        print(f"\n[Parallel Optimize] 开始并行优化 {len(questions)} 个问题...")
+
+        # 使用临时字典存储结果，保持顺序
+        results_dict = {}
+
+        def process_question(idx, question):
+            """处理单个问题的优化"""
+            try:
+                print(f"\n[Optimize Thread {idx + 1}/{len(questions)}] 开始优化问题...")
+
+                # 构建优化 prompt
+                optimize_prompt = f"""
+作为 QA 优化专家，请对以下问题进行深度分析和优化。
+
+【月份】{month_key}
+
+【每日详细数据】
+{json.dumps(daily_draft_data, ensure_ascii=False, indent=2)}
+
+【待优化的问题】
+{json.dumps(question, ensure_ascii=False, indent=2)}
+
+**优化任务**
+
+1. **问题合理性分析**
+   - 问题表述是否清晰、无歧义？
+   - 问题是否在数据支撑范围内？
+   - 问题是否过于简单？
+
+2. **题面分析**
+   - 问题是否自然、符合真实用户的提问习惯？
+   - 问题是否包含足够的信息但不过多？
+   - 问题是否有明确的答案指向？
+   - 问题的难度是否适中，需要整合分析才能回答？
+   - 问题是否包含了过多的提示和信息。
+   - 问题是否具有实际意义和价值
+   
+3. **答案正确性分析**
+   - 答案是否完整回答了问题？
+   - 答案是否与数据事实一致？
+   - 答案的逻辑是否自洽？
+   - 答案是否包含因果解释（为什么）？
+
+4. **优化方向**
+   - 如果问题表述不够自然，调整为更符合第一人称真实提问的方式
+   - 如果问题难度不够，增加需要多维度分析的深度
+   - 如果问题过于复杂，简化但保持核心分析点
+   - 如果答案不够完整或缺少因果解释，优化答案
+   - 如果答案与数据不符，修正答案使其与数据一致
+
+**重要原则**
+- 必须基于提供的每日详细数据进行优化
+- 问题必须明确包含月份（{month_key}）
+- 答案必须包含"是什么"和"为什么"两部分
+- 保持问题的 original question_type 不变
+
+请以 JSON 格式返回优化后的问题：
+{{
+    "optimized_question": "优化后的问题（如果无需修改则与原问题相同）",
+    "optimized_answer": "优化后的答案（如果无需修改则与原答案相同）",
+    "analysis": "详细分析（问题合理性、题面分析、答案正确性、优化点）",
+    "needs_modification": true/false,  // 是否需要修改
+    "modification_reason": "如果需要修改，说明原因"
+}}
+"""
+
+                # 调用 LLM 进行优化
+                llm_result = llm_call_j(optimize_prompt)
+
+                if self.is_print:
+                    print(f"[Optimize Thread {idx + 1}] LLM 优化输出:")
+                    print(str(llm_result)[:300] + "..." if len(str(llm_result)) > 300 else str(llm_result))
+
+                # 解析 LLM 结果
+                if isinstance(llm_result, str):
+                    start_idx = llm_result.find('{')
+                    end_idx = llm_result.rfind('}') + 1
+                    if start_idx != -1 and end_idx != -1:
+                        llm_result = json.loads(llm_result[start_idx:end_idx])
+
+                if not isinstance(llm_result, dict):
+                    print(f"[Optimize Thread {idx + 1}] LLM 返回格式错误，保留原问题")
+                    return idx, question
+
+                needs_modification = llm_result.get('needs_modification', False)
+                optimized_question_text = llm_result.get('optimized_question', '')
+                optimized_answer_text = llm_result.get('optimized_answer', '')
+
+                if needs_modification and optimized_question_text and optimized_answer_text:
+                    # 创建优化后的问题副本
+                    optimized_question = question.copy()
+                    optimized_question['question'] = optimized_question_text
+                    optimized_question['answer'] = optimized_answer_text
+                    print(f"[Optimize Thread {idx + 1}] ✓ 问题已优化")
+                    print(f"  [原始问题] {question.get('question', '')}")
+                    print(f"  [优化问题] {optimized_question_text}")
+                    print(f"  [原始答案] {question.get('answer', '')[:100]}..." if len(str(question.get('answer', ''))) > 100 else f"  [原始答案] {question.get('answer', '')}")
+                    print(f"  [优化答案] {optimized_answer_text[:100]}..." if len(optimized_answer_text) > 100 else f"  [优化答案] {optimized_answer_text}")
+                    return idx, optimized_question
+                else:
+                    print(f"[Optimize Thread {idx + 1}] ✓ 问题无需修改")
+                    return idx, question
+
+            except Exception as e:
+                print(f"[Optimize Thread {idx + 1}] 处理异常：{e}，保留原问题")
+                return idx, question
+
+        # 使用 ThreadPoolExecutor 并行处理，最多 20 个线程
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            futures = [
+                executor.submit(process_question, idx, question)
+                for idx, question in enumerate(questions)
+            ]
+
+            # 收集结果
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    idx, optimized_question = future.result()
+                    results_dict[idx] = optimized_question
+                except Exception as e:
+                    print(f"[Parallel Optimize] 结果收集异常：{e}")
+
+        # 按索引顺序构建结果列表
+        optimized_questions = [results_dict[i] for i in range(len(questions)) if i in results_dict]
+
+        print(f"\n[Parallel Optimize] 优化完成，保留 {len(optimized_questions)}/{len(questions)} 个问题")
+
+        return optimized_questions
     
     def _parallel_check_agent(self, questions: List[Dict[str, Any]], month_key: str) -> List[Dict[str, Any]]:
         """
@@ -836,88 +999,97 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
     def _generate_preference_questions(self, input_data: Dict[str, Any], month_key: str) -> List[Dict[str, Any]]:
         """
         生成习惯与偏好类问题
-        
+
         Args:
             input_data: 包含偏好变化、新习惯、改变的习惯和主要事件的输入数据
             month_key: 月份标识
-            
+
         Returns:
             生成的问题列表
         """
         import json
+        daily_draft_data = input_data.get('daily_draft_data', [])
         prompt = get_preference_template(
             month_key=month_key,
             major_events=input_data['major_events'],
             preference_changes=input_data['preference_changes'],
             new_habits=json.dumps(input_data['new_habits'], ensure_ascii=False, indent=2),
-            changed_habits=json.dumps(input_data['changed_habits'], ensure_ascii=False, indent=2)
+            changed_habits=json.dumps(input_data['changed_habits'], ensure_ascii=False, indent=2),
+            daily_draft_data=json.dumps(daily_draft_data, ensure_ascii=False, indent=2)
         )
-        
+
         return self._call_llm_for_questions(prompt, month_key, 'preference_habit')
-    
+
     def _generate_interest_questions(self, input_data: Dict[str, Any], month_key: str) -> List[Dict[str, Any]]:
         """
         生成兴趣类问题
-        
+
         Args:
             input_data: 包含兴趣变化、关注领域、学习重点和主要事件的输入数据
             month_key: 月份标识
-            
+
         Returns:
             生成的问题列表
         """
         import json
+        daily_draft_data = input_data.get('daily_draft_data', [])
         prompt = get_interest_template(
             month_key=month_key,
             major_events=input_data['major_events'],
             interest_changes=input_data['interest_changes'],
             focus_areas=json.dumps(input_data['focus_areas'], ensure_ascii=False, indent=2),
-            learning_focus=input_data['learning_focus']
+            learning_focus=input_data['learning_focus'],
+            daily_draft_data=json.dumps(daily_draft_data, ensure_ascii=False, indent=2)
         )
-        
+
         return self._call_llm_for_questions(prompt, month_key, 'interest_learning')
-    
+
     def _generate_emotional_questions(self, input_data: Dict[str, Any], month_key: str) -> List[Dict[str, Any]]:
         """
         生成情感事件类问题
-        
+
         Args:
             input_data: 包含情感事件、情感总结和主要事件的输入数据
             month_key: 月份标识
-            
+
         Returns:
             生成的问题列表
         """
         import json
+        daily_draft_data = input_data.get('daily_draft_data', [])
         prompt = get_emotional_template(
             month_key=month_key,
             major_events=input_data['major_events'],
             emotional_events=json.dumps(input_data['emotional_events'], ensure_ascii=False, indent=2),
-            emotional_summary=input_data['emotional_summary']
+            emotional_summary=input_data['emotional_summary'],
+            daily_draft_data=json.dumps(daily_draft_data, ensure_ascii=False, indent=2)
         )
-        
+
         return self._call_llm_for_questions(prompt, month_key, 'emotional_reflection')
-    
+
     def _generate_health_questions(self, input_data: Dict[str, Any], month_key: str) -> List[Dict[str, Any]]:
         """
         生成运动健康类问题
-        
+
         Args:
             input_data: 包含健康变化、运动变化、健康状况、生活调整和主要事件的输入数据
             month_key: 月份标识
-            
+
         Returns:
             生成的问题列表
         """
+        import json
+        daily_draft_data = input_data.get('daily_draft_data', [])
         prompt = get_health_template(
             month_key=month_key,
             major_events=input_data['major_events'],
             health_fitness_changes=input_data['health_fitness_changes'],
             exercise_changes=input_data['exercise_changes'],
             health_status=input_data['health_status'],
-            lifestyle_adjustments=input_data['lifestyle_adjustments']
+            lifestyle_adjustments=input_data['lifestyle_adjustments'],
+            daily_draft_data=json.dumps(daily_draft_data, ensure_ascii=False, indent=2)
         )
-        
+
         return self._call_llm_for_questions(prompt, month_key, 'health_fitness')
     
     def _call_llm_for_questions(self, prompt: str, month_key: str, question_type: str) -> List[Dict[str, Any]]:
@@ -937,7 +1109,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
             
             if self.is_print:
                 print(f"\n[LLM Call - {month_key} - {question_type}] LLM 输出:")
-                print(str(llm_result)[:300] + "..." if len(str(llm_result)) > 300 else str(llm_result))
+                print(str(llm_result))
             
             # 处理可能的字符串返回
             if isinstance(llm_result, str):
@@ -1867,7 +2039,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                - **示例**：
                  - ✅ 缺少跑步公里数：生成短信"今天跑了 5 公里"或推送"你今日已运动 5 公里，十分健康"
                  - ❌ 不要生成：详细的跑步笔记，包含时间、路线、配速、心率等完整信息
-            5. **谨慎删除**：**除非数据明显不合理，否则不要删除手机数据**。仅在数据存在明显错误或矛盾情况下考虑删除，有些数据是合理的噪声：
+            5. **谨慎删除**：**除非数据明显不合理或出行冗余，否则不要删除手机数据**。仅在数据存在明显错误或矛盾情况下考虑删除。我们允许描述该事件其他内容（与问题无关）的数据存在。
                 
             
             **分析任务**
@@ -1891,7 +2063,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                     {{
                         "type": "数据类型",
                         "phone_id": "数据 ID",
-                        "reason": "为什么要删除（与该事件不相关/冗余/错误等）"
+                        "reason": "为什么要删除（冗余/错误等）"
                     }}
                 ],
                 "rationale": "数据分析理由"
