@@ -216,135 +216,213 @@ class QATemporalGenerator(BaseQAGenerator):
         monthly_summaries.sort(key=lambda x: x.get('month', ''))
         
         print(f"\n========== 完成 {len(monthly_summaries)}/12 个月的总结 ==========")
-        
-        # # Step 2: 分析全年相似事件分组
-        # event_groups = self._analyze_similar_events(monthly_summaries, year)
-        #
-        event_groups = []
-        return monthly_summaries, event_groups
-    
-    def _analyze_similar_events(self, yearly_summaries: List[Dict[str, Any]], year: int) -> Dict[str, Any]:
+
+        # Step 2: 为每个事件添加相似事件分析
+        print(f"\n========== 开始为每个事件分析相似事件 ==========")
+        monthly_summaries = self._find_similar_events_for_all(monthly_summaries, year)
+        print(f"========== 相似事件分析完成 ==========")
+
+        return monthly_summaries, {}
+
+    def _find_similar_events_for_all(self, monthly_summaries: List[Dict[str, Any]], year: int) -> List[Dict[str, Any]]:
         """
-        分析全年相似事件并分组
-        
+        并行为每个重要事件查找相似事件（可能混淆的事件）
+
         Args:
-            yearly_summaries: 全年各月总结列表
+            monthly_summaries: 每月总结列表
             year: 年份
-            
+
         Returns:
-            事件分组结果
+            添加了相似事件的每月总结列表
         """
-        print(f"\n{'='*80}")
-        print(f"[Event Analysis] 开始分析 {year} 年的相似事件...")
-        print(f"{'='*80}")
-        
-        # 收集全年所有事件
-        all_events = []
-        for summary in yearly_summaries:
+        # 收集所有需要分析的事件及其上下文
+        all_events_to_analyze = []
+        for summary in monthly_summaries:
             month = summary.get('month', '')
             important_events = summary.get('important_events', [])
             for event in important_events:
-                all_events.append({
+                all_events_to_analyze.append({
+                    'month': month,
                     'date': event.get('date', ''),
-                    'description': event.get('event_description', ''),
-                    'month': month
+                    'event_description': event.get('event_description', ''),
+                    'original_event': event
                 })
-        
-        if not all_events:
-            print("[Event Analysis] 没有事件可分析")
-            return {}
-        
-        print(f"[Event Analysis] 共收集 {len(all_events)} 个事件，开始 LLM 分析...")
-        
-        # 构建 prompt
-        events_text = json.dumps(all_events, ensure_ascii=False, indent=2)
-        
-        prompt = f"""
-        作为事件分析专家，请分析以下 {year} 年全年的重要事件，识别相似或同类事件并进行分组。
-        
-        【全年事件列表】
-        {events_text}
-        
-        **分析任务**
-        1. 识别相似事件：找出描述相似、性质相同或属于同一类别的事件
-           - 例如：多次跑步、多次旅行、多次会议、多次学习等
-        2. 事件分组：将相似事件归为一组，并为每组命名
-        3. 统计频次：计算每组事件的发生次数
-        4. 时间分布：分析每组事件在一年中的时间分布
-        
-        **分组原则**
-        - **细粒度分组**：不要按大类别（如运动、娱乐、工作）分组，而是按具体活动类型分组
-          - ✅ 正确示例：跑步分为一组、健身分为一组、游泳分为一组（而不是全部归为"运动类"）
-          - ✅ 正确示例：去KTV分为一组、旅游分为一组、看电影分为一组（而不是全部归为"娱乐类"）
-          - ❌ 错误示例：将所有运动相关事件归为一组
-          - ❌ 错误示例：将所有娱乐相关事件归为一组
-        - **相似性判断**：只有真正相似的具体活动才归为一组
-          - 例如：多次跑步可以归为一组，但跑步和健身应该分开
-          - 例如：多次去KTV可以归为一组，但KTV和旅游应该分开
-        - **重复性优先**：优先将重复发生的具体活动归为一组
-        - **每个组应该有明确的具体活动主题**，而不是宽泛的类别
-        
-        **输出要求**
-        1. 为每个组提供清晰的名称
-        2. 列出组内包含的所有事件（含日期）
-        
-        请以 JSON 格式返回：
-        {{
-            "event_groups": [
-                {{
-                    "group_name": "分组名称（如：跑步运动、朋友聚会、工作会议等）",
-                    "events": [
-                        {{
-                            "date": "YYYY-MM-DD",
-                            "description": "事件描述",
-                        }}
-                    ]
-                }}
-            ]
-        }}
+
+        if not all_events_to_analyze:
+            print("[Similar Events] 没有事件需要分析")
+            return monthly_summaries
+
+        print(f"[Similar Events] 共有 {len(all_events_to_analyze)} 个事件需要分析")
+
+        # 并行处理所有事件
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            future_to_event = {
+                executor.submit(self._find_similar_events_for_single_event, item, year): item
+                for item in all_events_to_analyze
+            }
+
+            completed_count = 0
+            for future in concurrent.futures.as_completed(future_to_event):
+                item = future_to_event[future]
+                try:
+                    similar_events = future.result()
+                    # 将结果更新到原事件中
+                    item['original_event']['similar_events'] = similar_events
+                    completed_count += 1
+                    if completed_count % 10 == 0 or completed_count == len(all_events_to_analyze):
+                        print(f"[Similar Events] 已完成 {completed_count}/{len(all_events_to_analyze)} 个事件的相似分析")
+                except Exception as e:
+                    print(f"[Similar Events] 事件分析失败：{e}")
+                    item['original_event']['similar_events'] = []
+
+        return monthly_summaries
+
+    def _find_similar_events_for_single_event(self, event_item: Dict[str, Any], year: int) -> List[Dict[str, Any]]:
         """
-        
+        为单个事件查找相似事件（可能与之混淆的事件）
+
+        Args:
+            event_item: 事件项，包含 month, date, event_description, original_event
+            year: 年份
+
+        Returns:
+            相似事件列表
+        """
+        target_event = event_item.get('event_description', '')
+        target_date = event_item.get('date', '')
+        target_month = event_item.get('month', '')
+
+        # 收集除当前月之外的所有月份的每日事件数据（原始 daily_draft 格式）
+        other_months_daily_data = {}
+        for month_key, month_data in self.draft_event.items():
+            if not month_key.startswith(str(year)):
+                continue
+            if month_key == target_month:
+                continue
+            if not isinstance(month_data, list):
+                continue
+
+            # 只保留有事件的日期
+            days_with_events = []
+            for day_data in month_data:
+                events = day_data.get('events', [])
+                if events and len(events) > 0:
+                    days_with_events.append(day_data)
+
+            if days_with_events:
+                other_months_daily_data[month_key] = days_with_events
+
+        if not other_months_daily_data:
+            return []
+
+        # 构建 prompt，让 LLM 先聚合每月多日活动，再找相似事件
+        prompt = f"""
+        作为事件相似性分析专家，请完成以下任务：
+
+        【目标事件】
+        - 日期：{target_date}
+        - 描述：{target_event}
+
+        【其他月份每日事件数据】（原始格式，遍历每天的事件）
+        {json.dumps(other_months_daily_data, ensure_ascii=False, indent=2)}
+
+        **任务一：聚合每月多日活动**
+        遍历每天的事件数据，根据目标事件的粒度决定是否需要聚合：
+        - **如果目标事件是粒度较粗的跨多日事件**（如"云南五日游"、"参加马拉松比赛"）：
+          必须将每月中相关联的多日活动聚合成摘要来匹配
+          例如：杭州旅行每天活动 → "杭州三日游"
+        - **如果目标事件是粒度较细的单日事件**（如"在某餐厅吃饭"、"看了某场电影"）：
+          不强制聚合，可以直接用单日活动匹配
+        - 时间表示：单日"YYYY-MM-DD"，多日"YYYY-MM-DD 至 YYYY-MM-DD"
+
+        **任务二：找相似事件**
+        从聚合后（或原始）的活动中找出与目标事件可能混淆的相似事件（最多5个）。
+
+        **相似性标准**
+        - 同类活动（多次旅行、多次聚会、多次比赛等）
+        - 相关主题（多次医疗、多次学习等）
+        - 相似场景（类似休闲活动、工作场景等）
+        - 排除：仅日期不同的日常重复事件（如每天跑步）
+
+        **输出格式**
+        直接返回 JSON 数组，每个元素：
+        {{
+            "month": "月份",
+            "date": "YYYY-MM-DD 或 YYYY-MM-DD 至 YYYY-MM-DD",
+            "name": "活动名称",
+            "description": "描述（不超过80字）",
+            "similarity_reason": "相似原因"
+        }}
+
+        **输出示例**
+
+        假设目标事件是"云南五日游"（粗粒度多日）：
+        ```
+        [
+            {{
+                "month": "2025-06",
+                "date": "2025-06-10 至 2025-06-14",
+                "name": "厦门鼓浪屿三日游",
+                "description": "周末前往厦门游玩，游览鼓浪屿景区",
+                "similarity_reason": "同属跨省市旅游活动，地点和性质相似，容易混淆具体时间和目的地"
+            }},
+            {{
+                "month": "2025-10",
+                "date": "2025-10-03 至 2025-10-05",
+                "name": "参加云南全程马拉松比赛",
+                "description": "前往云南参加全程马拉松比赛并游玩",
+                "similarity_reason": "同属多日外出活动，且目的地都是云南，且有游玩成分，可能混淆"
+            }}
+        ]
+        ```
+
+        假设目标事件是"在图书馆借了5本书"（细粒度单日）：
+        ```
+        [
+            {{
+                "month": "2025-08",
+                "date": "2025-08-20",
+                "name": "图书馆归还图书",
+                "description": "在图书馆归还之前借阅的书籍",
+                "similarity_reason": "同属图书馆活动，可能混淆具体日期"
+            }}
+        ]
+        ```
+
+        无相似事件：
+        ```
+        []
+        ```
+        """
+
         try:
-            llm_result = llm_call_reason_j(prompt)
-            print(f"[Event Analysis - {year}] LLM 输出:",llm_result)
-            if self.is_print:
-                print(f"\n[Event Analysis - {year}] LLM 输出:")
-                print(str(llm_result)[:300] + "..." if len(str(llm_result)) > 300 else str(llm_result))
-            
+            llm_result = llm_call_j(prompt)
+
             # 解析结果
             if isinstance(llm_result, str):
-                start_idx = llm_result.find('{')
-                end_idx = llm_result.rfind('}') + 1
+                start_idx = llm_result.find('[')
+                end_idx = llm_result.rfind(']') + 1
                 if start_idx != -1 and end_idx != -1:
                     json_str = llm_result[start_idx:end_idx]
                     try:
-                        llm_result = json.loads(json_str)
-                    except json.JSONDecodeError as e:
-                        print(f"[Event Analysis - {year}] JSON 解析失败：{e}")
-                        return {}
-            
-            if isinstance(llm_result, dict):
-                event_groups = llm_result.get('event_groups', [])
-                
-                result = {
-                    'year': year,
-                    'event_groups': event_groups,
-                    'total_groups': len(event_groups)
-                }
-                
-                print(f"[Event Analysis] {year} 年分析完成，共识别 {len(event_groups)} 个事件组")
-                for group in event_groups:
-                    print(f"  - {group.get('group_name', '')}: {group.get('event_count', 0)} 个事件")
-                
-                return result
+                        similar_events = json.loads(json_str)
+                    except json.JSONDecodeError:
+                        return []
+                else:
+                    return []
+            elif isinstance(llm_result, list):
+                similar_events = llm_result
             else:
-                print(f"[Event Analysis - {year}] 返回格式错误：{type(llm_result)}")
-                return {}
-                
+                return []
+
+            if isinstance(similar_events, list):
+                return similar_events
+            return []
+
         except Exception as e:
-            print(f"[Event Analysis - {year}] 分析失败：{e}")
-            return {}
-    
+            print(f"[Similar Events - Single] LLM 调用失败：{e}")
+            return []
+
     def QAGen(self, year: str = "2025") -> List[Dict[str, Any]]:
         """
         生成时序相关 QA 对的主入口函数
@@ -411,7 +489,8 @@ class QATemporalGenerator(BaseQAGenerator):
                 all_events.append({
                     'date': event.get('date', ''),
                     'description': event.get('event_description', ''),
-                    'month': month
+                    'month': month,
+                    'similar_events': event.get('similar_events', [])
                 })
         
         if len(all_events) < 2:
@@ -789,80 +868,102 @@ class QATemporalGenerator(BaseQAGenerator):
         print(f"[_locate_daily_events] 开始定位 {len(summary_events)} 个事件的daily_event（20线程并行）...")
         
         # 定义单个事件的搜索函数
-        def search_single_event(event):
+        def search_single_event(idx, event):
             date_str = event.get('date', '')
             description = event.get('description', '') or event.get('event_description', '')
-            
+
+            print(f"  [_locate_daily_events] 输入[{idx}]: date={date_str[:10] if date_str else 'N/A'}, desc={description[:50]}...")
+
             if not date_str:
-                return []
-            
+                return idx, description, []
+
             try:
                 # 解析日期
                 start_date_str = date_str.split('至')[0].strip()[:10]
                 target_date = datetime.strptime(start_date_str, '%Y-%m-%d')
-                
+
                 # 计算日期范围
                 prev_date = target_date - timedelta(days=date_offset)
                 next_date = target_date + timedelta(days=date_offset)
-                
+
                 date_range = [
                     prev_date.strftime('%Y-%m-%d'),
                     target_date.strftime('%Y-%m-%d'),
                     next_date.strftime('%Y-%m-%d')
                 ]
-                
+
                 # 调用LLM搜索
                 found_events = self._search_daily_events_by_llm(
                     date_range=date_range,
                     event_description=description,
                     target_date=start_date_str
                 )
-                
-                return found_events
-                    
+
+                print(f"  [_locate_daily_events] 输出[{idx}]: 找到 {len(found_events)} 个事件")
+                for evt in found_events[:3]:
+                    print(f"    -> event_id={evt.get('event_id', '')}, desc={evt.get('description', '')[:40]}...")
+
+                return idx, description, found_events
+
             except Exception as e:
                 print(f"[_locate_daily_events] 处理事件失败：{e}")
-                return []
-        
+                return idx, description, []
+
         # 使用 ThreadPoolExecutor 并行处理，最多20线程
+        # 按 original_events 的索引顺序存储结果
+        located_results = []  # [located_events_for_orig_0, located_events_for_orig_1, ...]
+        for orig_event in summary_events:
+            located_results.append([])  # 预分配，保持索引对应
+
         all_found_daily_events = []
         with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
-            # 提交所有任务
-            future_to_event = {
-                executor.submit(search_single_event, event): event
-                for event in summary_events
+            # 提交所有任务，使用 (idx, event) 便于记录位置
+            future_to_idx = {
+                executor.submit(search_single_event, idx, event): idx
+                for idx, event in enumerate(summary_events)
             }
-            
+
             # 收集结果
             completed_count = 0
-            for future in concurrent.futures.as_completed(future_to_event):
+            for future in concurrent.futures.as_completed(future_to_idx):
                 try:
-                    result = future.result()
-                    if result:
-                        all_found_daily_events.extend(result)
+                    result_idx, result_desc, result_events = future.result()
+                    if result_events:
+                        located_results[result_idx] = result_events
+                        all_found_daily_events.extend(result_events)
                     completed_count += 1
                     if completed_count % 5 == 0 or completed_count == len(summary_events):
                         print(f"[_locate_daily_events] 已完成 {completed_count}/{len(summary_events)} 个事件的搜索")
                 except Exception as e:
                     print(f"[_locate_daily_events] 任务执行失败：{e}")
-        
+
         if not all_found_daily_events:
             print("[_locate_daily_events] 未找到任何daily_event事件")
-            return []
-        
+            return [], {}
+
         print(f"[_locate_daily_events] 总共找到{len(all_found_daily_events)}个daily_event事件")
-        
+
         # 去重（基于event_id）
         unique_events = {}
         for event in all_found_daily_events:
             event_id = event.get('event_id', '') or event.get('atomic_id', '')
             if event_id and event_id not in unique_events:
                 unique_events[event_id] = event
-        
+
         deduped_events = list(unique_events.values())
         print(f"[_locate_daily_events] 去重后剩余{len(deduped_events)}个事件")
-        
-        return deduped_events
+
+        # 构建映射：原事件索引 -> {original_event, located_events}
+        event_mapping = {}
+        for idx, orig_event in enumerate(summary_events):
+            located = located_results[idx] if idx < len(located_results) else []
+            if located:
+                event_mapping[idx] = {
+                    "original_event": orig_event,
+                    "located_events": located
+                }
+
+        return deduped_events, event_mapping
     
     def _generate_sorting_questions(self, events: List[Dict[str, Any]], year: int) -> List[Dict[str, Any]]:
         """
@@ -878,20 +979,82 @@ class QATemporalGenerator(BaseQAGenerator):
             return []
         
         # Step 2: 定位到 daily_event
-        daily_events = self._locate_daily_events(sampled_events, date_offset=1)
+        daily_events, event_mapping = self._locate_daily_events(sampled_events, date_offset=1)
         if len(daily_events) < 3:
             print("[Sorting Questions] 事件数量不足3个，无法生成排序问题")
             return []
-        
+
         # Step 3: 生成问题 - 随机sample 3-6个事件生成排序问题
         questions = []
         num_questions = 1
-        
+
         for _ in range(num_questions):
             num_events = random.randint(4, min(6, len(daily_events)))
             selected_events = random.sample(daily_events, num_events)
+            print(f"\n[Sorting Questions] 选取的 {num_events} 个事件:")
+            for i, evt in enumerate(selected_events):
+                print(f"  [{i+1}] event_id={evt.get('event_id', '')}, date={evt.get('date', '')}, desc={evt.get('description', '')[:50]}...")
+            print(f"\n[Sorting Questions] event_mapping 内容:")
+            print(f"  event_mapping 大小: {len(event_mapping)}")
+            for idx, mapping in event_mapping.items():
+                orig_desc = mapping['original_event'].get('description', '') or mapping['original_event'].get('event_description', '')
+                print(f"  idx={idx}: {orig_desc[:40]}...")
+                print(f"    -> original_event_id={mapping['original_event'].get('event_id', '')}")
+                print(f"    -> similar_events count={len(mapping['original_event'].get('similar_events', []))}")
+                print(f"    -> located_count={len(mapping['located_events'])}")
+
+            # 构建用于 Step 4 的事件列表：需要包含 original_event 的 similar_events 和当日其他事件
+            events_for_check = []
+            for sel_evt in selected_events:
+                sel_evt_id = sel_evt.get('event_id', '')
+                # 从 event_mapping 中找到对应的 original_event（基于 event_id 匹配）
+                matched_mapping = None
+                matched_idx = None
+                for idx, mapping in event_mapping.items():
+                    # 检查 located_events 中是否有匹配的 event_id
+                    for loc_evt in mapping['located_events']:
+                        if str(loc_evt.get('event_id', '')) == str(sel_evt_id):
+                            matched_mapping = mapping
+                            matched_idx = idx
+                            break
+                    if matched_mapping:
+                        break
+                if matched_mapping:
+                    events_for_check.append({
+                        'event_id': sel_evt.get('event_id', ''),
+                        'description': sel_evt.get('description', ''),
+                        'date': sel_evt.get('date', ''),
+                        'similar_events': matched_mapping['original_event'].get('similar_events', []),
+                        'original_event': matched_mapping['original_event'],
+                        'mapping_idx': matched_idx
+                    })
+                else:
+                    events_for_check.append({
+                        'event_id': sel_evt.get('event_id', ''),
+                        'description': sel_evt.get('description', ''),
+                        'date': sel_evt.get('date', ''),
+                        'similar_events': [],
+                        'original_event': sel_evt,
+                        'mapping_idx': None
+                    })
+
             question_data = self._generate_single_sorting_question_with_llm(selected_events, year)
             if question_data:
+                # Step 4: 检查是否需要重写事件描述以避免混淆
+                print(f"\n[Sorting Questions] 调用 _check_and_rewrite_event_descriptions...")
+                question_data = self._check_and_rewrite_event_descriptions(
+                    events_for_check, question_data, year, event_mapping
+                )
+                # Step 5: 如果重写发生了，需要将新增的锚点事件的 event_id 加入 required_events_id
+                if question_data.get('needs_rewrite') and question_data.get('rewrite_details'):
+                    original_ids = set(question_data.get('required_events_id', []))
+                    for detail in question_data['rewrite_details']:
+                        anchor_ids = detail.get('anchor_event_ids', [])
+                        for anchor_id in anchor_ids:
+                            if anchor_id:
+                                original_ids.add(str(anchor_id))
+                    question_data['required_events_id'] = list(original_ids)
+                    print(f"[_check_and_rewrite] 重写后 required_events_id: {question_data['required_events_id']}")
                 questions.append(question_data)
         
         #print(f"[Sorting Questions] 生成了 {len(questions)} 个排序问题")
@@ -1140,7 +1303,6 @@ class QATemporalGenerator(BaseQAGenerator):
             print(f"[Filter Important Events] 筛选失败：{e}")
             return multi_day_events[:10]  # 失败时返回前10个
 
-    
     def _generate_and_verify_duration_question(self, event: Dict[str, Any], 
                                                 year: int) -> Dict[str, Any]:
         """
@@ -1915,6 +2077,355 @@ class QATemporalGenerator(BaseQAGenerator):
         except Exception as e:
             print(f"[Generate Sorting Question] 生成失败：{e}")
             return None
+
+    def _check_and_rewrite_event_descriptions(self, events: List[Dict[str, Any]],
+                                               question_data: Dict[str, Any],
+                                               year: int,
+                                               event_mapping: Dict[int, Dict] = None) -> Dict[str, Any]:
+        """
+        Step 4: 分析并提取可能会干扰到题面的相似事件，决定是否需要重写题面中对事件的描述
+
+        Args:
+            events: 选定的事件列表
+            question_data: 已生成的问题数据
+            year: 年份
+            event_mapping: 索引 -> {original_event, located_events} 映射
+
+        Returns:
+            更新后的问题数据（如果需要重写则包含重写后的描述）
+        """
+        try:
+            # 提取问题中的事件描述
+            question = question_data.get('question', '')
+            if not question:
+                return question_data
+
+            print(f"\n[_check_and_rewrite] ========== Step 4 开始 ==========")
+            print(f"[_check_and_rewrite] 原始问题:\n{question[:200]}...")
+
+            # Step 4a: 检查事件是否有 similar_events 字段，构建事件列表
+            events_with_similar = []
+            for event in events:
+                similar_events = event.get('similar_events', [])
+                if similar_events and len(similar_events) > 0:
+                    events_with_similar.append({
+                        'event_id': event.get('event_id', ''),
+                        'description': event.get('event_description', '') or event.get('description', ''),
+                        'date': event.get('date', ''),
+                        'similar_events': similar_events
+                    })
+
+            if not events_with_similar:
+                print("[_check_and_rewrite] 没有相似事件，跳过重写")
+                return question_data
+
+            print(f"[_check_and_rewrite] 共 {len(events_with_similar)} 个事件有相似事件")
+
+            # Step 4b: 输入题面和相似事件数组，让 LLM 判断哪些事件的描述需要重写
+            print("[_check_and_rewrite] Step 4b: LLM 判断哪些事件需要重写...")
+            decision_prompt = f"""
+            作为时序问题质量审核专家，请分析以下排序问题中的事件描述是否可能导致答题时混淆。
+
+            【原始问题】
+            {question}
+
+            【事件及其相似事件列表】
+            {json.dumps(events_with_similar, ensure_ascii=False, indent=2)}
+
+            **混淆判定标准**
+            - 如果题面描述过于笼统（如"去云南旅行"），而存在多个相似事件（如"去云南丽江旅行"、"去云南昆明旅行"），会导致答题者无法确定具体是哪一个
+            - 如果描述中包含的关键词（地点、人物、具体事项等）能在多个相似事件中找到，描述就不够清晰
+            - 如果描述缺乏当日独特锚点（如当天其他事件），仅靠事件本身描述无法唯一确定是哪一天
+
+            **决策规则**
+            - 对于"需要重写"的事件：描述不足以区分目标事件和相似事件，需要加入当日其他事件作为锚点
+            - 对于"不需要重写"的事件：描述已经足够清晰独特，或者没有相似事件
+
+            **输出格式**
+            请以 JSON 格式返回：
+            {{
+                "events_needing_rewrite": [
+                    {{
+                        "event_id": "事件ID",
+                        "original_description": "原始描述",
+                        "reason": "需要重写的原因（如：描述与相似事件过于相似、缺乏当日锚点等）"
+                    }}
+                ],
+                "events_ok": [
+                    {{
+                        "event_id": "事件ID",
+                        "description": "原始描述",
+                        "reason": "为什么不需要重写（如：描述已包含独特细节、无相似事件等）"
+                    }}
+                ]
+            }}
+            """
+            print(f"\n[_check_and_rewrite] Step 4b 决策 prompt:")
+            print(f"  - 事件数量: {len(events_with_similar)}")
+            for i, evt in enumerate(events_with_similar):
+                print(f"  - 事件[{i+1}]: id={evt.get('event_id', '')}, similar_events数量={len(evt.get('similar_events', []))}")
+            print(f"\n[_check_and_rewrite] ========== Step 4b LLM 输入 ==========")
+            print(decision_prompt[:2000] + "..." if len(decision_prompt) > 2000 else decision_prompt)
+            print(f"========== Step 4b LLM 输入结束 ==========")
+            print(f"[_check_and_rewrite] Step 4b 决策 prompt 长度: {len(decision_prompt)}")
+
+            decision_result = llm_call_j(decision_prompt)
+
+            print(f"\n[_check_and_rewrite] ========== Step 4b LLM 输出 ==========")
+            print(str(decision_result)[:2000] + "..." if len(str(decision_result)) > 2000 else str(decision_result))
+            print(f"========== Step 4b LLM 输出结束 ==========")
+
+            # 解析决策结果
+            if isinstance(decision_result, str):
+                start_idx = decision_result.find('{')
+                end_idx = decision_result.rfind('}') + 1
+                if start_idx != -1 and end_idx != -1:
+                    decision_result = json.loads(decision_result[start_idx:end_idx])
+            if not isinstance(decision_result, dict):
+                print("[_check_and_rewrite] 决策结果解析失败，跳过")
+                return question_data
+
+            events_needing_rewrite = decision_result.get('events_needing_rewrite', [])
+            events_ok = decision_result.get('events_ok', [])
+            print(f"[_check_and_rewrite] 需要重写的事件: {len(events_needing_rewrite)}, 不需要重写的事件: {len(events_ok)}")
+
+            if not events_needing_rewrite:
+                print("[_check_and_rewrite] 没有事件需要重写")
+                return question_data
+
+            # Step 4c: 对于需要重写的事件，输入当日事件，让 LLM 加入独特内容来重写描述
+            print(f"[_check_and_rewrite] Step 4c: 为 {len(events_needing_rewrite)} 个需要重写的事件获取当日事件...")
+
+            # 构建 event_id 到 events_for_check 条目的映射
+            events_check_map = {}
+            for ec in events:
+                eid = str(ec.get('event_id', ''))
+                events_check_map[eid] = ec
+
+            # 准备需要重写的事件及其当日事件
+            rewrite_context = []
+            for item in events_needing_rewrite:
+                event_id = item.get('event_id', '')
+                original_desc = item.get('original_description', '')
+
+                # 从 events_for_check 中获取相似事件和当日事件信息
+                ec_item = events_check_map.get(str(event_id), {})
+                similar_events = ec_item.get('similar_events', [])
+                daily_on_date = None
+
+                # 获取目标日期
+                target_date = None
+                for evt in events:
+                    if str(evt.get('event_id', '')) == str(event_id):
+                        date_str = evt.get('date', '')
+                        # 处理 date 可能是列表的情况
+                        if isinstance(date_str, list):
+                            date_str = date_str[0] if date_str else ''
+                        if '至' in date_str:
+                            target_date = date_str.split('至')[0].strip()[:10]
+                        else:
+                            target_date = date_str[:10] if date_str else None
+                        break
+
+                # 如果 events_for_check 中没有当日事件，尝试用 _get_daily_events_by_date 获取
+                if not daily_on_date and target_date:
+                    daily_on_date = self._get_daily_events_by_date(target_date)
+
+                # 提取当日其他事件的 event_id（排除目标事件本身）
+                anchor_event_ids = []
+                anchor_event_descs = []
+                for de in daily_on_date:
+                    de_id = str(de.get('event_id', ''))
+                    if de_id and de_id != str(event_id):
+                        anchor_event_ids.append(de_id)
+                        anchor_event_descs.append({
+                            'event_id': de_id,
+                            'description': de.get('description', '')[:100]
+                        })
+
+                rewrite_context.append({
+                    'event_id': event_id,
+                    'original_description': original_desc,
+                    'reason': item.get('reason', ''),
+                    'target_date': target_date,
+                    'similar_events': similar_events,  # 相似事件列表，帮助 LLM 理解混淆点
+                    'daily_events_on_date': anchor_event_descs,  # 当日其他事件（用于提取锚点）
+                    'anchor_event_ids': anchor_event_ids
+                })
+
+            # 调用 LLM 重写描述
+            rewrite_prompt = f"""
+作为描述优化专家，请为以下需要重写的事件生成更具区分性的描述。
+
+【事件列表】
+{json.dumps(rewrite_context, ensure_ascii=False, indent=2)}
+
+**重写要求**
+1. **分析混淆原因**：对比 original_description 和 similar_events，找出导致混淆的关键点
+2. **使用当日事件作为锚点**：从 daily_events_on_date 中选择最能区分的事件作为锚点
+3. **重写格式**：将锚点信息自然融入描述，如"事件A（当天还发生了事件B）"
+4. 不要减少任何原事件内容，只增加锚点信息
+5. anchor_event_ids 必须填写实际使用了的当日事件的 event_id
+
+**输出格式**
+请以 JSON 格式返回：
+{{
+    "rewritten_descriptions": [
+        {{
+            "event_id": "事件ID",
+            "original_description": "原始描述",
+            "rewritten_description": "重写后的描述（增加当日其他事件作为锚点）",
+            "anchor_added": "新增的当日其他事件锚点描述",
+            "anchor_event_ids": ["使用的当日其他事件event_id列表"]
+        }}
+    ]
+}}
+"""
+            print(f"\n[_check_and_rewrite] Step 4c 重写 prompt:")
+            print(f"  - 需要重写的事件数量: {len(events_needing_rewrite)}")
+            for i, evt in enumerate(events_needing_rewrite):
+                print(f"  - 事件[{i+1}]: id={evt.get('event_id', '')}, reason={evt.get('reason', '')[:50]}...")
+            print(f"\n========== Step 4c LLM 输入 ==========")
+            print(rewrite_prompt[:3000] + "..." if len(rewrite_prompt) > 3000 else rewrite_prompt)
+            print(f"========== Step 4c LLM 输入结束 ==========")
+
+            rewrite_result = llm_call_j(rewrite_prompt)
+            print(f"\n========== Step 4c LLM 输出 ==========")
+            print(str(rewrite_result)[:2000] + "..." if len(str(rewrite_result)) > 2000 else str(rewrite_result))
+            print(f"========== Step 4c LLM 输出结束 ==========")
+
+            # 解析重写结果
+            if isinstance(rewrite_result, str):
+                start_idx = rewrite_result.find('{')
+                end_idx = rewrite_result.rfind('}') + 1
+                if start_idx != -1 and end_idx != -1:
+                    rewrite_result = json.loads(rewrite_result[start_idx:end_idx])
+            if not isinstance(rewrite_result, dict):
+                print("[_check_and_rewrite] 重写结果解析失败，跳过")
+                return question_data
+
+            rewritten_descriptions = rewrite_result.get('rewritten_descriptions', [])
+            print(f"[_check_and_rewrite] 共 {len(rewritten_descriptions)} 个事件被重写")
+
+            if not rewritten_descriptions:
+                print("[_check_and_rewrite] 没有事件被重写")
+                return question_data
+
+            # 打印重写后的描述
+            print(f"\n[_check_and_rewrite] ========== 重写后的描述 ==========")
+            for item in rewritten_descriptions:
+                print(f"  事件ID: {item.get('event_id', '')}")
+                print(f"  原始描述: {item.get('original_description', '')[:80]}...")
+                print(f"  重写后: {item.get('rewritten_description', '')[:80]}...")
+                print(f"  新增锚点: {item.get('anchor_added', '')}")
+                print(f"  锚点event_ids: {item.get('anchor_event_ids', [])}")
+                print(f"  ---")
+
+            # 构建事件ID到新描述的映射
+            desc_map = {}
+            for item in rewritten_descriptions:
+                event_id = item.get('event_id', '')
+                rewritten = item.get('rewritten_description', '')
+                if event_id and rewritten:
+                    desc_map[event_id] = rewritten
+
+            print(f"[_check_and_rewrite] 重写后的描述映射: {list(desc_map.keys())}")
+            print(f"[_check_and_rewrite] ========== Step 4 结束 ==========")
+
+            # 更新问题文本中的事件描述标记
+            question_data['rewritten_descriptions'] = desc_map
+            question_data['needs_rewrite'] = True
+            question_data['rewrite_details'] = rewritten_descriptions
+
+            # Step 5: 调用 LLM 将重写后的描述替换到问题文本中
+            print(f"\n[_check_and_rewrite] Step 5: 调用 LLM 将重写后的描述替换到问题文本...")
+            replace_prompt = f"""
+作为文本替换专家，请根据【重写描述映射】将【原始问题】中的对应描述替换为【重写后的描述】。
+
+【原始问题】
+{question_data.get('question', '')}
+
+【重写描述映射】
+{json.dumps(desc_map, ensure_ascii=False, indent=2)}
+
+**替换要求**
+1. 找到【原始问题】中每个 event_id 对应的描述句
+2. 将该描述句完整替换为【重写描述映射】中对应 event_id 的新描述
+3. 保持问题中其他内容不变，包括编号格式
+4. 如果某个 event_id 在原始问题中找不到对应描述，保持原样
+
+**输出格式**
+请以 JSON 格式返回：
+{{
+    "rewritten_question": "替换后的完整问题文本"
+}}
+"""
+            print(f"\n========== Step 5 LLM 输入 ==========")
+            print(replace_prompt[:2000] + "..." if len(replace_prompt) > 2000 else replace_prompt)
+            print(f"========== Step 5 LLM 输入结束 ==========")
+
+            replace_result = llm_call_j(replace_prompt)
+            print(f"\n========== Step 5 LLM 输出 ==========")
+            print(str(replace_result)[:2000] + "..." if len(str(replace_result)) > 2000 else str(replace_result))
+            print(f"========== Step 5 LLM 输出结束 ==========")
+
+            # 解析替换结果
+            if isinstance(replace_result, str):
+                start_idx = replace_result.find('{')
+                end_idx = replace_result.rfind('}') + 1
+                if start_idx != -1 and end_idx != -1:
+                    replace_result = json.loads(replace_result[start_idx:end_idx])
+
+            if isinstance(replace_result, dict):
+                new_question = replace_result.get('rewritten_question', '')
+                if new_question:
+                    question_data['question'] = new_question
+                    print(f"[_check_and_rewrite] Step 5: 问题文本已更新")
+
+            return question_data
+
+        except Exception as e:
+            print(f"[_check_and_rewrite] 分析失败：{e}")
+            import traceback
+            traceback.print_exc()
+            return question_data
+
+    def _get_daily_events_by_date(self, date_str: str) -> List[Dict[str, Any]]:
+        """
+        根据日期获取该天的所有 daily_event 事件
+
+        Args:
+            date_str: 日期字符串，格式 YYYY-MM-DD
+
+        Returns:
+            该天的所有事件列表
+        """
+        target_date = date_str[:10] if len(date_str) > 10 else date_str
+        matching_events = []
+
+        if not isinstance(self.daily_event, list):
+            return matching_events
+
+        for event in self.daily_event:
+            if not isinstance(event, dict):
+                continue
+            event_dates = event.get('date', [])
+            if not isinstance(event_dates, list):
+                continue
+            for time_range in event_dates:
+                if '至' in time_range:
+                    start_part = time_range.split('至')[0].strip()[:10]
+                    if start_part == target_date:
+                        matching_events.append(event)
+                        break
+                else:
+                    # 单个日期
+                    event_date = time_range.strip()[:10]
+                    if event_date == target_date:
+                        matching_events.append(event)
+                        break
+
+        return matching_events
 
     def _save_questions(self, questions: List[Dict[str, Any]], year: str):
         """
@@ -2920,8 +3431,8 @@ class QATemporalGenerator(BaseQAGenerator):
             sms, phonecall, photo, push, note, calendar
                         
             **重要原则**
-            1. **非必要不生成**：只有当十分确定缺乏关键信息，或缺乏足以支持回答的信息时，才考虑新增。若已有数据能大致反映事件则不用新增。**能不生成就不生成**。
-            2. **重点优先**：不需要全面反映出事件的所有细节，只关注与问题相关的重点内容。
+            1. **非必要不生成**：只有当十分确定缺乏关键信息，或缺乏足以支持回答的信息时，才考虑新增。若已有数据能大致反映事件则不用新增。
+            2. **重点优先**：不需要全面反映出事件的所有细节，只关注与问题相关的重点内容，题面中包含的信息必须要全面反映出来。
                - 例如：问题可能只问跑步频率，那只要手机数据能反映出用户跑步了就行，至于距离、时间可以不关心
                - 例如：如果问题问了跑量，则需要反映公里数
             3. **互补性原则**：如果要生成新数据，必须与已有数据形成互补关系，不要和已有数据反映同样的信息。
@@ -2938,7 +3449,8 @@ class QATemporalGenerator(BaseQAGenerator):
                - **示例**：
                  -  缺少跑步公里数：生成短信“今天跑了 5 公里”或推送“你今日已运动 5 公里，十分健康”
                  -  不要生成：详细的跑步笔记，包含时间、路线、配速、心率等完整信息
-            5. **谨慎删除**：**除非数据明显不合理，否则不要删除手机数据**。仅在数据存在明显错误或矛盾情况下考虑删除，有些数据是合理的噪声：
+            5. **谨慎删除**：**除非数据明显不合理，否则不要删除手机数据**。仅在数据存在明显错误或矛盾情况下考虑删除，有些数据是合理的噪声。
+            6. 当你决定要生成时，优先生成多个不同类型的手机操作，将信息分散在不同手机操作中，并降低手机操作里的文本描述和题面文本的相似性。来增加题目的挑战性和证据多样性。
                 
             
             **分析任务**
