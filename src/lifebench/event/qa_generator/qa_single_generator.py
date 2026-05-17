@@ -171,6 +171,16 @@ class QASingleGenerator(BaseQAGenerator):
             'daily_events_in_range': daily_events_on_target_date or daily_events_in_range
         }]
 
+        # Step 5: 查找与目标事件极度相似的事件（可能引起混淆的事件）
+        if target_event_full:
+            print(f"\n[Select Agent] Step 5: 查找与目标事件极度相似的历史事件...")
+            similar_confusing_events = self._find_similar_confusing_events(
+                target_event_full, year, target_month
+            )
+            sampling_results[0]['similar_confusing_events'] = similar_confusing_events
+            if similar_confusing_events:
+                print(f"[Select Agent] 找到 {len(similar_confusing_events)} 个可能引起混淆的相似事件")
+
         print(f"[Select Agent] 完成，选择了 {len(sampling_results)} 个时间段")
         return sampling_results
 
@@ -234,6 +244,113 @@ class QASingleGenerator(BaseQAGenerator):
             print(f"[Select Agent] LLM 返回解析失败：{e}")
 
         return None
+
+    def _find_similar_confusing_events(self, target_event: Dict, year: int, target_month: int) -> List[Dict]:
+        """
+        查找与目标事件极度相似的事件（可能引起混淆的事件）
+
+        Args:
+            target_event: 目标事件
+            year: 年份
+            target_month: 目标月份
+
+        Returns:
+            相似事件列表，每个包含 date 和 description
+        """
+        target_event_id = target_event.get('event_id', '')
+        target_desc = target_event.get('description', '')
+        target_name = target_event.get('name', target_event.get('event_name', ''))
+
+        # 收集该月及之前月份的所有 draft events
+        draft_events_to_check = []
+        for month in range(1, target_month + 1):
+            month_key = f"{year}-{month:02d}"
+            if month_key not in self.draft_event:
+                continue
+
+            month_data = self.draft_event[month_key]
+            if not isinstance(month_data, list):
+                continue
+
+            for day_data in month_data:
+                date_str = day_data.get('date', '')
+                events_list = day_data.get('events', [])
+                if not isinstance(events_list, list):
+                    continue
+
+                for evt in events_list:
+                    evt_id = evt.get('event_id', [])
+                    if isinstance(evt_id, list) and evt_id:
+                        evt_id_str = evt_id[0]
+                    else:
+                        evt_id_str = str(evt_id) if evt_id else ''
+
+                    # 排除目标事件本身
+                    if evt_id_str == target_event_id:
+                        continue
+
+                    draft_events_to_check.append({
+                        'date': date_str,
+                        'name': evt.get('name', ''),
+                        'description': evt.get('description', '')
+                    })
+
+        if not draft_events_to_check:
+            return []
+
+        print(f"[_find_similar_confusing_events] 共有 {len(draft_events_to_check)} 个候选事件需要检查相似性")
+
+        # 构建 LLM prompt，直接传入所有候选事件
+        prompt = f"""
+作为相似度分析专家，请从以下候选事件中找出与目标事件极度相似的历史事件。
+
+**极度相似的定义**：主要内容相似，但发生时间和一些细节不一样。
+如果直接提问"今年XXX"，可能导致指代不明确、混淆。
+
+【目标事件】
+事件名称：{target_name}
+事件描述：{target_desc[:500]}
+
+【候选事件列表】（共 {len(draft_events_to_check)} 个）
+{json.dumps(draft_events_to_check, ensure_ascii=False, indent=2)}
+
+**输出要求**
+请以 JSON 格式返回极度相似的事件列表：
+{{
+    "similar_events": [
+        {{
+            "date": "YYYY-MM-DD",
+            "description": "事件描述（全量内容）",
+            "similarity_reason": "相似原因说明"
+        }}
+    ]
+}}
+
+注意：
+1. 只返回与目标事件极度相似的历史事件
+2. 如果没有找到相似事件，返回空的 similar_events 数组
+3. 最多返回 5 个最相似的事件
+4. 重点关注事件类型、人物关系、活动内容相似的条目
+5. 输出时 description 字段请使用完整描述，不要截断
+"""
+
+        try:
+            result = llm_call_j(prompt)
+            if isinstance(result, str):
+                start_idx = result.find('{')
+                end_idx = result.rfind('}') + 1
+                if start_idx != -1 and end_idx != -1:
+                    result = json.loads(result[start_idx:end_idx])
+
+            if isinstance(result, dict):
+                similar_events = result.get('similar_events', [])
+                print(f"[_find_similar_confusing_events] LLM 返回 {len(similar_events)} 个相似事件")
+                return similar_events[:5]
+
+        except Exception as e:
+            print(f"[_find_similar_confusing_events] 分析失败: {e}")
+
+        return []
 
     def _build_selection_prompt(self, daily_events: List[Dict], date_strs: List[str]) -> str:
         """构建选择目标事件的 prompt"""
@@ -897,8 +1014,16 @@ class QASingleGenerator(BaseQAGenerator):
                     'evidence': [],  # 将在生成数据后填充
                     'design_rationale': plan_json.get('design_rationale', ''),
                     'strategy_narrative': question.get('strategy_narrative', ''),
-                    'target_event': question.get('target_event', {})
+                    'target_event': question.get('target_event', {}),
+                    'similar_confusing_events': question.get('similar_confusing_events', [])  # 携带相似事件信息
                 }
+
+                # Step 5: 如果是 generate 模式且有相似事件，检查并重写问题描述以避免混淆
+                if mode == 'generate' and question.get('similar_confusing_events'):
+                    print("\n[Design Agent - Step 5] 检查问题描述是否可能导致与相似事件混淆...")
+                    new_question_obj = self._check_and_rewrite_question_for_similarity(
+                        new_question_obj, question.get('similar_confusing_events', [])
+                    )
 
                 # 2. 解析手机数据规划
                 phone_data_plan = plan_json.get('phone_data_plan', {})
@@ -1003,7 +1128,96 @@ class QASingleGenerator(BaseQAGenerator):
         
         # 失败情况下返回原问题，不继续迭代
         return question, False
-    
+
+    def _check_and_rewrite_question_for_similarity(self, question_obj: Dict, similar_events: List[Dict]) -> Dict:
+        """
+        检查问题描述是否可能导致与相似事件混淆，如果是则重写
+
+        Args:
+            question_obj: 问题对象
+            similar_events: 相似事件列表
+
+        Returns:
+            可能有重写后的问题对象
+        """
+        if not similar_events:
+            return question_obj
+
+        target_event = question_obj.get('target_event', {})
+        target_desc = target_event.get('description', '')[:200]
+
+        prompt = f"""
+作为问题质量审核专家，请分析以下问题描述是否可能导致与历史相似事件混淆，并进行必要的重写。
+
+【目标事件】
+事件名称：{target_event.get('name', '')}
+事件描述：{target_desc}
+
+【生成的问题】
+问题：{question_obj.get('question', '')}
+答案：{question_obj.get('answer', '')[:200]}
+
+【相似历史事件】（可能导致混淆）
+{json.dumps(similar_events, ensure_ascii=False, indent=2)}
+
+**分析任务**
+1. 问题描述是否足够具体，能与上述相似事件区分开？
+2. 如果存在混淆风险，应该如何重写？
+   - 可能混淆时：加强时间约束（范围变小，更具体，如"春夏之交"→"5月份"）
+   - 不会混淆时：可以放宽时间约束（范围变大，更模糊，如"5月份"→"春夏之际"）
+   - 可以增加区分性细节
+3. 重写时保持问题的自然口语化，不改变核心问题意图
+
+**重写原则**
+- 如果问题描述已经足够区分（如包含独特人物、地点、事件特征），保持原样
+- 如果可能混淆（与相似事件内容相似但时间接近）：
+  * 加强时间约束到更小范围（"春夏之际" → "5月份"，或"今年" → "3月份"）
+  * 增加与相似事件不同的区分性细节
+  * 用关系/特征替代具体名称
+- 如果不会混淆（与相似事件差异明显或时间较远）：
+  * 可以适当放宽时间约束（"5月份" → "春夏之际"、"春季"）
+  * 保持口语化和自然
+
+**时间约束设计参考**
+- 精确时间："3月5日"、"5月份第2周"
+- 月份范围："5月份"、"3月后"
+- 季节范围："春季"、"春夏之交"
+- 年份范围："今年"、"今年上半年"
+- 模糊时间："有一段时间"、"那阵子"
+
+**输出格式**
+请以 JSON 格式返回：
+{{
+    "needs_rewrite": true/false,
+    "rewritten_question": "重写后的问题（如果需要）",
+    "rewritten_answer": "重写后的答案（如果需要）",
+    "rewrite_reason": "重写原因说明"
+}}
+"""
+        try:
+            result = llm_call(prompt)
+            if isinstance(result, str):
+                start_idx = result.find('{')
+                end_idx = result.rfind('}') + 1
+                if start_idx != -1 and end_idx != -1:
+                    result = json.loads(result[start_idx:end_idx])
+
+            if isinstance(result, dict) and result.get('needs_rewrite', False):
+                new_q = result.get('rewritten_question', '')
+                new_a = result.get('rewritten_answer', '')
+                if new_q:
+                    print(f"\n[Step 5] 问题描述已重写:")
+                    print(f"  原问题: {question_obj.get('question', '')[:80]}...")
+                    print(f"  新问题: {new_q[:80]}...")
+                    question_obj['question'] = new_q
+                    question_obj['answer'] = new_a
+                    question_obj['rewritten_for_similarity'] = True
+
+        except Exception as e:
+            print(f"[_check_and_rewrite_question_for_similarity] 分析失败: {e}")
+
+        return question_obj
+
     def _delete_phone_operations(self, to_delete: List[Dict[str, Any]]) -> bool:
         """
         删除指定的手机操作数据
@@ -1116,8 +1330,8 @@ class QASingleGenerator(BaseQAGenerator):
             target_event = select_result.get('target_event', {})
             question_draft = select_result.get('question_draft', '')
             daily_events_on_target_date = select_result.get('daily_events_in_range', [])  # 直接使用 select_agent 返回的数据
+            similar_confusing_events = select_result.get('similar_confusing_events', [])  # 提取相似事件
 
-            
             # Step 2: Search Agent (已禁用，始终返回空字典)
             search_result = {}
 
@@ -1127,7 +1341,8 @@ class QASingleGenerator(BaseQAGenerator):
                 'answer': '',
                 'score_points': [],
                 'target_event': target_event,
-                'strategy_narrative': select_result.get('strategy_narrative', '')
+                'strategy_narrative': select_result.get('strategy_narrative', ''),
+                'similar_confusing_events': similar_confusing_events  # 携带相似事件信息
             }
             
             # ========== 在 Step 3 之前，先格式化问题为标准结构 ==========
@@ -1157,7 +1372,8 @@ class QASingleGenerator(BaseQAGenerator):
                 'required_events_id': [event_id] if event_id else [],
                 'evidence': related_phone_data,
                 'strategy_narrative': initial_question.get('strategy_narrative', ''),
-                'target_event': target_event
+                'target_event': target_event,
+                'similar_confusing_events': initial_question.get('similar_confusing_events', [])
             }
             
             # Step 3: Design Agent 生成初始问题（使用生成模式）
