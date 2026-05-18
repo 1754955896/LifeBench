@@ -19,6 +19,25 @@ The main objectives of our dataset are as follows:
 
 ## Example of the data
 ![LifeBench Example](pic/PIC_BENCH.png)
+
+### Question Categories
+
+LifeBench contains 9 categories of questions:
+
+| Question Category | English Name | Description |
+|-------------------|--------------|-------------|
+| **Single-hop Reasoning** | Single_hop | Direct information extraction questions based on a single event or mobile phone operation record |
+| **Multi-hop Reasoning** | Multi_hop | Complex questions requiring integration of multiple event information and multi-source data correlation analysis |
+| **Temporal Reasoning** | Temporal | Questions involving analysis of time dimensions such as event chronology, time intervals, and frequency |
+| **Non-declarative Memory** | Non-declarative | Questions identifying user behavior patterns, habit preferences, personality traits, and other patterned information |
+| **Knowledge Update Reasoning** | Knowledge_update | Questions tracking changes in user knowledge, hobbies, status, etc. over time, assessing memory update capability |
+| **Causal Reasoning** | Causal | Questions analyzing causal relationships between events, behavioral triggers, and chain reactions |
+| **Conflict Detection** | Conflict | Questions identifying logical contradictions and time conflicts in mobile data or information |
+| **Hidden Information Mining** | Hidden_info | Questions extracting implicit information through correlation analysis of multi-source data |
+| **Unanswerable** | Unanswerable | Questions that cannot be answered based on existing data, used for evaluating model refusal capability |
+
+Each question contains: question content, answer, score points (for evaluation), required event IDs, ask time, and other fields.
+
 ## Overview
 ![LifeBench Overview](pic/PIC_INTRO.png)
 Existing benchmarks mainly focus on dialogue scenarios and lack diverse digital traces. Furthermore, current datasets do not cover continuous, long-term life sequences of an individual, but only concentrate on major events. In contrast, we model continuous data that covers an individual’s entire life over the course of one year.
