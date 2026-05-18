@@ -803,7 +803,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
             
             if questions:
                 # 验证并补充该主题组涉及的节点的手机数据
-                questions = self.validate_and_generate_phone_data_for_nodes(questions)
+                questions = self.validate_and_generate_phone_data_for_nodes(questions, nodes)
 
                 # 为每个问题添加 required_events_id 和 evidence 字段
                 for qa in questions:
@@ -834,9 +834,9 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                         all_event_ids = list(set(all_event_ids))
                         qa["required_events_id"] = all_event_ids
 
-                        # 校验并调整 ask_time：若 ask_time 在所有引用事件最晚日期之前，则调整为最晚日期 + 1 天
-                        if all_event_ids and qa.get('ask_time'):
-                            qa['ask_time'] = self._adjust_ask_time_for_knowledge(all_event_ids, qa['ask_time'])
+                        # 使用 LLM 校验答案与 ask_time 的一致性
+                        if all_event_ids and qa.get('ask_time') and qa.get('question') and qa.get('answer'):
+                            qa = self._validate_answer_consistency(qa, all_event_ids)
 
                         # 基于 required_events_id 获取对应的手机数据作为 evidence
                         if all_event_ids:
@@ -853,9 +853,9 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
 
                     qa['question_type'] = 'Knowledge_update'
                     qa['score_points'] = [{
-        "description": f"正确回答出答案:{qa['answer']}",
-        "score": 10
-      }]
+                        "description": f"正确回答出答案:{qa['answer']}",
+                        "score": 10
+                    }]
                 all_questions.extend(questions)
                 if self.is_print:
                     print(f"    ✓ 生成 {len(questions)} 个问题（已补充手机数据）")
@@ -937,6 +937,114 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
 
         return ask_time
 
+    def _find_event_by_id(self, event_id: str, events: List[Dict]):
+        """根据 event_id 在事件列表中查找匹配的事件"""
+        if not event_id:
+            return None
+        for event in events:
+            if isinstance(event, dict) and str(event.get('event_id', '')) == str(event_id):
+                return event
+        return None
+
+    def _validate_answer_consistency(self, qa: Dict[str, Any], all_event_ids: List[str]) -> Dict[str, Any]:
+        """
+        使用 LLM 校验答案与 ask_time 的一致性
+
+        如果 ask_time 在某两个事件节点之间，且答案是针对较早事件的，则认为是一致的，无需修改。
+        如果 ask_time 在某事件之后，但答案没有包含该事件，则认为不一致，需要修改 ask_time。
+
+        Args:
+            qa: QA 对象
+            all_event_ids: 所有引用的事件 ID 列表
+
+        Returns:
+            校验后的 QA 对象
+        """
+        question = qa.get('question', '')
+        answer = qa.get('answer', '')
+        ask_time = qa.get('ask_time', '')
+
+        if not question or not answer or not ask_time:
+            return qa
+
+        # 构建事件日期映射
+        event_dates = {}
+        for eid in all_event_ids:
+            event_data = self._find_event_by_id(str(eid), self.daily_event)
+            if event_data:
+                dates = event_data.get('date', [])
+                for date_range in dates:
+                    if isinstance(date_range, str) and '至' in date_range:
+                        start_part = date_range.split('至')[0].strip()
+                        try:
+                            dt = datetime.strptime(start_part, "%Y-%m-%d %H:%M:%S")
+                            event_dates[str(eid)] = dt.strftime('%Y-%m-%d')
+                        except ValueError:
+                            pass
+
+        if not event_dates:
+            return qa
+
+        validation_prompt = f"""
+你是逻辑校验专家。请判断以下问答对的答案是否与 ask_time 一致。
+
+【问题】
+{question}
+
+【答案】
+{answer}
+
+【ask_time（提问时间）】
+{ask_time}
+
+【涉及的事件及其日期】
+{json.dumps(event_dates, ensure_ascii=False, indent=2)}
+
+**判断标准**
+1. 如果 ask_time 在某两个事件之间，且答案是针对较早事件的（如 ask_time = 2025-10-01，事件1=2025-07-26，事件2=2025-10-12），则答案一致
+2. 如果 ask_time 在某事件之后，但答案没有包含该事件（如 ask_time = 2025-10-13，答案只说7月26日一次，但10月12日还有一次），则答案不一致，需要修改
+3. 如果 ask_time 在所有事件之前，且答案是针对最初状态的，则答案一致
+4. **关键约束**：如果 ask_time < 某事件日期，则答案必须**不包含**该事件的任何信息
+
+**输出格式**
+请以 JSON 格式返回：
+{{
+    "is_consistent": true/false,
+    "analysis": "判断分析",
+    "suggested_ask_time": "如果需要修改，输出建议的 ask_time（YYYY-MM-DD 格式）"
+}}
+
+**示例**
+- 一致情况：{{"is_consistent": true, "analysis": "ask_time 在事件1和事件2之间，答案针对事件1，一致", "suggested_ask_time": ""}}
+- 不一致情况：{{"is_consistent": false, "analysis": "ask_time 在事件2之后，但答案只包含事件1，不一致", "suggested_ask_time": "2025-10-01"}}
+- 答案引用了未发生的事件：{{"is_consistent": false, "analysis": "ask_time 为10月1日，但答案包含10月12日事件的信息，时间矛盾", "suggested_ask_time": "2025-10-15"}}
+"""
+        try:
+            result = llm_call_j(validation_prompt)
+            if isinstance(result, str):
+                start_idx = result.find('{')
+                end_idx = result.rfind('}') + 1
+                if start_idx != -1 and end_idx != -1:
+                    result = json.loads(result[start_idx:end_idx])
+
+            if isinstance(result, dict):
+                is_consistent = result.get('is_consistent', True)
+                analysis = result.get('analysis', '')
+                suggested_ask_time = result.get('suggested_ask_time', '')
+
+                if not is_consistent and suggested_ask_time:
+                    print(f"[答案一致性校验] 问题: {question[:50]}...")
+                    print(f"  原 ask_time: {ask_time}, 分析: {analysis}")
+                    print(f"  建议 ask_time: {suggested_ask_time}")
+                    qa['ask_time'] = suggested_ask_time
+                else:
+                    print(f"[答案一致性校验] 通过: {question[:50]}... (ask_time={ask_time})")
+
+        except Exception as e:
+            print(f"[答案一致性校验] 校验失败: {e}")
+
+        return qa
+
     def _generate_questions_for_topic(self, topic_group_id: str, state_name: str, 
                                       refined_topic: str, nodes_summary: List[Dict],
                                       max_questions: int) -> List[Dict]:
@@ -991,37 +1099,26 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
            - 例如：如果人物去过徐州、南京、苏州三个城市旅游，那么在第三个节点之后提问"我去过哪些城市旅游？"时，答案应该是"徐州、南京、苏州"，而不是只有"苏州"
            - 累积性的状态（如去过的地方、学过的技能、完成的事项等）需要包含所有历史节点的信息
         
-        2. **ask_time 设计与事件参考范围**：
+        2. **ask_time 设计与分配逻辑**：
            - 每个问题必须包含 `ask_time` 字段，表示提问的时间点
-           - **重要约束**：`ask_time` 必须是 "YYYY-MM-DD" 格式（如 "2025-01-10"、"2025-03-31"），具体到天
-           - **时间顺序强制要求**：`ask_time` 必须在所引用节点的所有事件日期之后（包含当天），否则会导致时间逻辑矛盾
-             * 如果节点的最新事件发生在 2025-03-15，则 `ask_time` 必须 >= 2025-03-15
-             * 例如：`ask_time: "2025-03-16"` 表示在 2025年3月16日 提问
-             * 例如：`ask_time: "2025-04-01"` 表示在 2025年4月1日 提问
-           - **上限约束**：`ask_time` 最晚不得超过 2025-12-31
-           - **时间偏移原则**：`ask_time` 应该与状态变化节点的时间有合理的间隔
-             * 如果节点发生在某月中旬，`ask_time` 可以是该月或下个月
-             * 避免 `ask_time` 与节点日期过于接近，应该有足够的时间让状态稳定
-           
-           **根据问题类型确定参考的事件范围**：
-           - **问"上一次"、"前两次"等特定次序**：需要准确定位到特定的时间节点，考察记忆系统能否识别事件的先后顺序
-             * 例如："我上一次去哪里旅游了？" → 需要找到最近一次旅行事件
-             * 例如："我前两次参加的比赛是什么？" → 需要找到倒数第二次的比赛
-           
-           - **问"累计"、"总共"、"一共"等累积性问题**：需要参考从开始到 ask_time 的所有相关事件
-             * 例如："我一共去过哪些城市旅游？" → 需要汇总所有旅行事件
-             * 例如："我总共完成了多少个项目？" → 需要统计所有完成的项目
-           
-           - **问"近期"、"最近"、"这段时间"等模糊时间**：主要参考最近的事件，但也要考虑上下文
-             * 例如："我最近在忙什么？" → 参考最近的几个事件
-             * 例如："这段时间我的工作状态如何？" → 参考近期的工作相关事件
+           - **格式约束**：`ask_time` 必须是 "YYYY-MM-DD" 格式（如 "2025-01-10"、"2025-03-31"），具体到天
+           - **时间顺序要求**：`ask_time` 必须在所引用节点的事件日期之后，或在第一个节点之前（询问"在此之前"状态）
 
-           - **问"之前"状态**：参考 ask_time 之前最后一个影响该状态的事件
-             * 例如："我现在在哪里工作？" → 参考最后一次工作变动
+           **ask_time 分配策略**：
+           - **节点前提问**：询问"在此之前"状态时，设置 `ask_time` 在第一个节点日期之前
+             * 例如：事件1(2025-01-15)、事件2(2025-03-20)，询问"在此之前"则 `ask_time: 2025-01-09`
+           - **节点后提问**：询问当前状态时，设置 `ask_time` 在该节点日期之后
+             * 例如：事件2(2025-03-20)，则 `ask_time: 2025-03-21` 或更晚
+           - **时间距离原则**：`ask_time` 与节点日期之间应有合理间隔，不宜过于接近
+             * 错误：事件1(01-15)、事件2(01-18)，ask_time 选 01-19（太接近）
+             * 正确：事件1(01-15)、事件2(01-18)，第一个问题 ask_time 选 01-10，第二个选 02-15
 
-           - **问"在此之前"状态**：ask_time 在第一个节点之前，表示询问的是状态变化前的状态
-             * 例如："在这之前我在哪工作？" (ask_time: 2025-01-01) → 答案："在A公司"
-             * 这种问题 ask_time 必须 < 第一个节点日期
+           **问题类型与参考范围**：
+           - **问"上一次"、"前两次"等特定次序**：定位到特定节点，ask_time 在该节点之后
+           - **问"累计"、"总共"、"一共"等累积性问题**：ask_time 越晚，参考范围越大
+           - **问"在此之前"状态**：ask_time 在第一个节点之前
+
+           **上限约束**：`ask_time` 最晚不得超过 2025-12-31
         
         3. **问题质量与意义**：
            - 问题应该具体、明确，避免模糊
@@ -1116,126 +1213,174 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                 print(f"  ⚠️ LLM 生成问题失败: {e}")
             return []
     
-    def validate_and_generate_phone_data_for_nodes(self, questions: List[Dict]) -> List[Dict]:
+    def validate_and_generate_phone_data_for_nodes(self, questions: List[Dict], nodes: List[Dict]) -> List[Dict]:
         """
         验证问题涉及的节点是否有对应的手机数据，若没有则生成
-        
+
         Args:
             questions: generate_questions_by_topic 输出的问题列表
-        
+            nodes: 当前 topic_group 的节点列表（用于限定 node_id 范围）
+
         Returns:
             补充了手机数据的问题列表
         """
         if not questions:
             return questions
-        
+
         print(f"\n[KnowledgeGen] 开始验证和补充 {len(questions)} 个问题的手机数据...")
-        
-        # 收集所有涉及的 node_id
+
+        # 收集所有涉及的 node_id 和对应的 event_ids
         all_node_ids = set()
+        node_id_to_event_ids = {}  # node_id -> [event_ids]
         for qa in questions:
             node_ids = qa.get("node_ids", [])
             if isinstance(node_ids, list):
                 all_node_ids.update(node_ids)
-        
+                # 收集每个 node_id 对应的 event_ids（使用相同的提取逻辑）
+                for nid in node_ids:
+                    if nid not in node_id_to_event_ids:
+                        node_id_to_event_ids[nid] = []
+
         if not all_node_ids:
             print("[KnowledgeGen] 没有涉及任何节点，跳过验证")
             return questions
-        
-        print(f"[KnowledgeGen] 共涉及 {len(all_node_ids)} 个节点")
-        
+
+        print(f"[KnowledgeGen] 共涉及 {len(all_node_ids)} 个节点: {sorted(all_node_ids)}")
+
+        # 构建 node_id -> node_info 映射，只使用当前 topic 的 nodes（限定范围避免跨 topic 的 node_id 冲突）
+        node_id_to_info = {}
+        for node in nodes:
+            nid = node.get("node_id")
+            if nid in all_node_ids:
+                node_id_to_info[nid] = node
+
+        print(f"[KnowledgeGen] 开始收集每个节点的 event_ids...")
+
+        # 遍历每个节点，收集 event_ids
+        for node_id in all_node_ids:
+            node_info = node_id_to_info.get(node_id)
+            if not node_info:
+                print(f"  - 节点 {node_id}: 未找到节点信息（可能在其他 topic）")
+                continue
+
+            evidence = node_info.get("evidence", [])
+            event_ids = []
+            if evidence and isinstance(evidence, list):
+                for evt_group in evidence:
+                    if isinstance(evt_group, dict):
+                        events = evt_group.get("events", [])
+                        if isinstance(events, list):
+                            for event in events:
+                                if isinstance(event, dict):
+                                    event_id = event.get("event_id") or event.get("id")
+                                    if event_id:
+                                        event_ids.append(str(event_id))
+
+            node_id_to_event_ids[node_id] = list(set(event_ids))
+            print(f"  - 节点 {node_id}: event_ids = {node_id_to_event_ids[node_id]}")
+
+        print(f"[KnowledgeGen] 开始遍历节点，检查并补充手机数据...")
+
         # 遍历每个节点，检查并补充手机数据
         for node_id in all_node_ids:
-            self._validate_and_generate_phone_data_for_single_node(node_id)
-        
+            event_ids = node_id_to_event_ids.get(node_id, [])
+            self._validate_and_generate_phone_data_for_single_node(node_id, event_ids, nodes)
+
         print(f"[KnowledgeGen] ✓ 手机数据验证和补充完成")
-        
+
         return questions
     
-    def _validate_and_generate_phone_data_for_single_node(self, node_id: int):
+    def _validate_and_generate_phone_data_for_single_node(self, node_id: int, event_ids: List[str] = None, nodes: List[Dict] = None):
         """
         验证单个节点是否有对应的手机数据，若没有则生成
-        
+
         Args:
             node_id: 节点 ID
+            event_ids: 该节点关联的 event_ids 列表（如果为 None，则从节点 evidence 字段提取）
+            nodes: 当前 topic_group 的节点列表（用于限定 node_id 范围）
         """
-        # 1. 获取节点信息
-        node_info = self._get_node_by_id(node_id)
+        # 1. 获取节点信息（只在当前 topic 的 nodes 中查找）
+        node_info = self._get_node_by_id(node_id, nodes)
         if not node_info:
             print(f"  ⚠️ 节点 {node_id} 不存在")
             return
-        
+
         date = node_info.get("date", "")
         new_state = node_info.get("new_state", "")
-        evidence = node_info.get("evidence", [])
-        
+
         if not date or not new_state:
             print(f"  ⚠️ 节点 {node_id} 缺少必要信息")
             return
-        
+
         print(f"\n  - 验证节点 {node_id}: {date} - {new_state[:50]}...")
-        
-        # 2. 从节点的 evidence 字段获取 daily_event ID
-        event_ids = []
-        if evidence and isinstance(evidence, list):
-            for evt_group in evidence:
-                if isinstance(evt_group, dict):
-                    # evidence 结构: {"events": [{"event_id": "12", ...}, ...]}
-                    events = evt_group.get("events", [])
-                    if isinstance(events, list):
-                        for event in events:
-                            if isinstance(event, dict):
-                                event_id = event.get("event_id") or event.get("id")
-                                if event_id:
-                                    event_ids.append(str(event_id))
-        
+
+        # 2. 使用传入的 event_ids（已在 validate_and_generate_phone_data_for_nodes 中收集好）
+        if event_ids is None:
+            event_ids = []
+
         if not event_ids:
-            print(f"    ⚠️ 节点 {node_id} 的 evidence 字段为空或缺少事件ID")
+            print(f"    ⚠️ 节点 {node_id} 没有关联的事件ID，无法生成手机数据")
             return
-        
-        print(f"    - 从 evidence 中找到 {len(event_ids)} 个事件: {event_ids}")
+
+        print(f"    - 关联事件: {event_ids}")
         
         # 3. 获取这些事件对应的手机数据
         phone_data = self._get_phone_data_by_event_ids(event_ids)
-        
+
         print(f"    - 找到 {len(phone_data)} 条手机数据")
-        
+        if phone_data:
+            print(f"    - 手机数据示例: {json.dumps(phone_data[0], ensure_ascii=False, indent=4)[:500]}...")
+
         # 4. 使用 LLM 分析手机数据是否体现了该节点的状态变化
         is_reflected = self._check_if_phone_data_reflects_node(phone_data, new_state, date)
-        
+
         if is_reflected:
             print(f"    ✓ 手机数据已体现该节点状态")
         else:
             print(f"    ⚠️ 手机数据未体现该节点状态，开始生成...")
+            print(f"    [生成手机数据] 调用 _generate_phone_data_for_node(node_id={node_id}, event_ids={event_ids})")
             # 5. 生成手机数据
             generated_phone_data = self._generate_phone_data_for_node(node_info, event_ids)
-            
+
             if generated_phone_data:
                 print(f"    ✓ 成功生成 {len(generated_phone_data)} 条手机数据")
+                print(f"    [生成结果] 手机数据内容:")
+                for i, item in enumerate(generated_phone_data[:3]):  # 只打印前3条
+                    print(f"      数据{i+1}: {json.dumps(item, ensure_ascii=False)[:200]}...")
                 # 6. 将生成的数据添加到 phonedata 中
+                print(f"    [添加数据] 调用 _add_generated_phone_data()")
                 self._add_generated_phone_data(generated_phone_data)
             else:
                 print(f"    ✗ 生成手机数据失败")
     
-    def _get_node_by_id(self, node_id: int) -> Dict:
+    def _get_node_by_id(self, node_id: int, nodes: List[Dict] = None) -> Dict:
         """
-        根据 node_id 获取节点信息
-        
+        根据 node_id 获取节点信息（只在指定节点列表中查找）
+
         Args:
             node_id: 节点 ID
-        
+            nodes: 要搜索的节点列表（如果为 None，则搜索所有 topic_group）
+
         Returns:
             节点信息字典
         """
+        if nodes is not None:
+            # 只在指定节点列表中查找
+            for node in nodes:
+                if node.get("node_id") == node_id:
+                    return node
+            return {}
+
+        # 搜索所有 topic_group（向后兼容）
         if not hasattr(self, 'topic_group') or not self.topic_group:
             return {}
-        
+
         for topic_group_id, group_info in self.topic_group.items():
             nodes = group_info.get("nodes", [])
             for node in nodes:
                 if node.get("node_id") == node_id:
                     return node
-        
+
         return {}
     
     def _get_event_ids_by_date(self, date: str) -> List[str]:
@@ -1406,7 +1551,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
 - 新状态: {new_state}
 
 【任务要求】
-请生成 2-5 条能够反映该状态变化的手机操作规划。
+请生成 1-3 条能够反映该状态变化的手机操作规划。
 
 【支持的类型（必须使用以下类型之一）】
 - sms: 短信
@@ -1420,6 +1565,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
 1. 选择合适的手机数据类型组合
 2. 对每种类型说明具体的生成要求（内容、要点等）
 3. 确保多样性和真实性
+4. 不同的手机数据分别反映不同的信息，不要表达重复的信息内容。体现手机数据信息碎片化特点。
 
 【输出格式】
 请以 JSON 数组格式返回：
@@ -1432,37 +1578,49 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
 ]
 """
 
+        print(f"[生成手机数据] 开始为节点 {node_info.get('node_id')} 生成手机数据...")
+        print(f"[生成手机数据] date={date}, state_name={state_name}")
+        print(f"[生成手机数据] event_ids={event_ids}")
+
         try:
+            print(f"[生成手机数据] 调用 LLM 生成规划方案...")
             res = llm_call_j(plan_prompt)
             if isinstance(res, str):
                 res = json.loads(res)
 
             if not isinstance(res, list):
+                print(f"[生成手机数据] LLM 返回不是列表类型")
                 return []
+
+            print(f"[生成手机数据] LLM 返回 {len(res)} 条规划")
 
             # 使用 PhoneOperationGenerator 生成实际的手机数据
             all_generated_data = []
-            for plan in res:
+            for i, plan in enumerate(res):
                 operation_type = plan.get("operation_type", "")
                 generation_hint = plan.get("generation_hint", "")
+                print(f"[生成手机数据] 规划{i+1}: type={operation_type}, hint={generation_hint[:50]}...")
 
                 # 调用 PhoneOperationGenerator 生成
+                print(f"[生成手机数据] 调用 phone_op_generator.generate()")
                 generated = self.phone_op_generator.generate(
                     operation_type=operation_type,
                     original_event=original_event,
                     question="状态变化: " + new_state,
                     generation_hint=generation_hint
                 )
+                print(f"[生成手机数据] phone_op_generator 返回 {len(generated) if generated else 0} 条数据")
 
                 # 直接使用 PhoneOperationGenerator 返回的数据，不做额外包装
                 if generated:
                     all_generated_data.extend(generated)
 
+            print(f"[生成手机数据] 共生成 {len(all_generated_data)} 条手机数据")
             return all_generated_data
 
         except Exception as e:
             if self.is_print:
-                print(f"      warning: 生成手机数据失败: {e}")
+                print(f"      ⚠️ 生成手机数据失败: {e}")
             return []
     
     # 支持的手机数据类型（与 PhoneOperationGenerator 保持一致）
@@ -1566,6 +1724,14 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
             try:
                 print(f"\n[Filter Thread {idx + 1}/{len(questions)}] 开始处理问题...")
 
+                # 过滤：丢弃 required_events_id 为空或 evidence 为空的问题
+                if not question.get('required_events_id'):
+                    print(f"[Filter Thread {idx + 1}] ✗ 丢弃：required_events_id 为空")
+                    return idx, None, False
+                if not question.get('evidence'):
+                    print(f"[Filter Thread {idx + 1}] ✗ 丢弃：evidence 为空")
+                    return idx, None, False
+
                 # 过滤 evidence 中时间晚于 ask_time 的数据项
                 filtered_evidence = self._filter_evidence_by_ask_time(question)
                 question['evidence'] = filtered_evidence
@@ -1575,9 +1741,8 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                 作为 QA 质量评估专家，请仔细分析以下问答对的质量。
 
                 **重要说明**：
-                - 提供的 evidence 并非全量数据，只是部分相关事件
-                - 只要 evidence 中有能够体现答案的事件即可，不需要考虑时序、潜在幻觉、不充分等问题
-              
+                - 只要 evidence 中有能够体现答案的事件信息即可，不需要考虑时序、潜在幻觉、不充分等问题。不需要考虑最近、上一次，第二次，现在这类描述的依据。
+                - 请注意asktime，asktime时间之后的evidence作为干扰项，并不影响答案的回答。例如asktime是10月1日，问题为我参加了几次马拉松。evidence中有10月12日的马拉松和9月10日的马拉松，那么答案为1次，因为asktime是10月1日，10月12日的马拉松不应该被包含在内。
 
                 【问题】
                 {question.get('question', '')}
@@ -1596,7 +1761,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                 1. **答案合理性检查（核心）**
                    - 答案是否存在严重的不合理或明显错误？
                    - 答案是否与 evidence 中的信息有严重冲突？
-                   - 注意：只要 evidence 中有能够支持答案的事件即可，不需要 evidence 提供例如最近，上一次等支持。
+                   - 注意：只要 evidence 中有能够支持答案的事件即可，不需要 evidence 提供例如最近，上一次等支持。不要过于严格。
 
                 2. **问题合理性检查**
                    - 问题表述是否清晰、无歧义？

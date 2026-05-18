@@ -584,14 +584,16 @@ class PhoneOperationGenerator:
                 continue
 
             # 3. 校验 datetime 格式
+            # agent_chat 类型使用 date 字段而非 datetime
+            datetime_field = "date" if operation_type == "agent_chat" else "datetime"
             try:
-                dt = datetime.strptime(op["datetime"], "%Y-%m-%d %H:%M:%S")
+                dt = datetime.strptime(op[datetime_field], "%Y-%m-%d %H:%M:%S")
                 if dt.year != 2025:
-                    invalid_reasons[idx] = f"datetime 年份不是 2025: {op['datetime']}"
+                    invalid_reasons[idx] = f"{datetime_field} 年份不是 2025: {op[datetime_field]}"
                     invalid_data.append((idx, op))
                     continue
             except ValueError as e:
-                invalid_reasons[idx] = f"datetime 格式错误: {op['datetime']}, 应为 'YYYY-MM-DD HH:MM:SS'"
+                invalid_reasons[idx] = f"{datetime_field} 格式错误: {op[datetime_field]}, 应为 'YYYY-MM-DD HH:MM:SS'"
                 invalid_data.append((idx, op))
                 continue
 

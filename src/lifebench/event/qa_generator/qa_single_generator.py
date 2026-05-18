@@ -180,6 +180,7 @@ class QASingleGenerator(BaseQAGenerator):
             sampling_results[0]['similar_confusing_events'] = similar_confusing_events
             if similar_confusing_events:
                 print(f"[Select Agent] 找到 {len(similar_confusing_events)} 个可能引起混淆的相似事件")
+                # 注意：similar_confusing_events 仅用于内部逻辑，不输出到最终QA
 
         print(f"[Select Agent] 完成，选择了 {len(sampling_results)} 个时间段")
         return sampling_results
@@ -1558,7 +1559,7 @@ class QASingleGenerator(BaseQAGenerator):
         # 准备所有任务：1 月到 12 月，问题数从 2 到 24
         tasks = []
         for month in range(1, 13):
-            num_questions_for_month = month * 2  # 1 月=2 个，2 月=4 个，...，12 月=24 个
+            num_questions_for_month = 7  # 1 月=2 个，2 月=4 个，...，12 月=24 个
             for _ in range(num_questions_for_month):
                 tasks.append(month)
         
@@ -1581,6 +1582,10 @@ class QASingleGenerator(BaseQAGenerator):
                 except Exception as e:
                     print(f"[QAGen] 问题生成异常：{e}")
         
+        # 去除 similar_confusing_events 字段（在过滤和优化之前）
+        for qa in all_qa:
+            qa.pop('similar_confusing_events', None)
+
         # 过滤和优化生成的问题
         print("\n[QAGen] 开始过滤和优化生成的问题...")
         filtered_qa = self._filter_and_refine_questions(all_qa)
