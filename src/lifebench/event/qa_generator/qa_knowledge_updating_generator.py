@@ -872,6 +872,8 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         校验 ask_time 是否在 required_events_id 所有事件最晚日期之后，
         若不是，则调整为最晚日期的下一天（YYYY-MM-DD 格式）。
 
+        特殊处理：如果 ask_time 在第一个事件日期之前（询问"在此之前"状态），则不调整。
+
         Args:
             required_events_id: 问题引用的必需事件 ID 列表
             ask_time: 当前提问时间（格式 YYYY-MM-DD 或 YYYY-MM）
@@ -889,7 +891,8 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                 eid = str(event.get('event_id', ''))
                 event_id_to_date[eid] = event.get('date', [])
 
-        # 找到所有引用的最晚事件日期
+        # 找到所有引用的最早和最晚事件日期
+        earliest_dt = None
         latest_dt = None
         for eid in required_events_id:
             dates = event_id_to_date.get(str(eid), [])
@@ -898,12 +901,14 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                     start_part = date_range.split('至')[0].strip()
                     try:
                         dt = datetime.strptime(start_part, "%Y-%m-%d %H:%M:%S")
+                        if earliest_dt is None or dt < earliest_dt:
+                            earliest_dt = dt
                         if latest_dt is None or dt > latest_dt:
                             latest_dt = dt
                     except ValueError:
                         pass
 
-        if latest_dt is None:
+        if earliest_dt is None and latest_dt is None:
             return ask_time
 
         # 解析 ask_time（兼容 YYYY-MM 和 YYYY-MM-DD 格式）
@@ -915,8 +920,13 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         except ValueError:
             return ask_time
 
+        # 如果 ask_time 在最早事件日期之前，说明是询问"在此之前"状态，不调整
+        if earliest_dt is not None and ask_dt < earliest_dt:
+            print(f"[ask_time 校验] ask_time {ask_time} 在最早事件日期 {earliest_dt.strftime('%Y-%m-%d')} 之前，保持不变（询问在此之前的状态）")
+            return ask_time
+
         # 若 ask_time 在最晚事件日期之前或当天，调整为最晚日期 + 1 天
-        if ask_dt <= latest_dt:
+        if latest_dt is not None and ask_dt <= latest_dt:
             adjusted_dt = latest_dt + timedelta(days=1)
             # 若超过 2025-12-31，则用 2025-12-31
             max_dt = datetime(2025, 12, 31)
@@ -953,11 +963,20 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         
         【状态变化节点】
         {json.dumps(nodes_summary, ensure_ascii=False, indent=2)}
-        
+
         【任务要求】
         请设计**成对的问题**（至少2个问题，必须是偶数个），每对问题应该是：
         - **相同的核心问题**，但在**不同的时间点**提问
         - 由于状态发生了变化，两个问题的**答案不同**
+
+        **优先级要求**：
+        - 优先基于重要节点设计问题（如工作变动、城市迁移等重大变化）
+        - 次要考虑一般节点（如日常活动）
+
+        **问题质量要求**：
+        - 题面必须清晰明确完整，避免模糊表述
+        - 问题应包含足够的限定信息，能唯一定位到目标事件
+        - 避免使用"某天"、"那个人"等模糊指代
         
         例如：
         - 问题1："冯浩然在哪里工作？" (ask_time: "2025-01-10") → 答案："A公司"
@@ -996,9 +1015,13 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
            - **问"近期"、"最近"、"这段时间"等模糊时间**：主要参考最近的事件，但也要考虑上下文
              * 例如："我最近在忙什么？" → 参考最近的几个事件
              * 例如："这段时间我的工作状态如何？" → 参考近期的工作相关事件
-           
-           - **问当前状态**：参考 ask_time 之前最后一个影响该状态的事件
+
+           - **问"之前"状态**：参考 ask_time 之前最后一个影响该状态的事件
              * 例如："我现在在哪里工作？" → 参考最后一次工作变动
+
+           - **问"在此之前"状态**：ask_time 在第一个节点之前，表示询问的是状态变化前的状态
+             * 例如："在这之前我在哪工作？" (ask_time: 2025-01-01) → 答案："在A公司"
+             * 这种问题 ask_time 必须 < 第一个节点日期
         
         3. **问题质量与意义**：
            - 问题应该具体、明确，避免模糊
@@ -1554,7 +1577,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                 **重要说明**：
                 - 提供的 evidence 并非全量数据，只是部分相关事件
                 - 只要 evidence 中有能够体现答案的事件即可，不需要考虑时序、潜在幻觉、不充分等问题
-                - 不要因为 evidence 看起来不完整就判断为不合理
+              
 
                 【问题】
                 {question.get('question', '')}
@@ -1573,7 +1596,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                 1. **答案合理性检查（核心）**
                    - 答案是否存在严重的不合理或明显错误？
                    - 答案是否与 evidence 中的信息有严重冲突？
-                   - 注意：只要 evidence 中有能够支持答案的事件即可，不需要 evidence 完全覆盖答案的所有细节
+                   - 注意：只要 evidence 中有能够支持答案的事件即可，不需要 evidence 提供例如最近，上一次等支持。
 
                 2. **问题合理性检查**
                    - 问题表述是否清晰、无歧义？
