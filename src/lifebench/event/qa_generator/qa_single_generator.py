@@ -248,6 +248,7 @@ class QASingleGenerator(BaseQAGenerator):
     def _find_similar_confusing_events(self, target_event: Dict, year: int, target_month: int) -> List[Dict]:
         """
         查找与目标事件极度相似的事件（可能引起混淆的事件）
+        使用两月窗口并行分析，避免上下文过长
 
         Args:
             target_event: 目标事件
@@ -257,62 +258,82 @@ class QASingleGenerator(BaseQAGenerator):
         Returns:
             相似事件列表，每个包含 date 和 description
         """
+        import concurrent.futures
+
         target_event_id = target_event.get('event_id', '')
         target_desc = target_event.get('description', '')
         target_name = target_event.get('name', target_event.get('event_name', ''))
 
-        # 收集该月及之前月份的所有 draft events
-        draft_events_to_check = []
-        for month in range(1, target_month + 1):
-            month_key = f"{year}-{month:02d}"
-            if month_key not in self.draft_event:
-                continue
+        # 按两月窗口收集候选事件
+        window_data = []
+        for month in range(1, target_month + 1, 2):
+            window_months = [month, month + 1] if month + 1 <= target_month else [month]
+            window_events = []
 
-            month_data = self.draft_event[month_key]
-            if not isinstance(month_data, list):
-                continue
-
-            for day_data in month_data:
-                date_str = day_data.get('date', '')
-                events_list = day_data.get('events', [])
-                if not isinstance(events_list, list):
+            for m in window_months:
+                month_key = f"{year}-{m:02d}"
+                if month_key not in self.draft_event:
                     continue
 
-                for evt in events_list:
-                    evt_id = evt.get('event_id', [])
-                    if isinstance(evt_id, list) and evt_id:
-                        evt_id_str = evt_id[0]
-                    else:
-                        evt_id_str = str(evt_id) if evt_id else ''
+                month_data = self.draft_event[month_key]
+                if not isinstance(month_data, list):
+                    continue
 
-                    # 排除目标事件本身
-                    if evt_id_str == target_event_id:
+                for day_data in month_data:
+                    date_str = day_data.get('date', '')
+                    events_list = day_data.get('events', [])
+                    if not isinstance(events_list, list):
                         continue
 
-                    draft_events_to_check.append({
-                        'date': date_str,
-                        'name': evt.get('name', ''),
-                        'description': evt.get('description', '')
-                    })
+                    for evt in events_list:
+                        evt_id = evt.get('event_id', [])
+                        if isinstance(evt_id, list) and evt_id:
+                            evt_id_str = evt_id[0]
+                        else:
+                            evt_id_str = str(evt_id) if evt_id else ''
 
-        if not draft_events_to_check:
+                        # 排除目标事件本身
+                        if evt_id_str == target_event_id:
+                            continue
+
+                        window_events.append({
+                            'date': date_str,
+                            'name': evt.get('name', ''),
+                            'description': evt.get('description', '')
+                        })
+
+            if window_events:
+                window_data.append({
+                    'months': f"{window_months[0]}-{window_months[-1]}" if len(window_months) > 1 else str(window_months[0]),
+                    'events': window_events
+                })
+
+        if not window_data:
             return []
 
-        print(f"[_find_similar_confusing_events] 共有 {len(draft_events_to_check)} 个候选事件需要检查相似性")
+        print(f"[_find_similar_confusing_events] 将按 {len(window_data)} 个两月窗口并行分析")
 
-        # 构建 LLM prompt，直接传入所有候选事件
-        prompt = f"""
-作为相似度分析专家，请从以下候选事件中找出与目标事件极度相似的历史事件。
+        # 并行分析每个窗口
+        def analyze_window(window: Dict) -> List[Dict]:
+            """分析单个窗口的相似事件"""
+            window_months = window['months']
+            window_events = window['events']
+
+            if not window_events:
+                return []
+
+            prompt = f"""
+作为相似度分析专家，请从以下候选事件中找出与目标事件极度相似的历史事件。只分析目标事件发生之前的日期的数据。
 
 **极度相似的定义**：主要内容相似，但发生时间和一些细节不一样。
 如果直接提问"今年XXX"，可能导致指代不明确、混淆。
 
 【目标事件】
 事件名称：{target_name}
-事件描述：{target_desc[:500]}
+事件描述：{target_desc}
 
-【候选事件列表】（共 {len(draft_events_to_check)} 个）
-{json.dumps(draft_events_to_check, ensure_ascii=False, indent=2)}
+【候选事件列表】（{window_months}月，共 {len(window_events)} 个）
+{json.dumps(window_events, ensure_ascii=False, indent=2)}
 
 **输出要求**
 请以 JSON 格式返回极度相似的事件列表：
@@ -329,28 +350,49 @@ class QASingleGenerator(BaseQAGenerator):
 注意：
 1. 只返回与目标事件极度相似的历史事件
 2. 如果没有找到相似事件，返回空的 similar_events 数组
-3. 最多返回 5 个最相似的事件
+3. 最多返回 3 个最相似的事件
 4. 重点关注事件类型、人物关系、活动内容相似的条目
 5. 输出时 description 字段请使用完整描述，不要截断
 """
+            try:
+                result = llm_call_j(prompt)
+                if isinstance(result, str):
+                    start_idx = result.find('{')
+                    end_idx = result.rfind('}') + 1
+                    if start_idx != -1 and end_idx != -1:
+                        result = json.loads(result[start_idx:end_idx])
 
-        try:
-            result = llm_call_j(prompt)
-            if isinstance(result, str):
-                start_idx = result.find('{')
-                end_idx = result.rfind('}') + 1
-                if start_idx != -1 and end_idx != -1:
-                    result = json.loads(result[start_idx:end_idx])
+                if isinstance(result, dict):
+                    return result.get('similar_events', [])
+            except Exception as e:
+                print(f"[_find_similar_confusing_events] 窗口 {window_months} 分析失败: {e}")
 
-            if isinstance(result, dict):
-                similar_events = result.get('similar_events', [])
-                print(f"[_find_similar_confusing_events] LLM 返回 {len(similar_events)} 个相似事件")
-                return similar_events[:5]
+            return []
 
-        except Exception as e:
-            print(f"[_find_similar_confusing_events] 分析失败: {e}")
+        # 使用线程池并行处理
+        all_similar_events = []
+        with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
+            futures = {executor.submit(analyze_window, w): w for w in window_data}
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    window_result = future.result()
+                    all_similar_events.extend(window_result)
+                except Exception as e:
+                    print(f"[_find_similar_confusing_events] 窗口处理异常: {e}")
 
-        return []
+        # 去重并按日期排序
+        seen = set()
+        unique_events = []
+        for evt in all_similar_events:
+            key = evt.get('date', '')
+            if key not in seen:
+                seen.add(key)
+                unique_events.append(evt)
+
+        unique_events.sort(key=lambda x: x.get('date', ''))
+        print(f"[_find_similar_confusing_events] 共找到 {len(unique_events)} 个相似事件")
+
+        return unique_events[:5]
 
     def _build_selection_prompt(self, daily_events: List[Dict], date_strs: List[str]) -> str:
         """构建选择目标事件的 prompt"""
@@ -550,6 +592,9 @@ class QASingleGenerator(BaseQAGenerator):
         【问题策略】
         {question.get('strategy_narrative', '')}
         
+        【提问时间】
+        {question.get('ask_time', '')}
+        
         【已有证据（evidence）—— 回答问题的唯一依据】
         {json.dumps(question.get('evidence', []), ensure_ascii=False, indent=2)}
         注意：evidence 是手机数据（短信、通话、笔记、日历等），是回答问题的**唯一**依据。
@@ -562,7 +607,8 @@ class QASingleGenerator(BaseQAGenerator):
         - **信息合理性**：题目的信息是否足够定位回答问题，手机数据是否能推理出问题的答案？是否需要补充信息/去除冗余信息？题面的提供的信息符合一般人提问时会提供的信息吗（时间or地点or人物or描述）？
         - **信息适度性**：提供的信息量是否合理？是否过多或过少，是否有冗余信息？
         - **检索困难性**：题面和证据之间的相似性是否过高，导致检索证据回答问题很容易。在保证问题可从 evidence 中回答的前提下，检减少题面和证据的相似度。（可以减少一些题面描述的细节信息内容，只保留可回答的最小信息即可。）
-
+        - **信息精简**：对于题面中可以删除的不影响回答问题的细节信息，可以减少并优化题面。
+        
         ## 2. 答案合理性正确性检查
         - **答案完整性**：答案是否完整回答了问题？
         - **答案正确性**：答案与 evidence 中的数据是否一致？是否存在矛盾？
@@ -581,6 +627,7 @@ class QASingleGenerator(BaseQAGenerator):
         - **答案唯一性**：是否存在多个可能的答案？是否有歧义？
         - **检索可行性**：能否通过 evidence 手机数据有效检索并推理出答案？
         - **推理链条**：是否需要多步推理？推理过程是否合理？
+        - **ask_time**：用户提问时间是否合理？是否在所有引用事件的最晚日期之后？
         
         请以 JSON 格式返回评估结果：
         {{
@@ -635,13 +682,12 @@ class QASingleGenerator(BaseQAGenerator):
         Returns:
             生成模式的 prompt
         """
-        # 根据 required_events_id 对应事件的最晚日期，随机选取其后的月份作为提问时间
-        # current_month 在此仅作保底，不再生效
-        ask_time_description = '\n\n【用户提问时间】LLM 需根据 required_events_id 中所有事件的发生月份，随机选取其中最晚月份之后的某个月（最晚为 2025-12）作为 ask_time。例如若最晚事件在 3 月，则 ask_time 可选 4~12 月中的任意一个月。'
-        
+        # ask_time 要求：事件发生后两个月到当年12-31之间随机选取
+        ask_time_description = '\n\n【用户提问时间】LLM 需根据 required_events_id 中所有事件的发生日期，选取最晚事件发生后两个月到 2025-12-31 之间的任意一天作为 ask_time（YYYY-MM-DD 格式）。例如若最晚事件在 3月15日，则 ask_time 可选 5月16日到 12月31日之间的任意一天。'
+
         return f"""
         你是 Design Agent（生成模式），需要模拟真实用户向手机智能体提问的场景。
-            
+
         想象一下：用户正在回忆自己生活中的事件，于是向记录了自己生活数据的手机智能体提问。或是某事件的内容被用户遗忘，用户现在想回忆起来。或是有重要的细节用户需要回忆。{ask_time_description}
             
         【目标事件】
@@ -767,7 +813,8 @@ class QASingleGenerator(BaseQAGenerator):
                         "score": 分数
                     }}
                 ],
-                "required_events_id": ["相关事件 ID 列表"]
+                "required_events_id": ["相关事件 ID 列表"],
+                "ask_time": "YYYY-MM-DD 格式的用户提问时间（必须在所有引用事件的最晚日期之后）"
             }},
             "phone_data_plan": {{
                 "to_delete": [],  // 生成模式通常不需要删除
@@ -1015,7 +1062,8 @@ class QASingleGenerator(BaseQAGenerator):
                     'design_rationale': plan_json.get('design_rationale', ''),
                     'strategy_narrative': question.get('strategy_narrative', ''),
                     'target_event': question.get('target_event', {}),
-                    'similar_confusing_events': question.get('similar_confusing_events', [])  # 携带相似事件信息
+                    'similar_confusing_events': question.get('similar_confusing_events', []),  # 携带相似事件信息
+                    'ask_time': designed_question.get('ask_time', '')  # LLM 设计的提问时间
                 }
 
                 # Step 5: 如果是 generate 模式且有相似事件，检查并重写问题描述以避免混淆
@@ -1147,47 +1195,60 @@ class QASingleGenerator(BaseQAGenerator):
         target_desc = target_event.get('description', '')[:200]
 
         prompt = f"""
-作为问题质量审核专家，请分析以下问题描述是否可能导致与历史相似事件混淆，并进行必要的重写。
+作为问题质量审核专家，请先分析以下问题描述和相似事件，再决定是否需要重写。
 
 【目标事件】
 事件名称：{target_event.get('name', '')}
+事件日期：{target_event.get('date', '')}
 事件描述：{target_desc}
 
 【生成的问题】
 问题：{question_obj.get('question', '')}
-答案：{question_obj.get('answer', '')[:200]}
+答案：{question_obj.get('answer', '')}
+用户提问时间（ask_time）：{question_obj.get('ask_time', '')}
 
 【相似历史事件】（可能导致混淆）
 {json.dumps(similar_events, ensure_ascii=False, indent=2)}
 
-**分析任务**
-1. 问题描述是否足够具体，能与上述相似事件区分开？
-2. 如果存在混淆风险，应该如何重写？
-   - 可能混淆时：加强时间约束（范围变小，更具体，如"春夏之交"→"5月份"）
-   - 不会混淆时：可以放宽时间约束（范围变大，更模糊，如"5月份"→"春夏之际"）
-   - 可以增加区分性细节
-3. 重写时保持问题的自然口语化，不改变核心问题意图
+**分析步骤**
+
+**第一步：验证相似事件是否真的相似**
+- 逐个分析每个"相似事件"，判断它与目标事件是否真的内容相似
+- 如果两个事件只是时间接近但内容截然不同，它们其实不相似，不需要通过时间约束区分
+- 例如："3月5日跑步"和"3月6日购物"时间接近但内容不同，不混淆
+
+**第二步：检验题面是否会同时回答多个事件**
+- 用当前问题去问"相似事件"的内容，看答案是否也对
+- 如果对目标事件的回答同时也适用于相似事件，说明题面设计有问题，需要重写
+- 如果回答只针对目标事件而不能回答相似事件，说明题面设计合理
+
+**判断标准**
+- 如果相似事件内容不同、或题面能明确区分目标事件 → 不需要重写
+- 如果相似事件内容高度重叠、且题面会让用户混淆 → 需要重写（加强时间约束）
 
 **重写原则**
-- 如果问题描述已经足够区分（如包含独特人物、地点、事件特征），保持原样
-- 如果可能混淆（与相似事件内容相似但时间接近）：
-  * 加强时间约束到更小范围（"春夏之际" → "5月份"，或"今年" → "3月份"）
-  * 增加与相似事件不同的区分性细节
-  * 用关系/特征替代具体名称
-- 如果不会混淆（与相似事件差异明显或时间较远）：
-  * 可以适当放宽时间约束（"5月份" → "春夏之际"、"春季"）
-  * 保持口语化和自然
+- 如果可能混淆：加强时间约束到更小范围（"春夏之际" → "具体月份"，或"今年" → "具体月份"）
+- 如果不会混淆：可以选择性放宽时间约束（"具体月份" → "春夏之际"、"X月后"）
+- 重写时保持问题的自然口语化，不改变核心问题意图
 
-**时间约束设计参考**
-- 精确时间："3月5日"、"5月份第2周"
-- 月份范围："5月份"、"3月后"
-- 季节范围："春季"、"春夏之交"
-- 年份范围："今年"、"今年上半年"
-- 模糊时间："有一段时间"、"那阵子"
+**重要约束：ask_time 一致性**
+- ask_time 是用户提问时间（{question_obj.get('ask_time', '')}），必须在所有引用事件的最晚日期之后
+- 问题中的相对时间描述应该与 ask_time 保持逻辑一致
+
+**时间约束宽松度优先级（从宽到严）**
+当题面不会与相似事件发生混淆冲突时，优先选择最宽松的约束：
+1. "今年"、"今年上半年"
+2. "春季"、"年初"、"新年伊始"
+3. "1月之后"、"春季前后"
+4. "3月份"、"第二季度"
+5. "3月上旬"、"3月第2周"、"月中左右"
+6. "3月4号"、"3月5日"等精确日期
 
 **输出格式**
 请以 JSON 格式返回：
 {{
+    "similarity_analysis": "分析每个相似事件是否真的与目标事件内容相似",
+    "question_confusion_check": "检验题面是否会让用户同时回答了相似事件",
     "needs_rewrite": true/false,
     "rewritten_question": "重写后的问题（如果需要）",
     "rewritten_answer": "重写后的答案（如果需要）",
@@ -1195,6 +1256,7 @@ class QASingleGenerator(BaseQAGenerator):
 }}
 """
         try:
+            print("\n[Step 5] 检查问题描述与相似事件的区分度...",prompt)
             result = llm_call(prompt)
             if isinstance(result, str):
                 start_idx = result.find('{')
@@ -1404,7 +1466,10 @@ class QASingleGenerator(BaseQAGenerator):
             
             while iteration_count < max_iterations:
                 print(f"\n[Iteration {iteration_count + 1}/{max_iterations}]")
-                
+
+                # 保留上一次生成的 ask_time
+                ask_time = current_question.get('ask_time')
+
                 # Evaluation Agent（传入最新的 current_question）
                 eval_result = self.evaluation_agent(current_question, search_result, daily_events_on_target_date, current_month=current_month_str)
                 
@@ -1430,6 +1495,8 @@ class QASingleGenerator(BaseQAGenerator):
                 
                 # 更新当前问题
                 current_question = designed_question
+                if not current_question.get('ask_time') and ask_time:
+                    current_question['ask_time'] = ask_time
                 
                 # 如果不需要继续迭代或已合格，退出循环
                 if not should_continue or eval_result.get('is_qualified', False):
@@ -1440,11 +1507,12 @@ class QASingleGenerator(BaseQAGenerator):
             
             final_question = current_question
 
-            # 添加 ask_time（YYYY-MM-DD 格式，由 _adjust_ask_time_if_needed 随机选取最晚事件日期之后的某天）
-            final_question['ask_time'] = self._adjust_ask_time_if_needed(
-                final_question.get('required_events_id', []),
-                f"{year}-{month:02d}"
-            )
+            # 添加 ask_time（如果 LLM 没有设计，则使用 _adjust_ask_time_if_needed 生成）
+            if not final_question.get('ask_time'):
+                final_question['ask_time'] = self._adjust_ask_time_if_needed(
+                    final_question.get('required_events_id', []),
+                    f"{year}-{month:02d}"
+                )
             final_question['question_type'] = 'Single_hop'
             
             # 删除内部使用字段
