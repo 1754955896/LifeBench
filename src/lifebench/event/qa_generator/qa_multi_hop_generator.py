@@ -587,7 +587,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
    - **同实体**：两个事件涉及相同的人物、地点或物品
    - **同位置**：两个事件发生在相同的地点
    - **因果**：前一个事件导致或影响了后一个事件
-   - **时间差**：两个事件之间有明确的时间间隔（如“3天后”、“一周前”）
+   - **时间差**：两个事件之间有明确的时间间隔（如"3天后"、"一周前"）
    - **同事件**：两个事件属于同一个大事件的子事件，或是发生在不同天的同样的事件，如跑步，理发
 
 4. **链条示例**
@@ -803,7 +803,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
    - 包含：名称、时间、实体、来源、event_id
 
 3. **建立时序关系**
-   - 描述新节点与起始节点的时间关系（如“X天后”、“X天前”）
+   - 描述新节点与起始节点的时间关系（如"X天后"、"X天前"）
    - 解释为什么这个事件对推理链条很重要
 
 请以 JSON 格式返回：
@@ -938,18 +938,18 @@ class QAMultiHopGenerator(BaseQAGenerator):
    - 基于提取的实体，在月份事件中寻找能体现该实体的其他事件
    - 思考方向：
      * **同一地点**：在该月，这个地点还发生了什么其他事情？
-       - 例：起始节点是“在和平饭店过生日”，寻找“在和平饭店同事聚餐”
+       - 例：起始节点是"在和平饭店过生日"，寻找"在和平饭店同事聚餐"
      * **同一人物**：在该月，这个人还做了什么其他重要的事情？
-       - 例：起始节点是“和同事张三开会”，寻找“和张三一起健身”
+       - 例：起始节点是"和同事张三开会"，寻找"和张三一起健身"
      * **同一物品**：在该月，这个物品还出现在什么场景中？
-       - 例：起始节点是“收到李四送的书籍”，寻找“和李四讨论这本书”
+       - 例：起始节点是"收到李四送的书籍"，寻找"和李四讨论这本书"
 
 3. **设计推理关系**
    - 两个事件应该能通过实体形成一条推理链
    - 推理关系示例：
-     * “我过生日” --(和平饭店)--> “同事聚餐”
-     * “参加工作会议” --(张三)--> “和张三健身”
-     * “收到礼物” --(书籍)--> "和朋友讨论书"
+     * "我过生日" --(和平饭店)--> "同事聚餐"
+     * "参加工作会议" --(张三)--> "和张三健身"
+     * "收到礼物" --(书籍)--> "和朋友讨论书"
 
 4. **确定目标日期**
    - 从选中的目标事件中确定一个具体的日期（YYYY-MM-DD 格式）
@@ -975,8 +975,8 @@ class QAMultiHopGenerator(BaseQAGenerator):
 }}
 
 **示例**：
-如果起始节点是“在和平饭店过十周岁生日”，识别的实体是“和平饭店（地点）”，
-目标事件可能是“在和平饭店与同事聚餐”，推理关系是“我过生日 --(和平饭店)--> 同事聚餐”
+如果起始节点是"在和平饭店过十周岁生日"，识别的实体是"和平饭店（地点）"，
+目标事件可能是"在和平饭店与同事聚餐"，推理关系是"我过生日 --(和平饭店)--> 同事聚餐"
 """
         
         llm_result = llm_call(analysis_prompt)
@@ -1427,24 +1427,24 @@ class QAMultiHopGenerator(BaseQAGenerator):
 
 - 从推理节点或背景事件中选择多个相关事件，设计一个需要整合这些事件信息才能回答的问题
 - 示例：
-  * 事件1：“1月19号完成体检调研表”
-  * 事件2：“1月20号基于调研表和哥哥讨论”
-  * ✅ 好问题：“我1月20号和哥哥讨论的内容是什么时候制定的？”
+  * 事件1："1月19号完成体检调研表"
+  * 事件2："1月20号基于调研表和哥哥讨论"
+  * ✅ 好问题："我1月和哥哥讨论的内容是什么时候制定的？"
     - 答案需要整合：讨论内容（来自事件2） + 制定时间（来自事件1）
-  * ✅ 好问题：“我1月20号左右关于健康体检做了哪些事情？”
+  * ✅ 好问题："我1月下旬关于健康体检做了哪些事情？"
     - 答案需要整合：填写的项目（来自事件1） + 讨论对象（来自事件2）
 
 - 针对同一时间段或同一主题的多个事件，设计一个需要汇总所有相关信息的问题
 - 示例：
-  * 事件1：“1月15号和小红在公园跑步”
-  * 事件2：“1月18号和小红在湖边跑步”
-  * 事件3：“1月20号和小红在操场跑步”
-  * ✅ 好问题：“1月15号到20号这段时间我和小红去了哪些地方跑步？”
+  * 事件1："1月15号和小红在公园跑步"
+  * 事件2："1月18号和小红在湖边跑步"
+  * 事件3："1月20号和小红在操场跑步"
+  * ✅ 好问题："1月15号到20号这段时间我和小红去了哪些地方跑步？"
     - 答案需要整合：所有跑步地点（公园、湖边、操场）
-  * 事件1：“3月5号去北京出差”
-  * 事件2：“3月12号去上海开会”
-  * 事件3：“3月20号去广州参加展览”
-  * ✅ 好问题：“我3月份都去了哪些城市出差或参加活动？”
+  * 事件1："3月5号去北京出差"
+  * 事件2："3月12号去上海开会"
+  * 事件3："3月20号去广州参加展览"
+  * ✅ 好问题："我3月份都去了哪些城市出差或参加活动？"
     - 答案需要整合：所有城市（北京、上海、广州）
 
 💡 **关键原则**：
@@ -1454,7 +1454,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
 
 **备选策略：若难以设计多事件问题，可设计单跳查询问题**
 - 针对目标事件设计一个直接的查询问题
-- 示例：“3月4号我在和平饭店庆祝生日的时候和小明交谈了什么？”
+- 示例："3月4号我在和平饭店庆祝生日的时候和小明交谈了什么？"
 
 💡 **关键原则**：
 - 初始问题可以包含目标事件的直接信息（后续会被替换掉）
@@ -1467,17 +1467,17 @@ class QAMultiHopGenerator(BaseQAGenerator):
 
 **① 实体替换**（同实体关系）
 - 用具有相同实体（地点、人物、物品等）的其他事件来替换
-- ⚠️ **重要约束**：**不得提取用户主体（主角/“我”）作为同实体来替换**
-  * ❌ 错误：“我” → “那天去跑步的人”（禁止，因为“我”是用户主体）
-  * ✅ 正确：“和平饭店” → “我2月同事聚餐的地方”（地点替换）
-  * ✅ 正确：“小明” → “那天散步时遇到的邻居”（其他人物替换）
-  * ✅ 正确：“笔记本电脑” → “上周刚买的那台设备”（物品替换）
+- ⚠️ **重要约束**：**不得提取用户主体（主角/"我"）作为同实体来替换**
+  * ❌ 错误："我" → "那天去跑步的人"（禁止，因为"我"是用户主体）
+  * ✅ 正确："和平饭店" → "我2月同事聚餐的地方"（地点替换）
+  * ✅ 正确："小明" → "那天散步时遇到的邻居"（其他人物替换）
+  * ✅ 正确："笔记本电脑" → "上周刚买的那台设备"（物品替换）
 
 **② 因果替换**（因果/目的关系）
 - 用导致目标事件的原因或目标事件导致的结果来替换
 - 示例：
-  * “过生日” → “和小红在3月2号计划要做的事情”
-  * “庆祝生日” → “完成那个需要三个材料准备的任务后举行的活动”
+  * "过生日" → "和小红在3月2号计划要做的事情"
+  * "庆祝生日" → "完成那个需要三个材料准备的任务后举行的活动"
 
 ⚠️ **关键约束**：
 - 每次替换都必须使用**未使用节点**（即初始问题中未涉及的节点）
@@ -1495,7 +1495,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
 4. **合理性**：问题是否有实际意义？答案是否能从提供的节点中推理出来？
 5. **质量保障**：问题是否清晰、无歧义？
 6. **月份信息包含**：题面是否明确包含月份信息？
-7. **信息减少**：删除题面中包含的一些细节信息，尽可能多的减少信息量，但要保证问题可回答。例如我XX会上的主题为“植树节”的ppt是什么时候制作的？应该修改为我XX会上的ppt什么时候制作的？去除不必要的信息。
+7. **信息减少**：删除题面中包含的一些细节信息，尽可能多的减少信息量，但要保证问题可回答。例如我XX会上的主题为"植树节"的ppt是什么时候制作的？应该修改为我XX会上的ppt什么时候制作的？去除不必要的信息。
 
 **如果发现问题不自然或不合理**：
 - ✅ **可以完全重新设计问题和答案**，不必拘泥于之前的替换步骤
@@ -1504,8 +1504,8 @@ class QAMultiHopGenerator(BaseQAGenerator):
 - ✅ **最终目标是**：一个自然流畅、需要多跳推理、信息隐藏得当的高质量问题
 
 **润色示例**：
-- ❌ 不自然：“在我晋升主管的10天前，我在我2月同事聚餐的地方，做那件和小红在3月2号计划要做的事情时，和那天散步时遇到的邻居交谈了什么？”
-- ✅ 润色后：“我2月同事聚餐那天，我和散步时遇到的那位邻居聊起了之前和小红计划的事情，我们主要谈了什么？”
+- ❌ 不自然："在我晋升主管的10天前，我在我2月同事聚餐的地方，做那件和小红在3月2号计划要做的事情时，和那天散步时遇到的邻居交谈了什么？"
+- ✅ 润色后："我2月同事聚餐那天，我和散步时遇到的那位邻居聊起了之前和小红计划的事情，我们主要谈了什么？"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 【任务要求】
@@ -1573,18 +1573,18 @@ class QAMultiHopGenerator(BaseQAGenerator):
 - [ ] 题面是否有过于丰富的信息，尽可能减少信息和去除细节，来提高问题难度，但要保证足够回答问题的信息量。
 
 **题面清晰度检查**：
-- 问题中的每个指代（如“那个地方”、“那个人”、“那件事”）是否都有明确的推理路径可以定位？
+- 问题中的每个指代（如"那个地方"、"那个人"、"那件事"）是否都有明确的推理路径可以定位？
 - 是否存在多个可能的事件都符合描述，导致答案不唯一？
 - 示例：
-  - ❌ 模糊：“我去过的那个地方” （可能指多个地方）
-  - ✅ 清晰：“我2月同事聚餐的那个地方” （唯一定位到2月的聚餐事件）
+  - ❌ 模糊："我去过的那个地方" （可能指多个地方）
+  - ✅ 清晰："我2月同事聚餐的那个地方" （唯一定位到2月的聚餐事件）
 
 **答案可推导性检查**：
 - 从问题出发，是否能通过推理链唯一确定答案？
 - 是否存在多种可能的解释或答案？
 - 示例：
-  - ❌ 不可推导：“我和某人见面时聊了什么？”（“某人”不确定，“聊了什么”无法推导）
-  - ✅ 可推导：“我和那天散步时遇到的邻居交谈了什么？”（“那天散步时遇到的邻居”可以唯一定位到具体人物，进而推导出交谈内容）
+  - ❌ 不可推导："我和某人见面时聊了什么？"（"某人"不确定，"聊了什么"无法推导）
+  - ✅ 可推导："我和那天散步时遇到的邻居交谈了什么？"（"那天散步时遇到的邻居"可以唯一定位到具体人物，进而推导出交谈内容）
 
 如果以上任何一项不满足，请重新设计问题。
 """
@@ -1608,69 +1608,64 @@ class QAMultiHopGenerator(BaseQAGenerator):
                 print(f"[Generate Question & Data] 生成问题: {question[:80]}...")
                 print(f"[Generate Question & Data] 答案长度: {len(answer)} 字符")
                 print(f"[Generate Question & Data] 所需事件 ID: {required_events_id}")
-                
+
+                # 获取 required_events_id 对应的 daily_event 数据
+                required_events_data = {}
+                for eid in required_events_id:
+                    event_data = self._find_event_by_id(str(eid), self.daily_event)
+                    if event_data:
+                        required_events_data[str(eid)] = event_data
+
                 # Step 1.5: 检查并优化问题
                 check_prompt = f"""
-作为 Question Reviewer，请检查以下多跳推理问题的质量。
+作为 Question Reviewer，请检查并优化以下多跳推理问题的质量。尽量不对原问题做大的修改。
 
-【推理图节点】（共 {len(nodes)} 个）
-{json.dumps(nodes, ensure_ascii=False, indent=2)}
+【当前问题】
+{question}
 
-【推理图边】（共 {len(edges)} 条）
-{json.dumps(edges, ensure_ascii=False, indent=2)}
+【当前答案】
+{answer}
 
-【当前生成的问题与答案】
-- 问题：{question}
-- 答案：{answer}
-- 所需事件 ID：{required_events_id}
+【相关事件数据】
+{json.dumps(required_events_data, ensure_ascii=False, indent=2)}
 
 **检查标准**
 
-1. **问题和答案是否合理**
-   - 问题是否清晰、无歧义？
+1. **问题答案一致性**
+   - 问题是否清晰无歧义？
    - 答案是否正确回答了问题？
-   - 答案的推理过程是否合理？
+   - 答案是否包含问题要求回答的之外的信息？(若包含考虑增加问题的提问内容)
 
-2. **是否是多跳问题**
-   - 问题是否需要结合多个事件的信息才能回答？
-   - 是否需要多步骤推理才能得到答案？
-   - 是否涉及至少 2 个以上的节点？
+2. **多跳特性**
+   - 是否需要结合多个事件信息才能回答？
+   - 是否需要多步骤推理？
 
-3. **是否具有复杂性**
-   - 问题是否有一定的推理难度？
-   - 是否避免了过于简单直接的提问？
-   - 是否需要用户进行思考和分析？
+3. **复杂性**
+   - 是否有一定推理难度？
+   - 是否过于简单直接？
+   - 是否可以通过模糊/减少题面的信息来增加难度？（但要保证可回答性）
 
-4. **是否存在假的推理节点或无用信息**
-   - 问题中提到的所有节点是否都是必要的？
-   - 是否有实际上不需要推理就能回答的部分？
-   - 是否有冗余的、不影响答案的信息？
+4. **信息冗余**
+   - 是否有不影响答案的冗余描述？
+   - 是否可以简化而不影响回答？
 
-5. **是否可直接被回答**
-   - 问题是否可以不检索对应事件信息就直接回答？
-   - 问题是否过于宽泛或主观，导致无法基于具体事件回答？
-   - 例如：“我今天心情怎么样？”（太主观，无法基于事件回答）
+在完成上述检查并重新设计了问题后，对新的问题进行进一步优化:
+**优化步骤**
+在答案不变、题面整体目标不变的前提下：
+1. 找出题面中过于丰富、明确、冗余的信息
+2. 用更模糊的表达替换（如具体日期→X月）
+3. 删除不影响推理的冗余描述
+4. 确保优化后问题仍可回答
 
-**输出要求**
-
-请以 JSON 格式返回检查结果和改进后的问题数据（格式与上一轮相同）：
+**输出格式**
+请以 JSON 格式返回：
 {{
-    "question": "改进后的问题（如果没有问题则保持原样）",
-    "answer": "改进后的答案（如果没有问题则保持原样）",
-    "score_points": [
-        {{
-            "description": "评分要点描述",
-            "score": 25
-        }}
-    ],
-    "required_events_id": ["选中的节点对应的 event_id 列表"]
+    "is_valid": true/false,
+    "issues": ["问题列表（如果没有则为空数组）"],
+    "improved_question": "优化后的问题（如果无需优化则与原问题相同）",
+    "improved_answer": "优化后的答案（如果无需优化则与原答案相同）",
+    "reason": "优化说明或保持原样的原因"
 }}
-
-**注意**：
-- 如果问题已经很好，可以不做改进，但需要在 answer 中说明原因
-- 改进应该尽量保持原问题的核心意图
-- 只进行必要的最小化修改
-- 必须返回完整的 question、answer、score_points 和 required_events_id 字段
 """
                 print("[Generate Question & Data] 开始检查问题质量...")
                 check_result = llm_call_j(check_prompt)
@@ -1709,6 +1704,10 @@ class QAMultiHopGenerator(BaseQAGenerator):
                     'evidence':[],
                     'question_type': 'Multi_hop'
                 }
+
+                # Step 3: 检查相似事件混淆问题
+                print("\n[Generate Question & Data] Step 3: 检查相似事件混淆...")
+                qa_result = self._check_similar_events_confusion(qa_result)
 
                 # 验证 required_events_id，过滤无效的 event_id（如 node_1, node_2 等）
                 validated_ids = []
@@ -1873,17 +1872,17 @@ class QAMultiHopGenerator(BaseQAGenerator):
 sms, phonecall, photo, push, note, calendar
 
 **重要原则**
-1. **多跳推理设计（核心原则）**：
-   - 生成的手机数据必须分散在多个操作中，确保回答问题需要整合多个操作的信息
+1. **多跳推理设计（核心原则，设计生成数据时参考，生成多个数据）**：
+   - 生成的手机数据必须分散在多个操作中，使得信息碎片化，确保回答问题需要整合多个操作的信息
    - 不要在单个手机操作中包含完整答案信息
    - 每个操作只提供部分线索，需要通过多个操作的组合才能推理出完整答案
    - **示例**：
      - ❌ 错误：一个笔记包含"凌晨2点处理35床心衰的全过程"
-     - ✅ 正确：分散为多条数据
+     - ✅ 正确：分散为多条数据，每个类型的数据表示不同的碎片信息。
        * 短信："今晚加班，可能很晚回去"
        * 日历："凌晨2点，35床急诊"
        * 笔记："标注35床心衰病例重点"
-2. **降低重复性**：只有当确定缺乏关键信息，或缺乏足以支持回答的信息时，才考虑新增数据表达缺失信息。若已有数据能大致反映事件则不用新增。
+2. **降低重复性**：只有当确定缺乏关键信息，或缺乏足以支持回答的信息时，才考虑新增数据表达缺失信息。但是，一旦当你决定新增数据，就尽量为这个事件和目标信息生成多个不同类型的手机操作，把要补充的信息分散在多个操作中，这些操作之间形成信息互补关系。生成的手机操作的信息不要和已有信息重合。
 3. **重点优先**：不需要全面反映出事件的所有细节，只关注与问题相关的重点内容。
    - 例如：问题可能只问跑步频率，那只要手机数据能反映出用户跑步了就行，至于距离、时间可以不关心
    - 例如：如果问题问了跑量，则需要反映公里数
@@ -1899,9 +1898,9 @@ sms, phonecall, photo, push, note, calendar
    - 只生成包含缺少信息的数据，不要在数据中反映所有信息
    - **禁止**生成一个包含了事件所有信息或可以直接反映答案的充足数据（如一个反映了所有信息的笔记/信息）
    - **示例**：
-     - ✅ 缺少跑步公里数：生成短信"今天跑了 5 公里"或推送"你今日已运动 5 公里，十分健康"
-     - ❌ 不要生成：详细的跑步笔记，包含时间、路线，配速，心率等完整信息
-6. **谨慎删除**：**除非数据明显不合理，否则不要删除手机数据**。仅在数据存在明显错误或矛盾情况下考虑删除，有些数据是合理的噪声。当选择删除操作时，考虑该操作是否有事件相关的重要信息需要反应，如有则生成对应的新增操作。
+     - ✅ 缺少跑步公里数：生成短信"今天跑步的公里数记录在keep app里"和推送"[keep]你今日已运动 5 公里，十分健康"
+     - ❌ 不要生成：一条详细的跑步笔记，包含时间、路线，配速，心率等完整信息
+6. **谨慎删除**：**除非数据不合理且会干扰回答问题，否则不要删除手机数据**。仅在数据存在明显错误或矛盾情况下考虑删除，有些数据是合理的噪声。当选择删除操作时，考虑该手机数据是否有事件相关的信息需要反应，如有则生成对应的新增操作。
 
 **分析任务**
 请逐个分析每个事件的证据数据：
@@ -2430,9 +2429,523 @@ sms, phonecall, photo, push, note, calendar
         
         discarded_count = len(questions) - len(filtered_questions)
         print(f"\n[_filter_multi_hop_questions] 过滤完成：保留 {len(filtered_questions)} 个问题，抛弃 {discarded_count} 个问题")
-        
+
         return filtered_questions
-    
+
+    def _check_similar_events_confusion(self, qa_result: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        检查问题中的事件描述是否可能导致与相似事件混淆，并重写问题
+
+        Args:
+            qa_result: QA 结果
+
+        Returns:
+            可能已重写问题的 QA 结果
+        """
+        required_events_ids = qa_result.get('required_events_id', [])
+        if not required_events_ids:
+            return qa_result
+
+        # 收集所有事件及其日期信息，按月份分组
+        event_info_map = {}  # event_id -> event info
+        events_by_month = {}  # month -> list of events
+
+        for event_id in required_events_ids:
+            # 在 daily_event 中查找事件
+            target_event = None
+            for event in self.daily_event:
+                if str(event.get('event_id', '')) == str(event_id):
+                    target_event = event
+                    break
+
+            if not target_event:
+                continue
+
+            # 获取目标事件的日期
+            target_date = target_event.get('date', [])
+            if isinstance(target_date, list) and target_date:
+                target_date_str = target_date[0][:10] if target_date[0] else ''
+            else:
+                target_date_str = str(target_date)[:10] if target_date else ''
+
+            target_year = target_date_str[:4] if target_date_str else '2025'
+            target_month = int(target_date_str[5:7]) if len(target_date_str) >= 7 else 1
+
+            event_info_map[event_id] = {
+                'event_id': event_id,
+                'event': target_event,
+                'year': target_year,
+                'month': target_month,
+                'name': target_event.get('name', ''),
+                'description': target_event.get('description', '')[:200]
+            }
+
+            # 按月份分组
+            if target_month not in events_by_month:
+                events_by_month[target_month] = []
+            events_by_month[target_month].append({
+                'event_id': event_id,
+                'name': target_event.get('name', ''),
+                'description': target_event.get('description', '')
+            })
+
+        if not event_info_map:
+            return qa_result
+
+        # 批量查找每个月的相似事件
+        event_similar_events = []
+        for month, events_in_month in events_by_month.items():
+            # 使用批量查询（每月只调用一次 LLM）
+            event_ids_in_month = [e['event_id'] for e in events_in_month]
+            similar_map = self._find_similar_events_batch(events_in_month, '2025', month)
+
+            for event_id in event_ids_in_month:
+                similar_list = similar_map.get(event_id, [])
+                if similar_list:
+                    info = event_info_map[event_id]
+                    event_similar_events.append({
+                        'event_id': event_id,
+                        'event_name': info['name'],
+                        'event_description': info['description'],
+                        'similar_events': similar_list
+                    })
+
+        if not event_similar_events:
+            return qa_result
+
+        print(f"[_check_similar_events_confusion] 检查 {len(event_similar_events)} 个事件的相似事件...")
+
+        # ========== 收集事件相关的 daily_event 数据 ==========
+        date_daily_events = {}
+        all_dates = set()
+
+        # 收集目标事件的日期
+        for item in event_similar_events:
+            for date_str in item.get('event_date', '').split(','):
+                date_str = date_str.strip()[:10]
+                if date_str:
+                    all_dates.add(date_str)
+
+        # 收集相似事件的日期
+        for item in event_similar_events:
+            for sim_event in item.get('similar_events', []):
+                sim_date = str(sim_event.get('date', ''))[:10]
+                if sim_date:
+                    all_dates.add(sim_date)
+
+        # 获取每个日期的 daily_event
+        for date_str in all_dates:
+            date_daily_events[date_str] = self._get_unique_daily_events_for_date(date_str)
+
+        # ========== 第一轮 LLM：分析哪些事件可能会混淆 ==========
+        analysis_prompt = f"""
+作为问题质量审核专家，请分析以下多跳推理问题中的事件描述是否可能导致混淆。
+
+【当前问题】
+{qa_result.get('question', '')}
+
+【当前答案】
+{qa_result.get('answer', '')}
+
+【涉及的事件及其相似事件】
+{json.dumps(event_similar_events, ensure_ascii=False, indent=2)}
+
+【事件相关的 daily_event 数据】
+{json.dumps(date_daily_events, ensure_ascii=False, indent=2)}
+
+**分析任务**
+逐一检查每个目标事件与其相似事件，分析哪些会产生混淆：
+
+1. 对于每个目标事件，检查其相似事件列表
+2. 判断题面描述是否足够区分目标事件与相似事件
+3. 如果存在混淆风险，输出该事件及其日期，以及会导致混淆的相似事件详情
+
+**输出格式**
+请以 JSON 格式返回：
+{{
+    "confusion_analysis": [
+        {{
+            "event_id": "目标事件ID",
+            "event_name": "目标事件名称",
+            "event_date": "YYYY-MM-DD",
+            "confusing_similar_events": [
+                {{
+                    "date": "YYYY-MM-DD",
+                    "description": "相似事件描述",
+                    "similarity_reason": "相似原因"
+                }}
+            ]
+        }}
+    ],
+    "has_confusion": true/false
+}}
+"""
+        confusion_result = {}
+        try:
+            result = llm_call(analysis_prompt)
+            if isinstance(result, str):
+                start_idx = result.find('{')
+                end_idx = result.rfind('}') + 1
+                if start_idx != -1 and end_idx != -1:
+                    result = json.loads(result[start_idx:end_idx])
+
+            if isinstance(result, dict):
+                confusion_result = result
+                print(f"[_check_similar_events_confusion] 混淆分析结果: has_confusion={result.get('has_confusion', False)}")
+
+        except Exception as e:
+            print(f"[_check_similar_events_confusion] 第一轮分析失败: {e}")
+            return qa_result
+
+        if not confusion_result.get('has_confusion', False):
+            return qa_result
+
+        confusion_analysis = confusion_result.get('confusion_analysis', [])
+        if not confusion_analysis:
+            return qa_result
+
+        # ========== 第二轮 LLM：基于分析结果和 daily_event 重写问题 ==========
+        rewrite_prompt = f"""
+基于以下混淆分析结果，判断是否需要重写问题。
+
+【当前问题】
+{qa_result.get('question', '')}
+
+【当前答案】
+{qa_result.get('answer', '')}
+
+【混淆分析结果】
+{json.dumps(confusion_analysis, ensure_ascii=False, indent=2)}
+
+【各日期的 daily_event 数据】
+{json.dumps(date_daily_events, ensure_ascii=False, indent=2)}
+
+**第一步：判断是否需要重写**
+逐一检查每个目标事件的相似事件：
+1. 假设用户阅读问题描述后，能否明确区分目标事件和相似事件？
+2. 即：使用当前问题描述，回答相似事件的内容也算正确吗？
+   - 如果是 → 需要重写
+   - 如果否 → 不需要重写，保持原样
+
+**第二步：重写要求**（仅在需要重写时执行）
+1. 选取一个目标日期中独特的事件作为区分锚点
+2. 将该区分事件的描述加入问题题面
+3. 必须从 daily_event 数据中返回对应的 event_id
+
+**示例**
+原问题："今年3月我和朋友聚会聊天，有的朋友给我鼓励打气，想问问具体说了什么？"
+重写后："今年3月5日上午刚给父亲买了按摩仪，下午和朋友们聚会聊天（那天聊了很多工作近况），有的朋友给我鼓励打气，想问问具体说了什么？"
+新增事件ID：["123"]
+
+**输出格式**
+{{
+    "needs_rewrite": true/false,
+    "rewritten_question": "添加区分性描述后的问题（仅当 needs_rewrite=true 时）",
+    "additional_required_events": ["返回新增事件的 event_id（仅当 needs_rewrite=true 时）"]
+}}
+"""
+        try:
+            result = llm_call(rewrite_prompt)
+            if isinstance(result, str):
+                start_idx = result.find('{')
+                end_idx = result.rfind('}') + 1
+                if start_idx != -1 and end_idx != -1:
+                    result = json.loads(result[start_idx:end_idx])
+
+            if isinstance(result, dict):
+                needs_rewrite = result.get('needs_rewrite', False)
+                new_q = result.get('rewritten_question', '')
+                additional_events = result.get('additional_required_events', [])
+
+                print(f"\n[_check_similar_events_confusion] 第二轮 LLM 返回:")
+                print(f"  needs_rewrite: {needs_rewrite}")
+                print(f"  rewritten_question: {new_q[:100] if new_q else 'N/A'}...")
+                print(f"  additional_required_events: {additional_events}")
+                print(f"  原始 required_events_id: {qa_result.get('required_events_id', [])}")
+
+                if needs_rewrite and new_q:
+                    print(f"\n[_check_similar_events_confusion] 问题描述已重写:")
+                    print(f"  原问题: {qa_result.get('question', '')[:80]}...")
+                    print(f"  新问题: {new_q[:80]}...")
+
+                    qa_result['question'] = new_q
+
+                    if additional_events:
+                        current_required = qa_result.get('required_events_id', [])
+                        for evt_id in additional_events:
+                            if evt_id not in current_required:
+                                current_required.append(evt_id)
+                        qa_result['required_events_id'] = current_required
+                        print(f"  更新后 required_events_id: {current_required}")
+                    else:
+                        print(f"  未新增事件ID，保留原 required_events_id: {qa_result.get('required_events_id', [])}")
+
+                    qa_result['rewritten_for_similarity'] = True
+                elif not needs_rewrite:
+                    print(f"[_check_similar_events_confusion] 不需要重写，保持原问题")
+
+        except Exception as e:
+            print(f"[_check_similar_events_confusion] 第二轮重写失败: {e}")
+
+        return qa_result
+
+
+    def _find_similar_events_batch(self, events: List[Dict], year: str, target_month: int) -> Dict[str, List[Dict]]:
+        """
+        批量查找多个事件的相似事件（每月只调用一次 LLM）
+
+        Args:
+            events: 目标事件列表，每个元素包含 event_id, name, description
+            year: 年份
+            target_month: 目标月份
+
+        Returns:
+            Dict[str, List[Dict]]: key 为 event_id，value 为该事件的相似事件列表
+        """
+        if not events:
+            return {}
+
+        # 收集该月及之前月份的所有 draft events
+        draft_events_to_check = []
+        for month in range(1, target_month + 1):
+            month_key = f"{year}-{month:02d}"
+            if month_key not in self.draft_event:
+                continue
+
+            month_data = self.draft_event[month_key]
+            if not isinstance(month_data, list):
+                continue
+
+            for day_data in month_data:
+                date_str = day_data.get('date', '')
+                events_list = day_data.get('events', [])
+                if not isinstance(events_list, list):
+                    continue
+
+                for evt in events_list:
+                    evt_id = evt.get('event_id', [])
+                    if isinstance(evt_id, list) and evt_id:
+                        evt_id_str = evt_id[0]
+                    else:
+                        evt_id_str = str(evt_id) if evt_id else ''
+
+                    draft_events_to_check.append({
+                        'event_id': evt_id_str,
+                        'date': date_str,
+                        'name': evt.get('name', ''),
+                        'description': evt.get('description', '')
+                    })
+
+        if not draft_events_to_check:
+            return {}
+
+        # 构建批量查询 prompt
+        prompt = f"""
+作为相似度分析专家，请为以下 {len(events)} 个目标事件各找出与它们极度相似的历史事件。
+
+**极度相似的定义**：主要内容相似，但发生时间和一些细节不一样。
+如果直接提问"今年XXX"，可能导致指代不明确、混淆。
+
+【目标事件列表】
+{json.dumps(events, ensure_ascii=False, indent=2)}
+
+【候选事件列表】（共 {len(draft_events_to_check)} 个）
+{json.dumps(draft_events_to_check, ensure_ascii=False, indent=2)}
+
+**输出要求**
+请以 JSON 格式返回每个目标事件的相似事件：
+{{
+    "results": [
+        {{
+            "target_event_id": "目标事件ID",
+            "similar_events": [
+                {{
+                    "date": "YYYY-MM-DD",
+                    "description": "事件描述",
+                    "similarity_reason": "相似原因说明"
+                }}
+            ]
+        }}
+    ]
+}}
+
+注意：
+1. 为每个目标事件分别找出与它极度相似的历史事件
+2. 如果某个目标事件没有相似事件，similar_events 返回空数组
+3. 每个目标事件最多返回 5 个最相似的事件
+4. 重点关注事件类型、人物关系、活动内容相似的条目
+5. 输出时 description 字段请使用完整描述，不要截断
+"""
+        try:
+            result = llm_call_j(prompt)
+            if isinstance(result, str):
+                start_idx = result.find('{')
+                end_idx = result.rfind('}') + 1
+                if start_idx != -1 and end_idx != -1:
+                    result = json.loads(result[start_idx:end_idx])
+
+            if isinstance(result, dict):
+                results = result.get('results', [])
+                print(f"[_find_similar_events_batch] LLM 返回 {len(results)} 个结果")
+
+                # 转换为 Dict[str, List[Dict]]
+                event_similar_map = {}
+                for item in results:
+                    target_id = item.get('target_event_id', '')
+                    similar_list = item.get('similar_events', [])[:5]
+                    if target_id:
+                        event_similar_map[target_id] = similar_list
+
+                return event_similar_map
+
+        except Exception as e:
+            print(f"[_find_similar_events_batch] 分析失败: {e}")
+
+        return {}
+
+    def _get_unique_daily_events_for_date(self, date_str: str) -> List[Dict]:
+        """
+        获取指定日期的所有 daily_event，选取较为独特的事件作为区分参考
+
+        Args:
+            date_str: 日期字符串 (YYYY-MM-DD)
+
+        Returns:
+            该日期的 daily_event 列表
+        """
+        if not date_str or not self.daily_event:
+            return []
+
+        unique_events = []
+        for event in self.daily_event:
+            event_dates = event.get('date', [])
+            if not event_dates:
+                continue
+
+            # 检查事件是否在目标日期
+            event_date_str = ''
+            for d in event_dates:
+                if isinstance(d, str) and d.startswith(date_str):
+                    event_date_str = date_str
+                    break
+
+            if event_date_str == date_str:
+                unique_events.append({
+                    'event_id': event.get('event_id', ''),
+                    'name': event.get('name', ''),
+                    'description': event.get('description', ''),
+                    'date': event.get('date', []),
+                    'type': event.get('type', ''),
+                    'location': event.get('location', ''),
+                    'participant': event.get('participant', [])
+                })
+
+        return unique_events
+
+    def _find_similar_confusing_events(self, target_event: Dict, year: str, target_month: int) -> List[Dict]:
+        """
+        使用 LLM 查找与目标事件极度相似的历史事件
+
+        Args:
+            target_event: 目标事件
+            year: 年份
+            target_month: 目标月份
+
+        Returns:
+            相似事件列表
+        """
+        target_event_id = target_event.get('event_id', '')
+        target_desc = target_event.get('description', '')
+        target_name = target_event.get('name', target_event.get('event_name', ''))
+
+        # 收集该月及之前月份的所有 draft events
+        draft_events_to_check = []
+        for month in range(1, target_month + 1):
+            month_key = f"{year}-{month:02d}"
+            if month_key not in self.draft_event:
+                continue
+
+            month_data = self.draft_event[month_key]
+            if not isinstance(month_data, list):
+                continue
+
+            for day_data in month_data:
+                date_str = day_data.get('date', '')
+                events_list = day_data.get('events', [])
+                if not isinstance(events_list, list):
+                    continue
+
+                for evt in events_list:
+                    evt_id = evt.get('event_id', [])
+                    if isinstance(evt_id, list) and evt_id:
+                        evt_id_str = evt_id[0]
+                    else:
+                        evt_id_str = str(evt_id) if evt_id else ''
+
+                    # 排除目标事件本身
+                    if evt_id_str == target_event_id:
+                        continue
+
+                    draft_events_to_check.append({
+                        'date': date_str,
+                        'name': evt.get('name', ''),
+                        'description': evt.get('description', '')
+                    })
+
+        if not draft_events_to_check:
+            return []
+
+        # 调用 LLM 查找相似事件
+        prompt = f"""
+作为相似度分析专家，请从以下候选事件中找出与目标事件极度相似的历史事件。
+
+**极度相似的定义**：主要内容相似，但发生时间和一些细节不一样。
+如果直接提问"今年XXX"，可能导致指代不明确、混淆。
+
+【目标事件】
+事件名称：{target_name}
+事件描述：{target_desc[:500]}
+
+【候选事件列表】（共 {len(draft_events_to_check)} 个）
+{json.dumps(draft_events_to_check, ensure_ascii=False, indent=2)}
+
+**输出要求**
+请以 JSON 格式返回极度相似的事件列表：
+{{
+    "similar_events": [
+        {{
+            "date": "YYYY-MM-DD",
+            "description": "事件描述（全量内容）",
+            "similarity_reason": "相似原因说明"
+        }}
+    ]
+}}
+
+注意：
+1. 只返回与目标事件极度相似的历史事件
+2. 如果没有找到相似事件，返回空的 similar_events 数组
+3. 最多返回 5 个最相似的事件
+4. 重点关注事件类型、人物关系、活动内容相似的条目
+5. 输出时 description 字段请使用完整描述，不要截断
+"""
+        try:
+            result = llm_call_j(prompt)
+            if isinstance(result, str):
+                start_idx = result.find('{')
+                end_idx = result.rfind('}') + 1
+                if start_idx != -1 and end_idx != -1:
+                    result = json.loads(result[start_idx:end_idx])
+
+            if isinstance(result, dict):
+                similar_events = result.get('similar_events', [])
+                print(f"[_find_similar_confusing_events] LLM 返回 {len(similar_events)} 个相似事件")
+                return similar_events[:5]
+
+        except Exception as e:
+            print(f"[_find_similar_confusing_events] 分析失败: {e}")
+
+        return []
+
     def _get_background_events_for_target(self, target_time: str) -> List[Dict]:
         """
         获取目标事件前后各一天的 daily_event 作为背景素材
