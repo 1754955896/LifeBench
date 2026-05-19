@@ -128,6 +128,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     file_path = args.file_path
+    # 确保 file_path 以 / 结尾
+    if not file_path.endswith('/'):
+        file_path += '/'
     start_time = args.start_time
     end_time = args.end_time
     persona = read_json_file(file_path + 'persona.json')

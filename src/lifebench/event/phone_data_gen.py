@@ -692,10 +692,14 @@ def process_single_date_dynamic(date, contact, file_path, matcher,
                     item['event_id'] = item.pop('atomic_id')
 
                 # 重命名字段后：检查 daily_event_id 是否为有效数字/字符串数字，若无效则抛弃该数据
+                # 注意：fitness_health 类型数据不受此约束，允许 daily_event_id 为 None
                 valid_data = []
                 for item in data_list:
                     deid = item.get('daily_event_id')
-                    if isinstance(deid, int):
+                    # fitness_health 类型允许 daily_event_id 为 None
+                    if filename == 'event_fitness_health.json':
+                        valid_data.append(item)
+                    elif isinstance(deid, int):
                         valid_data.append(item)
                     elif isinstance(deid, str) and deid.isdigit():
                         valid_data.append(item)
