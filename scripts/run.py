@@ -3,6 +3,7 @@ import os
 import time
 import argparse
 import subprocess
+import json
 
 
 def parse_args():
@@ -33,6 +34,8 @@ def parse_args():
                         help='是否生成QA（默认：1）')
     parser.add_argument('--year', type=int, default=2025,
                         help='生成数据的年份（默认：2025）')
+    parser.add_argument('--dry-run', action='store_true',
+                        help='仅创建占位文件，不实际生成数据（用于测试流程）')
 
     return parser.parse_args()
 
@@ -213,7 +216,57 @@ if __name__ == '__main__':
     project_root = os.path.dirname(script_dir)
     if project_root not in sys.path:
         sys.path.insert(0, project_root)
-    
+
+    # DRY_RUN 模式：创建所有占位文件
+    if args.dry_run:
+        print(f"\n{'='*60}")
+        print(f"[DRY RUN] 创建占位文件")
+        print(f"{'='*60}")
+
+        # 确保 base_path 目录存在
+        os.makedirs(args.base_path, exist_ok=True)
+
+        # 创建核心占位文件
+        placeholder_files = ['daily_draft.json', 'daily_event.json', 'event_tree.json']
+        for filename in placeholder_files:
+            filepath = os.path.join(args.base_path, filename)
+            with open(filepath, 'w', encoding='utf-8') as f:
+                json.dump({}, f)
+            print(f"已创建占位文件: {filepath}")
+
+        # 创建 process 文件夹及占位文件
+        process_folder = os.path.join(args.base_path, args.process_path)
+        os.makedirs(process_folder, exist_ok=True)
+        with open(os.path.join(process_folder, 'final_timeline.json'), 'w', encoding='utf-8') as f:
+            json.dump({}, f)
+        print(f"已创建: {process_folder}/final_timeline.json")
+
+        # 创建 phone_data 占位文件
+        phone_data_dir = os.path.join(args.base_path, 'phone_data')
+        os.makedirs(phone_data_dir, exist_ok=True)
+        with open(os.path.join(phone_data_dir, 'contact.json'), 'w', encoding='utf-8') as f:
+            json.dump([], f)
+        print(f"已创建占位文件: {phone_data_dir}/contact.json")
+
+        # 创建 QA 占位文件
+        qa_dir = os.path.join(args.base_path, 'QA_all')
+        os.makedirs(qa_dir, exist_ok=True)
+        with open(os.path.join(qa_dir, 'QA.json'), 'w', encoding='utf-8') as f:
+            json.dump([], f)
+        print(f"已创建占位文件: {qa_dir}/QA.json")
+
+        # 创建 summary 占位文件
+        summary_dir = os.path.join(args.base_path, 'summary')
+        os.makedirs(summary_dir, exist_ok=True)
+        with open(os.path.join(summary_dir, 'all_monthly_health_reports.json'), 'w', encoding='utf-8') as f:
+            json.dump([], f)
+        print(f"已创建占位文件: {summary_dir}/all_monthly_health_reports.json")
+
+        print(f"\n{'='*60}")
+        print(f"[DRY RUN] 所有占位文件创建完成")
+        print(f"{'='*60}")
+        sys.exit(0)
+
     # 检查对应文件夹中是否存在daily_draft.json文件
     daily_draft_path = os.path.join(args.base_path, 'daily_draft.json')
     if os.path.exists(daily_draft_path):
@@ -357,8 +410,8 @@ if __name__ == '__main__':
             print(f"\n{'='*60}")
             print(f"开始生成手机数据...")
             print(f"{'='*60}")
-            
-            # 构建phone_gen.py的命令行参数
+
+                # 构建phone_gen.py的命令行参数
             phone_gen_cmd = [
                 sys.executable,
                 os.path.join(os.path.dirname(__file__), 'run', 'phone_gen.py'),
@@ -367,7 +420,7 @@ if __name__ == '__main__':
                 '--end-time', '2025-12-31',    # 使用默认结束日期
                 '--max-workers', '40',          # 使用默认线程数
             ]
-            
+
             # 执行phone_gen.py脚本
             try:
                 result = subprocess.run(phone_gen_cmd, check=True, capture_output=True, text=True)

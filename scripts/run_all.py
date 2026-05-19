@@ -9,7 +9,7 @@ import argparse
 
 def parse_args():
     parser = argparse.ArgumentParser(description='批量运行人物数据生成')
-    parser.add_argument('--persona-folder', type=str, default='data/',
+    parser.add_argument('--persona-folder', type=str, default='input/',
                         help='人物数据文件夹路径')
     parser.add_argument('--start-id', type=int, default=0,
                         help='开始的人物ID')
@@ -29,6 +29,8 @@ def parse_args():
                         help='是否执行QA生成（默认：1）')
     parser.add_argument('--year', type=int, default=2025,
                         help='生成数据的年份（默认：2025）')
+    parser.add_argument('--dry-run', action='store_true',
+                        help='仅打印将要执行的操作，不实际运行')
     return parser.parse_args()
 
 def run_script(script_path, description, args=None):
@@ -126,6 +128,10 @@ def run_for_persona(persona_data, persona_folder, instance_id, args):
         # 添加可选参数
         if args.max_workers is not None:
             run_args.extend(["--max-workers", str(args.max_workers)])
+
+        # 添加 dry-run 参数
+        if args.dry_run:
+            run_args.append("--dry-run")
         
         # 调用集成好的run.py
         scripts = [{
@@ -169,13 +175,19 @@ def main():
     """
     主函数，实现批量运行功能
     """
-    
+
     # 解析命令行参数
     args = parse_args()
-    
+
     # 设置工作目录为脚本所在目录
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    os.chdir(script_dir)
+
+    # 将 persona_folder 转为绝对路径，确保相对于项目根目录解析
+    if not os.path.isabs(args.persona_folder):
+        project_root = os.path.dirname(script_dir)
+        args.persona_folder = os.path.join(project_root, args.persona_folder)
+
     # 读取person.json文件
     person_json_path = os.path.join(args.persona_folder, "person.json")
     if not os.path.exists(person_json_path):
@@ -216,10 +228,13 @@ def main():
         
         # 将姓名转换为拼音
         pinyin_name = ''.join(pypinyin.lazy_pinyin(name))
-        
+
         # 创建文件夹名称
         persona_folder_name = f"{pinyin_name}_{i+1}"
-        persona_folder = os.path.join("../output", persona_folder_name)
+        # 使用绝对路径，确保传递给 run.py 时路径正确
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(script_dir)
+        persona_folder = os.path.join(project_root, "output", persona_folder_name)
         
         # 执行流程
         if run_for_persona(persona, persona_folder, i+1, args):
