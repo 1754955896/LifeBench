@@ -16,7 +16,8 @@ class QAConflictGenerator(BaseQAGenerator):
 
     def __init__(self, daily_event: List[Dict], draft_event: Dict[str, List],
                  phonedata: Dict[str, List], phone_data_dir: str = None,
-                 is_print: bool = True, year: int = 2025):
+                 is_print: bool = True, year: int = 2025,
+                 persona_data: Dict[str, Any] = None):
         """
         初始化冲突问题生成器
 
@@ -27,6 +28,7 @@ class QAConflictGenerator(BaseQAGenerator):
             phone_data_dir: 手机数据目录路径
             is_print: 是否打印调试信息
             year: 年份，默认 2025
+            persona_data: 用户画像数据，包含 name 字段
         """
         super().__init__()
         self.daily_event = daily_event
@@ -34,6 +36,8 @@ class QAConflictGenerator(BaseQAGenerator):
         self.phonedata = phonedata
         self.phone_data_dir = phone_data_dir
         self.is_print = is_print
+        self.persona_data = persona_data or {}
+        self.persona_name = self.persona_data.get('name', '用户')
 
         # 线程锁
         self.phonedata_lock = threading.Lock()
@@ -65,17 +69,19 @@ class QAConflictGenerator(BaseQAGenerator):
             return None
         
         prompt = f"""
-        作为月度事件总结专家，请分析以下 {month_key} 的生活记录数据，输出用户本月主要做了什么。
-        
+        作为月度事件总结专家，请分析以下 {month_key} 的生活记录数据，输出{self.persona_name}本月主要做了什么。
+
+        **重要**：请使用 {self.persona_name} 而不是"我/自己"来指代用户。
+
         【月份数据】
         {json.dumps(month_events, ensure_ascii=False, indent=2)}
-        
+
         **核心要求**
-        - **叙述性总结**：以"用户这个月主要做了什么"的角度进行总结
+        - **叙述性总结**：以"{self.persona_name}这个月主要做了什么"的角度进行总结
         - **包含重要事件**：出行、娱乐、工作成就、社交活动等重要活动都要包含
         - **数量限制**：只输出 10-15 个最主要的事件
         - **独立性保证**：输出的事件之间不应存在可合并的步骤关系
-        
+
         **提取标准**
         1. **出行旅游事件**：短途旅行、长途旅游、出差等
         2. **娱乐休闲事件**：看电影、演唱会、聚会、运动比赛等
@@ -83,17 +89,17 @@ class QAConflictGenerator(BaseQAGenerator):
         4. **健康医疗事件**：体检、治疗、健身突破等
         5. **社交人际事件**：重要聚会、拜访亲友、参加活动等
         6. **其他重要事件**：购物大件、搬家整理、特殊体验等
-        
+
         **排除标准**
         ❌ 不要提取日常琐事（普通用餐、通勤、日常购物等）
         ❌ 不要提取规划性事件（计划但未执行的活动）
-        
+
         **输出要求**
         请以 JSON 格式返回数组：
         [
             {{
                 "date": "YYYY-MM-DD 或 YYYY-MM-DD 至 YYYY-MM-DD",
-                "event_description": "事件描述（简洁突出用户做了什么）",
+                "event_description": "事件描述（简洁突出{self.persona_name}做了什么）",
                 "event_type": "事件类型（出行/娱乐/工作/健康/社交/其他）"
             }}
         ]
@@ -418,7 +424,9 @@ class QAConflictGenerator(BaseQAGenerator):
         
         prompt = f"""
         作为冲突情节设计师，请基于以下事件，设计一个合理的冲突场景。
-        
+
+        **重要**：请使用 {self.persona_name} 而不是"我/自己"来指代用户。在生成的手机数据内容中，也必须使用 {self.persona_name}。
+
         【原始事件】
         {json.dumps(event_info, ensure_ascii=False, indent=2)}
         
@@ -430,6 +438,27 @@ class QAConflictGenerator(BaseQAGenerator):
         - **如果当前类型难以设计出合理、自然的冲突情节，可以自由选择其他更适合的冲突类型**
         - 优先考虑冲突的合理性、真实性和可设计性，不必严格遵循指定的类型
         - 最终目标是生成一个逻辑清晰、符合生活场景的冲突故事
+
+        **选择记错内容的指导原则**
+        在设计冲突情节之前，先分析事件的特点，选择最容易被误导且有意义的方面：
+
+        1. **分析事件的独特性**：
+           - **一次性/罕见事件**（如：手术抢救、车祸、参加特定聚会、获得奖项等）：日期、地点、参与人物、具体内容都可以作为提问焦点
+           - **日常重复性事件**（如：晨跑、上班通勤、常规健身、吃饭睡觉等）：不建议记错日期（因为每天都在做，日期没有特殊性），更适合记错具体内容（如跑了多远、吃的什么）、参与人物（和谁一起）、地点细微差别等
+
+        2. **地点的稳定性**：
+           - **固定常用地点**（如：上班公司、常去的健身房、家、固定的咖啡店）：不建议设计记错地点，因为这类地点不会混淆
+           - **一次性/不常去的地点**（如：出差城市、旅游景点、参加活动的场所、探访的朋友家）：可以设计记错地点
+
+        3. **人物的可混淆性**：
+           - **重要人物/唯一参与者**（如：手术中的主刀医生、独自完成的事件）：可以设计记错人物
+           - **普通社交场合**（如：和很多人一起参加的活动）：可以设计记错具体和谁一起
+
+        4. **选择记错内容的判断标准**：
+           - 如果事件是**重要的、罕见的、有明确日期的**，优先考虑记错日期
+           - 如果事件是**日常重复的**，优先考虑记错具体内容/参与人物/感受细节
+           - 如果地点是**不熟悉的**，可以记错地点
+           - 避免选择那些"不太可能记错"的内容（稳定的工作地点、每天都见的家人等）
         
         **冲突类型详解（指导错误信息的设计）**
         
@@ -461,12 +490,12 @@ class QAConflictGenerator(BaseQAGenerator):
         
         6. **意图与行动不符**：用户原本打算做某事，但实际做了另一件事
            - 错误信息来源：表达意图的信息 vs 实际行动的记录
-           - 示例：说“我打算5月去”，但实际4月就去了；或者说“我要去A地”，但实际去了B地
+           - 示例：说"我打算5月去"，但实际4月就去了；或者说"我要去A地"，但实际去了B地
            - 关键：体现意图声明和实际行动的差异
                 
         7. **记忆冲突（回忆冲突）**：在后续回忆该事件时给出了错误的信息
            - 错误信息来源：事后回忆、聊天回顾、笔记记录时的错误记忆
-           - 示例：事件发生在4月15日，但在5月份回忆时说“我记得是4月20日”；或者在6月份和朋友聊天时说错地点
+           - 示例：事件发生在4月15日，但在5月份回忆时说"我记得是4月20日"；或者在6月份和朋友聊天时说错地点
            - 关键：**错误情节必须发生在原事件之后**，体现记忆的偏差或遗忘
            - 特点：不需要纠正情节，因为这是纯粹的回忆错误，原事件已经正常发生
         
@@ -488,30 +517,30 @@ class QAConflictGenerator(BaseQAGenerator):
            - 在原事件之前，生成**1-3条**与最终事实不符的信息
            - **多条错误情节可以互相印证**，形成一个看似合理但实际错误的链条
            - 例如：
-             * 先发信息说“计划5月15日去北京”
-             * 过几天又说“我订了5月15日的机票”（印证前面的说法）
-             * 再过几天说“酒店也订好了，5月15-17日”（继续印证）
+             * 先发信息说"计划5月15日去北京"
+             * 过几天又说"我订了5月15日的机票"（印证前面的说法）
+             * 再过几天说"酒店也订好了，5月15-17日"（继续印证）
              * （这些都是错误的，实际是4月15日）
            - **互相印证的示例**：
-             * 第一条：“我查了下日历，你生日好像是5月15日”
-             * 第二条：“我刚跟朋友确认了，他说也是5月15日”（用第三方印证）
-             * 第三条：“我订了5月15日的餐厅，到时候见”（用行动印证）
+             * 第一条："我查了下日历，你生日好像是5月15日"
+             * 第二条："我刚跟朋友确认了，他说也是5月15日"（用第三方印证）
+             * 第三条："我订了5月15日的餐厅，到时候见"（用行动印证）
            - 多条互相印证的错误信息会让冲突更真实、更有说服力
            - 这些错误信息要符合冲突类型的特征
                            
            **第二步：纠正错误信息（只生成一条）**
            - 在原事件发生前，必须有**且仅有一条**明确的情节显示所有错误被纠正
-           - **纠正方式要自然含蓄**：不要直接说出正确答案，而是表达“我之前的信息有误”、“我需要重新确认/安排”
+           - **纠正方式要自然含蓄**：不要直接说出正确答案，而是表达"我之前的信息有误"、"我需要重新确认/安排"
            - **关键要求**：纠正信息只声明自己纠正了，但**不需要告诉具体正确内容**
            - 例如：
-             * “不好意思，我之前说的时间可能不对，我需要重新确认一下”（不说正确时间）
-             * “我发现之前搞错了，让我重新安排一下时间”（不说新时间）
-             * “等等，我刚才发现有些问题，我们重新商量一下”（不说具体问题）
-             * “我之前说的都不算数了，有变动，稍后告诉你准确信息”（不说准确信息）
-             * “之前的计划有变，我重新安排了”（不说新计划）
-           - **禁止**：纠正信息中直接说出正确答案（如“应该是4月15日”）
+             * "不好意思，我之前说的时间可能不对，我需要重新确认一下"（不说正确时间）
+             * "我发现之前搞错了，让我重新安排一下时间"（不说新时间）
+             * "等等，我刚才发现有些问题，我们重新商量一下"（不说具体问题）
+             * "我之前说的都不算数了，有变动，稍后告诉你准确信息"（不说准确信息）
+             * "之前的计划有变，我重新安排了"（不说新计划）
+           - **禁止**：纠正信息中直接说出正确答案（如"应该是4月15日"）
            - 纠正情节要让原事件的发生变得合理、不突兀
-           - **关键**：纠正信息应该体现“意识到错误 → 重新确认/安排”的过程，但**不透露最终结果**
+           - **关键**：纠正信息应该体现"意识到错误 → 重新确认/安排"的过程，但**不透露最终结果**
                            
            **第三步：原事件正常发生**
            - 原事件按照最初的事实正常进行
@@ -524,7 +553,7 @@ class QAConflictGenerator(BaseQAGenerator):
            - 生成**1-2条**回忆时的错误信息
            - 例如：
              * 原事件是4月15日参加聚会
-             * 5月10日：发短信给朋友说“我记得上次聚会是4月20日吧？”（实际是4月15日）
+             * 5月10日：发短信给朋友说"我记得上次聚会是4月20日吧？"（实际是4月15日）
              * 或者在6月份记录笔记时写错日期
            - **不需要纠正情节**，因为这是纯粹的回忆错误
            - 错误信息要体现记忆的偏差、遗忘或混淆
@@ -544,12 +573,12 @@ class QAConflictGenerator(BaseQAGenerator):
              * 例如：给朋友发信息说错时间、收到朋友的纠正信息、和朋友确认日程等
              * 特点：双向沟通，可以体现信息传递错误或协调不一致
            - **agent_chat（AI智能体对话）**：适合询问AI智能体的场景，可向AI智能体透露信息
-             * 例如：问AI“我5月15日有什么安排？”（实际是4月15日）、让AI提醒错误的时间等
+             * 例如：问AI"我5月15日有什么安排？"（实际是4月15日）、让AI提醒错误的时间等
              * 特点：用户向AI透露错误信息，AI基于错误信息给出回应，后续可纠正
            - **calendar（日历）**：适合记录错误的时间安排，后续可以被纠正或更新
              * 例如：在日历中错误地标记了5月15日的活动，后来被告知后修改为4月15日
            - **note（笔记）**：适合记录从别人那得到的错误信息，或者自己记错的内容
-             * 例如：记下“朋友生日是5月15日”，后来发现记错了
+             * 例如：记下"朋友生日是5月15日"，后来发现记错了
              * 例如：记录会议时间，但信息来源有误，后续收到纠正通知
            - 至少需要2条数据：一条错误信息 + 一条纠正信息
            - **content_hint 必须明确包含要生成的数据的具体内容**，不能只是模糊的提示
@@ -561,22 +590,22 @@ class QAConflictGenerator(BaseQAGenerator):
         
         **示例场景**
         
-        假设原事件是“4月15日参加朋友的生日聚会”
+        假设原事件是"4月15日参加朋友的生日聚会"
         
         ✅ **正确设计（前6种类型，包含纠正）**：
-        - 4月5日：发短信给朋友“我可能5月15日才能参加你的生日聚会了，4月有事”
-        - 4月10日：再发短信“不好意思，我重新安排了时间，4月15日可以参加了！之前说的5月不对”
+        - 4月5日：发短信给朋友"我可能5月15日才能参加你的生日聚会了，4月有事"
+        - 4月10日：再发短信"不好意思，我重新安排了时间，4月15日可以参加了！之前说的5月不对"
         - 4月15日：原事件正常发生（参加生日聚会）
         
         ❌ **错误设计（前6种类型，缺少纠正）**：
-        - 4月5日：发短信说“我5月15日参加你的生日聚会”
+        - 4月5日：发短信说"我5月15日参加你的生日聚会"
         - 4月15日：原事件发生（参加生日聚会）
         - 问题：没有纠正情节，4月15日的发生显得突兀
         
         ✅ **正确设计（第7种类型，记忆冲突）**：
         - 4月15日：原事件正常发生（参加生日聚会）
-        - 5月20日：发短信给朋友说“我记得上次聚会是4月20日吧？”（实际是4月15日）
-        - 或者在6月份记录笔记时写错日期：“4月20日参加了张三的生日聚会”
+        - 5月20日：发短信给朋友说"我记得上次聚会是4月20日吧？"（实际是4月15日）
+        - 或者在6月份记录笔记时写错日期："4月20日参加了张三的生日聚会"
         - 特点：错误发生在事后，不需要纠正，体现记忆的偏差
         
         **输出要求**
@@ -653,8 +682,9 @@ class QAConflictGenerator(BaseQAGenerator):
             content_hint = plot.get('content_hint', '')
             plot_role = plot.get('plot_role', '')
 
-            # 只支持这四种类型
-            if data_type not in ['sms', 'note', 'calendar', 'agent_chat']:
+            # 支持多种类型：sms, note, calendar, agent_chat, phonecall, photo, push
+            supported_types = ['sms', 'note', 'calendar', 'agent_chat', 'phonecall', 'photo', 'push']
+            if data_type not in supported_types:
                 print(f"[Generate Phone Data] 不支持的数据类型：{data_type}，跳过")
                 continue
 
@@ -679,28 +709,34 @@ class QAConflictGenerator(BaseQAGenerator):
 - 日期: {plot_date}
 
 【支持的类型（必须使用以下类型之一）】
-- sms: 短信
-- call: 通话记录
-- note: 笔记
-- calendar: 日程事件
-- photo: 照片
-- push: 推送通知
-- agent_chat: 智能体对话
+- **sms（短信）**：用户与他人的文字消息交流，包含消息内容、联系人、时间戳
+  * 生成要点：联系人姓名、消息具体内容（如时间、地点、确认或询问的信息）、发送/接收时间
+- **note（笔记）**：用户的文字记录，包含标题、内容、创建时间
+  * 生成要点：笔记标题、内容摘要（可包含错误信息或待确认事项）、创建时间
+- **calendar（日历）**：日程安排记录，包含标题、时间、地点、描述
+  * 生成要点：日程标题、开始/结束时间、地点（如适用）、描述内容
+- **photo（照片）**：拍摄的照片，包含标题、拍摄时间、地点、人物识别
+  * 生成要点：照片标题（如IMG_年月日_时分秒格式）、拍摄时间、地点信息、人物（如有）、内容描述
+- **push（推送通知）**：手机应用推送的通知，包含标题、内容、来源、时间
+  * 生成要点：推送来源应用、通知标题、内容摘要、推送时间
+- **agent_chat（智能体对话）**：用户与AI智能体的对话记录，包含对话轮次、用户动作、AI回复内容
+  * 生成要点：用户的问题/陈述内容、对话轮次、用户action类型（如topic query、need confirmation等）
 
 【任务要求】
 请为这个冲突情节生成手机操作规划。
 
 【规划要求】
 1. 选择合适的手机数据类型（当前情节指定了 {data_type}）
-2. 说明具体的生成要求（内容、要点等）
-3. 生成要求应能精确反映冲突情节的核心内容
+2. 说明具体的生成要求（内容、要点等），包含足够的细节供实际数据生成
+3. generation_hint 必须包含：联系人/人物、时间信息、具体内容描述
+4. 生成要求应能精确反映冲突情节的核心内容
 
 【输出格式】
 请以 JSON 数组格式返回：
 [
     {{
-        "operation_type": "sms/call/note/calendar/photo/push/agent_chat 之一",
-        "generation_hint": "具体的生成要求，说明需要什么内容"
+        "operation_type": "sms/note/calendar/photo/push/agent_chat 之一",
+        "generation_hint": "具体的生成要求，必须包含：联系人/人物、时间（如具体钟点或时间段）、具体内容描述"
     }}
 ]
 """
@@ -896,62 +932,74 @@ class QAConflictGenerator(BaseQAGenerator):
             
             # === 子步骤 5.2: 基于原事件和情节生成问题 ===
             print(f"[Step 5.2] 基于原事件和情节生成问题...")
-            conflict_scenario = plot.get('conflict_scenario', '')
+
             correct_information = plot.get('correct_information', '')
-            incorrect_information = plot.get('incorrect_information', '')
-            
+            correct_information = plot.get('correct_information', '')
+
+
             question_prompt = f"""
-            作为问答设计师，请基于以下原始事件和错误信息类型生成一个问题。
-            
-            【原始事件】
+            作为问答设计师，请根据以下信息设计一个会被干扰项误导的问题。
+
+            **核心思路**
+            1. 先分析：错误信息会干扰对原事件的哪个具体方面的记忆（时间/地点/人物/内容）
+            2. 再设计：基于原始事件（正确信息）设计问题，即题面不知道冲突信息，只是描述对原始事件内容的询问。
+            3. 问题本身不能提及或暗示任何错误信息或冲突
+
+            **重要**：请使用 {self.persona_name} 而不是"我/自己/你"来指代用户。
+
+            【原始事件（正确信息）】
             {json.dumps(daily_event_data, ensure_ascii=False, indent=2)}
-            
-            【错误信息】
-            {incorrect_information}
-            
+
+            【完整冲突情节信息】
+            # conflict_scenario: 冲突场景的详细描述，说明如何产生矛盾
+            # correct_information: 正确信息，原始事件的真实情况
+            # incorrect_information: 错误/干扰信息，与正确信息不符的内容
+            {json.dumps({
+                'conflict_scenario': plot.get('conflict_scenario', ''),
+                'correct_information': plot.get('correct_information', ''),
+                'incorrect_information': plot.get('incorrect_information', ''),
+            }, ensure_ascii=False, indent=2)}
+
             **任务要求**
-            1. **根据错误信息的类型确定提问焦点**：
-               - 如果错误信息涉及**时间**（如日期、时刻），则提问时间
-               - 如果错误信息涉及**地点**，则提问地点
-               - 如果错误信息涉及**人物**，则提问参与者
-               - 如果错误信息涉及**内容/事项**，则提问具体内容
-            
-            2. **在题面中加入月份信息**：
-               - 从原始事件的 date 字段中提取月份（如 "2025-12-01" 提取为 "12月"）
-               - 在问题中自然地融入月份信息，例如“我在12月份...”或“12月的时候...”
-               - 如果目标事件常规来说可能在一个月内经常发生，请加上上旬，下旬，第x周等描述，如 "我在12月上旬..."
-               - 如果目标事件可能每天都会发生，请加上具体的日期信息，如 "我在12月1号..."
-               
-            3. **根据提问类型添加相关上下文**：
-               - **提问时间时**：加上地点和人物信息，例如“我在12月份在[地点]与[人物]见面是什么时候？”
-               - **提问地点时**：加上时间信息，例如“我在12月份[时间描述]XX时是在哪里？”
-               - **提问人物时**：加上时间信息
-               - **提问内容时**：加上时间信息
-            
-            4. **只基于原始事件的正确信息**设计问题
-            5. **完全忽视任何冲突情节或错误信息**，不要在问题中提及或暗示
-            6. 问题应该自然、符合真实对话场景
-            7. 不要直接在问题中透露答案
-            8. 以回忆的口吻提问
-            
-            **重要约束**
-            - 问题必须只关注事件的客观事实（时间、地点、人物、内容等）
-            - 不要提及任何关于“记错”、“纠正”、“之前说错”等内容
-            - 不要暗示存在矛盾或冲突
-            - 让问题看起来像是一个普通的记忆查询
-            - **必须在问题中包含月份信息**
-            
+            1. **分析干扰项如何误导**：
+               - 对比原始事件和错误信息，找出矛盾点
+               - 确定用户记错的是哪个具体方面：时间、地点、人物还是内容
+               - 例如：如果错误信息说"10月15日"，但原事件是"10月10日"，则时间被干扰
+
+            2. **针对被干扰的方面设计问题**：
+               - 如果被干扰的是**时间**：问"具体是哪天？""那天是几号来着？"
+               - 如果被干扰的是**地点**：问"是在哪里来着？""具体地点是？"
+               - 如果被干扰的是**人物**：问"当时有谁在一起？""和谁一起？"
+               - 如果被干扰的是**内容**：问"当时做了什么来着？""具体是什么事？"
+
+            3. **问题必须满足**：
+               - 只基于原事件（正确信息）设计问题
+               - 不提及任何错误信息、冲突情节或矛盾
+               - 看起来像普通的生活记忆查询
+               - 在问题中融入月份信息（如"{self.persona_name}在12月份..."）
+
+            4. **问题示例**：
+               - 干扰项说10月15日，原事件是10月10日：
+                 - ✅ "10月上旬我被医生告知的成绩评估日期具体是在哪天？","10月10日"
+               - 干扰项说是玩偶，原事件是准备的手表：
+                 - ✅ "8月我给小明准备的礼物具体是什么？","手表"
+
+            注意问题和答案要基于正确信息提问。
+
             **输出要求**
             请以 JSON 格式返回：
             {{
-                "question": "生成的问题文本",
-                "answer": "简洁准确的答案（基于原始事件的正确信息）"
+                "inferred_aspect": "根据错误信息推断出需要针对原事件提问的方面（如：时间、地点、人物、内容等）",
+                "correct_answer": "基于原始事件的正确信息，推断出的方面对应的答案",
+                "question": "生成的问题文本（基于原事件信息，针对推断出的方面设计，只针对原事件信息提问）",
+                "answer": "简洁准确的答案（与question对应）"
             }}
             """
             
             try:
+                print(f"[Generate Question] LLM 输入:", question_prompt)
                 llm_result = llm_call_j(question_prompt)
-                
+                print(f"[Generate Question] LLM 输出:", llm_result)
                 if isinstance(llm_result, str):
                     start_idx = llm_result.find('{')
                     end_idx = llm_result.rfind('}') + 1
@@ -1012,26 +1060,31 @@ class QAConflictGenerator(BaseQAGenerator):
             all_evidence = qa_pair['evidence']
             analysis_prompt = f"""
             作为证据分析师，请分析以下问题和现有证据。
-            
+
+            【原事件数据】
+            {json.dumps(daily_event_data, ensure_ascii=False, indent=2)}
+
             【问题】
             {question_text}
-            
+
             【答案】
             {answer_text}
-            
+
             【现有证据】（共{len(all_evidence)}条）
-            {json.dumps([{'type': item.get('type', 'unknown'), 'summary': str(item)[:200]} for item in all_evidence[:5]], ensure_ascii=False, indent=2)}
-            
+            {json.dumps([{'type': item.get('type', 'unknown'), 'summary': str(item)[:200]} for item in all_evidence[:10]], ensure_ascii=False, indent=2)}
+
             **任务要求**
             1. 分析现有证据是否足以回答问题
             2. 如果不足，说明缺少什么关键信息
             3. 如果需要生成新证据，说明需要生成什么类型的数据和内容
+            4. 生成的证据要基于原事件来生成，生成的证据具有真实性，即不只包含简洁明确的面对答案的内容，内容可能同时含有复杂多样的信息，噪声等。使其符合真实手机数据的复杂性。
+            5. 当你需要表达多个信息并生成多个手机操作数据时，尽量生成不同类型的手机操作，同时每个手机操作表达不同的信息而非重复的信息，操作间信息互补，体现真实数据的信息碎片化特性。多个手机操作只有有一两个左右反映答案信息即可，其他手机数据可以描述相关事件帮助定位作证到具体的时间，内容但不包含答案。
             
             **重要约束**
             - **只允许生成以下类型的证据**：sms、phonecall、photo、push、note、calendar
             - **严禁生成其他类型**（如 agent_chat 等）
             - 根据缺少的信息选择最合适的数据类型
-            
+
             **输出要求**
             请以 JSON 格式返回：
             {{
@@ -1107,7 +1160,7 @@ class QAConflictGenerator(BaseQAGenerator):
             """验证单个 QA 对"""
             try:
                 filter_prompt = f"""
-作为问答质量审核员，请验证以下问题是否可以通过现有证据回答。
+作为问答质量审核员，请验证以下问题是否可以通过现有证据回答，并检查其冲突性。
 
 【问题】
 {qa.get('question', '')}
@@ -1118,25 +1171,46 @@ class QAConflictGenerator(BaseQAGenerator):
 【证据列表】（共 {len(qa.get('evidence', []))} 条）
 {json.dumps([{'type': e.get('type', 'unknown'), 'summary': str(e)[:300]} for e in qa.get('evidence', [])], ensure_ascii=False, indent=2)}
 
-**任务要求**
-1. 分析问题、答案和证据之间的关系
-2. 判断证据是否足以支撑生成正确的问题和答案
-3. 如果证据不足以回答问题，返回 pass=False，并说明原因
-4. 如果证据可以回答问题，返回 pass=True
+**审查维度**
 
-**重要约束**
-- 问题必须是具体、可回答的
-- 答案必须与问题匹配
-- 证据必须能支撑答案的推理过程
+1. **可回答性检查**
+   - 问题是否能从现有证据推理出答案？
+   - 证据中是否包含回答问题所需的完整信息（时间、地点、人物、内容等）？
+   - 如果证据不足以回答问题，标记为"不可回答"
+
+2. **冲突性检查**
+   - 证据中是否存在冲突/矛盾的信息（如不同来源提到不同时间/日期）？
+   - 问题是否需要分析多个冲突证据才能得出正确答案？
+   - 如果证据过于简单直接（无冲突），则缺乏区分度
+
+**分类标准**
+
+根据审查结果，将问题分为三类：
+
+1. **pass（通过）**：题面有难度，需要综合分析矛盾证据和正确证据
+   - 证据中存在冲突信息
+   - 问题需要多步推理或对比分析才能得出正确答案
+   - 题面描述清晰但不直接指向答案
+
+2. **revise（微调）**：题面或答案需要小幅修改
+   - 题面过于简单/直接，矛盾证据没有体现出来。
+   - 答案不够精确，但可以微调
+   - 适用于：问题框架合理，只需小幅修改即可
+
+3. **discard（抛弃）**：质量不合格，需完全重新设计
+   - 问题完全不可回答（证据缺失关键信息）
+   - 证据完全没有冲突（过于简单，缺乏Conflict特点）
+   - 题面与证据严重不匹配
+   - 答案本身错误或不合理
 
 **输出要求**
 请以 JSON 格式返回：
 {{
-    "pass": true/false,
-    "reason": "验证通过/不通过的原因",
-    "revised_question": "如果 pass=false，给出重新设计的问题",
-    "revised_answer": "如果 pass=false，给出重新设计的答案",
-    "revised_score_points": "如果 pass=false，给出重新设计的评分点，格式为 [{{"description": "...", "score": N}}]"
+    "category": "pass/revise/discard",
+    "reason": "判断原因详细说明",
+    "revised_question": "如果 category=revise，给出微调后的问题",
+    "revised_answer": "如果 category=revise，给出微调后的答案",
+    "revised_score_points": "如果 category=revise，给出重新设计的评分点，格式为 [{{"description": "...", "score": N}}]"
 }}
 """
                 llm_result = llm_call_j(filter_prompt)
@@ -1148,24 +1222,21 @@ class QAConflictGenerator(BaseQAGenerator):
                         llm_result = json.loads(llm_result[start_idx:end_idx])
 
                 if isinstance(llm_result, dict):
-                    is_pass = llm_result.get('pass', True)
+                    category = llm_result.get('category', 'pass')
                     reason = llm_result.get('reason', '')
 
-                    if is_pass:
-                        print(f"[Step 7] ✓ 第 {idx + 1} 个问题通过验证")
+                    if category == 'pass':
+                        print(f"[Step 7] ✓ 第 {idx + 1} 个问题通过验证（pass）")
                         return idx, qa, True, reason, None, None, None
-                    else:
-                        print(f"[Step 7] ✗ 第 {idx + 1} 个问题未通过验证：{reason}")
+                    elif category == 'revise':
+                        print(f"[Step 7] ~ 第 {idx + 1} 个问题需要微调（revise）：{reason}")
                         revised_question = llm_result.get('revised_question', '')
                         revised_answer = llm_result.get('revised_answer', '')
                         revised_score_points = llm_result.get('revised_score_points', [])
-
-                        if revised_question and revised_answer:
-                            print(f"[Step 7] 重新设计第 {idx + 1} 个问题")
-                            return idx, qa, False, reason, revised_question, revised_answer, revised_score_points
-                        else:
-                            print(f"[Step 7] 跳过无法重新设计的问题")
-                            return idx, qa, False, reason, None, None, None
+                        return idx, qa, False, reason, revised_question, revised_answer, revised_score_points
+                    else:  # discard
+                        print(f"[Step 7] ✗ 第 {idx + 1} 个问题被抛弃（discard）：{reason}")
+                        return idx, qa, False, reason, None, None, None
                 else:
                     print(f"[Step 7] LLM 返回格式错误")
                     return idx, qa, True, "LLM 返回格式错误", None, None, None
@@ -1186,14 +1257,19 @@ class QAConflictGenerator(BaseQAGenerator):
                 try:
                     idx, qa, is_pass, reason, revised_question, revised_answer, revised_score_points = future.result()
                     if is_pass:
+                        # pass: 直接保留
                         filtered_results[idx] = qa
                     else:
+                        # revise: 使用修订后的值
                         if revised_question and revised_answer:
                             qa['question'] = revised_question
                             qa['answer'] = revised_answer
                             if revised_score_points:
                                 qa['score_points'] = revised_score_points
-                        filtered_results[idx] = qa if revised_question else None
+                            filtered_results[idx] = qa
+                        else:
+                            # discard: 抛弃（filtered_results[idx] 保持 None）
+                            print(f"[Step 7] 抛弃问题 {idx + 1}")
                 except Exception as e:
                     print(f"[Step 7] 结果收集失败：{e}")
 

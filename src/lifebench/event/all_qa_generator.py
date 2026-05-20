@@ -365,8 +365,40 @@ class QAGenerator:
 
         # 整合所有问题到 QA.json
         if all_questions:
-            # 对所有问题进行类型重新分类（并行 LLM 调用）
+            # 先过滤不可回答的问题（并行 LLM 调用）
+            all_questions_before_filter = all_questions
+            persona_name = ""
+            persona_path = os.path.join(self.data_path, "persona.json")
+            if os.path.exists(persona_path):
+                with open(persona_path, 'r', encoding='utf-8') as f:
+                    persona_data = json.load(f)
+                    persona_name = persona_data.get("name", "")
+            print(f"可回答性过滤：用户名为 {persona_name}")
+            answerable_qa, discard_stats = self._filter_unanswerable_qa_parallel(all_questions, persona_name)
+            all_questions = answerable_qa
+
+            # 按原问题类型统计抛弃数量
+            answerable_qa_ids = set(id(qa) for qa in answerable_qa)
+            type_discard_stats = {}
+            for qa in all_questions_before_filter:
+                if id(qa) not in answerable_qa_ids:
+                    q_types = qa.get('question_type', [])
+                    if isinstance(q_types, list):
+                        type_key = tuple(sorted(q_types))
+                    else:
+                        type_key = (str(q_types),)
+                    type_discard_stats[type_key] = type_discard_stats.get(type_key, 0) + 1
+
+            if type_discard_stats:
+                print("\n按原问题类型统计的抛弃数量:")
+                for type_key, count in sorted(type_discard_stats.items(), key=lambda x: -x[1]):
+                    print(f"  - {type_key}: {count} 个")
+
+            # 对可回答的问题进行类型重新分类（并行 LLM 调用）
             all_questions = self._classify_qa_types_parallel(all_questions)
+
+            # 重新生成 score_points（并行 LLM 调用）
+            all_questions = self._regenerate_score_points_parallel(all_questions, persona_name)
 
             final_output_path = os.path.join(qa_all_dir, "QA.json")
             with open(final_output_path, 'w', encoding='utf-8') as f:
@@ -572,7 +604,6 @@ class QAGenerator:
                 result = result.strip()
                 if result.startswith('['):
                     types = json.loads(result)
-                    print(f"LLM 分类结果: {types} for question: {question}")
                     if isinstance(types, list) and all(isinstance(t, str) for t in types):
                         qa['question_type'] = types[:3]  # 最多保留3个类型
                         # 如果原类型是 Knowledge_update，确保它在结果中
@@ -608,5 +639,244 @@ class QAGenerator:
         print(f"类型分类完成，新类型统计:")
         for t, count in sorted(type_count.items()):
             print(f"  - {t}: {count} 个问题")
+
+        return updated_qa_list
+
+    def _filter_unanswerable_qa_parallel(self, qa_list: List[Dict[str, Any]], persona_name: str = "", max_workers: int = 20) -> tuple:
+        """
+        并行调用 LLM 分析每个问答对的可回答性，过滤掉不可回答的问题
+
+        Args:
+            qa_list: 问答对列表
+            persona_name: 用户姓名（用于明确问题中"我"的指代）
+            max_workers: 最大并行线程数
+
+        Returns:
+            (answerable_qa_list, discard_stats: Dict[str, int])
+            - answerable_qa_list: 可回答的问答对列表
+            - discard_stats: 被抛弃的问题统计，按抛弃原因分类
+        """
+        def filter_single_qa(qa: Dict[str, Any]) -> tuple:
+            """对单个问答对进行可回答性分析
+            Returns: (qa_or_none, discard_reason)
+            """
+            # 如果原类型已经是 Unanswerable，直接保留
+            original_type = qa.get('question_type', '')
+            if original_type == 'Unanswerable':
+                return (qa, None)
+
+            question = qa.get('question', '')
+            answer = qa.get('answer', '')
+            evidence = qa.get('evidence', [])
+
+            prompt = f"""请分析以下问答对的问题，判断该问题是否可以根据提供的证据回答。
+
+### 重要前提
+- 题目中的"我"均指代{persona_name}，而非回答者或其他人，当某个描述确实主语时，默认为{persona_name}。
+- 请基于此前提判断问题的可回答性
+
+### 分析维度
+1. **可回答性**：问题是否可以通过证据推理得出答案？证据是否包含回答问题所需的关键信息？
+2. **合理性**：问题的前提假设是否正确？问题与证据之间是否存在逻辑矛盾？
+3. **意义性**：问题是否有意义？是否为无效问题（如询问未来事件、纯粹主观偏好等无法基于证据回答的问题）？
+
+### 思考过程（请按步骤分析）
+1. **提取问题描述的关键事件/活动**：从问题描述中提取问题所涉及的所有关键事件、活动或状态（如"夜跑"、"早餐"、"某人的夸赞"等）
+2. **逐一核对证据**：检查证据中是否存在这些关键事件/活动的直接证据或间接佐证
+3. **判断问题可回答性**：
+   - 如果问题描述的某个关键前提（如"夜跑后"、"某天做了X事"）在证据中完全找不到对应，则该问题不可回答
+   - 即使后续部分（如"第二天早晨"）有证据支撑，只要问题描述的核心前提缺失，整个问题仍不可回答
+
+### 抛弃规则（满足任一则抛弃）
+- **不可回答**：
+  - 证据不足以支撑得出答案，或证据与问题无关
+  - **问题描述的关键事件在证据中缺失**：如问题提到"夜跑后"但证据中无夜跑记录，或问题提到"某天做了X"但无对应证据
+- **不合理**：问题的前提假设与证据矛盾，如：
+  - 主体不匹配：问题以"我"提问，但证据中的行为主体是其他人（非{persona_name}）
+  - 答案主体不匹配：答案是"他/她做了X"且无证据表明{persona_name}做了此事，或答案指向他人但问题以"我"提问
+  - 时间错位：证据显示事件发生在T时间，但问题询问的是T之前或之后的相关事件却没有对应证据
+  - 事件缺失：问题涉及的关键活动、前提步骤在证据中完全缺失
+  - **指代或描述错误**：问题描述的前提（如"我做了X"）在证据中实为他人所为，或问题假设某事已发生但证据显示并未发生
+- **无意义**：
+  - 询问未来还未发生的事件
+  - 询问绝对主观、无客观答案的偏好（如"更喜欢咖啡还是茶"）
+  - 问题本身存在逻辑错误或自相矛盾
+  - 询问用户明确表示"不记得"或"不确定"的信息，且无其他证据补充
+  - 答案为"无法确定"、"不知道"、"根据现有数据无法回答"等不可回答类型
+  
+### 输出要求
+请仔细分析后输出 JSON 对象，不要添加任何解释文字：
+
+如果问题可回答，输出：
+{{"is_answerable": true}}
+
+如果问题不可回答，输出：
+{{"is_answerable": false, "reason": "抛弃原因"}}
+
+### 问答对信息
+问题：{question}
+答案：{answer}
+证据：{json.dumps(evidence, ensure_ascii=False, indent=2) if evidence else '无证据'}
+
+请直接输出 JSON 对象：
+"""
+            try:
+                result = llm_call_j(prompt)
+                result = result.strip()
+
+                # 移除可能的 ```json 包装
+                if result.startswith('```'):
+                    import re
+                    result = re.sub(r'```json\s*|\s*```', '', result, flags=re.MULTILINE)
+
+                result = result.strip()
+                analysis = json.loads(result)
+
+                if analysis.get("is_answerable", False):
+                    return (qa, None)
+                else:
+                    reason = analysis.get("reason", "未知原因")
+                    print(f"  抛弃问题 (不可回答): {question[:50]}... 原因: {reason}")
+                    return (None, reason)
+
+            except Exception as e:
+                print(f"可回答性分析失败: {str(e)}, 保留该问题")
+                return (qa, None)
+
+        print(f"\n开始并行分析 QA 可回答性，共 {len(qa_list)} 个问题...")
+
+        answerable_qa = []
+        discard_stats = {}
+
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            results = list(executor.map(filter_single_qa, qa_list))
+
+        for qa, reason in results:
+            if qa is not None:
+                answerable_qa.append(qa)
+            else:
+                reason_category = reason if reason else "未知原因"
+                discard_stats[reason_category] = discard_stats.get(reason_category, 0) + 1
+
+        print(f"\n可回答性过滤完成:")
+        print(f"  - 保留问题: {len(answerable_qa)} 个")
+        print(f"  - 抛弃问题: {len(qa_list) - len(answerable_qa)} 个")
+
+        if discard_stats:
+            print(f"  抛弃原因统计:")
+            for reason, count in sorted(discard_stats.items(), key=lambda x: -x[1]):
+                print(f"    - {reason}: {count} 个")
+
+        return answerable_qa, discard_stats
+
+    def _regenerate_score_points_parallel(self, qa_list: List[Dict[str, Any]], persona_name: str = "", max_workers: int = 20) -> List[Dict[str, Any]]:
+        """
+        并行调用 LLM 重新生成问答对的 score_points
+
+        Args:
+            qa_list: 问答对列表
+            persona_name: 用户姓名（用于明确问题中"我"的指代）
+            max_workers: 最大并行线程数
+
+        Returns:
+            更新 score_points 后的问答对列表
+        """
+        def regenerate_single_qa(qa: Dict[str, Any]) -> Dict[str, Any]:
+            """对单个问答对重新生成 score_points"""
+            question = qa.get('question', '')
+            answer = qa.get('answer', '')
+            evidence = qa.get('evidence', [])
+
+            prompt = f"""请为以下问答对设计评分标准（score_points），用于评估模型回答该问题的准确程度。
+
+### 重要前提
+- 题目中的"我"均指代{persona_name}，而非回答者或其他人
+- 请基于此前提设计评分标准
+
+### 要求
+1. 总分必须为 10 分
+2. 得分点应反映回答该问题所需的关键推理步骤或知识点
+3. 每个得分点的 description 应清晰描述得分点内容，score 为该得分点的分值
+4. 得分点数量建议 2-5 个，每个得分点的分值根据重要性和难度分配
+5. description 应基于证据内容，描述回答问题时需要正确识别或推理的关键信息
+
+### 输出格式
+请直接输出 JSON 数组格式，不要添加任何解释文字：
+[
+  {{
+    "description": "得分点1描述",
+    "score": X
+  }},
+  {{
+    "description": "得分点2描述",
+    "score": Y
+  }}
+]
+
+### 问答对信息
+问题：{question}
+答案：{answer}
+证据：{json.dumps(evidence, ensure_ascii=False, indent=2) if evidence else '无证据'}
+
+请直接输出 JSON 数组：
+"""
+            try:
+                result = llm_call_j(prompt)
+                result = result.strip()
+
+                # 移除可能的 ```json 包装
+                if result.startswith('```'):
+                    import re
+                    result = re.sub(r'```json\s*|\s*```', '', result, flags=re.MULTILINE)
+
+                result = result.strip()
+                if result.startswith('['):
+                    score_points = json.loads(result)
+                    # 检查是否为有效的得分点列表
+                    if isinstance(score_points, list) and all(
+                        isinstance(item, dict) and 'description' in item and 'score' in item
+                        for item in score_points
+                    ):
+                        # 检查总分是否为 10
+                        total = sum(item.get('score', 0) for item in score_points)
+                        if total == 10:
+                            qa['score_points'] = score_points
+                            return qa
+                        else:
+                            # 总分不为 10，尝试调整
+                            if total > 0:
+                                scale = 10 / total
+                                for item in score_points:
+                                    item['score'] = round(item['score'] * scale)
+                                qa['score_points'] = score_points
+                                return qa
+
+                # 解析失败，使用默认得分点
+                qa['score_points'] = [
+                    {
+                        "description": "正确回答出答案",
+                        "score": 10
+                    }
+                ]
+                return qa
+
+            except Exception as e:
+                # 异常时使用默认得分点
+                qa['score_points'] = [
+                    {
+                        "description": "正确回答出答案",
+                        "score": 10
+                    }
+                ]
+                return qa
+
+        print(f"\n开始重新生成 score_points，共 {len(qa_list)} 个问题...")
+
+        updated_qa_list = []
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            results = list(executor.map(regenerate_single_qa, qa_list))
+            updated_qa_list = results
+
+        print(f"score_points 重新生成完成")
 
         return updated_qa_list

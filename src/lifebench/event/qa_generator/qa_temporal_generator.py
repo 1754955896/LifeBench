@@ -1084,8 +1084,8 @@ class QATemporalGenerator(BaseQAGenerator):
         for pair in event_pairs:
             for event in pair:
                 all_daily_events.append(event)
-        
-        daily_events = self._locate_daily_events(all_daily_events, date_offset=0)
+
+        daily_events, event_mapping = self._locate_daily_events(all_daily_events, date_offset=0)
         if len(daily_events) < 2:
             print("[Time Difference Questions] 未找到足够的daily_event事件")
             return []
