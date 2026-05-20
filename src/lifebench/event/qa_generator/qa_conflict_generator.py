@@ -788,7 +788,7 @@ class QAConflictGenerator(BaseQAGenerator):
         print(f"[Generate Phone Data] 总共生成 {len(all_operations)} 条手机数据")
         return all_operations
     
-    def QAGen(self, year: int = 2025, num_samples: int = 30) -> List[Dict[str, Any]]:
+    def QAGen(self, year: int = 2025, num_samples: int = 60) -> List[Dict[str, Any]]:
         """
         生成冲突 QA 对的主入口函数
         

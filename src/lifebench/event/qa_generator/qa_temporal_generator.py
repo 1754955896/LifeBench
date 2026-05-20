@@ -73,7 +73,7 @@ class QATemporalGenerator(BaseQAGenerator):
         {json.dumps(month_events, ensure_ascii=False, indent=2)}
         
         **核心要求**
-        - **叙述性总结**：以“用户这个月主要做了什么”的角度进行总结
+        - **叙述性总结**：以"用户这个月主要做了什么"的角度进行总结
         - **包含重要事件**：出行、娱乐、工作成就、等重要活动都要包含
         - **数量限制**：只输出 10 个最主要的事件
         - **独立性保证**：输出的事件之间不应存在可合并的步骤关系，请你分析已有事件的关联，可以把他们合并为一个连贯的事件输出。
@@ -96,21 +96,21 @@ class QATemporalGenerator(BaseQAGenerator):
         ⚠️ **关键要求**：输出的 10 个事件必须是相互独立的，不存在可合并的步骤关系
         
         ✅ **正确示例**（独立事件）：
-        - “云南五日游” （已合并机票、酒店、游览等步骤）
-        - “参加半程马拉松比赛”
+        - "云南五日游" （已合并机票、酒店、游览等步骤）
+        - "参加半程马拉松比赛"
         - "完成Python入门课程学习"
-        - “与朋友去KTV庆祝生日”
+        - "与朋友去KTV庆祝生日"
         
         ❌ **错误示例**（存在步骤关系，应合并）：
-        - 事件1：“预约了按摩” + 事件2：“去按摩店按摩” → 应合并为“进行了按摩理疗”
-        - 事件1：“购买了去北京的机票” + 事件2：“在北京游览故宫” → 应合并为“北京三日游”
+        - 事件1："预约了按摩" + 事件2："去按摩店按摩" → 应合并为"进行了按摩理疗"
+        - 事件1："购买了去北京的机票" + 事件2："在北京游览故宫" → 应合并为"北京三日游"
         
         **输出要求**
         1. **数量限制**：严格输出 10 个事件（如果不足10个重要事件，可以少于10个）
         2. **事件描述**：简洁明了，突出主干内容，体现用户做了什么
         3. **时间段表示**：
-           - 单日活动：“YYYY-MM-DD”
-           - 多日连贯活动：“YYYY-MM-DD 至 YYYY-MM-DD”
+           - 单日活动："YYYY-MM-DD"
+           - 多日连贯活动："YYYY-MM-DD 至 YYYY-MM-DD"
         4. **优先级排序**：按重要性排序，最重要的事件排在前面
         
         请以 JSON 格式返回数组：
@@ -530,7 +530,7 @@ class QATemporalGenerator(BaseQAGenerator):
         with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
             # 提交所有任务（20个排序 + 20个时间差 = 40个任务）
             futures = []
-            for i in range(20):
+            for i in range(30):
                 futures.append(executor.submit(generate_sorting_task, i))
                 futures.append(executor.submit(generate_time_diff_task, i))
             
@@ -1161,12 +1161,14 @@ class QATemporalGenerator(BaseQAGenerator):
         
         def process_single_event(event):
             """处理单个事件的验证和问题生成"""
+            import traceback
             try:
                 question_data = self._generate_and_verify_duration_question(event, year)
                 return question_data
             except Exception as e:
                 desc = event.get('name', '') or event.get('event_name', '') or event.get('description', '')
                 print(f"[Duration Analysis Questions] 处理事件 '{desc}' 时出错: {e}")
+                print(f"[Duration Analysis Questions] 异常详情: {traceback.format_exc()}")
                 return None
         
         # 使用 ThreadPoolExecutor 并行处理，最多12线程
@@ -1241,8 +1243,8 @@ class QATemporalGenerator(BaseQAGenerator):
         **特别注意 - 跨月连续事件识别**
         - 有些事件实际上是同一个连续事件，但因为跨月而被分成了多个记录
         - 例如：一个从6月28日持续到7月5日的旅行，可能被分成两个事件：
-          * 索引X: 6月28日至6月30日，描述“云南旅游”
-          * 索引Y: 7月1日至7月5日，描述“云南旅游”
+          * 索引X: 6月28日至6月30日，描述"云南旅游"
+          * 索引Y: 7月1日至7月5日，描述"云南旅游"
         - **判断标准**：
           * 时间上连续：下一个事件的开始日期 = 当前事件结束日期 + 1天
           * 描述相似：名称或描述高度相似（包含相同关键词）
@@ -1316,17 +1318,21 @@ class QATemporalGenerator(BaseQAGenerator):
             生成的问题数据，如果验证失败则返回None
         """
         from datetime import datetime
-        
-        desc = event.get('name', '') or event.get('event_name', '') or event.get('description', '')
+
+        desc = event.get('name', '') or event.get('event_name', '') or event.get('description', '') or event.get('event_description', '')
         original_start = event.get('original_start_date', '')
         original_end = event.get('original_end_date', '')
         
         if not desc or not original_start or not original_end:
             return None
-        
+
+        print(f"[_generate_and_verify_duration_question] 输入事件: desc={desc}, original_start={original_start}, original_end={original_end}")
+
         # Step 1: 先验证真正的开始和结束日期
+        print(f"[_generate_and_verify_duration_question] 调用 _verify_duration_dates，original_start={original_start}, original_end={original_end}")
         verified_dates = self._verify_duration_dates(event, original_start, original_end)
-        
+        print(f"[_generate_and_verify_duration_question] _verify_duration_dates 返回: {verified_dates}")
+
         if not verified_dates:
             print(f"[Verify Duration Dates] 无法验证事件 '{desc}' 的日期，放弃该问题")
             return None
@@ -1336,6 +1342,7 @@ class QATemporalGenerator(BaseQAGenerator):
         event_status_summary = verified_dates.get('event_status_summary', '')
         start_event_id = verified_dates.get('start_event_id')
         end_event_id = verified_dates.get('end_event_id')
+        related_event_ids = verified_dates.get('related_event_ids', [])
         
         # 检查是否找到了开始和结束事件的ID，如果没有找到则放弃该问题
         if not start_event_id or not end_event_id:
@@ -1355,17 +1362,36 @@ class QATemporalGenerator(BaseQAGenerator):
             actual_duration = event.get('duration_days', 0)
         
         # Step 2: 使用验证后的日期和事件状态总结生成问题
-        question_draft = self._generate_duration_question_draft(desc, actual_start, actual_end, actual_duration, year, event_status_summary)
+        print(f"[Duration Question] 事件 '{desc}' 验证通过，开始生成问题...")
+
+        # 获取相关事件的详细信息
+        related_events_details = []
+        for eid in related_event_ids:
+            ev = self._get_event_by_id(eid)
+            if ev:
+                related_events_details.append(ev)
+
+        question_draft = self._generate_duration_question_draft(
+            desc, actual_start, actual_end, actual_duration, year,
+            event_status_summary, start_event, end_event, related_events_details
+        )
         if not question_draft:
+            print(f"[Duration Question] 问题生成失败，返回 None")
             return None
-        
-        # 构建 required_events_id：包含开始事件和结束事件的ID
+
+        print(f"[Duration Question] 问题生成成功: {question_draft.get('question', '')[:50]}...")
+
+        # 构建 required_events_id：包含开始事件、结束事件和相关节点事件的ID
         required_events_ids = []
         if start_event_id:
             required_events_ids.append(str(start_event_id))
         if end_event_id and end_event_id != start_event_id:
             required_events_ids.append(str(end_event_id))
-        
+        # 添加相关节点事件ID
+        for eid in related_event_ids:
+            if str(eid) not in required_events_ids:
+                required_events_ids.append(str(eid))
+
         # 构建完整的问题数据
         question_data = {
             'question': question_draft.get('question', ''),
@@ -1378,7 +1404,7 @@ class QATemporalGenerator(BaseQAGenerator):
             ],
             'required_events_id': required_events_ids
         }
-        
+
         return question_data
     
     def _get_event_by_id(self, event_id: str) -> Dict[str, Any]:
@@ -1397,14 +1423,15 @@ class QATemporalGenerator(BaseQAGenerator):
                     return event
         return {}
     
-    def _generate_duration_question_draft(self, desc: str, start_date: str, 
+    def _generate_duration_question_draft(self, desc: str, start_date: str,
                                            end_date: str, duration_days: int, year: int,
                                            event_status_summary: str = '',
                                            start_event: Dict[str, Any] = None,
-                                           end_event: Dict[str, Any] = None) -> Dict[str, Any]:
+                                           end_event: Dict[str, Any] = None,
+                                           related_events: List[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         生成持续时长问题的草稿
-        
+
         Args:
             desc: 事件描述
             start_date: 开始日期
@@ -1414,7 +1441,8 @@ class QATemporalGenerator(BaseQAGenerator):
             event_status_summary: 事件状态总结，包含事件的详细过程记录
             start_event: 标志开始的事件数据
             end_event: 标志结束的事件数据
-            
+            related_events: 相关的事件列表（包含开始、结束及重要节点事件）
+
         Returns:
             问题草稿
         """
@@ -1429,7 +1457,7 @@ class QATemporalGenerator(BaseQAGenerator):
         - 参与者: {start_event.get('participant', [])}
         - 地点: {start_event.get('location', '')}
         """
-        
+
         end_event_info = ""
         if end_event:
             end_event_info = f"""
@@ -1440,103 +1468,174 @@ class QATemporalGenerator(BaseQAGenerator):
         - 参与者: {end_event.get('participant', [])}
         - 地点: {end_event.get('location', '')}
         """
+
+        # 准备相关事件的信息
+        related_events_info = ""
+        if related_events:
+            related_events_list = []
+            for ev in related_events:
+                ev_name = ev.get('name', '') or ev.get('event_name', '') or ev.get('description', '')[:50]
+                ev_date = ev.get('date', '')
+                ev_desc = ev.get('description', '')[:100] if ev.get('description', '') else ''
+                related_events_list.append(f"- [{ev_date}] {ev_name}: {ev_desc}")
+            if related_events_list:
+                related_events_info = "\n【相关事件列表】\n" + "\n".join(related_events_list)
         
         prompt = f"""
-        作为持续时长分析问题设计专家,请基于以下多日事件,生成一个持续时长分析问题。
-                        
+        作为持续时长分析问题设计专家,请模拟在**年末12月31日对今年进行年终回顾**的场景,基于以下多日事件,生成一个持续时长分析问题。
+
+        【场景设定】
+        现在是**12月31日**,我们在对**今年**发生的事件进行年终回顾。
+        所有事件都发生在今年,问题中只提及月份或事件特征来定位,不需要也不应该提及具体日期。
+        题面应该像是在年度总结时,自然地回忆:"我今年······?"
+
         【事件】
         {desc}
         时间:{start_date} 至 {end_date}
         持续天数:{duration_days}天
-                
+
         【事件详细过程记录】
         {event_status_summary if event_status_summary else '无详细过程记录'}
         {start_event_info}
         {end_event_info}
-                        
+        {related_events_info}
+
+        **重要判断 - 结束事件的标志意义**
+        ⚠️ 请分析【标志结束的事件】是否真正代表事情完全结束：
+        - 请你先分析开始事件和结束事件是否有对应关系，是否代表详细过程记录的描述的整体事件的开始或结束。如果是，直接对这个整体事件提问持续时间即可，如果不是，我们需要针对性对开始事件和结束事件设计持续时长的提问（但题面不能直接说明这两个事件的时间，也不要包含过于详细的事件细节）
+        - 如果结束事件确实标志事情完全结束（如：完成培训、结束旅行、完成搬家等），问题描述正常
+        - **如果结束事件不能完全代表事情结束**（如：只是某个阶段结束、最后一次活动、某个标志事件但不一定是最终结束），则在题面设计中增加叙述"到X月（结束事件的描述）为止"，明确表示持续时间计算到该结束事件为止
+
+        **重要 - 题面设计要求**
+        ⚠️ **题面设计原则：简洁为主，避免堆砌细节**
+        - 优先使用简单直接的问题，如"我4月的个人艺术展举办了多久？"
+        - 只有当事件的结束时间存在歧义时（如：举办时间不确定是从会展结束算还是后续定金交付完成算），才在题面中增加对结束节点的最小化描述来消除歧义
+        - 示例1（结束明确）："我4月的个人艺术展举办了多久？"→ 简洁明确
+        示例2（结束模糊）："我4月的个人艺术展到会展结束持续了多久？"→ 引入结束节点描述消除歧义
+
+        **问题类型选择**
+        请根据事件特点，选择生成以下类型的问题：
+
+        **持续时长问题**：
+           - 优先简洁设计，题面尽量简单，包含较少的事件细节，只保留能定位回答出答案的信息量。
+           - **当持续天数≥3天时**，应在问题中在询问持续时间之外，增加对过程中某个细节的询问，使问题更具挑战性
+           - 如果结束时间存在歧义，在题面末尾增加对结束节点的最小化描述来消除歧义（但仍不直接说明具体日期）
+           - 示例（持续天数≥3天，带细节询问）：
+             - "我记得今年7月那次独立带组，到病例讨论获表扬，持续了多久？那段时间除了成功抢救了患有什么病的患者"
+             - "我记得今年8月参加的那个摄影展，到闭幕式结束持续了多久？中间有哪些让我写在笔记的展出？"
+           - 示例（持续天数<3天，简洁设计）：
+             - "我记得今年5月参加主治医师资格考试，那次持续了多久？"
+
         **任务要求**
-        1. **回忆口吻**：问题应该是在事件发生一段时间后进行回忆的口吻，像是在事后询问或回顾
-        2. **总体概括**：在叙述这个事件时，要足够概括，不需要过多细节信息
-        3. **时间定位**：必须带有足够确定这段时间的事件的信息，让回答者能准确定位到是哪一次事件
+        1. **回忆口吻**：问题应该是在年末12月31日进行年终回顾时的口吻，像是在年终聚餐或年度总结时聊起往事
+        2. **简洁设计**：优先使用最简洁的表述，不堆砌事件细节
+        3. **持续天数≥3天时增加细节询问**：使问题更具挑战性，答案需要综合分析过程事件才能给出
+        4. **结束节点处理**：如果结束时间明确，直接简洁提问；如果存在歧义，才增加对结束节点的描述
+        5. **时间定位**：必须带有足够确定这段时间的事件的信息，让回答者能准确定位到是哪一次事件
            - **一年一次的事件**（如生日、节假日）：加入节假日/特殊日期信息
-             * 示例：“我春节那次回家...”、“我过生日那几天...”
+             * 示例："我今年春节回家..."、"我今年过生日那几天..."
            - **一年多次的事件**（如出差、旅游）：加入月份或时间段信息
-             * 示例：“我7月下旬那次出差...”、“我国庆节去的那次旅游...”
-             * 示例：“我上半年参加的那个培训...”
+             * 示例："我今年7月下旬那次出差..."、"我今年国庆节去的那次旅游..."
+             * 示例："我今年上半年参加的那个培训..."
            - **独特性事件**：如果事件本身很独特，可以直接描述
-             * 示例：“我去云南那次旅游...”、“我参加马拉松那次...”
-        4. **参考开始和结束事件**：问题应该自然地关联到标志开始和结束的具体事件，使问题更加准确和可验证
-        5. 问题应该以第一人称口吻,语气自然流畅
-        6. 提供准确的答案,答案中必须明确说明持续天数为{duration_days}天
-        7. **参考【事件详细过程记录】**，了解事件的具体活动内容、地点、参与者等细节，使答案更加丰富和具体
-        8. 合理设计题面，使答案符合开始日期和结束日期。题面具有一定难度。   
-                     
+             * 示例："我今年去云南那次旅游..."、"我今年参加马拉松那次..."
+        6. 问题应该以第一人称口吻,语气自然流畅
+        7. 提供准确的答案,答案中必须明确说明持续天数为{duration_days}天
+        8. **参考【事件详细过程记录】**，了解事件的具体活动内容、地点、参与者等细节，使答案更加丰富和具体
+        9. 合理设计题面，使答案符合开始日期和结束日期。题面具有一定难度。
+
         **重要约束 - answer 字段规范**
         ⚠️ **answer 字段只能包含最终答案内容,严禁包含任何思考过程、分析步骤或推理说明**
-                        
+
         ✅ **正确的 answer 示例**:
-        - “你那次云南旅游一共去了5天,从3月10日到3月15日,主要游览了大理和丽江”
-        - “这次培训持续了7天,从周一到周日,学习了Python基础和数据分析”
-                        
+        - "你那次云南旅游一共去了5天,从3月10日到3月15日,主要游览了大理和丽江"
+        - "这次培训持续了7天,从周一到周日,学习了Python基础和数据分析"
+
         ❌ **错误的 answer 示例**(包含思考过程):
-        - “根据事件描述,这个活动从X日到Y日,所以持续了N天...”(不要解释计算过程)
-        - “首先确定开始日期是...,然后结束日期是...,因此答案是...”(不要展示推理步骤)
-        - “通过分析事件记录,我发现...”(不要说明分析方法)
-                        
+        - "根据事件描述,这个活动从X日到Y日,所以持续了N天..."(不要解释计算过程)
+        - "首先确定开始日期是...,然后结束日期是...,因此答案是..."(不要展示推理步骤)
+        - "通过分析事件记录,我发现..."(不要说明分析方法)
+
+        **题面 Bad Case 警示**
+        ⚠️ 以下是**错误**的题面设计，请**避免**：
+
+        ❌ **问题包含具体日期**（直接暴露答案，无需分析）：
+        - "我从7月15日开始独立带组，到7月24日病例讨论获表扬，一共多少天？"
+        - 正确做法：只给出月份提示，不在问题中写具体日期
+
+        ❌ **堆砌过多开始/结束事件细节**（让回答者无需分析事件数据就能回答）：
+        - "我从7月15日张磊主任宣布我正式接管16至19床医疗组成为责任主治医师那天开始，到7月24日在科室疑难病例讨论会上汇报多发性骨髓瘤合并肾衰竭病例并获得主任表扬，一共持续了多少天？"
+        - 正确做法：简洁设计，问题应该要求回答者分析事件数据才能得出答案
+
+        ❌ **题面过于冗长复杂**：
+        - "我记得去年12月我在社区艺术空间举办的那个个人摄影展，从12月22日下午在社区艺术空间举办开幕式我拿着话筒致辞感谢到场的亲友，到12月30日上午在纺织工业遗址博物馆和林婉清一起举办闭幕式分享，整个展览从开幕式到闭幕式一共持续了多少天？"
+        - 正确做法：简洁为主，如"我记得去年12月我办的那个摄影展，一共展出了多少天？"
+
+        ❌ **过早/过多引入结束节点描述**（应优先简洁，只有必要时才增加）：
+        - "我记得那次独立带组，到7月24日在科室汇报多发性骨髓瘤病例并获表扬，一共持续了多少天？"（结束时间存在歧义时才可以这样设计）
+        - 但如果结束明确，不应该加那么多细节
+
         **输出要求**
         请以 JSON 格式返回:
         {{
-            "question": "持续时长问题(回忆口吻,第一人称,包含时间定位信息,总体概括不冗长)",
+            "question": "问题(回忆口吻,第一人称,简洁设计,只在必要时增加结束节点描述以消除歧义)",
             "answer": "直接给出答案,只包含事实性内容,不含任何思考过程,可引用事件过程中的关键信息"
         }}
-                        
+
         **示例**
         {{
-            "question": "我春节回家那几天一共待了多少天?",
-            "answer": "你春节回家一共待了7天,从2月8日到2月14日,陪父母过年,还去拜访了亲戚"
+            "question": "我记得今年5月参加的那个专业培训，一直到培训结束，一共持续了多少天？",
+            "answer": "你今年5月参加的那个专业培训从5月10日到5月15日，一共持续了6天。"
         }},
         {{
-            "question": "我7月下旬那次出差去了多少天?",
-            "answer": "你7月下旬那次出差一共去了5天,从7月22日到7月26日,去北京参加了行业会议"
+            "question": "我记得今年8月安排的那次自驾游，从出发到返程，那次持续了多久？我们中间车辆抛锚是谁帮我们联系了拖车？",
+            "answer": "你今年8月安排的那次自驾游持续了7天，从8月1日到8月7日，途经多个城市。是一位路过的交警帮你们联系了拖车。"
         }},
         {{
-            "question": "我去云南那次旅游一共去了多少天?都去了哪些地方?",
-            "answer": "你那次云南旅游一共去了5天,从3月10日到3月15日,主要游览了大理和丽江"
+            "question": "我记得今年6月参与的那个项目，从开始到项目正式上线持续了多久？，除了日常开发，中间的测试是在几月几号进行的？",
+            "answer": "从6月1日到6月20日一共20天，中间经历了需求评审、技术方案设计、两周冲刺开发、上线前测试等重要节点，最终在6月20日正式上线。测试是在6月18日进行的。"
         }}
         """
         
         try:
+            print(f"[Duration Question Draft] 发送LLM请求...")
             llm_result = llm_call_j(prompt)
-            
+            print(f"[Duration Question Draft] LLM原始输出: {str(llm_result)[:200]}...")
+
             if isinstance(llm_result, str):
                 start_idx = llm_result.find('{')
                 end_idx = llm_result.rfind('}') + 1
                 if start_idx != -1 and end_idx != -1:
                     json_str = llm_result[start_idx:end_idx]
-                    return json.loads(json_str)
+                    result = json.loads(json_str)
+                    print(f"[Duration Question Draft] 解析成功: question={result.get('question', '')[:50]}...")
+                    return result
             elif isinstance(llm_result, dict):
+                print(f"[Duration Question Draft] 解析成功(字典): question={llm_result.get('question', '')[:50]}...")
                 return llm_result
-        except:
-            pass
-        
+        except Exception as e:
+            print(f"[Duration Question Draft] 异常: {e}")
+
         return None
     
-    def _verify_duration_dates(self, event: Dict[str, Any], original_start: str, 
+    def _verify_duration_dates(self, event: Dict[str, Any], original_start: str,
                                 original_end: str) -> Dict[str, Any]:
         """
         调用LLM从起始日期的前一天开始往后遍历daily_event，逐日判断是否为开始/结束日期
         并提取标志开始和结束的事件及其event_id
-        
+
         Args:
             event: 事件数据
             original_start: 原定开始日期
             original_end: 原定结束日期
-            
+
         Returns:
             验证后的日期信息，包含开始和结束事件的event_id，如果找不到则返回None
         """
         from datetime import datetime, timedelta
-        
+
+        print(f"[_verify_duration_dates] 进入函数，输入: original_start={original_start}, original_end={original_end}")
+
         desc = event.get('description', '') or event.get('event_description', '')
         event_name = event.get('name', '') or event.get('event_name', '')
         
@@ -1585,6 +1684,7 @@ class QATemporalGenerator(BaseQAGenerator):
         actual_end_date = None
         start_event_id = None  # 标志开始日期的事件ID
         end_event_id = None    # 标志结束日期的事件ID
+        related_event_ids = []  # 相关的重要节点事件ID列表
         
         # 逐日判断
         for i, current_date in enumerate(sorted_dates):
@@ -1627,7 +1727,8 @@ class QATemporalGenerator(BaseQAGenerator):
                - **中间日期**：如果事件仍在进行中
                - **无关日期**：如果当天没有与该事件相关的活动
             3. 参考【事件状态总结】，了解之前日期的情况，帮助判断今天是否是结束日期
-            
+            4. 识别并记录当天与目标事件相关的**重要节点事件**，如出发、回程、开始、结束、或任何重要的子事件开始/结束等
+
             **输出要求**
             请以 JSON 格式返回：
             {{
@@ -1636,6 +1737,7 @@ class QATemporalGenerator(BaseQAGenerator):
                 "is_related": true/false,
                 "start_event_id": "如果是开始日期，填写标志该事件开始的event_id；否则为空字符串",
                 "end_event_id": "如果是结束日期，填写标志该事件结束的event_id；否则为空字符串",
+                "related_event_ids": ["当天所有与目标事件相关的重要节点事件的event_id列表，包括开始、结束、出发、回程、或其他重要子事件等"],
                 "status_update": "对今天与目标事件相关的所有事件的详细总结，包括具体活动内容、时间、地点等关键信息，无字数限制",
                 "reason": "判断原因说明"
             }}
@@ -1647,6 +1749,7 @@ class QATemporalGenerator(BaseQAGenerator):
                 "is_related": true,
                 "start_event_id": "evt_12345",
                 "end_event_id": "",
+                "related_event_ids": ["evt_12345", "evt_12346"],
                 "status_update": "今天开始了云南旅游，到达了大理，入住了酒店",
                 "reason": "今天的第一个事件显示到达了大理并开始旅游，符合事件描述的开端"
             }}
@@ -1693,13 +1796,20 @@ class QATemporalGenerator(BaseQAGenerator):
                 status_update = result.get('status_update', '')
                 current_start_event_id = result.get('start_event_id', '')
                 current_end_event_id = result.get('end_event_id', '')
-                
+                current_related_event_ids = result.get('related_event_ids', [])
+
                 print(f"[Verify Duration Dates] {current_date}: is_start={is_start}, is_end={is_end}, is_related={is_related}")
-                
+
                 # 更新事件状态总结
                 if is_related and status_update:
                     event_status_summary += f"\n[{current_date}] {status_update}"
-                
+
+                # 收集相关的重要节点事件ID
+                if is_related and current_related_event_ids:
+                    for eid in current_related_event_ids:
+                        if eid and eid not in related_event_ids:
+                            related_event_ids.append(eid)
+
                 # 记录开始日期和对应的event_id
                 if is_start and not actual_start_date:
                     actual_start_date = current_date
@@ -1748,16 +1858,19 @@ class QATemporalGenerator(BaseQAGenerator):
             return None
         
         print(f"[Verify Duration Dates] ✓ 开始/结束事件验证通过: {validation_result.get('reason', '')}")
-        
-        return {
+
+        result_dict = {
             'actual_start_date': actual_start_date,
             'actual_end_date': actual_end_date,
             'start_event_id': start_event_id,
             'end_event_id': end_event_id,
+            'related_event_ids': related_event_ids,
             'found': True,
             'verification_reason': f"从{actual_start_date}到{actual_end_date}，共{(datetime.strptime(actual_end_date, '%Y-%m-%d') - datetime.strptime(actual_start_date, '%Y-%m-%d')).days + 1}天",
             'event_status_summary': event_status_summary
         }
+        print(f"[_verify_duration_dates] 返回结果: {result_dict}")
+        return result_dict
     
     def _validate_start_end_events(self, event_name: str, event_desc: str,
                                     start_event: Dict[str, Any],
@@ -1828,8 +1941,10 @@ class QATemporalGenerator(BaseQAGenerator):
         """
         
         try:
+            print(f"[Validate Start End Events] 开始验证...")
             llm_result = llm_call_j(prompt)
-            
+            print(f"[Validate Start End Events] LLM输出: {str(llm_result)[:200]}...")
+
             # 解析结果
             if isinstance(llm_result, str):
                 start_idx = llm_result.find('{')
@@ -1838,15 +1953,18 @@ class QATemporalGenerator(BaseQAGenerator):
                     json_str = llm_result[start_idx:end_idx]
                     try:
                         result = json.loads(json_str)
+                        print(f"[Validate Start End Events] 验证结果: is_valid={result.get('is_valid')}, reason={result.get('reason', '')[:50]}...")
                         return result
                     except json.JSONDecodeError as e:
                         print(f"[Validate Start End Events] JSON解析失败: {e}")
                         return {'is_valid': False, 'reason': 'JSON解析失败'}
             elif isinstance(llm_result, dict):
+                print(f"[Validate Start End Events] 验证结果: is_valid={llm_result.get('is_valid')}")
                 return llm_result
-            
+
+            print(f"[Validate Start End Events] 返回格式异常")
             return {'is_valid': False, 'reason': 'LLM返回格式异常'}
-            
+
         except Exception as e:
             print(f"[Validate Start End Events] 验证失败: {e}")
             return {'is_valid': False, 'reason': f'验证过程出错: {str(e)}'}
@@ -2816,10 +2934,10 @@ class QATemporalGenerator(BaseQAGenerator):
             
             **如果是重复关系，生成问题的要求**：
             - **问题类型多样化**：
-              * **最近一次类**：“我上一次{group_name}是什么时候？在哪里？和谁一起？”
-              * **第n次类**：“我第X次{group_name}是什么时候？有什么特别的？”（X可以是2、3等）
-              * **细节对比类**：“我第X次{group_name}和第Y次{group_name}有什么不同？”
-              * **特别经历类**：“我{group_name}的经历中，哪次最特别？为什么？”
+              * **最近一次类**："我上一次{group_name}是什么时候？在哪里？和谁一起？"
+              * **第n次类**："我第X次{group_name}是什么时候？有什么特别的？"（X可以是2、3等）
+              * **细节对比类**："我第X次{group_name}和第Y次{group_name}有什么不同？"
+              * **特别经历类**："我{group_name}的经历中，哪次最特别？为什么？"
             - **合理分配ask_time**：
               * 为每个问题设定不同的提问时间（ask_time）
               * ask_time应该在事件发生期间的不同时间点
@@ -2909,8 +3027,8 @@ class QATemporalGenerator(BaseQAGenerator):
             
             **如果是顺序/因果/组成关系，生成问题的要求**：
             - **问题类型**：
-              * **时间跨度类**：“从XX到XX隔了多久？”、“XX之后多久发生了XX？”
-              * **持续时间类**：“整个XX过程持续了多长时间？”
+              * **时间跨度类**："从XX到XX隔了多久？"、"XX之后多久发生了XX？"
+              * **持续时间类**："整个XX过程持续了多长时间？"
             - **问题设计规范**：
               * 选择有因果关系或先后顺序的两个事件（起点和终点）
               * 题面提及起点事件，询问到终点事件的时间跨度
@@ -3200,24 +3318,24 @@ class QATemporalGenerator(BaseQAGenerator):
              * 如果某个特征足以唯一定位，就不要添加额外信息
              
              **示例场景**：
-             - ✅ 正确：如果当天只有和小明做的事 → “XX3天后我和小明谈了什么”
-             - ❌ 错误：如果“和小明谈了什么”已足够 → 不要说“XX3天后在和平饭店和小明谈了什么”（地点是冗余的）
-             - ✅ 正确：如果当天有多个和同事做的事，但只有和小明做的事 → “XX3天后我和小明谈了什么”
-             - ✅ 正确：如果当天有多个地点的活动，但只有和平饭店有活动 → “XX3天后我在和平饭店做了什么”
-             - ✅ 正确：如果和平饭店有多个活动，但只有就餐后和同事谈话 → “XX3天后我在和平饭店就餐后和同事谈了什么”（用“同事”指代小明，因为当天没有其他同事的事）
-             - ❌ 错误：如果“在和平饭店就餐”已足够 → 不要说“在和平饭店就餐并点了招牌菜”（点菜是冗余的）
+             - ✅ 正确：如果当天只有和小明做的事 → "XX3天后我和小明谈了什么"
+             - ❌ 错误：如果"和小明谈了什么"已足够 → 不要说"XX3天后在和平饭店和小明谈了什么"（地点是冗余的）
+             - ✅ 正确：如果当天有多个和同事做的事，但只有和小明做的事 → "XX3天后我和小明谈了什么"
+             - ✅ 正确：如果当天有多个地点的活动，但只有和平饭店有活动 → "XX3天后我在和平饭店做了什么"
+             - ✅ 正确：如果和平饭店有多个活动，但只有就餐后和同事谈话 → "XX3天后我在和平饭店就餐后和同事谈了什么"（用"同事"指代小明，因为当天没有其他同事的事）
+             - ❌ 错误：如果"在和平饭店就餐"已足够 → 不要说"在和平饭店就餐并点了招牌菜"（点菜是冗余的）
              
              **核心思想**：
              - 优先使用最独特的单一特征（独特人物、独特地点、独特活动等）
              - 如果单一特征不足以区分，才组合多个特征
-             - 可以使用指代词（如“同事”、“朋友”）隐藏具体人名，前提是当天没有其他类似人物
+             - 可以使用指代词（如"同事"、"朋友"）隐藏具体人名，前提是当天没有其他类似人物
              - 目标是让题面简洁但足够精确
            
            - 问题应该以第一人称口吻，自然流畅
                 
         2. **时间表达多样化**：
-           - 可以使用“X天后”、“X个星期后”、“X周后”等表达
-           - 也可以使用“过了X天”、“相隔X天之后”等
+           - 可以使用"X天后"、"X个星期后"、"X周后"等表达
+           - 也可以使用"过了X天"、"相隔X天之后"等
            - 确保时间间隔与实际日期差匹配
                 
         3. **答案要求**：
@@ -3440,14 +3558,14 @@ class QATemporalGenerator(BaseQAGenerator):
                - **补充缺失信息**：只生成能提供新信息的数据
                - **避免重复**：**严禁**生成与已有数据内容重复或高度相似的数据
                - **示例**：
-                 -  已有一条短信提到“今天跑了 5 公里”，但缺少具体时间  生成推送“您于 07:30 完成晨跑 5 公里”
-                 -  已有短信“今天跑了 5 公里”，又生成笔记“今天早上我跑了 5 公里”（信息重复）
+                 -  已有一条短信提到"今天跑了 5 公里"，但缺少具体时间  生成推送"您于 07:30 完成晨跑 5 公里"
+                 -  已有短信"今天跑了 5 公里"，又生成笔记"今天早上我跑了 5 公里"（信息重复）
             4. **最小信息量**：当要新增手机数据时：
                - 先分析缺少的具体信息是什么
                - 只生成包含缺少信息的数据，不要在数据中反映所有信息
                - **禁止**生成一个包含了事件所有信息或可以直接反映答案的充足数据（如一个反映了所有信息的笔记/信息）
                - **示例**：
-                 -  缺少跑步公里数：生成短信“今天跑了 5 公里”或推送“你今日已运动 5 公里，十分健康”
+                 -  缺少跑步公里数：生成短信"今天跑了 5 公里"或推送"你今日已运动 5 公里，十分健康"
                  -  不要生成：详细的跑步笔记，包含时间、路线、配速、心率等完整信息
             5. **谨慎删除**：**除非数据明显不合理，否则不要删除手机数据**。仅在数据存在明显错误或矛盾情况下考虑删除，有些数据是合理的噪声。
             6. 当你决定要生成时，优先生成多个不同类型的手机操作，将信息分散在不同手机操作中，并降低手机操作里的文本描述和题面文本的相似性。来增加题目的挑战性和证据多样性。

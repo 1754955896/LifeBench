@@ -851,6 +851,25 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                     # 删除 node_ids 字段
                     qa.pop("node_ids", None)
 
+                    # 基于 ask_time 过滤证据：去除日期晚于 ask_time 的证据
+                    qa_ask_time = qa.get('ask_time', '')
+                    if qa_ask_time and qa.get('evidence'):
+                        from datetime import datetime
+                        filtered_evidence = []
+                        for ev in qa['evidence']:
+                            # 优先使用 date 字段，否则用 datetime 字段
+                            ev_date = ev.get('date', '') or ev.get('datetime', '')
+                            if ev_date and ev_date not in ('None', 'null', ''):
+                                # 统一截取日期部分进行比较
+                                ev_date_only = ev_date.split(' ')[0] if ' ' in ev_date else ev_date[:10]
+                                # 比较日期：只保留日期 <= ask_time 的证据
+                                if ev_date_only <= qa_ask_time:
+                                    filtered_evidence.append(ev)
+                            else:
+                                # 没有日期的证据默认保留
+                                filtered_evidence.append(ev)
+                        qa['evidence'] = filtered_evidence
+
                     qa['question_type'] = 'Knowledge_update'
                     qa['score_points'] = [{
                         "description": f"正确回答出答案:{qa['answer']}",
@@ -1776,10 +1795,9 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                   * 问题表述清晰
                 - **处理方式**：**通过**
 
-                ### 情况 B：答案存在严重不合理
+                ### 情况 B：答案存在略微不合理
                 - **判断标准**：
-                  * 答案与 evidence 中的信息有严重冲突
-                  * 答案包含明显的错误或荒谬的内容
+                  * 答案与 evidence 中的信息有轻微冲突
                   * 但问题是合理的，只需要修正答案
                 - **处理方式**：**重新设计答案**
                 - **设计要求**：
@@ -1787,7 +1805,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                   * 新答案应该合理、准确
                   * 保持原问题不变
 
-                ### 情况 C：问题本身存在严重问题
+                ### 情况 C：问题本身存在严重问题或答案严重不合理或没法回答该问题
                 - **判断标准**：
                   * 问题表述不清、有歧义或无意义
                   * 问题与知识更新的主题完全无关
