@@ -36,7 +36,7 @@ class QAGenerator:
             'order': 3,
             'qagen_params': {
                 'year': 2025,
-                'num_questions_per_month': 5
+                'num_questions_per_month': 7
             }
         },
         'qa_pattern_recognition_generator': {
@@ -44,7 +44,7 @@ class QAGenerator:
             'order': 4,
             'qagen_params': {
                 'year': '2025',
-                'num_questions_per_month': 5
+                'num_questions_per_month': 6
             }
         },
         'qa_conflict_generator': {
@@ -52,7 +52,7 @@ class QAGenerator:
             'order': 5,
             'qagen_params': {
                 'year': 2025,
-                'num_samples': 30
+                'num_samples': 60
             }
         },
         # 'qa_harmful_memory_generator': {
@@ -65,14 +65,14 @@ class QAGenerator:
             'order': 7,
             'qagen_params': {
                 'year': 2025,
-                'num_questions_per_month': 5
+                'num_questions_per_month': 4
             }
         },
         'qa_knowledge_updating_generator': {
             'class_name': 'QAKnowledgeUpdatingGenerator',
             'order': 8,
             'qagen_params': {
-                'max_questions_per_topic': 6
+                'max_questions_per_topic': 10
             }
         },
         'qa_hidden_info_generator': {

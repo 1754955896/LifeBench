@@ -32,8 +32,14 @@ class PhoneOperationGenerator:
         'agent_chat': {'type', 'date', 'conversation', 'daily_event_id', 'event_id'}
     }
 
-    def __init__(self):
+    def __init__(self, persona_data: Dict[str, Any] = None):
         self.operation_types = ['sms', 'call', 'calendar', 'note', 'gallery', 'contact']
+        # 从画像数据中提取人物姓名
+        self.persona_name = ""
+        if persona_data and isinstance(persona_data, dict):
+            self.persona_name = persona_data.get('name', '')
+        if not self.persona_name:
+            self.persona_name = "用户"
 
     def _convert_unsupported_type(self, operation_type: str, generation_hint: str, original_event: Dict[str, Any]) -> tuple:
         """
@@ -158,6 +164,18 @@ class PhoneOperationGenerator:
             # 解析结果
             operations = self._parse_result(result, operation_type, original_event)
 
+            # 语义层面 LLM 校验
+            semantic_errors = self._semantic_validate(operations, original_event, question, operation_type)
+            if semantic_errors:
+                if fix_attempt < max_fix_attempts - 1:
+                    print(f"[PhoneOperationGenerator] 语义校验发现 {len(semantic_errors)} 个问题，开始重新生成...")
+                    continue
+                else:
+                    print(f"[PhoneOperationGenerator] 语义校验失败，抛弃 {len(operations)} 条数据")
+                    return []
+            else:
+                print(f"[PhoneOperationGenerator] 语义校验通过")
+
             # 格式硬校验
             if not operations:
                 if fix_attempt < max_fix_attempts - 1:
@@ -261,15 +279,19 @@ class PhoneOperationGenerator:
 
         prompt = f"""
         作为手机操作数据生成器，请根据以下信息生成{operation_type}类型的操作数据。
-        
+
+        【人物信息】
+        - 主体姓名：{self.persona_name}
+        - 所有生成的数据必须以{self.persona_name}的视角出发，符合该人物的身份和行为习惯
+
         【原始事件】
         {event_info}
-        
+
         【事件类型分析】
         - 事件类型：{event_type}
         - 事件名称：{event_name}
         {event_type_guidance}
-        
+
         【生成目标】
         生成的{operation_type}数据应该：
         1. 与原始事件（{event_name}）相关且合理
@@ -693,6 +715,105 @@ class PhoneOperationGenerator:
             valid_ops.append(op)
 
         return valid_ops, invalid_data, invalid_reasons
+
+    def _semantic_validate(self, operations: List[Dict[str, Any]], original_event: Dict[str, Any],
+                           question: str, operation_type: str) -> List[Dict[str, Any]]:
+        """
+        语义层面 LLM 校验，验证生成的数据是否符合场景、是否能回答问题
+
+        Args:
+            operations: 生成的操作数据列表
+            original_event: 原始事件
+            question: 相关问题
+            operation_type: 操作类型
+
+        Returns:
+            错误列表，如果为空则校验通过
+        """
+        if not operations:
+            return []
+
+        print(f"[PhoneOperationGenerator] 开始语义校验，共 {len(operations)} 条数据...")
+
+        # 构建校验 prompt
+        prompt = f"""
+        作为手机数据质量评估专家，请校验以下生成的{operation_type}数据是否正确。
+
+        【原始事件】
+        {json.dumps(original_event, ensure_ascii=False, indent=2)}
+
+        【相关问题】
+        {question}
+
+        【生成的数据】
+        {json.dumps(operations, ensure_ascii=False, indent=2)}
+
+        **校验要求**
+
+        1. **场景一致性**：数据是否与原始事件的场景相符？
+           - 时间是否合理？（如工作时间收到娱乐推送不合理）
+           - 内容是否与事件主题相关？
+           - 联系人的选择是否合理？
+
+        2. **回答支持性**：这些数据是否能够支持回答相关问题？
+           - 数据中的信息是否与问题答案相关？
+           - 是否存在缺失关键信息的情况？
+           - 是否存在与问题无关的冗余信息？
+
+        3. **内容合理性**：数据内容是否真实自然？
+           - 是否存在明显不合逻辑的内容？
+           - 是否存在可能的幻觉信息？
+           - 时间、内容、联系人等细节是否一致？
+
+        **输出格式**
+        请以 JSON 格式返回校验结果：
+        {{
+            "is_valid": true/false,  // 是否通过校验
+            "errors": [
+                {{
+                    "index": 0,  // 出错数据的索引
+                    "error_type": "场景不一致/回答支持不足/内容不合理",
+                    "error_description": "具体错误描述",
+                    "suggestion": "修改建议"
+                }}
+            ],
+            "overall_feedback": "整体评估反馈"
+        }}
+
+        **重要**：
+        - 如果所有数据都正确，返回 {{"is_valid": true, "errors": [], "overall_feedback": "通过"}}
+        - 如果发现问题，必须指出具体是哪些索引的数据出错以及错误原因
+        """
+
+        try:
+            result = llm_call_j(prompt)
+
+            if isinstance(result, str):
+                start_idx = result.find('{')
+                end_idx = result.rfind('}') + 1
+                if start_idx != -1 and end_idx != -1:
+                    result = json.loads(result[start_idx:end_idx])
+
+            if not isinstance(result, dict):
+                print(f"[PhoneOperationGenerator] 语义校验结果解析失败，假设通过")
+                return []
+
+            is_valid = result.get('is_valid', True)
+            errors = result.get('errors', [])
+
+            if is_valid:
+                print(f"[PhoneOperationGenerator] 语义校验通过")
+                return []
+            else:
+                print(f"[PhoneOperationGenerator] 语义校验发现 {len(errors)} 个问题")
+                for err in errors:
+                    print(f"  - 索引 {err.get('index')}: {err.get('error_description')}")
+                    print(f"    建议: {err.get('suggestion')}")
+                return errors
+
+        except Exception as e:
+            print(f"[PhoneOperationGenerator] 语义校验失败: {e}")
+            return []
 
     def _get_type_spec(self, operation_type: str) -> str:
         """

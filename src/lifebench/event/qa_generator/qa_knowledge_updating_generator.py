@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 from typing import List, Dict, Any, Tuple
 from .base_generator import BaseQAGenerator
 from .phone_operation_generator import PhoneOperationGenerator
-from src.lifebench.utils.llm_call import llm_call_j
+from src.lifebench.utils.llm_call import llm_call_j, llm_call_reason_j
 
 class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
     def __init__(self, daily_event: List[Dict], event_tree: List[Dict],
@@ -184,7 +184,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
             【必须检测的状态类型】（共8个固定状态）
             **重要**：以下8个类型对应8个固定状态，同类型的不同事件都归到同一个状态下记录变化。
             
-            1. **所在城市**：常住城市或居住地的变化
+            1. **所在城市**：常住城市或居住地的变化，或者进行了出游/旅行/出差导致的城市变化。
                - 示例：从北京搬到上海、从租房改为购房等
             
             2. **工作变动**：换工作、离职、入职、职位变化等（**只有确实出现变动才记录**）
@@ -1083,7 +1083,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         prompt = f"""
         你是一位生活观察专家和问题设计师。请基于以下人物状态变化信息，设计**知识和信息更新类问题对**。
         
-        **核心概念**：知识和信息更新问题是指，在不同时间点询问同一个问题时，由于人物状态发生了变化，得到的答案会不一样。
+        **核心概念**：知识和信息更新问题是指，关于该人物的某个信息发生了变化，我们考察记忆系统对变化的感知性。那么我们在不同时间点询问同一个问题时，由于人物状态发生了变化，得到的答案会不一样。
         
         【状态类型】: {state_name}
         【细分主题】: {refined_topic}
@@ -1092,9 +1092,9 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         {json.dumps(nodes_summary, ensure_ascii=False, indent=2)}
 
         【任务要求】
-        请设计**成对的问题**（至少2个问题，必须是偶数个），每对问题应该是：
+        请设计**多个问题组**，每组问题应该是：
         - **相同的核心问题**，但在**不同的时间点**提问
-        - 由于状态发生了变化，两个问题的**答案不同**
+        - 由于状态发生了变化，每组问题的**答案不同**
 
         **优先级要求**：
         - 优先基于重要节点设计问题（如工作变动、城市迁移等重大变化）
@@ -1106,18 +1106,29 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         - 避免使用"某天"、"那个人"等模糊指代
         
         例如：
+        事件为：2025-01-05 冯浩然加入了A公司，2025-01-18 冯浩然离开了A公司并加入了B公司。
         - 问题1："冯浩然在哪里工作？" (ask_time: "2025-01-10") → 答案："A公司"
         - 问题2："冯浩然在哪里工作？" (ask_time: "2025-01-20") → 答案："B公司"
         
         **具体要求**：
         
         1. **问题本质**：
-           - 问题应该是询问人物的某个状态或信息
+           - 问题应该是询问人物的某个状态或信息，可以从不同角度设计问题。但要保障问题可以基于节点数据回答，不增加额外假设或不存在的细节。
            - 在状态变化前后，这个问题的答案应该不同
            - **重要**：设计问题时，对于目标节点外的所有之前节点都要考虑是否会影响答案
            - 例如：如果人物去过徐州、南京、苏州三个城市旅游，那么在第三个节点之后提问"我去过哪些城市旅游？"时，答案应该是"徐州、南京、苏州"，而不是只有"苏州"
            - 累积性的状态（如去过的地方、学过的技能、完成的事项等）需要包含所有历史节点的信息
-        
+
+        **设问指导**：
+        设计问题时可从以下两种角度出发：
+        1. **提问当前状态/信息**：询问人物在当前时间点的具体状态或信息
+           - 示例："我现在的工作是？"、"我现在住在哪个城市？"
+           - 答案应反映 ask_time 时该节点的最新状态
+        2. **提问过往的节点信息聚合**：询问截至 ask_time 为止的所有历史节点汇总
+           - 示例："我目前为止去过哪些城市？"、"我一共获得过几次最优员工？"
+           - 答案应包含所有历史节点的信息，而不只是最后一个节点
+           - 注意：如果 ask_time 在某个节点之前，该节点的信息不应被包含
+
         2. **ask_time 设计与分配逻辑**：
            - 每个问题必须包含 `ask_time` 字段，表示提问的时间点
            - **格式约束**：`ask_time` 必须是 "YYYY-MM-DD" 格式（如 "2025-01-10"、"2025-03-31"），具体到天
@@ -1149,17 +1160,16 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
              * 好的问题应该让答题者需要仔细回忆和推理才能给出正确答案
              * 问题应该有一定的挑战性，不能太显而易见
            - **题目描述要自然流畅**，像真实用户会问的问题
-           - **使用第一人称视角**，例如"我现在..."、"我最近..."、"我的..."
+  
         
         4. **node_ids 标注**：
            - 每个问题必须包含 `node_ids` 字段，指明是基于哪些变化节点设计的
            - `node_ids` 是一个数组，包含相关的节点 ID
            - 例如：如果问题涉及从节点0到节点1的变化，则 `node_ids: [0, 1]`
         
-        5. **成对输出**：
-           - 必须输出偶数个问题（2个、4个、6个等）
-           - 每对问题应该是相同的核心问题，但 ask_time 不同
-           - 每对问题的答案应该不同，体现状态变化
+        5. **问题数目**：
+            - 基于变化节点的数目，尽量涵盖每个变化节点的不同状态设计问题。
+           
         
         **输出格式**：
         请以 JSON 数组格式返回问题和答案：
@@ -1179,35 +1189,46 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         ]
         
         **示例**：
+        节点输入示例：
+        ```
+        [
+            {{"node_id": 0, "date": "2025-01-15", "new_state": "入职A公司担任前端工程师"}},
+            {{"node_id": 1, "date": "2025-03-20", "new_state": "跳槽到B公司担任高级前端工程师"}},
+            {{"node_id": 2, "date": "2025-06-01", "new_state": "月收入从15000元涨到18000元"}}
+        ]
+        ```
+
+        对应的输出示例：
+        ```json
         [
             {{
                 "question": "冯浩然在哪里工作？",
                 "answer": "冯浩然在A公司担任前端工程师。",
-                "ask_time": "2025-01-10",
+                "ask_time": "2025-01-20",
                 "node_ids": [0]
             }},
             {{
                 "question": "冯浩然在哪里工作？",
                 "answer": "冯浩然在B公司担任高级前端工程师。",
-                "ask_time": "2025-01-20",
-                "node_ids": [0]
+                "ask_time": "2025-03-25",
+                "node_ids": [1]
             }},
             {{
                 "question": "冯浩然的月收入是多少？",
                 "answer": "冯浩然的月收入是15000元。",
-                "ask_time": "2025-02-01",
-                "node_ids": [1]
+                "ask_time": "2025-03-01",
+                "node_ids": [2]
             }},
             {{
                 "question": "冯浩然的月收入是多少？",
                 "answer": "冯浩然的月收入是18000元。",
-                "ask_time": "2025-03-01",
-                "node_ids": [1]
+                "ask_time": "2025-06-10",
+                "node_ids": [2]
             }}
         ]
+        ```
         
         **注意**：
-        - 必须输出偶数个问题（至少2个）
         - `ask_time` 格式必须为 "YYYY-MM-DD"，且必须在所引用节点的所有事件日期之后，最晚不得超过 2025-12-31
         - `node_ids` 必须引用输入中存在的节点 ID
         - 问题的答案应该反映在 `ask_time` 这个时间点的状态
@@ -1215,7 +1236,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         """
         
         try:
-            res = llm_call_j(prompt)
+            res = llm_call_reason_j(prompt)
             print(f"[KnowledgeGen] LLM 输入: {prompt}")
             print(f"[KnowledgeGen] LLM 生成问题结果: {res}")
             if isinstance(res, str):
@@ -1686,7 +1707,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         """
         实现基类抽象方法，作为外部调用的统一入口
         """
-        max_questions_per_topic = kwargs.get('max_questions_per_topic', 6)
+        max_questions_per_topic = kwargs.get('max_questions_per_topic', 10)
         
         # 3. 基于主题生成问题（会自动验证和补充手机数据）
         if self.is_print:

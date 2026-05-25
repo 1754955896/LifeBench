@@ -10,9 +10,10 @@
 import os
 import json
 import random
-from typing import List, Dict
+from typing import List, Dict, Any
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from .base_generator import BaseQAGenerator
+from .phone_operation_generator import PhoneOperationGenerator
 from src.lifebench.utils.llm_call import llm_call_j
 
 
@@ -43,6 +44,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
         self.is_print = is_print
         self.year = year
         self.persona_data = persona_data
+        self.phone_op_generator = PhoneOperationGenerator()
     
     def QAGen(self, **kwargs) -> List[Dict]:
         """
@@ -62,7 +64,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
         
         all_questions = []
         months = list(self.draft_event.keys())
-        
+        months = ['2025-12']
         if self.is_print:
             print(f"  - 共 {len(months)} 个月份需要处理")
         
@@ -92,49 +94,60 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
         if self.is_print:
             print(f"[HiddenInfoGen] ✓ 完成，共生成 {len(all_questions)} 个隐藏信息问题")
 
-        # 过滤不可回答的问题（20线程并行）
+        # Step 6: 验证问题的可回答性和答案合理性（20线程并行）
         if self.is_print:
-            print("\n[HiddenInfoGen] 开始过滤不可回答的问题...")
+            print("\n[HiddenInfoGen] 开始验证问题的可回答性和答案合理性...")
 
         from src.lifebench.utils.llm_call import llm_call_j
 
         def validate_single_qa(idx: int, qa: Dict) -> tuple:
-            """验证单个 QA 对"""
+            """验证单个 QA 对的可回答性和答案合理性"""
             try:
-                filter_prompt = f"""
-作为问答质量审核员，请验证以下问题是否可以通过现有证据回答。
+                question_text = qa.get('question', '')
+                answer_text = qa.get('answer', '')
+                evidence_list = qa.get('evidence', [])
+                score_points = qa.get('score_points', [])
+
+                validate_prompt = f"""
+作为问答质量审核员，请验证以下问题的可回答性和答案合理性。
 
 【问题】
-{qa.get('question', '')}
+{question_text}
 
 【答案】
-{qa.get('correct_answer', '')}（选择题答案）
+{answer_text}
 
-【选项】
-{json.dumps(qa.get('options', []), ensure_ascii=False, indent=2)}
+【评分点】
+{json.dumps(score_points, ensure_ascii=False, indent=2)}
 
-【证据列表】（共 {len(qa.get('evidence', []))} 条）
-{json.dumps([{'type': e.get('type', 'unknown'), 'summary': str(e)[:300]} for e in qa.get('evidence', [])], ensure_ascii=False, indent=2)}
+【证据列表】（共 {len(evidence_list)} 条）
+{json.dumps(evidence_list, ensure_ascii=False, indent=2)}
 
-**任务要求**
-1. 分析问题、答案和证据之间的关系
-2. 判断证据是否足以支撑选出正确的选项
-3. 如果证据不足以回答问题，返回 pass=False，并说明原因
-4. 如果证据可以回答问题，返回 pass=True
+【验证任务】
+1. **可回答性分析**：答案的所有内容是否都能从现有证据推断出来？
+   - 检查答案中的每个关键信息是否在证据中有对应支持
+   - 如果答案包含证据中没有的信息，标记为不可回答
 
-**重要约束**
-- 问题必须是具体、可回答的
-- 选项必须与问题匹配
-- 证据必须能支撑答案的推理过程
+2. **答案合理性分析**：答案是否基于正确的推理？
+   - 答案是否符合逻辑、符合用户的实际情况
+   - 答案是否与隐藏信息、约束条件一致
 
-**输出要求**
+3. **综合判断**：
+   - 如果答案所有内容都能从证据推断，且推理合理 → pass=True
+   - 如果答案有内容无法从证据推断，或推理不合理 → pass=False
+
+【输出格式】
 请以 JSON 格式返回：
 {{
     "pass": true/false,
-    "reason": "验证通过/不通过的原因"
+    "answerable": true/false,
+    "answer_reasonable": true/false,
+    "missing_evidence": ["缺失的证据1", "缺失的证据2", ...],
+    "unreasonable_aspects": ["不合理的方面1", ...],
+    "reason": "综合验证结论"
 }}
 """
-                llm_result = llm_call_j(filter_prompt)
+                llm_result = llm_call_j(validate_prompt)
 
                 if isinstance(llm_result, str):
                     start_idx = llm_result.find('{')
@@ -144,18 +157,45 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
 
                 if isinstance(llm_result, dict):
                     is_pass = llm_result.get('pass', True)
+                    answerable = llm_result.get('answerable', True)
+                    answer_reasonable = llm_result.get('answer_reasonable', True)
                     reason = llm_result.get('reason', '')
-                    print(f"[HiddenInfoGen] 第 {idx + 1} 个问题: {'✓ 通过' if is_pass else '✗ 未通过'} - {reason}")
+                    missing_evidence = llm_result.get('missing_evidence', [])
+                    unreasonable_aspects = llm_result.get('unreasonable_aspects', [])
+
+                    # 将验证结果添加到 QA 中
+                    qa['_validation'] = {
+                        'pass': is_pass,
+                        'answerable': answerable,
+                        'answer_reasonable': answer_reasonable,
+                        'reason': reason,
+                        'missing_evidence': missing_evidence,
+                        'unreasonable_aspects': unreasonable_aspects
+                    }
+
+                    status = "✓ 通过" if is_pass else "✗ 抛弃"
+                    print(f"[HiddenInfoGen] 问题 {idx + 1}: {status}")
+                    if not is_pass:
+                        print(f"    原因: {reason}")
+                        if missing_evidence:
+                            print(f"    缺失证据: {missing_evidence}")
+                        if unreasonable_aspects:
+                            print(f"    不合理方面: {unreasonable_aspects}")
+
                     return idx, qa, is_pass
                 else:
                     return idx, qa, True
 
             except Exception as e:
-                print(f"[HiddenInfoGen] 第 {idx + 1} 个问题验证失败：{e}")
+                print(f"[HiddenInfoGen] 问题 {idx + 1} 验证失败：{e}")
+                qa['_validation'] = {'pass': True, 'reason': f'验证异常: {e}'}
                 return idx, qa, True
 
         # 20线程并行验证
-        filtered_results = [None] * len(all_questions)
+        validation_results = [None] * len(all_questions)
+        pass_count = 0
+        abandon_count = 0
+
         with ThreadPoolExecutor(max_workers=20) as executor:
             futures = [
                 executor.submit(validate_single_qa, idx, qa)
@@ -165,19 +205,24 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
             for future in as_completed(futures):
                 try:
                     idx, qa, is_pass = future.result()
+                    validation_results[idx] = qa
                     if is_pass:
-                        filtered_results[idx] = qa
+                        pass_count += 1
+                    else:
+                        abandon_count += 1
                 except Exception as e:
                     print(f"[HiddenInfoGen] 结果收集失败：{e}")
 
-        # 过滤掉 None 值
-        all_questions = [r for r in filtered_results if r is not None]
+        # 过滤掉未通过验证的问题
+        filtered_questions = [r for r in validation_results if r is not None and r.get('_validation', {}).get('pass', True)]
 
         if self.is_print:
-            print(f"[HiddenInfoGen] ✓ 过滤完成，通过验证的问题数量：{len(all_questions)}")
+            print(f"\n[HiddenInfoGen] ✓ 验证完成")
+            print(f"    通过: {pass_count} 个")
+            print(f"    抛弃: {abandon_count} 个")
+            print(f"    最终有效问题: {len(filtered_questions)} 个")
 
-        # 转换选择题格式为问答题格式
-        all_questions = self._convert_to_qa_format(all_questions)
+        all_questions = filtered_questions
 
         return all_questions
 
@@ -284,13 +329,14 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
 
         return questions_to_keep + rewritten_questions
     
-    def _generate_questions_for_month(self, month: str) -> List[Dict]:
+    def _generate_questions_for_month(self, month: str, k: int = 5) -> List[Dict]:
         """
         为单月生成隐藏信息问题
-        
+
         Args:
             month: 月份字符串，格式 YYYY-MM
-        
+            k: 最终选取的节点数量上限，默认为5
+
         Returns:
             该月生成的 QA 列表
         """
@@ -299,34 +345,39 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
         print(f"  - 月份 {month}: 共 {len(month_data)} 条数据")
         if not month_data or not isinstance(month_data, list):
             return []
-        
-        # Step 1: 分析整月的隐藏需求
-        print(f"  - 开始分析隐藏需求...")
-        hidden_needs = self._analyze_hidden_needs_for_month(month, month_data)
-        
-        if not hidden_needs:
-            print(f"  ⚠️ 未发现隐藏需求，返回空列表")
+
+        # Step 1: 分析整月的异常状态/节点
+        print(f"  - 开始分析异常状态节点...")
+        unusual_states = self._analyze_unusual_states_for_month(month, month_data)
+
+        if not unusual_states:
+            print(f"  ⚠️ 未发现异常状态节点，返回空列表")
             return []
-        
-        # Step 2: 为每个需求收集证据
-        for need in hidden_needs:
-            self._collect_evidence_for_need(need, month_data)
 
-        print(f"  - 共 {len(hidden_needs)} 个隐藏需求")
-        print(hidden_needs)
+        print(f"  - 共 {len(unusual_states)} 个异常状态节点")
 
-        # Step 2.5: 生成当月主要事件和主题总结
-        month_summary = self._generate_month_summary(month, month_data)
-        print(f"  - 月度总结: {month_summary}")
+        # Step 2: 对每个节点进行影响分析
+        for state in unusual_states:
+            self._analyze_node_impact(state, month_data)
 
-        # Step 3: 对所有隐藏需求一次性生成问题
-        questions = self._design_questions_for_all_needs(hidden_needs, month, month_summary)
-        
+        # Step 2.5: 对节点进行质量排序，选取最佳节点
+        print(f"  - 开始对节点进行质量排序...")
+        ranked_states = self._rank_and_select_nodes(unusual_states, k=k)
+        print(f"  - 选取了 {len(ranked_states)} 个高质量节点")
+
+        # Step 2.6: 为每个节点收集对应的 daily_event
+        for node in ranked_states:
+            self._collect_evidence_for_node(node)
+
+        print(ranked_states)
+
+        # Step 3: 基于异常状态节点直接生成问题
+        questions = self._design_questions_for_all_nodes(ranked_states, month)
+
         # Step 4: 为每个问题补充 evidence 字段（手机数据）
         for qa in questions:
             required_events_id = qa.get("required_events_id", [])
             if required_events_id:
-                # 从 phonedata 中查找对应的手机数据
                 evidence_data = self._get_phone_evidence_by_event_ids(required_events_id)
                 qa["evidence"] = evidence_data
             else:
@@ -334,193 +385,1235 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
             qa['ask_time'] = f'{self.year}-12-31'
         return questions
     
-    def _analyze_hidden_needs_for_month(self, month: str, month_data: List[Dict]) -> List[Dict]:
+    def _analyze_unusual_states_for_month(self, month: str, month_data: List[Dict]) -> List[Dict]:
         """
-        分析整月的隐藏需求
-        
+        分析整月的异常状态区间和状态变化节点
+
         Args:
             month: 月份字符串
             month_data: 该月的所有数据
-        
+
         Returns:
-            隐藏需求列表
+            异常状态列表，每项包含：state（状态描述）、state_analysis（状态分析）、start_date、end_date
         """
+        # 准备用户画像数据（去掉relation字段）
+        persona_info = {}
+        if self.persona_data:
+            persona_info = {k: v for k, v in self.persona_data.items() if k != 'relation'}
+        persona_text = json.dumps(persona_info, ensure_ascii=False, indent=2) if persona_info else "无用户画像数据"
+
         prompt = f"""
-        你是一位用户行为分析师和心理学家。请分析以下用户在 {month} 的整体活动数据，挖掘用户可能存在的**隐藏需求**。
-        
+        你是一位用户行为分析师。请分析以下用户在 {month} 的整体活动数据，找出与用户正常状态不同的**异常状态区间**或**状态变化节点**。
+
+        【用户画像】（用于判断什么是"异常"状态）
+        {persona_text}
+
         【重要概念】
-        隐藏需求是指：
-        - 用户没有明确表达，但可以通过行为模式推理出的需求
-        - 不是表面的活动，而是活动背后的动机或潜在需求
-        - 例如：频繁搜索健身信息 → 可能有减肥或塑形的需求（但未明确说）
-        - 例如：多次查看机票 → 可能有旅行计划（但未预订或告诉他人）
-        
+        异常状态是指：
+        - 用户在特定时间段内表现出的、与平时不同的行为模式或状态
+        - 用户对自己施加的临时性规则、约束或限制（如"这周不吃辣"、"每天必须走10000步"）
+        - 物理位置发生变化的时间段（如出差、返乡、旅游等不在常居地的时期）
+        - 生活节奏或习惯的显著改变（如某段时间突然开始运动、某段时间情绪低落）
+        - 用户主动制定的计划或承诺（如"每周三去陶艺"、"素食日打卡"）
+
         【月度活动数据】
         {json.dumps(month_data, ensure_ascii=False, indent=2)}
-        
+
         【任务要求】
-        请分析用户的行为模式，找出 3-5 个可能的隐藏需求。
-        
+        请分析用户的行为模式，识别所有符合"异常状态"定义的时间段或节点，不要限制数量。
+
+        **节点类型**（必须标注，每项都要有 node_type 字段）：
+        - "rule_constraint"：规则约束（用户对自己施加的临时性规则、限制、承诺）
+        - "position_change"：位置变化（出差、旅游、返乡等离开常居地）
+        - "special_event"：特殊事件（导致生活习惯、状态在一定时间内发生改变的事件）
+        - "profile_change"：画像变化（个人信息变化，如薪资、住址、职业、工作地、信仰、人物关系等）
+
         **分析维度**：
-        1. **行为模式**：用户的哪些行为暗示了某种需求？
-        2. **潜在动机**：这些行为背后可能的动机是什么？
-        3. **未满足的需求**：用户可能需要什么但没有明确表达？
-        
+        1. **规则约束**：用户是否在某段时间给自己制定了规则、限制、承诺？
+        2. **位置变化**：用户是否在某段时间离开常居地（出差、旅游、返乡等）？
+        3. **特殊事件**：是否有特殊事件导致生活习惯或状态在一定时间内发生改变？
+        4. **画像变化**：用户的个人信息是否有显著变化，如：
+           - 薪资/收入变化（获得奖金、加薪、投资收益/亏损等）
+           - 住址变化（搬家、装修、租房/退租等）
+           - 职业/工作变化（晋升、调岗、离职、开始新项目等）
+           - 工作地变化（办公室搬迁、远程办公、出差常驻等）
+           - 信仰/价值观变化（开始/停止某种信仰、观念转变等）
+           - 人物关系变化（新认识重要朋友、朋友离职/搬家/去世、恋人关系进展、社交圈变化等）
+
         **筛选标准**：
-        - 需求必须是隐藏的，不能是用户明确表达的
-        - 必须有行为证据支持，不能凭空猜测
-        - 需求应该是具体的、可验证的
-        - 优先选择贯穿整个月或多个日期的需求
-        
+        - 状态必须是可观测的、有行为证据支持的
+        - 状态应该有一定的持续时间（至少1天以上）
+        - 优先识别持续多天或反复出现的状态
+        - 状态应该是"异常"的，即与用户的一般模式不同
+
         **输出格式**：
         请以 JSON 数组格式返回：
         [
             {{
-                "need_description": "隐藏需求的描述（具体、清晰）",
-                "confidence": "置信度（high/medium/low）",
-                "evidence_summary": "支持该需求的行为证据摘要",
-                "related_dates": ["2025-01-05", "2025-01-12"]  // 相关日期列表，按最能体现该需求的程度排序（最相关的排在前面）
+                "node_type": "rule_constraint/position_change/special_event/profile_change",
+                "state": "状态描述（如：这周开始严格执行素食日/出差去北京期间/这段时间每天晨跑5公里）",
+                "state_analysis": "状态分析（说明这个状态的特点、原因或影响）",
+                "start_date": "YYYY-MM-DD",
+                "end_date": "YYYY-MM-DD"
             }}
         ]
-        
+
         **示例**：
         [
             {{
-                "need_description": "用户可能有学习新技能的需求，特别是编程或数据分析",
-                "confidence": "medium",
-                "evidence_summary": "多次浏览在线课程网站，搜索Python教程，收藏技术博客",
-                "related_dates": ["2025-01-05", "2025-01-12", "2025-01-20"]
+                "node_type": "special_event",
+                "state": "出差去北京期间，生活节奏被打乱，运动中断",
+                "state_analysis": "因工作出差前往北京，期间无暇晨跑和打球，日常运动量大幅减少",
+                "start_date": "2025-01-15",
+                "end_date": "2025-01-20"
             }},
             {{
-                "need_description": "用户可能有改善睡眠质量的需求",
-                "confidence": "high",
-                "evidence_summary": "深夜频繁查看手机，搜索助眠方法，购买眼罩和耳塞",
-                "related_dates": ["2025-01-08", "2025-01-15", "2025-01-22"]
+                "node_type": "rule_constraint",
+                "state": "严格执行素食日计划，并记录身体变化",
+                "state_analysis": "用户主动开始素食实验，每天在日记中记录体重和身体感受，持续执行了一周",
+                "start_date": "2025-01-10",
+                "end_date": "2025-01-17"
             }}
         ]
-        
-        如果没有发现明显的隐藏需求，返回空数组 []。
+
+        如果没有发现明显的异常状态，返回空数组 []。
         """
-        
+
         try:
             res = llm_call_j(prompt)
-            print(f"  - LLM 分析整月隐藏需求: {res}")
+            print(f"  - LLM 分析异常状态: {res}")
             if isinstance(res, str):
                 res = json.loads(res)
-            
+
             # 兼容不同的返回格式
             if isinstance(res, list):
                 return res
             elif isinstance(res, dict):
-                # 尝试从常见字段名中提取列表
-                hidden_needs = res.get("hidden_needs") or res.get("needs") or res.get("data") or []
-                if isinstance(hidden_needs, list):
-                    return hidden_needs
-            
+                states = res.get("states") or res.get("data") or res.get("abnormal_states") or []
+                if isinstance(states, list):
+                    return states
+
             return []
-        
+
         except Exception as e:
             if self.is_print:
-                print(f"  ⚠️ 分析整月隐藏需求失败 ({month}): {e}")
+                print(f"  ⚠️ 分析异常状态失败 ({month}): {e}")
             return []
-    
-    def _generate_month_summary(self, month: str, month_data: List[Dict]) -> Dict:
+
+    def _analyze_node_impact(self, node: Dict, month_data: List[Dict]):
         """
-        生成当月主要事件和主题的总结
-        
+        对单个异常状态节点进行影响分析：
+        - 输入当月的 daily_draft 和一个不寻常节点
+        - 推理分析这个不寻常节点的时间具体有什么不寻常
+        - 有哪些事情会因为这个不寻常的改变在哪段时间不能做
+        - 或者有哪些事件在没发生不寻常事件之前不能做
+        - 或哪些事件在发生不寻常事件之后不能做了
+
         Args:
-            month: 月份字符串
+            node: 异常状态节点（包含 start_date, end_date, state, state_analysis, node_type）
             month_data: 该月的所有数据
-        
-        Returns:
-            包含主要事件和主题的总结字典
         """
+        start_date = node.get("start_date", "")
+        end_date = node.get("end_date", "")
+        state = node.get("state", "")
+        state_analysis = node.get("state_analysis", "")
+
         prompt = f"""
-        你是一位用户行为分析师。请分析用户在 {month} 的主要活动和涉及的主题。
-        
-        【月度活动数据】
-        {json.dumps(month_data[:10], ensure_ascii=False, indent=2)}  # 只取前10条作为样本
-        
+        你是一位用户行为分析师。请分析以下异常状态节点对用户生活的影响。
+
+        【异常状态节点信息】
+        - 节点类型: {node.get('node_type', 'N/A')}
+        - 状态描述: {state}
+        - 状态分析: {state_analysis}
+        - 开始日期: {start_date}
+        - 结束日期: {end_date}
+
+        【该月活动数据】
+        {json.dumps(month_data, ensure_ascii=False, indent=2)}
+
         【任务要求】
-        请总结该月的主要事件类型和涉及的主题领域。
-        
+        请从以下角度分析该异常状态节点的影响：
+
+        1. **该时间段的不寻常之处**：这个节点期间，用户的行为/状态有哪些与平时不同？
+
+        2. **因该节点而不能做的事**：由于这个事件的发生，在 {start_date} 到 {end_date} 这段时间内，用户有哪些原本可以做的事情不能做了？
+
+        3. **在该节点之前不能做的事**：在没有发生这个事件之前，用户有哪些事情是不能做/没条件做的？
+
+        4. **在该节点之后不能做的事**：发生这个事件之后，用户有哪些事情就不能做了？
+
         **输出格式**：
         请以 JSON 格式返回：
         {{
-            "main_events": ["主要事件类型1", "主要事件类型2", ...],
-            "topics": ["主题领域1", "主题领域2", ...],
-            "summary": "一句话总结该月的核心活动特征"
+            "unusual_points": ["该时间段的不寻常之处1", "该时间段的不寻常之处2", ...],
+            "cannot_do_during": ["因该节点而不能做的事1", "因该节点而不能做的事2", ...],
+            "cannot_do_before": ["在该节点之前不能做的事1", "在该节点之前不能做的事2", ...],
+            "cannot_do_after": ["在该节点之后不能做的事1", "在该节点之后不能做的事2", ...]
         }}
-        
-        **示例**：
-        {{
-            "main_events": ["职业发展与学习", "健康管理", "社交活动", "投资理财"],
-            "topics": ["CFA备考", "健身运动", "摄影爱好", "客户咨询", "家庭聚会", "邮票收藏"],
-            "summary": "该月用户主要围绕职业发展（CFA备考、客户工作）、健康管理（运动、体检）和社交活动（朋友聚会、家庭联系）展开"
-        }}
+
+        如果某个类别没有相关内容，返回空数组 []。
         """
-        
+
         try:
             res = llm_call_j(prompt)
+            print(f"  - LLM 分析节点影响: {res}")
             if isinstance(res, str):
                 res = json.loads(res)
-            
+
             if isinstance(res, dict):
-                return res
-            else:
-                return {
-                    "main_events": [],
-                    "topics": [],
-                    "summary": ""
+                node["impact_analysis"] = {
+                    "unusual_points": res.get("unusual_points", []),
+                    "cannot_do_during": res.get("cannot_do_during", []),
+                    "cannot_do_before": res.get("cannot_do_before", []),
+                    "cannot_do_after": res.get("cannot_do_after", [])
                 }
-        
+            else:
+                node["impact_analysis"] = {
+                    "unusual_points": [],
+                    "cannot_do_during": [],
+                    "cannot_do_before": [],
+                    "cannot_do_after": []
+                }
+
         except Exception as e:
             if self.is_print:
-                print(f"  ⚠️ 生成月度总结失败: {e}")
-            return {
-                "main_events": [],
-                "topics": [],
-                "summary": ""
+                print(f"  ⚠️ 分析节点影响失败: {e}")
+            node["impact_analysis"] = {
+                "unusual_points": [],
+                "cannot_do_during": [],
+                "cannot_do_before": [],
+                "cannot_do_after": []
             }
-    
-    def _collect_evidence_for_need(self, need: Dict, month_data: List[Dict]):
+
+        # Step 2: 再次调用 LLM，对影响分析结果进行提炼
+        self._refine_node_impact(node, month_data)
+
+    def _refine_node_impact(self, node: Dict, month_data: List[Dict]):
         """
-        基于需求的相关日期，遍历每个日期，获取该日期的所有daily_event，
-        使用LLM分析并提取能体现需求的事件，直到收集到超过3个证据
-        
+        对节点影响分析结果进行二次提炼
+
+        从第一次分析的结果中，选取最明确、最有关联性、最能基于节点状态
+        推断出的"不能做的事情"，关注最能确定、最容易观察到的内容。
+
         Args:
-            need: 隐藏需求信息（包含 related_dates）
-            month_data: 该月的所有数据（未使用，保留参数兼容性）
+            node: 异常状态节点（已包含 impact_analysis）
+            month_data: 该月的所有数据
         """
-        related_dates = need.get("related_dates", [])
-        if not related_dates:
-            need["evidence"] = []
+        impact = node.get("impact_analysis", {})
+        state = node.get("state", "")
+        state_analysis = node.get("state_analysis", "")
+        node_type = node.get("node_type", "")
+        start_date = node.get("start_date", "")
+        end_date = node.get("end_date", "")
+
+        # 准备第一次分析的结果
+        initial_analysis = {
+            "unusual_points": impact.get("unusual_points", []),
+            "cannot_do_during": impact.get("cannot_do_during", []),
+            "cannot_do_before": impact.get("cannot_do_before", []),
+            "cannot_do_after": impact.get("cannot_do_after", [])
+        }
+
+        prompt = f"""
+        请以 JSON 格式输出分析结果。你是一位用户行为分析专家。请分析以下异常状态节点，推理其背后的隐藏信息，并基于这些隐藏信息设计用户"不能做"的事情。
+
+        【节点基本信息】
+        - 节点类型: {node_type}
+        - 状态描述: {state}
+        - 状态分析: {state_analysis}
+        - 时间范围: {start_date} ~ {end_date}
+
+        【第一次 LLM 分析的初步结果】（仅供参考，不要直接采用）
+        {json.dumps(initial_analysis, ensure_ascii=False, indent=2)}
+
+        【分析流程】（三步法）
+        1. **提取隐藏信息**：从节点事件中提取导致用户变化的隐含信息
+           - 地点变化：如"不在武汉"、"在省人民医院培训"
+           - 数值变化：如"薪资提升50%"、"月供能力变化"
+           - 事实变化：如"之前不认识林婉清"、"开始独立带组"
+
+        2. **确定不能做的事情**：基于隐藏信息，确定用户不能实现的某类事情
+           - 例如：培训期间不能正常接诊、薪资提升前不能买更贵的房子
+
+        3. **设计具体情景**：用具体的情景/事件来体现这个"不能做"
+           - 情景可以是合理设计的，不必拘泥于原数据
+           - 情景应该是用户自己能明显感知到的限制
+
+        **情景设计示例**：
+
+        | 节点类型 | 隐藏信息 | 不能做的事 | 情景设计 |
+        |---------|---------|-----------|---------|
+        | 位置变化 | 不在武汉 | 处理家中事务 | 在长沙旅游时，不能及时回家处理漏水事故 |
+        | 数值变化 | 薪资1万→1.5万 | 购买高月供房子 | 假设最多用50%收入还贷，则不能买月供7000的房子 |
+        | 事实变化 | 之前不认识林婉清 | 和她交流 | 在认识她之前，不能和她一起听歌、交流心事 |
+
+        **阶段标注要求**：
+        - 每个 cannot_do 必须标注"之前"、"过程中"或"之后"
+        - 之前：该节点发生前，由于缺少某个条件而不能做
+        - 过程中：该节点持续期间，因隐含状态而不能做
+        - 之后：该节点发生后，因状态改变而不能做
+
+        **好的情景 vs 不好的情景**：
+
+        ✓ 好的情景（直接、具体、有因果关系）：
+        - "去省人民医院全天候上课则不能在市中心医院接诊老患者"
+        - "假设最多支持收入50%还房贷则不能购买月供7000的房屋"
+        - "在洛阳老家则不能在郑州常去的健身房锻炼"
+
+        ✗ 不好的情景（模糊、泛泛、缺少因果）：
+        - "用户可能感到孤独，想念家人"（情绪推断，不具体）
+        - "培训期间用户可能有压力"（泛泛而谈，无关推断）
+        - "结识新朋友后需要维护关系"（表面总结，非不能做）
+
+        **输出格式**：
+        {{
+            "hidden_info": "该状态的隐藏信息描述",
+            "reason": "推理过程说明，解释隐藏信息和 cannot_do 的逻辑关联",
+            "cannot_do": [
+                {{
+                    "constraint": "基于隐藏信息，不能做的事情（简洁描述）",
+                    "phase": "之前/过程中/之后",
+                    "scenario": "具体的情景/事件（如：假设最多支持收入50%还房贷则不能购买月供7000的房屋）"
+                }}
+            ]
+        }}
+
+        **重要约束**：
+        - hidden_info：深层解读，而非表面描述
+        - cannot_do：最多返回2个，必须有 phase 和 scenario
+        - scenario：具体可落地，体现直接因果关系
+        - **第一次分析结果仅供参考**，不直接采用
+        - 优先选择直接、直观、因果明确的推断
+        """
+
+        try:
+            res = llm_call_j(prompt)
+            print(f"  - LLM 提炼节点影响: {res}")
+            if isinstance(res, str):
+                res = json.loads(res)
+
+            if isinstance(res, dict):
+                node["impact_analysis"] = {
+                    "hidden_info": res.get("hidden_info", ""),
+                    "reason": res.get("reason", ""),
+                    "cannot_do": res.get("cannot_do", [])
+                }
+            else:
+                node["impact_analysis"] = {
+                    "hidden_info": "",
+                    "reason": "",
+                    "cannot_do": []
+                }
+
+        except Exception as e:
+            if self.is_print:
+                print(f"  ⚠️ 提炼节点影响失败: {e}")
+            node["impact_analysis"] = {
+                "hidden_info": "",
+                "reason": "",
+                "cannot_do": []
+            }
+
+        # Step 3: 为每个 cannot_do 约束分配具体的时间范围
+        self._assign_constraint_time_ranges(node, month_data)
+
+    def _assign_constraint_time_ranges(self, node: Dict, month_data: List[Dict]):
+        """
+        为每个 cannot_do 约束分配具体的时间范围
+
+        输入当月的 daily_draft 数据，为每个约束分配限制的时间段，
+        包含起始时间、结束时间、跨度（1天到1个月）
+
+        Args:
+            node: 异常状态节点（已包含 impact_analysis）
+            month_data: 该月的所有数据
+        """
+        impact = node.get("impact_analysis", {})
+        cannot_do = impact.get("cannot_do", [])
+        state = node.get("state", "")
+        node_type = node.get("node_type", "")
+        start_date = node.get("start_date", "")
+        end_date = node.get("end_date", "")
+
+        if not cannot_do:
             return
-        
-        # 按日期排序
-        sorted_dates = sorted(related_dates)
-        
-        # 收集证据
-        evidence_events = []
-        
-        for date in sorted_dates:
-            if len(evidence_events) > 3:
-                break
-            
-            # 获取该日期的所有事件
+
+        prompt = f"""
+        你是一位用户行为分析专家。请根据当月的活动数据，为以下约束分配具体的时间范围。
+
+        【节点基本信息】
+        - 节点类型: {node_type}
+        - 状态描述: {state}
+        - 节点时间范围: {start_date} ~ {end_date}
+        - 隐藏信息: {impact.get("hidden_info", "")}
+
+        【约束项】
+        {json.dumps(cannot_do, ensure_ascii=False, indent=2)}
+
+        【当月活动数据】
+        {json.dumps(month_data, ensure_ascii=False, indent=2)}
+
+        【任务要求】
+        请分析当月活动数据，为每个约束选取**不与约束冲突**、**符合约束**、**受约束影响**的日期。
+
+        **分析步骤**：
+        1. **确定节点基础起止时间**：根据节点信息确认时间范围
+        2. **确定约束阶段**：确认约束是"之前"、"过程中"还是"之后"
+        3. **选取合适日期**：从当月活动中选取符合以下条件的日期：
+           - 不与约束冲突（如约束说"不能晨跑"，则不选有晨跑数据的日期）
+           - 符合约束的背景（如约束是培训期间，则选培训相关的日期）
+           - 受约束影响（该日期的行为与约束有关联）
+
+        **日期选取原则**：
+        - 跨度可以任意选取：1天、2-3天、一周、多周均可
+        - 可以从月中任意位置选取，不必完全匹配节点时间范围
+        - 优先选取与约束情景最吻合的时间段
+
+        **输出格式**：
+        请以 JSON 格式返回：
+        {{
+            "constraint_time_ranges": [
+                {{
+                    "constraint": "约束描述（与输入一致）",
+                    "phase": "之前/过程中/之后",
+                    "start_date": "YYYY-MM-DD",
+                    "end_date": "YYYY-MM-DD",
+                    "duration_days": 天数
+                }},
+                ...
+            ]
+        }}
+
+        **重要约束**：
+        - start_date 和 end_date 必须精确到 YYYY-MM-DD 格式
+        - duration_days 为自然数
+        - 选取的日期必须与约束情景相符，不冲突
+        """
+
+        try:
+            res = llm_call_j(prompt)
+            print(f"  - LLM 分配约束时间范围: {res}")
+            if isinstance(res, str):
+                res = json.loads(res)
+
+            if isinstance(res, dict):
+                constraint_time_ranges = res.get("constraint_time_ranges", [])
+                # 将时间范围信息合并到 cannot_do 中
+                for i, item in enumerate(cannot_do):
+                    if isinstance(item, dict) and i < len(constraint_time_ranges):
+                        time_range = constraint_time_ranges[i]
+                        item["start_date"] = time_range.get("start_date", "")
+                        item["end_date"] = time_range.get("end_date", "")
+                        item["duration_days"] = time_range.get("duration_days", 0)
+                node["impact_analysis"]["cannot_do"] = cannot_do
+
+        except Exception as e:
+            if self.is_print:
+                print(f"  ⚠️ 分配约束时间范围失败: {e}")
+
+    def _rank_and_select_nodes(self, unusual_states: List[Dict], k: int = 5) -> List[Dict]:
+        """
+        对节点进行质量排序，选取最佳节点
+
+        根据节点的隐藏信息质量、约束的明确性、情景的直观性等维度
+        进行综合评估，选取前 k 个最优质的节点。
+
+        Args:
+            unusual_states: 异常状态节点列表
+            k: 选取数量上限
+
+        Returns:
+            排序后的节点列表（按质量从高到低）
+        """
+        if not unusual_states:
+            return []
+
+        if len(unusual_states) <= k:
+            print(f"  - 节点数量 {len(unusual_states)} <= {k}，全部保留")
+            return unusual_states
+
+        prompt = f"""
+        请对以下节点进行质量评估和排序，选取最优质的前 {k} 个节点。
+
+        【节点列表】
+        {json.dumps(unusual_states, ensure_ascii=False, indent=2)}
+
+        【评估维度】（每个维度 1-10 分）：
+        1. **明确性**：隐藏信息是否清晰、具体、不模糊
+        2. **直观性**：约束和情景是否直观、可理解
+        3. **因果强度**：约束与隐藏信息是否有直接、强烈的因果关系
+        4. **事实贴合度**：情景是否符合逻辑，与用户实际情况贴切
+        5. **可落地性**：情景是否可以具体执行，还是泛泛的总结
+
+        【排序原则】
+        - 综合评分最高的排在前面
+        - 优先选取：明确、直观、因果强、贴合事实的节点
+        - 排除：模糊、泛泛、因果弱的节点
+
+        【输出格式】
+        请以 JSON 格式返回排序后的节点索引列表：
+        {{
+            "ranked_indices": [索引3, 索引1, 索引5, ...],
+            "scores": [
+                {{"index": 3, "total_score": 42, "明确性": 8, "直观性": 9, "因果强度": 8, "事实贴合度": 9, "可落地性": 8}},
+                ...
+            ]
+        }}
+        """
+
+        try:
+            res = llm_call_j(prompt)
+            print(f"  - LLM 节点排序结果: {res}")
+            if isinstance(res, str):
+                res = json.loads(res)
+
+            if isinstance(res, dict):
+                ranked_indices = res.get("ranked_indices", [])
+                if ranked_indices and len(ranked_indices) > 0:
+                    # 根据索引排序
+                    ranked_states = []
+                    for idx in ranked_indices:
+                        if 0 <= idx < len(unusual_states):
+                            ranked_states.append(unusual_states[idx])
+                    print(f"  - 选取了 {len(ranked_states)} 个高质量节点")
+                    return ranked_states[:k]
+
+            # 如果解析失败，使用默认排序
+            print(f"  - LLM 排序解析失败，使用默认顺序")
+            return unusual_states[:k]
+
+        except Exception as e:
+            if self.is_print:
+                print(f"  ⚠️ 节点排序失败: {e}")
+            return unusual_states[:k]
+
+    def _collect_evidence_for_node(self, node: Dict):
+        """
+        为单个异常状态节点收集证据（调用LLM分析每日daily_event）
+
+        遍历这段时间的每日的daily_event，调用LLM分析记录下所有能反映
+        状态变化和隐藏信息和情景的daily_event的event id
+
+        Args:
+            node: 异常状态节点（包含 start_date, end_date, state, impact_analysis 等）
+        """
+        start_date = node.get("start_date", "")
+        end_date = node.get("end_date", "")
+
+        if not start_date or not end_date:
+            node["evidence"] = []
+            return
+
+        # 生成该时间段内的所有日期
+        from datetime import datetime, timedelta
+        try:
+            start = datetime.strptime(start_date, "%Y-%m-%d")
+            end = datetime.strptime(end_date, "%Y-%m-%d")
+        except ValueError:
+            node["evidence"] = []
+            return
+
+        date_range = []
+        current = start
+        while current <= end:
+            date_range.append(current.strftime("%Y-%m-%d"))
+            current += timedelta(days=1)
+
+        # 收集这些日期对应的 daily_event
+        daily_events_by_date = []
+        for date in date_range:
             daily_events = self._get_events_for_single_date(date)
-            print(f"  - 日期 {date}: 共 {len(daily_events)} 个事件")
-            if not daily_events:
+            if daily_events:
+                daily_events_by_date.append({
+                    "date": date,
+                    "events": daily_events
+                })
+
+        if not daily_events_by_date:
+            node["evidence"] = []
+            print(f"  - 节点 {start_date} ~ {end_date}: 未收集到每日事件证据")
+            return
+
+        # 提取节点关键信息用于 LLM 分析
+        node_state = node.get("state", "")
+        state_analysis = node.get("state_analysis", "")
+        hidden_info = node.get("impact_analysis", {}).get("hidden_info", "")
+        cannot_do = node.get("impact_analysis", {}).get("cannot_do", [])
+
+        # 构建 cannot_do 描述用于提示 LLM
+        cannot_do_text = ""
+        if cannot_do:
+            for i, constraint in enumerate(cannot_do, 1):
+                constraint_text = constraint.get("constraint", "")
+                scenario = constraint.get("scenario", "")
+                phase = constraint.get("phase", "")
+                cannot_do_text += f"\n{i}. [{phase}] {constraint_text}\n   情景: {scenario}"
+
+        # 调用 LLM 分析每天的 events，识别与该节点严格相关的 event_id
+        prompt = f"""
+请以 JSON 格式输出。你需要分析以下每日事件列表，只提取与该节点**严格相关**的事件。
+
+【筛选标准，满足一项即可】
+1. 体现出该节点关键的变化事件的事件（如体现晋升，地址变化，人物关系变化的具体事件）
+2. 事件能体现该节点的隐藏信息（如晋升后的工资上调，出差后的地址变化，认识新人物的具体事件）
+3. 事件能对应"不能做"情景的具体原因体现
+
+【节点状态】
+{node_state}
+
+【状态分析】
+{state_analysis}
+
+【隐藏信息】
+{hidden_info}
+
+【不能做的情景】
+{cannot_do_text if cannot_do_text else "无具体约束"}
+
+【日期范围】
+{start_date} 至 {end_date}
+
+【每日事件列表】
+{json.dumps(daily_events_by_date, ensure_ascii=False, indent=2)}
+
+【输出格式】
+请以 JSON 对象格式返回：
+{{
+    "related_events": [
+        {{
+            "date": "事件日期",
+            "event_id": "事件ID",
+            "event_name": "事件名称",
+            "reason": "为什么这个事件与该节点严格相关（必须具体说明）"
+        }},
+        ...
+    ]
+}}
+
+【重要约束】
+- 只返回 JSON 对象
+- 不要使用 Markdown 代码块
+- **只输出严格相关的事件**，如果某天所有事件都无关，则该天的 related_events 输出空数组（不要省略该字段）
+- event_id 必须是字符串格式
+- 宁缺毋滥：不相关的事件不要输出
+"""
+
+        try:
+            res = llm_call_j(prompt)
+
+            if isinstance(res, str):
+                res = json.loads(res)
+
+            if not isinstance(res, dict):
+                node["evidence"] = daily_events_by_date
+                print(f"  - 节点 {start_date} ~ {end_date}: LLM 返回格式错误，使用原始事件数据")
+                return
+
+            related_events = res.get("related_events", [])
+
+            if not related_events:
+                node["evidence"] = {
+                    "date_range": {"start": start_date, "end": end_date},
+                    "node_state": node_state,
+                    "related_event_ids": [],
+                    "related_events_detail": [],
+                    "total_days": len(date_range),
+                    "days_with_events": len(daily_events_by_date),
+                    "abandon": True,
+                    "abandon_reason": "未识别到任何相关事件"
+                }
+                print(f"  - 节点 {start_date} ~ {end_date}: 未识别到相关事件，标记为抛弃")
+                return
+
+            # Step 2: 第二次 LLM 过滤分析，只保留最相关的不超过10个事件
+            print(f"  - 节点 {start_date} ~ {end_date}: 初步识别 {len(related_events)} 个相关事件，进行过滤分析...")
+
+            # 获取相关事件的完整详情（包含 event 对象）
+            related_events_with_detail = []
+            for rel_event in related_events:
+                rel_date = rel_event.get("date")
+                rel_event_id = rel_event.get("event_id")
+                # 从 daily_events_by_date 中找到完整的 event 对象
+                for day_data in daily_events_by_date:
+                    if day_data.get("date") == rel_date:
+                        for evt in day_data.get("events", []):
+                            if str(evt.get("event_id", "")) == str(rel_event_id):
+                                rel_event["event_obj"] = evt
+                                related_events_with_detail.append(rel_event)
+                                break
+
+            filter_prompt = f"""
+请以 JSON 格式输出。你需要对以下初步识别的事件进行深度过滤分析，提取最相关的最多10个事件，并判断这些事件是否能有效反映节点的状态变化和约束。
+
+【节点状态】
+{node_state}
+
+【状态分析】
+{state_analysis}
+
+【隐藏信息】
+{hidden_info}
+
+【不能做的情景】
+{cannot_do_text if cannot_do_text else "无具体约束"}
+
+【初步识别的事件列表】
+{json.dumps(related_events_with_detail, ensure_ascii=False, indent=2)}
+
+【过滤分析任务】
+1. **精选最相关事件**：从列表中选择最多10个最能反映以下内容的事件：
+   - 核心状态变化的主要事件的关键节点
+   - 直接体现隐藏信息的事件
+   - 明确对应"不能做"的原因情景的事件
+
+2. **评估事件能否反映状态和约束**：
+   - 分析选中事件是否能够清晰反映出主要事件节点（如晋升，地址变化，人物关系变化的具体事件）
+   - 分析选中事件是否能够体现隐藏信息（如晋升后的工资上调，出差后的地址变化，认识新人物的具体事件）
+   - 分析选中事件是否能够对应"不能做"情景的具体原因
+
+3. **判断标准**：
+   - 如果有 >= 3 个事件能清晰关联状态变化/约束，则保留
+   - 如果 < 3 个事件能清晰关联，则输出抛弃标志
+
+【输出格式】
+请以 JSON 对象格式返回：
+{{
+    "filtered_events": [
+        {{
+            "date": "事件日期",
+            "event_id": "事件ID",
+            "event_name": "事件名称",
+            "reason": "为什么这个事件与该节点最相关",
+            "reflects_state": true/false,
+            "reflects_constraint": true/false
+        }},
+        ...
+    ],
+    "abandon": true/false,
+    "abandon_reason": "如果 abandon 为 true，说明原因",
+    "summary": "对这些事件的整体评估，说明为什么保留或抛弃"
+}}
+
+【重要约束】
+- 只返回 JSON 对象
+- 不要使用 Markdown 代码块
+- filtered_events 最多 10 个
+- 必须明确给出 abandon 字段（true 或 false）
+"""
+
+            try:
+                filter_res = llm_call_j(filter_prompt)
+
+                if isinstance(filter_res, str):
+                    filter_res = json.loads(filter_res)
+
+                if not isinstance(filter_res, dict):
+                    # LLM 返回格式错误，使用初步分析结果
+                    evidence = {
+                        "date_range": {"start": start_date, "end": end_date},
+                        "node_state": node_state,
+                        "related_event_ids": [e.get("event_id") for e in related_events if e.get("event_id")],
+                        "related_events_detail": related_events,
+                        "total_days": len(date_range),
+                        "days_with_events": len(daily_events_by_date),
+                        "abandon": False
+                    }
+                    node["evidence"] = evidence
+                    print(f"  - 节点 {start_date} ~ {end_date}: 过滤分析返回格式错误，使用初步结果")
+                    return
+
+                filtered_events = filter_res.get("filtered_events", [])
+                abandon = filter_res.get("abandon", False)
+                abandon_reason = filter_res.get("abandon_reason", "")
+                summary = filter_res.get("summary", "")
+
+                # 构建最终证据数据结构
+                evidence = {
+                    "date_range": {"start": start_date, "end": end_date},
+                    "node_state": node_state,
+                    "related_event_ids": [e.get("event_id") for e in filtered_events if e.get("event_id")],
+                    "related_events_detail": filtered_events,
+                    "total_days": len(date_range),
+                    "days_with_events": len(daily_events_by_date),
+                    "abandon": abandon,
+                    "abandon_reason": abandon_reason if abandon else "",
+                    "summary": summary,
+                    "original_count": len(related_events),
+                    "filtered_count": len(filtered_events)
+                }
+
+                node["evidence"] = evidence
+
+                if abandon:
+                    print(f"  - 节点 {start_date} ~ {end_date}: 标记为抛弃 - {abandon_reason}")
+                else:
+                    print(f"  - 节点 {start_date} ~ {end_date}: 过滤后保留 {len(filtered_events)} 个相关事件（原始 {len(related_events)} 个）")
+                    if summary:
+                        print(f"    评估: {summary}")
+
+                    # Step 3: 检查并生成手机数据证据
+                    print(f"  - 节点 {start_date} ~ {end_date}: 检查手机数据证据...")
+                    phone_evidence = self._check_and_generate_phone_evidence(node, filtered_events)
+                    evidence["phone_evidence"] = phone_evidence
+                    node["evidence"] = evidence
+
+            except Exception as e:
+                if self.is_print:
+                    print(f"  - 节点 {start_date} ~ {end_date}: 过滤分析失败: {e}")
+                # 失败时使用初步结果，不抛弃
+                evidence = {
+                    "date_range": {"start": start_date, "end": end_date},
+                    "node_state": node_state,
+                    "related_event_ids": [e.get("event_id") for e in related_events if e.get("event_id")],
+                    "related_events_detail": related_events,
+                    "total_days": len(date_range),
+                    "days_with_events": len(daily_events_by_date),
+                    "abandon": False,
+                    "error": str(e)
+                }
+                node["evidence"] = evidence
+
+        except Exception as e:
+            if self.is_print:
+                print(f"  - 节点 {start_date} ~ {end_date}: LLM 分析失败: {e}")
+            node["evidence"] = {"date_range": {"start": start_date, "end": end_date}, "error": str(e)}
+
+    def _design_questions_for_all_nodes(self, unusual_states: List[Dict], month: str) -> List[Dict]:
+        """
+        基于异常状态节点生成问答题（每个节点单独调用LLM）
+
+        问题需要挖掘隐藏信息才能回答，设计为询问在某段时间做某安排是否合适。
+        如果不知道隐藏信息，问题看起来会是正常甚至有吸引力的安排。
+
+        Args:
+            unusual_states: 异常状态节点列表（已排序）
+            month: 月份字符串
+
+        Returns:
+            生成的 QA 列表
+        """
+        if not unusual_states:
+            return []
+
+        print(f"\n  - 开始为 {len(unusual_states)} 个异常状态节点生成问题...")
+
+        # 准备 persona 数据
+        persona_info = {}
+        if self.persona_data:
+            persona_info = {k: v for k, v in self.persona_data.items() if k != 'relation'}
+        persona_text = json.dumps(persona_info, ensure_ascii=False, indent=2) if persona_info else "无用户画像数据"
+
+        questions = []
+
+        for idx, node in enumerate(unusual_states, 1):
+            # 跳过已被标记为抛弃的节点
+            evidence = node.get("evidence", {})
+            if evidence.get("abandon", False):
+                abandon_reason = evidence.get("abandon_reason", "未说明原因")
+                print(f"  - 节点 {idx}: 已标记为抛弃，跳过问题生成 - {abandon_reason}")
                 continue
-            
-            # 使用LLM分析该日期的事件中哪些能体现需求
-            relevant_events = self._check_daily_events_relevance(daily_events, need, date)
-            
-            # 添加到证据列表
-            evidence_events.extend(relevant_events)
-        
-        need["evidence"] = evidence_events
-    
+
+            print(f"  - 处理节点 {idx}/{len(unusual_states)}: {node.get('state', 'N/A')}")
+
+            prompt = f"""
+请以 JSON 格式输出。你是一位问答设计专家。请基于以下异常状态节点，为用户设计问答题。
+
+【用户画像】
+{persona_text}
+
+【月份】
+{month}
+
+【异常状态节点】
+{json.dumps(node, ensure_ascii=False, indent=2)}
+
+【问题设计原则】
+1. **问题要体现安排/提议性质**：询问用户在某段时间做某个安排是否合适、怎么样
+   - 示例："我在今年7月2日到7月14日去省人民医院参观学习怎么样？"
+   - 示例："安排我去长沙玩几天怎么样？"
+   - 示例："我计划在那段时间每天早起晨跑，这个安排怎么样？"
+
+2. **答案要揭示隐藏信息**：说明为什么不合适/不可行
+   - 答案应该基于节点的 hidden_info 和 constraint
+   - 如果知道隐藏信息，就会理解为什么这个安排不合适
+
+3. **问题要具有迷惑性**：对于不知道隐藏信息的人来说
+   - 问题看起来应该是正常的、甚至是有吸引力的安排
+   - 不应该直接暴露"不能做"的事实
+   - 例如：询问培训期间去接诊老患者看起来是正常提议
+
+4. **情景可以自己设计**：
+   - 不必完全照搬约束中的情景
+   - 可以设计更迷惑性的、看似正常的安排
+   - 让不知道隐藏信息的人觉得这是个好提议
+
+5. **问题格式灵活**：
+   - 不必严格遵循"我在xxx这段时间去XX怎么样"的格式
+   - 可以是"xxx安排怎么样"、"计划在xxx做xx合适吗"等
+   - 保持自然流畅的第一人称表达
+
+**好的问题示例**：
+- 节点：参加省级骨干医师培训（7月2日-14日）
+  问题："我计划在7月2日到14日每天去市中心医院出门诊接诊老患者，这个安排怎么样？"
+  答案："不合适，因为这段时间要去省人民医院参加全天候培训，无法在市中心医院接诊。"
+
+- 节点：薪资1万→1.5万
+  问题："我打算在看中的地段买个月供8000的房子，月收入1.5万能负担得起吗？"
+  答案："不能，假设最多用50%收入还贷，则1.5万的月收入只能负担7500以下的月供。"
+
+- 节点：结识新朋友林婉清（7月7日认识）
+  问题："7月初我想约林婉清一起去听古典音乐会，可惜还不认识她，有机会吗？"
+  答案："不行，因为7月7日才认识她，7月初还不存在'约她'这个选项。"
+
+【输出格式】
+请以 JSON 对象格式返回：
+{{
+    "question": "问答题描述（包含时间段和安排）",
+    "answer": "基于隐藏信息的回答（揭示为什么不合适）",
+    "score_points": [
+        {{"description": "能说出隐藏信息的核心要点", "score": 10}},
+        {{"description": "能基于隐藏信息进行合理推断", "score": 5}}
+    ]
+}}
+
+【重要约束】
+- 只返回 JSON 对象
+- 不要使用 Markdown 代码块
+- question 包含具体时间段和安排
+- answer 基于 hidden_info 说明为什么不合适
+"""
+
+            try:
+                res = llm_call_j(prompt)
+
+                if isinstance(res, str):
+                    res = json.loads(res)
+
+                if not isinstance(res, dict):
+                    print(f"  ⚠️ 节点 {idx}: LLM 返回格式错误，期望对象")
+                    continue
+
+                # 从节点证据中提取 related_event_ids 作为 required_events_id
+                node_evidence = node.get("evidence", {})
+                required_event_ids = node_evidence.get("related_event_ids", []) if isinstance(node_evidence, dict) else []
+
+                qa = {
+                    "question": res.get("question", ""),
+                    "answer": res.get("answer", ""),
+                    "score_points": res.get("score_points", [{"description": "能基于隐藏信息回答", "score": 10}]),
+                    "node_type": node.get("node_type", ""),
+                    "state": node.get("state", ""),
+                    "impact_analysis": node.get("impact_analysis", {}),
+                    "required_events_id": required_event_ids,
+                    "question_type": "Hidden_info"
+                }
+
+                if not qa["question"] or not qa["answer"]:
+                    print(f"  ⚠️ 节点 {idx}: 问题或答案为空，跳过")
+                    continue
+
+                questions.append(qa)
+                print(f"  ✓ 节点 {idx}: 成功生成问题")
+
+            except Exception as e:
+                if self.is_print:
+                    print(f"  ⚠️ 节点 {idx}: 设计问题失败: {e}")
+                continue
+
+        print(f"  - 共生成 {len(questions)} 个问题")
+        return questions
+
+    def _check_and_generate_phone_evidence(self, node: Dict, filtered_events: List[Dict]) -> Dict:
+        """
+        检查并生成手机数据证据
+
+        遍历最终选取的所有 daily_event，获取其对应的手机数据，
+        分析关于该状态，主要事件的信息是否被手机数据体现。
+        若没有，则生成该事件的相关手机数据。
+
+        Args:
+            node: 异常状态节点
+            filtered_events: 过滤后保留的相关事件列表
+
+        Returns:
+            手机数据证据字典
+        """
+        node_state = node.get("state", "")
+        hidden_info = node.get("impact_analysis", {}).get("hidden_info", "")
+        cannot_do = node.get("impact_analysis", {}).get("cannot_do", [])
+
+        # 获取所有相关事件ID和完整事件对象
+        related_events_info = []
+        for event in filtered_events:
+            event_id = event.get("event_id")
+            if not event_id:
+                continue
+
+            # 获取原始事件对象
+            original_event = None
+            for daily_event in self.daily_event:
+                if str(daily_event.get("event_id", "")) == str(event_id):
+                    original_event = daily_event
+                    break
+
+            if original_event:
+                related_events_info.append({
+                    "event_id": event_id,
+                    "event_name": event.get("event_name", ""),
+                    "date": event.get("date", ""),
+                    "original_event": original_event
+                })
+
+        if not related_events_info:
+            return {"has_phone_data": False, "generated_phone_data": [], "reason": "无相关事件ID"}
+
+        # 收集已存在的手机数据
+        existing_phone_data = []
+        for event_info in related_events_info:
+            event_id = event_info["event_id"]
+            phone_ops = self.get_phone_operations_by_event_id(event_id)
+            if phone_ops:
+                existing_phone_data.append({
+                    "event_id": event_id,
+                    "event_name": event_info["event_name"],
+                    "phone_operations": phone_ops
+                })
+
+        # 准备事件列表用于 LLM 分析
+        events_for_analysis = []
+        for event_info in related_events_info:
+            event_id = event_info["event_id"]
+            # 查找该事件的现有手机数据
+            event_phone_data = [p for p in existing_phone_data if p["event_id"] == event_id]
+            events_for_analysis.append({
+                "event_id": event_id,
+                "event_name": event_info["event_name"],
+                "date": event_info["date"],
+                "original_event": event_info["original_event"],
+                "existing_phone_data": event_phone_data[0]["phone_operations"] if event_phone_data else []
+            })
+
+        # 调用 LLM 分析并生成 to_generate 格式
+        analysis_prompt = f"""
+请分析以下事件及其现有手机数据，判断是否充分体现节点的状态和约束，并为不充分的事件生成需要补充的数据。
+
+【节点状态】
+{node_state}
+
+【隐藏信息】
+{hidden_info}
+
+【不能做的情景】
+{json.dumps(cannot_do, ensure_ascii=False, indent=2) if cannot_do else "无"}
+
+【允许的数据类型】
+sms, phonecall, photo, push, note, calendar
+
+【事件列表及现有手机数据】
+{json.dumps(events_for_analysis, ensure_ascii=False, indent=2)}
+
+【分析任务】
+1. 对每个事件，分析其现有手机数据是否充分反映了该事件的核心信息
+2. 如果不充分，使用 to_generate 格式指定需要生成的数据
+3. to_generate 中的 content_summary 应该详细描述需要生成什么数据来补充现有数据的不足
+
+【输出格式】
+请以 JSON 格式返回：
+{{
+    "overall_analysis": "对所有事件证据的整体分析",
+    "events_analysis": [
+        {{
+            "event_id": "事件 ID",
+            "event_name": "事件名称",
+            "sufficiency_analysis": "对现有数据是否充分反映该事件的分析",
+            "to_generate": [
+                {{
+                    "type": "sms/phonecall/photo/push/note/calendar",
+                    "content_summary": "数据内容描述（用于生成具体数据，只包含缺少的关键信息，保持最小信息量）",
+                    "reason": "为什么需要这个数据来反映该事件的哪个重要信息，以及为何现有数据不足"
+                }}
+            ]
+        }}
+    ]
+}}
+
+【重要约束】
+- 只返回 JSON 对象
+- 不要使用 Markdown 代码块
+- 只为确实需要补充数据的事件生成 to_generate
+- content_summary 应该详细且具体，描述需要生成什么内容
+"""
+        try:
+            analysis_res = llm_call_j(analysis_prompt)
+            if isinstance(analysis_res, str):
+                analysis_res = json.loads(analysis_res)
+
+            if not isinstance(analysis_res, dict):
+                return {
+                    "has_phone_data": len(existing_phone_data) > 0,
+                    "existing_data": existing_phone_data,
+                    "generated_phone_data": [],
+                    "error": "LLM 返回格式错误"
+                }
+
+            events_analysis = analysis_res.get("events_analysis", [])
+
+            # 收集所有需要生成的数据项
+            all_to_generate = []
+            for event_analysis in events_analysis:
+                event_id = event_analysis.get("event_id", "")
+                to_generate = event_analysis.get("to_generate", [])
+                for gen_item in to_generate:
+                    gen_item["target_event_id"] = event_id
+                    all_to_generate.append(gen_item)
+
+            print(f"    整体分析: {analysis_res.get('overall_analysis', '')[:100]}...")
+            print(f"    需要生成 {len(all_to_generate)} 条手机数据")
+
+            # 生成手机数据
+            generated_data = []
+            if all_to_generate:
+                generated_data = self._generate_phone_data_from_to_generate(
+                    node, all_to_generate, related_events_info
+                )
+
+            return {
+                "has_phone_data": len(existing_phone_data) > 0,
+                "existing_data": existing_phone_data,
+                "generated_phone_data": generated_data,
+                "events_analysis": events_analysis,
+                "total_to_generate": len(all_to_generate)
+            }
+
+        except Exception as e:
+            if self.is_print:
+                print(f"    手机数据分析失败: {e}")
+            return {
+                "has_phone_data": len(existing_phone_data) > 0,
+                "existing_data": existing_phone_data,
+                "generated_phone_data": [],
+                "error": str(e)
+            }
+
+    def _generate_phone_data_from_to_generate(self, node: Dict, to_generate: List[Dict], related_events_info: List[Dict]) -> List[Dict]:
+        """
+        根据 to_generate 格式生成手机数据
+
+        Args:
+            node: 异常状态节点
+            to_generate: 需要生成的数据项列表 (type, content_summary, reason, target_event_id)
+            related_events_info: 相关事件的详细信息
+
+        Returns:
+            生成的手机数据列表
+        """
+        node_state = node.get("state", "")
+
+        # 建立 event_id 到事件信息的映射
+        event_info_map = {e["event_id"]: e for e in related_events_info}
+
+        # 允许的操作类型
+        ALLOWED_OP_TYPES = {'sms', 'phonecall', 'photo', 'push', 'note', 'calendar'}
+
+        generated_data = []
+        all_generated_operations = []
+
+        for gen_item in to_generate:
+            op_type = gen_item.get('type', 'sms')
+            content_summary = gen_item.get('content_summary', '')
+            target_event_id = gen_item.get('target_event_id', '')
+            reason = gen_item.get('reason', '')
+
+            if op_type not in ALLOWED_OP_TYPES:
+                print(f"    跳过不支持的类型: {op_type}")
+                continue
+
+            event_info = event_info_map.get(target_event_id, {})
+            original_event = event_info.get("original_event", {})
+
+            if not original_event:
+                continue
+
+            # 构建详细的 generation_hint
+            generation_hint = f"""
+请生成 {op_type} 类型的数据，要求：{content_summary}
+
+背景信息：
+- 目标事件: {event_info.get('event_name', '')}
+- 事件日期: {event_info.get('date', '')}
+- 节点状态: {node_state}
+- 生成原因: {reason}
+
+注意：这是为了支持事件 {target_event_id} 的证据数据，请确保数据准确反映该事件。
+可生成的数据类型仅限于：sms, phonecall, photo, push, note, calendar
+"""
+
+            try:
+                print(f"    生成 {op_type} 数据 for 事件 {target_event_id}: {content_summary[:50]}...")
+
+                # 使用 PhoneOperationGenerator 生成
+                operations = self.phone_op_generator.generate(
+                    operation_type=op_type,
+                    original_event=original_event,
+                    question=f"关于 {node_state} 的问题",
+                    generation_hint=generation_hint
+                )
+
+                if operations:
+                    # 为生成的数据设置 daily_event_id 和 event_id
+                    for op in operations:
+                        op["daily_event_id"] = target_event_id
+                        op["event_id"] = target_event_id
+
+                    all_generated_operations.extend(operations)
+
+                    generated_data.append({
+                        "event_id": target_event_id,
+                        "event_name": event_info.get("event_name", ""),
+                        "op_type": op_type,
+                        "generated_operations": operations,
+                        "reason": reason
+                    })
+                    print(f"      生成了 {len(operations)} 条 {op_type} 数据")
+
+            except Exception as e:
+                if self.is_print:
+                    print(f"      生成失败: {e}")
+                continue
+
+        # 将生成的操作数据添加到 phonedata
+        if all_generated_operations:
+            self._add_operations_to_phonedata(all_generated_operations)
+
+        return generated_data
+
+    def _add_operations_to_phonedata(self, operations: List[Dict[str, Any]]):
+        """
+        将手机操作数据添加到 phonedata
+
+        Args:
+            operations: 手机操作数据列表
+        """
+        with self.phonedata_lock:
+            for op in operations:
+                op_type = op.get('type', 'unknown')
+
+                if op_type not in self.phonedata:
+                    self.phonedata[op_type] = []
+
+                # 分配 phone_id
+                if op_type not in self.phone_id_counters:
+                    self.phone_id_counters[op_type] = 1
+
+                if 'phone_id' not in op:
+                    op['phone_id'] = self.phone_id_counters[op_type]
+
+                self.phone_id_counters[op_type] += 1
+
+                self.phonedata[op_type].append(op)
+
+        print(f"    已将 {len(operations)} 条操作数据添加到 phonedata")
+
     def _get_events_for_single_date(self, date: str) -> List[Dict]:
         """
         获取指定日期的所有事件
@@ -557,335 +1650,6 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
                             break
         
         return events
-    
-    def _check_daily_events_relevance(self, daily_events: List[Dict], need: Dict, date: str) -> List[Dict]:
-        """
-        使用LLM分析某日的所有事件中，哪些能体现隐藏需求
-        
-        Args:
-            daily_events: 某日的所有事件列表
-            need: 隐藏需求信息
-            date: 日期字符串
-        
-        Returns:
-            能体现需求的事件列表（带日期信息）
-        """
-        if not daily_events:
-            return []
-        
-        need_description = need.get("need_description", "")
-        
-        # 直接使用完整的事件数据
-        events_desc = json.dumps(daily_events, ensure_ascii=False, indent=2)
-        
-        prompt = f"""
-        你是一位用户行为分析师。请分析以下用户在 {date} 的所有事件，找出能体现用户隐藏需求的事件。
-        
-        【隐藏需求】
-        {need_description}
-        
-        【{date} 的所有事件】
-        {events_desc}
-        
-        【任务要求】
-        请分析这些事件中，哪些事件能作为支持该隐藏需求的证据。
-        
-        **判断标准**：
-        - 事件应该直接或间接反映了用户的需求或动机
-        - 事件可能是需求的表现、原因或结果
-        - 只选择与需求有明显关联的事件
-        
-        **输出格式**：
-        请以 JSON 数组格式返回相关事件的ID列表：
-        ["event_id_1", "event_id_2", ...]
-        
-        如果没有相关事件，返回空数组 []。
-        """
-        
-        try:
-            res = llm_call_j(prompt)
-            print(f"  - LLM 分析日期 {date} 的事件相关性: {res}")
-            if isinstance(res, str):
-                res = json.loads(res)
-            
-            if not isinstance(res, list):
-                # 兼容不同的返回格式
-                if isinstance(res, dict):
-                    # 尝试多种可能的字段名
-                    relevant_event_ids = res.get("relevant_event_ids") or res.get("relevant_events") or res.get("event_ids") or []
-                    if isinstance(relevant_event_ids, list):
-                        res = relevant_event_ids
-                    else:
-                        return []
-                else:
-                    return []
-            
-            # 根据返回的ID列表提取对应事件
-            relevant_event_ids = set(res)
-            relevant_events = []
-            
-            for event in daily_events:
-                event_id = event.get("id") or event.get("event_id")
-                if event_id in relevant_event_ids:
-                    relevant_events.append({
-                        "date": date,
-                        "event": event
-                    })
-            
-            print(f"    - 找到 {len(relevant_events)} 个相关事件")
-            return relevant_events
-        
-        except Exception as e:
-            if self.is_print:
-                print(f"  ⚠️ LLM 分析日期 {date} 的事件相关性失败: {e}")
-            return []
-    
-    def _design_questions_for_all_needs(self, hidden_needs: List[Dict], month: str, month_summary: Dict = None) -> List[Dict]:
-        """
-        基于该月的所有隐藏需求，一次性生成一组推荐类选择题
-        
-        Args:
-            hidden_needs: 该月的所有隐藏需求列表
-            month: 月份字符串
-            month_summary: 月度主要事件和主题总结
-        
-        Returns:
-            生成的 QA 列表
-        """
-        if not hidden_needs:
-            return []
-        
-        print(f"\n  - 开始为 {len(hidden_needs)} 个隐藏需求生成推荐问题...")
-        
-        # 构建所有需求的摘要
-        needs_summary = []
-        for idx, need in enumerate(hidden_needs, 1):
-            needs_summary.append({
-                "need_id": idx,
-                "need_description": need.get("need_description", ""),
-                "evidence_summary": need.get("evidence_summary", ""),
-                "evidence_count": len(need.get("evidence", []))
-            })
-        
-        # 准备 persona 数据
-        persona_info = json.dumps(self.persona_data, ensure_ascii=False, indent=2) if self.persona_data else "无用户画像数据"
-        
-        # 准备月度总结数据
-        month_summary_info = json.dumps(month_summary, ensure_ascii=False, indent=2) if month_summary else "无月度总结"
-        
-        prompt = f"""
-        你是一位精通用户心理的内容推荐专家。基于对用户行为的深度分析，我们发现用户在 {month} 可能存在多个隐藏需求。
-        
-        【{month} 的主要事件和主题】
-        {month_summary_info}
-        
-        【{month} 的所有隐藏需求】（**重点**）
-        {json.dumps(needs_summary, ensure_ascii=False, indent=2)}
-        
-        【任务要求】
-        请基于这些隐藏需求和用户画像，为**最多前5个最明显的隐藏需求**设计**推荐类选择题**。
-        
-        **筛选原则**：
-        - 优先选择置信度高（high）、证据充分的需求
-        - 如果需求超过5个，只选择前5个最明显、最有把握的需求
-        - 每个选中的需求对应一个问题
-        
-        **问题设计要求**：
-        1. **题面自然多样化且包含月份，体现推荐性质**：
-           - **必须在题面中明确提及月份**（如"在2025-01"、"这个月"、"1月期间"等）
-           - **题面要体现推荐性质**，让用户感觉是在做内容/活动推荐选择
-           - 不要机械地使用固定格式，要让问题读起来自然流畅
-           - 可以根据需求特点调整问法，例如：
-             * "在2025-01，我最近似乎对哪类内容更感兴趣？"
-             * "以下哪个话题最符合我在1月的关注点？"
-             * "如果要选择一个方向深入学习，我在2025-01更可能选哪个？"
-             * "哪项活动最能反映我在1月期间的潜在兴趣？"
-           - 保持第一人称视角，像用户在自我反思
-           - 问题要间接探索隐藏需求，不要直接暴露
-        
-        2. **选项设计**（针对每个需求）：
-           - 提供 4 个选项（A/B/C/D）
-           - 其中 1 个是正确答案（与该隐藏需求高度相关）
-           - 其他 3 个是错误选项（干扰项）
-           
-        3. **正确答案分布要求**：
-           - **正确答案的位置要多样分布**，不能所有问题的正确答案都是 A
-           - 应该在 A/B/C/D 之间随机分布，保持平衡
-           - 避免让答题者发现规律
-        
-        4. **错误选项的关键要求**：
-           - **不得包含本月的任何隐藏需求**：错误选项不能反映用户在本月的任何隐藏需求
-           - **与本月主要主题尽量无关**：错误选项应该避开【{month} 的主要事件和主题】中提到的主题领域，选择与该月核心活动不相关的内容
-           - **必须与问题主题相关**：错误选项必须与问题的主题领域相关，不能出现完全无关的内容
-             * 例如：如果问题是关于"个人社交"的，错误选项应该是其他社交/人际关系相关的内容，不能是"野外求生"这种完全不相关的主题
-             * 错误选项应该在同一个大主题下，但指向不同的子方向或需求
-             * 要让答题者需要在相似主题中进行判断，而不是通过主题差异直接排除
-           - **包含一定量与人物关联不大的数据**：不要所有错误选项都基于用户的个人特征或历史行为设计，应该包含一些通用的、与人物关联度较低的内容选项
-           - **错误选项的合理性控制**：
-             * 错误选项要有一定的吸引力，不能非常不合理
-             * 但从深层逻辑来看，除正确答案外的其他选项不应该真正合理
-             * 不能让答题者从题面轻易分辨出哪个是正确答案
-             * 错误选项应该是"看似合理但实际不符合用户当前隐藏需求"的内容
-           - **不可直接判断**：不能让答题者根据选项内容就能直接推断出正确答案
-           - **多样化来源**：错误选项可以来自：
-             * 用户过去的兴趣爱好（但本月未体现）
-             * 与用户职业/生活相关但不涉及本月主题的内容
-             * 通用的热门话题/内容（与本月活动无关，与人物关联不大，但与问题主题相关）
-             * 与其他月份的需求相关的内容
-             * 中性、普适性的内容选项（但与问题主题相关）
-           - **避免明显错误**：错误选项不应该是明显不合理或与用户完全无关的内容
-        
-        5. **答案解释和推理过程不需要输出**：只需要返回问题和选项
-        
-        **重要提示**：
-        - 每个需求对应一个问题
-        - 不同问题的选项应该有所区别，避免重复
-        - 错误选项要精心设计，让题目有挑战性但不是陷阱题
-        - 结合用户画像信息，使选项更符合用户的背景和兴趣
-        
-        **输出格式**：
-        请以 JSON 数组格式返回，每个元素对应一个隐藏需求的问题：
-        [
-            {{
-                "need_id": 1,
-                "question": "自然流畅的问题表述（第一人称，多样化表达，**必须包含月份信息**）",
-                "options": [
-                    "A. [选项A内容]",
-                    "B. [选项B内容]",
-                    "C. [选项C内容]",
-                    "D. [选项D内容]"
-                ],
-                "correct_answer": "A"
-            }},
-            ...
-        ]
-        
-        **示例**：
-        [
-            {{
-                "need_id": 1,
-                "question": "在2025-01，我最近似乎在寻找一种方式来平衡工作和生活的压力，以下哪个内容最符合我的需求？",
-                "options": [
-                    "A. 《CFA二级备考策略与时间管理技巧》",
-                    "B. 《周末城市徒步摄影指南》",
-                    "C. 《职场压力管理与工作生活平衡实践》",
-                    "D. 《家庭理财规划与税务优化方案》"
-                ],
-                "correct_answer": "C"
-            }},
-            {{
-                "need_id": 2,
-                "question": "在2025-01，如果要选择一个方向来拓展我的人际关系，我更可能倾向于哪个？",
-                "options": [
-                    "A. 《高效沟通技巧：如何在职场建立影响力》",
-                    "B. 《亲密关系心理学：建立深层连接的艺术》",
-                    "C. 《Python数据分析实战：从入门到精通》",
-                    "D. 《马拉松训练计划：从零到全马》"
-                ],
-                "correct_answer": "B"
-            }}
-        ]
-        
-        【用户画像】
-        {persona_info}
-        
-        【重要约束】
-        - **只返回 JSON 数组**，不要有任何其他文字、解释或标记
-        - **不要使用 Markdown 代码块**（如 ```json ... ```）
-        - **不要添加任何前缀或后缀**
-        - **确保 JSON 格式完全正确**，可以被 json.loads() 直接解析
-        - **每个需求必须对应一个问题**，不得遗漏
-        - **选项必须是字符串数组**，格式为 ["A. xxx", "B. xxx", "C. xxx", "D. xxx"]
-        - **correct_answer 必须是单个字母**："A"、"B"、"C" 或 "D"
-        """
-        
-        try:
-            res = llm_call_j(prompt)
-            print(f"  - LLM 返回结果数量: {len(res) if isinstance(res, list) else '非列表'}")
-            if isinstance(res, str):
-                res = json.loads(res)
-            
-            if not isinstance(res, list):
-                print(f"  ⚠️ LLM 返回格式错误，期望列表")
-                return []
-            
-            # 构建 QA 列表
-            questions = []
-            for qa_data in res:
-                need_id = qa_data.get("need_id", 0)
-                if need_id < 1 or need_id > len(hidden_needs):
-                    print(f"  ⚠️ 无效的 need_id: {need_id}")
-                    continue
-                
-                need = hidden_needs[need_id - 1]
-                
-                # 提取证据中的事件ID
-                evidence = need.get("evidence", [])
-                required_events_id = [evt.get("event", {}).get("id") or evt.get("event", {}).get("event_id") 
-                                     for evt in evidence 
-                                     if evt.get("event")]
-                # 过滤掉 None 值
-                required_events_id = [eid for eid in required_events_id if eid]
-                
-                qa = {
-                    "question": qa_data.get("question", ""),
-                    "options": qa_data.get("options", []),
-                    "correct_answer": qa_data.get("correct_answer", ""),
-                    "required_events_id": required_events_id,
-                    "question_type": "Hidden_info"
-                }
-                
-                # 验证必要字段
-                if not qa["question"] or not qa["options"] or not qa["correct_answer"]:
-                    print(f"  ⚠️ 需求 {need_id}: 问题、选项或正确答案为空，跳过")
-                    continue
-                
-                questions.append(qa)
-                print(f"  ✓ 需求 {need_id}: 成功生成推荐问题 (证据事件数: {len(required_events_id)})")
-            
-            print(f"  - 共生成 {len(questions)} 个问题")
-            return questions
-        
-        except Exception as e:
-            if self.is_print:
-                print(f"  ⚠️ 批量设计问题失败: {e}")
-                import traceback
-                traceback.print_exc()
-            return []
-
-    
-    def _get_events_for_dates(self, dates: List[str]) -> List[Dict]:
-        """
-        获取指定日期列表的相关事件
-        
-        Args:
-            dates: 日期字符串列表
-        
-        Returns:
-            相关事件列表
-        """
-        if not dates:
-            return []
-        
-        # 收集这些日期的所有事件
-        related_events = []
-        for event in self.daily_event:
-            event_dates = event.get("date", [])
-            if not event_dates:
-                continue
-            
-            # 提取事件的日期部分
-            for date_range in event_dates:
-                if isinstance(date_range, str):
-                    start_date = date_range.split("至")[0].split(" ")[0] if "至" in date_range else date_range.split(" ")[0]
-                    
-                    if start_date in dates:
-                        evt_with_date = event.copy()
-                        evt_with_date["event_date"] = start_date
-                        related_events.append(evt_with_date)
-                        break
-        
-        return related_events
     
     def _get_phone_evidence_by_event_ids(self, event_ids: List[str]) -> List[Dict]:
         """

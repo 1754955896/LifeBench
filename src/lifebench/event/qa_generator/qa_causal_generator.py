@@ -59,7 +59,7 @@ class QACausalGenerator(BaseQAGenerator):
                         self.atomic_to_event_id_map[str(aid)] = str(eid)
 
 
-    def extract_causal_pairs(self) -> List[Dict]:
+    def extract_causal_pairs(self, num_trees: int = 100) -> List[Dict]:
         """遍历事件树森林，提取每棵树的底层节点并调用 LLM 识别因果关系对"""
         if self.is_print:
             print("[CausalGen] 正在从事件树森林中提取各树的底层节点...")
@@ -155,15 +155,15 @@ class QACausalGenerator(BaseQAGenerator):
                 
             return tree_pairs
             
-        # 并行处理所有树（随机采样100棵）
+        # 并行处理所有树（随机采样 num_trees 棵）
         import random
         total_trees = len(self.event_tree)
-        if total_trees > 100:
-            # 随机采样100个索引
-            sampled_indices = random.sample(range(total_trees), 100)
+        if total_trees > num_trees:
+            # 随机采样 num_trees 个索引
+            sampled_indices = random.sample(range(total_trees), num_trees)
             sampled_trees = [(idx, self.event_tree[idx]) for idx in sampled_indices]
             if self.is_print:
-                print(f"[CausalGen] 事件树总数: {total_trees}，随机采样 100 棵进行处理")
+                print(f"[CausalGen] 事件树总数: {total_trees}，随机采样 {num_trees} 棵进行处理")
         else:
             # 如果不足100棵，全部处理
             sampled_trees = list(enumerate(self.event_tree))
@@ -397,12 +397,13 @@ class QACausalGenerator(BaseQAGenerator):
         实现基类抽象方法，作为外部调用的统一入口
         """
         num_samples = kwargs.get('num_samples', 60)
-        
+        num_trees = kwargs.get('num_trees', 150)
+
         # 1. 提取因果对
         if not self.causal_pairs:
             if self.is_print:
                 print("\n[QAGen] 开始提取因果对...")
-            self.extract_causal_pairs()
+            self.extract_causal_pairs(num_trees=num_trees)
         
         # 2. 生成问题
         if self.is_print:
