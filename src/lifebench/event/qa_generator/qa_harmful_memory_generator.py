@@ -97,13 +97,13 @@ class QAHarmfulMemoryGenerator(BaseQAGenerator):
         self.phone_data_dir = phone_data_dir
         self.is_print = is_print
         self.persona = persona
-        
+
         # 线程锁
         self.phonedata_lock = threading.Lock()
         self.phone_id_counters = {}
-        
+
         # 手机操作生成器
-        self.phone_op_generator = PhoneOperationGenerator()
+        self.phone_op_generator = PhoneOperationGenerator(persona_data=persona or {})
     
     def QAGen(self, **kwargs) -> List[Dict[str, Any]]:
         """

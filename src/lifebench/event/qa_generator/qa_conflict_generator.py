@@ -45,7 +45,7 @@ class QAConflictGenerator(BaseQAGenerator):
         self.default_ask_time = f"{year}-12-31"
 
         # 手机操作生成器
-        self.phone_op_generator = PhoneOperationGenerator()
+        self.phone_op_generator = PhoneOperationGenerator(persona_data=self.persona_data)
     
     def _generate_monthly_summary(self, year: int, month: int) -> Dict[str, Any]:
         """

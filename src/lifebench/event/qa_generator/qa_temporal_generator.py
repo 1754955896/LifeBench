@@ -3738,7 +3738,7 @@ class QATemporalGenerator(BaseQAGenerator):
                     # 构建 generation_hint 字符串
                     generation_hint = f"需要生成{op_type}类型的数据，内容要求：{content_summary}。原因：{reason}"
                     
-                    phone_op_generator = PhoneOperationGenerator()
+                    phone_op_generator = PhoneOperationGenerator(persona_data=self.persona_data)
                     # 使用 PhoneOperationGenerator 生成
                     operations = phone_op_generator.generate(
                         operation_type=op_type,

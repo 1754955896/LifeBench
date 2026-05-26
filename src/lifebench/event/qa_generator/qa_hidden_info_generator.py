@@ -44,7 +44,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
         self.is_print = is_print
         self.year = year
         self.persona_data = persona_data
-        self.phone_op_generator = PhoneOperationGenerator()
+        self.phone_op_generator = PhoneOperationGenerator(persona_data=persona_data or {})
     
     def QAGen(self, **kwargs) -> List[Dict]:
         """
@@ -64,7 +64,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
         
         all_questions = []
         months = list(self.draft_event.keys())
-        months = ['2025-12']
+       
         if self.is_print:
             print(f"  - 共 {len(months)} 个月份需要处理")
         
@@ -109,7 +109,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
                 score_points = qa.get('score_points', [])
 
                 validate_prompt = f"""
-作为问答质量审核员，请验证以下问题的可回答性和答案合理性。
+作为问答质量审核员，请严格按以下步骤验证问题。
 
 【问题】
 {question_text}
@@ -123,28 +123,48 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
 【证据列表】（共 {len(evidence_list)} 条）
 {json.dumps(evidence_list, ensure_ascii=False, indent=2)}
 
-【验证任务】
-1. **可回答性分析**：答案的所有内容是否都能从现有证据推断出来？
-   - 检查答案中的每个关键信息是否在证据中有对应支持
-   - 如果答案包含证据中没有的信息，标记为不可回答
+【验证步骤】
 
-2. **答案合理性分析**：答案是否基于正确的推理？
-   - 答案是否符合逻辑、符合用户的实际情况
-   - 答案是否与隐藏信息、约束条件一致
+**第一步：问题可回答性分析**
 
-3. **综合判断**：
-   - 如果答案所有内容都能从证据推断，且推理合理 → pass=True
-   - 如果答案有内容无法从证据推断，或推理不合理 → pass=False
+分析基于现有证据能否回答该问题：
+- 问题询问的信息是否在证据覆盖的时间范围内？
+- 证据是否提供了足够的关键信息来推断答案？
+- 问题是否超出了证据所能回答的范围？
 
-【输出格式】
+如果问题完全不可回答（如证据时间范围与问题不符、缺少关键信息），直接输出：
+{{"result": "discard", "pass": false, "reason": "问题不可回答的具体原因"}}
+
+**第二步：答案合理性分析**
+
+在确认问题可回答后，逐条检查答案中的每个关键信息：
+- 答案中的每个细节（时间、地点、人物、状态、事件等）是否在证据中有对应？
+- 答案是否有证据中不存在的细节？
+
+**第三步：综合判断**
+
+根据以下规则输出最终结果：
+
+【情况1 - 通过】问题和答案均合理，答案与证据完全对应
+- 输出：{{"result": "pass", "pass": true, "reason": "通过理由"}}
+
+【情况2 - 修改】答案有少量细节需要修正，但核心正确
+- 输出：{{"result": "modify", "pass": true, "modified_answer": "修正后的答案", "reason": "需要修改的细节及原因"}}
+
+【情况3 - 放弃】答案与证据矛盾，或关键信息缺失无法修复
+- 输出：{{"result": "discard", "pass": false, "reason": "放弃原因"}}
+
+**输出格式**
 请以 JSON 格式返回：
 {{
+    "result": "pass/modify/discard",
     "pass": true/false,
-    "answerable": true/false,
-    "answer_reasonable": true/false,
-    "missing_evidence": ["缺失的证据1", "缺失的证据2", ...],
-    "unreasonable_aspects": ["不合理的方面1", ...],
-    "reason": "综合验证结论"
+    "modified_answer": "修正后的答案（仅情况2填写）",
+    "reason": "判断理由",
+    "answer_check": {{
+        "supported": ["证据支持的细节"],
+        "unsupported_or_contradict": ["证据不支持或矛盾的内容"]
+    }}
 }}
 """
                 llm_result = llm_call_j(validate_prompt)
@@ -156,31 +176,47 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
                         llm_result = json.loads(llm_result[start_idx:end_idx])
 
                 if isinstance(llm_result, dict):
-                    is_pass = llm_result.get('pass', True)
-                    answerable = llm_result.get('answerable', True)
-                    answer_reasonable = llm_result.get('answer_reasonable', True)
+                    result_type = llm_result.get('result', 'pass')
                     reason = llm_result.get('reason', '')
-                    missing_evidence = llm_result.get('missing_evidence', [])
-                    unreasonable_aspects = llm_result.get('unreasonable_aspects', [])
+                    answer_check = llm_result.get('answer_check', {})
 
-                    # 将验证结果添加到 QA 中
-                    qa['_validation'] = {
-                        'pass': is_pass,
-                        'answerable': answerable,
-                        'answer_reasonable': answer_reasonable,
-                        'reason': reason,
-                        'missing_evidence': missing_evidence,
-                        'unreasonable_aspects': unreasonable_aspects
-                    }
+                    if result_type == 'pass':
+                        is_pass = True
+                        qa['_validation'] = {
+                            'result': 'pass',
+                            'pass': True,
+                            'reason': reason,
+                            'answer_check': answer_check
+                        }
+                        status = "✓ 通过"
+                    elif result_type == 'modify':
+                        is_pass = True
+                        modified_answer = llm_result.get('modified_answer', '')
+                        if modified_answer:
+                            qa['answer'] = modified_answer
+                        qa['_validation'] = {
+                            'result': 'modify',
+                            'pass': True,
+                            'modified_answer': modified_answer,
+                            'reason': reason,
+                            'answer_check': answer_check
+                        }
+                        status = "✓ 修改后通过"
+                    else:  # discard
+                        is_pass = False
+                        qa['_validation'] = {
+                            'result': 'discard',
+                            'pass': False,
+                            'reason': reason,
+                            'answer_check': answer_check
+                        }
+                        status = "✗ 抛弃"
 
-                    status = "✓ 通过" if is_pass else "✗ 抛弃"
                     print(f"[HiddenInfoGen] 问题 {idx + 1}: {status}")
-                    if not is_pass:
-                        print(f"    原因: {reason}")
-                        if missing_evidence:
-                            print(f"    缺失证据: {missing_evidence}")
-                        if unreasonable_aspects:
-                            print(f"    不合理方面: {unreasonable_aspects}")
+                    print(f"    理由: {reason}")
+                    unsupported = answer_check.get('unsupported_or_contradict', [])
+                    if unsupported:
+                        print(f"    证据不支持的内容: {unsupported}")
 
                     return idx, qa, is_pass
                 else:
@@ -329,7 +365,7 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
 
         return questions_to_keep + rewritten_questions
     
-    def _generate_questions_for_month(self, month: str, k: int = 5) -> List[Dict]:
+    def _generate_questions_for_month(self, month: str, k: int = 7) -> List[Dict]:
         """
         为单月生成隐藏信息问题
 

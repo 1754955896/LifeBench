@@ -50,13 +50,14 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                         special_event=special_event, phone_data_dir=phone_data_dir)
         self.is_print = is_print
         self.default_ask_time = f"{year}-12-31"
+        self.persona_data = persona_data or {}
 
         # 线程锁
         self.phonedata_lock = threading.Lock()
         self.phone_id_counters = {}
 
         # 手机操作生成器
-        self.phone_op_generator = PhoneOperationGenerator()
+        self.phone_op_generator = PhoneOperationGenerator(persona_data=self.persona_data)
     
     def _add_operations_to_phonedata(self, operations: List[Dict[str, Any]]):
         """

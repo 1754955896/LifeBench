@@ -16,7 +16,7 @@ class QACausalGenerator(BaseQAGenerator):
     def __init__(self, daily_event: List[Dict], event_tree: List[Dict],
                  draft_event: Dict[str, List], phonedata: Dict[str, List],
                  phone_data_dir: str = None, is_print: bool = True,
-                 year: int = 2025):
+                 year: int = 2025, persona_data: Dict = None):
         """
         初始化因果问题生成器
 
@@ -27,6 +27,7 @@ class QACausalGenerator(BaseQAGenerator):
             phonedata: 手机操作数据字典
             phone_data_dir: 手机数据目录路径
             is_print: 是否打印调试信息
+            persona_data: 用户画像数据
         """
         super().__init__()
         self.daily_event = daily_event
@@ -35,7 +36,8 @@ class QACausalGenerator(BaseQAGenerator):
         self.phonedata = phonedata
         self.phone_data_dir = phone_data_dir
         self.is_print = is_print
-        self.phone_op_generator = PhoneOperationGenerator()
+        self.persona_data = persona_data or {}
+        self.phone_op_generator = PhoneOperationGenerator(persona_data=self.persona_data)
         # 线程锁
         self.phonedata_lock = threading.Lock()
         self.phone_id_counters = {}

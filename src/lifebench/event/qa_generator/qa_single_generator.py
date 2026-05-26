@@ -34,10 +34,11 @@ class QASingleGenerator(BaseQAGenerator):
     
     def __init__(self, daily_event: List[Dict], event_tree: List[Dict],
                  draft_event: Dict[str, List], phonedata: Dict[str, List],
-                 phone_data_dir: str = None, is_print: bool = True):
+                 phone_data_dir: str = None, is_print: bool = True,
+                 persona_data: Dict = None):
         """
         初始化单跳 QA 生成器
-            
+
         Args:
             phone_data_dir: 手机数据文件夹路径
             is_print: 是否打印 Agent 的 LLM 输出，默认 True
@@ -48,6 +49,7 @@ class QASingleGenerator(BaseQAGenerator):
         self.daily_event = daily_event
         self.event_tree = event_tree
         self.draft_event = draft_event
+        self.persona_data = persona_data or {}
         # 如果传入了 phone_data_dir，则使用父类加载的数据（不要覆盖）
         # 如果没有传入 phone_data_dir，才使用传入的 phonedata
         if not phone_data_dir:
@@ -56,9 +58,9 @@ class QASingleGenerator(BaseQAGenerator):
         self.phonedata_lock = threading.Lock()
         self.phone_id_lock = threading.Lock()
         self.is_print = is_print  # 打印控制标志
-        
+
         # 初始化手机操作生成器
-        self.phone_op_generator = PhoneOperationGenerator()
+        self.phone_op_generator = PhoneOperationGenerator(persona_data=self.persona_data)
     
     def load_data_from_path(self, data_path: str):
         """从指定路径加载用户数据"""
@@ -609,6 +611,8 @@ class QASingleGenerator(BaseQAGenerator):
         - **信息适度性**：提供的信息量是否合理？是否过多或过少，是否有冗余信息？
         - **检索困难性**：题面和证据之间的相似性是否过高，导致检索证据回答问题很容易。在保证问题可从 evidence 中回答的前提下，检减少题面和证据的相似度。（可以减少一些题面描述的细节信息内容，只保留可回答的最小信息即可。）
         - **信息精简**：对于题面中可以删除的不影响回答问题的细节信息，可以减少并优化题面。
+        - **答案泄露检查**（重要）：题面是否包含了过多答案内容？如果题面中已经描述了答案的核心信息，用户无需检索 evidence 就能回答，则说明题面设计有问题，需要精简题面中与答案重复的描述。
+        - **相似度过高检查**（重要）：如果题面描述与 evidence 中的原始数据高度相似（只是做了简单的同义词替换），则失去了检索的意义。需要通过改写、抽象化、简化等方式降低题面与 evidence 的表面相似度。
         
         ## 2. 答案合理性正确性检查
         - **答案完整性**：答案是否完整回答了问题？

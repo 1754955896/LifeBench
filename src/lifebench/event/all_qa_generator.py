@@ -5,7 +5,7 @@ import importlib
 from typing import List, Dict, Any
 from concurrent.futures import ThreadPoolExecutor
 from src.lifebench.event.qa_generator.base_generator import BaseQAGenerator
-from src.lifebench.utils.llm_call import llm_call_j
+from src.lifebench.utils.llm_call import llm_call_j, llm_call_reason_j
 
 
 class QAGenerator:
@@ -559,6 +559,7 @@ class QAGenerator:
             # 如果原类型已经是 Unanswerable，直接保留
             original_type = qa.get('question_type', '')
             is_knowledge_update = original_type == 'Knowledge_update'
+            is_conflict = original_type == 'Conflict'
 
             if original_type == 'Unanswerable':
                 qa['question_type'] = ['Unanswerable']
@@ -609,6 +610,9 @@ class QAGenerator:
                         # 如果原类型是 Knowledge_update，确保它在结果中
                         if is_knowledge_update and 'Knowledge_update' not in qa['question_type']:
                             qa['question_type'].append('Knowledge_update')
+                        # 如果原类型是 Conflict，确保它在结果中
+                        if is_conflict and 'Conflict' not in qa['question_type']:
+                            qa['question_type'].append('Conflict')
                         return qa
             except Exception as e:
                 print(f"类型分类失败: {str(e)}, 保持原类型")
@@ -669,49 +673,48 @@ class QAGenerator:
             answer = qa.get('answer', '')
             evidence = qa.get('evidence', [])
 
-            prompt = f"""请分析以下问答对的问题，判断该问题是否可以根据提供的证据回答。
+            prompt = f"""请严格基于证据分析以下问答对，按三个步骤进行判断。
 
 ### 重要前提
 - 题目中的"我"均指代{persona_name}，而非回答者或其他人，当某个描述确实主语时，默认为{persona_name}。
 - 请基于此前提判断问题的可回答性
 
-### 分析维度
-1. **可回答性**：问题是否可以通过证据推理得出答案？证据是否包含回答问题所需的关键信息？
-2. **合理性**：问题的前提假设是否正确？问题与证据之间是否存在逻辑矛盾？
-3. **意义性**：问题是否有意义？是否为无效问题（如询问未来事件、纯粹主观偏好等无法基于证据回答的问题）？
+### 第一步：问题可回答性分析
+检查问题是否可以通过证据回答：
+- 问题询问的信息是否在证据覆盖的时间范围内？
+- 证据是否包含了回答问题所需的全部关键信息？
+- 问题描述的关键事件/活动在证据中是否存在对应？
+- 如果问题描述的核心前提在证据中缺失（如"夜跑后"但无夜跑记录），则问题不可回答
 
-### 思考过程（请按步骤分析）
-1. **提取问题描述的关键事件/活动**：从问题描述中提取问题所涉及的所有关键事件、活动或状态（如"夜跑"、"早餐"、"某人的夸赞"等）
-2. **逐一核对证据**：检查证据中是否存在这些关键事件/活动的直接证据或间接佐证
-3. **判断问题可回答性**：
-   - 如果问题描述的某个关键前提（如"夜跑后"、"某天做了X事"）在证据中完全找不到对应，则该问题不可回答
-   - 即使后续部分（如"第二天早晨"）有证据支撑，只要问题描述的核心前提缺失，整个问题仍不可回答
+### 第二步：问题合理性分析
+检查问题本身是否合理：
+- 主体匹配：问题以"我"提问时，证据中的行为主体是否确实是{persona_name}？
+- 时间逻辑：证据显示的事件时间与问题询问的时间是否匹配？
+- 描述正确：问题的描述是否与证据一致？
 
-### 抛弃规则（满足任一则抛弃）
-- **不可回答**：
-  - 证据不足以支撑得出答案，或证据与问题无关
-  - **问题描述的关键事件在证据中缺失**：如问题提到"夜跑后"但证据中无夜跑记录，或问题提到"某天做了X"但无对应证据
-- **不合理**：问题的前提假设与证据矛盾，如：
-  - 主体不匹配：问题以"我"提问，但证据中的行为主体是其他人（非{persona_name}）
-  - 答案主体不匹配：答案是"他/她做了X"且无证据表明{persona_name}做了此事，或答案指向他人但问题以"我"提问
-  - 时间错位：证据显示事件发生在T时间，但问题询问的是T之前或之后的相关事件却没有对应证据
-  - 事件缺失：问题涉及的关键活动、前提步骤在证据中完全缺失
-  - **指代或描述错误**：问题描述的前提（如"我做了X"）在证据中实为他人所为，或问题假设某事已发生但证据显示并未发生
-- **无意义**：
-  - 询问未来还未发生的事件
-  - 询问绝对主观、无客观答案的偏好（如"更喜欢咖啡还是茶"）
-  - 问题本身存在逻辑错误或自相矛盾
-  - 询问用户明确表示"不记得"或"不确定"的信息，且无其他证据补充
-  - 答案为"无法确定"、"不知道"、"根据现有数据无法回答"等不可回答类型
-  
-### 输出要求
-请仔细分析后输出 JSON 对象，不要添加任何解释文字：
+### 第三步：答案合理性分析
+在确认问题可回答且合理后，检查答案：
+- 答案中的每个细节（时间、地点、人物、状态、事件等）是否在证据中有对应？
+- 答案是否有证据中不存在的细节？
 
-如果问题可回答，输出：
-{{"is_answerable": true}}
+### 综合判断
+根据以上分析，输出以下三种结果之一：
 
-如果问题不可回答，输出：
-{{"is_answerable": false, "reason": "抛弃原因"}}
+【情况1 - 通过】
+问题和答案均合理，答案与证据完全对应，不存在证据回答不出的内容。
+输出：{{"result": "pass", "reason": "通过理由"}}
+
+【情况2 - 修改】
+答案有少量细节与证据不符，但核心正确，可通过微调答案使其与证据一致。
+输出：{{"result": "modify", "modified_answer": "修正后的答案", "reason": "需要修改的细节及原因"}}
+
+【情况3 - 放弃】
+问题不可回答，或答案与证据矛盾，或关键信息缺失无法修复。
+输出：{{"result": "discard", "reason": "放弃原因"}}
+
+### 输出格式
+请直接输出 JSON 对象，不要添加任何解释文字：
+{{"result": "pass/modify/discard", "modified_answer": "修正后答案（仅modify时填写）", "reason": "判断理由"}}
 
 ### 问答对信息
 问题：{question}
@@ -721,7 +724,7 @@ class QAGenerator:
 请直接输出 JSON 对象：
 """
             try:
-                result = llm_call_j(prompt)
+                result = llm_call_reason_j(prompt)
                 result = result.strip()
 
                 # 移除可能的 ```json 包装
@@ -732,11 +735,19 @@ class QAGenerator:
                 result = result.strip()
                 analysis = json.loads(result)
 
-                if analysis.get("is_answerable", False):
+                result_type = analysis.get("result", "pass")
+
+                if result_type == "pass":
                     return (qa, None)
-                else:
+                elif result_type == "modify":
+                    # 修改答案
+                    modified_answer = analysis.get("modified_answer", "")
+                    if modified_answer:
+                        qa["answer"] = modified_answer
+                    return (qa, None)
+                else:  # discard
                     reason = analysis.get("reason", "未知原因")
-                    print(f"  抛弃问题 (不可回答): {question[:50]}... 原因: {reason}")
+                    print(f"  抛弃问题: {question[:50]}... 原因: {reason}")
                     return (None, reason)
 
             except Exception as e:
@@ -795,20 +806,23 @@ class QAGenerator:
 
 ### 要求
 1. 总分必须为 10 分
-2. 得分点应反映回答该问题所需的关键推理步骤或知识点
-3. 每个得分点的 description 应清晰描述得分点内容，score 为该得分点的分值
-4. 得分点数量建议 2-5 个，每个得分点的分值根据重要性和难度分配
-5. description 应基于证据内容，描述回答问题时需要正确识别或推理的关键信息
+2. **得分点内容必须严格基于证据可推断的内容**：
+   - 每个得分点的 description 必须能在证据中找到对应或可合理推理
+   - 不能出现证据中没有或推理不出的内容
+   - 得分点描述的应该是证据中明确包含或可间接推断的关键信息
+3. 得分点应反映回答该问题所需的关键推理步骤或知识点
+4. 每个得分点的 description 应清晰描述得分点内容，score 为该得分点的分值
+5. 得分点数量建议 2-5 个，每个得分点的分值根据重要性和难度分配
 
 ### 输出格式
 请直接输出 JSON 数组格式，不要添加任何解释文字：
 [
   {{
-    "description": "得分点1描述",
+    "description": "得分点1描述（必须在证据中有对应或可推理）",
     "score": X
   }},
   {{
-    "description": "得分点2描述",
+    "description": "得分点2描述（必须在证据中有对应或可推理）",
     "score": Y
   }}
 ]

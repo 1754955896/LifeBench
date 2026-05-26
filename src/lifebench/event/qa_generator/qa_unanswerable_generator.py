@@ -62,6 +62,7 @@ class QAUnanswerableGenerator(BaseQAGenerator):
         self.phone_id_lock = threading.Lock()
 
         # 初始化手机操作生成器
+        self.phone_op_generator = PhoneOperationGenerator(persona_data=self.persona_data)
 
     def _extract_date_from_event(self, event: Dict[str, Any]) -> str:
         """

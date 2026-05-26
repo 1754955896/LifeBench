@@ -15,10 +15,11 @@ from src.lifebench.utils.llm_call import llm_call_j, llm_call_reason_j
 class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
     def __init__(self, daily_event: List[Dict], event_tree: List[Dict],
                  draft_event: Dict[str, List], phonedata: Dict[str, List],
-                 phone_data_dir: str = None, is_print: bool = True):
+                 phone_data_dir: str = None, is_print: bool = True,
+                 persona_data: Dict = None):
         """
         初始化知识更新 QA 生成器
-            
+
         Args:
             daily_event: daily_event 数据列表
             event_tree: event_tree 数据列表
@@ -26,6 +27,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
             phonedata: 手机操作数据字典
             phone_data_dir: 手机数据目录路径
             is_print: 是否打印调试信息
+            persona_data: 用户画像数据
         """
         # 调用父类的 __init__
         super().__init__()
@@ -35,14 +37,15 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         self.phonedata = phonedata
         self.phone_data_dir = phone_data_dir
         self.is_print = is_print
-        
+        self.persona_data = persona_data or {}
+
         # 初始化线程锁
         self.phonedata_lock = threading.Lock()
         self.phone_id_lock = threading.Lock()
         self.phone_id_counters = {}
         
         # 初始化手机操作生成器
-        self.phone_op_generator = PhoneOperationGenerator()
+        self.phone_op_generator = PhoneOperationGenerator(persona_data=self.persona_data)
         
         self.outlines = []
         self.state_changes = []  # 记录所有检测到的状态变化

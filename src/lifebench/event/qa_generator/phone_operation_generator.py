@@ -148,6 +148,7 @@ class PhoneOperationGenerator:
         operation_type = normalized_type
 
         max_fix_attempts = 2  # 最多修正2次
+        semantic_errors_from_previous = []  # 记录上一次语义校验的错误
 
         for fix_attempt in range(max_fix_attempts):
             # 构建生成提示
@@ -155,7 +156,8 @@ class PhoneOperationGenerator:
                 operation_type,
                 original_event,
                 question,
-                generation_hint
+                generation_hint,
+                semantic_errors=semantic_errors_from_previous if fix_attempt > 0 else []
             )
 
             # 调用 LLM 生成
@@ -164,17 +166,22 @@ class PhoneOperationGenerator:
             # 解析结果
             operations = self._parse_result(result, operation_type, original_event)
 
-            # 语义层面 LLM 校验
-            semantic_errors = self._semantic_validate(operations, original_event, question, operation_type)
-            if semantic_errors:
-                if fix_attempt < max_fix_attempts - 1:
-                    print(f"[PhoneOperationGenerator] 语义校验发现 {len(semantic_errors)} 个问题，开始重新生成...")
-                    continue
-                else:
-                    print(f"[PhoneOperationGenerator] 语义校验失败，抛弃 {len(operations)} 条数据")
-                    return []
-            else:
-                print(f"[PhoneOperationGenerator] 语义校验通过")
+            #             # 语义层面 LLM 校验（只在第一次生成时进行）
+#             if fix_attempt == 0:
+#                 semantic_errors = self._semantic_validate(operations, original_event, question, operation_type)
+#                 if semantic_errors:
+#                     if fix_attempt < max_fix_attempts - 1:
+#                         print(f"[PhoneOperationGenerator] 语义校验发现 {len(semantic_errors)} 个问题，开始重新生成...")
+#                         semantic_errors_from_previous = semantic_errors  # 记录错误供下一次使用
+#                         continue
+#                     else:
+#                         print(f"[PhoneOperationGenerator] 语义校验失败，抛弃 {len(operations)} 条数据")
+#                         return []
+#                 else:
+#                     print(f"[PhoneOperationGenerator] 语义校验通过")
+#             else:
+#                 # 第二次生成跳过语义校验
+#                 print(f"[PhoneOperationGenerator] 第二次生成，跳过语义校验")
 
             # 格式硬校验
             if not operations:
@@ -236,26 +243,42 @@ class PhoneOperationGenerator:
                                   operation_type: str,
                                   original_event: Dict[str, Any],
                                   question: str,
-                                  generation_hint: str = None) -> str:
+                                  generation_hint: str = None,
+                                  semantic_errors: List[Dict] = None) -> str:
         """
         构建生成提示
-        
+
         Args:
             operation_type: 操作类型
             original_event: 原始事件
             question: 问题
             generation_hint: 生成提示
-            
+            semantic_errors: 上一次语义校验的错误列表（第二次生成时传入）
+
         Returns:
             完整的提示词
         """
         event_info = json.dumps(original_event, ensure_ascii=False, indent=2)
-        
+
         # 提取事件类型
         event_type = original_event.get('type', '未知事件') if isinstance(original_event, dict) else '未知事件'
         event_name = original_event.get('name', original_event.get('event_name', '未命名事件')) if isinstance(original_event, dict) else '未命名事件'
-        
+
         hint_text = f"\n生成要求：{generation_hint}" if generation_hint else ""
+
+        # 如果有语义错误，添加到提示中作为最高优先级
+        semantic_error_text = ""
+        if semantic_errors and len(semantic_errors) > 0:
+            semantic_error_text = f"""
+【重要 - 必须修复的问题】（最高优先级）
+上一次生成的数据存在以下问题，请务必避免：
+{json.dumps(semantic_errors, ensure_ascii=False, indent=2)}
+
+请根据上述问题重新生成数据，确保：
+1. 修复所有列出的问题
+2. 保持数据的真实性和合理性
+3. 严格按照格式要求生成
+"""
 
         # 统一外部操作类型到内部标准类型
         # phonecall 和 call 都统一为 call
@@ -279,7 +302,7 @@ class PhoneOperationGenerator:
 
         prompt = f"""
         作为手机操作数据生成器，请根据以下信息生成{operation_type}类型的操作数据。
-
+{semantic_error_text}
         【人物信息】
         - 主体姓名：{self.persona_name}
         - 所有生成的数据必须以{self.persona_name}的视角出发，符合该人物的身份和行为习惯
