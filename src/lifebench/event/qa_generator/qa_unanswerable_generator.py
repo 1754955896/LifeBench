@@ -17,6 +17,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from src.lifebench.event.templates.template_qa import UNANSWERABLE_QUESTION_TEMPLATE
 from src.lifebench.utils.llm_call import llm_call
 from .base_generator import BaseQAGenerator
+from .phone_operation_generator import PhoneOperationGenerator
 
 
 

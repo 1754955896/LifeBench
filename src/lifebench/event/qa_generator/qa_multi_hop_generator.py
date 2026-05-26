@@ -6,7 +6,7 @@ from typing import List, Dict, Any, Tuple, Optional
 import threading
 import concurrent.futures
 
-from src.lifebench.utils.llm_call import llm_call, llm_call_j
+from src.lifebench.utils.llm_call import llm_call, llm_call_j, llm_call_reason_j
 from .base_generator import BaseQAGenerator
 from .phone_operation_generator import PhoneOperationGenerator
 
@@ -1398,7 +1398,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
         background_events_desc = json.dumps(background_events, ensure_ascii=False, indent=2) if background_events else "无背景事件"
         
         question_prompt = f"""
-作为 Question Generator，请基于推理链条生成一个高质量的多跳推理问题。
+作为 Question Generator，请基于推理链条为用户{self.persona_data.get('name', '用户')}的生活生成一个高质量的多跳推理问题。
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 【输入数据参考】
@@ -1427,7 +1427,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
 
 **优先策略：设计涉及多个事件信息的询问**
 
-- 从推理节点或背景事件中选择多个相关事件，设计一个需要整合这些事件信息才能回答的问题
+- 从推理节点或背景事件中选择多个相关联的事件，设计一个需要整合这些事件信息才能回答的问题
 - 示例：
   * 事件1："1月19号完成体检调研表"
   * 事件2："1月20号基于调研表和哥哥讨论"
@@ -1481,6 +1481,13 @@ class QAMultiHopGenerator(BaseQAGenerator):
   * "过生日" → "和小红在3月2号计划要做的事情"
   * "庆祝生日" → "完成那个需要三个材料准备的任务后举行的活动"
 
+**③ 描述替换**（相关关系）
+- 用与其他事件的描述来替换想询问的目标事件的描述，要求两个事件之间有明确的关联关系或相对关系。
+- 示例：
+    * "在和平饭店庆祝生日" → "在我2月同事聚餐的地方"
+    * "和小明交谈" → "我们出门散步快回家时遇见的事情"
+
+
 ⚠️ **关键约束**：
 - 每次替换都必须使用**未使用节点**（即初始问题中未涉及的节点）
 - 分析问题的难度来选择是否进行替换，确保问题需要多步推理，可以不进行任何替换
@@ -1493,7 +1500,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
 **检查清单**：
 1. **自然流畅性**：问题读起来是否自然？是否因为多次替换导致题面不自然、拗口？
 2. **多跳推理要求**：是否需要至少 2-3 步推理或者需要整合多个事件的信息才能得出答案？
-3. **信息隐藏**：问题中是否完全不包含目标事件的直接信息？
+3. **信息隐藏**：问题中是否完全不包含目标事件的直接信息，是否包含了多余的没必要的信息导致问题难度下降？
 4. **合理性**：问题是否有实际意义？答案是否能从提供的节点中推理出来？
 5. **质量保障**：问题是否清晰、无歧义？
 6. **月份信息包含**：题面是否明确包含月份信息？
@@ -1537,11 +1544,11 @@ class QAMultiHopGenerator(BaseQAGenerator):
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 请以JSON格式输出：
 {{
-    "initial_question": "设计的初始直接问题（基于目标事件或多个相关事件设计多跳初始问题）",
+    "initial_question": "设计的初始直接问题（基于目标事件或多个相关事件设计多跳初始问题，尽量需要整合多个事件/节点才能得出答案）",
     "replacement_process": [
         {{
             "step": 1,
-            "replacement_type": "实体替换/因果替换",
+            "replacement_type": "实体替换/因果替换/描述替换",
             "original": "被替换的原始信息",
             "replaced_with": "替换后的描述",
             "reason": "为什么这样替换（推理关系说明）",
@@ -1591,7 +1598,7 @@ class QAMultiHopGenerator(BaseQAGenerator):
 如果以上任何一项不满足，请重新设计问题。
 """
         print("[Generate Question & Data] LLM 输入:", question_prompt)
-        llm_result = llm_call_j(question_prompt)
+        llm_result = llm_call_reason_j(question_prompt)
         print("[Generate Question & Data] LLM 输出:", llm_result)
         if self.is_print:
             print("\n[Question Generator] LLM 输出:")
@@ -1618,85 +1625,85 @@ class QAMultiHopGenerator(BaseQAGenerator):
                     if event_data:
                         required_events_data[str(eid)] = event_data
 
-                # Step 1.5: 检查并优化问题
-                check_prompt = f"""
-作为 Question Reviewer，请检查并优化以下多跳推理问题的质量。尽量不对原问题做大的修改。
+#                 # Step 1.5: 检查并优化问题
+#                 check_prompt = f"""
+# 作为 Question Reviewer，请检查并优化以下多跳推理问题的质量。尽量不对原问题做大的修改。
 
-【当前问题】
-{question}
+# 【当前问题】
+# {question}
 
-【当前答案】
-{answer}
+# 【当前答案】
+# {answer}
 
-【相关事件数据】
-{json.dumps(required_events_data, ensure_ascii=False, indent=2)}
+# 【相关事件数据】
+# {json.dumps(required_events_data, ensure_ascii=False, indent=2)}
 
-**检查标准**
+# **检查标准**
 
-1. **问题答案一致性**
-   - 问题是否清晰无歧义？
-   - 答案是否正确回答了问题？
-   - 答案是否包含问题要求回答的之外的信息？(若包含考虑增加问题的提问内容)
+# 1. **问题答案一致性**
+#    - 问题是否清晰无歧义？
+#    - 答案是否正确回答了问题？
+#    - 答案是否包含问题要求回答的之外的信息？(若包含考虑增加问题的提问内容)
 
-2. **多跳特性**
-   - 是否需要结合多个事件信息才能回答？
-   - 是否需要多步骤推理？
+# 2. **多跳特性**
+#    - 是否需要结合多个事件信息才能回答？
+#    - 是否需要多步骤推理？
 
-3. **复杂性**
-   - 是否有一定推理难度？
-   - 是否过于简单直接？
-   - 是否可以通过模糊/减少题面的信息来增加难度？（但要保证可回答性）
+# 3. **复杂性**
+#    - 是否有一定推理难度？
+#    - 是否过于简单直接？
+#    - 是否可以通过模糊/减少题面的信息来增加难度？（但要保证可回答性）
 
-4. **信息冗余/完整**
-   - 是否有不影响答案的冗余描述？
-   - 是否可以简化而不影响回答？
-   - 注意分析有些事件可能会经常发生（如晨跑，吃饭，这类事件一般要明确时间约束才能定位，比如2月下旬的那次晨跑，3月5日的午饭时，如果直接题面说那次晨跑时，会导致回答者根本无法确定是哪次晨跑，这属于信息不充足，需要优化题面添加时间约束）
+# 4. **信息冗余/完整**
+#    - 是否有不影响答案的冗余描述？
+#    - 是否可以简化而不影响回答？
+#    - 注意分析有些事件可能会经常发生（如晨跑，吃饭，这类事件一般要明确时间约束才能定位，比如2月下旬的那次晨跑，3月5日的午饭时，如果直接题面说那次晨跑时，会导致回答者根本无法确定是哪次晨跑，这属于信息不充足，需要优化题面添加时间约束）
 
-在完成上述检查并重新设计了问题后，对新的问题进行进一步优化:
-**优化步骤**
-在答案不变、题面整体目标不变的前提下：
-1. 找出题面中过于丰富、明确、冗余的信息
-2. 用更模糊的表达替换（如具体日期→X月，但对于可能在一年内多次发生的事情请不要让题面一点时间信息都没有，请加上X月，X-2月后，年初，春季等类似描述约束）
-3. 删除不影响推理的冗余描述
-4. 确保优化后问题仍可回答
+# 在完成上述检查并重新设计了问题后，对新的问题进行进一步优化:
+# **优化步骤**
+# 在答案不变、题面整体目标不变的前提下：
+# 1. 找出题面中过于丰富、明确、冗余的信息
+# 2. 用更模糊的表达替换（如具体日期→X月，但对于可能在一年内多次发生的事情请不要让题面一点时间信息都没有，请加上X月，X-2月后，年初，春季等类似描述约束）
+# 3. 删除不影响推理的冗余描述
+# 4. 确保优化后问题仍可回答
 
-**输出格式**
-请以 JSON 格式返回：
-{{
-    "is_valid": true/false,
-    "issues": ["问题列表（如果没有则为空数组）"],
-    "improved_question": "优化后的问题（如果无需优化则与原问题相同）",
-    "improved_answer": "优化后的答案（如果无需优化则与原答案相同）",
-    "reason": "优化说明或保持原样的原因"
-}}
-"""
-                print("[Generate Question & Data] 开始检查问题质量...")
-                check_result = llm_call_j(check_prompt)
-                print("[Generate Question & Data] 检查结果:", check_result)
+# **输出格式**
+# 请以 JSON 格式返回：
+# {{
+#     "is_valid": true/false,
+#     "issues": ["问题列表（如果没有则为空数组）"],
+#     "improved_question": "优化后的问题（如果无需优化则与原问题相同）",
+#     "improved_answer": "优化后的答案（如果无需优化则与原答案相同）",
+#     "reason": "优化说明或保持原样的原因"
+# }}
+# """
+#                 print("[Generate Question & Data] 开始检查问题质量...")
+#                 check_result = llm_call_j(check_prompt)
+#                 print("[Generate Question & Data] 检查结果:", check_result)
                 
-                try:
-                    start_idx = check_result.find('{')
-                    end_idx = check_result.rfind('}') + 1
-                    if start_idx != -1 and end_idx != -1:
-                        check_json = json.loads(check_result[start_idx:end_idx])
-                        is_valid = check_json.get('is_valid', True)
-                        issues = check_json.get('issues', [])
-                        improved_question = check_json.get('improved_question', question)
-                        improved_answer = check_json.get('improved_answer', answer)
-                        reason = check_json.get('reason', '')
+#                 try:
+#                     start_idx = check_result.find('{')
+#                     end_idx = check_result.rfind('}') + 1
+#                     if start_idx != -1 and end_idx != -1:
+#                         check_json = json.loads(check_result[start_idx:end_idx])
+#                         is_valid = check_json.get('is_valid', True)
+#                         issues = check_json.get('issues', [])
+#                         improved_question = check_json.get('improved_question', question)
+#                         improved_answer = check_json.get('improved_answer', answer)
+#                         reason = check_json.get('reason', '')
                         
-                        if not is_valid or issues:
-                            print(f"[Generate Question & Data] 发现问题: {issues}")
-                            print(f"[Generate Question & Data] 改进原因: {reason}")
-                            question = improved_question
-                            answer = improved_answer
-                            print(f"[Generate Question & Data] 改进后问题: {question[:80]}...")
-                        else:
-                            print(f"[Generate Question & Data] 问题质量良好，无需改进")
-                except Exception as e:
-                    print(f"[Generate Question & Data] 问题检查失败: {e}，使用原始问题")
-                    import traceback
-                    traceback.print_exc()
+#                         if not is_valid or issues:
+#                             print(f"[Generate Question & Data] 发现问题: {issues}")
+#                             print(f"[Generate Question & Data] 改进原因: {reason}")
+#                             question = improved_question
+#                             answer = improved_answer
+#                             print(f"[Generate Question & Data] 改进后问题: {question[:80]}...")
+#                         else:
+#                             print(f"[Generate Question & Data] 问题质量良好，无需改进")
+#                 except Exception as e:
+#                     print(f"[Generate Question & Data] 问题检查失败: {e}，使用原始问题")
+#                     import traceback
+#                     traceback.print_exc()
                 
                 # 构建 QA 结果
                 qa_result = {
@@ -2334,7 +2341,7 @@ sms, phonecall, photo, push, note, calendar
    - 题面应该提供线索和上下文，让回答者需要通过推理才能找到答案
    - 参考原题目设计的推理思路来润色新题目，保证推理需要2-4跳。
    - 题目应至少包含月份信息。
-   
+
 3. **问题和答案的合理性**
    - 问题是否清晰、无歧义？
    - 答案是否正确回答了问题？
@@ -2345,6 +2352,18 @@ sms, phonecall, photo, push, note, calendar
    - 从 evidence 出发，是否能通过多步推导出答案？
    - 是否存在 evidence 不足导致无法回答的情况？
 
+5. **答案与证据的一致性检查**（重要）
+   - 答案中是否包含了证据（evidence）中没有的、无法体现的细节或信息？
+   - 如果答案描述了具体日期、数字、人名、事件细节等，检查这些内容是否能在 evidence 中找到依据
+   - 答案不应包含 evidence 中不存在的信息，尤其是具体数值、具体人名、具体地点等关键细节
+   - 若发现此类问题，可通过微调答案（去除evidence中不存在的细节）来修正
+
+6. **题面与证据的一致性检查**（重要）
+   - 题面的描述是否与 evidence 中的信息一致？
+   - 题面中提到的日期、时间、地点、人物等关键信息，是否能在 evidence 中找到对应？
+   - 题面是否包含了无法从 evidence 推理出来的内容或描述？
+   - 若发现不一致，可通过微调题面来修正
+
 **输出要求**
 
 请以 JSON 格式返回检查结果：
@@ -2353,22 +2372,23 @@ sms, phonecall, photo, push, note, calendar
     "issues": ["问题列表，如果没有问题则为空数组"],
     "action": "keep/regenerate/discard",
     "reason": "做出该决定的原因",
-    "suggested_question": "如果需要重新生成，建议的新问题（可选）",
-    "suggested_answer": "如果需要重新生成，建议的新答案（可选）"
+    "suggested_question": "如果需要重新生成或微调，建议的新问题（可选）",
+    "suggested_answer": "如果需要重新生成或微调，建议的新答案（可选）"
 }}
 
 **决策规则**：
-- keep: 问题是高质量的多跳推理问题，题面简洁且信息量适中，可以从多个 evidence 推理得出答案
-- regenerate: 问题有多跳推理潜力，但题面过于冗长或与目标信息相似度过高，需要优化题面和答案
-- discard: 问题难以改造成合理的高质量多跳复杂推理问题，或者 evidence 完全不足以支持多跳推理
+- keep: 问题是高质量的多跳推理问题，题面简洁且信息量适中，可以从多个 evidence 推理得出答案，且答案和题面均与 evidence 一致
+- regenerate: 问题整体合理，但出现答案包含 evidence 无法体现的细节，或题面描述与 evidence 不一致，可通过微调答案和题面来修正。或者题面包含了过多提示和冗余信息，导致题面的推理难度/跳数减少或过于简单。可修改题面表述。
+- discard: 问题难以改造成合理的高质量多跳复杂推理问题，或者 evidence 完全不足以支持多跳推理，或存在根本性不一致无法通过微调修正
 
 **示例判断**：
 - ✅ keep: "我参加完马拉松比赛后，和小李庆祝时提到的项目合作方案后来实施了吗？"（需要推理：马拉松→庆生→项目讨论→实施情况）
 - ❌ regenerate: "我在5月15日参加完马拉松比赛后，5月20日在和平饭店和小李讨论的项目合作方案后来实施了吗？"（题面过长，直接给出了太多细节）
 - ❌ discard: "我那天做了什么？"（单步推理，不是多跳问题）
+- ❌ regenerate: 答案提到"7月15日在中心医院"，但 evidence 只显示"7月15日"，地点无法体现 → 微调答案为"7月15日"，去除医院信息
 """
                 
-                check_result = llm_call_j(check_prompt)
+                check_result = llm_call_reason_j(check_prompt)
                 
                 try:
                     start_idx = check_result.find('{')

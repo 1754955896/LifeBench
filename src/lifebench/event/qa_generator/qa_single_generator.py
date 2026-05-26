@@ -582,10 +582,17 @@ class QASingleGenerator(BaseQAGenerator):
                 ask_time_description = ''
         
         # 调用 LLM 评估问题质量
+        persona_name = self.persona_data.get('name', '于晓雯') if self.persona_data else '于晓雯'
         eval_prompt = f"""
         作为 Evaluation Agent，请全面评估以下问题QA的质量。下面的问题QA基于的场景是手机用户在提问一个记录了他一年手机数据的手机智能助手，回忆自己的生活。
+
+        【背景信息】
+        - 当前年份：2025年
+        - 用户名字：{persona_name}
+        - 问题中的"我"均指代{persona_name}
+
         {ask_time_description}
-        
+
         【当前问题】
         {question.get('question', '')}
         
@@ -608,12 +615,11 @@ class QASingleGenerator(BaseQAGenerator):
         - **场景真实性**：问题描述的场景是否符合真实生活？
         - **逻辑连贯性**：问题表述是否逻辑清晰、无矛盾？
         - **信息合理性**：题目的信息是否足够定位回答问题，手机数据是否能推理出问题的答案？是否需要补充信息/去除冗余信息？题面的提供的信息符合一般人提问时会提供的信息吗（时间or地点or人物or描述）？
-        - **信息适度性**：提供的信息量是否合理？是否过多或过少，是否有冗余信息？
+        - **信息适度性**：提供的信息量是否合理？是否充足，过多或过少，是否有冗余信息？
         - **检索困难性**：题面和证据之间的相似性是否过高，导致检索证据回答问题很容易。在保证问题可从 evidence 中回答的前提下，检减少题面和证据的相似度。（可以减少一些题面描述的细节信息内容，只保留可回答的最小信息即可。）
         - **信息精简**：对于题面中可以删除的不影响回答问题的细节信息，可以减少并优化题面。
-        - **答案泄露检查**（重要）：题面是否包含了过多答案内容？如果题面中已经描述了答案的核心信息，用户无需检索 evidence 就能回答，则说明题面设计有问题，需要精简题面中与答案重复的描述。
-        - **相似度过高检查**（重要）：如果题面描述与 evidence 中的原始数据高度相似（只是做了简单的同义词替换），则失去了检索的意义。需要通过改写、抽象化、简化等方式降低题面与 evidence 的表面相似度。
-        
+        - **答案泄露检查**：题面是否包含了过多答案内容？如果题面中已经描述了答案的核心信息，用户无需检索 evidence 就能回答，则说明题面设计有问题，需要精简题面中与答案重复的描述。
+   
         ## 2. 答案合理性正确性检查
         - **答案完整性**：答案是否完整回答了问题？
         - **答案正确性**：答案与 evidence 中的数据是否一致？是否存在矛盾？
@@ -1647,12 +1653,18 @@ class QASingleGenerator(BaseQAGenerator):
                 print(f"\n[Filter Thread {idx + 1}/{len(questions)}] 开始处理问题...")
                 
                 # 构建评估 prompt
+                persona_name = self.persona_data.get('name', '于晓雯') if self.persona_data else '于晓雯'
                 eval_prompt = f"""
                 作为 QA 质量评估专家，请仔细分析以下问答对的质量。
-                
+
+                【背景信息】
+                - 当前年份：2025年
+                - 用户名字：{persona_name}
+                - 问题中的"我"均指代{persona_name}
+
                 【问题】
                 {question.get('question', '')}
-                
+
                 【答案】
                 {question.get('answer', '')}
                 

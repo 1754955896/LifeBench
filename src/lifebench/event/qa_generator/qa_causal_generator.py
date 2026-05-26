@@ -398,8 +398,8 @@ class QACausalGenerator(BaseQAGenerator):
         """
         实现基类抽象方法，作为外部调用的统一入口
         """
-        num_samples = kwargs.get('num_samples', 60)
-        num_trees = kwargs.get('num_trees', 150)
+        num_samples = kwargs.get('num_samples', 72)
+        num_trees = kwargs.get('num_trees', 160)
 
         # 1. 提取因果对
         if not self.causal_pairs:

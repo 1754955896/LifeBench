@@ -313,8 +313,14 @@ class QAGenerator:
                     with open(single_output_path, 'r', encoding='utf-8') as f:
                         existing_questions = json.load(f)
                     if isinstance(existing_questions, list):
-                        all_questions.extend(existing_questions)
-                        print(f"   ✓ 已加载 {len(existing_questions)} 个已有问题，将统一经过分类处理")
+                        # 加载已有文件时也先过滤格式，只保留指定字段
+                        allowed_fields = ["question", "answer", "score_points", "required_events_id", "question_type", "evidence", "ask_time"]
+                        filtered_existing = []
+                        for item in existing_questions:
+                            filtered_item = {k: v for k, v in item.items() if k in allowed_fields}
+                            filtered_existing.append(filtered_item)
+                        all_questions.extend(filtered_existing)
+                        print(f"   ✓ 已加载 {len(filtered_existing)} 个已有问题（已过滤字段），将统一经过分类处理")
                 except Exception as e:
                     print(f"   ⚠️ 加载已有文件失败: {e}")
                 continue
@@ -351,8 +357,14 @@ class QAGenerator:
                         json.dump(result, f, ensure_ascii=False, indent=2)
                     print(f"✓ {gen_name}问题生成完成，共 {len(result)} 个问题，已保存到 {single_output_path}")
                     
-                    # 添加到总列表
-                    all_questions.extend(result)
+                    # 添加到总列表前先过滤格式，只保留指定字段
+                    filtered_result = []
+                    allowed_fields = ["question", "answer", "score_points", "required_events_id", "question_type", "evidence", "ask_time"]
+                    for item in result:
+                        filtered_item = {k: v for k, v in item.items() if k in allowed_fields}
+                        filtered_result.append(filtered_item)
+
+                    all_questions.extend(filtered_result)
                 else:
                     print(f"✓ {gen_name}问题生成完成，但未返回问题")
                 
@@ -560,6 +572,7 @@ class QAGenerator:
             original_type = qa.get('question_type', '')
             is_knowledge_update = original_type == 'Knowledge_update'
             is_conflict = original_type == 'Conflict'
+            is_hidden_info = original_type == 'Hidden_info'
 
             if original_type == 'Unanswerable':
                 qa['question_type'] = ['Unanswerable']
@@ -613,6 +626,9 @@ class QAGenerator:
                         # 如果原类型是 Conflict，确保它在结果中
                         if is_conflict and 'Conflict' not in qa['question_type']:
                             qa['question_type'].append('Conflict')
+                        # 如果原类型是 Hidden_info，确保它在结果中
+                        if is_hidden_info and 'Hidden_info' not in qa['question_type']:
+                            qa['question_type'].append('Hidden_info')
                         return qa
             except Exception as e:
                 print(f"类型分类失败: {str(e)}, 保持原类型")
