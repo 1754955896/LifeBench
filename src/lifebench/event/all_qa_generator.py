@@ -85,7 +85,7 @@ class QAGenerator:
             'order': 10,
             'qagen_params': {
                 'year': 2025,
-                'num_questions_per_month': 5
+                'num_questions_per_month': 7
             }
         }
     }
@@ -664,9 +664,9 @@ class QAGenerator:
             """对单个问答对进行可回答性分析
             Returns: (qa_or_none, discard_reason)
             """
-            # 如果原类型已经是 Unanswerable，直接保留
+            # 如果原类型已经是 Unanswerable 或 Conflict，直接保留
             original_type = qa.get('question_type', '')
-            if original_type == 'Unanswerable':
+            if original_type in ('Unanswerable', 'Conflict'):
                 return (qa, None)
 
             question = qa.get('question', '')

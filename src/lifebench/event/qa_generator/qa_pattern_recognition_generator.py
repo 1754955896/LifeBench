@@ -1532,6 +1532,18 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
             
         # 并行分析每个窗口
         window_analyses = self._parallel_analyze_windows(windows, question, month_key)
+
+        # 打印每个窗口的分析结果
+        print(f"[Check Agent] ========== 窗口分析结果 ({len(window_analyses)} 个窗口) ==========")
+        for i, wa in enumerate(window_analyses):
+            print(f"\n--- 窗口 {i+1} ---")
+            print(f"date_range: {wa.get('date_range', 'N/A')}")
+            analysis = wa.get('analysis', '')
+            print(f"analysis: {analysis[:300]}..." if len(str(analysis)) > 300 else f"analysis: {analysis}")
+            key_events = wa.get('key_events', [])
+            print(f"key_events: {key_events[:5]}" if len(key_events) > 5 else f"key_events: {key_events}")
+            print(f"is_significant: {wa.get('is_significant', 'N/A')}")
+        print(f"[Check Agent] ========== 窗口分析结果打印完毕 ==========")
             
         # 整合分析结果并优化问题
         optimized_question = self._optimize_question(question, window_analyses, month_key)
@@ -1809,7 +1821,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
         - 信息重复或冗余的事件
         - 不适合用于设计高质量问题的事件
                         
-        因此，你需要**自行判断和筛选**，从分析结果中找出真正与问题相关、有价值的关键事件，并基于这些事件重新设计问题。
+        因此，你需要**自行判断和筛选**，从分析结果中找出真正与问题相关、有价值的关键事件，并基于这些事件重新设计问题。但是请注意，不要遗漏任何事件，事件的选取应覆盖整个月份，而不是只集中在某一段时间。选取的事件要足够充分，能回答出问题并体现出答案。不要遗漏答案相关的任何事件。
                                         
         **首要任务：评估并调整问题**
         在开始优化之前，请先评估提供的事件数据是否足以回答该问题：
@@ -1830,12 +1842,12 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                   
         **情况二：事件数据充足时，正常优化，不需大幅度调整问题**
         - 继续进行问题优化，确保以下几点：
-        1. **筛选关键事件**：从【分析结果】的 `relevant_events_with_time` 中，仔细判断并筛选出真正与问题相关的重点事件，不要盲目使用所有列出的事件
+        1. **获取相关事件**：从【分析结果】的 `relevant_events_with_time` 中，仔细判断并筛选出真正与问题相关的事件，保障答案的全部内容和细节都有对应的事件支持。不要遗漏任何与答案相关的事件，确保选取的事件覆盖整个月份，而不是只集中在某一段时间。选取的事件要足够充分，能回答出问题并体现出答案。
         2. **整合时间信息**：继续筛选出的关键事件的信息进行整合，分析问题和答案是否需要修正优化，使 QA 建立在真实数据基础上
         3. **优化问题表述**：修正问题表述，使其更自然、更符合用户真实提问方式，以最小信息量表述问题，题面不要出现冗余信息
         4. **校正答案内容**：确保答案准确反映用户的实际生活数据和对应的时间段
-        5. **标注事件依据**：将筛选出的关键事件的 id 增加到 required_events_id，明确标注问题所需的事件依据
-        6. **提供评分要点**：提供清晰的评分要点，说明回答该问题需要覆盖的关键信息
+        5. **标注事件依据**：将获取筛选出的事件的 id 增加到 required_events_id，明确标注问题和答案所需的事件依据
+        6. **提供评分要点**：提供清晰的评分要点，说明回答该问题需要覆盖的关键信息和推理过程
         7. **规范输出格式**：规范化问题格式，确保符合输出要求
                                         
         **输出格式**
@@ -1868,8 +1880,9 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
         """
             
         try:
-            response = llm_call_j(prompt)
-            print(response)
+            print(f"[Check Agent] 发送优化提示给 LLM...{prompt}")
+            response = llm_call_reason_j(prompt)
+            print(f"[Check Agent] LLM 响应：{response}")
             # 匹配第一个和最后一个 {} 并 load
             if isinstance(response, str):
                 import re
@@ -1996,33 +2009,41 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
             # 使用 LLM 分析现有数据是否充足，以及需要增删哪些数据
             analysis_prompt = f"""
             作为数据分析师，请分析以下事件、问题和现有证据。
-                        
+
             【任务背景】
             您正在为问题的回答设计证据。这些证据是手机操作数据（包括短信、通话、照片、推送通知、笔记、日历等），手机智能助手会基于这些手机操作推理并回答问题。
-                        
+
             现在正在分析回答该问题的一个子事件。**请注意**：
             - 我们提供的手机数据只是与该事件有关的数据
             - 这个事件只是用来回答问题的众多事件中的其中一个
             - **不需要检查手机数据能否回答整个问题**
             - **只需要分析这个事件的重要信息是否都手机数据被表现并反映出来**
-                        
+
+            【手机数据类型及主要格式】
+            1. **sms（短信）**：包含 message_content（短信内容）、contactName（联系人姓名）、phoneNumber（电话号码）、datetime（时间）、message_type（发送/接收）
+            2. **phonecall（通话）**：包含 contactName（联系人）、phoneNumber（号码）、datetime（通话时间）、datetime_end（结束时间）、direction（0=呼入/1=呼出）、call_result（通话结果），注意此类数据一般不反应内容。
+            3. **photo（照片）**：包含 title（文件名）、datetime（拍摄时间）、location（位置信息，含省市区街道门牌号）、caption（描述）、imageTag（图片标签）、faceRecognition（人脸识别结果）、ocrText（文字识别）
+            4. **push（推送通知）**：包含 push_title（通知标题）、push_content（通知内容）、datetime（时间）、source_app（来源应用）
+            5. **note（笔记）**：包含 title（标题）、content（正文内容）、datetime（创建时间）
+            6. **calendar（日历）**：包含 title（事件标题）、description（描述）、start_time（开始时间）、end_time（结束时间）、datetime（提醒时间）
+
             【问题与答案】
             - 问题：{question.get('question', '')}
             - 答案：{question.get('answer', '')[:500]}{'...' if len(question.get('answer', '')) > 500 else ''}
-                        
+
             【事件信息】
             - 事件 ID: {event_id}
             - 事件描述：{event_description}
             - 事件日期：{json.dumps(event_date, ensure_ascii=False)}
-                        
+
             【现有手机数据证据】（共{len(existing_evidence)}条）
             {json.dumps([{'type': ev['type'], 'phone_id': ev['phone_id'], 'data_summary': str(ev['data'])[:200]} for ev in existing_evidence], ensure_ascii=False, indent=2)}
-                        
+
             【可生成的数据类型】
             sms, phonecall, photo, push, note, calendar
-                        
+
             **重要原则**
-            1. **非必要不生成**：只有当十分确定缺乏关键信息，或缺乏足以支持回答的信息时，才考虑新增。若已有数据能大致反映事件则不用新增。**能不生成就不生成**。
+            1. **非必要不生成**：只有当十分确定缺乏关键信息，或缺乏足以支持回答的信息时，才考虑新增。若已有数据能大致反映事件且信息足够用于问题的回答则不用新增。**能不生成就不生成**。
             2. **重点优先**：不需要全面反映出事件的所有细节，只关注与问题相关的重点内容。
                - 例如：问题可能只问跑步频率，那只要手机数据能反映出用户跑步了就行，至于距离、时间可以不关心
                - 例如：如果问题问了跑量，则需要反映公里数
@@ -2041,14 +2062,13 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                  - ✅ 缺少跑步公里数：生成短信"今天跑了 5 公里"或推送"你今日已运动 5 公里，十分健康"
                  - ❌ 不要生成：详细的跑步笔记，包含时间、路线、配速、心率等完整信息
             5. **谨慎删除**：**除非数据明显不合理或出行冗余，否则不要删除手机数据**。仅在数据存在明显错误或矛盾情况下考虑删除。我们允许描述该事件其他内容（与问题无关）的数据存在。
-                
-            
+
             **分析任务**
             1. 现有手机数据是否充分反映了该事件的关键信息？
             2. 该事件的重要信息是否都在手机数据中有所体现？
-            3. 如果不足，最需要补充哪些关键数据来完整展现该事件？（尽可能少地增加）
-            4. 如果有与该事件不相关或冗余的数据，应该删除哪些？
-                        
+            3. 如果不足，最需要补充哪些关键数据来完整展现该事件？（尽可能少地增加，若需增加多个手机数据，优先增加不同的类别，尽可能多样化，增加的手机数据之间不要反应重复的信息，体现信息碎片化的特征。）
+  
+
             **输出格式**
             请以 JSON 格式返回：
             {{
@@ -2056,7 +2076,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                 "to_generate": [
                     {{
                         "type": "sms/phonecall/photo/push/note/calendar",
-                        "content_summary": "数据内容描述（用于生成具体数据，只包含缺少的关键信息，保持最小信息量）",
+                        "content_summary": "数据内容描述（说明此条数据要体现什么内容，尽量详细具体，指出要体现的原事件的内容和具体的手机数据内容）",
                         "reason": "为什么需要这个数据来反映该事件的哪个重要信息，以及为何现有数据不足"
                     }}
                 ],
