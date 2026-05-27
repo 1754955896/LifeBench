@@ -4,7 +4,7 @@ import holidays
 import json
 from typing import List, Dict, Optional
 from src.lifebench.event.templates.templates import template_event_update, template_biweekly_event_schedule_analysis
-from src.lifebench.event.templates.template_refiner import template_daily_event_refine, template_daily_diversity_optimization, template_format_validation, template_monthly_health_report
+from src.lifebench.event.templates.template_refiner import template_daily_event_refine, template_daily_diversity_optimization, template_format_validation, template_monthly_health_report, template_daily_date_refine, template_event_date_matching
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
@@ -227,6 +227,368 @@ class EventRefiner:
         res = llm_call_reason(prompt, self.context, record=record)
         return res
 
+    def _get_events_in_range(self, events: List[Dict], dates: List[str]) -> List[Dict]:
+        """获取指定日期范围内的所有事件
+
+        Args:
+            events: 事件列表
+            dates: 日期列表
+
+        Returns:
+            List[Dict]: 日期范围内的事件列表
+        """
+        event_sequence = []
+        for date in dates:
+            date_events = self.filter_by_date(events, date)
+            event_sequence.extend(date_events)
+        return event_sequence
+
+    def _build_daily_life_data(self, dates: List[str], updated_events: List[Dict]) -> List[Dict]:
+        """从事件构建每日生活数据
+
+        Args:
+            dates: 日期列表
+            updated_events: 更新后的事件列表
+
+        Returns:
+            List[Dict]: 每日生活数据 [{date, events}, ...]
+        """
+        daily_life_data = []
+        for date in dates:
+            date_events = self.filter_by_date(updated_events, date)
+            daily_life_data.append({
+                "date": date,
+                "events": [e.get("description", "") for e in date_events]
+            })
+        return daily_life_data
+
+    def _simplify_persona(self, persona: Dict) -> Dict:
+        """简化 persona 数据，只保留 relation 中的必要字段
+
+        Args:
+            persona: 原始 persona 数据
+
+        Returns:
+            Dict: 简化后的 persona 数据
+        """
+        simplified_persona = {}
+        for key, value in persona.items():
+            if key == "relation" and isinstance(value, list):
+                simplified_persona[key] = []
+                for outer_item in value:
+                    if isinstance(outer_item, list):
+                        simplified_outer_item = []
+                        for inner_item in outer_item:
+                            simplified_inner_item = {
+                                "name": inner_item.get("name", ""),
+                                "relation": inner_item.get("relation", ""),
+                                "relation_description": inner_item.get("relation_description", "")
+                            }
+                            simplified_outer_item.append(simplified_inner_item)
+                        simplified_persona[key].append(simplified_outer_item)
+                    else:
+                        simplified_item = {
+                            "name": outer_item.get("name", ""),
+                            "relation": outer_item.get("relation", ""),
+                            "relation_description": outer_item.get("relation_description", "")
+                        }
+                        simplified_persona[key].append(simplified_item)
+            else:
+                simplified_persona[key] = value
+        return simplified_persona
+
+    def _parse_optimization_res(self, optimization_res: str) -> List[Dict]:
+        """解析 LLM 优化结果，包含多重 fallback
+
+        Args:
+            optimization_res: LLM 返回的优化结果字符串
+
+        Returns:
+            List[Dict]: 解析后的数据列表，或空列表（失败时）
+        """
+        import re
+        print(f"开始解析optimization_res...")
+        optimization_data = []
+        try:
+            opt_start_index = optimization_res.find('[')
+            opt_end_index = optimization_res.rfind(']')
+            if opt_start_index != -1 and opt_end_index != -1 and opt_start_index < opt_end_index:
+                opt_json_str = optimization_res[opt_start_index:opt_end_index+1]
+                optimization_data = json.loads(opt_json_str)
+                print(f"成功将optimization_res解析为JSON数组，包含{len(optimization_data)}条记录")
+            else:
+                optimization_data = json.loads(optimization_res)
+                print(f"直接解析optimization_res成功，包含{len(optimization_data)}条记录")
+        except json.JSONDecodeError as e:
+            print(f"解析optimization_res失败: {str(e)}")
+            try:
+                cleaned_optimization = self.clean_json_string(optimization_res)
+                optimization_data = json.loads(cleaned_optimization)
+                print(f"清理后解析optimization_res成功，包含{len(optimization_data)}条记录")
+            except json.JSONDecodeError as e2:
+                print(f"清理后解析optimization_res仍然失败: {str(e2)}")
+                try:
+                    stricter_cleaned = re.sub(r'[\x00-\x1f\x7f]', '', cleaned_optimization)
+                    optimization_data = json.loads(stricter_cleaned)
+                    print(f"严格清理后解析optimization_res成功，包含{len(optimization_data)}条记录")
+                except Exception as e3:
+                    print(f"严格清理后解析optimization_res仍然失败: {str(e3)}")
+                    print(f"所有解析尝试均失败，将使用降级逻辑处理")
+        except Exception as e:
+            print(f"处理optimization_res时发生错误: {str(e)}")
+            print(f"将使用降级逻辑处理")
+        return optimization_data
+
+    def _validate_and_split_date_range(self, optimization_res: str, range_dates: List[str],
+                                        range_start: str, date_range_desc: str) -> List[Dict]:
+        """当解析失败时，拆分日期范围进行格式验证
+
+        Args:
+            optimization_res: LLM 返回的优化结果
+            range_dates: 日期范围列表
+            range_start: 范围开始日期
+            date_range_desc: 日期范围描述
+
+        Returns:
+            List[Dict]: 合并后的验证结果
+        """
+        from src.lifebench.utils.llm_call import llm_call_reason_j
+
+        print(f"optimization_data为空，需要进行格式验证")
+
+        first_end_date = datetime.strptime(range_start, "%Y-%m-%d") + timedelta(days=7)
+        first_end_date_str = first_end_date.strftime("%Y-%m-%d")
+
+        first_half_dates = []
+        second_half_dates = []
+
+        for date in range_dates:
+            if date <= first_end_date_str:
+                first_half_dates.append(date)
+            else:
+                second_half_dates.append(date)
+
+        first_date_range = f"{first_half_dates[0]} 至 {first_half_dates[-1]}" if first_half_dates else ""
+        second_date_range = f"{second_half_dates[0]} 至 {second_half_dates[-1]}" if second_half_dates else ""
+
+        print(f"将日期范围分为两部分: 第一部分{first_date_range}，第二部分{second_date_range}")
+
+        validated_first_half = []
+        validated_second_half = []
+
+        if first_date_range:
+            first_validation_prompt = template_format_validation.format(
+                json_string=optimization_res,
+                date_range=first_date_range
+            )
+            first_validated_res = llm_call_reason_j(first_validation_prompt, 0)
+            print(f"第一部分验证后响应长度: {len(first_validated_res)}")
+
+            try:
+                first_start = first_validated_res.find('[')
+                first_end = first_validated_res.rfind(']')
+                if first_start != -1 and first_end != -1 and first_start < first_end:
+                    first_valid_json = first_validated_res[first_start:first_end+1]
+                    validated_first_half = json.loads(first_valid_json)
+                    print(f"成功解析第一部分验证结果，包含{len(validated_first_half)}条记录")
+                else:
+                    cleaned_first = self.clean_json_string(first_validated_res)
+                    validated_first_half = json.loads(cleaned_first)
+                    print(f"清理后成功解析第一部分，包含{len(validated_first_half)}条记录")
+            except json.JSONDecodeError as e:
+                print(f"解析第一部分验证结果失败: {str(e)}")
+                validated_first_half = []
+
+        if second_date_range:
+            second_validation_prompt = template_format_validation.format(
+                json_string=optimization_res,
+                date_range=second_date_range
+            )
+            second_validated_res = llm_call_reason_j(second_validation_prompt, 0)
+            print(f"第二部分验证后响应长度: {len(second_validated_res)}")
+
+            try:
+                second_start = second_validated_res.find('[')
+                second_end = second_validated_res.rfind(']')
+                if second_start != -1 and second_end != -1 and second_start < second_end:
+                    second_valid_json = second_validated_res[second_start:second_end+1]
+                    validated_second_half = json.loads(second_valid_json)
+                    print(f"成功解析第二部分验证结果，包含{len(validated_second_half)}条记录")
+                else:
+                    cleaned_second = self.clean_json_string(second_validated_res)
+                    validated_second_half = json.loads(cleaned_second)
+                    print(f"清理后成功解析第二部分，包含{len(validated_second_half)}条记录")
+            except json.JSONDecodeError as e:
+                print(f"解析第二部分验证结果失败: {str(e)}")
+                validated_second_half = []
+
+        result = validated_first_half + validated_second_half
+        print(f"合并两部分后得到{len(result)}条记录")
+        return result
+
+    def _refine_daily_life_dates(self, daily_life_data: List[Dict], date_range_desc: str, persona_str: str) -> List[Dict]:
+        """调用 LLM 调整每日生活中的事件日期
+
+        Args:
+            daily_life_data: 每日生活数据 [{date, events}, ...]
+            date_range_desc: 日期范围描述
+            persona_str: JSON 序列化后的人物画像
+
+        Returns:
+            List[Dict]: 日期调整后的每日生活数据
+        """
+        from src.lifebench.utils.llm_call import llm_call_reason_j
+
+        prompt = template_daily_date_refine.format(
+            daily_life_data=json.dumps(daily_life_data, ensure_ascii=False, indent=2),
+            date_range_description=date_range_desc,
+            persona=persona_str
+        )
+        print(f"调用LLM进行每日生活日期润色...{prompt}")
+        res = llm_call_reason_j(prompt, 0)
+        print(f"事件日期润色响应长度: {len(res)}")
+        print(f"事件日期润色响应内容: {res}...")  # 打印前500字符以检查格式
+        # 解析结果
+        try:
+            start_index = res.find('[')
+            end_index = res.rfind(']')
+            if start_index != -1 and end_index != -1 and start_index < end_index:
+                refined_data = json.loads(res[start_index:end_index+1])
+                print(f"成功解析日期润色结果，包含 {len(refined_data)} 条记录")
+                return refined_data
+        except Exception as e:
+            print(f"解析日期润色结果失败: {str(e)}")
+
+        # 如果解析失败，返回原始数据
+        return daily_life_data
+
+    def _build_refine_prompt(self, persona_str: str, daily_life_data: List[Dict],
+                            date_range_desc: str, previous_day_status_str: str,
+                            final_day_status_str: str, life_analysis_str: str) -> str:
+        """构建事件精炼 prompt
+
+        Args:
+            persona_str: JSON 序列化后的人物画像
+            daily_life_data: 每日生活数据
+            date_range_desc: 日期范围描述
+            previous_day_status_str: 前一日状态
+            final_day_status_str: 最终日状态
+            life_analysis_str: 生活分析结果
+
+        Returns:
+            str: 格式化的 prompt
+        """
+        return template_daily_event_refine.format(
+            persona=persona_str,
+            event_data=daily_life_data,
+            date_range_description=date_range_desc,
+            previous_day_status=previous_day_status_str,
+            final_day_status=final_day_status_str,
+            life_analysis_str=life_analysis_str
+        )
+
+    def _build_optimization_prompt(self, persona_str: str, date_range_desc: str,
+                                  health_initial_state: str, health_end_state: str,
+                                  daily_events: str) -> str:
+        """构建多样性优化 prompt
+
+        Args:
+            persona_str: JSON 序列化后的人物画像
+            date_range_desc: 日期范围描述
+            health_initial_state: 健康初始状态
+            health_end_state: 健康结束状态
+            daily_events: 每日事件数据
+
+        Returns:
+            str: 格式化的 prompt
+        """
+        return template_daily_diversity_optimization.format(
+            persona=persona_str,
+            date_range_description=date_range_desc,
+            health_initial_state=health_initial_state,
+            health_end_state=health_end_state,
+            daily_events=daily_events
+        )
+
+    def _match_and_adjust_event_dates(self, event_sequence: List[Dict], optimization_data: List[Dict],
+                                      date_range_desc: str) -> List[Dict]:
+        """并行分析原始事件，为每个原事件匹配优化后的位置并生成日期修改指令
+
+        Args:
+            event_sequence: 日期范围内的原始底层事件列表
+            optimization_data: 优化后的每日事件数据
+            date_range_desc: 日期范围描述
+
+        Returns:
+            List[Dict]: 日期修改操作列表 [{"event_id": "...", "old_date": "YYYY-MM-DD", "new_date": "YYYY-MM-DD"}, ...]
+        """
+        print(f"开始并行匹配原始事件与优化数据，共 {len(event_sequence)} 个事件，20线程...")
+        date_adjustments = []
+
+        # 序列化优化数据供逐个匹配使用
+        optimized_daily_data_str = json.dumps(optimization_data, ensure_ascii=False, indent=2)
+
+        def match_single_event(args):
+            """匹配单个事件的辅助函数"""
+            i, event = args
+            date_matching_prompt = template_event_date_matching.format(
+                original_events=json.dumps([event], ensure_ascii=False, indent=2),
+                optimized_daily_data=optimized_daily_data_str,
+                date_range_description=date_range_desc
+            )
+            matching_res = self.llm_call_sr(date_matching_prompt, 0)
+
+            result = None
+            try:
+                start_idx = matching_res.find('{')
+                end_idx = matching_res.rfind('}')
+                if start_idx != -1 and end_idx != -1 and start_idx < end_idx:
+                    item = json.loads(matching_res[start_idx:end_idx+1])
+                    event_id = item.get('event_id')
+                    old_date = item.get('old_date')
+                    new_date = item.get('new_date')
+                    if event_id and old_date and new_date:
+                        result = {
+                            "event_id": event_id,
+                            "old_date": old_date,
+                            "new_date": new_date
+                        }
+            except Exception as e:
+                print(f"    事件 {i+1} 解析失败: {e}")
+            return i, result
+
+        # 使用20线程并行处理
+        with ThreadPoolExecutor(max_workers=20) as executor:
+            futures = [executor.submit(match_single_event, (i, event)) for i, event in enumerate(event_sequence)]
+            for future in futures:
+                i, result = future.result()
+                if result:
+                    date_adjustments.append(result)
+                    print(f"  第 {i+1}/{len(event_sequence)} 个事件匹配完成")
+
+        # 按原始顺序排序
+        date_adjustments.sort(key=lambda x: event_sequence.index(next(e for e in event_sequence if e.get('id') == x['event_id'])) if any(e.get('id') == x['event_id'] for e in event_sequence) else 0)
+
+        # 统计匹配不到的事件数量
+        unmatched_count = sum(1 for adj in date_adjustments if adj.get('new_date') == '2026-01-01')
+        match_rate = (len(event_sequence) - unmatched_count) / len(event_sequence) * 100 if event_sequence else 0
+        print(f"匹配率: {match_rate:.1f}% ({len(event_sequence) - unmatched_count}/{len(event_sequence)} 个匹配, {unmatched_count} 个未匹配)")
+
+        if date_adjustments:
+            print(f"共生成了 {len(date_adjustments)} 个日期修改操作")
+            for adj in date_adjustments[:5]:
+                print(f"  事件: {adj['event_id']}, 日期调整: {adj['old_date']} -> {adj['new_date']}")
+            if len(date_adjustments) > 5:
+                print(f"  ... 还有 {len(date_adjustments) - 5} 个")
+        else:
+            print("无日期修改操作")
+
+        # 将日期修改操作添加到 current_event_updates
+        self.current_event_updates.extend(date_adjustments)
+        print(f"已将日期修改操作添加到 current_event_updates，当前共 {len(self.current_event_updates)} 个操作")
+
+        return date_adjustments
+
     def date_range_event_refine(self, events: List[Dict], start_date: str, end_date: str, context: str = "") -> Dict[str, any]:
         """
         基于指定时间范围批量调整事件的内容、时间、地点，使其发生更合理
@@ -280,7 +642,7 @@ class EventRefiner:
             event_background = []
             
             for event in event_sequence:
-                event_id = event["event_id"]
+                event_id = str(event["event_id"])
                 # 获取父事件ID（处理子事件的情况）
                 parent_id = event_id.rsplit('-')[0]
                 #print(parent_id)
@@ -481,15 +843,12 @@ class EventRefiner:
             def process_date_range(range_start: str, range_end: str, health_start_state: Dict, health_end_state: Dict, life_result: Dict):
                 """处理单个日期范围的数据生成"""
                 print(f"处理日期范围: {range_start} 至 {range_end}")
-                
+
                 # 获取该日期范围内的所有日期
                 range_dates = get_all_dates_in_range(range_start, range_end)
-                
+
                 # 获取该日期范围内的所有底层事件
-                event_sequence = []
-                for date in range_dates:
-                    date_events = self.filter_by_date(events, date)
-                    event_sequence.extend(date_events)
+                event_sequence = self._get_events_in_range(events, range_dates)
 
                 # 如果没有事件，直接返回空结果
                 if not event_sequence:
@@ -497,14 +856,14 @@ class EventRefiner:
                     return []
 
                 # 先调用date_range_event_refine进行事件调整
-                date_range_result = self.date_range_event_refine(events, range_start, range_end, context)
-                event_updates = date_range_result.get("event_updates", [])
-                
+                # date_range_result = self.date_range_event_refine(events, range_start, range_end, context)
+                # event_updates = date_range_result.get("event_updates", [])
+
                 # 移除深拷贝，不直接应用更新，而是将更新操作保存起来
-                self.current_event_updates = event_updates
-                
+                # self.current_event_updates = event_updates
+
                 # 为了保持代码兼容性，创建一个更新后的事件副本
-                updated_events = self.apply_event_updates(events, event_updates)
+                updated_events = events  # 不做事件调整，直接使用原始事件
 
                 # 构建日期范围描述
                 date_range_desc = self.get_holidays_and_weekends_in_range(range_start, range_end)
@@ -513,68 +872,32 @@ class EventRefiner:
                 health_start_state_str = json.dumps(health_start_state, ensure_ascii=False, indent=2)
                 health_end_state_str = json.dumps(health_end_state, ensure_ascii=False, indent=2)
                 life_analysis_str = json.dumps(life_result["summary"], ensure_ascii=False, indent=2)
-                
+
                 # 准备月变化分析参数
                 previous_day_status_str = json.dumps(previous_day_status, ensure_ascii=False, indent=2) if previous_day_status else "无前一日状态信息"
                 final_day_status_str = json.dumps(final_day_status, ensure_ascii=False, indent=2) if final_day_status else "无最终日状态信息"
                 change_persona_str = json.dumps(change_persona, ensure_ascii=False, indent=2)
-                
+
                 # 为daily_life数据添加事件字段
-                daily_life_data = []
-                for date in range_dates:
-                    date_events = self.filter_by_date(updated_events, date)
-                    event_descriptions = []
-                    event_ids = []
-                    for event in date_events:
-                        event_descriptions.append(event.get("description", ""))
-                        event_ids.append(event.get("event_id", ""))
-                    daily_life_entry = {
-                        "date": date,
-                        "events": event_descriptions # 添加事件描述的数组
-                    }
-                    daily_life_data.append(daily_life_entry)
+                daily_life_data = self._build_daily_life_data(range_dates, updated_events)
 
                 # 精简persona数据，只保留relation中的name、relation、relation_description字段
-                simplified_persona = {}
-                for key, value in persona.items():
-                    if key == "relation" and isinstance(value, list):
-                        # 处理嵌套的社交圈数组结构，保留每个元素的name、relation、relation_description字段
-                        simplified_persona[key] = []
-                        for outer_item in value:  # 外层数组的每个元素也是一个数组
-                            if isinstance(outer_item, list):
-                                simplified_outer_item = []
-                                for inner_item in outer_item:  # 内层数组中的每个人
-                                    simplified_inner_item = {
-                                        "name": inner_item.get("name", ""),
-                                        "relation": inner_item.get("relation", ""),
-                                        "relation_description": inner_item.get("relation_description", "")
-                                    }
-                                    simplified_outer_item.append(simplified_inner_item)
-                                simplified_persona[key].append(simplified_outer_item)
-                            else:  # 如果不是嵌套数组，按照原来的方式处理
-                                simplified_item = {
-                                    "name": outer_item.get("name", ""),
-                                    "relation": outer_item.get("relation", ""),
-                                    "relation_description": outer_item.get("relation_description", "")
-                                }
-                                simplified_persona[key].append(simplified_item)
-                    else:
-                        # 其他字段保持不变
-                        simplified_persona[key] = value
-                
+                simplified_persona = self._simplify_persona(persona)
                 simplified_persona_str = json.dumps(simplified_persona, ensure_ascii=False, indent=2)
-                # with open("daily_life_data.json", "w") as f:
-                #     json.dump(daily_life_data, f, ensure_ascii=False, indent=2)
+
+                # 调用 LLM 进行事件日期润色
+                print(f"执行日期范围{range_start}至{range_end}的事件日期润色...")
+                daily_life_data = self._refine_daily_life_dates(daily_life_data, date_range_desc, simplified_persona_str)
+
                 # 使用模板调用LLM进行批量分析，使用daily_life_data作为event_data
-                prompt = template_daily_event_refine.format(
-                    persona=simplified_persona_str,
-                    event_data=daily_life_data,  # 使用daily_life_data替代原来的event_sequence
-                    date_range_description=date_range_desc,
-                    previous_day_status=previous_day_status_str,
-                    final_day_status=final_day_status_str,
+                prompt = self._build_refine_prompt(
+                    persona_str=simplified_persona_str,
+                    daily_life_data=daily_life_data,
+                    date_range_desc=date_range_desc,
+                    previous_day_status_str=previous_day_status_str,
+                    final_day_status_str=final_day_status_str,
                     life_analysis_str=life_analysis_str
                 )
-                #print(f"发送给LLM的prompt长度: {len(prompt)}")
                 res = self.llm_call_sr(prompt, 0)
                 print(f"日期范围{range_start}至{range_end}的事件批量分析思考-----------------------------------------------------------------------")
                 print(f"LLM响应长度: {len(res)}",print(res[:100]))
@@ -582,9 +905,9 @@ class EventRefiner:
                 # 使用多样性优化模板对每日数据进行优化
                 print(f"执行日期范围{range_start}至{range_end}的每日数据多样性优化...")
 
-                optimization_prompt = template_daily_diversity_optimization.format(
-                    persona=simplified_persona_str,
-                    date_range_description=date_range_desc,
+                optimization_prompt = self._build_optimization_prompt(
+                    persona_str=simplified_persona_str,
+                    date_range_desc=date_range_desc,
                     health_initial_state=health_start_state_str,
                     health_end_state=health_end_state_str,
                     daily_events=res
@@ -592,147 +915,21 @@ class EventRefiner:
                 from src.lifebench.utils.llm_call import llm_call_reason_j
                 optimization_res = llm_call_reason_j(optimization_prompt)
                 print(f"日期范围{range_start}至{range_end}的每日数据多样性优化-----------------------------------------------------------------------")
-                #print(res)
                 print(f"优化后响应长度: {len(optimization_res)}")
-                
-                
-                
-                # 添加格式验证步骤
-                # 先尝试将optimization_res解析为JSON数组，以便分成两部分
-                print(f"开始解析optimization_res...")
-                optimization_data = []
-                try:
-                    # 找到JSON数组的边界
-                    opt_start_index = optimization_res.find('[')
-                    opt_end_index = optimization_res.rfind(']')
-                    if opt_start_index != -1 and opt_end_index != -1 and opt_start_index < opt_end_index:
-                        opt_json_str = optimization_res[opt_start_index:opt_end_index+1]
-                        optimization_data = json.loads(opt_json_str)
-                        print(f"成功将optimization_res解析为JSON数组，包含{len(optimization_data)}条记录")
-                    else:
-                        # 如果没有找到数组边界，尝试直接解析整个响应
-                        optimization_data = json.loads(optimization_res)
-                        print(f"直接解析optimization_res成功，包含{len(optimization_data)}条记录")
-                except json.JSONDecodeError as e:
-                    print(f"解析optimization_res失败: {str(e)}")
-                    # 如果解析失败，尝试清理字符串并再次解析
-                    try:
-                        cleaned_optimization = self.clean_json_string(optimization_res)
-                        optimization_data = json.loads(cleaned_optimization)
-                        print(f"清理后解析optimization_res成功，包含{len(optimization_data)}条记录")
-                    except json.JSONDecodeError as e2:
-                        print(f"清理后解析optimization_res仍然失败: {str(e2)}")
-                        # 再次清理，更严格地移除控制字符
-                        try:
-                            # 使用正则表达式移除所有控制字符
-                            import re
-                            stricter_cleaned = re.sub(r'[\x00-\x1f\x7f]', '', cleaned_optimization)
-                            optimization_data = json.loads(stricter_cleaned)
-                            print(f"严格清理后解析optimization_res成功，包含{len(optimization_data)}条记录")
-                        except Exception as e3:
-                            print(f"严格清理后解析optimization_res仍然失败: {str(e3)}")
-                            # 如果所有解析尝试都失败，记录错误并继续执行降级逻辑
-                            print(f"所有解析尝试均失败，将使用降级逻辑处理")
-                except Exception as e:
-                    print(f"处理optimization_res时发生错误: {str(e)}")
-                    print(f"将使用降级逻辑处理")
-                
-                # 如果直接解析成功且数据不为空，直接使用解析后的结果
-                if optimization_data:
-                    optimized_dailylife = optimization_data
-                    print(f"直接使用解析成功的optimization_res，包含{len(optimized_dailylife)}条记录")
-                else:
-                    # 如果解析失败或数据为空，使用日期范围控制两次输出
-                    print(f"optimization_data为空，需要进行格式验证")
-                    
-                    # 将日期范围分成两部分：第一部分为range_start加7天，剩下的为第二部分
-                    first_end_date = datetime.strptime(range_start, "%Y-%m-%d") + timedelta(days=7)
-                    first_end_date_str = first_end_date.strftime("%Y-%m-%d")
-                    
-                    # 分割日期列表
-                    first_half_dates = []
-                    second_half_dates = []
-                    
-                    for date in range_dates:
-                        if date <= first_end_date_str:
-                            first_half_dates.append(date)
-                        else:
-                            second_half_dates.append(date)
-                    
-                    # 生成第一部分的日期范围描述
-                    if first_half_dates:
-                        first_date_range = f"{first_half_dates[0]} 至 {first_half_dates[-1]}"
-                    else:
-                        first_date_range = ""
-                    
-                    # 生成第二部分的日期范围描述
-                    if second_half_dates:
-                        second_date_range = f"{second_half_dates[0]} 至 {second_half_dates[-1]}"
-                    else:
-                        second_date_range = ""
-                    
-                    print(f"将日期范围分为两部分: 第一部分{first_date_range}，第二部分{second_date_range}")
-                    
-                    # 分别对两部分进行格式验证
-                    validated_first_half = []
-                    validated_second_half = []
-                    
-                    if first_date_range:
-                        # 调用格式验证模板，只验证第一部分日期范围的数据
-                        first_validation_prompt = template_format_validation.format(
-                            json_string=optimization_res,
-                            date_range=first_date_range
-                        )
-                        first_validated_res = llm_call_reason_j(first_validation_prompt, 0)
-                        print(f"第一部分验证后响应长度: {len(first_validated_res)}")
-                        
-                        # 解析第一部分验证结果
-                        try:
-                            first_start = first_validated_res.find('[')
-                            first_end = first_validated_res.rfind(']')
-                            if first_start != -1 and first_end != -1 and first_start < first_end:
-                                first_valid_json = first_validated_res[first_start:first_end+1]
-                                validated_first_half = json.loads(first_valid_json)
-                                print(f"成功解析第一部分验证结果，包含{len(validated_first_half)}条记录")
-                            else:
-                                # 尝试清理后解析
-                                cleaned_first = self.clean_json_string(first_validated_res)
-                                validated_first_half = json.loads(cleaned_first)
-                                print(f"清理后成功解析第一部分，包含{len(validated_first_half)}条记录")
-                        except json.JSONDecodeError as e:
-                            print(f"解析第一部分验证结果失败: {str(e)}")
-                            validated_first_half = []
-                    
-                    if second_date_range:
-                        # 调用格式验证模板，只验证第二部分日期范围的数据
-                        second_validation_prompt = template_format_validation.format(
-                            json_string=optimization_res,
-                            date_range=second_date_range
-                        )
-                        second_validated_res = llm_call_reason_j(second_validation_prompt, 0)
-                        print(f"第二部分验证后响应长度: {len(second_validated_res)}")
-                        
-                        # 解析第二部分验证结果
-                        try:
-                            second_start = second_validated_res.find('[')
-                            second_end = second_validated_res.rfind(']')
-                            if second_start != -1 and second_end != -1 and second_start < second_end:
-                                second_valid_json = second_validated_res[second_start:second_end+1]
-                                validated_second_half = json.loads(second_valid_json)
-                                print(f"成功解析第二部分验证结果，包含{len(validated_second_half)}条记录")
-                            else:
-                                # 尝试清理后解析
-                                cleaned_second = self.clean_json_string(second_validated_res)
-                                validated_second_half = json.loads(cleaned_second)
-                                print(f"清理后成功解析第二部分，包含{len(validated_second_half)}条记录")
-                        except json.JSONDecodeError as e:
-                            print(f"解析第二部分验证结果失败: {str(e)}")
-                            validated_second_half = []
-                    
-                    # 合并两部分结果
-                    optimized_dailylife = validated_first_half + validated_second_half
-                    print(f"合并两部分后得到{len(optimized_dailylife)}条记录")
-                return optimized_dailylife
+
+                # 解析优化结果
+                optimization_data = self._parse_optimization_res(optimization_res)
+
+                # 如果解析失败或数据为空，使用日期范围控制两次输出
+                if not optimization_data:
+                    optimization_data = self._validate_and_split_date_range(
+                        optimization_res, range_dates, range_start, date_range_desc
+                    )
+
+                # 分析原始事件和优化后数据的日期一致性，为每个原事件匹配优化后的位置
+                self._match_and_adjust_event_dates(event_sequence, optimization_data, date_range_desc)
+
+                return optimization_data
 
             # 导入并行处理模块
             from concurrent.futures import ThreadPoolExecutor

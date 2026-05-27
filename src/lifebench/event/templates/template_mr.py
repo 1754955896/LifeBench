@@ -1269,15 +1269,12 @@ def generate_month_summary_and_persona_template(month: str, final_events: List[D
     """
 
 
-def yearly_consistency_analysis_template(year: int, monthly_summaries: Dict[str, Dict], persona: Dict) -> str:
+def yearly_consistency_analysis_template(year: int, monthly_summaries: Dict[str, Dict]) -> str:
     """全年一致性分析的 prompt 模板"""
     return f"""
-以全年视角分析 {year} 年的月度总结，识别不一致、矛盾或不合理之处。
+以全年视角分析 {year} 年的月度总结，识别不一致、矛盾或不合理之处。只有出现明显的不合理矛盾才提出来，不要过于苛刻地挑毛病，保持合理的宽容度。因为我们输入的总结没有包含全量数据，只基于总结分析。
 
 **年份：** {year}
-
-**人物画像：**
-{json.dumps(persona, ensure_ascii=False, indent=2)}
 
 **月度总结汇总：**
 {json.dumps(monthly_summaries, ensure_ascii=False, indent=2)}
@@ -1287,23 +1284,19 @@ def yearly_consistency_analysis_template(year: int, monthly_summaries: Dict[str,
 **一、时间线一致性**
 - 事件的时间顺序是否合理？是否有时间倒流或逻辑冲突？
 - 跨月事件的衔接是否自然？（如某月开始的项目是否在后续月份有延续）
-- 重要日期是否与人物画像一致？（如生日、纪念日等）
 
-**二、人物画像一致性**
-- 各月的习惯兴趣变化是否符合人物性格和发展轨迹？
-- 健康状况的波动是否合理？是否有突兀的变化？
-- 人际关系的发展是否连贯？（如某月结识的人是否在后续月份出现）
-- 职业发展是否符合逻辑？（如晋升、跳槽等重大变化是否有铺垫）
+**二、合理性**
+- 是否有冲突的，重复的，不真实的，不合理的事件？
+- 事件发展是否连贯，是否有突兀的变化？
+- 是否发生数据的冲突？
 
 **三、数据一致性**
-- 体重、运动量等健康数据是否有明显的不合理波动？
-- 经济状况的描述是否与收入和消费一致？
 - 工作地点、居住地等信息是否前后矛盾？
 
+
 **四、事件合理性**
-- 是否有违背常理或人物特点的事件？
+- 是否有违背常理的事件？
 - 是否有过于密集或稀疏的时期？
-- 节假日安排是否合理？（如春节是否回家、国庆是否有旅行等）
 
 **输出要求：**
 - 仅输出发现的问题，不要输出评价性文本
@@ -1439,6 +1432,7 @@ def consistency_based_monthly_analysis_template(month: str, events: List[Dict],
 **本月事件：**
 {json.dumps(events, ensure_ascii=False, indent=2)}
 
+**全年一致性分析结果：**
 {issues_context}
 
 ## 核心任务
@@ -1446,6 +1440,7 @@ def consistency_based_monthly_analysis_template(month: str, events: List[Dict],
 你需要完成两项工作：
 1. **修复不一致**：解决全年一致性分析中指出的问题
 2. **润色优化**：在修复基础上，优化本月数据使其更合理、更连贯、更符合全年叙事
+当全年一致性分析结果中没有发现与本月相关的显著问题时，可以不做任何修改，dates_to_modify 返回空数组。
 
 ## 分析与修复维度
 

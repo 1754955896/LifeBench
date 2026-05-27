@@ -4678,50 +4678,53 @@ class Scheduler:
                 self.parallel_daily_event_refine(final_timeline["analysis_results"],self.persona,monthly_details,daily_draft_file)
                 print(f"✓ 每日状态已保存到: {daily_draft_file}")
 
-            # 步骤9: 调用check_event_matching.py进行事件匹配分析
-            print("\n=== 步骤9: 事件匹配分析 ===")
-            import event.check_event_matching
-            event_decompose_dfs_path = os.path.join(meidan_path, "event_decompose_dfs.json")
-            new_event_tree_file = os.path.join(output_path, "event_tree.json")
+#             # 步骤9: 调用check_event_matching.py进行事件匹配分析
+#             print("\n=== 步骤9: 事件匹配分析 ===")
+#             import sys
+# import os
+# sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
+# from src.lifebench.event.tools.check_event_matching import check_event_matching
+#             event_decompose_dfs_path = os.path.join(meidan_path, "event_decompose_dfs.json")
+#             new_event_tree_file = os.path.join(output_path, "event_tree.json")
             
-            # 检查目标文件是否存在，如果存在则跳过
-            if 0:
-                print(f"✓ 事件匹配分析结果文件已存在，跳过生成: {new_event_tree_file}")
-            else:
-                print(f"正在调用check_event_matching.py，输入文件：")
-                print(f"  - event_decompose_dfs.json: {event_decompose_dfs_path}")
-                print(f"  - daily_draft.json: {daily_draft_file}")
+#             # 检查目标文件是否存在，如果存在则跳过
+#             if 0:
+#                 print(f"✓ 事件匹配分析结果文件已存在，跳过生成: {new_event_tree_file}")
+#             else:
+#                 print(f"正在调用check_event_matching.py，输入文件：")
+#                 print(f"  - event_decompose_dfs.json: {event_decompose_dfs_path}")
+#                 print(f"  - daily_draft.json: {daily_draft_file}")
                 
-                # 保存原始daily_draft.json为daily_draft_raw.json到meidan_path
-                import shutil
-                raw_daily_draft_path = os.path.join(meidan_path, "daily_draft_raw.json")
-                shutil.copy2(daily_draft_file, raw_daily_draft_path)
-                print(f"✓ 已将原始daily_draft.json保存为: {raw_daily_draft_path}")
+#                 # 保存原始daily_draft.json为daily_draft_raw.json到meidan_path
+#                 import shutil
+#                 raw_daily_draft_path = os.path.join(meidan_path, "daily_draft_raw.json")
+#                 shutil.copy2(daily_draft_file, raw_daily_draft_path)
+#                 print(f"✓ 已将原始daily_draft.json保存为: {raw_daily_draft_path}")
                 
-                # 调用check_event_matching.py的main函数，传递输出路径
-                event.check_event_matching.main(
-                    event_decompose_dfs_path=event_decompose_dfs_path,
-                    daily_draft_path=daily_draft_file,
-                    output_path=output_path
-                )
+#                 # 调用check_event_matching.py的main函数，传递输出路径
+#                 check_event_matching.main(
+#                     event_decompose_dfs_path=event_decompose_dfs_path,
+#                     daily_draft_path=daily_draft_file,
+#                     output_path=output_path
+#                 )
 
-                # 新生成的daily_draft.json已经保存在output_path，无需替换
+#                 # 新生成的daily_draft.json已经保存在output_path，无需替换
 
-            # 步骤10: 调用event_tree_classify.py进行event_tree文件的分类
-            print("\n=== 步骤10: 事件树分类 ===")
-            import event.event_tree_classify
-            # 使用步骤九生成的event_tree.json文件作为分类的目标文件
-            event_tree_file = os.path.join(output_path, "event_tree.json")
+#             # 步骤10: 调用event_tree_classify.py进行event_tree文件的分类
+#             print("\n=== 步骤10: 事件树分类 ===")
+#             from src.lifebench.event.tools.event_tree_classify import *
+#             # 使用步骤九生成的event_tree.json文件作为分类的目标文件
+#             event_tree_file = os.path.join(output_path, "event_tree.json")
             
-            print(f"正在调用event_tree_classify.py，处理文件：")
-            print(f"  - event_tree.json: {event_tree_file}")
+#             print(f"正在调用event_tree_classify.py，处理文件：")
+#             print(f"  - event_tree.json: {event_tree_file}")
             
-            # 创建分类器实例
-            classifier = event.event_tree_classify.EventTreeClassifier()
+#             # 创建分类器实例
+#             classifier = event.event_tree_classify.EventTreeClassifier()
             
-            # 处理event_tree文件，直接输出到原文件
-            classifier.process_events(event_tree_file, output_path=event_tree_file)
-            print(f"✓ 已用分类结果替换原来的event_tree.json")
+#             # 处理event_tree文件，直接输出到原文件
+#             classifier.process_events(event_tree_file, output_path=event_tree_file)
+#             print(f"✓ 已用分类结果替换原来的event_tree.json")
             
 
             print("\n🎉 年度时间线草稿生成完成！")
@@ -5191,8 +5194,345 @@ class Scheduler:
         
         return all_refine_results
 
+    def _generate_summaries_script(self, timeline_data, persona):
+        """脚本生成时间线总结字段
+
+        Args:
+            timeline_data: 包含 events 数组的时间线数据
+            persona: 人物画像数据
+
+        Returns:
+            填充了 monthly_summary、impact、comprehensive_summary 的时间线数据
+        """
+        import copy
+        import json
+        result = copy.deepcopy(timeline_data)
+        all_month_summaries = []
+
+        for month_detail in result.get('monthly_details', []):
+            events = month_detail.get('events', [])
+            month_str = month_detail.get('month', '')
+
+            # 生成 monthly_summary 和 impact：按月调用LLM，避免文本过长
+            if events:
+                events_text = '\n'.join([
+                    f"- {e.get('name', '')}: {e.get('description', '')}"
+                    for e in events
+                ])
+
+                # 分别生成 monthly_summary
+                prompt_summary = f"""请根据以下事件数据，为{month_str}月生成30-50字的月度总结，概括当月主要事件和发展脉络。
+
+事件列表（JSON格式）：
+{events_text}
+
+直接输出以下格式，不要添加其他内容：
+monthly_summary:[总结内容]
+"""
+                llm_output = self.llm_call_sr(prompt_summary)
+                for line in llm_output.split('\n'):
+                    if line.startswith('monthly_summary:'):
+                        month_detail['monthly_summary'] = line.split(':', 1)[1].strip()
+
+                # 分别生成 impact
+                prompt_impact = f"""请根据以下事件数据，为{month_str}月生成20-30字的影响分析，说明当月事件带来的变化和关键事件。
+
+事件列表（JSON格式）：
+{events_text}
+
+直接输出以下格式，不要添加其他内容：
+impact:[影响分析]
+"""
+                llm_output = self.llm_call_s(prompt_impact)
+                for line in llm_output.split('\n'):
+                    if line.startswith('impact:'):
+                        month_detail['impact'] = line.split(':', 1)[1].strip()
+
+            if not month_detail.get('monthly_summary'):
+                # fallback：从 events description 提取
+                summaries = [e.get('description', '')[:60] for e in events[:3] if e.get('description')]
+                month_detail['monthly_summary'] = '；'.join(summaries)
+
+            if not month_detail.get('impact'):
+                # fallback：基于事件 name
+                key_events = [e.get('name', '') for e in events[:3] if e.get('name')]
+                month_detail['impact'] = '关键事件：' + '、'.join(key_events)
+
+            if month_detail.get('monthly_summary'):
+                all_month_summaries.append(month_detail['monthly_summary'])
+
+        # 生成 comprehensive_summary：拼接所有 monthly_summary
+        result['comprehensive_summary'] = '。'.join(all_month_summaries) + '。' if all_month_summaries else ''
+
+        return result
+
+    def _extract_themes_from_llm(self, timeline_data):
+        """从时间线数据中提取所有可能的主题（LLM调用）
+
+        Args:
+            timeline_data: 原始时间线数据
+
+        Returns:
+            主题列表，每个主题包含 theme_name 和 theme_description
+        """
+        import json
+        timeline_json = json.dumps(timeline_data, ensure_ascii=False, indent=2)
+
+        prompt = f"""请分析以下时间线数据，提取或分析所有不同的主题的事件发展脉络，以JSON格式输出。
+
+时间线数据：
+{timeline_json}
+
+要求：
+1. 分析全年的 events，提取前后有关联的事件，分析涉及的不同主题事件发展脉络（如：备考线，哥哥购房线，和小红的恋爱线，羽毛球爱好线等）
+2. 每个主题事件发展线用一句话描述
+
+直接输出JSON格式，每行一个主题事件发展线：
+[
+    {{"theme_name": "主题名称", "theme_description": "主题描述"}}
+]
+"""
+        llm_output = self.llm_call_sr(prompt)
+
+        import re
+        themes = []
+        matches = re.findall(r'\[.*\]', llm_output, re.DOTALL)
+        if matches:
+            try:
+                import json
+                parsed = json.loads(matches[0])
+                if isinstance(parsed, list):
+                    for item in parsed:
+                        if isinstance(item, dict) and 'theme_name' in item:
+                            themes.append({'theme_name': item['theme_name'], 'theme_description': item.get('theme_description', '')})
+            except:
+                pass
+
+        if not themes:
+            # fallback：使用默认主题
+            themes = [{'theme_name': '综合生活', 'theme_description': '日常生活事件'}]
+
+        print(f"提取到 {len(themes)} 个主题")
+        return themes
+
+    def _process_month_with_llm(self, month_str, events_text, themes, prev_month_data=None):
+        """将单个月的事件文本转换为完整的月度数据（LLM调用）
+
+        一次性输出：该月的事件数组、monthly_summary、impact
+
+        Args:
+            month_str: 月份字符串，如 "2025-01"
+            events_text: 事件文本（多行字符串）
+            themes: 主题列表
+            prev_month_data: 上一个月的数据（字典），用于保持事件连续性
+
+        Returns:
+            包含 month、monthly_summary、events、impact 的字典，或 None（失败时）
+        """
+        import json
+        import re
+
+        # 获取2025年中国节假日
+        cn_holidays = holidays.China(years=2025)
+        holiday_lines = []
+        for date, name in sorted(cn_holidays.items()):
+            holiday_lines.append(f"- {name}: {date}")
+        holiday_info = '\n'.join(holiday_lines) if holiday_lines else "无固定节假日"
+
+        themes_text = '\n'.join([f"- {t['theme_name']}: {t['theme_description']}" for t in themes])
+
+        # 构建上一个月的数据（用于连续性参考）
+        prev_context = ""
+        if prev_month_data:
+            prev_json = json.dumps(prev_month_data, ensure_ascii=False, indent=2)
+            prev_context = f"\n\n【上一个月（{prev_month_data.get('month', '')}）的完整数据，请注意事件连续性】：\n{prev_json}"
+
+        prompt = f"""任务：将以下 {month_str} 月的事件文本转换为完整的月度数据。
+
+【可选主题】
+{themes_text}
+
+【本月事件文本】
+{events_text}
+
+【设计要求】
+1. events：为每个事件生成 name（事件名称）、description（详细描述）、date（如"2025-01-01至2025-01-03"）、belongs_to_theme（所属主题）
+2. description 要基于原文重写，使其更详细具体。
+3. date 格式为"开始日期至结束日期"，如果是单日事件则开始和结束日期相同，请合理分配事件的时间，允许多个事件同时发生，但是不允许难以同时进行的事情同时发生，如工作出差和家庭聚会等。同时尽量合理分配事件密度。
+4. monthly_summary：生成30-50字的月度总结，概括当月主要事件和发展脉络
+5. impact：生成20-30字的影响分析，说明当月事件带来的变化和关键事件
+6. 事件衔接：检查上月数据中是否有跨月持续的事件（如长期项目、疾病康复、家庭矛盾等）。如果上月的某个事件持续到本月，需要：
+   - 在本月的 events 中体现该事件的延续（如"继续"、"接续"等）
+   - date 的开始日期应衔接上月的结束日期或合理选择日期，不与之前的描述冲突。
+
+7. 事件合并：对于同一主题下的多个相关且连贯事件（如同一件事情在一天的连续流程，或同一人在不同日期做的多个相关行动），可以合并为一个事件，合并规则：
+   - name：使用能涵盖各子事件的总结的主题名称（如"春节期间的多次家庭聚会，回乡探望父母"）
+   - description：详细叙述每个子事件的发生过程，保持时间顺序，同时明确每个子事件的日期。
+   - date：使用最早开始日期至最晚结束日期的跨度
+   - belongs_to_theme：各子事件共同的所属主题
+   - 注意：合并的是真正相关的子事件，或连贯的同属于一个主要事件的内容，而非无关事件的强行合并
+
+8. 日期修正：如果发现事件文本中描写的事件时间与节假日对应不上（如描写"大年初一"但按节假日应在1月，"大年初六"应在2月），则应将 date 修正到正确的月份而不是分配在本月。修正原则：
+   - 事件描述的节日/节气 → 按节假日实际日期分配
+   - 农历新年相关（如除夕、春节）→ 按节假日日期安排
+   - 其他事件 → 在本月内合理安排
+
+【参考数据】
+2025年中国节假日（事件日期应与实际节假日对应）：
+{holiday_info}
+
+上月参考数据（用于保证事件连续性）：
+{prev_context}
+
+直接输出以下JSON格式，不要添加其他内容：
+{{
+    "month": "{month_str}",
+    "monthly_summary": "月度总结...",
+    "events": [
+        {{
+            "name": "事件名称",
+            "description": "详细描述",
+            "date": "2025-01-01至2025-01-03",
+            "belongs_to_theme": "主题名称"
+        }}
+    ],
+    "impact": "影响分析..."
+}}
+"""
+        llm_output = self.llm_call_sr(prompt)
+
+        # 提取JSON
+        matches = re.findall(r'\{.*\}', llm_output, re.DOTALL)
+        if not matches:
+            return None
+
+        for match in matches:
+            try:
+                parsed = json.loads(match)
+                if parsed.get('month') == month_str and 'events' in parsed:
+                    return parsed
+            except:
+                continue
+
+        return None
+
+    def _convert_events_script(self, month_str, events_text, themes, prev_month_data=None):
+        """脚本方式将事件文本转换为完整的月度数据（fallback）
+
+        Args:
+            month_str: 月份字符串
+            events_text: 事件文本列表
+            themes: 主题列表
+            prev_month_data: 上一个月的数据（字典）
+
+        Returns:
+            包含 month、monthly_summary、events、impact 的字典
+        """
+        events = []
+        default_theme = themes[0]['theme_name'] if themes else '综合生活'
+
+        for i, text in enumerate(events_text):
+            desc = text.strip() if isinstance(text, str) else str(text)
+            date_str = f"{month_str}-01至{month_str}-01"
+
+            events.append({
+                "name": desc[:20] + "..." if len(desc) > 20 else desc,
+                "description": desc,
+                "date": date_str,
+                "belongs_to_theme": default_theme
+            })
+
+        # 从 description 提取关键信息生成 summary
+        summaries = [e['description'][:60] for e in events[:3]]
+        monthly_summary = '；'.join(summaries)
+
+        # 从 name 提取关键事件
+        key_events = [e['name'] for e in events[:3]]
+        impact = '关键事件：' + '、'.join(key_events)
+
+        return {
+            "month": month_str,
+            "monthly_summary": monthly_summary,
+            "events": events,
+            "impact": impact
+        }
+
+    def _fix_event_month_assignment(self, monthly_details):
+        """修正事件月份归属：如果事件起始日期不在当前月，移动到对应月份
+
+        Args:
+            monthly_details: 月度详情列表
+
+        Returns:
+            修正后的月度详情列表
+        """
+        import re
+
+        # 按月份建立索引
+        month_data_map = {m['month']: m for m in monthly_details}
+
+        # 遍历每个月份的事件，检查起始日期是否在本月
+        for month_str, month_data in month_data_map.items():
+            events_to_move = []
+            remaining_events = []
+
+            for event in month_data.get('events', []):
+                date_str = event.get('date', '')
+                if '至' in date_str:
+                    # 提取起始日期
+                    start_date = date_str.split('至')[0].strip()
+                    # 提取起始月份
+                    match = re.match(r'(\d{4})-(\d{2})-(\d{2})', start_date)
+                    if match:
+                        start_year_month = f"{match.group(1)}-{match.group(2)}"
+                        if start_year_month != month_str:
+                            # 事件起始日期不在本月，需要移动
+                            events_to_move.append(event)
+                            continue
+
+                remaining_events.append(event)
+
+            # 更新当前月份的事件列表
+            if events_to_move:
+                month_data['events'] = remaining_events
+                print(f"  {month_str}: 移动 {len(events_to_move)} 个事件到正确月份")
+
+                # 将事件移动到对应月份
+                for event in events_to_move:
+                    date_str = event.get('date', '')
+                    start_date = date_str.split('至')[0].strip()
+                    match = re.match(r'(\d{4})-(\d{2})-(\d{2})', start_date)
+                    if match:
+                        target_month = f"{match.group(1)}-{match.group(2)}"
+
+                        # 确保目标月份存在
+                        if target_month not in month_data_map:
+                            month_data_map[target_month] = {
+                                'month': target_month,
+                                'monthly_summary': '',
+                                'events': [],
+                                'impact': ''
+                            }
+                            monthly_details.append(month_data_map[target_month])
+
+                        # 添加事件到目标月份
+                        month_data_map[target_month]['events'].append(event)
+
+        # 重新排序
+        monthly_details.sort(key=lambda x: x['month'])
+
+        # 重新构建 events_by_theme
+        # （这部分在主流程中处理，此处只保证 monthly_details 正确）
+
+        return monthly_details
+
     def convert_timeline_to_events_with_llm(self, timeline_data):
         """使用LLM将时间线数据转换为按主题分组的事件数组
+
+        重构后的流程：
+        1. 一次性输入所有数据给LLM，输出所有可能的主题
+        2. 逐月进行格式转换，每个月调用LLM输出转化后的格式
+        3. 如果LLM输出失败，使用脚本进行转换
 
         Args:
             timeline_data: 从test5.json加载的时间线数据
@@ -5202,155 +5542,124 @@ class Scheduler:
         """
         import json
         import re
-        from src.lifebench.event.templates.template_scheduler import template_convert_timeline_to_events
-
-        # 将timeline_data转换为JSON字符串
-        timeline_json = json.dumps(timeline_data, ensure_ascii=False)
-
-        # 构建提示
-        prompt = template_convert_timeline_to_events.format(timeline_json=timeline_json)
+        import copy
 
         try:
-            # 调用LLM
-            print("正在调用LLM进行事件转换...")
-            llm_output = self.llm_call_sr(prompt)
+            # 步骤1：提取所有月份的事件文本，汇总后调用一次LLM提取主题
+            all_events_text = []
+            month_events_map = {}
+            for month_detail in timeline_data.get('monthly_details', []):
+                month_str = month_detail.get('month', '')
+                events = month_detail.get('events', [])
+                month_events_map[month_str] = []
+                for event in events:
+                    if isinstance(event, str):
+                        all_events_text.append(f"[{month_str}] {event}")
+                        month_events_map[month_str].append(event)
 
-            # 提取并解析JSON
-            try:
-                # 提取JSON数组
-                json_pattern = r'\[.*\]'  # 匹配从第一个[到最后一个]的完整内容
-                matches = re.findall(json_pattern, llm_output, re.DOTALL)
+            # 调用LLM提取主题
+            print("正在提取主题...")
+            themes = self._extract_themes_from_llm(timeline_data)
 
-                if not matches:
-                    raise ValueError("未找到JSON数组内容")
+            # 步骤2：逐月进行格式转换（一次性输出 events + monthly_summary + impact）
+            print("正在逐月转换事件格式...")
+            monthly_details = []
+            sorted_months = sorted(month_events_map.keys())
+            prev_month_data = None
 
-                # 解析JSON
-                events_by_theme = json.loads(matches[0])
-
-                # 验证输出格式
-                if not isinstance(events_by_theme, list):
-                    raise ValueError("输出不是数组格式")
-
-                # 检查每个主题对象的结构
-                for i, theme_obj in enumerate(events_by_theme):
-                    if not isinstance(theme_obj, dict):
-                        raise ValueError(f"第{i + 1}个主题不是对象格式")
-
-                    # 检查主题必要字段
-                    if not all(key in theme_obj for key in ['theme_name', 'theme_description', 'events']):
-                        raise ValueError(f"主题缺少必要字段: {theme_obj}")
-
-                    # 检查事件数组
-                    theme_events = theme_obj['events']
-                    if not isinstance(theme_events, list):
-                        raise ValueError(f"主题事件不是数组格式: {theme_obj['theme_name']}")
-
-                    # 检查每个事件的结构
-                    for j, event in enumerate(theme_events):
-                        if not all(key in event for key in ['name', 'description', 'date']):
-                            raise ValueError(f"主题 '{theme_obj['theme_name']}' 中第{j + 1}个事件缺少必要字段: {event}")
-
-                print("事件转换成功！")
-                
-                # =====================新增逻辑：生成时间线格式数据=====================
-                import json
-                from src.lifebench.event.templates.template_scheduler import template_generate_timeline_summaries
-                
-                # 1. 收集所有事件并按月份分组
-                all_events = []
-                for theme_obj in events_by_theme:
-                    for event in theme_obj['events']:
-                        # 添加事件所属主题信息
-                        event_with_theme = event.copy()
-                        event_with_theme['belongs_to_theme'] = theme_obj['theme_name']
-                        all_events.append(event_with_theme)
-                
-                # 2. 按月份分组事件
-                events_by_month = {}
-                for event in all_events:
-                    # 提取事件的起始月份 (YYYY-MM格式)
-                    try:
-                        start_date = event['date'].split('至')[0].strip()
-                        month = start_date[:7]  # 取YYYY-MM格式
-                        if month not in events_by_month:
-                            events_by_month[month] = []
-                        events_by_month[month].append(event)
-                    except:
-                        # 如果日期格式有问题，跳过此事件
-                        continue
-                
-                # 3. 构建时间线数据结构
-                timeline_data = {
-                    "comprehensive_summary": "",
-                    "monthly_details": []
-                }
-                
-                # 按月份排序
-                sorted_months = sorted(events_by_month.keys())
-                
-                for month in sorted_months:
-                    month_data = {
-                        "month": month,
+            for month_str in sorted_months:
+                events_text = month_events_map.get(month_str, [])
+                if not events_text:
+                    monthly_details.append({
+                        "month": month_str,
                         "monthly_summary": "",
-                        "events": events_by_month[month],
+                        "events": [],
                         "impact": ""
-                    }
-                    timeline_data["monthly_details"].append(month_data)
-                
-                # 4. 调用LLM生成总结字段
-                print("正在调用LLM生成时间线总结...")
-                timeline_json = json.dumps(timeline_data, ensure_ascii=False, indent=2)
-                prompt = template_generate_timeline_summaries.format(timeline_json=timeline_json)
-                llm_output = self.llm_call_sr(prompt)
-                
-                # 提取并解析带总结的时间线数据
-                try:
-                    import re
-                    json_pattern = r'\{.*\}'  # 匹配从第一个{到最后一个}的完整内容
-                    matches = re.findall(json_pattern, llm_output, re.DOTALL)
-                    if not matches:
-                        raise ValueError("未找到JSON对象内容")
-                    
-                    # 寻找最完整的JSON对象（包含comprehensive_summary的）
-                    full_timeline = None
-                    for match in matches:
-                        try:
-                            parsed = json.loads(match)
-                            if "comprehensive_summary" in parsed and "monthly_details" in parsed:
-                                full_timeline = parsed
-                                break
-                        except:
-                            continue
-                    
-                    if not full_timeline:
-                        # 如果没有找到完整的JSON，使用原始结构
-                        full_timeline = timeline_data
-                    
-                    print("时间线总结生成成功！")
-                    
-                    # 5. 返回事件数据和时间线数据
-                    return {
-                        "events_by_theme": events_by_theme,
-                        "timeline_data": full_timeline
-                    }
-                except json.JSONDecodeError as e:
-                    print(f"时间线JSON解析失败: {e}")
-                    print(f"LLM输出: {llm_output}")
-                    # 返回原始数据结构
-                    return {
-                        "events_by_theme": events_by_theme,
-                        "timeline_data": timeline_data
-                    }
+                    })
+                    prev_month_data = None  # 重置，连续事件到此为止
+                    continue
 
-            except json.JSONDecodeError as e:
-                print(f"JSON解析失败: {e}")
-                print(f"LLM输出: {llm_output}")
-                raise
-            except ValueError as e:
-                print(f"输出格式验证失败: {e}")
-                print(f"LLM输出: {llm_output}")
-                raise
+                print(f"  处理 {month_str} ...")
+                month_data = self._process_month_with_llm(
+                    month_str,
+                    '\n'.join([f"- {t}" for t in events_text]),
+                    themes,
+                    prev_month_data
+                )
+
+                if month_data is None:
+                    print(f"  {month_str} LLM转换失败，使用脚本 fallback")
+                    month_data = self._convert_events_script(month_str, events_text, themes, prev_month_data)
+
+                monthly_details.append(month_data)
+                prev_month_data = month_data  # 更新为当前月，供下个月使用
+                print(f"  {month_str} 处理完成，共 {len(month_data.get('events', []))} 个事件")
+
+            # 步骤3：修正事件月份归属（如果事件起始日期不在当前月，移动到对应月份）
+            print("正在修正事件月份归属...")
+            monthly_details = self._fix_event_month_assignment(monthly_details)
+            print("事件月份归属修正完成")
+
+            # 步骤4：构建 timeline_data 结构
+            timeline_data_result = {
+                "comprehensive_summary": "",
+                "monthly_details": monthly_details
+            }
+
+            # 步骤4：生成 comprehensive_summary
+            all_summaries = [m.get('monthly_summary', '') for m in monthly_details if m.get('monthly_summary')]
+            timeline_data_result['comprehensive_summary'] = '。'.join(all_summaries) + '。' if all_summaries else ''
+
+            # 构建 events_by_theme（按主题分组）
+            events_by_theme = []
+            for theme in themes:
+                theme_events = []
+                for month_detail in timeline_data_result.get('monthly_details', []):
+                    for event in month_detail.get('events', []):
+                        if event.get('belongs_to_theme') == theme['theme_name']:
+                            theme_events.append(event)
+                if theme_events:
+                    events_by_theme.append({
+                        'theme_name': theme['theme_name'],
+                        'theme_description': theme['theme_description'],
+                        'events': theme_events
+                    })
+
+            # 如果没有按主题分组的结果，直接用月份分组
+            if not events_by_theme:
+                events_by_theme = [{
+                    'theme_name': '综合生活',
+                    'theme_description': '日常生活事件',
+                    'events': []
+                }]
+
+            # 确保每个月都有输出（完整性保障）
+            # 从输入数据中获取年份
+            first_month = sorted_months[0] if sorted_months else "2025-01"
+            year = first_month[:5]  # 获取年份，如 "2025-"
+            expected_months = [f"{year}{str(m).zfill(2)}" for m in range(1, 13)]
+
+            existing_months = {m.get('month') for m in monthly_details}
+            for expected in expected_months:
+                if expected not in existing_months:
+                    monthly_details.append({
+                        "month": expected,
+                        "monthly_summary": "",
+                        "events": [],
+                        "impact": ""
+                    })
+                    print(f"  警告: {expected} 无数据，已补充空记录")
+
+            # 重新排序
+            monthly_details.sort(key=lambda x: x['month'])
+
+            return {
+                "events_by_theme": events_by_theme,
+                "timeline_data": timeline_data_result
+            }
 
         except Exception as e:
             print(f"事件转换过程中出错: {e}")
+            import traceback
+            traceback.print_exc()
             raise

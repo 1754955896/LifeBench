@@ -234,11 +234,10 @@ class OutlineOptimizer:
         prompt = yearly_consistency_analysis_template(
             year=self.year,
             monthly_summaries=monthly_summaries,
-            persona=self.persona
         )
         
         try:
-            result_str = llm_call_j(prompt)
+            result_str = llm_call_reason_j(prompt)
             # 匹配字符串的第一个和最后一个{}，确保解析完整的JSON对象
             start_idx = result_str.find('{')
             end_idx = result_str.rfind('}')
