@@ -4458,9 +4458,29 @@ class Scheduler:
             all_events.extend(month_data["events"])
         
         if len(all_events) > 0:
-            # 找到全年最大id
-            max_id = max(event.get("id", 0) for event in all_events)
-            
+            # 找到全年最大id（纯数字id转为int，非纯数字id转为0参与重新赋值）
+            def get_int_id(event):
+                event_id = event.get("id", 0)
+                if isinstance(event_id, int):
+                    return event_id
+                if isinstance(event_id, str):
+                    try:
+                        return int(event_id)
+                    except ValueError:
+                        return 0  # 非纯数字id转为0，参与重新赋值
+                return 0
+            max_id = max(get_int_id(event) for event in all_events)
+
+            # 先将所有非纯数字id转为0
+            for month_data in results:
+                for event in month_data["events"]:
+                    event_id = event.get("id", 0)
+                    if isinstance(event_id, str):
+                        try:
+                            int(event_id)
+                        except ValueError:
+                            event["id"] = 0
+
             # 为所有id=0的事件重新赋值
             for month_data in results:
                 for event in month_data["events"]:
@@ -4523,6 +4543,12 @@ class Scheduler:
                         event_copy['event_id'] = event_copy.pop('id')
                     # 如果没有id字段，确保event_id字段存在
                     event_copy.setdefault('event_id', 0)
+                    # 确保event_id是int类型，无法转换的设为0
+                    if isinstance(event_copy['event_id'], str):
+                        try:
+                            event_copy['event_id'] = int(event_copy['event_id'])
+                        except ValueError:
+                            event_copy['event_id'] = 0
 
                     # 确保所有必要字段都存在
                     event_copy.setdefault('name', '未命名事件')
