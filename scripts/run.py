@@ -423,7 +423,7 @@ if __name__ == '__main__':
 
             # 执行phone_gen.py脚本
             try:
-                result = subprocess.run(phone_gen_cmd, check=True, capture_output=True, text=True)
+                result = subprocess.run(phone_gen_cmd, check=True, capture_output=True, encoding='utf-8', errors='ignore')
                 print(f"\n{'='*60}")
                 print(f"手机数据生成完成")
                 print(f"{'='*60}")

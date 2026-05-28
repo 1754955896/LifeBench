@@ -81,3 +81,6 @@ src/lifebench/event/local_models/
 
 # Local libraries
 lib/
+
+# Claude
+.claude/
