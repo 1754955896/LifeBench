@@ -1,0 +1,705 @@
+{
+  "name": "陆明强",
+  "birth": "1986-05-11",
+  "age": 35,
+  "nationality": "汉",
+  "home_address": {
+    "province": "海南省",
+    "city": "海口市",
+    "district": "龙华区",
+    "street_name": "金贸中路",
+    "street_number": "15号"
+  },
+  "birth_place": {
+    "province": "海南省",
+    "city": "海口市",
+    "district": "美兰区"
+  },
+  "gender": "男",
+  "education": "初中",
+  "job": "电力机械安装和修理工人",
+  "occupation": "海口市电力工程服务有限公司",
+  "workplace": {
+    "province": "海南省",
+    "city": "海口市",
+    "district": "秀英区",
+    "street_name": "海盛路",
+    "street_number": "28号"
+  },
+  "belief": "不信仰宗教",
+  "salary": 40000.0,
+  "body": {
+    "height": 171,
+    "weight": 72.5,
+    "BMI": 24.8
+  },
+  "family": "初婚有配偶，育有2个孩子",
+  "personality": {
+    "mbti": "ISTJ",
+    "traits": [
+      "事业导向",
+      "自主独立",
+      "精神满足导向"
+    ]
+  },
+  "hobbies": [
+    "打壁球（单人）",
+    "跑步",
+    "参加体育锻炼",
+    "上网",
+    "收藏酒瓶（白酒）",
+    "放风筝（传统）"
+  ],
+  "favorite_foods": [
+    "海南鸡饭",
+    "清补凉",
+    "烤鱼",
+    "老爸茶点心"
+  ],
+  "memory_date": [
+    "2010-08-20 结婚纪念日",
+    "2015-09-01 长子出生日"
+  ],
+  "aim": [
+    "3年内考取电工高级技师证书",
+    "5年内带家人完成一次环岛自驾游",
+    "未来10年拥有一间属于自己的维修工作室"
+  ],
+  "healthy_desc": "陆明强自认为身体健康状况很好，无长期慢性病或残疾。他保持着规律的运动习惯，每周进行数次体育锻炼以维持体能，这与他的重体力工作性质相得益彰。他暂无定期体检的习惯，就医频率较低，主要依靠自身良好的体感和生活习惯来维护健康。",
+  "lifestyle_desc": "陆明强的生活规律且务实。他的主要信息来源是互联网，几乎每天都会上网。休闲活动以居家放松和体育锻炼为主，每周数次看电视和锻炼身体，每月会与朋友聚会数次，但很少进行逛街购物、阅读或参加文化活动等。他几乎不外出度假，生活重心围绕家庭、工作和简单的休闲娱乐，风格踏实、稳定。",
+  "economic_desc": "陆明强家庭年收入约5万元，其中他本人年薪4万元，配偶从事兼职家政工作，年收入约1万元。收支基本平衡。家庭拥有一处房产和一辆家用小汽车，没有使用信用卡等透支消费的习惯，也未曾进行股票、基金、债券等任何金融投资活动，家庭财务状况稳健保守，以储蓄和满足基本生活需求为主。",
+  "work_desc": "陆明强受雇于一家电力工程公司，担任电力机械安装和修理工人。他每周工作时间长达60小时，从事的主要是重体力劳动，工作日程为规律的白班，通勤时间单程仅10分钟。尽管工作强度大，但他对自己的工作非常满意。他目前没有兼任其他工作，也未担任任何行政职务。",
+  "experience_desc": "陆明强是土生土长的海南海口人，自出生起户口和居住地从未变更。他于2007年，约21岁时获得了第一份工作，职业同样是技术工人（体力工人），当时也是受雇于他人。多年来，他一直在本地从事电力机械相关领域的工作，从学徒逐步成长为熟练的技术工人，通过实践积累了大量经验，并在此地成家立业，生活轨迹稳定而清晰。",
+  "description": "陆明强，35岁，汉族男性，出生于海南海口，现与配偶及两个孩子居住在海口市龙华区。他拥有初中学历，是一名踏实肯干的电力机械安装和修理工人，受雇于本地一家电力工程公司，对这份需要重体力劳动但规律稳定的工作感到非常满意。他的性格符合ISTJ类型，严谨、负责、注重实际，价值观上倾向于事业导向、自主独立并从工作中获得精神满足。陆明强身体健康，无慢性疾病，通过每周数次的体育锻炼来保持体能以应对工作。他的生活方式简单规律，主要休闲活动是上网、听音乐、锻炼身体以及与朋友每月聚会，几乎不参与文化消费或长途旅行。家庭经济状况稳健，有房有车但无投资活动，消费习惯保守。生活中，他可能经常需要应对紧急的电力设备维修任务，偶尔在周末带着孩子去公园放风筝。他的未来愿景包括提升职业技能、带家人环岛旅行，并最终拥有自己的工作室。",
+  "relation": [
+    [
+      {
+        "name": "陆建国",
+        "relation": "父亲",
+        "social circle": "家庭圈",
+        "gender": "男",
+        "age": 62,
+        "birth_date": "1962-03-15",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "美兰区",
+          "street_name": "海府路",
+          "street_number": "42号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "海口市"
+        },
+        "personality": "ISTJ",
+        "economic_level": "小康",
+        "occupation": "退休电工",
+        "organization": "原海口市供电局",
+        "nickname": "老爸",
+        "relation_description": "陆明强的父亲，退休前是海口市供电局的电工，技术扎实，为人严谨。父子俩都从事电力相关行业，父亲是陆明强职业道路上的引路人。退休后与老伴同住，生活规律，喜欢在小区下棋、喝茶。陆明强每周会带孩子去看望父母一次，一起吃晚饭，聊聊工作和生活。父亲偶尔会关心儿子的工作进展，并给予一些技术上的建议。"
+      },
+      {
+        "name": "陈秀英",
+        "relation": "母亲",
+        "social circle": "家庭圈",
+        "gender": "女",
+        "age": 60,
+        "birth_date": "1964-08-22",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "美兰区",
+          "street_name": "海府路",
+          "street_number": "42号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "文昌市"
+        },
+        "personality": "ISFJ",
+        "economic_level": "小康",
+        "occupation": "家庭主妇",
+        "organization": "无",
+        "nickname": "老妈",
+        "relation_description": "陆明强的母亲，典型的家庭主妇，勤劳、细心，将家庭打理得井井有条。她做得一手好菜，尤其擅长海南本地家常菜，陆明强最爱吃的海南鸡饭就是母亲的味道。现在主要精力放在照顾孙子和老伴上。陆明强一家每周探望时，母亲总是准备丰盛的饭菜，并关心儿子一家的生活起居。婆媳关系融洽，经常电话交流育儿经验。"
+      },
+      {
+        "name": "王丽娟",
+        "relation": "配偶",
+        "social circle": "家庭圈",
+        "gender": "女",
+        "age": 33,
+        "birth_date": "1991-10-05",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "龙华区",
+          "street_name": "金贸中路",
+          "street_number": "15号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "儋州市"
+        },
+        "personality": "ESFJ",
+        "economic_level": "小康",
+        "occupation": "兼职家政员",
+        "organization": "海口市社区家政服务中心",
+        "nickname": "娟子",
+        "relation_description": "陆明强的妻子，两人于2010年结婚。她性格外向，善于沟通，将家庭和兼职工作平衡得很好。主要负责照顾两个孩子的日常起居和教育，同时每周有几天在社区从事家政服务工作以补贴家用。夫妻感情稳定，共同承担家庭责任。日常交流主要是关于孩子、家庭开支和各自工作的琐事。周末有时会一起带孩子去公园或市场，是彼此生活中最重要的支持者。"
+      },
+      {
+        "name": "陆子轩",
+        "relation": "长子",
+        "social circle": "家庭圈",
+        "gender": "男",
+        "age": 8,
+        "birth_date": "2015-09-01",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "龙华区",
+          "street_name": "金贸中路",
+          "street_number": "15号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "海口市"
+        },
+        "personality": "ENFP",
+        "economic_level": "无收入",
+        "occupation": "小学生",
+        "organization": "海口市龙华区第一实验小学",
+        "nickname": "轩轩",
+        "relation_description": "陆明强的长子，目前就读小学二年级。性格活泼开朗，好奇心强，是家里的开心果。喜欢运动，尤其崇拜父亲，对父亲工具箱里的各种工具很感兴趣。陆明强工作虽忙，但会尽量抽时间陪儿子做作业，周末偶尔带他去放风筝或跑步。父子关系亲密，陆明强希望儿子能好好学习，未来有更多选择。"
+      },
+      {
+        "name": "陆子涵",
+        "relation": "次子",
+        "social circle": "家庭圈",
+        "gender": "男",
+        "age": 4,
+        "birth_date": "2019-12-10",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "龙华区",
+          "street_name": "金贸中路",
+          "street_number": "15号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "海口市"
+        },
+        "personality": "ISFP",
+        "economic_level": "无收入",
+        "occupation": "学龄前儿童",
+        "organization": "海口市龙华区金贸幼儿园",
+        "nickname": "涵涵",
+        "relation_description": "陆明强的次子，目前在上幼儿园。性格相对安静，观察力强，喜欢自己玩积木或看图画书。是全家人的宝贝，哥哥也很照顾他。陆明强下班回家后，小儿子总会跑过来要抱抱。由于年龄小，主要由母亲和爷爷奶奶照顾。周末家庭活动时，他也会跟着一起去公园。"
+      },
+      {
+        "name": "陆明华",
+        "relation": "哥哥",
+        "social circle": "家庭圈",
+        "gender": "男",
+        "age": 38,
+        "birth_date": "1985-02-28",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "宝安区",
+          "street_name": "新安街道创业二路",
+          "street_number": "305号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "海口市"
+        },
+        "personality": "ENTJ",
+        "economic_level": "中产",
+        "occupation": "电子产品贸易公司经理",
+        "organization": "深圳华创电子贸易有限公司",
+        "nickname": "华哥",
+        "relation_description": "陆明强的哥哥，比陆明强大一岁多。早年去广东闯荡，目前在深圳经营一家小型电子产品贸易公司，事业小有成就。兄弟俩性格迥异，哥哥更具冒险精神和商业头脑。虽然分隔两地，但感情很好，主要通过微信和电话联系，每月会通话一两次，聊聊近况、家庭和父母的身体。哥哥经济条件较好，逢年过节会回海口看望父母，也会给侄子们带礼物。陆明强很佩服哥哥，但对自己的稳定生活也感到满足。两人见面时，哥哥常会请全家吃饭。"
+      }
+    ],
+    [
+      {
+        "name": "王海",
+        "relation": "发小",
+        "social circle": "童年/邻里圈",
+        "gender": "男",
+        "age": 35,
+        "birth_date": "1986-08-23",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "南山区",
+          "street_name": "科技园路",
+          "street_number": "9号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "美兰区"
+        },
+        "personality": "ESFP",
+        "economic_level": "中产",
+        "occupation": "电子产品销售经理",
+        "organization": "深圳华强电子世界某数码店铺",
+        "nickname": "海子",
+        "relation_description": "王海是陆明强从小一起在美兰区胡同里长大的发小，两人从小学到初中都是同班同学。初中毕业后，王海随家人迁往广东，后来在深圳华强北从事电子产品销售工作，凭借灵活的头脑和善于交际的性格，逐步做到了店铺销售经理的位置。如今两人分隔两地，主要通过微信视频和朋友圈互动保持联系，平均每月会通话一两次，聊聊各自家庭、工作近况，以及回忆童年趣事。陆明强去广东出差（尽管极少）或王海回海口探亲时，他们会争取见面，通常会找一家大排档，点上烤鱼和啤酒，畅聊到深夜。王海性格外向热情，与陆明强的沉稳务实形成互补，是陆明强为数不多可以毫无顾忌倾诉心事的老朋友。"
+      }
+    ],
+    [
+      {
+        "name": "陈建国",
+        "relation": "工友",
+        "social_circle": "工作圈",
+        "gender": "男",
+        "age": 38,
+        "birth_date": "1985-08-22",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "琼山区",
+          "street_name": "凤翔东路",
+          "street_number": "32号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "文昌市"
+        },
+        "personality": "ISTP",
+        "economic_level": "温饱",
+        "occupation": "电力机械安装和修理工人",
+        "organization": "海口市电力工程服务有限公司",
+        "nickname": "建国",
+        "relation_description": "陈建国是陆明强在公司里关系最铁的工友，两人相识于2012年的一次高压线路抢修项目。他们配合默契，工作中常搭档处理复杂的安装任务，私下里也会一起喝老爸茶、聊聊家庭和孩子。两人都住在海口，但不同区，平时主要通过微信工作群和电话联系，每周因工作见面5-6天，偶尔周末会两家人一起去白沙门公园放风筝或吃烤鱼。"
+      },
+      {
+        "name": "李师傅",
+        "relation": "师父",
+        "social_circle": "工作圈",
+        "gender": "男",
+        "age": 58,
+        "birth_date": "1965-03-15",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "美兰区",
+          "street_name": "海府路",
+          "street_number": "56号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "湛江市"
+        },
+        "personality": "ISFJ",
+        "economic_level": "小康",
+        "occupation": "高级电工技师（已退休返聘）",
+        "organization": "海口市电力工程服务有限公司",
+        "nickname": "老李头",
+        "relation_description": "李师傅是陆明强入行时的领路人，2007年陆明强刚进公司当学徒时就跟着他。李师傅技术精湛，为人严谨但护犊子，不仅教会了陆明强扎实的实操技能，还经常传授一些老一辈电工的“土办法”和经验。如今李师傅已退休，但公司遇到疑难杂症时仍会请他回来指导。两人现在见面不多，平均每月一两次，通常是在公司遇到棘手故障时，陆明强会打电话请教，或李师傅来现场看看。他们保持着师徒间的尊重和情谊。"
+      },
+      {
+        "name": "张班长",
+        "relation": "班长",
+        "social_circle": "工作圈",
+        "gender": "男",
+        "age": 42,
+        "birth_date": "1981-11-30",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "秀英区",
+          "street_name": "滨海大道",
+          "street_number": "189号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "儋州市"
+        },
+        "personality": "ESTJ",
+        "economic_level": "小康",
+        "occupation": "电力工程班组长",
+        "organization": "海口市电力工程服务有限公司",
+        "nickname": "张头",
+        "relation_description": "张班长是陆明强所在班组的直接领导，负责日常工作的分配和现场安全监督。他做事雷厉风行，要求严格，但赏罚分明，很看重陆明强这种踏实肯干、技术过硬的老员工。陆明强对张班长是又敬又“怕”，工作上绝对服从。他们每天上班都会见面，交流主要是工作安排和进度汇报。私下交往不多，仅限于公司组织的年终聚餐或班组偶尔的团建活动，频率大约每季度一次。"
+      },
+      {
+        "name": "赵强",
+        "relation": "工友",
+        "social_circle": "工作圈",
+        "gender": "男",
+        "age": 29,
+        "birth_date": "1994-07-04",
+        "home_address": {
+          "province": "湖南省",
+          "city": "永州市",
+          "district": "冷水滩区",
+          "street_name": "湘永路",
+          "street_number": "218号"
+        },
+        "birth_place": {
+          "province": "湖南省",
+          "city": "永州市"
+        },
+        "personality": "ESFP",
+        "economic_level": "温饱",
+        "occupation": "电力机械安装学徒工",
+        "organization": "海口市电力工程服务有限公司",
+        "nickname": "小赵",
+        "relation_description": "赵强是公司去年新招的学徒，来自湖南，目前跟着陆明强和陈建国这一组学习。他年轻有活力，但经验不足，陆明强像当年李师傅带自己一样，耐心地指导他。因为赵强家在外省，独自在海口租房，陆明强有时会叫他来家里吃饭，尝尝海南菜。他们工作日天天见面，但由于赵强计划干几年攒够钱就回老家发展，所以私下联系不算特别紧密，主要是工作上的师徒关系和偶尔的生活关照。"
+      },
+      {
+        "name": "刘经理",
+        "relation": "经理",
+        "social_circle": "工作圈",
+        "gender": "男",
+        "age": 48,
+        "birth_date": "1975-01-20",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "龙华区",
+          "street_name": "国贸路",
+          "street_number": "铂金公馆1栋"
+        },
+        "birth_place": {
+          "province": "湖北省",
+          "city": "武汉市"
+        },
+        "personality": "ENTJ",
+        "economic_level": "富裕",
+        "occupation": "工程服务部经理",
+        "organization": "海口市电力工程服务有限公司",
+        "nickname": "刘总",
+        "relation_description": "刘经理是公司工程服务部的负责人，掌管着包括陆明强所在班组在内的多个施工团队。他科班出身，管理风格现代化，注重效率和规范流程。陆明强与他直接接触的机会不多，通常是通过张班长汇报工作，或者在月度安全会议、公司年会上见到。刘经理赏识陆明强这类技术骨干的稳定性，曾鼓励他考取高级技师证书。他们的联系是典型的上下级关系，正式且保持距离，频率大约每月一两次的会议或通知传达。"
+      }
+    ],
+    [
+      {
+        "name": "周伟",
+        "relation": "初中同学",
+        "social circle": "初中同学圈",
+        "gender": "男",
+        "age": 35,
+        "birth_date": "1986-08-22",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "南山区",
+          "street_name": "科技园路",
+          "street_number": "10号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "海口市"
+        },
+        "personality": "ESTP",
+        "economic_level": "中产",
+        "occupation": "电子产品销售经理",
+        "organization": "深圳华强北某电子商贸公司",
+        "nickname": "伟哥",
+        "relation_description": "周伟是陆明强的初中同学，两人在海口同一所中学就读时相识。毕业后，周伟前往广东发展，目前在深圳从事电子产品销售工作。他们主要通过微信保持联系，每年春节回海口时，周伟会主动约上包括陆明强、吴刚在内的几个老同学一起聚餐，聊聊近况和回忆学生时代。平时联系频率不高，大约每季度一次，主要是分享生活趣事或行业见闻。由于分隔两地，他们已有数年未曾见面，但同学情谊仍在线上维系。"
+      },
+      {
+        "name": "吴刚",
+        "relation": "初中同学",
+        "social circle": "初中同学圈",
+        "gender": "男",
+        "age": 36,
+        "birth_date": "1985-12-05",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "美兰区",
+          "street_name": "海府路",
+          "street_number": "56号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "海口市"
+        },
+        "personality": "ISFJ",
+        "economic_level": "小康",
+        "occupation": "社区水电维修工",
+        "organization": "海口市美兰区某物业服务中心",
+        "nickname": "刚子",
+        "relation_description": "吴刚是陆明强的初中同学，两人自学生时代起关系就不错。毕业后，吴刚留在海口本地工作，成为一名社区水电维修工，与陆明强同属技术工人圈子，偶尔会在行业交流中碰面。他们现在生活在同一个城市，联系相对方便，大约每月会通过电话或微信聊一两次，有时会约着在周末喝老爸茶，交流工作心得和家庭琐事。当周伟从深圳回海口时，通常由吴刚协助组织同学小聚。吴刚性格温和踏实，是陆明强在本地较为稳定的社交纽带之一。"
+      }
+    ],
+    [
+      {
+        "name": "林峰",
+        "relation": "球友",
+        "social circle": "壁球圈",
+        "gender": "男",
+        "age": 33,
+        "birth_date": "1991-08-22",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "琼山区",
+          "street_name": "凤翔东路",
+          "street_number": "9号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "湛江市"
+        },
+        "personality": "ESTP",
+        "economic_level": "小康",
+        "occupation": "健身教练",
+        "organization": "海口市动力健身俱乐部",
+        "nickname": "阿峰",
+        "relation_description": "林峰是陆明强在壁球俱乐部结识的球友，两人因每周三晚的固定场次而熟络。林峰性格外向活跃，球风凌厉，与陆明强沉稳扎实的风格形成互补，常在赛后交流技术心得。他们同在海口生活，除了打球，偶尔也会约着一起跑步或去大排档吃烤鱼。目前主要通过微信约球和闲聊，每周见面一至两次，关系稳定在运动伙伴层面。"
+      }
+    ],
+    [
+      {
+        "name": "陈建国",
+        "relation": "朋友",
+        "social circle": "酒瓶收藏同好圈",
+        "gender": "男",
+        "age": 38,
+        "birth_date": "1985-08-22",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "琼山区",
+          "street_name": "中山南路",
+          "street_number": "42号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "儋州市"
+        },
+        "personality": "ISFP",
+        "economic_level": "小康",
+        "occupation": "个体经营户",
+        "organization": "建国五金店",
+        "nickname": "老陈",
+        "relation_description": "陈建国是陆明强在本地酒瓶收藏圈认识的朋友，两人因共同爱好白酒瓶收藏而结识，常在线上论坛交流心得，线下每月会约在茶店见面一两次，交流新淘到的藏品或分享本地白酒信息。陈建国在海口经营一家五金店，工作时间相对自由，这使得他有时能在工作日午后与陆明强小聚。两人见面时话题多围绕收藏、工作和家庭琐事，偶尔也会互相帮忙处理一些简单的家庭水电或五金维修问题。他们主要通过微信保持日常联系，分享图片和信息，关系稳定而轻松。"
+      }
+    ],
+    [
+      {
+        "name": "陈杰",
+        "relation": "朋友",
+        "social_circle": "放风筝圈",
+        "gender": "男",
+        "age": 33,
+        "birth_date": "1990-08-22",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "美兰区",
+          "street_name": "海甸五西路",
+          "street_number": "8号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "文昌市"
+        },
+        "personality": "ISFP",
+        "economic_level": "温饱",
+        "occupation": "汽车维修工",
+        "organization": "海口美兰区迅捷汽车服务中心",
+        "nickname": "阿杰",
+        "relation_description": "陈杰是陆明强在万绿园放风筝时结识的朋友，两人因都对传统风筝的制作和放飞技巧感兴趣而熟络。相识已有五年，通常会在周末下午天气晴好时相约去公园放风筝，交流新做的风筝骨架或改良的提线方法。他们见面时除了放风筝，也会聊聊各自的工作和家庭琐事，偶尔会一起在公园附近的大排档吃烤鱼。两人目前都在海口生活，联系频率大约为每月两到三次，主要通过微信约时间，属于因共同爱好而维持的、轻松随性的朋友关系。"
+      }
+    ],
+    [
+      {
+        "name": "陈斌",
+        "relation": "朋友",
+        "social circle": "跑步圈",
+        "gender": "男",
+        "age": 33,
+        "birth_date": "1991-03-22",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "琼山区",
+          "street_name": "凤翔东路",
+          "street_number": "8号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "儋州市"
+        },
+        "personality": "ESFJ",
+        "economic_level": "温饱",
+        "occupation": "物流配送员",
+        "organization": "海口顺丰速运有限公司",
+        "nickname": "阿斌",
+        "relation_description": "陈斌是陆明强在跑步时认识的朋友，两人因共同的跑步爱好而结缘，大约相识于五年前。他们通常在周末清晨约在海口白沙门公园或万绿园晨跑，边跑边聊工作和生活琐事。跑完步后，有时会一起去附近的早餐店吃海南粉或喝老爸茶。陈斌性格外向热情，很会照顾人，是跑步小圈子的组织者之一。两人目前都在海口生活，主要通过微信联系，每周跑步聚会一至两次，偶尔也会在对方遇到家电小问题时互相帮忙。"
+      }
+    ],
+    [
+      {
+        "name": "王建国",
+        "relation": "邻居",
+        "social_circle": "邻里圈",
+        "gender": "男",
+        "age": 58,
+        "birth_date": "1966-03-22",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "龙华区",
+          "street_name": "金贸中路",
+          "street_number": "12号"
+        },
+        "birth_place": {
+          "province": "广东省",
+          "city": "湛江市"
+        },
+        "personality": "ESFJ",
+        "economic_level": "小康",
+        "occupation": "退休小学教师",
+        "organization": "海口市龙华区第一小学（已退休）",
+        "nickname": "王叔",
+        "relation_description": "王建国是陆明强家隔壁单元的邻居，已退休多年。两人相识于陆明强搬入小区后的一次楼道偶遇。王叔性格热情，乐于助人，经常在小区里散步、下棋，见到陆明强下班回来总会点头打招呼或简单寒暄几句。他们之间的联系多因邻里琐事，比如代收快递、短暂照看门口物品，或者小区停水停电时互相通个气。偶尔在周末的早晨，两人会在小区门口的早餐摊相遇，一起吃碗海南粉，聊聊天气、孩子和本地新闻。由于同住一个小区，见面频率很高，几乎每天或隔天就能碰到，但交流内容以日常问候和简单信息交换为主，属于融洽但不过分亲密的邻里关系。"
+      }
+    ],
+    [
+      {
+        "name": "陈志强",
+        "relation": "妻弟",
+        "social_circle": "亲戚圈",
+        "gender": "男",
+        "age": 31,
+        "birth_date": "1992-08-23",
+        "home_address": {
+          "province": "广东省",
+          "city": "深圳市",
+          "district": "南山区",
+          "street_name": "科技园路",
+          "street_number": "88号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "美兰区"
+        },
+        "personality": "ESFP",
+        "economic_level": "中产",
+        "occupation": "电子产品销售经理",
+        "organization": "深圳华强北某大型电子商城",
+        "nickname": "阿强",
+        "relation_description": "陈志强是陆明强妻子的弟弟，两人因姻亲关系相识。他性格外向活跃，与姐夫陆明强关系融洽，虽然一个在海南从事稳定的技术工作，一个在深圳打拼销售事业，但两人价值观都务实。他们主要通过微信视频和电话联系，平均每月一两次，聊家常、孩子教育以及偶尔的工作见闻。陈志强逢年过节会回海口探亲，届时两家人会一起聚餐，他也会给外甥们带些新奇的电子产品作为礼物。由于分隔两地，日常互动以线上为主，但亲情纽带牢固。"
+      },
+      {
+        "name": "王秀英",
+        "relation": "姨妈",
+        "social_circle": "亲戚圈",
+        "gender": "女",
+        "age": 58,
+        "birth_date": "1965-03-17",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "琼山区",
+          "street_name": "府城镇中山路",
+          "street_number": "56号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "美兰区"
+        },
+        "personality": "ISFJ",
+        "economic_level": "温饱",
+        "occupation": "退休小学教师（曾）",
+        "organization": "海口市某区中心小学（已退休）",
+        "nickname": "大姨",
+        "relation_description": "王秀英是陆明强母亲的姐姐，从小看着陆明强长大，感情深厚。她退休前是小学教师，为人温和细致，非常关心晚辈。现在与陆明强同在海口市生活，但住在不同的区。陆明强每月会抽空带着孩子去探望大姨一两次，陪她喝老爸茶、聊聊近况，大姨也时常关心他的工作安全和家庭生活，并会传授一些育儿经验。她是陆明强家庭与老一辈亲戚之间重要的情感纽带，逢年过节的家庭聚会通常由她协助张罗。两人联系紧密，是陆明强在本地重要的亲情支持。"
+      }
+    ],
+    [
+      {
+        "name": "张建国",
+        "relation": "同行",
+        "social_circle": "行业交流圈",
+        "gender": "男",
+        "age": 38,
+        "birth_date": "1985-08-22",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "美兰区",
+          "street_name": "海甸五西路",
+          "street_number": "32号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "儋州市"
+        },
+        "personality": "ESTP",
+        "economic_level": "小康",
+        "occupation": "电力设备安装工",
+        "organization": "海口市电力工程服务有限公司",
+        "nickname": "张工",
+        "relation_description": "张建国是陆明强在同一家电力工程公司的同事，两人因工作结识已有五年。他技术扎实，性格外向，擅长处理现场突发状况，是陆明强在工作中遇到难题时常会请教和讨论的对象。两人同在海口生活，除了工作日午餐时在食堂或工地附近的小餐馆一起吃饭、交流工作心得外，每月大概有一两次会在周末相约去大排档吃烤鱼、喝啤酒，聊聊家庭和孩子。由于同在一个行业圈，他们也共同认识几位其他公司的老师傅，偶尔会通过微信群分享行业信息或约着参加市里组织的技能培训。"
+      }
+    ],
+    [
+      {
+        "name": "李建国",
+        "relation": "客户",
+        "social_circle": "工作客户圈",
+        "gender": "男",
+        "age": 48,
+        "birth_date": "1976-08-15",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "美兰区",
+          "street_name": "海府路",
+          "street_number": "32号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "文昌市"
+        },
+        "personality": "ESTP",
+        "economic_level": "中等",
+        "occupation": "个体经营者",
+        "organization": "建国电器维修店",
+        "nickname": "李老板",
+        "relation_description": "李建国在海口美兰区经营一家电器维修店，是陆明强所在公司的长期客户。两人相识于2015年，当时李老板的店铺需要紧急电力线路改造。陆明强负责了那次安装工作，因其技术扎实、为人可靠，给李老板留下了深刻印象。此后，李老板店铺的电力设备维护和中小型工程都优先联系陆明强。他们平时主要通过电话和微信联系，沟通内容以工作需求为主，偶尔会交流一些本地电工行业的信息。由于都在海口，且业务往来频繁，他们平均每月会有一次因工作需要而见面，通常在李老板的维修店里。见面时除了处理具体维修或安装事务，也会简单寒暄几句，聊聊近况。李老板欣赏陆明强的技术，陆明强也尊重这位做事爽快的客户，双方保持着稳定、互信的工作伙伴关系。"
+      }
+    ],
+    [
+      {
+        "name": "王建国",
+        "relation": "对接人",
+        "social circle": "工作服务圈",
+        "gender": "男",
+        "age": 48,
+        "birth_date": "1976-03-22",
+        "home_address": {
+          "province": "海南省",
+          "city": "海口市",
+          "district": "龙华区",
+          "street_name": "国贸三横路",
+          "street_number": "8号"
+        },
+        "birth_place": {
+          "province": "海南省",
+          "city": "文昌市"
+        },
+        "personality": "ESFJ",
+        "economic_level": "小康",
+        "occupation": "物业管理",
+        "organization": "金贸中路社区物业服务中心",
+        "nickname": "王主任",
+        "relation_description": "王建国是陆明强所居住小区的物业服务中心主任，两人因小区公共电力设施维护和业主报修等事宜相识。陆明强作为专业的电力维修工人，时常被物业聘请处理一些紧急或复杂的电路问题，王主任则是主要的对接和协调人。他们相处时公事公办，但也因多次合作建立了信任。现在两人同在海口市生活，联系频率不固定，通常只在有维修需求时通过电话或微信沟通，见面地点多在小区物业办公室或故障现场，沟通完正事后偶尔会闲聊几句家常。"
+      }
+    ]
+  ]
+}
