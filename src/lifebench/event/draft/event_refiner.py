@@ -223,8 +223,9 @@ class EventRefiner:
         返回:
             str: 大模型返回结果
         """
-        from src.lifebench.utils.llm_call import llm_call_reason
-        res = llm_call_reason(prompt, self.context, record=record)
+        from src.lifebench.utils.llm_call import llm_call_reason_j
+        res = llm_call_reason_j(prompt, 
+                                record=record)
         return res
 
     def _get_events_in_range(self, events: List[Dict], dates: List[str]) -> List[Dict]:
@@ -464,7 +465,8 @@ class EventRefiner:
 
     def _build_refine_prompt(self, persona_str: str, daily_life_data: List[Dict],
                             date_range_desc: str, previous_day_status_str: str,
-                            final_day_status_str: str, life_analysis_str: str) -> str:
+                            final_day_status_str: str, life_analysis_str: str,
+                            yearly_summary: str = "") -> str:
         """构建事件精炼 prompt
 
         Args:
@@ -474,6 +476,7 @@ class EventRefiner:
             previous_day_status_str: 前一日状态
             final_day_status_str: 最终日状态
             life_analysis_str: 生活分析结果
+            yearly_summary: 全年各月总结
 
         Returns:
             str: 格式化的 prompt
@@ -484,12 +487,13 @@ class EventRefiner:
             date_range_description=date_range_desc,
             previous_day_status=previous_day_status_str,
             final_day_status=final_day_status_str,
-            life_analysis_str=life_analysis_str
+            life_analysis_str=life_analysis_str,
+            yearly_summary=yearly_summary
         )
 
     def _build_optimization_prompt(self, persona_str: str, date_range_desc: str,
                                   health_initial_state: str, health_end_state: str,
-                                  daily_events: str) -> str:
+                                  daily_events: str, yearly_summary: str = "") -> str:
         """构建多样性优化 prompt
 
         Args:
@@ -498,6 +502,7 @@ class EventRefiner:
             health_initial_state: 健康初始状态
             health_end_state: 健康结束状态
             daily_events: 每日事件数据
+            yearly_summary: 全年各月总结
 
         Returns:
             str: 格式化的 prompt
@@ -507,7 +512,8 @@ class EventRefiner:
             date_range_description=date_range_desc,
             health_initial_state=health_initial_state,
             health_end_state=health_end_state,
-            daily_events=daily_events
+            daily_events=daily_events,
+            yearly_summary=yearly_summary
         )
 
     def _match_and_adjust_event_dates(self, event_sequence: List[Dict], optimization_data: List[Dict],
@@ -777,7 +783,7 @@ class EventRefiner:
         
         print(f"每日生活数据已保存到: {output_path}")
 
-    def daily_event_refine(self, events: List[Dict], start_date: str, end_date: str, persona: Dict, split_date: str, health_result: Dict, life_result: Dict, month_transition_analysis: Dict = None, context: str = "") -> Dict[
+    def daily_event_refine(self, events: List[Dict], start_date: str, end_date: str, persona: Dict, split_date: str, health_result: Dict, life_result: Dict, month_transition_analysis: Dict = None, context: str = "", yearly_summary: str = "") -> Dict[
         str, any]:
         """
         基于指定时间范围批量调整事件的内容、时间、地点，使其发生更合理，并加入健康分析结果
@@ -793,6 +799,7 @@ class EventRefiner:
             life_result: 生活分析结果
             month_transition_analysis: 月变化分析结果，包含前一日status和final_day_status等信息
             context: 用于LLM调用的上下文信息（可选）
+            yearly_summary: 全年各月下个月指导总结
 
         返回:
             Dict[str, any]: 包含事件更新操作列表和每日生活数据的字典
@@ -840,7 +847,7 @@ class EventRefiner:
                 final_day_status = month_transition_analysis.get("final_day_status", {})
                 change_persona = month_transition_analysis.get("profile_changes", "")
             # 辅助函数：处理单个日期范围的逻辑
-            def process_date_range(range_start: str, range_end: str, health_start_state: Dict, health_end_state: Dict, life_result: Dict):
+            def process_date_range(range_start: str, range_end: str, health_start_state: Dict, health_end_state: Dict, life_result: Dict, yearly_summary: str = ""):
                 """处理单个日期范围的数据生成"""
                 print(f"处理日期范围: {range_start} 至 {range_end}")
 
@@ -896,7 +903,8 @@ class EventRefiner:
                     date_range_desc=date_range_desc,
                     previous_day_status_str=previous_day_status_str,
                     final_day_status_str=final_day_status_str,
-                    life_analysis_str=life_analysis_str
+                    life_analysis_str=life_analysis_str,
+                    yearly_summary=yearly_summary
                 )
                 res = self.llm_call_sr(prompt, 0)
                 print(f"日期范围{range_start}至{range_end}的事件批量分析思考-----------------------------------------------------------------------")
@@ -910,7 +918,8 @@ class EventRefiner:
                     date_range_desc=date_range_desc,
                     health_initial_state=health_start_state_str,
                     health_end_state=health_end_state_str,
-                    daily_events=res
+                    daily_events=res,
+                    yearly_summary=yearly_summary
                 )
                 from src.lifebench.utils.llm_call import llm_call_reason_j
                 optimization_res = llm_call_reason_j(optimization_prompt)
@@ -941,8 +950,8 @@ class EventRefiner:
             # 使用并行处理生成两组数据
             with ThreadPoolExecutor(max_workers=2) as executor:
                 # 提交两个任务：第一组（start_date到split_date）使用初始状态和中间状态；第二组（split_date+1到end_date）使用中间状态和最终状态
-                future1 = executor.submit(process_date_range, start_date, split_date, health_initial_state, health_mid_state, life_result)
-                future2 = executor.submit(process_date_range, second_stage_start, end_date, health_mid_state, health_end_state, life_result)
+                future1 = executor.submit(process_date_range, start_date, split_date, health_initial_state, health_mid_state, life_result, yearly_summary)
+                future2 = executor.submit(process_date_range, second_stage_start, end_date, health_mid_state, health_end_state, life_result, yearly_summary)
 
                 # 获取两个任务的结果
                 result1 = future1.result()
@@ -1235,6 +1244,43 @@ class EventRefiner:
                 "profile_changes": previous_profile_changes,
                 "previous_day_status": "上月信息获取失败，需自行推理"
             }
+
+    def generate_next_month_summary(self, month_data: Dict, persona: Dict, previous_summary: str = "") -> str:
+        """
+        生成用于指导下个月事件生成的总结文本
+
+        参数:
+            month_data: 本月事件数据
+            persona: 人物画像
+            previous_summary: 之前的全年总结文本
+
+        返回:
+            指导生成下个月事件的总结文本（字符串）
+        """
+        from src.lifebench.event.templates.template_refiner import template_next_month_summary
+        import json
+
+        try:
+            print("生成下个月指导总结...")
+
+            # 准备输入数据
+            persona_str = json.dumps(persona, ensure_ascii=False, indent=2)
+            month_data_str = json.dumps(month_data, ensure_ascii=False, indent=2)
+
+            # 使用模板调用LLM生成总结
+            prompt = template_next_month_summary.format(
+                persona=persona_str,
+                month_data=month_data_str,
+                previous_summary=previous_summary
+            )
+
+            summary_response = self.llm_call_s(prompt)
+
+            return summary_response
+
+        except Exception as e:
+            print(f"生成下个月指导总结时出错: {e}")
+            return ""
 
     def annual_event_refine(self, events: List[Dict], start_date: str, end_date: str, context: str = "", max_workers: int = 5, output_path: str = "output/daily_state.json") -> List[Dict]:
         """

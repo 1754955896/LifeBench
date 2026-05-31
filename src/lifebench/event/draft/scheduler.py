@@ -19,6 +19,7 @@ class EventTree:
     def __init__(self, persona: str):
         self.persona = persona
         self.decompose_schedule = []  # 最终分解结果（完整树形结构）
+        self.yearly_summary = ""  # 全年各月下个月指导总结
         self.schema = {
 "运动":["游泳",
         "健身锻炼",
@@ -3874,7 +3875,7 @@ class Scheduler:
             traceback.print_exc()
             return {'updated_timeline': timeline_data, 'same_theme_arr': [], 'frequency_id_groups': []}
 
-    def optimize_events_by_category(self, month, events, persona, calendar_data):
+    def optimize_events_by_category(self, month, events, persona, calendar_data, next_month_summary=""):
         """
         按事件类别优化事件的方法
 
@@ -3883,6 +3884,7 @@ class Scheduler:
             events: 原始事件列表
             persona: 人物画像数据
             calendar_data: 日历数据
+            next_month_summary: 上个月生成的用于指导下个月事件生成的总结文本
 
         返回:
             优化后的事件列表
@@ -4053,13 +4055,16 @@ class Scheduler:
         
         # 构建分析提示词
         operations_analysis_prompt = f'''
-        请基于以下人物画像、该月已有原事件数据和收集到对原数据修改的建议操作序列，分析并决定保留哪些操作。
-        
+        请基于以下人物画像、该月已有原事件数据、收集到的操作序列以及历史月份总结，分析并决定保留哪些操作。
+
         人物画像：{json.dumps(persona, ensure_ascii=False)}
-        
+
         该月已有原事件数据：{json.dumps(events, ensure_ascii=False)}
-        
+
         收集到的操作序列：{json.dumps(all_operations, ensure_ascii=False)}
+
+        历史月份总结（包含之前各月的重大事件及对后续月份的影响,注意人物画像会被历史月份总结所改变，优先参考历史月份总结中的信息而不是人物画像）：
+        {next_month_summary}
         
         操作类型说明：
         1. **add**（添加操作）：
@@ -4210,12 +4215,13 @@ class Scheduler:
 
         return final_optimized_events
 
-    def process_single_month(self, month_data):
+    def process_single_month(self, month_data, next_month_summary=""):
             """
             处理单个月数据的内部方法
 
             参数:
                 month_data: 单个月的数据，可能包含profile_changes_context字段
+                next_month_summary: 上个月生成的用于指导下个月事件生成的总结文本
 
             返回:
                 优化后的单个月数据
@@ -4260,7 +4266,8 @@ class Scheduler:
                 calendar_data=calendar_data,
                 event_ids=event_ids,
                 profile_changes_context=profile_changes_context_str,
-                previous_month_final_status=previous_month_final_status_str
+                previous_month_final_status=previous_month_final_status_str,
+                next_month_summary=next_month_summary
             )
             print(monthly_data_str)
             print(f"调用LLM分析{month}的事件...")
@@ -4312,7 +4319,8 @@ class Scheduler:
                 month=month,
                 events=optimized_events,
                 persona=self.persona,
-                calendar_data=calendar_data
+                calendar_data=calendar_data,
+                next_month_summary=next_month_summary
             )
             print(f"完成{month}的事件类别优化")
 
@@ -4373,11 +4381,12 @@ class Scheduler:
         # 串行处理每个月的数据
         results = []
         previous_analysis = None
-        
+        previous_next_month_summary = ""  # 用于存储上个月生成的下个月指导总结
+
         for month_data in sorted_month_details:
             month = month_data["month"]
             print(f"\n开始处理{month}的数据...")
-            
+
             # 准备事件规划的输入数据
             # 如果有前一个月的分析结果，提取profile_changes和final_day_status作为背景
             if previous_analysis and 'transition_analysis' in previous_analysis:
@@ -4387,9 +4396,9 @@ class Scheduler:
                 # 将final_day_status添加到month_data中作为背景信息
                 month_data['previous_month_final_status'] = prev_transition_analysis.get('final_day_status', {})
                 print(f"使用前一个月的profile_changes和final_day_status作为{month}的背景信息")
-            
-            # 处理单个月的事件规划
-            result = self.process_single_month(month_data)
+
+            # 处理单个月的事件规划，传入上个月生成的下个月指导总结
+            result = self.process_single_month(month_data, next_month_summary=previous_next_month_summary)
             
             # # 将每个月的原始结果保存到record文件中
             # record_dir = os.path.join(os.path.dirname(__file__), '../output/new/refine')
@@ -4454,13 +4463,26 @@ class Scheduler:
             
             # 添加到分析结果字典
             optimized_timeline['analysis_results'][month] = month_analysis_results
-            
+
             # 更新previous_analysis为当前月份的所有分析结果
             previous_analysis = {
                 'health_analysis': health_result,
                 'life_analysis': life_result,
                 'transition_analysis': transition_result
             }
+
+            # 生成下个月指导总结，拼接到全年总结中
+            print(f"生成{month}的下个月指导总结...")
+            current_next_month_summary = refiner.generate_next_month_summary(
+                month_data=result,
+                persona=self.persona,
+                previous_summary=previous_next_month_summary
+            )
+            if previous_next_month_summary:
+                previous_next_month_summary += f"\n\n=== {month} ===\n" + current_next_month_summary
+            else:
+                previous_next_month_summary = f"=== {month} ===\n" + current_next_month_summary
+            print(f"{month}的下个月指导总结生成完成")
 
         # 为所有id为0的事件统一分配新id（从全年最大id开始递增）
         all_events = []
@@ -4519,6 +4541,9 @@ class Scheduler:
         # with open(final_output_file, 'w', encoding='utf-8') as f:
         #     json.dump(optimized_timeline, f, ensure_ascii=False, indent=2)
         # print(f"\n最终调整过ID的月度规划结果已保存到: {final_output_file}")
+
+        # 保存全年总结到self属性
+        self.yearly_summary = previous_next_month_summary
 
         return optimized_timeline
     def process_monthly_details(self, monthly_details_data, output_file_prefix):
@@ -5084,7 +5109,8 @@ class Scheduler:
                 split_date=split_date_str,
                 health_result=health_analysis,
                 life_result=life_analysis,
-                month_transition_analysis=month_transition_data
+                month_transition_analysis=month_transition_data,
+                yearly_summary=self.yearly_summary
             )
             
             print(f"完成处理 {month} 月份的daily_event_refine")
