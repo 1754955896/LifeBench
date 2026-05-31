@@ -76,8 +76,10 @@ venv.bak/
 # Data & generated outputs
 tests/
 config/config.json
-# 模型权重
-src/lifebench/event/local_models/
+# 模型权重（只跟踪目录结构，不跟踪文件内容）
+!src/lifebench/event/local_models/
+src/lifebench/event/local_models/*
+!src/lifebench/event/local_models/.gitkeep
 
 # Local libraries
 lib/
