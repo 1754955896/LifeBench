@@ -392,7 +392,7 @@ class EventTree:
                        - name：事件名称（简洁明了）。
                        - date：时间数组（单个日期/多个日期，粒度≤1天；跨天事件用"至"连接，如["2025-01-01至2025-01-03"]）。
                        - type：取值范围（必选其一）：Career、Education、Relationships、Family&Living Situation、Personal Life、Finance、Health、Unexpected Events、Other。
-                       - description：事件详细描述（包含执行动作、目的、场景）。
+                       - **description：事件详细描述，必须完整描述整个事件的全部内容过程，包括：事件的具体动作和执行过程、涉及的所有人物及其角色、发生的具体地点和环境背景。描述要具体、完整、不遗漏关键信息，让读者能通过description完整了解事件的来龙去脉。**
                        - participant：参与者数组，格式：[{{"name":"姓名","relation":"关系"}}]，优先从用户画像选择；无合适关系可合理编造，自己参与则为[{{"name":"自己名字","relation":"自己"}}]。
                        - location：城市+POI类别描述（如"上海市-家中书房"、"杭州市-灵隐寺"）。
                        - **decompose：0（原子事件，时间跨度小于一天），1=需要继续分解（时间跨度大于一天）。一定要检查，若子事件date中含至，即跨度大于1天，一定要decompose=1**
@@ -496,7 +496,7 @@ class EventTree:
                       - name：事件名称（简洁明了）。
                       - **date：时间数组（单个日期/多个日期，粒度≤1天，日期格式为XXXX-XX-XX,如["2025-01-01"]，不允许使用跨天区间格式（如["2025-01-01至2025-02-01"]）。**
                       - type：取值范围（必选其一）：Career、Education、Relationships、Family&Living Situation、Personal Life、Finance、Health、Unexpected Events、Other。
-                      - description：事件详细描述（包含执行动作、目的、场景）。
+                      - **description：事件详细描述，必须完整描述整个事件的全部内容过程，包括：事件的具体动作和执行步骤、涉及的所有人物及其角色、发生的具体地点和环境背景。描述要具体、完整、不遗漏关键信息，让读者能通过description完整了解事件的来龙去脉。**
                       - participant：参与者数组，格式：[{{"name":"姓名","relation":"关系"}}]，优先从用户画像选择；无合适关系可合理编造，自己参与则为[{{"name":"自己名字","relation":"自己"}}]。
                       - location：城市+POI类别描述（如"上海市-家中书房"、"杭州市-灵隐寺"）。
                       - decompose：0=无需继续分解（原子事件）。

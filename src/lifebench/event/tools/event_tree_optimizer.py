@@ -33,18 +33,18 @@ def get_all_event_ids(base_path):
             for atomic_id in event.get('atomic_id', []):
                 all_ids.add(str(atomic_id))
 
-    # 2. 从 phone_data 收集 event_id
-    phone_data_dir = os.path.join(base_path, 'phone_data')
-    if os.path.exists(phone_data_dir):
-        for fname in os.listdir(phone_data_dir):
-            if fname.endswith('.json'):
-                try:
-                    phone_data = load_json(os.path.join(phone_data_dir, fname))
-                    for record in phone_data:
-                        for eid in record.get('event_id', []):
-                            all_ids.add(str(eid))
-                except:
-                    pass
+    # # 2. 从 phone_data 收集 event_id
+    # phone_data_dir = os.path.join(base_path, 'phone_data')
+    # if os.path.exists(phone_data_dir):
+    #     for fname in os.listdir(phone_data_dir):
+    #         if fname.endswith('.json'):
+    #             try:
+    #                 phone_data = load_json(os.path.join(phone_data_dir, fname))
+    #                 for record in phone_data:
+    #                     for eid in record.get('event_id', []):
+    #                         all_ids.add(str(eid))
+    #             except:
+    #                 pass
 
     print(f"共收集到 {len(all_ids)} 个有效 event_id")
     return all_ids
@@ -131,31 +131,55 @@ def analyze_node_consistency(node, children_info):
     if not children_info:
         return None
 
-    prompt = f"""你是一名事件分析专家，请分析以下父事件与其子事件的关系：
+    node_json = json.dumps(node, ensure_ascii=False)
 
-父事件：{node.get('name', '')}
-父事件描述：{node.get('description', '')[:200]}
+    prompt = f"""你是一名事件分析专家，请基于子事件分析父事件的一致性与合理性。
 
-子事件：
+父事件（完整JSON）：
+{node_json}
+
+子事件列表：
 {children_info}
 
-任务：
-1. 判断子节点是否缺少重要过程（删除/遗漏），若缺少了重要过程则删除，或者子节点是否与父节点对应，如果子节点与父节点不对应，不正确，则删除。
-2. 如果不缺，判断父事件描述是否与子事件一致
+字段说明：
+- name：父事件名称，简短概括事件核心内容
+- description：父事件详细描述，包含时间、地点、人物、事件经过等完整信息
+- date：父事件日期，可能为单个日期或日期范围（如 ["2025-01-15"] 或 ["2025-01-15至2025-01-20"]）
 
-输出JSON格式：
+分析流程（分两阶段）：
+
+【阶段一：子事件完整性检查 - 删除决策】
+将所有子事件视为一个整体，分析：
+1. 这些子事件能否串联成一个连贯的整体事件？事件发展是否顺畅合理？
+2. 整个过程是否基本充分（允许缺少一些细节，但主要步骤不能缺失）？
+3. 若子事件明显缺少主要步骤，不能构成一个完整的事件逻辑链，则标记 delete
+
+若存在上述问题，输出：
 {{
-    "missing_important": true/false,
-    "description_match": true/false,
+    "action": "delete",
+    "reason": "具体说明为什么子事件不能构成连贯整体事件"
+}}
+
+【阶段二：父事件优化决策 - 重写/保持】
+在子事件能构成连贯整体（无删除）的前提下：
+1. 判断父事件的 name、description、date 是否与子事件集合信息一致
+2. 若不一致，选择 rewrite；否则选择 keep
+
+若无需删除，输出：
+{{
+    "action": "rewrite"/"keep",
     "reason": "分析原因",
-    "action": "keep"/"delete"/"rewrite",
-    "rewritten_description": "如果需要重写，输出新的描述"
+    "rewritten_node": {{
+        "name": "重写后的父事件名称（仅 rewrite 时填写）",
+        "description": "重写后的父事件描述（仅 rewrite 时填写）",
+        "date": ["重写后的日期（仅 rewrite 时填写）"]
+    }}
 }}
 """
 
     try:
-        from src.lifebench.utils.llm_call import llm_call_j
-        response = llm_call_j(prompt)
+        from src.lifebench.utils.llm_call import llm_call_reason_j
+        response = llm_call_reason_j(prompt)
         start = response.find('{')
         end = response.rfind('}')
         if start != -1 and end != -1 and start < end:
@@ -290,8 +314,15 @@ def optimize_tree_single(tree, results_to_delete, deletion_logs):
                     parent_id = str(parent.get('event_id', ''))
                     if parent_id not in processed and parent_id not in results_to_delete:
                         process_queue.append(id_to_node[parent_id])
-            elif result.get('action') == 'rewrite' and result.get('rewritten_description'):
-                node_info['event']['description'] = result['rewritten_description']
+            elif result.get('action') == 'rewrite' and result.get('rewritten_node'):
+                # 只替换 name、description、date 字段
+                rewritten = result['rewritten_node']
+                if 'name' in rewritten:
+                    node_info['event']['name'] = rewritten['name']
+                if 'description' in rewritten:
+                    node_info['event']['description'] = rewritten['description']
+                if 'date' in rewritten:
+                    node_info['event']['date'] = rewritten['date']
 
 
 def optimize_tree_parallel(event_tree, max_workers=20):

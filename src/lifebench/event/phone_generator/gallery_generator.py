@@ -6,7 +6,7 @@
 import json
 import random
 from typing import List, Dict
-from src.lifebench.utils.llm_call import llm_call, llm_call_j
+from src.lifebench.utils.llm_call import llm_call, llm_call_j,llm_call_reason_j
 
 
 class GalleryOperationGenerator:
@@ -322,7 +322,7 @@ class GalleryOperationGenerator:
         '''
         prompt = template.format(daily_events=res, persona=extool.persona)
         print(prompt)
-        a = llm_call_j(prompt)
+        a = llm_call_reason_j(prompt)
         print(a)
         a = self.parse_llm_prob_json(a)
 
@@ -466,7 +466,7 @@ class GalleryOperationGenerator:
         prompt = template.format(instruct=instruction, event=res, persona=extool.persona,date=date)
         # 保存 daily_event 数据，避免被后续 LLM 返回结果覆盖
         daily_events_backup = res
-        res = llm_call_j(prompt)
+        res = llm_call_reason_j(prompt)
         print(res)
         res = self.remove_json_wrapper(res, "array")
         data = json.loads(res)
