@@ -1,0 +1,4795 @@
+[
+  {
+    "type": "call",
+    "phoneNumber": "+8613098765432",
+    "contactName": "王秀芳",
+    "datetime": "2025-01-01 09:15:00",
+    "datetime_end": "2025-01-01 09:20:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5",
+    "event_id": [
+      "1-3"
+    ],
+    "phone_id": 0
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-01-02 16:15:00",
+    "datetime_end": "2025-01-02 16:17:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "29",
+    "event_id": [
+      "2-2"
+    ],
+    "phone_id": 1
+  },
+  {
+    "type": "call",
+    "phoneNumber": "18634567890",
+    "contactName": "王鹏",
+    "datetime": "2025-01-03 11:20:00",
+    "datetime_end": "2025-01-03 11:25:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "40",
+    "event_id": [],
+    "phone_id": 2
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13711223344",
+    "contactName": "张伟",
+    "datetime": "2025-01-05 11:02:00",
+    "datetime_end": "2025-01-05 11:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "68",
+    "event_id": [
+      "3-1"
+    ],
+    "phone_id": 3
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13156789012",
+    "contactName": "高志远",
+    "datetime": "2025-01-06 17:35:00",
+    "datetime_end": "2025-01-06 17:40:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "92",
+    "event_id": [
+      "200-3",
+      "206-1-1"
+    ],
+    "phone_id": 4
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13156789012",
+    "contactName": "高志远",
+    "datetime": "2025-01-07 14:26:00",
+    "datetime_end": "2025-01-07 14:27:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "107",
+    "event_id": [
+      "200-4"
+    ],
+    "phone_id": 5
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-01-08 13:40:00",
+    "datetime_end": "2025-01-08 13:43:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "124",
+    "event_id": [],
+    "phone_id": 6
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13156789012",
+    "contactName": "高志远",
+    "datetime": "2025-01-09 09:10:00",
+    "datetime_end": "2025-01-09 09:12:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "140",
+    "event_id": [],
+    "phone_id": 7
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613956789012",
+    "contactName": "张伟",
+    "datetime": "2025-01-10 12:50:00",
+    "datetime_end": "2025-01-10 12:52:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "162",
+    "event_id": [
+      "202-3",
+      "202-4"
+    ],
+    "phone_id": 8
+  },
+  {
+    "type": "call",
+    "phoneNumber": "400-888-6666",
+    "contactName": "泥土实验室",
+    "datetime": "2025-01-11 09:50:00",
+    "datetime_end": "2025-01-11 09:52:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "173",
+    "event_id": [
+      "109-1"
+    ],
+    "phone_id": 9
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "赵建国",
+    "datetime": "2025-01-12 10:30:00",
+    "datetime_end": "2025-01-12 10:33:15",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "189",
+    "event_id": [],
+    "phone_id": 10
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-01-13 08:15:00",
+    "datetime_end": "2025-01-13 08:20:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "204",
+    "event_id": [],
+    "phone_id": 11
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13156789012",
+    "contactName": "高志远",
+    "datetime": "2025-01-14 15:30:00",
+    "datetime_end": "2025-01-14 15:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "227",
+    "event_id": [
+      "206-1-5"
+    ],
+    "phone_id": 12
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-01-15 08:35:00",
+    "datetime_end": "2025-01-15 08:37:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "239",
+    "event_id": [
+      "206-2"
+    ],
+    "phone_id": 13
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612345678",
+    "contactName": "徐明",
+    "datetime": "2025-01-16 21:05:00",
+    "datetime_end": "2025-01-16 21:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "266",
+    "event_id": [
+      "203-3"
+    ],
+    "phone_id": 14
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-01-17 11:50:00",
+    "datetime_end": "2025-01-17 11:52:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "273",
+    "event_id": [],
+    "phone_id": 15
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-01-18 16:25:00",
+    "datetime_end": "2025-01-18 16:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "297",
+    "event_id": [
+      "209-4"
+    ],
+    "phone_id": 16
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-01-20 15:25:00",
+    "datetime_end": "2025-01-20 15:27:15",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "331",
+    "event_id": [
+      "207-2"
+    ],
+    "phone_id": 17
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-01-23 16:05:00",
+    "datetime_end": "2025-01-23 16:07:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "382",
+    "event_id": [
+      "207-6"
+    ],
+    "phone_id": 18
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-01-24 17:05:00",
+    "datetime_end": "2025-01-24 17:08:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "403",
+    "event_id": [
+      "211-2"
+    ],
+    "phone_id": 19
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613698765432",
+    "contactName": "陈浩",
+    "datetime": "2025-01-25 13:46:00",
+    "datetime_end": "2025-01-25 13:49:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "417",
+    "event_id": [],
+    "phone_id": 20
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612345678",
+    "contactName": "徐明",
+    "datetime": "2025-01-26 18:30:00",
+    "datetime_end": "2025-01-26 18:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "431",
+    "event_id": [],
+    "phone_id": 21
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-01-27 08:50:00",
+    "datetime_end": "2025-01-27 08:52:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "441",
+    "event_id": [],
+    "phone_id": 22
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-01-28 14:00:00",
+    "datetime_end": "2025-01-28 14:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "462",
+    "event_id": [],
+    "phone_id": 23
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613098765432",
+    "contactName": "王秀芳",
+    "datetime": "2025-01-29 21:45:00",
+    "datetime_end": "2025-01-29 21:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "483",
+    "event_id": [],
+    "phone_id": 24
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13711223344",
+    "contactName": "张伟",
+    "datetime": "2025-01-30 09:35:00",
+    "datetime_end": "2025-01-30 09:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "488",
+    "event_id": [
+      "205-2"
+    ],
+    "phone_id": 25
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613665432109",
+    "contactName": "叶明远",
+    "datetime": "2025-01-31 18:00:00",
+    "datetime_end": "2025-01-31 18:05:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "513",
+    "event_id": [],
+    "phone_id": 26
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613800123456",
+    "contactName": "王中介",
+    "datetime": "2025-02-03 08:20:00",
+    "datetime_end": "2025-02-03 08:25:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "547",
+    "event_id": [
+      "14-3"
+    ],
+    "phone_id": 27
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613956789012",
+    "contactName": "张伟",
+    "datetime": "2025-02-05 12:30:00",
+    "datetime_end": "2025-02-05 12:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "580",
+    "event_id": [
+      "15-4"
+    ],
+    "phone_id": 28
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-02-06 11:40:00",
+    "datetime_end": "2025-02-06 11:45:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "595",
+    "event_id": [
+      "16-3"
+    ],
+    "phone_id": 29
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-02-07 11:35:00",
+    "datetime_end": "2025-02-07 11:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "611",
+    "event_id": [
+      "16-4"
+    ],
+    "phone_id": 30
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-02-11 18:10:00",
+    "datetime_end": "2025-02-11 18:11:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "685",
+    "event_id": [
+      "216-2-2",
+      "216-2-3"
+    ],
+    "phone_id": 32
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-02-12 10:45:00",
+    "datetime_end": "2025-02-12 10:47:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "697",
+    "event_id": [],
+    "phone_id": 33
+  },
+  {
+    "type": "call",
+    "phoneNumber": "18823456789",
+    "contactName": "李想",
+    "datetime": "2025-02-13 10:00:00",
+    "datetime_end": "2025-02-13 10:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "713",
+    "event_id": [
+      "214-1"
+    ],
+    "phone_id": 34
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-02-15 11:55:00",
+    "datetime_end": "2025-02-15 11:57:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "748",
+    "event_id": [
+      "216-2-5"
+    ],
+    "phone_id": 35
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-02-17 08:10:00",
+    "datetime_end": "2025-02-17 08:12:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "776",
+    "event_id": [
+      "216-3-2"
+    ],
+    "phone_id": 37
+  },
+  {
+    "type": "call",
+    "phoneNumber": "18823456789",
+    "contactName": "李想",
+    "datetime": "2025-02-17 09:50:00",
+    "datetime_end": "2025-02-17 09:53:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "779",
+    "event_id": [],
+    "phone_id": 38
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-02-19 11:35:00",
+    "datetime_end": "2025-02-19 11:38:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "808",
+    "event_id": [],
+    "phone_id": 39
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13711223344",
+    "contactName": "高志远",
+    "datetime": "2025-02-20 09:10:00",
+    "datetime_end": "2025-02-20 09:12:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "823",
+    "event_id": [
+      "217-1"
+    ],
+    "phone_id": 40
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613678901234",
+    "contactName": "钱建国",
+    "datetime": "2025-02-22 10:35:00",
+    "datetime_end": "2025-02-22 10:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "856",
+    "event_id": [
+      "215-1",
+      "215-2"
+    ],
+    "phone_id": 41
+  },
+  {
+    "type": "call",
+    "phoneNumber": "400-800-8888",
+    "contactName": "当当客服",
+    "datetime": "2025-02-23 11:30:00",
+    "datetime_end": "2025-02-23 11:31:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "871",
+    "event_id": [],
+    "phone_id": 42
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613678901234",
+    "contactName": "钱建国",
+    "datetime": "2025-02-24 09:00:00",
+    "datetime_end": "2025-02-24 09:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "886",
+    "event_id": [
+      "215-3"
+    ],
+    "phone_id": 43
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-02-25 10:35:00",
+    "datetime_end": "2025-02-25 10:38:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "897",
+    "event_id": [],
+    "phone_id": 44
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-02-26 14:00:00",
+    "datetime_end": "2025-02-26 14:03:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "911",
+    "event_id": [
+      "222-2"
+    ],
+    "phone_id": 45
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13234567890",
+    "contactName": "周涛",
+    "datetime": "2025-02-27 11:35:00",
+    "datetime_end": "2025-02-27 11:37:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "926",
+    "event_id": [
+      "222-3"
+    ],
+    "phone_id": 46
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-02-28 19:00:00",
+    "datetime_end": "2025-02-28 19:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "950",
+    "event_id": [
+      "17-5"
+    ],
+    "phone_id": 47
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-03-03 17:15:00",
+    "datetime_end": "2025-03-03 17:16:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1004",
+    "event_id": [
+      "37-1-1"
+    ],
+    "phone_id": 49
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-03-05 08:05:00",
+    "datetime_end": "2025-03-05 08:07:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1031",
+    "event_id": [],
+    "phone_id": 50
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-03-07 09:30:00",
+    "datetime_end": "2025-03-07 09:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1065",
+    "event_id": [],
+    "phone_id": 51
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-03-08 13:05:00",
+    "datetime_end": "2025-03-08 13:05:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1085",
+    "event_id": [
+      "25-3"
+    ],
+    "phone_id": 52
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13711223344",
+    "contactName": "张伟",
+    "datetime": "2025-03-09 14:30:00",
+    "datetime_end": "2025-03-09 14:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1097",
+    "event_id": [
+      "25-7"
+    ],
+    "phone_id": 53
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612345678",
+    "contactName": "徐明",
+    "datetime": "2025-03-10 20:55:00",
+    "datetime_end": "2025-03-10 21:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1118",
+    "event_id": [],
+    "phone_id": 54
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-03-11 13:35:00",
+    "datetime_end": "2025-03-11 13:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1128",
+    "event_id": [
+      "26-3",
+      "26-4"
+    ],
+    "phone_id": 55
+  },
+  {
+    "type": "call",
+    "phoneNumber": "18823456789",
+    "contactName": "李想",
+    "datetime": "2025-03-12 14:30:00",
+    "datetime_end": "2025-03-12 14:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1144",
+    "event_id": [
+      "26-5"
+    ],
+    "phone_id": 56
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-03-13 07:55:00",
+    "datetime_end": "2025-03-13 07:56:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1159",
+    "event_id": [
+      "26-6"
+    ],
+    "phone_id": 57
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-03-14 07:20:00",
+    "datetime_end": "2025-03-14 07:22:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1174",
+    "event_id": [],
+    "phone_id": 58
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13711223344",
+    "contactName": "张伟",
+    "datetime": "2025-03-16 09:40:00",
+    "datetime_end": "2025-03-16 09:42:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1210",
+    "event_id": [
+      "28-2"
+    ],
+    "phone_id": 59
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-03-18 13:40:00",
+    "datetime_end": "2025-03-18 13:43:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1259",
+    "event_id": [
+      "231-2"
+    ],
+    "phone_id": 60
+  },
+  {
+    "type": "call",
+    "phoneNumber": "4008001234",
+    "contactName": "海泰物业",
+    "datetime": "2025-03-19 08:15:00",
+    "datetime_end": "2025-03-19 08:16:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1270",
+    "event_id": [
+      "110-3",
+      "110-4"
+    ],
+    "phone_id": 61
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-03-21 08:05:00",
+    "datetime_end": "2025-03-21 08:08:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1300",
+    "event_id": [],
+    "phone_id": 62
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-03-22 08:05:00",
+    "datetime_end": "2025-03-22 08:07:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1319",
+    "event_id": [],
+    "phone_id": 63
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "赵建国",
+    "datetime": "2025-03-23 20:15:00",
+    "datetime_end": "2025-03-23 20:20:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1347",
+    "event_id": [
+      "23-4"
+    ],
+    "phone_id": 64
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13956789012",
+    "contactName": "李明",
+    "datetime": "2025-03-24 08:30:00",
+    "datetime_end": "2025-03-24 09:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1353",
+    "event_id": [
+      "227-1"
+    ],
+    "phone_id": 65
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-03-25 07:45:00",
+    "datetime_end": "2025-03-25 07:46:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1368",
+    "event_id": [],
+    "phone_id": 66
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-03-26 11:45:00",
+    "datetime_end": "2025-03-26 11:48:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1390",
+    "event_id": [],
+    "phone_id": 67
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-03-27 20:30:00",
+    "datetime_end": "2025-03-27 20:35:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1416",
+    "event_id": [],
+    "phone_id": 68
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-03-28 09:30:00",
+    "datetime_end": "2025-03-28 09:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1419",
+    "event_id": [],
+    "phone_id": 69
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-03-29 08:30:00",
+    "datetime_end": "2025-03-29 08:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1434",
+    "event_id": [
+      "139-1"
+    ],
+    "phone_id": 70
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-03-30 09:40:00",
+    "datetime_end": "2025-03-30 09:45:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1449",
+    "event_id": [],
+    "phone_id": 71
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13711223344",
+    "contactName": "张伟",
+    "datetime": "2025-03-31 07:30:00",
+    "datetime_end": "2025-03-31 07:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1463",
+    "event_id": [],
+    "phone_id": 72
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-03-31 17:45:00",
+    "datetime_end": "2025-03-31 17:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1469",
+    "event_id": [],
+    "phone_id": 73
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-04-01 10:00:00",
+    "datetime_end": "2025-04-01 10:05:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1479",
+    "event_id": [],
+    "phone_id": 74
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-04-02 17:25:00",
+    "datetime_end": "2025-04-02 17:28:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1501",
+    "event_id": [],
+    "phone_id": 75
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-04-03 16:35:00",
+    "datetime_end": "2025-04-03 16:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1514",
+    "event_id": [
+      "235-1-2"
+    ],
+    "phone_id": 76
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-04-04 12:15:00",
+    "datetime_end": "2025-04-04 12:18:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1529",
+    "event_id": [],
+    "phone_id": 77
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "周涛",
+    "datetime": "2025-04-05 08:15:00",
+    "datetime_end": "2025-04-05 08:16:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1541",
+    "event_id": [
+      "37-1-4"
+    ],
+    "phone_id": 78
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13711223344",
+    "contactName": "张伟",
+    "datetime": "2025-04-06 08:05:00",
+    "datetime_end": "2025-04-06 08:08:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1550",
+    "event_id": [],
+    "phone_id": 79
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-04-07 15:20:00",
+    "datetime_end": "2025-04-07 15:23:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1574",
+    "event_id": [
+      "235-1-4"
+    ],
+    "phone_id": 80
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-04-08 17:10:00",
+    "datetime_end": "2025-04-08 17:12:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1591",
+    "event_id": [],
+    "phone_id": 81
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-04-09 13:15:00",
+    "datetime_end": "2025-04-09 13:20:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1603",
+    "event_id": [
+      "235-1-6"
+    ],
+    "phone_id": 82
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-04-09 19:05:00",
+    "datetime_end": "2025-04-09 19:08:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1606",
+    "event_id": [],
+    "phone_id": 83
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "徐明",
+    "datetime": "2025-04-10 20:30:00",
+    "datetime_end": "2025-04-10 20:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1627",
+    "event_id": [
+      "33-6",
+      "33-7"
+    ],
+    "phone_id": 84
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612345678",
+    "contactName": "徐明",
+    "datetime": "2025-04-11 20:00:00",
+    "datetime_end": "2025-04-11 22:00:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1645",
+    "event_id": [
+      "237-1",
+      "237-3",
+      "237-4",
+      "237-5"
+    ],
+    "phone_id": 85
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613123456789",
+    "contactName": "王健",
+    "datetime": "2025-04-13 11:10:00",
+    "datetime_end": "2025-04-13 11:12:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1671",
+    "event_id": [],
+    "phone_id": 86
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-04-14 11:00:00",
+    "datetime_end": "2025-04-14 11:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1683",
+    "event_id": [],
+    "phone_id": 87
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618634567890",
+    "contactName": "王鹏",
+    "datetime": "2025-04-15 08:30:00",
+    "datetime_end": "2025-04-15 08:32:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1697",
+    "event_id": [
+      "236-2"
+    ],
+    "phone_id": 88
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-04-16 08:45:00",
+    "datetime_end": "2025-04-16 08:46:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1715",
+    "event_id": [
+      "235-2"
+    ],
+    "phone_id": 89
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-04-17 08:20:00",
+    "datetime_end": "2025-04-17 08:22:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1728",
+    "event_id": [
+      "236-5"
+    ],
+    "phone_id": 90
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-04-18 17:00:00",
+    "datetime_end": "2025-04-18 17:01:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1749",
+    "event_id": [],
+    "phone_id": 91
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-04-19 18:00:00",
+    "datetime_end": "2025-04-19 18:02:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1768",
+    "event_id": [
+      "37-5"
+    ],
+    "phone_id": 92
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-04-20 15:45:00",
+    "datetime_end": "2025-04-20 15:47:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1783",
+    "event_id": [],
+    "phone_id": 93
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-04-22 08:35:00",
+    "datetime_end": "2025-04-22 08:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1803",
+    "event_id": [],
+    "phone_id": 94
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-04-23 15:25:00",
+    "datetime_end": "2025-04-23 15:30:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1825",
+    "event_id": [
+      "239-1"
+    ],
+    "phone_id": 95
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "赵建国",
+    "datetime": "2025-04-24 21:30:00",
+    "datetime_end": "2025-04-24 22:00:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1849",
+    "event_id": [
+      "120-5"
+    ],
+    "phone_id": 96
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613811223344",
+    "contactName": "刘洋",
+    "datetime": "2025-04-25 19:20:00",
+    "datetime_end": "2025-04-25 19:22:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1862",
+    "event_id": [
+      "238-1"
+    ],
+    "phone_id": 97
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613811223344",
+    "contactName": "刘洋",
+    "datetime": "2025-04-26 22:20:00",
+    "datetime_end": "2025-04-26 22:25:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1882",
+    "event_id": [
+      "238-4"
+    ],
+    "phone_id": 98
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-04-27 15:00:00",
+    "datetime_end": "2025-04-27 15:03:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1891",
+    "event_id": [],
+    "phone_id": 99
+  },
+  {
+    "type": "call",
+    "phoneNumber": "4008828828",
+    "contactName": "招商银行",
+    "datetime": "2025-04-28 09:05:00",
+    "datetime_end": "2025-04-28 09:06:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1905",
+    "event_id": [
+      "41-1"
+    ],
+    "phone_id": 100
+  },
+  {
+    "type": "call",
+    "phoneNumber": "18634567890",
+    "contactName": "王鹏",
+    "datetime": "2025-04-29 10:00:00",
+    "datetime_end": "2025-04-29 10:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1923",
+    "event_id": [],
+    "phone_id": 101
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-04-30 12:15:00",
+    "datetime_end": "2025-04-30 12:18:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1939",
+    "event_id": [],
+    "phone_id": 102
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13711223344",
+    "contactName": "张伟",
+    "datetime": "2025-04-30 21:05:00",
+    "datetime_end": "2025-04-30 21:10:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1945",
+    "event_id": [],
+    "phone_id": 103
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613567891234",
+    "contactName": "孙静",
+    "datetime": "2025-05-02 07:40:00",
+    "datetime_end": "2025-05-02 07:41:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1967",
+    "event_id": [
+      "43-6"
+    ],
+    "phone_id": 105
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "未知来电",
+    "datetime": "2025-05-04 17:35:00",
+    "datetime_end": "2025-05-04 17:36:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2005",
+    "event_id": [],
+    "phone_id": 106
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613678901234",
+    "contactName": "钱建国",
+    "datetime": "2025-05-05 11:45:00",
+    "datetime_end": "2025-05-05 11:47:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2021",
+    "event_id": [
+      "47-2"
+    ],
+    "phone_id": 107
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-05-06 08:10:00",
+    "datetime_end": "2025-05-06 08:12:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2033",
+    "event_id": [],
+    "phone_id": 108
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-05-06 17:40:00",
+    "datetime_end": "2025-05-06 17:45:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2038",
+    "event_id": [],
+    "phone_id": 109
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618634567890",
+    "contactName": "王鹏",
+    "datetime": "2025-05-08 15:30:00",
+    "datetime_end": "2025-05-08 15:34:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2068",
+    "event_id": [
+      "242-1"
+    ],
+    "phone_id": 110
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613098765432",
+    "contactName": "陈骁",
+    "datetime": "2025-05-11 18:25:00",
+    "datetime_end": "2025-05-11 18:28:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2120",
+    "event_id": [
+      "145-4-2"
+    ],
+    "phone_id": 111
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613123456789",
+    "contactName": "王健",
+    "datetime": "2025-05-12 08:00:00",
+    "datetime_end": "2025-05-12 08:04:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2125",
+    "event_id": [],
+    "phone_id": 112
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀芳",
+    "datetime": "2025-05-13 08:45:00",
+    "datetime_end": "2025-05-13 08:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2134",
+    "event_id": [],
+    "phone_id": 113
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-05-14 19:40:00",
+    "datetime_end": "2025-05-14 19:41:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2160",
+    "event_id": [
+      "45-4"
+    ],
+    "phone_id": 114
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-05-15 08:05:00",
+    "datetime_end": "2025-05-15 08:07:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2169",
+    "event_id": [],
+    "phone_id": 115
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13156789012",
+    "contactName": "高志远",
+    "datetime": "2025-05-16 08:35:00",
+    "datetime_end": "2025-05-16 08:35:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2189",
+    "event_id": [
+      "46-2-4"
+    ],
+    "phone_id": 116
+  },
+  {
+    "type": "call",
+    "phoneNumber": "18823456789",
+    "contactName": "李想",
+    "datetime": "2025-05-17 11:35:00",
+    "datetime_end": "2025-05-17 11:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2206",
+    "event_id": [
+      "112-3",
+      "112-2"
+    ],
+    "phone_id": 117
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-05-20 07:20:00",
+    "datetime_end": "2025-05-20 07:22:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2260",
+    "event_id": [
+      "3-5",
+      "48-3",
+      "48-2",
+      "48-4"
+    ],
+    "phone_id": 118
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613856789012",
+    "contactName": "高志远",
+    "datetime": "2025-05-21 08:10:00",
+    "datetime_end": "2025-05-21 08:15:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2277",
+    "event_id": [],
+    "phone_id": 119
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-05-22 10:00:00",
+    "datetime_end": "2025-05-22 10:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2295",
+    "event_id": [
+      "49-1"
+    ],
+    "phone_id": 120
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-05-23 10:15:00",
+    "datetime_end": "2025-05-23 10:18:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2310",
+    "event_id": [],
+    "phone_id": 121
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-05-26 19:40:00",
+    "datetime_end": "2025-05-26 19:42:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2366",
+    "event_id": [
+      "46-3-1"
+    ],
+    "phone_id": 123
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-05-27 13:30:00",
+    "datetime_end": "2025-05-27 13:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2378",
+    "event_id": [],
+    "phone_id": 124
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618634567890",
+    "contactName": "王鹏",
+    "datetime": "2025-05-28 09:00:00",
+    "datetime_end": "2025-05-28 09:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2393",
+    "event_id": [
+      "46-3-3"
+    ],
+    "phone_id": 125
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-05-29 14:00:00",
+    "datetime_end": "2025-05-29 14:03:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2415",
+    "event_id": [],
+    "phone_id": 126
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-05-30 16:45:00",
+    "datetime_end": "2025-05-30 16:47:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2433",
+    "event_id": [
+      "124-1"
+    ],
+    "phone_id": 127
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-05-31 19:20:00",
+    "datetime_end": "2025-05-31 19:23:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2454",
+    "event_id": [
+      "145-4-2"
+    ],
+    "phone_id": 128
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613123456789",
+    "contactName": "王健",
+    "datetime": "2025-06-01 10:05:00",
+    "datetime_end": "2025-06-01 10:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2462",
+    "event_id": [
+      "241-4"
+    ],
+    "phone_id": 129
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-06-02 08:00:00",
+    "datetime_end": "2025-06-02 08:02:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2477",
+    "event_id": [
+      "51-1-1"
+    ],
+    "phone_id": 130
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-06-03 08:32:00",
+    "datetime_end": "2025-06-03 08:37:00",
+    "direction": 0,
+    "call_result": "未接通",
+    "daily_event_id": "2497",
+    "event_id": [
+      "51-1-2"
+    ],
+    "phone_id": 131
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-06-04 08:10:00",
+    "datetime_end": "2025-06-04 08:13:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2515",
+    "event_id": [],
+    "phone_id": 132
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-06-05 06:40:00",
+    "datetime_end": "2025-06-05 06:41:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2533",
+    "event_id": [],
+    "phone_id": 133
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-06-08 08:00:00",
+    "datetime_end": "2025-06-08 08:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2585",
+    "event_id": [],
+    "phone_id": 134
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-06-09 08:45:00",
+    "datetime_end": "2025-06-09 08:47:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2602",
+    "event_id": [
+      "51-3-1"
+    ],
+    "phone_id": 135
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-06-11 20:05:00",
+    "datetime_end": "2025-06-11 20:07:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2647",
+    "event_id": [
+      "0-3-1"
+    ],
+    "phone_id": 136
+  },
+  {
+    "type": "call",
+    "phoneNumber": "18823456789",
+    "contactName": "李想",
+    "datetime": "2025-06-12 09:00:00",
+    "datetime_end": "2025-06-12 09:03:20",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2656",
+    "event_id": [
+      "52-1-4"
+    ],
+    "phone_id": 137
+  },
+  {
+    "type": "call",
+    "phoneNumber": "18823456789",
+    "contactName": "李想",
+    "datetime": "2025-06-13 07:30:00",
+    "datetime_end": "2025-06-13 07:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2667",
+    "event_id": [
+      "171-2"
+    ],
+    "phone_id": 138
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613811223344",
+    "contactName": "刘洋",
+    "datetime": "2025-06-14 11:50:00",
+    "datetime_end": "2025-06-14 11:54:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2688",
+    "event_id": [
+      "53-3"
+    ],
+    "phone_id": 139
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613098765432",
+    "contactName": "王秀芳",
+    "datetime": "2025-06-14 18:20:00",
+    "datetime_end": "2025-06-14 18:25:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2695",
+    "event_id": [
+      "54-3"
+    ],
+    "phone_id": 140
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-06-15 05:30:00",
+    "datetime_end": "2025-06-15 05:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2701",
+    "event_id": [
+      "145-5"
+    ],
+    "phone_id": 141
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-06-16 12:30:00",
+    "datetime_end": "2025-06-16 12:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2720",
+    "event_id": [],
+    "phone_id": 142
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613678901234",
+    "contactName": "李老板",
+    "datetime": "2025-06-17 14:15:00",
+    "datetime_end": "2025-06-17 14:18:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2733",
+    "event_id": [],
+    "phone_id": 143
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-06-18 10:45:00",
+    "datetime_end": "2025-06-18 10:47:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2746",
+    "event_id": [],
+    "phone_id": 144
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "赵建国",
+    "datetime": "2025-06-19 12:30:00",
+    "datetime_end": "2025-06-19 12:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2762",
+    "event_id": [
+      "53-6"
+    ],
+    "phone_id": 145
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13956789012",
+    "contactName": "张炜",
+    "datetime": "2025-06-20 16:45:00",
+    "datetime_end": "2025-06-20 16:48:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2781",
+    "event_id": [
+      "55-4",
+      "55-5"
+    ],
+    "phone_id": 146
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613665432109",
+    "contactName": "叶明远",
+    "datetime": "2025-06-21 16:00:00",
+    "datetime_end": "2025-06-21 16:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2795",
+    "event_id": [
+      "54-5-3"
+    ],
+    "phone_id": 147
+  },
+  {
+    "type": "call",
+    "contactName": "王鹏",
+    "phoneNumber": "18634567890",
+    "datetime": "2025-06-22 08:00:00",
+    "datetime_end": "2025-06-22 08:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2806",
+    "event_id": [
+      "52-2"
+    ],
+    "phone_id": 148
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-06-24 11:45:00",
+    "datetime_end": "2025-06-24 11:46:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2831",
+    "event_id": [],
+    "phone_id": 149
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-06-25 07:50:00",
+    "datetime_end": "2025-06-25 07:53:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2846",
+    "event_id": [
+      "52-3"
+    ],
+    "phone_id": 150
+  },
+  {
+    "type": "call",
+    "phoneNumber": "18634567890",
+    "contactName": "王鹏",
+    "datetime": "2025-06-26 10:00:00",
+    "datetime_end": "2025-06-26 10:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2862",
+    "event_id": [
+      "52-4"
+    ],
+    "phone_id": 151
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13234567890",
+    "contactName": "周涛",
+    "datetime": "2025-06-27 14:30:00",
+    "datetime_end": "2025-06-27 14:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2877",
+    "event_id": [],
+    "phone_id": 152
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895623",
+    "contactName": "李想",
+    "datetime": "2025-06-28 11:35:00",
+    "datetime_end": "2025-06-28 11:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2889",
+    "event_id": [],
+    "phone_id": 153
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "鑫达家电维修",
+    "datetime": "2025-06-29 08:35:00",
+    "datetime_end": "2025-06-29 08:39:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2900",
+    "event_id": [
+      "175-2"
+    ],
+    "phone_id": 154
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-07-01 06:25:00",
+    "datetime_end": "2025-07-01 06:27:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2911",
+    "event_id": [],
+    "phone_id": 155
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13711223344",
+    "contactName": "张伟",
+    "datetime": "2025-07-02 08:00:00",
+    "datetime_end": "2025-07-02 08:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2926",
+    "event_id": [],
+    "phone_id": 156
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-07-03 11:00:00",
+    "datetime_end": "2025-07-03 11:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2943",
+    "event_id": [],
+    "phone_id": 157
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613887654321",
+    "contactName": "刘文涛",
+    "datetime": "2025-07-04 08:00:00",
+    "datetime_end": "2025-07-04 08:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2956",
+    "event_id": [],
+    "phone_id": 158
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613098765432",
+    "contactName": "张伟",
+    "datetime": "2025-07-05 07:30:00",
+    "datetime_end": "2025-07-05 07:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2973",
+    "event_id": [],
+    "phone_id": 159
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618634567890",
+    "contactName": "王鹏",
+    "datetime": "2025-07-06 11:00:00",
+    "datetime_end": "2025-07-06 11:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2995",
+    "event_id": [
+      "58-3",
+      "166-1"
+    ],
+    "phone_id": 160
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613900000001",
+    "contactName": "张师傅",
+    "datetime": "2025-07-07 13:20:00",
+    "datetime_end": "2025-07-07 13:22:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3011",
+    "event_id": [
+      "256-2"
+    ],
+    "phone_id": 161
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀芳",
+    "datetime": "2025-07-08 08:40:00",
+    "datetime_end": "2025-07-08 08:43:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3023",
+    "event_id": [],
+    "phone_id": 162
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-07-09 12:30:00",
+    "datetime_end": "2025-07-09 12:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3042",
+    "event_id": [],
+    "phone_id": 163
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8615800000000",
+    "contactName": "刘经理",
+    "datetime": "2025-07-10 10:00:00",
+    "datetime_end": "2025-07-10 10:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3054",
+    "event_id": [],
+    "phone_id": 164
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-07-11 07:10:00",
+    "datetime_end": "2025-07-11 07:13:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3064",
+    "event_id": [],
+    "phone_id": 165
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-07-12 12:00:00",
+    "datetime_end": "2025-07-12 12:02:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3088",
+    "event_id": [
+      "165-3"
+    ],
+    "phone_id": 166
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-07-14 08:10:00",
+    "datetime_end": "2025-07-14 08:11:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3114",
+    "event_id": [],
+    "phone_id": 167
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613611112222",
+    "contactName": "王工",
+    "datetime": "2025-07-15 14:35:00",
+    "datetime_end": "2025-07-15 14:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3133",
+    "event_id": [],
+    "phone_id": 168
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613800112233",
+    "contactName": "刘师傅",
+    "datetime": "2025-07-16 08:25:00",
+    "datetime_end": "2025-07-16 08:27:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3148",
+    "event_id": [
+      "258-4"
+    ],
+    "phone_id": 169
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-07-17 12:10:00",
+    "datetime_end": "2025-07-17 12:15:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3166",
+    "event_id": [],
+    "phone_id": 170
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-07-18 08:00:00",
+    "datetime_end": "2025-07-18 08:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3184",
+    "event_id": [],
+    "phone_id": 171
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-07-19 18:10:00",
+    "datetime_end": "2025-07-19 18:13:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3203",
+    "event_id": [],
+    "phone_id": 172
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-07-21 08:20:00",
+    "datetime_end": "2025-07-21 08:22:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3223",
+    "event_id": [
+      "177-1"
+    ],
+    "phone_id": 174
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-07-22 08:20:00",
+    "datetime_end": "2025-07-22 08:22:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3233",
+    "event_id": [
+      "177-2"
+    ],
+    "phone_id": 175
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-07-23 07:43:00",
+    "datetime_end": "2025-07-23 07:44:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3248",
+    "event_id": [
+      "177-3"
+    ],
+    "phone_id": 176
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-07-24 08:00:00",
+    "datetime_end": "2025-07-24 08:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3262",
+    "event_id": [
+      "168-2"
+    ],
+    "phone_id": 177
+  },
+  {
+    "type": "call",
+    "phoneNumber": "18634567890",
+    "contactName": "王鹏",
+    "datetime": "2025-07-25 13:35:00",
+    "datetime_end": "2025-07-25 13:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3281",
+    "event_id": [
+      "262-5",
+      "262-4",
+      "262-3",
+      "262-1"
+    ],
+    "phone_id": 178
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613098765432",
+    "contactName": "王秀兰",
+    "datetime": "2025-07-26 08:20:00",
+    "datetime_end": "2025-07-26 08:25:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3292",
+    "event_id": [
+      "256-5"
+    ],
+    "phone_id": 179
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-07-28 08:05:00",
+    "datetime_end": "2025-07-28 08:08:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3314",
+    "event_id": [],
+    "phone_id": 180
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13234567890",
+    "contactName": "周涛",
+    "datetime": "2025-07-29 08:00:00",
+    "datetime_end": "2025-07-29 08:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3331",
+    "event_id": [],
+    "phone_id": 181
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-07-30 18:30:00",
+    "datetime_end": "2025-07-30 18:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3355",
+    "event_id": [
+      "179-3",
+      "179-4",
+      "180-1"
+    ],
+    "phone_id": 182
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613698765432",
+    "contactName": "陈浩",
+    "datetime": "2025-07-31 16:00:00",
+    "datetime_end": "2025-07-31 16:04:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3366",
+    "event_id": [
+      "255-5"
+    ],
+    "phone_id": 183
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613800123456",
+    "contactName": "李刚",
+    "datetime": "2025-08-01 13:40:00",
+    "datetime_end": "2025-08-01 13:43:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3380",
+    "event_id": [],
+    "phone_id": 184
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613699887766",
+    "contactName": "李娜",
+    "datetime": "2025-08-02 15:10:00",
+    "datetime_end": "2025-08-02 15:12:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3398",
+    "event_id": [],
+    "phone_id": 185
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-08-03 09:15:00",
+    "datetime_end": "2025-08-03 09:17:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3410",
+    "event_id": [],
+    "phone_id": 186
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-08-04 08:10:00",
+    "datetime_end": "2025-08-04 08:13:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3421",
+    "event_id": [],
+    "phone_id": 187
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-08-05 08:00:00",
+    "datetime_end": "2025-08-05 08:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3440",
+    "event_id": [],
+    "phone_id": 188
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-08-06 12:25:00",
+    "datetime_end": "2025-08-06 12:27:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3462",
+    "event_id": [
+      "181-2"
+    ],
+    "phone_id": 189
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-08-07 17:30:00",
+    "datetime_end": "2025-08-07 17:32:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3477",
+    "event_id": [
+      "181-3"
+    ],
+    "phone_id": 190
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-08-08 08:10:00",
+    "datetime_end": "2025-08-08 08:12:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3488",
+    "event_id": [],
+    "phone_id": 191
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-08-09 13:00:00",
+    "datetime_end": "2025-08-09 13:05:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3512",
+    "event_id": [
+      "182-1"
+    ],
+    "phone_id": 192
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613665432109",
+    "contactName": "叶明远",
+    "datetime": "2025-08-10 16:35:00",
+    "datetime_end": "2025-08-10 16:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3531",
+    "event_id": [
+      "65-3",
+      "181-4",
+      "181-5"
+    ],
+    "phone_id": 193
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-08-11 08:05:00",
+    "datetime_end": "2025-08-11 08:08:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3541",
+    "event_id": [],
+    "phone_id": 194
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-08-12 08:30:00",
+    "datetime_end": "2025-08-12 08:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3559",
+    "event_id": [],
+    "phone_id": 195
+  },
+  {
+    "type": "call",
+    "phoneNumber": "18823456789",
+    "contactName": "李想",
+    "datetime": "2025-08-13 08:30:00",
+    "datetime_end": "2025-08-13 08:32:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3579",
+    "event_id": [
+      "265-3"
+    ],
+    "phone_id": 196
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-08-14 10:00:00",
+    "datetime_end": "2025-08-14 10:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3597",
+    "event_id": [
+      "265-4"
+    ],
+    "phone_id": 197
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-08-15 08:10:00",
+    "datetime_end": "2025-08-15 08:12:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3613",
+    "event_id": [
+      "266-2"
+    ],
+    "phone_id": 198
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-08-17 08:50:00",
+    "datetime_end": "2025-08-17 08:53:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3651",
+    "event_id": [
+      "68-1"
+    ],
+    "phone_id": 199
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613887654321",
+    "contactName": "刘文涛",
+    "datetime": "2025-08-18 22:45:00",
+    "datetime_end": "2025-08-18 22:47:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3676",
+    "event_id": [
+      "159-4",
+      "161-1"
+    ],
+    "phone_id": 200
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-08-19 11:10:00",
+    "datetime_end": "2025-08-19 11:13:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3683",
+    "event_id": [],
+    "phone_id": 201
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-08-21 08:10:00",
+    "datetime_end": "2025-08-21 08:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3711",
+    "event_id": [],
+    "phone_id": 202
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-08-22 09:00:00",
+    "datetime_end": "2025-08-22 09:02:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3726",
+    "event_id": [],
+    "phone_id": 203
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-08-23 16:35:00",
+    "datetime_end": "2025-08-23 16:37:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3746",
+    "event_id": [
+      "267-1"
+    ],
+    "phone_id": 204
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8615512345678",
+    "contactName": "刘工",
+    "datetime": "2025-08-24 08:40:00",
+    "datetime_end": "2025-08-24 08:42:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3752",
+    "event_id": [
+      "115-6"
+    ],
+    "phone_id": 205
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613956789012",
+    "contactName": "张伟",
+    "datetime": "2025-08-25 12:45:00",
+    "datetime_end": "2025-08-25 12:55:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3774",
+    "event_id": [
+      "185-3"
+    ],
+    "phone_id": 206
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613956789012",
+    "contactName": "张伟",
+    "datetime": "2025-08-26 12:15:00",
+    "datetime_end": "2025-08-26 12:20:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3790",
+    "event_id": [
+      "186-2",
+      "187-1"
+    ],
+    "phone_id": 207
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-08-27 10:30:00",
+    "datetime_end": "2025-08-27 10:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3803",
+    "event_id": [],
+    "phone_id": 208
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-08-29 08:10:00",
+    "datetime_end": "2025-08-29 08:13:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3832",
+    "event_id": [],
+    "phone_id": 209
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-08-29 09:30:00",
+    "datetime_end": "2025-08-29 09:35:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3834",
+    "event_id": [],
+    "phone_id": 210
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-08-31 06:35:00",
+    "datetime_end": "2025-08-31 06:36:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3863",
+    "event_id": [],
+    "phone_id": 211
+  },
+  {
+    "type": "call",
+    "phoneNumber": "022-58888888",
+    "contactName": "羽峰羽毛球馆",
+    "datetime": "2025-08-31 09:30:00",
+    "datetime_end": "2025-08-31 09:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3865",
+    "event_id": [],
+    "phone_id": 212
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613611112222",
+    "contactName": "王强",
+    "datetime": "2025-09-01 15:00:00",
+    "datetime_end": "2025-09-01 15:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3881",
+    "event_id": [
+      "71-2-1",
+      "169-6-1",
+      "71-1"
+    ],
+    "phone_id": 213
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613678901234",
+    "contactName": "钱建国",
+    "datetime": "2025-09-02 17:10:00",
+    "datetime_end": "2025-09-02 17:12:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3901",
+    "event_id": [
+      "269-2",
+      "74-2"
+    ],
+    "phone_id": 214
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-09-03 13:20:00",
+    "datetime_end": "2025-09-03 13:22:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3912",
+    "event_id": [
+      "71-2-3"
+    ],
+    "phone_id": 215
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-09-04 08:28:00",
+    "datetime_end": "2025-09-04 08:30:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3926",
+    "event_id": [
+      "169-6-2",
+      "71-2-6"
+    ],
+    "phone_id": 216
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-09-05 07:00:00",
+    "datetime_end": "2025-09-05 07:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3938",
+    "event_id": [],
+    "phone_id": 217
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-09-06 08:10:00",
+    "datetime_end": "2025-09-06 08:13:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3956",
+    "event_id": [
+      "272-2"
+    ],
+    "phone_id": 218
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618634567890",
+    "contactName": "王鹏",
+    "datetime": "2025-09-08 10:40:00",
+    "datetime_end": "2025-09-08 10:42:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3983",
+    "event_id": [
+      "71-3",
+      "71-4-1"
+    ],
+    "phone_id": 219
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-09-09 06:50:00",
+    "datetime_end": "2025-09-09 06:53:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3995",
+    "event_id": [],
+    "phone_id": 220
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "张工",
+    "datetime": "2025-09-09 08:35:00",
+    "datetime_end": "2025-09-09 08:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4000",
+    "event_id": [],
+    "phone_id": 221
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-09-10 06:30:00",
+    "datetime_end": "2025-09-10 06:32:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4014",
+    "event_id": [],
+    "phone_id": 222
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8615612345678",
+    "contactName": "天津恒达代表",
+    "datetime": "2025-09-11 13:50:00",
+    "datetime_end": "2025-09-11 13:53:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4041",
+    "event_id": [
+      "71-4-4"
+    ],
+    "phone_id": 223
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-09-12 09:05:00",
+    "datetime_end": "2025-09-12 09:08:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4053",
+    "event_id": [
+      "71-4-5"
+    ],
+    "phone_id": 224
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-09-14 10:30:00",
+    "datetime_end": "2025-09-14 10:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4088",
+    "event_id": [
+      "74-3"
+    ],
+    "phone_id": 225
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶明远",
+    "datetime": "2025-09-16 21:00:00",
+    "datetime_end": "2025-09-16 21:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4132",
+    "event_id": [
+      "193-2"
+    ],
+    "phone_id": 226
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-09-17 12:00:00",
+    "datetime_end": "2025-09-17 12:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4142",
+    "event_id": [
+      "71-6-4"
+    ],
+    "phone_id": 227
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8615800000001",
+    "contactName": "王强",
+    "datetime": "2025-09-18 14:40:00",
+    "datetime_end": "2025-09-18 14:42:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4163",
+    "event_id": [
+      "71-8"
+    ],
+    "phone_id": 228
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-09-19 08:00:00",
+    "datetime_end": "2025-09-19 08:05:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4173",
+    "event_id": [],
+    "phone_id": 229
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "叶建国",
+    "datetime": "2025-09-20 08:00:00",
+    "datetime_end": "2025-09-20 08:02:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4185",
+    "event_id": [],
+    "phone_id": 230
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13156789012",
+    "contactName": "高志远",
+    "datetime": "2025-09-21 10:30:00",
+    "datetime_end": "2025-09-21 10:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4203",
+    "event_id": [
+      "78-3"
+    ],
+    "phone_id": 231
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-09-22 21:20:00",
+    "datetime_end": "2025-09-22 21:23:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4229",
+    "event_id": [
+      "78-6"
+    ],
+    "phone_id": 232
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-09-23 06:40:00",
+    "datetime_end": "2025-09-23 06:43:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4231",
+    "event_id": [],
+    "phone_id": 233
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-09-24 08:30:00",
+    "datetime_end": "2025-09-24 08:32:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4248",
+    "event_id": [],
+    "phone_id": 234
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618634567890",
+    "contactName": "王鹏",
+    "datetime": "2025-09-25 08:10:00",
+    "datetime_end": "2025-09-25 08:13:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4263",
+    "event_id": [],
+    "phone_id": 235
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-09-26 17:10:00",
+    "datetime_end": "2025-09-26 17:13:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4286",
+    "event_id": [
+      "193-3"
+    ],
+    "phone_id": 236
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613699887766",
+    "contactName": "李娜",
+    "datetime": "2025-09-27 14:30:00",
+    "datetime_end": "2025-09-27 14:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4298",
+    "event_id": [],
+    "phone_id": 237
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-09-28 18:36:00",
+    "datetime_end": "2025-09-28 18:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4315",
+    "event_id": [
+      "193-6"
+    ],
+    "phone_id": 238
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-09-29 12:15:00",
+    "datetime_end": "2025-09-29 12:18:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4328",
+    "event_id": [],
+    "phone_id": 239
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613665432109",
+    "contactName": "叶明远",
+    "datetime": "2025-09-30 07:10:00",
+    "datetime_end": "2025-09-30 07:13:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4339",
+    "event_id": [],
+    "phone_id": 240
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13711223344",
+    "contactName": "张伟",
+    "datetime": "2025-10-01 11:15:00",
+    "datetime_end": "2025-10-01 11:20:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4363",
+    "event_id": [],
+    "phone_id": 241
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8615898765432",
+    "contactName": "郑凯",
+    "datetime": "2025-10-02 12:30:00",
+    "datetime_end": "2025-10-02 12:32:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4380",
+    "event_id": [],
+    "phone_id": 242
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-10-03 15:50:00",
+    "datetime_end": "2025-10-03 15:53:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4398",
+    "event_id": [
+      "194-2",
+      "195-2"
+    ],
+    "phone_id": 243
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613698765432",
+    "contactName": "陈浩",
+    "datetime": "2025-10-04 21:25:00",
+    "datetime_end": "2025-10-04 21:27:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4420",
+    "event_id": [
+      "194-5",
+      "194-4"
+    ],
+    "phone_id": 244
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-10-05 18:20:00",
+    "datetime_end": "2025-10-05 18:22:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4433",
+    "event_id": [
+      "195-5"
+    ],
+    "phone_id": 245
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613678901234",
+    "contactName": "钱建国",
+    "datetime": "2025-10-07 07:20:00",
+    "datetime_end": "2025-10-07 07:22:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4458",
+    "event_id": [
+      "88-1-3"
+    ],
+    "phone_id": 246
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613098765432",
+    "contactName": "王秀芳",
+    "datetime": "2025-10-08 18:36:00",
+    "datetime_end": "2025-10-08 18:38:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4488",
+    "event_id": [
+      "156-2"
+    ],
+    "phone_id": 247
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-10-09 09:45:00",
+    "datetime_end": "2025-10-09 09:47:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4497",
+    "event_id": [
+      "82-5"
+    ],
+    "phone_id": 248
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-10-13 10:30:00",
+    "datetime_end": "2025-10-13 10:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4567",
+    "event_id": [
+      "87-3"
+    ],
+    "phone_id": 249
+  },
+  {
+    "type": "call",
+    "phoneNumber": "18634567890",
+    "contactName": "王鹏",
+    "datetime": "2025-10-14 09:05:00",
+    "datetime_end": "2025-10-14 09:06:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4583",
+    "event_id": [
+      "87-4"
+    ],
+    "phone_id": 250
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-10-15 08:05:00",
+    "datetime_end": "2025-10-15 08:07:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4598",
+    "event_id": [],
+    "phone_id": 251
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-10-17 14:35:00",
+    "datetime_end": "2025-10-17 14:38:15",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4637",
+    "event_id": [
+      "157-4"
+    ],
+    "phone_id": 252
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-10-17 15:30:00",
+    "datetime_end": "2025-10-17 15:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4638",
+    "event_id": [
+      "157-4"
+    ],
+    "phone_id": 253
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-10-18 08:00:00",
+    "datetime_end": "2025-10-18 08:01:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4645",
+    "event_id": [
+      "151-1"
+    ],
+    "phone_id": 254
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-10-19 10:00:00",
+    "datetime_end": "2025-10-19 10:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4662",
+    "event_id": [
+      "151-3"
+    ],
+    "phone_id": 255
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-10-20 09:00:00",
+    "datetime_end": "2025-10-20 09:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4676",
+    "event_id": [
+      "158-1"
+    ],
+    "phone_id": 256
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13156789012",
+    "contactName": "高志远",
+    "datetime": "2025-10-21 08:15:00",
+    "datetime_end": "2025-10-21 08:17:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4695",
+    "event_id": [
+      "276-4"
+    ],
+    "phone_id": 257
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13156789012",
+    "contactName": "高志远",
+    "datetime": "2025-10-22 07:25:00",
+    "datetime_end": "2025-10-22 07:27:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4716",
+    "event_id": [],
+    "phone_id": 258
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613678901234",
+    "contactName": "钱建国",
+    "datetime": "2025-10-23 19:35:00",
+    "datetime_end": "2025-10-23 19:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4742",
+    "event_id": [
+      "89-4-2"
+    ],
+    "phone_id": 259
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-10-24 08:01:00",
+    "datetime_end": "2025-10-24 08:03:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4747",
+    "event_id": [],
+    "phone_id": 260
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-10-25 08:15:00",
+    "datetime_end": "2025-10-25 08:18:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4759",
+    "event_id": [
+      "90-2"
+    ],
+    "phone_id": 261
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-10-26 08:00:00",
+    "datetime_end": "2025-10-26 08:01:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4778",
+    "event_id": [],
+    "phone_id": 262
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-10-27 10:30:00",
+    "datetime_end": "2025-10-27 10:33:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4793",
+    "event_id": [],
+    "phone_id": 263
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-10-28 08:10:00",
+    "datetime_end": "2025-10-28 08:12:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4808",
+    "event_id": [],
+    "phone_id": 264
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-10-29 10:25:00",
+    "datetime_end": "2025-10-29 10:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4822",
+    "event_id": [],
+    "phone_id": 265
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-10-30 10:00:00",
+    "datetime_end": "2025-10-30 10:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4841",
+    "event_id": [],
+    "phone_id": 266
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13234567890",
+    "contactName": "周涛",
+    "datetime": "2025-10-31 09:30:00",
+    "datetime_end": "2025-10-31 09:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4859",
+    "event_id": [
+      "91-3"
+    ],
+    "phone_id": 267
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-11-01 12:30:00",
+    "datetime_end": "2025-11-01 12:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4882",
+    "event_id": [
+      "92-1"
+    ],
+    "phone_id": 268
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-11-02 19:00:00",
+    "datetime_end": "2025-11-02 20:00:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4904",
+    "event_id": [
+      "92-2"
+    ],
+    "phone_id": 269
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-11-03 10:22:00",
+    "datetime_end": "2025-11-03 10:26:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4912",
+    "event_id": [
+      "92-3"
+    ],
+    "phone_id": 270
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618612345678",
+    "contactName": "王工",
+    "datetime": "2025-11-04 09:50:00",
+    "datetime_end": "2025-11-04 09:52:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4931",
+    "event_id": [
+      "93-1"
+    ],
+    "phone_id": 271
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-11-05 08:35:00",
+    "datetime_end": "2025-11-05 08:36:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4945",
+    "event_id": [
+      "92-5"
+    ],
+    "phone_id": 272
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613900001111",
+    "contactName": "张师傅",
+    "datetime": "2025-11-06 08:35:00",
+    "datetime_end": "2025-11-06 08:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4965",
+    "event_id": [
+      "93-3"
+    ],
+    "phone_id": 273
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613956789012",
+    "contactName": "张伟",
+    "datetime": "2025-11-07 07:45:00",
+    "datetime_end": "2025-11-07 07:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4982",
+    "event_id": [],
+    "phone_id": 274
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-11-08 12:05:00",
+    "datetime_end": "2025-11-08 12:06:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5001",
+    "event_id": [],
+    "phone_id": 275
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618823456789",
+    "contactName": "李想",
+    "datetime": "2025-11-09 13:30:00",
+    "datetime_end": "2025-11-09 13:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5015",
+    "event_id": [
+      "94-5",
+      "94-4"
+    ],
+    "phone_id": 276
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613901234567",
+    "contactName": "王先生",
+    "datetime": "2025-11-10 14:05:00",
+    "datetime_end": "2025-11-10 14:12:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5028",
+    "event_id": [
+      "95-1"
+    ],
+    "phone_id": 277
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-11-11 10:15:00",
+    "datetime_end": "2025-11-11 10:18:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5040",
+    "event_id": [],
+    "phone_id": 278
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613698765432",
+    "contactName": "陈浩",
+    "datetime": "2025-11-12 07:50:00",
+    "datetime_end": "2025-11-12 07:55:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5053",
+    "event_id": [],
+    "phone_id": 279
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-11-12 08:25:00",
+    "datetime_end": "2025-11-12 08:28:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5054",
+    "event_id": [],
+    "phone_id": 280
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613156789012",
+    "contactName": "高志远",
+    "datetime": "2025-11-14 10:30:00",
+    "datetime_end": "2025-11-14 10:32:00",
+    "direction": 2,
+    "call_result": "接通",
+    "daily_event_id": "5086",
+    "event_id": [
+      "97-1"
+    ],
+    "phone_id": 281
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613678901234",
+    "contactName": "钱建国",
+    "datetime": "2025-11-15 10:45:00",
+    "datetime_end": "2025-11-15 10:52:10",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5102",
+    "event_id": [
+      "125-1"
+    ],
+    "phone_id": 282
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613699887766",
+    "contactName": "李娜",
+    "datetime": "2025-11-16 10:35:00",
+    "datetime_end": "2025-11-16 10:40:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5119",
+    "event_id": [
+      "285-3"
+    ],
+    "phone_id": 283
+  },
+  {
+    "type": "call",
+    "phoneNumber": "4008308300",
+    "contactName": "华为授权服务中心",
+    "datetime": "2025-11-17 17:59:00",
+    "datetime_end": "2025-11-17 18:01:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5136",
+    "event_id": [
+      "197-3",
+      "198-1"
+    ],
+    "phone_id": 284
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-11-18 08:45:00",
+    "datetime_end": "2025-11-18 08:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5144",
+    "event_id": [],
+    "phone_id": 285
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13711223344",
+    "contactName": "张伟",
+    "datetime": "2025-11-19 07:00:00",
+    "datetime_end": "2025-11-19 07:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5153",
+    "event_id": [],
+    "phone_id": 286
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13156789012",
+    "contactName": "高志远",
+    "datetime": "2025-11-20 08:50:00",
+    "datetime_end": "2025-11-20 08:52:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5169",
+    "event_id": [],
+    "phone_id": 287
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-11-22 14:20:00",
+    "datetime_end": "2025-11-22 14:22:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5202",
+    "event_id": [
+      "116-6"
+    ],
+    "phone_id": 288
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-11-24 08:00:00",
+    "datetime_end": "2025-11-24 08:02:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5232",
+    "event_id": [],
+    "phone_id": 289
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-11-25 18:00:00",
+    "datetime_end": "2025-11-25 18:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5261",
+    "event_id": [
+      "163-5-3"
+    ],
+    "phone_id": 290
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13234567890",
+    "contactName": "王秀兰",
+    "datetime": "2025-11-26 12:00:00",
+    "datetime_end": "2025-11-26 12:01:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5272",
+    "event_id": [],
+    "phone_id": 291
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-11-26 17:35:00",
+    "datetime_end": "2025-11-26 17:37:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5275",
+    "event_id": [],
+    "phone_id": 292
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-11-28 10:50:00",
+    "datetime_end": "2025-11-28 10:53:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5298",
+    "event_id": [],
+    "phone_id": 293
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13098765432",
+    "contactName": "王秀芳",
+    "datetime": "2025-11-30 08:10:00",
+    "datetime_end": "2025-11-30 08:13:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5324",
+    "event_id": [],
+    "phone_id": 294
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-12-01 08:00:00",
+    "datetime_end": "2025-12-01 08:02:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5338",
+    "event_id": [],
+    "phone_id": 295
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-12-03 16:55:00",
+    "datetime_end": "2025-12-03 16:57:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5377",
+    "event_id": [
+      "290-3-1",
+      "290-3-3"
+    ],
+    "phone_id": 296
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613123456789",
+    "contactName": "王健",
+    "datetime": "2025-12-04 16:20:00",
+    "datetime_end": "2025-12-04 16:23:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5393",
+    "event_id": [
+      "290-1"
+    ],
+    "phone_id": 297
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-12-06 09:30:00",
+    "datetime_end": "2025-12-06 09:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5421",
+    "event_id": [],
+    "phone_id": 298
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613811223344",
+    "contactName": "刘洋",
+    "datetime": "2025-12-07 13:30:00",
+    "datetime_end": "2025-12-07 13:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5437",
+    "event_id": [
+      "138-5"
+    ],
+    "phone_id": 299
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618634567890",
+    "contactName": "王鹏",
+    "datetime": "2025-12-08 15:00:00",
+    "datetime_end": "2025-12-08 15:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5456",
+    "event_id": [
+      "119-1"
+    ],
+    "phone_id": 300
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8618634567890",
+    "contactName": "王鹏",
+    "datetime": "2025-12-09 12:10:00",
+    "datetime_end": "2025-12-09 12:12:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5468",
+    "event_id": [
+      "119-3"
+    ],
+    "phone_id": 301
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613887654321",
+    "contactName": "刘文涛",
+    "datetime": "2025-12-10 07:30:00",
+    "datetime_end": "2025-12-10 07:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5481",
+    "event_id": [],
+    "phone_id": 302
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-12-11 07:35:00",
+    "datetime_end": "2025-12-11 07:37:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5495",
+    "event_id": [],
+    "phone_id": 303
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-12-12 12:10:00",
+    "datetime_end": "2025-12-12 12:14:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5510",
+    "event_id": [
+      "291-3"
+    ],
+    "phone_id": 304
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13711223344",
+    "contactName": "张伟",
+    "datetime": "2025-12-13 09:10:00",
+    "datetime_end": "2025-12-13 09:12:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5526",
+    "event_id": [],
+    "phone_id": 305
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "赵晓峰",
+    "datetime": "2025-12-14 19:30:00",
+    "datetime_end": "2025-12-14 19:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5551",
+    "event_id": [
+      "291-4"
+    ],
+    "phone_id": 306
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-12-15 06:45:00",
+    "datetime_end": "2025-12-15 06:47:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5556",
+    "event_id": [],
+    "phone_id": 307
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613678901234",
+    "contactName": "钱建国",
+    "datetime": "2025-12-16 11:05:00",
+    "datetime_end": "2025-12-16 11:50:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5575",
+    "event_id": [
+      "101-3",
+      "101-4"
+    ],
+    "phone_id": 308
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-12-17 14:00:00",
+    "datetime_end": "2025-12-17 14:05:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5595",
+    "event_id": [],
+    "phone_id": 309
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895623",
+    "contactName": "叶建国",
+    "datetime": "2025-12-19 07:30:00",
+    "datetime_end": "2025-12-19 07:32:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5623",
+    "event_id": [],
+    "phone_id": 310
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-12-20 20:30:00",
+    "datetime_end": "2025-12-20 20:33:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5652",
+    "event_id": [],
+    "phone_id": 311
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613711223344",
+    "contactName": "张伟",
+    "datetime": "2025-12-22 08:20:00",
+    "datetime_end": "2025-12-22 08:23:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5668",
+    "event_id": [],
+    "phone_id": 312
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-12-23 11:35:00",
+    "datetime_end": "2025-12-23 11:36:30",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "5681",
+    "event_id": [],
+    "phone_id": 313
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-12-24 13:45:00",
+    "datetime_end": "2025-12-24 13:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5702",
+    "event_id": [],
+    "phone_id": 314
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13699887766",
+    "contactName": "李娜",
+    "datetime": "2025-12-25 19:40:00",
+    "datetime_end": "2025-12-25 19:45:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5725",
+    "event_id": [
+      "196-3"
+    ],
+    "phone_id": 315
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13678901234",
+    "contactName": "钱建国",
+    "datetime": "2025-12-25 20:10:00",
+    "datetime_end": "2025-12-25 21:00:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5726",
+    "event_id": [
+      "127-4",
+      "127-5"
+    ],
+    "phone_id": 316
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "赵建国",
+    "datetime": "2025-12-26 19:55:00",
+    "datetime_end": "2025-12-26 19:56:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5745",
+    "event_id": [
+      "105-2"
+    ],
+    "phone_id": 317
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613234567890",
+    "contactName": "周涛",
+    "datetime": "2025-12-29 11:25:00",
+    "datetime_end": "2025-12-29 11:26:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5779",
+    "event_id": [],
+    "phone_id": 318
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13912345678",
+    "contactName": "王主任",
+    "datetime": "2025-12-30 16:35:00",
+    "datetime_end": "2025-12-30 16:38:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5795",
+    "event_id": [
+      "129-5"
+    ],
+    "phone_id": 319
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800001111",
+    "contactName": "电信李师傅",
+    "datetime": "2025-05-30 16:50:00",
+    "datetime_end": "2025-05-30 16:55:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2434",
+    "event_id": [],
+    "phone_id": 322
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "张经理",
+    "datetime": "2025-01-03 16:10:00",
+    "datetime_end": "2025-01-03 16:22:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "44",
+    "event_id": [],
+    "phone_id": 323
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "王健",
+    "datetime": "2025-02-09 16:25:00",
+    "datetime_end": "2025-02-09 16:27:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "649",
+    "event_id": [],
+    "phone_id": 324
+  },
+  {
+    "type": "call",
+    "phoneNumber": "022-12345678",
+    "contactName": "津环检测",
+    "datetime": "2025-05-24 13:10:00",
+    "datetime_end": "2025-05-24 13:12:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2328",
+    "event_id": [],
+    "phone_id": 325
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13888886666",
+    "contactName": "张伟",
+    "datetime": "2025-03-13 20:52:00",
+    "datetime_end": "2025-03-13 20:53:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1171",
+    "event_id": [],
+    "phone_id": 326
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "高志远",
+    "datetime": "2025-04-10 16:00:00",
+    "datetime_end": "2025-04-10 16:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1620",
+    "event_id": [],
+    "phone_id": 327
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "李想",
+    "datetime": "2025-04-10 15:00:00",
+    "datetime_end": "2025-04-10 15:03:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1620",
+    "event_id": [],
+    "phone_id": 328
+  },
+  {
+    "type": "call",
+    "phoneNumber": "022-27639988",
+    "contactName": "中北镇社区医院",
+    "datetime": "2025-04-10 12:50:00",
+    "datetime_end": "2025-04-10 12:53:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1619",
+    "event_id": [],
+    "phone_id": 329
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-08-23 10:55:00",
+    "datetime_end": "2025-08-23 10:58:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3743",
+    "event_id": [],
+    "phone_id": 330
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "张伟",
+    "datetime": "2025-10-20 18:50:00",
+    "datetime_end": "2025-10-20 19:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4686",
+    "event_id": [],
+    "phone_id": 331
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138002",
+    "contactName": "王健",
+    "datetime": "2025-04-13 19:15:00",
+    "datetime_end": "2025-04-13 19:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1677",
+    "event_id": [],
+    "phone_id": 332
+  },
+  {
+    "type": "call",
+    "phoneNumber": "022-23714567",
+    "contactName": "社区医院护士",
+    "datetime": "2025-04-10 11:00:00",
+    "datetime_end": "2025-04-10 11:02:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1617",
+    "event_id": [],
+    "phone_id": 333
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13855501234",
+    "contactName": "吴斌",
+    "datetime": "2025-12-02 09:00:00",
+    "datetime_end": "2025-12-02 09:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5354",
+    "event_id": [],
+    "phone_id": 334
+  },
+  {
+    "type": "call",
+    "phoneNumber": "120",
+    "contactName": "急救中心",
+    "datetime": "2025-08-20 20:05:00",
+    "datetime_end": "2025-08-20 20:06:20",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3709",
+    "event_id": [],
+    "phone_id": 335
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "李明",
+    "datetime": "2025-03-16 14:05:00",
+    "datetime_end": "2025-03-16 14:10:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1216",
+    "event_id": [],
+    "phone_id": 336
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13821234567",
+    "contactName": "叶建国",
+    "datetime": "2025-03-17 07:20:00",
+    "datetime_end": "2025-03-17 07:30:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1229",
+    "event_id": [],
+    "phone_id": 337
+  },
+  {
+    "type": "call",
+    "phoneNumber": "95555",
+    "contactName": "招商银行客服",
+    "datetime": "2025-03-16 14:30:00",
+    "datetime_end": "2025-03-16 15:00:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "1217",
+    "event_id": [],
+    "phone_id": 338
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "王秀兰",
+    "datetime": "2025-07-01 12:00:00",
+    "datetime_end": "2025-07-01 12:02:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "2917",
+    "event_id": [],
+    "phone_id": 339
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "李想",
+    "datetime": "2025-04-02 10:35:00",
+    "datetime_end": "2025-04-02 10:45:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1493",
+    "event_id": [],
+    "phone_id": 340
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138002",
+    "contactName": "李想",
+    "datetime": "2025-01-08 13:10:00",
+    "datetime_end": "2025-01-08 13:13:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "122",
+    "event_id": [],
+    "phone_id": 341
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "造梦工坊",
+    "datetime": "2025-09-22 19:15:00",
+    "datetime_end": "2025-09-22 19:23:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4226",
+    "event_id": [],
+    "phone_id": 342
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "造梦工坊",
+    "datetime": "2025-09-21 14:00:00",
+    "datetime_end": "2025-09-21 14:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4204",
+    "event_id": [],
+    "phone_id": 343
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "叶建国",
+    "datetime": "2025-08-15 16:30:00",
+    "datetime_end": "2025-08-15 16:32:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3624",
+    "event_id": [],
+    "phone_id": 344
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "张伟",
+    "datetime": "2025-01-11 20:15:00",
+    "datetime_end": "2025-01-11 20:17:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "183",
+    "event_id": [],
+    "phone_id": 345
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "李师傅",
+    "datetime": "2025-12-18 09:50:00",
+    "datetime_end": "2025-12-18 09:51:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5608",
+    "event_id": [],
+    "phone_id": 346
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800001111",
+    "contactName": "经理",
+    "datetime": "2025-09-08 10:20:00",
+    "datetime_end": "2025-09-08 10:23:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3982",
+    "event_id": [],
+    "phone_id": 347
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138001",
+    "contactName": "鑫源钢材李经理",
+    "datetime": "2025-09-08 13:45:00",
+    "datetime_end": "2025-09-08 13:50:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3986",
+    "event_id": [],
+    "phone_id": 348
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13900139002",
+    "contactName": "宏达金属张总",
+    "datetime": "2025-09-08 14:00:00",
+    "datetime_end": "2025-09-08 14:08:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3986",
+    "event_id": [],
+    "phone_id": 349
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13700137003",
+    "contactName": "华信钢铁王主管",
+    "datetime": "2025-09-08 14:20:00",
+    "datetime_end": "2025-09-08 14:25:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3986",
+    "event_id": [],
+    "phone_id": 350
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13600136004",
+    "contactName": "通源特钢陈经理",
+    "datetime": "2025-09-08 15:10:00",
+    "datetime_end": "2025-09-08 15:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3986",
+    "event_id": [],
+    "phone_id": 351
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "王教练",
+    "datetime": "2025-12-19 21:12:00",
+    "datetime_end": "2025-12-19 21:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5630",
+    "event_id": [],
+    "phone_id": 352
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "赵建国",
+    "datetime": "2025-03-16 20:30:00",
+    "datetime_end": "2025-03-16 21:10:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "1224",
+    "event_id": [],
+    "phone_id": 353
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "深圳供应商技术代表",
+    "datetime": "2025-09-12 13:15:00",
+    "datetime_end": "2025-09-12 13:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4057",
+    "event_id": [],
+    "phone_id": 354
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "赵建国",
+    "datetime": "2025-02-18 22:00:00",
+    "datetime_end": "2025-02-18 22:35:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "803",
+    "event_id": [],
+    "phone_id": 355
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "吴斌",
+    "datetime": "2025-07-07 20:00:00",
+    "datetime_end": "2025-07-07 22:30:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "3018",
+    "event_id": [],
+    "phone_id": 356
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800001234",
+    "contactName": "高志远",
+    "datetime": "2025-08-09 15:00:00",
+    "datetime_end": "2025-08-09 15:10:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3513",
+    "event_id": [],
+    "phone_id": 357
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800001234",
+    "contactName": "张伟",
+    "datetime": "2025-12-06 13:30:00",
+    "datetime_end": "2025-12-06 16:00:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5425",
+    "event_id": [],
+    "phone_id": 358
+  },
+  {
+    "type": "call",
+    "phoneNumber": "120",
+    "contactName": "急救中心",
+    "datetime": "2025-08-20 19:46:00",
+    "datetime_end": "2025-08-20 19:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3708",
+    "event_id": [],
+    "phone_id": 359
+  },
+  {
+    "type": "call",
+    "phoneNumber": "隐去",
+    "contactName": "深圳厂商技术代表",
+    "datetime": "2025-09-12 13:15:00",
+    "datetime_end": "2025-09-12 13:35:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "4057",
+    "event_id": [],
+    "phone_id": 360
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800000000",
+    "contactName": "周涛",
+    "datetime": "2025-05-06 19:15:00",
+    "datetime_end": "2025-05-06 20:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2040",
+    "event_id": [],
+    "phone_id": 361
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "唐经理",
+    "datetime": "2025-12-12 09:00:00",
+    "datetime_end": "2025-12-12 09:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5507",
+    "event_id": [],
+    "phone_id": 362
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "母亲",
+    "datetime": "2025-11-15 19:45:00",
+    "datetime_end": "2025-11-15 20:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5111",
+    "event_id": [],
+    "phone_id": 363
+  },
+  {
+    "type": "call",
+    "phoneNumber": "022-12345678",
+    "contactName": "银行客户经理",
+    "datetime": "2025-06-05 10:15:00",
+    "datetime_end": "2025-06-05 10:18:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2537",
+    "event_id": [],
+    "phone_id": 364
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345600",
+    "contactName": "李阿姨",
+    "datetime": "2025-07-01 12:00:00",
+    "datetime_end": "2025-07-01 12:02:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2917",
+    "event_id": [],
+    "phone_id": 365
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "辣有道麻辣香锅",
+    "datetime": "2025-11-21 16:45:00",
+    "datetime_end": "2025-11-21 16:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "5186",
+    "event_id": [],
+    "phone_id": 366
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13888888888",
+    "contactName": "妈妈",
+    "datetime": "2025-07-06 21:15:00",
+    "datetime_end": "2025-07-06 21:15:30",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3001",
+    "event_id": [],
+    "phone_id": 367
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800001234",
+    "contactName": "张伟",
+    "datetime": "2025-02-10 07:45:00",
+    "datetime_end": "2025-02-10 07:48:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "658",
+    "event_id": [],
+    "phone_id": 368
+  },
+  {
+    "type": "call",
+    "phoneNumber": "4008205555",
+    "contactName": "张伟",
+    "datetime": "2025-02-11 15:10:00",
+    "datetime_end": "2025-02-11 15:12:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "681",
+    "event_id": [],
+    "phone_id": 369
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "周涛",
+    "datetime": "2025-05-07 09:00:00",
+    "datetime_end": "2025-05-07 09:15:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2047",
+    "event_id": [],
+    "phone_id": 370
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "周涛",
+    "datetime": "2025-09-12 12:15:00",
+    "datetime_end": "2025-09-12 12:20:00",
+    "direction": 0,
+    "call_result": "接通",
+    "daily_event_id": "4055",
+    "event_id": [],
+    "phone_id": 371
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "王秀芳",
+    "datetime": "2025-05-20 15:10:00",
+    "datetime_end": "2025-05-20 15:22:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "2267",
+    "event_id": [],
+    "phone_id": 372
+  },
+  {
+    "type": "call",
+    "phoneNumber": "022-xxxx",
+    "contactName": "供应商",
+    "datetime": "2025-09-08 13:20:00",
+    "datetime_end": "2025-09-08 13:25:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3985",
+    "event_id": [],
+    "phone_id": 373
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "赵晓峰",
+    "datetime": "2025-01-18 17:40:00",
+    "datetime_end": "2025-01-18 17:50:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "301",
+    "event_id": [],
+    "phone_id": 374
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "张伟",
+    "datetime": "2025-09-05 19:35:00",
+    "datetime_end": "2025-09-05 20:05:00",
+    "direction": 1,
+    "call_result": "接通",
+    "daily_event_id": "3950",
+    "event_id": [],
+    "phone_id": 375
+  }
+]
