@@ -1,7 +1,10 @@
 {
   "llm": {
     "api_key": "",
-    "base_url": "https://api.deepseek.com"
+    "base_url": "https://api.deepseek.com",
+    "default_model": "deepseek-v4-flash",
+    "reason_model": "deepseek-v4-pro",
+    "strip_think": false
   },
   "map_tool": {
     "api_key": ""
