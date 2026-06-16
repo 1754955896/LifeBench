@@ -635,7 +635,8 @@ class CommunicationOperationGenerator:
             '''
         
         # 获取 extool（需要从外部导入）
-        from src.lifebench.event.phone_data_gen import extool
+        if extool is None:
+            from src.lifebench.event.phone_data_gen import extool
         
         # 获取今日 daily_event
         res1 = extool.filter_by_date(date)
@@ -753,7 +754,9 @@ class CommunicationOperationGenerator:
         print(f"\n开始通信数据校验，共 {len(c)} 条数据...")
         
         # 获取用户姓名（从 persona 中提取）
-        user_name = extool.persona.get("name", "") or extool.persona.get("姓名", "")
+        user_name = ""
+        if isinstance(extool.persona, dict):
+            user_name = extool.persona.get("name", "") or extool.persona.get("姓名", "")
         if not user_name:
             print("警告：未找到用户姓名，跳过本人姓名检测")
         

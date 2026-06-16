@@ -225,7 +225,200 @@ class GalleryOperationGenerator:
         except Exception as e:
             return False, f"格式校验异常: {str(e)}"
     
-    def phone_gen_gallery(self, date, contact, file_path, extool=None):
+    def generate_main_scenario_photos(self, date, contact, file_path, extool=None):
+        """
+        生成主要场景照片的主方法
+        在phone_gen_gallery的第一轮LLM调用之前调用
+
+        Args:
+            date: 日期
+            contact: 联系人列表
+            file_path: 文件路径
+            extool: Data_extract 实例，如果为 None 则从模块导入
+
+        Returns:
+            生成的主要场景照片数据列表
+        """
+        if extool is None:
+            from src.lifebench.event.phone_data_gen import extool
+
+        # 过滤当日事件
+        res1 = extool.filter_by_date(date)
+        res = []
+        for i in range(len(res1)):
+            if "-" in res1[i]['event_id']:
+                continue
+            res.append(res1[i])
+
+        template = '''
+请基于<当日事件>和<个人画像>，分析并提取必定会产生照片的重要场景，并进行重要性分级。
+
+### 一、必定产生照片的场景类型
+以下类型的事件通常一定会产生照片：
+1. **旅行事件**：旅行、出游、景点打卡等
+2. **聚餐事件**：约会、聚餐、宴会、生日会等（注意日常饮食吃饭不被纳入）
+3. **重要节假日**：春节、中秋节、国庆节、情人节等重要节日
+4. **纪念节点**：生日、纪念日、毕业典礼、婚礼等重要个人节点
+5. **重大会议/活动**：发布会、颁奖典礼、重要会议等
+6. **摄影相关活动**：摄影爱好者参与的外拍活动等
+7. **不寻常，难遇到的事件**：如特殊活动、异常事件等
+请考虑事件的情景，如果用户过于忙或处于没有手机的状态是不能拍照的。
+
+### 二、重要性分级
+根据事件的规模和独特性分为三个等级：
+
+| 等级 | 照片数量 | 适用场景 |
+|------|----------|----------|
+| 1级 | 2-4张 | 不重要、不独特或较小的事件，如普通聚餐、小型聚会等 |
+| 2级 | 3-6张 | 中等重要性的事件，如正式聚餐、一般旅行游览等 |
+| 3级 | 5-10张 | 重要且独特的事件，如大型旅行、重要纪念日、毕业典礼等 |
+
+### 三、分析规则
+1. 逐事件分析，判断该事件是否属于"必定产生照片"的场景类型
+2. 如果属于，进一步判断其重要性等级
+3. 重要节假日、婚礼、毕业典礼等大型活动一般为3级
+4. 普通旅行游览一般为2级
+5. 小型聚餐、朋友聚会等一般为1级
+6. 结合个人画像中的兴趣、习惯等进行判断
+7. **重要说明**：每日最多提取3个重要场景；允许一个重要场景也没有（即当日无必定产生照片的事件）；过于日常、无拍照需求的事件不提取（如居家活动、常规通勤等）
+
+### 四、输出要求
+输出JSON数组，包含event_id和importance_level字段，无任何额外文本。如果无重要场景，输出空数组[]。示例：
+[
+  {{"event_id": "1", "importance_level": 3}},
+  {{"event_id": "3", "importance_level": 2}},
+  {{"event_id": "5", "importance_level": 1}}
+]
+]
+
+请基于<当日事件>：{daily_events}、<个人画像>：{persona}，输出必定会产生照片的事件及其重要性等级。
+        '''
+        prompt = template.format(daily_events=res, persona=extool.persona)
+        print(prompt)
+        a = llm_call_reason_j(prompt)
+        print(a)
+        a = self.remove_json_wrapper(a, "array")
+        main_scenario_events = json.loads(a)
+
+        if not main_scenario_events:
+            print("未找到必定产生照片的主要场景事件")
+            return []
+
+        # 获取需要生成主要场景照片的event_id列表
+        main_event_ids = [item['event_id'] for item in main_scenario_events]
+        # 建立event_id到importance_level的映射
+        importance_map = {item['event_id']: item.get('importance_level', 2) for item in main_scenario_events}
+        print(f"主要场景事件event_ids: {main_event_ids},重要性等级: {importance_map}")
+
+        # 筛选出主要场景事件
+        main_events = [e for e in res if e['event_id'] in main_event_ids]
+        if not main_events:
+            print("未找到匹配的主要场景事件")
+            return []
+
+        # 逐个事件生成照片数据
+        all_photos = []
+        for event in main_events:
+            event_id = event['event_id']
+            event_name = event.get('event_name', event.get('description', '未知事件'))
+            importance_level = importance_map.get(event_id, 2)
+            # 根据重要性等级确定照片数量范围
+            photo_count_map = {1: (2, 4), 2: (3, 6), 3: (5, 10)}
+            min_photos, max_photos = photo_count_map.get(importance_level, (3, 6))
+            print(f"\n为事件 {event_id} ({event_name}) 生成主要场景照片，重要性等级: {importance_level}, 生成 {min_photos}-{max_photos} 张...")
+
+            template = '''
+请基于<单个事件>和<个人画像>，为该重要场景生成多张照片，每张照片从不同角度/视角拍摄。
+
+### 日期约束
+- **当前关注的事件日期：{date}**
+- 所有时间字段的日期部分应以此日期为基准
+
+### 核心要求
+1. 生成{min_photos}-{max_photos} 张不同角度的照片，覆盖该场景的多个方面
+2. 不同照片应从不同视角、构图、氛围来拍摄
+3. 照片之间应有明显差异，避免重复，最好能体现不同的内容。
+4. 地点真实性：基于个人画像"常居地/常去地"生成真实层级化地点信息
+5. caption简洁明确：准确反映该照片的具体内容
+
+### 字段规则
+- event_id：严格沿用原事件唯一标识
+- type：固定"photo"
+- datetime：与事件时间一致或相近，格式"YYYY-MM-DD HH:MM:SS"，不同照片时间略有不同
+- location：嵌套对象（province、city、district、streetName、streetNumber、poi）
+- faceRecognition：联系人列表姓名数组/"无"/"XX 若干"
+- imageTag：2-4 个关键词
+- ocrText：仅导视牌/门票/海报/文档场景填写真实文字，其他填"无"
+- shoot_mode：正常拍照/夜景/人像/微距
+- image_size：四种格式之一
+
+### 单个事件
+{event}
+
+### 个人画像
+{persona}
+
+### 输出要求
+仅输出 JSON 数组，无任何额外文本。每个元素对应 1 张图片，按 datetime 升序排列。示例：
+[
+  {{
+    "event_id": "1",
+    "type": "photo",
+    "caption": "李华在西湖断桥打卡，身后有湖面游船雷峰塔",
+    "title": "IMG_20231001_143025",
+    "datetime": "2023-10-01 14:30:25",
+    "location": {{
+      "province": "浙江省",
+      "city": "杭州市",
+      "district": "西湖区",
+      "streetName": "北山街",
+      "streetNumber": "XX 号",
+      "poi": "西湖断桥景区"
+    }},
+    "faceRecognition": ["李华"],
+    "imageTag": ["西湖", "断桥", "游船", "雷峰塔"],
+    "ocrText": "无",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024"
+  }},
+  {{
+    "event_id": "1",
+    "type": "photo",
+    "caption": "雷峰塔远景，夕阳下的西湖水面",
+    "title": "IMG_20231001_144530",
+    "datetime": "2023-10-01 14:45:30",
+    "location": {{
+      "province": "浙江省",
+      "city": "杭州市",
+      "district": "西湖区",
+      "streetName": "南山路",
+      "streetNumber": "XX 号",
+      "poi": "雷峰塔景区"
+    }},
+    "faceRecognition": ["无"],
+    "imageTag": ["雷峰塔", "远景", "夕阳", "西湖"],
+    "ocrText": "无",
+    "shoot_mode": "正常拍照",
+    "image_size": "4032×3024"
+  }}
+]
+            '''
+            prompt = template.format(event=json.dumps(event, ensure_ascii=False),
+                                    persona=json.dumps(extool.persona, ensure_ascii=False),
+                                    date=date,
+                                    min_photos=min_photos,
+                                    max_photos=max_photos)
+            res = llm_call_reason_j(prompt)
+            print(res)
+            res = self.remove_json_wrapper(res, "array")
+            photos = json.loads(res)
+            print(f"事件 {event_id} 生成 {len(photos)} 张照片")
+            all_photos.extend(photos)
+
+        print(f"\n主要场景共生成 {len(all_photos)} 条原始数据")
+        return all_photos
+
+    def phone_gen_gallery(self, date, contact, file_path, extool=None, enable_main_scenario_photos=False):
         """
         生成照片数据的主方法
 
@@ -234,6 +427,7 @@ class GalleryOperationGenerator:
             contact: 联系人列表
             file_path: 文件路径
             extool: Data_extract 实例，如果为 None 则从模块导入
+            enable_main_scenario_photos: 是否启用主要场景照片生成，只有为 True 时才调用 main_scenario_photos
 
         Returns:
             生成的照片数据列表
@@ -250,8 +444,21 @@ class GalleryOperationGenerator:
             res.append(res1[i])
             print(res1[i]['event_id'])
 
+        # 先调用主要场景生成方法，提取必定会产生照片的重要场景
+        main_scenario_photos = []
+        main_event_ids = set()
+        if enable_main_scenario_photos:
+            main_scenario_photos = self.generate_main_scenario_photos(date, contact, file_path, extool)
+        # 记录已生成照片的事件ID集合
+        main_event_ids = set(item['event_id'] for item in main_scenario_photos)
+        print(f"主要场景已生成 {len(main_scenario_photos)} 条，涉及事件ID: {main_event_ids}")
+
         template = '''
         请基于用户提供的{{当日事件}}和{{个人画像}}，逐事件分析拍照行为的生成概率、场景细分及图片数量，仅输出概率建模结果，不涉及任何具体内容生成。核心规则：拍照场景与概率严格匹配事件类型，单个事件生成 1-3 张图片，避免过度生成。
+
+### 重要说明
+以下event_id对应的事件已在主要场景中生成照片，**不需要对这些事件进行概率建模**：
+{excluded_event_ids}
 
 ### 一、概率建模核心规则
 #### 1. 事件类型与拍照场景映射（基础概率作参考，可按画像微调±5%），若事件描述中明确指定拍照场景，则生成照片的概率为100%，且场景严格匹配事件描述。
@@ -275,7 +482,7 @@ class GalleryOperationGenerator:
 
 #### 4. 生成约束
 - 非外出类事件（如"居家办公""独自学习"）：仅保留"文档扫描""物品收纳"场景，其他场景概率强制 0%
-- 无视觉价值事件（如"电话沟通""线上会议"）：所有场景概率 0%，图片数量 0 张
+- 无视觉价值事件（如"电话沟通""线上会议"）：所有场景概率 0%，图片数量 0 张。
 - 单个事件场景最多生成 3 张图片，不可超额
 
 ### 二、输出字段要求（仅保留以下 6 个字段，无额外内容）
@@ -320,7 +527,7 @@ class GalleryOperationGenerator:
 
 请基于<当日事件>：{daily_events}、<个人画像>：{persona}，严格按上述要求逐事件输出概率建模结果。
         '''
-        prompt = template.format(daily_events=res, persona=extool.persona)
+        prompt = template.format(daily_events=res, persona=extool.persona, excluded_event_ids=main_event_ids)
         print(prompt)
         a = llm_call_reason_j(prompt)
         print(a)
@@ -355,10 +562,15 @@ class GalleryOperationGenerator:
             event_id = item['event_id']
             event_name = item['event_name']
             p1 = item['photo_count_prob']
-            
+
+            # 跳过已在主要场景中生成的事件
+            if event_id in main_event_ids:
+                print(f"事件 {event_id} ({event_name}) 已在主要场景中生成，跳过")
+                continue
+
             selected_count = sample_from_distribution(p1)
             has_photo = selected_count != '0'
-            
+
             if has_photo:
                 instruction += f'''
 --------------------------------------------------
@@ -469,10 +681,16 @@ class GalleryOperationGenerator:
         res = llm_call_reason_j(prompt)
         print(res)
         res = self.remove_json_wrapper(res, "array")
-        data = json.loads(res)
-        
-        # ========== 新增：合理性校验与格式校验环节 ==========
-        print(f"\n开始相册数据校验，共 {len(data)} 条数据...")
+        phone_gen_data = json.loads(res)
+
+        # 合并两部分数据进行统一校验，过滤掉phone_gen_data中主场景已包含event_id的照片
+        phone_gen_filtered = [item for item in phone_gen_data if item['event_id'] not in main_event_ids]
+        print(f"过滤掉主场景重复照片 {len(phone_gen_data) - len(phone_gen_filtered)} 条")
+        all_data = main_scenario_photos + phone_gen_filtered
+        print(f"\n合并后共 {len(all_data)} 条数据，开始统一校验...")
+
+        # ========== 统一校验环节 ==========
+        print(f"\n开始相册数据校验，共 {len(all_data)} 条数据...")
         
         # 获取用户姓名（从 persona 中提取）
         user_name = extool.persona.get("name", "") or extool.persona.get("姓名", "")
@@ -483,7 +701,7 @@ class GalleryOperationGenerator:
         valid_data = []
         need_format_check = []  # 需要进一步格式校验的数据
         
-        for idx, item in enumerate(data):
+        for idx, item in enumerate(all_data):
             is_valid, fixed_data, error_msg = self.validate_and_fix_gallery_data(
                 item, daily_events_backup, user_name
             )
@@ -505,7 +723,7 @@ class GalleryOperationGenerator:
             else:
                 print(f"  [合理性错误] 索引 {idx}, event_id={item.get('event_id')}: {error_msg}，抛弃该数据")
         
-        print(f"\n合理性校验结果：通过 {len(need_format_check)} 条，抛弃 {len(data) - len(need_format_check)} 条")
+        print(f"\n合理性校验结果：通过 {len(need_format_check)} 条，抛弃 {len(all_data) - len(need_format_check)} 条")
         
         # 第二轮：格式校验（年份、必填字段等）
         final_valid = []
