@@ -24,7 +24,11 @@ def parse_args():
     # 线程/进程参数
     parser.add_argument('--max-workers', type=int, default=None,
                         help='最大工作线程数（默认：CPU核心数×2）')
-    
+
+    # 交互参数
+    parser.add_argument('--interactive', action='store_true',
+                        help='启用交互模式，情节优化时迭代与LLM交互直到用户输入包含"结束"')
+
     # 功能控制参数
     parser.add_argument('--generate-phone-data', type=int, default=1,
                         help='是否生成手机数据（默认：1）')
@@ -65,7 +69,9 @@ def run_draft_gen(args):
             cmd.extend(['--instance-id', str(args.instance_id)])
         if args.max_workers is not None:
             cmd.extend(['--max-workers', str(args.max_workers)])
-        
+        if args.interactive:
+            cmd.append('--interactive')
+
         print(f"执行命令: {' '.join(cmd)}")
         
         # 运行脚本

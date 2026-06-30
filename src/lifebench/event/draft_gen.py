@@ -13,14 +13,15 @@ class DraftGen:
         self.persona = persona
         self.file_path = file_path
     
-    def generate_draft(self, output_path="output/", meidan_path=None):
+    def generate_draft(self, output_path="output/", meidan_path=None, interactive=False):
         """
         生成draft的主要方法
-        
+
         参数:
             output_path: 输出路径
             meidan_path: 中间数据路径
-            
+            interactive: 是否交互模式，默认为False。为True时，情节优化会迭代与LLM交互直到用户输入包含"结束"
+
         返回:
             生成的draft数据
         """
@@ -80,8 +81,18 @@ class DraftGen:
 
                 # 自动优化当前情节
                 print("\n开始自动优化情节...")
-                current_plot = writing_agent.interact_with_user("帮我自动优化", current_plot)
-                print("✓ 情节优化完成")
+                if interactive:
+                    print('[交互模式] 请输入优化指令（输入包含"结束"的文字结束交互）:')
+                    while True:
+                        user_input = input("> ")
+                        if "结束" in user_input:
+                            print("✓ 交互优化结束")
+                            break
+                        current_plot = writing_agent.interact_with_user(user_input, current_plot)
+                        print('✓ 本轮优化完成，继续输入指令或输入"结束"结束交互')
+                else:
+                    current_plot = writing_agent.interact_with_user("帮我自动优化", current_plot)
+                    print("✓ 情节优化完成")
 
                 current_plot = writing_agent.iterative_optimization(current_plot)
 

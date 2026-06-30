@@ -48,6 +48,10 @@ def parse_args():
     parser.add_argument('--max-workers', type=int, default=None,
                         help='最大工作线程数（默认：CPU核心数×2）')
 
+    # 交互参数
+    parser.add_argument('--interactive', action='store_true',
+                        help='启用交互模式，情节优化时迭代与LLM交互直到用户输入包含"结束"')
+
     return parser.parse_args()
 
 
@@ -77,6 +81,7 @@ def main():
         print(f"系统配置：")
         print(f"- CPU核心数: {cpu_count}")
         print(f"- 最大工作线程数: {max_workers}")
+        print(f"- 交互模式: {'启用' if args.interactive else '禁用'}")
         print(f"- 基础数据路径: {base_file_path}")
         print(f"- 处理文件路径: {process_file_path}")
         print(f"- 中间数据路径: {meidan_path}")
@@ -94,7 +99,7 @@ def main():
         # 调用 generate_draft 生成草稿
         print('\n开始生成年度时间线草稿...')
         draft_start_time = time.time()
-        draft_gen.generate_draft(output_path=base_file_path, meidan_path=meidan_path)
+        draft_gen.generate_draft(output_path=base_file_path, meidan_path=meidan_path, interactive=args.interactive)
         draft_end_time = time.time()
         draft_execution_time = draft_end_time - draft_start_time
         print(f'年度时间线草稿生成完成-------------------------- (耗时: {timedelta(seconds=draft_execution_time)})')
