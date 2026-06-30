@@ -84,6 +84,9 @@ class DraftGen:
                 if interactive:
                     print('[交互模式] 请输入优化指令（输入包含"结束"的文字结束交互）:')
                     while True:
+                        print("\n========== 当前情节数据 ==========")
+                        print(json.dumps(current_plot, ensure_ascii=False, indent=2))
+                        print("==================================")
                         user_input = input("> ")
                         if "结束" in user_input:
                             print("✓ 交互优化结束")

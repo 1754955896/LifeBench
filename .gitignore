@@ -76,6 +76,8 @@ venv.bak/
 # Data & generated outputs
 tests/
 config/config.json
+# persona_file（参考数据与生成结果，本地私有）
+src/lifebench/persona/persona_file/
 # 模型权重（只跟踪目录结构，不跟踪文件内容）
 !src/lifebench/event/local_models/
 src/lifebench/event/local_models/*
