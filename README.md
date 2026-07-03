@@ -8,17 +8,14 @@ LifeBench is a benchmark designed for evaluating personalized agent memory syste
 
 The main objectives of our dataset are as follows:
 
-1. **Challenging question-answering and interactive tasks**
-   We aim to design comprehensive, continuous, and dense scenarios that cover real-life interactions between humans and agents/mobile devices, posing rigorous challenges to agent/device interaction capabilities. 
-   The current version includes tasks such as single-hop reasoning, multi-hop reasoning, temporal and memory-updating reasoning, and non-declarative memory reasoning. 
-   In future work, we plan to introduce additional challenging settings, including conflicting memories, harmful memories (involving privacy and bias), and the ability to retain important memories under massive memory loads.
+1. **Challenging and comprehensive question-answering and online interaction tasks** (with interleaved memory augmentation, memory retrieval, and answering)
+2. **Long-term, realistic and rich personal life data and digital traces**
+3. **Automated pipeline** for data generation and question design, supporting large-scale applications
 
-2. **Long-term, full-coverage personal life and digital trace data**
-   Such data can be applied to a wide range of fields, including recommendation systems, research on services for vulnerable groups, game NPC generation, and general data training, rather than being limited to the evaluation of agent memory systems. 
-   Therefore, constructing high-quality, realistic, and plausible datasets of this kind is of great importance.
+## Overview
+![LifeBench Overview](pic/PIC_INTRO.png)
+Existing benchmarks mainly focus on dialogue scenarios and lack diverse digital traces. Furthermore, current datasets do not cover continuous, long-term life sequences of an individual, but only concentrate on major events. In contrast, we model continuous data that covers an individual's entire life over the course of one year.
 
-## Example of the data
-![LifeBench Example](pic/PIC_BENCH.png)
 
 ### Question Categories
 
@@ -38,11 +35,6 @@ LifeBench contains 9 categories of questions:
 
 Each question contains: question content, answer, score points (for evaluation), required event IDs, ask time, and other fields.
 
-## Overview
-![LifeBench Overview](pic/PIC_INTRO.png)
-Existing benchmarks mainly focus on dialogue scenarios and lack diverse digital traces. Furthermore, current datasets do not cover continuous, long-term life sequences of an individual, but only concentrate on major events. In contrast, we model continuous data that covers an individual’s entire life over the course of one year.
-
-
 ## Dataset
 
 The dataset can be found in the `life_bench_data/version1` folder, available in both English and Chinese versions. The dataset contains data from 10 users, with each user having the following files:
@@ -57,7 +49,7 @@ The dataset can be found in the `life_bench_data/version1` folder, available in 
 
 ### Memory Benchmark Support
 
-For the convenience of conducting memory benchmark tests on existing memory systems (primarily for locomo), we have converted the QA data into the locomo input format. The converted data can be found in `our.json`.
+For the convenience of conducting memory benchmark tests on existing memory systems (primarily for locomo), we have converted the QA data into the locomo input format. 
 
 ## Usage
 ![Data Synthesis Framework](pic/pic.png)
@@ -69,7 +61,16 @@ For the convenience of conducting memory benchmark tests on existing memory syst
    pip install -r requirements.txt
    ```
 
-2. **Configuration File**
+2. **Embedding Model Preparation** (Optional, for memory system)
+   Download embedding models to `src/lifebench/event/local_models/` for local similarity search:
+
+   ```bash
+   pip install huggingface-hub
+   huggingface-cli download sentence-transformers/all-MiniLM-L6-v2 --local-dir src/lifebench/event/local_models/all-MiniLM-L6-v2
+   ```
+
+
+3. **Configuration File**
    - Create `config/config.json` (copy from `config.example.json`)
    - Configure LLM API and map API keys
 
@@ -77,7 +78,9 @@ For the convenience of conducting memory benchmark tests on existing memory syst
    {
      "llm": {
        "api_key": "your_api_key_here",
-       "base_url": "https://api.deepseek.com"
+       "base_url": "https://api.deepseek.com",
+       "default_model": "deepseek-v4-flash",
+       "reason_model": "deepseek-v4-pro"
      },
      "map_tool": {
        "api_key": "your_map_api_key_here"
@@ -88,8 +91,17 @@ For the convenience of conducting memory benchmark tests on existing memory syst
    | Config Key | Description | Required |
    |------------|-------------|----------|
    | `llm.api_key` | LLM API key | Yes |
-   | `llm.base_url` | LLM API endpoint | Yes |
+   | `llm.base_url` | LLM API endpoint (support OpenAI-compatible format) | Yes |
+   | `llm.default_model` | Default model for general generation | No |
+   | `llm.reason_model` | Reasoning model for complex tasks | No |
    | `map_tool.api_key` | Map API key (for address generation) | No |
+
+   **支持任意兼容 OpenAI API 格式的 LLM 服务商**（如 DeepSeek、Claude、GPT-4 等），通过配置不同的 `base_url` 和 `model` 即可切换。
+
+   **模型选择策略**：`default_model` 和 `reason_model` 的设计是为了**减少生成成本**。
+   - 简单任务（短上下文、非复杂推理）：自动调用 `default_model`
+   - 长上下文任务（复杂推理、多步骤生成）：自动调用 `reason_model`
+   - 若不想区分，可将两个字段配置为**同一个 model**
 
 ### Data Preparation
 

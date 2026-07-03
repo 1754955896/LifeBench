@@ -43,7 +43,8 @@
 | 目录 | 说明 |
 |------|------|
 | `version2/data/` | 中文版多源数据 |
-| `version2/multi_source_format/` | 多源格式 QA 数据 |
+| `version2/data_en/` | 英文版多源数据 |
+| `version2/locomo_format/` | locomo 格式 QA 数据 |
 
 ### version2 各用户数据文件说明
 
@@ -61,3 +62,15 @@
 ### multi_source_format 说明
 
 多源格式数据将所有用户的 QA 数据合并为一个文件，包含完整的问答对、手机操作数据等。
+
+| 文件 | 说明 |
+|------|------|
+| `lifebench_multi_source_format_*.json` | 各用户多源格式 QA 数据汇总 |
+
+### locomo_format 说明
+
+locomo 格式数据是从多源格式数据转换而来的标准化 QA 数据格式。
+
+| 文件 | 说明 |
+|------|------|
+| `lifebench_locomo_format.json` | 所有用户 locomo 格式 QA 数据汇总 |
