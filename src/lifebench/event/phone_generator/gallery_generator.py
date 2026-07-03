@@ -323,34 +323,55 @@ class GalleryOperationGenerator:
             event_name = event.get('event_name', event.get('description', '未知事件'))
             importance_level = importance_map.get(event_id, 2)
             # 根据重要性等级确定照片数量范围
-            photo_count_map = {1: (2, 4), 2: (3, 6), 3: (5, 10)}
+            photo_count_map = {1: (1, 4), 2: (2, 6), 3: (4, 8)}
             min_photos, max_photos = photo_count_map.get(importance_level, (3, 6))
             print(f"\n为事件 {event_id} ({event_name}) 生成主要场景照片，重要性等级: {importance_level}, 生成 {min_photos}-{max_photos} 张...")
 
             template = '''
-请基于<单个事件>和<个人画像>，为该重要场景生成多张照片，每张照片从不同角度/视角拍摄。
+你是一个摄影顾问。请基于<单个事件>和<个人画像>，生成符合真实生活场景的照片数据。
 
 ### 日期约束
 - **当前关注的事件日期：{date}**
 - 所有时间字段的日期部分应以此日期为基准
 
-### 核心要求
-1. 生成{min_photos}-{max_photos} 张不同角度的照片，覆盖该场景的多个方面
-2. 不同照片应从不同视角、构图、氛围来拍摄
-3. 照片之间应有明显差异，避免重复，最好能体现不同的内容。
-4. 地点真实性：基于个人画像"常居地/常去地"生成真实层级化地点信息
-5. caption简洁明确：准确反映该照片的具体内容
+### 现实摄影场景指导原则
+生成的照片必须是**个人在实际事件中真正可能拍摄的内容**，事件描述可能不够细致，你可以合理推测额外的场景：
+
+**合理的个人摄影场景（具体且实际，不是抽象概念）：**
+- 出行记录：沿途街景、交通工具、目的地外观/入口牌匾
+- 用餐场景：餐桌食物（俯拍）、餐厅环境
+- 购物/买菜：商品陈列货架、购物小票
+- 户外运动：运动手表数据截图、跑步路线截图、完赛证书
+- 亲子/家庭：孩子活动、家人合影
+- 差旅/出行：机票/车票/登机牌（屏幕上或纸质）、机场/车站环境、窗外风景
+- 演唱会/活动：场馆外观、排队入场、与同伴的合影（不能拍舞台）、场外海报
+- 博物馆/景点：展品外观、场馆外观、参观者视角的展览
+- 购物支付：手机支付成功截图
+- 日常生活中：工作台/书桌、宠物、阳台植物、手工/绘画作品
+
+
+**不可能被个人拍摄的内容（禁止生成）：**
+- 他人隐私场景
+- 监控/官方视角的内容
+
+### 生成要求
+1. 生成{min_photos}-{max_photos} 张照片，以事件时间线为顺序
+2. 按时间顺序排列，每张照片时间略有不同（递增）
+3. 地点真实性：基于个人画像的常居地/常去地生成真实层级化地点
+4. caption：简洁准确描述照片内容，**使用普通观众的视角和口吻**
 
 ### 字段规则
 - event_id：严格沿用原事件唯一标识
 - type：固定"photo"
-- datetime：与事件时间一致或相近，格式"YYYY-MM-DD HH:MM:SS"，不同照片时间略有不同
+- caption：具体准确描述照片内容，**仅描述实际可见的环境/物品/动作**，禁止描述心情、感受、情绪等抽象内容（如"感动"、"开心"、"激动"等词汇不应出现）
+- title：格式"IMG_yyyyMMdd_HHmmss"，与 datetime 对应
+- datetime：与事件时间一致或合理延后，格式"YYYY-MM-DD HH:MM:SS"
 - location：嵌套对象（province、city、district、streetName、streetNumber、poi）
-- faceRecognition：联系人列表姓名数组/"无"/"XX 若干"
+- faceRecognition：联系人姓名数组/"无"/"XX 若干"/"于晓薇"
 - imageTag：2-4 个关键词
-- ocrText：仅导视牌/门票/海报/文档场景填写真实文字，其他填"无"
-- shoot_mode：正常拍照/夜景/人像/微距
-- image_size：四种格式之一
+- ocrText：仅屏幕截图（手表/手机）、导视牌/门票/海报场景填写真实文字，其他填"无"
+- shoot_mode：正常拍照、夜景、人像、微距、屏幕截图（任选一种）
+- image_size：4032×3024、3024×4032、2048×1536、1536×2048（任选一种）
 
 ### 单个事件
 {event}
@@ -358,25 +379,24 @@ class GalleryOperationGenerator:
 ### 个人画像
 {persona}
 
-### 输出要求
-仅输出 JSON 数组，无任何额外文本。每个元素对应 1 张图片，按 datetime 升序排列。示例：
+### 输出示例
 [
   {{
     "event_id": "1",
     "type": "photo",
-    "caption": "李华在西湖断桥打卡，身后有湖面游船雷峰塔",
-    "title": "IMG_20231001_143025",
-    "datetime": "2023-10-01 14:30:25",
+    "title": "IMG_20250316_064500",
+    "caption": "清晨湿漉漉的街道，天空灰蒙，行人稀少",
+    "datetime": "2025-03-16 06:45:00",
     "location": {{
-      "province": "浙江省",
-      "city": "杭州市",
-      "district": "西湖区",
-      "streetName": "北山街",
-      "streetNumber": "XX 号",
-      "poi": "西湖断桥景区"
+      "province": "香港特别行政区",
+      "city": "香港",
+      "district": "九龙城区",
+      "streetName": "太子道西",
+      "streetNumber": "XX号",
+      "poi": "太子道西街景"
     }},
-    "faceRecognition": ["李华"],
-    "imageTag": ["西湖", "断桥", "游船", "雷峰塔"],
+    "faceRecognition": ["无"],
+    "imageTag": ["街景", "清晨", "雨天", "香港"],
     "ocrText": "无",
     "shoot_mode": "正常拍照",
     "image_size": "4032×3024"
@@ -384,25 +404,28 @@ class GalleryOperationGenerator:
   {{
     "event_id": "1",
     "type": "photo",
-    "caption": "雷峰塔远景，夕阳下的西湖水面",
-    "title": "IMG_20231001_144530",
-    "datetime": "2023-10-01 14:45:30",
+    "title": "IMG_20250316_074500",
+    "caption": "跑步手表屏幕显示恢复性慢跑数据：3公里，配速6分35秒",
+    "datetime": "2025-03-16 07:45:00",
     "location": {{
-      "province": "浙江省",
-      "city": "杭州市",
-      "district": "西湖区",
-      "streetName": "南山路",
-      "streetNumber": "XX 号",
-      "poi": "雷峰塔景区"
+      "province": "香港特别行政区",
+      "city": "香港",
+      "district": "九龙城区",
+      "streetName": "常盛街",
+      "streetNumber": "XX号",
+      "poi": "东何文田休憩公园"
     }},
     "faceRecognition": ["无"],
-    "imageTag": ["雷峰塔", "远景", "夕阳", "西湖"],
-    "ocrText": "无",
-    "shoot_mode": "正常拍照",
-    "image_size": "4032×3024"
+    "imageTag": ["跑步", "手表", "数据", "运动"],
+    "ocrText": "3公里 | 6:35/km | 175步/分",
+    "shoot_mode": "屏幕截图",
+    "image_size": "3024×4032"
   }}
 ]
-            '''
+
+### 输出要求
+仅输出 JSON 数组，无任何额外文本。每个元素对应 1 张图片，按 datetime 升序排列。
+'''
             prompt = template.format(event=json.dumps(event, ensure_ascii=False),
                                     persona=json.dumps(extool.persona, ensure_ascii=False),
                                     date=date,

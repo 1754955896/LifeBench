@@ -6,7 +6,7 @@
 import json
 import random
 from typing import List, Dict
-from src.lifebench.utils.llm_call import llm_call, llm_call_j
+from src.lifebench.utils.llm_call import llm_call, llm_call_j, llm_call_reason_j
 
 
 class CommunicationOperationGenerator:
@@ -23,7 +23,7 @@ class CommunicationOperationGenerator:
             random_seed: 随机种子，确保可复现
         """
         random.seed(random_seed)
-        self.supported_scenes = ["紧急事务", "服务通知", "日常社交", "商务交互", "无通信需求"]
+        self.supported_scenes = ["紧急事务", "日常分享", "日常社交", "商务交互", "无通信需求"]
     
     def parse_llm_prob_json(self, llm_json_str: str) -> List[Dict]:
         """
@@ -52,8 +52,7 @@ class CommunicationOperationGenerator:
             # 第三步：校验必填字段
             required_fields = [
                 "event_id", "event_name", "event_basic", "communication_scene",
-                "trigger_probability", "type_probability", "multi_sms_probability",
-                "scene_reasoning"
+                "trigger_probability", "type_probability", "multi_sms_probability"
             ]
             valid_events = []
             for event in events:
@@ -232,7 +231,299 @@ class CommunicationOperationGenerator:
             final_instr += f"{idx}. {instr}\n" + "-" * 60 + "\n"
 
         return final_instr
-    
+
+    def extract_key_scenes(self, daily_events: List[Dict], persona: Dict) -> List[Dict]:
+        """
+        调用 LLM 从今日事件中提取重点场景
+
+        Args:
+            daily_events: 今日事件列表
+            persona: 个人画像
+
+        Returns:
+            重点场景列表，每项包含 {event_id, event_name, scene_desc, enhancement_type}
+            enhancement_type: "high_priority" | "emotional" | "memorable"
+        """
+        prompt = f"""请从以下今日事件中识别出需要"重点场景增强"的事件。
+
+重点场景定义（仅关注服务类场景）：
+1. **预约/订票场景**：预约挂号、景点/游乐园/演唱会/电影票务预约、活动预约等
+2. **服务短信场景**：银行通知、运营商通知、医疗服务通知、账单提醒等
+3. **出行旅游场景**：航空旅行、火车旅行、酒店住宿、旅游度假等
+4. **外卖/餐饮场景**：外卖订单、餐厅预订等
+5. **快递/物流场景**：快递派送、物流运输、取件通知等
+6. **票务入场场景**：游乐园、演唱会、电影院、体育赛事等票务及入场信息
+7. **银行卡重大支出**：大额消费、转账汇款、扣款通知等
+
+### 个人画像摘要
+- 姓名：{persona.get('name', '')}
+- 职业：{persona.get('job', '')}
+- 性格：{persona.get('personality', {}).get('mbti', '')}
+- 爱好：{', '.join(persona.get('hobbies', [])[:5])}
+
+### 今日事件
+{json.dumps(daily_events, ensure_ascii=False, indent=2)}
+
+### 输出要求
+请全面识别所有服务类场景，输出 JSON 数组（有多少个符合的场景就输出多少个）：
+[
+  {{
+    "event_id": "对应的事件ID",
+    "event_name": "事件名称",
+    "scene_desc": "对该场景的简短描述（10-20字）",
+    "enhancement_type": "booking | service | travel | delivery | ticket | expense",
+    "enhancement_reason": "为什么这个场景需要增强（1-2句话）"
+  }}
+]
+
+**重要**：输出时仅包含 event_id、event_name、scene_desc、enhancement_type、enhancement_reason 五个字段，不要返回其他事件原始字段（原始事件信息会通过匹配 event_id 自动补全）。
+仅输出 JSON 数组，不要添加任何额外文本或注释。
+
+enhancement_type 取值说明：
+- booking: 预约/订票类
+- service: 服务短信类（银行/运营商/医疗等）
+- travel: 出行旅游类（机票/火车票/酒店）
+- delivery: 外卖/快递/物流类
+- ticket: 票务入场类（游乐园/演唱会/电影）
+- expense: 银行卡支出类
+
+仅输出 JSON 数组，不要添加任何额外文本或注释。
+"""
+        try:
+            result = llm_call(prompt)
+            result = self.remove_json_wrapper(result, "array")
+            scenes = json.loads(result)
+            # 用 event_id 匹配，补全原始事件的完整信息（地点、描述、日期等）
+            event_map = {e.get("event_id", ""): e for e in daily_events}
+            enriched = []
+            for s in scenes:
+                eid = s.get("event_id", "")
+                full_event = event_map.get(eid, {})
+                # 合并：保留 LLM 输出字段 + 事件原始字段
+                enriched.append({**full_event, **s})
+            scenes = enriched
+            print(f"✓ 重点场景提取完成，共 {len(scenes)} 个场景")
+            for s in scenes:
+                print(f"  - [{s.get('enhancement_type')}] {s.get('event_name')}: {s.get('scene_desc')}")
+            return scenes
+        except Exception as e:
+            print(f"重点场景提取失败: {e}")
+            return []
+
+    def generate_key_scene_sms(self, key_scenes: List[Dict], contacts: List[Dict], persona: Dict) -> List[Dict]:
+        """
+        为重点场景生成增强型通信数据（主要生成短信）
+
+        Args:
+            key_scenes: 重点场景列表
+            contacts: 联系人列表
+            persona: 个人画像
+
+        Returns:
+            生成的通信数据列表
+        """
+        if not key_scenes:
+            return []
+
+        contacts_json = json.dumps(contacts, ensure_ascii=False, indent=2)
+        persona_json = json.dumps(persona, ensure_ascii=False, indent=2)
+        scenes_json = json.dumps(key_scenes, ensure_ascii=False, indent=2)
+
+        prompt = f"""你是一个重点场景通信数据生成专家。请为以下重点场景生成额外的通信数据（主要是短信），用于丰富场景细节。
+
+### 个人画像
+{persona_json}
+
+### 重点场景
+{scenes_json}
+
+### 可用联系人
+{contacts_json}
+
+### 各场景语言风格参考（严格遵循以下格式）
+
+**航空旅行**：
+- "{{航空公司}}: 您好，{{name}}，您的机票已出票。航班号为{{flight_number}}的航班，于{{MM/DD/YYYY hh:mm A}}从{{出发机场}}飞往{{到达机场}}。票号：{{ticket_number}}。值机截止时间为航班起飞前60分钟。"
+- "{{航空公司}}: 尊敬的乘客，您的{{flight_number}}航班订单{{order_number}}已开放值机。请通过{{平台应用名称}}应用选座并获取电子登机牌。"
+- "{{航空公司}}: 尊敬的{{name}}，{{flight_number}}航班因{{延误原因}}延误。预计新起飞时间：{{new_departure_time}}。"
+- "{{航空公司}}: 您好，{{name}}，{{flight_number}}航班已开始登机。请前往登机口{{gate_number}}。"
+
+**火车旅行**：
+- "铁路服务：您好，{{name}}，您的火车票已预订成功，乘车日期为{{MM/DD/YYYY}}，车次为{{train_number}}，从{{出发站}}至{{到达站}}。座位类型：{{seat_type}}，座位号：{{seat_number}}。"
+- "铁路服务：您好，{{train_number}}次列车将于{{MM/DD/YYYY hh:mm A}}发车，即将开始登车。请于开车前30分钟到达站台。"
+
+**酒店住宿**：
+- "{{平台}}: 您好，{{name}}，您的酒店预订已确认。入住日期：{{check_in_date}}，退房日期：{{check_out_date}}。酒店名称：{{hotel_name}}，房型：{{room_type}}。地址：{{address}}。"
+- "{{平台}}: 尊敬的{{name}}，您在{{hotel_name}}的预订已确认，入住日期为{{check_in_date}}。入住时间：{{MM/DD/YYYY hh:mm A}}。地址：{{address}}。"
+- "{{平台}}: 尊敬的{{name}}，您在{{hotel_name}}的住宿将于{{check_out_date}}结束。请于{{checkout_deadline_time}}前办理退房。"
+
+**电子商务/快递/外卖**：
+- "{{配送服务}}: 您好，{{name}}，您的订单{{order_number}}已于{{MM/DD/YYYY hh:mm A}}提交。收货地址：{{delivery_address}}。预计送达时间：{{eta_delivery_date}}。"
+- "{{配送服务}}: 尊敬的{{name}}，您的订单{{order_number}}包裹已从{{origin_city}}发出，正在运往{{destination_city}}途中。预计送达时间：{{eta_delivery_date}}。"
+- "{{配送服务}}: 您好，{{name}}，您的包裹已派送中，预计今日送达。请保持手机畅通。"
+
+**预约/票务入场（游乐园/演唱会/电影）**：
+- "{{平台}}: 您好，{{name}}，您的{{活动名称}}门票已购买成功。演出时间：{{MM/DD/YYYY hh:mm A}}，座位号：{{seat_number}}。请提前30分钟入场。"
+- "{{平台}}: 尊敬的{{name}}，您的订单{{order_number}}已确认。{{活动类型}}：{{event_name}}，时间：{{datetime}}，地点：{{venue}}。"
+
+**银行卡/支付通知**：
+- "{{银行名称}}: 尊敬的{{name}}，您的银行卡{{card_number_tail}}于{{MM/DD/YYYY hh:mm A}}支出{{amount}}元，余额{{balance}}元。如有疑问请致电客服。"
+- "{{支付平台}}: 您好，{{name}}，您的{{platform}}账户{{MM/DD/YYYY hh:mm A}}消费{{amount}}元。商户：{{merchant_name}}。"
+
+### 生成要求
+1. **虚构合理信息**：允许自行编造订单号、票号、卡号尾数、金额、数量等字段，确保符合场景逻辑且格式合理（如订单号10位数字、票号6位字母+数字组合、航班号如CA1234/ZH5678等）
+2. 每个场景生成 至少1条短信，严格遵循上述对应场景的语言风格，最多三条，如果1条短信符合现实逻辑且信息充足可以不额外生成。
+3. 服务类短信（航空/火车/酒店/快递/银行）一律使用"接收"类型的模板风格短信
+4. 时间逻辑要合理（在事件发生前后适当时间收到/发送）
+5. 航空/火车/酒店场景优先从联系人列表选对应联系人，无匹配则使用机构名称
+6. 外卖/快递场景使用机构平台名称作为 contactName
+7. **内容要丰富**：短信正文应包含尽可能多的场景细节（如具体地名、金额、状态描述等），信息充实不空洞
+8. 信息之间的逻辑要合理（如订单号、票号、卡号尾数等字段要与场景逻辑一致，相关的订单号/车次要一致）
+
+### 输出格式
+仅输出 JSON 数组，每条数据包含以下字段：
+- type: "sms"
+- event_id: 对应场景的 event_id
+- message_content: 短信内容，遵循上述对应场景的语言风格，**信息丰富，包含虚构的订单号/票号等细节**
+- contactName: 机构名称或联系人姓名
+- phoneNumber: 机构号段（1069/400/+86手机号）或联系人电话
+- datetime: 时间（YYYY-MM-DD HH:MM:SS，在事件发生前后合理范围内）
+- message_type: "接收"（服务类）或 "发送"/"接收"（情感类）
+
+### 输出示例
+[
+  {{"type":"sms","event_id":"5901","message_content":"【东方航空】尊敬的韩海生旅客，您购买的MU5735航班已出票，航班号MU5735，将于2025-06-15 08:30从上海浦东国际机场飞往北京首都国际机场。票号：8812153674。请于航班起飞前60分钟完成值机。","contactName":"东方航空","phoneNumber":"+8613900069555","datetime":"2025-06-14 14:23:18","message_type":"接收"}},
+  {{"type":"sms","event_id":"5902","message_content":"【顺丰速运】您好，韩海生，您的订单SF1023876543包裹已从杭州发出，正在运往上海途中。预计送达时间：2025-06-16。请保持手机畅通，收件时出示验证码。","contactName":"顺丰速运","phoneNumber":"+861061095533","datetime":"2025-06-15 09:15:42","message_type":"接收"}},
+  {{"type":"sms","event_id":"5903","message_content":"【美团外卖】您好，韩海生，您的订单MT2025061512345已提交，商家：老盛兴生煎（徐汇店），预计送达时间10:30。地址：上海市徐汇区漕河泾开发区。","contactName":"美团外卖","phoneNumber":"+861065195533","datetime":"2025-06-15 09:05:00","message_type":"接收"}}
+]
+
+请仅输出 JSON 数组，不要添加任何额外文本、注释或代码块标记。
+"""
+        try:
+            result = llm_call_reason_j(prompt)
+            result = self.remove_json_wrapper(result, "array")
+            data = json.loads(result)
+            print(f"✓ 重点场景SMS生成完成，生成 {len(data)} 条数据")
+            for d in data:
+                print(f"  - [{d.get('event_id')}] {d.get('contactName')}: {d.get('message_content', '')[:30]}...")
+            return data
+        except Exception as e:
+            print(f"重点场景SMS生成失败: {e}")
+            return []
+
+    def analyze_and_merge_duplicates(self, all_data: List[Dict], daily_events: List[Dict]) -> List[Dict]:
+        """
+        按 event_id 分组，逐组调用 LLM 分析重复和不一致，只对 modify/remove 输出决策
+
+        Args:
+            all_data: 所有通信数据列表（原生 + 重点场景增强）
+            daily_events: 当日事件列表
+
+        Returns:
+            去重/修正后的通信数据列表
+        """
+        if len(all_data) <= 1:
+            return all_data
+
+        from collections import defaultdict
+
+        grouped = defaultdict(list)
+        for it in all_data:
+            grouped[it.get("event_id", "")].append(it)
+
+        # 为每个 item 赋予唯一 data_id（event_id + 出现序号），解决同 event_id 多条数据无法定位的问题
+        data_by_data_id = {}
+        for event_id, items in grouped.items():
+            for idx, it in enumerate(items):
+                data_id = f"{event_id}_{idx}"
+                it['_data_id'] = data_id
+                data_by_data_id[data_id] = it
+
+        # 构建 event_id -> event_info 映射
+        event_map = {e.get("event_id", ""): e for e in daily_events}
+
+        print(f"✓ 开始重复/不一致分析，共 {len(grouped)} 个事件分组...")
+
+        delete_ids = set()
+        fix_map = {}
+        total_analyzed = 0
+
+        for event_id, items in grouped.items():
+            # 单条数据无需分析，直接保留
+            if len(items) <= 1:
+                continue
+
+            total_analyzed += 1
+            event_info = event_map.get(event_id, {})
+            event_desc = event_info.get("description", event_info.get("desc", ""))
+            items_json = json.dumps(items, ensure_ascii=False, indent=2)
+
+            prompt = f"""你是一个通信数据去重与一致性分析专家。请分析以下同一 event_id 的所有通信数据。
+
+### 事件信息
+- event_id: {event_id}
+- 事件名称: {event_info.get('name', '未知')}
+- 事件描述: {str(event_desc)[:150]}
+
+### 该事件下所有通信数据
+{items_json}
+
+### 分析要求
+1. **虚构一致性**（最重要！）：若短信内容涉及事件描述之外的信息（如订单号、航班号、车次、酒店名、票号、送达时间等），提取每条数据中的虚构字段值；若同事件多条数据虚构了同一类信息但值不同，**必须统一为同一个值**，在 fixed_data 中给出修正后的完整数据
+2. **内容重复**：保留信息最完整或最合理的一条，删除其他高度重复的
+3. **逻辑矛盾**：联系人、时间、收发方向等字段存在矛盾的，修正或删除
+
+### 输出格式
+**只输出需要修改或删除的数据**，keep 的不需要输出：
+[
+  {{
+    "data_id": "_data_id值，格式为event_id_序号（如5903_0）",
+    "decision": "delete | fix",
+    "reason": "决定原因（简洁）",
+    "fixed_data": {{修正后的完整数据，仅 decision 为 fix 时需要}}
+  }}
+]
+
+- delete: 删除该数据
+- fix: 修正后保留（虚构不一致必须统一，字段矛盾可以修正，必须在 fixed_data 中给出完整数据）
+
+请仅输出 JSON 数组，不要添加任何额外文本、注释或代码块标记。
+"""
+            try:
+                from src.lifebench.utils.llm_call import llm_call_reason_j
+                result = llm_call_j(prompt)
+                result = self.remove_json_wrapper(result, "array")
+                decisions = json.loads(result)
+
+                for dec in decisions:
+                    did = dec.get("data_id", "")
+                    decision = dec.get("decision", "")
+                    reason = dec.get("reason", "")
+                    if decision == "delete":
+                        delete_ids.add(did)
+                        print(f"  [删除] {event_id} - {did}: {reason}")
+                    elif decision == "fix":
+                        fixed = dec.get("fixed_data")
+                        if fixed:
+                            fix_map[did] = fixed
+                            print(f"  [修正] {event_id} - {did}: {reason}")
+            except Exception as e:
+                print(f"  ⚠️ 事件 {event_id} 分析失败（{e}），跳过")
+
+        # 应用修正
+        for did, fixed_data in fix_map.items():
+            if did in data_by_data_id:
+                data_by_data_id[did].update(fixed_data)
+
+        # 应用删除
+        result_list = [it for it in all_data if it.get("_data_id") not in delete_ids]
+        # 移除 _data_id 字段
+        for it in result_list:
+            it.pop("_data_id", None)
+        print(f"✓ 去重分析完成：分析了 {total_analyzed} 个分组，修改 {len(fix_map)} 条，删除 {len(delete_ids)} 条，输入 {len(all_data)} 条 -> 输出 {len(result_list)} 条")
+
+        return result_list
+
     def validate_and_fix_communication_data(self, data: Dict, event_context: Dict, all_daily_events: List[Dict], user_name: str) -> tuple:
         """
         校验通信数据合理性并修正
@@ -544,13 +835,13 @@ class CommunicationOperationGenerator:
                 - 输出格式：`"event_basic": {{"time": "xxx", "scene_keyword": "xxx", "purpose": "xxx", "is_face_to_face": "xxx", "related_person_status": "xxx", "duration": "xx 分钟", "is_multi_topic": "xxx"}}`
                 
                 #### 3. 通信场景分类（主场景唯一归属，严格匹配事件核心属性）
-                事件相关通信可选分类：紧急事务（如突发情况处理、重要事项紧急协调）、服务通知（如订单提醒、机构告知、业务办理通知）、社交互动（如亲友问候、聚会约见、情感交流）、商务交互（如工作对接、会议协调、客户沟通）、日常生活（如购物咨询、出行规划、便民服务）、无通信需求（如独自休闲、无外部关联的个人行为）
+                事件相关通信可选分类：紧急事务（如突发情况处理、重要事项紧急协调）、日常分享（如日常闲聊、朋友圈分享、生活点滴交流）、社交互动（如亲友问候、聚会约见、情感交流）、商务交互（如工作对接、会议协调、客户沟通）、日常生活（如购物咨询、出行规划、便民服务）、无通信需求（如独自休闲、无外部关联的个人行为）
                 - 输出格式：`"communication_scene": "xxx"`
                 
                 #### 4. 通信触发概率（分"事件相关"和"事件无关"，取值 0%-100%，保留整数）
                 - 计算依据（基础值 + 修正项，总和强制约束在 0%-100%，逻辑优先级：基础值→核心修正→微调）：
                   - 基础概率（贴合场景本质通信需求）：
-                    - 相关通信：紧急事务 90%、服务通知 85%、社交互动 70%、商务交互 80%、日常生活 45%、无通信需求 0%(若事件描述中明确描述了通信事件，则概率为100%)；
+                    - 相关通信：紧急事务 90%、日常分享 65%、社交互动 70%、商务交互 80%、日常生活 45%、无通信需求 0%(若事件描述中明确描述了通信事件，则概率为100%)；
                     - 无关通信（随机外部干扰/主动联络）：基础 15%（无特殊情况默认此值）。
                   - 核心修正规则（按影响程度排序，叠加计算）：
                     1. 面对面场景：事件相关通信 -35%（现场已直接交流，大幅降低远程沟通需求）；若相关通信基础值≤35%，修正后最低保留 0%；
@@ -558,7 +849,7 @@ class CommunicationOperationGenerator:
                     3. 高频时段（8:00-9:00/12:00-13:00/19:00-21:00）：无关通信 +5%（该时段为社交/事务活跃期，随机联络概率提升）；
                     4. 低频时段（0:00-7:00/22:00-24:00）：无关通信 -8%（夜间休息时段，随机联络概率降低，最低保留 5%）；
                     5. 个人画像修正：社交型人格→相关通信 +10%/无关通信 +5%（主动沟通意愿强）；职场人→商务类相关通信 +10%（工作场景沟通需求更高）；内向型人格→相关通信 -5%/无关通信 -3%（被动沟通为主）；
-                    6. 事件属性修正：短时长事件（≤15 分钟）→相关通信 -5%（事务简单，沟通需求低）；长时长事件（≥60 分钟）→相关通信 +5%（事务复杂，需多轮沟通）。
+                    6. 事件属性修正：短时长事件（≤15 分钟）→相关通信 -5%（事务简单，沟通需求低）；长时长事件（≥60 分钟）→相关通信 +5%（事务复杂，需多轮沟通）；【仅限日常分享场景】若遇到重要事件、新奇事件、游玩事件、纪念性事件等→相关通信额外 +15%（分享意愿强烈，本规则叠加于日常分享基础概率之上）。
                   - 特殊规则：
                     1. 无关通信概率最低保留 5%（即使低频时段/内向人格，仍存在极小概率随机联络）；
                     2. 无通信需求场景：相关通信强制 0%，无关通信按规则计算（最低 5%）；
@@ -569,7 +860,7 @@ class CommunicationOperationGenerator:
                 - 基础规则（贴合场景沟通习惯）：
                   - 相关通信：
                     - 紧急事务：通话 90%/短信 10%（紧急情况需实时沟通，优先通话）；
-                    - 服务通知：短信 80%/通话 20%（机构通知以低成本短信为主，重要通知可能电话补充）；
+                    - 日常分享：短信 85%/通话 15%（日常分享以异步短信为主，轻松随意）；
                     - 社交互动：短信 70%/通话 30%（日常社交以异步短信为主，亲密关系可能通话）；
                     - 商务交互：通话 60%/短信 40%（工作沟通需高效确认，通话占比更高）；
                     - 日常生活：短信 75%/通话 25%（便民服务/购物咨询以短信为主，复杂需求可能通话）；
@@ -584,28 +875,28 @@ class CommunicationOperationGenerator:
                   3. 高频时段→通话概率 +5%（对方接听概率高，优先通话）；
                   4. 低频时段→通话概率 -10%（避免打扰对方，优先短信，最低保留 5%）。
                 - 输出格式：`"type_probability": {{"related": {{"call": "xx%", "sms": "xx%"}}, "unrelated": {{"call": "xx%", "sms": "xx%"}}}}`
-                
+
                 #### 6. 多短信生成概率（仅短信类型触发时计算，各类概率总和 100%，保留整数）
                 - 核心逻辑：基于事件复杂度、参与者数量、沟通目的，按常识分配概率，同时考虑"发送必要性"和"接收响应概率"，避免不合理的多短信场景：
                   - 简单场景（单参与者 + 事项单一 + 无后续需求，如"给家人报平安""接收快递通知"）：1 条 85%、2 条 15%（2 条仅为补充说明，无多余信息）；
                   - 一般场景（2-3 个参与者/事项较简单 + 需确认，如"同事对接工作进度""约 2 个朋友聚餐"）：1 条 60%、2 条 30%、3 条 10%（2 条用于核心沟通，3 条仅为细节补充）；
                   - 复杂场景（≥3 个参与者/事项繁琐 + 多轮确认，如"组织部门团建协调时间""多人旅行规划"）：1 条 10%、2 条 50%、3 条 35%、4 条 5%（需多轮同步信息，4 条为上限，避免过度冗余）；
-                  - 服务通知类（如"订单状态更新""账单提醒"）：1 条 95%、2 条 5%（2 条仅为补发场景，如首次未收到，无重复通知）。
+                  - 日常分享类（如"朋友圈分享""生活点滴闲聊"）：1 条 80%、2 条 20%（日常分享简短，一条足够）。
                 - 输出格式：`"multi_sms_probability": {{"sms_count": ["1 条:xx%", "2 条:xx%", ...], "note": "xxx"}}`（note 需明确说明判断依据，如"2 个参与者 + 事项简单，按一般场景分配；高频时段修正短信概率 +5%"）
                 
-                #### 7. 场景推理说明（逻辑清晰、论据充分，覆盖 3 个核心点）
-                - 必须包含：
+                #### 7. 场景推理说明（可选，仅用于 debug/追溯，不需要在最终输出中体现）
+                - 可选说明内容（不需要输出，仅供分析过程参考）：
                   1. 场景判定依据（结合事件时间、目的、参与者等属性说明为何归类该场景）；
                   2. 触发概率修正原因（逐一说明适用的修正规则，如"面对面场景 -35%+ 多主题 +10%，最终相关通信概率为 XX%"）；
                   3. 多短信场景归类原因（说明场景复杂度/参与者数量，为何选择该概率分配）。
-                - 输出格式：`"scene_reasoning": "xxx"`
-                
+                - 注意：此字段仅供分析参考，**最终输出 JSON 中不需要包含 scene_reasoning 字段**
+
                 ### 二、分析原则（严格遵守，确保结果合理性）
                 1. 概率逻辑自洽：修正项叠加后不得出现矛盾（如相关通信概率不可为负，通话/短信概率总和必须 100%）；
                 2. 贴合现实规律：避免极端概率（如无关通信不超过 30%，复杂场景 4 条短信概率不超过 10%）；
                 3. 适配个人画像：通信概率需与用户人格特征匹配（如内向型人格通话概率低于外向型）；
-                4. 输出精简规范：仅保留指定 8 项字段，无任何额外文本、注释，严格按 JSON 数组格式输出，字段顺序与要求一致。
-                
+                4. 输出精简规范：仅保留指定 7 项字段（event_id、event_name、event_basic、communication_scene、trigger_probability、type_probability、multi_sms_probability），无任何额外文本、注释，严格按 JSON 数组格式输出。
+
                 ### 三、输出格式要求（严格遵循，否则视为无效）
                 仅输出 JSON 数组，每个元素对应一个事件，字段无缺失、无冗余，示例如下（可直接参考格式）：
                 [
@@ -616,18 +907,16 @@ class CommunicationOperationGenerator:
                     "communication_scene": "社交互动",
                     "trigger_probability": {{"related": "45%", "unrelated": "20%"}},
                     "type_probability": {{"related": {{"call": "35%", "sms": "65%"}}, "unrelated": {{"call": "40%", "sms": "60%"}}}},
-                    "multi_sms_probability": {{"sms_count": ["1 条:85%", "2 条:15%"], "note": "单参与者 + 事项单一，按简单场景分配；面对面场景修正短信概率 -10%"}},
-                    "scene_reasoning": "判定为社交互动场景（事件目的为家庭情感交流，场景关键词符合）；触发概率修正：基础相关通信 70%→面对面 -35%→最终 45%，无关通信基础 15%+ 高频时段 5%→最终 20%；多短信按简单场景分配（单参与者 + 事项单一，无复杂沟通需求）"
+                    "multi_sms_probability": {{"sms_count": ["1 条:85%", "2 条:15%"], "note": "单参与者 + 事项单一，按简单场景分配；面对面场景修正短信概率 -10%"}}
                   }},
                   {{
                     "event_id": "5913",
                     "event_name": "组织部门团建协调时间",
-                    "event_basic": {{"time": "2025-12-01 20:12", "scene_keyword": "商务 + 协调", "purpose": "团队活动组织", "is_face_to_face": "否", "related_person_status": "同事 5 人", "duration": "78 分钟", "is_multi_topic": "是"}},
+                    "event_basic": {{"time": "2025-12-01 20:12", "scene_keyword": "商务+协调", "purpose": "团队活动组织", "is_face_to_face": "否", "related_person_status": "同事 5 人", "duration": "78 分钟", "is_multi_topic": "是"}},
                     "communication_scene": "商务交互",
                     "trigger_probability": {{"related": "95%", "unrelated": "20%"}},
                     "type_probability": {{"related": {{"call": "45%", "sms": "55%"}}, "unrelated": {{"call": "15%", "sms": "85%"}}}},
-                    "multi_sms_probability": {{"sms_count": ["1 条:10%", "2 条:50%", "3 条:35%", "4 条:5%"], "note": "≥3 个参与者 + 事项繁琐，按复杂场景分配；多参与者修正短信概率 +10%"}},
-                    "scene_reasoning": "判定为商务交互场景（事件目的为团队活动组织，涉及同事关系，属于工作协调）；触发概率修正：基础相关通信 80%→多主题 +10%+ 长时长 +5%→最终 95%，无关通信基础 15%+ 高频时段 5%→最终 20%；多短信按复杂场景分配（5 个参与者 + 事项繁琐，需多轮同步信息）；通信类型修正：多参与者 +10% 短信概率，基础通话 60%→45%、短信 40%→55%"
+                    "multi_sms_probability": {{"sms_count": ["1 条:10%", "2 条:50%", "3 条:35%", "4 条:5%"], "note": "≥3 个参与者 + 事项繁琐，按复杂场景分配；多参与者修正短信概率 +10%"}}
                   }}
                 ]
                 
@@ -649,10 +938,10 @@ class CommunicationOperationGenerator:
         mid = (len(res) + 1) // 2  # 向上取整（如 5→3，4→2）
         res1, res2 = res[:mid], res[mid:]
         prompt = event_classify.format(daily_events=res1, persona=extool.persona)
-        a = llm_call_j(prompt)
+        a = llm_call_reason_j(prompt)
         print(a)
         prompt = event_classify.format(daily_events=res2, persona=extool.persona)
-        b = llm_call_j(prompt)
+        b = llm_call_reason_j(prompt)
         print(b)
         resx1 = self.generate_llm_instructions(a)
         resx2 = self.generate_llm_instructions(b)
@@ -677,10 +966,10 @@ class CommunicationOperationGenerator:
   - 事件关联（个人）：
     - 提前通知：明确时间、事项、要求（如"明天 10 点销售会议，带数据报表"）；
     - 同步/核对：简洁传递核心信息（如"商圈考察完成，竞品总结已发邮箱"）；
-    - 服务通知：机构官方格式 + 脱敏信息（如【XX 保险】保单已归档，保单号 XXX，回复"预约"可办理）；
+    - 日常分享：生活化、口语化（如【闲聊】周末去爬山拍了很多照片，有一张特别满意）；
   - 事件无关（个人）：基于联系人关系设计聊天/谈论场景（如家人→"降温记得添衣"、同事→"报表整理好，需要发你吗"、朋友→"考上研究生了，请你吃饭！"）
 - contactName：优先联系人列表；个人通信填真实姓名；机构类填官方名称（如"XX 电商""XX 保险公司"）
-- phoneNumber：个人填 11 位手机号；机构类填 1069/400 号段（如服务通知填 10690000XXXX）
+- phoneNumber：个人填 11 位手机号；机构类填 1069/400 号段
 - datetime：按指令时间范围 + 场景逻辑生成，格式"YYYY-MM-DD HH:MM:SS"：
   - 事件相关：
     - 提前通知类（如会议、活动协调）：事件发生前 30 分钟 -24 小时；
@@ -693,7 +982,7 @@ class CommunicationOperationGenerator:
 需包含以下字段，缺一不可：
 - event_id：直接使用指令中的 event_id（如"1231"），仅保留原事件 id，不要添加任何后缀
 - type：固定值"call"
-- phoneNumber：个人填 11 位手机号；机构类填 1069/400/010 号段（如服务通知填 010-12345678）
+- phoneNumber：个人填 11 位手机号；机构类填 1069/400/010 号段
 - contactName：优先联系人列表；个人通信填真实姓名；机构类填官方名称（如"XX 银行""XX 快递"）
 - datetime：通话开始时间，按指令时间范围 + 场景逻辑生成，格式"YYYY-MM-DD HH:MM:SS"：
   - 事件相关：
@@ -717,7 +1006,7 @@ class CommunicationOperationGenerator:
    - 接收/呼入（被动）：
      - 事件相关：他人发起的与事件相关的沟通（如同事核对数据、机构通知保单归档）；
      - 事件无关：亲友/同事主动联系用户（如朋友约饭、家人关心生活）；
-     - 关系场景：用户接收长辈的叮嘱、上级的安排、机构的服务通知。
+     - 关系场景：用户接收长辈的叮嘱、上级的安排、朋友的日常分享。
 3. 联系人与场景匹配：
    - 事件相关：优先选择与事件目的相关的联系人（如"销售数据核对"→同事/上级，"保险办理"→保险公司专员）；
    - 事件无关：基于联系人关系生成合理交流场景（如家人→生活关心、同事→工作寒暄、朋友→娱乐约见、客户→节日问候），避免无意义的泛泛沟通。
@@ -738,7 +1027,7 @@ class CommunicationOperationGenerator:
 请基于{{操作指令}}：{instructions}、{{联系人列表}}：{contacts}、{{当日事件}}：{daily_events}生成具体通信操作。
 '''
         prompt = template.format(daily_events=res1, contacts=contact, instructions=resx1)
-        res = llm_call_j(prompt, extool.context)
+        res = llm_call_reason_j(prompt, extool.context)
         print(res)
         res = self.remove_json_wrapper(res, "array")
         data = json.loads(res)
@@ -749,7 +1038,22 @@ class CommunicationOperationGenerator:
         res = self.remove_json_wrapper(res, "array")
         data = json.loads(res)
         c += data
-        
+
+        # ========== 重点场景增强流程 ==========
+        print(f"\n开始重点场景增强流程...")
+        key_scenes = self.extract_key_scenes(res1 + res2, extool.persona)
+        key_scene_data = self.generate_key_scene_sms(key_scenes, contact, extool.persona)
+        if key_scene_data:
+            c += key_scene_data
+            print(f"✓ 合并后通信数据共 {len(c)} 条（原生 {len(c) - len(key_scene_data)} 条 + 重点场景增强 {len(key_scene_data)} 条）")
+        else:
+            print("⚠️  未生成重点场景增强数据，继续使用原生数据")
+        # ====================================
+
+        # ========== 重复/不一致检测 ==========
+        c = self.analyze_and_merge_duplicates(c, res1 + res2)
+        # ====================================
+
         # ========== 新增：合理性校验与格式校验环节 ==========
         print(f"\n开始通信数据校验，共 {len(c)} 条数据...")
         
