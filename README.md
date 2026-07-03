@@ -96,12 +96,12 @@ For the convenience of conducting memory benchmark tests on existing memory syst
    | `llm.reason_model` | Reasoning model for complex tasks | No |
    | `map_tool.api_key` | Map API key (for address generation) | No |
 
-   **支持任意兼容 OpenAI API 格式的 LLM 服务商**（如 DeepSeek、Claude、GPT-4 等），通过配置不同的 `base_url` 和 `model` 即可切换。
+   **Supports any LLM provider compatible with the OpenAI API format** (e.g., DeepSeek, Claude, GPT-4) by configuring different `base_url` and `model` values.
 
-   **模型选择策略**：`default_model` 和 `reason_model` 的设计是为了**减少生成成本**。
-   - 简单任务（短上下文、非复杂推理）：自动调用 `default_model`
-   - 长上下文任务（复杂推理、多步骤生成）：自动调用 `reason_model`
-   - 若不想区分，可将两个字段配置为**同一个 model**
+   **Model Selection Strategy**: `default_model` and `reason_model` are designed to **reduce generation costs**.
+   - Simple tasks (short context, non-complex reasoning): automatically call `default_model`
+   - Long-context tasks (complex reasoning, multi-step generation): automatically call `reason_model`
+   - If you do not want to differentiate, configure both fields as the **same model**
 
 ### Data Preparation
 
