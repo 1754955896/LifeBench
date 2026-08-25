@@ -46,7 +46,7 @@ max_workers = args.max_workers  # 最大并行线程数
 interval_days = args.interval_days  # 每个线程处理的天数
 
 # 中断保存文件路径
-INTERRUPT_FILE = file_path + "process/interrupt_state.json"
+INTERRUPT_FILE = file_path + "sim/interrupt_state.json"
 
 
 # 日志函数
@@ -56,7 +56,7 @@ def log(message):
 
 
 # 确保必要的目录存在
-os.makedirs(os.path.join(file_path, "process"), exist_ok=True)
+os.makedirs(os.path.join(file_path, "sim"), exist_ok=True)
 
 # 1. 读取基础数据
 persona = read_json_file(file_path + 'persona.json')
@@ -68,8 +68,8 @@ if generate_data:
     log("\n=== 开始数据生成流程 ===")
     start_time_generate = time.time()
     log(f"参数设置: 开始日期={start_date}, 结束日期={end_date}, 并行线程数={max_workers}, 区间大小={interval_days}天")
-    monthly_file = os.path.join(file_path, "monthly_summaries.json")
-    cumulative_file = os.path.join(file_path, "cumulative_summaries.json")
+    monthly_file = os.path.join(file_path, "sim", "monthly_summaries.json")
+    cumulative_file = os.path.join(file_path, "sim", "cumulative_summaries.json")
     year = int(start_date[:4])
 
 
@@ -111,7 +111,7 @@ if generate_data:
         print(f"未找到fuzzymemory文件，开始生成该年的月度总结和累积总结...")
         event = read_json_file(file_path + "event_transfer.json")
         print(f"成功读取event_transfer文件，共{len(event)}个事件")
-        fuzzy_memory_builder = FuzzyMemoryBuilder.get_instance(event, persona, file_path)
+        fuzzy_memory_builder = FuzzyMemoryBuilder.get_instance(event, persona, os.path.join(file_path, "sim"))
         fuzzy_memory_builder.build_all_summaries(year)
         print("fuzzymemory生成完成！")
     if not os.path.exists(file_path + "location.json"):

@@ -3,12 +3,34 @@ import threading
 
 import requests
 import time
-from typing import List, Dict, Optional, Tuple, Union, Any
-from xml.etree import ElementTree
+import re
+from typing import List, Dict, Optional, Tuple, Any
+
+
+def _coerce_str(v):
+    """高德 geocode 接口的 street/number 等字段可能返回 JSON 数组，统一转字符串。"""
+    if isinstance(v, list):
+        return "".join(_coerce_str(x) for x in v)
+    if v is None:
+        return ""
+    return v if isinstance(v, str) else str(v)
+
+
+def _clean_address(s):
+    """清洗历史 location.json 遗留的 [] 空占位符与 ['x'] 列表化门牌。"""
+    if not isinstance(s, str):
+        return s
+    s = re.sub(r"\[\]", "", s)
+    s = re.sub(r"\['([^']*)'\]", r"\1", s)
+    return s
 
 
 class MapMaintenanceTool:
     """地图维护工具类，支持POI查询、地理编码、跨城市路线查询，确保所有函数出错时有明确输出"""
+
+    DEFAULT_TIMEOUT_SECONDS = 10
+    TRANSIT_DEFAULT_CITY = "010"
+    AROUND_SEARCH_RADIUS = 3000
 
     def __init__(self, api_key: str, cache_expire_seconds: int = 3600, persona_address_data: Optional[List[Dict]] = None):
         self.api_key = api_key
@@ -90,7 +112,7 @@ class MapMaintenanceTool:
                 "output": "JSON",
                 "city": city
             }
-            response = requests.get(base_url, params=params, timeout=10)
+            response = requests.get(base_url, params=params, timeout=self.DEFAULT_TIMEOUT_SECONDS)
             response.raise_for_status()
             result = response.json()
 
@@ -102,18 +124,24 @@ class MapMaintenanceTool:
             # 提取第一个地理编码结果（最匹配）
             geocode_info = result["geocodes"][0]
             # 结构化返回数据（统一字段格式，避免空值）
+            province = _coerce_str(geocode_info.get("province"))
+            city = _coerce_str(geocode_info.get("city"))
+            district = _coerce_str(geocode_info.get("district"))
+            street = _coerce_str(geocode_info.get("street"))
+            number = _coerce_str(geocode_info.get("number"))
+
             structured_data = {
-                "country": geocode_info.get("country", ""),
-                "province": geocode_info.get("province", ""),
-                "city": geocode_info.get("city", ""),
-                "citycode": geocode_info.get("citycode", ""),
-                "district": geocode_info.get("district", ""),
-                "street": geocode_info.get("street", ""),
-                "number": geocode_info.get("number", ""),
-                "adcode": geocode_info.get("adcode", ""),
-                "location": geocode_info.get("location", ""),
-                "level": geocode_info.get("level", ""),
-                "formatted_address": f"{geocode_info.get('province', '')}{geocode_info.get('city', '')}{geocode_info.get('district', '')}{geocode_info.get('street', '')}{geocode_info.get('number', '')}"
+                "country": _coerce_str(geocode_info.get("country")),
+                "province": province,
+                "city": city,
+                "citycode": _coerce_str(geocode_info.get("citycode")),
+                "district": district,
+                "street": street,
+                "number": number,
+                "adcode": _coerce_str(geocode_info.get("adcode")),
+                "location": _coerce_str(geocode_info.get("location")),
+                "level": _coerce_str(geocode_info.get("level")),
+                "formatted_address": f"{province}{city}{district}{street}{number}"
             }
 
             # 缓存结果
@@ -149,7 +177,7 @@ class MapMaintenanceTool:
                     "page": 1,
                     "extensions": "base"
                 },
-                timeout=10
+                timeout=self.DEFAULT_TIMEOUT_SECONDS
             )
             response.raise_for_status()
             result = response.json()
@@ -217,11 +245,11 @@ class MapMaintenanceTool:
             url = self.transport_apis[transport]
             params = {"key": self.api_key, "origin": origin_loc, "destination": dest_loc}
             if transport == "transit":
-                params["city"] = origin_city or dest_city or "010"
-                params["cityd"] = dest_city or origin_city or "010"
+                params["city"] = origin_city or dest_city or self.TRANSIT_DEFAULT_CITY
+                params["cityd"] = dest_city or origin_city or self.TRANSIT_DEFAULT_CITY
                 params["nightflag"] = 0
 
-            response = requests.get(url, params=params, timeout=10)
+            response = requests.get(url, params=params, timeout=self.DEFAULT_TIMEOUT_SECONDS)
             response.raise_for_status()
             result = response.json()
 
@@ -461,7 +489,7 @@ class MapMaintenanceTool:
                 "output": "JSON"
             }
             params = {k: v for k, v in params.items() if v is not None}
-            response = requests.get(base_url, params=params, timeout=10)
+            response = requests.get(base_url, params=params, timeout=self.DEFAULT_TIMEOUT_SECONDS)
             response.raise_for_status()
             result = response.json()
             if result.get("status") != "1":
@@ -497,7 +525,7 @@ class MapMaintenanceTool:
             if not enhanced_top10:
                 print(f"周边POI均缺少有效经纬度")
                 return None
-            random_poi = random.choice(enhanced_top10)
+            random_poi = self._random.choice(enhanced_top10)
             print(f"随机选中POI：{random_poi['name']}（距离：{random_poi['distance_m']}米）")
             return random_poi
         except requests.exceptions.RequestException as e:
@@ -510,19 +538,19 @@ class MapMaintenanceTool:
     # 最终优化：类型1指令通过POI获取精准Location，地理编码降级
     # ------------------------------
     def process_instruction_route(self, instruction_data: Dict[str, Any]) -> Tuple[Dict[str, Any], str]:
+        """
+        解析用户POI查询指令，生成POI列表并计算通行时间（最终优化版）
+        核心优化：
+        1. 类型1（画像地址）：优先通过POI查询获取精准Location，地理编码仅作为降级
+        2. 类型3（附近POI）：失败降级为类型2（baseKeyword+poiType）
+        3. 单个指令失败不终止，记录失败信息
+        4. 通行时间计算仅使用有效经纬度，确保准确性
+        Args:
+            instruction_data: 用户指令字典（格式不变）
+        Returns:
+            Tuple[结构化结果, 错误汇总信息]
+        """
         with self._lock:
-            """
-            解析用户POI查询指令，生成POI列表并计算通行时间（最终优化版）
-            核心优化：
-            1. 类型1（画像地址）：优先通过POI查询获取精准Location，地理编码仅作为降级
-            2. 类型3（附近POI）：失败降级为类型2（baseKeyword+poiType）
-            3. 单个指令失败不终止，记录失败信息
-            4. 通行时间计算仅使用有效经纬度，确保准确性
-            Args:
-                instruction_data: 用户指令字典（格式不变）
-            Returns:
-                Tuple[结构化结果, 错误汇总信息]
-            """
             # 初始化结果容器
             success_poi_list = []  # 成功执行的POI数据（均含有效location）
             failed_instructions = []  # 失败的指令记录
@@ -555,9 +583,9 @@ class MapMaintenanceTool:
                     try:
                         # 3.1 类型1：画像地址（优先从画像地址数据中匹配，失败后降级到地理编码）
                         if instr_type == "1":
-                            location = instr.get("location", "").strip()
-                            name = instr.get("name", "").strip()
-                            c = instr.get("city", city).strip()
+                            location = (instr.get("location") or "").strip()
+                            name = (instr.get("name") or "").strip()
+                            c = (instr.get("city") or city or "").strip()
                             # 检查location或name是否存在
                             if not location and not name:
                                 raise ValueError("缺少location或name字段")
@@ -654,7 +682,7 @@ class MapMaintenanceTool:
                                     location=base_geocode["location"],
                                     types=poi_type,
                                     city=city,
-                                    radius=3000
+                                    radius=self.AROUND_SEARCH_RADIUS
                                 )
 
                             if around_poi and around_poi.get("location"):
@@ -853,18 +881,10 @@ class MapMaintenanceTool:
         # 2. 成功POI信息提取（关键字段：索引、类型、名称、地址、经纬度）
         success_pois = route_result.get("success_poi_list", [])
         if success_pois:
-            for idx, poi in enumerate(success_pois, 1):
-                instr_idx = poi.get("instruction_index", -1)
-                instr_type = poi.get("instruction_type", "未知")
+            for poi in success_pois:
                 name = poi.get("name", "未知名称")
-                address = poi.get("structured_address", "未知地址")
+                address = _clean_address(poi.get("structured_address", "未知地址"))
                 location = poi.get("location", "未知经纬度")
-                # 补充类型1的降级标记、类型3的降级标记
-                fallback_note = ""
-                if instr_type == "1":
-                    fallback_note = "（已降级为地理编码）" if poi.get("is_poi_fallback", False) else "（POI搜索成功）"
-                elif instr_type == "3":
-                    fallback_note = "（已降级为直接POI搜索）" if poi.get("is_fallback", False) else "（周边POI搜索成功）"
 
                 poi_section += (
                     f"     名称：{name}\n"
@@ -883,8 +903,6 @@ class MapMaintenanceTool:
                 dest_name = route.get("destination", {}).get("name", "未知终点")
                 transport = route.get("transport", "未知方式")
                 duration = route.get("duration_minutes", 0.0)
-                origin_idx = route.get("origin", {}).get("instruction_index", -1)
-                dest_idx = route.get("destination", {}).get("instruction_index", -1)
 
                 route_section += (
                     f"  路段{segment}：\n"
@@ -898,8 +916,6 @@ class MapMaintenanceTool:
         failed_instrs = route_result.get("failed_instructions", [])
         if failed_instrs:
             for fail in failed_instrs:
-                instr_idx = fail.get("instruction_index", -1)
-                instr_type = fail.get("type", "未知类型")
                 original = fail.get("original_instruction", {})
                 error = fail.get("error", "未知错误")
                 desc = fail.get("description", "无描述")
@@ -940,7 +956,7 @@ class MapMaintenanceTool:
             poi_index_map = {poi.get("instruction_index"): idx + 1 for idx, poi in enumerate(success_pois)}
             for seq, poi in enumerate(success_pois, 1):
                 name = poi.get("name", "未知地点")
-                address = poi.get("structured_address", "未知地址")
+                address = _clean_address(poi.get("structured_address", "未知地址"))
                 poi_str += f"{seq}. 名称：{name} | 地址：{address}\n"
         else:
             poi_str += "无有效地点信息\n"

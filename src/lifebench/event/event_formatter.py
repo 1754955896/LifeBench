@@ -6,9 +6,10 @@ from typing import List, Dict
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from src.lifebench.event.templates.templates import template_event_format_sequence
+from src.lifebench.event.templates.template_simulation import template_event_format_sequence
 from src.lifebench.utils.llm_call import llm_call_reason_j
 from src.lifebench.event.tools.check_event_matching import main as check_event_matching_main
+from src.lifebench.utils.json_utils import remove_json_wrapper
 
 
 class EventFormatter:
@@ -148,7 +149,7 @@ class EventFormatter:
             match_result = llm_call_reason_j(match_prompt)
             
             # 清理匹配结果
-            cleaned_match_result = self.remove_json_wrapper(match_result, json_type='object')
+            cleaned_match_result = remove_json_wrapper(match_result, json_type='object')
             try:
                 match_mappings = json.loads(cleaned_match_result)
                 print(match_mappings)
@@ -184,22 +185,11 @@ class EventFormatter:
         返回:
             List[str]: 中间输出文件路径列表
         """
-        # 查找所有日期文件夹，支持带前导零和不带前导零的格式（如2025-12-09和2025-12-9）
-        date_folders = glob.glob(os.path.join(self.data_dir, "202*-*-*"))
-        intermediate_files = []
-        
-        for folder in date_folders:
-            # 查找该日期文件夹下的intermediate_output文件夹
-            intermediate_output_folders = glob.glob(os.path.join(folder, "intermediate_output"))
-            for intermediate_folder in intermediate_output_folders:
-                # 查找intermediate_output文件夹中的所有中间输出文件
-                files = glob.glob(os.path.join(intermediate_folder, "intermediate_outputs_thread_*.json"))
-                intermediate_files.extend(files)
-        
-        # 如果在日期文件夹下没找到，检查根目录下是否有直接的中间输出文件
-        root_files = glob.glob(os.path.join(self.data_dir, "intermediate_outputs_thread_*.json"))
-        intermediate_files.extend(root_files)
-        
+        # 中间输出统一存放在 sim/intermediate/ 下，按分片（instance_id + 分片起始日）命名
+        intermediate_folder = os.path.join(self.data_dir, "sim", "intermediate")
+        intermediate_files = glob.glob(
+            os.path.join(intermediate_folder, "intermediate_outputs_*.json")
+        )
         return intermediate_files
     
     def extract_adjusted_events(self, file_path: str) -> List[Dict]:
@@ -230,47 +220,6 @@ class EventFormatter:
             print(f"读取文件 {file_path} 时出错: {str(e)}")
             return []
     
-    def remove_json_wrapper(self, input_str: str, json_type: str = 'object') -> str:
-        """
-        移除JSON字符串的前后包装（如```json ```标签、非法转义字符等）
-        并根据json_type参数提取对应的JSON内容：
-        - json_type='object'：提取第一个{到最后一个}之间的内容
-        - json_type='array'：提取第一个[到最后一个]之间的内容
-        
-        参数:
-            input_str: 输入字符串
-            json_type: JSON类型，'object'对应{}，'array'对应[]，默认为'object'
-        
-        返回:
-            str: 清理后的字符串
-        """
-        # 步骤1：去除开头的```json（含空格/换行）和结尾的```（含空格）
-        pattern = r'^\s*```json\s*\n?|\s*```\s*$'
-        result = re.sub(pattern, '', input_str, flags=re.MULTILINE)
-
-        # 步骤2：根据json_type提取对应的括号内容
-        if json_type == 'array':
-            first_bracket = result.find('[')
-            last_bracket = result.rfind(']')
-            if first_bracket != -1 and last_bracket != -1 and first_bracket < last_bracket:
-                result = result[first_bracket:last_bracket + 1]
-        else:  # 默认处理JSON对象
-            first_brace = result.find('{')
-            last_brace = result.rfind('}')
-            if first_brace != -1 and last_brace != -1 and first_brace < last_brace:
-                result = result[first_brace:last_brace + 1]
-
-        # 步骤3：清理 JSON 非法控制字符
-        # 保留：JSON 允许的控制字符（\n换行、\r回车、\t制表符、\b退格、\f换页）+ 可见ASCII字符（0x20-0x7E）+ 中文/全角字符
-        valid_pattern = r'[^\x20-\x7E\n\r\t\b\f\u4E00-\u9FFF\u3000-\u303F\uFF00-\uFFEF\u2000-\u206F\u2E80-\u2EFF]'
-        result = re.sub(valid_pattern, '', result)
-
-        # 步骤4：规范空格和换行
-        result = result.strip()  # 去除首尾多余空格/换行
-        result = result.replace('\u3000', ' ')  # 全角空格转半角空格
-        result = re.sub(r'\r\n?', '\n', result)  # 统一换行符为 \n
-        return result
-    
     def _format_events_task(self, events: str, poi_data: str, date: str, task_id: int) -> List[Dict]:
         """
         单个事件格式化任务，用于并行处理
@@ -295,7 +244,7 @@ class EventFormatter:
             formatted_content = llm_call_reason_j(prompt)
             #print(formatted_content)
             # 清理JSON格式
-            cleaned_content = self.remove_json_wrapper(formatted_content, json_type='array')
+            cleaned_content = remove_json_wrapper(formatted_content, json_type='array')
             
             # 解析JSON
             formatted_events = json.loads(cleaned_content)
