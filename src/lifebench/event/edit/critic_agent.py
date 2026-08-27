@@ -9,6 +9,7 @@ from typing import Dict, List, Any
 from datetime import datetime, timedelta
 import holidays
 from src.lifebench.utils.llm_call import llm_call
+from src.lifebench.utils.date_utils import TimeSpec
 
 
 def log(message: str, debug: bool = True) -> None:
@@ -29,22 +30,23 @@ class CriticAgent:
     分析时间线质量，找出不足并给出修改建议
     """
     
-    def __init__(self, path: str, year: int = 2025):
+    def __init__(self, path: str, spec: TimeSpec = None):
         """
         初始化评判家代理
-        
+
         Args:
             path: 基础路径，包含persona.json
-            year: 目标年份，默认为2025
+            spec: 时间范围规格（年份 + 模拟月数），默认 2025 全年
         """
         self.path = path
-        self.year = year
+        self.spec = spec or TimeSpec()
+        self.year = self.spec.year
         self.persona_path = f"{path}/persona.json"
         self.persona_data = self._load_persona()
-        # 预设的评估标准
+        # 预设的评估标准（措辞按 spec 时间范围动态生成，避免把短区间误导向 12 个月）
         self.evaluation_criteria = {
             "合理性": "时间线是否符合逻辑，是否符合人物的背景和目标，是否符合现实世界的常理",
-            "丰富性": "时间线是否包含足够的事件和细节，每个月是否有充实的内容",
+            "丰富性": f"时间线是否包含足够的事件和细节，{self.spec.year}年1月至{self.spec.months}月期间的每个月是否有充实的内容",
             "多样性": "时间线是否包含不同类型的事件，如工作、生活、学习、社交等",
             "连贯性": "事件之间是否有合理的因果关系和逻辑联系",
             "真实性": "事件是否符合人物的性格、职业、背景和目标，是否不过于波折，过于像小说情节，是否某段时间只有消极或积极的事件，是否具有现实世界的复杂性",
@@ -52,7 +54,7 @@ class CriticAgent:
             "多线叙事": "是否存在多条叙事线索，且线索之间有交叉影响",
             "平衡性": "不同领域的事件是否分布合理，避免过于集中在某一方面",
             "创新性": "时间线是否有新颖的情节和创意，避免过于平淡",
-            "完整性": "是否有些产生影响变化的事件在后续的时间线没有被体现，或某个事件链条没有完整体现到12月结束，如认识了某人，但后续没有再提及，或是培养了新爱好但没有后续发展",
+            "完整性": f"是否有些产生影响变化的事件在后续的时间线没有被体现，或某个事件链条没有完整体现到{self.spec.month_keys[-1]}结束，如认识了某人，但后续没有再提及，或是培养了新爱好但没有后续发展",
             "充分性": "画像数据的每个细节点（爱好，关系，技能）是否被重复体现，有没有遗漏。"
         }
         # 评估次数计数器

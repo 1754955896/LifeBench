@@ -8,837 +8,26 @@ from typing import Dict, List, Any
 from concurrent.futures import ProcessPoolExecutor, as_completed, ThreadPoolExecutor
 from src.lifebench.utils.utils_io import *
 from datetime import datetime, timedelta
+from src.lifebench.utils.date_utils import TimeSpec, DEFAULT_YEAR
 from src.lifebench.utils.llm_call import *
 from src.lifebench.event.templates.templates import *
 from src.lifebench.event.templates.template_scheduler import *
 import re
+from src.lifebench.event.draft.event_tree import EventTree
 import holidays  # 需安装：pip install holidays
 
 
-class EventTree:
-    def __init__(self, persona: str):
-        self.persona = persona
-        self.decompose_schedule = []  # 最终分解结果（完整树形结构）
-        self.yearly_summary = ""  # 全年各月下个月指导总结
-        self.schema = {
-"运动":["游泳",
-        "健身锻炼",
-        "跑步",
-        "骑行",
-        "户外步行",
-        "武术",
-        "舞蹈",
-        "羽毛球",
-        "棒球",
-        "滑雪",
-        "足球",
-        "篮球",
-        "轮滑",
-        "户外探险",
-        "健美操",
-        "漫步机",
-        "射箭",
-        "羽毛球",
-        "芭蕾舞",
-        "沙滩足球",
-        "沙滩排球",
-        "肚皮舞",
-        "冬季两项",
-        "BMX自行车",
-        "搏击操",
-        "保龄球",
-        "拳击",
-        "闭气测试",
-        "闭气训练",
-        "蹦极",
-        "皮划艇",
-        "核心训练",
-        "板球",
-        "越野滑雪",
-        "Crossfit",
-        "冰壶",
-        "飞镖",
-        "自由潜水",
-        "躲避球",
-        "龙舟",
-        "漂流",
-        "椭圆机",
-        "电子竞技",
-        "击剑",
-        "钓鱼","跳伞",
-        "双杠",
-        "跑酷",
-        "体能训练",
-        "普拉提",
-        "操场赛跑",
-        "广场舞",
-        "台球",
-        "泳池游泳",
-        "赛车",
-        "攀岩",
-        "轮滑",
-        "划船机",
-        "赛艇",
-        "橄榄球",
-        "帆船",
-        "水肺潜水",
-        "体感运动",
-        "藤球",
-        "毽球",
-        "单杠",
-        "滑板",
-        "滑冰",
-        "滑雪",
-        "滑雪橇",
-        "单板滑雪",
-        "雪地摩托",
-        "垒球",
-        "动感单车",
-        "壁球",
-        "爬楼",
-        "踏步机",
-        "街舞",
-        "力量训练",
-        "桨板冲浪",
-        "冲浪",
-        "秋千",
-        "乒乓球",
-        "跆拳道",
-        "太极拳",
-        "网球",
-        "越野跑",
-        "铁人三项",
-        "拔河",
-        "排球",
-        "瑜伽"],
-"工作": [
-"出差",
-"上班通勤",
-"下班通勤",
-"办公",
-"会议研讨",
-"出差 - 那年今日",
-"请假",
-"加班",
-"工作总结",
-"工作交流",
-"培训",
-"报销"
-],
-"社交动作": [
-"与某人通话",
-"与某人视频通话",
-"向某人发送即时消息",
-"接收某人发送的即时消息",
-"向某人发送邮件",
-"接收某人发送的工作邮件",
-"邀请某人参加日历事件",
-"接受某人发起的日历邀请",
-"与某人同处一地（短时）",
-"与某人参加同一会议",
-"与某人参加同一培训 / 讲座",
-"在通讯录中新增联系人",
-"更新某人联系信息",
-"删除 / 屏蔽某人"
-],
-"人际交往": [
-"参加聚餐",
-"参加婚礼",
-"参加生日派对",
-"参加公司团建",
-"参加社区活动",
-"拜访他人住所",
-"探望住院人员",
-"参加节日庆典",
-"参加宗教仪式",
-"参加慈善活动",
-"参加政治集会",
-"参加亲子活动",
-"陪同前往学校 / 培训机构",
-"组织活动",
-"预订餐厅 / 场地",
-"宠物照料"
-],
-"教育": [
-"作业",
-"会议研讨",
-"课程",
-"请假",
-"上班通勤",
-"下班通勤",
-"背单词",
-"预约考试",
-"参加考试",
-"成绩查询"
-],
-"便捷生活": [
-"家政",
-"政务和公共服务",
-"生活缴费",
-"跑腿代办",
-"3C 数码维修",
-"行李寄存"
-],
-"财务管理": [
-"银行入账",
-"银行出账",
-"金融 app 入账",
-"金融 app 出账",
-"记账",
-"理财",
-"保险",
-"支付订单",
-"房产装修",
-"房产交易",
-"汽车交易"
-],
-"健康管理": [
-"运动记录",
-"体检",
-"挂号",
-"查看电子病历或检查报告",
-"服药",
-"心理咨询",
-"睡眠管理",
-"饮食管理",
-"精神健康管理"
-],
-"出行旅游": [
-"旅游",
-"行走",
-"跑",
-"骑车",
-"乘飞机",
-"乘火车",
-"乘地铁",
-"开车",
-"乘车",
-"乘交通工具",
-"行程规划",
-"购票",
-"检票",
-"退票",
-"改签",
-"景点浏览",
-"购物",
-"逛街",
-"城市漫游",
-"出海游船",
-"露营",
-"度假村放松",
-"酒店休息",
-"就餐",
-"出发",
-"城市切换",
-"达到",
-"城市旅游",
-"旅程",
-"游玩主题乐园",
-"参观动物园",
-"参观博物馆",
-"参观美术馆",
-"参观海洋馆",
-"节假日回乡",
-"居家拜访",
-"扫墓",
-"探亲"
-],
-"休闲娱乐": [
-"看演唱会",
-"看话剧",
-"看音乐剧",
-"看展览",
-"看脱口秀",
-"看相声",
-"看演唱会",
-"看音乐会",
-"看音乐节",
-"看戏曲",
-"看电竞赛事",
-"看舞蹈",
-"看体育赛事",
-"看魔术",
-"看电影",
-"看亲子演出",
-"划船",
-"射击射箭",
-"溜冰",
-"马术",
-"钓鱼",
-"按摩足疗",
-"洗浴汗蒸",
-"密室逃脱",
-"游戏厅",
-"网吧",
-"采摘农家乐",
-"撸宠",
-"K 歌",
-"酒吧",
-"轰趴",
-"剧本杀",
-"逛街",
-"电子游戏",
-"做 SPA",
-"桌游",
-"茶馆棋牌",
-"DIY 手工"
-]
-}
-        # 定义外部事件类别schema
-        self.event_type_schema = {
-            "Career": self.schema["工作"]+self.schema["社交动作"]+self.schema["人际交往"]+self.schema["教育"]+self.schema["财务管理"],
-            "Education": self.schema["工作"]+self.schema["社交动作"]+self.schema["人际交往"]+self.schema["教育"],
-            "Relationships": self.schema["工作"]+self.schema["社交动作"]+self.schema["人际交往"]+self.schema["休闲娱乐"],
-            "Family&Living Situation": self.schema["工作"]+self.schema["社交动作"]+self.schema["人际交往"]+self.schema["教育"]+self.schema["便捷生活"]+self.schema["财务管理"],
-            "Personal Life": self.schema["出行旅游"]+self.schema["休闲娱乐"]+self.schema["运动"],
-            "Finance": self.schema["工作"]+self.schema["财务管理"]+self.schema["社交动作"]+self.schema["人际交往"],
-            "Health": self.schema["社交动作"]+self.schema["人际交往"]+self.schema["健康管理"]+self.schema["运动"],
-            "Unexpected Events": self.schema["工作"]+self.schema["社交动作"]+self.schema["人际交往"]+self.schema["便捷生活"]+self.schema["财务管理"]+self.schema["健康管理"],
-            "Other": self.schema["工作"]+self.schema["社交动作"]+self.schema["人际交往"]+self.schema["教育"]+self.schema["便捷生活"]+self.schema["财务管理"],
-        }
-        
-        # 第一层分解模板：原事件→阶段事件/原子事件
-        self.template_level1_1 = '''
-            基于以下待分解事件，完成推理、扩展、分解，并直接输出子事件JSON数组（无需额外分析文本），目标是将事件分解为粒度小于一天的原子事件：
-            
-            1. 事件扩展：可参考事件描述进行分解，但原事件可能不完整，不具体，甚至不合理，需合理推理**前置（准备/规划/预定）、后续（收尾/影响）及相关事件**，补充后使其完整丰富。
-            2. 粒度与阶段分解规则：
-               - 阶段事件：针对跨度长（超过7天）、流程复杂、重要性高的原事件，可拆分为「阶段性子事件」（如项目立项→执行→验收、旅行准备→行程执行→收尾），等后续再分解为粒度为一天的原子事件。
-                 - 阶段事件特征：date格式为跨天区间（如["2025-01-01至2025-01-15"]），覆盖一个完整阶段的时间范围，decompose=1，表示其后续将被递归分解。
-                 - 阶段划分原则：按「时间顺序+流程逻辑」拆分，每个阶段聚焦一个核心目标，避免阶段重叠或遗漏。注意，如果原事件时间范围小于一天，则不用拆分为阶段事件，直接拆分为原子事件。
-               - 原子事件：粒度≤1天，date格式为当天日期（如["2025-01-01"]）。具体可执行，发生时间可超出原事件起止时间；多次发生需拆分为多个日期（如["2025-01-01","2025-02-01"]而非["2025-01-01至2025-02-01"]），decompose=0（无需继续分解）。
-               - **重要规则：对于发生在同一日的事件，尽量不要拆分为不同的原子事件。同一日的所有动作应在一个原子事件中描述，避免过度拆分。**
-               - **如果输入的父事件时间跨度为一天，则考虑是否有相关的不在这一天发生的事件（如提前预定），若全在这一天发生，则返回一个原子事件即可，内容为原事件更详细的描述。注意不要为了分解而分解，除了预定买票类需提前做的事件，否则不需要为跨度为一日的事件合成额外的事件，直接输出一个原子事件即可。**
-               - **注意，不可以输出空数组，如果原事件很简单，你也要分解为不同的原子事件，或推理相关后续/前置事件，只不过都为粒度小于1天的原子事件，decompose=0即可。**
-            3. 递归分解约束：
-               - 分解的子事件数量**严格控制在10个以内**（建议2-7个，避免过度拆分）。
-               - 事件ID中的'-'代表层级，每多一个'-'表示多一层分解。
-               - **如果你分解出的子事件为阶段事件，date格式为跨天区间（如["2025-01-01至2025-01-15"]），则其decompose一定为1。**
-               - **如果分解出的子事件为原子事件，date格式为当天日期（如["2025-01-01"]），则其decompose一定为0。**
-            4. 时间范围规则：
-               - 第一层分解的子事件时间范围**可以超出**父事件规定的时间范围（允许前置准备(如买票、预定)和后续收尾事件）。
-               - 同一父事件的子事件时间范围应避免重叠（除非有明确的并行执行逻辑）。
-            5. 分解策略：
-               - 分解需多样化：并非所有事件都需经过准备/规划流程，同一类事件在不同场景下流程可不同。事件的发展可能并非线性，可能存在波动等情况。
-               - 时间分布：无需均匀分布事件，按真实场景合理安排（持续时间长不代表每天都有相关动作）；阶段事件的时间区间需覆盖原事件核心流程，原子事件可穿插在阶段内。
-               - **所有子事件应尽量为不同日期，同一日的所有动作在一个原子事件中描述，不要拆分。**
-            6. 合理性优化：可修改原事件不合理信息，避免事件间安排冲突，确保描述真实丰富；阶段事件的时间区间需衔接自然，无明显断层。
-            
-            --- 输出格式强制要求 ---
-            1. **仅返回JSON数组（直接子事件列表），以[]开头结尾，无任何额外文本（包括分析、注释、代码块标记）。**
-            2. 每个子事件必须包含以下字段（缺一不可，语法严格正确）：
-               - event_id：格式为「父事件ID-序号」（如父ID=1，子事件ID=1-1、1-2），确保层级关联。
-               - name：事件名称（简洁明了）。
-               - date：时间数组（单个日期/多个日期，粒度≤1天；跨天事件用"至"连接，如["2025-01-01至2025-01-03"]）。
-               - type：
-                 * 对于需要继续分解的事件（decompose=1）：取值范围（必选其一）：Career、Education、Relationships、Family&Living Situation、Personal Life、Finance、Health、Unexpected Events、Other。
-                 * 对于原子事件（decompose=0）：请从以下预定义的底层事件类别中选择，若没有合适的预定义类别，可自行生成合理的详细类别描述，不同于decompose=1的事件。预定义的底层事件类别：【
-                   {atomic_categories}】
-               - description：事件详细描述（包含执行动作、目的、场景）。
-               - participant：参与者数组，格式：[{{"name":"姓名","relation":"关系"}}]，优先从用户画像选择；无合适关系可合理编造，自己参与则为[{{"name":"自己名字","relation":"自己"}}]。
-               - location：城市+POI类别描述（如"上海市-家中书房"、"杭州市-灵隐寺"）。
-               - **decompose：0（原子事件，时间跨度小于一天），1=需要继续分解（时间跨度大于一天）。一定要检查，若子事件date中含至，即跨度大于1天，一定要decompose=1**
-            3. JSON语法要求：
-               - 字段名用双引号包裹，字段间用逗号分隔（无多余逗号）。
-               - 字符串值用双引号包裹，无语法错误。
-            
-            -- 输出示例 --
-            假设待分解事件为：{{"event_id":"1","name":"2025年1月1日至2025年1月15日的欧洲旅行","date":["2025-01-01至2025-01-15"],"type":"Personal Life","description":"为期15天的欧洲旅行","participant":[{{"name":"张三","relation":"自己"}}],"location":"欧洲","decompose":1}}
-            输出：
-            [{{"event_id":"1-1","name":"旅行前准备","date":["2024-12-15至2024-12-30"],"type":"Personal Life","description":"准备欧洲旅行所需的签证、机票、酒店预订等","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-家中","decompose":1}},{{"event_id":"1-2","name":"欧洲旅行行程执行","date":["2025-01-01至2025-01-15"],"type":"Personal Life","description":"按照计划在欧洲各国旅行","participant":[{{"name":"张三","relation":"自己"}}],"location":"欧洲各国","decompose":1}},{{"event_id":"1-3","name":"旅行后整理","date":["2025-01-16"],"type":"物品购买","description":"整理旅行照片和购买的纪念品","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-家中","decompose":0}}]
-            
-            -- 用户画像 --
-            {persona}
-            
-            -- 待分解事件 --
-            {parent_event}
-        '''
-        self.template_level1 = '''
-                    基于以下待分解事件，完成推理、分解，并直接输出子事件JSON数组（无需额外分析文本），目标是将事件分解为粒度小于一天的原子事件：
-
-                    1. 分解原则：
-                       - **严格依据题面主体**：分解内容必须严格围绕原事件描述的主体核心，不允许发散到与主体无关的额外事件。
-                       - **不做过多扩展，例如计划事件仅分解计划**：如果原事件描述的是计划、预约或尚未执行的安排（如"计划去旅行"、"安排聚会"），则分解内容仅涵盖计划相关的准备工作（如确定时间地点、通知参与者），不应扩展到假设性的执行过程（旅行的整体流程）或后续事件。
-                       - **禁止无关扩展**：严禁引入原描述中完全不存在的新情节线，也不得基于假设生成后续没在时间范围内的情节。
-                    2. 事件扩展：
-                       - 可参考事件描述进行分解，但原事件可能不完整，不具体，甚至不合理，需合理丰富简单的**前置（准备/规划/预定）、具体过程，以及其他相关事件**，补充后使其完整丰富。
-                       - **扩展约束：新增情节时必须严格遵循以下两条规则：**
-                         - **规则一（细节补充）：仅允许补充粒度≤1天的简单关联事件，如订票、交通通行、预约、沟通确认、物资准备等，且这些事件必须与原描述情节直接相关，不得引入原描述中完全不存在的新情节线。**
-                         - **规则二（细化执行）：允许在原描述基础上进行具体化设计，将粗略安排（如"杭州3天旅行"）细化为可执行的分段安排（如"第一天西湖观光，第二天灵隐寺参访，第三天河坊街购物"），此类新增情节是对原描述的深化实现，而非引入与原描述无关的重大新情节。**
-                         - **禁止：严禁生成与原事件核心情节存在较大差异、涉及多环节影响或改变事件性质的新情节（如临时新增旅行目的地、临时改变活动主题，新增未提及的第二次旅行等），扩展后的子事件应与原事件保持情节一致性，仅对原描述未涉及的细节进行补充完善。**
-                    3. 粒度与阶段分解规则：
-                       - 阶段事件：针对跨度长（超过7天）、流程复杂、重要性高的原事件，可拆分为「阶段性子事件」（如项目立项→执行→验收、旅行准备→行程执行→收尾），等后续再分解为粒度为一天的原子事件。
-                         - 阶段事件特征：date格式为跨天区间（如["2025-01-01至2025-01-15"]），覆盖一个完整阶段的时间范围，decompose=1，表示其后续将被递归分解。
-                         - 阶段划分原则：按「时间顺序+流程逻辑」拆分，每个阶段聚焦一个核心目标，避免阶段重叠或遗漏。注意，如果原事件时间范围小于一天，则不用拆分为阶段事件，直接拆分为原子事件。
-                       - 原子事件：粒度≤1天，date格式为当天日期（如["2025-01-01"]）。具体可执行，多次发生需拆分为多个日期（如["2025-01-01","2025-02-01"]而非["2025-01-01至2025-02-01"]），decompose=0（无需继续分解）。
-                       - **注意，不可以输出空数组，如果原事件很简单，你也要分解为不同的原子事件，或推理相关后续/前置事件，只不过都为粒度小于1天的原子事件，decompose=0即可。**
-                    4. 时间范围约束（关键）：
-                       - **子事件日期应在父事件时间范围内**。如需扩展事件到父事件时间范围之外，**最多不得超过父事件起止时间向前或向后各7天**（如父事件为2025-01-01至2025-01-15，则子事件最早可为2024-12-25，最晚可为2025-01-22）。
-                       - 超出此范围的子事件不允许生成。
-                       - 同一父事件的子事件时间范围应避免重叠（除非有明确的并行执行逻辑）。
-                    5. 递归分解约束：
-                       - 分解的子事件数量**严格控制在10个以内**（建议3-8个，避免过度拆分）。
-                       - 事件ID中的'-'代表层级，每多一个'-'表示多一层分解。
-                       - **如果你分解出的子事件为阶段事件，date格式为跨天区间（如["2025-01-01至2025-01-15"]），则其decompose一定为1。**
-                       - **如果分解出的子事件为原子事件，date格式为当天日期（如["2025-01-01"]），则其decompose一定为0。**
-                    6. 分解策略：
-                       - 分解需多样化：并非所有事件都需经过准备/规划流程，同一类事件在不同场景下流程可不同。
-                       - 时间分布：无需均匀分布事件，按真实场景合理安排（持续时间长不代表每天都有相关动作）；阶段事件的时间区间需覆盖原事件核心流程，原子事件可穿插在阶段内。
-                    7. 合理性优化：可修改原事件不合理信息，避免事件间安排冲突，确保描述真实丰富；阶段事件的时间区间需衔接自然，无明显断层。
-
-                    --- 输出格式强制要求 ---
-                    1. **仅返回JSON数组（直接子事件列表），以[]开头结尾，无任何额外文本（包括分析、注释、代码块标记）。**
-                    2. 每个子事件必须包含以下字段（缺一不可，语法严格正确）：
-                       - event_id：格式为「父事件ID-序号」（如父ID=1，子事件ID=1-1、1-2），确保层级关联。
-                       - name：事件名称（简洁明了）。
-                       - date：时间数组（单个日期/多个日期，粒度≤1天；跨天事件用"至"连接，如["2025-01-01至2025-01-03"]）。
-                       - type：取值范围（必选其一）：Career、Education、Relationships、Family&Living Situation、Personal Life、Finance、Health、Unexpected Events、Other。
-                       - **description：事件详细描述，必须完整描述整个事件的全部内容过程，包括：事件的具体动作和执行过程、涉及的所有人物及其角色、发生的具体地点和环境背景。描述要具体、完整、不遗漏关键信息，让读者能通过description完整了解事件的来龙去脉。**
-                       - participant：参与者数组，格式：[{{"name":"姓名","relation":"关系"}}]，优先从用户画像选择；无合适关系可合理编造，自己参与则为[{{"name":"自己名字","relation":"自己"}}]。
-                       - location：城市+POI类别描述（如"上海市-家中书房"、"杭州市-灵隐寺"）。
-                       - **decompose：0（原子事件，时间跨度小于一天），1=需要继续分解（时间跨度大于一天）。一定要检查，若子事件date中含至，即跨度大于1天，一定要decompose=1**
-                    3. JSON语法要求：
-                       - 字段名用双引号包裹，字段间用逗号分隔（无多余逗号）。
-                       - 字符串值用双引号包裹，无语法错误。
-
-                    -- 输出示例 --
-                    假设待分解事件为：{{"event_id":"1","name":"2025年1月1日至2025年1月15日的欧洲旅行","date":["2025-01-01至2025-01-15"],"type":"Personal Life","description":"为期15天的欧洲旅行","participant":[{{"name":"张三","relation":"自己"}}],"location":"欧洲","decompose":1}}
-                    输出：
-                    [{{"event_id":"1-1","name":"旅行前准备","date":["2024-12-25至2024-12-31"],"type":"Personal Life","description":"准备欧洲旅行所需的签证、机票、酒店预订等","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-家中","decompose":1}},{{"event_id":"1-2","name":"欧洲旅行行程执行","date":["2025-01-01至2025-01-15"],"type":"Personal Life","description":"按照计划在欧洲各国旅行","participant":[{{"name":"张三","relation":"自己"}}],"location":"欧洲各国","decompose":1}},{{"event_id":"1-3","name":"旅行后整理","date":["2025-01-16至2025-01-22"],"type":"Personal Life","description":"整理旅行照片和购买的纪念品","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-家中","decompose":0}}]
-
-                    假设待分解事件为（计划类）：{{"event_id":"2","name":"计划国庆假期旅行","date":["2025-09-15"],"type":"Personal Life","description":"与家人商量国庆假期去杭州旅行的计划","participant":[{{"name":"张三","relation":"自己"}}],"location":"家中","decompose":1}}
-                    输出：
-                    [{{"event_id":"2-1","name":"讨论旅行目的地和时间","date":["2025-09-15"],"type":"Personal Life","description":"与家人商量国庆假期去杭州旅行的具体安排","participant":[{{"name":"张三","relation":"自己"}}],"location":"家中","decompose=0}},{{"event_id":"2-2","name":"查询酒店和交通","date":["2025-09-16至2025-09-22"],"type":"Personal Life","description":"查询杭州酒店和往返交通信息","participant":[{{"name":"张三","relation":"自己"}}],"location":"家中","decompose":0}}]
-
-                    -- 用户画像 --
-                    {persona}
-
-                    -- 待分解事件 --
-                    {parent_event}
-                '''
-        # 第二层分解模板：阶段事件→原子事件
-        self.template_level2_1 = '''
-            基于以下待分解阶段事件和背景信息，完成推理、分解，并直接输出原子事件JSON数组（无需额外分析文本）：
-            
-            1. 原子事件要求：粒度≤1天，具体可执行，decompose=0（无需继续分解）。
-            2. 粒度与阶段分解规则：
-               - 当前为第二层分解（current_depth≥1），必须分解为原子事件（粒度为天）。
-               - **原子事件时间跨度不超过1天，多次发生需拆分为多个日期（如["2025-01-01","2025-02-01"]而非["2025-01-01至2025-02-01"]）。**
-               - **重要规则：对于发生在同一日的事件，尽量不要拆分为不同的原子事件。同一日的所有动作应在一个原子事件中描述，避免过度拆分。**
-               - **如果输入的父事件时间跨度为一天，则拆解并返回一个原子事件即可，内容为原事件更详细的描述。**
-            3. 递归分解约束：
-               - 每一层分解的子事件数量**严格控制在10个以内**（建议2-6个，避免过度拆分）。
-               - 事件ID中的'-'代表层级，每多一个'-'表示多一层分解。
-            4. 时间范围规则：
-               - 第二层分解的子事件时间范围**必须严格包含**在父事件规定的时间范围内（不允许超出）。
-               - 同一父事件的子事件时间范围应避免重叠，确保时间安排合理。
-               - 原子事件时间跨度不超过1天。
-            5. 分解策略：
-               - 基于背景信息，确保分解的原子事件与整体事件流程协调一致。
-               - 按真实场景合理安排时间分布，确保事件流程连贯。
-               - 时间分布：无需均匀分布事件，按真实场景合理安排（持续时间长不代表每天都有相关动作）；原子事件需在父事件时间范围内合理分布。
-               - **确保同一日的所有相关动作整合到一个原子事件中，避免将同一日的连续动作拆分为多个原子事件。**
-            6. 合理性优化：确保事件描述真实丰富，与用户画像匹配，避免事件间安排冲突。
-            
-            --- 输出格式强制要求 ---
-            1. **仅返回JSON数组（直接子事件列表），以[]开头结尾，无任何额外文本（包括分析、注释、代码块标记）。**
-            2. 每个子事件必须包含以下字段（缺一不可，语法严格正确）：
-               - event_id：格式为「父事件ID-序号」（如父ID=1-1，子事件ID=1-1-1、1-1-2），确保层级关联。
-               - name：事件名称（简洁明了）。
-               - **date：时间数组（单个日期/多个日期，粒度≤1天，日期格式为XXXX-XX-XX,如["2025-01-01"]，不允许使用跨天区间格式（如["2025-01-01至2025-02-01"]）。**
-               - type：请使用以下预定义的底层事件类别，若没有合适的预定义类别，可自行生成合理的类别：
-                   {atomic_categories}
-               - description：事件详细描述（包含执行动作、目的、场景）。
-               - participant：参与者数组，格式：[{{"name":"姓名","relation":"关系"}}]，优先从用户画像选择；无合适关系可合理编造，自己参与则为[{{"name":"自己名字","relation":"自己"}}]。
-               - location：城市+POI类别描述（如"上海市-家中书房"、"杭州市-灵隐寺"）。
-               - decompose：0=无需继续分解（原子事件）。
-            3. JSON语法要求：
-               - 字段名用双引号包裹，字段间用逗号分隔（无多余逗号）。
-               - 字符串值用双引号包裹，无语法错误。
-            
-            -- 输出示例 --
-            假设待分解阶段事件为：{{"event_id":"1-1","name":"旅行前准备","date":["2024-12-15至2024-12-30"],"type":"Personal Life","description":"准备欧洲旅行所需的签证、机票、酒店预订等","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-家中","decompose":1}}
-            输出：
-            [{{"event_id":"1-1-1","name":"办理欧洲签证","date":["2024-12-15"],"type":"个人事务处理","description":"前往大使馆办理欧洲申根签证","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-大使馆","decompose":0}},{{"event_id":"1-1-2","name":"预订机票","date":["2024-12-20"],"type":"票务预定","description":"预订北京往返欧洲的机票","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-家中","decompose":0}},{{"event_id":"1-1-3","name":"预订酒店","date":["2024-12-25"],"type":"p","description":"预订欧洲旅行期间的酒店","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-家中","decompose":0}},{{"event_id":"1-1-4","name":"准备旅行物品","date":["2024-12-30"],"type":"个人事务处理","description":"收拾行李，准备旅行所需物品","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-家中","decompose":0}}]
-            
-            -- 用户画像 --
-            {persona}
-            
-            -- 背景信息 --
-            {background_info}
-            
-            -- 待分解事件 --
-            {parent_event}
-        '''
-        self.template_level2 = '''
-                   基于以下待分解阶段事件和背景信息，完成推理、分解，并直接输出原子事件JSON数组（无需额外分析文本）：
-
-                   1. 原子事件要求：粒度≤1天，具体可执行，decompose=0（无需继续分解）。
-                   2. 粒度与阶段分解规则：
-                      - 当前为第二层分解（current_depth≥1），必须分解为原子事件（粒度为天）。
-                      - **原子事件时间跨度不超过1天，多次发生需拆分为多个日期（如["2025-01-01","2025-02-01"]而非["2025-01-01至2025-02-01"]）。**
-                   3. 递归分解约束：
-                      - 每一层分解的子事件数量**严格控制在10个以内**（建议2-7个，避免过度拆分）。
-                      - 事件ID中的'-'代表层级，每多一个'-'表示多一层分解。
-                   4. 时间范围规则：
-                      - 第二层分解的子事件时间范围**必须严格包含**在父事件规定的时间范围内（不允许超出）。
-                      - 同一父事件的子事件时间范围应避免重叠，确保时间安排合理。
-                      - 原子事件时间跨度不超过1天。
-                   5. 分解策略：
-                      - 基于背景信息，确保分解的原子事件与整体事件流程协调一致。
-                      - 按真实场景合理安排时间分布，确保事件流程连贯。
-                      - 时间分布：无需均匀分布事件，按真实场景合理安排（持续时间长不代表每天都有相关动作）；原子事件需在父事件时间范围内合理分布。
-                   6. 合理性优化：确保事件描述真实丰富，与用户画像匹配，避免事件间安排冲突。
-
-                   --- 输出格式强制要求 ---
-                   1. **仅返回JSON数组（直接子事件列表），以[]开头结尾，无任何额外文本（包括分析、注释、代码块标记）。**
-                   2. 每个子事件必须包含以下字段（缺一不可，语法严格正确）：
-                      - event_id：格式为「父事件ID-序号」（如父ID=1-1，子事件ID=1-1-1、1-1-2），确保层级关联。
-                      - name：事件名称（简洁明了）。
-                      - **date：时间数组（单个日期/多个日期，粒度≤1天，日期格式为XXXX-XX-XX,如["2025-01-01"]，不允许使用跨天区间格式（如["2025-01-01至2025-02-01"]）。**
-                      - type：取值范围（必选其一）：Career、Education、Relationships、Family&Living Situation、Personal Life、Finance、Health、Unexpected Events、Other。
-                      - **description：事件详细描述，必须完整描述整个事件的全部内容过程，包括：事件的具体动作和执行步骤、涉及的所有人物及其角色、发生的具体地点和环境背景。描述要具体、完整、不遗漏关键信息，让读者能通过description完整了解事件的来龙去脉。**
-                      - participant：参与者数组，格式：[{{"name":"姓名","relation":"关系"}}]，优先从用户画像选择；无合适关系可合理编造，自己参与则为[{{"name":"自己名字","relation":"自己"}}]。
-                      - location：城市+POI类别描述（如"上海市-家中书房"、"杭州市-灵隐寺"）。
-                      - decompose：0=无需继续分解（原子事件）。
-                   3. JSON语法要求：
-                      - 字段名用双引号包裹，字段间用逗号分隔（无多余逗号）。
-                      - 字符串值用双引号包裹，无语法错误。
-
-                   -- 输出示例 --
-                   假设待分解阶段事件为：{{"event_id":"1-1","name":"旅行前准备","date":["2024-12-15至2024-12-30"],"type":"Personal Life","description":"准备欧洲旅行所需的签证、机票、酒店预订等","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-家中","decompose":1}}
-                   输出：
-                   [{{"event_id":"1-1-1","name":"办理欧洲签证","date":["2024-12-15"],"type":"Personal Life","description":"前往大使馆办理欧洲申根签证","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-大使馆","decompose":0}},{{"event_id":"1-1-2","name":"预订机票","date":["2024-12-20"],"type":"Personal Life","description":"预订北京往返欧洲的机票","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-家中","decompose":0}},{{"event_id":"1-1-3","name":"预订酒店","date":["2024-12-25"],"type":"Personal Life","description":"预订欧洲旅行期间的酒店","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-家中","decompose":0}},{{"event_id":"1-1-4","name":"准备旅行物品","date":["2024-12-30"],"type":"Personal Life","description":"收拾行李，准备旅行所需物品","participant":[{{"name":"张三","relation":"自己"}}],"location":"北京市-家中","decompose":0}}]
-
-                   -- 用户画像 --
-                   {persona}
-
-                   -- 背景信息 --
-                   {background_info}
-
-                   -- 待分解事件 --
-                   {parent_event}
-               '''
-    def llm_call_s(self, prompt: str) -> str:
-        """大模型调用（直接输出子事件JSON数组）"""
-        #print('call llm')
-        response = llm_call(prompt)
-        return response
-
-    def _extract_json_from_llm_output(self, llm_output: str) -> List[Dict[str, Any]]:
-        """简单处理LLM输出：提取[]包裹的JSON数组（防止无关内容）"""
-        # 匹配第一个[到最后一个]之间的所有内容（贪婪匹配，忽略中间无关文本）
-        json_pattern = r'\[(.*)\]'  # 关键修改：贪婪匹配，覆盖完整JSON数组
-        matches = re.findall(json_pattern, llm_output, re.DOTALL)
-        if not matches:
-            raise ValueError("未找到JSON数组内容")
-        print(matches[0])
-        # 解析JSON
-        try:
-            raw_json = f"[{matches[0]}]"
-            # 修复1：补全字段间缺少的逗号（核心修复）
-            # 修复2：去除多余的逗号（如最后一个字段后有逗号）
-            raw_json = re.sub(r',\s*]', ']', raw_json)
-            raw_json = re.sub(r',\s*}', '}', raw_json)
-            # 修复3：确保字段名用双引号（替换单引号为双引号）
-            raw_json = re.sub(r"'([^']+)'", r'"\1"', raw_json)
-            # 修复4：去除JSON中的注释（// 开头的内容）
-            raw_json = re.sub(r'//.*?$', '', raw_json, flags=re.MULTILINE)
-            # 修复5：去除多余空格和换行（可选，优化格式）
-            raw_json = re.sub(r'\s+', ' ', raw_json).strip()
-            sub_events = json.loads(raw_json)
-            if not isinstance(sub_events, list):
-                raise ValueError("提取内容不是数组")
-            return sub_events
-        except Exception as e:
-            raise ValueError(f"JSON解析失败：{str(e)}")
-
-    def _get_atomic_categories(self, parent_type: str) -> str:
-        """
-        根据父节点的type获取对应的原子事件类别列表，格式化为字符串
-        :param parent_type: 父节点的事件类型
-        :return: 格式化后的原子事件类别字符串
-        """
-        # 构建原子事件类别字符串
-        categories_str = ""
-        
-        # 如果父节点的type在预定义的schema中，优先显示该类型下的具体类别
-        if parent_type in self.event_type_schema:
-            categories_str += f"- {parent_type}: {', '.join(self.event_type_schema[parent_type])}\n"
-            
-        # 显示所有其他类型的类别
-        for event_type, categories in self.event_type_schema.items():
-            if event_type != parent_type:
-                categories_str += f"- {event_type}: {', '.join(categories)}\n"
-        
-        return categories_str
-    
-    def _decompose_single_node(self, parent_event: Dict[str, Any], current_depth: int = 0, background_info="") -> List[Dict[str, Any]]:
-        """并行处理单个父事件：生成分解后的子事件列表"""
-        import copy
-        import json
-        # 深拷贝父事件，避免并行处理时的引用共享问题
-        parent_event_copy = copy.deepcopy(parent_event)
-        parent_id = parent_event_copy["event_id"]
-        parent_name = parent_event_copy["name"]
-        print(f"正在分解事件：{parent_id} - {parent_name[:30]}... 当前深度: {current_depth}")
-        
-        # 获取父事件的type
-        parent_type = parent_event_copy.get("type", "Other")
-        # 根据父事件的type获取对应的原子事件类别
-        atomic_categories = self._get_atomic_categories(parent_type)
-
-        # 根据当前深度选择模板
-        if current_depth == 0:
-            template = self.template_level1
-            # 第一层分解不需要背景信息
-            prompt = template.format(
-                persona=self.persona,
-                parent_event=json.dumps(parent_event_copy, ensure_ascii=False),
-                current_depth=current_depth,
-                atomic_categories=atomic_categories
-            )
-        else:
-            template = self.template_level2
-            # 第二层分解需要背景信息
-            prompt = template.format(
-                persona=self.persona,
-                parent_event=json.dumps(parent_event_copy, ensure_ascii=False),
-                current_depth=current_depth,
-                background_info=background_info,
-                atomic_categories=atomic_categories
-            )
-        #print(prompt)
-        # 2. 调用大模型获取子事件JSON
-        llm_output = self.llm_call_s(prompt)
-        print('-----------------------------')
-        print(llm_output)
-        print('-----------------------------')
-        # 3. 提取并解析JSON（简单处理，仅提取[]内内容）
-        try:
-            sub_events = self._extract_json_from_llm_output(llm_output)
-            # 验证子事件字段完整性
-            required_fields = ["event_id", "name", "date", "type", "description", "participant", "location",
-                               "decompose"]
-            valid_sub_events = []
-            for idx, sub_event in enumerate(sub_events):
-                if not isinstance(sub_event, dict):
-                    continue
-                missing_fields = [f for f in required_fields if f not in sub_event]
-                if missing_fields:
-                    print(f"子事件{idx + 1}缺少字段：{missing_fields}，跳过该事件")
-                    continue
-                # 验证decompose字段取值
-                if "decompose" not in sub_event:
-                    sub_event["decompose"] = 0
-                else:
-                    sub_event["decompose"] = int(sub_event["decompose"])
-                    if sub_event["decompose"] not in [0, 1]:
-                        sub_event["decompose"] = 0  # 默认为无需分解
-                valid_sub_events.append(sub_event)
-
-            print(f"事件分解完成：{parent_id} - 生成{len(valid_sub_events)}个有效子事件")
-            return valid_sub_events
-        except Exception as e:
-            print(f"事件分解失败：{parent_id} - 错误：{str(e)}")
-            return []  # 失败时返回空列表，避免中断流程
-
-    def _dfs_parallel_decompose_tree(self, event_nodes: List[Dict[str, Any]], max_workers: int = None, current_depth: int = 0) -> List[
-        Dict[str, Any]]:
-        """DFS递归分解+并行处理（基于decompose标记判断是否继续）"""
-        # 如果未指定max_workers，则使用类配置的线程数
-        if max_workers is None:
-            max_workers = self.decompose_workers
-        if not event_nodes:
-            return []
-
-        # 步骤1：并行分解当前层级需要继续分解的事件（decompose=1）
-        processed_nodes = []
-        pending_nodes = []  # 下一层级待分解的事件
-
-        # 深度检查：如果当前深度>=2（已分解3层），强制所有事件不再继续分解
-        if current_depth >= 2:
-            for node in event_nodes:
-                node["decompose"] = 0
-                node["subevent"] = []
-                processed_nodes.append(node)
-            return processed_nodes
-
-        # 筛选需要分解的节点
-        nodes_to_decompose = []
-        for node in event_nodes:
-            if node.get("decompose", 0) == 1:
-                nodes_to_decompose.append(node)
-            else:
-                # 无需分解的节点，直接保留（subevent设为空）
-                node["subevent"] = []
-                processed_nodes.append(node)
-
-        # 并行处理需要分解的节点
-        if nodes_to_decompose:
-            print(f"\n当前层级需分解{len(nodes_to_decompose)}个节点，并行处理中...")
-            with ThreadPoolExecutor(max_workers=max_workers) as executor:
-                future_to_node = {
-                    executor.submit(self._decompose_single_node, node, current_depth): node
-                    for node in nodes_to_decompose
-                }
-
-                # 保存每个父节点的分解结果，用于传递背景信息
-                node_decomposition_results = {}
-
-                for future in as_completed(future_to_node):
-                    parent_node = future_to_node[future]
-                    try:
-                        sub_events = future.result()
-                        # 为父节点添加子事件列表
-                        parent_node["subevent"] = sub_events
-                        processed_nodes.append(parent_node)
-                        # 收集下一层级需要分解的子事件（decompose=1）
-                        pending_nodes.extend([sub for sub in sub_events if sub["decompose"] == 1])
-                        # 保存分解结果
-                        node_decomposition_results[parent_node["event_id"]] = sub_events
-                    except Exception as e:
-                        print(f"处理节点{parent_node['event_id']}时异常：{str(e)}")
-                        parent_node["subevent"] = []
-                        processed_nodes.append(parent_node)
-                        # 保存空结果
-                        node_decomposition_results[parent_node["event_id"]] = []
-
-        # 步骤2：递归分解下一层级的事件
-        if pending_nodes:
-            print(f"\n发现{len(pending_nodes)}个子节点需要继续分解，进入下一层递归...")
-
-            # 为每个待分解的子节点构建背景信息
-            nodes_with_background = []
-            for node in pending_nodes:
-                # 找到父节点的分解结果作为背景信息
-                parent_id = "-".join(node["event_id"].split("-")[:-1])
-                background_info = node_decomposition_results.get(parent_id, [])
-
-                # 转换背景信息为JSON字符串
-                import json
-                background_str = json.dumps(background_info, ensure_ascii=False)
-
-                # 将背景信息添加到节点中
-                node_with_background = {
-                    "node": node,
-                    "background_info": background_str
-                }
-                nodes_with_background.append(node_with_background)
-
-            # 使用线程池并行分解下一层级的事件
-            decomposed_subtrees = []
-            with ThreadPoolExecutor(max_workers=max_workers) as executor:
-                future_to_node = {
-                    executor.submit(self._decompose_single_node, node_info["node"], current_depth + 1, node_info["background_info"]): node_info["node"]
-                    for node_info in nodes_with_background
-                }
-
-                for future in as_completed(future_to_node):
-                    parent_node = future_to_node[future]
-                    try:
-                        sub_events = future.result()
-                        # 为父节点添加子事件列表
-                        parent_node["subevent"] = sub_events
-                        decomposed_subtrees.append(parent_node)
-                        # 递归分解更深层级的事件（如果有）
-                        deeper_nodes = [sub for sub in sub_events if sub.get("decompose", 0) == 1]
-                        if deeper_nodes:
-                            deeper_subtrees = self._dfs_parallel_decompose_tree(deeper_nodes, max_workers, current_depth + 2)
-                            # 更新子事件
-                            updated_sub_events = []
-                            for sub_event in sub_events:
-                                matched = False
-                                for deeper_subtree in deeper_subtrees:
-                                    if deeper_subtree["event_id"] == sub_event["event_id"]:
-                                        updated_sub_events.append(deeper_subtree)
-                                        matched = True
-                                        break
-                                if not matched:
-                                    updated_sub_events.append(sub_event)
-                            parent_node["subevent"] = updated_sub_events
-                    except Exception as e:
-                        print(f"处理子节点{parent_node['event_id']}时异常：{str(e)}")
-                        parent_node["subevent"] = []
-                        decomposed_subtrees.append(parent_node)
-
-            # 替换子节点为分解后的完整子树（通过event_id匹配）
-            for processed_node in processed_nodes:
-                original_sub_events = processed_node.get("subevent", [])
-                updated_sub_events = []
-                for sub_event in original_sub_events:
-                    # 查找是否有分解后的子树
-                    matched = False
-                    for decomposed_subtree in decomposed_subtrees:
-                        if decomposed_subtree["event_id"] == sub_event["event_id"]:
-                            updated_sub_events.append(decomposed_subtree)
-                            matched = True
-                            break
-                    if not matched:
-                        updated_sub_events.append(sub_event)
-                processed_node["subevent"] = updated_sub_events
-
-        return processed_nodes
-
-    def event_decomposer(self, events: List[Dict[str, Any]], file: str, max_workers: int = 10):
-        """
-        主函数：DFS并行分解事件为树形结构（基于decompose标记自动终止）
-        Args:
-            events: 原始事件列表（需包含 event_id、name、date 等基础字段）
-            file: 结果保存路径前缀
-            max_workers: 并行线程数（IO密集型可设10-20）
-        """
-        import copy
-        # 验证原始事件格式并创建副本，避免修改原始数据
-        required_fields = ["event_id", "name"]
-        processed_events = []
-        for i, event in enumerate(events):
-            missing_fields = [f for f in required_fields if f not in event]
-            if missing_fields:
-                raise ValueError(f"原始事件{i + 1}缺少必填字段：{','.join(missing_fields)}")
-            # 创建事件副本，避免修改原始数据
-            event_copy = copy.deepcopy(event)
-            # 为副本添加默认字段（若缺失）
-            event_copy.setdefault("type", "Other")
-            event_copy.setdefault("description", event_copy["name"])
-            event_copy.setdefault("participant", [{"name": "自己", "relation": "自己"}])
-            event_copy.setdefault("location", "未知")
-            event_copy.setdefault("decompose", 1)  # 原始事件默认需要分解
-            event_copy.setdefault("subevent", [])
-            processed_events.append(event_copy)
-
-        print(f"开始分解事件树，共{len(processed_events)}个原始事件，并行线程数：{max_workers}")
-
-        # 核心：DFS+并行分解
-        self.decompose_schedule = self._dfs_parallel_decompose_tree(processed_events, max_workers, current_depth=0)
-
-        # 保存完整树形结果
-        output_path = f"{file}/event_decompose_dfs.json"
-        # 确保输出目录存在
-        import os
-        output_dir = os.path.dirname(output_path)
-        os.makedirs(output_dir, exist_ok=True)
-        with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(self.decompose_schedule, f, ensure_ascii=False, indent=2)
-
-        print(f"\n事件树分解完成！结果已保存到：{output_path}")
-
-        # 统计原子事件总数（decompose=0且subevent为空）
-        def count_atomic_events(nodes: List[Dict[str, Any]]) -> int:
-            count = 0
-            for node in nodes:
-                if node["decompose"] == 0 and not node.get("subevent", []):
-                    count += 1
-                count += count_atomic_events(node.get("subevent", []))
-            return count
-
-        atomic_count = count_atomic_events(self.decompose_schedule)
-        print(f"原子事件总数：{atomic_count}")
-
 class Scheduler:
-    def __init__(self, persona, file_path):
-        """初始化日程调度器，创建空的日程存储结构"""
+    def __init__(self, persona, file_path, spec: TimeSpec = None):
+        """初始化日程调度器，创建空的日程存储结构
+
+        参数:
+            persona: 人物画像数据
+            file_path: 基础数据路径
+            spec: 时间范围规格（年份 + 模拟月数），默认 2025 全年
+        """
         # 基础配置
+        self.spec = spec or TimeSpec()
         self.schedule = {}  # 存储日程数据，格式如{"2025-01-01":["event1","event2"],...}
         self.raw_events = []  # 保存原始事件信息
         self.persona = persona
@@ -888,15 +77,46 @@ class Scheduler:
         """
         return self.raw_events
 
+    def _time_guard(self) -> str:
+        """
+        构造时间范围约束头。
+
+        提示词模板中散布着大量 "2025年" 的字面量（示例、格式说明、硬性要求），
+        逐条参数化风险大且易漏。这里在所有经由本类发往 LLM 的提示词前统一加一段
+        覆盖声明，明确真实的目标年份与月份范围，模板中的年份仅作格式参考。
+        """
+        lines = [
+            "【时间范围硬性约束】",
+            f"本次生成的目标年份为 {self.spec.year} 年，模拟范围为 {self.spec.describe()}。",
+            f"1. 所有日期必须落在 {self.spec.start_date} 至 {self.spec.end_date} 之间，"
+            f"不得生成该范围之外的任何日期。",
+        ]
+        # 年份与模板示例一致时不必强调"别照搬"，避免自相矛盾的措辞
+        if self.spec.year != DEFAULT_YEAR:
+            lines.append(
+                f"2. 下文提示词与示例中出现的年份（如 {DEFAULT_YEAR}）仅供格式参考，"
+                f"一律以本约束的 {self.spec.year} 年为准，不得照搬。"
+            )
+        # 只在实际截断年份时才需要月份上限约束
+        if self.spec.months < 12:
+            lines.append(
+                # 前两行是标题与范围描述，不参与编号
+                f"{len(lines) - 1}. 月份仅限 1 至 {self.spec.months} 月；"
+                f"不要生成第 {self.spec.months + 1} 月及以后的内容，"
+                f"全年总结也只覆盖这 {self.spec.months} 个月。"
+            )
+        lines.append("-" * 40)
+        return "\n".join(lines) + "\n"
+
     def llm_call_sr(self,prompt,record=0):
         """调用大模型的函数"""
-        res = llm_call_reason_j(prompt)
+        res = llm_call_reason_j(self._time_guard() + prompt)
         return res
 
-    
+
     def llm_call_s(self,prompt,record=0):
         """调用大模型的函数"""
-        res = llm_call_j(prompt)
+        res = llm_call_j(self._time_guard() + prompt)
         return res
 
     def handle_profie(self,persona):
@@ -923,19 +143,20 @@ class Scheduler:
     def genevent_yearterm(self,persona):
         #基于persona提取重点+分配不同类型事件概率
         summary = self.handle_profie(persona)
-        prompt = template_yearterm_eventgen.format(summary=summary)
+        guard = self._time_guard()
+        prompt = guard + template_yearterm_eventgen.format(summary=summary)
         #第一轮生成，基于不同类别和概率。100件
         res1 = llm_call(prompt, context, 1)
         print(res1)
-        prompt = template_yearterm_complete.format(persona=persona)
+        prompt = guard + template_yearterm_complete.format(persona=persona)
         #第二轮，基于画像，挖掘没在重点中的细节。100件
         res2 = llm_call(prompt, context, 1)
         print(res2)
-        prompt = template_yearterm_complete_2.format(persona= persona)
+        prompt = guard + template_yearterm_complete_2.format(persona= persona)
         #第三轮，聚焦类别百分比平衡和人类共性事件。100件
         res3 = llm_call(prompt, context, 1)
         print(res3)
-        prompt = template_yearterm_complete_3.format(summary=summary)
+        prompt = guard + template_yearterm_complete_3.format(summary=summary)
         #第四轮，聚焦波折、困难、负面事件。20件
         res4 = llm_call(prompt, context)
         print(res4)
@@ -1706,12 +927,12 @@ class Scheduler:
             stage_events_str = ", ".join(category_stage_events) if category_stage_events else ""
 
             # 1. 合理性校验：画像匹配度、现实合理性、日期、频率与间隔、相似事件
-            prompt = template_check.format(persona=self.persona, content=data)
+            prompt = self._time_guard() + template_check.format(persona=self.persona, content=data)
             validation_result = llm_call_reason(prompt, context, 1)
             print(f"【{type}】合理性校验完成")
 
             # 2. 基于合理性校验结果进行修改、删除
-            prompt = template_process.format(content=data,t=type)
+            prompt = self._time_guard() + template_process.format(content=data,t=type)
             processed_result = llm_call_reason(prompt, context,1)
             data1 = robust_json_parse(processed_result, "事件处理结果")
             # 确保data1是数组类型
@@ -1726,7 +947,7 @@ class Scheduler:
             else:
                 instruction = base_instruction
 
-            prompt = template_process_2.format(type=type, content=processed_result, persona=self.persona, instruction=instruction)
+            prompt = self._time_guard() + template_process_2.format(type=type, content=processed_result, persona=self.persona, instruction=instruction)
             new_events_result = llm_call(prompt, context)
             data2 = robust_json_parse(new_events_result, "新增事件结果")
             # 确保data2是数组类型
@@ -1760,7 +981,7 @@ class Scheduler:
                 i, chunk = chunk_info
                 try:
                     # 本地处理，不共享可变数据
-                    local_prompt = template_process_1.format(content=chunk, relation=self.relation, stage_events=stage_events_str, t=type)
+                    local_prompt = self._time_guard() + template_process_1.format(content=chunk, relation=self.relation, stage_events=stage_events_str, t=type)
                     local_result = llm_call(local_prompt, context)
                     local_data = robust_json_parse(local_result, f"第 {i} 块标准化结果")
                     # 确保local_data是数组类型
@@ -1925,15 +1146,17 @@ class Scheduler:
         # else:
         #     print(f"event_1.json文件不存在: {event_1_path}")
 
-    def extract_events_by_month(self, target_month, event_dict=None, target_year=2025, include_surrounding=False):
+    def extract_events_by_month(self, target_month, event_dict=None, target_year=None, include_surrounding=False):
         """
         提取目标月份的事件，支持灵活配置
         :param target_month: 目标月份（整数，1-12）
         :param event_dict: 要提取的事件字典，默认使用self.schedule
-        :param target_year: 目标年份，默认为2025
+        :param target_year: 目标年份，默认取 self.spec.year
         :param include_surrounding: 是否包含前后一个月的事件
         :return: 根据参数返回相应的事件字典
         """
+        if target_year is None:
+            target_year = self.spec.year
         if event_dict is None:
             event_dict = self.schedule
             
@@ -2198,7 +1421,7 @@ class Scheduler:
         )
 
     def event_schedule(self,data,month):
-        prompt = template_process_4.format(content=data, persona=self.persona,calendar=self.get_month_calendar(2025,month))
+        prompt = template_process_4.format(content=data, persona=self.persona,calendar=self.get_month_calendar(self.spec.year,month))
         print(prompt)
         res = self.llm_call_sr(prompt)
         print(res)
@@ -2225,12 +1448,12 @@ class Scheduler:
         from datetime import datetime, timedelta
         
         # 计算前一个月的后10天和当前月的前10天的时间范围
-        target_year = 2025
-        
+        target_year = self.spec.year
+
         # 计算前一个月的起始日期（从16号开始）
         # 确保所有日期都在target_year内
         if month == 1:
-            # 1月份的交界处，只处理2025年1月1日到15日的事件，不处理2024年的事件
+            # 1月份的交界处，只处理目标年1月1日到15日的事件，不处理上一年的事件
             prev_month_mid = None  # 不处理前一个月
             prev_month_last_day = None
         else:
@@ -2376,36 +1599,38 @@ class Scheduler:
 
     def _process_single_month(self, data, month):
         """实例方法：处理单个月份的事件"""
-        print(f"【2025年{month}月】开始处理")
+        year = self.spec.year
+        print(f"【{year}年{month}月】开始处理")
         try:
-            month_events = self.get_events_by_month(data, 2025, month)
+            month_events = self.get_events_by_month(data, year, month)
             scheduled_events = self.event_schedule(month_events, month)
-            print(f"【2025年{month}月】完成，生成{len(scheduled_events)}件")
+            print(f"【{year}年{month}月】完成，生成{len(scheduled_events)}件")
             return scheduled_events
         except Exception as e:
-            print(f"【2025年{month}月】处理失败：{str(e)}")
+            print(f"【{year}年{month}月】处理失败：{str(e)}")
             import traceback
             traceback.print_exc()
             return []
 
     def parallel_process_monthly_events(self, data: List[Dict[str, Any]]):
-        """并行处理1-12月主题事件（类方法入口）"""
+        """并行处理模拟范围内各月的主题事件（类方法入口）"""
         final_schedule = []
+        year = self.spec.year
         max_workers = min(12, self.schedule_workers)
 
         # 使用ThreadPoolExecutor实现并行处理（避免pickling问题）
         from concurrent.futures import ThreadPoolExecutor, as_completed
-        
+
         # 定义每个线程要执行的函数
         def process_month(month):
-            print(f"【2025年{month}月】开始处理")
+            print(f"【{year}年{month}月】开始处理")
             try:
-                month_events = self.get_events_by_month(data, 2025, month)
+                month_events = self.get_events_by_month(data, year, month)
                 scheduled_events = self.event_schedule(month_events, month)
-                print(f"【2025年{month}月】完成，生成{len(scheduled_events)}件")
+                print(f"【{year}年{month}月】完成，生成{len(scheduled_events)}件")
                 return scheduled_events
             except Exception as e:
-                print(f"【2025年{month}月】处理失败：{str(e)}")
+                print(f"【{year}年{month}月】处理失败：{str(e)}")
                 import traceback
                 traceback.print_exc()
                 return []
@@ -2413,7 +1638,7 @@ class Scheduler:
         # 提交所有任务到线程池
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             # 提交任务并获取Future对象
-            future_to_month = {executor.submit(process_month, month): month for month in range(1, 13)}
+            future_to_month = {executor.submit(process_month, month): month for month in self.spec.month_nums}
             
             # 处理完成的任务结果
             for future in as_completed(future_to_month):
@@ -2427,7 +1652,7 @@ class Scheduler:
                     with open(output_path, "w", encoding="utf-8") as f:
                         json.dump(final_schedule, f, ensure_ascii=False, indent=2)
                 except Exception as e:
-                    print(f"【2025年{month}月】结果处理失败：{str(e)}")
+                    print(f"【{year}年{month}月】结果处理失败：{str(e)}")
 
         # 保存最终结果到实例属性
         self.final_schedule = final_schedule
@@ -2462,8 +1687,9 @@ class Scheduler:
         # 提交所有任务到线程池
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             # 提交任务并获取Future对象
-            # 处理1-2月，2-3月，...，11-12月交界处
-            future_to_month = {executor.submit(process_transition, month): month for month in range(2, 13)}
+            # 处理1-2月，2-3月，... 各相邻月交界处（末月由 spec.months 决定）
+            future_to_month = {executor.submit(process_transition, month): month
+                               for month in range(2, self.spec.months + 1)}
             
             # 处理完成的任务结果
             for future in as_completed(future_to_month):
@@ -2518,872 +1744,6 @@ class Scheduler:
         res = self.sort_and_add_event_id(res)
         #分解事件
         self.decompose_events_with_event_tree(res,file)
-
-    def extract_important_nodes(self, persona):
-        """
-        基于人物画像提取今年（2025年）的重要节点
-        
-        参数:
-            persona: 人物画像数据
-            
-        返回:
-            dict: 包含个人重要节点和社交关系相关人士重要节点的字典
-        """
-        result = {"personal_nodes": [], "social_nodes": []}
-        
-        # 1. 单独提取个人重要节点
-        print("开始提取个人重要节点...")
-        personal_prompt = template_important_nodes.format(persona=persona)
-        personal_res = self.llm_call_s(personal_prompt)
-        #print("个人重要节点提取结果:")
-        #print(personal_res)
-
-        try:
-            # 解析个人重要节点
-            json_pattern = r'\{.*\}'
-            matches = re.search(json_pattern, personal_res, re.DOTALL)
-            if matches:
-                json_str = matches.group(0)
-                # 修复可能的JSON格式问题
-                json_str = re.sub(r'\s+', ' ', json_str)
-                json_str = re.sub(r',\s*\}', '}', json_str)
-                json_str = re.sub(r',\s*\]', ']', json_str)
-
-                personal_result = json.loads(json_str)
-                if "personal_nodes" in personal_result:
-                    result["personal_nodes"] = personal_result["personal_nodes"]
-                    print(f"成功提取{len(result['personal_nodes'])}个个人重要节点")
-        except Exception as e:
-            print(f"解析个人重要节点失败: {str(e)}")
-
-        # 2. 单独提取社交关系相关人士的重要节点（每10个社交关系为一组进行生成）
-        print("\n开始提取社交关系重要节点...")
-
-        # 检查persona中是否包含社交关系信息
-        if "relation" not in persona or not persona["relation"]:
-            print("persona中没有社交关系信息")
-            return result
-
-        try:
-            # 创建main_persona：原个人信息去除relation之后的信息
-            main_persona = persona.copy()
-            if "relation" in main_persona:
-                del main_persona["relation"]
-
-            # 从persona中提取所有社交关系
-            all_relations = []
-            for relation_group in persona["relation"]:
-                if isinstance(relation_group, list):
-                    all_relations.extend(relation_group)
-                else:
-                    all_relations.append(relation_group)
-
-            print(f"共提取到{len(all_relations)}个社交关系")
-
-            # 将社交关系按每10个一组进行分组
-            for i in range(0, len(all_relations), 10):
-                batch_relations = all_relations[i:i+10]
-                print(f"\n处理第{int(i/10)+1}组社交关系，共{len(batch_relations)}个")
-
-                # 调用LLM生成当前批次社交关系的重要节点
-                batch_prompt = template_social_nodes.format(main_persona=main_persona, social_group=batch_relations)
-                batch_res = self.llm_call_s(batch_prompt)
-                #print(f"第{int(i/10)+1}组社交关系重要节点提取结果:")
-                #print(batch_res)
-
-                # 解析当前批次的结果
-                json_pattern = r'\{.*\}'
-                matches = re.search(json_pattern, batch_res, re.DOTALL)
-                if matches:
-                    json_str = matches.group(0)
-                    # 修复可能的JSON格式问题
-                    json_str = re.sub(r'\s+', ' ', json_str)
-                    json_str = re.sub(r',\s*\}', '}', json_str)
-                    json_str = re.sub(r',\s*\]', ']', json_str)
-
-                    batch_result = json.loads(json_str)
-                    if "social_nodes" in batch_result:
-                        result["social_nodes"].extend(batch_result["social_nodes"])
-                        print(f"成功提取第{int(i/10)+1}组{len(batch_result['social_nodes'])}个社交关系重要节点")
-        except Exception as e:
-            print(f"提取社交关系重要节点失败: {str(e)}")
-            import traceback
-            traceback.print_exc()
-
-        print(f"\n社交关系重要节点提取完成，共提取{len(result['social_nodes'])}个")
-        
-        return result
-        
-    def extract_personal_change_timelines(self, persona):
-        """
-        提取个人变化节点，为四个指定主题各生成一个时间线
-        
-        参数:
-            persona: 人物画像数据
-            
-        返回:
-            list: 包含个人变化时间线的列表
-        """
-        print("\n开始提取个人变化事件时间线...")
-        personal_change_timelines = []
-        
-        try:
-            # 初始化历史记录
-            history_records = []
-            
-            # 定义四个主题字典
-            event_types = [
-                {"type": "工作变动", "description": "包括升职、降薪、转行、职业发展等相关事件"},
-                {"type": "家庭变动", "description": "包括搬家、家庭成员变动（指成员的里程碑事件，如升职，结婚等）、家庭资产变动（如大物件购置，环境改造）相关事件"},
-                {"type": "爱好变动", "description": "包括新增爱好相关事件"},
-                {"type": "偏好变动", "description": "包括新增偏好、偏好转变等相关事件"}
-            ]
-            
-            # 为每个主题生成一个事件时间线
-            for idx, event_type in enumerate(event_types):
-                print(f"\n为主题 '{event_type['type']}' 生成个人变化事件...")
-                
-                # 准备历史记录字符串
-                if history_records:
-                    history_str = "\n".join([f"{j+1}. 主题：{record['name']}，描述：{record['description']}" for j, record in enumerate(history_records)])
-                else:
-                    history_str = "暂无历史记录"
-                
-                # 构建prompt，传入指定主题
-                changes_prompt = template_personal_changes.format(
-                    persona=persona,
-                    history=history_str,
-                    event_type=event_type['type']
-                )
-                
-                # 调用LLM生成个人变化事件时间线
-                changes_res = self.llm_call_s(changes_prompt)
-                #print(f"主题 '{event_type['type']}' 生成结果:")
-                #print(changes_res)
-                
-                # 解析个人变化事件时间线
-                json_pattern = r'\[.*\]'
-                matches = re.search(json_pattern, changes_res, re.DOTALL)
-                if matches:
-                    json_str = matches.group(0)
-                    # 修复可能的JSON格式问题
-                    json_str = re.sub(r'\s+', ' ', json_str)
-                    json_str = re.sub(r',\s*\}', '}', json_str)
-                    json_str = re.sub(r',\s*\]', ']', json_str)
-                    
-                    changes_result = json.loads(json_str)
-                    if changes_result and isinstance(changes_result, list):
-                        # 获取事件（数组中的第一个元素）
-                        event_timeline = changes_result[0]
-                        # 添加主题类型字段
-                        event_timeline["theme"] = event_type['type']
-                        personal_change_timelines.append(event_timeline)
-                        
-                        # 记录历史，避免主题重复
-                        history_records.append({
-                            "name": event_timeline["topic"],
-                            "description": event_timeline["detailed_description"]
-                        })
-                        
-                        print(f"成功提取 '{event_type['type']}' 主题事件：{event_timeline['topic']}")
-        except Exception as e:
-            print(f"提取个人变化事件时间线失败: {str(e)}")
-            import traceback
-            traceback.print_exc()
-        
-        print(f"\n个人变化事件时间线提取完成，共提取{len(personal_change_timelines)}个事件时间线")
-        
-        return personal_change_timelines
-    
-    def generate_event_timeline(self, important_nodes, max_workers=None):
-        """
-        基于提取的重要节点生成主题时间线
-        
-        参数:
-            important_nodes: 包含个人节点和社交节点的字典
-            max_workers: 最大并发线程数，当前禁用多线程
-            
-        返回:
-            dict: 按类别分类的主题时间线，每个主题包含结构化的主题、详细描述和月度描述
-        """
-        # 1. 按类别分类所有事件
-        categorized_events = {}
-        
-        # 首先初始化所有在event_type_descriptions中定义的事件类别
-        event_type_descriptions = {
-            "Career": "职业工作相关（如“参加行业高峰论坛”“参与新产品研发项目”）",
-            "Education": "教育学习相关（如“上课”“考取专业资格证”，学生角色该类事件较多，其他角色相关事件会较少）",
-            "Relationships": "人际关系（如“为父母筹备生日宴”“组织闺蜜旅行”）",
-            "Family&Living Situation": "家庭生活与居住环境（如“智能家居安装”“组织家庭活动”）",
-            "Personal Life": "自我关怀、娱乐与生活方式（SelfCare & Entertainment & Lifesyle）（如“定期SPA护理”“短途旅行”“组织同学聚会”“KTV娱乐”）",
-            "Finance": "个人资产财务（如“购买理财产品”“汽车保养与维修”）",
-            "Health": "健康管理（如“中医调理”“瑜伽静修营”）",
-        }
-        
-        # 初始化所有事件类别为[]
-        for event_type in event_type_descriptions:
-            categorized_events[event_type] = []
-        
-        # 处理个人重要节点
-        for event in important_nodes.get("personal_nodes", []):
-            event_type = event.get("type", "Other")
-            if event_type not in categorized_events:
-                categorized_events[event_type] = []
-            categorized_events[event_type].append(event)
-        
-        # 处理社交重要节点（按事件自身的type分类）
-        for event in important_nodes.get("social_nodes", []):
-            # 使用事件自身的type字段进行分类
-            event_type = event.get("type", "Relationships")
-            if event_type not in categorized_events:
-                categorized_events[event_type] = []
-            categorized_events[event_type].append(event)
-        
-        # 3. 为每个类别生成额外的重要事件（测试阶段只生成Family&Living Situation类别）
-        from src.lifebench.event.templates.template_scheduler import template_important_events_generation
-        import json
-        
-        # 为所有类别生成额外重要事件（多线程版本）
-        from concurrent.futures import ThreadPoolExecutor
-        
-        def generate_important_events_for_category(event_type, existing_events):
-            """为单个事件类别生成额外重要事件"""
-            print(f"\n开始为{event_type}类别生成额外重要事件...")
-            
-            # 定义不同事件类别的描述
-            event_type_descriptions = {
-                "Career": "职业工作相关（如“参加行业高峰论坛”“参与新产品研发项目”）",
-                "Education": "教育学习相关（如“上课”“考取专业资格证”，学生角色该类事件较多，其他角色相关事件会较少）",
-                "Relationships": "人际关系（如“为父母筹备生日宴”“组织闺蜜旅行”）",
-                "Family&Living Situation": "家庭生活与居住环境（如“智能家居安装”“组织家庭活动”）",
-                "Personal Life": "自我关怀、娱乐与生活方式（SelfCare & Entertainment & Lifesyle）（如“定期SPA护理”“短途旅行”“组织同学聚会”“KTV娱乐”）",
-                "Finance": "个人资产财务（如“购买理财产品”“汽车保养与维修”）",
-                "Health": "健康管理（如“中医调理”“瑜伽静修营”）",
-            }
-            
-            # 获取当前事件类别的描述，如果没有则使用默认描述
-            event_type_with_description = event_type
-            if event_type in event_type_descriptions:
-                event_type_with_description = f"{event_type}：{event_type_descriptions[event_type]}"
-            
-            # 准备prompt，将已有重要节点作为参考输入
-            prompt = template_important_events_generation.format(
-                persona=self.persona,
-                event_type=event_type_with_description,
-                existing_events=json.dumps(existing_events, ensure_ascii=False) if existing_events else "[]"
-            )
-            
-            generated_events = []
-            
-            # 调用LLM生成重要事件
-            try:
-                response = self.llm_call_sr(prompt)
-                
-                # 提取JSON部分
-                start_idx = response.find('[')
-                end_idx = response.rfind(']')
-                if start_idx != -1 and end_idx != -1 and start_idx < end_idx:
-                    json_response = response[start_idx:end_idx + 1]
-                    raw_events = json.loads(json_response)
-                    
-                    # 转换为与原有事件格式一致的结构
-                    generated_events = [{
-                        "name": event["name"],
-                        "type": event_type,
-                        "description": event["description"],
-                        "impact": event["potential_impact"],
-                        "reason": event["reason"]
-                    } for event in raw_events]
-                    
-                    print(f"成功为{event_type}类别生成{len(generated_events)}个额外重要事件")
-                else:
-                    print(f"无法提取{event_type}类别生成的重要事件JSON")
-            except json.JSONDecodeError as e:
-                print(f"解析{event_type}类别重要事件JSON时出错: {e}")
-                #print(f"LLM响应内容: {response}")
-            except Exception as e:
-                print(f"为{event_type}类别生成重要事件时发生错误: {e}")
-                import traceback
-                traceback.print_exc()
-            
-            return (event_type, generated_events)
-        
-        # 使用线程池并行处理所有事件类别
-        with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            # 提交所有事件类别的处理任务
-            future_to_category = {
-                executor.submit(generate_important_events_for_category, event_type, events): event_type
-                for event_type, events in categorized_events.items()
-            }
-            
-            # 收集处理结果
-            for future in future_to_category:
-                try:
-                    event_type, result = future.result()
-                    if result:
-                        categorized_events[event_type].extend(result)
-                except Exception as e:
-                    event_type = future_to_category[future]
-                    print(f"处理{event_type}类别额外重要事件时发生错误: {e}")
-                    import traceback
-                    traceback.print_exc()
-
-        # 2. 为每个类别生成事件变动时间线
-        event_timelines = {}
-        
-        # 如果没有事件类型，直接返回空字典
-        if not categorized_events:
-            return event_timelines
-            
-        def generate_topic_timelines(event_type, events):
-            """生成单个类别的主题时间线JSON数组，每十个事件调用一次LLM生成"""
-            import json
-            print(f"\n开始生成{event_type}类别的主题时间线...")
-            
-            # 定义不同事件类别的描述
-            event_type_descriptions = {
-                "Career": "职业工作相关（如“参加行业高峰论坛”“参与新产品研发项目”）",
-                "Education": "教育学习相关（如“上课”“考取专业资格证”，学生角色该类事件较多，其他角色相关事件会较少）",
-                "Relationships": "人际关系（如“为父母筹备生日宴”“组织闺蜜旅行”）",
-                "Family&Living Situation": "家庭生活与居住环境（如“家居装修”“智能家居安装”）",
-                "Personal Life": "自我关怀、娱乐与生活方式（SelfCare & Entertainment & Lifesyle）（如“定期SPA护理”“短途旅行”“组织同学聚会”）",
-                "Finance": "个人资产财务（如“购买理财产品”“汽车保养与维修”）",
-                "Health": "健康管理（如“中医调理”“瑜伽静修营”）",
-                "Unexpected Events": "突发应对（如“车辆小事故处理”“临时加班替班”）",
-                "Other": "其他未涉及类别"
-            }
-            
-            # 获取当前事件类别的描述，如果没有则使用默认描述
-            event_type_with_description = event_type
-            if event_type in event_type_descriptions:
-                event_type_with_description = f"{event_type}：{event_type_descriptions[event_type]}"
-            
-            # 将事件按每10个一组进行分组
-            events_per_group = 10
-            event_groups = [events[i:i+events_per_group] for i in range(0, len(events), events_per_group)]
-            
-            all_timeline_data = []
-            
-            # 处理每组事件
-            for group_idx, event_group in enumerate(event_groups):
-                print(f"\n处理{event_type}类别第{group_idx+1}/{len(event_groups)}组事件，共{len(event_group)}个事件")
-                
-                # 准备prompt
-                prompt = template_event_timeline.format(
-                    event_type=event_type_with_description,
-                    persona=self.persona,
-                    important_nodes=json.dumps(event_group, ensure_ascii=False)
-                )
-                
-                # 调用LLM生成时间线JSON
-                try:
-                    response = self.llm_call_sr(prompt)
-                    #print(f"{event_type}类别第{group_idx+1}组主题时间线生成结果:")
-                    #print(response)
-                    
-                    # 提取JSON部分：匹配第一个[和最后一个]之间的内容
-                    start_idx = response.find('[')
-                    end_idx = response.rfind(']')
-                    if start_idx != -1 and end_idx != -1 and start_idx < end_idx:
-                        json_response = response[start_idx:end_idx + 1]
-                        timeline_data = json.loads(json_response)
-                        all_timeline_data.extend(timeline_data)
-                    else:
-                        print(f"第{group_idx+1}组无法提取JSON内容")
-                        print(f"LLM响应内容: {response}")
-                except json.JSONDecodeError as e:
-                    print(f"解析{event_type}第{group_idx+1}组时间线JSON时出错: {e}")
-                    print(f"LLM响应内容: {response}")
-                except Exception as e:
-                    print(f"生成{event_type}第{group_idx+1}组时间线时出错: {str(e)}")
-                    import traceback
-                    traceback.print_exc()
-            
-            print(f"\n{event_type}类别所有组时间线生成完成，共生成{len(all_timeline_data)}个主题时间线")
-            return all_timeline_data
-        
-        # 处理所有类别的事件，使用多线程并行处理
-        from concurrent.futures import ThreadPoolExecutor
-        
-        def process_event_category(event_type, events):
-            """处理单个事件类别的时间线生成"""
-            print(f"\n开始处理{event_type}类别...")
-            
-            # 生成主题时间线数据（直接返回，不再进行冲突消解和时间线统一）
-            topic_timelines_data = generate_topic_timelines(event_type, events)
-            
-            if topic_timelines_data:
-                print(f"{event_type}类别主题时间线生成完成")
-                return (event_type, topic_timelines_data)
-            else:
-                print(f"{event_type}类别没有生成主题时间线数据")
-                return (event_type, [])
-        
-        # 使用线程池并行处理所有事件类别
-        with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            # 提交所有事件类别的处理任务
-            future_to_category = {
-                executor.submit(process_event_category, event_type, events): event_type
-                for event_type, events in categorized_events.items()
-            }
-            
-            # 收集处理结果
-            for future in future_to_category:
-                try:
-                    event_type, result = future.result()
-                    if result:
-                        event_timelines[event_type] = result
-                except Exception as e:
-                    event_type = future_to_category[future]
-                    print(f"处理{event_type}类别时发生错误: {e}")
-                    import traceback
-                    traceback.print_exc()
-        
-        # 调用个人变化时间线提取函数，将结果作为"persona change"类别的时间线
-        persona_change_timelines = self.extract_personal_change_timelines(self.persona)
-        if persona_change_timelines:
-            event_timelines["persona change"] = persona_change_timelines
-        
-        return event_timelines
-
-    def save_event_timelines(self, event_timelines, output_path):
-        """
-        保存事件时间线到文件
-        
-        参数:
-            event_timelines: 事件时间线字典
-            output_path: 输出文件路径
-        """
-        import json
-        import os
-        
-        # 确保输出目录存在
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        
-        # 保存时间线到文件
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(event_timelines, f, ensure_ascii=False, indent=2)
-        
-        print(f"事件时间线已保存到 {output_path}")
-    
-    def merge_similar_timelines(self, event_timelines, max_workers=None):
-        """
-        筛选所有类别的相似主题时间线（不分类别）
-        
-        参数:
-            event_timelines: 事件时间线字典，键为事件类型，值为主题时间线列表
-            max_workers: 最大并发线程数，默认使用CPU核心数
-            
-        返回:
-            tuple: (筛选后的时间线列表, 筛选后的时间线id列表)
-        """
-        import json
-        import concurrent.futures
-        
-        print("\n开始处理所有类别的相似主题合并...")
-        
-        # 1. 收集所有事件类型的时间线到一个列表
-        all_timelines = []
-        timeline_metadata = []  # 保存时间线的原始事件类型信息
-        
-        for event_type, timelines in event_timelines.items():
-            for timeline in timelines:
-                all_timelines.append(timeline)
-                timeline_metadata.append({
-                    'original_event_type': event_type
-                })
-        
-        print(f"共收集到{len(all_timelines)}个主题时间线")
-        
-        # 如果时间线数量小于2，无需筛选
-        if len(all_timelines) < 2:
-            print(f"只有{len(all_timelines)}个主题时间线，无需筛选")
-            # 为时间线生成id
-            selected_ids = []
-            for i, (timeline, metadata) in enumerate(zip(all_timelines, timeline_metadata), 1):
-                event_type = metadata['original_event_type']
-                timeline_id = f"{event_type}_{i}"
-                selected_ids.append(timeline_id)
-            return all_timelines, selected_ids
-        
-        # 2. 按主题长度排序（可选，有助于后续处理）
-        sorted_timelines = sorted(all_timelines, key=lambda x: len(x.get('topic', '')), reverse=True)
-        
-        # 3. 准备LLM提示，判断主题相似性
-        timeline_info = []
-        for i, timeline in enumerate(sorted_timelines, 1):
-            topic = timeline.get('topic', '')
-            description = timeline.get('detailed_description', '')[:150]  # 截取部分描述以控制prompt长度
-            timeline_info.append(f"序号{i}: 主题: {topic}\n描述: {description}...")
-        
-        # 构建相似性判断和选择prompt
-        similarity_prompt = f"""
-        以下是一系列主题时间线的信息：
-        {chr(10).join(timeline_info)}
-        
-        请仔细分析这些主题时间线，并执行以下任务：
-        
-        1. 相似簇判断：找出所有主题相似的簇。相似的标准是主题内容大部分重复或高度相关，没有必要单独作为一个主题时间线。
-        2. 相似簇选择：从每个相似簇中选择一个最具代表性、最全面、事件时间分布最真实丰富的时间线，返回其序号。
-        3. 主题多样性优先：确保最终剩余的时间线主题间尽量差异明显，避免内容重复，优先保留不同类别的主题（如工作、学习、健康、生活、社交、爱好等）。
-        4. 真实丰富时间优先：在选择时间线时，优先选择事件时间分布真实、丰富、符合生活逻辑的时间线，避免选择时间过于集中或事件安排不真实的时间线。避免变化过于曲折而违和的时间线。
-        5. 冲突处理：
-           - 对于存在冲突（事件时间、地点、影响等不一致）的时间线，选择冲突较少、更合理的时间线
-           - 确保时间线的连贯性和合理性
-        6. 事件真实性检查：
-           - 对于主题相同的事件（如都是患病类事件），需考虑整合后是否会导致一年中该类事件过多而不真实
-           - 确保最终的时间线组合符合实际生活逻辑，避免出现不真实的事件密集情况
-           
-        7. 数量控制：最终选择9-10个时间线，确保主题多样且时间真实丰富。
-        
-        输出格式要求：
-        1. 仅返回JSON对象，格式如下：
-        {{"selected_timelines": [序号1, 序号2, 序号3, ...],  # 保留的时间线序号列表（9-10个）
-            "similar_clusters": [[序号1, 序号2], [序号3, 序号4], ...]  # 相似簇列表（用于冲突分析）
-        }}
-        2. 确保selected_timelines中的序号没有重复，且数量为8-10个
-        3. 每个相似簇至少包含2个序号
-        4. 请确保输出的JSON格式正确，不包含任何无关解释、注释或代码，直接以{{}}开头。
-        """
-        #print("相似主题判断和选择prompt: ", similarity_prompt)
-        # 调用LLM判断相似性并选择时间线
-        llm_result = {}
-        try:
-            response = self.llm_call_sr(similarity_prompt)
-            #print(f"LLM响应内容: {response}")
-            # 提取JSON部分
-            start_idx = response.find('{')
-            end_idx = response.rfind('}')
-            if start_idx != -1 and end_idx != -1 and start_idx < end_idx:
-                json_response = response[start_idx:end_idx + 1]
-                llm_result = json.loads(json_response)
-                print(f"成功获取LLM选择结果：共选择{len(llm_result.get('selected_timelines', []))}个时间线，识别{len(llm_result.get('similar_clusters', []))}个相似主题簇")
-            else:
-                print("无法提取相似主题和选择结果的JSON")
-        except json.JSONDecodeError as e:
-            print(f"解析相似主题和选择结果JSON时出错: {e}")
-            #print(f"LLM响应内容: {response}")
-        except Exception as e:
-            print(f"判断主题相似性时发生错误: {e}")
-            import traceback
-            traceback.print_exc()
-        
-        # 4. 处理LLM返回的选择结果
-        selected_timelines = []
-        selected_ids = []
-        
-        # 获取LLM选择的时间线序号
-        selected_indices = llm_result.get('selected_timelines', [])
-        similar_clusters = llm_result.get('similar_clusters', [])
-        
-        if selected_indices:
-            print(f"开始处理LLM选择的{len(selected_indices)}个时间线...")
-            
-            # 添加LLM选择的时间线
-            for idx in selected_indices:
-                if 1 <= idx <= len(sorted_timelines):
-                    timeline = sorted_timelines[idx - 1]
-                    selected_timelines.append(timeline)
-                    # 为时间线生成id
-                    event_type = timeline_metadata[idx - 1]['original_event_type']
-                    timeline_id = f"{event_type}_{idx}"
-                    selected_ids.append(timeline_id)
-        else:
-            print("LLM未返回选择结果，使用默认策略：选择前8个时间线")
-            # 默认策略：选择前8个时间线
-            selected_timelines = sorted_timelines[:8]  # 选择前8个时间线
-            for i, timeline in enumerate(selected_timelines, 1):
-                event_type = timeline_metadata[i - 1]['original_event_type']
-                timeline_id = f"{event_type}_{i}"
-                selected_ids.append(timeline_id)
-        
-        print(f"主题选择完成，保留{len(selected_timelines)}个时间线")
-        return selected_timelines
-    
-    def optimize_merged_timelines(self, merged_timelines, max_workers=None):
-        """
-        优化合并后的时间线，主要功能：
-        1. 每5个时间线进行一次合并，得到一组合并后时间线
-        2. 最后对合并后时间线进行一次统一合并（单独的prompt）
-        3. 生成一个多样的、丰富的、连贯的、无冲突的时间线
-        
-        参数:
-            merged_timelines: 合并后的时间线列表
-            max_workers: （已废弃，不再使用）
-            
-        返回:
-            list: 包含一个统一优化后的时间线的列表
-        """
-        import json
-
-        # 导入templates模块
-        from src.lifebench.event.templates.template_scheduler import template_timeline_conflict_resolution
-
-        print("\n开始优化合并后的时间线...")
-        print(f"共收到{len(merged_timelines)}个合并后的时间线")
-
-        # 如果时间线数量为0，直接返回
-        if len(merged_timelines) == 0:
-            print("没有时间线需要优化")
-            return merged_timelines
-
-        # 内部函数：合并一组时间线
-        def merge_timeline_group(group_timelines, group_index):
-            """合并一组时间线"""
-            print(f"\n开始合并第{group_index+1}组时间线，共{len(group_timelines)}个时间线")
-
-            # 1. 收集这组时间线信息，准备LLM分析
-            group_analysis_data = []
-            for i, timeline in enumerate(group_timelines, 1):
-                topic = timeline.get('topic', '')
-                description = timeline.get('detailed_description', '')
-                # 将时间线信息添加到分析数据列表
-                group_analysis_data.append({
-                    'id': i,
-                    'topic': topic,
-                    'description': description,
-                    'events': timeline.get('events', [])
-                })
-            print(f"成功收集第{group_index+1}组时间线的分析数据")
-
-            # 2. 使用template_timeline_conflict_resolution模板进行冲突分析
-            print(f"\n正在调用LLM分析第{group_index+1}组时间线冲突...")
-
-            # 准备模板所需参数
-            persona = json.dumps(self.persona, ensure_ascii=False, indent=2)
-            group_timelines_json = json.dumps(group_timelines, ensure_ascii=False, indent=2)
-
-            # 构建冲突分析提示
-            analysis_prompt = template_timeline_conflict_resolution.format(
-                persona=persona,
-                timelines_list=group_timelines_json
-            )
-
-
-            response = self.llm_call_sr(analysis_prompt)
-            print(f"成功获取第{group_index+1}组时间线冲突分析结果")
-
-            # 4. 整合这组时间线，生成统一的优化时间线
-            print(f"\n正在整合第{group_index+1}组时间线，生成统一的优化时间线...")
-
-            try:
-                # 准备整合时间线的参数
-                original_timeline = json.dumps(group_timelines, ensure_ascii=False, indent=2)  # 将所有时间线作为一个整体
-
-                # 构建整合时间线的提示
-                integration_prompt = template_timeline_final_generation.format(
-                    persona=persona,
-                    original_timelines=original_timeline,
-                    conflict_analysis_result=response
-                )
-
-                # 调用LLM生成整合后的时间线
-                response = self.llm_call_sr(integration_prompt)
-                #print(response)
-                # 提取JSON部分（匹配第一个{和最后一个}）
-                start_idx = response.find('{')
-                end_idx = response.rfind('}')
-                if start_idx != -1 and end_idx != -1 and start_idx < end_idx:
-                    json_response = response[start_idx:end_idx + 1]
-                    try:
-                        group_merged_timeline = json.loads(json_response)
-                        print(f"\n第{group_index+1}组时间线整合完成")
-
-                        # 确保返回的是一个有效的时间线列表
-                        if isinstance(group_merged_timeline, list):
-                            result_to_return = group_merged_timeline
-                        elif isinstance(group_merged_timeline, dict):
-                            result_to_return = [group_merged_timeline]
-                        else:
-                            print(f"第{group_index+1}组整合后时间线格式不符合预期，返回原始时间线组")
-                            result_to_return = group_timelines
-
-                        # # 将每组输出保存到output/new/med.json文件
-                        # import os
-                        # output_dir = "output/new"
-                        # output_file = os.path.join(output_dir, "med.json")
-                        #
-                        # # 确保输出目录存在
-                        # os.makedirs(output_dir, exist_ok=True)
-                        #
-                        # try:
-                        #     # 读取已有的数据（如果文件存在）
-                        #     existing_data = []
-                        #     if os.path.exists(output_file):
-                        #         with open(output_file, 'r', encoding='utf-8') as f:
-                        #             existing_data = json.load(f)
-
-                            # # 添加当前组的结果
-                            # existing_data.extend(result_to_return)
-
-                            # # 保存到文件
-                            # with open(output_file, 'w', encoding='utf-8') as f:
-                            #     json.dump(existing_data, f, ensure_ascii=False, indent=2)
-                            #
-                            # print(f"第{group_index+1}组时间线已成功保存到{output_file}")
-                        # except Exception as e:
-                        #     print(f"保存第{group_index+1}组时间线到文件时出错: {e}")
-                        #     import traceback
-                        #     traceback.print_exc()
-
-                        return result_to_return
-                    except json.JSONDecodeError as e:
-                        print(f"解析第{group_index+1}组整合时间线JSON时出错: {e}")
-                        #print(f"LLM响应内容: {response}")
-                        return group_timelines
-                else:
-                    print(f"无法提取第{group_index+1}组整合时间线的JSON")
-                    #print(f"LLM响应内容: {response}")
-                    return group_timelines
-            except Exception as e:
-                print(f"整合第{group_index+1}组时间线时发生错误: {e}")
-                import traceback
-                traceback.print_exc()
-                return group_timelines
-
-        # 步骤1: 将时间线按每5个一组进行分组
-        grouped_timelines = [merged_timelines[i:i+5] for i in range(0, len(merged_timelines), 5)]
-        print(f"将时间线分成{len(grouped_timelines)}组，每组最多5个时间线")
-
-        # 步骤2: 合并每组时间线（多线程并行）
-        import threading
-
-        # 定义线程安全的结果列表
-        group_merged_results = []
-        results_lock = threading.Lock()
-
-        # 线程工作函数
-        def merge_group_thread(group, group_index):
-            nonlocal group_merged_results
-            result = merge_timeline_group(group, group_index)
-            with results_lock:
-                group_merged_results.extend(result)
-
-        # 创建并启动线程
-        threads = []
-        for i, group in enumerate(grouped_timelines):
-            thread = threading.Thread(target=merge_group_thread, args=(group, i))
-            threads.append(thread)
-            thread.start()
-
-        # 等待所有线程完成
-        for thread in threads:
-            thread.join()
-
-        print(f"\n所有分组合并完成，共得到{len(group_merged_results)}个中间合并结果")
-
-        # 如果只有一个分组，直接返回该分组的结果
-        if len(grouped_timelines) == 1:
-            return group_merged_results
-
-        # 步骤3: 对所有分组合并结果进行一次统一合并
-        print("\n开始对所有分组合并结果进行统一合并...")
-        # with open("output/new/med.json", 'w', encoding='utf-8') as f:
-        #     json.dump(group_merged_results, f, ensure_ascii=False, indent=2)
-        try:
-            # 准备整合时间线的参数
-            persona = json.dumps(self.persona, ensure_ascii=False, indent=2)
-            original_timeline = json.dumps(group_merged_results, ensure_ascii=False, indent=2)  # 将所有分组合并结果作为原始时间线
-
-            # 由于没有新的冲突分析结果，使用包含空结构的JSON对象
-            conflict_analysis_result = {
-                "conflict_resolution_result": [],
-                "annual_overview": {}
-            }
-            conflict_analysis_result_str = json.dumps(conflict_analysis_result, ensure_ascii=False, indent=2)
-
-            # 构建整合时间线的提示
-            integration_prompt = template_timeline_final_generation.format(
-                persona=persona,
-                original_timelines=original_timeline,
-                conflict_analysis_result=conflict_analysis_result_str
-            )
-
-            # 调用LLM生成整合后的时间线
-            response = self.llm_call_sr(integration_prompt)
-            #print(f"统一合并时间线LLM响应内容: {response}")
-
-            # 提取JSON部分（匹配第一个{和最后一个}）
-            start_idx = response.find('{')
-            end_idx = response.rfind('}')
-            if start_idx != -1 and end_idx != -1 and start_idx < end_idx:
-                json_response = response[start_idx:end_idx + 1]
-                try:
-                    final_result = json.loads(json_response)
-                    print("\n所有分组合并结果统一合并完成")
-
-                    # 确保返回的是一个有效的时间线列表
-                    if isinstance(final_result, list):
-                        pass  # 已经是列表，直接使用
-                    elif isinstance(final_result, dict):
-                        final_result = [final_result]  # 转换为列表
-                    else:
-                        print("统一合并后时间线格式不符合预期，返回分组合并结果")
-                        final_result = group_merged_results
-                except json.JSONDecodeError as e:
-                    print(f"解析统一合并时间线JSON时出错: {e}")
-                    #print(f"LLM响应内容: {response}")
-                    final_result = group_merged_results
-            else:
-                print("无法提取统一合并时间线的JSON")
-                #print(f"LLM响应内容: {response}")
-                final_result = group_merged_results
-        except Exception as e:
-            print(f"统一合并时间线时发生错误: {e}")
-            import traceback
-            traceback.print_exc()
-            final_result = group_merged_results
-
-
-        # 步骤4: 时间线校验优化
-        try:
-            # 将final_result转换为JSON字符串用于校验
-            merged_timeline_str = json.dumps(final_result, ensure_ascii=False, indent=2)
-            
-            # 构建时间线校验的提示
-            validation_prompt = template_timeline_validation.format(
-                persona=self.persona,
-                merged_timeline=merged_timeline_str
-            )
-            
-            # 调用LLM进行时间线校验
-            validation_response = self.llm_call_sr(validation_prompt)
-            #print(f"时间线校验LLM响应内容: {validation_response}")
-            
-            # 提取JSON部分（匹配第一个{和最后一个}）
-            start_idx_val = validation_response.find('{')
-            end_idx_val = validation_response.rfind('}')
-            if start_idx_val != -1 and end_idx_val != -1 and start_idx_val < end_idx_val:
-                json_validation_response = validation_response[start_idx_val:end_idx_val + 1]
-                try:
-                    # 解析校验后的时间线
-                    validated_result = json.loads(json_validation_response)
-                    print("\n时间线校验优化完成")
-                    
-                    # 确保返回的是一个有效的时间线列表
-                    if isinstance(validated_result, list):
-                        print("\n统一合并完成，返回校验后的最终结果")
-                        return validated_result
-                    elif isinstance(validated_result, dict):
-                        print("\n统一合并完成，返回校验后的最终结果")
-                        return [validated_result]
-                    else:
-                        print("校验后时间线格式不符合预期，返回原始合并结果")
-                except json.JSONDecodeError as e:
-                    print(f"解析校验后时间线JSON时出错: {e}")
-                    #print(f"LLM响应内容: {validation_response}")
-            else:
-                print("无法提取校验后时间线的JSON")
-                #print(f"LLM响应内容: {validation_response}")
-        except Exception as e:
-            print(f"时间线校验时发生错误: {e}")
-            import traceback
-            traceback.print_exc()
-        
-        # 校验失败时返回原始合并结果
-        print("\n统一合并完成，时间线校验失败，返回原始合并结果")
-        return final_result
-
 
     def generate_and_insert_events(self, timeline_data, events_by_theme=None):
         """
@@ -3515,7 +1875,7 @@ class Scheduler:
                     if start_time_str:
                         try:
                             event_date = datetime.strptime(start_time_str.split(' ')[0], '%Y-%m-%d')
-                            month_key = f"2025-{event_date.month:02d}"
+                            month_key = self.spec.month_key(event_date.month)
                             
                             # 查找对应的月份索引
                             month_found = False
@@ -3704,7 +2064,7 @@ class Scheduler:
                                     if start_time_str:
                                         try:
                                             event_date = datetime.strptime(start_time_str.split(' ')[0], '%Y-%m-%d')
-                                            month_key = f"2025-{event_date.month:02d}"
+                                            month_key = self.spec.month_key(event_date.month)
                                             
                                             # 添加事件到待插入列表
                                             events_to_insert.append({
@@ -3737,7 +2097,7 @@ class Scheduler:
                                         if start_time_str:
                                             try:
                                                 event_date = datetime.strptime(start_time_str.split(' ')[0], '%Y-%m-%d')
-                                                month_key = f"2025-{event_date.month:02d}"
+                                                month_key = self.spec.month_key(event_date.month)
                                                 
                                                 # 添加序列事件到待插入列表
                                                 events_to_insert.append({
@@ -4237,7 +2597,7 @@ class Scheduler:
             # 从"YYYY-MM"格式解析月份数字
             month_num = int(month.split('-')[1])
             # 使用现有的get_month_calendar方法获取日历数据
-            calendar_data = self.get_month_calendar(2025, month_num)
+            calendar_data = self.get_month_calendar(self.spec.year, month_num)
 
             # 第一步：调用LLM分析这个月的事件，给出修改建议
             monthly_data_str = json.dumps(month_data, ensure_ascii=False)
@@ -4626,66 +2986,15 @@ class Scheduler:
         os.makedirs(meidan_path, exist_ok=True)
 
         try:
-            # 检查是否可以直接跳过步骤1-4（如果 optimized_timelines.json 已存在）
+            # Scheduler 依赖上游（TimelineGen + WritingAgent）产出的 optimized_timelines.json，
+            # 不再自带步骤 1-4 的情节库生成逻辑（已迁移至 TimelineGen）。
             optimized_timelines_path = os.path.join(meidan_path, "optimized_timelines.json")
-            if os.path.exists(optimized_timelines_path):
-                print(f"✓ optimized_timelines.json 已存在，跳过步骤1-4，直接读取")
-                with open(optimized_timelines_path, 'r', encoding='utf-8') as f:
-                    optimized_timelines = json.load(f)
-            else:
-                # 步骤1: 提取重要节点
-                print("\n=== 步骤1: 提取重要节点 ===")
-                important_nodes_path = os.path.join(meidan_path, "important_nodes.json")
-                if os.path.exists(important_nodes_path):
-                    print(f"✓ 重要节点文件已存在，直接读取: {important_nodes_path}")
-                    with open(important_nodes_path, 'r', encoding='utf-8') as f:
-                        important_nodes = json.load(f)
-                else:
-                    important_nodes = self.extract_important_nodes(persona=persona)
-                    print(f"✓ 成功提取{len(important_nodes)}个重要节点")
-                    # 保存结果
-                    with open(important_nodes_path, 'w', encoding='utf-8') as f:
-                        json.dump(important_nodes, f, ensure_ascii=False, indent=2)
-                    print(f"✓ 重要节点已保存到: {important_nodes_path}")
-
-                # 步骤2: 生成事件时间线
-                print("\n=== 步骤2: 生成事件时间线 ===")
-                event_timelines_path = os.path.join(meidan_path, "event_timelines.json")
-                if os.path.exists(event_timelines_path):
-                    print(f"✓ 事件时间线文件已存在，直接读取: {event_timelines_path}")
-                    with open(event_timelines_path, 'r', encoding='utf-8') as f:
-                        event_timelines = json.load(f)
-                else:
-                    event_timelines = self.generate_event_timeline(important_nodes, max_workers=12)
-                    print(f"✓ 成功生成{len(event_timelines)}个事件时间线")
-                    # 保存结果
-                    with open(event_timelines_path, 'w', encoding='utf-8') as f:
-                        json.dump(event_timelines, f, ensure_ascii=False, indent=2)
-                    print(f"✓ 事件时间线已保存到: {event_timelines_path}")
-
-                # 步骤3: 合并相似时间线
-                print("\n=== 步骤3: 合并相似时间线 ===")
-                merged_timelines_path = os.path.join(meidan_path, "merged_timelines.json")
-                if os.path.exists(merged_timelines_path):
-                    print(f"✓ 合并后的时间线文件已存在，直接读取: {merged_timelines_path}")
-                    with open(merged_timelines_path, 'r', encoding='utf-8') as f:
-                        merged_timelines = json.load(f)
-                else:
-                    merged_timelines = self.merge_similar_timelines(event_timelines)
-                    print(f"✓ 成功合并为{len(merged_timelines)}个时间线")
-                    # 保存结果
-                    with open(merged_timelines_path, 'w', encoding='utf-8') as f:
-                        json.dump(merged_timelines, f, ensure_ascii=False, indent=2)
-                    print(f"✓ 合并后的时间线已保存到: {merged_timelines_path}")
-
-                # 步骤4: 优化合并后的时间线
-                print("\n=== 步骤4: 优化合并后的时间线 ===")
-                optimized_timelines = self.optimize_merged_timelines(merged_timelines)
-                print(f"✓ 成功优化为{len(optimized_timelines)}个时间线")
-                # 保存结果
-                with open(optimized_timelines_path, 'w', encoding='utf-8') as f:
-                    json.dump(optimized_timelines, f, ensure_ascii=False, indent=2)
-                print(f"✓ 优化后的时间线已保存到: {optimized_timelines_path}")
+            if not os.path.exists(optimized_timelines_path):
+                raise FileNotFoundError(
+                    f"缺少 {optimized_timelines_path}，请先运行情节库生成与优化阶段（TimelineGen + WritingAgent）。"
+                )
+            with open(optimized_timelines_path, 'r', encoding='utf-8') as f:
+                optimized_timelines = json.load(f)
 
             # 步骤5: 生成并插入事件
             print("\n=== 步骤5: 生成并插入事件 ===")
@@ -4739,55 +3048,6 @@ class Scheduler:
                 self.parallel_daily_event_refine(final_timeline["analysis_results"],self.persona,monthly_details,daily_draft_file)
                 print(f"✓ 每日状态已保存到: {daily_draft_file}")
 
-#             # 步骤9: 调用check_event_matching.py进行事件匹配分析
-#             print("\n=== 步骤9: 事件匹配分析 ===")
-#             import sys
-# import os
-# sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
-# from src.lifebench.event.tools.check_event_matching import check_event_matching
-#             event_decompose_dfs_path = os.path.join(meidan_path, "event_decompose_dfs.json")
-#             new_event_tree_file = os.path.join(output_path, "event_tree.json")
-            
-#             # 检查目标文件是否存在，如果存在则跳过
-#             if 0:
-#                 print(f"✓ 事件匹配分析结果文件已存在，跳过生成: {new_event_tree_file}")
-#             else:
-#                 print(f"正在调用check_event_matching.py，输入文件：")
-#                 print(f"  - event_decompose_dfs.json: {event_decompose_dfs_path}")
-#                 print(f"  - daily_draft.json: {daily_draft_file}")
-                
-#                 # 保存原始daily_draft.json为daily_draft_raw.json到meidan_path
-#                 import shutil
-#                 raw_daily_draft_path = os.path.join(meidan_path, "daily_draft_raw.json")
-#                 shutil.copy2(daily_draft_file, raw_daily_draft_path)
-#                 print(f"✓ 已将原始daily_draft.json保存为: {raw_daily_draft_path}")
-                
-#                 # 调用check_event_matching.py的main函数，传递输出路径
-#                 check_event_matching.main(
-#                     event_decompose_dfs_path=event_decompose_dfs_path,
-#                     daily_draft_path=daily_draft_file,
-#                     output_path=output_path
-#                 )
-
-#                 # 新生成的daily_draft.json已经保存在output_path，无需替换
-
-#             # 步骤10: 调用event_tree_classify.py进行event_tree文件的分类
-#             print("\n=== 步骤10: 事件树分类 ===")
-#             from src.lifebench.event.tools.event_tree_classify import *
-#             # 使用步骤九生成的event_tree.json文件作为分类的目标文件
-#             event_tree_file = os.path.join(output_path, "event_tree.json")
-            
-#             print(f"正在调用event_tree_classify.py，处理文件：")
-#             print(f"  - event_tree.json: {event_tree_file}")
-            
-#             # 创建分类器实例
-#             classifier = event.event_tree_classify.EventTreeClassifier()
-            
-#             # 处理event_tree文件，直接输出到原文件
-#             classifier.process_events(event_tree_file, output_path=event_tree_file)
-#             print(f"✓ 已用分类结果替换原来的event_tree.json")
-            
-
             print("\n🎉 年度时间线草稿生成完成！")
             print(f"除每日状态外的其他数据已保存到: {meidan_path}")
             print(f"每日状态数据已保存到: {daily_draft_file}")
@@ -4811,202 +3071,16 @@ class Scheduler:
             
             return None
     
-    def monthly_analysis(self, timeline=None, persona=None, output_dir=None):
-        """
-        串行生成每个月的健康分析数据、生活分析数据、月度转换分析数据并保存
-        
-        参数:
-            timeline: rich_timeline格式的数据，参考rich_timeline.json格式
-            persona: 人物画像信息
-            output_dir: 分析结果保存目录
-        
-        返回:
-            包含所有月份分析结果的字典
-        """
-        import src.lifebench.event.draft.event_refiner
-        import json
-        import os
-        from datetime import datetime
-        
-        # 初始化EventRefiner实例
-        refiner = src.lifebench.event.draft.event_refiner.EventRefiner(persona,{})
-        
-        # 存储所有月份的分析结果
-        all_analysis_results = {}
-        
-        # 处理输入参数
-        # 验证timeline参数格式
-        if not timeline or not isinstance(timeline, dict) or 'monthly_details' not in timeline:
-            print("timeline必须是有效的rich_timeline格式数据，包含'monthly_details'字段")
-            return all_analysis_results
-        
-        # 将rich_timeline格式转换为timeline格式
-        rich_timeline = timeline
-        timeline = []
-        for month_data in rich_timeline.get('monthly_details', []):
-            month_str = month_data.get('month', '')
-            # 假设年份为2025，将"1月"转换为"2025-01"格式
-            if month_str and '月' in month_str:
-                month_num = int(month_str.replace('月', ''))
-                month_key = f"2025-{month_num:02d}"
-                
-                # 提取事件数据
-                events = month_data.get('events', [])
-                
-                # 构建timeline元素
-                timeline_item = {
-                    'month': month_key,
-                    'events': events
-                }
-                timeline.append(timeline_item)
-        
-        print(f"成功转换 {len(timeline)} 个月的数据")
-        
-        # 验证转换后的timeline参数
-        if not timeline or not isinstance(timeline, list):
-            print("timeline必须包含有效的'monthly_details'数据")
-            return all_analysis_results
-            
-        if not persona or not isinstance(persona, dict):
-            print("persona必须是有效的人物画像字典")
-            return all_analysis_results
-            
-        # 设置保存目录
-        if output_dir and isinstance(output_dir, str):
-            # 如果提供了保存目录参数，使用该目录
-            output_dir = os.path.abspath(output_dir)
-        else:
-            # 否则使用默认目录
-            output_dir = os.path.join(os.path.dirname(__file__), '../analysis_results')
-            
-        # 创建保存目录
-        os.makedirs(output_dir, exist_ok=True)
-        print(f"分析结果将保存到: {output_dir}")
-        
-        # 将timeline数组转换为字典格式，方便处理
-        monthly_data = {}
-        for month_item in timeline:
-            if not isinstance(month_item, dict) or 'month' not in month_item:
-                print("timeline中的元素必须包含'month'字段")
-                continue
-                
-            month_key = month_item['month']
-            monthly_data[month_key] = month_item
-            
-        print(f"成功加载 {len(monthly_data)} 个月的事件数据")
-        
-        # 如果没有获取到有效数据，返回空结果
-        if not monthly_data:
-            print("没有获取到有效的月度事件数据")
-            return all_analysis_results
-        
-        # 遍历每个月的数据
-        previous_analysis = None
-        from concurrent.futures import ThreadPoolExecutor
-        
-        for month, month_data in sorted(monthly_data.items()):
-            print(f"\n开始分析 {month} 月份的数据...")
-            print(month_data)
-            # 确保month_data包含必要的字段
-            if not isinstance(month_data, dict) or 'events' not in month_data:
-                print(f"{month} 月份数据格式不正确，跳过")
-                continue
-            
-            # 准备初始状态数据
-            initial_health_state = None
-            if previous_analysis and 'health_analysis' in previous_analysis:
-                try:
-                    # 解析上个月的健康分析结果
-                    import json
-                    prev_health_data = json.loads(previous_analysis['health_analysis'])
-                    initial_health_state = prev_health_data.get('end_of_month_state')
-                    if initial_health_state:
-                        print(f"使用上个月的健康最终状态作为 {month} 月份的初始状态")
-                except Exception as e:
-                    print(f"解析上个月健康状态时出错: {e}")
-            
-            initial_life_state = None
-            if previous_analysis and 'life_analysis' in previous_analysis:
-                initial_life_state = previous_analysis['life_analysis'].get('final_state')
-                if initial_life_state:
-                    print(f"使用上个月的生活最终状态作为 {month} 月份的初始状态")
-            
-            prev_transition_analysis = previous_analysis['transition_analysis'] if previous_analysis and 'transition_analysis' in previous_analysis else None
-            
-            # 使用线程池并行执行三个分析任务
-            print(f"并行执行 {month} 月份的健康分析、生活分析和转换分析...")
-            
-            def run_health_analysis():
-                print(f"健康分析线程开始执行 {month} 月份")
-                result = refiner.health_analysis(month_data, persona, initial_state=initial_health_state)
-                print(f"健康分析线程完成 {month} 月份")
-                return result
-            
-            def run_life_analysis():
-                print(f"生活分析线程开始执行 {month} 月份")
-                result = refiner.life_analysis(month_data, persona, initial_state=initial_life_state)
-                print(f"生活分析线程完成 {month} 月份")
-                return result
-            
-            def run_transition_analysis():
-                print(f"转换分析线程开始执行 {month} 月份")
-                result = refiner.month_transition_analysis(month_data, persona, previous_analysis=prev_transition_analysis)
-                print(f"转换分析线程完成 {month} 月份")
-                return result
-            
-            with ThreadPoolExecutor(max_workers=3) as executor:
-                # 提交三个分析任务
-                health_future = executor.submit(run_health_analysis)
-                life_future = executor.submit(run_life_analysis)
-                transition_future = executor.submit(run_transition_analysis)
-                
-                # 获取分析结果
-                health_result = health_future.result()
-                life_result = life_future.result()
-                transition_result = transition_future.result()
-            
-            # 保存本月的分析结果
-            month_results = {
-                'month': month,
-                'health_analysis': health_result,
-                'life_analysis': life_result,
-                'transition_analysis': transition_result
-            }
-            
-            # 保存到字典中
-            all_analysis_results[month] = month_results
-            
-            # 保存到文件
-            month_output_file = os.path.join(output_dir, f"{month}_analysis.json")
-            with open(month_output_file, 'w', encoding='utf-8') as f:
-                json.dump(month_results, f, ensure_ascii=False, indent=2)
-            print(f"{month} 月份分析结果已保存到: {month_output_file}")
-            
-            # 更新previous_analysis为当前月份的所有分析结果
-            previous_analysis = {
-                'health_analysis': health_result,
-                'life_analysis': life_result,
-                'transition_analysis': transition_result
-            }
-        
-        # 保存所有月份的综合分析结果
-        all_results_file = os.path.join(output_dir, f"all_months_analysis_{datetime.now().strftime('%Y%m%d%H%M%S')}.json")
-        with open(all_results_file, 'w', encoding='utf-8') as f:
-            json.dump(all_analysis_results, f, ensure_ascii=False, indent=2)
-        print(f"\n所有月份分析结果已保存到: {all_results_file}")
-        
-        return all_analysis_results
-    
     def parallel_daily_event_refine(self, monthly_analysis_results: Dict[str, Dict], persona: Dict, timeline: List[Dict], output_dir: str = None) -> Dict[str, Dict]:
         """
-        读取monthly_analysis的分析结果作为输入，先调用annual_event_refine，再并行对每个月数据执行daily_event_refine
-        
+        读取月度事件规划（monthly_event_planning）的 analysis_results 作为输入，并行对每个月执行 daily_event_refine。
+
         参数:
-            monthly_analysis_results: monthly_analysis方法的输出结果，包含每个月的分析数据
+            monthly_analysis_results: monthly_event_planning 输出的 analysis_results，包含每个月的分析数据
             persona: 人物画像信息
             timeline: 事件时间线数据，直接传递给daily_event_refine处理，包含所有事件数据
             output_dir: 保存结果的路径（可选），可以是目录路径或JSON文件路径
-            
+
         返回:
             包含每个月daily_event_refine结果的字典
         """
@@ -5017,23 +3091,8 @@ class Scheduler:
         import copy
 
 
-        # 首先调用annual_event_refine
-        print("开始执行年度事件调整...")
+        # 年度级事件调整（annual_event_refine）已废弃，refined_timeline 直接透传原始 timeline。
         from src.lifebench.event.draft.event_refiner import EventRefiner
-        refiner = EventRefiner(persona=persona, events=timeline)
-        
-        start_date = '2025-01-01'
-        end_date = '2025-12-31'
-        
-        # # 调用annual_event_refine方法
-        # refined_timeline = refiner.annual_event_refine(
-        #     events=timeline,
-        #     start_date=start_date,
-        #     end_date=end_date,
-        #     context="",
-        #     max_workers=24
-        # )
-        # print("年度事件调整完成")
         refined_timeline = timeline
         # 定义一个辅助函数，用于对单个月份执行daily_event_refine
         def process_monthly_refine(month: str, analysis_results: Dict, refined_timeline: List[Dict], persona: Dict):
@@ -5394,8 +3453,8 @@ impact:[影响分析]
         import json
         import re
 
-        # 获取2025年中国节假日
-        cn_holidays = holidays.China(years=2025)
+        # 获取目标年份的中国节假日
+        cn_holidays = holidays.China(years=self.spec.year)
         holiday_lines = []
         for date, name in sorted(cn_holidays.items()):
             holiday_lines.append(f"- {name}: {date}")
@@ -5440,7 +3499,7 @@ impact:[影响分析]
    - 其他事件 → 在本月内合理安排
 
 【参考数据】
-2025年中国节假日（事件日期应与实际节假日对应）：
+{self.spec.year}年中国节假日（事件日期应与实际节假日对应）：
 {holiday_info}
 
 上月参考数据（用于保证事件连续性）：
@@ -5695,11 +3754,9 @@ impact:[影响分析]
                     'events': []
                 }]
 
-            # 确保每个月都有输出（完整性保障）
-            # 从输入数据中获取年份
-            first_month = sorted_months[0] if sorted_months else "2025-01"
-            year = first_month[:5]  # 获取年份，如 "2025-"
-            expected_months = [f"{year}{str(m).zfill(2)}" for m in range(1, 13)]
+            # 确保模拟范围内每个月都有输出（完整性保障）
+            # 注意：只补齐 spec 声明的月份，不再无条件补到 12 月
+            expected_months = self.spec.month_keys
 
             existing_months = {m.get('month') for m in monthly_details}
             for expected in expected_months:
@@ -5712,8 +3769,22 @@ impact:[影响分析]
                     })
                     print(f"  警告: {expected} 无数据，已补充空记录")
 
+            # 丢弃落在模拟范围之外的月份（LLM 可能产出超范围数据）
+            # 注意：必须原地修改，timeline_data_result["monthly_details"] 与此为同一列表对象
+            expected_set = set(expected_months)
+            out_of_range = [m.get('month') for m in monthly_details
+                            if m.get('month') not in expected_set]
+            if out_of_range:
+                print(f"  警告: 以下月份超出模拟范围 {self.spec.describe()}，已丢弃: {out_of_range}")
+                monthly_details[:] = [m for m in monthly_details
+                                      if m.get('month') in expected_set]
+
             # 重新排序
             monthly_details.sort(key=lambda x: x['month'])
+
+            # 月份集合可能已变化，重算全年总结
+            all_summaries = [m.get('monthly_summary', '') for m in monthly_details if m.get('monthly_summary')]
+            timeline_data_result['comprehensive_summary'] = '。'.join(all_summaries) + '。' if all_summaries else ''
 
             return {
                 "events_by_theme": events_by_theme,

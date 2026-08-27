@@ -82,39 +82,6 @@ class OutlineOptimizer:
             print(f"daily_draft.json 文件不存在：{self.draft_path}")
             return {}
     
-    def _extract_monthly_data(self) -> Dict[str, List[Dict]]:
-        """
-        从 daily_draft 中提取按月份组织的数据
-        
-        Returns:
-            月份到事件列表的映射，格式：{"2025-01": [...], "2025-02": [...]}
-        """
-        monthly_data = {}
-        
-        # 遍历所有日期的事件
-        for date, day_events in self.daily_draft.items():
-            if isinstance(day_events, list) and day_events:
-                # 提取月份（YYYY-MM）
-                if len(date) >= 7:
-                    month = date[:7]
-                    
-                    if month not in monthly_data:
-                        monthly_data[month] = []
-                    
-                    # 添加日期信息到每个事件
-                    for event in day_events:
-                        event_with_date = event.copy()
-                        event_with_date["date"] = date
-                        monthly_data[month].append(event_with_date)
-        
-        # 按月份排序
-        sorted_months = sorted(monthly_data.keys())
-        self._print(f"✓ 提取月份数据完成，共 {len(sorted_months)} 个月份")
-        for month in sorted_months:
-            self._print(f"  - {month}: {len(monthly_data[month])} 个事件")
-        
-        return monthly_data
-    
     def generate_monthly_summaries_parallel(self, months: List[str] = None) -> Dict[str, Dict]:
         """
         并行生成指定月份的总结报告
@@ -792,98 +759,6 @@ class OutlineOptimizer:
         updated_data.sort(key=lambda x: x.get('date', '') if isinstance(x, dict) else '')
         
         return updated_data
-    
-    def _regenerate_month_days(self, month: str, month_events: List[Dict], 
-                                instructions: List[Dict]) -> List[Dict]:
-        """
-        重新生成指定月份中特定日期的数据
-        
-        Args:
-            month: 月份，格式为 "YYYY-MM"
-            month_events: 该月份的所有事件列表
-            instructions: 重新生成的指导信息列表，包含 target_date、reason、suggestions
-        
-        Returns:
-            重新生成后的日期数据列表
-        """
-        from src.lifebench.event.templates.template_scheduler import template_regenerate_daily_draft
-        
-        regenerated_days = []
-        
-        # 对每个需要重新生成的日期单独处理
-        for instruction in instructions:
-            target_date = instruction.get("target_date", "")
-            if not target_date:
-                continue
-            
-            # 从 daily_draft 中查找该日期的数据（daily_draft 的 key 是月份，value 是天数数组）
-            original_day_data = None
-            for date_key, day_list in self.daily_draft.items():
-                if isinstance(day_list, list):
-                    for day_item in day_list:
-                        if isinstance(day_item, dict) and day_item.get("date") == target_date:
-                            original_day_data = day_item
-                            break
-                if original_day_data:
-                    break
-            
-            if not original_day_data:
-                self._print(f"  ⚠️  未找到日期 {target_date} 的原始数据")
-                continue
-            
-            # 获取前一天的数据
-            previous_date = self._get_previous_date(target_date)
-            previous_day_data = None
-            if previous_date:
-                for date_key, day_list in self.daily_draft.items():
-                    if isinstance(day_list, list):
-                        for day_item in day_list:
-                            if isinstance(day_item, dict) and day_item.get("date") == previous_date:
-                                previous_day_data = day_item
-                                break
-                    if previous_day_data:
-                        break
-            
-            # 获取后一天的数据
-            next_date = self._get_next_date(target_date)
-            next_day_data = None
-            if next_date:
-                for date_key, day_list in self.daily_draft.items():
-                    if isinstance(day_list, list):
-                        for day_item in day_list:
-                            if isinstance(day_item, dict) and day_item.get("date") == next_date:
-                                next_day_data = day_item
-                                break
-                    if next_day_data:
-                        break
-            
-            # 构建提示词
-            prompt = template_regenerate_daily_draft.format(
-                original_day_data=json.dumps(original_day_data, ensure_ascii=False),
-                previous_day_data=json.dumps(previous_day_data, ensure_ascii=False) if previous_day_data else "无",
-                next_day_data=json.dumps(next_day_data, ensure_ascii=False) if next_day_data else "无",
-                instructions=json.dumps(instruction, ensure_ascii=False)
-            )
-            
-            try:
-                result_str = llm_call_j(prompt)
-                # 解析 JSON 对象
-                start_idx = result_str.find('{')
-                end_idx = result_str.rfind('}')
-                if start_idx != -1 and end_idx != -1 and start_idx < end_idx:
-                    json_str = result_str[start_idx:end_idx+1]
-                    regenerated_day = json.loads(json_str)
-                    regenerated_days.append(regenerated_day)
-                    self._print(f"  ✓ 成功重新生成 {target_date}")
-                else:
-                    self._print(f"  ⚠️  无法解析 {target_date} 的重新生成数据")
-            
-            except json.JSONDecodeError as e:
-                self._print(f"  ⚠️  重新生成 {target_date} 失败（JSON解析）：{e}")
-            except Exception as e:
-                self._print(f"  ⚠️  重新生成 {target_date} 失败：{e}")
-        
-        return regenerated_days
     
     def _get_previous_date(self, date_str: str) -> Optional[str]:
         """

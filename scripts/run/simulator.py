@@ -71,6 +71,8 @@ if generate_data:
     monthly_file = os.path.join(file_path, "sim", "monthly_summaries.json")
     cumulative_file = os.path.join(file_path, "sim", "cumulative_summaries.json")
     year = int(start_date[:4])
+    # 从起止日期推导模拟的月数，避免对超出范围的空月份生成虚构总结
+    months = int(end_date[5:7]) if end_date[:4] == start_date[:4] else 12
 
 
     def convert(input_file, output_file):
@@ -112,7 +114,7 @@ if generate_data:
         event = read_json_file(file_path + "event_transfer.json")
         print(f"成功读取event_transfer文件，共{len(event)}个事件")
         fuzzy_memory_builder = FuzzyMemoryBuilder.get_instance(event, persona, os.path.join(file_path, "sim"))
-        fuzzy_memory_builder.build_all_summaries(year)
+        fuzzy_memory_builder.build_all_summaries(year, months=months)
         print("fuzzymemory生成完成！")
     if not os.path.exists(file_path + "location.json"):
         print(f"未找到location.json文件，开始生成画像地址数据...")

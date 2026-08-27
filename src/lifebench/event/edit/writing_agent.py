@@ -7,6 +7,7 @@ import json
 import re
 from typing import Dict, List, Any
 from src.lifebench.utils.llm_call import llm_call_j, llm_call, llm_call_reason_j
+from src.lifebench.utils.date_utils import TimeSpec
 from .critic_agent import CriticAgent
 
 
@@ -16,34 +17,26 @@ class WritingAgent:
     与用户迭代交互，分析情节与画像适配性，修改并生成情节数据
     """
     
-    def __init__(self, path: str):
+    def __init__(self, path: str, spec: TimeSpec = None):
         """
         初始化写作代理
-        
+
         Args:
-            path: 基础路径，包含persona.json和process/merged_timeline.json
+            path: 基础路径，包含persona.json和process/merged_timelines.json
+            spec: 时间范围规格（年份 + 模拟月数），默认 2025 全年
         """
         self.path = path
+        self.spec = spec or TimeSpec()
         self.persona_path = f"{path}/persona.json"
         self.reference_timeline_path = f"{path}/process/merged_timelines.json"
         self.persona_data = self._load_persona()
         self.reference_timeline_data = self._load_reference_timeline()
-        # 初始化空的plot结构
+        # 初始化空的plot结构（月份数量由 spec 决定，是整条链路月份数的源头）
         self.initial_plot = {
             "comprehensive_summary": "",
             "monthly_details": [
-                {"month": "2025-01", "events": [], "main topics": [], "changes": ""},
-                {"month": "2025-02", "events": [], "main topics": [], "changes": ""},
-                {"month": "2025-03", "events": [], "main topics": [], "changes": ""},
-                {"month": "2025-04", "events": [], "main topics": [], "changes": ""},
-                {"month": "2025-05", "events": [], "main topics": [], "changes": ""},
-                {"month": "2025-06", "events": [], "main topics": [], "changes": ""},
-                {"month": "2025-07", "events": [], "main topics": [], "changes": ""},
-                {"month": "2025-08", "events": [], "main topics": [], "changes": ""},
-                {"month": "2025-09", "events": [], "main topics": [], "changes": ""},
-                {"month": "2025-10", "events": [], "main topics": [], "changes": ""},
-                {"month": "2025-11", "events": [], "main topics": [], "changes": ""},
-                {"month": "2025-12", "events": [], "main topics": [], "changes": ""}
+                {"month": month_key, "events": [], "main topics": [], "changes": ""}
+                for month_key in self.spec.month_keys
             ]
         }
         self.plot_history = [self.initial_plot.copy()]  # 保存情节的历史版本，初始版本为空结构
@@ -154,14 +147,14 @@ class WritingAgent:
         
         示例输出：
         <thinking>
-        用户想要添加一个北京出差的事件，需要在2025-01月份添加相关内容。
-        目前时间线中2025-01月份的events为空，需要添加出差相关事件。
+        用户想要添加一个北京出差的事件，需要在{self.spec.month_keys[0]}月份添加相关内容。
+        目前时间线中{self.spec.month_keys[0]}月份的events为空，需要添加出差相关事件。
         同时需要更新comprehensive_summary，包含这次出差的内容。
         </thinking>
         <advice>
-        1. 在monthly_details中2025-01月份的events列表中添加："前往北京参加医学会议"
-        2. 在monthly_details中2025-01月份的main topics列表中添加："专业发展"
-        3. 在monthly_details中2025-01月份的changes字段中添加："拓展了专业人脉，了解了最新医学研究成果"
+        1. 在monthly_details中{self.spec.month_keys[0]}月份的events列表中添加："前往北京参加医学会议"
+        2. 在monthly_details中{self.spec.month_keys[0]}月份的main topics列表中添加："专业发展"
+        3. 在monthly_details中{self.spec.month_keys[0]}月份的changes字段中添加："拓展了专业人脉，了解了最新医学研究成果"
         4. 在comprehensive_summary中添加关于这次出差的内容
         </advice>
         """
@@ -199,127 +192,102 @@ class WritingAgent:
     def modify_plot(self, plot: Dict, advice: str) -> Dict:
         """
         根据分析结果修改情节
-        
+
         Args:
             plot: 原始情节数据
             advice: 修改建议字符串
-            
+
         Returns:
             修改后的情节数据
         """
+        # 按 spec 时间范围动态生成示例，避免 12 个月示例诱导 LLM 发散到范围外
+        example_details = [
+            {
+                "month": month_key,
+                "events": ["制定年度计划", "参加行业会议"] if idx == 0 else [],
+                "main topics": ["规划", "专业发展"] if idx == 0 else [],
+                "changes": "开始注重时间管理和目标设定" if idx == 0 else "",
+            }
+            for idx, month_key in enumerate(self.spec.month_keys)
+        ]
+        example_plot = {
+            "comprehensive_summary": (
+                f"{self.spec.year}年是充满挑战与成长的一年。在专业领域，通过项目管理的突破，"
+                "提升了团队协作效率；在财务方面，通过合理规划实现了资产增值；在健康意识上，"
+                "经历了从忽视到重视的转变；在家庭责任上，深刻理解了家庭的重要性。这一年，"
+                "在压力中成长，在挑战中突破，实现了个人的系统性跃迁。"
+            ),
+            "monthly_details": example_details,
+        }
+        example_json = json.dumps(example_plot, ensure_ascii=False, indent=4)
+
         prompt = f"""
         你是一位专业的人生规划师，请根据以下人物画像、原始时间线和修改建议，修改时间线数据。
-        
+
         人物画像：
         {json.dumps(self.persona_data, ensure_ascii=False, indent=2)}
-        
+
         原始时间线：
         {json.dumps(plot, ensure_ascii=False, indent=2)}
-        
+
         修改建议：
         {advice}
-        
+
         修改要求：
         1. 根据修改建议修改时间线
         2. 修改时间线，使其更多样、丰富、合理
         3. 确保修改后的时间线符合人物的性格、职业、背景和目标
         4. 提高时间线的合理性和连贯性
         5. 保持与原始时间线相同的格式
-        
+        6. 时间范围严格限定为 {self.spec.describe()}，monthly_details 只能包含 {', '.join(self.spec.month_keys)} 这些月份，不得新增或遗漏其他月份
+
         输出格式：
         仅输出修改后的完整时间线数据，使用JSON格式，与输入格式一致
-        
+
         输出JSON示例：
-        {{
-            "comprehensive_summary": "2025年是充满挑战与成长的一年。在专业领域，通过项目管理的突破，提升了团队协作效率；在财务方面，通过合理规划实现了资产增值；在健康意识上，经历了从忽视到重视的转变；在家庭责任上，深刻理解了家庭的重要性。这一年，在压力中成长，在挑战中突破，实现了个人的系统性跃迁。",
-            "monthly_details": [
-                {{
-                    "month": "2025-01",
-                    "events": ["制定年度计划", "参加行业会议"],
-                    "main topics": ["规划", "专业发展"],
-                    "changes": "开始注重时间管理和目标设定"
-                }},
-                {{
-                    "month": "2025-02",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-03",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-04",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-05",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-06",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-07",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-08",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-09",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-10",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-11",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-12",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }}
-            ]
-        }}
+        {example_json}
         """
-        
+
         try:
             response = llm_call_reason_j(prompt).strip()
             # 移除JSON包装
             response = self.remove_json_wrapper(response, 'object')
             # 解析响应
             modified_plot = json.loads(response)
+            # 月份护栏：杜绝优化过程把时间线发散到 spec 之外的月份
+            modified_plot = self._guard_monthly_details(modified_plot)
             print(f"修改后的时间线：\n{json.dumps(modified_plot, ensure_ascii=False, indent=2)}")
             return modified_plot
         except Exception as e:
             print(f"修改情节失败：{str(e)}")
             return plot
+
+    def _guard_monthly_details(self, plot: Dict) -> Dict:
+        """
+        月份护栏：强制 monthly_details 与 spec.month_keys 严格一致。
+
+        丢弃 spec 范围之外的月份（防止 12 月泄漏），并补齐缺失的目标月份，
+        最终按 spec 顺序排序。这是所有情节修改（modify_plot）的唯一收口点。
+        """
+        if not isinstance(plot, dict):
+            return plot
+        details = plot.get("monthly_details")
+        if not isinstance(details, list):
+            details = []
+        allowed = set(self.spec.month_keys)
+        kept = [d for d in details if isinstance(d, dict) and d.get("month") in allowed]
+        dropped = [d.get("month") for d in details
+                   if not (isinstance(d, dict) and d.get("month") in allowed)]
+        if dropped:
+            print(f"⚠️ 月份护栏：丢弃超出 {self.spec.describe()} 的月份 {dropped}")
+        present = {d.get("month") for d in kept}
+        for month_key in self.spec.month_keys:
+            if month_key not in present:
+                kept.append({"month": month_key, "events": [], "main topics": [], "changes": ""})
+        order = {k: i for i, k in enumerate(self.spec.month_keys)}
+        kept.sort(key=lambda d: order.get(d.get("month"), 0))
+        plot["monthly_details"] = kept
+        return plot
     
     def parse_command(self, user_input: str) -> Dict:
         """
@@ -490,7 +458,7 @@ class WritingAgent:
                 3. 合理修改借鉴的情节，使其融入当前时间线，确保符合人物的性格、职业、背景和目标
                 4. 优化原有时间线，确保新情节加入后产生的因果关联和后续影响被体现，甚至可能影响已有事件的发生情况
                 5. 提供具体的优化建议，包括需要添加、修改或调整的内容
-                6. 我们期望最终的时间线更丰富、更立体、更有趣味性，能更好地反映人物的性格、职业、背景和目标。同时多线叙事，且环节仅仅相扣，不断发展变化。一整年有许多不同主题的多线叙述，每个线还会交叉影响。每个月也有充实的足够多的事件。
+                6. 我们期望最终的时间线更丰富、更立体、更有趣味性，能更好地反映人物的性格、职业、背景和目标。同时多线叙事，且环节仅仅相扣，不断发展变化。{self.spec.year}年1月至{self.spec.months}月期间有许多不同主题的多线叙述，每个线还会交叉影响。每个月也有充实的足够多的事件。
                 7. 你不需要在一次修改就满足所有的最终目标，提出一定的修改建议，选取适量的情节和构思适量的创作想法，并为情节的选取增添一些随机性。对于参考情节的数据也是选择性的使用。
                 8. 你也可以选择性删除已有情节，创作新的情节，优化当前时间线，但尽量不要删除太多内容。
         
@@ -550,7 +518,7 @@ class WritingAgent:
             print("\n=== 开始迭代优化过程 ===")
             
             # 创建评判家代理
-            critic_agent = CriticAgent(self.path)
+            critic_agent = CriticAgent(self.path, spec=self.spec)
             
             # 初始化优化结果
             optimized_plot = current_plot.copy()

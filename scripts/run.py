@@ -5,6 +5,11 @@ import argparse
 import subprocess
 import json
 
+# 添加项目根目录到 Python 路径
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from src.lifebench.utils.date_utils import TimeSpec, guard_time_spec_meta
+
 
 def parse_args():
     """
@@ -38,6 +43,8 @@ def parse_args():
                         help='是否生成QA（默认：1）')
     parser.add_argument('--year', type=int, default=2025,
                         help='生成数据的年份（默认：2025）')
+    parser.add_argument('--months', type=int, default=12,
+                        help='模拟该年的前几个月，取值 1-12（默认：12，即完整一年）')
     parser.add_argument('--dry-run', action='store_true',
                         help='仅创建占位文件，不实际生成数据（用于测试流程）')
 
@@ -71,6 +78,8 @@ def run_draft_gen(args):
             cmd.extend(['--max-workers', str(args.max_workers)])
         if args.interactive:
             cmd.append('--interactive')
+        cmd.extend(['--year', str(args.year)])
+        cmd.extend(['--months', str(args.months)])
 
         print(f"执行命令: {' '.join(cmd)}")
         
@@ -119,6 +128,10 @@ def run_simulator(args):
             cmd.extend(['--file-path', args.base_path])
         if args.instance_id is not None:
             cmd.extend(['--instance-id', str(args.instance_id)])
+        # 与 draft 阶段保持同一时间范围，否则 simulator 会退回默认的 2025 整年
+        spec = TimeSpec(year=args.year, months=args.months)
+        cmd.extend(['--start-date', spec.start_date])
+        cmd.extend(['--end-date', spec.end_date])
         # 注意：不添加--refine-events参数，因为用户说这个参数已经没有用了
         
         print(f"执行命令: {' '.join(cmd)}")
@@ -273,6 +286,23 @@ if __name__ == '__main__':
         print(f"{'='*60}")
         sys.exit(0)
 
+    # 校验时间范围与已有产物一致
+    # draft_gen 内部也有同样的校验，但这里的跳过分支会绕过它，所以要提前拦一次
+    spec = TimeSpec(year=args.year, months=args.months)
+    print(f"\n时间范围: {spec.describe()}")
+    try:
+        guard_time_spec_meta(
+            os.path.join(args.base_path, args.process_path),
+            spec,
+            artifacts=[os.path.join(args.base_path, 'daily_draft.json'),
+                       os.path.join(args.base_path, 'daily_event.json')],
+        )
+    except RuntimeError as e:
+        print(f"\n{'='*60}")
+        print(f"错误: {e}")
+        print(f"{'='*60}")
+        sys.exit(1)
+
     # 检查对应文件夹中是否存在daily_draft.json文件
     daily_draft_path = os.path.join(args.base_path, 'daily_draft.json')
     if os.path.exists(daily_draft_path):
@@ -390,7 +420,8 @@ if __name__ == '__main__':
                         event_data_path=event_data_path,
                         health_analysis_file=health_analysis_file,
                         output_dir=output_dir,
-                        context=context
+                        context=context,
+                        spec=TimeSpec(year=args.year, months=args.months)
                     )
                     
                     print(f"\n{'='*60}")
@@ -422,8 +453,8 @@ if __name__ == '__main__':
                 sys.executable,
                 os.path.join(os.path.dirname(__file__), 'run', 'phone_gen.py'),
                 '--file-path', args.base_path + '/',
-                '--start-time', '2025-01-01',  # 使用默认开始日期
-                '--end-time', '2025-12-31',    # 使用默认结束日期
+                '--start-time', TimeSpec(year=args.year, months=args.months).start_date,
+                '--end-time', TimeSpec(year=args.year, months=args.months).end_date,
                 '--max-workers', '40',          # 使用默认线程数
             ]
 

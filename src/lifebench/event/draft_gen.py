@@ -3,16 +3,41 @@
 from src.lifebench.event.draft.timeline_gen import TimelineGen
 from src.lifebench.event.edit.writing_agent import WritingAgent
 from src.lifebench.event.draft.scheduler import Scheduler
+from src.lifebench.utils.date_utils import TimeSpec, guard_time_spec_meta
 import os
 import json
 
 
 class DraftGen:
-    def __init__(self, persona, file_path):
-        """初始化draft生成器"""
+    def __init__(self, persona, file_path, spec: TimeSpec = None):
+        """初始化draft生成器
+
+        参数:
+            persona: 人物画像数据
+            file_path: 基础数据路径
+            spec: 时间范围规格（年份 + 模拟月数），默认 2025 全年
+        """
         self.persona = persona
         self.file_path = file_path
-    
+        self.spec = spec or TimeSpec()
+
+    def _guard_meta(self, output_path, meidan_path):
+        """
+        时间范围一致性护栏。
+
+        整条流水线用"文件是否存在"来跳过已完成的步骤，这在续跑时很好用，
+        但换了 --year / --months 再跑同一目录时，旧产物会被静默复用，
+        得到年份互相矛盾的数据集。这里用 meta.json 记录本次的时间范围，
+        发现不一致就直接报错，而不是继续污染数据。
+        """
+        guard_time_spec_meta(
+            meidan_path,
+            self.spec,
+            artifacts=[os.path.join(output_path, 'daily_draft.json'),
+                       os.path.join(meidan_path, 'optimized_timelines.json')],
+        )
+
+
     def generate_draft(self, output_path="output/", meidan_path=None, interactive=False):
         """
         生成draft的主要方法
@@ -33,6 +58,10 @@ class DraftGen:
         os.makedirs(output_path, exist_ok=True)
         os.makedirs(meidan_path, exist_ok=True)
 
+        # 在任何跳过判断之前校验时间范围，避免复用不同 year/months 的旧产物
+        self._guard_meta(output_path, meidan_path)
+        print(f"时间范围: {self.spec.describe()}")
+
         # 检查 optimize_timeline.json 是否存在，存在则跳过步骤1-6
         optimize_timeline_path = os.path.join(meidan_path, "optimized_timelines.json")
         if optimize_timeline_path and os.path.exists(optimize_timeline_path):
@@ -40,7 +69,7 @@ class DraftGen:
         else:
             # 步骤1: 调用timeline_gen.py生成情节库
             print("\n=== 步骤1: 生成情节库 ===")
-            timeline_gen = TimelineGen(self.persona, self.file_path)
+            timeline_gen = TimelineGen(self.persona, self.file_path, spec=self.spec)
 
             # 调用generate_yearly_timeline_plot方法生成情节库
             timeline_gen.generate_yearly_timeline_plot(self.persona, output_path, meidan_path)
@@ -55,7 +84,7 @@ class DraftGen:
 
             # 初始化WritingAgent
             try:
-                writing_agent = WritingAgent(path=base_path)
+                writing_agent = WritingAgent(path=base_path, spec=self.spec)
                 print("✓ WritingAgent 初始化成功")
             except Exception as e:
                 print(f"✗ WritingAgent 初始化失败: {e}")
@@ -126,7 +155,7 @@ class DraftGen:
         if os.path.exists(daily_draft_file):
             print(f"✓ daily_draft.json 已存在，跳过 Scheduler 调用")
         else:
-            scheduler = Scheduler(persona=self.persona, file_path=output_path)
+            scheduler = Scheduler(persona=self.persona, file_path=output_path, spec=self.spec)
             scheduler.generate_yearly_timeline_draft(
                 self.persona,
                 output_path=output_path,
@@ -138,7 +167,8 @@ class DraftGen:
         if os.path.exists(daily_draft_file):
             from src.lifebench.event.draft.outline_optimizer import OutlineOptimizer
 
-            outline_optimizer = OutlineOptimizer(output_path, meidan_path)
+            # 注意：第二个位置参数是 year，早前误传了 meidan_path（导致 self.year 变成路径字符串）
+            outline_optimizer = OutlineOptimizer(output_path, year=self.spec.year)
             optimized_outline = outline_optimizer.optimize_outline()
             print("✓ 每日大纲优化完成")
         else:

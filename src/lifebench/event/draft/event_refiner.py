@@ -1282,125 +1282,33 @@ class EventRefiner:
             print(f"生成下个月指导总结时出错: {e}")
             return ""
 
-    def annual_event_refine(self, events: List[Dict], start_date: str, end_date: str, context: str = "", max_workers: int = 5, output_path: str = "output/daily_state.json") -> List[Dict]:
-        """
-        处理整个年度的事件调整，内部使用多线程并统一合并结果
-        
-        参数:
-            events: 事件列表
-            start_date: 开始日期（格式：YYYY-MM-DD）
-            end_date: 结束日期（格式：YYYY-MM-DD）
-            context: 用于LLM调用的上下文信息（可选）
-            max_workers: 最大线程数
-            
-        返回:
-            List[Dict]: 调整后的事件列表
-        """
-        from concurrent.futures import ThreadPoolExecutor, as_completed
-        import copy
-        
-        # 如果提供了新的上下文，则更新
-        if context:
-            self.context = context
-        
-        # 生成所有两周区间
-        def get_biweekly_intervals(start_date: str, end_date: str) -> List[tuple]:
-            """将日期范围划分为两周（14天）的区间"""
-            intervals = []
-            current_date = datetime.strptime(start_date, "%Y-%m-%d").date()
-            end_date_obj = datetime.strptime(end_date, "%Y-%m-%d").date()
-            
-            while current_date <= end_date_obj:
-                interval_end = current_date + timedelta(days=13)
-                if interval_end > end_date_obj:
-                    interval_end = end_date_obj
-                intervals.append((current_date.strftime("%Y-%m-%d"), interval_end.strftime("%Y-%m-%d")))
-                current_date += timedelta(days=14)
-            
-            return intervals
-        
-        # 获取所有两周区间
-        biweekly_intervals = get_biweekly_intervals(start_date, end_date)
-        print(f"共划分为{len(biweekly_intervals)}个两周区间")
-        
-        # 定义每个线程要执行的任务函数
-        def process_interval(interval_idx, interval_start, interval_end, events_copy, context):
-            """处理单个区间的事件调整"""
-            try:
-                print(f"区间 {interval_idx}/{len(biweekly_intervals)}: 调整{interval_start}至{interval_end}的事件...")
-                results = self.date_range_event_refine(
-                        events_copy, 
-                        interval_start, 
-                        interval_end, 
-                        context
-                    )
-                print(f"    区间 {interval_idx}/{len(biweekly_intervals)} 调整完成")
-                return interval_idx, results["event_updates"], results["dailylife"], None
-            except Exception as e:
-                error_msg = f"处理区间 {interval_idx} ({interval_start}至{interval_end}) 时出错：{e}"
-                print(error_msg)
-                return interval_idx, [], [], error_msg
-
-        try:
-            # 提交所有任务到线程池
-            results = []
-            with ThreadPoolExecutor(max_workers=max_workers) as executor:
-                future_to_interval = {}
-                for idx, (start, end) in enumerate(biweekly_intervals):
-                    # 为每个线程创建独立的事件数据副本，确保线程安全
-                    thread_events_copy = copy.deepcopy(events)
-                    future = executor.submit(process_interval, idx+1, start, end, thread_events_copy, self.context)
-                    future_to_interval[future] = (idx+1, start, end)
-
-                # 收集所有结果
-                for future in as_completed(future_to_interval):
-                    interval_idx, interval_event_updates, interval_dailylife, error = future.result()
-                    if error:
-                        print(error)
-                    results.append((interval_idx, interval_event_updates, interval_dailylife))
-
-            # 按区间顺序合并结果
-            results.sort(key=lambda x: x[0])
-            merged_updates = []
-            all_dailylife = []
-            for _, event_updates, dailylife in results:
-                merged_updates.extend(event_updates)
-                all_dailylife.extend(dailylife)
-            
-            # 应用更新操作到事件列表
-            updated_events = self.apply_event_updates(events, merged_updates)
-            
-            # 保存每日生活数据到JSON文件
-            if all_dailylife:
-                self.save_dailylife_to_json(all_dailylife, output_path)
-
-            return updated_events
-        except Exception as e:
-            print(f"年度事件调整过程中出错：{e}")
-            return events
-
     @staticmethod
     def monthly_health_report_generation(persona: Dict, 
                                          month_num: int, 
                                          event_data_path: str, 
                                          health_analysis_file: str = "output/new/all_months_analysis_20260113134815_updated.json",
-                                         context: str = "") -> str:
+                                         context: str = "",
+                                         spec: "TimeSpec" = None) -> str:
         """
         生成月度运动健康报告
-        
+
         参数:
             persona: 不带联系人的画像数据
             month_num: 月份编号 (1-12)
             event_data_path: 事件数据文件路径
             health_analysis_file: 健康分析数据文件路径 (支持final_timeline.json格式)
             context: 用于LLM调用的上下文信息
-            
+            spec: 时间范围规格（年份 + 模拟月数），默认 2025 全年
+
         返回:
             str: 月度运动健康报告的JSON字符串
         """
         import json
         from src.lifebench.utils.llm_call import llm_call_reason
-        
+        from src.lifebench.utils.date_utils import TimeSpec
+
+        spec = spec or TimeSpec()
+
         # 读取事件数据文件
         try:
             with open(event_data_path, 'r', encoding='utf-8') as f:
@@ -1411,7 +1319,7 @@ class EventRefiner:
             raise ValueError(f"事件数据文件格式错误: {event_data_path}")
         
         # 获取本月事件数据
-        month_key = f"2025-{month_num:02d}"
+        month_key = spec.month_key(month_num)
         if month_key not in all_event_data:
             raise ValueError(f"事件数据中未找到 {month_key} 月份的数据")
         
@@ -1429,7 +1337,7 @@ class EventRefiner:
             # 检查是否是final_timeline.json格式
             if 'monthly_details' in health_analysis_data:
                 # 从final_timeline.json格式中提取健康数据
-                month_str = f"2025-{month_num:02d}"
+                month_str = spec.month_key(month_num)
                 
                 # 查找对应的月份数据
                 month_data = None
@@ -1455,7 +1363,7 @@ class EventRefiner:
                     print(f"健康分析数据中未找到 {month_str} 月份的数据")
             else:
                 # 传统格式：以月份为键的JSON对象
-                month_key = f"2025-{month_num:02d}"
+                month_key = spec.month_key(month_num)
                 if month_key in health_analysis_data:
                     month_health_data = health_analysis_data[month_key]
                     
@@ -1521,43 +1429,50 @@ class EventRefiner:
                                                  event_data_path: str,
                                                  health_analysis_file: str = "output/new/all_months_analysis_20260113134815_updated.json",
                                                  output_dir: str = "output/monthly_health_reports",
-                                                 context: str = "") -> Dict[str, str]:
+                                                 context: str = "",
+                                                 spec: "TimeSpec" = None) -> Dict[str, str]:
         """
-        并行生成12个月的健康报告并保存
-        
+        并行生成模拟范围内各月的健康报告并保存
+
         参数:
             persona: 不带联系人的画像数据
             event_data_path: 事件数据文件路径
             health_analysis_file: 健康分析数据文件路径
             output_dir: 输出目录路径
             context: 用于LLM调用的上下文信息
-            
+            spec: 时间范围规格（年份 + 模拟月数），默认 2025 全年
+
         返回:
             Dict[str, str]: 包含所有月份健康报告的字典
         """
         import json
         import os
-        
+        from src.lifebench.utils.date_utils import TimeSpec
+
+        spec = spec or TimeSpec()
+
         # 确保输出目录存在
         os.makedirs(output_dir, exist_ok=True)
-        
+
         # 定义生成单个月份报告的内部函数
         def generate_single_month_report(month_num):
+            month_key = spec.month_key(month_num)
             try:
-                report = EventRefiner.monthly_health_report_generation(persona, month_num, event_data_path, health_analysis_file, context)
-                return f"2025-{month_num:02d}", report
+                report = EventRefiner.monthly_health_report_generation(
+                    persona, month_num, event_data_path, health_analysis_file, context, spec=spec)
+                return month_key, report
             except Exception as e:
-                error_msg = f"生成{2025}-{month_num:02d}月健康报告时出错: {e}"
+                error_msg = f"生成{month_key}月健康报告时出错: {e}"
                 print(error_msg)
-                return f"2025-{month_num:02d}", error_msg
-        
+                return month_key, error_msg
+
         # 使用线程池并行处理
         monthly_reports = {}
         with ThreadPoolExecutor(max_workers=4) as executor:  # 限制线程数以避免资源过度消耗
             # 提交所有任务
             future_to_month = {
-                executor.submit(generate_single_month_report, month_num): month_num 
-                for month_num in range(1, 13)  # 1到12月
+                executor.submit(generate_single_month_report, month_num): month_num
+                for month_num in spec.month_nums
             }
             
             # 收集结果

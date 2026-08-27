@@ -1,17 +1,26 @@
 # -*- coding: utf-8 -*-
 """时间线生成类，负责处理时间线相关的操作"""
+import json
+import re
 from datetime import timedelta
 from src.lifebench.utils.llm_call import *
+from src.lifebench.utils.date_utils import TimeSpec, DEFAULT_YEAR
 from src.lifebench.event.templates.template_scheduler import *
 import holidays  # 需安装：pip install holidays
-from .event_tree import *
 
 
 class TimelineGen:
-    def __init__(self, persona, file_path):
-        """初始化时间线生成器"""
+    def __init__(self, persona, file_path, spec: TimeSpec = None):
+        """初始化时间线生成器
+
+        参数:
+            persona: 人物画像数据
+            file_path: 基础数据路径
+            spec: 时间范围规格（年份 + 模拟月数），默认 2025 全年
+        """
         self.persona = persona
         self.file_path = file_path
+        self.spec = spec or TimeSpec()
     
     def generate_initial_timeline(self):
         """
@@ -26,107 +35,46 @@ class TimelineGen:
         person_name = self.persona.get('name', '人物')
         
         # 生成完整的时间线数据，包含年度综合总结和月度详情
+        # 示例月份按 spec 动态生成，避免 months=3 时示例里仍出现 12 个月、把模型引回 2025 全年
+        example_months = ",\n".join(
+            f'                {{{{\n'
+            f'                    "month": "{mk}",\n'
+            f'                    "events": [],\n'
+            f'                    "main topics": [],\n'
+            f'                    "changes": ""\n'
+            f'                }}}}'
+            for mk in self.spec.month_keys
+        )
         timeline_prompt = f"""
-        你是一位专业的人生规划师和故事作家，请根据以下人物画像，为{person_name}的2025年生成一份完整的时间线数据。
-        
+        你是一位专业的人生规划师和故事作家，请根据以下人物画像，为{person_name}的{self.spec.year}年生成一份完整的时间线数据。
+
         人物画像：
         {json.dumps(self.persona, ensure_ascii=False, indent=2)}
-        
+
         思考过程：
         1. 首先分析人物画像，了解{person_name}的背景、职业、性格和目标
-        2. 基于人物画像，构思2025年的整体发展脉络
-        
+        2. 基于人物画像，构思{self.spec.year}年的整体发展脉络
+
         时间线字段说明：
-        - comprehensive_summary：年度综合总结，描述{person_name}2025年的整体发展情况，包括专业、财务、健康和家庭责任等方面的变化
-        - monthly_details：月度详情列表，包含12个月的详细信息
+        - comprehensive_summary：年度综合总结，描述{person_name}{self.spec.year}年的整体发展情况，包括专业、财务、健康和家庭责任等方面的变化
+        - monthly_details：月度详情列表，包含{self.spec.months}个月的详细信息
           - month：月份，格式为YYYY-MM
           - events：该月发生的事件列表
           - main topics：该月的主要事件的主题列表
           - changes：该月的个人变化描述
-        
+
         输出格式：
         仅返回JSON格式的时间线数据，不包含任何其他内容
-        
+
         输出示例：
         {{
             "comprehensive_summary": "",
             "monthly_details": [
-                {{
-                    "month": "2025-01",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-02",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-03",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-04",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-05",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-06",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-07",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-08",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-09",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-10",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-11",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }},
-                {{
-                    "month": "2025-12",
-                    "events": [],
-                    "main topics": [],
-                    "changes": ""
-                }}
+{example_months}
             ]
         }}
         """
-        
+
         try:
             # 使用llm_call_j获取JSON格式响应
             response = llm_call_j(timeline_prompt)
@@ -138,10 +86,10 @@ class TimelineGen:
         except Exception as e:
             print(f"生成初始时间线失败: {str(e)}")
             # 生成默认时间线
-            comprehensive_summary = f"{person_name}的2025年是充满挑战与成长的一年，在专业、财务、健康和家庭责任方面都取得了显著进展。"
+            comprehensive_summary = f"{person_name}的{self.spec.year}年是充满挑战与成长的一年，在专业、财务、健康和家庭责任方面都取得了显著进展。"
             monthly_details = []
-            for month in range(1, 13):
-                month_str = f"2025-{month:02d}"
+            for month in self.spec.month_nums:
+                month_str = self.spec.month_key(month)
                 monthly_details.append({
                     "month": month_str,
                     "events": [],
@@ -156,14 +104,36 @@ class TimelineGen:
         print("初始时间线生成完成")
         return initial_timeline
 
+    def _time_guard(self) -> str:
+        """与 Scheduler 一致的时间范围约束头，避免模板中的 2025 示例牵引出错误年份。"""
+        lines = [
+            "【时间范围硬性约束】",
+            f"本次生成的目标年份为 {self.spec.year} 年，模拟范围为 {self.spec.describe()}。",
+            f"1. 所有日期必须落在 {self.spec.start_date} 至 {self.spec.end_date} 之间，"
+            f"不得生成该范围之外的任何日期。",
+        ]
+        if self.spec.year != DEFAULT_YEAR:
+            lines.append(
+                f"2. 下文提示词与示例中出现的年份（如 {DEFAULT_YEAR}）仅供格式参考，"
+                f"一律以本约束的 {self.spec.year} 年为准，不得照搬。"
+            )
+        if self.spec.months < 12:
+            lines.append(
+                f"{len(lines) - 1}. 月份仅限 1 至 {self.spec.months} 月；"
+                f"不要生成第 {self.spec.months + 1} 月及以后的内容，"
+                f"全年总结也只覆盖这 {self.spec.months} 个月。"
+            )
+        lines.append("-" * 40)
+        return "\n".join(lines) + "\n"
+
     def llm_call_sr(self, prompt, record=0):
         """调用大模型的函数"""
-        res = llm_call_reason_j(prompt)
+        res = llm_call_reason_j(self._time_guard() + prompt)
         return res
 
     def llm_call_s(self, prompt, record=0):
         """调用大模型的函数"""
-        res = llm_call_j(prompt)
+        res = llm_call_j(self._time_guard() + prompt)
         return res
 
     def get_month_calendar(self, year, month):
@@ -989,22 +959,6 @@ class TimelineGen:
                 with open(merged_timelines_path, 'w', encoding='utf-8') as f:
                     json.dump(merged_timelines, f, ensure_ascii=False, indent=2)
                 print(f"✓ 合并后的时间线已保存到: {merged_timelines_path}")
-
-            # # 步骤4: 优化合并后的时间线
-            # print("\n=== 步骤4: 优化合并后的时间线 ===")
-            # optimized_timelines_path = os.path.join(meidan_path, "optimized_timelines.json")
-            # if os.path.exists(optimized_timelines_path):
-            #     print(f"✓ 优化后的时间线文件已存在，直接读取: {optimized_timelines_path}")
-            #     with open(optimized_timelines_path, 'r', encoding='utf-8') as f:
-            #         optimized_timelines = json.load(f)
-            # else:
-            #     optimized_timelines = self.optimize_merged_timelines(merged_timelines)
-            #     print(f"✓ 成功优化为{len(optimized_timelines)}个时间线")
-            #     # 保存结果
-            #     with open(optimized_timelines_path, 'w', encoding='utf-8') as f:
-            #         json.dump(optimized_timelines, f, ensure_ascii=False, indent=2)
-            #     print(f"✓ 优化后的时间线已保存到: {optimized_timelines_path}")
-
 
         except Exception as e:
             print(f"\n❌ 生成年度时间线草稿时发生错误: {str(e)}")

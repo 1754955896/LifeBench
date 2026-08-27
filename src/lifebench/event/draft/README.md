@@ -9,11 +9,8 @@
 | `graph_generator.py` | 事件关系图生成 |
 | `graph_refiner.py` | 事件关系图细化 |
 | `timeline_gen.py` | 时间线生成 |
-| `daily_refine.py` | 每日大纲细化 |
-| `monthly_refine.py` | 月度大纲细化 |
 | `event_gen.py` | 事件生成 |
 | `event_refiner.py` | 事件细化 |
 | `event_tree.py` | 事件树结构 |
 | `outline_optimizer.py` | 大纲优化 |
-| `normalizer.py` | 标准化工具 |
 | `scheduler.py` | 日程调度（大规模） |

@@ -90,15 +90,17 @@ class QAGenerator:
         }
     }
     
-    def __init__(self, data_path: str, auto_discover: bool = True):
+    def __init__(self, data_path: str, auto_discover: bool = True, year: int = None):
         """
         初始化 QAGenerator
         
         Args:
             data_path: 用户数据路径，包含 persona.json、event_tree.json、daily_event.json 等文件
             auto_discover: 是否自动发现并加载所有生成器（默认 True）
+            year: 目标年份；为 None 时沿用各生成器配置中的默认年份
         """
         self.data_path = data_path
+        self.year = year
         self.phone_data_dir = os.path.join(data_path, "phone_data")
         self.generators = {}  # 存储所有生成器实例
         
@@ -221,7 +223,12 @@ class QAGenerator:
                     if 'phonedata' in params:
                         init_kwargs['phonedata'] = phonedata
                     if 'year' in params:
-                        init_kwargs['year'] = config['qagen_params'].get('year', 2025)
+                        default_year = config['qagen_params'].get('year', 2025)
+                        if self.year is None:
+                            init_kwargs['year'] = default_year
+                        else:
+                            # 各生成器对 year 的类型约定不同（int / str），沿用其默认值的类型
+                            init_kwargs['year'] = type(default_year)(self.year)
 
                     # 初始化生成器
                     generator = generator_class(**init_kwargs)
@@ -329,11 +336,14 @@ class QAGenerator:
             
             # 准备 QAGen 的参数
             qagen_kwargs = config['qagen_params'].copy()
-            
-            # 特殊处理：添加年份参数
-            if 'year' not in qagen_kwargs:
+
+            # 特殊处理：年份参数以本次运行的 year 为准，覆盖各生成器配置中的默认年份；
+            # 并沿用各生成器对 year 的类型约定（int / str）
+            if 'year' in qagen_kwargs:
+                qagen_kwargs['year'] = type(qagen_kwargs['year'])(year)
+            else:
                 qagen_kwargs['year'] = str(year)
-            
+
             # 对于推理生成器，添加额外参数
             if gen_name == 'reasoning':
                 if themes:

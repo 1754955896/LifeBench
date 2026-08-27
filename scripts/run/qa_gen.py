@@ -36,7 +36,7 @@ def main():
 
         # 初始化问答生成器
         print(f"正在初始化问答生成器，数据路径：{data_path}")
-        qa_generator = QAGenerator(data_path=data_path)
+        qa_generator = QAGenerator(data_path=data_path, year=args.year)
 
         # 从rich_timeline.json文件中加载themes和event_id_groups数据
         rich_timeline_path = os.path.join(data_path, "process", "rich_timeline.json")

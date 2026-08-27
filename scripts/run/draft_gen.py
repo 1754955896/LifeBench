@@ -11,6 +11,7 @@ project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(_
 sys.path.insert(0, project_root)
 
 from src.lifebench.event.draft_gen import DraftGen
+from src.lifebench.utils.date_utils import TimeSpec
 
 
 def ensure_directory_exists(directory):
@@ -52,6 +53,12 @@ def parse_args():
     parser.add_argument('--interactive', action='store_true',
                         help='启用交互模式，情节优化时迭代与LLM交互直到用户输入包含"结束"')
 
+    # 时间范围参数
+    parser.add_argument('--year', type=int, default=2025,
+                        help='生成数据的年份（默认：2025）')
+    parser.add_argument('--months', type=int, default=12,
+                        help='模拟该年的前几个月，取值 1-12（默认：12，即完整一年）')
+
     return parser.parse_args()
 
 
@@ -77,11 +84,15 @@ def main():
         # 线程数配置
         max_workers = args.max_workers or default_workers
 
+        # 时间范围配置（非法取值会在此直接抛出 ValueError）
+        spec = TimeSpec(year=args.year, months=args.months)
+
         # 打印系统配置
         print(f"系统配置：")
         print(f"- CPU核心数: {cpu_count}")
         print(f"- 最大工作线程数: {max_workers}")
         print(f"- 交互模式: {'启用' if args.interactive else '禁用'}")
+        print(f"- 时间范围: {spec.describe()}")
         print(f"- 基础数据路径: {base_file_path}")
         print(f"- 处理文件路径: {process_file_path}")
         print(f"- 中间数据路径: {meidan_path}")
@@ -94,7 +105,7 @@ def main():
         persona = read_json_file(persona_file)
 
         # 初始化 DraftGen
-        draft_gen = DraftGen(persona, base_file_path)
+        draft_gen = DraftGen(persona, base_file_path, spec=spec)
 
         # 调用 generate_draft 生成草稿
         print('\n开始生成年度时间线草稿...')

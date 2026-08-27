@@ -222,19 +222,20 @@ class FuzzyMemoryBuilder:
         summary = llm_call(prompt, self.persona.get("context", ""))
         return summary
 
-    def build_monthly_summaries(self, year: int = 2025, max_workers: int = 12):
+    def build_monthly_summaries(self, year: int = 2025, max_workers: int = 12, months: int = 12):
         """
-        并行生成12个月的事件总结
+        并行生成事件总结（默认全年12个月）
 
         参数:
             year: 年份
             max_workers: 并行工作线程数
+            months: 生成前几个月（1-12），默认 12 整年
         """
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            # 提交12个月的总结任务
+            # 提交前 months 个月的总结任务（只覆盖模拟范围内的月份）
             futures = {
                 executor.submit(self._generate_monthly_summary, year, month): month
-                for month in range(1, 13)
+                for month in range(1, months + 1)
             }
 
             # 收集结果
@@ -412,15 +413,16 @@ class FuzzyMemoryBuilder:
                 for month_key, summary in zip(months_range, available_summaries)
             ])
 
-    def build_all_summaries(self, year: int = 2025):
+    def build_all_summaries(self, year: int = 2025, months: int = 12):
         """
         生成所有月度总结和累积总结
 
         参数:
             year: 年份
+            months: 生成前几个月（1-12），默认 12 整年
         """
         print("开始生成月度总结...")
-        self.build_monthly_summaries(year)
+        self.build_monthly_summaries(year, months=months)
         print("月度总结生成完成！")
 
         print("开始生成累积总结...")
