@@ -5,6 +5,11 @@ import pandas as pd
 from collections import defaultdict
 import matplotlib.ticker as ticker
 
+try:
+    from .metrics import flatten_relation_groups, get_social_circle
+except ImportError:
+    from metrics import flatten_relation_groups, get_social_circle
+
 # 设置中文显示
 plt.rcParams["font.family"] = ["SimHei", "WenQuanYi Micro Hei", "Heiti TC"]
 plt.rcParams["axes.unicode_minus"] = False  # 解决负号显示问题
@@ -19,19 +24,7 @@ def process_relation_array(relation_data):
     返回:
     - 处理后的一维数组
     """
-    # 检查是否为列表（数组）
-    if not isinstance(relation_data, list):
-        # 如果不是列表，返回空列表或根据需求处理
-        return []
-
-    # 检查是否为二维数组（列表中的元素也是列表）
-    if len(relation_data) > 0 and isinstance(relation_data[0], list):
-        # 是二维数组，取第一个元素作为一维数组
-        # 这里假设二维数组的第一个元素是需要的一维数组
-        return relation_data[0] if len(relation_data[0]) > 0 else []
-    else:
-        # 已经是一维数组，直接返回
-        return relation_data
+    return flatten_relation_groups(relation_data)
 
 
 def analyze_relations(json_data):
@@ -39,12 +32,8 @@ def analyze_relations(json_data):
     relation_counts = defaultdict(int)
 
     for person in json_data:
-        for group in person.get("relation", []):
-            for related in group:
-                relation = related.get("social circle", "未知圈")
-                relation_counts[relation] += 1
-                relation = related.get("social_circle", "未知圈")
-                relation_counts[relation] += 1
+        for related in flatten_relation_groups(person.get("relation", [])):
+            relation_counts[get_social_circle(related) or "未知圈"] += 1
 
     # 转换为排序后的DataFrame
     df = pd.DataFrame(
@@ -162,16 +151,15 @@ def analyze_person_data(json_data):
     for person in json_data:
 
         # 统计关联人信息
-        for group in person.get("relation", []):
-            for related in group:
-                # 关系统计
-                stats["relation_dist"][related.get("relation", "未知关系")] += 1
-                # 社交圈统计
-                stats["social_circle_dist"][related.get("social circle", "未知社交圈")] += 1
-                # 关联人城市统计
-                stats["city_dist"][related.get("home_address", {}).get("city", "未知城市")] += 1
-                # 关联人性格统计
-                stats["personality_dist"][f"MBTI_{related.get('personality', '未知MBTI')}"] += 1
+        for related in flatten_relation_groups(person.get("relation", [])):
+            # 关系统计
+            stats["relation_dist"][related.get("relation", "未知关系")] += 1
+            # 社交圈统计
+            stats["social_circle_dist"][get_social_circle(related) or "未知社交圈"] += 1
+            # 关联人城市统计
+            stats["city_dist"][related.get("home_address", {}).get("city", "未知城市")] += 1
+            # 关联人性格统计
+            stats["personality_dist"][f"MBTI_{related.get('personality', '未知MBTI')}"] += 1
 
     # 转换为普通字典
     return {k: dict(v) for k, v in stats.items()}

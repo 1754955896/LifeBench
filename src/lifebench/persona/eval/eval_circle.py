@@ -4,18 +4,14 @@ from wordcloud import WordCloud
 from collections import defaultdict
 import pandas as pd
 
+try:
+    from .metrics import flatten_relation_groups, get_social_circle
+except ImportError:
+    from metrics import flatten_relation_groups, get_social_circle
+
 # 设置中文字体
 plt.rcParams["font.family"] = ["SimHei", "WenQuanYi Micro Hei", "Heiti TC"]
 plt.rcParams["axes.unicode_minus"] = False
-
-
-def get_social_circle(related_person):
-    """兼容'social circle'和'social_circle'两种键名"""
-    if 'social_circle' in related_person:
-        return related_person['social_circle']
-    elif 'social circle' in related_person:
-        return related_person['social circle']
-    return None
 
 
 def analyze_data(json_data):
@@ -40,26 +36,25 @@ def analyze_data(json_data):
             stats["personality_dist"][f"特质_{trait}"] += 1
 
         # 处理关联人信息
-        relations = person.get("relation", [])
-        for group in relations:
-            for related in group:
-                # 关系统计
-                rel = related.get("relation","未知关系")
-                stats["relation_dist"][rel] += 1
+        relations = flatten_relation_groups(person.get("relation", []))
+        for related in relations:
+            # 关系统计
+            rel = related.get("relation", "未知关系")
+            stats["relation_dist"][rel] += 1
 
-                # 社交圈统计
-                circle = get_social_circle(related)
-                if circle in (None, "", " "):
-                    circle = "未知社交圈"
-                stats["social_circle_dist"][circle] += 1
+            # 社交圈统计
+            circle = get_social_circle(related)
+            if circle in (None, "", " "):
+                circle = "未知社交圈"
+            stats["social_circle_dist"][circle] += 1
 
-                # 城市统计
-                related_city = related.get("home_address", {}).get("city", "未知城市")
-                stats["city_dist"][related_city] += 1
+            # 城市统计
+            related_city = related.get("home_address", {}).get("city", "未知城市")
+            stats["city_dist"][related_city] += 1
 
-                # 性格统计
-                related_mbti = related.get("personality", "未知MBTI")
-                stats["personality_dist"][f"MBTI_{related_mbti}"] += 1
+            # 性格统计
+            related_mbti = related.get("personality", "未知MBTI")
+            stats["personality_dist"][f"MBTI_{related_mbti}"] += 1
 
     # 转换为普通字典
     return {k: dict(v) for k, v in stats.items()}

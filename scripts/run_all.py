@@ -75,7 +75,7 @@ def run_script(script_path, description, args=None):
         print(f"{'='*60}")
         return False
 
-def run_for_persona(persona_data, persona_folder, instance_id, args):
+def run_for_persona(persona_data, persona_folder, instance_id, args, location_data=None):
     """
     为单个画像执行完整流程
     :param persona_data: 画像数据
@@ -93,7 +93,7 @@ def run_for_persona(persona_data, persona_folder, instance_id, args):
     
     # 保存persona.json（如果文件夹是新创建的）
     persona_json_path = os.path.join(persona_folder, "persona.json")
-    if not folder_exists or not os.path.exists(persona_json_path):
+    if location_data is not None or not folder_exists or not os.path.exists(persona_json_path):
         with open(persona_json_path, 'w', encoding='utf-8') as f:
             json.dump(persona_data, f, ensure_ascii=False, indent=2)
         print(f"已保存persona.json文件")
@@ -101,6 +101,14 @@ def run_for_persona(persona_data, persona_folder, instance_id, args):
         print(f"\n{'='*60}")
         print(f"人物 {persona_data.get('name', '未知')} 的文件夹已存在: {persona_folder}")
         print(f"跳过保存persona.json文件")
+
+    # 新画像生成流程会输出与画像数组一一对齐的 location sidecar。
+    # 在模拟开始前将对应项写入人物目录，确保 simulator 不再重新随机生成地址。
+    if location_data is not None:
+        location_json_path = os.path.join(persona_folder, "location.json")
+        with open(location_json_path, 'w', encoding='utf-8') as f:
+            json.dump(location_data, f, ensure_ascii=False, indent=2)
+        print(f"已保存与画像一致的location.json文件")
     
     # 检查是否需要运行run.py（基于关键输出文件的存在性）
     # run.py会自动检查其内部各个模块是否需要运行
@@ -200,12 +208,24 @@ def main():
     if not isinstance(personas, list):
         print(f"❌ 错误: {person_json_path} 不是有效的画像数组")
         return 1
+
+    location_batches = None
+    location_sidecar_path = os.path.splitext(person_json_path)[0] + "_locations.json"
+    if os.path.exists(location_sidecar_path):
+        with open(location_sidecar_path, 'r', encoding='utf-8') as f:
+            location_batches = json.load(f)
+        if not isinstance(location_batches, list) or len(location_batches) != len(personas):
+            print(f"❌ 错误: {location_sidecar_path} 必须是与画像数量一致的二维地址数组")
+            return 1
+        print(f"已加载画像阶段生成的地址数据: {location_sidecar_path}")
     
     # 根据start-id和end-id过滤人物
     if args.start_id > 0 or args.end_id > 0:
         start_idx = args.start_id - 1 if args.start_id > 0 else 0
         end_idx = args.end_id if args.end_id > 0 else len(personas)
         personas = personas[start_idx:end_idx]
+        if location_batches is not None:
+            location_batches = location_batches[start_idx:end_idx]
         print(f"\n根据ID范围过滤后，需要处理的人物数: {len(personas)}")
     
     # 记录总开始时间
@@ -237,7 +257,8 @@ def main():
         persona_folder = os.path.join(project_root, "output", persona_folder_name)
         
         # 执行流程
-        if run_for_persona(persona, persona_folder, i+1, args):
+        location_data = location_batches[i] if location_batches is not None else None
+        if run_for_persona(persona, persona_folder, i+1, args, location_data=location_data):
             success_count += 1
             print(f"\n✅ 人物 {name} 处理成功!")
         else:

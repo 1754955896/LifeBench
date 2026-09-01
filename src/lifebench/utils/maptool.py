@@ -25,14 +25,39 @@ def _clean_address(s):
     return s
 
 
+def _safe_error(error, api_key=""):
+    """Prevent map credentials embedded in request URLs from reaching logs."""
+    message = str(error)
+    if api_key:
+        message = message.replace(str(api_key), "***REDACTED***")
+    return message
+
+
+def _join_address(province="", city="", district="", street="", number=""):
+    """Join address parts without repeating direct-controlled municipalities."""
+    province = _coerce_str(province)
+    city = _coerce_str(city)
+    parts = [province]
+    if city and city != province:
+        parts.append(city)
+    parts.extend((_coerce_str(district), _coerce_str(street), _coerce_str(number)))
+    return _clean_address("".join(part for part in parts if part))
+
+
 class MapMaintenanceTool:
     """地图维护工具类，支持POI查询、地理编码、跨城市路线查询，确保所有函数出错时有明确输出"""
 
     DEFAULT_TIMEOUT_SECONDS = 10
     TRANSIT_DEFAULT_CITY = "010"
     AROUND_SEARCH_RADIUS = 3000
+    QPS_INFOCODES = {"10014", "10015", "10019", "10020", "10021", "10029"}
+    DAILY_LIMIT_INFOCODES = {"10003", "10044", "10045", "40000"}
 
-    def __init__(self, api_key: str, cache_expire_seconds: int = 3600, persona_address_data: Optional[List[Dict]] = None):
+    def __init__(
+        self, api_key: str, cache_expire_seconds: int = 3600,
+        persona_address_data: Optional[List[Dict]] = None,
+        requests_per_second: float = 3.0, rate_limit_retries: int = 3,
+    ):
         self.api_key = api_key
         self.cache_expire_seconds = cache_expire_seconds  # 缓存有效期
         self.transport_apis = {
@@ -43,6 +68,7 @@ class MapMaintenanceTool:
         }
         # 初始化缓存
         self.poi_cache: Dict[str, Tuple[float, Dict]] = {}
+        self.poi_candidate_cache: Dict[str, Tuple[float, List[Dict]]] = {}
         self.duration_cache: Dict[str, Tuple[float, int]] = {}
         self.geocode_cache: Dict[str, Tuple[float, Dict]] = {}
         # 新增：已有真实地点数据（用于快速匹配type为1的指令）
@@ -72,6 +98,17 @@ class MapMaintenanceTool:
         # 线程安全的随机数实例（替代全局random）
         self._random = random.Random()
         self._random.seed(time.time())
+        # 高德账号当前实测搜索接口约 5 QPS；默认 3 QPS 为滚动窗口和外部流量留余量。
+        self.requests_per_second = max(float(requests_per_second), 0.0)
+        self.rate_limit_retries = max(int(rate_limit_retries), 0)
+        self._request_interval = 1.0 / self.requests_per_second if self.requests_per_second else 0.0
+        self._request_lock = threading.Lock()
+        self._last_request_at = 0.0
+
+    def set_random_seed(self, seed: int) -> None:
+        """Set deterministic POI selection for one persona generation run."""
+        with self._lock:
+            self._random.seed(int(seed))
 
     def _is_cache_valid(self, cache_time: float) -> bool:
         """检查缓存是否有效，出错时返回False"""
@@ -80,6 +117,39 @@ class MapMaintenanceTool:
         except Exception as e:
             print(f"缓存有效性检查失败: {str(e)}")
             return False
+
+    def _wait_for_request_slot(self) -> None:
+        """Apply one process-wide request pace across all map endpoints and workers."""
+        if self._request_interval <= 0:
+            return
+        with self._request_lock:
+            now = time.monotonic()
+            wait_seconds = self._last_request_at + self._request_interval - now
+            if wait_seconds > 0:
+                time.sleep(wait_seconds)
+            self._last_request_at = time.monotonic()
+
+    def _request_json(self, url: str, params: Dict[str, Any]) -> Dict[str, Any]:
+        """Request JSON with shared QPS throttling and retry only transient limits."""
+        last_result: Dict[str, Any] = {}
+        for attempt in range(self.rate_limit_retries + 1):
+            self._wait_for_request_slot()
+            response = requests.get(url, params=params, timeout=self.DEFAULT_TIMEOUT_SECONDS)
+            response.raise_for_status()
+            result = response.json()
+            last_result = result if isinstance(result, dict) else {}
+            infocode = _coerce_str(last_result.get("infocode"))
+            if infocode not in self.QPS_INFOCODES:
+                return last_result
+            if attempt >= self.rate_limit_retries:
+                break
+            delay = 0.4 * (2 ** attempt)
+            print(
+                "地图API触发QPS限流(%s)，%.1f秒后重试 %d/%d"
+                % (infocode, delay, attempt + 1, self.rate_limit_retries)
+            )
+            time.sleep(delay)
+        return last_result
 
     def amap_geocode(self, address: str, city: Optional[str] = None) -> Optional[Dict]:
         """
@@ -112,9 +182,7 @@ class MapMaintenanceTool:
                 "output": "JSON",
                 "city": city
             }
-            response = requests.get(base_url, params=params, timeout=self.DEFAULT_TIMEOUT_SECONDS)
-            response.raise_for_status()
-            result = response.json()
+            result = self._request_json(base_url, params)
 
             # 解析结果
             if result.get("status") != "1" or int(result.get("count", 0)) == 0:
@@ -141,7 +209,7 @@ class MapMaintenanceTool:
                 "adcode": _coerce_str(geocode_info.get("adcode")),
                 "location": _coerce_str(geocode_info.get("location")),
                 "level": _coerce_str(geocode_info.get("level")),
-                "formatted_address": f"{province}{city}{district}{street}{number}"
+                "formatted_address": _join_address(province, city, district, street, number)
             }
 
             # 缓存结果
@@ -149,7 +217,7 @@ class MapMaintenanceTool:
             return structured_data
 
         except Exception as e:
-            print(f"地理编码执行失败({address}@{city}): {str(e)}")
+            print(f"地理编码执行失败({address}@{city}): {_safe_error(e, self.api_key)}")
             return None
 
     def get_poi(self, keyword: str, city: Optional[str] = None) -> Optional[Dict]:
@@ -166,45 +234,29 @@ class MapMaintenanceTool:
                     print(f"POI缓存命中: {keyword}@{city}")
                     return poi_data
 
-            # 调用POI API
-            response = requests.get(
-                url="https://restapi.amap.com/v3/place/text",
-                params={
-                    "key": self.api_key,
-                    "keywords": keyword,
-                    "city": city,
-                    "offset": 1,
-                    "page": 1,
-                    "extensions": "base"
-                },
-                timeout=self.DEFAULT_TIMEOUT_SECONDS
-            )
-            response.raise_for_status()
-            result = response.json()
-
-            # 解析POI基础信息
-            if result.get("status") != "1" or int(result.get("count", 0)) == 0:
-                print(f"未找到POI: {keyword}@{city}")
+            candidates = self.search_poi_candidates(keyword, city=city, limit=20)
+            if not candidates:
                 return None
-
-            first_poi = result["pois"][0]
-            poi_location = first_poi.get("location", "")
+            first_poi = candidates[0]
+            poi_location = _coerce_str(first_poi.get("location"))
 
             # 调用地理编码补充结构化地址（优先用POI的address字段，无则用keyword）
-            poi_address = first_poi.get("address", keyword)
+            poi_address = _coerce_str(first_poi.get("address")) or _coerce_str(first_poi.get("structured_address")) or keyword
             geocode_data = self.amap_geocode(address=poi_address, city=city)
 
             # 融合POI和地理编码信息（geocode字段存储完整地理编码数据）
             enhanced_poi = {
                 **first_poi,  # 保留原有POI字段
                 "geocode": geocode_data or {},  # 地理编码补充信息
-                "structured_address": geocode_data["formatted_address"] if geocode_data else poi_address  # 统一结构化地址字段
+                "structured_address": geocode_data["formatted_address"] if geocode_data else first_poi.get("structured_address", poi_address)
             }
 
-            # 处理经纬度优先级：地理编码的location更精准，优先使用
-            if geocode_data and geocode_data["location"]:
+            # POI 自身坐标比街道地理编码更适合作为场所位置。
+            if poi_location:
+                enhanced_poi["location"] = poi_location
+            elif geocode_data and geocode_data["location"]:
                 enhanced_poi["location"] = geocode_data["location"]
-            elif not poi_location:
+            else:
                 print(f"POI缺少经纬度: {keyword}@{city}")
                 return None
 
@@ -213,8 +265,116 @@ class MapMaintenanceTool:
             return enhanced_poi
 
         except Exception as e:
-            print(f"get_poi执行失败({keyword}@{city}): {str(e)}")
+            print(f"get_poi执行失败({keyword}@{city}): {_safe_error(e, self.api_key)}")
             return None
+
+    @staticmethod
+    def _normalize_poi_candidate(poi: Dict[str, Any], fallback_city: Optional[str] = None) -> Dict[str, Any]:
+        province = _coerce_str(poi.get("pname"))
+        city = _coerce_str(poi.get("cityname")) or _coerce_str(fallback_city)
+        district = _coerce_str(poi.get("adname"))
+        address = _coerce_str(poi.get("address"))
+        name = _coerce_str(poi.get("name"))
+        address_detail = address or name
+        structured_address = _join_address(province, city, district, address_detail)
+        candidate = dict(poi)
+        candidate["name"] = name
+        candidate["location"] = _coerce_str(poi.get("location"))
+        candidate["address"] = address
+        candidate["structured_address"] = structured_address or address
+        candidate["distance_m"] = int(_coerce_str(poi.get("distance")) or 0)
+        candidate["geocode"] = {
+            "province": province,
+            "city": city,
+            "district": district,
+            "street": address_detail,
+            "number": "",
+            "location": candidate["location"],
+            "formatted_address": candidate["structured_address"],
+        }
+        return candidate
+
+    def search_poi_candidates(
+        self, keyword: str, city: Optional[str] = None, limit: int = 20,
+        types: Optional[str] = None,
+    ) -> List[Dict[str, Any]]:
+        """Return a POI candidate pool without geocoding every item."""
+        if not keyword or not isinstance(keyword, str):
+            return []
+        limit = max(1, min(int(limit), 50))
+        cache_key = "text:%s:%s:%s:%s" % (keyword, city or "", types or "", limit)
+        cached = self.poi_candidate_cache.get(cache_key)
+        if cached and self._is_cache_valid(cached[0]):
+            return [dict(item) for item in cached[1]]
+        try:
+            result = self._request_json(
+                "https://restapi.amap.com/v3/place/text",
+                {
+                    "key": self.api_key, "keywords": keyword, "city": city,
+                    "types": types, "citylimit": "true" if city else "false",
+                    "offset": limit, "page": 1, "extensions": "all", "output": "JSON",
+                },
+            )
+            if result.get("status") != "1":
+                print(
+                    "POI候选查询失败: %s (%s)"
+                    % (result.get("info", "未知错误"), result.get("infocode", "无错误码"))
+                )
+                return []
+            candidates = [
+                self._normalize_poi_candidate(item, city)
+                for item in result.get("pois", [])[:limit]
+                if _coerce_str(item.get("location"))
+            ]
+            self.poi_candidate_cache[cache_key] = (time.time(), candidates)
+            return [dict(item) for item in candidates]
+        except Exception as e:
+            print("POI候选查询异常(%s@%s): %s" % (keyword, city, _safe_error(e, self.api_key)))
+            return []
+
+    def search_around_candidates(
+        self, location: str, keywords: Optional[str] = None,
+        types: Optional[str] = None, city: Optional[str] = None,
+        radius: int = 5000, limit: int = 20, sortrule: str = "distance",
+    ) -> List[Dict[str, Any]]:
+        """Return nearby candidates using the around response directly."""
+        if not location or len(str(location).split(",")) != 2:
+            return []
+        limit = max(1, min(int(limit), 50))
+        radius = max(0, min(int(radius), 50000))
+        sortrule = sortrule if sortrule in {"distance", "weight"} else "distance"
+        cache_key = "around:%s:%s:%s:%s:%s:%s:%s" % (
+            location, keywords or "", types or "", city or "", radius, limit, sortrule,
+        )
+        cached = self.poi_candidate_cache.get(cache_key)
+        if cached and self._is_cache_valid(cached[0]):
+            return [dict(item) for item in cached[1]]
+        try:
+            result = self._request_json(
+                "https://restapi.amap.com/v3/place/around",
+                {
+                    "key": self.api_key, "location": location, "keywords": keywords,
+                    "types": types, "city": city, "radius": radius,
+                    "sortrule": sortrule, "offset": limit, "page": 1,
+                    "extensions": "all", "output": "JSON",
+                },
+            )
+            if result.get("status") != "1":
+                print(
+                    "周边候选查询失败: %s (%s)"
+                    % (result.get("info", "未知错误"), result.get("infocode", "无错误码"))
+                )
+                return []
+            candidates = [
+                self._normalize_poi_candidate(item, city)
+                for item in result.get("pois", [])[:limit]
+                if _coerce_str(item.get("location"))
+            ]
+            self.poi_candidate_cache[cache_key] = (time.time(), candidates)
+            return [dict(item) for item in candidates]
+        except Exception as e:
+            print("周边候选查询异常(%s): %s" % (keywords, _safe_error(e, self.api_key)))
+            return []
 
     def get_duration_between_pois(self, origin_poi: Dict, dest_poi: Dict, transport: str,
                                   origin_city: Optional[str] = None, dest_city: Optional[str] = None) -> Optional[int]:
@@ -249,9 +409,7 @@ class MapMaintenanceTool:
                 params["cityd"] = dest_city or origin_city or self.TRANSIT_DEFAULT_CITY
                 params["nightflag"] = 0
 
-            response = requests.get(url, params=params, timeout=self.DEFAULT_TIMEOUT_SECONDS)
-            response.raise_for_status()
-            result = response.json()
+            result = self._request_json(url, params)
 
             # 解析结果
             duration = None
@@ -266,14 +424,21 @@ class MapMaintenanceTool:
                     duration = int(result["data"]["paths"][0]["duration"])
 
             if duration is None:
-                print(f"未获取到耗时: {origin_city}->{dest_city}({transport})")
+                print(
+                    "未获取到耗时: %s->%s(%s)，地图状态=%s(%s)"
+                    % (
+                        origin_city, dest_city, transport,
+                        result.get("info", result.get("errmsg", "未知")),
+                        result.get("infocode", result.get("errcode", "无错误码")),
+                    )
+                )
                 return None
 
             self.duration_cache[cache_key] = (time.time(), duration)
             return duration
 
         except Exception as e:
-            print(f"get_duration_between_pois执行失败: {str(e)}")
+            print(f"get_duration_between_pois执行失败: {_safe_error(e, self.api_key)}")
             return None
 
     def process_route(self, keywords: List[str], cities: List[Optional[str]], transports: List[str]) -> Tuple[
@@ -422,6 +587,8 @@ class MapMaintenanceTool:
             # 清理POI缓存
             self.poi_cache = {k: (t, d) for k, (t, d) in self.poi_cache.items() if
                               current_time - t < self.cache_expire_seconds}
+            self.poi_candidate_cache = {k: (t, d) for k, (t, d) in self.poi_candidate_cache.items() if
+                                        current_time - t < self.cache_expire_seconds}
             # 清理耗时缓存
             self.duration_cache = {k: (t, d) for k, (t, d) in self.duration_cache.items() if
                                    current_time - t < self.cache_expire_seconds}
@@ -429,7 +596,8 @@ class MapMaintenanceTool:
             self.geocode_cache = {k: (t, d) for k, (t, d) in self.geocode_cache.items() if
                                   current_time - t < self.cache_expire_seconds}
             print(
-                f"缓存清理完成（POI: {len(self.poi_cache)}, 耗时: {len(self.duration_cache)}, 地理编码: {len(self.geocode_cache)}）")
+                f"缓存清理完成（POI: {len(self.poi_cache)}, POI候选: {len(self.poi_candidate_cache)}, "
+                f"耗时: {len(self.duration_cache)}, 地理编码: {len(self.geocode_cache)}）")
         except Exception as e:
             print(f"缓存清理失败: {str(e)}")
     # ------------------------------
@@ -474,64 +642,22 @@ class MapMaintenanceTool:
             if extensions not in ["base", "all"]:
                 print(f"周边搜索失败：返回结果控制无效（{extensions}，仅支持base/all）")
                 return None
-            base_url = "https://restapi.amap.com/v3/place/around"
-            params = {
-                "key": self.api_key,
-                "location": location,
-                "keywords": keywords,
-                "types": types,
-                "city": city,
-                "radius": radius,
-                "sortrule": sortrule,
-                "page": 1,
-                "offset": offset,
-                "extensions": extensions,
-                "output": "JSON"
-            }
-            params = {k: v for k, v in params.items() if v is not None}
-            response = requests.get(base_url, params=params, timeout=self.DEFAULT_TIMEOUT_SECONDS)
-            response.raise_for_status()
-            result = response.json()
-            if result.get("status") != "1":
-                error_info = result.get("info", "未知错误")
-                error_code = result.get("infocode", "无错误码")
-                print(f"周边搜索API返回失败：{error_info}（错误码：{error_code}）")
-                return None
-            poi_list = result.get("pois", [])
-            total_count = len(poi_list)
-            if total_count == 0:
+            candidates = self.search_around_candidates(
+                location=location, keywords=keywords, types=types, city=city,
+                radius=radius, limit=offset, sortrule=sortrule,
+            )
+            if not candidates:
                 print(f"周边搜索失败：未找到符合条件的POI")
                 return None
-            top10_poi = poi_list[:10]
-            print(f"周边搜索成功：找到{total_count}个POI，从排名前十中随机选择一个")
-            enhanced_top10 = []
-            for poi in top10_poi:
-                poi_address = poi.get("address", poi.get("name", ""))
-                poi_city = poi.get("city", city)
-                geocode_data = self.amap_geocode(address=poi_address, city=poi_city)
-                enhanced_poi = {
-                    **poi,
-                    "geocode": geocode_data or {},
-                    "structured_address": geocode_data["formatted_address"] if geocode_data else poi_address,
-                    "distance_m": int(poi.get("distance", 0))
-                }
-                # 优先使用地理编码的location
-                if geocode_data and geocode_data["location"]:
-                    enhanced_poi["location"] = geocode_data["location"]
-                elif not poi.get("location"):
-                    print(f"周边POI缺少经纬度：{poi.get('name')}")
-                    continue
-                enhanced_top10.append(enhanced_poi)
-            if not enhanced_top10:
-                print(f"周边POI均缺少有效经纬度")
-                return None
-            random_poi = self._random.choice(enhanced_top10)
+            top10_poi = candidates[:10]
+            print(f"周边搜索成功：找到{len(candidates)}个POI，从排名前十中随机选择一个")
+            random_poi = self._random.choice(top10_poi)
             print(f"随机选中POI：{random_poi['name']}（距离：{random_poi['distance_m']}米）")
             return random_poi
         except requests.exceptions.RequestException as e:
-            print(f"周边搜索网络错误：{str(e)}")
+            print(f"周边搜索网络错误：{_safe_error(e, self.api_key)}")
         except Exception as e:
-            print(f"周边搜索执行失败：{str(e)}")
+            print(f"周边搜索执行失败：{_safe_error(e, self.api_key)}")
         return None
 
     # ------------------------------
@@ -733,10 +859,10 @@ class MapMaintenanceTool:
                             "instruction_index": idx,
                             "type": instr_type,
                             "original_instruction": instr,
-                            "error": str(e),
+                            "error": _safe_error(e, self.api_key),
                             "description": instr_desc
                         })
-                        print(f"{instr_desc}执行失败：{str(e)}（已记录，继续处理后续指令）")
+                        print(f"{instr_desc}执行失败：{_safe_error(e, self.api_key)}（已记录，继续处理后续指令）")
                         continue
 
                 # 4. 计算通行时间（仅对连续成功且有有效Location的POI）
@@ -821,7 +947,7 @@ class MapMaintenanceTool:
 
             except Exception as e:
                 # 全局异常捕获（确保返回结构化结果）
-                global_error = f"整体处理异常：{str(e)}"
+                global_error = f"整体处理异常：{_safe_error(e, self.api_key)}"
                 failed_instructions.append(
                     {"instruction_index": -1, "type": "global", "error": global_error, "description": "全局异常"})
                 final_result = {
