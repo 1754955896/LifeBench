@@ -6,6 +6,15 @@
     "reason_model": "deepseek-v4-pro",
     "strip_think": false
   },
+  "trajectory_assignment": {
+    "enabled": true,
+    "seed": 0,
+    "candidate_limit": 12,
+    "route_top_k": 4,
+    "final_itinerary_retry_count": 1,
+    "strict_validation": true,
+    "accuracy_validation": false
+  },
   "map_tool": {
     "api_key": ""
   }

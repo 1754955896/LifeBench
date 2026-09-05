@@ -3,7 +3,10 @@
 
 从 Mind._generate_objective_events 迁出。
 """
+import json
+
 from src.lifebench.event.templates.template_simulation import template_daily_event_objective_optimize
+from src.lifebench.event.simulation.state import LongTermMemory
 
 
 def generate_objective_events(mind, plan, date, event):
@@ -11,7 +14,7 @@ def generate_objective_events(mind, plan, date, event):
     生成客观事件。
 
     参数:
-        mind: Mind 实例（读取 long_memory/short_memory/cognition 及日志/LLM 工具）
+        mind: Mind 实例（读取 long_memory/short_memory_context/cognition 及日志/LLM 工具）
         plan: 未来规划
         date: 目标日期
         event: 主观思考内容
@@ -19,12 +22,29 @@ def generate_objective_events(mind, plan, date, event):
     返回:
         str: 客观事件内容
     """
+    context = getattr(mind, "last_subjective_context", None) or {}
+    memory_context = {
+        "long_memory": context.get("long_memory") or LongTermMemory.from_string(
+            str(getattr(mind, "long_memory", "") or "")
+        ).to_dict(),
+        "short_memory_context": context.get("short_memory_context") or getattr(
+            mind, "short_memory_context", {}
+        ),
+    }
     prompt = template_daily_event_objective_optimize.format(
         event=event,
         plan=plan,
-        memory=mind.long_memory + mind.short_memory,
+        memory=json.dumps(memory_context, ensure_ascii=False, separators=(",", ":")),
         date=mind.get_date_string(date),
-        persona=mind.cognition
+        persona=mind.cognition,
+        recent_behavior_summary=json.dumps(
+            context.get("recent_behavior_summary", {}),
+            ensure_ascii=False, separators=(",", ":"),
+        ),
+        day_variation_context=json.dumps(
+            context.get("day_variation_context", {}),
+            ensure_ascii=False, separators=(",", ":"),
+        ),
     )
     events = mind.llm_call_s(prompt, 0)
     mind._log_event("客观生成-----------------------------------------------------------------------")

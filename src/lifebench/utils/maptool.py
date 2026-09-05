@@ -72,7 +72,17 @@ class MapMaintenanceTool:
         self.duration_cache: Dict[str, Tuple[float, int]] = {}
         self.geocode_cache: Dict[str, Tuple[float, Dict]] = {}
         # 新增：已有真实地点数据（用于快速匹配type为1的指令）
-        self.persona_address_data = persona_address_data or []
+        # 兼容部分历史数据中 location.json 被额外包裹一层或多层数组的情况。
+        self.persona_address_data = []
+
+        def collect_addresses(value: Any) -> None:
+            if isinstance(value, dict):
+                self.persona_address_data.append(value)
+            elif isinstance(value, (list, tuple)):
+                for child in value:
+                    collect_addresses(child)
+
+        collect_addresses(persona_address_data or [])
         # 构建已有真实地点索引，提高匹配效率
         self._persona_address_index = {}
         for idx, address in enumerate(self.persona_address_data):

@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
-"""短期记忆检索：从结构化 MemoryStore 检索并构建短期记忆。
-
-将 Mind.update_short_memory 抽到独立模块：向存储插入今日反思，检索近期/周期/相似
-事件，拼接为 short_memory 字符串写回 mind.short_memory。
-"""
+"""短期记忆检索：从 MemoryStore 构建唯一的结构化短期记忆上下文。"""
 import calendar
 from datetime import datetime, timedelta
 from typing import List
 
+from src.lifebench.utils.date_utils import recent_dates
 
 def build_short_memory(mind, dailyevent, date):
     """更新短期记忆：插入今日事件并检索相关历史事件。
@@ -18,12 +15,18 @@ def build_short_memory(mind, dailyevent, date):
         date: 当前日期字符串（格式：YYYY-MM-DD）
 
     返回:
-        None: 直接更新 mind.short_memory 属性
+        None: 直接更新 mind.short_memory_context
     """
     # 记忆库插入今天事件
     written_ids = []
     if dailyevent != "":
-        written_id = mind.mem_module.add_memory(dailyevent)
+        # 短期情景库只保存可检索的日记四字段；activity_metrics、
+        # next_day_context 和完整 long_memory 分别由各自状态字段持有，避免逐日重复。
+        memory_record = {
+            key: str(dailyevent.get(key) or "")
+            for key in ("date", "topic", "events", "thought")
+        } if isinstance(dailyevent, dict) else dailyevent
+        written_id = mind.mem_module.add_memory(memory_record)
         written_ids.append(written_id)
 
     # 本日检索命中 ID 收集器（供 memory_trace 回报）
@@ -34,41 +37,6 @@ def build_short_memory(mind, dailyevent, date):
             eid = j.get("event_id")
             if eid:
                 retrieved_ids.append(eid)
-    # 检索明天相关事件
-    def get_target_dates(date_str: str, date_format: str = "%Y-%m-%d") -> List[str]:
-        """
-        根据输入的字符串日期，获取「前两天日期」和「本日日期」的字符串数组（按时间升序排列）
-
-        参数:
-            date_str: 输入的日期字符串，默认格式为"YYYY-MM-DD"（如"2025-01-01"）
-            date_format: 日期字符串的格式，默认是"%Y-%m-%d"，可根据实际需求修改
-
-        返回:
-            List[str]: 按时间升序排列的日期数组，格式为[前两天日期, 本日日期]
-
-        异常:
-            ValueError: 若输入的日期字符串格式与指定格式不匹配，会抛出该异常
-        """
-        # 1. 将字符串日期转为datetime对象
-        try:
-            target_date = datetime.strptime(date_str, date_format)
-        except ValueError as e:
-            raise ValueError(f"日期格式错误！请确保输入符合'{date_format}'格式（如'2025-01-01'），错误信息：{str(e)}")
-
-        # 2. 计算前四天的日期（本日日期 - 4天）
-        two_days_ago = target_date - timedelta(days=2)
-        one_days_ago = target_date - timedelta(days=1)
-        three_days_ago = target_date - timedelta(days=3)
-        f = target_date - timedelta(days=4)
-        # 3. 将两个日期转回原格式的字符串
-        two_days_ago_str = two_days_ago.strftime(date_format)
-        target_date_str = target_date.strftime(date_format)
-        one_days_ago_str = one_days_ago.strftime(date_format)
-        three_days_ago_str = three_days_ago.strftime(date_format)
-        f_str = f.strftime(date_format)
-        # 4. 返回按时间升序排列的数组（前两天在前，本日在后）
-        return [target_date_str,one_days_ago_str,two_days_ago_str,f_str]
-
     def get_next_day(date_str: str, date_format: str = "%Y-%m-%d") -> str:
         """
         输入字符串日期，返回其「后一天」的日期（同格式字符串）
@@ -148,24 +116,48 @@ def build_short_memory(mind, dailyevent, date):
         # 4. 直接返回数组（顺序：上个月同日 → 上周同星期）
         return [last_month_day, last_week_weekday]
 
-    # 最终增加前五天事件、上周同日事件、上月同日事件、检索最相似2日事件
+    # 最终增加前五天事件、上周同日事件、上月同日事件、检索最相似2日事件。
+    # 按「来源」分桶组织（recent/periodic/similar），避免扁平列表丢失时间与语义来源；
+    # event_id / source 等记账字段不写入记录，只保留对 LLM 有意义的语义字段。
     date_set = set()
-    mem = ""
-    for i in get_target_dates(date):
+    buckets = {"recent": [], "periodic": [], "similar": []}
+    record_keys = set()
+    _source_to_bucket = {"recent": "recent", "fuzzy": "recent", "periodic": "periodic", "similar": "similar"}
+
+    def add_record(item, source, fallback_date=None):
+        if not isinstance(item, dict):
+            return
+        events = str(item.get("events") or "")
+        event_date = item.get("date") or fallback_date
+        event_id = item.get("event_id")
+        key = str(event_id or "%s|%s" % (event_date, events[:80]))
+        if not events or key in record_keys:
+            return
+        record_keys.add(key)
+        buckets[_source_to_bucket.get(source, "recent")].append({
+            "date": event_date,
+            "topic": str(item.get("topic") or ""),
+            "events": events,
+            "thought": str(item.get("thought") or ""),
+            "confidence": 1.0 if event_id else 0.55,
+        })
+
+    for i in recent_dates(date):
         res = mind.mem_module.search_by_date(start_time=i)
         _collect(res)
         for j in res:
-            mem += j['events']
             date_set.add(j['date'])
+            add_record(j, "recent")
         if res == []:
-            mem += mind.get_fuzzy_short_memory(i)
+            fuzzy = mind.get_fuzzy_short_memory(i) or ""
+            add_record({"date": i, "events": fuzzy}, "fuzzy", i)
 
     for i in get_cycle_dates_array(get_next_day(date)):
         res = mind.mem_module.search_by_date(start_time=i)
         _collect(res)
         for j in res:
-            mem += j['events']
             date_set.add(j['date'])
+            add_record(j, "periodic")
     arr = mind.filter_by_date(get_next_day(date))
     res = ""
     for item in arr:
@@ -176,8 +168,12 @@ def build_short_memory(mind, dailyevent, date):
     for i in res:
         if i['date'] in date_set:
             continue
-        mem += i['events']
-    mind.short_memory = mem
+        add_record(i, "similar")
+    mind.short_memory_context = {
+        "recent": buckets["recent"],
+        "periodic": buckets["periodic"],
+        "similar": buckets["similar"],
+    }
 
     # 回报本日命中/写入 ID（若 Mind 持有 trace 记录器）
     recorder = getattr(mind, "memory_trace", None)

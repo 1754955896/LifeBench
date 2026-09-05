@@ -14,7 +14,7 @@ from src.lifebench.event.templates.template_simulation import *
 from src.lifebench.event.simulation.memory.store import MemoryStore
 from src.lifebench.event.simulation.memory.consolidation import FuzzyMemoryBuilder
 from src.lifebench.event.simulation.memory.retrieval import build_short_memory
-from src.lifebench.event.simulation.state import CognitiveState
+from src.lifebench.event.simulation.state import CognitiveState, LongTermMemory
 from typing import List, Dict, Optional
 from src.lifebench.utils.json_utils import remove_json_wrapper
 from src.lifebench.utils.date_utils import (
@@ -30,8 +30,12 @@ from src.lifebench.event.simulation.generators import (
     generate_reflection,
 )
 from src.lifebench.event.simulation.engine import DailySimulationEngine
-from src.lifebench.event.simulation.memory.consolidation import update_long_term_memory
 from src.lifebench.event.simulation.telemetry import MemoryTraceRecorder
+from src.lifebench.event.simulation.geolocation import build_location_records
+from src.lifebench.event.simulation.context import (
+    append_daily_behavior_record,
+    build_daily_behavior_record,
+)
 
 
 def convert_chinese_to_pinyin(chinese_str: str) -> str:
@@ -59,8 +63,12 @@ class Mind:
         self.context = ""
         self.cognition = ""  # 主要存储对自我的认知，包括画像信息
         self.long_memory = ""  # 主要存储近期事件感知、印象深刻的关键事件、长期主要事件感知、近期想法及推理思考（动机）
-        self.short_memory = ""  # 主要存储近期所有详细事件和相关检索事件
         self.thought = ""  # 记录个人的感受、想法，包括情绪、想法、需求及思考过程中的打算
+        self.short_memory_context = {}  # 带日期和检索来源的短记忆结构
+        self.next_day_context = {}  # reflection 生成的下一日状态、需求和未完成事项
+        self.last_subjective_context = None
+        self.trajectory_location_history = []  # 最终采用地点的跨日稳定注册表
+        self.behavior_history = []  # 最近30天结构化活动与移动摘要
         self.bottom_events : Optional[List[Dict]] = None
         # 读取配置文件，使用项目根目录下的 config.json
         script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -91,7 +99,8 @@ class Mind:
         self.daily_state = daily_state if daily_state is not None else []
         # 新增daily_draft属性
         self.daily_draft = daily_draft if daily_draft is not None else []
-        self.persona_address_data = persona_address_data if persona_address_data is not None else []
+        # 与地图工具共享归一化后的扁平地址目录，兼容历史 location.json 多层数组格式。
+        self.persona_address_data = list(self.maptools.persona_address_data)
         
     def save_to_json(self):
         data = {}
@@ -99,9 +108,12 @@ class Mind:
         data["context"] = self.context
         data["cognition"] = self.cognition
         data["long_memory"] = self.long_memory
-        data["short_memory"] = self.short_memory
         data["thought"] = self.thought
         data['env'] = self.env
+        data["short_memory_context"] = self.short_memory_context
+        data["next_day_context"] = self.next_day_context
+        data["trajectory_location_history"] = self.trajectory_location_history
+        data["behavior_history"] = self.behavior_history
         
         # 按分片（instance_id + 分片起始日）命名，替代线程ID，保证可复现
         shard_key = getattr(self, "interval_start", None) or "unknown"
@@ -120,21 +132,27 @@ class Mind:
         """导出结构化认知状态（用于 checkpoint 持久化）。"""
         return CognitiveState(
             long_memory=self.long_memory,
-            short_memory=self.short_memory,
             thought=self.thought,
             cognition=self.cognition,
             context=self.context,
             env=self.env,
+            short_memory_context=self.short_memory_context,
+            next_day_context=self.next_day_context,
+            trajectory_location_history=self.trajectory_location_history,
+            behavior_history=self.behavior_history,
         )
 
     def restore_cognitive_state(self, state: CognitiveState) -> None:
         """从结构化认知状态恢复字段。"""
         self.long_memory = state.long_memory
-        self.short_memory = state.short_memory
         self.thought = state.thought
         self.cognition = state.cognition
         self.context = state.context
         self.env = state.env
+        self.short_memory_context = state.short_memory_context
+        self.next_day_context = state.next_day_context
+        self.trajectory_location_history = state.trajectory_location_history
+        self.behavior_history = state.behavior_history
 
     def _get_bottom_level_events(self) -> List[Dict]:
         """
@@ -332,7 +350,7 @@ class Mind:
         res = self.llm_call_s(prompt)
         self.context = res
 
-        # 结构化长记忆种子：把叙述式模糊记忆整理为 7 字段（P1 改进）
+        # 将模糊记忆整理为新的四字段长期记忆冷启动快照。
         self.seed_long_term_memory()
 
         self.persona_withoutrl = persona.copy()
@@ -340,38 +358,31 @@ class Mind:
             del self.persona_withoutrl["relation"]
 
     def seed_long_term_memory(self):
-        """将叙述式模糊记忆冷启动种子转换为 7 字段结构化长记忆。
-
-        冷启动的 get_fuzzy_long_memory 返回叙述式总结，直接作为 long_memory 会导致
-        update_long_term_memory 只填充 key_events/summary 而 state/facts/preferences/
-        routines 全空。这里用一次 LLM 调用把画像 + 自我认知 + 模糊记忆整理为
-        7 字段 JSON，作为结构化的长记忆种子。
-        """
-        from src.lifebench.event.simulation.state import LongTermMemory
+        """把画像之外的模糊历史整理为四字段长期记忆。"""
         from src.lifebench.utils.llm_call import llm_call_j
         from src.lifebench.utils.json_utils import remove_json_wrapper
 
         prompt = '''
-请你基于以下信息，为角色初始化一份「状态型长期记忆」，严格输出七字段 JSON。
+请基于以下信息初始化一份有界长期记忆，严格输出四字段 JSON。
 各字段含义：
-- state（当前状态）：位置、职业、关系、健康、经济、心理等慢变化状态。
-- facts（客观事实/常用信息）：固定场所、常用服务、重要时间点等客观信息，标注日期。
-- preferences（固定偏好）：长期稳定的偏好（饮食、消费、运动、娱乐）。
-- routines（重复/习惯性行为）：重复多次进行的行为总结。
-- key_events（关键事件）：高价值、印象深刻的关键节点，需明确日期。
-- plans（未来规划）：明确的未来规划，需含具体日期；无则留空。
-- summary（滚动总结）：对过去一段生活的滚动概括。
+- profile_changes：相对基础画像已经发生的长期变化，没有则为空字符串。
+- persistent_patterns：历史反复验证的稳定偏好、习惯和关系模式，字符串数组，最多20条。
+- key_memories：重要且会持续影响后续行为的经历，最多20条；每项包含date、content、impact。
+- period_summary：当前生活阶段的简洁概括。
 
 要求：
-1. 尽量从画像与自我认知中提取 state/facts/preferences/routines，不得随意留空（确实无相关信息才写空字符串）。
-2. 仅输出 JSON 对象，无任何额外文本或代码块标记。
+1. 人物基础画像只是判断基线，不要把画像原文重复写入 profile_changes。
+2. profile_changes 只记录已经发生且会持续影响后续生活的重大画像变化，如居住、职业、长期健康、家庭结构、明确关系、持续职责或经济状态变化。普通心情、疲劳、临时压力、一次互动或一次尝试不得写入。
+3. persistent_patterns 只记录模糊历史中明确表达形成的长期习惯/偏好，或至少3个不同日期反复出现的稳定行为。单次尝试、偶尔行为和同一天重复提及不得写入。
+4. 不保存即时状态、临时需求、未来计划或地点地址；证据不足时保持为空，不得从基础画像推测变化。
+5. 仅输出 JSON 对象，无任何额外文本或代码块标记。
 
 个人画像：{persona}
 自我认知：{cognition}
 模糊记忆（草稿派生总结）：{fuzzy}
 
 输出格式：
-{{"state":"...","facts":"...","preferences":"...","routines":"...","key_events":"...","plans":"...","summary":"..."}}
+{{"profile_changes":"...","persistent_patterns":["..."],"key_memories":[{{"date":"YYYY-MM-DD","content":"...","impact":"..."}}],"period_summary":"..."}}
 '''
         try:
             res = llm_call_j(prompt.format(
@@ -386,7 +397,8 @@ class Mind:
             if seeded.strip():
                 self.long_memory = seeded
         except Exception as e:
-            print(f"[seed_long_term_memory] 结构化种子生成失败，保留叙述式长记忆：{str(e)}")
+            self.long_memory = LongTermMemory().to_string()
+            print(f"[seed_long_term_memory] 结构化种子生成失败，使用空四字段长期记忆：{str(e)}")
 
     def load_from_json(self, event, persona):
         """
@@ -405,11 +417,14 @@ class Mind:
 
         d = read_json_file('record.json')
         self.long_memory = d['long_memory']
-        self.short_memory = d['short_memory']
         self.thought = d['thought']
         self.env = d['env']
         self.cognition = d['cognition']
         self.context = d['context']
+        self.short_memory_context = d.get("short_memory_context", {})
+        self.next_day_context = d.get("next_day_context", {})
+        self.trajectory_location_history = d.get("trajectory_location_history", [])
+        self.behavior_history = d.get("behavior_history", [])
         # 创建副本以避免修改原始persona
         persona_copy = persona.copy()
         del persona_copy["relation"]
@@ -735,13 +750,13 @@ class Mind:
             # 获取累积记忆
             cumulative_memory = self.fuzzy_memory_builder.get_memory_up_to_month(date)
             
-            # 2. 获取当月从1日到目标日期的事件并生成总结
+            # 2. 只获取当月1日至目标日前一天的事件，禁止把目标日草稿提前当成记忆。
             start_of_month = datetime(year, month, 1).strftime("%Y-%m-%d")
-            end_of_month = datetime(year, month, day).strftime("%Y-%m-%d")
+            end_of_month = (target_date - timedelta(days=1)).strftime("%Y-%m-%d")
             
             # 提取当月到目标日期的事件
             events_this_month = []
-            for d in range(1, day + 1):
+            for d in range(1, day):
                 current_date = datetime(year, month, d).strftime("%Y-%m-%d")
                 events_this_month.extend(self.filter_by_date(current_date))
             
@@ -756,16 +771,16 @@ class Mind:
                 
                 # 使用LLM生成当月总结
                 prompt = f"""
-                你是一位记忆专家，请基于以下个人画像和{year}年{month}月1日到{day}日的事件，仅聚焦于以下信息进行总结：
+                你是一位记忆专家，请基于以下个人画像和{start_of_month}到{end_of_month}的事件，仅聚焦于以下信息进行总结：
                 
-                1. 个人近期（特别是前一日和当日）主要做了什么
-                2. 个人当前所在的位置等状态信息（如是否在居住地,目前在关注什么,是否受什么影响）
-                3. 近期事件对当日生活的影响
-                4. 当下的状态及受之前哪些事件的影响
+                1. 截至目标日前一天，个人近期主要做了什么
+                2. 最近一次已知的位置和持续状态信息
+                3. 近期已发生事件可能延续到目标日的影响
+                4. 目标日前最后可知的状态及其历史原因
                 
                 个人画像：{json.dumps(self.persona, ensure_ascii=False, indent=2)}
                 
-                {year}年{month}月1日到{day}日的事件：
+                {start_of_month}到{end_of_month}的事件：
                 {events_desc}
                 
                 输出要求：
@@ -779,7 +794,7 @@ class Mind:
             
             # 3. 合并累积记忆和当月总结
             if monthly_summary:
-                combined_memory = f"{cumulative_memory}\n\n{year}年{month}月1日到{day}日的重要事件：\n{monthly_summary}"
+                combined_memory = f"{cumulative_memory}\n\n{start_of_month}到{end_of_month}的重要事件：\n{monthly_summary}"
             else:
                 combined_memory = cumulative_memory
             
@@ -790,9 +805,9 @@ class Mind:
             # 出错时返回空记忆
             return ""
 
-    def map(self,pt):
+    def map(self, pt, plan=None):
         """获取真实poi数据和通行信息（委托给轨迹生成器）。"""
-        return generate_poi_route(self, pt)
+        return generate_poi_route(self, pt, plan)
 
     def daily_event_gen1(self, date):
         """
@@ -805,6 +820,8 @@ class Mind:
             bool: 执行是否成功的标志
         """
         try:
+            # 地理位置分配的随机种子、追踪记录和复现均以正在处理的日期为准。
+            self.current_date = date
             self._log_event(f"\n=== 开始生成 {date} 的事件 ===")
             # 1. 生成主观思考
             plan = self.get_plan4(date)
@@ -816,32 +833,74 @@ class Mind:
             # 2. 生成客观事件
             objective_events = self._generate_objective_events(plan, date, subjective_thought)
             # 3. 获取POI数据并调整轨迹
-            poi_data = self.map(objective_events)
+            poi_data = self.map(objective_events, plan)
             # 从plan2中获取当日事件参考数据
             adjusted_events = self._adjust_event_trajectory(poi_data, objective_events, plan,
                                                             self.get_plan4(date,-1))
 
             # 4. 生成反思和更新想法
             reflection = self._generate_reflection(adjusted_events, plan, date)
-            self.thought = reflection["thought"]
+            self.thought = reflection.get("thought") or self.thought
+            self.next_day_context = copy.deepcopy(
+                reflection.get("next_day_context", {})
+            )
 
-            # 5. 更新长期记忆
-            self._update_long_term_memory(plan, reflection, date)
+            # 5. reflection 已在同一次 LLM 调用中生成完整长期记忆快照。
+            self.long_memory = LongTermMemory.from_dict(
+                reflection.get("long_memory", {})
+            ).to_string()
 
             # 6. 更新短期记忆并保存数据
             self.update_short_memory(reflection, date)
 
-            # 7. 保存每日中间输出到实例变量
+            # 7. 用最终结构化行程更新跨日行为摘要；只统计事实，不解析自然语言。
+            assignment = getattr(self, "last_trajectory_assignment", None)
+            assignment_data = assignment.to_dict() if assignment is not None else None
+            location_records = getattr(self, "final_location_records", None)
+            if location_records is None:
+                location_records = build_location_records(assignment) if assignment is not None else None
+            subjective_context = getattr(self, "last_subjective_context", None) or {}
+            behavior_record = build_daily_behavior_record(
+                date=date,
+                location_records=location_records,
+                reflection=reflection,
+                history=self.behavior_history,
+                day_variation_context=subjective_context.get("day_variation_context", {}),
+            )
+            self.behavior_history = append_daily_behavior_record(
+                self.behavior_history, behavior_record
+            )
+
+            # 8. 保存每日中间输出到实例变量
             self.daily_intermediate_outputs[date] = {
                 "plan": plan,
                 "subjective_thought": subjective_thought,
+                "subjective_context": subjective_context,
+                "recent_behavior_summary": copy.deepcopy(
+                    subjective_context.get("recent_behavior_summary", {})
+                ),
+                "day_variation_context": copy.deepcopy(
+                    subjective_context.get("day_variation_context", {})
+                ),
                 "objective_events": objective_events,
+                "activity_plan": getattr(self, "last_activity_plan", None),
                 "poi_data": poi_data,
+                "trajectory_assignment": assignment_data,
+                "location_records": location_records,
+                "final_event_segments": (
+                    copy.deepcopy(location_records.get("event_segments", []))
+                    if isinstance(location_records, dict) else []
+                ),
+                "location_reconciliation": copy.deepcopy(
+                    getattr(self, "last_location_reconciliation", None)
+                ),
                 "adjusted_events": adjusted_events,
-                "reflection": reflection
+                "reflection": reflection,
+                "next_day_context": copy.deepcopy(self.next_day_context),
+                "daily_behavior_record": behavior_record,
             }
 
-            # 8. 保存当前状态
+            # 9. 保存当前状态
             self.save_to_json()
             self.save_intermediate_outputs()
             # self._save_events_to_file()
@@ -920,10 +979,6 @@ class Mind:
         """生成反思（委托给 reflection 生成器）。"""
         return generate_reflection(self, events, plan, date)
     
-    def _update_long_term_memory(self, plan, reflection, date):
-        """更新长期记忆（委托给 consolidation 模块，状态型长记忆）。"""
-        update_long_term_memory(self, plan, reflection, date)
-
 class MindController:
     """
     Mind类的并行化控制器，用于管理多个Mind实例的并行执行

@@ -10,6 +10,10 @@ from src.lifebench.event.templates.template_simulation import template_event_for
 from src.lifebench.utils.llm_call import llm_call_reason_j
 from src.lifebench.event.tools.check_event_matching import main as check_event_matching_main
 from src.lifebench.utils.json_utils import remove_json_wrapper
+from src.lifebench.event.simulation.geolocation.export import (
+    attach_event_geodata,
+    build_location_records,
+)
 
 
 class EventFormatter:
@@ -212,7 +216,12 @@ class EventFormatter:
                     adjusted_events_list.append({
                         "date": date,
                         "events": outputs["adjusted_events"],
-                        "poi_data": outputs.get("poi_data", "")
+                        "poi_data": outputs.get("poi_data", ""),
+                        # 新输出直接读 sidecar；旧中间文件从 assignment 现场转换。
+                        "location_records": (
+                            outputs.get("location_records")
+                            or build_location_records(outputs.get("trajectory_assignment"))
+                        ),
                     })
             
             return adjusted_events_list
@@ -220,7 +229,8 @@ class EventFormatter:
             print(f"读取文件 {file_path} 时出错: {str(e)}")
             return []
     
-    def _format_events_task(self, events: str, poi_data: str, date: str, task_id: int) -> List[Dict]:
+    def _format_events_task(self, events: str, poi_data: str, date: str, task_id: int,
+                            location_records: Dict = None) -> List[Dict]:
         """
         单个事件格式化任务，用于并行处理
         
@@ -238,7 +248,10 @@ class EventFormatter:
             prompt = template_event_format_sequence.format(
                 content=events,
                 poi=poi_data,
-                date=date
+                date=date,
+                location_records=json.dumps(
+                    location_records or {}, ensure_ascii=False, separators=(",", ":"),
+                ),
             )
             # 调用LLM获取格式化后的事件
             formatted_content = llm_call_reason_j(prompt)
@@ -248,6 +261,11 @@ class EventFormatter:
             
             # 解析JSON
             formatted_events = json.loads(cleaned_content)
+            if not isinstance(formatted_events, list):
+                raise ValueError("格式化事件必须是JSON数组")
+
+            # LLM 只负责格式和叙述；坐标由程序从轨迹 sidecar 附加。
+            formatted_events = attach_event_geodata(formatted_events, location_records)
             
             # 获取该日期的daily_draft数据
             daily_draft_date_data = self.daily_draft_data.get(date, [])
@@ -261,7 +279,8 @@ class EventFormatter:
             print(f"任务 {task_id} - 格式化日期 {date} 的事件时出错: {str(e)}")
             return []
     
-    def format_events(self, events: str, poi_data: str, date: str) -> List[Dict]:
+    def format_events(self, events: str, poi_data: str, date: str,
+                      location_records: Dict = None) -> List[Dict]:
         """
         使用template_event_format_sequence格式化事件（单线程版本）
         
@@ -273,7 +292,9 @@ class EventFormatter:
         返回:
             List[Dict]: 格式化后的事件列表
         """
-        formatted_events = self._format_events_task(events, poi_data, date, 0)
+        formatted_events = self._format_events_task(
+            events, poi_data, date, 0, location_records,
+        )
         
         # 按日期排序事件（在同一天内按时间排序）
         def get_event_datetime(event):
@@ -353,6 +374,7 @@ class EventFormatter:
                 date = item["date"]
                 events = item["events"]
                 poi_data = item["poi_data"]
+                location_records = item.get("location_records") or {}
                 
                 # 检查日期是否在指定范围内
                 include_date = True
@@ -373,6 +395,7 @@ class EventFormatter:
                         'task_id': task_id,
                         'events': events,
                         'poi_data': poi_data,
+                        'location_records': location_records,
                         'date': date
                     })
                     task_id += 1
@@ -385,11 +408,12 @@ class EventFormatter:
         
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             # 提交所有任务
-            future_to_task = {executor.submit(self._format_events_task, 
-                                             task['events'], 
-                                             task['poi_data'], 
-                                             task['date'], 
-                                             task['task_id']): task 
+            future_to_task = {executor.submit(self._format_events_task,
+                                             task['events'],
+                                             task['poi_data'],
+                                             task['date'],
+                                             task['task_id'],
+                                             task['location_records']): task
                              for task in tasks}
             
             # 处理完成的任务
@@ -474,7 +498,7 @@ class EventFormatter:
         self.process_all_files(max_workers=max_workers, start_date=start_date, end_date=end_date)
         
         # 保存结果
-        self.save_to_event_json(self.data_dir+'daily_event.json')
+        self.save_to_event_json(os.path.join(self.data_dir, "daily_event.json"))
         
         print("=== 事件格式化流程完成 ===")
 

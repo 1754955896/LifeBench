@@ -23,6 +23,16 @@ _SUPPORTED_DATE_FORMATS = [
 ]
 
 
+def recent_dates(date_str: str, days: int = 5,
+                 date_format: str = "%Y-%m-%d") -> List[str]:
+    """返回包含基准日在内、从近到远的连续日期。"""
+    target_date = datetime.strptime(date_str, date_format)
+    return [
+        (target_date - timedelta(days=offset)).strftime(date_format)
+        for offset in range(max(1, int(days)))
+    ]
+
+
 @dataclass(frozen=True)
 class TimeSpec:
     """生成数据的时间范围规格：目标年份 + 模拟该年前 months 个月。

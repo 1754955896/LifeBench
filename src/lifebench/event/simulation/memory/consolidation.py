@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-"""记忆巩固：状态型长记忆更新 + 草稿派生的模糊记忆（冷启动）。
+"""草稿派生的模糊记忆（冷启动）。
 
 本模块集中「记忆巩固」逻辑：
-- update_long_term_memory：每日反思后，用 LLM 把今日生活变化合并进
-  LongTermMemory（覆盖式、有界、带遗忘）。
 - FuzzyMemoryBuilder：从每日草稿派生月度/累积摘要，作为分片冷启动的模糊记忆
   （从 memory_structure.fuzzy_memory_builder 迁移而来）。
+
+每日长期记忆已经合并到 generators.reflection 的同一次 LLM 调用中。
 """
 import json
 import os
@@ -14,70 +14,8 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from typing import List, Dict
 
-from src.lifebench.event.templates.template_simulation import template_update_long_term_memory
-from src.lifebench.utils.llm_call import llm_call, llm_call_j
-from src.lifebench.utils.json_utils import remove_json_wrapper
+from src.lifebench.utils.llm_call import llm_call
 from src.lifebench.utils.utils_io import write_json_file
-from src.lifebench.event.simulation.state import LongTermMemory
-
-
-def update_long_term_memory(mind, plan, reflection, date):
-    """更新长期记忆（状态型长记忆）。
-
-    参数:
-        mind: Mind 实例
-        plan: 今日规划
-        reflection: 反思数据（含 date/topic/events/thought）
-        date: 目标日期
-    """
-    # 获取近期历史：今日反思 + 前 1~2 天记忆
-    history_data = [reflection]
-    retrieved_ids = []
-    for i in range(1, 3):
-        res = mind.mem_module.search_by_date(mind.get_next_n_day(date, -i))
-        history_data += res
-        for j in res:
-            eid = j.get("event_id")
-            if eid:
-                retrieved_ids.append(eid)
-
-    # 回报本日检索命中 ID（若 Mind 持有 trace 记录器）
-    recorder = getattr(mind, "memory_trace", None)
-    if recorder is not None:
-        recorder.record(date, retrieved=retrieved_ids)
-
-    prompt = template_update_long_term_memory.format(
-        cognition=mind.cognition,
-        memory=mind.long_memory,
-        plan=plan,
-        history=history_data,
-        now=json.dumps(reflection),
-        thought=mind.thought,
-        date=mind.get_date_string(date),
-    )
-
-    updated_memory = llm_call_j(prompt)
-    cleaned_memory = remove_json_wrapper(updated_memory)
-
-    mind._log_event("更新（客观事实与固定偏好，IMO记忆的关键事件，重复多次进行的事件，对过去总结）-----------------------------------------------------------------------")
-    mind._log_event(cleaned_memory)
-
-    try:
-        memory_data = json.loads(cleaned_memory)
-    except json.JSONDecodeError:
-        memory_data = None
-
-    # 仅当解析出有效字段时才覆盖，避免 LLM 输出畸形时清空长期记忆
-    if isinstance(memory_data, dict):
-        # 稳定字段（state/facts/preferences/routines）漏填时继承旧值，避免历史丢失；
-        # key_events/plans 保持 LLM 权威（有界、带遗忘）。
-        old_ltm = LongTermMemory.from_string(mind.long_memory)
-        new_ltm = LongTermMemory.from_dict(memory_data)
-        new_memory = LongTermMemory.merge(old_ltm, new_ltm).to_string()
-        if new_memory.strip():
-            mind.long_memory = new_memory
-
-    mind._save_log("", "t5", cleaned_memory)
 
 
 class FuzzyMemoryBuilder:
