@@ -54,6 +54,16 @@ def _normalize(intent: StopIntent, order: int) -> StopIntent:
         intent.explicit_name = ""
     explicit_destination = bool(intent.explicit_name or intent.explicit_location)
     if (
+        intent.activity_type not in {"home", "work", "education"}
+        and intent.spatial_scope in {"room", "building", "compound"}
+        and not explicit_destination
+    ):
+        intent.mobility_pattern = "micro"
+        intent.query_type = "micro"
+        intent.distance_tier = "local"
+        intent.distance_band_km = [0.0, 0.1]
+        intent.distance_sensitivity = "high"
+    if (
         any(term in text for term in LOCAL_LOOP_TERMS)
         and not explicit_destination
         and not any(term in text for term in ("去公园", "到公园", "前往公园"))

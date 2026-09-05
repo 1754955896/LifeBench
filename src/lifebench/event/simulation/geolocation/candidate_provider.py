@@ -78,11 +78,23 @@ def _deterministic_distance(salt: str, low_m: int, high_m: int) -> int:
     return int(low_m + fraction * (high_m - low_m))
 
 
+def _haversine_km(first: str, second: str) -> float:
+    try:
+        lon1, lat1 = (math.radians(float(value)) for value in first.split(","))
+        lon2, lat2 = (math.radians(float(value)) for value in second.split(","))
+    except (AttributeError, TypeError, ValueError):
+        return 0.0
+    value = math.sin((lat2 - lat1) / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin((lon2 - lon1) / 2) ** 2
+    return 6371.0088 * 2 * math.asin(min(1.0, math.sqrt(value)))
+
+
 class CandidateProvider:
-    def __init__(self, maptools: Any, catalog: LocationCatalog, limit: int = 12):
+    def __init__(self, maptools: Any, catalog: LocationCatalog, limit: int = 12,
+                 urban_candidate_share: float = 0.35):
         self.maptools = maptools
         self.catalog = catalog
         self.limit = limit
+        self.urban_candidate_share = max(0.15, min(0.70, float(urban_candidate_share)))
 
     def get(self, intent: StopIntent, previous: Optional[LocationCandidate],
             search_only: bool = False) -> List[LocationCandidate]:
@@ -122,6 +134,8 @@ class CandidateProvider:
             for location_id in intent.historical_candidate_ids:
                 historical = self.catalog.by_location_id(location_id)
                 if historical is None or historical.source != "trajectory_history":
+                    continue
+                if historical.raw.get("return_eligible") is False:
                     continue
                 if not city_matches(intent.city, historical.city):
                     continue
@@ -177,7 +191,25 @@ class CandidateProvider:
                 ))
                 if len(raw) >= self.limit:
                     break
-        candidates.extend(self._from_map(item, index, intent) for index, item in enumerate(raw))
+            # 城市活动不能只依赖文本搜索默认排序。自主选址且有同城起点时，
+            # 再进行一次覆盖目标距离带的周边召回，使 3—15km 的候选真实进入池中。
+            if (
+                origin and origin.coordinates and not crosses_city
+                and intent.selection_policy == "gravity"
+                and intent.distance_tier in {"urban", "long"}
+            ):
+                high_km = max(intent.distance_band_km or [0.0, 15.0])
+                radius = min(50000, max(5000, int(high_km * 1000)))
+                per_query = max(2, self.limit // max(1, len(queries)))
+                for query in queries:
+                    raw.extend(self.maptools.search_around_candidates(
+                        location=origin.coordinates, keywords=query, types=None,
+                        city=intent.city or origin.city or None, radius=radius,
+                        limit=per_query,
+                    ))
+        mapped = [self._from_map(item, index, intent) for index, item in enumerate(raw)]
+        self._annotate_distances(mapped, origin)
+        candidates.extend(self._stratify(mapped, intent))
         if not candidates and intent.city and (intent.explicit_location or intent.explicit_name):
             # 具名地点（如北京南站、天津站、特斯拉）优先精确地理编码拿真实坐标，
             # 而不是先落城市中心虚拟地址，避免两个真实地点被压到同一坐标。
@@ -196,6 +228,42 @@ class CandidateProvider:
                 # 目标城市兜底：换相关词重搜，全空则在目标城市随机区生成虚拟地址。
                 candidates.extend(self._citywide_fallback(intent))
         return self._deduplicate(candidates)
+
+    def _annotate_distances(
+        self, candidates: List[LocationCandidate], origin: Optional[LocationCandidate],
+    ) -> None:
+        if origin is None or not origin.coordinates:
+            return
+        for candidate in candidates:
+            distance = _haversine_km(origin.coordinates, candidate.coordinates)
+            candidate.distance_m = distance * 1000.0
+            candidate.raw["distance_from_origin_km"] = round(distance, 3)
+            candidate.raw["distance_band"] = (
+                "local" if distance < 3.0 else "urban" if distance <= 15.0 else "long"
+            )
+
+    def _stratify(
+        self, candidates: List[LocationCandidate], intent: StopIntent,
+    ) -> List[LocationCandidate]:
+        """保留多距离带覆盖；区间是软偏好，召回不足时不丢弃可用地点。"""
+        if intent.selection_policy != "gravity" or len(candidates) <= self.limit:
+            return candidates
+        buckets = {"local": [], "urban": [], "long": [], "unknown": []}
+        for candidate in candidates:
+            bucket = str(candidate.raw.get("distance_band") or "unknown")
+            buckets.setdefault(bucket, []).append(candidate)
+        preferred = intent.distance_tier if intent.distance_tier in buckets else "urban"
+        order = [preferred] + [key for key in ("local", "urban", "long", "unknown") if key != preferred]
+        quota = max(2, int(round(
+            self.limit * (self.urban_candidate_share if preferred == "urban" else 1.0 / 3.0)
+        )))
+        chosen = []
+        for key in order:
+            chosen.extend(buckets[key][:quota])
+        if len(chosen) < self.limit:
+            selected_ids = {id(item) for item in chosen}
+            chosen.extend(item for item in candidates if id(item) not in selected_ids)
+        return chosen[:self.limit]
 
     @staticmethod
     def _queries(intent: StopIntent) -> List[str]:

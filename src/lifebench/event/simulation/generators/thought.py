@@ -6,7 +6,10 @@
 import json
 
 from src.lifebench.event.templates.template_simulation import template_daily_event_subjective_plan
-from src.lifebench.event.simulation.context import build_subjective_context
+from src.lifebench.event.simulation.context import (
+    build_subjective_context,
+    lean_mobility_day_profile,
+)
 
 
 def generate_subjective_thought(mind, plan, date):
@@ -32,10 +35,12 @@ def generate_subjective_thought(mind, plan, date):
         short_memory_context=dump(context["short_memory_context"]),
         previous_thought=dump(context["previous_thought"]),
         state_and_needs=dump(context["state_and_needs"]),
-        open_loops=dump(context["open_loops"]),
         environment=dump(context["environment"]),
         recent_behavior_summary=dump(context["recent_behavior_summary"]),
         day_variation_context=dump(context["day_variation_context"]),
+        mobility_day_profile=dump(lean_mobility_day_profile(context["mobility_day_profile"])),
+        location_inspiration_context=dump(context["location_inspiration_context"]),
+        activity_recommendation=dump(context["activity_recommendation"]),
     )
     thought = mind.llm_call_s(prompt, 0)
     mind._log_event("主观思考（计划如何执行、想安排什么活动）-----------------------------------------------------------------------")

@@ -35,5 +35,14 @@
 | `seed` | 候选选择的全局随机种子，与人物和日期共同决定可复现结果 | `0` |
 | `candidate_limit` | 每个非固定停留点召回的地图候选上限 | `12` |
 | `route_top_k` | 进入真实路线计算的重力模型候选数 | `4` |
+| `budget_aware` | 地点分配时使用当日剩余距离与通行时间软预算；必选地点只告警不删除 | `true` |
 | `final_itinerary_retry_count` | 最终地点—通行链无法完整解析时的额外 LLM 重试次数 | `1` |
 | `strict_validation` | 地理分配或最终行程不完整时令当日失败并触发引擎重试，禁止静默回退为成功数据 | `true` |
+| `half_hour_export` | 从最终协调后的唯一地理事实导出48个半小时位置；不会读取初始地图分配 | 见 `config.example.json` |
+| `mobility_calibration` | 离线同网格评估产生的有界EPR与距离衰减参数；省略时使用内置先验 | 见 `config.example.json` |
+| `mobility_distribution_targets` | 工作日/休息日日型的可校准抽样权重；历史信号只在此基础上温和修正 | 见 `config.example.json` |
+| `location_opportunity_pool` | 人物级同城参考 POI 预生成和每日地点灵感抽样参数 | 见 `config.example.json` |
+
+### simulation_asset_preparation
+
+在任何日期分片启动前，单进程生成或加载模糊记忆与 `persona_locations_v2`，校验后冻结为本次运行共享的只读资产。`ensure_location_opportunity_pool` 开启时会额外调用现有配置中的 LLM 和地图 API；输入和生成版本未变化时复用缓存。

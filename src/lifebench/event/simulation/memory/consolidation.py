@@ -19,6 +19,9 @@ from src.lifebench.utils.utils_io import write_json_file
 
 
 class FuzzyMemoryBuilder:
+    _instances = {}
+    _instances_lock = threading.Lock()
+
     def __init__(self, event_data: List[Dict], persona: Dict, output_dir: str = "../data/"):
         self.event_data = event_data
         self.persona = persona
@@ -367,8 +370,8 @@ class FuzzyMemoryBuilder:
         self.build_cumulative_summaries(year)
         print("累积总结生成完成！")
 
-    @staticmethod
-    def get_instance(event_data: List[Dict], persona: Dict, output_dir: str = "data/"):
+    @classmethod
+    def get_instance(cls, event_data: List[Dict], persona: Dict, output_dir: str = "data/"):
         """
         创建或获取FuzzyMemoryBuilder实例（单例模式）
 
@@ -380,6 +383,10 @@ class FuzzyMemoryBuilder:
         返回:
             FuzzyMemoryBuilder: 实例
         """
-        if not hasattr(FuzzyMemoryBuilder, "_instance"):
-            FuzzyMemoryBuilder._instance = FuzzyMemoryBuilder(event_data, persona, output_dir)
-        return FuzzyMemoryBuilder._instance
+        # 共享资产的真实边界是人物输出目录，而不是整个 Python 进程。
+        # 全局单例会让连续模拟不同人物时误用前一人的模糊记忆。
+        key = os.path.normcase(os.path.abspath(output_dir))
+        with cls._instances_lock:
+            if key not in cls._instances:
+                cls._instances[key] = cls(event_data, persona, output_dir)
+            return cls._instances[key]

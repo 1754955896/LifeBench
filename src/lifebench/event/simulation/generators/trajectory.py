@@ -110,8 +110,49 @@ def _compact_location_registry(mind, limit=80):
             "last_seen_date": str(item.get("last_seen_date") or ""),
             "recent_visit_dates": list(item.get("recent_visit_dates") or [])[-5:],
             "map_verified": bool(item.get("map_verified", False)),
+            "location_tier": str(item.get("location_tier") or "occasional"),
+            "active_day_count": int(item.get("active_day_count", 0) or 0),
+            "familiarity": float(item.get("familiarity", 0.0) or 0.0),
+            "return_eligible": bool(item.get("return_eligible", False)),
         })
     return json.dumps(rows, ensure_ascii=False, separators=(",", ":"))
+
+
+def _compact_intent_location_context(mind):
+    """Expose anchors plus today's sampled opportunities, not the whole city pool."""
+    rows = []
+    seen = set()
+
+    def add(item):
+        if not isinstance(item, dict):
+            return
+        location_id = str(item.get("location_id") or item.get("id") or "").strip()
+        identity = location_id or "%s|%s" % (
+            item.get("name", ""), item.get("location", ""),
+        )
+        if not identity or identity in seen:
+            return
+        seen.add(identity)
+        rows.append({
+            "location_id": location_id,
+            "name": str(item.get("name") or ""),
+            "address": str(item.get("formatted_address") or item.get("address") or ""),
+            "city": str(item.get("city") or ""),
+            "category": str(item.get("activity_category") or item.get("category") or "other"),
+            "location_role": str(item.get("location_role") or ""),
+            "knowledge_state": str(item.get("knowledge_state") or ""),
+            "distance_from_home_km": item.get("distance_from_home_km"),
+        })
+
+    for item in getattr(mind, "persona_core_address_data", None) or []:
+        add(item)
+    context = getattr(mind, "last_subjective_context", None) or {}
+    inspiration = context.get("location_inspiration_context", {})
+    inspiration = inspiration if isinstance(inspiration, dict) else {}
+    for key in ("anchors", "familiar_options", "citywide_options", "social_options"):
+        for item in inspiration.get(key, []) if isinstance(inspiration.get(key), list) else []:
+            add(item)
+    return rows
 
 
 def _remember_final_locations(mind, records):
@@ -121,6 +162,24 @@ def _remember_final_locations(mind, records):
         history, records, limit=200,
         date=str(getattr(mind, "current_date", "") or ""),
     )
+
+
+def _record_final_epr_outcomes(mind, records):
+    assignment = getattr(mind, "last_trajectory_assignment", None)
+    if assignment is None or not isinstance(records, dict):
+        return
+    final_ids = {
+        str(stop.get("location_id") or "")
+        for stop in records.get("stops", []) if isinstance(stop, dict)
+    }
+    for decision in assignment.diagnostics.get("epr_decisions", []):
+        selected = str(decision.get("selected_location_id") or "")
+        if selected and selected in final_ids:
+            decision["final_decision"] = "accepted"
+            decision["final_location_id"] = selected
+        elif selected:
+            decision["final_decision"] = "llm_relocated_or_removed"
+            decision["override_reason"] = "final_adjustment_no_longer_uses_initial_location"
 
 
 def _identity_from_stop(stop):
@@ -379,6 +438,11 @@ def _requery_resolve(intent, spec, prev_stop, next_stop, allocator, issues):
             q for q in (intent.explicit_name, intent.poi_type) if str(q).strip()
         ]
     city = str(spec.get("city") or intent.city or "").strip()
+    # 保留原始 selection_policy：自主探索（gravity）的停留点 requery 时不能退回
+    # best_match，否则会丢失 distance_tier 对应的远距离召回与多距离带覆盖。
+    selection_policy = str(spec.get("selection_policy") or intent.selection_policy or "best_match")
+    if selection_policy not in {"gravity", "best_match", "random"}:
+        selection_policy = "best_match"
 
     def search(queries):
         if not queries:
@@ -387,7 +451,7 @@ def _requery_resolve(intent, spec, prev_stop, next_stop, allocator, issues):
             intent,
             query_type="search", search_queries=list(queries),
             explicit_name="", explicit_location="", keyword="", poi_type="",
-            city=city, selection_policy="best_match", reuse_policy="may_explore",
+            city=city, selection_policy=selection_policy, reuse_policy="may_explore",
             reuse_location_id="", historical_candidate_ids=[], epr_applicable=False,
         )
         try:
@@ -527,14 +591,27 @@ def _reorganize_trajectory(mind, allocator, intents, assignment, pt, plan, confi
     final_assignment = TrajectoryAssignment(
         date=assignment.date, stops=resolved_stops, legs=legs,
         feasible=True, violations=[], diagnostics={
-            "allocator": assignment.diagnostics.get("allocator", ""),
-            "budget_aware": assignment.diagnostics.get("budget_aware", False),
+            **assignment.diagnostics,
             "stop_count": len(resolved_stops),
             "leg_count": len(legs),
             "requery_stop_count": diagnostics["requery_stop_count"],
             "reorganized_stop_count": len(stops_spec),
         },
     )
+    initial_by_stop = {stop.stop_id: stop for stop in assignment.stops}
+    final_by_stop = {stop.stop_id: stop for stop in resolved_stops}
+    for decision in final_assignment.diagnostics.get("epr_decisions", []):
+        stop_id = str(decision.get("stop_id") or "")
+        original = initial_by_stop.get(stop_id)
+        final = final_by_stop.get(stop_id)
+        if final is None:
+            decision["final_decision"] = "llm_removed_optional"
+            continue
+        changed = original is not None and original.location_id != final.location_id
+        decision["final_decision"] = "llm_relocated" if changed else "accepted"
+        decision["final_location_id"] = final.location_id
+        if changed:
+            decision["override_reason"] = "trajectory_reorganizer_reselected_location"
     diagnostics["applied"] = True
     return final_assignment, diagnostics
 
@@ -556,12 +633,20 @@ def generate_poi_route(mind, pt, plan=None):
         if config.get("enabled", True)
         else template_poi_real_location_assign_legacy
     )
+    _subjective_ctx = getattr(mind, "last_subjective_context", None) or {}
+    day_variation = _subjective_ctx.get("day_variation_context", {}) or {}
+    mobility_day_budget = (
+        _subjective_ctx.get("mobility_day_profile")
+        or _subjective_ctx.get("mobility_day_budget") or {}
+    )
     prompt = intent_template.format(
         persona=mind.persona,
         data=pt,
         plan=plan or {},
-        persona_address_data=mind.maptools.persona_address_data,
+        persona_address_data=_compact_intent_location_context(mind),
         location_registry=_compact_location_registry(mind),
+        mobility_day_budget=mobility_day_budget,
+        day_variation_context=day_variation,
     )
     res = mind.llm_call_j(prompt, 0)
     print("poi分析-----------------------------------------------------------------------")
@@ -574,15 +659,19 @@ def generate_poi_route(mind, pt, plan=None):
         activity_plan = plan_activity_intents(intents)
         intents = activity_plan.intents
         mind.last_activity_plan = activity_plan.to_dict()
-        day_variation = (
-            (getattr(mind, "last_subjective_context", None) or {}).get(
-                "day_variation_context", {}
-            ) or {}
-        )
         epr_profile = build_personal_epr_profile(
             getattr(mind, "behavior_history", None) or [],
             getattr(mind, "trajectory_location_history", None) or [],
         )
+        calibration = config.get("mobility_calibration", {})
+        calibration = calibration if isinstance(calibration, dict) else {}
+        allowed = {
+            key: float(calibration[key])
+            for key in ("rho", "distance_beta", "distance_cutoff_km")
+            if key in calibration
+        }
+        if allowed:
+            epr_profile = replace(epr_profile, **allowed)
         allocator = TrajectoryAllocator(
             maptools=mind.maptools,
             persona_addresses=_address_catalog_with_history(mind),
@@ -596,12 +685,13 @@ def generate_poi_route(mind, pt, plan=None):
             novelty_level=str(day_variation.get("novelty_level", "medium")),
             mobility_level=str(day_variation.get("mobility_level", "medium")),
             epr_profile=epr_profile,
+            mobility_day_budget=mobility_day_budget,
+            urban_candidate_share=float(calibration.get("urban_candidate_share", 0.35)),
         )
-        # 一轮 LLM 取代 allocate 的预算分析/最终评估与 replan 决策：allocate
-        # 只负责召回+选择+真实通行时长，语义去重/修正/重排交给组织 LLM。
+        # 数值预算参与候选选择；必选事件不会被删除，超预算仍交给组织 LLM 调整。
         assignment = allocator.allocate(
             intents, str(getattr(mind, "current_date", "")),
-            budget_aware=False,
+            budget_aware=bool(config.get("budget_aware", True)),
         )
         assignment, reorganize_diagnostics = _reorganize_trajectory(
             mind, allocator, intents, assignment, pt, plan or {}, config,
@@ -646,12 +736,16 @@ def adjust_event_trajectory(mind, poi_data, event, daily_event_reference="", his
     """
     # 简化 persona_address_data，只保留 name、formatted_address 和 description 字段
     simplified_address_data = []
-    if mind.persona_address_data and isinstance(mind.persona_address_data, list):
-        for address in mind.persona_address_data:
+    core_addresses = getattr(mind, "persona_core_address_data", None) or []
+    if isinstance(core_addresses, list):
+        for address in core_addresses:
             simplified_address = {
+                "location_id": address.get("location_id", address.get("id", "")),
                 "name": address.get("name", ""),
                 "formatted_address": address.get("formatted_address", ""),
-                "description": address.get("description", "")
+                "description": address.get("description", ""),
+                "location_role": address.get("location_role", ""),
+                "knowledge_state": address.get("knowledge_state", ""),
             }
             simplified_address_data.append(simplified_address)
 
@@ -721,13 +815,21 @@ def adjust_event_trajectory(mind, poi_data, event, daily_event_reference="", his
                     maptools=getattr(mind, "maptools", None),
                 )
                 diagnostics = final_records.get("itinerary_reconciliation", {})
+                attempt_issues = list(diagnostics.get("issues", []))
                 if diagnostics.get("applied"):
+                    attempt_issues.extend(validate_location_records(
+                        final_records,
+                        require_itinerary=config.get("strict_validation", True),
+                        accuracy_validation=config.get("accuracy_validation", True),
+                    ))
+                if diagnostics.get("applied") and not attempt_issues:
                     break
                 if attempt < retry_count:
                     attempt_prompt = reconcile_prompt + (
-                        "\n上一次结构未能完整解析。错误为：%s。请重新输出完整 JSON，"
-                        "确保每一行都有可解析的已有 stop_id 或 location_key。"
-                        % json.dumps(diagnostics.get("issues", []), ensure_ascii=False)
+                        "\n上一次结构或数值事实未通过校验。错误为：%s。请重新输出完整 JSON，"
+                        "确保每一行都有可解析的已有 stop_id 或 location_key，并使坐标端点、"
+                        "distance_km、duration_minutes 和 mode 相互一致。"
+                        % json.dumps(attempt_issues, ensure_ascii=False)
                     )
             diagnostics = (final_records or {}).get("itinerary_reconciliation", {})
             reconciled = bool(diagnostics.get("applied"))
@@ -768,6 +870,7 @@ def adjust_event_trajectory(mind, poi_data, event, daily_event_reference="", his
         )
         if final_issues:
             raise RuntimeError("最终地理记录门禁失败: " + "; ".join(final_issues))
+    _record_final_epr_outcomes(mind, mind.final_location_records)
     _remember_final_locations(mind, mind.final_location_records)
     mind._log_event("轨迹调整-----------------------------------------------------------------------")
     mind._log_event(adjusted_events)

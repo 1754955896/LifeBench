@@ -30,8 +30,10 @@ from src.lifebench.event.simulation.generators import (
     generate_reflection,
 )
 from src.lifebench.event.simulation.engine import DailySimulationEngine
+from src.lifebench.event.simulation.preparation import SimulationAssetPreparer
 from src.lifebench.event.simulation.telemetry import MemoryTraceRecorder
 from src.lifebench.event.simulation.geolocation import build_location_records
+from src.lifebench.event.simulation.geolocation.catalog import flatten_location_data
 from src.lifebench.event.simulation.context import (
     append_daily_behavior_record,
     build_daily_behavior_record,
@@ -69,6 +71,9 @@ class Mind:
         self.last_subjective_context = None
         self.trajectory_location_history = []  # 最终采用地点的跨日稳定注册表
         self.behavior_history = []  # 最近30天结构化活动与移动摘要
+        # 人物级只读地点资产；保留 v2 分层结构供每日地点灵感抽样。
+        self.persona_location_data = copy.deepcopy(persona_address_data or [])
+        self.assets_prepared = False
         self.bottom_events : Optional[List[Dict]] = None
         # 读取配置文件，使用项目根目录下的 config.json
         script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -101,6 +106,14 @@ class Mind:
         self.daily_draft = daily_draft if daily_draft is not None else []
         # 与地图工具共享归一化后的扁平地址目录，兼容历史 location.json 多层数组格式。
         self.persona_address_data = list(self.maptools.persona_address_data)
+        # cognition 只应看到人物已知、稳定的地点。城市机会池是每日抽样用的
+        # “可能选项”，若整池注入自我认知，LLM 会把未访问 POI 误写成熟悉地点。
+        self.persona_core_address_data = [
+            row for row in flatten_location_data(persona_address_data or [])
+            if str(row.get("location_role") or "") not in {
+                "city_reference", "social_location",
+            }
+        ]
         
     def save_to_json(self):
         data = {}
@@ -306,6 +319,8 @@ class Mind:
         cumulative_file = os.path.join(self.sim_dir, "cumulative_summaries.json")
 
         if not (os.path.exists(monthly_file) and os.path.exists(cumulative_file)):
+            if self.assets_prepared:
+                raise RuntimeError("预处理已完成但模糊记忆资产缺失，禁止在日期分片中重新生成")
             print("未找到fuzzymemory文件，开始生成" + str(year) + "年的月度总结和累积总结...")
             self.fuzzy_memory_builder.build_all_summaries(year)
             print("fuzzymemory生成完成！")
@@ -342,7 +357,10 @@ class Mind:
 
         print("[DEBUG initialize] self.persona type=" + str(type(self.persona)))
         print("[DEBUG initialize] self.persona_address_data type=" + str(type(self.persona_address_data)))
-        prompt = t1.format(persona=self.persona, persona_address_data=self.persona_address_data)
+        prompt = t1.format(
+            persona=self.persona,
+            persona_address_data=self.persona_core_address_data,
+        )
         res = self.llm_call_s(prompt)
         self.cognition = res
 
@@ -859,6 +877,24 @@ class Mind:
             location_records = getattr(self, "final_location_records", None)
             if location_records is None:
                 location_records = build_location_records(assignment) if assignment is not None else None
+            from src.lifebench.event.simulation.geolocation import (
+                build_half_hour_trajectory, write_half_hour_trajectory,
+            )
+            trajectory_config = self.config.get("trajectory_assignment", {}) if isinstance(self.config, dict) else {}
+            export_config = trajectory_config.get("half_hour_export", {}) if isinstance(trajectory_config, dict) else {}
+            export_enabled = export_config.get("enabled", True) if isinstance(export_config, dict) else True
+            half_hour_trajectory = build_half_hour_trajectory(
+                location_records, date=date, instance_id=self.instance_id,
+                slot_minutes=int(export_config.get("slot_minutes", 30) or 30),
+            ) if export_enabled else None
+            if half_hour_trajectory is not None:
+                half_hour_path = os.path.join(
+                    self.sim_dir, "half_hour",
+                    "half_hour_%s_%s.jsonl" % (
+                        self.instance_id, getattr(self, "interval_start", None) or "unknown",
+                    ),
+                )
+                write_half_hour_trajectory(half_hour_path, half_hour_trajectory)
             subjective_context = getattr(self, "last_subjective_context", None) or {}
             behavior_record = build_daily_behavior_record(
                 date=date,
@@ -882,6 +918,18 @@ class Mind:
                 "day_variation_context": copy.deepcopy(
                     subjective_context.get("day_variation_context", {})
                 ),
+                "mobility_day_budget": copy.deepcopy(
+                    subjective_context.get("mobility_day_budget", {})
+                ),
+                "mobility_day_profile": copy.deepcopy(
+                    subjective_context.get("mobility_day_profile", {})
+                ),
+                "location_inspiration_context": copy.deepcopy(
+                    subjective_context.get("location_inspiration_context", {})
+                ),
+                "activity_recommendation": copy.deepcopy(
+                    subjective_context.get("activity_recommendation", {})
+                ),
                 "objective_events": objective_events,
                 "activity_plan": getattr(self, "last_activity_plan", None),
                 "poi_data": poi_data,
@@ -891,6 +939,7 @@ class Mind:
                     copy.deepcopy(location_records.get("event_segments", []))
                     if isinstance(location_records, dict) else []
                 ),
+                "half_hour_trajectory": half_hour_trajectory,
                 "location_reconciliation": copy.deepcopy(
                     getattr(self, "last_location_reconciliation", None)
                 ),
@@ -997,6 +1046,9 @@ class MindController:
         """
         self.data_dir = data_dir
         self.instance_id = instance_id
+        self.event_file = event_file
+        self.persona_file = persona_file
+        self.location_file = os.path.abspath(loc_data)
         # 从文件加载初始数据
         from src.lifebench.utils.utils_io import read_json_file
         try:
@@ -1035,9 +1087,26 @@ class MindController:
         返回:
             List: 执行结果列表
         """
+        # Shared assets must be produced once before ThreadPoolExecutor creates shards.
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(os.path.dirname(os.path.dirname(script_dir)))
+        with open(os.path.join(project_root, 'config', 'config.json'), 'r', encoding='utf-8') as file:
+            simulation_config = json.load(file)
+        prepared = SimulationAssetPreparer(
+            data_dir=self.data_dir,
+            persona=self.persona,
+            events=self.events,
+            location_data=self.loc_data,
+            location_path=self.location_file,
+            config=simulation_config,
+            simulation_start=start_date,
+        ).prepare()
+        self.loc_data = prepared["location_data"]
+        asset_snapshot = prepared["asset_snapshot"]
+
         def mind_factory():
             # 使用人物的 instance_id 作为标识，确保每个人只有一个 memory 文件
-            return Mind(
+            mind = Mind(
                 file_path=self.data_dir,
                 instance_id=self.instance_id,
                 persona=self.persona,
@@ -1045,6 +1114,9 @@ class MindController:
                 daily_state=None,
                 persona_address_data=self.loc_data
             )
+            mind.assets_prepared = True
+            mind.asset_snapshot = copy.deepcopy(asset_snapshot)
+            return mind
 
         engine = DailySimulationEngine(
             mind_factory=mind_factory,

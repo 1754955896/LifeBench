@@ -75,12 +75,34 @@ class MapMaintenanceTool:
         # 兼容部分历史数据中 location.json 被额外包裹一层或多层数组的情况。
         self.persona_address_data = []
 
-        def collect_addresses(value: Any) -> None:
-            if isinstance(value, dict):
-                self.persona_address_data.append(value)
-            elif isinstance(value, (list, tuple)):
+        location_groups = {
+            "anchors": "anchor", "familiar_places": "familiar",
+            "city_reference_pois": "city_reference",
+            "social_locations": "social_location",
+        }
+
+        def collect_addresses(value: Any, inherited_role: str = "") -> None:
+            if isinstance(value, (list, tuple)):
                 for child in value:
-                    collect_addresses(child)
+                    collect_addresses(child, inherited_role)
+                return
+            if not isinstance(value, dict):
+                return
+            if str(value.get("schema_version") or "") == "persona_locations_v2" or any(
+                key in value for key in location_groups
+            ):
+                for group, role in location_groups.items():
+                    collect_addresses(value.get(group, []), role)
+                return
+            if not (value.get("location") and (value.get("name") or value.get("poi"))):
+                for child in value.values():
+                    if isinstance(child, (list, tuple)):
+                        collect_addresses(child, inherited_role)
+                return
+            row = dict(value)
+            if inherited_role:
+                row.setdefault("location_role", inherited_role)
+            self.persona_address_data.append(row)
 
         collect_addresses(persona_address_data or [])
         # 构建已有真实地点索引，提高匹配效率

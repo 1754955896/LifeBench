@@ -32,7 +32,6 @@ def generate_reflection(mind, events, plan, date):
         short_memory_context=dumps(context.get("short_memory_context", {})),
         previous_thought=dumps(context.get("previous_thought", {})),
         state_and_needs=dumps(context.get("state_and_needs", "")),
-        open_loops=dumps(context.get("open_loops", [])),
         environment=dumps(context.get("environment", {})),
         content=events,
         plan=dumps(plan),
@@ -63,7 +62,6 @@ def generate_reflection(mind, events, plan, date):
             metrics[key] = 0
     raw_next = parsed.get("next_day_context", {})
     raw_next = raw_next if isinstance(raw_next, dict) else {}
-    open_loops = raw_next.get("open_loops", [])
     state_and_needs = str(raw_next.get("state_and_needs") or "")
     if not state_and_needs:
         state_and_needs = "；".join(
@@ -100,7 +98,6 @@ def generate_reflection(mind, events, plan, date):
         "activity_metrics": metrics,
         "next_day_context": {
             "state_and_needs": state_and_needs,
-            "open_loops": open_loops if isinstance(open_loops, list) else [],
         },
         "long_memory": next_long_memory.to_dict(),
     }

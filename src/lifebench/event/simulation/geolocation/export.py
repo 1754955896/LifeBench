@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 """将轨迹分配转为最终事件可消费的地理 sidecar。
 
-经纬度始终从 TrajectoryAssignment 复制，不由事件格式化 LLM 生成。
+经纬度来自最终统一事实层：地图值或对最终叙事地点的显式估算。
 """
 import re
 from difflib import SequenceMatcher
 from typing import Any, Dict, Iterable, List, Optional, Tuple
+
+from .coordinates import gcj02_to_wgs84
 
 
 COORDINATE_SYSTEM = "GCJ-02"
@@ -36,6 +38,7 @@ def _point(stop: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     if coordinates is None:
         return None
     longitude, latitude = coordinates
+    canonical_longitude, canonical_latitude = gcj02_to_wgs84(longitude, latitude)
     return {
         "location_id": str(stop.get("location_id") or stop.get("id") or ""),
         "stop_id": str(stop.get("stop_id") or ""),
@@ -44,11 +47,18 @@ def _point(stop: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         "longitude": longitude,
         "latitude": latitude,
         "coordinate_system": COORDINATE_SYSTEM,
+        "canonical_longitude": round(canonical_longitude, 7),
+        "canonical_latitude": round(canonical_latitude, 7),
+        "canonical_coordinate_system": "WGS-84",
         "source": str(stop.get("source") or ""),
         "map_verified": bool(stop.get("map_verified", False)),
         "confidence": float(stop.get("confidence", 1.0) or 0.0),
         "spatial_scope": str(stop.get("spatial_scope") or "city"),
         "city": str(stop.get("city") or ""),
+        "fact_source": str(stop.get("fact_source") or "allocator"),
+        "override_reason": str(stop.get("override_reason") or ""),
+        "anchor_location_id": str(stop.get("anchor_location_id") or ""),
+        "estimate_method": str(stop.get("estimate_method") or ""),
     }
 
 
@@ -94,11 +104,19 @@ def build_location_records(assignment: Any) -> Dict[str, Any]:
             "map_verified": bool(raw.get("map_verified", False)),
             "confidence": float(raw.get("confidence", 1.0) or 0.0),
             "leg_type": str(raw.get("leg_type") or "transfer"),
+            "fact_source": str(raw.get("fact_source") or (
+                "map_accepted" if raw.get("map_verified", False) else "narrative_estimated"
+            )),
+            "override_reason": str(raw.get("override_reason") or ""),
+            "estimate_method": str(raw.get("estimate_method") or (
+                "map_route" if raw.get("map_verified", False) else "route_estimate"
+            )),
         })
     return {
         "schema_version": "simulation_location_v1",
         "date": str(data.get("date") or ""),
         "coordinate_system": COORDINATE_SYSTEM,
+        "canonical_coordinate_system": "WGS-84",
         "stops": stops,
         "legs": legs,
     }
@@ -107,8 +125,10 @@ def build_location_records(assignment: Any) -> Dict[str, Any]:
 def _public_point(point: Dict[str, Any]) -> Dict[str, Any]:
     keys = (
         "location_id", "stop_id", "name", "address", "longitude", "latitude",
-        "coordinate_system", "source", "map_verified", "confidence", "spatial_scope",
+        "coordinate_system", "canonical_longitude", "canonical_latitude",
+        "canonical_coordinate_system", "source", "map_verified", "confidence", "spatial_scope",
         "city",
+        "fact_source", "override_reason", "anchor_location_id", "estimate_method",
     )
     return {key: point.get(key) for key in keys}
 

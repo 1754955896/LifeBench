@@ -16,6 +16,12 @@ EPR_ACTIVITY_RHO_MULTIPLIER = {
     "medical": 0.45, "leisure": 1.15, "other": 1.0,
 }
 
+EPR_ACTIVITY_BOUNDS = {
+    "meal": (0.08, 0.55), "fitness": (0.06, 0.52),
+    "shopping": (0.10, 0.62), "leisure": (0.12, 0.72),
+    "medical": (0.03, 0.35), "other": (0.06, 0.62),
+}
+
 DISTANCE_CUTOFF_MULTIPLIER = {
     "meal": 0.35, "fitness": 0.55, "shopping": 0.80,
     "medical": 1.0, "leisure": 1.20, "other": 1.0,
@@ -75,7 +81,10 @@ class GravitySelector:
             and item.location_id in approved_ids
         ]
         explore_pool = [item for item in eligible if item not in return_pool]
-        exploration_probability = self._exploration_probability(intent)
+        exploration_probability, probability_factors = self._exploration_probability(
+            intent, return_pool,
+        )
+        random_draw = rng.random() if return_pool and explore_pool else None
         if not return_pool:
             decision = "explore_first_visit" if not approved_ids else "explore_no_valid_history"
             selected_pool = explore_pool
@@ -84,7 +93,7 @@ class GravitySelector:
             decision = "return_no_new_candidate"
             selected_pool = return_pool
             exploration_probability = 0.0
-        elif rng.random() < exploration_probability:
+        elif random_draw < exploration_probability:
             decision = "explore"
             selected_pool = explore_pool
         else:
@@ -102,18 +111,52 @@ class GravitySelector:
                 for candidate in selected_pool
             ]
         ordered = self._weighted_order(weighted, rng)
-        self._record(intent, decision, exploration_probability, return_pool, ordered)
+        self._record(
+            intent, decision, exploration_probability, return_pool, ordered,
+            random_draw=random_draw, probability_factors=probability_factors,
+        )
         return ordered
 
-    def _exploration_probability(self, intent: StopIntent) -> float:
+    def _exploration_probability(
+        self, intent: StopIntent, return_pool: List[LocationCandidate],
+    ) -> Tuple[float, dict]:
         profile = self.epr_profile
-        distinct = max(1, profile.distinct_location_count)
+        distinct = max(1, profile.return_eligible_count or len(return_pool))
         category = EPR_ACTIVITY_RHO_MULTIPLIER.get(intent.activity_type, 1.0)
         novelty = {"none": 0.45, "low": 0.72, "medium": 1.0, "high": 1.45}[
             self.novelty_level
         ]
-        probability = profile.rho * category * distinct ** (-profile.gamma) * novelty
-        return max(0.02, min(0.95, probability))
+        fatigue = self._repetition_fatigue(return_pool)
+        probability = profile.rho * category * distinct ** (-profile.gamma) * novelty * fatigue
+        low, high = EPR_ACTIVITY_BOUNDS.get(intent.activity_type, (0.06, 0.65))
+        result = max(low, min(high, probability))
+        return result, {
+            "return_eligible_count": distinct,
+            "activity_multiplier": category,
+            "novelty_multiplier": novelty,
+            "repetition_fatigue_multiplier": fatigue,
+            "bounds": [low, high],
+        }
+
+    def _repetition_fatigue(self, candidates: List[LocationCandidate]) -> float:
+        """连续数日复访提高探索概率；只读取结构化访问日期。"""
+        try:
+            current = dt.datetime.strptime(self.current_date, "%Y-%m-%d").date()
+        except (TypeError, ValueError):
+            return 1.0
+        recent_days = set()
+        for candidate in candidates:
+            for value in candidate.raw.get("recent_visit_dates", []) or []:
+                try:
+                    delta = (current - dt.datetime.strptime(str(value), "%Y-%m-%d").date()).days
+                except (TypeError, ValueError):
+                    continue
+                if 1 <= delta <= 3:
+                    recent_days.add(delta)
+        consecutive = 0
+        while consecutive + 1 in recent_days:
+            consecutive += 1
+        return 1.0 + min(0.75, consecutive * 0.22)
 
     def _return_weight(self, intent: StopIntent, candidate: LocationCandidate) -> float:
         visits = max(1, int(candidate.raw.get("visit_count", 0) or 0))
@@ -139,6 +182,18 @@ class GravitySelector:
         if intent.target_distance_km > 0:
             target = max(0.2, intent.target_distance_km)
             distance_kernel *= math.exp(-abs(math.log((distance + 0.2) / target)))
+        if intent.distance_band_km and len(intent.distance_band_km) >= 2:
+            low, high = intent.distance_band_km[:2]
+            if distance < low:
+                band_fit = math.exp(-(low - distance) / max(0.8, low + 0.5))
+            elif distance > high:
+                band_fit = math.exp(-(distance - high) / max(1.0, high * 0.45))
+            else:
+                band_fit = 1.35
+            sensitivity = {"high": 1.6, "medium": 1.0, "low": 0.55}.get(
+                intent.distance_sensitivity, 1.0,
+            )
+            distance_kernel *= band_fit ** sensitivity
         attraction = 1.0 / math.log(candidate.map_rank + 2.0)
         semantic = 1.35 if candidate.category == intent.activity_type else 0.80
         return max(1e-9, distance_kernel * attraction * semantic)
@@ -184,7 +239,8 @@ class GravitySelector:
 
     def _record(self, intent: StopIntent, decision: str, probability: float,
                 return_pool: List[LocationCandidate],
-                ordered: List[object]) -> None:
+                ordered: List[object], random_draw: Optional[float] = None,
+                probability_factors: Optional[dict] = None) -> None:
         candidates = []
         for item in ordered:
             candidate = item[0] if isinstance(item, tuple) else item
@@ -197,9 +253,13 @@ class GravitySelector:
             "valid_return_candidate_ids": [item.location_id for item in return_pool],
             "decision": decision,
             "exploration_probability": round(float(probability), 4),
+            "random_draw": None if random_draw is None else round(float(random_draw), 4),
+            "probability_factors": probability_factors or {},
+            "distance_tier": intent.distance_tier,
+            "distance_band_km": list(intent.distance_band_km),
             "ranked_candidate_ids": candidates,
         })
 
     def _rng(self, stop_id: str) -> random.Random:
-        digest = hashlib.sha256((self.seed + "|" + stop_id).encode("utf-8")).hexdigest()[:16]
+        digest = hashlib.sha256((self.seed + "|" + self.current_date + "|" + stop_id).encode("utf-8")).hexdigest()[:16]
         return random.Random(int(digest, 16))

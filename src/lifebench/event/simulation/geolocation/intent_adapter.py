@@ -33,6 +33,18 @@ def _string_list(value: Any) -> List[str]:
     return [text]
 
 
+def _distance_band(value: Any, tier: str) -> List[float]:
+    defaults = {"local": [0.0, 3.0], "urban": [3.0, 15.0], "long": [15.0, 500.0]}
+    if isinstance(value, (list, tuple)) and len(value) >= 2:
+        try:
+            low, high = max(0.0, float(value[0])), max(0.0, float(value[1]))
+            if high > low:
+                return [low, high]
+        except (TypeError, ValueError):
+            pass
+    return defaults[tier]
+
+
 def _policy(category: str, query_type: str) -> str:
     if category in {"home", "education"} or query_type == "existing":
         return "must_return"
@@ -98,6 +110,12 @@ def parse_stop_intents(data: Dict[str, Any]) -> List[StopIntent]:
             and query_type not in {"existing", "micro"}
             and _boolean(row.get("epr_applicable", False))
         )
+        distance_tier = _value(row, "distance_tier")
+        if distance_tier not in {"local", "urban", "long"}:
+            distance_tier = "local" if query_type in {"existing", "micro", "around"} else "urban"
+        distance_sensitivity = _value(row, "distance_sensitivity")
+        if distance_sensitivity not in {"high", "medium", "low"}:
+            distance_sensitivity = "high" if distance_tier == "local" else "low" if distance_tier == "long" else "medium"
         intents.append(StopIntent(
             stop_id=_value(row, "stop_id") or "stop_%03d" % index,
             order=index,
@@ -135,6 +153,11 @@ def parse_stop_intents(data: Dict[str, Any]) -> List[StopIntent]:
             fallback_queries=_string_list(row.get("fallback_queries")),
             fallback_area=_value(row, "fallback_area", "district"),
             allow_citywide_fallback=_boolean(row.get("allow_citywide_fallback", False)),
+            distance_tier=distance_tier,
+            distance_band_km=_distance_band(row.get("distance_band_km"), distance_tier),
+            distance_sensitivity=distance_sensitivity,
+            independent_trip=_boolean(row.get("independent_trip", False)),
+            distance_tier_reason=_value(row, "distance_tier_reason"),
         ))
     if not intents:
         raise ValueError("没有可解析的停留点")

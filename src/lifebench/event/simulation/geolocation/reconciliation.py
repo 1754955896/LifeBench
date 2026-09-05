@@ -8,6 +8,7 @@ from typing import Any, Dict, Iterable, List, Optional
 
 from .allocator import offset_coordinates
 from .catalog import city_matches
+from .coordinates import attach_record_wgs84
 from .registry import find_registered_location, normalize_place_name, stable_location_id
 from .validator import validate_location_records
 
@@ -78,14 +79,42 @@ def _district_hint(anchor: Dict[str, Any]) -> str:
 def _geocode_named_place(
     maptools: Any, name: str, address: str, city: str, district: str = "",
 ) -> Optional[Dict[str, str]]:
-    """对 LLM 新造地名做地理编码，取一个大致合理的地理坐标。
+    """只为具有可检索专名的 ``search_named`` 地点解析坐标。
 
-    优先按「省市区 + name」拼接查询，保证即使名称较泛也能落到目标城市；
-    省/市取自 city，区县尽可能从同城锚点地址提取。只要拿到坐标即视为可用，
-    不再过滤命中级别。
+    优先使用 POI 文本检索；仅当 POI 检索失败时才使用地理编码，且拒绝省、
+    市、区县、乡镇等行政中心级命中。
     """
     if maptools is None:
         return None
+    poi_search = getattr(maptools, "search_poi_candidates", None)
+    if callable(poi_search):
+        for query in (name, (district + " " + name).strip()):
+            if not query:
+                continue
+            try:
+                candidates = poi_search(keyword=query, city=city or None, limit=5)
+            except Exception:
+                candidates = []
+            for candidate in candidates or []:
+                if not isinstance(candidate, dict):
+                    continue
+                location = str(candidate.get("location") or "").strip()
+                if len(location.split(",")) != 2:
+                    continue
+                geocode_info = candidate.get("geocode") if isinstance(candidate.get("geocode"), dict) else {}
+                result_city = str(geocode_info.get("city") or candidate.get("cityname") or city or "")
+                if city and result_city and not city_matches(city, result_city):
+                    continue
+                return {
+                    "location": location,
+                    "formatted_address": str(candidate.get("structured_address") or candidate.get("address") or ""),
+                    "city": result_city,
+                    "district": str(geocode_info.get("district") or candidate.get("adname") or ""),
+                    "province": str(geocode_info.get("province") or candidate.get("pname") or ""),
+                    "adcode": str(geocode_info.get("adcode") or candidate.get("adcode") or ""),
+                    "poi_id": str(candidate.get("id") or ""),
+                    "resolution_source": "amap_poi_text",
+                }
     geocode = getattr(maptools, "amap_geocode", None)
     if not callable(geocode):
         return None
@@ -113,6 +142,9 @@ def _geocode_named_place(
         result_city = str(result.get("city") or "")
         if city and result_city and not city_matches(city, result_city):
             continue
+        level = str(result.get("level") or "").strip()
+        if level in {"国家", "省", "市", "区县", "乡镇", "村庄"}:
+            continue
         return {
             "location": location,
             "formatted_address": str(result.get("formatted_address") or ""),
@@ -120,6 +152,8 @@ def _geocode_named_place(
             "district": str(result.get("district") or ""),
             "province": str(result.get("province") or ""),
             "adcode": str(result.get("adcode") or ""),
+            "poi_id": "",
+            "resolution_source": "amap_geocode",
         }
     return None
 
@@ -172,6 +206,25 @@ def reconcile_estimated_locations(
         if activity_type not in ACTIVITY_TYPES:
             activity_type = "other"
         location_key = str(raw.get("location_key") or "").strip()
+        explicit_mode = str(raw.get("resolution_mode") or "").strip()
+        resolution_mode = explicit_mode or (
+            "reuse_existing" if raw.get("source_stop_id") else "anchor_estimate"
+        )
+        if resolution_mode not in {"reuse_existing", "search_named", "anchor_estimate"}:
+            issues.append("%s 的 resolution_mode 无效" % name)
+            continue
+
+        # 简称和表述润色不得产生第二个地点事实。只要 LLM 给出原 stop_id，
+        # 直接建立 location_key 别名，不重新搜索、不移动坐标。
+        source_stop_id = str(raw.get("source_stop_id") or "").strip()
+        if source_stop_id:
+            source_stop = by_id.get(source_stop_id)
+            if source_stop is None:
+                issues.append("%s 的 source_stop_id 无法解析" % name)
+                continue
+            if location_key:
+                location_key_to_stop_id[location_key] = source_stop_id
+            continue
         duplicate = existing_by_identity.get((name, address))
         if duplicate is not None:
             if location_key and duplicate.get("stop_id"):
@@ -182,7 +235,7 @@ def reconcile_estimated_locations(
             known_locations, name, address, requested_city,
             str(raw.get("activity_type") or ""),
         )
-        if registered is not None:
+        if registered is not None and (resolution_mode == "reuse_existing" or not explicit_mode):
             coordinates = str(registered.get("location") or "")
             longitude, latitude = (float(value) for value in coordinates.split(","))
             stable_id = str(
@@ -211,6 +264,9 @@ def reconcile_estimated_locations(
                 "city": requested_city or str(registered.get("city") or ""),
                 "reused_from_registry": True,
                 "location_key": location_key,
+                "fact_source": "map_reselected",
+                "override_reason": str(raw.get("generation_reason") or "最终文本复用历史地点"),
+                "estimate_method": "registry_identity",
             }
             stops.append(point)
             by_id[stop_id] = point
@@ -220,17 +276,22 @@ def reconcile_estimated_locations(
                 location_key_to_stop_id[location_key] = stop_id
             continue
 
+        if resolution_mode == "reuse_existing":
+            issues.append("%s 要求复用地点，但未提供可解析的 source_stop_id 或历史地点" % name)
+            continue
+
         # 先解析锚点（仅用于提取区县提示），再做地理编码。
         requested_anchor_id = str(raw.get("anchor_stop_id") or "").strip()
         anchor = by_id.get(requested_anchor_id) or default_anchor
         if requested_anchor_id and requested_anchor_id not in by_id:
             issues.append("%s 的 anchor_stop_id 无效，改用默认锚点" % name)
 
-        # LLM 新造地名：优先按「省市区 + name」geocode 拿大致合理坐标，
-        # 取代锚点偏移的估算值。仅在编码失败/落错城市时退回后续锚点偏移分支。
+        # 只有 LLM 明确声明 search_named 才允许地图搜索。泛称或相对地点
+        # 默认走 anchor_estimate，避免落到区县中心后造成假近距离。
         district_hint = _district_hint(anchor)
-        geocoded = _geocode_named_place(
-            maptools, name, address, requested_city, district_hint,
+        geocoded = (
+            _geocode_named_place(maptools, name, address, requested_city, district_hint)
+            if resolution_mode == "search_named" else None
         )
         if geocoded is not None:
             coordinates = geocoded["location"]
@@ -238,7 +299,10 @@ def reconcile_estimated_locations(
             resolved_city = geocoded.get("city") or requested_city or (
                 str(default_anchor.get("city") or "") if default_anchor else ""
             )
-            stable_id = stable_location_id(name, address, resolved_city)
+            stable_id = (
+                "amap:" + geocoded["poi_id"] if geocoded.get("poi_id")
+                else stable_location_id(name, address, resolved_city)
+            )
             occurrence_identity = "%s|%s|%s" % (seed, location_key, stable_id)
             stop_id = "final_geocoded_" + hashlib.sha1(
                 occurrence_identity.encode("utf-8")
@@ -251,7 +315,7 @@ def reconcile_estimated_locations(
                 "longitude": longitude,
                 "latitude": latitude,
                 "coordinate_system": records.get("coordinate_system", "GCJ-02"),
-                "source": "amap_geocode",
+                "source": geocoded.get("resolution_source") or "amap_geocode",
                 "map_verified": True,
                 "confidence": 0.85,
                 "spatial_scope": str(raw.get("spatial_scope") or "city"),
@@ -266,6 +330,10 @@ def reconcile_estimated_locations(
                 ),
                 "is_local_loop": _boolean(raw.get("is_local_loop", False)),
                 "location_key": location_key,
+                "fact_source": "map_reselected",
+                "override_reason": str(raw.get("generation_reason") or "最终文本更换地点"),
+                "estimate_method": geocoded.get("resolution_source") or "amap_geocode",
+                "resolution_mode": "search_named",
             }
             stops.append(point)
             by_id[stop_id] = point
@@ -273,6 +341,10 @@ def reconcile_estimated_locations(
             added.append(stop_id)
             if location_key:
                 location_key_to_stop_id[location_key] = stop_id
+            continue
+
+        if resolution_mode == "search_named":
+            issues.append("%s 的具名地点搜索失败，不自动改用行政中心或锚点偏移" % name)
             continue
 
         if not anchor or anchor.get("longitude") is None or anchor.get("latitude") is None:
@@ -333,6 +405,11 @@ def reconcile_estimated_locations(
             "is_local_loop": is_local_loop,
             "location_key": location_key,
             "city": city,
+            "fact_source": "narrative_estimated",
+            "override_reason": str(raw.get("generation_reason") or "最终文本更换地点"),
+            "anchor_location_id": str(anchor.get("location_id") or ""),
+            "estimate_method": "stable_anchor_offset",
+            "resolution_mode": "anchor_estimate",
         }
         stops.append(point)
         by_id[stop_id] = point
@@ -349,7 +426,7 @@ def reconcile_estimated_locations(
         "location_key_to_stop_id": location_key_to_stop_id,
         "issues": issues,
     }
-    return records
+    return attach_record_wgs84(records)
 
 
 FINAL_SEGMENT_KINDS = {"activity", "travel", "local_loop"}
@@ -384,6 +461,7 @@ def _public_point(point: Dict[str, Any]) -> Dict[str, Any]:
         "location_id", "stop_id", "name", "address", "longitude", "latitude",
         "coordinate_system", "source", "map_verified", "confidence", "spatial_scope",
         "city",
+        "fact_source", "override_reason", "anchor_location_id", "estimate_method",
     )
     return {key: point.get(key) for key in keys}
 
@@ -442,7 +520,7 @@ def reconcile_final_itinerary(
     )
     raw_segments = payload.get("segments")
     if not isinstance(raw_segments, list):
-        return records
+        return attach_record_wgs84(records)
 
     all_stops = [item for item in records.get("stops", []) if isinstance(item, dict)]
     by_stop_id = {
@@ -532,6 +610,9 @@ def reconcile_final_itinerary(
             "departure_time": segment["start_time"],
             "arrival_time": segment["end_time"],
             "source": str(base_leg.get("source") or "") if preserves_base else "llm_post_adjustment_estimate",
+            "fact_source": "map_accepted" if preserves_base else "narrative_estimated",
+            "override_reason": "" if preserves_base else str(raw.get("override_reason") or "最终文本调整通行事实"),
+            "estimate_method": "map_route" if preserves_base else "llm_time_distance_estimate",
             "map_verified": bool(base_leg.get("map_verified", False)) if preserves_base else False,
             "confidence": float(base_leg.get("confidence", 1.0) or 0.0) if preserves_base else 0.5,
             "leg_type": leg_type,
@@ -575,4 +656,4 @@ def reconcile_final_itinerary(
         "final_stop_count": len(records.get("stops", [])),
         "issues": issues,
     }
-    return records
+    return attach_record_wgs84(records)

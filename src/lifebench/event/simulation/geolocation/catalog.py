@@ -17,6 +17,64 @@ CATEGORY_TERMS = {
     "home": ("家", "住址", "住所", "居住", "住宅", "宿舍"),
 }
 
+LOCATION_GROUP_ROLES = {
+    "anchors": "anchor",
+    "familiar_places": "familiar",
+    "city_reference_pois": "city_reference",
+    "social_locations": "social_location",
+}
+
+REFERENCE_CATEGORY_MAP = {
+    "food": "meal", "restaurant": "meal", "dining": "meal",
+    "retail": "shopping", "mall": "shopping",
+    "sports": "fitness", "sport": "fitness",
+    "scenic": "leisure", "culture": "leisure", "entertainment": "leisure",
+    "nature": "leisure", "park": "leisure",
+}
+
+
+def flatten_location_data(value: Any) -> List[Dict[str, Any]]:
+    """Flatten legacy address arrays and persona_locations_v2 without losing roles."""
+    rows: List[Dict[str, Any]] = []
+
+    def collect(item: Any, inherited_role: str = "") -> None:
+        if isinstance(item, (list, tuple)):
+            for child in item:
+                collect(child, inherited_role)
+            return
+        if not isinstance(item, dict):
+            return
+        is_v2 = str(item.get("schema_version") or "") == "persona_locations_v2"
+        if is_v2 or any(key in item for key in LOCATION_GROUP_ROLES):
+            for group, role in LOCATION_GROUP_ROLES.items():
+                collect(item.get(group, []), role)
+            return
+        # Ignore arbitrary metadata wrappers, but keep a dict that actually looks like a place.
+        if not (item.get("location") and (item.get("name") or item.get("poi"))):
+            for child in item.values():
+                if isinstance(child, (list, tuple)):
+                    collect(child, inherited_role)
+            return
+        row = dict(item)
+        if inherited_role:
+            row.setdefault("location_role", inherited_role)
+        role = str(row.get("location_role") or "")
+        if role == "city_reference":
+            row.setdefault("source", "map_preseed")
+            row.setdefault("knowledge_state", "known_unvisited")
+            row.setdefault("return_eligible", False)
+            row.setdefault("visit_count", 0)
+        elif role == "social_location":
+            row.setdefault("source", "persona_social_location")
+        elif role == "anchor":
+            row.setdefault("source", "persona_catalog")
+        elif role == "familiar":
+            row.setdefault("source", "persona_familiar")
+        rows.append(row)
+
+    collect(value)
+    return rows
+
 
 def infer_category(text: Any, fallback: str = "other") -> str:
     value = str(text or "").lower()
@@ -58,16 +116,7 @@ def _stable_id(name: str, coordinates: str) -> str:
 class LocationCatalog:
     def __init__(self, addresses: Optional[Iterable[Dict[str, Any]]]):
         self.items = []  # type: List[LocationCandidate]
-        flattened = []  # type: List[Dict[str, Any]]
-
-        def collect(value: Any) -> None:
-            if isinstance(value, dict):
-                flattened.append(value)
-            elif isinstance(value, (list, tuple)):
-                for child in value:
-                    collect(child)
-
-        collect(addresses or [])
+        flattened = flatten_location_data(addresses or [])
         for index, item in enumerate(flattened):
             if not isinstance(item, dict):
                 continue
@@ -76,8 +125,11 @@ class LocationCatalog:
             if len(coordinates.split(",")) != 2:
                 continue
             description = _text(item.get("description"))
-            role = infer_role(name, description)
-            declared_category = _text(item.get("category"))
+            location_role = _text(item.get("location_role"))
+            declared_anchor = _text(item.get("anchor_role"))
+            role = declared_anchor if location_role == "anchor" and declared_anchor else infer_role(name, description)
+            declared_category = _text(item.get("activity_category") or item.get("category"))
+            declared_category = REFERENCE_CATEGORY_MAP.get(declared_category, declared_category)
             category = declared_category if declared_category in CATEGORY_TERMS or declared_category == "other" else infer_category(name + _text(item.get("type")))
             if category == "other":
                 category = infer_category(description)

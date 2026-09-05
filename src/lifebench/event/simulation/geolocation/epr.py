@@ -29,6 +29,7 @@ class EPRProfile:
     distance_cutoff_km: float = 30.0
     characteristic_trip_km: float = 5.0
     distinct_location_count: int = 0
+    return_eligible_count: int = 0
     observed_days: int = 0
 
     def to_dict(self) -> Dict[str, Any]:
@@ -68,6 +69,13 @@ def build_personal_epr_profile(
         for item in locations
         if str(item.get("location_id") or item.get("id") or "")
     }
+    eligible_ids = {
+        str(item.get("location_id") or item.get("id") or "")
+        for item in locations
+        if str(item.get("location_id") or item.get("id") or "")
+        and item.get("return_eligible", True)
+        and str(item.get("location_tier") or "") not in {"temporary", "episodic"}
+    }
     return EPRProfile(
         rho=round(rho, 4),
         gamma=round(gamma, 4),
@@ -76,5 +84,6 @@ def build_personal_epr_profile(
         distance_cutoff_km=round(cutoff, 3),
         characteristic_trip_km=round(characteristic, 3),
         distinct_location_count=len(distinct_ids),
+        return_eligible_count=len(eligible_ids),
         observed_days=days,
     )

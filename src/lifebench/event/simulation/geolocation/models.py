@@ -42,6 +42,11 @@ class StopIntent:
     fallback_queries: List[str] = field(default_factory=list)
     fallback_area: str = ""
     allow_citywide_fallback: bool = False
+    distance_tier: str = "urban"
+    distance_band_km: List[float] = field(default_factory=lambda: [0.0, 15.0])
+    distance_sensitivity: str = "medium"
+    independent_trip: bool = False
+    distance_tier_reason: str = ""
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -92,6 +97,10 @@ class ResolvedStop:
     spatial_scope: str = "city"
     confidence: float = 1.0
     map_verified: bool = False
+    fact_source: str = "allocator"
+    override_reason: str = ""
+    anchor_location_id: str = ""
+    estimate_method: str = ""
 
     def as_poi(self) -> Dict[str, Any]:
         return {"name": self.name, "location": self.coordinates, "city": self.city}

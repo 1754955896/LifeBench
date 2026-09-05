@@ -136,11 +136,11 @@ def validate_location_records(
         coord_distance = haversine_km(
             _point_coordinates(origin), _point_coordinates(destination),
         )
-        # 以下为「数值真实性/精度」校验：数据仍结构完整、有坐标，只是不够精确。
-        # accuracy_validation=False 时降级为提示，不再 fail。
-        if accuracy_validation and not same_location and coord_distance < 0.03:
+        # 坐标、声明距离和通行时长必须形成同一套数值事实，无论地图
+        # 精度开关如何都要检查。accuracy_validation 只控制城市标签等外部精度。
+        if not same_location and coord_distance < 0.03:
             issues.append("%s的不同宏地点使用了相同坐标" % leg_id)
-        if accuracy_validation and not same_location and coord_distance > 0.2 and distance + 0.1 < coord_distance * 0.75:
+        if not same_location and coord_distance > 0.2 and distance + 0.1 < coord_distance * 0.75:
             issues.append("%s记录距离%.2f公里显著小于端点直线距离%.2f公里" % (
                 leg_id, distance, coord_distance,
             ))
@@ -153,7 +153,7 @@ def validate_location_records(
             and coord_distance < 20.0
         ):
             issues.append("%s跨城市但坐标距离不足20公里" % leg_id)
-        if accuracy_validation and duration > 0 and distance > 0:
+        if duration > 0 and distance > 0:
             speed = distance / (duration / 60.0)
             maximum = MODE_MAX_SPEED_KMH.get(str(leg.get("mode") or ""))
             if maximum is not None and speed > maximum:

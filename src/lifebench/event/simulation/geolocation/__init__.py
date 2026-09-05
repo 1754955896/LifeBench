@@ -9,6 +9,8 @@ from .injection import render_assignment_summary
 from .intent_adapter import parse_stop_intents
 from .models import PlausibleLocationSpec, TrajectoryAssignment
 from .registry import find_registered_location, remember_location_records
+from .timeslot import build_half_hour_trajectory, write_half_hour_trajectory
+from .coordinates import attach_record_wgs84, gcj02_to_wgs84
 
 __all__ = [
     "TrajectoryAllocator",
@@ -24,4 +26,8 @@ __all__ = [
     "render_assignment_summary",
     "find_registered_location",
     "remember_location_records",
+    "build_half_hour_trajectory",
+    "write_half_hour_trajectory",
+    "attach_record_wgs84",
+    "gcj02_to_wgs84",
 ]

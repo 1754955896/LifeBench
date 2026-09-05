@@ -46,9 +46,14 @@ class TrajectoryAllocator:
     def __init__(self, maptools: Any, persona_addresses: Any, persona: Any,
                  seed: str = "0", candidate_limit: int = 12, route_top_k: int = 4,
                  novelty_level: str = "medium", mobility_level: str = "medium",
-                 epr_profile: Optional[EPRProfile] = None):
+                 epr_profile: Optional[EPRProfile] = None,
+                 mobility_day_budget: Optional[Dict[str, Any]] = None,
+                 urban_candidate_share: float = 0.35):
         self.catalog = LocationCatalog(persona_addresses)
-        self.provider = CandidateProvider(maptools, self.catalog, candidate_limit)
+        self.provider = CandidateProvider(
+            maptools, self.catalog, candidate_limit,
+            urban_candidate_share=urban_candidate_share,
+        )
         self.selector = GravitySelector(
             seed, novelty_level=novelty_level, epr_profile=epr_profile,
         )
@@ -57,6 +62,7 @@ class TrajectoryAllocator:
             mobility_level if mobility_level in {"low", "medium", "high"}
             else "medium"
         )
+        self.mobility_day_budget = dict(mobility_day_budget or {})
         self.mode_planner = ModePlanner(maptools, persona)
         self.route_top_k = max(1, route_top_k)
 
@@ -70,6 +76,8 @@ class TrajectoryAllocator:
         previous_candidate = None  # type: Optional[LocationCandidate]
         previous_intent = None  # type: Optional[StopIntent]
         route_queries = 0
+        distance_used_km = 0.0
+        visited_location_ids = set()
 
         for intent in sorted(intents, key=lambda item: item.order):
             if (
@@ -88,6 +96,8 @@ class TrajectoryAllocator:
             candidate, route, over_budget = self._choose(
                 intent, previous_intent, previous_candidate, ranked,
                 budget_aware=budget_aware,
+                distance_used_km=distance_used_km,
+                visited_location_ids=visited_location_ids,
             )
             route_queries += min(len(ranked), self.route_top_k) if previous_candidate else 0
             degraded = False
@@ -148,11 +158,15 @@ class TrajectoryAllocator:
                 route = route or self.mode_planner.route(previous_candidate, candidate, intent)
                 if budget_aware:
                     budget = self._budget(previous_intent, intent)
-                    feasible = route.leg_type == "local_loop" or route.duration_minutes <= budget
-                    if over_budget or not feasible:
+                    within_budget = route.leg_type == "local_loop" or route.duration_minutes <= budget
+                    # Keep the real route and mark the leg for the itinerary LLM. A false
+                    # flag is diagnostic here; required stops are not removed or rejected.
+                    feasible = within_budget and not over_budget
+                    if over_budget or not within_budget:
                         assignment.violations.append({
                             "code": "travel_budget_exceeded", "stop_id": intent.stop_id,
                             "duration_minutes": route.duration_minutes, "budget_minutes": budget,
+                            "soft": True,
                         })
                 else:
                     # 预算分析交由后续一轮 LLM 完成，这里只记录真实通行时长。
@@ -178,7 +192,15 @@ class TrajectoryAllocator:
                     narrative_route=route.narrative_route,
                     map_verified=route.map_verified,
                 ))
+                distance_used_km += max(0.0, float(route.distance_km or 0.0))
             assignment.stops.append(stop)
+            visited_location_ids.add(stop.location_id)
+            decision = next((
+                row for row in reversed(self.selector.decision_trace)
+                if row.get("stop_id") == intent.stop_id
+            ), None)
+            if decision is not None:
+                decision["selected_location_id"] = stop.location_id
             previous_candidate = candidate
             previous_intent = intent
 
@@ -193,6 +215,13 @@ class TrajectoryAllocator:
             "budget_aware": bool(budget_aware),
             "novelty_level": self.novelty_level,
             "mobility_level": self.mobility_level,
+            "mobility_day_budget": self.mobility_day_budget,
+            "mobility_progress": {
+                "distance_used_km": round(distance_used_km, 2),
+                "macro_stops_used": len(visited_location_ids),
+                "target_distance_band_km": list(self.mobility_day_budget.get("daily_distance_band_km", [])),
+                "target_macro_stop_range": list(self.mobility_day_budget.get("macro_stop_range", [])),
+            },
             "epr_profile": self.selector.epr_profile.to_dict(),
             "epr_decisions": list(self.selector.decision_trace),
             "stop_count": len(assignment.stops),
@@ -272,7 +301,9 @@ class TrajectoryAllocator:
     def _choose(self, intent: StopIntent, previous_intent: Optional[StopIntent],
                 previous: Optional[LocationCandidate],
                 ranked: List[Tuple[LocationCandidate, float]],
-                budget_aware: bool = True) -> Tuple[Optional[LocationCandidate], Optional[RouteChoice], bool]:
+                budget_aware: bool = True, distance_used_km: float = 0.0,
+                visited_location_ids: Optional[set] = None,
+                ) -> Tuple[Optional[LocationCandidate], Optional[RouteChoice], bool]:
         if not ranked:
             return None, None, False
         if previous is None:
@@ -292,7 +323,15 @@ class TrajectoryAllocator:
         evaluated = []
         for candidate, gravity_score in ranked[:self.route_top_k]:
             route = self.mode_planner.route(previous, candidate, intent)
-            route_score = gravity_score / (1.0 + route.duration_minutes / float(max(1, budget)))
+            profile_fit = self._remaining_profile_fit(
+                route.distance_km, distance_used_km,
+                candidate.location_id not in (visited_location_ids or set()),
+                len(visited_location_ids or set()),
+            )
+            route_score = (
+                gravity_score * profile_fit
+                / (1.0 + route.duration_minutes / float(max(1, budget)))
+            )
             evaluated.append((candidate, route, route_score))
         feasible = [item for item in evaluated if item[1].duration_minutes <= budget]
         if feasible:
@@ -300,6 +339,37 @@ class TrajectoryAllocator:
             return selected[0], selected[1], False
         selected = min(evaluated, key=lambda item: (item[1].duration_minutes, -item[2]))
         return selected[0], selected[1], True
+
+    def _remaining_profile_fit(
+        self, leg_distance_km: float, distance_used_km: float,
+        creates_new_macro_stop: bool, stops_used: int,
+    ) -> float:
+        """Softly prefer candidates that move the day toward, not past, its profile."""
+        profile = self.mobility_day_budget
+        band = profile.get("daily_distance_band_km", [])
+        stop_range = profile.get("macro_stop_range", profile.get("unique_macro_location_range", []))
+        score = 1.0
+        if isinstance(band, list) and len(band) >= 2:
+            try:
+                low, high = max(0.0, float(band[0])), max(0.0, float(band[1]))
+                projected = distance_used_km + max(0.0, float(leg_distance_km or 0.0))
+                if projected > high > 0:
+                    score *= math.exp(-(projected - high) / max(4.0, high * 0.35))
+                elif distance_used_km < low and projected <= high:
+                    progress = min(1.0, max(0.0, leg_distance_km) / max(1.0, low - distance_used_km))
+                    score *= 1.0 + 0.45 * progress
+            except (TypeError, ValueError):
+                pass
+        if isinstance(stop_range, list) and len(stop_range) >= 2 and creates_new_macro_stop:
+            try:
+                minimum, maximum = int(stop_range[0]), int(stop_range[1])
+                if stops_used < minimum:
+                    score *= 1.25
+                elif stops_used >= maximum:
+                    score *= 0.75
+            except (TypeError, ValueError):
+                pass
+        return max(0.05, score)
 
     def _budget(self, previous: Optional[StopIntent], current: StopIntent) -> int:
         default = current.maximum_travel_minutes or DEFAULT_MAX_LEG_MINUTES.get(current.activity_type, 45)
@@ -337,6 +407,9 @@ class TrajectoryAllocator:
             spatial_scope=intent.spatial_scope,
             confidence=candidate.confidence,
             map_verified=candidate.map_verified,
+            fact_source="map_accepted" if candidate.map_verified else "narrative_estimated",
+            anchor_location_id=candidate.anchor_id,
+            estimate_method="" if candidate.map_verified else "candidate_fallback",
         )
 
     @staticmethod

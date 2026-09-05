@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import hashlib
+import math
 import random
 from collections import Counter
 from datetime import datetime
@@ -39,8 +40,8 @@ def _time_minutes(value: Any) -> int:
         return 0
 
 
-def _stable_rng(instance_id: Any, date: str) -> random.Random:
-    raw = f"day-variation-v1|{instance_id}|{date}".encode("utf-8")
+def _stable_rng(instance_id: Any, date: str, simulation_seed: Any = 0) -> random.Random:
+    raw = f"day-variation-v2|{simulation_seed}|{instance_id}|{date}".encode("utf-8")
     seed = int(hashlib.sha256(raw).hexdigest()[:16], 16)
     return random.Random(seed)
 
@@ -72,6 +73,10 @@ def _window_summary(records: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
             "exercise_days": 0,
             "exploratory_days": 0,
             "new_location_count": 0,
+            "average_distance_km": 0.0,
+            "average_radius_gyration_km": 0.0,
+            "urban_activity_days": 0,
+            "long_distance_days": 0,
             "dominant_mobility_signature": "",
             "dominant_signature_days": 0,
         }
@@ -96,6 +101,23 @@ def _window_summary(records: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
         "exercise_days": sum(bool(item.get("exercise_day")) for item in records),
         "exploratory_days": sum(_number(item.get("new_location_count")) > 0 for item in records),
         "new_location_count": int(sum(_number(item.get("new_location_count")) for item in records)),
+        "average_distance_km": round(
+            sum(
+                _number(item.get("travel_distance_km") or item.get("route_distance_km"))
+                for item in records
+            ) / count, 2
+        ),
+        "average_radius_gyration_km": round(
+            sum(_number(item.get("radius_gyration_km")) for item in records) / count, 2
+        ),
+        "urban_activity_days": sum(
+            30 <= _number(item.get("travel_distance_km") or item.get("route_distance_km")) < 80
+            for item in records
+        ),
+        "long_distance_days": sum(
+            _number(item.get("travel_distance_km") or item.get("route_distance_km")) >= 80
+            for item in records
+        ),
         "dominant_mobility_signature": dominant,
         "dominant_signature_days": dominant_days,
     }
@@ -123,14 +145,16 @@ _WEEKDAY_ARCHETYPES = {
     "evening_activity": 0.18,
     "social_or_leisure": 0.10,
     "exploratory": 0.05,
+    "citywide_leisure": 0.04,
 }
 
 _WEEKEND_ARCHETYPES = {
     "home_recovery": 0.18,
-    "local_leisure": 0.27,
-    "social_activity": 0.24,
-    "exercise_outing": 0.16,
+    "local_leisure": 0.22,
+    "social_activity": 0.20,
+    "exercise_outing": 0.13,
     "exploratory": 0.10,
+    "citywide_leisure": 0.12,
     "long_distance": 0.05,
 }
 
@@ -146,11 +170,47 @@ _ARCHETYPE_SETTINGS = {
     "social_activity": ("medium", "medium", "1-2", "medium", "low"),
     "exercise_outing": ("medium", "low", "1-2", "low", "medium"),
     "long_distance": ("high", "high", "1-2", "low", "low"),
+    "citywide_leisure": ("high", "medium", "1-3", "low", "medium"),
+}
+
+
+# daily distance, macro stops, destination distance, maximum single trip,
+# radius of gyration and the prior chance that one leg exceeds 15 km.
+_MOBILITY_ARCHETYPE_PROFILES = {
+    "low_mobility": ([0, 10], [1, 3], [0, 4], [0, 2], [0, 3], 0.01),
+    "home_recovery": ([0, 8], [1, 3], [0, 3], [0, 2], [0, 2.5], 0.01),
+    "local_leisure": ([5, 20], [2, 4], [1, 8], [2, 5], [1, 5], 0.02),
+    "routine_commute": ([10, 30], [2, 3], [2, 12], [2, 8], [2, 7], 0.02),
+    "commute_with_errand": ([15, 40], [3, 5], [2, 15], [4, 10], [3, 9], 0.04),
+    "evening_activity": ([20, 50], [3, 5], [3, 18], [5, 15], [4, 10], 0.06),
+    "social_or_leisure": ([20, 60], [3, 5], [3, 20], [5, 18], [4, 11], 0.08),
+    "social_activity": ([15, 60], [3, 5], [3, 20], [5, 18], [4, 11], 0.08),
+    "exercise_outing": ([5, 30], [2, 4], [1, 12], [2, 10], [2, 7], 0.03),
+    "exploratory": ([15, 60], [3, 6], [3, 22], [6, 20], [4, 12], 0.10),
+    "citywide_leisure": ([30, 80], [4, 6], [5, 25], [10, 25], [8, 12], 0.14),
+    "long_distance": ([60, 180], [3, 6], [10, 80], [15, 80], [10, 40], 0.22),
+}
+
+
+_ACTIVITY_STIMULI = {
+    "low_mobility": ["保留居家休息和附近短活动，不为丰富度专程远行"],
+    "home_recovery": ["以恢复、家务和低强度生活为主，允许完全不外出"],
+    "local_leisure": ["可在社区或邻近城区安排公园、餐饮、采购或轻松活动"],
+    "routine_commute": ["维持主要通勤骨架，只安排自然的用餐和自由时间"],
+    "commute_with_errand": ["可沿通勤链增加一次采购、维修、理发或生活办事"],
+    "evening_activity": ["可在下班后安排一项完整的运动、餐饮或娱乐活动"],
+    "social_or_leisure": ["可联系已有关系中的熟人，安排聚餐或休闲活动"],
+    "social_activity": ["可联系已有关系中的熟人，安排半日社交或共同娱乐"],
+    "exercise_outing": ["可根据体力安排户外、场馆运动或恢复训练"],
+    "exploratory": ["可改变一种活动或地点，在当天完成一次有动机的新尝试"],
+    "citywide_leisure": ["若空闲允许，可去同城其他城区安排景点、商场、餐饮或娱乐组成的活动链"],
+    "long_distance": ["只有动机和时间充分时才安排远郊、跨区或更远目的地"],
 }
 
 
 def build_day_variation_context(
     *, history: Any, plan: Any, date: str, instance_id: Any = 0,
+    simulation_seed: Any = 0, distribution_config: Any = None,
 ) -> Dict[str, Any]:
     """按日期和近期分布生成可复现的当日软约束。"""
     summary = build_recent_behavior_summary(history)
@@ -170,8 +230,35 @@ def build_day_variation_context(
     if has_holiday:
         is_weekend = True
     weights = dict(_WEEKEND_ARCHETYPES if is_weekend else _WEEKDAY_ARCHETYPES)
+    configured = _dict(distribution_config).get(
+        "weekend_archetype_weights" if is_weekend else "weekday_archetype_weights",
+        {},
+    )
+    if isinstance(configured, dict):
+        for key, value in configured.items():
+            if key not in weights:
+                continue
+            try:
+                weights[key] = max(0.0, float(value))
+            except (TypeError, ValueError):
+                continue
 
     days = int(recent.get("days", 0) or 0)
+    if days == 0:
+        # 冷启动使用人群先验。降低而不禁止尾部日型，否则短分片中几乎
+        # 永远不会出现跨城区/长距离日，总体分布会被人为截断。
+        if "citywide_leisure" in weights:
+            weights["citywide_leisure"] *= 0.65
+        if "long_distance" in weights:
+            weights["long_distance"] *= 0.45
+        if "exploratory" in weights:
+            weights["exploratory"] *= 0.75
+        for key in (
+            "routine_commute", "commute_with_errand", "low_mobility",
+            "home_recovery", "local_leisure",
+        ):
+            if key in weights:
+                weights[key] *= 1.25
     if days >= 3:
         repeated = int(recent.get("dominant_signature_days", 0) or 0)
         average_stops = _number(recent.get("average_unique_stops"))
@@ -181,7 +268,7 @@ def build_day_variation_context(
                     weights[key] *= 0.55
             for key in (
                 "commute_with_errand", "evening_activity", "social_or_leisure",
-                "local_leisure", "social_activity", "exploratory",
+                "local_leisure", "social_activity", "exploratory", "citywide_leisure",
             ):
                 if key in weights:
                     weights[key] *= 1.35
@@ -196,24 +283,49 @@ def build_day_variation_context(
                 weights["exploratory"] *= 0.45
             if "long_distance" in weights:
                 weights["long_distance"] *= 0.65
+        if int(recent.get("urban_activity_days", 0) or 0) == 0 and "citywide_leisure" in weights:
+            weights["citywide_leisure"] *= 1.45
+        if int(recent.get("long_distance_days", 0) or 0) > 0 and "long_distance" in weights:
+            weights["long_distance"] *= 0.55
 
     required_event_count = len(_list(plan_data.get("events")))
     if required_event_count >= 6:
-        for key in ("exploratory", "long_distance", "social_activity", "social_or_leisure"):
+        for key in (
+            "exploratory", "long_distance", "social_activity", "social_or_leisure",
+            "citywide_leisure", "evening_activity",
+        ):
             if key in weights:
                 weights[key] *= 0.70
 
-    rng = _stable_rng(instance_id, date)
+    rng = _stable_rng(instance_id, date, simulation_seed)
     day_type = _weighted_choice(rng, weights)
     mobility, novelty, extra_budget, mundane_density, schedule_slack = _ARCHETYPE_SETTINGS[day_type]
+    history_signals = []
+    if days == 0:
+        history_signals.append("暂无近期结构化移动历史，今日使用人群先验与可复现随机抽样")
+    else:
+        if int(recent.get("dominant_signature_days", 0) or 0) >= 3:
+            history_signals.append("近期同一移动链连续出现，可温和提高第三地点或顺路活动概率")
+        if _number(recent.get("average_unique_stops")) <= 2.2:
+            history_signals.append("近期日均宏观地点较少，空闲且状态允许时可考虑多一个自然停留点")
+        if int(recent.get("evening_out_days", 0) or 0) == 0:
+            history_signals.append("近七日无晚间外出，仅在人物有意愿时增加晚间活动可能")
+        if int(recent.get("urban_activity_days", 0) or 0) == 0:
+            history_signals.append("近期无30–80公里城市活动日，休息日可温和增加跨城区活动概率")
+        if int(recent.get("long_distance_days", 0) or 0) > 0:
+            history_signals.append("近期已有长距离日，不需要为尾部分布连续安排远行")
     return {
-        "schema_version": "day_variation_v1",
+        "schema_version": "day_variation_v2",
+        "seed_key": "day-variation-v2|%s|%s|%s" % (simulation_seed, instance_id, date),
         "day_type": day_type,
+        "day_archetype": day_type,
         "mobility_level": mobility,
         "novelty_level": novelty,
         "formal_extra_activity_budget": extra_budget,
         "mundane_detail_density": mundane_density,
         "schedule_slack": schedule_slack,
+        "history_signals": history_signals[:4],
+        "base_distribution_source": "config" if configured else "builtin",
         "principles": {
             "required_events_remain_mandatory": True,
             "allow_unstructured_time": True,
@@ -221,6 +333,108 @@ def build_day_variation_context(
             "mundane_details_do_not_require_new_stops": True,
             "soft_constraint": "若与必选事件、实际反馈、体力或时空可行性冲突，可以自然降级，不为满足类型强行出行。",
         },
+    }
+
+
+def build_mobility_day_budget(day_variation: Any, plan: Any) -> Dict[str, Any]:
+    """Build the V2 day profile; targets are soft and never remove required events."""
+    variation = _dict(day_variation)
+    level = str(variation.get("mobility_level") or "medium")
+    day_type = str(variation.get("day_type") or "")
+    profile = _MOBILITY_ARCHETYPE_PROFILES.get(
+        day_type, _MOBILITY_ARCHETYPE_PROFILES["routine_commute"]
+    )
+    distance_band, stops, destination_band, max_trip_band, gyration_band, long_probability = profile
+    stop_min, stop_max = stops
+    trip_min, trip_max = {
+        "low": (0, 4), "medium": (2, 8), "high": (4, 10),
+    }.get(level, (2, 8))
+    explore_min, explore_max = (
+        (0, 1) if level == "low" else ((1, 3) if level == "high" else (0, 2))
+    )
+    required = len(_list(_dict(plan).get("events")))
+    trip_max = max(trip_max, min(12, required + 2))
+    # 区间控制总体分布，区间内的可复现随机目标避免所有同类日都落在同一值。
+    target_rng = random.Random(int(hashlib.sha256(
+        (str(variation.get("seed_key") or "") + "|mobility-targets").encode("utf-8")
+    ).hexdigest()[:16], 16))
+    distance_fraction = (target_rng.random() + target_rng.random()) / 2.0
+    sampled_distance = round(
+        float(distance_band[0]) + (float(distance_band[1]) - float(distance_band[0])) * distance_fraction,
+        1,
+    )
+    sampled_stops = target_rng.randint(int(stop_min), int(stop_max))
+    independent_probability = {
+        "low_mobility": 0.05, "home_recovery": 0.03, "routine_commute": 0.08,
+        "commute_with_errand": 0.20, "evening_activity": 0.35,
+        "social_or_leisure": 0.35, "social_activity": 0.40,
+        "local_leisure": 0.22, "exercise_outing": 0.20,
+        "exploratory": 0.42, "citywide_leisure": 0.55, "long_distance": 0.65,
+    }.get(day_type, 0.15)
+    preferred_windows = (
+        ["weekday_evening"] if day_type in {"evening_activity", "social_or_leisure"}
+        else ["weekend_daytime", "weekend_evening"] if day_type in {
+            "social_activity", "local_leisure", "exercise_outing", "exploratory", "citywide_leisure",
+        } else []
+    )
+    return {
+        "schema_version": "mobility_day_profile_v2",
+        "seed_key": str(variation.get("seed_key") or ""),
+        "day_type": day_type,
+        "day_archetype": day_type,
+        "mobility_level": level,
+        "novelty_level": str(variation.get("novelty_level") or "medium"),
+        "soft_constraint": True,
+        "default_application": "attempt_unless_required_plan_or_feasibility_conflicts",
+        "daily_distance_band_km": list(distance_band),
+        "sampled_daily_distance_target_km": sampled_distance,
+        "destination_distance_band_km": list(destination_band),
+        "max_single_trip_band_km": list(max_trip_band),
+        "target_radius_gyration_km": list(gyration_band),
+        "macro_stop_range": [stop_min, stop_max],
+        "sampled_macro_stop_target": sampled_stops,
+        "trip_count_range": [trip_min, trip_max],
+        "unique_macro_location_range": [stop_min, stop_max],
+        "activity_radius_km": float(max(destination_band)),
+        "exploration_budget": explore_max,
+        "exploration_stop_range": [explore_min, explore_max],
+        "long_trip_probability": long_probability,
+        "independent_trip_probability": independent_probability,
+        "preferred_outing_windows": preferred_windows,
+        "distance_band_prior": {
+            "local": 0.80 if level == "low" else (0.38 if level == "high" else 0.55),
+            "urban": 0.18 if level == "low" else (0.48 if level == "high" else 0.39),
+            "long": 0.02 if level == "low" else (0.14 if level == "high" else 0.06),
+        },
+        "activity_stimuli": list(_ACTIVITY_STIMULI.get(day_type, [])),
+        "history_signals": list(variation.get("history_signals", [])),
+        "activity_chain_prior": (
+            ["H-X-Y-Z-H", "H-X-Y-H"] if day_type == "citywide_leisure"
+            else ["H-W-X-H", "H-W-H"] if day_type in {
+                "routine_commute", "commute_with_errand", "evening_activity"
+            } else ["H-X-H", "H-X-Y-H"]
+        ),
+        "allow_intercity": "only_when_required_or_narratively_justified",
+        "budget_source": "recent_history_plan_day_variation",
+        "instruction": "先保留必选事件；默认尝试落实软画像。若冲突，由LLM调整弹性活动并记录降级原因。",
+    }
+
+
+# mobility_day_profile 中与 day_variation_context 重复、或纯记账对 LLM 无用的字段。
+# 只用于主观/客观模板打印的精简视图；程序化消费者（地点灵感、分配器）仍用完整结构。
+_MOBILITY_PROFILE_LEAN_DROP = {
+    "schema_version", "seed_key", "day_type", "day_archetype",
+    "mobility_level", "novelty_level", "history_signals",
+    "soft_constraint", "default_application", "budget_source", "instruction",
+}
+
+
+def lean_mobility_day_profile(profile: Any) -> Dict[str, Any]:
+    """返回去掉重复/记账字段后的移动画像，供 LLM 模板打印，避免与 day_variation_context 重复。"""
+    return {
+        key: value
+        for key, value in _dict(profile).items()
+        if key not in _MOBILITY_PROFILE_LEAN_DROP
     }
 
 
@@ -267,7 +481,9 @@ def build_daily_behavior_record(
     for stop in stops:
         location_id = str(stop.get("location_id") or stop.get("stop_id") or "")
         source = str(stop.get("source") or "")
-        if location_id and location_id not in seen_ids and source != "persona_catalog":
+        if location_id and location_id not in seen_ids and source not in {
+            "persona_catalog", "persona_familiar",
+        }:
             novel_ids.append(location_id)
 
     signature_parts: List[str] = []
@@ -286,12 +502,49 @@ def build_daily_behavior_record(
     metrics = _dict(_dict(reflection).get("activity_metrics"))
     travel_minutes = int(round(sum(_number(item.get("duration_minutes")) for item in legs)))
     travel_distance = round(sum(_number(item.get("distance_km")) for item in legs), 2)
+    distance_band_counts = {"local": 0, "urban": 0, "long": 0}
+    for leg in legs:
+        distance = _number(leg.get("distance_km"))
+        bucket = "local" if distance < 3 else ("urban" if distance < 15 else "long")
+        distance_band_counts[bucket] += 1
+    dwell_by_stop: Dict[str, float] = {}
+    for segment in segments:
+        if str(segment.get("kind") or "") != "activity":
+            continue
+        stop_id = str(segment.get("stop_id") or "")
+        duration = max(0, _time_minutes(segment.get("end_time")) - _time_minutes(segment.get("start_time")))
+        if stop_id:
+            dwell_by_stop[stop_id] = dwell_by_stop.get(stop_id, 0.0) + duration
+    weighted_points = []
+    for stop in stops:
+        try:
+            longitude = float(stop.get("longitude"))
+            latitude = float(stop.get("latitude"))
+        except (TypeError, ValueError):
+            continue
+        weight = max(1.0, dwell_by_stop.get(str(stop.get("stop_id") or ""), 1.0))
+        weighted_points.append((longitude, latitude, weight))
+    radius_gyration = 0.0
+    if weighted_points:
+        total_weight = sum(point[2] for point in weighted_points)
+        center_lon = sum(point[0] * point[2] for point in weighted_points) / total_weight
+        center_lat = sum(point[1] * point[2] for point in weighted_points) / total_weight
+        latitude_km = 110.574
+        longitude_km = 111.320 * math.cos(math.radians(center_lat))
+        squared = sum(
+            point[2] * (
+                ((point[0] - center_lon) * longitude_km) ** 2
+                + ((point[1] - center_lat) * latitude_km) ** 2
+            )
+            for point in weighted_points
+        ) / total_weight
+        radius_gyration = round(math.sqrt(max(0.0, squared)), 2)
     unique_stop_count = len(location_ids)
     travel_leg_count = len(legs)
     new_location_count = len(set(novel_ids))
     variation = _dict(day_variation_context)
     return {
-        "schema_version": "daily_behavior_record_v1",
+        "schema_version": "daily_behavior_record_v2",
         "date": date,
         "planned_day_type": str(variation.get("day_type") or ""),
         "actual_day_type": _actual_day_type(
@@ -305,10 +558,16 @@ def build_daily_behavior_record(
         "unique_stop_count": unique_stop_count,
         "travel_minutes": travel_minutes,
         "travel_distance_km": travel_distance,
+        "route_distance_km": travel_distance,
+        "radius_gyration_km": radius_gyration,
+        "macro_stop_count": unique_stop_count,
+        "long_stay_location_count": sum(value >= 60 for value in dwell_by_stop.values()),
+        "distance_band_counts": distance_band_counts,
         "location_ids": location_ids,
         "new_location_count": new_location_count,
+        "return_location_count": max(0, unique_stop_count - new_location_count),
         "mobility_signature": ">".join(signature_parts),
-        "low_mobility": unique_stop_count <= 2,
+        "low_mobility": travel_distance <= 10.0,
         "evening_out": evening_out,
         "social_day": _number(metrics.get("social_minutes")) > 0,
         "exercise_day": _number(metrics.get("exercise_minutes")) > 0,

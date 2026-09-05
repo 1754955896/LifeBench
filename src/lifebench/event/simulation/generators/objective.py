@@ -6,6 +6,7 @@
 import json
 
 from src.lifebench.event.templates.template_simulation import template_daily_event_objective_optimize
+from src.lifebench.event.simulation.context import lean_mobility_day_profile
 from src.lifebench.event.simulation.state import LongTermMemory
 
 
@@ -43,6 +44,14 @@ def generate_objective_events(mind, plan, date, event):
         ),
         day_variation_context=json.dumps(
             context.get("day_variation_context", {}),
+            ensure_ascii=False, separators=(",", ":"),
+        ),
+        mobility_day_profile=json.dumps(
+            lean_mobility_day_profile(context.get("mobility_day_profile", {})),
+            ensure_ascii=False, separators=(",", ":"),
+        ),
+        location_inspiration_context=json.dumps(
+            context.get("location_inspiration_context", {}),
             ensure_ascii=False, separators=(",", ":"),
         ),
     )
