@@ -208,6 +208,72 @@ _ACTIVITY_STIMULI = {
 }
 
 
+_EXTRA_ACTIVITY_TYPES = {
+    "low_mobility": "none_or_micro",
+    "home_recovery": "recovery_or_home",
+    "routine_commute": "none_or_local",
+    "commute_with_errand": "life_service",
+    "evening_activity": "leisure_or_exercise",
+    "social_or_leisure": "social_or_leisure",
+    "social_activity": "social",
+    "local_leisure": "local_leisure",
+    "exercise_outing": "exercise",
+    "exploratory": "novel_experience",
+    "citywide_leisure": "citywide_leisure",
+    "long_distance": "long_distance_leisure",
+}
+
+
+def _sample_extra_activity_target(
+    day_type: str, budget: str, seed_key: str,
+) -> tuple[int, str, bool, str]:
+    """Turn a vague range into one reproducible daily soft target.
+
+    Active archetypes already won a probabilistic day-type draw, so their
+    target starts at one.  Low/recovery/routine days retain a genuine chance of
+    no formal extra activity.  The target may still be downgraded by the LLM
+    when required events or feasibility conflict.
+    """
+    try:
+        low_text, high_text = str(budget).split("-", 1)
+        low, high = max(0, int(low_text)), max(0, int(high_text))
+    except (TypeError, ValueError):
+        low, high = 0, 1
+    if high < low:
+        low, high = high, low
+    rng = random.Random(int(hashlib.sha256(
+        (seed_key + "|extra-activity-target").encode("utf-8")
+    ).hexdigest()[:16], 16))
+    passive_probability = {
+        "low_mobility": 0.08,
+        "home_recovery": 0.06,
+        "routine_commute": 0.18,
+    }.get(day_type)
+    if passive_probability is not None:
+        count = 1 if high >= 1 and rng.random() < passive_probability else 0
+    else:
+        count = max(1, low) if high >= 1 else 0
+        if high > count and rng.random() < 0.22:
+            count += 1
+        if high > count and rng.random() < 0.08:
+            count += 1
+    count = min(high, count)
+    mobility_role = (
+        "urban_optional" if day_type in {
+            "social_or_leisure", "social_activity", "exploratory",
+            "citywide_leisure", "long_distance",
+        }
+        else "local_chain" if day_type == "commute_with_errand"
+        else "local_optional"
+    )
+    return (
+        count,
+        _EXTRA_ACTIVITY_TYPES.get(day_type, "general_life"),
+        bool(count),
+        mobility_role,
+    )
+
+
 def build_day_variation_context(
     *, history: Any, plan: Any, date: str, instance_id: Any = 0,
     simulation_seed: Any = 0, distribution_config: Any = None,
@@ -300,6 +366,15 @@ def build_day_variation_context(
     rng = _stable_rng(instance_id, date, simulation_seed)
     day_type = _weighted_choice(rng, weights)
     mobility, novelty, extra_budget, mundane_density, schedule_slack = _ARCHETYPE_SETTINGS[day_type]
+    seed_key = "day-variation-v2|%s|%s|%s" % (
+        simulation_seed, instance_id, date,
+    )
+    (
+        preferred_extra_activity_count,
+        preferred_extra_activity_type,
+        prefer_independent_topic,
+        preferred_mobility_role,
+    ) = _sample_extra_activity_target(day_type, extra_budget, seed_key)
     history_signals = []
     if days == 0:
         history_signals.append("暂无近期结构化移动历史，今日使用人群先验与可复现随机抽样")
@@ -316,12 +391,16 @@ def build_day_variation_context(
             history_signals.append("近期已有长距离日，不需要为尾部分布连续安排远行")
     return {
         "schema_version": "day_variation_v2",
-        "seed_key": "day-variation-v2|%s|%s|%s" % (simulation_seed, instance_id, date),
+        "seed_key": seed_key,
         "day_type": day_type,
         "day_archetype": day_type,
         "mobility_level": mobility,
         "novelty_level": novelty,
         "formal_extra_activity_budget": extra_budget,
+        "preferred_extra_activity_count": preferred_extra_activity_count,
+        "preferred_extra_activity_type": preferred_extra_activity_type,
+        "prefer_independent_topic": prefer_independent_topic,
+        "preferred_mobility_role": preferred_mobility_role,
         "mundane_detail_density": mundane_density,
         "schedule_slack": schedule_slack,
         "history_signals": history_signals[:4],

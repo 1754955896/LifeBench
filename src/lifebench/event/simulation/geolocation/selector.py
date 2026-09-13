@@ -74,6 +74,7 @@ class GravitySelector:
             return [(item, 1.0 / (index + 1.0)) for index, item in enumerate(ordered)]
 
         approved_ids = set(intent.historical_candidate_ids)
+        preferred_ids = set(intent.preferred_candidate_ids)
         return_pool = [
             item for item in eligible
             if intent.epr_applicable
@@ -81,6 +82,41 @@ class GravitySelector:
             and item.location_id in approved_ids
         ]
         explore_pool = [item for item in eligible if item not in return_pool]
+        preferred_pool = [
+            item for item in eligible if item.location_id in preferred_ids
+        ]
+        preference_probability = 0.0
+        preference_draw = None
+        if preferred_pool:
+            strength = max(0.0, min(1.0, float(intent.preference_strength)))
+            preference_probability = 0.55 + 0.35 * strength
+            other_pool = [item for item in eligible if item not in preferred_pool]
+            if not other_pool:
+                selected = [
+                    (candidate, self._preference_weight(intent, candidate, previous))
+                    for candidate in preferred_pool
+                ]
+                ordered = self._weighted_order(selected, rng)
+                self._record(
+                    intent, "preferred_only", 0.0, return_pool, ordered,
+                    preferred_pool=preferred_pool,
+                    preference_probability=1.0, preference_draw=None,
+                )
+                return ordered
+            preference_draw = rng.random()
+            if preference_draw < preference_probability:
+                selected = [
+                    (candidate, self._preference_weight(intent, candidate, previous))
+                    for candidate in preferred_pool
+                ]
+                ordered = self._weighted_order(selected, rng)
+                self._record(
+                    intent, "preferred", 0.0, return_pool, ordered,
+                    preferred_pool=preferred_pool,
+                    preference_probability=preference_probability,
+                    preference_draw=preference_draw,
+                )
+                return ordered
         exploration_probability, probability_factors = self._exploration_probability(
             intent, return_pool,
         )
@@ -114,6 +150,9 @@ class GravitySelector:
         self._record(
             intent, decision, exploration_probability, return_pool, ordered,
             random_draw=random_draw, probability_factors=probability_factors,
+            preferred_pool=preferred_pool,
+            preference_probability=preference_probability,
+            preference_draw=preference_draw,
         )
         return ordered
 
@@ -198,6 +237,21 @@ class GravitySelector:
         semantic = 1.35 if candidate.category == intent.activity_type else 0.80
         return max(1e-9, distance_kernel * attraction * semantic)
 
+    def _preference_weight(
+        self, intent: StopIntent, candidate: LocationCandidate,
+        previous: Optional[LocationCandidate],
+    ) -> float:
+        if (
+            candidate.source == "trajectory_history"
+            and candidate.location_id in set(intent.historical_candidate_ids)
+        ):
+            base = self._return_weight(intent, candidate)
+        else:
+            base = self._exploration_weight(intent, candidate, previous)
+        return base * (1.0 + 3.0 * max(
+            0.0, min(1.0, float(intent.preference_strength))
+        ))
+
     def _recency_weight(self, last_seen_date: object) -> float:
         try:
             current = dt.datetime.strptime(self.current_date, "%Y-%m-%d")
@@ -240,7 +294,10 @@ class GravitySelector:
     def _record(self, intent: StopIntent, decision: str, probability: float,
                 return_pool: List[LocationCandidate],
                 ordered: List[object], random_draw: Optional[float] = None,
-                probability_factors: Optional[dict] = None) -> None:
+                probability_factors: Optional[dict] = None,
+                preferred_pool: Optional[List[LocationCandidate]] = None,
+                preference_probability: float = 0.0,
+                preference_draw: Optional[float] = None) -> None:
         candidates = []
         for item in ordered:
             candidate = item[0] if isinstance(item, tuple) else item
@@ -250,11 +307,19 @@ class GravitySelector:
             "selection_policy": intent.selection_policy,
             "epr_applicable": bool(intent.epr_applicable),
             "requested_historical_candidate_ids": list(intent.historical_candidate_ids),
+            "requested_preferred_candidate_ids": list(intent.preferred_candidate_ids),
             "valid_return_candidate_ids": [item.location_id for item in return_pool],
+            "valid_preferred_candidate_ids": [
+                item.location_id for item in (preferred_pool or [])
+            ],
             "decision": decision,
             "exploration_probability": round(float(probability), 4),
             "random_draw": None if random_draw is None else round(float(random_draw), 4),
             "probability_factors": probability_factors or {},
+            "preference_probability": round(float(preference_probability), 4),
+            "preference_draw": (
+                None if preference_draw is None else round(float(preference_draw), 4)
+            ),
             "distance_tier": intent.distance_tier,
             "distance_band_km": list(intent.distance_band_km),
             "ranked_candidate_ids": candidates,

@@ -97,12 +97,12 @@ class Scheduler:
                 f"2. 下文提示词与示例中出现的年份（如 {DEFAULT_YEAR}）仅供格式参考，"
                 f"一律以本约束的 {self.spec.year} 年为准，不得照搬。"
             )
-        # 只在实际截断年份时才需要月份上限约束
-        if self.spec.months < 12:
+        # 只在模拟范围不是完整自然年时才需要月份边界约束
+        if not (self.spec.start_month == 1 and self.spec.end_month == 12):
             lines.append(
                 # 前两行是标题与范围描述，不参与编号
-                f"{len(lines) - 1}. 月份仅限 1 至 {self.spec.months} 月；"
-                f"不要生成第 {self.spec.months + 1} 月及以后的内容，"
+                f"{len(lines) - 1}. 月份仅限 {self.spec.start_month} 至 {self.spec.end_month} 月；"
+                f"不要生成该范围之外月份的内容，"
                 f"全年总结也只覆盖这 {self.spec.months} 个月。"
             )
         lines.append("-" * 40)
@@ -1452,8 +1452,8 @@ class Scheduler:
 
         # 计算前一个月的起始日期（从16号开始）
         # 确保所有日期都在target_year内
-        if month == 1:
-            # 1月份的交界处，只处理目标年1月1日到15日的事件，不处理上一年的事件
+        if month == self.spec.start_month:
+            # 模拟范围首月的交界处，只处理当月1日到15日的事件，不处理上一个（范围外的）月
             prev_month_mid = None  # 不处理前一个月
             prev_month_last_day = None
         else:
@@ -1520,7 +1520,7 @@ class Scheduler:
         if prev_month_mid is not None:
             transition_start = prev_month_mid
         else:
-            # 1月份的情况，从当月1号开始
+            # 模拟范围首月的情况，从当月1号开始
             transition_start = current_month_start
         transition_end = current_month_mid
         
@@ -1687,9 +1687,9 @@ class Scheduler:
         # 提交所有任务到线程池
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             # 提交任务并获取Future对象
-            # 处理1-2月，2-3月，... 各相邻月交界处（末月由 spec.months 决定）
+            # 处理相邻月交界处（从 start_month+1 到 end_month，避开起始月之前）
             future_to_month = {executor.submit(process_transition, month): month
-                               for month in range(2, self.spec.months + 1)}
+                               for month in range(self.spec.start_month + 1, self.spec.end_month + 1)}
             
             # 处理完成的任务结果
             for future in as_completed(future_to_month):

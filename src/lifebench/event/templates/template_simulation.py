@@ -111,8 +111,7 @@ template_daily_event_subjective_plan = '''
    - 无法判断时按“当前不可知”处理，并在内部时间轴保留弹性，避免自主活动占满相关时段。
 3. `previous_thought` 只是上一日的想法，不代表实际发生；长期记忆表示稳定事实与累积变化，短期记忆表示近期已经发生的经历。三者不得混用。
 4. 只使用输入中已有的重要人物、关系和长期事实，不凭空建立新关系、固定习惯、重大承诺、高额消费或跨日影响显著的事件。
-5. 地点候选只是灵感，不代表人物去过或今天必须前往。选择候选时须原样保留名称和 `{{location_id:...}}`；未选择时只写地点语义，不编造精确店名、地址、坐标、路线、距离和通行时间。`known_unvisited` 不得描述成常去地点；亲友住所必须有已有约定或主动联系的合理前提。
-
+5. 地点候选只是灵感，不代表人物去过或今天必须前往。选择候选时须原样保留名称和 `{{location_id:...}}`；未选择时只写地点语义，不编造精确店名、地址、坐标、路线、距离和通行时间。`known_unvisited` 不得描述成常去地点；
 ## 二、约束优先级
 
 发生冲突时按以下顺序处理：
@@ -132,9 +131,10 @@ template_daily_event_subjective_plan = '''
 2. **建立已知计划骨架**：识别人物当前可知的确定事项；同时为当前不可知但必须发生的情景保留必要弹性，不泄露其内容。对每项当前可知事项，考虑大致时段、通常地点、过往执行方式，以及今天是否需要调整时间、地点或线上/线下方式；补充的是人物准备如何执行，不得预写尚未发生的过程和结果。
 3. **适配日期、环境与习惯**：明确今天是工作日、休息日还是节假日，先匹配人物在该日期类型下的职责、通勤和典型作息，再根据天气、身体状态和近期变化决定晨练、早餐、阅读、运动等习惯是照常、缩短、替换、推迟还是取消。不要为了变化而强行改变所有习惯。
 4. **落实今日移动形态**：评估确定事项已经产生的移动，再决定是否需要补充本地、同城较远、社交、探索、休闲、聚会、办事或居家活动。移动画像控制一天的总体倾向，不要求机械命中每个数值；休息日若画像允许，可以考虑城市中的商圈、景点、文娱或休闲地点，而不必把活动都限制在家附近。
-5. **补充人物自己的生活**：结合画像、记忆、状态需求、近期行为和真实空闲，选择少量合适活动。除娱乐和社交外，还应考虑工作/学习计划、消费意图、采购补给、清洁维修、账单快递等生活事务；消费强度须符合人物收入、身份和既有偏好，不得仅凭性别、年龄或职业标签刻板推断。允许“今天正好有空、临时想换换”的低风险选择。
-6. **补充可执行细节**：让活动具有足以指导客观阶段的具体性，例如准备做什么、和谁联系、采用何种活动方式、倾向哪类地点以及如何与前后安排衔接；但不要编造工作反馈、他人答复、偶遇、意外结果、精确交通数据或过多琐碎过程。
-7. **一致性校验与删减**：检查时间顺序、活动时长、移动衔接、体力和经济条件，并与画像及近期记忆核对。历史中已经出现的人物、地点、组织和场所再次出现时，必须沿用原名及已有 `location_id`，不得另起别名或用近义名称制造新实体。删除重复、牵强或只为凑丰富度加入的内容，保留真实留白。
+5. **落实当日自主活动目标**：读取 `preferred_extra_activity_count/type`。先从真实连续空闲中提出相应数量的正式候选；若 `prefer_independent_topic=true`，其中至少一项必须与当天主线主题无直接关系。天冷、普通工作疲劳或地点未定不能自动等同于取消，可以换成室内、较近或低强度活动；只有必选事件占满时间、明确身体不适或确实缺少可行窗口时才降级，并写清原因。
+6. **补充人物自己的生活**：结合画像、记忆、状态需求、近期行为和真实空闲，选择少量合适活动。除娱乐和社交外，还应考虑工作/学习计划、消费意图、采购补给、清洁维修、账单快递等生活事务；消费强度须符合人物收入、身份和既有偏好，不得仅凭性别、年龄或职业标签刻板推断。允许“今天正好有空、临时想换换”的低风险选择。
+7. **补充可执行细节**：让活动具有足以指导客观阶段的具体性，例如准备做什么、和谁联系、采用何种活动方式、倾向哪类地点以及如何与前后安排衔接；但不要编造工作反馈、他人答复、偶遇、意外结果、精确交通数据或过多琐碎过程。对离家较远的探索性活动，应表达与画像相符的交通倾向（步行/打车/驾车/公交/地铁），不要一律写成步行。
+8. **一致性校验与删减**：检查时间顺序、活动时长、移动衔接、体力和经济条件，并与画像及近期记忆核对。历史中已经出现的人物、地点、组织和场所再次出现时，必须沿用原名及已有 `location_id`，不得另起别名或用近义名称制造新实体。删除重复、牵强或只为凑丰富度加入的内容，保留真实留白。
 
 ## 四、弹性活动生成准则
 
@@ -143,13 +143,14 @@ template_daily_event_subjective_plan = '''
 - 先判断确定事项之外是否存在真实可用的连续空闲，再决定是否增加活动。自主活动可以持续几十分钟或数小时，不要只用碎片行为填空；时间不足、已经忙碌、身体疲劳或人物明确想休息时，可以不增加。
 - 新活动既可以由近期需求驱动，例如采购物资、恢复运动、缓解疲劳、补充社交或处理积压事务；也可以来自普通的一时兴起，例如换口味、看电影、打游戏、逛商场、KTV、按摩、探店或去公园。动机只需日常可信，不要为普通活动编造宏大意义。
 - 活动应覆盖相互独立的生活内容。若时间允许，至少考虑一项与当天核心工作、学习或计划事件没有直接主题关系的生活安排，避免一天所有活动围绕同一主题展开。
+- “独立活动”必须具有自己的日常动机和可辨识时段；便利店、取快递、洗漱、回复消息、工作中的小互动和描述性细节不计入正式独立活动。不得为了让叙事显得连贯，把餐饮、娱乐、运动或社交重新解释成工作主线的启发、调研或延伸。
 - 如果活动数量很少、类型单一或某段时间存在较大空白，可以考虑增加一个与时间长度匹配的候选安排，但不得机械填补每段空闲。场景长期局限时可以提出室内、微地点、顺路或外出候选，也允许基于人物状态保持原状。
 - 丰富不等于塞满全天。做饭、家务、线上娱乐、无目的休息和零碎事务也是有效生活内容；低信息行为应合并在较长时段中，不要各自扩展成正式活动。
 
 ### 2. 自主探索与日常变体
 
 - 结合 `day_variation_context` 的 `novelty_level`、近期重复程度、人物兴趣和空闲，决定今天保持熟悉生活还是探索。`none/low` 可以完全不探索或只做很小变化；`medium/high` 可以提出一项较完整的新尝试，但探索不是强制任务。
-- 探索可发生在三个维度：①更换活动，如把普通休息换成游泳、电影、桌游或与熟人见面；②更换地点或扩大活动半径，如尝试新餐厅、不同商圈、网咖、书店、展览或城市休闲地点；③更换执行方式，如改变时间、时长、同行者、强度，或在线/线下、独自/结伴、居家/外出的方式。
+- 探索可发生在三个维度：①更换活动，如把普通休息换成游泳、电影、桌游或与熟人见面；②更换地点或扩大活动半径，如尝试新餐厅、不同商圈、网咖、书店、展览或城市休闲地点，并相应采用打车、驾车（有车时）或公交/地铁等更远的出行方式；③更换执行方式，如改变时间、时长、同行者、强度，或在线/线下、独自/结伴、居家/外出的方式。
 - 新地点优先从 `location_inspiration_context` 中选择与活动语义、距离层级和人物条件相符的候选；没有合适候选时只表达地点类型。不能为了使用候选地点而倒推一个人物并不需要的活动。
 - 一天通常只探索一至两个维度。探索必须能在当天完成，并符合时间、预算、体力、关系和移动画像；不能因此制造重大承诺、突兀跨城或不合理消费。
 
@@ -187,6 +188,9 @@ template_daily_event_subjective_plan = '''
 
 最后必须原样使用以下键名追加一行控制摘要，供后续阶段读取。只填写合法枚举和真实引用，不得包含当前不可知的事件：
 `MOBILITY_PROFILE_APPLICATION={{"status":"satisfied_by_required|augmented|downgraded","planned_optional_outings":整数,"planned_location_refs":["location_id"],"profile_deviation_reason":""}}`
+
+在其前一行输出一个紧凑的自主活动合同，供客观阶段逐项落实或说明取消。没有自主活动时 `activities` 为空。`activity_id` 从 `optional_01` 顺序编号；`topic_relation` 仅用 independent/related；`location_binding` 仅用 fixed/preferred/open：如果人物已经明确决定去输入中的某个地点，使用 fixed 并把完整ID写入 `selected_location_id`；如果只是倾向或“可以考虑”，使用 preferred 并把候选写入 `preferred_candidate_ids`；如果只决定活动类型，使用 open。不能仅因输入展示了地点灵感就声称已经选定，但也不能把人物已明确选定的ID重新开放抽选：
+`OPTIONAL_ACTIVITY_PLAN={{"dominant_theme":"今日主要情节的短语","activities":[{{"activity_id":"optional_01","activity":"一项正式自主活动","time_window":"晚间","topic_relation":"independent","requires_macro_stop":true,"distance_tier":"local|urban|long","location_control":"self","location_binding":"open","selected_location_id":"","preferred_candidate_ids":[],"preference_strength":0.0}}]}}`
 
 ## 七、输入数据
 
@@ -231,7 +235,8 @@ template_daily_event_objective_optimize = '''
 5. 读取主观输出末尾的 `MOBILITY_PROFILE_APPLICATION`：`satisfied_by_required` 表示不重复增加同类移动，`augmented` 表示有计划外出但仍需由当天反馈决定是否实际发生，`downgraded` 表示主观阶段已有合理降级原因。
 6. 若主观活动引用 `location_inspiration_context` 中的地点且客观上实际执行，必须在“地点语义提示”中保留 `{{location_id:原ID}}`。若更换或取消地点，则清除旧 ID，不能只改名称后沿用旧坐标。
 7. 地点灵感被展示或在主观中考虑过都不等于已经访问；只有本步骤实际发生并进入最终地理行程的活动才算访问。亲友住所必须出现联系成功、已有约定或邀请等合理前提。
-8. 主观脚本提出的新增活动安排在不冲突活难以实现的情况下可以尽量实现。
+8. 主观脚本提出的新增活动只要不与硬约束冲突且具有可行时间窗口，就应优先实际执行。
+9. 读取 `OPTIONAL_ACTIVITY_PLAN` 并逐项决定 completed/modified/cancelled。只要存在合理时间窗口，优先把其中的正式活动落实为可辨识时段；不能把它缩写成取快递、便利店、洗漱、回复消息或一句背景细节。取消必须由当天已经发生的具体冲突触发，不能只写“工作日”“天气冷”或“有点累”。
 
 ## 二、补全基础日常生活
 
@@ -248,6 +253,8 @@ template_daily_event_objective_optimize = '''
 
 基础日常不必与当天核心情节保持主题一致。通勤可以单纯听音乐或发呆，午餐可以只关注食物或无关消息，晚间娱乐也不必再次引出白天的工作结论。
 
+先在内部识别当天 `dominant_theme`。除 `plan/required` 明确要求外，餐饮、通勤、购物、娱乐、运动和社交默认保持主题独立；不得让它们主动总结、映射、启发或延续该主题。一天至多允许一项非工作活动自然关联核心工作主题，其余生活线应保留普通、无关和低信息量内容。
+
 ## 三、生成计划外的自主安排
 
 人物会根据当天的空闲时间、心情、需求、天气、现场信息和他人互动，临时决定做计划外的事。新增正式活动数量优先服从 `day_variation_context.formal_extra_activity_budget`；没有该设定时普通一天通常补充0至2项即可。不必限于小事，只要能在当天完成、动机充分、时空可行，且不会造成重大持久影响即可。
@@ -263,7 +270,7 @@ template_daily_event_objective_optimize = '''
 - 因疲劳赖床、午睡、提前休息或比平时晚睡30至90分钟；
 - 顺路处理某件小事，或临时放弃原本想做但没有必要强行完成的活动。
 
-自主活动必须与人物的年龄、兴趣、经济状况、社交关系、当天精力和前后日程相符。一项活动如果需要较长通行或多人配合，必须有更强动机和足够时间。默认优先利用已有出行链、家附近、工作地附近或现有空档；但当今日 novelty_level 为 medium/high，或 day_type 为 exploratory/social_activity/evening_activity/local_leisure 时，允许并鼓励安排一次需要专程前往的独立外出（约3—15km），例如去一家想试的餐厅、约朋友去商圈/KTV/电竞馆/桌游店、逛某个商场或看展览，不必把它当作需要极强动机的例外。
+自主活动必须与人物的年龄、兴趣、经济状况、社交关系、当天精力和前后日程相符。一项活动如果需要较长通行或多人配合，必须有更强动机和足够时间。默认优先利用已有出行链、家附近、工作地附近或现有空档；但当今日 novelty_level 为 medium/high，或 day_type 为 exploratory/social_activity/evening_activity/local_leisure 时，允许并鼓励安排一次需要专程前往的独立外出（约3—15km），例如去一家想试的餐厅、约朋友去商圈/KTV/电竞馆/桌游店、逛某个商场或看展览，不必把它当作需要极强动机的例外。这类专程外出应搭配与距离、画像相符的机动化交通（驾车/打车/公交/地铁），不要写成步行。
 
 当 `recent_behavior_summary.last_7d.social_days` 明显偏低（例如 7 天内少于 1 天）且画像/记忆中存在可联系的关系时，应主动安排一次联系或见面（拜访朋友、约饭、约逛街或一起活动），除非当日精力、天气或必选事件明确不允许。
 
@@ -301,7 +308,7 @@ template_daily_event_objective_optimize = '''
 ## 六、跨日分布与生活噪声
 
 1. 参考 `recent_behavior_summary` 判断近期是否反复出现同一移动链，但只把它作为分布信号，不能把统计数字写入叙事。
-2. 遵循 `day_variation_context` 的软设定和正式新增活动预算。预算表示适宜范围，不是必须凑满的数量；若必选事件密集、人物疲劳或临时反馈占用时间，可以不新增正式活动。
+2. 遵循 `day_variation_context` 的软设定和正式新增活动目标。`preferred_extra_activity_count` 是当天抽样后的首选值，不是机械硬约束；若必选事件密集、明确身体不适或临时反馈占用时间，可以减少，但必须在自主活动结果中给出具体原因。
 3. `low_mobility`、`routine_commute` 或 `home_recovery` 可以保持很少的移动；`commute_with_errand`、`evening_activity`、`social_activity` 或 `exploratory` 才考虑增加相应外出，并且必须有自然动机。这些外出不必局限在家附近：`exploratory`、`social_activity` 或 novelty 较高时，可以专程前往本城区或更远的商圈、特色餐饮、休闲娱乐场所。
 4. 当天至少允许存在一条与主要情节无关的生活线索，但不要求它形成新地点。例如生活用品、普通娱乐、室友闲聊、排队、家务、随手浏览或临时放空。
 5. 不要让每个活动都产生启发、解决矛盾或推动主线。允许没有结果的尝试、未读完的内容、普通闲聊、没有特别感受的一餐，以及被推迟的小事。
@@ -329,10 +336,11 @@ template_daily_event_objective_optimize = '''
 
 1. 不同主活动的时间不得无故重叠；只有符合上述规则的伴随活动可以在同一时段内并行。外界触发只能影响触发之后的日程。
 2. 地点只写语义提示，例如“家、工作地、公司内部、小区内、家附近、工作地附近、某类餐厅/商店/休闲场所”。
-3. 为每项活动标注 room/building/compound/neighborhood/district/city 空间范围，不编造精确地址、地铁线路或通行分钟数。
+3. 为每项活动标注 room/building/compound/neighborhood/district/city 空间范围；空间范围要与交通方式匹配（neighborhood 以内的短距离可步行，district/city 尺度需公交/地铁/驾车/打车）。不编造精确地址、地铁线路或通行分钟数，但可以在描述中写出交通方式（如"打车前往""坐地铁去"）。
 4. 优先利用已有出行链，避免短时间内反复跨区往返；但有充分动机和时间时允许完整的独立外出。
 5. 快递柜、楼下便利店、公司食堂等应使用 building/compound/neighborhood，不得写成远距离城市出行。
 6. 晨跑、散步、遛狗等未指定目的地的活动，应描述为住处或当前地点周边的本地环线。
+7. 对探索性、专程前往或 district/city 尺度（约3公里以上）的活动，默认安排合理的机动化交通，不要写成步行：画像显示有私家车或习惯自驾时优先驾车/打车；依赖公共交通时用公交/地铁；时间紧张、距离远或携带物品时可用打车。只有 neighborhood 以内的短距离（约1公里内）才默认步行。
 
 ## 十、事实和叙事边界
 
@@ -357,6 +365,9 @@ template_daily_event_objective_optimize = '''
 
 对于外界触发的事件，描述必须包含触发来源、人物回应和对后续日程的影响。对于执行方式发生变化的计划事件，仍标记为 `plan/required`，并说明变化原因和最终结果。
 
+若某行落实 `OPTIONAL_ACTIVITY_PLAN`，在描述末尾原样保留 `[optional_activity_id:optional_01]`。如果实际活动已经选定具体地点，保留原始 `selected_location_id`；如果只是保留倾向，输出 `preferred_candidate_ids`。表格结束后必须单独输出一行：
+`OPTIONAL_ACTIVITY_RESULT={{"activities":[{{"activity_id":"optional_01","status":"completed|modified|cancelled","actual_activity":"实际活动或空","requires_macro_stop":true,"location_control":"self","location_binding":"fixed|preferred|open","selected_location_id":"","preferred_candidate_ids":[],"preference_strength":0.0,"cancel_reason":"取消时的具体原因，否则为空"}}]}}`
+
 ## 十二、参考数据
 
 第一步的人物主观活动构想：
@@ -373,6 +384,12 @@ template_daily_event_objective_optimize = '''
 
 个人画像：
 {persona}
+
+当日开始时的近期状态与需求：
+{state_and_needs}
+
+当日环境：
+{environment}
 
 近7/30天结构化行为摘要（只用于调节跨日分布）：
 {recent_behavior_summary}
@@ -445,7 +462,7 @@ template_poi_real_location_assign = '''
 
 规则：
 1. 提取所有真实发生地点变化的停留点，按移动顺序排列；若一天从家出发或回家，必须包含对应的家。
-2. 画像地址中已有的家、工作地、学校等固定地点使用 query_type=existing，名称和坐标必须原样复制。客观事件若保留了 `{{location_id:...}}` 地点引用，必须从已有真实地点数据中复制完整 ID 到 `reuse_location_id`，不得按名称重新搜索。
+2. 画像地址中已有的家、工作地、学校等固定地点使用 query_type=existing，名称和坐标必须原样复制。`location_binding=fixed` 且带 `selected_location_id` 的地点表示人物已经选定，复制到 `reuse_location_id` 并直接复用。若只是 preferred 倾向，放入 `preferred_candidate_ids`，不得误写为 must_return。
 3. 由你自主决定每个停留点的搜索方式与距离远近。尤其当事件只给出活动类型、未指定具体地点（如“出去吃饭”“健身”“逛街”“看电影”）时，地点完全由你合理决策，不要一律就近，按语义在三种策略里选：
    - 就近：工作午餐、便利店、社区运动等必须靠近当前锚点的小活动，用 `query_type=around`；
    - 探索新地点：值得专程前往的商圈、聚会、电影、特色餐饮、娱乐，用 `query_type=search`；
@@ -465,7 +482,11 @@ template_poi_real_location_assign = '''
    禁止把整句事件描述、复合短语或虚构名称（如“客户公司会议室”“高端商务洽谈会所”）当关键词；城市已由 `city` 字段单独指定，关键词无需再拼城市名。`poi_type`没有可靠地图类型时留空，避免过窄过滤。
 13. 对出差客户公司、一次性办事场所、景区等非小型活动，如果具体关键词全部失败后允许在目标城市选择一个功能合理的真实POI，设置 `allow_citywide_fallback=true`，并给出 `fallback_queries` 和合理的 `fallback_area`（区县）；`fallback_queries` 同样要简洁可匹配，用宽泛的通用类别词（如“产业园”“写字楼”“景区”）。这种城市级兜底不受周边半径限制。家、固定公司、学校等稳定锚点不能随机替换。
 14. 客观事件中明确出现的车站、机场等交通节点必须各自提取为stop；不要把“家—车站—客户公司”压缩成“家—客户公司”。
-15. `selection_policy`表示人物对地点是否有决定权，只能使用：
+15. 先用 `location_control` 表示人物对地点的决定权，仅使用 self/fixed/external_unspecified；再用 `location_binding` 表示绑定强度，仅使用 fixed/preferred/open：
+   - `self`：人物能自主选择去哪。已经明确选定地点时搭配 fixed 并使用 best_match/直接复用；仍在候选中权衡时搭配 preferred/open，由程序确定 `selection_policy=gravity`；
+   - `fixed`：事件明确指定实体或家/公司等锚点；搭配 fixed，由程序确定 `selection_policy=best_match`；
+   - `external_unspecified`：地点由外部决定但没有给出具体实体；搭配 open，由程序确定 `selection_policy=random`。
+   `selection_policy`是上述语义字段的执行结果，只能使用：
    - `gravity`：人物可自主选址的聚会、吃饭、购物、健身、住宿等，结合历史回访、探索倾向和距离选择；
    - `best_match`：事件已经明确指定名称/地址的会议地、景点、车站、医院、酒店等，选择语义最匹配的第一候选，不因上一地点距离改变；
    - `random`：地点由外部指定但事件没有给出具体名称，如未具名客户公司、临时会议地址，从语义合格候选中可复现随机选一个，不因上一地点距离改变。
@@ -475,12 +496,12 @@ template_poi_real_location_assign = '''
    - 没有合理候选或无法确定：设置 `epr_applicable=false, historical_candidate_ids=[]`。程序将其视为首次探索或没有可返回地点，从地图新候选中选择；即使当天探索倾向低，也不能因此取消活动或复用语义不符的旧地点。
    - 不得仅因为地点同属“餐饮/休闲”等大类就列为候选。例如工作午餐不一定能复用跨城旅行餐厅，游泳不能复用普通健身房，独自买菜不能复用仅适合大型聚会的酒店。
    - `best_match`、`random`、固定锚点以及 micro/local_loop 不使用EPR，设置 `epr_applicable=false, historical_candidate_ids=[]`。
-18. 两种情况填写 `reuse_location_id`：一是事件明确表示“上次那家、常去的、同一家”或指定历史地点；二是客观事件明确保留了当日地点灵感中的 `{{location_id:...}}`。程序都直接复用对应实体并跳过重新搜索。一般性吃饭、购物、健身和休闲若没有明确引用，即使存在历史候选，也应保持 `reuse_location_id` 为空，交给EPR决定探索或返回。
-19. `reuse_location_id` 可以来自已有真实地点数据或历史动态注册表；`historical_candidate_ids` 只能来自过去实际访问且允许返回的地点。`stop_id` 是当天一次停留的顺序ID，二者不可混用。只能复制输入中真实存在的完整ID，禁止猜测、缩写或新造ID；`known_unvisited` 参考 POI 不得放入 `historical_candidate_ids`。
+18. 以下情况填写 `reuse_location_id` 并设置 `location_binding=fixed`：事件明确表示“上次那家、同一家”；家、公司、明确预约机构等固定实体；或主观/客观阶段已明确选定 `selected_location_id`。其中人物自主选定的地点保留 `location_control=self`，外部固定实体使用 `location_control=fixed`，二者都直接复用但后续重规划权限不同。若地点只是倾向，设置 `location_control=self, location_binding=preferred, selection_policy=gravity`，写入 `preferred_candidate_ids` 和0—1的 `preference_strength`；过去实际访问且语义兼容的地点另外写入 `historical_candidate_ids`，两者不能混为一谈。
+19. `reuse_location_id`、`preferred_candidate_ids` 可以来自已有真实地点数据或历史动态注册表；`historical_candidate_ids` 只能来自过去实际访问且允许返回的地点。`preferred_candidate_ids` 表示今天的倾向，可以包含 `known_unvisited` 参考POI；`historical_candidate_ids` 表示EPR回访池，不能包含未访问地点。`stop_id` 是当天一次停留的顺序ID，三者不可混用。只能复制输入中真实存在的完整ID，禁止猜测、缩写或新造ID。
 20. 为每个外部目的地输出距离层级（只对事件中已有的停留点标注，不要新增或删除活动）：`distance_tier` 仅使用 local/urban/long，分别表示约0—3km、3—15km、15km以上；`distance_band_km` 给出本次可接受的软区间；`distance_sensitivity` 仅用 high/medium/low。日常晨跑、便利店、工作午餐通常 local；值得专程前往的商圈、聚会、电影、特色餐饮可为 urban，不应一律周边搜索；跨城、旅行或明确远途为 long。对 meal/shopping/leisure/fitness 等自主选址活动，若事件语义允许且今日 novelty_level 为 medium/high（或 day_type 为 exploratory/social_activity/local_leisure/evening_activity），应倾向 selection_policy=gravity、query_type=search、distance_tier=urban，不要一律压成 around/local；novelty_level=none/low 或 day_type=home_recovery/low_mobility 时才就近。`independent_trip=true` 表示该活动值得单独往返，不必依附上一活动链。必须用 `distance_tier_reason` 简述动机。该判断结合活动动机、时间、今日移动预算与人物自主权，而不是只按活动类别固定映射。
 21. query_type 与距离层级协调：local 通常 around；urban 应使用 search，程序会同时召回城市关键词与3—15km多距离带候选；long 或跨城使用 search/city。明确地点和固定锚点仍由 existing/best_match 优先，距离层级不能改变事实。
 22. 仅输出 JSON，不输出解释。格式：
-{{"stops":[{{"stop_id":"stop_000","parent_event_id":"计划事件ID或空","event_ref":"起床后从家出发","activity_type":"home","query_type":"existing","explicit_name":"画像地址中的原名","explicit_location":"画像地址中的原坐标","keyword":"","search_queries":[],"poi_type":"","city":"城市","anchor_role":"home","reuse_policy":"must_return","reuse_location_id":"","epr_applicable":false,"historical_candidate_ids":[],"history_match_reason":"固定锚点不使用EPR","selection_policy":"best_match","start_time":"07:00","end_time":"08:00","minimum_dwell_minutes":0,"mode_hint":"","required":true,"provenance":"plan","flexibility":"fixed","spatial_scope":"building","maximum_travel_minutes":0,"mobility_pattern":"stationary","allow_plausible_location":false,"preferred_radius_m":0,"target_distance_km":0,"target_duration_minutes":0,"fallback_queries":[],"fallback_area":"","allow_citywide_fallback":false,"distance_tier":"local","distance_band_km":[0,3],"distance_sensitivity":"high","independent_trip":false,"distance_tier_reason":"固定住宅锚点"}}]}}
+{{"stops":[{{"stop_id":"stop_000","parent_event_id":"计划事件ID、optional_activity_id或空","event_ref":"起床后从家出发","activity_type":"home","query_type":"existing","explicit_name":"画像地址中的原名","explicit_location":"画像地址中的原坐标","keyword":"","search_queries":[],"poi_type":"","city":"城市","anchor_role":"home","reuse_policy":"must_return","reuse_location_id":"","epr_applicable":false,"historical_candidate_ids":[],"preferred_candidate_ids":[],"preference_strength":0.0,"history_match_reason":"固定锚点不使用EPR","location_control":"fixed","location_binding":"fixed","selection_policy":"best_match","start_time":"07:00","end_time":"08:00","minimum_dwell_minutes":0,"mode_hint":"","required":true,"provenance":"plan","flexibility":"fixed","spatial_scope":"building","maximum_travel_minutes":0,"mobility_pattern":"stationary","allow_plausible_location":false,"preferred_radius_m":0,"target_distance_km":0,"target_duration_minutes":0,"fallback_queries":[],"fallback_area":"","allow_citywide_fallback":false,"distance_tier":"local","distance_band_km":[0,3],"distance_sensitivity":"high","independent_trip":false,"distance_tier_reason":"固定住宅锚点"}}]}}
 
 当日生活事件：{data}
 今日核心计划（用于识别 required，不能因地点问题删除）：{plan}
@@ -498,11 +519,12 @@ template_geo_activity_replan = '''
 允许：
 1. 调整 movable/optional 活动的时间和顺序；
 2. 合并或删除 inferred+optional 活动；
-3. 修改非锚点活动的 keyword、search_queries、fallback_queries、fallback_area、allow_citywide_fallback、poi_type、query_type、selection_policy、spatial_scope 和 mobility_pattern，以寻找更合理地点；关键词一律遵循「简洁可匹配」原则（单个通用POI名词或真实品牌/机构名，见主规则第12条）；selection_policy必须依据人物对地点的决定权，不能为了缩短路程把被动指定地点改成gravity；
-4. 将快递柜、楼下、小区内活动改为 mobility_pattern=micro 且 spatial_scope=compound；
-5. 将低价值独立外出并入已有购物或出行链。
-6. 对跨城或大型目的地补回事件中已经明确出现但初始意图遗漏的车站/机场stop；对未具名客户公司/工厂等生成从具体到宽泛、简洁可匹配的关键词（如“电子厂”“产业园”），并在合理时启用城市区域兜底。
-7. 重新核对历史地点语义：一般自主选址活动若存在合理旧地点，设置 epr_applicable=true 并在 historical_candidate_ids 中列出最多5个完整ID，由程序决定返回或探索；没有则设置false和空数组。只有事件明确要求“上次/常去/同一家”时才填写唯一 reuse_location_id。不得新造ID，语义不符的旧ID必须删除。
+3. 修改非锚点活动的 keyword、search_queries、fallback_queries、fallback_area、allow_citywide_fallback、poi_type、query_type、location_control、location_binding、selection_policy、spatial_scope 和 mobility_pattern，以寻找更合理地点；关键词一律遵循「简洁可匹配」原则（单个通用POI名词或真实品牌/机构名，见主规则第12条）；人物已经选定地点时用 self+fixed并保留reuse_location_id，自主但未决定时用 self+preferred/open+gravity，固定实体用 fixed+fixed+best_match，外部决定但未具名用 external_unspecified+open+random；不能为了缩短路程改变人物对地点的决定权；
+4. 若人物自主选定的地点造成明显时空冲突，只有在活动本身为 movable/optional 时才可将 self+fixed 显式降为 self+preferred/open；降级时把原ID放入 preferred_candidate_ids 并赋予较高 preference_strength，同时填写调整原因。不得静默丢弃原选择。
+5. 将快递柜、楼下、小区内活动改为 mobility_pattern=micro 且 spatial_scope=compound；
+6. 将低价值独立外出并入已有购物或出行链。
+7. 对跨城或大型目的地补回事件中已经明确出现但初始意图遗漏的车站/机场stop；对未具名客户公司/工厂等生成从具体到宽泛、简洁可匹配的关键词（如“电子厂”“产业园”），并在合理时启用城市区域兜底。
+8. 重新核对历史地点语义：一般自主选址活动若存在合理旧地点，设置 epr_applicable=true并在historical_candidate_ids中列出最多5个完整ID，由程序决定返回或探索；没有则设置false和空数组。人物已选定的地点写reuse_location_id；仅有倾向的地点写preferred_candidate_ids。不得新造ID，语义不符的旧ID必须删除。
 
 禁止：
 1. 删除 required 活动，修改其 stop_id、parent_event_id 或 activity_type；
@@ -660,12 +682,14 @@ template_event_traffic_adjust = '''
 1. 提供的轨迹数据来自人物画像地址、地图搜索、候选选择、路径计算或合理估算。它是**高优先级参考，不是不可修改的冻结事实**。若数据与事件语义、人物身份、时间表和日常行为一致，应优先原样使用。
 2. 对画像中稳定的家、工作地、学校及其他明确固定地点，除非当日情景明确改变，否则应保持名称、身份和空间关系一致，不得随意搬移或替换。
 3. 当真实地点或路线数据明显不合理时，可以主动调整。典型情况包括：搜索结果与活动类型不符；晨跑、用餐、买日用品等普通活动被分配到过远地点；路线造成不必要的折返；通行时间挤占必须事件；交通方式与距离、人物能力、时间或天气不符。
-4. 调整时按以下顺序选择最小必要改动：
-   - 先调整事件的先后顺序、时段或时长，减少往返；
-   - 再在提供的真实候选或已知地点中选择更合适的一个；
-   - 再根据距离、天气和人物条件更换交通方式或通行时间；
-   - 若仍无法合理安排，可使用“家附近的社区公园”“公司附近的小餐馆”等叙事上可信的估算地点。
-5. 修改后的交通方式和通行时间必须在自身叙事中一致。使用地图核验数据时尽量保留原数值；使用自主估算时，应使用“附近、约、大致”等措辞，不得把估算冒充为地图精确事实。
+4. 调整时按以下顺序做最小必要改动，并遵循”地点与通行”三级优先级：
+   - 先调整事件的先后顺序、时段或时长，减少往返与时间冲突；
+   - 地点与通行的采用优先级（依次判断）：
+     1）参考地点＋参考通行（含通行方式与通行时间）合理时，直接采用；
+     2）参考地点合理但参考通行时间不可接受（如步行数百分钟、远超距离、时间表或人物能力允许范围）时，保留参考地点，只修改通行方式（例如将”步行”改为”打车/驾车/公交”），并自行优化出与距离、天气、人物条件相匹配的通行时间；
+     3）只有当参考地点本身明显不合理（搜索结果与活动类型不符、普通活动被分配到过远地点等）时，才放弃该参考地点，改用提供的候选/已知地点或”家附近的社区公园””公司附近的小餐馆”等叙事估算地点。
+   - 即：参考地点没有明显不合理时，尽量通过修改通行方式与通行时间来继续使用它，而不是先换地点。
+5. 修改后的交通方式和通行时间必须在自身叙事中一致。参考通行时间合理时尽量保留地图核验的原数值；按第4条修改了通行方式或通行时间时，应使用与新方式、新距离匹配的时间；使用自主估算时，应使用”附近、约、大致”等措辞，不得把估算冒充为地图精确事实。
 6. 地图结果缺失、地点被替换或通行方式被修正，都不得成为删除当日必须事件的理由。
 7. **地点身份由“位置引用”决定，而不是由叙述措辞决定。**只要参考中的真实地点在类型、距离和时间上合理，就必须在“位置引用”中原样保留其 `stop_id`。可以在事件描述中简称为“公司附近餐馆”，但不得因此把已有真实餐馆改造成一个无 `stop_id` 的新地点。
 8. 只有参考地点确实不合理、不可用或与最终活动不匹配时，才允许舍弃其 `stop_id` 并创建叙事估算地点。不能仅因为想让名称更自然、更概括或更符合菜品描述而更换地点。

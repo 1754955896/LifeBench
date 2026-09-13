@@ -6,6 +6,7 @@
 import json
 
 from src.lifebench.event.templates.template_simulation import template_daily_event_subjective_plan
+from src.lifebench.event.simulation.activity_contract import extract_named_json
 from src.lifebench.event.simulation.context import (
     build_subjective_context,
     lean_mobility_day_profile,
@@ -43,6 +44,9 @@ def generate_subjective_thought(mind, plan, date):
         activity_recommendation=dump(context["activity_recommendation"]),
     )
     thought = mind.llm_call_s(prompt, 0)
+    mind.last_optional_activity_plan = extract_named_json(
+        thought, "OPTIONAL_ACTIVITY_PLAN"
+    )
     mind._log_event("主观思考（计划如何执行、想安排什么活动）-----------------------------------------------------------------------")
     mind._log_event(thought)
     mind._save_log(date, "t1", thought)

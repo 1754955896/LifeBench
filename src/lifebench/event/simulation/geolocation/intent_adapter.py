@@ -33,6 +33,13 @@ def _string_list(value: Any) -> List[str]:
     return [text]
 
 
+def _float_value(value: Any, default: float = 0.0) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
 def _distance_band(value: Any, tier: str) -> List[float]:
     defaults = {"local": [0.0, 3.0], "urban": [3.0, 15.0], "long": [15.0, 500.0]}
     if isinstance(value, (list, tuple)) and len(value) >= 2:
@@ -70,6 +77,68 @@ def _selection_policy(
     return "gravity"
 
 
+def _location_decision(
+    row: Dict[str, Any], category: str, query_type: str, explicit_name: str,
+    explicit_location: str, required: bool, historical_candidate_ids: List[str],
+) -> tuple[str, str, str]:
+    """Normalize semantic location agency into one executable policy.
+
+    New prompts emit ``location_control`` and ``location_binding``.  Old data
+    remains accepted, but an explicitly self-chosen preferred/open destination
+    must not collapse to best_match merely because an inspiration supplied a
+    name or location id.
+    """
+    control = _value(row, "location_control")
+    binding = _value(row, "location_binding")
+    if control not in {"self", "fixed", "external_unspecified"}:
+        control = ""
+    if binding not in {"fixed", "preferred", "open"}:
+        binding = ""
+
+    declared_policy = _value(row, "selection_policy")
+    declared_reuse = (
+        _value(row, "reuse_location_id")
+        or _value(row, "selected_location_id")
+    )
+    # Backward-compatible explicit reuse remains a hard binding unless the new
+    # schema explicitly marks it preferred/open.
+    if declared_reuse and not binding:
+        binding = "fixed"
+    if declared_reuse and not control and row.get("selected_location_id"):
+        control = "self"
+    if control == "fixed":
+        binding, policy = "fixed", "best_match"
+    elif control == "external_unspecified":
+        binding, policy = "open", "random"
+    elif control == "self":
+        policy = "best_match" if binding == "fixed" else "gravity"
+    elif declared_policy in {"gravity", "best_match", "random"}:
+        policy = declared_policy
+    else:
+        policy = _selection_policy(
+            category, query_type, explicit_name, explicit_location, required,
+        )
+
+    if not control:
+        control = {
+            "gravity": "self",
+            "best_match": "fixed",
+            "random": "external_unspecified",
+        }[policy]
+    if not binding:
+        if policy == "best_match" or query_type == "existing":
+            binding = "fixed"
+        elif historical_candidate_ids:
+            binding = "preferred"
+        else:
+            binding = "open"
+    if binding == "fixed":
+        policy = "best_match"
+    elif control == "self":
+        policy = "gravity"
+    return control, binding, policy
+
+
 def parse_stop_intents(data: Dict[str, Any]) -> List[StopIntent]:
     if not isinstance(data, dict):
         raise ValueError("轨迹意图必须是JSON对象")
@@ -94,21 +163,43 @@ def parse_stop_intents(data: Dict[str, Any]) -> List[StopIntent]:
         city = _value(row, "city") or (str(cities[index]) if index < len(cities) else "")
         explicit_location = _value(row, "explicit_location", "location")
         required = _boolean(row.get("required", False))
-        selection_policy = _value(row, "selection_policy")
-        if selection_policy not in {"gravity", "best_match", "random"}:
-            selection_policy = _selection_policy(
-                category, query_type, name, explicit_location, required,
-            )
         mode_hint = _value(row, "mode_hint")
         if legacy and index > 0 and index - 1 < len(transports):
             mode_hint = str(transports[index - 1])
         historical_candidate_ids = list(dict.fromkeys(
             _string_list(row.get("historical_candidate_ids"))
         ))[:5]
+        preferred_candidate_ids = list(dict.fromkeys(
+            _string_list(row.get("preferred_candidate_ids"))
+            + _string_list(row.get("candidate_location_ids"))
+        ))[:5]
+        location_control, location_binding, selection_policy = _location_decision(
+            row, category, query_type, name, explicit_location, required,
+            historical_candidate_ids,
+        )
+        # A preferred/open self-chosen destination is a choice set, not an
+        # already resolved entity.  Force it through candidate generation and
+        # let EPR choose return versus exploration.
+        if location_control == "self" and location_binding != "fixed":
+            if query_type == "existing":
+                query_type = "search"
+            reuse_location_id = ""
+            reuse_policy = _value(row, "reuse_policy") or _policy(category, query_type)
+            if reuse_policy == "must_return":
+                reuse_policy = "prefer_return" if historical_candidate_ids else "may_explore"
+        else:
+            reuse_location_id = (
+                _value(row, "reuse_location_id")
+                or _value(row, "selected_location_id")
+            )
+            reuse_policy = _value(row, "reuse_policy") or _policy(category, query_type)
         epr_applicable = (
             selection_policy == "gravity"
             and query_type not in {"existing", "micro"}
-            and _boolean(row.get("epr_applicable", False))
+            and (
+                _boolean(row.get("epr_applicable", False))
+                or bool(historical_candidate_ids)
+            )
         )
         distance_tier = _value(row, "distance_tier")
         if distance_tier not in {"local", "urban", "long"}:
@@ -129,11 +220,21 @@ def parse_stop_intents(data: Dict[str, Any]) -> List[StopIntent]:
             poi_type=poi_type,
             city=city,
             anchor_role=_value(row, "anchor_role"),
-            reuse_policy=_value(row, "reuse_policy") or _policy(category, query_type),
-            reuse_location_id=_value(row, "reuse_location_id"),
+            reuse_policy=reuse_policy,
+            reuse_location_id=reuse_location_id,
             epr_applicable=epr_applicable,
             historical_candidate_ids=historical_candidate_ids if epr_applicable else [],
+            preferred_candidate_ids=(
+                preferred_candidate_ids
+                if location_control == "self" and location_binding == "preferred"
+                else []
+            ),
+            preference_strength=max(0.0, min(
+                1.0, _float_value(row.get("preference_strength"), 0.75)
+            )) if preferred_candidate_ids else 0.0,
             history_match_reason=_value(row, "history_match_reason"),
+            location_control=location_control,
+            location_binding=location_binding,
             selection_policy=selection_policy,
             start_time=_value(row, "start_time"),
             end_time=_value(row, "end_time"),

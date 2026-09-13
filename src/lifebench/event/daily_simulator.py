@@ -69,6 +69,13 @@ class Mind:
         self.short_memory_context = {}  # 带日期和检索来源的短记忆结构
         self.next_day_context = {}  # reflection 生成的下一日状态、需求和未完成事项
         self.last_subjective_context = None
+        self.last_trajectory_intent_diagnostics = None
+        self.last_optional_activity_plan = {}
+        self.last_optional_activity_result = {}
+        self.last_optional_activity_diagnostics = {}
+        # In-run stage cache: a downstream failure can retry from that stage
+        # without paying again for already completed subjective/objective calls.
+        self._daily_stage_cache = {}
         self.trajectory_location_history = []  # 最终采用地点的跨日稳定注册表
         self.behavior_history = []  # 最近30天结构化活动与移动摘要
         # 人物级只读地点资产；保留 v2 分层结构供每日地点灵感抽样。
@@ -838,6 +845,8 @@ class Mind:
             bool: 执行是否成功的标志
         """
         try:
+            stage_cache = self._daily_stage_cache.setdefault(date, {})
+            stage_cache_hits = []
             # 地理位置分配的随机种子、追踪记录和复现均以正在处理的日期为准。
             self.current_date = date
             self._log_event(f"\n=== 开始生成 {date} 的事件 ===")
@@ -846,18 +855,106 @@ class Mind:
             print("[DEBUG daily_event_gen1] plan type=" + str(type(plan)) + ", keys=" + str(list(plan.keys()) if isinstance(plan, dict) else "N/A"))
             if isinstance(plan, dict) and "events" in plan:
                 print("[DEBUG daily_event_gen1] plan events count=" + str(len(plan.get("events", []))))
-            subjective_thought = self._generate_subjective_thought(plan, date)
+            if "subjective_thought" in stage_cache:
+                subjective_thought = stage_cache["subjective_thought"]
+                self.last_subjective_context = copy.deepcopy(
+                    stage_cache.get("subjective_context") or {}
+                )
+                self.last_optional_activity_plan = copy.deepcopy(
+                    stage_cache.get("optional_activity_plan") or {}
+                )
+                stage_cache_hits.append("subjective_thought")
+            else:
+                subjective_thought = self._generate_subjective_thought(plan, date)
+                stage_cache["subjective_thought"] = subjective_thought
+                stage_cache["subjective_context"] = copy.deepcopy(
+                    self.last_subjective_context or {}
+                )
+                stage_cache["optional_activity_plan"] = copy.deepcopy(
+                    self.last_optional_activity_plan
+                )
 
             # 2. 生成客观事件
-            objective_events = self._generate_objective_events(plan, date, subjective_thought)
+            if "objective_events" in stage_cache:
+                objective_events = stage_cache["objective_events"]
+                self.last_optional_activity_plan = copy.deepcopy(
+                    stage_cache.get("optional_activity_plan") or {}
+                )
+                self.last_optional_activity_result = copy.deepcopy(
+                    stage_cache.get("optional_activity_result") or {}
+                )
+                self.last_optional_activity_diagnostics = copy.deepcopy(
+                    stage_cache.get("optional_activity_diagnostics") or {}
+                )
+                stage_cache_hits.append("objective_events")
+            else:
+                objective_events = self._generate_objective_events(
+                    plan, date, subjective_thought
+                )
+                stage_cache["objective_events"] = objective_events
+                stage_cache["optional_activity_plan"] = copy.deepcopy(
+                    self.last_optional_activity_plan
+                )
+                stage_cache["optional_activity_result"] = copy.deepcopy(
+                    self.last_optional_activity_result
+                )
+                stage_cache["optional_activity_diagnostics"] = copy.deepcopy(
+                    self.last_optional_activity_diagnostics
+                )
             # 3. 获取POI数据并调整轨迹
-            poi_data = self.map(objective_events, plan)
+            if "poi_data" in stage_cache:
+                poi_data = stage_cache["poi_data"]
+                self.last_trajectory_assignment = stage_cache.get(
+                    "trajectory_assignment"
+                )
+                self.last_activity_plan = copy.deepcopy(
+                    stage_cache.get("activity_plan")
+                )
+                self.last_trajectory_intent_diagnostics = copy.deepcopy(
+                    stage_cache.get("trajectory_intent_diagnostics")
+                )
+                stage_cache_hits.append("trajectory_assignment")
+            else:
+                poi_data = self.map(objective_events, plan)
+                stage_cache["poi_data"] = poi_data
+                stage_cache["trajectory_assignment"] = getattr(
+                    self, "last_trajectory_assignment", None
+                )
+                stage_cache["activity_plan"] = copy.deepcopy(
+                    getattr(self, "last_activity_plan", None)
+                )
+                stage_cache["trajectory_intent_diagnostics"] = copy.deepcopy(
+                    getattr(self, "last_trajectory_intent_diagnostics", None)
+                )
             # 从plan2中获取当日事件参考数据
-            adjusted_events = self._adjust_event_trajectory(poi_data, objective_events, plan,
-                                                            self.get_plan4(date,-1))
+            if "adjusted_events" in stage_cache:
+                adjusted_events = stage_cache["adjusted_events"]
+                self.final_location_records = copy.deepcopy(
+                    stage_cache.get("final_location_records")
+                )
+                self.last_location_reconciliation = copy.deepcopy(
+                    stage_cache.get("location_reconciliation")
+                )
+                stage_cache_hits.append("adjusted_events")
+            else:
+                adjusted_events = self._adjust_event_trajectory(
+                    poi_data, objective_events, plan, self.get_plan4(date, -1)
+                )
+                stage_cache["adjusted_events"] = adjusted_events
+                stage_cache["final_location_records"] = copy.deepcopy(
+                    getattr(self, "final_location_records", None)
+                )
+                stage_cache["location_reconciliation"] = copy.deepcopy(
+                    getattr(self, "last_location_reconciliation", None)
+                )
 
             # 4. 生成反思和更新想法
-            reflection = self._generate_reflection(adjusted_events, plan, date)
+            if "reflection" in stage_cache:
+                reflection = copy.deepcopy(stage_cache["reflection"])
+                stage_cache_hits.append("reflection")
+            else:
+                reflection = self._generate_reflection(adjusted_events, plan, date)
+                stage_cache["reflection"] = copy.deepcopy(reflection)
             self.thought = reflection.get("thought") or self.thought
             self.next_day_context = copy.deepcopy(
                 reflection.get("next_day_context", {})
@@ -869,7 +966,9 @@ class Mind:
             ).to_string()
 
             # 6. 更新短期记忆并保存数据
-            self.update_short_memory(reflection, date)
+            if not stage_cache.get("short_memory_updated"):
+                self.update_short_memory(reflection, date)
+                stage_cache["short_memory_updated"] = True
 
             # 7. 用最终结构化行程更新跨日行为摘要；只统计事实，不解析自然语言。
             assignment = getattr(self, "last_trajectory_assignment", None)
@@ -930,6 +1029,19 @@ class Mind:
                 "activity_recommendation": copy.deepcopy(
                     subjective_context.get("activity_recommendation", {})
                 ),
+                "stage_cache_hits": stage_cache_hits,
+                "trajectory_intent_diagnostics": copy.deepcopy(
+                    getattr(self, "last_trajectory_intent_diagnostics", None)
+                ),
+                "optional_activity_plan": copy.deepcopy(
+                    getattr(self, "last_optional_activity_plan", {})
+                ),
+                "optional_activity_result": copy.deepcopy(
+                    getattr(self, "last_optional_activity_result", {})
+                ),
+                "optional_activity_diagnostics": copy.deepcopy(
+                    getattr(self, "last_optional_activity_diagnostics", {})
+                ),
                 "objective_events": objective_events,
                 "activity_plan": getattr(self, "last_activity_plan", None),
                 "poi_data": poi_data,
@@ -955,6 +1067,7 @@ class Mind:
             # self._save_events_to_file()
 
             self._log_event(f"\n=== {date} 的事件生成完成 ===")
+            self._daily_stage_cache.pop(date, None)
             return True
         except Exception as e:
             self._log_event(f"\n=== {date} 的事件生成出现错误: {str(e)} ===")

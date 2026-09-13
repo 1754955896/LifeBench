@@ -117,10 +117,10 @@ class TimelineGen:
                 f"2. 下文提示词与示例中出现的年份（如 {DEFAULT_YEAR}）仅供格式参考，"
                 f"一律以本约束的 {self.spec.year} 年为准，不得照搬。"
             )
-        if self.spec.months < 12:
+        if not (self.spec.start_month == 1 and self.spec.end_month == 12):
             lines.append(
-                f"{len(lines) - 1}. 月份仅限 1 至 {self.spec.months} 月；"
-                f"不要生成第 {self.spec.months + 1} 月及以后的内容，"
+                f"{len(lines) - 1}. 月份仅限 {self.spec.start_month} 至 {self.spec.end_month} 月；"
+                f"不要生成该范围之外月份的内容，"
                 f"全年总结也只覆盖这 {self.spec.months} 个月。"
             )
         lines.append("-" * 40)

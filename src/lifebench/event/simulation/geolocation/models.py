@@ -22,7 +22,14 @@ class StopIntent:
     reuse_location_id: str = ""
     epr_applicable: bool = False
     historical_candidate_ids: List[str] = field(default_factory=list)
+    preferred_candidate_ids: List[str] = field(default_factory=list)
+    preference_strength: float = 0.0
     history_match_reason: str = ""
+    # 地点决定权与绑定强度由 LLM 做语义判断，selection_policy 仅是其
+    # 确定性执行结果。这样“地点灵感”不会因为带了名称/ID就被误当成
+    # 必须返回的固定地点。
+    location_control: str = "self"
+    location_binding: str = "open"
     selection_policy: str = "gravity"
     start_time: str = ""
     end_time: str = ""

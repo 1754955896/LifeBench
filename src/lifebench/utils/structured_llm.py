@@ -77,6 +77,9 @@ class StructuredLLMCaller:
         prompt: str,
         validator: Optional[Callable[[Any], Any]] = None,
         use_reason_model: bool = False,
+        retry_prompt_builder: Optional[
+            Callable[[str, List[str], int], str]
+        ] = None,
     ) -> StructuredCallResult:
         errors = []
         current_prompt = prompt
@@ -84,7 +87,10 @@ class StructuredLLMCaller:
         prompt_hash = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
         for attempt in range(1, self.max_retries + 2):
             try:
-                data = parse_json(call(current_prompt))
+                raw = call(current_prompt)
+                if raw is None or (isinstance(raw, str) and not raw.strip()):
+                    raise ValueError("empty_response")
+                data = parse_json(raw)
                 if not isinstance(data, dict):
                     raise ValueError("响应顶层必须是 JSON 对象")
                 validation_errors = _validation_errors(validator, data)
@@ -94,11 +100,17 @@ class StructuredLLMCaller:
             except Exception as exc:
                 errors.append(str(exc))
             if attempt <= self.max_retries:
-                current_prompt = (
-                    prompt
-                    + "\n\n上一次输出未通过校验。只修正下列错误并重新输出完整 JSON 对象：\n- "
-                    + "\n- ".join(errors[-10:])
-                )
+                next_attempt = attempt + 1
+                if retry_prompt_builder is not None:
+                    current_prompt = retry_prompt_builder(
+                        prompt, list(errors), next_attempt,
+                    )
+                else:
+                    current_prompt = (
+                        prompt
+                        + "\n\n上一次输出未通过校验。只修正下列错误并重新输出完整 JSON 对象：\n- "
+                        + "\n- ".join(errors[-10:])
+                    )
         raise StructuredOutputError("结构化 JSON 调用重试耗尽", errors)
 
     def call_json_array(

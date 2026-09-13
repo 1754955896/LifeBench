@@ -127,6 +127,24 @@ class CandidateProvider:
         elif anchor and intent.reuse_policy == "must_return":
             candidates.append(anchor)
 
+        # A preference is today's inclination, not proof of a previous visit.
+        # It may therefore point to either a familiar place or a known-unvisited
+        # inspiration.  Keep it in the pool with its stable id; the selector
+        # applies a probabilistic preference without turning it into hard reuse.
+        if intent.selection_policy == "gravity":
+            for location_id in intent.preferred_candidate_ids:
+                preferred = self.catalog.by_location_id(location_id)
+                if preferred is None:
+                    continue
+                if not city_matches(intent.city, preferred.city):
+                    continue
+                if (
+                    intent.activity_type != "other"
+                    and preferred.category not in {intent.activity_type, "other"}
+                ):
+                    continue
+                candidates.append(preferred)
+
         # 历史返回地点只参与人物自主选址，并且必须由 LLM 根据事件语义从
         # 动态地点注册表显式列出。程序只验证 ID、城市、类别和来源，不再把
         # 同类别的所有画像/历史地点都默认为可复访候选。

@@ -35,44 +35,56 @@ def recent_dates(date_str: str, days: int = 5,
 
 @dataclass(frozen=True)
 class TimeSpec:
-    """生成数据的时间范围规格：目标年份 + 模拟该年前 months 个月。
+    """生成数据的时间范围规格：目标年份 + 起始月 + 连续月数。
 
     贯穿 draft 生成全链路，替换各处硬编码的 2025 与 range(1, 13)。
 
     用法：
-        spec = TimeSpec(year=2027, months=3)
-        spec.month_keys   -> ["2027-01", "2027-02", "2027-03"]
-        spec.start_date   -> "2027-01-01"
-        spec.end_date     -> "2027-03-31"
+        spec = TimeSpec(year=2027, start_month=3, months=5)   # 2027 年 3~7 月
+        spec.month_keys   -> ["2027-03", "2027-04", "2027-05", "2027-06", "2027-07"]
+        spec.start_date   -> "2027-03-01"
+        spec.end_date     -> "2027-07-31"
     """
     year: int = DEFAULT_YEAR
     months: int = DEFAULT_MONTHS
+    start_month: int = 1
 
     def __post_init__(self):
         if not isinstance(self.year, int) or not (1900 <= self.year <= 2999):
             raise ValueError(f"year 需为 1900..2999 的整数，收到 {self.year!r}")
         if not isinstance(self.months, int) or not (1 <= self.months <= 12):
             raise ValueError(f"months 需为 1..12 的整数，收到 {self.months!r}")
+        if not isinstance(self.start_month, int) or not (1 <= self.start_month <= 12):
+            raise ValueError(f"start_month 需为 1..12 的整数，收到 {self.start_month!r}")
+        if self.start_month + self.months - 1 > 12:
+            raise ValueError(
+                f"起始月份 {self.start_month} 加月数 {self.months} 超出 12 月，"
+                f"暂不支持跨年范围")
+
+    @property
+    def end_month(self) -> int:
+        """最后一个模拟月（1-12），如 start_month=3, months=5 -> 7"""
+        return self.start_month + self.months - 1
 
     @property
     def month_nums(self) -> List[int]:
-        """[1, 2, ..., months]"""
-        return list(range(1, self.months + 1))
+        """[start_month, ..., end_month]"""
+        return list(range(self.start_month, self.end_month + 1))
 
     @property
     def month_keys(self) -> List[str]:
-        """["2025-01", "2025-02", ...]，长度为 months"""
+        """["2025-03", "2025-04", ...]，长度为 months"""
         return [self.month_key(m) for m in self.month_nums]
 
     @property
     def start_date(self) -> str:
-        """第一个月的第一天，"YYYY-01-01" """
-        return f"{self.year}-01-01"
+        """第一个月的第一天，如 "YYYY-03-01" """
+        return self.month_start_date(self.start_month)
 
     @property
     def end_date(self) -> str:
         """最后一个模拟月的最后一天（自动处理闰年与月长）"""
-        return self.month_end_date(self.months)
+        return self.month_end_date(self.end_month)
 
     @property
     def total_days(self) -> int:
@@ -94,7 +106,7 @@ class TimeSpec:
 
     def is_last_month(self, month: int) -> bool:
         """是否为本次模拟的最后一个月（注意与 month == 12 的"是否为自然年末"区分）"""
-        return month == self.months
+        return month == self.end_month
 
     def contains_month(self, month_key: str) -> bool:
         """"YYYY-MM" 是否落在模拟范围内"""
@@ -104,9 +116,14 @@ class TimeSpec:
         """"YYYY-MM-DD" 是否落在模拟范围内"""
         return self.start_date <= date_str[:10] <= self.end_date
 
+    @property
+    def range_label(self) -> str:
+        """人类可读的月份区间标签，如 "2025年3月至7月" 或 "2025年1月至12月" """
+        return f"{self.year}年{self.start_month}月至{self.end_month}月"
+
     def describe(self) -> str:
         """人类可读描述，可注入 prompt"""
-        return (f"{self.year}年1月至{self.months}月"
+        return (f"{self.range_label}"
                 f"（{self.start_date} 至 {self.end_date}，共 {self.total_days} 天）")
 
     @classmethod
@@ -116,6 +133,7 @@ class TimeSpec:
         return cls(
             year=getattr(args, "year", None) or default_year,
             months=getattr(args, "months", None) or default_months,
+            start_month=getattr(args, "start_month", None) or 1,
         )
 
 
@@ -246,7 +264,7 @@ def guard_time_spec_meta(meta_dir, spec, artifacts=None, write=True):
     import os
 
     meta_path = os.path.join(meta_dir, 'meta.json')
-    current = {'year': spec.year, 'months': spec.months}
+    current = {'year': spec.year, 'months': spec.months, 'start_month': spec.start_month}
 
     if os.path.exists(meta_path):
         try:
@@ -257,11 +275,14 @@ def guard_time_spec_meta(meta_dir, spec, artifacts=None, write=True):
             previous = None
 
         if previous and (previous.get('year') != current['year']
-                         or previous.get('months') != current['months']):
+                         or previous.get('months') != current['months']
+                         or previous.get('start_month', 1) != current['start_month']):
             raise RuntimeError(
                 f"时间范围与已有产物不一致，已中止以免生成自相矛盾的数据。\n"
-                f"  已有产物: year={previous.get('year')}, months={previous.get('months')}\n"
-                f"  本次参数: year={current['year']}, months={current['months']}\n"
+                f"  已有产物: year={previous.get('year')}, months={previous.get('months')}, "
+                f"start_month={previous.get('start_month', 1)}\n"
+                f"  本次参数: year={current['year']}, months={current['months']}, "
+                f"start_month={current['start_month']}\n"
                 f"请改用一致的参数，或换一个输出目录，或先删除 {meta_dir} "
                 f"及同级 daily_draft.json / daily_event.json 后重跑。"
             )

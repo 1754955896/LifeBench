@@ -56,8 +56,10 @@ def parse_args():
     # 时间范围参数
     parser.add_argument('--year', type=int, default=2025,
                         help='生成数据的年份（默认：2025）')
+    parser.add_argument('--start-month', type=int, default=1,
+                        help='起始月份，取值 1-12（默认：1）')
     parser.add_argument('--months', type=int, default=12,
-                        help='模拟该年的前几个月，取值 1-12（默认：12，即完整一年）')
+                        help='模拟的连续月数，从 start-month 起算，取值 1-12（默认：12）')
 
     return parser.parse_args()
 
@@ -85,7 +87,7 @@ def main():
         max_workers = args.max_workers or default_workers
 
         # 时间范围配置（非法取值会在此直接抛出 ValueError）
-        spec = TimeSpec(year=args.year, months=args.months)
+        spec = TimeSpec(year=args.year, months=args.months, start_month=args.start_month)
 
         # 打印系统配置
         print(f"系统配置：")

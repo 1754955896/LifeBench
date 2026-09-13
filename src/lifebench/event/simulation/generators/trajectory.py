@@ -38,6 +38,9 @@ from src.lifebench.event.simulation.geolocation.selector import haversine_km
 from src.lifebench.event.simulation.geolocation.validator import (
     validate_assignment, validate_location_records,
 )
+from src.lifebench.utils.structured_llm import (
+    StructuredLLMCaller, StructuredOutputError,
+)
 
 
 def _extract_json_object(response):
@@ -49,6 +52,124 @@ def _extract_json_object(response):
     if first_bracket != -1 and last_bracket != -1 and first_bracket < last_bracket:
         value = value[first_bracket:last_bracket + 1]
     return json.loads(value)
+
+
+def _validate_stop_intent_payload(data):
+    """Business validation used before any map API work is attempted."""
+    if not isinstance(data, dict):
+        return ["轨迹意图顶层必须是JSON对象"]
+    rows = data.get("stops")
+    if not isinstance(rows, list) or not rows:
+        return ["顶层必须包含非空stops数组"]
+    errors = []
+    raw_ids = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            errors.append("stops[%d]必须是对象" % index)
+            continue
+        stop_id = str(row.get("stop_id") or "").strip()
+        if not stop_id:
+            errors.append("stops[%d]缺少stop_id" % index)
+        raw_ids.append(stop_id)
+    duplicates = sorted({item for item in raw_ids if item and raw_ids.count(item) > 1})
+    if duplicates:
+        errors.append("stop_id重复: %s" % ",".join(duplicates))
+    try:
+        intents = parse_stop_intents(data)
+    except Exception as error:
+        errors.append(str(error))
+        return errors
+    if len(intents) != len(rows):
+        errors.append("部分停留点无法解析")
+    return errors
+
+
+def _compact_stop_intent_retry_prompt(
+    *, events, plan, location_context, location_registry, mobility_profile,
+    day_variation, errors,
+):
+    """A shorter regeneration prompt for the final structured retry."""
+    dump = lambda value: json.dumps(
+        value, ensure_ascii=False, separators=(",", ":"),
+    ) if not isinstance(value, str) else value
+    return '''你只需重新生成当天按时间排序的停留意图JSON。只输出一个对象：
+{{"stops":[{{"stop_id":"stop_000","parent_event_id":"","event_ref":"活动","activity_type":"home|work|education|meal|fitness|shopping|medical|leisure|other","query_type":"existing|around|search|city|micro","explicit_name":"","explicit_location":"","keyword":"","search_queries":[],"poi_type":"","city":"","anchor_role":"","reuse_policy":"must_return|prefer_return|may_explore","reuse_location_id":"","epr_applicable":false,"historical_candidate_ids":[],"preferred_candidate_ids":[],"preference_strength":0.0,"history_match_reason":"","location_control":"self|fixed|external_unspecified","location_binding":"fixed|preferred|open","selection_policy":"gravity|best_match|random","start_time":"HH:MM","end_time":"HH:MM","mode_hint":"walking|bicycling|transit|driving","required":false,"provenance":"plan|inferred","flexibility":"fixed|movable|optional","spatial_scope":"room|building|compound|neighborhood|district|city","mobility_pattern":"stationary|micro|destination|local_loop|roaming","distance_tier":"local|urban|long","distance_band_km":[0,3],"distance_sensitivity":"high|medium|low","independent_trip":false}}]}}
+固定家/公司和明确不可替换实体用 fixed/fixed/best_match；人物已选定的自主地点用 self/fixed并直接复用ID；只有偏好或未决定的自主餐饮、购物、健身、娱乐才用 self+preferred/open+gravity；外部指定但未具名地点用 external_unspecified/open/random。必须覆盖所有真实宏观地点变化，不为微地点新建stop。
+上一次错误：{errors}
+当天事件：{events}
+核心计划：{plan}
+已有地点：{locations}
+历史地点注册表：{registry}
+移动画像：{mobility}
+生活变体：{variation}'''.format(
+        errors=dump(errors[-10:]), events=dump(events), plan=dump(plan),
+        locations=dump(location_context), registry=dump(location_registry),
+        mobility=dump(mobility_profile), variation=dump(day_variation),
+    )
+
+
+def _generate_stop_intent_payload(
+    mind, prompt, *, events, plan, location_context, location_registry,
+    mobility_profile, day_variation, config,
+):
+    """Generate and validate stop intents with stage-local retries."""
+    retry_count = max(0, int(config.get("intent_retry_count", 2) or 0))
+    current_date = str(getattr(mind, "current_date", "") or "")
+    previous_diagnostics = getattr(
+        mind, "last_trajectory_intent_diagnostics", None
+    )
+    prior_runs = []
+    if (
+        isinstance(previous_diagnostics, dict) and previous_diagnostics
+        and previous_diagnostics.get("date", "") == current_date
+        and previous_diagnostics.get("status") == "failed"
+    ):
+        prior_runs.extend(previous_diagnostics.get("prior_runs", []))
+        prior_runs.append({
+            key: value for key, value in previous_diagnostics.items()
+            if key != "prior_runs"
+        })
+    caller = StructuredLLMCaller(
+        max_retries=retry_count,
+        object_call=lambda value: mind.llm_call_j(value, 0),
+        reason_object_call=lambda value: mind.llm_call_j(value, 0),
+    )
+
+    def retry_builder(original_prompt, errors, next_attempt):
+        if next_attempt <= 2:
+            return original_prompt + (
+                "\n\n上一次轨迹意图未通过校验。错误为：%s。"
+                "请重新输出完整JSON对象，不要输出解释。"
+                % json.dumps(errors[-10:], ensure_ascii=False)
+            )
+        return _compact_stop_intent_retry_prompt(
+            events=events, plan=plan, location_context=location_context,
+            location_registry=location_registry,
+            mobility_profile=mobility_profile, day_variation=day_variation,
+            errors=errors,
+        )
+
+    try:
+        result = caller.call_json_object(
+            prompt,
+            validator=_validate_stop_intent_payload,
+            retry_prompt_builder=retry_builder,
+        )
+    except StructuredOutputError as error:
+        mind.last_trajectory_intent_diagnostics = {
+            "status": "failed", "attempts": retry_count + 1,
+            "errors": list(error.errors),
+            "prior_runs": prior_runs,
+            "date": current_date,
+        }
+        raise
+    mind.last_trajectory_intent_diagnostics = {
+        "status": "success", "attempts": result.attempts,
+        "prompt_hash": result.prompt_hash, "errors": list(result.errors),
+        "prior_runs": prior_runs,
+        "date": current_date,
+    }
+    return result.data
 
 
 def _trajectory_config(mind):
@@ -648,11 +769,21 @@ def generate_poi_route(mind, pt, plan=None):
         mobility_day_budget=mobility_day_budget,
         day_variation_context=day_variation,
     )
-    res = mind.llm_call_j(prompt, 0)
     print("poi分析-----------------------------------------------------------------------")
     mind.last_trajectory_assignment = None
     try:
-        data = _extract_json_object(res)
+        if config.get("enabled", True):
+            location_context = _compact_intent_location_context(mind)
+            location_registry = _compact_location_registry(mind)
+            data = _generate_stop_intent_payload(
+                mind, prompt, events=pt, plan=plan or {},
+                location_context=location_context,
+                location_registry=location_registry,
+                mobility_profile=mobility_day_budget,
+                day_variation=day_variation, config=config,
+            )
+        else:
+            data = _extract_json_object(mind.llm_call_j(prompt, 0))
         if not config.get("enabled", True):
             return _legacy_route(mind, data)
         intents = parse_stop_intents(data)
@@ -713,7 +844,7 @@ def generate_poi_route(mind, pt, plan=None):
             # 重试整日。禁止把旧版字符串当作新版地理成功数据。
             raise RuntimeError("新版地理位置分配失败: %s" % e) from e
         try:
-            data = _extract_json_object(res)
+            data = _extract_json_object(mind.llm_call_j(prompt, 0))
             return _legacy_route(mind, data)
         except Exception as fallback_error:
             print("旧版轨迹回退也失败: %s" % fallback_error)

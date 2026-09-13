@@ -19,6 +19,9 @@ sdist/
 var/
 wheels/
 *.whl
+docs/
+
+
 
 # PyInstaller
 *.manifest
