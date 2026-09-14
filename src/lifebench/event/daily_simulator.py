@@ -99,6 +99,8 @@ class Mind:
         self.env = ""
         self.file_path = file_path
         self.instance_id = instance_id
+        # 是否开启真实地理匹配；关闭时跳过真实地理搜索，直接由 LLM 在 adjust 阶段统一分配地点
+        self.enable_real_geo = True
         # 分片起始日（initialize 时由引擎传入），用于统一命名 sim/ 下产物
         self.interval_start = None
         # 统一输出根目录：所有运行态产物都写到 {file_path}/sim/ 下
@@ -915,7 +917,12 @@ class Mind:
                 )
                 stage_cache_hits.append("trajectory_assignment")
             else:
-                poi_data = self.map(objective_events, plan)
+                if getattr(self, "enable_real_geo", True):
+                    poi_data = self.map(objective_events, plan)
+                else:
+                    # 关闭真实地理匹配：跳过真实地理搜索，直接由 LLM 在 adjust 阶段统一分配地点
+                    poi_data = ""
+                    self.last_trajectory_assignment = None
                 stage_cache["poi_data"] = poi_data
                 stage_cache["trajectory_assignment"] = getattr(
                     self, "last_trajectory_assignment", None
@@ -1146,19 +1153,21 @@ class MindController:
     Mind类的并行化控制器，用于管理多个Mind实例的并行执行
     """
         
-    def __init__(self, event_file='event.json', persona_file='persona.json', data_dir='data/2025-12-07', daily_state_file='daily_state.json', instance_id=0, loc_data='location.json'):
+    def __init__(self, event_file='event.json', persona_file='persona.json', data_dir='data/2025-12-07', daily_state_file='daily_state.json', instance_id=0, loc_data='location.json', enable_real_geo=True):
         """
         初始化MindController实例
-        
+
         参数:
             event_file: 事件数据文件路径
             persona_file: 人物画像数据文件路径
             data_dir: 数据存储目录
             daily_state_file: 每日状态数据文件路径
             instance_id: 人物实例ID，用于确保每个人只有一个memory文件
+            enable_real_geo: 是否开启真实地理匹配（True 开启；False 跳过真实地理搜索，由 LLM 统一分配）
         """
         self.data_dir = data_dir
         self.instance_id = instance_id
+        self.enable_real_geo = enable_real_geo
         self.event_file = event_file
         self.persona_file = persona_file
         self.location_file = os.path.abspath(loc_data)
@@ -1229,6 +1238,7 @@ class MindController:
             )
             mind.assets_prepared = True
             mind.asset_snapshot = copy.deepcopy(asset_snapshot)
+            mind.enable_real_geo = self.enable_real_geo
             return mind
 
         engine = DailySimulationEngine(

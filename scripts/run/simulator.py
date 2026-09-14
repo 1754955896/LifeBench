@@ -23,6 +23,7 @@ parser.add_argument('--interval-days', type=int, default=13, help='每个线程�
 parser.add_argument('--generate-data', type=int, default=1, help='是否生成数据')
 parser.add_argument('--format-events', type=int, default=1, help='是否格式化事件')
 parser.add_argument('--instance-id', type=int, default=0, help='人物实例ID')
+parser.add_argument('--real-geo', type=int, default=1, help='是否开启真实地理匹配（1开启，默认；0关闭，跳过真实地理搜索，直接由LLM在adjust阶段统一分配地点）')
 args = parser.parse_args()
 
 # 配置参数
@@ -135,7 +136,8 @@ if generate_data:
         event_file=adjusted_events_path,
         daily_state_file=file_path + 'daily_draft.json',
         instance_id=args.instance_id,
-        loc_data=file_path + 'location.json'
+        loc_data=file_path + 'location.json',
+        enable_real_geo=(args.real_geo == 1)
     )
 
     # 3.2 执行多线程并行处理

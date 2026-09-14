@@ -124,6 +124,7 @@ if __name__ == "__main__":
     parser.add_argument('--phone-count-min', type=int, default=2, help='每天手机数据最小条数')
     parser.add_argument('--phone-count-max', type=int, default=7, help='每天手机数据最大条数')
     parser.add_argument('--phone-count-weekly-max', type=int, default=30, help='每周手机数据最大条数')
+    parser.add_argument('--no-sample', action='store_true', help='不控制每日手机数据条数，保留全部生成的数据（跳过采样）')
     parser.add_argument('--process-only', action='store_true', help='仅执行数据后处理操作，不生成新数据')
     args = parser.parse_args()
 
@@ -202,18 +203,22 @@ if __name__ == "__main__":
 
             return daily_counts
 
-        # 生成每天的数据量
-        daily_counts = generate_daily_counts(
-            start_time, end_time,
-            args.phone_count_min, args.phone_count_max,
-            args.phone_count_weekly_max
-        )
+        if args.no_sample:
+            daily_counts = None
+            print("\n已启用 --no-sample：不控制每日手机数据条数，保留全部生成的数据（跳过采样）")
+        else:
+            # 生成每天的数据量
+            daily_counts = generate_daily_counts(
+                start_time, end_time,
+                args.phone_count_min, args.phone_count_max,
+                args.phone_count_weekly_max
+            )
 
-        print(f"\n每天计划生成的数据量：")
-        for date_str in sorted(daily_counts.keys())[:7]:
-            print(f"  {date_str}: {daily_counts[date_str]} 条")
-        if len(daily_counts) > 7:
-            print(f"  ... 共 {len(daily_counts)} 天")
+            print(f"\n每天计划生成的数据量：")
+            for date_str in sorted(daily_counts.keys())[:7]:
+                print(f"  {date_str}: {daily_counts[date_str]} 条")
+            if len(daily_counts) > 7:
+                print(f"  ... 共 {len(daily_counts)} 天")
 
         # 执行全部数据生成任务（使用 dynamic 版本）
         print(f"\n开始生成所有类型的手机数据，日期范围：{start_time} 到 {end_time}")
@@ -224,7 +229,8 @@ if __name__ == "__main__":
             file_path=file_path,
             matcher=matcher,
             daily_counts=daily_counts,
-            max_workers=args.max_workers
+            max_workers=args.max_workers,
+            no_sample=args.no_sample
         )
 
         # 执行数据后处理操作（调用 phone_data_gen.py 中的函数）

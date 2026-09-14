@@ -179,6 +179,151 @@ def run_for_persona(persona_data, persona_folder, instance_id, args, location_da
     
     return all_success
 
+def format_duration(seconds):
+    """
+    将秒数格式化为可读的时长字符串（如 1h 23m 45s）
+    """
+    if seconds is None:
+        return "N/A"
+    seconds = int(round(seconds))
+    days, rem = divmod(seconds, 86400)
+    hours, rem = divmod(rem, 3600)
+    minutes, secs = divmod(rem, 60)
+    if days > 0:
+        return f"{days}d {hours}h {minutes}m {secs}s"
+    if hours > 0:
+        return f"{hours}h {minutes}m {secs}s"
+    if minutes > 0:
+        return f"{minutes}m {secs}s"
+    return f"{secs}s"
+
+
+def empty_usage():
+    """返回一个空的 token 用量结构"""
+    return {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "call_count": 0,
+        "models": {},
+    }
+
+
+def merge_usage(acc, usage):
+    """把单个 usage 快照累加到累加器 acc（原地修改并返回 acc）"""
+    if not usage:
+        return acc
+    for key in ("prompt_tokens", "completion_tokens", "total_tokens", "call_count"):
+        acc[key] = acc.get(key, 0) + (usage.get(key) or 0)
+    models = acc.setdefault("models", {})
+    for model, stats in (usage.get("models") or {}).items():
+        target = models.setdefault(model, {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0,
+            "call_count": 0,
+        })
+        for key in ("prompt_tokens", "completion_tokens", "total_tokens", "call_count"):
+            target[key] = target.get(key, 0) + (stats.get(key) or 0)
+    return acc
+
+
+def aggregate_token_files(token_dir):
+    """
+    聚合目录下所有 token_<pid>.json 文件中的 token 用量
+    :param token_dir: 存放 token 统计文件的目录
+    :return: 合并后的 usage 字典
+    """
+    acc = empty_usage()
+    if not token_dir or not os.path.isdir(token_dir):
+        return acc
+    for filename in os.listdir(token_dir):
+        if not (filename.startswith("token_") and filename.endswith(".json")):
+            continue
+        file_path = os.path.join(token_dir, filename)
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                usage = json.load(f)
+            merge_usage(acc, usage)
+        except Exception as e:
+            print(f"  警告: 读取 token 统计文件失败 {file_path}: {str(e)}")
+    return acc
+
+
+def read_stage_times(persona_folder):
+    """读取某个画像目录下 run.py 写入的 stage_times.json（不存在则返回 None）"""
+    path = os.path.join(persona_folder, "stage_times.json")
+    if not os.path.exists(path):
+        return None
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data.get("stages")
+    except Exception as e:
+        print(f"  警告: 读取阶段耗时文件失败 {path}: {str(e)}")
+        return None
+
+
+def write_report(report, output_root):
+    """
+    将报告写入输出目录（JSON 与可读文本两份）
+    :param report: 报告内容字典
+    :param output_root: 输出根目录（即 output/）
+    """
+    os.makedirs(output_root, exist_ok=True)
+    json_path = os.path.join(output_root, "synthesis_report.json")
+    txt_path = os.path.join(output_root, "synthesis_report.txt")
+
+    try:
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(report, f, ensure_ascii=False, indent=2)
+        print(f"\n✅ 报告文件已生成: {json_path}")
+    except Exception as e:
+        print(f"\n❌ 写入报告文件失败 {json_path}: {str(e)}")
+
+    try:
+        lines = []
+        lines.append("=" * 70)
+        lines.append("合成数据报告")
+        lines.append(f"生成时间: {report.get('generated_at', '')}")
+        lines.append(f"画像总数: {report.get('persona_count', 0)}")
+        lines.append(f"成功数量: {report.get('success_count', 0)}")
+        lines.append(f"失败数量: {report.get('failed_count', 0)}")
+        lines.append(f"总耗时: {report.get('total_duration_human', '')}")
+        lines.append("")
+        tokens = report.get("total_tokens", {})
+        lines.append(f"Token 消耗总量: {tokens.get('total_tokens', 0)}")
+        lines.append(f"  - 输入 tokens: {tokens.get('prompt_tokens', 0)}")
+        lines.append(f"  - 输出 tokens: {tokens.get('completion_tokens', 0)}")
+        lines.append(f"  - LLM 调用次数: {tokens.get('call_count', 0)}")
+        models = tokens.get("models", {})
+        if models:
+            lines.append("  按模型统计:")
+            for model, stats in models.items():
+                lines.append(f"    - {model}: 输入 {stats.get('prompt_tokens', 0)} / "
+                             f"输出 {stats.get('completion_tokens', 0)} / "
+                             f"总计 {stats.get('total_tokens', 0)} / "
+                             f"调用 {stats.get('call_count', 0)} 次")
+        stage_times = report.get("stage_times")
+        if stage_times:
+            lines.append("")
+            lines.append("各阶段累计耗时:")
+            for stage, duration in stage_times.items():
+                lines.append(f"  - {stage}: {format_duration(duration)}")
+        lines.append("")
+        lines.append("各画像明细:")
+        for p in report.get("personas", []):
+            lines.append(f"  - [{p.get('status', '')}] {p.get('name', '')} "
+                         f"(耗时 {p.get('duration_human', '')}, "
+                         f"tokens {p.get('tokens', {}).get('total_tokens', 0)})")
+        lines.append("=" * 70)
+        with open(txt_path, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines) + "\n")
+        print(f"✅ 报告文件已生成: {txt_path}")
+    except Exception as e:
+        print(f"\n❌ 写入可读报告失败 {txt_path}: {str(e)}")
+
+
 def main():
     """
     主函数，实现批量运行功能
@@ -235,53 +380,107 @@ def main():
     print(f"总开始时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"总共有 {len(personas)} 个画像需要处理")
     print(f"{'='*80}")
-    
-    # 为每个画像执行流程
+
+    # 输出根目录（报告文件将写入这里）
+    output_root = os.path.join(os.path.dirname(script_dir), "output")
+
+    # 为每个画像执行流程，并统计每个画像（阶段）的耗时与 token 用量
     success_count = 0
+    persona_records = []
     for i, persona in enumerate(personas):
         print(f"\n{'='*80}")
         print(f"开始处理第 {i+1}/{len(personas)} 个画像")
         print(f"{'='*80}")
-        
+
         # 获取人物姓名
         name = persona.get('name', f'person_{i+1}')
-        
+
         # 将姓名转换为拼音
         pinyin_name = ''.join(pypinyin.lazy_pinyin(name))
 
         # 创建文件夹名称
         persona_folder_name = f"{pinyin_name}_{i+1}"
         # 使用绝对路径，确保传递给 run.py 时路径正确
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.dirname(script_dir)
-        persona_folder = os.path.join(project_root, "output", persona_folder_name)
-        
-        # 执行流程
+        persona_folder = os.path.join(output_root, persona_folder_name)
+
+        # 为当前画像设置 token 统计落盘目录（环境变量会传递给 run.py 及其所有子进程）
+        token_dir = os.path.join(persona_folder, "token_stats")
+        os.environ["LIFEBENCH_TOKEN_DIR"] = token_dir
+
+        # 执行流程（记录单个画像耗时）
         location_data = location_batches[i] if location_batches is not None else None
-        if run_for_persona(persona, persona_folder, i+1, args, location_data=location_data):
+        persona_start_time = time.time()
+        success = run_for_persona(persona, persona_folder, i+1, args, location_data=location_data)
+        persona_duration = time.time() - persona_start_time
+
+        if success:
             success_count += 1
             print(f"\n✅ 人物 {name} 处理成功!")
         else:
             print(f"\n❌ 人物 {name} 处理失败!")
-    
+
+        # 汇总该画像的 token 用量与阶段耗时
+        tokens = aggregate_token_files(token_dir)
+        stage_times = read_stage_times(persona_folder)
+        persona_records.append({
+            "index": i + 1,
+            "name": name,
+            "folder": persona_folder_name,
+            "status": "success" if success else "failed",
+            "duration_seconds": round(persona_duration, 3),
+            "duration_human": format_duration(persona_duration),
+            "tokens": tokens,
+            "stages": stage_times,
+        })
+        print(f"人物 {name} 耗时: {format_duration(persona_duration)}, "
+              f"累计 tokens: {tokens.get('total_tokens', 0)}")
+
     # 记录总结束时间
     total_end_time = time.time()
     total_duration = total_end_time - total_start_time
-    
+
+    # 汇总 token 用量与各阶段累计耗时
+    total_tokens = empty_usage()
+    for record in persona_records:
+        merge_usage(total_tokens, record.get("tokens"))
+
+    total_stage_times = {}
+    for record in persona_records:
+        stages = record.get("stages") or {}
+        for stage, duration in stages.items():
+            total_stage_times[stage] = total_stage_times.get(stage, 0.0) + duration
+
     print(f"\n{'='*80}")
     print(f"批量生成流程执行结束")
     print(f"总结束时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"总耗时: {time.strftime('%H:%M:%S', time.gmtime(total_duration))}")
+    print(f"总耗时: {format_duration(total_duration)}")
     print(f"总处理人物数: {len(personas)}")
     print(f"成功处理人物数: {success_count}")
     print(f"失败处理人物数: {len(personas) - success_count}")
-    
+    print(f"Token 消耗总量: {total_tokens.get('total_tokens', 0)} "
+          f"(输入 {total_tokens.get('prompt_tokens', 0)} / 输出 {total_tokens.get('completion_tokens', 0)})")
+    print(f"LLM 调用次数: {total_tokens.get('call_count', 0)}")
+
     if success_count == len(personas):
         print(f"✅ 所有人物处理成功!")
     else:
         print(f"❌ 部分人物处理失败!")
     print(f"{'='*80}")
-    
+
+    # 生成报告文件（写入输出目录）
+    report = {
+        "generated_at": time.strftime('%Y-%m-%d %H:%M:%S'),
+        "persona_count": len(personas),
+        "success_count": success_count,
+        "failed_count": len(personas) - success_count,
+        "total_duration_seconds": round(total_duration, 3),
+        "total_duration_human": format_duration(total_duration),
+        "total_tokens": total_tokens,
+        "stage_times": total_stage_times,
+        "personas": persona_records,
+    }
+    write_report(report, output_root)
+
     return 0 if success_count == len(personas) else 1
 
 if __name__ == "__main__":

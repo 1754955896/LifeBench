@@ -887,7 +887,7 @@ def adjust_event_trajectory(mind, poi_data, event, daily_event_reference="", his
 
     config = _trajectory_config(mind)
     assignment = getattr(mind, "last_trajectory_assignment", None)
-    if config.get("enabled", True) and config.get("strict_validation", True):
+    if getattr(mind, "enable_real_geo", True) and config.get("enabled", True) and config.get("strict_validation", True):
         if assignment is None or not getattr(assignment, "stops", None):
             raise RuntimeError("最终事件调整前没有可用的新版轨迹分配")
 
@@ -991,7 +991,7 @@ def adjust_event_trajectory(mind, poi_data, event, daily_event_reference="", his
             )
             if config.get("strict_validation", True):
                 raise
-    if config.get("enabled", True) and config.get("strict_validation", True):
+    if getattr(mind, "enable_real_geo", True) and config.get("enabled", True) and config.get("strict_validation", True):
         final_issues = validate_location_records(
             mind.final_location_records,
             require_itinerary=bool(

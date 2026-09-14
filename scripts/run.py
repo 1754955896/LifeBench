@@ -37,6 +37,8 @@ def parse_args():
     # 功能控制参数
     parser.add_argument('--generate-phone-data', type=int, default=1,
                         help='是否生成手机数据（默认：1）')
+    parser.add_argument('--no-phone-sample', action='store_true',
+                        help='手机数据不控制每日条数，保留全部生成的数据（跳过采样）')
     parser.add_argument('--generate-monthly-report', type=int, default=1,
                         help='是否执行月度报告的生成（默认：1）')
     parser.add_argument('--generate-qa', type=int, default=1,
@@ -49,6 +51,27 @@ def parse_args():
                         help='仅创建占位文件，不实际生成数据（用于测试流程）')
 
     return parser.parse_args()
+
+
+def _write_stage_stats(args, stage_times):
+    """
+    将各阶段耗时写入 base_path 下的 stage_times.json，供 run_all.py 聚合统计
+    :param args: 命令行参数
+    :param stage_times: {阶段名: 耗时秒数}
+    """
+    stats_path = os.path.join(args.base_path, 'stage_times.json')
+    stats = {
+        "instance_id": args.instance_id,
+        "year": args.year,
+        "months": args.months,
+        "stages": stage_times,
+    }
+    try:
+        with open(stats_path, 'w', encoding='utf-8') as f:
+            json.dump(stats, f, ensure_ascii=False, indent=2)
+        print(f"\n已写入阶段耗时统计: {stats_path}")
+    except Exception as e:
+        print(f"写入阶段耗时统计失败: {str(e)}")
 
 
 def run_draft_gen(args):
@@ -303,18 +326,24 @@ if __name__ == '__main__':
         print(f"{'='*60}")
         sys.exit(1)
 
+    # 记录各阶段耗时，供报告文件统计
+    stage_times = {}
+
     # 检查对应文件夹中是否存在daily_draft.json文件
     daily_draft_path = os.path.join(args.base_path, 'daily_draft.json')
+    stage_start = time.time()
     if os.path.exists(daily_draft_path):
         print(f"检测到{daily_draft_path}文件，跳过年度时间线草稿生成系统")
         draft_gen_success = True
     else:
         # 运行年度时间线草稿生成系统
         draft_gen_success = run_draft_gen(args)
-    
+    stage_times['draft_gen'] = time.time() - stage_start
+
     # 检查是否存在daily_event.json文件，如果存在则跳过simulator步骤
     daily_event_path = os.path.join(args.base_path, 'daily_event.json')
     if draft_gen_success:
+        stage_start = time.time()
         if os.path.exists(daily_event_path):
             print(f"\n{'='*60}")
             print(f"检测到{daily_event_path}文件，跳过模拟器系统")
@@ -324,6 +353,7 @@ if __name__ == '__main__':
             simulator_success = run_simulator(args)
             if not simulator_success:
                 sys.exit(1)
+        stage_times['simulator'] = time.time() - stage_start
         
         # 移动除daily_draft、daily_event、persona外的其他json文件到process文件夹
         print(f"\n{'='*60}")
@@ -361,6 +391,7 @@ if __name__ == '__main__':
         print(f"开始执行事件匹配分析")
         print(f"{'='*60}")
 
+        stage_start = time.time()
         try:
             from src.lifebench.event.tools.check_event_matching import main as check_event_matching_main
 
@@ -379,14 +410,16 @@ if __name__ == '__main__':
             import traceback
             traceback.print_exc()
             sys.exit(1)
+        stage_times['event_matching'] = time.time() - stage_start
 
         # 根据参数决定是否执行月度报告生成
         if args.generate_monthly_report == 1:
+            stage_start = time.time()
             # 调用parallel_monthly_health_report_generation生成月度健康报告
             print(f"\n{'='*60}")
             print(f"开始生成月度健康报告")
             print(f"{'='*60}")
-            
+
             try:
                 # 导入EventRefiner类
                 from src.lifebench.event.draft.event_refiner import EventRefiner
@@ -437,13 +470,16 @@ if __name__ == '__main__':
                 import traceback
                 traceback.print_exc()
                 sys.exit(1)
+            stage_times['monthly_report'] = time.time() - stage_start
         else:
             print(f"\n{'='*60}")
             print(f"跳过生成月度健康报告")
             print(f"{'='*60}")
+            stage_times['monthly_report'] = 0.0
         
         # 根据参数决定是否生成手机数据
         if args.generate_phone_data == 1:
+            stage_start = time.time()
             print(f"\n{'='*60}")
             print(f"开始生成手机数据...")
             print(f"{'='*60}")
@@ -457,6 +493,8 @@ if __name__ == '__main__':
                 '--end-time', TimeSpec(year=args.year, months=args.months).end_date,
                 '--max-workers', '40',          # 使用默认线程数
             ]
+            if args.no_phone_sample:
+                phone_gen_cmd.append('--no-sample')
 
             # 执行phone_gen.py脚本
             try:
@@ -470,13 +508,16 @@ if __name__ == '__main__':
                 print(f"错误信息: {e.stderr}")
                 print(f"{'='*60}")
                 sys.exit(1)
+            stage_times['phone_gen'] = time.time() - stage_start
         else:
             print(f"\n{'='*60}")
             print(f"跳过生成手机数据")
             print(f"{'='*60}")
+            stage_times['phone_gen'] = 0.0
 
         # 根据参数决定是否生成QA
         if args.generate_qa == 1:
+            stage_start = time.time()
             print(f"\n{'='*60}")
             print(f"开始生成QA...")
             print(f"{'='*60}")
@@ -486,10 +527,15 @@ if __name__ == '__main__':
                 print(f"错误: QA生成系统运行失败!")
                 print(f"{'='*60}")
                 sys.exit(1)
+            stage_times['qa_gen'] = time.time() - stage_start
         else:
             print(f"\n{'='*60}")
             print(f"跳过生成QA")
             print(f"{'='*60}")
+            stage_times['qa_gen'] = 0.0
+
+        # 将各阶段耗时写入报告文件，供 run_all.py 聚合统计
+        _write_stage_stats(args, stage_times)
 
         sys.exit(0)
     else:

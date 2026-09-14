@@ -3,6 +3,8 @@ import os
 import json
 import re
 import threading
+import atexit
+import time
 
 from openai import OpenAI
 
@@ -55,6 +57,115 @@ def _get_thread_client():
                 )
     return _client
 
+
+# ==================== Token 统计 ====================
+# 每个进程把累计 token 用量增量写入自己的文件（以 PID 区分），供上层 run_all.py
+# 聚合多个子进程 / worker 进程的统计。即便进程被强杀（例如 ProcessPoolExecutor 在
+# Windows 下 spawn 出的 worker），增量落盘也能保留已完成调用的用量。
+_token_usage_lock = threading.Lock()
+_token_usage = {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "call_count": 0,
+    "models": {},
+}
+
+# 本进程 token 统计文件的落盘路径（惰性初始化）
+_token_dump_path = None
+
+
+def _get_token_dump_path():
+    """返回当前进程的 token 统计文件路径；未设置环境变量时仅做内存统计"""
+    global _token_dump_path
+    if _token_dump_path is None:
+        token_dir = os.environ.get("LIFEBENCH_TOKEN_DIR")
+        if token_dir:
+            os.makedirs(token_dir, exist_ok=True)
+            _token_dump_path = os.path.join(token_dir, f"token_{os.getpid()}.json")
+        else:
+            _token_dump_path = ""
+    return _token_dump_path or None
+
+
+def _flush_token_usage_locked():
+    """在已持有 _token_usage_lock 的前提下，把累计用量原子写入本进程的统计文件"""
+    path = _get_token_dump_path()
+    if not path:
+        return
+    snapshot = json.loads(json.dumps(_token_usage))
+    snapshot["pid"] = os.getpid()
+    snapshot["updated_at"] = time.strftime("%Y-%m-%d %H:%M:%S")
+    tmp_path = path + ".tmp"
+    try:
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            json.dump(snapshot, f, ensure_ascii=False, indent=2)
+        os.replace(tmp_path, path)
+    except Exception:
+        pass
+
+
+def _record_usage(response):
+    """从一次 chat.completions 响应中提取并累计 token 用量"""
+    usage = getattr(response, "usage", None)
+    if usage is None:
+        return
+
+    prompt = getattr(usage, "prompt_tokens", 0) or 0
+    completion = getattr(usage, "completion_tokens", 0) or 0
+    total = getattr(usage, "total_tokens", 0) or 0
+    model = getattr(response, "model", None) or "unknown"
+
+    with _token_usage_lock:
+        _token_usage["prompt_tokens"] += prompt
+        _token_usage["completion_tokens"] += completion
+        _token_usage["total_tokens"] += total
+        _token_usage["call_count"] += 1
+
+        model_stats = _token_usage["models"].setdefault(model, {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0,
+            "call_count": 0,
+        })
+        model_stats["prompt_tokens"] += prompt
+        model_stats["completion_tokens"] += completion
+        model_stats["total_tokens"] += total
+        model_stats["call_count"] += 1
+
+        _flush_token_usage_locked()
+
+
+def get_token_usage():
+    """返回当前进程累计的 token 用量快照（线程安全）"""
+    with _token_usage_lock:
+        return json.loads(json.dumps(_token_usage))
+
+
+def reset_token_usage():
+    """清空当前进程累计的 token 用量"""
+    global _token_usage
+    with _token_usage_lock:
+        _token_usage = {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0,
+            "call_count": 0,
+            "models": {},
+        }
+
+
+def _flush_on_exit():
+    """进程退出时的兜底落盘（正常流程已在每次调用时增量落盘）"""
+    if not os.environ.get("LIFEBENCH_TOKEN_DIR"):
+        return
+    with _token_usage_lock:
+        _flush_token_usage_locked()
+
+
+atexit.register(_flush_on_exit)
+
+
 # 默认系统上下文
 DEFAULT_CONTEXT = "你是一个人物分析师、故事创作者、数据补全与清洗专家。"
 
@@ -79,6 +190,7 @@ def llm_call(prompt, context="你是一个人物分析师、故事创作者、�
         stream=False
     )
     print(response)
+    _record_usage(response)
     return strip_think_content(response.choices[0].message.content)
 
 
@@ -103,6 +215,7 @@ def llm_call_reason(prompt, context="你是一个人物分析师、故事创作�
         stream=False
     )
 
+    _record_usage(response)
     return strip_think_content(response.choices[0].message.content)
 
 
@@ -128,6 +241,7 @@ def llm_call_j(prompt, record=0):
         response_format={'type': 'json_object'}
     )
 
+    _record_usage(response)
     return strip_think_content(response.choices[0].message.content)
 
 
@@ -153,6 +267,7 @@ def llm_call_reason_j(prompt, record=0):
         response_format={'type': 'json_object'}
     )
 
+    _record_usage(response)
     return strip_think_content(response.choices[0].message.content)
 
 
@@ -177,4 +292,5 @@ def llm_call_skip(prompt, context="你是一个人物分析师、故事创作者
         stream=False
     )
 
+    _record_usage(response)
     return strip_think_content(response.choices[0].message.content)

@@ -564,7 +564,7 @@ def run_generator_task(generator_name, generator_info, date, contact, file_path,
 
 
 def process_single_date_dynamic(date, contact, file_path, matcher,
-                               phone_count_control=None):
+                               phone_count_control=None, no_sample=False):
     """
     处理单个日期的所有数据生成（动态版本）
 
@@ -707,6 +707,11 @@ def process_single_date_dynamic(date, contact, file_path, matcher,
                         print(f"  警告: {filename} 中一条数据因 daily_event_id='{deid}' 无效被抛弃")
                 generated_data[filename] = valid_data
         
+        # 不控制条数：跳过采样，保留全部生成的数据
+        if no_sample:
+            print(f"成功处理日期：{date}（未控制条数，保留全部数据）")
+            return (True, date, generated_data)
+
         # 手机数据采样阶段：控制每日数据条数
         if phone_count_control is None:
             phone_count_control = {"min": 5, "max": 5}
@@ -834,7 +839,7 @@ def process_single_date_dynamic(date, contact, file_path, matcher,
 
 
 def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, matcher,
-                              daily_counts=None, max_workers=8):
+                              daily_counts=None, max_workers=8, no_sample=False):
     """
     多线程并行处理所有日期（动态版本）
 
@@ -846,6 +851,7 @@ def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, mat
         matcher: PhoneEventMatcher 实例
         daily_counts: 每天计划生成的数据量字典 {date: count}，默认 None（随机 2-7）
         max_workers: 最大并行线程数
+        no_sample: 是否跳过采样，保留全部生成的数据（默认 False，即按条数控制采样）
 
     返回:
         处理统计结果
@@ -875,7 +881,8 @@ def parallel_process_dates_dynamic(start_time, end_time, contact, file_path, mat
                 contact=contact,
                 file_path=file_path,
                 matcher=matcher,
-                phone_count_control={"min": target_count, "max": target_count}
+                phone_count_control={"min": target_count, "max": target_count},
+                no_sample=no_sample
             )
             futures.append(future)
         

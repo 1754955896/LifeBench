@@ -213,6 +213,11 @@ def analyze_event_matching(bottom_event, expanded_events, original_date):
 
         result = json.loads(response)
 
+        # 防御性规范化：LLM 偶尔返回缺失字段或非对象的 JSON，补齐必要字段避免下游 KeyError
+        if not isinstance(result, dict):
+            result = {}
+        result.setdefault('matched', False)
+
         if 'actual_date' not in result:
             result['actual_date'] = None
 
@@ -369,6 +374,13 @@ def analyze_daily_event_matching(daily_event, daily_draft_events, original_date)
             }
 
         result = json.loads(response)
+
+        # 防御性规范化：LLM 偶尔返回缺失字段或非对象的 JSON，补齐必要字段避免下游 KeyError
+        if not isinstance(result, dict):
+            result = {}
+        result.setdefault('matched', False)
+        result.setdefault('matched_event_name', None)
+        result.setdefault('actual_date', None)
         return result
     except Exception as e:
         print(f"分析daily_event时出错 ({daily_event.get('name', 'unknown')}): {str(e)}")
@@ -559,7 +571,7 @@ def main(base_path=None, output_path=None, resume=True):
 
                     event_id = result['event'].get('event_id', '未知ID')
 
-                    if result['analysis']['matched']:
+                    if result.get('analysis', {}).get('matched', False):
                         actual_date = result['analysis'].get('actual_date', result['date'])
                         if actual_date != result['date']:
                             print(f"✓ 事件ID: {event_id} - '{result['event']['name']}' 原计划日期 {result['date']}，实际在 {actual_date} 找到匹配")
@@ -588,7 +600,7 @@ def main(base_path=None, output_path=None, resume=True):
             event_results[event_id]['total_dates'] += 1
             event_results[event_id]['results'].append(result)
 
-            if result['analysis']['matched']:
+            if result.get('analysis', {}).get('matched', False):
                 event_results[event_id]['matched_dates'] += 1
 
         # 统计按事件分组的结果
@@ -601,7 +613,7 @@ def main(base_path=None, output_path=None, resume=True):
         print(f"匹配成功的事件数: {matched_events}")
         print(f"未匹配的事件数: {unmatched_events}")
         print(f"总日期任务数: {len(results)}")
-        print(f"匹配成功的日期数: {sum(1 for r in results if r['analysis']['matched'])}")
+        print(f"匹配成功的日期数: {sum(1 for r in results if r.get('analysis', {}).get('matched', False))}")
 
         if total_events > 0:
             print(f"事件匹配率: {matched_events / total_events * 100:.2f}%")
@@ -614,7 +626,7 @@ def main(base_path=None, output_path=None, resume=True):
                 "matched_events": matched_events,
                 "unmatched_events": unmatched_events,
                 "total_date_tasks": len(results),
-                "matched_date_tasks": sum(1 for r in results if r['analysis']['matched']),
+                "matched_date_tasks": sum(1 for r in results if r.get('analysis', {}).get('matched', False)),
                 "event_matching_rate": (matched_events / total_events * 100) if total_events > 0 else 0.0
             },
             "event_results": event_results,
@@ -716,7 +728,7 @@ def main(base_path=None, output_path=None, resume=True):
     event_date_name_to_id = defaultdict(list)
 
     for result in results:
-        if result['analysis']['matched']:
+        if result.get('analysis', {}).get('matched', False):
             event_tree_id = result['event'].get('event_id', '')
             matched_event_name = result['analysis'].get('matched_event_name', '')
             actual_date = result['analysis'].get('actual_date', '')
@@ -789,7 +801,7 @@ def main(base_path=None, output_path=None, resume=True):
     # 构建(日期, 事件名称)到event_tree底部event_id的映射
     draft_event_to_bottom_ids = defaultdict(list)
     for result in results:
-        if result['analysis']['matched']:
+        if result.get('analysis', {}).get('matched', False):
             event_tree_id = result['event'].get('event_id', '')
             matched_event_name = result['analysis'].get('matched_event_name', '')
             actual_date = result['analysis'].get('actual_date', '')
@@ -844,7 +856,7 @@ def main(base_path=None, output_path=None, resume=True):
     daily_event_atomic_ids = defaultdict(list)
 
     for result in daily_event_results:
-        if result['analysis']['matched']:
+        if result.get('analysis', {}).get('matched', False):
             daily_event_obj = result['daily_event']
             matched_event_name = result['analysis'].get('matched_event_name', '')
             date = result['date']
