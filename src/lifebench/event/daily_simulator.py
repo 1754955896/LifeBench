@@ -33,6 +33,7 @@ from src.lifebench.event.simulation.engine import DailySimulationEngine
 from src.lifebench.event.simulation.preparation import SimulationAssetPreparer
 from src.lifebench.event.simulation.telemetry import MemoryTraceRecorder
 from src.lifebench.event.simulation.geolocation import build_location_records
+from src.lifebench.event.simulation.geolocation.baseline import simple_allocate_trajectory
 from src.lifebench.event.simulation.geolocation.catalog import flatten_location_data
 from src.lifebench.event.simulation.context import (
     append_daily_behavior_record,
@@ -832,8 +833,17 @@ class Mind:
             # 出错时返回空记忆
             return ""
 
+    def _is_simple_geo_mode(self):
+        """朴素地理基线是否启用（allocation_mode == simple 且模块开启）。"""
+        cfg = self.config.get("trajectory_assignment", {}) if isinstance(self.config, dict) else {}
+        return bool(cfg.get("enabled", True)) and cfg.get("allocation_mode", "full") == "simple"
+
     def map(self, pt, plan=None):
         """获取真实poi数据和通行信息（委托给轨迹生成器）。"""
+        if self._is_simple_geo_mode():
+            # 朴素基线只替换“分配”这一步，产出与完整版相同的 TrajectoryAssignment
+            # 与 poi 参考串；下游 adjust event → 回填 → 通行统计复用完整版。
+            return simple_allocate_trajectory(self, pt, plan)
         return generate_poi_route(self, pt, plan)
 
     def daily_event_gen1(self, date):
@@ -944,6 +954,8 @@ class Mind:
                 )
                 stage_cache_hits.append("adjusted_events")
             else:
+                # 简单模式与完整版共用同一条下游：adjust event → reconcile/回填 →
+                # 通行统计；差异只在 map() 阶段的“分配”算法。
                 adjusted_events = self._adjust_event_trajectory(
                     poi_data, objective_events, plan, self.get_plan4(date, -1)
                 )
