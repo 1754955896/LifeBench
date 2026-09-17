@@ -227,6 +227,12 @@ def attach_event_geodata(events: Iterable[Dict[str, Any]], location_records: Any
             event["kind"] = explicit_segment.get("kind", event.get("kind") or "activity")
             if explicit_segment.get("location_detail"):
                 event["location_detail"] = explicit_segment["location_detail"]
+            if explicit_segment.get("location_identity_mode"):
+                event["location_identity_mode"] = explicit_segment["location_identity_mode"]
+            if explicit_segment.get("narrative_location_name"):
+                event["narrative_location_name"] = explicit_segment["narrative_location_name"]
+            if explicit_segment.get("location_override_reason"):
+                event["location_override_reason"] = explicit_segment["location_override_reason"]
             if explicit_segment.get("stop_id"):
                 event["stop_id"] = explicit_segment["stop_id"]
                 event.pop("leg_id", None)

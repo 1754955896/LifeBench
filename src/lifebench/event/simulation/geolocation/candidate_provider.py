@@ -49,6 +49,24 @@ CITY_FALLBACK_KEYWORDS = {
     "other": ["商业广场", "公共服务中心", "城市公园"],
 }
 
+# 高德 POI typecode 的一级类别。只映射能够可靠对应到 LifeBench 活动类别的
+# 前缀；商务住宅(12)、生活服务(07)、交通设施(15)等内部异质性较高，保留
+# 为 other，交由 type 文本和后续语义重组判断。
+AMAP_TYPECODE_CATEGORY = {
+    "05": "meal",
+    "06": "shopping",
+    "08": "leisure",
+    "09": "medical",
+    "11": "leisure",
+    "14": "education",
+    "17": "work",
+}
+
+SEMANTICALLY_COMPATIBLE_CATEGORIES = {
+    frozenset(("fitness", "leisure")),
+    frozenset(("meal", "shopping")),
+}
+
 
 def _text(value: Any) -> str:
     if isinstance(value, list):
@@ -86,6 +104,31 @@ def _haversine_km(first: str, second: str) -> float:
         return 0.0
     value = math.sin((lat2 - lat1) / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin((lon2 - lon1) / 2) ** 2
     return 6371.0088 * 2 * math.asin(min(1.0, math.sqrt(value)))
+
+
+def _map_category(item: Dict[str, Any]) -> tuple[str, str]:
+    """返回地图声明的宏观类别和原始细分类别，不借用活动意图。"""
+    name = _text(item.get("name"))
+    type_text = _text(item.get("type") or item.get("type_name"))
+    typecode = _text(item.get("typecode") or item.get("type_code"))
+    value = "%s %s" % (name, type_text)
+    category = infer_category(value, "other")
+    if category == "other":
+        if any(term in value for term in ("体育场馆", "运动场馆", "健身中心", "体育中心")):
+            category = "fitness"
+        else:
+            category = AMAP_TYPECODE_CATEGORY.get(typecode[:2], "other")
+    return category, type_text or typecode
+
+
+def _semantic_status(intent_category: str, map_category: str) -> str:
+    if not intent_category or intent_category == "other" or map_category == "other":
+        return "unknown"
+    if intent_category == map_category:
+        return "match"
+    if frozenset((intent_category, map_category)) in SEMANTICALLY_COMPATIBLE_CATEGORIES:
+        return "compatible"
+    return "conflict"
 
 
 class CandidateProvider:
@@ -145,15 +188,24 @@ class CandidateProvider:
                     continue
                 candidates.append(preferred)
 
-        # 历史返回地点只参与人物自主选址，并且必须由 LLM 根据事件语义从
-        # 动态地点注册表显式列出。程序只验证 ID、城市、类别和来源，不再把
-        # 同类别的所有画像/历史地点都默认为可复访候选。
+        # 自主选址的复访池由结构化地点注册表自动建立。LLM 仍可显式给出
+        # historical_candidate_ids，但不再由它承担“枚举全部历史地点”的职责；
+        # 否则 EPR 在大多数日子里会因为缺少显式 ID 而退化为首次探索。
         if intent.selection_policy == "gravity" and intent.epr_applicable:
-            for location_id in intent.historical_candidate_ids:
-                historical = self.catalog.by_location_id(location_id)
-                if historical is None or historical.source != "trajectory_history":
+            explicit_ids = set(intent.historical_candidate_ids)
+            for historical in self.catalog.items:
+                role = str(historical.raw.get("location_role") or "")
+                knowledge = str(historical.raw.get("knowledge_state") or "")
+                explicitly_requested = historical.location_id in explicit_ids
+                structurally_familiar = (
+                    historical.source in {"trajectory_history", "persona_familiar"}
+                    or role == "familiar"
+                )
+                if not explicitly_requested and not structurally_familiar:
                     continue
                 if historical.raw.get("return_eligible") is False:
+                    continue
+                if knowledge == "known_unvisited":
                     continue
                 if not city_matches(intent.city, historical.city):
                     continue
@@ -162,6 +214,7 @@ class CandidateProvider:
                     and historical.category not in {intent.activity_type, "other"}
                 ):
                     continue
+                historical.raw["epr_return_candidate"] = True
                 candidates.append(historical)
         if intent.reuse_policy == "must_return" and candidates:
             return self._deduplicate(candidates)
@@ -392,6 +445,13 @@ class CandidateProvider:
         coordinates = _text(item.get("location"))
         city = _text(item.get("city")) or _text(item.get("province")) or intent.city
         digest = hashlib.sha1((query + "|" + coordinates).encode("utf-8")).hexdigest()[:12]
+        raw = dict(item)
+        raw.update({
+            "intent_category": intent.activity_type,
+            "map_category": "other",
+            "map_subcategory": "",
+            "semantic_status": "unknown",
+        })
         return LocationCandidate(
             location_id="geocode_" + digest,
             name=intent.explicit_name or query,
@@ -399,8 +459,8 @@ class CandidateProvider:
             coordinates=coordinates,
             province=_text(item.get("province")), city=city,
             district=_text(item.get("district")), adcode=_text(item.get("adcode")),
-            category=intent.activity_type, source="amap_geocode",
-            raw=dict(item), confidence=0.85, map_verified=True,
+            category="other", source="amap_geocode",
+            raw=raw, confidence=0.85, map_verified=True,
         )
 
     @staticmethod
@@ -433,14 +493,15 @@ class CandidateProvider:
         coordinates = _text(item.get("location"))
         name = _text(item.get("name"))
         digest = hashlib.sha1((name + "|" + coordinates).encode("utf-8")).hexdigest()[:12]
-        type_text = _text(item.get("type")) + intent.poi_type + intent.keyword
-        # 候选点是按意图关键词定向搜出的，权威类别应跟随意图 activity_type，
-        # 避免 infer_category 被高德 type 里的干扰词（如"住宅"）带偏（产业园→home）。
-        category = (
-            intent.activity_type
-            if intent.activity_type not in (None, "", "other")
-            else infer_category(type_text, "other")
-        )
+        category, subcategory = _map_category(item)
+        semantic_status = _semantic_status(intent.activity_type, category)
+        raw = dict(item)
+        raw.update({
+            "intent_category": intent.activity_type,
+            "map_category": category,
+            "map_subcategory": subcategory,
+            "semantic_status": semantic_status,
+        })
         return LocationCandidate(
             location_id=_text(item.get("id")) or "map_" + digest,
             name=name,
@@ -454,7 +515,7 @@ class CandidateProvider:
             source="amap_around" if item.get("distance_m") is not None else "amap_text",
             distance_m=float(item.get("distance_m") or 0) or None,
             map_rank=rank,
-            raw=dict(item),
+            raw=raw,
             confidence=0.95,
             map_verified=True,
         )

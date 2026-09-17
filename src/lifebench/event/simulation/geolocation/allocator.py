@@ -48,7 +48,11 @@ class TrajectoryAllocator:
                  novelty_level: str = "medium", mobility_level: str = "medium",
                  epr_profile: Optional[EPRProfile] = None,
                  mobility_day_budget: Optional[Dict[str, Any]] = None,
-                 urban_candidate_share: float = 0.35):
+                 urban_candidate_share: float = 0.35,
+                 selection_temperature: float = 0.75,
+                 preference_boost: float = 1.5,
+                 repetition_fatigue_step: float = 0.10,
+                 repetition_fatigue_cap: float = 0.30):
         self.catalog = LocationCatalog(persona_addresses)
         self.provider = CandidateProvider(
             maptools, self.catalog, candidate_limit,
@@ -56,6 +60,10 @@ class TrajectoryAllocator:
         )
         self.selector = GravitySelector(
             seed, novelty_level=novelty_level, epr_profile=epr_profile,
+            selection_temperature=selection_temperature,
+            preference_boost=preference_boost,
+            repetition_fatigue_step=repetition_fatigue_step,
+            repetition_fatigue_cap=repetition_fatigue_cap,
         )
         self.novelty_level = self.selector.novelty_level
         self.mobility_level = (
@@ -354,19 +362,19 @@ class TrajectoryAllocator:
                 low, high = max(0.0, float(band[0])), max(0.0, float(band[1]))
                 projected = distance_used_km + max(0.0, float(leg_distance_km or 0.0))
                 if projected > high > 0:
-                    score *= math.exp(-(projected - high) / max(4.0, high * 0.35))
+                    score *= math.exp(-(projected - high) / max(4.0, high * 0.25))
                 elif distance_used_km < low and projected <= high:
                     progress = min(1.0, max(0.0, leg_distance_km) / max(1.0, low - distance_used_km))
-                    score *= 1.0 + 0.45 * progress
+                    score *= 1.0 + 0.20 * progress
             except (TypeError, ValueError):
                 pass
         if isinstance(stop_range, list) and len(stop_range) >= 2 and creates_new_macro_stop:
             try:
                 minimum, maximum = int(stop_range[0]), int(stop_range[1])
                 if stops_used < minimum:
-                    score *= 1.25
+                    score *= 1.10
                 elif stops_used >= maximum:
-                    score *= 0.75
+                    score *= 0.55
             except (TypeError, ValueError):
                 pass
         return max(0.05, score)

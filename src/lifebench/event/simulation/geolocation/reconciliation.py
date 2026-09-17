@@ -559,9 +559,22 @@ def reconcile_final_itinerary(
             if not stop_id:
                 issues.append("%s 的 stop_ref 无法解析" % segment["segment_id"])
                 continue
+            identity_mode = str(
+                raw.get("location_identity_mode") or "source_identity"
+            ).strip()
+            if identity_mode not in ("source_identity", "semantic_relabel"):
+                identity_mode = "source_identity"
+            narrative_name = str(raw.get("narrative_location_name") or "").strip()
+            override_reason = str(raw.get("location_override_reason") or "").strip()
+            if identity_mode == "semantic_relabel" and not narrative_name:
+                issues.append("%s 的 semantic_relabel 缺少 narrative_location_name" % segment["segment_id"])
+                continue
             segment.update({
                 "stop_id": stop_id,
                 "location_detail": str(raw.get("location_detail") or ""),
+                "location_identity_mode": identity_mode,
+                "narrative_location_name": narrative_name,
+                "location_override_reason": override_reason,
             })
             used_stop_ids.add(stop_id)
             final_segments.append(segment)

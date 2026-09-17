@@ -17,9 +17,10 @@
   },
   "trajectory_assignment": {
     "enabled": true,
+    "allocation_mode": "full",
     "seed": 0,
-    "candidate_limit": 12,
-    "route_top_k": 4,
+    "candidate_limit": 18,
+    "route_top_k": 6,
     "budget_aware": true,
     "final_itinerary_retry_count": 1,
     "strict_validation": true,
@@ -31,30 +32,40 @@
       "local_loop_geometry": "seeded_closed_loop"
     },
     "mobility_calibration": {
-      "rho": 0.60,
-      "distance_beta": 1.45,
-      "distance_cutoff_km": 30.0,
+      "rho": 0.52,
+      "gamma": 0.24,
+      "return_exponent": 0.85,
+      "distance_beta": 1.60,
+      "distance_cutoff_km": 24.0,
+      "distance_cutoff_multiplier": 3.0,
+      "epr_count_scope": "blended",
+      "epr_global_count_weight": 0.35,
       "urban_candidate_share": 0.35,
+      "personalization_weight": 0.50,
+      "selection_temperature": 0.75,
+      "preference_boost": 1.5,
+      "repetition_fatigue_step": 0.10,
+      "repetition_fatigue_cap": 0.30,
       "routine_active_days": 3
     },
     "mobility_distribution_targets": {
       "weekday_archetype_weights": {
-        "low_mobility": 0.14,
-        "routine_commute": 0.28,
-        "commute_with_errand": 0.25,
-        "evening_activity": 0.18,
-        "social_or_leisure": 0.10,
-        "exploratory": 0.05,
-        "citywide_leisure": 0.04
+        "low_mobility": 0.18,
+        "routine_commute": 0.31,
+        "commute_with_errand": 0.22,
+        "evening_activity": 0.14,
+        "social_or_leisure": 0.08,
+        "exploratory": 0.04,
+        "citywide_leisure": 0.03
       },
       "weekend_archetype_weights": {
-        "home_recovery": 0.18,
-        "local_leisure": 0.22,
-        "social_activity": 0.20,
-        "exercise_outing": 0.13,
-        "exploratory": 0.10,
-        "citywide_leisure": 0.12,
-        "long_distance": 0.05
+        "home_recovery": 0.23,
+        "local_leisure": 0.24,
+        "social_activity": 0.17,
+        "exercise_outing": 0.12,
+        "exploratory": 0.08,
+        "citywide_leisure": 0.09,
+        "long_distance": 0.07
       }
     },
     "location_opportunity_pool": {
@@ -62,9 +73,9 @@
       "refresh": false,
       "preseed_target_count": 60,
       "per_query_limit": 6,
-      "daily_familiar_quota": [2, 4],
-      "daily_citywide_quota": [4, 8],
-      "daily_social_quota": [0, 2]
+      "daily_familiar_quota": [3, 5],
+      "daily_citywide_quota": [3, 6],
+      "daily_social_quota": [0, 1]
     }
   },
   "map_tool": {

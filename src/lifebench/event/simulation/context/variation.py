@@ -139,23 +139,23 @@ def build_recent_behavior_summary(history: Any) -> Dict[str, Any]:
 
 
 _WEEKDAY_ARCHETYPES = {
-    "low_mobility": 0.14,
-    "routine_commute": 0.28,
-    "commute_with_errand": 0.25,
-    "evening_activity": 0.18,
-    "social_or_leisure": 0.10,
-    "exploratory": 0.05,
-    "citywide_leisure": 0.04,
+    "low_mobility": 0.18,
+    "routine_commute": 0.31,
+    "commute_with_errand": 0.22,
+    "evening_activity": 0.14,
+    "social_or_leisure": 0.08,
+    "exploratory": 0.04,
+    "citywide_leisure": 0.03,
 }
 
 _WEEKEND_ARCHETYPES = {
-    "home_recovery": 0.18,
-    "local_leisure": 0.22,
-    "social_activity": 0.20,
-    "exercise_outing": 0.13,
-    "exploratory": 0.10,
-    "citywide_leisure": 0.12,
-    "long_distance": 0.05,
+    "home_recovery": 0.23,
+    "local_leisure": 0.24,
+    "social_activity": 0.17,
+    "exercise_outing": 0.12,
+    "exploratory": 0.08,
+    "citywide_leisure": 0.09,
+    "long_distance": 0.07,
 }
 
 _ARCHETYPE_SETTINGS = {
@@ -180,15 +180,15 @@ _MOBILITY_ARCHETYPE_PROFILES = {
     "low_mobility": ([0, 10], [1, 3], [0, 4], [0, 2], [0, 3], 0.01),
     "home_recovery": ([0, 8], [1, 3], [0, 3], [0, 2], [0, 2.5], 0.01),
     "local_leisure": ([5, 20], [2, 4], [1, 8], [2, 5], [1, 5], 0.02),
-    "routine_commute": ([10, 30], [2, 3], [2, 12], [2, 8], [2, 7], 0.02),
-    "commute_with_errand": ([15, 40], [3, 5], [2, 15], [4, 10], [3, 9], 0.04),
-    "evening_activity": ([20, 50], [3, 5], [3, 18], [5, 15], [4, 10], 0.06),
-    "social_or_leisure": ([20, 60], [3, 5], [3, 20], [5, 18], [4, 11], 0.08),
-    "social_activity": ([15, 60], [3, 5], [3, 20], [5, 18], [4, 11], 0.08),
+    "routine_commute": ([8, 25], [2, 3], [2, 12], [2, 8], [2, 7], 0.02),
+    "commute_with_errand": ([12, 35], [3, 5], [2, 15], [4, 10], [3, 9], 0.04),
+    "evening_activity": ([15, 40], [3, 5], [3, 18], [5, 15], [4, 10], 0.06),
+    "social_or_leisure": ([15, 50], [3, 5], [3, 20], [5, 18], [4, 11], 0.08),
+    "social_activity": ([15, 50], [3, 5], [3, 20], [5, 18], [4, 11], 0.08),
     "exercise_outing": ([5, 30], [2, 4], [1, 12], [2, 10], [2, 7], 0.03),
-    "exploratory": ([15, 60], [3, 6], [3, 22], [6, 20], [4, 12], 0.10),
-    "citywide_leisure": ([30, 80], [4, 6], [5, 25], [10, 25], [8, 12], 0.14),
-    "long_distance": ([60, 180], [3, 6], [10, 80], [15, 80], [10, 40], 0.22),
+    "exploratory": ([15, 50], [3, 5], [3, 22], [6, 20], [4, 12], 0.10),
+    "citywide_leisure": ([30, 80], [3, 5], [5, 25], [10, 25], [8, 12], 0.14),
+    "long_distance": ([60, 180], [3, 5], [10, 80], [15, 80], [10, 40], 0.22),
 }
 
 
@@ -253,9 +253,9 @@ def _sample_extra_activity_target(
         count = 1 if high >= 1 and rng.random() < passive_probability else 0
     else:
         count = max(1, low) if high >= 1 else 0
-        if high > count and rng.random() < 0.22:
+        if high > count and rng.random() < 0.15:
             count += 1
-        if high > count and rng.random() < 0.08:
+        if high > count and rng.random() < 0.03:
             count += 1
     count = min(high, count)
     mobility_role = (
@@ -331,26 +331,26 @@ def build_day_variation_context(
         if repeated >= 3 or average_stops <= 2.2:
             for key in ("routine_commute", "low_mobility", "home_recovery"):
                 if key in weights:
-                    weights[key] *= 0.55
+                    weights[key] *= 0.80
             for key in (
                 "commute_with_errand", "evening_activity", "social_or_leisure",
                 "local_leisure", "social_activity", "exploratory", "citywide_leisure",
             ):
                 if key in weights:
-                    weights[key] *= 1.35
+                    weights[key] *= 1.15
         if int(recent.get("evening_out_days", 0) or 0) == 0:
             for key in ("evening_activity", "social_or_leisure", "social_activity"):
                 if key in weights:
-                    weights[key] *= 1.45
+                    weights[key] *= 1.20
         if int(recent.get("exercise_days", 0) or 0) == 0 and "exercise_outing" in weights:
-            weights["exercise_outing"] *= 1.35
+            weights["exercise_outing"] *= 1.20
         if int(recent.get("new_location_count", 0) or 0) >= 5:
             if "exploratory" in weights:
                 weights["exploratory"] *= 0.45
             if "long_distance" in weights:
                 weights["long_distance"] *= 0.65
         if int(recent.get("urban_activity_days", 0) or 0) == 0 and "citywide_leisure" in weights:
-            weights["citywide_leisure"] *= 1.45
+            weights["citywide_leisure"] *= 1.20
         if int(recent.get("long_distance_days", 0) or 0) > 0 and "long_distance" in weights:
             weights["long_distance"] *= 0.55
 
@@ -445,10 +445,10 @@ def build_mobility_day_budget(day_variation: Any, plan: Any) -> Dict[str, Any]:
     sampled_stops = target_rng.randint(int(stop_min), int(stop_max))
     independent_probability = {
         "low_mobility": 0.05, "home_recovery": 0.03, "routine_commute": 0.08,
-        "commute_with_errand": 0.20, "evening_activity": 0.35,
-        "social_or_leisure": 0.35, "social_activity": 0.40,
-        "local_leisure": 0.22, "exercise_outing": 0.20,
-        "exploratory": 0.42, "citywide_leisure": 0.55, "long_distance": 0.65,
+        "commute_with_errand": 0.15, "evening_activity": 0.28,
+        "social_or_leisure": 0.30, "social_activity": 0.30,
+        "local_leisure": 0.18, "exercise_outing": 0.18,
+        "exploratory": 0.35, "citywide_leisure": 0.45, "long_distance": 0.55,
     }.get(day_type, 0.15)
     preferred_windows = (
         ["weekday_evening"] if day_type in {"evening_activity", "social_or_leisure"}

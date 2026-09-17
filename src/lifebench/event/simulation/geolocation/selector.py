@@ -17,14 +17,25 @@ EPR_ACTIVITY_RHO_MULTIPLIER = {
 }
 
 EPR_ACTIVITY_BOUNDS = {
-    "meal": (0.08, 0.55), "fitness": (0.06, 0.52),
-    "shopping": (0.10, 0.62), "leisure": (0.12, 0.72),
-    "medical": (0.03, 0.35), "other": (0.06, 0.62),
+    "meal": (0.08, 0.45), "fitness": (0.06, 0.40),
+    "shopping": (0.10, 0.50), "leisure": (0.12, 0.60),
+    "medical": (0.03, 0.25), "other": (0.06, 0.50),
 }
 
 DISTANCE_CUTOFF_MULTIPLIER = {
     "meal": 0.35, "fitness": 0.55, "shopping": 0.80,
     "medical": 1.0, "leisure": 1.20, "other": 1.0,
+}
+
+SEMANTIC_WEIGHT = {
+    "return": {
+        "match": 1.25, "compatible": 1.05, "unknown": 0.90,
+        "conflict": 0.25,
+    },
+    "explore": {
+        "match": 1.35, "compatible": 1.00, "unknown": 0.75,
+        "conflict": 0.10,
+    },
 }
 
 
@@ -43,18 +54,39 @@ def haversine_km(first: str, second: str) -> float:
 
 class GravitySelector:
     def __init__(self, seed: str = "0", novelty_level: str = "medium",
-                 epr_profile: Optional[EPRProfile] = None):
+                 epr_profile: Optional[EPRProfile] = None,
+                 selection_temperature: float = 0.75,
+                 preference_boost: float = 1.5,
+                 repetition_fatigue_step: float = 0.10,
+                 repetition_fatigue_cap: float = 0.30):
         self.seed = str(seed)
         self.novelty_level = (
             novelty_level if novelty_level in {"none", "low", "medium", "high"}
             else "medium"
         )
         self.epr_profile = epr_profile or EPRProfile()
+        self.selection_temperature = max(0.25, min(2.0, float(selection_temperature)))
+        self.preference_boost = max(0.0, min(4.0, float(preference_boost)))
+        self.repetition_fatigue_step = max(
+            0.0, min(0.50, float(repetition_fatigue_step))
+        )
+        self.repetition_fatigue_cap = max(
+            0.0, min(1.0, float(repetition_fatigue_cap))
+        )
         self.current_date = ""
         self.decision_trace = []
 
     def rank(self, intent: StopIntent, candidates: List[LocationCandidate], previous: Optional[LocationCandidate]) -> List[Tuple[LocationCandidate, float]]:
         eligible = [item for item in candidates if city_matches(intent.city, item.city)]
+        if intent.selection_policy in {"gravity", "random"}:
+            non_conflicting = [
+                item for item in eligible
+                if self._semantic_status(intent, item) != "conflict"
+            ]
+            # 地图类别明确冲突时优先剔除；全部候选都冲突时保留原池，
+            # 让后续重组/兜底有机会处理，而不是把活动直接变成无地点。
+            if non_conflicting:
+                eligible = non_conflicting
         rng = self._rng(intent.stop_id)
         if intent.selection_policy == "best_match":
             ordered = sorted(enumerate(eligible), key=lambda pair: (
@@ -73,56 +105,31 @@ class GravitySelector:
             self._record(intent, "explicit_return", 0.0, ordered, ordered)
             return [(item, 1.0 / (index + 1.0)) for index, item in enumerate(ordered)]
 
-        approved_ids = set(intent.historical_candidate_ids)
         preferred_ids = set(intent.preferred_candidate_ids)
         return_pool = [
             item for item in eligible
             if intent.epr_applicable
-            and item.source == "trajectory_history"
-            and item.location_id in approved_ids
+            and (
+                bool(item.raw.get("epr_return_candidate", False))
+                or (
+                    item.source == "trajectory_history"
+                    and item.location_id in set(intent.historical_candidate_ids)
+                )
+            )
         ]
         explore_pool = [item for item in eligible if item not in return_pool]
         preferred_pool = [
             item for item in eligible if item.location_id in preferred_ids
         ]
-        preference_probability = 0.0
-        preference_draw = None
-        if preferred_pool:
-            strength = max(0.0, min(1.0, float(intent.preference_strength)))
-            preference_probability = 0.55 + 0.35 * strength
-            other_pool = [item for item in eligible if item not in preferred_pool]
-            if not other_pool:
-                selected = [
-                    (candidate, self._preference_weight(intent, candidate, previous))
-                    for candidate in preferred_pool
-                ]
-                ordered = self._weighted_order(selected, rng)
-                self._record(
-                    intent, "preferred_only", 0.0, return_pool, ordered,
-                    preferred_pool=preferred_pool,
-                    preference_probability=1.0, preference_draw=None,
-                )
-                return ordered
-            preference_draw = rng.random()
-            if preference_draw < preference_probability:
-                selected = [
-                    (candidate, self._preference_weight(intent, candidate, previous))
-                    for candidate in preferred_pool
-                ]
-                ordered = self._weighted_order(selected, rng)
-                self._record(
-                    intent, "preferred", 0.0, return_pool, ordered,
-                    preferred_pool=preferred_pool,
-                    preference_probability=preference_probability,
-                    preference_draw=preference_draw,
-                )
-                return ordered
         exploration_probability, probability_factors = self._exploration_probability(
             intent, return_pool,
         )
         random_draw = rng.random() if return_pool and explore_pool else None
         if not return_pool:
-            decision = "explore_first_visit" if not approved_ids else "explore_no_valid_history"
+            decision = (
+                "explore_no_valid_history"
+                if intent.historical_candidate_ids else "explore_first_visit"
+            )
             selected_pool = explore_pool
             exploration_probability = 1.0
         elif not explore_pool:
@@ -136,23 +143,23 @@ class GravitySelector:
             decision = "return"
             selected_pool = return_pool
 
-        if decision.startswith("return"):
-            weighted = [
-                (candidate, self._return_weight(intent, candidate))
-                for candidate in selected_pool
-            ]
-        else:
-            weighted = [
-                (candidate, self._exploration_weight(intent, candidate, previous))
-                for candidate in selected_pool
-            ]
+        strength = max(0.0, min(1.0, float(intent.preference_strength)))
+        preferred_multiplier = 1.0 + self.preference_boost * strength
+        weighted = []
+        for candidate in selected_pool:
+            if decision.startswith("return"):
+                weight = self._return_weight(intent, candidate)
+            else:
+                weight = self._exploration_weight(intent, candidate, previous)
+            if candidate in preferred_pool:
+                weight *= preferred_multiplier
+            weighted.append((candidate, weight))
         ordered = self._weighted_order(weighted, rng)
         self._record(
             intent, decision, exploration_probability, return_pool, ordered,
             random_draw=random_draw, probability_factors=probability_factors,
             preferred_pool=preferred_pool,
-            preference_probability=preference_probability,
-            preference_draw=preference_draw,
+            preference_boost=preferred_multiplier if preferred_pool else 1.0,
         )
         return ordered
 
@@ -160,9 +167,20 @@ class GravitySelector:
         self, intent: StopIntent, return_pool: List[LocationCandidate],
     ) -> Tuple[float, dict]:
         profile = self.epr_profile
-        distinct = max(1, profile.return_eligible_count or len(return_pool))
+        global_distinct = max(1, int(profile.return_eligible_count or 0))
+        context_distinct = max(1, len(return_pool))
+        if profile.count_scope == "global":
+            distinct = float(global_distinct)
+        elif profile.count_scope == "context":
+            distinct = float(context_distinct)
+        else:
+            global_weight = max(0.0, min(1.0, profile.global_count_weight))
+            distinct = (
+                global_distinct ** global_weight
+                * context_distinct ** (1.0 - global_weight)
+            )
         category = EPR_ACTIVITY_RHO_MULTIPLIER.get(intent.activity_type, 1.0)
-        novelty = {"none": 0.45, "low": 0.72, "medium": 1.0, "high": 1.45}[
+        novelty = {"none": 0.50, "low": 0.75, "medium": 1.0, "high": 1.25}[
             self.novelty_level
         ]
         fatigue = self._repetition_fatigue(return_pool)
@@ -170,7 +188,12 @@ class GravitySelector:
         low, high = EPR_ACTIVITY_BOUNDS.get(intent.activity_type, (0.06, 0.65))
         result = max(low, min(high, probability))
         return result, {
-            "return_eligible_count": distinct,
+            "return_eligible_count": profile.return_eligible_count,
+            "global_distinct_count": global_distinct,
+            "context_distinct_count": context_distinct,
+            "effective_distinct_count": round(distinct, 4),
+            "count_scope": profile.count_scope,
+            "global_count_weight": round(profile.global_count_weight, 4),
             "activity_multiplier": category,
             "novelty_multiplier": novelty,
             "repetition_fatigue_multiplier": fatigue,
@@ -195,14 +218,17 @@ class GravitySelector:
         consecutive = 0
         while consecutive + 1 in recent_days:
             consecutive += 1
-        return 1.0 + min(0.75, consecutive * 0.22)
+        return 1.0 + min(
+            self.repetition_fatigue_cap,
+            consecutive * self.repetition_fatigue_step,
+        )
 
     def _return_weight(self, intent: StopIntent, candidate: LocationCandidate) -> float:
         visits = max(1, int(candidate.raw.get("visit_count", 0) or 0))
         frequency = visits ** self.epr_profile.return_exponent
         recency = self._recency_weight(candidate.raw.get("last_seen_date"))
         time_match = self._time_match_weight(intent, candidate)
-        semantic = 1.25 if candidate.category == intent.activity_type else 1.0
+        semantic = SEMANTIC_WEIGHT["return"][self._semantic_status(intent, candidate)]
         return max(1e-9, frequency * recency * time_match * semantic)
 
     def _exploration_weight(self, intent: StopIntent, candidate: LocationCandidate,
@@ -234,8 +260,25 @@ class GravitySelector:
             )
             distance_kernel *= band_fit ** sensitivity
         attraction = 1.0 / math.log(candidate.map_rank + 2.0)
-        semantic = 1.35 if candidate.category == intent.activity_type else 0.80
+        semantic = SEMANTIC_WEIGHT["explore"][self._semantic_status(intent, candidate)]
         return max(1e-9, distance_kernel * attraction * semantic)
+
+    @staticmethod
+    def _semantic_status(intent: StopIntent, candidate: LocationCandidate) -> str:
+        declared = str(candidate.raw.get("semantic_status") or "").strip()
+        if declared in {"match", "compatible", "unknown", "conflict"}:
+            return declared
+        if intent.activity_type == "other" or candidate.category == "other":
+            return "unknown"
+        if candidate.category == intent.activity_type:
+            return "match"
+        compatible = {
+            frozenset(("fitness", "leisure")),
+            frozenset(("shopping", "meal")),
+        }
+        if frozenset((intent.activity_type, candidate.category)) in compatible:
+            return "compatible"
+        return "conflict"
 
     def _preference_weight(
         self, intent: StopIntent, candidate: LocationCandidate,
@@ -248,7 +291,7 @@ class GravitySelector:
             base = self._return_weight(intent, candidate)
         else:
             base = self._exploration_weight(intent, candidate, previous)
-        return base * (1.0 + 3.0 * max(
+        return base * (1.0 + self.preference_boost * max(
             0.0, min(1.0, float(intent.preference_strength))
         ))
 
@@ -280,16 +323,18 @@ class GravitySelector:
         period = "morning" if hour < 11 else "noon" if hour < 14 else "afternoon" if hour < 18 else "evening"
         return "%s_%s" % (day_kind, period)
 
-    @staticmethod
-    def _weighted_order(weighted: List[Tuple[LocationCandidate, float]],
+    def _weighted_order(self, weighted: List[Tuple[LocationCandidate, float]],
                         rng: random.Random) -> List[Tuple[LocationCandidate, float]]:
         raced = []
         for candidate, weight in weighted:
             safe_weight = max(1e-9, float(weight))
-            race = -math.log(max(1e-12, rng.random())) / safe_weight
-            raced.append((candidate, race))
+            effective_weight = safe_weight ** (1.0 / self.selection_temperature)
+            race = -math.log(max(1e-12, rng.random())) / effective_weight
+            raced.append((candidate, race, effective_weight))
         raced.sort(key=lambda item: (item[1], item[0].location_id))
-        return [(candidate, 1.0 / max(1e-9, race)) for candidate, race in raced]
+        # 排序仍然是可复现的加权随机顺序，但返回给路线分配器的是稳定的
+        # 基础权重，而不是随机 race 的倒数，避免路线评分被随机噪声支配。
+        return [(candidate, weight) for candidate, _, weight in raced]
 
     def _record(self, intent: StopIntent, decision: str, probability: float,
                 return_pool: List[LocationCandidate],
@@ -297,7 +342,8 @@ class GravitySelector:
                 probability_factors: Optional[dict] = None,
                 preferred_pool: Optional[List[LocationCandidate]] = None,
                 preference_probability: float = 0.0,
-                preference_draw: Optional[float] = None) -> None:
+                preference_draw: Optional[float] = None,
+                preference_boost: float = 1.0) -> None:
         candidates = []
         for item in ordered:
             candidate = item[0] if isinstance(item, tuple) else item
@@ -320,9 +366,17 @@ class GravitySelector:
             "preference_draw": (
                 None if preference_draw is None else round(float(preference_draw), 4)
             ),
+            "preference_boost": round(float(preference_boost), 4),
+            "selection_temperature": round(self.selection_temperature, 4),
             "distance_tier": intent.distance_tier,
             "distance_band_km": list(intent.distance_band_km),
             "ranked_candidate_ids": candidates,
+            "candidate_semantics": {
+                candidate.location_id: self._semantic_status(intent, candidate)
+                for candidate in (
+                    item[0] if isinstance(item, tuple) else item for item in ordered
+                )
+            },
         })
 
     def _rng(self, stop_id: str) -> random.Random:

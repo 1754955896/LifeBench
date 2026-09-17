@@ -15,12 +15,25 @@ def render_assignment_summary(assignment: TrajectoryAssignment) -> str:
     lines = [
         "【轨迹高优先级参考】以下内容来自地图候选、活动重规划和结构化路线计算。合理时应优先使用；若与事件语义、时间表或人物日常逻辑明显冲突，可做最小必要调整。map_verified/amap 为地图数据；llm_plausible/heuristic 为合理估算，不得把估算冒充地图事实。"
     ]  # type: List[str]
+    decisions = {
+        str(item.get("stop_id") or ""): item
+        for item in assignment.diagnostics.get("epr_decisions", [])
+        if isinstance(item, dict)
+    }
     for index, stop in enumerate(assignment.stops, 1):
         address = stop.address or (stop.city + " " + stop.name).strip()
-        lines.append("【参考地点%02d】%s｜%s｜事件:%s｜坐标:%s｜stop_id:%s｜location_id:%s｜活动:%s｜来源:%s｜地图核验:%s｜置信度:%.2f" % (
+        decision = decisions.get(stop.stop_id, {})
+        lock_hint = (
+            "｜位置约束:locked_gravity"
+            if decision.get("selection_policy") == "gravity"
+            and stop.map_verified and not stop.degraded
+            and decision.get("final_decision", "accepted") == "accepted"
+            else ""
+        )
+        lines.append("【参考地点%02d】%s｜%s｜事件:%s｜坐标:%s｜stop_id:%s｜location_id:%s｜活动:%s｜来源:%s｜地图核验:%s｜置信度:%.2f%s" % (
             index, stop.name, address, stop.event_ref, stop.coordinates,
             stop.stop_id, stop.location_id, stop.activity_type, stop.source,
-            "是" if stop.map_verified else "否", stop.confidence,
+            "是" if stop.map_verified else "否", stop.confidence, lock_hint,
         ))
         if index <= len(assignment.legs):
             leg = assignment.legs[index - 1]

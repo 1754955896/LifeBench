@@ -196,10 +196,8 @@ def parse_stop_intents(data: Dict[str, Any]) -> List[StopIntent]:
         epr_applicable = (
             selection_policy == "gravity"
             and query_type not in {"existing", "micro"}
-            and (
-                _boolean(row.get("epr_applicable", False))
-                or bool(historical_candidate_ids)
-            )
+            and location_control == "self"
+            and location_binding in {"preferred", "open"}
         )
         distance_tier = _value(row, "distance_tier")
         if distance_tier not in {"local", "urban", "long"}:

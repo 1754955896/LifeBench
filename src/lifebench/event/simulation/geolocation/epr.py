@@ -31,14 +31,17 @@ class EPRProfile:
     distinct_location_count: int = 0
     return_eligible_count: int = 0
     observed_days: int = 0
+    count_scope: str = "blended"
+    global_count_weight: float = 0.35
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
 
 
 def build_personal_epr_profile(
-    behavior_history: Any, location_history: Any,
+    behavior_history: Any, location_history: Any, calibration: Any = None,
 ) -> EPRProfile:
+    settings = calibration if isinstance(calibration, dict) else {}
     records = [item for item in (behavior_history or []) if isinstance(item, dict)][-30:]
     locations = [item for item in (location_history or []) if isinstance(item, dict)]
     days = len(records)
@@ -50,19 +53,55 @@ def build_personal_epr_profile(
     dominant_count = max((signatures.count(item) for item in set(signatures) if item), default=0)
     repeat_ratio = dominant_count / max(1, days)
 
-    # 小样本主要使用先验；最多让最近30天的个人观测占70%。
-    observation_weight = min(0.70, days / 30.0 * 0.70)
+    # 配置值是人群先验而不是硬覆盖。随着个人历史增加，最多按
+    # personalization_weight 吸收个人观测，避免所有人物退化成同一套 EPR 参数。
+    personalization_weight = _clamp(
+        0.0, 1.0, _number(settings.get("personalization_weight", 0.70)),
+    )
+    observation_weight = min(
+        personalization_weight,
+        days / 30.0 * personalization_weight,
+    )
+    prior_rho = _clamp(0.10, 0.90, _number(settings.get("rho", 0.60)))
+    prior_gamma = _clamp(0.05, 0.80, _number(settings.get("gamma", 0.22)))
+    prior_return_exponent = _clamp(
+        0.50, 1.80, _number(settings.get("return_exponent", 1.0)),
+    )
+    prior_beta = _clamp(
+        0.80, 2.50, _number(settings.get("distance_beta", 1.45)),
+    )
+    prior_cutoff = _clamp(
+        5.0, 150.0, _number(settings.get("distance_cutoff_km", 30.0)),
+    )
+    count_scope = str(settings.get("epr_count_scope") or "blended").strip().lower()
+    if count_scope not in {"global", "context", "blended"}:
+        count_scope = "blended"
+    global_count_weight = _clamp(
+        0.0, 1.0, _number(settings.get("epr_global_count_weight", 0.35)),
+    )
+
     empirical_rho = _clamp(0.20, 0.90, 0.30 + observed_exploration * 1.80)
-    rho = 0.60 * (1.0 - observation_weight) + empirical_rho * observation_weight
-    gamma = _clamp(0.12, 0.60, 0.18 + repeat_ratio * 0.36)
-    return_exponent = _clamp(0.85, 1.55, 0.90 + repeat_ratio * 0.55)
+    empirical_gamma = _clamp(0.12, 0.60, 0.18 + repeat_ratio * 0.36)
+    empirical_return_exponent = _clamp(0.70, 1.20, 0.75 + repeat_ratio * 0.35)
+    empirical_beta = _clamp(1.20, 1.90, 1.30 + repeat_ratio * 0.40)
+
+    rho = prior_rho * (1.0 - observation_weight) + empirical_rho * observation_weight
+    gamma = prior_gamma * (1.0 - observation_weight) + empirical_gamma * observation_weight
+    return_exponent = (
+        prior_return_exponent * (1.0 - observation_weight)
+        + empirical_return_exponent * observation_weight
+    )
 
     total_legs = sum(_number(item.get("travel_leg_count")) for item in records)
     total_distance = sum(_number(item.get("travel_distance_km")) for item in records)
     characteristic = total_distance / total_legs if total_legs else 5.0
     characteristic = _clamp(0.8, 40.0, characteristic)
-    cutoff = _clamp(8.0, 120.0, characteristic * 4.0)
-    beta = _clamp(1.20, 1.90, 1.30 + repeat_ratio * 0.40)
+    cutoff_multiplier = _clamp(
+        1.5, 6.0, _number(settings.get("distance_cutoff_multiplier", 3.0)),
+    )
+    empirical_cutoff = _clamp(8.0, 120.0, characteristic * cutoff_multiplier)
+    cutoff = prior_cutoff * (1.0 - observation_weight) + empirical_cutoff * observation_weight
+    beta = prior_beta * (1.0 - observation_weight) + empirical_beta * observation_weight
 
     distinct_ids = {
         str(item.get("location_id") or item.get("id") or "")
@@ -86,4 +125,6 @@ def build_personal_epr_profile(
         distinct_location_count=len(distinct_ids),
         return_eligible_count=len(eligible_ids),
         observed_days=days,
+        count_scope=count_scope,
+        global_count_weight=round(global_count_weight, 4),
     )

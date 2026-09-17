@@ -632,7 +632,11 @@ def _reorganize_trajectory(mind, allocator, intents, assignment, pt, plan, confi
         plan=plan or {},
         event=pt or "",
     )
-    diagnostics = {"enabled": True, "applied": False, "requery_stop_count": 0, "issues": []}
+    diagnostics = {
+        "enabled": True, "applied": False, "requery_stop_count": 0,
+        "locked_gravity_stop_count": 0, "blocked_relocation_count": 0,
+        "issues": [],
+    }
     try:
         response = _extract_json_object(mind.llm_call_j(prompt, 0))
     except Exception as error:
@@ -646,6 +650,20 @@ def _reorganize_trajectory(mind, allocator, intents, assignment, pt, plan, confi
 
     intent_by_id = {item.stop_id: item for item in intents}
     round1_by_stop_id = {stop.stop_id: stop for stop in assignment.stops}
+    violating_stop_ids = {
+        str(item.get("stop_id") or "")
+        for item in assignment.violations if isinstance(item, dict)
+    }
+    locked_gravity_stop_ids = {
+        intent.stop_id
+        for intent in intents
+        if intent.selection_policy == "gravity"
+        and intent.stop_id in round1_by_stop_id
+        and round1_by_stop_id[intent.stop_id].map_verified
+        and not round1_by_stop_id[intent.stop_id].degraded
+        and intent.stop_id not in violating_stop_ids
+    }
+    diagnostics["locked_gravity_stop_count"] = len(locked_gravity_stop_ids)
 
     identity_by_location_id = {}
     for stop in assignment.stops:
@@ -678,7 +696,17 @@ def _reorganize_trajectory(mind, allocator, intents, assignment, pt, plan, confi
             round1_by_stop_id.get(final_seq[index + 1])
             if index + 1 < len(final_seq) else None
         )
-        if str(spec.get("resolution") or "resolved") == "requery":
+        if stop_id in locked_gravity_stop_ids:
+            stop = round1_by_stop_id.get(stop_id)
+            requested_location = spec.get("location") if isinstance(spec.get("location"), dict) else {}
+            requested_location_id = str(requested_location.get("location_id") or "")
+            requested_resolution = str(spec.get("resolution") or "resolved")
+            if (
+                requested_resolution != "resolved"
+                or (requested_location_id and requested_location_id != stop.location_id)
+            ):
+                diagnostics["blocked_relocation_count"] += 1
+        elif str(spec.get("resolution") or "resolved") == "requery":
             stop = _requery_resolve(
                 intent, spec, prev_stop, next_stop, allocator, diagnostics["issues"],
             )
@@ -790,19 +818,13 @@ def generate_poi_route(mind, pt, plan=None):
         activity_plan = plan_activity_intents(intents)
         intents = activity_plan.intents
         mind.last_activity_plan = activity_plan.to_dict()
+        calibration = config.get("mobility_calibration", {})
+        calibration = calibration if isinstance(calibration, dict) else {}
         epr_profile = build_personal_epr_profile(
             getattr(mind, "behavior_history", None) or [],
             getattr(mind, "trajectory_location_history", None) or [],
+            calibration=calibration,
         )
-        calibration = config.get("mobility_calibration", {})
-        calibration = calibration if isinstance(calibration, dict) else {}
-        allowed = {
-            key: float(calibration[key])
-            for key in ("rho", "distance_beta", "distance_cutoff_km")
-            if key in calibration
-        }
-        if allowed:
-            epr_profile = replace(epr_profile, **allowed)
         allocator = TrajectoryAllocator(
             maptools=mind.maptools,
             persona_addresses=_address_catalog_with_history(mind),
@@ -818,6 +840,10 @@ def generate_poi_route(mind, pt, plan=None):
             epr_profile=epr_profile,
             mobility_day_budget=mobility_day_budget,
             urban_candidate_share=float(calibration.get("urban_candidate_share", 0.35)),
+            selection_temperature=float(calibration.get("selection_temperature", 0.75)),
+            preference_boost=float(calibration.get("preference_boost", 1.5)),
+            repetition_fatigue_step=float(calibration.get("repetition_fatigue_step", 0.10)),
+            repetition_fatigue_cap=float(calibration.get("repetition_fatigue_cap", 0.30)),
         )
         # 数值预算参与候选选择；必选事件不会被删除，超预算仍交给组织 LLM 调整。
         assignment = allocator.allocate(
