@@ -1,10 +1,11 @@
-# memory_structure 子目录 — 记忆结构构建
+# memory_structure 子目录 — 旧版记忆模块
 
-负责构建和模拟用户记忆结构的相关逻辑。
+旧版记忆结构（基于 sentence-transformers 的全局单例记忆模块）。
 
 ## 文件
 
 | 文件 | 说明 |
 |------|------|
-| `memory.py` | 记忆类定义与核心逻辑 |
-| `fuzzy_memory_builder.py` | 模糊记忆构建器 |
+| `memory.py` | `MemoryModule` — 记忆模块（全局单例/多例可选，统一管理记忆操作）。 |
+
+> 注意：新版每日模拟的记忆系统已迁至 [`event/simulation/memory/`](../simulation/memory/README.md)（`MemoryStore` / `FuzzyMemoryBuilder` / `build_short_memory` / `EmbeddingModel`）。本目录仅保留旧版 `MemoryModule`。

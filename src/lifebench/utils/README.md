@@ -5,7 +5,10 @@
 | 文件 | 说明 |
 |------|------|
 | `llm_call.py` | LLM（大语言模型）调用封装 |
+| `structured_llm.py` | 结构化 LLM 输出（JSON Schema 解码）调用 |
 | `utils_io.py` | 输入输出工具函数 |
 | `dataprocess.py` | 数据处理工具 |
+| `date_utils.py` | 日期/时间工具（`TimeSpec`、日期迭代等） |
+| `json_utils.py` | JSON 处理工具（如 `remove_json_wrapper`） |
 | `maptool.py` | 地图相关工具（如地址解析、距离计算等） |
 | `random_ref.py` | 随机参考工具 |

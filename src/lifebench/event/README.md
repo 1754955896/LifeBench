@@ -10,7 +10,6 @@
 | `phone_data_gen.py` | 手机操作数据生成 |
 | `all_qa_generator.py` | 问答对生成器 |
 | `draft_gen.py` | 每日大纲（daily draft）生成 |
-| `scheduler.py` | 日程调度相关逻辑 |
 | `data_edit.py` | 数据编辑与修正工具 |
 | `event_formatter.py` | 事件数据格式化 |
 | `event_schema.csv` | 事件数据 Schema 定义 |
@@ -19,6 +18,7 @@
 
 | 目录 | 说明 |
 |------|------|
+| `simulation/` | 每日生活模拟引擎（日期分片并行、地理分配、记忆、反思） |
 | `draft/` | 事件大纲生成相关脚本（Graph、Timeline、Refiner 等） |
 | `edit/` | 多 Agent 数据编辑管线（规划、执行、反思、批评等 Agent） |
 | `phone_generator/` | 手机各类型数据生成器（聊天、通话、健康、相册等） |

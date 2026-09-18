@@ -4,24 +4,64 @@
 
 ## 核心文件
 
+### 入口与编排
+
 | 文件 | 说明 |
 |------|------|
-| `persona_gen.py` | Persona 数据生成主脚本 |
-| `personas.json` | 生成的 personas 数据文件 |
-| `pipeline.py` | 分阶段生成与并发编排 |
-| `constraints.py` | 年龄、BMI、MBTI 和亲属年龄约束 |
-| `output_adapter.py` | 转换并锁定旧版 JSON 输出契约 |
-| `source_normalizer.py` | 使用结构化 LLM 从任意字段或文本中抽取明确事实与软线索 |
-| `canonicalizer.py` | 将稀疏事实转换为固定 27 字段画像骨架并锁定输入事实 |
-| `diversity.py` | 运行种子、结构化差异度和多样性门槛 |
+| `persona_gen.py` | `PersonaGenerator` — Persona 数据生成主入口。 |
+| `pipeline.py` | `PersonaPipeline` — 分阶段生成与并发编排。 |
+| `stages.py` | 各生成阶段函数（基础画像、叙事、充实、一致性、关系槽、联系人分组、变体蓝图）。 |
+| `run_record.py` | `PersonaRunRecord` — 运行记录。 |
+
+### 数据模型
+
+| 文件 | 说明 |
+|------|------|
+| `internal_models.py` | 内部数据结构（`InternalPersona`、`InternalContact`、`RelationSlot`、`CircleAnchor`、`PersonaResult`、`BatchResult`）。 |
+| `source_models.py` | 来源数据结构（`NormalizedSource`、`CanonicalSeed`）。 |
+| `variant_models.py` | `VariantBlueprint` — 差异化变体蓝图。 |
+
+### 来源处理
+
+| 文件 | 说明 |
+|------|------|
+| `source_io.py` | `load_source_records` — 读取任意输入来源。 |
+| `source_normalizer.py` | `SourceNormalizer` — 使用结构化 LLM 从任意字段或文本中抽取明确事实与软线索。 |
+| `canonicalizer.py` | 将稀疏事实转换为固定 27 字段画像骨架并锁定输入事实。 |
+| `normalization.py` | 结构化 LLM 响应归一化（联系人地址、关系分组、关系计划等）。 |
+
+### 约束 / 差异化 / 采样
+
+| 文件 | 说明 |
+|------|------|
+| `constraints.py` | 年龄、BMI、MBTI 和亲属年龄约束。 |
+| `diversity.py` | 运行种子、结构化差异度和多样性门槛。 |
+| `sampling.py` | `PersonaReferenceSampler` — 参考池采样与派生种子。 |
+
+### 落地 / 校验 / 输出
+
+| 文件 | 说明 |
+|------|------|
+| `address_generation.py` | `PersonaAddressService` — 画像地址落地（住宅/工作地/常去地点/城市级地标）。 |
+| `grounding.py` | 落地上下文与一致性校验（移动画像、雇主锚点、关系圈/语义质量错误）。 |
+| `validation.py` | 画像键、内部画像、输出契约的校验。 |
+| `output_adapter.py` | 转换并锁定旧版 JSON 输出契约。 |
+| `local_io.py` | 原子写 JSON 与失败记录。 |
+
+### 数据文件
+
+| 文件 | 说明 |
+|------|------|
+| `personas.json` | 生成的 personas 数据文件。 |
 
 ## 子目录
 
 | 目录 | 说明 |
 |------|------|
 | `persona_file/` | Persona 参考文件与最终数据（`complete_profiles.json`、`final.json`、`refer.json` 等） |
-| `prompts/` | 按基础画像、叙事、关系计划和联系人拆分的提示词模板 |
-| `eval/` | Persona 评估脚本（`eval.py`、`eval_circle.py`、`eval_relation.py`） |
+| `prompts/` | 按基础画像、叙事、关系计划和联系人拆分的提示词模板（详见 [prompts/README.md](prompts/README.md)） |
+| `eval/` | Persona 评估脚本（`eval.py`、`eval_circle.py`、`eval_relation.py`、`metrics.py`、`quality_gate.py`） |
+| `tests/` | Persona 单元测试（详见 [tests/README.md](tests/README.md)） |
 
 ## 任意输入与差异化生成
 
