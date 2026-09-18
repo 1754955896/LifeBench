@@ -1,0 +1,743 @@
+{
+  "name": "Lei Mingxuan",
+  "birth": "1990-10-20",
+  "age": 31,
+  "nationality": "Han",
+  "home_address": {
+    "province": "Shanghai",
+    "city": "Shanghai",
+    "district": "Pudong New Area",
+    "street_name": "Zhangyang Road",
+    "street_number": "No. 12, Lane 1589"
+  },
+  "birth_place": {
+    "province": "Shanghai",
+    "city": "Shanghai",
+    "district": "Pudong New Area"
+  },
+  "gender": "Male",
+  "education": "Associate degree (formal higher education)",
+  "job": "Self-employed store owner / clothing store owner.",
+  "occupation": "Self-employed / sole proprietor",
+  "workplace": {
+    "province": "Shanghai",
+    "city": "Shanghai",
+    "district": "Pudong New Area",
+    "street_name": "Century Avenue",
+    "street_number": "Shop A-208, 2nd floor, a shopping mall"
+  },
+  "belief": "No religious belief",
+  "salary": 150000.0,
+  "body": {
+    "height": 172,
+    "weight": 80.0,
+    "BMI": 27.04
+  },
+  "family": "Unmarried, lives with parents at No. 12, Lane 1589, Zhangyang Road, Pudong New Area, Shanghai",
+  "personality": {
+    "mbti": "ESTP",
+    "traits": [
+      "Freedom-first orientation",
+      "Exciting.",
+      "Independent and self-reliant"
+    ]
+  },
+  "hobbies": [
+    "Played pool (American eight-ball).",
+    "Roller skating (leisure)",
+    "Watch anime (Japanese)",
+    "Read a historical novel.",
+    "Basketball",
+    "Collecting trendy toy blind boxes (Pop Mart)",
+    "Accessories",
+    "Hanging out with friends"
+  ],
+  "favorite_foods": [
+    "Shanghai-style braised pork",
+    "Pan-fried buns",
+    "Japanese ramen",
+    "Hot pot",
+    "Fresh fruit salad"
+  ],
+  "memory_date": [
+    "2012-07-01: Landed my first job and officially entered the workforce",
+    "2020-05-20: The anniversary of the opening of his own clothing store"
+  ],
+  "aim": [
+    "Short-term goal: complete an in-depth self-driving trip through western Sichuan within six months, exploring lesser-known natural scenery.",
+    "Medium-term goal: within three years, upgrade the existing store into a small multi-brand store and open an online branch.",
+    "Life goal: within five years, develop a habit of regular exercise at least three times a week and keep BMI within a healthy range."
+  ],
+  "healthy_desc": "He subjectively feels very healthy, with no clear record of chronic diseases or long-term health problems. He has a habit of daily physical exercise (such as running) and outdoor activities almost every day, with a good physical foundation, but is slightly overweight (BMI 27.04). Past medical examination records are unknown, and medical visits are infrequent. Overall, he is a health-conscious person who focuses on maintaining vitality through daily exercise.",
+  "lifestyle_desc": "Lifestyle is active and emphasizes socializing and leisure. Daily routine includes going online for information, reading books and newspapers, listening to music at home, and physical exercise (running). Social life is rich, with gatherings with friends several times a week and gatherings and shopping trips with relatives who do not live together several times a month. Very fond of outdoor activities (such as roller skating, hiking) and does them almost every day. Information acquisition relies mainly on the Internet. In the past year, spent more than 30 nights away from home on vacations or visits to relatives, showing a lifestyle that loves travel and exploration, although long-haul flights are relatively infrequent. In daily leisure time, often social visits, rest and relaxation, and learning to recharge.",
+  "economic_desc": "Annual personal salary is 150,000 yuan; he lives with his parents, and the family's total annual income is about 200,000 yuan (including his personal store income and part of his parents' retirement pensions). Family assets include three properties (one for self-occupancy, the rest rented out) and a family car. Investment activities are relatively conservative, currently mainly investing in funds. Consumption habits emphasize life experiences, with frequent spending on socializing, shopping, and travel. Overall, his finances are stable, with some asset accumulation and financial planning awareness.",
+  "work_desc": "Currently the owner of his own clothing store (sole proprietor), self-employed, with no other part-time jobs. He works up to 56 hours a week and is highly devoted to his work. His work mainly involves commercial sales and customer service, and he does not hold an administrative position. The workplace is a shopping mall in Pudong New Area, Shanghai. Details such as commute time, physical/mental workload, and schedule are not specified, but he has autonomy over his current work status (as the boss). His first job started in 2012, as a commercial and service industry worker, and at that time he was employed by others.",
+  "experience_desc": "Lei Mingxuan is a native of Pudong, Shanghai. Since birth, his household registration and residence have never changed. In 2008, he entered a vocational college to study marketing. After graduating in 2012, his first job was as a salesperson at a local clothing store, where he accumulated rich sales skills and customer service experience. During his work, he keenly observed market trends and gradually built supplier relationships. In 2020, with his accumulated resources and insight into fashion, he opened his own clothing store in a mall in Pudong New District, successfully transforming from employee to boss. This entrepreneurial experience was an important milestone in his life. He remains unmarried, lives with his parents, and devotes most of his energy to store operations and personal interests. His life has always been rooted in Shanghai, and he is deeply familiar with the local business environment and culture.",
+  "description": "Lei Mingxuan, 31 years old, is a local male from Pudong, Shanghai, with a vocational college degree. He is currently the owner of a self-run clothing store, with an annual income of about 150,000 yuan. He is 172 cm tall and weighs 80 kg, slightly overweight but energetic, claiming to be in good health and having a daily exercise habit. He is unmarried and lives with his parents; the family owns three properties and a car, and their financial condition is solid. In terms of personality, he presents as an ESTP (entrepreneurial) personality: extroverted, pragmatic, fond of action and freedom, and in pursuit of novelty and excitement, with values leaning toward liberty and self-reliance. His life is full and active, with wide-ranging hobbies including billiards, roller skating, anime, historical fiction, running, collecting blind boxes, and making handmade soap, and he meets with friends multiple times a week, maintaining an active social circle. He goes outdoors almost every day, loves nature, and spends a significant amount of time each year on vacations and visiting relatives. At work, as a store owner, he works 56 hours a week and handles everything hands-on. Important dates in his life include starting his first job in 2012 and opening the store in 2020. His future goals include completing a self-driving trip through western Sichuan, upgrading the store's brand, and developing a regular fitness routine. Overall, Lei Mingxuan is a young self-employed person rooted in Shanghai, good at seizing opportunities, enjoying life, and entrepreneurial in spirit. His life combines down-to-earth business management with vibrant personal exploration.",
+  "relation": [
+    [
+      {
+        "name": "Lei Jianguo",
+        "relation": "Father",
+        "social circle": "Family circle.",
+        "gender": "Male",
+        "age": 61,
+        "birth_date": "1963-05-12",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Pudong New Area",
+          "street_name": "Zhangyang Road",
+          "street_number": "No. 12, Lane 1589"
+        },
+        "birth_place": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Huangpu District"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Retired technical worker",
+        "organization": "A former state-owned machinery factory in Shanghai",
+        "nickname": "Lao Lei",
+        "relation_description": "Lei Mingxuan's father was a senior skilled worker at a state-owned factory before retirement, rigorous and pragmatic. The father and son live together, and daily conversations revolve around family matters, store operations, and current affairs. Lei Jianguo is steady and is the backbone of the family. Although he doesn't quite understand some of his son's trendy hobbies (such as collecting blind boxes), he strongly supports his career. The two have dinner together at home several times a week, and on weekends they sometimes go to the market or take a walk in the park together. Lei Jianguo occasionally visits his son's store to help keep an eye on things. He has witnessed the entire journey from his son working for others to starting his own business and is Lei Mingxuan's strongest support."
+      },
+      {
+        "name": "Wang Xiuying",
+        "relation": "Mother",
+        "social circle": "Family circle.",
+        "gender": "Female",
+        "age": 59,
+        "birth_date": "1965-08-22",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Pudong New Area",
+          "street_name": "Zhangyang Road",
+          "street_number": "No. 12, Lane 1589"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Retired elementary school teacher",
+        "organization": "A certain former primary school in Pudong New Area",
+        "nickname": "Mom",
+        "relation_description": "Lei Mingxuan's mother was an elementary school Chinese teacher before retirement. She is warm and family-oriented, and cares deeply about the family atmosphere and her son's daily life. She is an excellent cook, especially when making the Shanghai-style braised pork her son loves. Wang Xiuying is close to her son and is one of the people Lei Mingxuan opens up to. Although she worries a bit about his busy work and frequent social activities, she is more proud than anything. Mother and son talk every day, about everything from store business to everyday family matters. Wang Xiuying sometimes goes to her son's store to help organize merchandise, and also reminds him to take care of his health and settle down sooner. She and Lei Jianguo are a typically complementary couple, together creating a stable and warm environment for the family."
+      }
+    ],
+    [
+      {
+        "name": "Zhang Wei",
+        "relation": "Childhood friend",
+        "social circle": "Childhood / Neighborhood Circle",
+        "gender": "Male",
+        "age": 31,
+        "birth_date": "1990-08-15",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Pudong New Area",
+          "street_name": "Jinqiao Road",
+          "street_number": "A certain building in Biyun International Community"
+        },
+        "birth_place": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Pudong New Area"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Middle class",
+        "occupation": "Marketing Manager",
+        "organization": "Shanghai branch of a well-known FMCG company.",
+        "nickname": "Wei Ge",
+        "relation_description": "Zhang Wei and Lei Mingxuan were childhood neighbors. They grew up in the same old lane in Pudong and attended primary and junior high school together. The two have complementary personalities: Zhang Wei is more steady and family-oriented, while Lei Mingxuan is more adventurous. As adults, Zhang Wei went into marketing at a company, while Lei Mingxuan opened his own shop, but they have stayed closely connected. Both now live in Shanghai, not far from each other, and they arrange to meet for a meal or play billiards about every two weeks. They often share funny stories from daily life and industry information in a WeChat group. During holidays, the two families (Zhang Wei is married and has a child) sometimes also have dinner together."
+      },
+      {
+        "name": "Li Na",
+        "relation": "Childhood friend",
+        "social circle": "Childhood / Neighborhood Circle",
+        "gender": "Female",
+        "age": 31,
+        "birth_date": "1990-12-05",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District.",
+          "street_name": "Wensan Road",
+          "street_number": "An apartment near a technology park"
+        },
+        "birth_place": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Pudong New Area"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "Internet product operations",
+        "organization": "A leading e-commerce platform",
+        "nickname": "Nana",
+        "relation_description": "Li Na is a childhood playmate of both Lei Mingxuan and Zhang Wei; as a kid she was a tomboy. She went to university in Hangzhou and stayed in the local internet industry after graduation. Although separated from Lei Mingxuan and Zhang Wei by the two cities of Shanghai and Hangzhou, the three of them have a WeChat group called Pudong Three Musketeers and chat almost every day. Li Na is outgoing and the mood maker of the group. They meet at least twice a year, usually when Li Na returns to Shanghai or when Lei Mingxuan and Zhang Wei go to Hangzhou for fun, reliving childhood memories and talking about work, relationships, and what is new in their respective cities. They are in frequent contact online, and their offline meetups are full of anticipation and joy."
+      }
+    ],
+    [
+      {
+        "name": "Chen Hao.",
+        "relation": "High school classmate",
+        "social_circle": "High school classmates group.",
+        "gender": "Male",
+        "age": 31,
+        "birth_date": "1990-08-15",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District.",
+          "street_name": "Wensan Road",
+          "street_number": "No. 456"
+        },
+        "birth_place": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Huangpu District"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Internet product manager",
+        "organization": "A well-known internet company in Hangzhou",
+        "nickname": "Haozi",
+        "relation_description": "Chen Hao was a high school classmate of Lei Mingxuan. They became friends because they both liked playing basketball while at a school in Pudong. After graduating from high school, Chen Hao went to college in Hangzhou and stayed there to build his career; he is now a product manager at an internet company. Although they are in different cities, the two have always maintained a good relationship, mainly keeping in touch through WeChat. Every year they arrange to play online games together (such as Honor of Kings) a few times and chat about their recent lives and industry gossip. When Lei Mingxuan travels to Hangzhou for business, or when Chen Hao comes back to Shanghai to visit family, they always meet for a meal, usually choosing hot pot or a local Shanghainese restaurant, recalling fun high school memories and sharing updates on their careers. They also have a three-person WeChat group with another high school classmate, Liu Yang, and occasionally share bits of daily life or arrange to visit their old school together."
+      },
+      {
+        "name": "Liu Yang",
+        "relation": "High school classmate",
+        "social_circle": "High school classmates group.",
+        "gender": "Male",
+        "age": 32,
+        "birth_date": "1989-05-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "An apartment near Tencent Building"
+        },
+        "birth_place": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Jing'an District"
+        },
+        "personality": "INTP",
+        "economic_level": "Middle class",
+        "occupation": "Game Development Engineer",
+        "organization": "A game company in Shenzhen",
+        "nickname": "Yangyang",
+        "relation_description": "Liu Yang is a high school classmate of Lei Mingxuan and Chen Hao. The three were teammates on the basketball team. Liu Yang is relatively introverted but has an active mind. He chose computer science in college, and after graduating, he went south to Shenzhen and entered the game industry. He is now a senior development engineer focused on game engine optimization. Because of his busy work and the long distance, Liu Yang keeps in touch with Lei Mingxuan less often than Chen Hao does, communicating about once a quarter via WeChat or phone, mostly about technology trends, new anime releases, and the designer toys he collects. When Lei Mingxuan's clothing store sometimes carries game IP co-branded items, he asks Liu Yang for his opinion. Every Spring Festival, if all three can return to Shanghai, they hold a small gathering of high school classmates, usually organized by Lei Mingxuan. When Liu Yang returns to Shanghai, he often goes by Lei Mingxuan's store to see what new items have arrived."
+      }
+    ],
+    [
+      {
+        "name": "Wang Lei",
+        "relation": "College classmates",
+        "social circle": "University classmates' circle",
+        "gender": "Male",
+        "age": 32,
+        "birth_date": "1991-05-15",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District.",
+          "street_name": "Wensan Road",
+          "street_number": "No. 456, Building 8, Room 302, Jialüyuan Community"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Internet product manager",
+        "organization": "A well-known e-commerce company in Hangzhou",
+        "nickname": "Stone",
+        "relation_description": "Wang Lei was Lei Mingxuan's college classmate; the two entered the marketing program together in 2008 and became friends during school through participating in student union activities and basketball games. After graduation, Wang Lei chose to develop his career in Hangzhou and entered the internet industry. He currently works as a product manager at an e-commerce company. Although the two are in different cities, their relationship has always been good. They mainly keep in touch via WeChat, chatting casually once or twice a week on average, sharing industry updates, interesting bits of life, or complaining about work pressure. Every year, when Lei Mingxuan goes to Hangzhou on business or Wang Lei returns to Shanghai to visit family, they make a point to meet up, usually finding an authentic Shanghainese restaurant or a Japanese restaurant to eat at, then playing pool or going to a quiet bar for drinks and reminiscing about college days. Wang Lei is quick-minded and goal-oriented and often gives Lei Mingxuan suggestions on the online operation of his store."
+      },
+      {
+        "name": "Zhao Min",
+        "relation": "College classmates",
+        "social circle": "University classmates' circle",
+        "gender": "Female",
+        "age": 31,
+        "birth_date": "1990-12-03",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Minhang District",
+          "street_name": "Hongxin Road",
+          "street_number": "Room 601, No. 15, Vanke Holiday Scenery Community, Lane 3333"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Suzhou"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "Marketing event planning",
+        "organization": "An international exhibition company in Shanghai",
+        "nickname": "Minmin",
+        "relation_description": "Zhao Min is a college classmate of Lei Mingxuan and Wang Lei, and the three of them belong to a close-knit circle of friends. She is outgoing and warm-hearted and served as the class art and entertainment committee member back then. After graduating from college, Zhao Min chose to develop her career in Shanghai and is currently working as a marketing planner at an exhibition company. She and Lei Mingxuan are both in Shanghai, so they stay in touch more frequently, meeting for a meal or joining offline activities about every two weeks, such as visiting art exhibitions, watching plays, or trying newly opened trendy restaurants. Zhao Min is a regular customer and 'fashion consultant' of Lei Mingxuan's clothing store. She often drops by the store, gives her opinions on product selection, and introduces her friends to shop there. She also keeps in touch with Wang Lei. The three have a WeChat group where they often share funny memes and travel photos and plan to get together at least once a year, usually a short trip during a mini holiday. Zhao Min's creativity and wide network of contacts often bring new inspiration and customers to Lei Mingxuan's store."
+      }
+    ],
+    [
+      {
+        "name": "Sun Yue",
+        "relation": "Former colleague",
+        "social circle": "Former work circle",
+        "gender": "Female",
+        "age": 30,
+        "birth_date": "1994-05-15",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District.",
+          "street_name": "Wensan Road",
+          "street_number": "Room 1202, Building 3, Jindu Garden, No. 456"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City"
+        },
+        "personality": "ENFJ",
+        "economic_level": "Middle class",
+        "occupation": "Regional operations manager for a clothing brand",
+        "organization": "A well-known domestic fast-fashion brand company",
+        "nickname": "Yueyue",
+        "relation_description": "Sun Yue was a colleague of Lei Mingxuan when he worked at a local clothing chain store in Shanghai from 2012 to 2015; both were on the sales team. She was outgoing and enthusiastic, good at communication, and was the store's top salesperson at the time. She gave Lei Mingxuan, who had just entered society, a lot of help and encouragement. At the end of 2015, Sun Yue chose to leave for personal development and returned to her hometown Hangzhou, and quickly rose through the ranks in the fast fashion industry thanks to her outstanding abilities. Although the two were in different places, they kept in touch via WeChat, occasionally exchanging industry trends and store operation insights. Every year, when Lei Mingxuan went to Hangzhou or Sun Yue came to Shanghai on business trips, they would have a meal together if time allowed, about once or twice a year. When meeting, they usually chose distinctive restaurants and chatted about recent life and work while eating. Online contact was irregular, mainly consisting of Moments interactions and holiday greetings."
+      }
+    ],
+    [
+      {
+        "name": "Zhou Tao",
+        "relation": "Supplier",
+        "social_circle": "Work/Business circle.",
+        "gender": "Male",
+        "age": 38,
+        "birth_date": "1986-05-14",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xiaoshan District",
+          "street_name": "Qianjiang Century City",
+          "street_number": "No. 353 Benjing Avenue"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Wenzhou"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Wealthy",
+        "occupation": "Partner at a garment manufacturer/trading company.",
+        "organization": "Hangzhou Taosheng Garments Co., Ltd.",
+        "nickname": "Brother Tao",
+        "relation_description": "Zhou Tao is one of the main fabric suppliers for Lei Mingxuan's clothing store. The two met at an industry exhibition in 2019. Zhou Tao's company is based in Hangzhou and mainly deals in wholesale of fast-fashion fabrics across Jiangsu, Zhejiang, and Shanghai. He is shrewd, capable, and has a sharp business sense. Lei Mingxuan appreciates that the fabrics he provides are consistent in quality and novel in style, able to meet the store's need for trendy designs. The two mainly communicate via WeChat and phone, talking on average once or twice a week about orders, new products, and industry trends. Every year, Lei Mingxuan goes to Hangzhou once or twice to attend order fairs or visit factories, during which he meets with Zhou Tao. Apart from business, they also have meals together and exchange market information. Since they live in different cities, their day-to-day cooperation is mainly online, but they trust each other and have built a solid business partnership."
+      },
+      {
+        "name": "Wu Fang",
+        "relation": "Supplier",
+        "social_circle": "Work/Business circle.",
+        "gender": "Female",
+        "age": 45,
+        "birth_date": "1979-08-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Guangzhou City",
+          "district": "Haizhu District",
+          "street_name": "Pazhou",
+          "street_number": "618 Xingang East Road"
+        },
+        "birth_place": {
+          "province": "Guangdong Province",
+          "city": "Chaozhou City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Wealthy",
+        "occupation": "Jewelry and accessories wholesaler",
+        "organization": "Guangzhou Fanghua Accessories Trading Company",
+        "nickname": "Sister Fang",
+        "relation_description": "Wu Fang is the supplier of accessories and trendy items for Lei Mingxuan's store; they established cooperation in 2021 through an industry peer introduction. She runs her own accessories trading company in Guangzhou, with a wide range of sources, especially good at discovering niche designer works and foreign trade surplus goods. Wu Fang is warm, thoughtful, and meticulous in service, always able to recommend suitable accessories based on the style of Lei Mingxuan's store. The two almost entirely communicate online, using WeChat video to inspect goods, place orders, and settle accounts, contacting each other several times a month. Lei Mingxuan occasionally goes to Guangzhou for the Canton Fair or wholesale market shopping, during which he visits Wu Fang's booth, has morning tea together, and exchanges the latest fashion trends. Although they are in Shanghai and Guangzhou respectively, their efficient online cooperation model has kept their business close, and Wu Fang often sends Lei Mingxuan new product samples."
+      },
+      {
+        "name": "Zheng Kai",
+        "relation": "Shopping mall property manager.",
+        "social_circle": "Work/Business circle.",
+        "gender": "Male",
+        "age": 35,
+        "birth_date": "1989-03-10",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Pudong New Area",
+          "street_name": "Huamu Road",
+          "street_number": "No. 5, Lane 188"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Middle class",
+        "occupation": "Commercial real estate property management",
+        "organization": "Century Link Mall Property Management Department",
+        "nickname": "Brother Kai",
+        "relation_description": "Zheng Kai is the property manager of the mall where Lei Mingxuan's store is located, responsible for the daily management of that floor and merchant coordination. The two met in 2020 when Lei Mingxuan's store opened. Zheng Kai is meticulous and principled in work, but also reasonable and understanding. He has helped Lei Mingxuan considerably with store decoration, daily operations and maintenance, and filing for promotional activities. Because they work in the same place, they run into each other almost every day in the mall and often briefly exchange mall updates or chat a little. Once a month, there is a more formal communication involving rent, property management fees, or the mall's unified event arrangements. Privately, because both live locally in Shanghai and are about the same age, they sometimes meet after work for a simple meal or a coffee near the mall. The relationship is somewhere between work partners and acquaintances. Zheng Kai is also familiar with other mall merchants and occasionally organizes small merchant gatherings, which Lei Mingxuan also attends."
+      }
+    ],
+    [
+      {
+        "name": "Qian Duoduo",
+        "relation": "Regular customer",
+        "social_circle": "Work/client circle.",
+        "gender": "Female",
+        "age": 28,
+        "birth_date": "1996-03-15",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Jing'an District",
+          "street_name": "West Nanjing Road",
+          "street_number": "Block B, 18th floor of an apartment building"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "New Media Operations Manager",
+        "organization": "A well-known MCN agency.",
+        "nickname": "Qianqian",
+        "relation_description": "Qian Duoduo is a regular customer of Lei Mingxuan's clothing store. About three years ago, she happened to walk into the store while shopping at a mall and was drawn to its unique product selection. She is lively and outgoing, likes to try trendy outfits, and is a typical ENFP. The two became acquainted because of their shared interest in fashion and designer toys. Whenever Qian Duoduo comes to the store, she not only shops but also often exchanges the latest fashion trends and anime news with Lei Mingxuan. She currently works and lives in Jing'an District, Shanghai, as a new media operations manager with a good income and strong spending power. They now mainly communicate via WeChat. Qian Duoduo follows new arrivals on the store's WeChat Moments and, on average, visits the store once or twice a month. Sometimes she also invites other designer toy enthusiasts they both know to come and browse the store and chat."
+      },
+      {
+        "name": "Feng Xiaoyu",
+        "relation": "Regular customer",
+        "social_circle": "Work/client circle.",
+        "gender": "Female",
+        "age": 35,
+        "birth_date": "1989-08-22",
+        "home_address": {
+          "province": "Jiangsu Province",
+          "city": "Suzhou",
+          "district": "Industrial park",
+          "street_name": "Xinghu Street",
+          "street_number": "Room 301, Building 12, a residential complex"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nanjing"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Middle class",
+        "occupation": "HR manager at a foreign company",
+        "organization": "Suzhou branch of a German automotive parts company",
+        "nickname": "Sister Xiaoyu",
+        "relation_description": "Feng Xiaoyu is an old customer Lei Mingxuan got to know in the early days of opening his store; they first met when she was purchasing event gifts for her company. She is gentle and meticulous, an ISFJ personality, and very organized. Although she lives in Suzhou Industrial Park and works in Shanghai, she frequently travels between Suzhou and Shanghai for business needs. She appreciates the quality of the goods in Lei Mingxuan's store and the owner's pragmatic style, so she not only buys for herself but also often introduces colleagues and friends to the store. Their relationship goes beyond simple buying and selling and is more like friendship; they chat about work and everyday matters. Feng Xiaoyu also knows Qian Duoduo, and sometimes the three of them meet at Lei Mingxuan's store. Nowadays they mainly stay in touch through WeChat and phone calls. When Feng Xiaoyu comes to Shanghai on business trips, she always finds time to drop by the store, roughly once or twice a quarter; otherwise they keep in contact online."
+      }
+    ],
+    [
+      {
+        "name": "Han Dong",
+        "relation": "Billiards buddy",
+        "social circle": "Billiards Enthusiasts Circle.",
+        "gender": "Male",
+        "age": 29,
+        "birth_date": "1995-03-15",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Minhang District",
+          "street_name": "Hongmei Road",
+          "street_number": "No. 8, Lane 3215"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Suzhou"
+        },
+        "personality": "ISTP",
+        "economic_level": "Moderate",
+        "occupation": "Auto repair technician",
+        "organization": "Tuhu Car Care Workshop (Minhang Store)",
+        "nickname": "Dongzi",
+        "relation_description": "Han Dong is a billiards buddy Lei Mingxuan met while playing at a billiards hall. They became friends because of their comparable skills and straightforward personalities. They met three years ago and usually arrange to play at the hall once or twice a week, chatting about cars, anime, and their current businesses while playing. Han Dong is Lei Mingxuan's regular \"practice opponent\". They also occasionally meet for late-night snacks, usually hot pot or barbecue. Both live in Shanghai, but one in Pudong and the other in Minhang. Besides playing billiards and occasional dinners, they mainly keep in touch online through WeChat, exchanging billiards news and sharing funny short videos."
+      },
+      {
+        "name": "Qin Lang",
+        "relation": "Billiards buddy",
+        "social circle": "Billiards Enthusiasts Circle.",
+        "gender": "Male",
+        "age": 33,
+        "birth_date": "1991-08-22",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District.",
+          "street_name": "Wensan Road",
+          "street_number": "No. 456"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Ningbo"
+        },
+        "personality": "ENTP",
+        "economic_level": "Above average",
+        "occupation": "Internet product manager",
+        "organization": "Alibaba Group",
+        "nickname": "Brother Lang",
+        "relation_description": "Qin Lang is another billiards expert whom Lei Mingxuan met through Han Dong. The three often formed a small circle and played together. Qin Lang works at an internet company in Hangzhou, but comes to Shanghai once or twice a month on business or for family visits; whenever he is in Shanghai, he always invites Lei Mingxuan and Han Dong to play. They have known each other for two years, and their relationship is somewhere between friends and playing buddies. When they meet, besides honing their skills, Qin Lang shares what he has seen and heard in the internet industry, while Lei Mingxuan talks about the amusing side of running a physical store. Since they are in different cities, daily contact mainly happens through a WeChat group, where they share billiards match videos, discuss newly released trendy toys, and plan the next Shanghai-Hangzhou billiards challenge."
+      }
+    ],
+    [
+      {
+        "name": "Song Jia",
+        "relation": "Roller skating partner",
+        "social circle": "Roller skating hobby circle",
+        "gender": "Female",
+        "age": 29,
+        "birth_date": "1995-03-15",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Minhang District",
+          "street_name": "Qixin Road",
+          "street_number": "Room 301, Building 8, Lane 3655"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City"
+        },
+        "personality": "ENFP",
+        "economic_level": "Moderate",
+        "occupation": "Graphic Designer",
+        "organization": "An advertising and creative company in Shanghai",
+        "nickname": "Jiajia",
+        "relation_description": "Song Jia is a roller-skating partner Lei Mingxuan met on the Pudong riverside roller-skating path. They got to know each other about three years ago through exchanging roller-skating techniques. She is outgoing and enthusiastic, an active member of the roller-skating circle, and often organizes weekend roller-skating activities. The two are used to being relaxed and casual with each other, and they get in touch because of skating events, newly opened restaurants, or interesting markets. When they meet, they usually go roller-skating, have a meal, or visit trendy shops. Currently both live in Shanghai, but they live in Pudong and Minhang respectively. Now they mainly stay in contact via WeChat, sharing life anecdotes and roller-skating videos. On average, they chat online a few times a week and meet up for skating or gatherings once or twice a month."
+      }
+    ],
+    [
+      {
+        "name": "Xie Fei",
+        "relation": "Basketball buddy.",
+        "social circle": "Basketball hobby circle",
+        "gender": "Male",
+        "age": 29,
+        "birth_date": "1995-03-15",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Minhang District",
+          "street_name": "Qixin Road",
+          "street_number": "Room 502, No. 8, Lane 3333"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nantong City"
+        },
+        "personality": "ESFP",
+        "economic_level": "Moderate",
+        "occupation": "Software test engineer",
+        "organization": "Shanghai Branch of an Internet Technology Company.",
+        "nickname": "Brother Fei",
+        "relation_description": "Xie Fei is a basketball buddy Lei Mingxuan met while playing at the community basketball court; they have known each other for three years. The two became friends through their shared love of basketball. Every Wednesday evening and Saturday afternoon, they regularly meet to play on the outdoor courts at Yuanshen Sports Center in Pudong. After playing, they often go to a nearby barbecue restaurant or noodle shop for a late-night snack, chatting about work and life. Xie Fei is outgoing and enthusiastic, and he is the one who keeps the atmosphere lively on the court. He currently works in Shanghai and lives in the same city as Lei Mingxuan, so meeting in person is very convenient. Besides playing basketball, they occasionally share interesting basketball videos on WeChat or discuss NBA games. They are sports partners with a simple but pleasant relationship."
+      }
+    ],
+    [
+      {
+        "name": "Gao Yuan",
+        "relation": "Fellow anime fans",
+        "social_circle": "Anime hobby circle",
+        "gender": "Male",
+        "age": 29,
+        "birth_date": "1995-03-15",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District.",
+          "street_name": "Wensan Road",
+          "street_number": "Room 502, Building 3, Cuiyuan Residential Community, No. 456"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City"
+        },
+        "personality": "INTP",
+        "economic_level": "Middle class",
+        "occupation": "Game Systems Designer",
+        "organization": "A network technology Co., Ltd. in Hangzhou",
+        "nickname": "Yuanzi",
+        "relation_description": "Gao Yuan is a fellow anime fan Lei Mingxuan met on an online anime forum. The two became close through deep discussions about the same niche anime series. They mainly interact online, exchanging news about new anime and sharing insights on collecting figures through QQ groups and Bilibili feed updates, and occasionally voice-call to watch new anime premieres together. Gao Yuan works in the gaming industry in Hangzhou, while Lei Mingxuan runs a clothing store in Shanghai. Although they live in different cities and work in completely different fields, their shared love of anime has kept their online friendship steady. On average, they interact online two or three times a week. During the peak convention season each year (such as Comicup in the summer or BML during the National Day holiday), if schedules align, they may arrange to meet in Shanghai or Hangzhou to go to conventions and shop together. Gao Yuan is introverted and rational, a well-known 'lore researcher' in the community, and often provides background knowledge and references for Lei Mingxuan's collection."
+      }
+    ],
+    [
+      {
+        "name": "Lin Jing",
+        "relation": "Trendy toy collector friends",
+        "social_circle": "Designer toy collecting circle",
+        "gender": "Female",
+        "age": 29,
+        "birth_date": "1995-03-15",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "Room 2103, Tower B, Innovation Building"
+        },
+        "birth_place": {
+          "province": "Hunan Province",
+          "city": "Changsha"
+        },
+        "personality": "INFP",
+        "economic_level": "Middle class",
+        "occupation": "UI designer",
+        "organization": "An internet technology company.",
+        "nickname": "Jingjing",
+        "relation_description": "Lin Jing is a collector friend Lei Mingxuan met in an online designer toy community. The two bonded over their shared collection of Pop Mart series. They met in 2021 and mainly communicate through WeChat groups and second-hand trading platforms to exchange information about collectibles and market trends, occasionally helping each other with proxy purchases or trading rare designs. Although one runs a physical store in Shanghai and the other works in internet design in Shenzhen, being in different cities, they are both passionate about this community. On average, they chat online once or twice a week, sharing new product updates and showing off their collections. When Lei Mingxuan went to Guangzhou for an expo, he met Lin Jing and two other fellow enthusiasts in person once, visiting the exhibition, eating, and exchanging collecting insights together. They currently keep in touch mainly online, and plan to organize another group trip to a large designer toy expo in the future if the opportunity arises."
+      }
+    ],
+    [
+      {
+        "name": "Xu Feng",
+        "relation": "Fund and wealth management manager",
+        "social_circle": "Financial services circle",
+        "gender": "Male",
+        "age": 35,
+        "birth_date": "1989-05-14",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Xuhui District",
+          "street_name": "Caoxi North Road",
+          "street_number": "Room 1203, Building 5, Huayue Apartment, No. 398"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City"
+        },
+        "personality": "INTJ",
+        "economic_level": "Middle class",
+        "occupation": "Financial Advisor",
+        "organization": "Huatai Securities Shanghai Branch",
+        "nickname": "Brother Feng",
+        "relation_description": "Xu Feng is a fund manager Lei Mingxuan was introduced to by a friend in 2021, at a time when Lei Mingxuan was thinking about investing part of his savings. Xu Feng is professional, composed, and good at analyzing markets; he developed a relatively conservative fund portfolio for Lei Mingxuan. When the two spend time together, Xu Feng shares the latest financial news and market perspectives, while Lei Mingxuan prefers to talk about life's interesting moments and running his shop. They both live in Shanghai now, but one in Pudong and the other in Xuhui. They keep in touch about once a month, mainly through WeChat to discuss investments. Occasionally, they meet at a café in Xuhui to talk about wealth management and what's new over coffee. The atmosphere is rational and relaxed."
+      }
+    ],
+    [
+      {
+        "name": "He Zhiqiang",
+        "relation": "Car repair shop owner",
+        "social_circle": "Life services circle",
+        "gender": "Male",
+        "age": 45,
+        "birth_date": "1979-03-15",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Minhang District",
+          "street_name": "Hongmei Road",
+          "street_number": "No. 8, Lane 3321"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Wenzhou"
+        },
+        "personality": "ISTP",
+        "economic_level": "Xiaokang",
+        "occupation": "Automobile repair and maintenance service",
+        "organization": "Zhiqiang Auto Care Center",
+        "nickname": "Master He",
+        "relation_description": "He Zhiqiang is the owner of the auto care center that Lei Mingxuan regularly visits. The two met three years ago through vehicle maintenance. Master He has solid skills and is a down-to-earth person. Lei Mingxuan admires his professionalism and integrity, and the relationship gradually grew from customer to friend. They usually stay in touch over car problems or maintenance needs, and occasionally have a casual meal near Lei Mingxuan's shop, chatting about business and cars. Both live in Shanghai, but in Pudong and Minhang districts respectively. They meet about once a quarter, mainly for business matters with socializing on the side. Some friends in Lei Mingxuan's circle have also been referred to Master He's shop for repairs, so Master He also knows several of Lei Mingxuan's basketball buddies."
+      }
+    ],
+    [
+      {
+        "name": "Zhu Xiuying",
+        "relation": "Neighbor",
+        "social_circle": "Neighborhood Circle",
+        "gender": "Female",
+        "age": 58,
+        "birth_date": "1966-03-15",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Pudong New Area",
+          "street_name": "Zhangyang Road",
+          "street_number": "No. 10, Lane 1589"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Ningbo"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Retired elementary school teacher",
+        "organization": "A primary school in Pudong New Area (retired)",
+        "nickname": "Auntie Zhu",
+        "relation_description": "Aunt Zhu is an old neighbor of Lei Mingxuan's family, living in the same alley. She watched Lei Mingxuan grow up and they are close. When his parents were busy at work, Aunt Zhu sometimes helped take care of him. Now Aunt Zhu is retired and lives a leisurely life, often chatting with neighbors at the entrance of the alley or in the community garden. When Lei Mingxuan comes home from work or goes out on weekends, he often runs into her and stops to exchange a few pleasantries, talking about the weather, community news, or her flowers and plants. Aunt Zhu sometimes makes Ningbo-style snacks, such as fermented rice dumplings, and brings a bowl to the Lei family. They share a warm, everyday neighborly bond with frequent contact; they meet and greet almost every day, making her a steady and kind presence in the community."
+      }
+    ],
+    [
+      {
+        "name": "Yang Fan",
+        "relation": "Younger male cousin",
+        "social circle": "Relatives' circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1996-03-15",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Yuhang District",
+          "street_name": "Wenyi West Road",
+          "street_number": "Building E, Dream Town, Future Sci-Tech City, No. 588"
+        },
+        "birth_place": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Pudong New Area"
+        },
+        "personality": "INTP",
+        "economic_level": "Middle class",
+        "occupation": "Algorithm engineer",
+        "organization": "A leading internet company",
+        "nickname": "Xiaofan",
+        "relation_description": "Yang Fan is the son of Lei Mingxuan's aunt. The two grew up together in Pudong, Shanghai, and are close. Yang Fan got into university in Hangzhou, and after graduating, he stayed there to work in the internet industry as an algorithm engineer. Although they live in different cities, they get along well and mainly keep in touch via WeChat and phone calls, video chatting about once a week on average. They talk about work, life, and new tech gadgets. When Lei Mingxuan goes to Hangzhou for business or travel, he makes a point of meeting up with him for meals, tech exhibitions, or billiards. Yang Fan is introverted and rational, and he is an important consultant for Lei Mingxuan on technical issues and investment and personal finance. Every Spring Festival, Yang Fan returns to Shanghai for Chinese New Year, and the two always find time to get together, talk about the year's changes, and share family anecdotes."
+      },
+      {
+        "name": "Shen Jie.",
+        "relation": "Younger female cousin",
+        "social circle": "Relatives' circle",
+        "gender": "Female",
+        "age": 26,
+        "birth_date": "1998-08-22",
+        "home_address": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Jing'an District",
+          "street_name": "West Nanjing Road",
+          "street_number": "Room 1203, Building 1, Plaza 66 Apartments"
+        },
+        "birth_place": {
+          "province": "Shanghai",
+          "city": "Shanghai",
+          "district": "Pudong New Area"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "Fashion buyer",
+        "organization": "The China branch of a certain international fashion brand",
+        "nickname": "Jiejie",
+        "relation_description": "Shen Jie is the daughter of Lei Mingxuan's maternal uncle, so they are cousins. She was also born and raised in Shanghai, studied fashion management in university, and currently works as a buyer for an international brand, with a sharp eye for fashion trends. Because they both live in Shanghai and their careers are both fashion-related, they keep in close contact and meet about every two weeks. Shen Jie is an important \"consultant\" for Lei Mingxuan's clothing store, often giving him advice on product selection and industry news. Lei Mingxuan also asks her to try on new items. When they meet, they often explore new shops, visit exhibitions, go shopping, or arrange dinners with other friends. Shen Jie is lively and outgoing, an active member of Lei Mingxuan's social circle, and they also talk about family matters and their romantic lives. At holiday family gatherings, they always sit together and are among the closest cousins in the family."
+      }
+    ]
+  ]
+}

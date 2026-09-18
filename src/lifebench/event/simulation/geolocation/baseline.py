@@ -1,67 +1,224 @@
 # -*- coding: utf-8 -*-
-"""地理分配的朴素基线：LLM 出定位指令 → 高德查询/直接引用 → 构建轨迹分配。
+"""simple 基线 v3：LLM 配备地理工具（function calling）的 agentic 地理分配。
 
-与完整版 TrajectoryAllocator 完全独立，不做 EPR/重力、预算、交通方式规划、
-候选分层、复访偏好等任何建模；但产出与完整版相同的数据结构 TrajectoryAssignment
-（stops + legs），后续的 adjust event → 回填 → 通行统计完全复用完整版下游
-（adjust_event_trajectory），确保与完整版在同一口径下对比。
+与完整版 TrajectoryAllocator 完全独立，且本文件内不做任何数值计算或算法：
+无 haversine、无偏移、无速度表、无通行方式启发式、无按时间/距离排序、无预算、
+无候选分层、无 direct 索引匹配。所有坐标 / 通行时长 / 距离都来自高德工具
+（maptools）的返回值，或 LLM 自己的判断。代码只做三件事：
 
-流程（1 次 LLM 调用 + 若干地图调用；后续 adjust/reconcile 与完整版一致）：
-  1. LLM 为每个事件生成一条定位指令（唯一一次指令级 LLM 调用），允许三种操作：
-     - search  关键字搜索：给业态/店名，高德 text 搜索取 top1；
-     - nearby  附近搜索：给“参考地点 + 业态”，先定位参考点再做周边搜索；
-     - direct  直接使用：直接引用已知地址（location.json 里的 anchor/familiar/social），
-               不再调用地图 API。
-  2. 按指令逐条调用高德（direct 直接读地址目录），每条取一个地点，构造 ResolvedStop。
-  3. 相邻停留点之间计算通行 TravelLeg（真实路由耗时，查不到则速度表启发式）。
-  4. 返回 TrajectoryAssignment，写入 mind.last_trajectory_assignment；同时返回
-     render_assignment_summary(assignment) 作为 poi 参考串，供 adjust_event_trajectory
-     使用（与完整版 generate_poi_route 的返回契约一致）。
+  1. 把 maptools 的高德方法暴露成 LLM 可调用的工具（function schema + 薄分发）；
+  2. 跑一个 function-calling 循环，直到 LLM 不再请求工具；
+  3. 把 LLM / 工具的返回字段原样映射成与完整版一致的 final_location_records。
 
-轨迹里的坐标只来自真实地图/地址（map_verified）；编造地点的坐标回填由完整版下游的
-reconcile_final_itinerary 完成（search_named 正向搜索 / anchor_estimate 偏移，搜不到
-则跳过）。
+流程（两个 LLM 阶段 + 薄回填）：
+  阶段 A（gather）  : LLM 用工具解析每个事件的地点（search_place / search_around /
+                      geocode），输出 stops（含真实坐标），返回 poi 参考串。
+  阶段 B（adjust）  : LLM 依据地点参考写出最终事件叙述 + 最终地点清单（可编造新地点，
+                      并自行为每次通行指定交通方式 mode）。
+  阶段 C（回填）    : 对最终地点逐条回填坐标（复用 A / 工具正向搜索，搜不到跳过），
+                      相邻不同地点之间调 route_between 工具取真实通行时长/距离，
+                      组装 stops + legs + event_segments 成 final_location_records。
+
+最终地点记录的导出/校验（build_location_records / validate_location_records /
+build_half_hour_trajectory）复用完整版共享下游，保证与完整版在同一口径下对比。
 """
 import json
-import math
 
-from .injection import render_assignment_summary
+from src.lifebench.utils.llm_call import llm_agent
+
 from .models import ResolvedStop, TrajectoryAssignment, TravelLeg
+from .export import build_location_records
+from .validator import validate_location_records
 
 
-# 低于此直线距离（公里）视为“同一宏地点”，与 _build_legs 的“同地点”阈值保持一致。
-# 同地点停留点应复用同一 location_id，否则下游 validate_location_records 会把零时长
-# 的腿误判为“跨地点移动缺少正的时长或距离”。
-_SAME_LOCATION_KM = 0.05
+_VALID_MODES = {"walking", "driving", "transit", "bicycling"}
 
 
-_SIMPLE_QUERY_PROMPT = '''你是人物行为数据生成助手。下面给出人物画像、已知地址和当天事件。
+# --------------------------------------------------------------------------- #
+# 工具 schema（暴露给 LLM 的高德工具）与薄分发
+# --------------------------------------------------------------------------- #
+_TOOL_SCHEMAS = [
+    {
+        "type": "function",
+        "function": {
+            "name": "search_place",
+            "description": "按关键词在高德文本搜索候选地点，返回最多5个候选（name/location/address/city/district）。用于发现具体店铺/场所。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "keyword": {"type": "string", "description": "店铺名或业态关键词，如“星巴克”“健身房”"},
+                    "city": {"type": "string", "description": "城市名，如“北京”；可空表示全国"},
+                },
+                "required": ["keyword"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "search_around",
+            "description": "在指定中心点附近按关键词搜索候选地点，返回最多5个候选。用于“在某地附近找某类场所”。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "center": {"type": "string", "description": "中心点坐标“经度,纬度”"},
+                    "keyword": {"type": "string", "description": "业态关键词，如“餐厅”"},
+                    "city": {"type": "string", "description": "城市名，可空"},
+                    "radius": {"type": "integer", "description": "搜索半径（米），默认3000"},
+                },
+                "required": ["center", "keyword"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "geocode",
+            "description": "地理编码：把名称或地址解析成坐标与结构化地址。用于把某具体地址/名称转成坐标。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "address": {"type": "string", "description": "地点名称或地址"},
+                    "city": {"type": "string", "description": "城市名，可空"},
+                },
+                "required": ["address"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "route_between",
+            "description": "计算两点之间某种交通方式的通行耗时与距离。用于估算相邻事件之间的通行。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "origin": {"type": "string", "description": "起点坐标“经度,纬度”"},
+                    "destination": {"type": "string", "description": "终点坐标“经度,纬度”"},
+                    "mode": {"type": "string", "enum": list(_VALID_MODES), "description": "交通方式"},
+                },
+                "required": ["origin", "destination", "mode"],
+            },
+        },
+    },
+]
 
-请为每个需要真实物理地点的事件选择一种定位方式（op），并给出城市和起止时间。
-只输出一个 JSON 对象，不要输出任何解释文字，格式如下：
-{"stops":[
-  {"event":"事件简述","op":"search","keyword":"查询关键词","city":"城市名","start_time":"HH:00","end_time":"HH:00"},
-  {"event":"事件简述","op":"nearby","keyword":"业态类型","base":"参考地点名或地址","city":"城市名","start_time":"HH:00","end_time":"HH:00"},
-  {"event":"事件简述","op":"direct","address":"已知地址的 name 或 location_id","start_time":"HH:00","end_time":"HH:00"}
-]}
 
-三种 op 的用法：
-1. search（关键字搜索）：用于需要发现具体店/场所的事件，keyword 写具体店名或业态；
-2. nearby（附近搜索）：用于“在某个已知地点附近找某类场所”，base 写参考地点名或地址，keyword 写业态类型；
-3. direct（直接使用）：用于回家/上班/去熟悉地点/拜访某人等，address 必须原样引用“已知地址”列表中的 name 或 location_id，不要改写。
+def _candidate_public(candidate):
+    """把 maptools 的候选 POI 压缩成写回 LLM 的公开字段。"""
+    geo = candidate.get("geocode") or {}
+    return {
+        "name": str(candidate.get("name") or ""),
+        "location": str(candidate.get("location") or ""),
+        "address": str(candidate.get("structured_address") or candidate.get("address") or ""),
+        "city": str(geo.get("city") or candidate.get("cityname") or candidate.get("city") or ""),
+        "district": str(geo.get("district") or candidate.get("adname") or ""),
+    }
 
-要求：
-- 回家/上班/上学/去熟悉地点/拜访他人等固定地点，用 direct；
-- 餐饮/购物/健身/娱乐等需要找具体场所的，用 search；
-- 需要“在某地附近找某类场所”的，用 nearby；
-- 纯线上或无法定位的事件不要生成；
-- city 留空表示全国搜索。
+
+def _dispatch_tool(mind, name, args):
+    """薄分发：按工具名调用 maptools 方法，把结果格式化为 JSON-safe 字典。"""
+    name = str(name or "")
+    mt = mind.maptools
+    try:
+        if name == "search_place":
+            keyword = str(args.get("keyword") or "").strip()
+            city = str(args.get("city") or "").strip() or None
+            candidates = mt.search_poi_candidates(keyword, city=city, limit=5) or []
+            return {"results": [_candidate_public(c) for c in candidates]}
+        if name == "search_around":
+            center = str(args.get("center") or "").strip()
+            keyword = str(args.get("keyword") or "").strip()
+            city = str(args.get("city") or "").strip() or None
+            radius = int(args.get("radius") or 3000)
+            candidates = mt.search_around_candidates(
+                center, keywords=keyword, city=city, radius=radius, limit=5,
+            ) or []
+            return {"results": [_candidate_public(c) for c in candidates]}
+        if name == "geocode":
+            address = str(args.get("address") or "").strip()
+            city = str(args.get("city") or "").strip() or None
+            geo = mt.amap_geocode(address, city)
+            if not geo or not geo.get("location"):
+                return {"found": False, "result": None}
+            return {"found": True, "result": {
+                "name": address,
+                "location": str(geo.get("location") or ""),
+                "formatted_address": str(geo.get("formatted_address") or ""),
+                "city": str(geo.get("city") or city or ""),
+                "district": str(geo.get("district") or ""),
+            }}
+        if name == "route_between":
+            origin = str(args.get("origin") or "").strip()
+            destination = str(args.get("destination") or "").strip()
+            mode = str(args.get("mode") or "driving").strip()
+            payload = mt.route_between_pois(
+                {"location": origin}, {"location": destination}, mode,
+            )
+            if not payload:
+                return {"found": False, "result": None}
+            return {"found": True, "result": {
+                "mode": mode,
+                "duration_minutes": max(1, int(round(payload["duration_seconds"] / 60.0))),
+                "distance_km": round(payload["distance_meters"] / 1000.0, 2),
+            }}
+    except Exception as exc:  # 工具异常不应中断整个 agent 循环
+        return {"error": "%s 调用失败: %s" % (name, type(exc).__name__)}
+    return {"error": "unknown tool: %s" % name}
+
+
+# --------------------------------------------------------------------------- #
+# 提示词与辅助
+# --------------------------------------------------------------------------- #
+_SIMPLE_GATHER_SYSTEM = (
+    "你是地理查询助手。你拥有高德地图工具（search_place/search_around/geocode/route_between），"
+    "可以自主设计查询、多次调用工具，并只根据工具返回的真实数据作答。所有坐标必须来自工具返回"
+    "或已知地址，禁止自行编造坐标。"
+)
+
+_SIMPLE_GATHER_PROMPT = '''你是人物的地理助手。下面给出“已知地址”表（含坐标，直接使用即可）、人物画像和当天事件清单。
+
+请为每个需要真实物理地点的【事件】确定一个地点，输出地点清单。规则：
+- 回家/上班/去熟悉地点/拜访他人等固定地点：直接使用“已知地址”表中的 name 和 location 坐标，不要改写；
+- 需要发现具体店铺/场所（餐饮、购物、健身、娱乐等）：调用 search_place / search_around / geocode 工具得到真实坐标；
+- 调用工具后必须使用工具返回的 name/location/address，不得编造坐标；
+- 无法定位的线上事件不要输出；
+- 每个事件一行，按时间先后排列，start_time/end_time 用 "HH:MM"。
+
+最终只输出一个 JSON 对象，不要输出解释文字，格式：
+{"stops":[{"event":"事件简述","name":"地点名","location":"经度,纬度","address":"地址","city":"城市","start_time":"HH:MM","end_time":"HH:MM"}]}
 
 人物画像：
 __PERSONA__
 
-已知地址：
+已知地址（含坐标）：
 __ADDRESSES__
+
+当天事件：
+__EVENTS__
+'''
+
+_SIMPLE_ADJUST_PROMPT = '''你是人物行为数据生成助手。根据人物画像、当天客观事件、以及已解析的“地点参考”（含真实坐标），写出当天最终事件叙述，并给出最终地点清单。
+
+要求：
+- 地点优先采用“地点参考”里已有的地点（直接引用其 name）；
+- 若事件语义需要一个新的具体地点（地点参考里没有），可自行取名，后续会用地图工具回填坐标；
+- 每个最终地点一行，按时间顺序；start_time/end_time 用 "HH:MM"；
+- 每个地点可带一个 "mode" 字段（可选），表示从上一地点到达该地点的交通方式
+  （walking/driving/transit/bicycling 之一）；第一项无需 mode。
+- 叙述中的日期必须以"当天日期"为准；人物画像里出现的日期是旧快照日期，不得沿用。
+
+只输出一个 JSON 对象：
+{"events":"<Markdown 叙述>","locations":[{"event":"事件简述","name":"地点名","city":"城市","start_time":"HH:00","end_time":"HH:00","mode":"driving"}]}
+
+当天日期：
+__DATE__
+
+人物画像：
+__PERSONA__
+
+地点参考：
+__REFERENCE__
 
 当天事件：
 __EVENTS__
@@ -84,196 +241,187 @@ def _extract_json(text):
     return {}
 
 
-def _minute(value):
-    """解析 "HH:MM" 为分钟数，无效返回 None。"""
-    try:
-        hour, minute = (int(part) for part in str(value).split(":", 1))
-    except (TypeError, ValueError):
-        return None
-    return hour * 60 + minute if 0 <= hour <= 23 and 0 <= minute <= 59 else None
+def _persona_text(mind, use_cognition=False):
+    """把画像转成可注入提示词的文本。"""
+    value = getattr(mind, "cognition", "") if use_cognition else getattr(mind, "persona", "")
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value
+    return json.dumps(value, ensure_ascii=False, separators=(",", ":"))
 
 
-def _build_known_addresses(mind):
-    """从 location.json 的扁平地址目录中取“可直接使用”的已知地址。
-
-    排除 city_reference（城市机会池是每日抽样候选，不是人物已知地点），
-    保留 anchor / familiar / social（家、工作地、熟悉地点、社交地址）。
-    返回 (有序列表, 键→条目索引)，键包括 name / location_id / formatted_address。
-    """
-    known = []
-    index = {}
+def _known_addresses_text(mind):
+    """把已知地址压缩成 LLM 可直接引用的字段列表（含坐标，排除城市机会池）。"""
+    rows = []
     for item in getattr(mind, "persona_address_data", None) or []:
         if not isinstance(item, dict):
             continue
         if str(item.get("location_role") or "") == "city_reference":
             continue
         name = str(item.get("name") or "").strip()
-        location_id = str(item.get("location_id") or "").strip()
-        formatted_address = str(item.get("formatted_address") or item.get("address") or "").strip()
-        entry = {
-            "location_id": location_id,
+        location = str(item.get("location") or "").strip()
+        address = str(item.get("formatted_address") or item.get("address") or "").strip()
+        if not name or not location:
+            continue
+        rows.append({
             "name": name,
-            "formatted_address": formatted_address,
-            "location_role": str(item.get("location_role") or ""),
-            "location": str(item.get("location") or ""),
-            "city": str(item.get("city") or ""),
-        }
-        known.append(entry)
-        for key in (name, location_id, formatted_address):
-            if key:
-                index[key] = entry
-    return known, index
+            "location": location,
+            "address": address,
+            "role": str(item.get("location_role") or ""),
+        })
+    return json.dumps(rows, ensure_ascii=False, separators=(",", ":"))
 
 
-def _prompt_addresses(known):
-    """把已知地址压缩成 LLM 可直接引用的字段列表。"""
-    return json.dumps(
-        [
-            {
-                "location_id": e["location_id"],
-                "name": e["name"],
-                "formatted_address": e["formatted_address"],
-                "location_role": e["location_role"],
-            }
-            for e in known
-        ],
-        ensure_ascii=False, separators=(",", ":"),
+def _events_text(events):
+    return events if isinstance(events, str) else json.dumps(events, ensure_ascii=False)
+
+
+def _render_geo_reference(stops):
+    lines = ["【地点参考】以下坐标均来自高德地图工具或已知地址（真实）。"]
+    for index, stop in enumerate(stops, 1):
+        lines.append("【参考地点%02d】%s｜%s｜事件:%s｜坐标:%s｜城市:%s｜%s-%s" % (
+            index, stop.get("name") or "", stop.get("address") or "",
+            stop.get("event") or "", stop.get("location") or "",
+            stop.get("city") or "", stop.get("start_time") or "?",
+            stop.get("end_time") or "?",
+        ))
+    return "\n".join(lines)
+
+
+# --------------------------------------------------------------------------- #
+# 阶段 A：地理收集 agent
+# --------------------------------------------------------------------------- #
+def simple_gather_geo(mind, events, plan=None):
+    """阶段 A：LLM 用工具解析每个事件地点，输出真实坐标的 stops，返回 poi 参考串。"""
+    # simple 模式不再使用完整版的 TrajectoryAssignment 分配算法。
+    mind.last_trajectory_assignment = None
+    mind._simple_geo_reference = {"stops": []}
+
+    prompt = (
+        _SIMPLE_GATHER_PROMPT
+        .replace("__PERSONA__", _persona_text(mind))
+        .replace("__ADDRESSES__", _known_addresses_text(mind))
+        .replace("__EVENTS__", _events_text(events))
     )
+    messages = [
+        {"role": "system", "content": _SIMPLE_GATHER_SYSTEM},
+        {"role": "user", "content": prompt},
+    ]
+    raw = None
+    try:
+        raw = llm_agent(messages, _TOOL_SCHEMAS, lambda name, args: _dispatch_tool(mind, name, args))
+    except Exception as exc:
+        print("[simple_geo] 地理收集 agent 失败（%s），跳过地理分配" % type(exc).__name__)
+
+    payload = _extract_json(raw)
+    rows = payload.get("stops", []) if isinstance(payload, dict) else []
+    if not isinstance(rows, list):
+        rows = []
+    stops = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        location = str(row.get("location") or "").strip()
+        if len(location.split(",")) != 2:
+            continue
+        stops.append({
+            "event": str(row.get("event") or "").strip(),
+            "name": str(row.get("name") or "").strip(),
+            "location": location,
+            "address": str(row.get("address") or "").strip(),
+            "city": str(row.get("city") or "").strip(),
+            "start_time": str(row.get("start_time") or "").strip(),
+            "end_time": str(row.get("end_time") or "").strip(),
+        })
+    mind._simple_geo_reference = {"stops": stops}
+    return _render_geo_reference(stops)
 
 
-def _poi_from_result(poi, keyword, city):
-    """把高德返回的 POI（或地址目录条目）归一化为写回字段；无效则返回 None。"""
-    if not poi or not poi.get("location"):
+# --------------------------------------------------------------------------- #
+# 阶段 B + C：adjust + 回填 + 组装最终记录
+# --------------------------------------------------------------------------- #
+def _match_ref(ref_stops, name):
+    """按名称（先精确后包含）在阶段 A 的 stops 里找已有地点；找不到返回 None。"""
+    if not name:
         return None
+    for stop in ref_stops:
+        if stop.get("name") and stop.get("name") == name:
+            return stop
+    for stop in ref_stops:
+        if stop.get("name") and (stop.get("name") in name or name in stop.get("name")):
+            return stop
+    return None
+
+
+def _backfill_location(mind, name, city):
+    """用工具正向搜索/地理编码回填一个编造地点的真实坐标；搜不到返回 None。"""
+    if not name:
+        return None
+    poi = mind.maptools.get_poi(name, city or None)
+    if not poi or not poi.get("location"):
+        geo = mind.maptools.amap_geocode(name, city or None)
+        if not geo or not geo.get("location"):
+            return None
+        return {
+            "name": name,
+            "location": str(geo.get("location") or ""),
+            "address": str(geo.get("formatted_address") or ""),
+            "city": str(geo.get("city") or city or ""),
+        }
+    geo = poi.get("geocode") or {}
     return {
-        "name": str(poi.get("name") or keyword),
+        "name": str(poi.get("name") or name),
         "location": str(poi.get("location") or ""),
-        "address": str(poi.get("formatted_address") or poi.get("structured_address") or poi.get("address") or ""),
-        "city": str(
-            (poi.get("geocode") or {}).get("city")
-            or poi.get("cityname") or poi.get("city") or city or ""
-        ),
+        "address": str(poi.get("structured_address") or poi.get("address") or ""),
+        "city": str(geo.get("city") or poi.get("cityname") or city or ""),
     }
 
 
-def _resolve_stop(mind, row, known, index):
-    """把单条 LLM 定位指令解析成一个地点（dict 或 None）。"""
-    op = str(row.get("op") or row.get("type") or "search").strip().lower()
-    keyword = str(row.get("keyword") or "").strip()
-    city = str(row.get("city") or "").strip()
-    base = str(row.get("base") or "").strip()
-    ref = str(row.get("address") or "").strip()
-
-    if op in ("1", "direct", "use", "known"):
-        # 直接使用已知地址：按 name / location_id / formatted_address 匹配。
-        target = index.get(ref)
-        if target is None:
-            for entry in known:
-                name = entry.get("name") or ""
-                if name and (name in ref or ref in name):
-                    target = entry
-                    break
-        return _poi_from_result(target, ref, city)
-
-    if op in ("3", "nearby", "around", "near"):
-        # 附近搜索：先定位参考点，再周边搜索；失败降级为关键字搜索。
-        if not keyword:
-            return None
-        center_location = ""
-        if base:
-            target = index.get(base)
-            if target:
-                center_location = str(target.get("location") or "")
-            else:
-                geocode = mind.maptools.amap_geocode(base, city or None)
-                center_location = str(geocode.get("location") or "") if geocode else ""
-        poi = None
-        if center_location:
-            poi = mind.maptools.search_around_poi_random(
-                location=center_location, keywords=keyword, city=city or None,
-            )
-        if not poi or not poi.get("location"):
-            poi = mind.maptools.get_poi(keyword, city or None)
-        return _poi_from_result(poi, keyword, city)
-
-    # 默认 search：关键字搜索取 top1。
-    if not keyword:
-        return None
-    return _poi_from_result(mind.maptools.get_poi(keyword, city or None), keyword, city)
-
-
-def _haversine_km(lon1, lat1, lon2, lat2):
-    """两点球面直线距离（公里）。"""
-    try:
-        lon1, lat1, lon2, lat2 = (float(v) for v in (lon1, lat1, lon2, lat2))
-    except (TypeError, ValueError):
-        return 0.0
-    radius = 6371.0088
-    dlon = math.radians(lon2 - lon1)
-    dlat = math.radians(lat2 - lat1)
-    a = (
-        math.sin(dlat / 2.0) ** 2
-        + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon / 2.0) ** 2
+def _route_tool(mind, origin_coords, dest_coords, mode):
+    """调 route_between 工具取真实通行时长(分)/距离(公里)；失败返回 None。"""
+    if mode not in _VALID_MODES:
+        mode = "driving"
+    payload = mind.maptools.route_between_pois(
+        {"location": origin_coords}, {"location": dest_coords}, mode,
     )
-    return radius * 2.0 * math.asin(min(1.0, math.sqrt(a)))
-
-
-def _pick_mode(distance_km):
-    """朴素通行方式启发式：短距离步行，其余驾车。"""
-    return "walking" if distance_km < 1.5 else "driving"
-
-
-def _home_anchor_entry(known):
-    """从已知地址里取住宅锚点（首个 anchor 角色地址），取不到用第一个已知地址。"""
-    for entry in known:
-        if str(entry.get("location_role") or "") == "anchor":
-            return entry
-    return known[0] if known else None
-
-
-def _dedup_location_id(resolved, groups, counter):
-    """给解析出的地点分配 location_id：与已有点位直线距离 < _SAME_LOCATION_KM 时复用其 id。
-
-    groups 为 [(location_id, (lon, lat))]，用于“同地点”判定；复用时不新增，否则
-    分配新的 amap_%03d。返回 (location_id, 下一个可用序号)。
-    """
-    coords = str(resolved.get("location") or "")
-    try:
-        lon, lat = (float(part) for part in coords.split(","))
-    except (TypeError, ValueError):
-        return "amap_%03d" % counter, counter + 1
-    for loc_id, (glon, glat) in groups:
-        if _haversine_km(lon, lat, glon, glat) < _SAME_LOCATION_KM:
-            return loc_id, counter
-    groups.append(("amap_%03d" % counter, (lon, lat)))
-    return "amap_%03d" % counter, counter + 1
-
-
-def _make_stop(index, resolved, event_text, location_id=None):
-    """把解析出的地点（name/location/address/city）构造成 ResolvedStop。
-
-    location_id 缺省时按序号分配 amap_%03d；调用方可为“同地点”的停留点传入已复用的
-    location_id，保证下游 validate_location_records 按同地点语义跳过正时长检查。
-    """
-    try:
-        parts = str(resolved["location"]).split(",")
-        float(parts[0]), float(parts[1])
-    except (TypeError, ValueError, IndexError):
+    if not payload:
         return None
+    return {
+        "mode": mode,
+        "duration_minutes": max(1, int(round(payload["duration_seconds"] / 60.0))),
+        "distance_km": round(payload["distance_meters"] / 1000.0, 2),
+    }
+
+
+def _hhmm_add_minutes(hhmm, minutes):
+    """把 "HH:MM" 加上分钟数得到到达时刻；非法输入返回空串。
+
+    仅用于把工具返回的通行时长换算成 travel 段的到达时刻，属时间格式换算，
+    不是地理分配算法（不做任何距离/速度/方式推断）。
+    """
+    try:
+        hour, minute = (int(part) for part in str(hhmm).split(":", 1))
+    except (TypeError, ValueError):
+        return ""
+    total = (hour * 60 + minute + int(minutes or 0)) % 1440
+    return "%02d:%02d" % (total // 60, total % 60)
+
+
+def _make_stop(index, info):
     return ResolvedStop(
         stop_id="stop_%03d" % index,
-        event_ref=event_text,
+        event_ref=info["event"],
         activity_type="other",
-        location_id=location_id or ("amap_%03d" % index),
-        name=resolved["name"],
-        address=resolved.get("address") or "",
-        coordinates=resolved["location"],
-        city=resolved.get("city") or "",
+        location_id=info["location_id"],
+        name=info["name"],
+        address=info["address"],
+        coordinates=info["location"],
+        city=info["city"],
         category="other",
         source="amap",
         degraded=False,
         original_order=index,
-        parent_event_id="",
         required=False,
         provenance="inferred",
         flexibility="movable",
@@ -283,146 +431,169 @@ def _make_stop(index, resolved, event_text, location_id=None):
         fact_source="map_accepted",
         override_reason="",
         anchor_location_id="",
-        estimate_method="amap_top1",
+        estimate_method="llm_tool_search",
     )
 
 
-def _build_legs(mind, stops, times):
-    """按时间顺序的停留点构造通行 TravelLeg（真实路由，失败启发式）。"""
-    legs = []
-    speeds = {"walking": 4.5, "bicycling": 12.0, "transit": 20.0, "driving": 28.0, "running": 8.0}
-    for i in range(len(stops) - 1):
-        origin, dest = stops[i], stops[i + 1]
-        origin_end, dest_start = times[i][1], times[i + 1][0]
-        lon1, lat1 = (float(part) for part in origin.coordinates.split(","))
-        lon2, lat2 = (float(part) for part in dest.coordinates.split(","))
-        distance = _haversine_km(lon1, lat1, lon2, lat2)
-        mode = _pick_mode(distance)
+def simple_adjust_trajectory(mind, poi_data, event, daily_event_reference="", history=""):
+    """阶段 B + C：写出最终事件叙述 + 回填坐标 + 组装 final_location_records。"""
+    ref_stops = (getattr(mind, "_simple_geo_reference", {}) or {}).get("stops", []) or []
 
-        if distance < _SAME_LOCATION_KM:
-            mode, duration, source, map_verified, confidence = "none", 0, "same_location", True, 1.0
-        else:
-            seconds = mind.maptools.get_duration_between_pois(
-                {"name": origin.name, "location": origin.coordinates, "city": origin.city},
-                {"name": dest.name, "location": dest.coordinates, "city": dest.city},
-                mode,
-                origin.city or None,
-                dest.city or None,
-            )
-            if seconds is not None:
-                duration = max(1, int(round(seconds / 60.0)))
-                source, map_verified, confidence = "amap", True, 1.0
+    prompt = (
+        _SIMPLE_ADJUST_PROMPT
+        .replace("__DATE__", str(getattr(mind, "current_date", "") or ""))
+        .replace("__PERSONA__", _persona_text(mind, use_cognition=True))
+        .replace("__REFERENCE__", poi_data or _render_geo_reference(ref_stops))
+        .replace("__EVENTS__", _events_text(event))
+    )
+    payload = {}
+    try:
+        payload = _extract_json(mind.llm_call_j(prompt, 0))
+    except Exception as exc:
+        print("[simple_geo] adjust LLM 失败（%s）" % type(exc).__name__)
+    if not isinstance(payload, dict):
+        payload = {}
+
+    events_narrative = payload.get("events") or ""
+    if not isinstance(events_narrative, str):
+        events_narrative = str(events_narrative)
+    locations = payload.get("locations", []) if isinstance(payload.get("locations"), list) else []
+
+    # 阶段 C：逐条回填坐标（复用 A / 工具搜索，搜不到跳过）。
+    final_stops = []
+    location_ids = {}
+    skipped = []
+    backfilled = []
+    for loc in locations:
+        if not isinstance(loc, dict):
+            continue
+        name = str(loc.get("name") or "").strip()
+        city = str(loc.get("city") or "").strip()
+        resolved = _match_ref(ref_stops, name)
+        provenance = "reference"
+        if resolved is None and name:
+            resolved = _backfill_location(mind, name, city)
+            provenance = "backfill"
+            if resolved is not None:
+                backfilled.append(name)
             else:
-                overhead = 8 if mode == "transit" else 5
-                duration = max(1, int(round(distance / speeds.get(mode, 20.0) * 60 + overhead)))
-                source, map_verified, confidence = "heuristic", False, 0.7
+                skipped.append(name)
+        if resolved is None:
+            continue
+        coords = str(resolved.get("location") or "").strip()
+        if len(coords.split(",")) != 2:
+            skipped.append(name)
+            continue
+        location_id = location_ids.get(coords)
+        if location_id is None:
+            location_id = "amap_%03d" % len(location_ids)
+            location_ids[coords] = location_id
+        final_stops.append({
+            "event": str(loc.get("event") or name).strip(),
+            "name": str(resolved.get("name") or name).strip(),
+            "location": coords,
+            "address": str(resolved.get("address") or "").strip(),
+            "city": str(resolved.get("city") or city).strip(),
+            "start_time": str(loc.get("start_time") or "").strip(),
+            "end_time": str(loc.get("end_time") or "").strip(),
+            "mode": str(loc.get("mode") or "").strip(),
+            "location_id": location_id,
+            "provenance": provenance,
+        })
 
-        legs.append(TravelLeg(
-            leg_id="leg_%03d" % i,
-            origin_stop_id=origin.stop_id,
-            destination_stop_id=dest.stop_id,
-            origin_name=origin.name,
-            destination_name=dest.name,
+    stops = [_make_stop(i, info) for i, info in enumerate(final_stops)]
+
+    # 组装 legs（mode 由 LLM 在阶段 B 指定，duration/distance 来自 route_between 工具）。
+    legs = []
+    segments = []
+    for i in range(len(final_stops)):
+        info = final_stops[i]
+        segments.append({
+            "segment_id": "segment_%03d" % (2 * i),
+            "event_group_id": "group_%03d" % i,
+            "kind": "activity",
+            "start_time": info["start_time"],
+            "end_time": info["end_time"],
+            "event_ref": info["event"],
+            "source_plan_ids": [],
+            "stop_id": stops[i].stop_id,
+            "location_detail": info["address"],
+            "location_identity_mode": "source_identity",
+            "narrative_location_name": info["name"],
+            "location_override_reason": "",
+        })
+        if i >= len(final_stops) - 1:
+            continue
+        nxt = final_stops[i + 1]
+        if info["location_id"] == nxt["location_id"]:
+            continue  # 同地点停留，无通行段
+        mode = nxt.get("mode") or "driving"
+        route = _route_tool(mind, stops[i].coordinates, stops[i + 1].coordinates, mode)
+        if route is None:
+            duration, distance, source, verified, confidence = 0, 0.0, "unresolved", False, 0.5
+        else:
+            duration = route["duration_minutes"]
+            distance = route["distance_km"]
+            source, verified, confidence = "amap", True, 1.0
+        # 到达时刻 = 出发时刻 + 工具返回的通行时长（时间格式换算，非分配算法）。
+        departure = info["end_time"]
+        arrival = _hhmm_add_minutes(departure, duration) if duration > 0 else nxt["start_time"]
+        leg = TravelLeg(
+            leg_id="leg_%03d" % len(legs),
+            origin_stop_id=stops[i].stop_id,
+            destination_stop_id=stops[i + 1].stop_id,
+            origin_name=stops[i].name,
+            destination_name=stops[i + 1].name,
             mode=mode,
             duration_minutes=duration,
-            distance_km=round(distance, 2),
-            departure_time=origin_end,
-            arrival_time=dest_start,
+            distance_km=distance,
+            departure_time=departure,
+            arrival_time=arrival,
             source=source,
             feasible=True,
             confidence=confidence,
             leg_type="transfer",
             narrative_route="",
-            map_verified=map_verified,
-        ))
-    return legs
-
-
-def simple_allocate_trajectory(mind, events, plan=None):
-    """朴素基线入口：定位指令 → 高德查询/直接引用 → 构造轨迹分配。
-
-    只做“分配”这一步，写入 mind.last_trajectory_assignment 并返回
-    render_assignment_summary(assignment) 作为 poi 参考串；adjust event、
-    最终回填与通行统计由完整版下游 adjust_event_trajectory 完成。
-    """
-    persona = str(getattr(mind, "persona", "") or "")
-    known, index = _build_known_addresses(mind)
-    addresses = _prompt_addresses(known)
-    events_text = events if isinstance(events, str) else json.dumps(events, ensure_ascii=False)
-    date = str(getattr(mind, "current_date", "") or "")
-
-    # 步骤1：LLM 生成定位指令。
-    prompt = (
-        _SIMPLE_QUERY_PROMPT
-        .replace("__PERSONA__", persona)
-        .replace("__ADDRESSES__", addresses)
-        .replace("__EVENTS__", events_text)
-    )
-    try:
-        payload = _extract_json(mind.llm_call_j(prompt, 0))
-    except Exception as exc:
-        payload = {}
-        print(
-            "[simple_geolocation] LLM 定位指令生成失败（%s），"
-            "跳过地理分配" % type(exc).__name__
+            map_verified=verified,
         )
-    rows = payload.get("stops", []) if isinstance(payload, dict) else []
-    if not isinstance(rows, list):
-        rows = []
-
-    # 步骤2：逐条解析成真实坐标。
-    entries = []  # (event_text, resolved, start_time, end_time)
-    for row in rows:
-        if not isinstance(row, dict):
-            continue
-        event_text = str(row.get("event") or row.get("keyword") or row.get("address") or "").strip()
-        if not event_text:
-            continue
-        start_time = str(row.get("start_time") or "")
-        end_time = str(row.get("end_time") or "")
-        resolved = _resolve_stop(mind, row, known, index)
-        if resolved is None:
-            continue
-        entries.append((event_text, resolved, start_time, end_time))
-
-    # 全部解析失败时回退到住宅锚点，保证至少一个停留点（与完整版兜底一致）。
-    if not entries:
-        home = _home_anchor_entry(known)
-        if home is not None:
-            resolved = _poi_from_result(home, home.get("name") or "家", home.get("city") or "")
-            if resolved is not None:
-                entries.append(("回家", resolved, "", ""))
-
-    # 按开始时间排序（无有效时间的排到最后）。
-    entries.sort(key=lambda e: (_minute(e[2]) is None, _minute(e[2]) or 0))
-
-    # 步骤3：构造 ResolvedStop；直线距离 < _SAME_LOCATION_KM 的停留点复用同一
-    # location_id（对齐完整版“微活动共享父地点”语义），避免下游 validate_location_records
-    # 把近距停留点的零时长腿误判为“跨地点移动缺少正的时长或距离”。
-    stops = []
-    times = []
-    location_groups = []
-    location_counter = 0
-    for event_text, resolved, start_time, end_time in entries:
-        location_id, location_counter = _dedup_location_id(
-            resolved, location_groups, location_counter,
-        )
-        stop = _make_stop(len(stops), resolved, event_text, location_id=location_id)
-        if stop is None:
-            continue
-        stops.append(stop)
-        times.append((start_time, end_time))
-
-    # 步骤4：相邻停留点构造 TravelLeg。
-    legs = _build_legs(mind, stops, times)
+        legs.append(leg)
+        segments.append({
+            "segment_id": "segment_%03d" % (2 * i + 1),
+            "event_group_id": "group_%03d" % i,
+            "kind": "travel",
+            "start_time": departure,
+            "end_time": arrival,
+            "event_ref": "",
+            "source_plan_ids": [],
+            "leg_id": leg.leg_id,
+            "origin_stop_id": leg.origin_stop_id,
+            "destination_stop_id": leg.destination_stop_id,
+            "mode": leg.mode,
+            "duration_minutes": leg.duration_minutes,
+            "distance_km": leg.distance_km,
+        })
 
     assignment = TrajectoryAssignment(
-        date=date,
+        date=str(getattr(mind, "current_date", "") or ""),
         stops=stops,
         legs=legs,
         feasible=True,
         violations=[],
-        diagnostics={"allocation_mode": "simple"},
+        diagnostics={"allocation_mode": "simple_tool_agent"},
     )
-    mind.last_trajectory_assignment = assignment
-    return render_assignment_summary(assignment)
+    records = build_location_records(assignment)
+    records["event_segments"] = segments
+    records["schema_version"] = "simulation_location_v2"
+
+    issues = validate_location_records(records, require_itinerary=True, accuracy_validation=True)
+    mind.final_location_records = records
+    mind.last_location_reconciliation = {
+        "estimated_stop_ids": [],
+        "estimated_stop_count": 0,
+        "backfilled": backfilled,
+        "skipped": skipped,
+        "stop_count": len(stops),
+        "leg_count": len(legs),
+        "issues": issues,
+    }
+    return events_narrative

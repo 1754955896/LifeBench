@@ -1,0 +1,740 @@
+{
+  "name": "Sun Yuwei",
+  "birth": "1999-07-16",
+  "age": 22,
+  "nationality": "Han",
+  "home_address": {
+    "province": "Yunnan Province",
+    "city": "Kunming",
+    "district": "Wuhua District",
+    "street_name": "Renmin Middle Road",
+    "street_number": "No. 123"
+  },
+  "birth_place": {
+    "province": "Yunnan Province",
+    "city": "Kunming",
+    "district": "Wuhua District"
+  },
+  "gender": "Female",
+  "education": "University student (Chinese Department)",
+  "job": "Student and freelance writer",
+  "occupation": "Yunnan University",
+  "workplace": {
+    "province": "Yunnan Province",
+    "city": "Kunming",
+    "district": "Wuhua District",
+    "street_name": "Renmin Middle Road",
+    "street_number": "No. 123"
+  },
+  "belief": "No religious belief",
+  "salary": 80000.0,
+  "body": {
+    "height": 160,
+    "weight": 44.0,
+    "BMI": 17.2
+  },
+  "family": "Unmarried",
+  "personality": {
+    "mbti": "INFP",
+    "traits": [
+      "Spiritual satisfaction orientation",
+      "Personal growth orientation",
+      "Benevolence"
+    ]
+  },
+  "hobbies": [
+    "Read books/newspapers/magazines",
+    "Listen to modern pop music",
+    "Do journaling (decorating / recording).",
+    "Studying Japanese Ikenobo flower arrangement",
+    "Travel (domestic / overseas / self-driving)",
+    "Visiting independent bookstores"
+  ],
+  "favorite_foods": [
+    "Crossing-the-bridge rice noodles",
+    "Flower cake",
+    "Mushroom hot pot.",
+    "Brown sugar pearl milk tea"
+  ],
+  "memory_date": [
+    "2018-09-01: University Enrollment Day",
+    "2021-03-15: publication date of my first column article."
+  ],
+  "aim": [
+    "Complete a first draft of a prose collection before graduation.",
+    "Take one domestic cultural trip within the next year.",
+    "Keep doing yoga or meditation twice a week to improve posture and relieve anxiety."
+  ],
+  "healthy_desc": "Subjectively, she feels she is in good health, with no record of long-term chronic illness or disability. She lacks regular exercise habits and has not participated in physical exercise or watched sporting events in the past year. Her personal care and regular check-up habits are unclear, and her overall health management tends to be passive, relying on her own feelings rather than systematic examination. However, as a young person, she is energetic and occasionally does yoga to relieve stress.",
+  "lifestyle_desc": "Her lifestyle is quiet and introspective, centered on home and campus activities. She relies heavily on the internet for information and goes online every day. Her most frequent leisure activities are resting and relaxing, socializing with friends, and learning to recharge. Every month she goes out to see a movie, meets up with friends, and listens to music at home; every week she goes shopping and reads. Although she loves nature, she has not participated in any outdoor leisure activities such as hiking in the past year, creating a contradictory state of “longing but not acting.” In the past year she spent 10-15 nights away from home for vacations or visiting relatives, and traveled by plane twice, showing intermittent needs for travel or a desire to explore.",
+  "economic_desc": "The family's financial situation is relatively well-off, owning two properties but no private car. The family has not engaged in any investment activities such as stocks, funds, bonds, futures, warrants, or property speculation, and its financial management style is likely conservative. As a student and freelancer, she has an annual income of about 80,000 yuan, mainly from writing. In terms of spending habits, she goes shopping several times a month and is relatively financially independent, but the overall asset and investment allocation information is unclear and may be mainly managed by the family.",
+  "work_desc": "She is currently a college student and works part-time as a freelance writer or content creator, usually at home or on campus. She works about 20 hours per week, mainly on writing and editing. She has considerable autonomy over her work schedule under a flexible work arrangement. Since it is part-time, she has no fixed employer, administrative rank, or type of organizational ownership. Her commute time is almost zero. She is quite satisfied with her overall job and gains a sense of value and recognition from her creative work.",
+  "experience_desc": "Sun Yuwei was born and grew up in Kunming, Yunnan Province. Her household registration has been registered locally since birth and has never been moved. She completed local primary and secondary education step by step, and in 2018 was admitted to the Chinese Department of a key university in the province. Currently (2021), she is a third-year undergraduate student, and in her spare time she does freelance writing, contributing to some media platforms. Her first formal job is \"student,\" with content creation as a part-time endeavor. Her life trajectory has been relatively stable, with her main life and social circle centered in Kunming. She has not yet experienced major changes such as marriage, childbirth, or moving to another city, and is currently at a stage of exploring her career direction and inner world.",
+  "description": "Sun Yuwei, 22 years old, is a Kunming native and a current university student and freelance writer. She has a slender figure and a quiet, introverted personality. Her MBTI type is INFP, and she values spiritual fulfillment and personal growth, with a strong sense of compassion. She is currently studying in the Chinese department at university, while also doing part-time content creation at home, earning about 80,000 yuan a year. She is unmarried and lives with her family. The family owns two properties but no car, and their financial style is conservative. Sun Yuwei lives at a relatively slow pace; her main leisure activities are reading, listening to music, keeping a journal, and studying Japanese Ikenobo flower arrangement. She loves to travel but does not get enough outdoor practice, and relies entirely on the internet for information. She travels by plane several times a year for vacations or to visit relatives. Important days in her life include starting university and publishing her first column. Her short-term goals are to complete the first draft of her essay collection and take cultural trips around the country; her long-term goal is to develop healthier living habits. She may often visit local independent bookstores and cafés for inspiration, and she keeps deep but not frequent contact with several close friends. Her future vision is to become an influential cultural observer while balancing her studies and creative work.",
+  "relation": [
+    [
+      {
+        "name": "Sun Mingyuan",
+        "relation": "Father",
+        "social circle": "Family circle.",
+        "gender": "Male",
+        "age": 52,
+        "birth_date": "1970-05-22",
+        "home_address": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Wuhua District",
+          "street_name": "Renmin Middle Road",
+          "street_number": "No. 123"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Kunming"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Middle class",
+        "occupation": "Public institution management staff.",
+        "organization": "The Cultural Bureau of a district in Kunming.",
+        "nickname": "Dad",
+        "relation_description": "He is Sun Yuwei's father and lives with his wife Li Xiulan and daughter Sun Yuwei. Steady and pragmatic in nature, he is the family's breadwinner and decision-maker. In his early years, he entered the cultural system through a job recruitment program and has had stable work. His relationship with his daughter is traditional and reserved; he expresses fatherly love mainly through daily care and material support. He supports his daughter's choice to major in Chinese and work as a freelance writer, but with slight concern. Now nearing retirement, he is gradually shifting his life's focus toward the family, and occasionally takes walks with his family at Green Lake Park on weekends."
+      },
+      {
+        "name": "Li Xiulan",
+        "relation": "Mother",
+        "social circle": "Family circle.",
+        "gender": "Female",
+        "age": 50,
+        "birth_date": "1972-11-08",
+        "home_address": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Wuhua District",
+          "street_name": "Renmin Middle Road",
+          "street_number": "No. 123"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Qujing City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Middle class",
+        "occupation": "Secondary school teacher",
+        "organization": "Kunming No. 2 Middle School",
+        "nickname": "Mom",
+        "relation_description": "Sun Yuwei's mother is a passionate and responsible Chinese language teacher. She comes from Qujing. After graduating from university, she was assigned to work in Kunming and started a family there. Outgoing and good at communicating, she is the emotional bond of the family. She cares deeply about her daughter's physical and mental health and studies. The mother and daughter are close and often go shopping, enjoy food, and share reading insights. She understands and appreciates her daughter's artistic temperament, but also encourages her to maintain a regular routine. Complementing her husband Sun Mingyuan in educational philosophy, they together create a stable and loving family atmosphere."
+      },
+      {
+        "name": "Sun Yutong",
+        "relation": "Older sister",
+        "social circle": "Family circle.",
+        "gender": "Female",
+        "age": 28,
+        "birth_date": "1995-03-14",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan South Road",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Kunming"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Upper-middle income",
+        "occupation": "Internet product manager",
+        "organization": "A leading internet company",
+        "nickname": "Big Sis",
+        "relation_description": "Sun Yuwei's older sister, six years her senior, has an independent and decisive personality. She studied in Shanghai for college, and after graduating she went to Shenzhen to build her career in the internet industry. Her career is currently going well. The sisters have a deep bond but very different personalities: the elder is pragmatic and driven, while the younger is literary and introspective. They mainly keep in touch through WeChat video calls and phone calls, at least once a week, sharing their lives, work, and worries. The elder sister is an important emotional supporter and life advisor for the younger, often encouraging her to pursue her writing dreams bravely, and also giving her some pocket money or gifts from time to time. Every Spring Festival and National Day holiday, the elder sister comes back to Kunming to reunite with the family, and the two sisters go shopping, watch movies, and visit interesting shops together—intimate times that Sun Yuwei cherishes very much."
+      }
+    ],
+    [
+      {
+        "name": "Zhang Jing",
+        "relation": "Bestie",
+        "social circle": "High school best friends group",
+        "gender": "Female",
+        "age": 22,
+        "birth_date": "1999-03-22",
+        "home_address": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Panlong District",
+          "street_name": "Beijing Road",
+          "street_number": "No. 988"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Kunming"
+        },
+        "personality": "ENFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Primary school Chinese teacher",
+        "organization": "Mingtong Primary School, Panlong District, Kunming",
+        "nickname": "Jingjing",
+        "relation_description": "Zhang Jing was Sun Yuwei's high school desk mate, and the two became close friends because of their shared love of literature and journaling. After high school, Zhang Jing was admitted to the local normal university, and now she teaches at a primary school in Kunming. Although the two live in the same city, their busy studies and work mean they meet about once a month. When they meet, they usually arrange to meet at an independent bookstore or a café, sharing recent books they've read, journaling tips, and reflections on life, and occasionally they go to an art-house movie or browse a creative market together. They mainly keep in touch via WeChat, sharing interesting web articles or little joys in daily life, and they are each other's important source of spiritual support."
+      },
+      {
+        "name": "Wang Xinran",
+        "relation": "Bestie",
+        "social circle": "High school best friends group",
+        "gender": "Female",
+        "age": 23,
+        "birth_date": "1998-11-05",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "No. 2001"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Kunming"
+        },
+        "personality": "ENTP",
+        "economic_level": "Middle class",
+        "occupation": "Internet product manager",
+        "organization": "Shenzhen Tencent Technology Co., Ltd.",
+        "nickname": "Xinran",
+        "relation_description": "Wang Xinran was the most outgoing and independent-minded one in the high school best-friend circle. After the college entrance exam, she went to Shanghai for university, and after graduation she joined a big tech company in Shenzhen. She maintained close online contact with Sun Yuwei and Zhang Jing and was the active organizer of their three-person WeChat group. Because of the long distance, she and Sun Yuwei could only meet about once or twice a year, usually when Sun Yuwei or Zhang Jing traveled to Shenzhen, or when she returned to Kunming to visit family. When they met, their topics were wide-ranging, from industry news to life plans. Wang Xinran often brought Sun Yuwei cultural updates from first-tier cities and fresh perspectives. They stayed in frequent contact, chatting or video-calling in the group almost every week."
+      },
+      {
+        "name": "Chen Sisi",
+        "relation": "Bestie",
+        "social circle": "High school best friends group",
+        "gender": "Female",
+        "age": 22,
+        "birth_date": "1999-08-30",
+        "home_address": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Xishan District",
+          "street_name": "Dianchi Road",
+          "street_number": "No. 1320"
+        },
+        "birth_place": {
+          "province": "Sichuan Province",
+          "city": "Chengdu"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Wealthy",
+        "occupation": "Gallery administrative assistant",
+        "organization": "Kunming Contemporary Art Museum",
+        "nickname": "Sisi",
+        "relation_description": "Chen Sisi was introduced to Sun Yuwei in high school through Zhang Jing, and later became part of their close circle of girlfriends. Her ancestral home is Sichuan, and she moved to Kunming with her parents during elementary school. Gentle and considerate, she is the \"caretaker\" of the group. She studied arts management in college and now works at an art museum in Kunming. She lives in the same city as Sun Yuwei and Zhang Jing, so it's relatively convenient to meet, and they usually get together every two or three weeks. The meeting place is often recommended by Sisi—maybe a new art exhibition, a niche café, or a distinctive Yunnan restaurant. She knows Sun Yuwei's interest in culture and aesthetics well, and often shares related event information. When the three of them get together, Sisi always quietly takes care of the details, making the gathering warm and comfortable. She and Sun Yuwei also often exchange private insights on flower arranging and handmade crafts."
+      }
+    ],
+    [
+      {
+        "name": "Li Haoran",
+        "relation": "High school classmate",
+        "social circle": "High school classmates group.",
+        "gender": "Male",
+        "age": 23,
+        "birth_date": "1998-05-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Panlong District"
+        },
+        "personality": "ENTP",
+        "economic_level": "Middle class",
+        "occupation": "Product manager",
+        "organization": "An internet technology company in Shenzhen.",
+        "nickname": "Haoran",
+        "relation_description": "Li Haoran was Sun Yuwei's high school classmate. They were in the same class for three years at Kunming No. 1 Middle School and became close through joining the literary club together. After high school, Li Haoran went to Guangzhou for university. After graduating with a computer science degree, he chose to develop his career in Shenzhen and became an Internet product manager. The two now live in different cities and mainly keep in touch via WeChat, having one or two online exchanges a month on average to share updates, industry news, or discuss books and movies they both find interesting. Every Spring Festival, if Li Haoran returns to Kunming for the New Year, they arrange dinners with a few other high school classmates in Kunming to catch up about the past and present. Sun Yuwei sometimes asks him for advice on technical or product logic issues related to new media writing."
+      }
+    ],
+    [
+      {
+        "name": "Liu Jia",
+        "relation": "College roommate",
+        "social circle": "University roommates group.",
+        "gender": "Female",
+        "age": 22,
+        "birth_date": "1999-05-23",
+        "home_address": {
+          "province": "Sichuan Province",
+          "city": "Chengdu",
+          "district": "Wuhou District",
+          "street_name": "Kehua North Road",
+          "street_number": "No. 66"
+        },
+        "birth_place": {
+          "province": "Sichuan Province",
+          "city": "Mianyang City"
+        },
+        "personality": "ENFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Student",
+        "organization": "Yunnan University",
+        "nickname": "Jiajia",
+        "relation_description": "Liu Jia was Sun Yuwei’s college roommate. The two met when they entered school in September 2018 and lived in the same dormitory for four years. Liu Jia is outgoing and warm, the mood-maker of the dorm. She often organized the group to eat at the cafeteria, go shopping, or watch movies together. She is from Sichuan and plans to return to Chengdu after graduation. At present she is preparing for the graduate school entrance exam. Although the two will be separated in different cities in the future, they still keep close contact online, mainly sharing daily life, reading insights, and journaling materials through WeChat, and they video-call at least once a week. During winter and summer breaks, when Liu Jia returns to Kunming, they always meet at their usual independent bookstore or café to talk about how they’ve been and their plans for the future."
+      },
+      {
+        "name": "Zhao Xiaowen",
+        "relation": "College roommate",
+        "social circle": "University roommates group.",
+        "gender": "Female",
+        "age": 23,
+        "birth_date": "1998-11-30",
+        "home_address": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Panlong District",
+          "street_name": "Beijing Road",
+          "street_number": "No. 720"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Dali Bai Autonomous Prefecture"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Student",
+        "organization": "Yunnan University",
+        "nickname": "Wenwen",
+        "relation_description": "Zhao Xiaowen is Sun Yuwei's college roommate, from Dali, Yunnan. She is gentle and meticulous, the most considerate person in the dorm, often reminding everyone about weather changes and sharing local specialties from home. Xiaowen and Yuwei are particularly close because they share an interest in literature and journaling; they often go together to visit Kunming's independent bookstores and cultural creative markets. Xiaowen plans to stay in Kunming to work after graduation and is currently interning at a local publishing house. Since they are in the same city, it is relatively convenient to meet, and they usually have a meal together about every two weeks. At other times, they chat frequently in the dorm's WeChat group, sharing good articles they've read, flower arrangements, or complaining about academic pressure."
+      },
+      {
+        "name": "Zhou Lin",
+        "relation": "College roommate",
+        "social circle": "University roommates group.",
+        "gender": "Female",
+        "age": 22,
+        "birth_date": "1999-09-10",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Hunan Province",
+          "city": "Changsha"
+        },
+        "personality": "ENTP",
+        "economic_level": "Wealthy",
+        "occupation": "Student",
+        "organization": "Yunnan University",
+        "nickname": "Linlin",
+        "relation_description": "Zhou Lin was Sun Yuwei's college roommate, a Hunanese girl with an active mind and a willingness to try new things. She came from a well-off family and had wide-ranging interests, and was the first in the dormitory to get everyone into learning Ikenobo-style flower arrangement and trying various trendy milk teas. Linlin had clear plans for the future, intending to work in content operations at an internet company in Shenzhen after graduation. Although she was about to move far away to Guangdong, her dorm group chat with Yuwei, Jiajia, and Xiaowen remained active, and they agreed to take at least one group trip every year. Currently, Zhou Lin and Sun Yuwei mainly keep in touch online, discussing their respective writing projects, sharing travel experiences and the latest music albums, about two or three times a week. When Zhou Lin came back to Kunming during holidays, the four of them would always get together."
+      }
+    ],
+    [
+      {
+        "name": "Wu Mingyuan",
+        "relation": "Mentor",
+        "social circle": "University Academic Circle",
+        "gender": "Male",
+        "age": 45,
+        "birth_date": "1979-03-22",
+        "home_address": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Chenggong District",
+          "street_name": "Shuxiang Road, University Town",
+          "street_number": "Teacher Apartment, Building 8, Room 302"
+        },
+        "birth_place": {
+          "province": "Jiangsu Province",
+          "city": "Nanjing"
+        },
+        "personality": "INFJ",
+        "economic_level": "Middle class",
+        "occupation": "Professor",
+        "organization": "School of Liberal Arts, Yunnan University.",
+        "nickname": "Teacher Wu",
+        "relation_description": "Wu Mingyuan is Sun Yuwei's advisor in the Department of Chinese Language and Literature at Yunnan University, mainly responsible for supervising her academic-year paper and graduation thesis. The two met in an elective course in the second semester of her sophomore year, when Sun Yuwei's unique views on modern prose in class caught Professor Wu's attention. Professor Wu appreciates Sun Yuwei's delicate writing style and genuine love of literature, and not only guides her in her studies but also encourages her to combine her freelance writing practice with academic thinking. They usually meet every two weeks in Professor Wu's office to discuss academic questions and creative plans, and stay in touch by email and WeChat in the meantime. Professor Wu has a gentle and thoughtful temperament. He often meets Sun Yuwei at book-sharing events in independent bookstores and occasionally recommends some obscure but excellent titles to her. Although they are both in Kunming, apart from academic occasions, they do not get together privately much, and their relationship is both mentor and friend."
+      }
+    ],
+    [
+      {
+        "name": "Lin Yue",
+        "relation": "College classmates",
+        "social_circle": "University classmates' circle",
+        "gender": "Female",
+        "age": 23,
+        "birth_date": "1998-05-22",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District.",
+          "street_name": "Wensan Road",
+          "street_number": "No. 456"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City"
+        },
+        "personality": "ENFJ",
+        "economic_level": "Middle class",
+        "occupation": "New media editor",
+        "organization": "A cultural media company in Hangzhou",
+        "nickname": "Yueyue",
+        "relation_description": "Lin Yue was Sun Yuwei's classmate in the Chinese Department at university and also her roommate. The two met at the start of freshman year because of their shared love of literature. They often attended classes, spent hours in the library, browsed independent bookstores and cafés, and discussed books and writing. Lin Yue is outgoing and warmhearted, and she is one of the few close friends with whom Sun Yuwei can share her inner thoughts and creative drafts. After college, Lin Yue returned to her hometown of Hangzhou to develop her career and joined a cultural media company. Although the two live in different cities, they stay in touch mainly through WeChat, video-calling once or twice a week to share updates on work, reading reflections, and everyday matters. Every winter or summer vacation, or during long holidays, when Sun Yuwei travels to Hangzhou or Lin Yue returns to Kunming to visit family, they always arrange to meet up and relive activities from their student days, such as trying out new shops, seeing exhibitions, or taking short trips."
+      }
+    ],
+    [
+      {
+        "name": "Xu Mingyuan.",
+        "relation": "Edit",
+        "social circle": "Writing Work Circle",
+        "gender": "Male",
+        "age": 35,
+        "birth_date": "1989-03-22",
+        "home_address": {
+          "province": "Beijing",
+          "city": "Beijing",
+          "district": "Chaoyang District",
+          "street_name": "Wangjing Street",
+          "street_number": "No. 8"
+        },
+        "birth_place": {
+          "province": "Liaoning Province",
+          "city": "Shenyang"
+        },
+        "personality": "INTJ",
+        "economic_level": "Middle class",
+        "occupation": "New media editor",
+        "organization": "Cultural Horizon Online Magazine",
+        "nickname": "Editor Xu",
+        "relation_description": "Xu Mingyuan is the online editor of Cultural Vision magazine, for which Sun Yuwei has long been a contributor. The two met through her submissions. He appreciated Sun Yuwei's delicate writing style and her observations of local culture, and was the first to recognize her talent. They mainly discuss manuscripts over WeChat and email, about once a week. Xu Mingyuan provides topic suggestions and revision comments, and occasionally shares industry trends. The two have never met offline, but they maintain a professional and mutually respectful working relationship. Xu Mingyuan also knows Song Wen, a fellow writer, and they often communicate in an online writers' group."
+      },
+      {
+        "name": "Song Wen",
+        "relation": "Fellow writers",
+        "social circle": "Writing Work Circle",
+        "gender": "Female",
+        "age": 24,
+        "birth_date": "2000-10-05",
+        "home_address": {
+          "province": "Sichuan Province",
+          "city": "Chengdu",
+          "district": "Wuhou District",
+          "street_name": "Yulin Road",
+          "street_number": "No. 52"
+        },
+        "birth_place": {
+          "province": "Sichuan Province",
+          "city": "Mianyang City"
+        },
+        "personality": "ENFP",
+        "economic_level": "Xiaokang",
+        "occupation": "Freelance writer / content creator",
+        "organization": "Personal studio",
+        "nickname": "Wen Zi",
+        "relation_description": "Song Wen and Sun Yuwei met in an online writing community. Because they were similar in age and both worked as freelance writers, they soon became close. They often exchanged writing tips and shared submission channels in the group, and they also privately vented about clients and procrastination. Although one lived in Kunming and the other in Chengdu, they chatted on WeChat almost every day, covering everything from work to life. They once planned to attend a cultural festival together, but for some reason it didn't work out. Song Wen has a lively personality and sometimes gets Sun Yuwei to try new writing platforms. The two both know the editor Xu Mingyuan, and both submit to him; from time to time they compare their thoughts on his feedback."
+      }
+    ],
+    [
+      {
+        "name": "Su Man",
+        "relation": "Flower arrangement enthusiasts",
+        "social circle": "Ikenobo flower arranging circle",
+        "gender": "Female",
+        "age": 24,
+        "birth_date": "1997-05-23",
+        "home_address": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Xishan District",
+          "street_name": "Dianchi Road",
+          "street_number": "No. 456"
+        },
+        "birth_place": {
+          "province": "Sichuan Province",
+          "city": "Chengdu"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Moderate",
+        "occupation": "Floral designer",
+        "organization": "Kunming Botanical Garden",
+        "nickname": "Manman",
+        "relation_description": "Su Man is a friend Sun Yuwei met in the beginner's Ikenobo flower arrangement class; the two bonded over their shared interest in the art of flower arranging. Su Man has a gentle and meticulous personality. In class, she often took the initiative to help Yuwei correct the techniques for anchoring flower materials. They met in the autumn of 2020, and afterward sometimes met up to choose materials at Dounan Flower Market or practiced flower arranging together on weekends. Su Man currently works at the Kunming Botanical Garden as a floral designer, so she is very familiar with the local flower market. Although both live in Kunming, due to their busy schedules with studies and work, they don't see each other very often—about once a month. They mainly communicate via WeChat, exchanging thoughts on flower arranging and sharing photos of their work, and sometimes also discussing literature and music. Su Man is one of the few friends Yuwei has in Kunming with whom she can have in-depth conversations about aesthetic topics."
+      }
+    ],
+    [
+      {
+        "name": "Qin Mingyuan",
+        "relation": "Bookstore owner",
+        "social circle": "Independent bookstore community",
+        "gender": "Male",
+        "age": 45,
+        "birth_date": "1979-03-22",
+        "home_address": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Wuhua District",
+          "street_name": "Wenlin Street",
+          "street_number": "No. 45"
+        },
+        "birth_place": {
+          "province": "Sichuan Province",
+          "city": "Chengdu"
+        },
+        "personality": "INFJ",
+        "economic_level": "Middle class",
+        "occupation": "Independent bookstore operator.",
+        "organization": "Mingyuan Bookstore",
+        "nickname": "Uncle Qin",
+        "relation_description": "Qin Mingyuan is the owner of the independent bookstore 'Mingyuan Bookstore' that Sun Yuwei often visits. They met in the autumn of 2020, when Sun Yuwei was looking for an obscure collection of essays in the bookstore. Owner Qin took the initiative to find it for her from the storeroom, and from there they began talking about literature. Owner Qin graduated from the History Department of Sichuan University in his early years and once worked at a publishing house. Later, because of his love for books and a quiet life, he came to Kunming and opened this bookstore. He appreciates Sun Yuwei's sensitivity to words and her serene temperament, and often reserves newly arrived literary magazines for her or recommends works by niche authors. Sun Yuwei goes to the bookstore once or twice a week, sometimes to buy books, sometimes just to sit in the reading corner and write in her journal or draft articles. Their conversations mostly center on books and writing, and occasionally they chat about how their lives are going. Owner Qin is, for Sun Yuwei, a mentor and a friend across generations in Kunming's cultural circle."
+      }
+    ],
+    [
+      {
+        "name": "Yang Xiao",
+        "relation": "Book friends",
+        "social_circle": "Reading discussion circle",
+        "gender": "Female",
+        "age": 24,
+        "birth_date": "1997-05-22",
+        "home_address": {
+          "province": "Sichuan Province",
+          "city": "Chengdu",
+          "district": "Jinjiang District",
+          "street_name": "Hongxing Road",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Sichuan Province",
+          "city": "Chengdu"
+        },
+        "personality": "INFJ",
+        "economic_level": "Moderate",
+        "occupation": "Literary editor",
+        "organization": "Qingcheng Literary Magazine",
+        "nickname": "Xiaoxiao",
+        "relation_description": "Yang Xiao is a book friend Sun Yuwei met in an online reading community. The two hit it off because they both love essays and Japanese literature. They met in 2020 and mainly exchanged reading insights through Douban groups and WeChat, occasionally sending each other postcards and books. Yang Xiao currently works as an editor at a literary magazine in Chengdu; she is busy at work but loves reading. The two live in different cities and keep in touch mainly online, communicating on average once or twice a week, with topics centered around new book recommendations, writing dilemmas, and reflections on life. They once agreed to meet in Chengdu or Kunming in the future, to browse independent bookstores and teahouses together, but so far this has not happened. This relationship is purely based on spiritual resonance and is one of Sun Yuwei's important companions and sources of inspiration on her creative path."
+      }
+    ],
+    [
+      {
+        "name": "He Lu",
+        "relation": "Yoga partner",
+        "social circle": "Yoga Circle",
+        "gender": "Female",
+        "age": 24,
+        "birth_date": "1998-05-21",
+        "home_address": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Panlong District",
+          "street_name": "Beijing Road",
+          "street_number": "No. 987"
+        },
+        "birth_place": {
+          "province": "Sichuan Province",
+          "city": "Chengdu"
+        },
+        "personality": "ENFJ",
+        "economic_level": "Middle class",
+        "occupation": "Yoga instructor",
+        "organization": "Kunming Jingxin Yoga Lifestyle Center",
+        "nickname": "Lulu",
+        "relation_description": "He Lu is a yoga buddy Sun Yuwei met at Jingxin Yoga Lifestyle Studio. The two became acquainted through the same introductory class. He Lu is outgoing and warm-hearted, and as a coach she often encourages the introverted Sun Yuwei. They attend yoga classes together every Wednesday and Saturday afternoon, and occasionally chat at a nearby café after class, sharing their lives and reading insights. He Lu currently lives and works in Kunming. The two mainly keep in touch via WeChat. Apart from meeting at regular classes, they also arrange to visit an independent bookstore or try a new vegetarian restaurant once a month."
+      }
+    ],
+    [
+      {
+        "name": "Xie Xiulan.",
+        "relation": "Neighbor",
+        "social_circle": "Neighborhood Circle",
+        "gender": "Female",
+        "age": 58,
+        "birth_date": "1966-03-22",
+        "home_address": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Wuhua District",
+          "street_name": "Renmin Middle Road",
+          "street_number": "No. 121"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Wuhua District"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Retired elementary school teacher",
+        "organization": "Hongqi Primary School, Wuhua District, Kunming (retired)",
+        "nickname": "Aunt Xie",
+        "relation_description": "Xie Xiulan is the Sun family's old neighbor of many years, living across the hall in the same building. She watched Sun Yuwei grow up, and the two families have a harmonious relationship. Before retiring, Aunt Xie was a primary school Chinese language teacher. She is warm-hearted and helpful, an active participant in community activities. She greatly admires Sun Yuwei's quiet, studious nature and often asks about her studies and writing progress. Now they live in the same residential compound and see each other frequently—almost every day in the hallway or the garden, where they exchange a few words about the weather, health, or neighborhood news. Aunt Xie sometimes gives the Sun family homemade flower cakes or mushrooms brought from her hometown, and Sun Yuwei's mother reciprocates with seasonal fruit. During holidays, the two families occasionally visit each other to pay New Year's greetings. Aunt Xie is one of Sun Yuwei's windows into the lives of the older generation of Kunming locals and local community information."
+      }
+    ],
+    [
+      {
+        "name": "Gao Yuan",
+        "relation": "Cousin",
+        "social circle": "Relatives' circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1995-03-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Kunming"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Internet product manager",
+        "organization": "A leading Internet company in Shenzhen",
+        "nickname": "Brother Yuan",
+        "relation_description": "Gao Yuan is Sun Yuwei's older male cousin. The two grew up together in Kunming and are close. He went to college in another province, and after graduating he entered the Internet industry in Shenzhen, where he has done well. Although they live in different cities, they meet every year during the Spring Festival when they return to their hometown in Kunming. They usually keep in touch through WeChat and video calls, about once or twice a month. Gao Yuan is outgoing and decisive. He often encourages Sun Yuwei to keep writing, and shares industry news and career advice with her. He also keeps in touch with his cousin Shen Wei. The three of them have a family WeChat group and occasionally have group video chats."
+      },
+      {
+        "name": "Shen Wei",
+        "relation": "Older female cousin",
+        "social circle": "Relatives' circle",
+        "gender": "Female",
+        "age": 26,
+        "birth_date": "1997-11-05",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District.",
+          "street_name": "Wensan Road",
+          "street_number": "No. 456"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Kunming"
+        },
+        "personality": "ENFJ",
+        "economic_level": "Middle class",
+        "occupation": "Brand Planning Director",
+        "organization": "A well-known advertising company in Hangzhou",
+        "nickname": "Sister Weiwei.",
+        "relation_description": "Shen Wei is Sun Yuwei's older female cousin. They are similar in age and often played together as children. Shen Wei majored in marketing in college and chose to build her career in Hangzhou after graduation. She now works as a brand planning director at an advertising company. She is warm and sociable, and she is someone Sun Yuwei can confide in. Although one lives in Kunming and the other in Hangzhou, they keep in close contact, chatting on WeChat every week and sharing funny moments from life and reading insights. Shen Wei is also close to their older male cousin Gao Yuan, and the three form a tight-knit \"cousin trio.\" They make a point of getting together at least once a year, such as traveling together during holidays or returning to Kunming to visit family. Shen Wei admires Sun Yuwei's writing and sometimes asks her to help polish copy."
+      }
+    ],
+    [
+      {
+        "name": "Zheng Yu",
+        "relation": "Childhood friend",
+        "social circle": "Childhood friends circle",
+        "gender": "Male",
+        "age": 23,
+        "birth_date": "1998-05-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Wuhua District"
+        },
+        "personality": "ENTP",
+        "economic_level": "Middle class",
+        "occupation": "Software engineer",
+        "organization": "A leading internet company",
+        "nickname": "A Yu",
+        "relation_description": "Zheng Yu is Sun Yuwei's childhood friend. The two grew up together in the same old neighborhood in Wuhua District, Kunming, and attended primary and junior high school together. After high school, Zheng Yu moved with his family to Shenzhen, but they stayed in touch through the internet. Zheng Yu majored in computer science in college and remained in Shenzhen after graduation, becoming a software engineer. They now mainly communicate through WeChat and occasional video calls, about once or twice a month, with topics ranging from recalling childhood anecdotes to sharing the pressures of life and work in their respective cities. When Sun Yuwei travels to Shenzhen, she meets up with Zheng Yu, and they look for distinctive local independent cafés or bookstores. When Zheng Yu returns to Kunming to visit family, he always has a meal with Sun Yuwei, tasting the hometown mushroom hotpot. Although they live in different cities and have taken very different paths, this friendship based on shared childhood memories remains strong."
+      }
+    ],
+    [
+      {
+        "name": "Han Mei",
+        "relation": "Elementary school classmate",
+        "social circle": "Primary school classmates group",
+        "gender": "Female",
+        "age": 22,
+        "birth_date": "1999-03-21",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Wuhua District"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "Internet product manager",
+        "organization": "A leading Internet company in Shenzhen",
+        "nickname": "Xiaomei.",
+        "relation_description": "Han Mei was Sun Yuwei's elementary school classmate. The two attended the same primary school in Wuhua District, Kunming. They were desk mates and close friends. After graduating from elementary school, Han Mei moved to Guangdong with her parents' job transfers. The two kept in touch mainly through QQ and later WeChat. Han Mei majored in computer science at South China University of Technology and after graduation worked in the internet industry in Shenzhen. Now they video call several times a year, sharing their life and work reflections, and occasionally interact and like each other's posts on Moments. When Sun Yuwei travels to Guangdong, she meets up with Han Mei, reminiscing about childhood memories and tasting local food. Despite being in different cities, the friendship that began in childhood remains pure and warm."
+      }
+    ],
+    [
+      {
+        "name": "Tang Lei",
+        "relation": "Junior high school classmate",
+        "social circle": "Middle school classmates",
+        "gender": "Male",
+        "age": 22,
+        "birth_date": "1999-11-23",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Yunnan Province",
+          "city": "Kunming",
+          "district": "Guandu District"
+        },
+        "personality": "ENTP",
+        "economic_level": "Middle class",
+        "occupation": "Internet product manager",
+        "organization": "A well-known internet company in Shenzhen",
+        "nickname": "Stone",
+        "relation_description": "Tang Lei was a junior high school classmate of Sun Yuwei, and the two met while attending the same school in Kunming. After graduating from junior high school, Tang Lei moved with his family to Guangdong, then studied computer science at Shenzhen University and stayed in Shenzhen to work after graduation. He is outgoing, active, and quick-thinking, which complements Sun Yuwei's introverted and quiet nature. The two now mainly keep in touch through WeChat, communicating an average of once or twice a month, mostly about their current lives, career development, and occasionally sharing interesting books or online articles. Because they live in different places, they haven't seen each other for several years, but they plan to meet and catch up if Sun Yuwei passes through Guangdong during her domestic cultural trip. In the small group chat of junior high school classmates, they also occasionally interact, and Tang Lei maintains loose contact with several other classmates who work outside the province."
+      }
+    ],
+    [
+      {
+        "name": "Fang Qing",
+        "relation": "Travel companion.",
+        "social circle": "Travel Circle",
+        "gender": "Female",
+        "age": 24,
+        "birth_date": "1997-05-22",
+        "home_address": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City",
+          "district": "Xihu District.",
+          "street_name": "Shuguang Road",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Zhejiang Province",
+          "city": "Hangzhou City"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "New media operations",
+        "organization": "A Cultural Media Company in Hangzhou",
+        "nickname": "Qingzi",
+        "relation_description": "Fang Qing is a companion Sun Yuwei met during a volunteer trip to Dali in 2020. The two shared a room in the same youth hostel and quickly became close because they both liked journaling and independent bookstores. Fang Qing is outgoing and extroverted, one of the few people in Sun Yuwei's social circle who can get her to join outdoor activities. Fang Qing currently works in Hangzhou; the two mainly keep in touch through WeChat and Douban, sharing travel guides, books, and interesting moments in life, chatting a few times a week on average. They have agreed to plan at least one short domestic trip together every year; the last time they met was six months ago at an independent bookstore market in Chengdu. Although separated by distance, their shared interests keep them in close online friendship."
+      }
+    ]
+  ]
+}

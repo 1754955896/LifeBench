@@ -1,0 +1,720 @@
+{
+  "name": "Ye Mingxuan",
+  "birth": "1995-08-16",
+  "age": 26,
+  "nationality": "Han",
+  "home_address": {
+    "province": "Tianjin",
+    "city": "Tianjin",
+    "district": "Xiqing District",
+    "street_name": "Zhongbei Avenue",
+    "street_number": "No. 128"
+  },
+  "birth_place": {
+    "province": "Tianjin",
+    "city": "Tianjin",
+    "district": "Xiqing District"
+  },
+  "gender": "Male",
+  "education": "Undergraduate degree (formal higher education).",
+  "job": "Mechanical engineer.",
+  "occupation": "Tianjin Haitai Precision Machinery Co., Ltd.",
+  "workplace": {
+    "province": "Tianjin",
+    "city": "Tianjin",
+    "district": "Xiqing District",
+    "street_name": "Haitai Fazhan Sixth Road",
+    "street_number": "No. 6"
+  },
+  "belief": "No religious belief",
+  "salary": 200000.0,
+  "body": {
+    "height": 173,
+    "weight": 75.0,
+    "BMI": 25.06
+  },
+  "family": "Unmarried",
+  "personality": {
+    "mbti": "ISTJ",
+    "traits": [
+      "Career-oriented",
+      "Family-oriented",
+      "Social responsibility orientation"
+    ]
+  },
+  "hobbies": [
+    "Handicrafts (woodworking)",
+    "Collecting ancient coins (modern era).",
+    "Travel (domestic road trip)",
+    "Watching variety shows (competitive).",
+    "Playing esports games",
+    "Learn programming (Python)",
+    "Growing flowers and plants (succulents)"
+  ],
+  "favorite_foods": [
+    "Tianjin Goubuli Baozi",
+    "Braised pork belly",
+    "Mala Xiang Guo",
+    "Steamed bass",
+    "Fruit salad"
+  ],
+  "memory_date": [
+    "2018-07-01 Got his first job, officially becoming a mechanical engineer",
+    "2021-05-20 My first independently designed mechanical component successfully passed acceptance"
+  ],
+  "aim": [
+    "Become a senior mechanical engineer within the next three years",
+    "Complete a self-driving trip around Qinghai Lake within two years",
+    "Purchase a property of his own within five years"
+  ],
+  "healthy_desc": "Overall personal health is fairly good, with no chronic diseases or long-term health issues. Medical check-ups are irregular. Over the past year, he saw a doctor a few times, usually for minor issues such as colds. He exercises several times a month, mainly using gym equipment and jogging on weekends, and has regular personal care habits.",
+  "lifestyle_desc": "Personal lifestyle is regular, with consistent day shifts on workdays. For leisure activities, the main source of information is the Internet, and he goes online almost every day. In his free time, he often listens to music at home (several times a week), and several times a month he meets friends, goes shopping, watches movies, and participates in physical exercise. Each year he spends 6-10 nights on vacations or visiting relatives. He rarely participates in cultural activities or attends sporting events in person. His lifestyle tends to be pragmatic and stable, emphasizing work-life balance.",
+  "economic_desc": "My personal annual salary is 200,000 yuan, and the total annual household income is about 300,000 yuan (including my parents' income). The family's financial situation is good; income exceeded expenses over the past year, and they have never used credit cards or other forms of overdraft. The family owns two properties but currently has no private car. Family investment activities are relatively conservative, currently only involving fund investments, without stocks, bonds, or other high-risk investments. My personal spending habits are fairly rational, with a focus on saving and prudent financial management.",
+  "work_desc": "Ye Mingxuan currently works as a mechanical engineer at a privately owned/controlled precision machinery manufacturing enterprise. He is an ordinary professional and technical staff member and does not hold an administrative position. He works about 40 hours a week, has only one regular job, and his work schedule is a regular day shift. His one-way commute takes about 40 minutes. His work often involves heavy mental labor, such as design, analysis, and problem-solving, but very little heavy physical labor. His satisfaction with his current job is average.",
+  "experience_desc": "Ye Mingxuan was born in Xiqing District, Tianjin. His household registration has been registered locally since birth, and he has always lived and resided there. In 2014, he entered university to study mechanical engineering. After graduating with a bachelor's degree in 2018, he got his first job at Tianjin Haitai Precision Machinery Co., Ltd. Starting as an assistant engineer, he gradually grew into a mechanical engineer capable of independently managing projects. He has focused on accumulation in his professional and technical field and has never changed cities; his growth path has been relatively steady.",
+  "description": "Ye Mingxuan, 26 years old, is a native of Tianjin and a rigorous, pragmatic mechanical engineer working at a private precision machinery company. He has an ISTJ (Inspector-type) personality: responsible, rule-abiding, and detail-oriented, making him a dependable pillar of his team. He earns an annual salary of 200,000 yuan and is in the rising stage of his career. His values lean toward career, family, and social responsibility. He is physically healthy and lives a regular life. His hobbies are broad and lean toward hands-on and exploratory activities, such as woodworking, coin collecting, self-driving road trips, and learning Python programming. He meets up with friends several times a month, but his overall social frequency is moderate; he prefers deep exchanges in small circles or focusing on his hobbies alone. The family owns two properties and prefers conservative funds for investment. His future vision includes career advancement, completing an unforgettable road trip, and buying a home of his own. In daily life, he may often need to tackle technical problems for projects, and occasionally takes short domestic business trips to partner factories for technical support.",
+  "relation": [
+    [
+      {
+        "name": "Ye Jianguo",
+        "relation": "Father",
+        "social circle": "Family circle.",
+        "gender": "Male",
+        "age": 58,
+        "birth_date": "1966-03-22",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Xiqing District",
+          "street_name": "Zhongbei Avenue",
+          "street_number": "No. 128"
+        },
+        "birth_place": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Xiqing District"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Retired technical worker",
+        "organization": "Former Tianjin No. 1 Machine Tool Plant",
+        "nickname": "Dad",
+        "relation_description": "Ye Mingxuan's father, who lives with his son. He was formerly a senior technical worker at the Tianjin No. 1 Machine Tool Plant and is now retired. The father-son relationship is traditional and close. Ye Jianguo is calm, steady, and pragmatic, and has had a profound influence on his son's career choice (mechanical engineering). The two do not talk much, but they often repair household items together, discuss technical issues, or watch competitive variety shows together. Ye Jianguo occasionally goes around near his son's company and is very concerned about his son's work progress. Currently the two live under the same roof and communicate frequently; he is an important source of family support for Ye Mingxuan."
+      },
+      {
+        "name": "Wang Xiulan",
+        "relation": "Mother",
+        "social circle": "Family circle.",
+        "gender": "Female",
+        "age": 56,
+        "birth_date": "1968-07-14",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Xiqing District",
+          "street_name": "Zhongbei Avenue",
+          "street_number": "No. 128"
+        },
+        "birth_place": {
+          "province": "Hebei Province",
+          "city": "Cangzhou"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Retired accountant",
+        "organization": "A former subdistrict community service center in Xiqing District",
+        "nickname": "Mom",
+        "relation_description": "Ye Mingxuan's mother lives with her husband and son. She was formerly an accountant at a community service center and is now retired. Wang Xiulan is warm-hearted and family-oriented, and is the emotional bond of the family. She cares very much about her son's daily life and marriage prospects, often reminding him to take care of his health and make more friends. When mother and son are together, she often prepares Tianjin dishes that her son loves, such as Goubuli steamed buns and braised pork. Ye Mingxuan's hobby of collecting ancient coins originally came from a discovery while his mother was sorting out old belongings. Now the family lives together, and his mother handles most of the household chores. Ye Mingxuan accompanies his mother shopping or chatting at home several times a month, and their relationship is close and warm."
+      }
+    ],
+    [
+      {
+        "name": "Zhang Wei",
+        "relation": "Childhood friend",
+        "social circle": "Childhood / primary school classmates circle",
+        "gender": "Male",
+        "age": 27,
+        "birth_date": "1996-03-22",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Xiqing District",
+          "street_name": "Xinhua Road, Yangliuqing Town",
+          "street_number": "No. 45"
+        },
+        "birth_place": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Xiqing District"
+        },
+        "personality": "ESFP",
+        "economic_level": "Moderate",
+        "occupation": "Automobile sales consultant",
+        "organization": "A 4S car dealership in Tianjin.",
+        "nickname": "Weizi.",
+        "relation_description": "Zhang Wei is Ye Mingxuan's childhood playmate and elementary school classmate. The two grew up in the same residential area in Xiqing District and spent a carefree childhood together. They met at the neighborhood children's playground. Outgoing and lively, Zhang Wei was often the leader of the kids and would take Ye Mingxuan along to play. Now both live in Tianjin, but in different areas. Because of the nature of his job, Zhang Wei's days off are irregular; they usually meet once or twice a month, mostly for barbecue, playing video games, or catching up. Zhang Wei occasionally asks Ye Mingxuan for car-buying advice, and Ye Mingxuan learns about new developments in the automotive industry through Zhang Wei. They mainly keep in touch via WeChat, occasionally sharing fun short videos or making dinner plans."
+      }
+    ],
+    [
+      {
+        "name": "Li Na",
+        "relation": "Elementary school classmate",
+        "social_circle": "Primary school classmates group",
+        "gender": "Female",
+        "age": 27,
+        "birth_date": "1996-03-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Xiqing District"
+        },
+        "personality": "ENFP",
+        "economic_level": "Middle class",
+        "occupation": "User Experience Designer",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "Nana",
+        "relation_description": "Li Na was Ye Mingxuan's elementary school classmate; the two attended the same elementary school in Xiqing District. After graduating from elementary school, Li Na moved with her family to Shenzhen, and since then they have mainly kept in touch online. She is outgoing and creative, and currently works as a user experience designer at an internet company in Shenzhen. They contact each other a few times a year via WeChat or phone, catching up on recent news and remembering childhood fun, and occasionally exchanging insights from their respective work fields. Because they live in different cities, they have not met since elementary school graduation, but both consider each other an important part of their childhood memories. In the small elementary school class group, Li Na, Ye Mingxuan, and a few other classmates occasionally share updates about their lives."
+      }
+    ],
+    [
+      {
+        "name": "Wang Lei",
+        "relation": "Junior high school classmate",
+        "social_circle": "Middle school classmates",
+        "gender": "Male",
+        "age": 27,
+        "birth_date": "1996-03-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Keji South First Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Hexi District"
+        },
+        "personality": "ENTP",
+        "economic_level": "Middle class",
+        "occupation": "Embedded software engineer.",
+        "organization": "Shenzhen Huachuang Microelectronics Co., Ltd.",
+        "nickname": "Lei Zi",
+        "relation_description": "Wang Lei was Ye Mingxuan's junior high school classmate. The two got along well while studying in Tianjin and often played basketball and discussed homework together. After junior high school, Wang Lei moved south with his family. He studied Electronic Information Engineering at South China University of Technology. He currently works as an embedded software engineer at a technology company in Shenzhen and is doing well. Though the two live in the north and the south, they stay in touch through online games (such as League of Legends) and WeChat, and have a video call about once a quarter to catch up on recent news, work, and technology trends. When Ye Mingxuan travels to Guangzhou or Shenzhen on business, he tries to meet Wang Lei and enjoy an authentic Chaoshan beef hotpot together, reminiscing about their youth."
+      }
+    ],
+    [
+      {
+        "name": "Chen Hao.",
+        "relation": "High school classmate",
+        "social_circle": "High school classmates group.",
+        "gender": "Male",
+        "age": 27,
+        "birth_date": "1996-03-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Hexi District"
+        },
+        "personality": "ENTP",
+        "economic_level": "Middle class",
+        "occupation": "Software engineer",
+        "organization": "An internet technology company in Shenzhen.",
+        "nickname": "Mouse",
+        "relation_description": "Chen Hao was a high school classmate of Ye Mingxuan. The two became close while studying in Tianjin because they both loved esports. After graduating from high school, Chen Hao went to university in the south and later stayed in Shenzhen to build his career, becoming a software engineer. Although they were separated by distance, they mainly kept in touch through WeChat and gaming platforms, teaming up online to play games several times a month and exchanging updates on their lives and technical issues. Every Spring Festival, when Chen Hao returned to Tianjin to visit relatives, the two would meet up for a meal and talk about their work, life changes, and shared interests such as collecting ancient coins and learning programming. Their friendship was built on memories of youth and a similar pragmatic, exploratory spirit—the kind of relationship that, though not frequently maintained, still felt warm whenever they met."
+      }
+    ],
+    [
+      {
+        "name": "Liu Yang",
+        "relation": "College roommate",
+        "social circle": "University classmates' circle",
+        "gender": "Male",
+        "age": 27,
+        "birth_date": "1996-03-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Hebei Province",
+          "city": "Shijiazhuang"
+        },
+        "personality": "ENTP",
+        "economic_level": "Middle class",
+        "occupation": "Embedded software engineer.",
+        "organization": "Shenzhen Huachuang Microelectronics Co., Ltd.",
+        "nickname": "Yangzi",
+        "relation_description": "Liu Yang was Ye Mingxuan's college roommate. The two studied mechanical engineering together at a university in Tianjin and lived together for four years, with a close relationship. Liu Yang is outgoing and active, full of ideas, and served as the 'brain' of the dormitory. After graduation, he chose to go south to Shenzhen for development, entered the electronics industry, and transitioned into embedded development. The two now mainly keep in touch through WeChat and online games, playing League of Legends once or twice a week or discussing technical issues. Every Spring Festival or National Day holiday, if Liu Yang returns to his hometown in Hebei, he may make a detour to Tianjin to have a small gathering with Ye Mingxuan and old classmates such as Zhao Xiaofeng and Sun Jing. When they meet, they usually have barbecue, talk about industry trends, and recall college life."
+      },
+      {
+        "name": "Zhao Xiaofeng",
+        "relation": "College classmates",
+        "social circle": "University classmates' circle",
+        "gender": "Male",
+        "age": 27,
+        "birth_date": "1995-11-05",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Nankai District",
+          "street_name": "Shuishang Park West Road",
+          "street_number": "No. 32"
+        },
+        "birth_place": {
+          "province": "Tianjin",
+          "city": "Tianjin"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Middle class",
+        "occupation": "Mechanical design engineer",
+        "organization": "Tianjin FAW Technology Center",
+        "nickname": "Xiaofeng",
+        "relation_description": "Zhao Xiaofeng was Ye Mingxuan's college classmate; the two became acquainted through group work in specialized courses. He has a gentle, meticulous personality and is down-to-earth in his work. After graduation, he stayed in Tianjin and entered the automotive manufacturing industry. Because they both lived in Tianjin, they could stay in contact relatively easily, meeting about once or twice a month—sometimes for a one-on-one meal, sometimes for small gatherings of college classmates organized by Sun Jing. When they met, they often discussed technical problems at work and industry news, and occasionally went to the gym together or talked about Ye Mingxuan's woodworking projects. Zhao Xiaofeng also kept in touch with Liu Yang and Sun Jing, and was one of the key bonds holding this small college circle together."
+      },
+      {
+        "name": "Sun Jing",
+        "relation": "College classmates",
+        "social circle": "University classmates' circle",
+        "gender": "Female",
+        "age": 26,
+        "birth_date": "1996-07-30",
+        "home_address": {
+          "province": "Beijing",
+          "city": "Beijing",
+          "district": "Chaoyang District",
+          "street_name": "Wangjing Street",
+          "street_number": "10th"
+        },
+        "birth_place": {
+          "province": "Liaoning Province",
+          "city": "Dalian"
+        },
+        "personality": "ENFJ",
+        "economic_level": "Middle class",
+        "occupation": "Project Manager",
+        "organization": "An international engineering consulting company in Beijing",
+        "nickname": "Sister Jing",
+        "relation_description": "Sun Jing is Ye Mingxuan's college classmate and an active member and organizer in the class. She is outgoing and good at coordination. After graduation, she went to Beijing and worked in project management. Although she lives in another city, she is enthusiastic about maintaining classmate relationships and is usually the initiator of college reunion parties. She, Ye Mingxuan, Liu Yang, and Zhao Xiaofeng have a WeChat group, and they often share interesting life anecdotes and industry information in the group. She contacts Ye Mingxuan individually about once or twice a month, mainly casual WeChat conversations or discussions of mechanical-related questions she encounters. Every year, she organizes one or two class reunions in Beijing or Tianjin, and Ye Mingxuan attends whenever time permits. At gatherings, Sun Jing is always the one in charge of ordering food and livening up the atmosphere."
+      }
+    ],
+    [
+      {
+        "name": "Gao Zhiyuan",
+        "relation": "Direct supervisor",
+        "social_circle": "Work circle",
+        "gender": "Male",
+        "age": 38,
+        "birth_date": "1986-03-22",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Nankai District",
+          "street_name": "Shuishang Park West Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Hebei Province",
+          "city": "Tangshan City"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Senior Mechanical Engineer",
+        "organization": "Tianjin Haitai Precision Machinery Co., Ltd.",
+        "nickname": "Senior Engineer",
+        "relation_description": "Gao Zhiyuan is Ye Mingxuan's direct superior and also his technical mentor. The two met in 2018 when Ye Mingxuan joined the company; as a key technical member of the department, Engineer Gao was responsible for guiding newcomers. Engineer Gao is decisive, has strong leadership, and is strict about technical details, but privately he also enjoys sharing industry insights. They are in the same project team and communicate about work almost every day, with a formal technical review meeting once a week. Outside of work, they occasionally have dinners with colleagues such as Zhou Tao and Li Xiang to discuss industry trends or company projects. Currently, both live and work in Tianjin, with close contact mainly for work collaboration and professional technical exchange."
+      },
+      {
+        "name": "Zhou Tao",
+        "relation": "Colleague",
+        "social_circle": "Work circle",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1996-09-10",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Jinnan District",
+          "street_name": "Jingu Road, Xianshuigu Town",
+          "street_number": "No. 335"
+        },
+        "birth_place": {
+          "province": "Shandong Province",
+          "city": "Qingdao"
+        },
+        "personality": "ENFP",
+        "economic_level": "Xiaokang",
+        "occupation": "Mechanical design engineer",
+        "organization": "Tianjin Haitai Precision Machinery Co., Ltd.",
+        "nickname": "Engineer Zhou",
+        "relation_description": "Zhou Tao is a colleague in the same department as Ye Mingxuan and joined the company a year later than him. The two became close through working together on an automated production line renovation project. Zhou Tao is outgoing and enthusiastic, with an active mind, and often comes up with novel design ideas; he is the team's \"idea king\". Their workstations are adjacent, so they have frequent technical discussions and often have lunch together in the company cafeteria. After work, they occasionally invite Li Xiang to play video games (especially competitive games) or exchange Python learning experiences. They have about one or two non-work gatherings a month, such as watching movies or eating Mala Xiangguo. Both live in Tianjin and stay in frequent contact, being both work partners and after-hours playmates."
+      },
+      {
+        "name": "Li Xiang",
+        "relation": "Colleague",
+        "social_circle": "Work circle",
+        "gender": "Male",
+        "age": 27,
+        "birth_date": "1997-05-18",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Xiqing District",
+          "street_name": "Xianghe Avenue, Zhangjiawo Town",
+          "street_number": "No. 66"
+        },
+        "birth_place": {
+          "province": "Tianjin",
+          "city": "Tianjin"
+        },
+        "personality": "INTP",
+        "economic_level": "Xiaokang",
+        "occupation": "Simulation Analysis Engineer",
+        "organization": "Tianjin Haitai Precision Machinery Co., Ltd.",
+        "nickname": "Engineer Li",
+        "relation_description": "Li Xiang is Ye Mingxuan's colleague, responsible for simulation and optimization analysis of mechanical structures. The two have an upstream-downstream collaboration at work: after Ye Mingxuan completes the preliminary design, he often hands it to Li Xiang for finite element analysis and motion simulation. Li Xiang is introverted, has extremely strong logical thinking, and is obsessed with optimizing technical models, making him the 'tech geek' of the team. They met through work coordination. Apart from necessary project meetings, they usually communicate online. In his spare time, Li Xiang is very interested in Ye Mingxuan's woodworking and ancient coin collection, and they have been to the antique market together. He, Zhou Tao, and Ye Mingxuan form a small circle, getting together for a meal or online gaming session once or twice a month. They currently both live in Xiqing District, but in different residential complexes, so they meet with moderate frequency."
+      },
+      {
+        "name": "Wang Peng",
+        "relation": "Project Manager",
+        "social_circle": "Work circle",
+        "gender": "Male",
+        "age": 42,
+        "birth_date": "1982-11-30",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Hexi District",
+          "street_name": "Youyi Road",
+          "street_number": "No. 32"
+        },
+        "birth_place": {
+          "province": "Beijing",
+          "city": "Beijing"
+        },
+        "personality": "ESTJ",
+        "economic_level": "Middle class",
+        "occupation": "Project Manager",
+        "organization": "Tianjin Haitai Precision Machinery Co., Ltd.",
+        "nickname": "Manager Wang",
+        "relation_description": "Wang Peng is the project manager of the project Ye Mingxuan is on, responsible for coordinating resources, controlling progress, and liaising with clients. He is experienced, pragmatic, and results-oriented. Ye Mingxuan's direct work interactions with him mostly occur at weekly project meetings, milestone reviews, and when resource coordination or cross-departmental problem-solving is needed. Manager Wang appreciates Ye Mingxuan's rigorous and responsible work ethic and once publicly praised him when the component he independently designed passed acceptance. Their relationship is more of a formal superior-subordinate one, with little private communication, usually limited to the annual company party or team-building activities. Manager Wang has a good personal relationship with Gao Zhiyuan and often discusses management issues with him. The two are both in Tianjin, but they are at different management levels. Their contact is mainly work-related, with formal meetings 1-2 times per week."
+      }
+    ],
+    [
+      {
+        "name": "Qian Jianguo",
+        "relation": "Master carpenter",
+        "social_circle": "Woodworking hobby circle",
+        "gender": "Male",
+        "age": 58,
+        "birth_date": "1966-03-22",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Xiqing District",
+          "street_name": "Xinhua Road, Yangliuqing Town",
+          "street_number": "No. 45"
+        },
+        "birth_place": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Xiqing District"
+        },
+        "personality": "ISTP",
+        "economic_level": "Xiaokang",
+        "occupation": "Retired carpenter / woodworking workshop consultant",
+        "organization": "Former Tianjin No. 1 Wood Products Factory / now a personal studio.",
+        "nickname": "Master Qian",
+        "relation_description": "Ye Mingxuan met Master Qian three years ago at a community handicraft exhibition, where he was deeply attracted by the mortise-and-tenon stool Master Qian made on site. Master Qian is a local. Before retiring, he was a veteran craftsman at a state-owned woodworking factory, highly skilled and especially good at restoring traditional furniture. Out of interest in woodworking, Ye Mingxuan took the initiative to apprentice himself to Master Qian. Now they meet about once or twice a month, usually in the workshop in the backyard of Master Qian's home. When they meet, Master Qian guides Ye Mingxuan through specific woodworking projects, such as making a toolbox or repairing old furniture, and also shares his knowledge of the old tools and wood he collects. Though they are master and apprentice, they get along more like friends across generations. Besides craft discussions, they sometimes drink tea together and talk about the stories of local veteran craftsmen. The fact that Ye Mingxuan's woodworking hobby has continued to deepen is largely thanks to Master Qian's patient and practical guidance."
+      }
+    ],
+    [
+      {
+        "name": "Zhao Jianguo",
+        "relation": "Ancient coin collecting friends",
+        "social_circle": "Ancient Coin Collecting Circle",
+        "gender": "Male",
+        "age": 48,
+        "birth_date": "1976-03-22",
+        "home_address": {
+          "province": "Shaanxi Province",
+          "city": "Xi'an City",
+          "district": "Yanta District",
+          "street_name": "Keji Road",
+          "street_number": "No. 58"
+        },
+        "birth_place": {
+          "province": "Shaanxi Province",
+          "city": "Xi'an City"
+        },
+        "personality": "INTP",
+        "economic_level": "Middle class",
+        "occupation": "Associate professor in a university history department",
+        "organization": "School of History, Northwest University",
+        "nickname": "Lao Zhao.",
+        "relation_description": "Ye Mingxuan and Zhao Jianguo met on an online ancient coin collecting forum and became friends because both had a strong interest in machine-struck coins of the late Qing Dynasty and early Republic of China. They mainly communicated through WeChat and forum private messages, discussing newly discovered coin types or market trends on average once or twice a week. Zhao Jianguo works and lives in Xi'an, so the two have never met offline so far, but their relationship is harmonious and they are purely online confidants. They occasionally mail each other duplicate pieces or related books as gifts. Ye Mingxuan admires Zhao Jianguo's deep historical knowledge and rigorous approach to textual research, while Zhao Jianguo thinks highly of Ye Mingxuan's precise engineering thinking and his hands-on ability to clean ancient coins."
+      }
+    ],
+    [
+      {
+        "name": "Wu Bin",
+        "relation": "Road trip buddies",
+        "social_circle": "Self-driving travel circle.",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1996-05-22",
+        "home_address": {
+          "province": "Sichuan Province",
+          "city": "Chengdu",
+          "district": "Wuhou District",
+          "street_name": "Tianfu Third Street",
+          "street_number": "No. 888"
+        },
+        "birth_place": {
+          "province": "Sichuan Province",
+          "city": "Mianyang City"
+        },
+        "personality": "ESTP",
+        "economic_level": "Middle class",
+        "occupation": "Outdoor Equipment Product Manager",
+        "organization": "Chengdu Aurora Outdoor Products Co., Ltd.",
+        "nickname": "Da Bin",
+        "relation_description": "Wu Bin is a travel buddy Ye Mingxuan met on a self-driving tour forum for western Sichuan. The two became close through their shared interest in off-road routes and vehicle modification. He is outgoing and loves adventure, a typical ESTP personality type. He currently works as a product manager at an outdoor equipment company in Chengdu, responsible for developing and testing new self-driving gear. Although they live apart in Tianjin and Chengdu, they mainly keep in touch through WeChat and specialized outdoor apps, communicating online several times a month on average, sharing route books, vehicle maintenance tips, or newly discovered hiking spots. Every year they try to plan a long-distance self-driving trip; for example, last year they completed the Gannan loop route together. Their usual contact revolves around travel plans, gear reviews, and sharing the signature foods of their respective cities."
+      }
+    ],
+    [
+      {
+        "name": "Zheng Kai",
+        "relation": "Gaming teammate",
+        "social_circle": "Esports community",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1996-03-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Hunan Province",
+          "city": "Changsha"
+        },
+        "personality": "INTP",
+        "economic_level": "Middle class",
+        "occupation": "Game client development engineer",
+        "organization": "Tencent Interactive Entertainment Group",
+        "nickname": "Kai",
+        "relation_description": "Zheng Kai is an online teammate Ye Mingxuan met while playing League of Legends. Because they had good teamwork and similar understanding of the game, they became regular partners and have known each other for three years. They mainly play ranked games together at fixed times in the evening or on weekends, using voice chat software to discuss tactics and daily life. Zheng Kai currently works in game development in Shenzhen, so he and Ye Mingxuan live in different cities and have never met offline. They keep in touch about several times a week; besides playing games together, they occasionally share gaming news, industry updates, or vent about work pressure on social media. Their conversations revolve heavily around gaming and internet technology—a typical online interest-based friendship."
+      }
+    ],
+    [
+      {
+        "name": "Xu Ming",
+        "relation": "Coding study buddy",
+        "social_circle": "Python Learning Circle.",
+        "gender": "Male",
+        "age": 28,
+        "birth_date": "1996-03-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan"
+        },
+        "personality": "INTP",
+        "economic_level": "Middle class",
+        "occupation": "Backend development engineer",
+        "organization": "Tencent Technology (Shenzhen) Co., Ltd.",
+        "nickname": "Aming",
+        "relation_description": "Ye Mingxuan and Xu Ming met in 2022 while taking an online practical Python data analysis course, and became familiar through collaboration on course projects. Xu Ming is quick-thinking and highly logical, a typical INTP personality, complementing Ye Mingxuan's rigorous and pragmatic ISTJ style. They mainly communicate online via WeChat and GitHub about technical issues, discuss project code, and occasionally share industry news and career development insights. Since Xu Ming works in Shenzhen and Ye Mingxuan works in Tianjin, the two have never met offline, but they maintain frequent online contact several times a month. They plan to meet at a technology conference in the future if the opportunity arises."
+      }
+    ],
+    [
+      {
+        "name": "Wang Xiufang",
+        "relation": "Relatives",
+        "social_circle": "Relatives' circle",
+        "gender": "Female",
+        "age": 48,
+        "birth_date": "1976-03-22",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Nankai District",
+          "street_name": "Shuishang Park West Road",
+          "street_number": "No. 45"
+        },
+        "birth_place": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Xiqing District"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Primary school teacher",
+        "organization": "Nankai District Central Primary School, Tianjin",
+        "nickname": "Auntie",
+        "relation_description": "Wang Xiufang is the youngest sister of Ye Mingxuan's mother. She watched Ye Mingxuan grow up and doted on him. They got to know each other at family gatherings, and their relationship is naturally warm and easygoing. Ye Mingxuan contacts his aunt for holiday greetings, family matters, or occasionally to share interesting moments from daily life. When they meet, they usually have a meal together, chat about everyday life and recent work, and his aunt often asks about his personal life. Both currently live in Tianjin but in different districts. They mainly keep in touch via WeChat, about once a week, and meet for meals during festivals or when there are important family events."
+      },
+      {
+        "name": "Ye Mingyuan",
+        "relation": "Relatives",
+        "social_circle": "Relatives' circle",
+        "gender": "Male",
+        "age": 30,
+        "birth_date": "1994-10-05",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Technology Park South Area",
+          "street_number": "No. 18 Keyuan Road"
+        },
+        "birth_place": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Xiqing District"
+        },
+        "personality": "ENTP",
+        "economic_level": "Middle class",
+        "occupation": "Software engineer",
+        "organization": "A well-known internet company in Shenzhen",
+        "nickname": "Brother Yuan",
+        "relation_description": "Ye Mingyuan is Ye Mingxuan’s older paternal cousin. In childhood, they often played together at their hometown in Tianjin and were close. Later, Ye Mingyuan was admitted to Southern University and stayed in Shenzhen to develop his career, while Ye Mingxuan remained in Tianjin. Geographically separated, they mainly kept in touch online. Ye Mingxuan would contact his cousin for technical questions, share gaming experiences, or discuss family news. They rarely met in person, usually during Spring Festival visits back to Tianjin, when they would have meals together, play games, or talk about developments in their respective industries. Now they keep in touch mainly through WeChat and occasional online gaming sessions, about once or twice a month—a brotherly relationship that is not frequent but has a deep emotional foundation."
+      }
+    ],
+    [
+      {
+        "name": "Liu Wentao",
+        "relation": "Family doctor",
+        "social_circle": "Medical Circle",
+        "gender": "Male",
+        "age": 38,
+        "birth_date": "1986-03-22",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Nankai District",
+          "street_name": "Shuishang Park West Road",
+          "street_number": "No. 45"
+        },
+        "birth_place": {
+          "province": "Hebei Province",
+          "city": "Shijiazhuang"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Middle class",
+        "occupation": "general practitioner",
+        "organization": "Zhongbei Town Community Health Service Center, Xiqing District, Tianjin",
+        "nickname": "Dr. Liu",
+        "relation_description": "Dr. Liu Wentao is Ye Mingxuan's family doctor. They met three years ago when Ye Mingxuan went to the community hospital for a severe cold. Dr. Liu is gentle, patient, and meticulous, and is deeply trusted by patients. Ye Mingxuan has one or two routine checkups or consultations each year, usually making an appointment by phone or WeChat and going directly to the community health service center where Dr. Liu works. In addition to routine health advice, Dr. Liu also gives lifestyle suggestions based on Ye Mingxuan's examination reports, such as recommending dietary adjustments and more frequent exercise because his BMI is slightly high. The two do not contact each other often, about once or twice a year, mainly for formal medical visits, but they trust each other and have a stable relationship."
+      }
+    ],
+    [
+      {
+        "name": "Zhang Wei",
+        "relation": "Wealth manager",
+        "social_circle": "Wealth management circle",
+        "gender": "Male",
+        "age": 35,
+        "birth_date": "1989-05-22",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Hexi District",
+          "street_name": "Youyi Road",
+          "street_number": "No. 35"
+        },
+        "birth_place": {
+          "province": "Hebei Province",
+          "city": "Shijiazhuang"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Middle class",
+        "occupation": "Senior Financial Advisor",
+        "organization": "China Merchants Bank, Tianjin Branch, Private Banking Department",
+        "nickname": "Manager Zhang",
+        "relation_description": "Zhang Wei is a wealth management manager Ye Mingxuan met when handling business at China Merchants Bank, and they have known each other for three years. Ye Mingxuan's conservative wealth management needs fit very well with Zhang Wei's professional service style. They usually contact each other once a quarter, mainly with Zhang Wei proactively updating Ye Mingxuan on market trends, fund performance, and providing asset allocation advice via WeChat or phone. Occasionally, Ye Mingxuan also consults Zhang Wei before considering large expenditures or adjusting investment strategies. They meet infrequently, about once a year, usually for one-on-one financial reviews in the bank's VIP lounge. Their relationship is based on professional trust; there is not much private contact, but Zhang Wei has a fairly deep understanding of Ye Mingxuan's family financial situation and investment preferences."
+      }
+    ],
+    [
+      {
+        "name": "Wang Jian",
+        "relation": "Coach",
+        "social_circle": "Fitness circle",
+        "gender": "Male",
+        "age": 32,
+        "birth_date": "1992-05-14",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Xiqing District",
+          "street_name": "Haitai Development Third Road",
+          "street_number": "18th"
+        },
+        "birth_place": {
+          "province": "Hebei Province",
+          "city": "Shijiazhuang"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Moderate",
+        "occupation": "Fitness coach",
+        "organization": "Limei Fitness Center, Xiqing District",
+        "nickname": "Coach Wang",
+        "relation_description": "Wang Jian is a personal fitness trainer hired by Ye Mingxuan at Limei Fitness Center. The two met in early 2022 when Ye Mingxuan bought personal training courses to improve his body fat percentage. Coach Wang is outgoing and enthusiastic, patient and meticulous in teaching, and adjusts the training plan according to Ye Mingxuan's work intensity and physical condition. They meet twice a week for strength training and aerobic guidance. Besides fitness topics, they occasionally chat about their personal lives. Wang Jian knows that Ye Mingxuan likes self-driving trips and has recommended some hiking routes around the Beijing-Tianjin-Hebei region. Currently, the two maintain a regular trainer-client relationship, mainly using WeChat to book courses and communicate dietary advice, with a stable contact frequency."
+      }
+    ],
+    [
+      {
+        "name": "Chen Jianguo",
+        "relation": "Mentor",
+        "social_circle": "University circle",
+        "gender": "Male",
+        "age": 58,
+        "birth_date": "1966-03-22",
+        "home_address": {
+          "province": "Tianjin",
+          "city": "Tianjin",
+          "district": "Nankai District",
+          "street_name": "Weijin Road",
+          "street_number": "No. 92"
+        },
+        "birth_place": {
+          "province": "Hebei Province",
+          "city": "Tangshan City"
+        },
+        "personality": "INTJ",
+        "economic_level": "Middle class",
+        "occupation": "University professor",
+        "organization": "School of Mechanical Engineering, Tiangong University",
+        "nickname": "Professor Chen",
+        "relation_description": "Chen Jianguo was Ye Mingxuan's mentor during his undergraduate years and supervised his graduation project. He is rigorous in scholarship and deeply accomplished in mechanical dynamics, and had an important influence on Ye Mingxuan's career choice. After graduation, Ye Mingxuan sends him greeting messages every Teachers' Day and occasionally asks Professor Chen for advice via WeChat when encountering complex technical problems. The two are both in Tianjin now, but they do not meet often, about once a year, usually at alumni events or industry technical seminars held at the school, where they briefly exchange updates and work insights."
+      }
+    ]
+  ]
+}

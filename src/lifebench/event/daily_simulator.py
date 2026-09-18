@@ -33,7 +33,14 @@ from src.lifebench.event.simulation.engine import DailySimulationEngine
 from src.lifebench.event.simulation.preparation import SimulationAssetPreparer
 from src.lifebench.event.simulation.telemetry import MemoryTraceRecorder
 from src.lifebench.event.simulation.geolocation import build_location_records
-from src.lifebench.event.simulation.geolocation.baseline import simple_allocate_trajectory
+from src.lifebench.event.simulation.geolocation.baseline import (
+    simple_gather_geo,
+    simple_adjust_trajectory,
+)
+from src.lifebench.event.simulation.baseline import (
+    generate_subjective_thought_no_feedback,
+    generate_objective_events_no_feedback,
+)
 from src.lifebench.event.simulation.geolocation.catalog import flatten_location_data
 from src.lifebench.event.simulation.context import (
     append_daily_behavior_record,
@@ -379,13 +386,13 @@ class Mind:
         self.context = res
 
         # 将模糊记忆整理为新的四字段长期记忆冷启动快照。
-        self.seed_long_term_memory()
+        self.seed_long_term_memory(date)
 
         self.persona_withoutrl = persona.copy()
         if "relation" in self.persona_withoutrl:
             del self.persona_withoutrl["relation"]
 
-    def seed_long_term_memory(self):
+    def seed_long_term_memory(self, date):
         """把画像之外的模糊历史整理为四字段长期记忆。"""
         from src.lifebench.utils.llm_call import llm_call_j
         from src.lifebench.utils.json_utils import remove_json_wrapper
@@ -404,10 +411,12 @@ class Mind:
 3. persistent_patterns 只记录模糊历史中明确表达形成的长期习惯/偏好，或至少3个不同日期反复出现的稳定行为。单次尝试、偶尔行为和同一天重复提及不得写入。
 4. 不保存即时状态、临时需求、未来计划或地点地址；证据不足时保持为空，不得从基础画像推测变化。
 5. 仅输出 JSON 对象，无任何额外文本或代码块标记。
+6. key_memories 的 date 必须与模糊记忆中的实际日期一致，年份以"当前模拟日期"所在年份为准；人物基础画像中的日期是旧快照，不得作为 key_memories 的日期基准。
 
 个人画像：{persona}
 自我认知：{cognition}
 模糊记忆（草稿派生总结）：{fuzzy}
+当前模拟日期：{date}
 
 输出格式：
 {{"profile_changes":"...","persistent_patterns":["..."],"key_memories":[{{"date":"YYYY-MM-DD","content":"...","impact":"..."}}],"period_summary":"..."}}
@@ -417,6 +426,7 @@ class Mind:
                 persona=json.dumps(self.persona, ensure_ascii=False, indent=2),
                 cognition=self.cognition,
                 fuzzy=self.long_memory,
+                date=date,
             ))
             cleaned = remove_json_wrapper(res)
             data = json.loads(cleaned)
@@ -838,12 +848,25 @@ class Mind:
         cfg = self.config.get("trajectory_assignment", {}) if isinstance(self.config, dict) else {}
         return bool(cfg.get("enabled", True)) and cfg.get("allocation_mode", "full") == "simple"
 
+    def _is_no_feedback_mode(self):
+        """无反馈基线是否启用：仅叠加在 simple 模式上，且 feedback_mode == none。
+
+        切断通道 1（behavior_history / trajectory_location_history 注入），
+        保留通道 2（反思/记忆叙事）。
+        """
+        cfg = self.config.get("trajectory_assignment", {}) if isinstance(self.config, dict) else {}
+        return (
+            bool(cfg.get("enabled", True))
+            and cfg.get("allocation_mode", "full") == "simple"
+            and cfg.get("feedback_mode", "on") == "none"
+        )
+
     def map(self, pt, plan=None):
         """获取真实poi数据和通行信息（委托给轨迹生成器）。"""
         if self._is_simple_geo_mode():
-            # 朴素基线只替换“分配”这一步，产出与完整版相同的 TrajectoryAssignment
-            # 与 poi 参考串；下游 adjust event → 回填 → 通行统计复用完整版。
-            return simple_allocate_trajectory(self, pt, plan)
+            # simple 基线：LLM 配备地理工具自主解析地点（阶段 A），
+            # 不做任何代码端数值计算；adjust/回填/通行统计在 _adjust_event_trajectory 中。
+            return simple_gather_geo(self, pt, plan)
         return generate_poi_route(self, pt, plan)
 
     def daily_event_gen1(self, date):
@@ -1146,14 +1169,21 @@ class Mind:
     
     def _generate_subjective_thought(self, plan, date):
         """生成主观思考（委托给 thought 生成器）。"""
+        if self._is_no_feedback_mode():
+            return generate_subjective_thought_no_feedback(self, plan, date)
         return generate_subjective_thought(self, plan, date)
     
     def _generate_objective_events(self, plan,date,event):
         """生成客观事件（委托给 objective 生成器）。"""
+        if self._is_no_feedback_mode():
+            return generate_objective_events_no_feedback(self, plan, date, event)
         return generate_objective_events(self, plan, date, event)
     
     def _adjust_event_trajectory(self, poi_data, event, daily_event_reference="",history=""):
         """调整事件轨迹（委托给 trajectory 生成器）。"""
+        if self._is_simple_geo_mode():
+            # simple 基线：阶段 B 写出叙述 + 阶段 C 回填坐标与通行统计，绕开完整版下游。
+            return simple_adjust_trajectory(self, poi_data, event, daily_event_reference, history)
         return adjust_event_trajectory(self, poi_data, event, daily_event_reference, history)
     
     def _generate_reflection(self, events, plan, date):

@@ -70,6 +70,7 @@ class MapMaintenanceTool:
         self.poi_cache: Dict[str, Tuple[float, Dict]] = {}
         self.poi_candidate_cache: Dict[str, Tuple[float, List[Dict]]] = {}
         self.duration_cache: Dict[str, Tuple[float, int]] = {}
+        self.route_cache: Dict[str, Tuple[float, Dict]] = {}
         self.geocode_cache: Dict[str, Tuple[float, Dict]] = {}
         # 新增：已有真实地点数据（用于快速匹配type为1的指令）
         # 兼容部分历史数据中 location.json 被额外包裹一层或多层数组的情况。
@@ -471,6 +472,71 @@ class MapMaintenanceTool:
 
         except Exception as e:
             print(f"get_duration_between_pois执行失败: {_safe_error(e, self.api_key)}")
+            return None
+
+    def route_between_pois(self, origin_poi: Dict, dest_poi: Dict, transport: str,
+                           origin_city: Optional[str] = None, dest_city: Optional[str] = None) -> Optional[Dict]:
+        """返回两点间真实路线的耗时(秒)与距离(米)；出错时返回 None。
+
+        与 get_duration_between_pois 同一套路由 API，但额外提取 path 的 distance 字段，
+        供 simple 基线把工具返回的 duration/distance 原样写入最终轨迹，无需代码端再算。
+        """
+        try:
+            origin_loc = str(origin_poi.get("location", "")).strip()
+            dest_loc = str(dest_poi.get("location", "")).strip()
+
+            if len(origin_loc.split(',')) != 2 or len(dest_loc.split(',')) != 2:
+                print("route_between_pois: 经纬度格式错误(需'X,Y')")
+                return None
+
+            if transport not in self.transport_apis:
+                print("route_between_pois: 不支持的交通方式: %s" % transport)
+                return None
+
+            cache_key = "route:%s:%s:%s:%s:%s" % (
+                origin_loc, dest_loc, transport, origin_city or "", dest_city or "",
+            )
+            cached = self.route_cache.get(cache_key)
+            if cached and self._is_cache_valid(cached[0]):
+                return dict(cached[1])
+
+            url = self.transport_apis[transport]
+            params = {"key": self.api_key, "origin": origin_loc, "destination": dest_loc}
+            if transport == "transit":
+                params["city"] = origin_city or dest_city or self.TRANSIT_DEFAULT_CITY
+                params["cityd"] = dest_city or origin_city or self.TRANSIT_DEFAULT_CITY
+                params["nightflag"] = 0
+
+            result = self._request_json(url, params)
+
+            duration = None
+            distance = None
+            if transport in ("driving", "walking"):
+                if result.get("status") == "1" and result.get("route", {}).get("paths"):
+                    path = result["route"]["paths"][0]
+                    duration = int(path.get("duration") or 0)
+                    distance = int(path.get("distance") or 0)
+            elif transport == "transit":
+                if result.get("status") == "1" and result.get("route", {}).get("transits"):
+                    transit = result["route"]["transits"][0]
+                    duration = int(transit.get("duration") or 0)
+                    distance = int(transit.get("distance") or 0)
+            elif transport == "bicycling":
+                if result.get("code") == "0" and result.get("data", {}).get("paths"):
+                    path = result["data"]["paths"][0]
+                    duration = int(path.get("duration") or 0)
+                    distance = int(path.get("distance") or 0)
+
+            if duration is None:
+                print("route_between_pois: 未获取到路线 %s->%s(%s)" % (origin_city, dest_city, transport))
+                return None
+
+            payload = {"duration_seconds": duration, "distance_meters": distance or 0, "mode": transport}
+            self.route_cache[cache_key] = (time.time(), payload)
+            return dict(payload)
+
+        except Exception as e:
+            print(f"route_between_pois执行失败: {_safe_error(e, self.api_key)}")
             return None
 
     def process_route(self, keywords: List[str], cities: List[Optional[str]], transports: List[str]) -> Tuple[

@@ -294,3 +294,59 @@ def llm_call_skip(prompt, context="你是一个人物分析师、故事创作者
 
     _record_usage(response)
     return strip_think_content(response.choices[0].message.content)
+
+
+def llm_agent(messages, tools, dispatch, model=None, max_turns=12):
+    """带工具调用（function calling）的 agent 循环：执行工具直到模型停止请求工具。
+
+    :param messages: 对话消息列表（与 chat.completions 的 messages 一致）
+    :param tools: OpenAI function-calling 的 tools 列表
+    :param dispatch: callable(tool_name, args_dict) -> 序列化结果（str 或 dict/list）
+    :param model: 覆盖默认模型；缺省用 DEFAULT_MODEL
+    :param max_turns: 工具循环最大轮数，防止失控
+    :return: 模型最终文本内容；若超轮数未收敛返回 None
+    """
+    client = _get_thread_client()
+    model = model or DEFAULT_MODEL
+    transcript = list(messages)
+    for _turn in range(max(int(max_turns), 1)):
+        response = client.chat.completions.create(
+            model=model,
+            messages=transcript,
+            tools=tools,
+            stream=False,
+        )
+        _record_usage(response)
+        message = response.choices[0].message
+        tool_calls = getattr(message, "tool_calls", None) or []
+        if not tool_calls:
+            return strip_think_content(getattr(message, "content", None) or "")
+        transcript.append({
+            "role": "assistant",
+            "content": getattr(message, "content", None) or "",
+            "tool_calls": [
+                {
+                    "id": tc.id,
+                    "type": "function",
+                    "function": {
+                        "name": tc.function.name,
+                        "arguments": tc.function.arguments or "{}",
+                    },
+                }
+                for tc in tool_calls
+            ],
+        })
+        for tc in tool_calls:
+            try:
+                args = json.loads(tc.function.arguments or "{}")
+            except (json.JSONDecodeError, TypeError):
+                args = {}
+            result = dispatch(tc.function.name, args)
+            if not isinstance(result, str):
+                result = json.dumps(result, ensure_ascii=False)
+            transcript.append({
+                "role": "tool",
+                "tool_call_id": tc.id,
+                "content": result,
+            })
+    return None

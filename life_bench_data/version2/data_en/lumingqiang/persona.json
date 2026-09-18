@@ -1,0 +1,705 @@
+{
+  "name": "Lu Mingqiang",
+  "birth": "1986-05-11",
+  "age": 35,
+  "nationality": "Han",
+  "home_address": {
+    "province": "Hainan Province",
+    "city": "Haikou City",
+    "district": "Longhua District",
+    "street_name": "Jinmao Middle Road",
+    "street_number": "No. 15"
+  },
+  "birth_place": {
+    "province": "Hainan Province",
+    "city": "Haikou City",
+    "district": "Meilan District"
+  },
+  "gender": "Male",
+  "education": "Middle school",
+  "job": "Electric machinery installation and repair worker",
+  "occupation": "Haikou Electric Power Engineering Service Co., Ltd.",
+  "workplace": {
+    "province": "Hainan Province",
+    "city": "Haikou City",
+    "district": "Xiuying District",
+    "street_name": "Haisheng Road",
+    "street_number": "28th"
+  },
+  "belief": "No religious belief",
+  "salary": 40000.0,
+  "body": {
+    "height": 171,
+    "weight": 72.5,
+    "BMI": 24.8
+  },
+  "family": "First marriage, has a spouse, and has 2 children.",
+  "personality": {
+    "mbti": "ISTJ",
+    "traits": [
+      "Career-oriented",
+      "Independent and self-reliant",
+      "Spiritual satisfaction orientation"
+    ]
+  },
+  "hobbies": [
+    "Play squash (solo)",
+    "Running",
+    "Engage in physical exercise",
+    "Go online",
+    "Collecting liquor bottles (baijiu)",
+    "Flying a kite (traditional)"
+  ],
+  "favorite_foods": [
+    "Hainanese chicken rice",
+    "Qingbu Liang",
+    "Grilled fish",
+    "I understand your current situation: a heavy workload, fragmented time, and a relatively low starting educational level. What you need is a phased study plan that focuses on breaking through weaknesses in practical operation and theory, while also taking into account the work-experience requirement in the registration conditions?"
+  ],
+  "memory_date": [
+    "2010-08-20 wedding anniversary",
+    "2015-09-01, eldest son's birth date"
+  ],
+  "aim": [
+    "Obtain the Senior Electrician Technician certificate within 3 years",
+    "Take the family on a round-island self-driving trip within 5 years.",
+    "To own a repair workshop of my own within the next 10 years."
+  ],
+  "healthy_desc": "Lu Mingqiang considers himself to be in good health, with no long-term chronic diseases or disabilities. He maintains a regular exercise habit, doing physical training several times a week to keep up his stamina, which complements the heavy physical nature of his job. He currently has no habit of regular checkups and goes to the doctor infrequently, relying mainly on his own good physical sensations and lifestyle to maintain health.",
+  "lifestyle_desc": "Lu Mingqiang's life is regular and pragmatic. His main source of information is the Internet, and he goes online almost every day. His leisure activities mainly consist of relaxing at home and physical exercise. He watches TV and exercises several times a week, and meets friends several times a month, but he rarely goes shopping, reads, or participates in cultural activities. He hardly ever vacations away from home. His life centers on family, work, and simple leisure and entertainment, with a steady and down-to-earth style.",
+  "economic_desc": "Lu Mingqiang's annual household income is about 50,000 yuan. He personally earns 40,000 yuan a year, and his spouse works part-time in housekeeping, earning about 10,000 yuan a year. Income and expenses are basically balanced. The family owns a house and a family car, has no habit of using credit cards or overdraft consumption, and has never made any financial investments such as stocks, funds, or bonds. The family's financial situation is stable and conservative, focused on saving and meeting basic living needs.",
+  "work_desc": "Lu Mingqiang is employed by an electric power engineering company as an electrical machinery installation and repair worker. He works up to 60 hours a week, mostly doing heavy physical labor, with a regular day shift schedule and a one-way commute of only 10 minutes. Despite the high intensity of the work, he is very satisfied with his job. He currently has no other part-time jobs and holds no administrative position.",
+  "experience_desc": "Lu Mingqiang is a native of Haikou, Hainan. Since birth, his household registration and residence have never changed. In 2007, at around age 21, he got his first job, also as a skilled worker (manual worker), and was also employed by others at the time. Over the years, he has been working locally in fields related to electrical machinery, growing step by step from an apprentice to a skilled technical worker. Through practice, he has accumulated extensive experience, and has settled down and started a career here. His life trajectory is stable and clear.",
+  "description": "Lu Mingqiang, 35, is a Han Chinese male born in Haikou, Hainan. He currently lives in Longhua District, Haikou, with his spouse and two children. He has a junior high school education and is a down-to-earth, hardworking electrical machinery installation and repair worker, employed by a local power engineering company. He is very satisfied with this job, which requires heavy physical labor but is regular and stable. His personality fits the ISTJ type: rigorous, responsible, and practical. His values tend toward career orientation, independence, and deriving spiritual fulfillment from work. Lu Mingqiang is in good health with no chronic diseases, and maintains his physical fitness for work through exercise several times a week. His lifestyle is simple and regular; his main leisure activities are going online, listening to music, exercising, and monthly gatherings with friends. He rarely participates in cultural consumption or long-distance travel. The family's financial situation is stable—they own a house and a car but have no investment activities, and their spending habits are conservative. In life, he may often need to deal with urgent electrical equipment repair tasks, and occasionally takes his children to fly kites in the park on weekends. His future vision includes improving his professional skills, taking his family on a trip around the island, and eventually having his own studio.",
+  "relation": [
+    [
+      {
+        "name": "Lu Jianguo",
+        "relation": "Father",
+        "social circle": "Family circle.",
+        "gender": "Male",
+        "age": 62,
+        "birth_date": "1962-03-15",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Meilan District",
+          "street_name": "Haifu Road",
+          "street_number": "No. 42"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Haikou City"
+        },
+        "personality": "ISTJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Retired electrician",
+        "organization": "Former Haikou Power Supply Bureau",
+        "nickname": "Dad",
+        "relation_description": "Lu Mingqiang's father, before retirement, was an electrician at the Haikou Power Supply Bureau. He was highly skilled and rigorous in his work. Both father and son worked in the power industry, and the father was a guide on Lu Mingqiang's career path. After retirement, he lives with his wife, keeps a regular routine, and enjoys playing chess and drinking tea in the community. Lu Mingqiang takes the children to visit his parents once a week, having dinner together and chatting about work and life. Occasionally, the father asks about his son's work progress and gives some technical advice."
+      },
+      {
+        "name": "Chen Xiuying",
+        "relation": "Mother",
+        "social circle": "Family circle.",
+        "gender": "Female",
+        "age": 60,
+        "birth_date": "1964-08-22",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Meilan District",
+          "street_name": "Haifu Road",
+          "street_number": "No. 42"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Wenchang City"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Housewife",
+        "organization": "None",
+        "nickname": "Mom",
+        "relation_description": "Lu Mingqiang's mother is a typical homemaker—hardworking and meticulous, keeping the household in perfect order. She is an excellent cook, especially skilled in local Hainan home-style dishes. The Hainanese chicken rice that Lu Mingqiang loves most is his mother's signature flavor. Now she devotes most of her energy to taking care of her grandchildren and her husband. When Lu Mingqiang's family visits every week, she always prepares a hearty meal and cares about their daily lives. The relationship between the mother-in-law and daughter-in-law is harmonious, and they often exchange parenting tips over the phone."
+      },
+      {
+        "name": "Wang Lijuan",
+        "relation": "Spouse",
+        "social circle": "Family circle.",
+        "gender": "Female",
+        "age": 33,
+        "birth_date": "1991-10-05",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Longhua District",
+          "street_name": "Jinmao Middle Road",
+          "street_number": "No. 15"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Danzhou City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Part-time housekeeper",
+        "organization": "Haikou Community Housekeeping Service Center",
+        "nickname": "Juanzi",
+        "relation_description": "Lu Mingqiang's wife. The two married in 2010. She is outgoing and good at communication, balancing family and part-time work well. She is mainly responsible for the daily care and education of the two children, while also doing community housekeeping work a few days a week to help with household expenses. The couple has a stable relationship and shares family responsibilities. Their daily communication is mainly about the children, household expenses, and trivial matters at work. On weekends, they sometimes take the children to the park or the market together. They are the most important supporters in each other's lives."
+      },
+      {
+        "name": "Lu Zixuan",
+        "relation": "Eldest son",
+        "social circle": "Family circle.",
+        "gender": "Male",
+        "age": 8,
+        "birth_date": "2015-09-01",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Longhua District",
+          "street_name": "Jinmao Middle Road",
+          "street_number": "No. 15"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Haikou City"
+        },
+        "personality": "ENFP",
+        "economic_level": "No income.",
+        "occupation": "Primary school student.",
+        "organization": "Haikou Longhua District No. 1 Experimental Primary School",
+        "nickname": "Xuanxuan",
+        "relation_description": "Lu Mingqiang's eldest son, currently in the second grade of primary school. He is lively and cheerful, curious, and the family's joy. He loves sports, especially admires his father, and is very interested in the various tools in his father's toolbox. Although Lu Mingqiang is busy at work, he tries to find time to do homework with his son, and occasionally takes him kite flying or running on weekends. The father-son relationship is close, and Lu Mingqiang hopes his son will study hard and have more choices in the future."
+      },
+      {
+        "name": "Lu Zihan",
+        "relation": "Second son",
+        "social circle": "Family circle.",
+        "gender": "Male",
+        "age": 4,
+        "birth_date": "2019-12-10",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Longhua District",
+          "street_name": "Jinmao Middle Road",
+          "street_number": "No. 15"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Haikou City"
+        },
+        "personality": "ISFP",
+        "economic_level": "No income.",
+        "occupation": "Preschool children",
+        "organization": "Jinmao Kindergarten, Longhua District, Haikou",
+        "nickname": "Hanhan",
+        "relation_description": "Lu Mingqiang's second son is currently in kindergarten. He is relatively quiet, has strong observation skills, and likes to play with building blocks or look at picture books by himself. He is the treasure of the whole family, and his older brother takes good care of him. When Lu Mingqiang comes home from work, his younger son always runs over for a hug. Because he is young, he is mainly cared for by his mother and grandparents. On weekend family outings, he also goes along to the park."
+      },
+      {
+        "name": "Lu Minghua",
+        "relation": "Older brother.",
+        "social circle": "Family circle.",
+        "gender": "Male",
+        "age": 38,
+        "birth_date": "1985-02-28",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Bao'an District",
+          "street_name": "Chuangye Second Road, Xin'an Subdistrict",
+          "street_number": "No. 305"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Haikou City"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Middle class",
+        "occupation": "Manager of an electronics trading company.",
+        "organization": "Shenzhen Huachuang Electronics Trading Co., Ltd.",
+        "nickname": "Brother Hua.",
+        "relation_description": "Lu Mingqiang's older brother, more than a year older than Lu Mingqiang. In his early years he went to Guangdong to seek opportunities, and now runs a small electronics trading company in Shenzhen, with modest career success. The brothers have very different personalities; the elder brother is more adventurous and business-minded. Although they live apart, they are close, mainly contacting each other via WeChat and phone, talking once or twice a month about recent news, family, and their parents' health. The elder brother is better off financially and returns to Haikou to visit their parents during festivals, bringing gifts for his nephews. Lu Mingqiang admires his brother, but is also content with his own stable life. When they meet, the elder brother often treats the whole family to dinner."
+      }
+    ],
+    [
+      {
+        "name": "Wang Hai",
+        "relation": "Childhood friend",
+        "social circle": "Childhood / Neighborhood Circle",
+        "gender": "Male",
+        "age": 35,
+        "birth_date": "1986-08-23",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "No. 9"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Meilan District"
+        },
+        "personality": "ESFP",
+        "economic_level": "Middle class",
+        "occupation": "Sales manager of electronic products",
+        "organization": "A digital products store at Shenzhen Huaqiang Electronic World",
+        "nickname": "Haizi",
+        "relation_description": "Wang Hai is Lu Mingqiang's childhood friend who grew up with him in the hutongs of Meilan District. They were classmates from elementary school through middle school. After graduating from middle school, Wang Hai moved with his family to Guangdong and later worked in electronics sales in Huaqiangbei, Shenzhen. With his quick mind and sociable personality, he gradually worked his way up to store sales manager. Now the two live in different places and mainly keep in touch through WeChat video calls and Moments interactions, talking once or twice a month on average about their families, current work, and childhood memories. When Lu Mingqiang goes to Guangdong on business (though very rarely) or Wang Hai returns to Haikou to visit relatives, they try to meet up, usually going to a food stall, ordering grilled fish and beer, and chatting late into the night. Wang Hai is outgoing and enthusiastic, complementing Lu Mingqiang's calm and pragmatic nature. He is one of the few old friends with whom Lu Mingqiang can share his feelings without any reservation."
+      }
+    ],
+    [
+      {
+        "name": "Chen Jianguo",
+        "relation": "Co-worker",
+        "social_circle": "Work circle",
+        "gender": "Male",
+        "age": 38,
+        "birth_date": "1985-08-22",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Qiongshan District",
+          "street_name": "Fengxiang East Road",
+          "street_number": "No. 32"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Wenchang City"
+        },
+        "personality": "ISTP",
+        "economic_level": "Basic necessities.",
+        "occupation": "Electric machinery installation and repair worker",
+        "organization": "Haikou Electric Power Engineering Service Co., Ltd.",
+        "nickname": "Jianguo",
+        "relation_description": "Chen Jianguo is Lu Mingqiang's closest workmate at the company. The two met during a high-voltage line emergency repair project in 2012. They work well together and often partner on complex installation tasks. Outside of work, they also have lao ba cha together and chat about family and kids. Both live in Haikou, but in different districts. They usually stay in touch through WeChat work groups and phone calls, seeing each other 5–6 days a week for work. Occasionally on weekends, the two families go to Baishamen Park to fly kites or eat grilled fish."
+      },
+      {
+        "name": "Master Li",
+        "relation": "Master",
+        "social_circle": "Work circle",
+        "gender": "Male",
+        "age": 58,
+        "birth_date": "1965-03-15",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Meilan District",
+          "street_name": "Haifu Road",
+          "street_number": "No. 56"
+        },
+        "birth_place": {
+          "province": "Guangdong Province",
+          "city": "Zhanjiang"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Senior electrician technician (retired and rehired)",
+        "organization": "Haikou Electric Power Engineering Service Co., Ltd.",
+        "nickname": "Old Li",
+        "relation_description": "Master Li was Lu Mingqiang's mentor when he entered the trade. In 2007, when Lu Mingqiang first joined the company as an apprentice, he studied under Master Li. Master Li had superb skills and was rigorous but protective of his apprentices. He not only taught Lu Mingqiang solid practical skills, but also often passed on the old-school tricks and experience of the older generation of electricians. Now Master Li has retired, but the company still invites him back to guide when encountering tough problems. The two don't meet often now, about once or twice a month on average, usually when the company has a difficult fault and Lu Mingqiang calls to ask for advice, or Master Li comes to the site to take a look. They maintain mutual respect and the bond between master and apprentice."
+      },
+      {
+        "name": "Team Leader Zhang",
+        "relation": "Team leader",
+        "social_circle": "Work circle",
+        "gender": "Male",
+        "age": 42,
+        "birth_date": "1981-11-30",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Xiuying District",
+          "street_name": "Binhai Avenue",
+          "street_number": "No. 189"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Danzhou City"
+        },
+        "personality": "ESTJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Electrical engineering team leader",
+        "organization": "Haikou Electric Power Engineering Service Co., Ltd.",
+        "nickname": "Boss Zhang",
+        "relation_description": "Team Leader Zhang was Lu Mingqiang’s direct supervisor in his team, responsible for assigning daily work and supervising on-site safety. He was brisk and strict, but fair in rewards and punishments, and valued steady, hardworking, highly skilled veteran employees like Lu Mingqiang. Lu Mingqiang both respected and “feared” Team Leader Zhang, and was absolutely obedient to him at work. They met every day at work, and their communication mainly involved work arrangements and progress reports. They had little private contact, limited to company-organized year-end dinners or occasional team-building activities, about once a quarter."
+      },
+      {
+        "name": "Zhao Qiang",
+        "relation": "Co-worker",
+        "social_circle": "Work circle",
+        "gender": "Male",
+        "age": 29,
+        "birth_date": "1994-07-04",
+        "home_address": {
+          "province": "Hunan Province",
+          "city": "Yongzhou",
+          "district": "Lengshuitan District",
+          "street_name": "Xiangyong Road",
+          "street_number": "No. 218"
+        },
+        "birth_place": {
+          "province": "Hunan Province",
+          "city": "Yongzhou"
+        },
+        "personality": "ESFP",
+        "economic_level": "Basic necessities.",
+        "occupation": "Apprentice electromechanical installer",
+        "organization": "Haikou Electric Power Engineering Service Co., Ltd.",
+        "nickname": "Xiao Zhao",
+        "relation_description": "Zhao Qiang is an apprentice the company recruited last year. He is from Hunan and is currently learning under Lu Mingqiang and Chen Jianguo's team. He is young and energetic but lacks experience, so Lu Mingqiang patiently guides him just as Master Li guided him back in the day. Because Zhao Qiang's family is in another province and he rents a place alone in Haikou, Lu Mingqiang sometimes invites him over for a meal to taste Hainan dishes. They see each other every workday, but since Zhao Qiang plans to return to his hometown after working a few years and saving enough money, their private contact isn't especially close—mostly a master-apprentice relationship at work and occasional care in daily life."
+      },
+      {
+        "name": "Manager Liu",
+        "relation": "Manager",
+        "social_circle": "Work circle",
+        "gender": "Male",
+        "age": 48,
+        "birth_date": "1975-01-20",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Longhua District",
+          "street_name": "Guomao Road",
+          "street_number": "Building 1, Platinum Mansion"
+        },
+        "birth_place": {
+          "province": "Hubei Province",
+          "city": "Wuhan"
+        },
+        "personality": "ENTJ",
+        "economic_level": "Wealthy",
+        "occupation": "Engineering Service Department Manager",
+        "organization": "Haikou Electric Power Engineering Service Co., Ltd.",
+        "nickname": "General Manager Liu",
+        "relation_description": "Manager Liu is the head of the company’s Engineering Services Department, overseeing several construction teams including the one Lu Mingqiang belongs to. He has a professional background, a modern management style, and focuses on efficiency and standardized procedures. Lu Mingqiang rarely had direct contact with him, usually reporting through Team Leader Zhang or seeing him at monthly safety meetings and the company annual meeting. Manager Liu appreciates the reliability of technical core staff like Lu Mingqiang and once encouraged him to obtain the senior technician certificate. Their relationship is a typical superior-subordinate one—formal and distant—with contact about once or twice a month in the form of meetings or notices."
+      }
+    ],
+    [
+      {
+        "name": "Zhou Wei",
+        "relation": "Junior high school classmate",
+        "social circle": "Middle school classmates",
+        "gender": "Male",
+        "age": 35,
+        "birth_date": "1986-08-22",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "10th"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Haikou City"
+        },
+        "personality": "ESTP",
+        "economic_level": "Middle class",
+        "occupation": "Sales manager of electronic products",
+        "organization": "An electronics trading company in Huaqiangbei, Shenzhen.",
+        "nickname": "Wei Ge",
+        "relation_description": "Zhou Wei was a junior high school classmate of Lu Mingqiang; the two met while attending the same middle school in Haikou. After graduation, Zhou Wei went to Guangdong for development and now works in electronics sales in Shenzhen. They mainly keep in touch through WeChat. Every Spring Festival when he returns to Haikou, Zhou Wei takes the initiative to invite several old classmates, including Lu Mingqiang and Wu Gang, to have dinner together, catch up, and reminisce about their school days. Their usual contact is not frequent, about once a quarter, mainly sharing interesting life anecdotes or industry news. Since they live in different cities, they have not seen each other for several years, but their old-classmate friendship is still maintained online."
+      },
+      {
+        "name": "Wu Gang",
+        "relation": "Junior high school classmate",
+        "social circle": "Middle school classmates",
+        "gender": "Male",
+        "age": 36,
+        "birth_date": "1985-12-05",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Meilan District",
+          "street_name": "Haifu Road",
+          "street_number": "No. 56"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Haikou City"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Community water and electricity maintenance worker",
+        "organization": "A property service center in Meilan District, Haikou",
+        "nickname": "Gangzi",
+        "relation_description": "Wu Gang was Lu Mingqiang's junior high school classmate, and the two had a good relationship since their school days. After graduation, Wu Gang stayed in Haikou and worked as a community water and electricity maintenance worker. Like Lu Mingqiang, he belonged to the skilled worker circle, and they occasionally met at industry exchanges. They now live in the same city, so staying in touch is relatively convenient. They chat by phone or WeChat once or twice a month, and sometimes meet on weekends for laoba tea, exchanging work insights and family matters. When Zhou Wei returns to Haikou from Shenzhen, Wu Gang usually helps organize small class gatherings. Wu Gang is gentle and down-to-earth, and he is one of Lu Mingqiang's more stable social ties locally."
+      }
+    ],
+    [
+      {
+        "name": "Lin Feng",
+        "relation": "Pool buddy",
+        "social circle": "Squash community",
+        "gender": "Male",
+        "age": 33,
+        "birth_date": "1991-08-22",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Qiongshan District",
+          "street_name": "Fengxiang East Road",
+          "street_number": "No. 9"
+        },
+        "birth_place": {
+          "province": "Guangdong Province",
+          "city": "Zhanjiang"
+        },
+        "personality": "ESTP",
+        "economic_level": "Xiaokang",
+        "occupation": "Fitness coach",
+        "organization": "Haikou Power Fitness Club",
+        "nickname": "A Feng",
+        "relation_description": "Lin Feng is a squash partner Lu Mingqiang met at the squash club. The two became familiar through their regular Wednesday evening court sessions. Lin Feng is outgoing and energetic, with an aggressive playing style that complements Lu Mingqiang's steady and solid style. They often exchange technical insights after matches. They both live in Haikou. In addition to playing squash, they occasionally meet up for a run or grilled fish at a street food stall. At present, they mainly make squash arrangements and chat via WeChat, meeting once or twice a week, with a stable relationship at the level of sports partners."
+      }
+    ],
+    [
+      {
+        "name": "Chen Jianguo",
+        "relation": "Friends",
+        "social circle": "Wine bottle collecting community.",
+        "gender": "Male",
+        "age": 38,
+        "birth_date": "1985-08-22",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Qiongshan District",
+          "street_name": "Zhongshan South Road",
+          "street_number": "No. 42"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Danzhou City"
+        },
+        "personality": "ISFP",
+        "economic_level": "Xiaokang",
+        "occupation": "Self-employed business operator.",
+        "organization": "Jianguo Hardware Store",
+        "nickname": "Old Chen",
+        "relation_description": "Chen Jianguo is a friend Lu Mingqiang met in the local liquor bottle collecting circle. The two got to know each other because of their shared interest in collecting baijiu bottles. They often exchange ideas on online forums, and offline they meet at a tea shop once or twice a month to talk about newly acquired items or share local baijiu information. Chen Jianguo runs a hardware store in Haikou, and his working hours are relatively flexible, which sometimes allows him to meet Lu Mingqiang for a casual get-together on weekday afternoons. When they meet, their conversations mostly revolve around collecting, work, and family trivia, and occasionally they help each other with simple home electrical, plumbing, or hardware repair problems. They mainly keep in daily contact through WeChat, sharing pictures and information. Their relationship is stable and relaxed."
+      }
+    ],
+    [
+      {
+        "name": "Chen Jie",
+        "relation": "Friends",
+        "social_circle": "Kite-flying circle.",
+        "gender": "Male",
+        "age": 33,
+        "birth_date": "1990-08-22",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Meilan District",
+          "street_name": "Haidian Fifth West Road",
+          "street_number": "No. 8"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Wenchang City"
+        },
+        "personality": "ISFP",
+        "economic_level": "Basic necessities.",
+        "occupation": "Auto repair technician",
+        "organization": "Xunjie Auto Service Center, Meilan District, Haikou",
+        "nickname": "Ajie",
+        "relation_description": "Chen Jie is a friend Lu Mingqiang met while flying kites at Wanlv Garden. The two became close because they both share an interest in the making and flying techniques of traditional kites. They have known each other for five years. On sunny weekend afternoons, they usually meet in the park to fly kites and exchange ideas about newly made kite frames or improved bridle lines. When they meet, besides flying kites, they also talk about their work and family matters, and occasionally have grilled fish at a food stall near the park. Both currently live in Haikou. They contact each other about two to three times a month, mainly scheduling through WeChat. It's a relaxed, easygoing friendship maintained by a shared hobby."
+      }
+    ],
+    [
+      {
+        "name": "Chen Bin",
+        "relation": "Friends",
+        "social circle": "Running Circle",
+        "gender": "Male",
+        "age": 33,
+        "birth_date": "1991-03-22",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Qiongshan District",
+          "street_name": "Fengxiang East Road",
+          "street_number": "No. 8"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Danzhou City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Basic necessities.",
+        "occupation": "Logistics delivery worker",
+        "organization": "Haikou SF Express Co., Ltd.",
+        "nickname": "A Bin",
+        "relation_description": "Chen Bin is a friend Lu Mingqiang met while running. They bonded over their shared love of running and got to know each other about five years ago. They usually arrange to go for a morning run at Haikou Baishamen Park or Wanlv Garden on weekend mornings, chatting about work and everyday life while running. After the run, they sometimes go to a nearby breakfast shop for Hainan noodles or laobaicha. Chen Bin is outgoing and warm, good at taking care of people, and is one of the organizers of the running circle. Both of them currently live in Haikou and mainly keep in touch via WeChat. They meet up for running once or twice a week, and occasionally help each other with small household appliance problems."
+      }
+    ],
+    [
+      {
+        "name": "Wang Jianguo",
+        "relation": "Neighbor",
+        "social_circle": "Neighborhood Circle",
+        "gender": "Male",
+        "age": 58,
+        "birth_date": "1966-03-22",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Longhua District",
+          "street_name": "Jinmao Middle Road",
+          "street_number": "12th"
+        },
+        "birth_place": {
+          "province": "Guangdong Province",
+          "city": "Zhanjiang"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Retired elementary school teacher",
+        "organization": "Longhua District No. 1 Primary School, Haikou (retired)",
+        "nickname": "Uncle Wang",
+        "relation_description": "Wang Jianguo is a neighbor in the unit next to Lu Mingqiang's and has been retired for many years. The two met by chance in the corridor after Lu Mingqiang moved into the community. Uncle Wang is warm-hearted and helpful. He often takes walks and plays chess in the neighborhood; whenever he sees Lu Mingqiang coming home from work, he always nods in greeting or exchanges a few pleasantries. Their contact is mostly due to small neighborhood matters, such as receiving packages on each other's behalf, briefly watching over things left at the door, or informing one another during water or power outages. Occasionally on weekend mornings, the two meet at the breakfast stall at the community entrance, share a bowl of Hainan noodles, and chat about the weather, the children, and local news. Because they live in the same community, they see each other frequently — almost every day or every other day — but their interactions are mainly daily greetings and simple exchanges of information, a cordial but not overly close neighborly relationship."
+      }
+    ],
+    [
+      {
+        "name": "Chen Zhiqiang",
+        "relation": "Wife's younger brother",
+        "social_circle": "Relatives' circle",
+        "gender": "Male",
+        "age": 31,
+        "birth_date": "1992-08-23",
+        "home_address": {
+          "province": "Guangdong Province",
+          "city": "Shenzhen",
+          "district": "Nanshan District",
+          "street_name": "Kejiyuan Road",
+          "street_number": "No. 88"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Meilan District"
+        },
+        "personality": "ESFP",
+        "economic_level": "Middle class",
+        "occupation": "Sales manager of electronic products",
+        "organization": "A large electronics mall in Huaqiangbei, Shenzhen",
+        "nickname": "Aqiang",
+        "relation_description": "Chen Zhiqiang is the younger brother of Lu Mingqiang's wife. The two met through their in-law relationship. He is outgoing and active, and gets along well with his brother-in-law Lu Mingqiang. Although one works a stable technical job in Hainan and the other is building a sales career in Shenzhen, both share a pragmatic outlook. They mainly keep in touch via WeChat video and phone calls, about once or twice a month on average, chatting about family matters, children's education, and occasionally work anecdotes. During holidays, Chen Zhiqiang returns to Haikou to visit his family. When that happens, the two families get together for meals, and he also brings his nephews some novel electronic gadgets as gifts. Because they live far apart, daily interaction is mainly online, but their family bond is strong."
+      },
+      {
+        "name": "Wang Xiuying",
+        "relation": "Aunt",
+        "social_circle": "Relatives' circle",
+        "gender": "Female",
+        "age": 58,
+        "birth_date": "1965-03-17",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Qiongshan District",
+          "street_name": "Zhongshan Road, Fucheng Town",
+          "street_number": "No. 56"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Meilan District"
+        },
+        "personality": "ISFJ",
+        "economic_level": "Basic necessities.",
+        "occupation": "Retired primary school teacher (former).",
+        "organization": "Central Primary School in a district of Haikou (retired)",
+        "nickname": "Aunt",
+        "relation_description": "Wang Xiuying is Lu Mingqiang's mother's elder sister. She watched Lu Mingqiang grow up, and their bond is deep. Before retiring, she was a primary school teacher—gentle, meticulous, and very caring toward younger generations. She now lives in the same city of Haikou as Lu Mingqiang, but in a different district. Every month, Lu Mingqiang takes time to visit her with his children once or twice, accompanying her for laobaicha and chatting about recent life. His aunt often asks about his work safety and family life and shares parenting experience. She is an important emotional link between Lu Mingqiang's family and the older generation of relatives. Family gatherings during festivals are usually organized with her help. The two are in close contact, and she is a key source of family support for Lu Mingqiang locally."
+      }
+    ],
+    [
+      {
+        "name": "Zhang Jianguo",
+        "relation": "Colleague",
+        "social_circle": "Industry exchange circle",
+        "gender": "Male",
+        "age": 38,
+        "birth_date": "1985-08-22",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Meilan District",
+          "street_name": "Haidian Fifth West Road",
+          "street_number": "No. 32"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Danzhou City"
+        },
+        "personality": "ESTP",
+        "economic_level": "Xiaokang",
+        "occupation": "Power equipment installer",
+        "organization": "Haikou Electric Power Engineering Service Co., Ltd.",
+        "nickname": "Zhang Gong",
+        "relation_description": "Zhang Jianguo is a colleague of Lu Mingqiang at the same electric power engineering company, and the two have known each other through work for five years. He has solid technical skills and an outgoing personality, and is good at handling on-site emergencies. He is often the person Lu Mingqiang consults and discusses with when encountering difficult problems at work. Both live in Haikou. Besides having lunch together on workdays in the cafeteria or at small restaurants near the construction site and exchanging work insights, about once or twice a month they meet on weekends at open-air food stalls for grilled fish and beer and chat about family and children. Since they are in the same industry circle, they also know several veteran masters from other companies, and occasionally share industry information through WeChat groups or arrange to attend city-organized skills training together."
+      }
+    ],
+    [
+      {
+        "name": "Li Jianguo",
+        "relation": "Client",
+        "social_circle": "Work client circle",
+        "gender": "Male",
+        "age": 48,
+        "birth_date": "1976-08-15",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Meilan District",
+          "street_name": "Haifu Road",
+          "street_number": "No. 32"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Wenchang City"
+        },
+        "personality": "ESTP",
+        "economic_level": "Moderate",
+        "occupation": "Self-employed",
+        "organization": "Jianguo Electrical Appliance Repair Shop",
+        "nickname": "Boss Li",
+        "relation_description": "Li Jianguo runs an electrical appliance repair shop in Meilan District, Haikou, and is a long-term client of Lu Mingqiang's company. The two met in 2015, when Boss Li's shop needed an urgent electrical line renovation. Lu Mingqiang handled that installation work, and his solid skills and reliability left a deep impression on Boss Li. Since then, Boss Li has given Lu Mingqiang priority for the shop's electrical equipment maintenance and small-to-medium projects. They usually communicate by phone and WeChat, mainly about work needs, and occasionally exchange information about the local electrician industry. As both are in Haikou and have frequent business dealings, they meet about once a month on average for work, usually at Boss Li's repair shop. When they meet, besides dealing with specific repair or installation matters, they also exchange pleasantries and catch up on how things are going. Boss Li appreciates Lu Mingqiang's skills, and Lu Mingqiang respects this straightforward client. The two maintain a stable, trusting working partnership."
+      }
+    ],
+    [
+      {
+        "name": "Wang Jianguo",
+        "relation": "Contact person",
+        "social circle": "Work Service Circle",
+        "gender": "Male",
+        "age": 48,
+        "birth_date": "1976-03-22",
+        "home_address": {
+          "province": "Hainan Province",
+          "city": "Haikou City",
+          "district": "Longhua District",
+          "street_name": "Guomao Third Cross Road",
+          "street_number": "No. 8"
+        },
+        "birth_place": {
+          "province": "Hainan Province",
+          "city": "Wenchang City"
+        },
+        "personality": "ESFJ",
+        "economic_level": "Xiaokang",
+        "occupation": "Property management",
+        "organization": "Jinmao Middle Road Community Property Service Center",
+        "nickname": "Director Wang",
+        "relation_description": "Wang Jianguo is the director of the property service center of the residential community where Lu Mingqiang lives. The two met through matters such as maintenance of public power facilities and owner repair requests. As a professional power maintenance worker, Lu Mingqiang is often hired by the property management to deal with urgent or complex circuit problems, and Director Wang is the main contact and coordinator. They are businesslike in their dealings, but have built trust through repeated cooperation. Now both live in Haikou. Their contact frequency is irregular; they usually communicate by phone or WeChat only when there is a maintenance need, and they usually meet at the community property office or at the fault site. After business is done, they occasionally engage in small talk."
+      }
+    ]
+  ]
+}

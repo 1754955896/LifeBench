@@ -1,0 +1,4703 @@
+[
+  {
+    "type": "call",
+    "phoneNumber": "13917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-01-01 08:05:00",
+    "datetime_end": "2025-01-01 08:08:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3",
+    "event_id": [],
+    "phone_id": 0
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-01-02 10:30:00",
+    "datetime_end": "2025-01-02 10:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "24",
+    "event_id": [],
+    "phone_id": 1
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613632229876",
+    "contactName": "Wu Fang",
+    "datetime": "2025-01-03 11:00:00",
+    "datetime_end": "2025-01-03 11:20:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "41",
+    "event_id": [],
+    "phone_id": 2
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895606",
+    "contactName": "Han Dong",
+    "datetime": "2025-01-04 20:00:00",
+    "datetime_end": "2025-01-04 20:05:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "59",
+    "event_id": [
+      "166-7"
+    ],
+    "phone_id": 3
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-01-05 11:30:00",
+    "datetime_end": "2025-01-05 11:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "63",
+    "event_id": [],
+    "phone_id": 4
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895607",
+    "contactName": "Song Jia",
+    "datetime": "2025-01-06 12:30:00",
+    "datetime_end": "2025-01-06 12:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "80",
+    "event_id": [
+      "99-2"
+    ],
+    "phone_id": 5
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-01-07 08:35:00",
+    "datetime_end": "2025-01-07 08:37:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "91",
+    "event_id": [],
+    "phone_id": 6
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757189876",
+    "contactName": "Sun Yue",
+    "datetime": "2025-01-08 10:35:00",
+    "datetime_end": "2025-01-08 10:40:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "111",
+    "event_id": [],
+    "phone_id": 7
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757190987",
+    "contactName": "Yang Fan",
+    "datetime": "2025-01-09 08:45:00",
+    "datetime_end": "2025-01-09 08:47:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "127",
+    "event_id": [
+      "99-3-3"
+    ],
+    "phone_id": 8
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757192034",
+    "contactName": "Li Na",
+    "datetime": "2025-01-10 10:50:00",
+    "datetime_end": "2025-01-10 10:55:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "152",
+    "event_id": [
+      "170-1"
+    ],
+    "phone_id": 9
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-01-12 08:30:00",
+    "datetime_end": "2025-01-12 08:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "175",
+    "event_id": [],
+    "phone_id": 10
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-01-13 10:00:00",
+    "datetime_end": "2025-01-13 10:05:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "194",
+    "event_id": [],
+    "phone_id": 11
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-01-14 08:30:00",
+    "datetime_end": "2025-01-14 08:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "209",
+    "event_id": [],
+    "phone_id": 12
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-01-15 09:30:00",
+    "datetime_end": "2025-01-15 09:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "221",
+    "event_id": [],
+    "phone_id": 13
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895605",
+    "contactName": "Qian Duoduo",
+    "datetime": "2025-01-16 11:20:00",
+    "datetime_end": "2025-01-16 11:23:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "237",
+    "event_id": [
+      "170-3"
+    ],
+    "phone_id": 14
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Mom",
+    "datetime": "2025-01-18 08:30:00",
+    "datetime_end": "2025-01-18 08:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "271",
+    "event_id": [
+      "100-2"
+    ],
+    "phone_id": 15
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-01-19 11:15:00",
+    "datetime_end": "2025-01-19 11:18:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "286",
+    "event_id": [],
+    "phone_id": 16
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-01-20 08:10:00",
+    "datetime_end": "2025-01-20 08:12:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "295",
+    "event_id": [],
+    "phone_id": 17
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-01-20 08:25:00",
+    "datetime_end": "2025-01-20 08:27:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "296",
+    "event_id": [],
+    "phone_id": 18
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613856778899",
+    "contactName": "Huang Lei",
+    "datetime": "2025-01-21 14:55:00",
+    "datetime_end": "2025-01-21 14:56:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "318",
+    "event_id": [
+      "172-4"
+    ],
+    "phone_id": 19
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-01-22 09:15:00",
+    "datetime_end": "2025-01-22 09:20:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "332",
+    "event_id": [
+      "80-1"
+    ],
+    "phone_id": 20
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-01-23 12:45:00",
+    "datetime_end": "2025-01-23 12:48:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "354",
+    "event_id": [
+      "80-4"
+    ],
+    "phone_id": 21
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-01-24 09:30:00",
+    "datetime_end": "2025-01-24 09:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "368",
+    "event_id": [],
+    "phone_id": 22
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-01-25 08:45:00",
+    "datetime_end": "2025-01-25 08:48:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "383",
+    "event_id": [],
+    "phone_id": 23
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-01-26 19:10:00",
+    "datetime_end": "2025-01-26 19:15:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "413",
+    "event_id": [],
+    "phone_id": 24
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-01-27 08:05:00",
+    "datetime_end": "2025-01-27 08:07:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "421",
+    "event_id": [],
+    "phone_id": 25
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Liu Yang",
+    "datetime": "2025-01-29 09:35:00",
+    "datetime_end": "2025-01-29 09:37:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "454",
+    "event_id": [
+      "142-1"
+    ],
+    "phone_id": 26
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-01-30 11:35:00",
+    "datetime_end": "2025-01-30 11:38:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "473",
+    "event_id": [
+      "173-1",
+      "142-4"
+    ],
+    "phone_id": 27
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-02-01 11:20:00",
+    "datetime_end": "2025-02-01 11:25:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "504",
+    "event_id": [
+      "7-1"
+    ],
+    "phone_id": 28
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-02-02 15:55:00",
+    "datetime_end": "2025-02-02 15:57:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "525",
+    "event_id": [
+      "142-5"
+    ],
+    "phone_id": 29
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613612345678",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-02-03 09:45:00",
+    "datetime_end": "2025-02-03 09:47:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "532",
+    "event_id": [],
+    "phone_id": 30
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-02-04 09:45:00",
+    "datetime_end": "2025-02-04 09:47:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "540",
+    "event_id": [],
+    "phone_id": 31
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-02-05 13:40:00",
+    "datetime_end": "2025-02-05 13:50:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "559",
+    "event_id": [],
+    "phone_id": 32
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895613",
+    "contactName": "Xiao Lin",
+    "datetime": "2025-02-07 17:05:00",
+    "datetime_end": "2025-02-07 17:08:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "593",
+    "event_id": [
+      "8-4"
+    ],
+    "phone_id": 33
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-02-09 16:45:00",
+    "datetime_end": "2025-02-09 16:46:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "619",
+    "event_id": [],
+    "phone_id": 35
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-02-10 13:35:00",
+    "datetime_end": "2025-02-10 13:37:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "630",
+    "event_id": [],
+    "phone_id": 36
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-02-11 07:10:00",
+    "datetime_end": "2025-02-11 07:12:30",
+    "direction": 2,
+    "call_result": "Connected",
+    "daily_event_id": "641",
+    "event_id": [],
+    "phone_id": 37
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "Boss Wang",
+    "datetime": "2025-02-12 15:45:00",
+    "datetime_end": "2025-02-12 15:50:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "668",
+    "event_id": [
+      "174-4"
+    ],
+    "phone_id": 38
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Xiao Lin",
+    "datetime": "2025-02-13 08:40:00",
+    "datetime_end": "2025-02-13 08:42:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "678",
+    "event_id": [],
+    "phone_id": 39
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-02-14 10:15:00",
+    "datetime_end": "2025-02-14 10:17:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "696",
+    "event_id": [],
+    "phone_id": 40
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-02-15 14:30:00",
+    "datetime_end": "2025-02-15 14:36:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "717",
+    "event_id": [
+      "81-6",
+      "81-5"
+    ],
+    "phone_id": 41
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-02-16 09:25:00",
+    "datetime_end": "2025-02-16 09:27:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "728",
+    "event_id": [
+      "181-2"
+    ],
+    "phone_id": 42
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-02-17 12:30:00",
+    "datetime_end": "2025-02-17 12:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "752",
+    "event_id": [
+      "175-2"
+    ],
+    "phone_id": 43
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Ming Jianguo",
+    "datetime": "2025-02-19 08:50:00",
+    "datetime_end": "2025-02-19 08:52:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "783",
+    "event_id": [],
+    "phone_id": 44
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-02-20 13:00:00",
+    "datetime_end": "2025-02-20 13:04:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "805",
+    "event_id": [
+      "176-3"
+    ],
+    "phone_id": 45
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757189876",
+    "contactName": "Sun Yue",
+    "datetime": "2025-02-22 09:00:00",
+    "datetime_end": "2025-02-22 09:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "829",
+    "event_id": [
+      "182-1",
+      "82-2"
+    ],
+    "phone_id": 47
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-02-23 19:30:00",
+    "datetime_end": "2025-02-23 19:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "857",
+    "event_id": [
+      "82-3",
+      "178-1"
+    ],
+    "phone_id": 48
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-02-24 10:45:00",
+    "datetime_end": "2025-02-24 10:48:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "867",
+    "event_id": [
+      "183-4"
+    ],
+    "phone_id": 49
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-02-25 09:00:00",
+    "datetime_end": "2025-02-25 09:02:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "883",
+    "event_id": [
+      "186-3"
+    ],
+    "phone_id": 50
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613632229876",
+    "contactName": "Wu Fang",
+    "datetime": "2025-02-26 09:30:00",
+    "datetime_end": "2025-02-26 09:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "898",
+    "event_id": [],
+    "phone_id": 51
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-02-27 07:30:00",
+    "datetime_end": "2025-02-27 07:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "908",
+    "event_id": [],
+    "phone_id": 52
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-03-01 08:45:00",
+    "datetime_end": "2025-03-01 08:50:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "941",
+    "event_id": [],
+    "phone_id": 53
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-03-02 08:50:00",
+    "datetime_end": "2025-03-02 08:54:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "954",
+    "event_id": [],
+    "phone_id": 54
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-03-03 20:00:00",
+    "datetime_end": "2025-03-03 20:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "978",
+    "event_id": [],
+    "phone_id": 55
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-03-04 10:00:00",
+    "datetime_end": "2025-03-04 10:05:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "985",
+    "event_id": [
+      "187-2"
+    ],
+    "phone_id": 56
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-03-05 08:15:00",
+    "datetime_end": "2025-03-05 08:17:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1001",
+    "event_id": [],
+    "phone_id": 57
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-03-06 10:00:00",
+    "datetime_end": "2025-03-06 10:02:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1017",
+    "event_id": [
+      "188-2"
+    ],
+    "phone_id": 58
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895605",
+    "contactName": "Qian Duoduo",
+    "datetime": "2025-03-10 10:00:00",
+    "datetime_end": "2025-03-10 10:02:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1089",
+    "event_id": [],
+    "phone_id": 60
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-03-11 08:00:00",
+    "datetime_end": "2025-03-11 08:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1098",
+    "event_id": [],
+    "phone_id": 61
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-03-12 09:10:00",
+    "datetime_end": "2025-03-12 09:15:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1117",
+    "event_id": [
+      "196-4"
+    ],
+    "phone_id": 62
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-03-15 13:35:00",
+    "datetime_end": "2025-03-15 13:37:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1171",
+    "event_id": [
+      "13-6"
+    ],
+    "phone_id": 63
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-03-16 08:10:00",
+    "datetime_end": "2025-03-16 08:15:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1183",
+    "event_id": [],
+    "phone_id": 64
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-03-17 07:35:00",
+    "datetime_end": "2025-03-17 07:37:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1191",
+    "event_id": [],
+    "phone_id": 65
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-03-18 13:55:00",
+    "datetime_end": "2025-03-18 13:57:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1215",
+    "event_id": [
+      "197-2"
+    ],
+    "phone_id": 66
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-03-20 09:30:00",
+    "datetime_end": "2025-03-20 09:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1244",
+    "event_id": [],
+    "phone_id": 67
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895607",
+    "contactName": "Song Jia",
+    "datetime": "2025-03-21 17:45:00",
+    "datetime_end": "2025-03-21 17:47:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1264",
+    "event_id": [
+      "192-1"
+    ],
+    "phone_id": 68
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-03-22 08:35:00",
+    "datetime_end": "2025-03-22 08:38:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1268",
+    "event_id": [],
+    "phone_id": 69
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895608",
+    "contactName": "Xie Fei",
+    "datetime": "2025-03-22 11:30:00",
+    "datetime_end": "2025-03-22 11:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1271",
+    "event_id": [
+      "194-1"
+    ],
+    "phone_id": 70
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895608",
+    "contactName": "Xie Fei",
+    "datetime": "2025-03-23 11:45:00",
+    "datetime_end": "2025-03-23 11:47:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1281",
+    "event_id": [
+      "194-5"
+    ],
+    "phone_id": 71
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-03-26 18:30:00",
+    "datetime_end": "2025-03-26 18:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1321",
+    "event_id": [],
+    "phone_id": 72
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-03-27 08:10:00",
+    "datetime_end": "2025-03-27 08:12:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1327",
+    "event_id": [],
+    "phone_id": 73
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-03-30 13:15:00",
+    "datetime_end": "2025-03-30 13:20:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1345",
+    "event_id": [
+      "12-7"
+    ],
+    "phone_id": 74
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895605",
+    "contactName": "Qian Duoduo",
+    "datetime": "2025-04-01 10:30:00",
+    "datetime_end": "2025-04-01 10:32:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "1377",
+    "event_id": [],
+    "phone_id": 75
+  },
+  {
+    "type": "call",
+    "phoneNumber": "400-811-1111",
+    "contactName": "SF Express",
+    "datetime": "2025-04-02 09:30:00",
+    "datetime_end": "2025-04-02 09:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1390",
+    "event_id": [],
+    "phone_id": 76
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-04-03 07:20:00",
+    "datetime_end": "2025-04-03 07:22:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1404",
+    "event_id": [],
+    "phone_id": 77
+  },
+  {
+    "type": "call",
+    "contactName": "Li Na",
+    "phoneNumber": "+8613757192034",
+    "datetime": "2025-04-05 08:35:00",
+    "datetime_end": "2025-04-05 08:38:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1438",
+    "event_id": [],
+    "phone_id": 78
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-04-06 08:00:00",
+    "datetime_end": "2025-04-06 08:02:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1449",
+    "event_id": [],
+    "phone_id": 79
+  },
+  {
+    "type": "call",
+    "phoneNumber": "4008001234",
+    "contactName": "Payment platform customer service",
+    "datetime": "2025-04-08 13:46:00",
+    "datetime_end": "2025-04-08 13:49:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1476",
+    "event_id": [
+      "136-1-1"
+    ],
+    "phone_id": 80
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895608",
+    "contactName": "Xie Fei",
+    "datetime": "2025-04-10 12:50:00",
+    "datetime_end": "2025-04-10 12:53:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1511",
+    "event_id": [
+      "21-2"
+    ],
+    "phone_id": 82
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-04-11 15:30:00",
+    "datetime_end": "2025-04-11 15:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1530",
+    "event_id": [
+      "208-1",
+      "208-2",
+      "208-3",
+      "208-4"
+    ],
+    "phone_id": 83
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-04-12 11:15:00",
+    "datetime_end": "2025-04-12 11:17:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "1539",
+    "event_id": [],
+    "phone_id": 84
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613900000001",
+    "contactName": "Huang Lei",
+    "datetime": "2025-04-13 13:35:00",
+    "datetime_end": "2025-04-13 13:37:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1552",
+    "event_id": [
+      "19-4"
+    ],
+    "phone_id": 85
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-04-14 12:10:00",
+    "datetime_end": "2025-04-14 12:13:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "1565",
+    "event_id": [],
+    "phone_id": 86
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "Lawyer Chen",
+    "datetime": "2025-04-15 10:05:00",
+    "datetime_end": "2025-04-15 10:08:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1580",
+    "event_id": [
+      "83-2"
+    ],
+    "phone_id": 87
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-04-16 18:00:00",
+    "datetime_end": "2025-04-16 18:03:20",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1599",
+    "event_id": [
+      "21-4"
+    ],
+    "phone_id": 88
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-04-17 15:30:00",
+    "datetime_end": "2025-04-17 15:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1607",
+    "event_id": [
+      "204-2"
+    ],
+    "phone_id": 89
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-04-18 10:00:00",
+    "datetime_end": "2025-04-18 10:05:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1618",
+    "event_id": [
+      "204-3"
+    ],
+    "phone_id": 90
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857123456",
+    "contactName": "Chen Hao.",
+    "datetime": "2025-04-19 08:30:00",
+    "datetime_end": "2025-04-19 08:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1631",
+    "event_id": [
+      "203-1"
+    ],
+    "phone_id": 91
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "Lin Xiaoyu",
+    "datetime": "2025-04-20 12:30:00",
+    "datetime_end": "2025-04-20 12:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1648",
+    "event_id": [
+      "20-3"
+    ],
+    "phone_id": 92
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-04-21 08:05:00",
+    "datetime_end": "2025-04-21 08:07:30",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "1657",
+    "event_id": [],
+    "phone_id": 93
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895606",
+    "contactName": "Han Dong",
+    "datetime": "2025-04-23 18:30:00",
+    "datetime_end": "2025-04-23 18:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1699",
+    "event_id": [
+      "207-3"
+    ],
+    "phone_id": 94
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-04-24 13:00:00",
+    "datetime_end": "2025-04-24 13:05:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1708",
+    "event_id": [],
+    "phone_id": 95
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-04-25 18:00:00",
+    "datetime_end": "2025-04-25 18:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1722",
+    "event_id": [
+      "211-3",
+      "211-4"
+    ],
+    "phone_id": 96
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-04-26 11:40:00",
+    "datetime_end": "2025-04-26 11:45:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "1735",
+    "event_id": [
+      "18-6",
+      "206-3"
+    ],
+    "phone_id": 97
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-04-27 07:30:00",
+    "datetime_end": "2025-04-27 07:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1746",
+    "event_id": [
+      "206-8"
+    ],
+    "phone_id": 98
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-04-29 07:30:00",
+    "datetime_end": "2025-04-29 07:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1775",
+    "event_id": [],
+    "phone_id": 99
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-04-30 07:40:00",
+    "datetime_end": "2025-04-30 07:42:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1790",
+    "event_id": [],
+    "phone_id": 100
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-05-02 08:45:00",
+    "datetime_end": "2025-05-02 08:48:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1817",
+    "event_id": [],
+    "phone_id": 102
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-05-03 08:15:00",
+    "datetime_end": "2025-05-03 08:20:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1831",
+    "event_id": [],
+    "phone_id": 103
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-05-03 10:30:00",
+    "datetime_end": "2025-05-03 10:32:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "1834",
+    "event_id": [],
+    "phone_id": 104
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-05-04 11:25:00",
+    "datetime_end": "2025-05-04 11:30:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1849",
+    "event_id": [
+      "223-1"
+    ],
+    "phone_id": 105
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-05-06 14:00:00",
+    "datetime_end": "2025-05-06 14:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1886",
+    "event_id": [
+      "223-3"
+    ],
+    "phone_id": 106
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-05-07 08:15:00",
+    "datetime_end": "2025-05-07 08:17:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1899",
+    "event_id": [],
+    "phone_id": 107
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-05-08 12:35:00",
+    "datetime_end": "2025-05-08 12:45:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "1920",
+    "event_id": [],
+    "phone_id": 108
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-05-09 10:00:00",
+    "datetime_end": "2025-05-09 10:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1935",
+    "event_id": [],
+    "phone_id": 109
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895606",
+    "contactName": "Han Dong",
+    "datetime": "2025-05-09 20:30:00",
+    "datetime_end": "2025-05-09 20:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1942",
+    "event_id": [],
+    "phone_id": 110
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757192034",
+    "contactName": "Li Na",
+    "datetime": "2025-05-10 15:40:00",
+    "datetime_end": "2025-05-10 15:43:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1956",
+    "event_id": [],
+    "phone_id": 111
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-05-11 08:20:00",
+    "datetime_end": "2025-05-11 08:22:30",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "1968",
+    "event_id": [
+      "102-5"
+    ],
+    "phone_id": 112
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-05-12 08:20:00",
+    "datetime_end": "2025-05-12 08:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1982",
+    "event_id": [],
+    "phone_id": 113
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613951123456",
+    "contactName": "Feng Xiaoyu",
+    "datetime": "2025-05-13 08:25:00",
+    "datetime_end": "2025-05-13 08:27:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2000",
+    "event_id": [],
+    "phone_id": 114
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895606",
+    "contactName": "Han Dong",
+    "datetime": "2025-05-14 08:30:00",
+    "datetime_end": "2025-05-14 08:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2014",
+    "event_id": [],
+    "phone_id": 115
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-05-15 10:00:00",
+    "datetime_end": "2025-05-15 10:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2029",
+    "event_id": [],
+    "phone_id": 116
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-05-16 08:10:00",
+    "datetime_end": "2025-05-16 08:12:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2043",
+    "event_id": [
+      "24-1"
+    ],
+    "phone_id": 117
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613800001111",
+    "contactName": "Xiao Lin",
+    "datetime": "2025-05-17 17:30:00",
+    "datetime_end": "2025-05-17 17:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2064",
+    "event_id": [
+      "25-1",
+      "25-2"
+    ],
+    "phone_id": 118
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-05-18 14:00:00",
+    "datetime_end": "2025-05-18 14:05:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2076",
+    "event_id": [],
+    "phone_id": 119
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-05-19 08:00:00",
+    "datetime_end": "2025-05-19 08:02:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2085",
+    "event_id": [
+      "218-5-1"
+    ],
+    "phone_id": 120
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-05-19 08:05:00",
+    "datetime_end": "2025-05-19 08:06:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2085",
+    "event_id": [
+      "218-5-1"
+    ],
+    "phone_id": 121
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-05-21 09:00:00",
+    "datetime_end": "2025-05-21 09:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2120",
+    "event_id": [],
+    "phone_id": 122
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-05-22 08:40:00",
+    "datetime_end": "2025-05-22 08:45:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2139",
+    "event_id": [],
+    "phone_id": 123
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895601",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-05-23 19:15:00",
+    "datetime_end": "2025-05-23 19:17:30",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "2164",
+    "event_id": [],
+    "phone_id": 124
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-05-24 17:30:00",
+    "datetime_end": "2025-05-24 17:32:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2175",
+    "event_id": [
+      "218-6-1"
+    ],
+    "phone_id": 125
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613988886666",
+    "contactName": "Master Wang",
+    "datetime": "2025-05-25 13:40:00",
+    "datetime_end": "2025-05-25 13:43:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2185",
+    "event_id": [
+      "104-3"
+    ],
+    "phone_id": 126
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-05-25 18:58:00",
+    "datetime_end": "2025-05-25 19:38:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2190",
+    "event_id": [
+      "215-1"
+    ],
+    "phone_id": 127
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-05-26 09:30:00",
+    "datetime_end": "2025-05-26 09:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2199",
+    "event_id": [
+      "215-2"
+    ],
+    "phone_id": 128
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-05-27 13:00:00",
+    "datetime_end": "2025-05-27 13:08:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2219",
+    "event_id": [
+      "215-3"
+    ],
+    "phone_id": 129
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757192034",
+    "contactName": "Li Na",
+    "datetime": "2025-05-28 16:35:00",
+    "datetime_end": "2025-05-28 16:37:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2240",
+    "event_id": [],
+    "phone_id": 130
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-05-29 12:35:00",
+    "datetime_end": "2025-05-29 12:37:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2249",
+    "event_id": [],
+    "phone_id": 131
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-05-30 11:45:00",
+    "datetime_end": "2025-05-30 11:48:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2266",
+    "event_id": [],
+    "phone_id": 132
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895608",
+    "contactName": "Xie Fei",
+    "datetime": "2025-05-31 15:10:00",
+    "datetime_end": "2025-05-31 15:13:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2288",
+    "event_id": [],
+    "phone_id": 133
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-06-01 10:00:00",
+    "datetime_end": "2025-06-01 10:03:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2303",
+    "event_id": [
+      "104-5"
+    ],
+    "phone_id": 134
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-06-02 08:20:00",
+    "datetime_end": "2025-06-02 08:23:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2310",
+    "event_id": [],
+    "phone_id": 135
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-06-03 09:30:00",
+    "datetime_end": "2025-06-03 09:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2327",
+    "event_id": [],
+    "phone_id": 136
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-06-04 07:35:00",
+    "datetime_end": "2025-06-04 07:37:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2338",
+    "event_id": [],
+    "phone_id": 137
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-06-05 15:00:00",
+    "datetime_end": "2025-06-05 15:05:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2360",
+    "event_id": [],
+    "phone_id": 138
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-06-06 07:30:00",
+    "datetime_end": "2025-06-06 07:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2367",
+    "event_id": [],
+    "phone_id": 139
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613900000001",
+    "contactName": "Xiao Lin",
+    "datetime": "2025-06-08 07:55:00",
+    "datetime_end": "2025-06-08 07:57:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "2395",
+    "event_id": [
+      "30-2-5",
+      "30-2-6"
+    ],
+    "phone_id": 141
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-06-09 10:55:00",
+    "datetime_end": "2025-06-09 10:58:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2410",
+    "event_id": [
+      "232-1"
+    ],
+    "phone_id": 142
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Song Jia",
+    "datetime": "2025-06-11 07:20:00",
+    "datetime_end": "2025-06-11 07:25:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2438",
+    "event_id": [],
+    "phone_id": 143
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895609",
+    "contactName": "Xu Feng",
+    "datetime": "2025-06-12 19:30:00",
+    "datetime_end": "2025-06-12 19:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2462",
+    "event_id": [
+      "230-1"
+    ],
+    "phone_id": 144
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895606",
+    "contactName": "Han Dong",
+    "datetime": "2025-06-13 19:00:00",
+    "datetime_end": "2025-06-13 19:02:15",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2473",
+    "event_id": [
+      "229-1"
+    ],
+    "phone_id": 145
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-06-14 14:00:00",
+    "datetime_end": "2025-06-14 14:05:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2481",
+    "event_id": [
+      "85-4",
+      "85-2",
+      "85-3"
+    ],
+    "phone_id": 146
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895607",
+    "contactName": "Song Jia",
+    "datetime": "2025-06-15 16:10:00",
+    "datetime_end": "2025-06-15 16:13:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2498",
+    "event_id": [
+      "32-5"
+    ],
+    "phone_id": 147
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-06-17 07:35:00",
+    "datetime_end": "2025-06-17 07:37:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2522",
+    "event_id": [
+      "226-4-2"
+    ],
+    "phone_id": 148
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "Community contracted doctor",
+    "datetime": "2025-06-19 07:10:00",
+    "datetime_end": "2025-06-19 07:12:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2545",
+    "event_id": [
+      "33-2",
+      "227-1",
+      "231-1"
+    ],
+    "phone_id": 149
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895607",
+    "contactName": "Song Jia",
+    "datetime": "2025-06-20 17:30:00",
+    "datetime_end": "2025-06-20 17:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2568",
+    "event_id": [
+      "130-1"
+    ],
+    "phone_id": 150
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-06-22 09:30:00",
+    "datetime_end": "2025-06-22 09:31:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2586",
+    "event_id": [
+      "30-3-4"
+    ],
+    "phone_id": 151
+  },
+  {
+    "type": "call",
+    "phoneNumber": "4008000000",
+    "contactName": "Ping An Health Insurance Customer Service",
+    "datetime": "2025-06-23 12:20:00",
+    "datetime_end": "2025-06-23 12:21:30",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "2605",
+    "event_id": [
+      "231-2"
+    ],
+    "phone_id": 152
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-06-24 09:15:00",
+    "datetime_end": "2025-06-24 09:18:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2615",
+    "event_id": [
+      "226-4-5"
+    ],
+    "phone_id": 153
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895611",
+    "contactName": "Zhu Xiuying",
+    "datetime": "2025-06-25 20:30:00",
+    "datetime_end": "2025-06-25 20:34:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "2640",
+    "event_id": [
+      "154-1",
+      "227-3"
+    ],
+    "phone_id": 154
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-06-26 09:30:00",
+    "datetime_end": "2025-06-26 09:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2647",
+    "event_id": [],
+    "phone_id": 155
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895606",
+    "contactName": "Han Dong",
+    "datetime": "2025-06-26 17:40:00",
+    "datetime_end": "2025-06-26 17:41:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2654",
+    "event_id": [],
+    "phone_id": 156
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-06-27 08:40:00",
+    "datetime_end": "2025-06-27 08:43:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2662",
+    "event_id": [],
+    "phone_id": 157
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-06-29 08:35:00",
+    "datetime_end": "2025-06-29 08:40:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2692",
+    "event_id": [],
+    "phone_id": 158
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wu Fang",
+    "datetime": "2025-06-30 11:00:00",
+    "datetime_end": "2025-06-30 11:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2711",
+    "event_id": [],
+    "phone_id": 159
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-07-01 10:35:00",
+    "datetime_end": "2025-07-01 10:38:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "2732",
+    "event_id": [],
+    "phone_id": 160
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-07-02 08:10:00",
+    "datetime_end": "2025-07-02 08:12:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2746",
+    "event_id": [
+      "155-1-2"
+    ],
+    "phone_id": 161
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-07-03 09:00:00",
+    "datetime_end": "2025-07-03 09:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2761",
+    "event_id": [],
+    "phone_id": 162
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-07-04 08:30:00",
+    "datetime_end": "2025-07-04 08:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2771",
+    "event_id": [],
+    "phone_id": 163
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-07-05 12:20:00",
+    "datetime_end": "2025-07-05 12:22:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2791",
+    "event_id": [
+      "240-1"
+    ],
+    "phone_id": 164
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-07-06 12:10:00",
+    "datetime_end": "2025-07-06 12:15:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2801",
+    "event_id": [],
+    "phone_id": 165
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-07-07 09:30:00",
+    "datetime_end": "2025-07-07 09:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2813",
+    "event_id": [
+      "236-1"
+    ],
+    "phone_id": 166
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-07-08 11:35:00",
+    "datetime_end": "2025-07-08 11:37:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2829",
+    "event_id": [
+      "160-1-5"
+    ],
+    "phone_id": 167
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-07-09 11:00:00",
+    "datetime_end": "2025-07-09 11:05:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2846",
+    "event_id": [
+      "236-3"
+    ],
+    "phone_id": 168
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-07-09 18:40:00",
+    "datetime_end": "2025-07-09 18:42:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2852",
+    "event_id": [],
+    "phone_id": 169
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613900000000",
+    "contactName": "Deppon Logistics",
+    "datetime": "2025-07-10 12:50:00",
+    "datetime_end": "2025-07-10 12:52:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2865",
+    "event_id": [
+      "236-4"
+    ],
+    "phone_id": 170
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-07-11 09:30:00",
+    "datetime_end": "2025-07-11 09:32:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2878",
+    "event_id": [],
+    "phone_id": 171
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-07-12 08:45:00",
+    "datetime_end": "2025-07-12 08:46:30",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "2889",
+    "event_id": [
+      "34-2-1"
+    ],
+    "phone_id": 172
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-07-15 08:30:00",
+    "datetime_end": "2025-07-15 08:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2932",
+    "event_id": [],
+    "phone_id": 173
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-07-16 15:10:00",
+    "datetime_end": "2025-07-16 15:13:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "2951",
+    "event_id": [
+      "40-4"
+    ],
+    "phone_id": 174
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "Lao Li",
+    "datetime": "2025-07-17 10:45:00",
+    "datetime_end": "2025-07-17 10:48:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2965",
+    "event_id": [
+      "40-5"
+    ],
+    "phone_id": 175
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-07-18 16:45:00",
+    "datetime_end": "2025-07-18 16:47:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2988",
+    "event_id": [
+      "40-6"
+    ],
+    "phone_id": 176
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-07-19 07:00:00",
+    "datetime_end": "2025-07-19 07:02:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3000",
+    "event_id": [
+      "34-3-1"
+    ],
+    "phone_id": 177
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-07-20 14:30:00",
+    "datetime_end": "2025-07-20 14:35:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "3017",
+    "event_id": [
+      "34-3-2"
+    ],
+    "phone_id": 178
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895608",
+    "contactName": "Xie Fei",
+    "datetime": "2025-07-21 11:45:00",
+    "datetime_end": "2025-07-21 11:48:30",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "3028",
+    "event_id": [
+      "38-1"
+    ],
+    "phone_id": 179
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895608",
+    "contactName": "Xie Fei",
+    "datetime": "2025-07-22 21:00:00",
+    "datetime_end": "2025-07-22 21:40:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3052",
+    "event_id": [
+      "38-2"
+    ],
+    "phone_id": 180
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895606",
+    "contactName": "Han Dong",
+    "datetime": "2025-07-23 08:30:00",
+    "datetime_end": "2025-07-23 08:32:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3062",
+    "event_id": [],
+    "phone_id": 181
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-07-24 08:00:00",
+    "datetime_end": "2025-07-24 08:02:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3074",
+    "event_id": [
+      "86-1-3"
+    ],
+    "phone_id": 182
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613900001111",
+    "contactName": "Lao Zhou",
+    "datetime": "2025-07-26 10:15:00",
+    "datetime_end": "2025-07-26 10:21:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3106",
+    "event_id": [
+      "245-3"
+    ],
+    "phone_id": 184
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-07-27 16:30:00",
+    "datetime_end": "2025-07-27 16:33:45",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3124",
+    "event_id": [
+      "38-4"
+    ],
+    "phone_id": 185
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613827126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-07-30 07:40:00",
+    "datetime_end": "2025-07-30 07:41:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3161",
+    "event_id": [
+      "161-1-4"
+    ],
+    "phone_id": 186
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857167654",
+    "contactName": "Gao Yuan",
+    "datetime": "2025-07-31 13:15:00",
+    "datetime_end": "2025-07-31 13:16:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3184",
+    "event_id": [
+      "86-4"
+    ],
+    "phone_id": 187
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-08-01 08:05:00",
+    "datetime_end": "2025-08-01 08:07:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3197",
+    "event_id": [
+      "86-5"
+    ],
+    "phone_id": 188
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757190987",
+    "contactName": "Yang Fan",
+    "datetime": "2025-08-03 14:05:00",
+    "datetime_end": "2025-08-03 14:08:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3236",
+    "event_id": [
+      "41-2"
+    ],
+    "phone_id": 190
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-08-05 16:20:00",
+    "datetime_end": "2025-08-05 16:23:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3253",
+    "event_id": [
+      "42-1"
+    ],
+    "phone_id": 191
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-08-06 15:10:00",
+    "datetime_end": "2025-08-06 15:13:00",
+    "direction": 2,
+    "call_result": "Connected",
+    "daily_event_id": "3266",
+    "event_id": [
+      "161-2-1"
+    ],
+    "phone_id": 192
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-08-07 08:00:00",
+    "datetime_end": "2025-08-07 08:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3274",
+    "event_id": [],
+    "phone_id": 193
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-08-08 07:30:00",
+    "datetime_end": "2025-08-08 07:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3290",
+    "event_id": [],
+    "phone_id": 194
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-08-09 12:35:00",
+    "datetime_end": "2025-08-09 12:37:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3313",
+    "event_id": [],
+    "phone_id": 195
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-08-10 14:30:00",
+    "datetime_end": "2025-08-10 14:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3328",
+    "event_id": [
+      "42-2"
+    ],
+    "phone_id": 196
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-08-11 08:30:00",
+    "datetime_end": "2025-08-11 08:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3338",
+    "event_id": [
+      "42-3"
+    ],
+    "phone_id": 197
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-08-12 08:20:00",
+    "datetime_end": "2025-08-12 08:25:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3358",
+    "event_id": [],
+    "phone_id": 198
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-08-13 13:30:00",
+    "datetime_end": "2025-08-13 14:30:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3379",
+    "event_id": [
+      "252-2"
+    ],
+    "phone_id": 199
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-08-14 08:15:00",
+    "datetime_end": "2025-08-14 08:18:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3391",
+    "event_id": [],
+    "phone_id": 200
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895613",
+    "contactName": "Brother Zhang",
+    "datetime": "2025-08-17 08:20:00",
+    "datetime_end": "2025-08-17 08:21:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "3433",
+    "event_id": [
+      "87-2"
+    ],
+    "phone_id": 202
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13757192034",
+    "contactName": "Li Na",
+    "datetime": "2025-08-18 11:30:00",
+    "datetime_end": "2025-08-18 11:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3450",
+    "event_id": [],
+    "phone_id": 203
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-08-19 17:15:00",
+    "datetime_end": "2025-08-19 17:17:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3469",
+    "event_id": [
+      "249-6"
+    ],
+    "phone_id": 204
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-08-20 09:30:00",
+    "datetime_end": "2025-08-20 09:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3479",
+    "event_id": [
+      "249-7"
+    ],
+    "phone_id": 205
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-08-22 17:15:00",
+    "datetime_end": "2025-08-22 17:17:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3515",
+    "event_id": [
+      "46-1",
+      "46-2"
+    ],
+    "phone_id": 207
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895608",
+    "contactName": "Xie Fei",
+    "datetime": "2025-08-23 11:15:00",
+    "datetime_end": "2025-08-23 11:17:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3526",
+    "event_id": [
+      "247-2",
+      "247-3"
+    ],
+    "phone_id": 208
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-08-24 08:35:00",
+    "datetime_end": "2025-08-24 08:38:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3542",
+    "event_id": [],
+    "phone_id": 209
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613632229876",
+    "contactName": "Wu Fang",
+    "datetime": "2025-08-25 09:30:00",
+    "datetime_end": "2025-08-25 09:32:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3556",
+    "event_id": [
+      "47-1"
+    ],
+    "phone_id": 210
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-08-27 09:30:00",
+    "datetime_end": "2025-08-27 09:32:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "3584",
+    "event_id": [],
+    "phone_id": 211
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-08-29 06:30:00",
+    "datetime_end": "2025-08-29 06:32:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3612",
+    "event_id": [],
+    "phone_id": 212
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-08-30 10:05:00",
+    "datetime_end": "2025-08-30 10:06:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3622",
+    "event_id": [
+      "162-1",
+      "162-2"
+    ],
+    "phone_id": 213
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-08-31 08:05:00",
+    "datetime_end": "2025-08-31 08:07:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3633",
+    "event_id": [],
+    "phone_id": 214
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-09-01 08:20:00",
+    "datetime_end": "2025-09-01 08:22:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3646",
+    "event_id": [
+      "259-3"
+    ],
+    "phone_id": 215
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-09-02 09:45:00",
+    "datetime_end": "2025-09-02 09:47:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3660",
+    "event_id": [
+      "111-2"
+    ],
+    "phone_id": 216
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-09-03 09:00:00",
+    "datetime_end": "2025-09-03 09:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3678",
+    "event_id": [
+      "259-5"
+    ],
+    "phone_id": 217
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-09-03 16:00:00",
+    "datetime_end": "2025-09-03 16:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3684",
+    "event_id": [
+      "259-5"
+    ],
+    "phone_id": 218
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613812345678",
+    "contactName": "Xiao Lin",
+    "datetime": "2025-09-04 08:35:00",
+    "datetime_end": "2025-09-04 08:37:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3694",
+    "event_id": [
+      "259-5"
+    ],
+    "phone_id": 219
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-09-05 08:00:00",
+    "datetime_end": "2025-09-05 08:02:45",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3708",
+    "event_id": [
+      "259-5"
+    ],
+    "phone_id": 220
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757192034",
+    "contactName": "Li Na",
+    "datetime": "2025-09-06 08:50:00",
+    "datetime_end": "2025-09-06 08:55:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3723",
+    "event_id": [
+      "48-1",
+      "48-2",
+      "48-3"
+    ],
+    "phone_id": 221
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-09-07 09:30:00",
+    "datetime_end": "2025-09-07 09:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3739",
+    "event_id": [
+      "259-6"
+    ],
+    "phone_id": 222
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613900000001",
+    "contactName": "Xiao Lin",
+    "datetime": "2025-09-08 15:00:00",
+    "datetime_end": "2025-09-08 15:02:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3758",
+    "event_id": [
+      "259-7"
+    ],
+    "phone_id": 223
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-09-09 07:40:00",
+    "datetime_end": "2025-09-09 07:42:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "3766",
+    "event_id": [],
+    "phone_id": 224
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857167654",
+    "contactName": "Gao Yuan",
+    "datetime": "2025-09-11 21:00:00",
+    "datetime_end": "2025-09-11 21:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3804",
+    "event_id": [
+      "256-2-4"
+    ],
+    "phone_id": 225
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613800123456",
+    "contactName": "Xiao Lin",
+    "datetime": "2025-09-12 08:30:00",
+    "datetime_end": "2025-09-12 08:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3811",
+    "event_id": [],
+    "phone_id": 226
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-09-14 11:30:00",
+    "datetime_end": "2025-09-14 11:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3845",
+    "event_id": [
+      "49-5"
+    ],
+    "phone_id": 227
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613632229876",
+    "contactName": "Wu Fang",
+    "datetime": "2025-09-15 08:20:00",
+    "datetime_end": "2025-09-15 08:22:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3856",
+    "event_id": [
+      "50-2",
+      "50-3",
+      "50-4"
+    ],
+    "phone_id": 228
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-09-16 08:20:00",
+    "datetime_end": "2025-09-16 08:23:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3866",
+    "event_id": [
+      "51-1"
+    ],
+    "phone_id": 229
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-09-18 09:30:00",
+    "datetime_end": "2025-09-18 09:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3895",
+    "event_id": [],
+    "phone_id": 230
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-09-19 17:30:00",
+    "datetime_end": "2025-09-19 17:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3911",
+    "event_id": [
+      "261-2"
+    ],
+    "phone_id": 231
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-09-20 08:35:00",
+    "datetime_end": "2025-09-20 08:40:15",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "3919",
+    "event_id": [
+      "261-4"
+    ],
+    "phone_id": 232
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895608",
+    "contactName": "Xie Fei",
+    "datetime": "2025-09-21 08:55:00",
+    "datetime_end": "2025-09-21 08:56:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3933",
+    "event_id": [
+      "117-2"
+    ],
+    "phone_id": 233
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613912345678",
+    "contactName": "Xiao Lin",
+    "datetime": "2025-09-22 09:40:00",
+    "datetime_end": "2025-09-22 09:42:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3952",
+    "event_id": [
+      "262-5"
+    ],
+    "phone_id": 234
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-09-23 07:20:00",
+    "datetime_end": "2025-09-23 07:24:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3968",
+    "event_id": [
+      "54-4-3"
+    ],
+    "phone_id": 235
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-09-24 07:00:00",
+    "datetime_end": "2025-09-24 07:03:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "3986",
+    "event_id": [
+      "114-3",
+      "115-1"
+    ],
+    "phone_id": 236
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-09-25 21:30:00",
+    "datetime_end": "2025-09-25 21:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4017",
+    "event_id": [],
+    "phone_id": 237
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-09-26 12:30:00",
+    "datetime_end": "2025-09-26 12:32:10",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4025",
+    "event_id": [],
+    "phone_id": 238
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857129876",
+    "contactName": "Wang Lei",
+    "datetime": "2025-09-28 12:00:00",
+    "datetime_end": "2025-09-28 12:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4049",
+    "event_id": [
+      "138-1"
+    ],
+    "phone_id": 239
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895611",
+    "contactName": "Zhu Xiuying",
+    "datetime": "2025-09-29 08:05:00",
+    "datetime_end": "2025-09-29 08:07:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4062",
+    "event_id": [],
+    "phone_id": 240
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-09-30 07:35:00",
+    "datetime_end": "2025-09-30 07:36:30",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "4082",
+    "event_id": [],
+    "phone_id": 241
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-10-01 10:30:00",
+    "datetime_end": "2025-10-01 10:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4098",
+    "event_id": [
+      "164-1-1"
+    ],
+    "phone_id": 242
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-10-02 08:00:00",
+    "datetime_end": "2025-10-02 08:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4109",
+    "event_id": [],
+    "phone_id": 244
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895605",
+    "contactName": "Qian Duoduo",
+    "datetime": "2025-10-04 09:45:00",
+    "datetime_end": "2025-10-04 09:46:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4141",
+    "event_id": [
+      "57-1-4",
+      "164-2-1",
+      "55-6"
+    ],
+    "phone_id": 245
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-10-05 10:30:00",
+    "datetime_end": "2025-10-05 10:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4153",
+    "event_id": [
+      "164-1-5"
+    ],
+    "phone_id": 246
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-10-06 12:45:00",
+    "datetime_end": "2025-10-06 12:46:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4171",
+    "event_id": [
+      "263-1",
+      "263-2"
+    ],
+    "phone_id": 247
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895603",
+    "contactName": "Zhao Min",
+    "datetime": "2025-10-07 08:30:00",
+    "datetime_end": "2025-10-07 08:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4183",
+    "event_id": [],
+    "phone_id": 248
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-10-09 22:00:00",
+    "datetime_end": "2025-10-09 22:02:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4222",
+    "event_id": [
+      "63-2-6"
+    ],
+    "phone_id": 249
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-10-10 12:40:00",
+    "datetime_end": "2025-10-10 12:43:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "4230",
+    "event_id": [
+      "58-4",
+      "58-3"
+    ],
+    "phone_id": 250
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-10-11 08:20:00",
+    "datetime_end": "2025-10-11 08:22:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4243",
+    "event_id": [],
+    "phone_id": 251
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-10-12 08:45:00",
+    "datetime_end": "2025-10-12 08:47:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "4263",
+    "event_id": [
+      "265-2"
+    ],
+    "phone_id": 252
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-10-13 16:30:00",
+    "datetime_end": "2025-10-13 16:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4285",
+    "event_id": [
+      "266-1"
+    ],
+    "phone_id": 253
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-10-14 12:15:00",
+    "datetime_end": "2025-10-14 12:18:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "4299",
+    "event_id": [],
+    "phone_id": 254
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757192034",
+    "contactName": "Li Na",
+    "datetime": "2025-10-15 11:45:00",
+    "datetime_end": "2025-10-15 11:48:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4313",
+    "event_id": [],
+    "phone_id": 255
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13632659874",
+    "contactName": "Liu Yang",
+    "datetime": "2025-10-16 08:30:00",
+    "datetime_end": "2025-10-16 08:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4325",
+    "event_id": [
+      "60-2"
+    ],
+    "phone_id": 256
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-10-18 10:30:00",
+    "datetime_end": "2025-10-18 10:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4360",
+    "event_id": [
+      "90-7"
+    ],
+    "phone_id": 257
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "Chen Yu",
+    "datetime": "2025-10-20 20:00:00",
+    "datetime_end": "2025-10-20 20:05:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4406",
+    "event_id": [
+      "60-4"
+    ],
+    "phone_id": 258
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-10-21 09:30:00",
+    "datetime_end": "2025-10-21 09:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4412",
+    "event_id": [],
+    "phone_id": 259
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-10-24 20:12:00",
+    "datetime_end": "2025-10-24 20:14:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4450",
+    "event_id": [],
+    "phone_id": 260
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895605",
+    "contactName": "Qian Duoduo",
+    "datetime": "2025-10-25 08:30:00",
+    "datetime_end": "2025-10-25 08:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4458",
+    "event_id": [
+      "64-1-1"
+    ],
+    "phone_id": 261
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613901234567",
+    "contactName": "Chongming Dongtan Ecological Camp Administrator",
+    "datetime": "2025-10-26 14:30:00",
+    "datetime_end": "2025-10-26 14:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4480",
+    "event_id": [
+      "164-3-1"
+    ],
+    "phone_id": 262
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13632229876",
+    "contactName": "Wu Fang",
+    "datetime": "2025-10-27 10:35:00",
+    "datetime_end": "2025-10-27 10:40:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4491",
+    "event_id": [
+      "62-5"
+    ],
+    "phone_id": 263
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757192034",
+    "contactName": "Li Na",
+    "datetime": "2025-10-28 08:10:00",
+    "datetime_end": "2025-10-28 08:12:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4502",
+    "event_id": [],
+    "phone_id": 264
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-10-29 08:00:00",
+    "datetime_end": "2025-10-29 08:05:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4513",
+    "event_id": [
+      "63-4-3"
+    ],
+    "phone_id": 265
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-10-30 08:30:00",
+    "datetime_end": "2025-10-30 08:32:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "4528",
+    "event_id": [],
+    "phone_id": 266
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895605",
+    "contactName": "Qian Duoduo",
+    "datetime": "2025-10-31 21:30:00",
+    "datetime_end": "2025-10-31 21:38:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4548",
+    "event_id": [
+      "64-1-5"
+    ],
+    "phone_id": 267
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-11-03 10:45:00",
+    "datetime_end": "2025-11-03 10:50:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4580",
+    "event_id": [
+      "164-3-3"
+    ],
+    "phone_id": 268
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613900000001",
+    "contactName": "Manager Liu",
+    "datetime": "2025-11-04 14:00:00",
+    "datetime_end": "2025-11-04 15:00:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4600",
+    "event_id": [
+      "274-2",
+      "64-4-2",
+      "274-3"
+    ],
+    "phone_id": 269
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8615801234567",
+    "contactName": "Ms. Zhang",
+    "datetime": "2025-11-05 11:00:00",
+    "datetime_end": "2025-11-05 11:02:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4613",
+    "event_id": [],
+    "phone_id": 270
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757192034",
+    "contactName": "Li Na",
+    "datetime": "2025-11-06 11:40:00",
+    "datetime_end": "2025-11-06 11:44:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4634",
+    "event_id": [
+      "164-3-2"
+    ],
+    "phone_id": 271
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-11-07 10:00:00",
+    "datetime_end": "2025-11-07 10:03:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4646",
+    "event_id": [],
+    "phone_id": 272
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895608",
+    "contactName": "Xie Fei",
+    "datetime": "2025-11-07 12:00:00",
+    "datetime_end": "2025-11-07 12:04:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "4647",
+    "event_id": [],
+    "phone_id": 273
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-11-08 15:20:00",
+    "datetime_end": "2025-11-08 15:23:15",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4663",
+    "event_id": [],
+    "phone_id": 274
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895608",
+    "contactName": "Xie Fei",
+    "datetime": "2025-11-09 14:20:00",
+    "datetime_end": "2025-11-09 14:23:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4674",
+    "event_id": [
+      "118-2"
+    ],
+    "phone_id": 275
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-11-11 00:15:00",
+    "datetime_end": "2025-11-11 00:25:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "4699",
+    "event_id": [],
+    "phone_id": 276
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757192034",
+    "contactName": "Li Na",
+    "datetime": "2025-11-12 20:30:00",
+    "datetime_end": "2025-11-12 20:36:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4721",
+    "event_id": [
+      "65-2"
+    ],
+    "phone_id": 277
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-11-13 10:30:00",
+    "datetime_end": "2025-11-13 10:32:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "4726",
+    "event_id": [
+      "65-3"
+    ],
+    "phone_id": 278
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Chen Lei",
+    "datetime": "2025-11-14 13:10:00",
+    "datetime_end": "2025-11-14 13:30:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4746",
+    "event_id": [
+      "65-4"
+    ],
+    "phone_id": 279
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-11-16 12:50:00",
+    "datetime_end": "2025-11-16 12:55:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4776",
+    "event_id": [
+      "110-3-1",
+      "164-2-1"
+    ],
+    "phone_id": 280
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895613",
+    "contactName": "Mr. Lin",
+    "datetime": "2025-11-17 13:20:00",
+    "datetime_end": "2025-11-17 13:23:20",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "4792",
+    "event_id": [
+      "110-3-2",
+      "164-2-1"
+    ],
+    "phone_id": 281
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-11-18 09:00:00",
+    "datetime_end": "2025-11-18 09:10:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4802",
+    "event_id": [
+      "65-7"
+    ],
+    "phone_id": 282
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-11-19 08:20:00",
+    "datetime_end": "2025-11-19 08:22:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4814",
+    "event_id": [
+      "110-3-4"
+    ],
+    "phone_id": 283
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895605",
+    "contactName": "Qian Duoduo",
+    "datetime": "2025-11-20 13:30:00",
+    "datetime_end": "2025-11-20 13:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4832",
+    "event_id": [
+      "110-3-5"
+    ],
+    "phone_id": 284
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895605",
+    "contactName": "Qian Duoduo",
+    "datetime": "2025-11-21 14:30:00",
+    "datetime_end": "2025-11-21 14:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4850",
+    "event_id": [
+      "164-2-1"
+    ],
+    "phone_id": 285
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613800138000",
+    "contactName": "Xiao Li",
+    "datetime": "2025-11-22 07:45:00",
+    "datetime_end": "2025-11-22 07:46:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4861",
+    "event_id": [],
+    "phone_id": 286
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895603",
+    "contactName": "Zhao Min",
+    "datetime": "2025-11-23 09:00:00",
+    "datetime_end": "2025-11-23 09:03:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4874",
+    "event_id": [],
+    "phone_id": 287
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-11-24 09:30:00",
+    "datetime_end": "2025-11-24 09:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4890",
+    "event_id": [
+      "272-2"
+    ],
+    "phone_id": 288
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-11-26 12:30:00",
+    "datetime_end": "2025-11-26 12:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4926",
+    "event_id": [],
+    "phone_id": 289
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-11-27 16:30:00",
+    "datetime_end": "2025-11-27 16:33:15",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "4944",
+    "event_id": [],
+    "phone_id": 290
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-11-27 20:45:00",
+    "datetime_end": "2025-11-27 20:48:20",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4947",
+    "event_id": [],
+    "phone_id": 291
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895606",
+    "contactName": "Han Dong",
+    "datetime": "2025-11-28 08:05:00",
+    "datetime_end": "2025-11-28 08:07:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4950",
+    "event_id": [],
+    "phone_id": 292
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-11-29 21:10:00",
+    "datetime_end": "2025-11-29 21:15:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4979",
+    "event_id": [
+      "123-1",
+      "122-2"
+    ],
+    "phone_id": 293
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-11-30 08:05:00",
+    "datetime_end": "2025-11-30 08:07:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4983",
+    "event_id": [],
+    "phone_id": 294
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757192034",
+    "contactName": "Li Na",
+    "datetime": "2025-12-02 07:45:00",
+    "datetime_end": "2025-12-02 07:47:30",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "4992",
+    "event_id": [
+      "70-3"
+    ],
+    "phone_id": 295
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-12-03 08:20:00",
+    "datetime_end": "2025-12-03 08:25:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5009",
+    "event_id": [],
+    "phone_id": 296
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-12-04 10:30:00",
+    "datetime_end": "2025-12-04 10:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5026",
+    "event_id": [],
+    "phone_id": 297
+  },
+  {
+    "type": "call",
+    "phoneNumber": "400-800-8888",
+    "contactName": "Arrail Dental",
+    "datetime": "2025-12-05 10:55:00",
+    "datetime_end": "2025-12-05 10:57:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5041",
+    "event_id": [
+      "92-2",
+      "71-2-1"
+    ],
+    "phone_id": 298
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895601",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-12-06 08:10:00",
+    "datetime_end": "2025-12-06 08:12:30",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "5056",
+    "event_id": [
+      "71-2-2",
+      "92-4-1"
+    ],
+    "phone_id": 299
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895605",
+    "contactName": "Qian Duoduo",
+    "datetime": "2025-12-08 08:30:00",
+    "datetime_end": "2025-12-08 08:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5096",
+    "event_id": [
+      "92-4-3"
+    ],
+    "phone_id": 300
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895612",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-12-09 13:15:00",
+    "datetime_end": "2025-12-09 13:30:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "5118",
+    "event_id": [
+      "92-4-4"
+    ],
+    "phone_id": 301
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-12-10 15:30:00",
+    "datetime_end": "2025-12-10 15:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5133",
+    "event_id": [
+      "72-1"
+    ],
+    "phone_id": 302
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-12-11 15:55:00",
+    "datetime_end": "2025-12-11 15:58:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5151",
+    "event_id": [
+      "72-2",
+      "72-3"
+    ],
+    "phone_id": 303
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13757190987",
+    "contactName": "Yang Fan",
+    "datetime": "2025-12-12 10:00:00",
+    "datetime_end": "2025-12-12 10:05:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5160",
+    "event_id": [
+      "73-1"
+    ],
+    "phone_id": 304
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613681792345",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-12-13 10:00:00",
+    "datetime_end": "2025-12-13 10:03:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "5173",
+    "event_id": [
+      "281-1-2"
+    ],
+    "phone_id": 305
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-12-14 19:00:00",
+    "datetime_end": "2025-12-14 19:05:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5198",
+    "event_id": [
+      "72-6"
+    ],
+    "phone_id": 306
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613857126543",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-12-15 11:00:00",
+    "datetime_end": "2025-12-15 12:10:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5207",
+    "event_id": [
+      "283-2",
+      "283-3"
+    ],
+    "phone_id": 307
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13757190987",
+    "contactName": "Yang Fan",
+    "datetime": "2025-12-16 15:00:00",
+    "datetime_end": "2025-12-16 15:05:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5228",
+    "event_id": [
+      "73-2-4"
+    ],
+    "phone_id": 308
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895604",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-12-17 10:30:00",
+    "datetime_end": "2025-12-17 10:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5240",
+    "event_id": [
+      "73-2-5"
+    ],
+    "phone_id": 309
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13917895603",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-12-19 08:45:00",
+    "datetime_end": "2025-12-19 08:48:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5273",
+    "event_id": [
+      "281-3"
+    ],
+    "phone_id": 310
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613632659874",
+    "contactName": "Liu Yang",
+    "datetime": "2025-12-21 19:20:00",
+    "datetime_end": "2025-12-21 19:25:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5310",
+    "event_id": [
+      "76-3",
+      "76-4"
+    ],
+    "phone_id": 311
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13757192034",
+    "contactName": "Li Na",
+    "datetime": "2025-12-24 18:05:00",
+    "datetime_end": "2025-12-24 18:08:30",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5355",
+    "event_id": [
+      "98-5",
+      "98-4"
+    ],
+    "phone_id": 312
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895602",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-12-26 18:00:00",
+    "datetime_end": "2025-12-26 18:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5389",
+    "event_id": [
+      "77-1"
+    ],
+    "phone_id": 313
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757192034",
+    "contactName": "Li Na",
+    "datetime": "2025-12-26 19:20:00",
+    "datetime_end": "2025-12-26 19:25:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5391",
+    "event_id": [
+      "77-1"
+    ],
+    "phone_id": 314
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757192034",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-12-27 08:00:00",
+    "datetime_end": "2025-12-27 08:00:40",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "5400",
+    "event_id": [
+      "77-2"
+    ],
+    "phone_id": 315
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13681792345",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-12-28 12:30:00",
+    "datetime_end": "2025-12-28 12:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5413",
+    "event_id": [
+      "78-3"
+    ],
+    "phone_id": 316
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757192034",
+    "contactName": "Li Na",
+    "datetime": "2025-12-29 18:30:00",
+    "datetime_end": "2025-12-29 18:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5433",
+    "event_id": [
+      "77-6"
+    ],
+    "phone_id": 317
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613917895605",
+    "contactName": "Qian Duoduo",
+    "datetime": "2025-12-30 09:30:00",
+    "datetime_end": "2025-12-30 09:33:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5444",
+    "event_id": [],
+    "phone_id": 318
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757190987",
+    "contactName": "Yang Fan",
+    "datetime": "2025-12-31 07:50:00",
+    "datetime_end": "2025-12-31 07:52:30",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "5456",
+    "event_id": [],
+    "phone_id": 319
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-01-21 09:15:00",
+    "datetime_end": "2025-01-21 09:19:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "313",
+    "event_id": [],
+    "phone_id": 320
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "Mother",
+    "datetime": "2025-03-09 13:35:00",
+    "datetime_end": "2025-03-09 13:37:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1073",
+    "event_id": [],
+    "phone_id": 322
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-05-10 20:00:00",
+    "datetime_end": "2025-05-10 20:30:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1771",
+    "event_id": [],
+    "phone_id": 323
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13912345678",
+    "contactName": "Liu Yang",
+    "datetime": "2025-02-20 09:00:00",
+    "datetime_end": "2025-02-20 09:45:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "800",
+    "event_id": [],
+    "phone_id": 324
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13845678901",
+    "contactName": "Qin Lang",
+    "datetime": "2025-04-28 19:30:00",
+    "datetime_end": "2025-04-28 21:20:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1771",
+    "event_id": [],
+    "phone_id": 325
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "Teacher Chen",
+    "datetime": "2025-11-18 18:45:00",
+    "datetime_end": "2025-11-18 18:53:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4810",
+    "event_id": [],
+    "phone_id": 326
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800000002",
+    "contactName": "Zhao Min",
+    "datetime": "2025-04-26 06:50:00",
+    "datetime_end": "2025-04-26 06:51:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1731",
+    "event_id": [],
+    "phone_id": 327
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "C",
+    "datetime": "2025-01-21 16:20:00",
+    "datetime_end": "2025-01-21 16:50:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "320",
+    "event_id": [],
+    "phone_id": 328
+  },
+  {
+    "type": "call",
+    "phoneNumber": "138****5678",
+    "contactName": "Client Ms. Wang",
+    "datetime": "2025-09-22 08:30:00",
+    "datetime_end": "2025-09-22 08:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3950",
+    "event_id": [],
+    "phone_id": 329
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Xiao Lin",
+    "datetime": "2025-07-29 10:20:00",
+    "datetime_end": "2025-07-29 10:23:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3149",
+    "event_id": [],
+    "phone_id": 330
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800000003",
+    "contactName": "C",
+    "datetime": "2025-01-21 16:20:00",
+    "datetime_end": "2025-01-21 16:50:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "320",
+    "event_id": [],
+    "phone_id": 331
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800001234",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-12-21 15:20:00",
+    "datetime_end": "2025-12-21 15:22:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5304",
+    "event_id": [],
+    "phone_id": 332
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138001",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-10-02 09:10:00",
+    "datetime_end": "2025-10-02 09:15:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4110",
+    "event_id": [],
+    "phone_id": 333
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Happiness Milk Tea Shop",
+    "datetime": "2025-10-02 16:15:00",
+    "datetime_end": "2025-10-02 16:20:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4113",
+    "event_id": [],
+    "phone_id": 334
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Li Wei",
+    "datetime": "2025-01-29 15:20:00",
+    "datetime_end": "2025-01-29 15:22:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "459",
+    "event_id": [],
+    "phone_id": 335
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-08-11 20:30:00",
+    "datetime_end": "2025-08-11 21:25:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3351",
+    "event_id": [],
+    "phone_id": 336
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13912345678",
+    "contactName": "Yang Fan",
+    "datetime": "2025-01-09 20:30:00",
+    "datetime_end": "2025-01-09 21:15:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "141",
+    "event_id": [],
+    "phone_id": 337
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "Lei Jianguo",
+    "datetime": "2025-06-11 18:30:00",
+    "datetime_end": "2025-06-11 18:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2447",
+    "event_id": [],
+    "phone_id": 338
+  },
+  {
+    "type": "call",
+    "phoneNumber": "+8613757192034",
+    "contactName": "Lao Li",
+    "datetime": "2025-08-21 10:30:00",
+    "datetime_end": "2025-08-21 10:35:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3496",
+    "event_id": [],
+    "phone_id": 339
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Master He",
+    "datetime": "2025-04-23 13:45:00",
+    "datetime_end": "2025-04-23 13:48:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1691",
+    "event_id": [],
+    "phone_id": 340
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-08-15 05:53:00",
+    "datetime_end": "2025-08-15 06:18:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3404",
+    "event_id": [],
+    "phone_id": 341
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Liu Tao",
+    "datetime": "2025-11-16 19:50:00",
+    "datetime_end": "2025-11-16 20:30:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4782",
+    "event_id": [],
+    "phone_id": 342
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-02-03 17:00:00",
+    "datetime_end": "2025-02-03 17:08:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "535",
+    "event_id": [],
+    "phone_id": 343
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138002",
+    "contactName": "Qin Lang",
+    "datetime": "2025-05-01 16:00:00",
+    "datetime_end": "2025-05-01 16:12:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1813",
+    "event_id": [],
+    "phone_id": 344
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Mother",
+    "datetime": "2025-05-08 20:10:00",
+    "datetime_end": "2025-05-08 20:20:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1927",
+    "event_id": [],
+    "phone_id": 345
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Mom",
+    "datetime": "2025-12-21 19:30:00",
+    "datetime_end": "2025-12-21 19:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5310",
+    "event_id": [],
+    "phone_id": 346
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138001",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-03-17 09:20:00",
+    "datetime_end": "2025-03-17 09:22:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1193",
+    "event_id": [],
+    "phone_id": 347
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Delivery courier",
+    "datetime": "2025-07-21 10:30:00",
+    "datetime_end": "2025-07-21 10:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3027",
+    "event_id": [],
+    "phone_id": 348
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13856238471",
+    "contactName": "Chen Yu",
+    "datetime": "2025-10-18 06:45:00",
+    "datetime_end": "2025-10-18 07:15:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4357",
+    "event_id": [],
+    "phone_id": 349
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "Qin Lang",
+    "datetime": "2025-08-08 20:10:00",
+    "datetime_end": "2025-08-08 20:50:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3305",
+    "event_id": [],
+    "phone_id": 350
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Qin Lang",
+    "datetime": "2025-08-08 20:10:00",
+    "datetime_end": "2025-08-08 20:50:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3305",
+    "event_id": [],
+    "phone_id": 351
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Han Dong",
+    "datetime": "2025-10-30 14:10:00",
+    "datetime_end": "2025-10-30 14:25:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4533",
+    "event_id": [],
+    "phone_id": 352
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "Parents",
+    "datetime": "2025-07-19 17:30:00",
+    "datetime_end": "2025-07-19 17:45:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3008",
+    "event_id": [],
+    "phone_id": 353
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138002",
+    "contactName": "Shen Jie.",
+    "datetime": "2025-04-25 21:00:00",
+    "datetime_end": "2025-04-25 21:40:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1726",
+    "event_id": [],
+    "phone_id": 354
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Han Dong",
+    "datetime": "2025-02-13 20:30:00",
+    "datetime_end": "2025-02-13 21:00:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "690",
+    "event_id": [],
+    "phone_id": 355
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800001234",
+    "contactName": "Zheng Kai",
+    "datetime": "2025-03-17 09:20:00",
+    "datetime_end": "2025-03-17 09:21:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "1193",
+    "event_id": [],
+    "phone_id": 356
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "Wang Xiuying",
+    "datetime": "2025-12-28 14:00:00",
+    "datetime_end": "2025-12-28 14:30:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5412",
+    "event_id": [],
+    "phone_id": 357
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Han Dong",
+    "datetime": "2025-01-14 21:20:00",
+    "datetime_end": "2025-01-14 21:21:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "217",
+    "event_id": [],
+    "phone_id": 358
+  },
+  {
+    "type": "call",
+    "phoneNumber": "021-58888888",
+    "contactName": "Lujiazui Center Xiangfang Chinese Restaurant",
+    "datetime": "2025-09-09 09:00:00",
+    "datetime_end": "2025-09-09 09:03:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3767",
+    "event_id": [],
+    "phone_id": 359
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800001234",
+    "contactName": "Zhou Tao",
+    "datetime": "2025-02-13 11:30:00",
+    "datetime_end": "2025-02-13 11:32:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "680",
+    "event_id": [],
+    "phone_id": 360
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13888886666",
+    "contactName": "Zhang Lei",
+    "datetime": "2025-11-13 13:30:00",
+    "datetime_end": "2025-11-13 13:45:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4729",
+    "event_id": [],
+    "phone_id": 361
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138002",
+    "contactName": "Han Dong",
+    "datetime": "2025-11-23 12:10:00",
+    "datetime_end": "2025-11-23 12:12:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "4877",
+    "event_id": [],
+    "phone_id": 362
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "Mr. Li",
+    "datetime": "2025-05-17 11:20:00",
+    "datetime_end": "2025-05-17 11:20:01",
+    "direction": 1,
+    "call_result": "No answer",
+    "daily_event_id": "2062",
+    "event_id": [],
+    "phone_id": 363
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800001111",
+    "contactName": "Lin Yue",
+    "datetime": "2025-01-22 15:30:00",
+    "datetime_end": "2025-01-22 16:30:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "338",
+    "event_id": [],
+    "phone_id": 364
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Lin Yue",
+    "datetime": "2025-01-23 09:05:00",
+    "datetime_end": "2025-01-23 09:18:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "352",
+    "event_id": [],
+    "phone_id": 365
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-12-02 19:20:00",
+    "datetime_end": "2025-12-02 19:40:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5004",
+    "event_id": [],
+    "phone_id": 366
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-12-18 18:15:00",
+    "datetime_end": "2025-12-18 18:20:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "5263",
+    "event_id": [],
+    "phone_id": 367
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13812345678",
+    "contactName": "Song Jia",
+    "datetime": "2025-06-16 08:30:00",
+    "datetime_end": "2025-06-16 08:38:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "2510",
+    "event_id": [],
+    "phone_id": 368
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800001234",
+    "contactName": "Editor Xiao Chen",
+    "datetime": "2025-08-21 21:00:00",
+    "datetime_end": "2025-08-21 21:08:00",
+    "direction": 1,
+    "call_result": "Connected",
+    "daily_event_id": "3503",
+    "event_id": [],
+    "phone_id": 369
+  },
+  {
+    "type": "call",
+    "phoneNumber": "13800138000",
+    "contactName": "Zhang Wei",
+    "datetime": "2025-01-26 19:30:00",
+    "datetime_end": "2025-01-26 20:10:00",
+    "direction": 0,
+    "call_result": "Connected",
+    "daily_event_id": "414",
+    "event_id": [],
+    "phone_id": 370
+  }
+]
