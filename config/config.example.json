@@ -8,7 +8,6 @@
   },
   "simulation_asset_preparation": {
     "enabled": true,
-    "run_before_sharding": true,
     "ensure_fuzzy_memory": true,
     "ensure_location_opportunity_pool": true,
     "freeze_for_run": true,
@@ -18,18 +17,18 @@
   "trajectory_assignment": {
     "enabled": true,
     "allocation_mode": "full",
+    "feedback_mode": "on",
     "seed": 0,
     "candidate_limit": 18,
     "route_top_k": 6,
     "budget_aware": true,
+    "intent_retry_count": 2,
     "final_itinerary_retry_count": 1,
     "strict_validation": true,
     "accuracy_validation": false,
     "half_hour_export": {
       "enabled": true,
-      "slot_minutes": 30,
-      "gap_policy": "carry_forward",
-      "local_loop_geometry": "seeded_closed_loop"
+      "slot_minutes": 30
     },
     "mobility_calibration": {
       "rho": 0.52,
@@ -45,8 +44,7 @@
       "selection_temperature": 0.75,
       "preference_boost": 1.5,
       "repetition_fatigue_step": 0.10,
-      "repetition_fatigue_cap": 0.30,
-      "routine_active_days": 3
+      "repetition_fatigue_cap": 0.30
     },
     "mobility_distribution_targets": {
       "weekday_archetype_weights": {
