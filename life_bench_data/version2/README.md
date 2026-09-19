@@ -21,55 +21,136 @@ pretty_name: LifeBench 2.0
 
 # 🧠 LifeBench 2.0
 
-> 面向长期记忆评测的生活日志基准数据集 · **A Chinese Life-Logging Benchmark for Long-Term Memory Evaluation**
+> A life-logging benchmark dataset for long-term memory evaluation
 
-LifeBench 2.0 收集了 **10 位虚拟用户** 一整年（2025-01-01 ～ 2025-12-31）的完整生活数据，涵盖人物画像、每日生活事件、事件树、以及 **9 类手机操作数据**（短信、通话、日历、笔记、照片、推送、运动健康、联系人、智能助手对话），并配套 **数千条带证据与评分点标注的问答对**，用于评测大语言模型的长期记忆、时间推理与多跳问答能力。数据集提供 **中文（`data/`）** 与 **英文（`data_en/`）** 两个版本，以及转换为 **LoCoMo 对话格式（`locomo_format/`）** 的标准化版本。
+LifeBench 2.0 collects a full year (2025-01-01 ~ 2025-12-31) of life data for **10 virtual users**, covering personas, daily life events, event trees, and **9 types of mobile-phone data** (SMS, calls, calendar, notes, photos, push notifications, fitness & health, contacts, and agent chat), together with **thousands of question-answer pairs annotated with evidence and score points**, for evaluating the long-term memory, temporal reasoning, and multi-hop QA capabilities of large language models. The dataset provides **Chinese (`data/`)** and **English (`data_en/`)** versions, as well as a standardized **LoCoMo conversational format (`locomo_format/`)**.
 
-## 📊 Dataset Statistics · 数据统计
+## 📊 Dataset Statistics
 
-| 指标 | 数值 |
-|------|------|
-| 👥 用户数 | 10 |
-| 🌐 语言 | 中文（`data/`）· 英文（`data_en/`） |
-| 📅 时间跨度 | 2025-01-01 ～ 2025-12-31（全年） |
-| 🗓️ 每日生活事件 | 57,486 条 |
-| 📱 手机数据记录 | 47,409 条（9 类数据源） |
-| ❓ 问答对（QA_all / locomo） | 3,380 条 |
-| 💾 数据体积 | 约 423 MB |
+| Metric | Value |
+|--------|-------|
+| 👥 Users | 10 |
+| 🌐 Languages | Chinese (`data/`) · English (`data_en/`) |
+| 📅 Time span | 2025-01-01 ~ 2025-12-31 (full year) |
+| 🗓️ Daily life events | 57,486 |
+| 📱 Phone data records | 47,409 (9 data sources) |
+| ❓ QA pairs (QA_all / locomo) | 3,380 |
+| 💾 Data size | ~423 MB |
 
-## 📁 Directory Structure · 目录结构
+## 🏆 Leaderboard
+
+Accuracy (%) of memory systems on LifeBench 2.0 and LoCoMo. **LifeBench Micro** is the accuracy over all questions, while **Macro** is the arithmetic mean of the nine category accuracies. **Gold Evidence†** feeds the annotated supporting evidence directly to the answer model (a reader under perfect retrieval) and is a reference upper bound — it is not a memory system and is excluded from the per-column best. **Bold** marks the best among memory systems in each column. LoCoMo excludes adversarial questions; `—` = not reported.
+
+![LifeBench memory-system leaderboard — Macro accuracy (DeepSeek-V4-Flash)](leaderboard.svg)
+
+<table>
+  <thead>
+    <tr>
+      <th>Base LLM</th>
+      <th>Memory System</th>
+      <th>SH</th><th>MH</th><th>TR</th><th>ND</th><th>KU</th><th>CR</th><th>CD</th><th>HI</th><th>UA</th><th>Micro</th><th>Macro</th><th>LoCoMo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="10">DeepSeek-V4-Flash</td>
+      <td>Mem0</td>
+      <td>78.09</td><td>41.41</td><td>32.45</td><td>48.48</td><td>75.84</td><td>52.55</td><td>78.07</td><td>32.47</td><td>55.73</td><td>61.54</td><td>55.01</td><td>85.32</td>
+    </tr>
+    <tr>
+      <td>Cognee</td>
+      <td>71.69</td><td>37.07</td><td>27.36</td><td>45.44</td><td>72.49</td><td>43.16</td><td>68.63</td><td>30.93</td><td><b>92.14</b></td><td>63.17</td><td>54.32</td><td>81.12</td>
+    </tr>
+    <tr>
+      <td>Hindsight</td>
+      <td>83.43</td><td>53.98</td><td>44.34</td><td><b>58.75</b></td><td>85.09</td><td><b>67.83</b></td><td>80.66</td><td><b>49.48</b></td><td>75.56</td><td>71.98</td><td><b>66.57</b></td><td>82.83</td>
+    </tr>
+    <tr>
+      <td>MemU</td>
+      <td>60.34</td><td>23.87</td><td>17.92</td><td>23.19</td><td>47.30</td><td>30.29</td><td>62.26</td><td>23.20</td><td>90.77</td><td>52.75</td><td>42.13</td><td>80.26</td>
+    </tr>
+    <tr>
+      <td>MemOS</td>
+      <td>72.94</td><td>32.91</td><td>26.98</td><td>33.65</td><td>71.47</td><td>40.21</td><td>68.63</td><td>35.57</td><td>88.89</td><td>61.51</td><td>52.36</td><td>79.40</td>
+    </tr>
+    <tr>
+      <td>EverMemOS</td>
+      <td>71.76</td><td>48.55</td><td>38.30</td><td>54.75</td><td>81.23</td><td>59.25</td><td>67.45</td><td>34.02</td><td>85.30</td><td>66.04</td><td>60.07</td><td>80.69</td>
+    </tr>
+    <tr>
+      <td>MindMemOS</td>
+      <td>79.83</td><td>42.04</td><td>42.45</td><td>35.36</td><td>69.67</td><td>38.07</td><td><b>84.67</b></td><td>26.80</td><td>84.10</td><td>67.37</td><td>55.89</td><td>86.70</td>
+    </tr>
+    <tr>
+      <td>Zep</td>
+      <td>77.78</td><td>49.46</td><td>46.23</td><td>43.92</td><td>73.78</td><td>53.89</td><td>83.25</td><td>39.69</td><td>54.53</td><td>63.85</td><td>58.06</td><td><b>88.84</b></td>
+    </tr>
+    <tr>
+      <td>GraphRAG</td>
+      <td>22.10</td><td>12.93</td><td>12.83</td><td>19.77</td><td>16.97</td><td>15.01</td><td>11.08</td><td>10.31</td><td>88.38</td><td>30.50</td><td>23.26</td><td>82.72</td>
+    </tr>
+    <tr>
+      <td><i>Gold Evidence†</i></td>
+      <td>98.14</td><td>94.85</td><td>94.91</td><td>93.73</td><td>96.14</td><td>94.10</td><td>98.11</td><td>93.30</td><td>100.00</td><td>97.28</td><td>95.92</td><td>—</td>
+    </tr>
+    <tr>
+      <td rowspan="2">GLM-5.2</td>
+      <td>Hindsight</td>
+      <td><b>85.60</b></td><td>53.62</td><td>45.85</td><td>56.65</td><td>83.55</td><td>66.76</td><td>80.90</td><td>40.72</td><td>84.79</td><td><b>74.41</b></td><td>66.49</td><td>—</td>
+    </tr>
+    <tr>
+      <td>EverMemOS</td>
+      <td>79.64</td><td><b>58.95</b></td><td><b>59.25</b></td><td><b>58.75</b></td><td>84.83</td><td>57.64</td><td>78.54</td><td>40.72</td><td>71.45</td><td>70.95</td><td>65.53</td><td>—</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Qwen-3.8-MAX</td>
+      <td>Hindsight</td>
+      <td>83.30</td><td>50.72</td><td>38.87</td><td>54.94</td><td>83.29</td><td>64.88</td><td>82.08</td><td>44.85</td><td>85.30</td><td>72.31</td><td>65.36</td><td>—</td>
+    </tr>
+    <tr>
+      <td>EverMemOS</td>
+      <td>73.49</td><td>55.06</td><td>55.09</td><td>54.37</td><td><b>86.38</b></td><td>55.50</td><td>72.17</td><td>43.81</td><td>86.84</td><td>69.32</td><td>64.75</td><td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+> **SH** Single-hop · **MH** Multi-hop · **TR** Temporal · **ND** Non-declarative · **KU** Knowledge update · **CR** Causal · **CD** Conflict detection · **HI** Hidden information · **UA** Unanswerable · **Micro** micro-average · **Macro** macro-average (across the 9 categories). † = Gold Evidence reference (perfect retrieval).
+>
+> 📊 **Interactive version** — sort and explore the full results at [C1754955896/Lifebench-Leaderboard](https://huggingface.co/spaces/C1754955896/Lifebench-Leaderboard).
+
+## 📁 Directory Structure
 
 ```
 version2/
-├── README.md                         # 本说明文档
-├── data/                             # 中文版多源数据（10 位用户）
-│   └── {user}/                       # 每位用户一个目录
-│       ├── persona.json              # 用户画像
-│       ├── daily_event.json          # 每日生活事件
-│       ├── event_tree.json           # 事件树结构
-│       ├── daily_draft.json          # 每日大纲（按月组织）
-│       ├── phone_data/               # 手机操作数据（9 类）
-│       │   ├── sms.json              # 短信
-│       │   ├── call.json             # 通话记录
-│       │   ├── calendar.json         # 日历
-│       │   ├── note.json             # 笔记
-│       │   ├── photo.json            # 照片
-│       │   ├── push.json             # 推送通知
-│       │   ├── fitness_health.json   # 运动健康
-│       │   ├── contact.json          # 联系人
-│       │   └── agent_chat.json       # 智能助手对话
+├── README.md                         # This file
+├── data/                             # Chinese multi-source data (10 users)
+│   └── {user}/                       # One folder per user
+│       ├── persona.json              # User profile
+│       ├── daily_event.json          # Daily life events
+│       ├── event_tree.json           # Event tree structure
+│       ├── daily_draft.json          # Daily outline (organized by month)
+│       ├── phone_data/               # Mobile-phone data (9 types)
+│       │   ├── sms.json              # SMS
+│       │   ├── call.json             # Call logs
+│       │   ├── calendar.json         # Calendar
+│       │   ├── note.json             # Notes
+│       │   ├── photo.json            # Photos
+│       │   ├── push.json             # Push notifications
+│       │   ├── fitness_health.json   # Fitness & health
+│       │   ├── contact.json          # Contacts
+│       │   └── agent_chat.json       # Agent chat
 │       └── QA_all/
-│           └── QA.json               # 问答对（含证据与评分点）
-├── data_en/                          # 英文版多源数据（结构与 data/ 一致）
-└── locomo_format/                    # LoCoMo 对话格式
-    ├── lifebench_locomo_conversation_format_v2.0_3380QA.json      # 中文
-    └── lifebench_locomo_conversation_format_v2.0_3380QA_en.json   # 英文
+│           └── QA.json               # QA pairs (with evidence & score points)
+├── data_en/                          # English multi-source data (same structure as data/)
+└── locomo_format/                    # LoCoMo conversational format
+    ├── lifebench_locomo_conversation_format_v2.0_3380QA.json      # Chinese
+    └── lifebench_locomo_conversation_format_v2.0_3380QA_en.json   # English
 ```
 
-## 👥 User List · 用户列表
+## 👥 User List
 
-| # | 用户 ID | 中文姓名 | 英文姓名 |
-|---|---------|----------|----------|
+| # | User ID | Chinese Name | English Name |
+|---|---------|--------------|--------------|
 | 1 | `fenghaoran` | 冯浩然 | Feng Haoran |
 | 2 | `leimingxuan` | 雷铭轩 | Lei Mingxuan |
 | 3 | `lumingqiang` | 卢明强 | Lu Mingqiang |
@@ -81,150 +162,150 @@ version2/
 | 9 | `yuxiaowei` | 于晓薇 | Yu Xiaowei |
 | 10 | `yuxiaowen` | 于晓雯 | Yu Xiaowen |
 
-## 📄 File Descriptions · 文件说明
+## 📄 File Descriptions
 
-每位用户的目录（`data/{user}/` 与 `data_en/{user}/`）包含以下文件：
+Each user folder (`data/{user}/` and `data_en/{user}/`) contains the following files:
 
-| 文件 | 说明 |
-|------|------|
-| `persona.json` | 👤 用户画像：姓名、年龄、职业、家庭、性格（MBTI）、兴趣爱好等 |
-| `daily_event.json` | 📅 每日生活事件列表：按时间顺序记录用户一年的生活轨迹 |
-| `event_tree.json` | 🌳 事件树：将复杂事件层级分解为子事件（`decompose`/`subevent`） |
-| `daily_draft.json` | 🗂️ 每日大纲：按月组织，含日期属性（天气/节假日/星期）与当日概览 |
-| `phone_data/` | 📱 9 类手机操作数据，见下表 |
-| `QA_all/QA.json` | ❓ 问答对：问题、答案、证据链、评分点、问题类型 |
+| File | Description |
+|------|-------------|
+| `persona.json` | 👤 User profile: name, age, occupation, family, personality (MBTI), hobbies, etc. |
+| `daily_event.json` | 📅 Daily life events: a chronological record of the user's life over a year |
+| `event_tree.json` | 🌳 Event tree: hierarchical decomposition of complex events (`decompose`/`subevent`) |
+| `daily_draft.json` | 🗂️ Daily outline: organized by month, with date attributes (weather/holiday/weekday) and daily overview |
+| `phone_data/` | 📱 9 types of mobile-phone data (see table below) |
+| `QA_all/QA.json` | ❓ QA pairs: question, answer, evidence chain, score points, question type |
 
-### 📱 手机数据源（phone_data/）
+### 📱 Phone Data Sources (phone_data/)
 
-| 文件 | 中文含义 | 记录数（10 用户合计） |
-|------|----------|------------------------|
-| `agent_chat.json` | 🤖 智能助手对话 | 8,177 |
-| `calendar.json` | 📅 日历 | 6,011 |
-| `call.json` | 📞 通话记录 | 3,947 |
-| `contact.json` | 👤 联系人 | 244 |
-| `fitness_health.json` | 🏃 运动健康 | 3,641 |
-| `note.json` | 📝 笔记 | 7,836 |
-| `photo.json` | 📷 照片 | 5,604 |
-| `push.json` | 🔔 推送通知 | 6,026 |
-| `sms.json` | 💬 短信 | 5,923 |
+| File | Description | Records (10 users total) |
+|------|-------------|--------------------------|
+| `agent_chat.json` | 🤖 Agent chat | 8,177 |
+| `calendar.json` | 📅 Calendar | 6,011 |
+| `call.json` | 📞 Call logs | 3,947 |
+| `contact.json` | 👤 Contacts | 244 |
+| `fitness_health.json` | 🏃 Fitness & health | 3,641 |
+| `note.json` | 📝 Notes | 7,836 |
+| `photo.json` | 📷 Photos | 5,604 |
+| `push.json` | 🔔 Push notifications | 6,026 |
+| `sms.json` | 💬 SMS | 5,923 |
 
-## ❓ QA 数据说明
+## ❓ QA Data
 
-数据集提供 **两种** 问答对表示：
+The dataset provides **two** representations of the QA pairs:
 
-1. **`QA_all/QA.json`**（每用户，合计 **3,380** 条）：逐条问答，字段包括
-   `question`、`answer`、`evidence`（证据链）、`score_points`（评分点）、`question_type`（如 `Single_hop`）、`required_events_id`、`ask_time`。
+1. **`QA_all/QA.json`** (per user, **3,380** in total): individual QA pairs with the fields
+   `question`, `answer`, `evidence` (evidence chain), `score_points`, `question_type` (e.g. `Single_hop`), `required_events_id`, and `ask_time`.
 
-2. **`locomo_format/`**（**3,380** 条，10 个样本）：转换为 LoCoMo 对话格式，每个样本含 `sample_id`、`conversation`（双角色对话）与 `qa`。
+2. **`locomo_format/`** (**3,380** QA, 10 samples): converted to the LoCoMo conversational format; each sample contains `sample_id`, `conversation` (two-speaker dialogue), and `qa`.
 
-> 各用户 QA 数量为 326～354 条不等，详情见各用户目录。
+> Each user has 326–354 QA pairs; see the individual user folders for details.
 
-## 🧾 Data Format Examples · 格式示例
+## 🧾 Data Format Examples
 
-### 👤 persona.json（用户画像）
+### 👤 persona.json (user profile)
 
 ```json
 {
-  "name": "于晓雯",
+  "name": "Yu Xiaowen",
   "birth": "1997-12-29",
   "age": 24,
-  "nationality": "汉",
-  "gender": "女",
-  "education": "大学本科",
-  "job": "住院医师",
-  "occupation": "郑州市中心医院",
+  "nationality": "Han",
+  "gender": "Female",
+  "education": "Undergraduate degree (formal higher education).",
+  "job": "Resident physician",
+  "occupation": "Zhengzhou Central Hospital",
   "salary": 120000.0,
   "body": { "height": 163, "weight": 50.0, "BMI": 18.8 },
-  "personality": { "mbti": "ISFJ", "traits": ["仁慈", "社会责任导向", "个人成长导向"] },
-  "hobbies": ["city walk", "读书", "羽毛球", "做陶艺"]
+  "personality": { "mbti": "ISFJ", "traits": ["Benevolence", "Social responsibility orientation", "Personal growth orientation"] },
+  "hobbies": ["city walk", "Read books/newspapers/magazines", "Listen to European classical music", "Badminton", "Made pottery (hand building)."]
 }
 ```
 
-### 📅 daily_event.json（每日事件）
+### 📅 daily_event.json (daily event)
 
 ```json
 {
   "event_id": "1",
-  "name": "跨年聚餐与新年目标分享",
-  "date": ["2025-01-01 00:00:00至2025-01-01 02:30:00"],
+  "name": "New Year's Eve dinner and New Year's goal sharing",
+  "date": ["2025-01-01 00:00:00 to 2025-01-01 02:30:00"],
   "type": "Relationships",
-  "description": "凌晨时分，与闺蜜张静、孙悦在家中跨年聚餐……",
+  "description": "In the early morning, she had a New Year's Eve dinner at home with close friends Zhang Jing and Sun Yue...",
   "participant": [
-    { "name": "于晓雯", "relation": "自己" },
-    { "name": "张静", "relation": "闺蜜" }
+    { "name": "Yu Xiaowen", "relation": "self" },
+    { "name": "Zhang Jing", "relation": "close friend" }
   ],
-  "location": "河南省郑州市金水区经三路89号……",
+  "location": "No. 89, Jingsan Road, Jinshui District, Zhengzhou City, Henan Province...",
   "atomic_id": ["1-1"]
 }
 ```
 
-### 🌳 event_tree.json（事件树）
+### 🌳 event_tree.json (event tree)
 
 ```json
 {
-  "name": "基金定投与理财规划调整",
+  "name": "Systematic fund investment and financial planning adjustments.",
   "date": ["2025-06-10"],
   "type": "Finance",
   "event_id": 229,
-  "participant": [{ "name": "自己", "relation": "自己" }],
-  "location": "未知",
+  "participant": [{ "name": "self", "relation": "self" }],
+  "location": "unknown",
   "decompose": 1,
   "subevent": [
-    { "event_id": "229-2", "name": "执行基金定投", "type": "Finance", "decompose": 0 }
+    { "event_id": "229-2", "name": "Execute systematic fund investment", "type": "Finance", "decompose": 0 }
   ]
 }
 ```
 
-### ❓ QA_all/QA.json（问答对）
+### ❓ QA_all/QA.json (QA pair)
 
 ```json
 {
-  "question": "我爸脑梗那天中午……具体通话了多久来着？",
-  "answer": "2分钟（12:13-12:15）",
+  "question": "At noon on the day my dad had a stroke, I remember I had just taken out my lunchbox and had only eaten a few bites when my mom called... How long exactly did that call last?",
+  "answer": "2 minutes (12:13-12:15)",
   "required_events_id": ["248", "248"],
   "ask_time": "2025-06-20",
   "question_type": ["Single_hop"],
   "score_points": [
-    { "description": "识别出与母亲李秀英的通话记录（12:13-12:15）", "score": 4 },
-    { "description": "正确计算通话时长为2分钟", "score": 3 }
+    { "description": "Identified the call record with mother Li Xiuying (12:13-12:15).", "score": 4 },
+    { "description": "Correctly calculated the call duration as 2 minutes.", "score": 3 }
   ],
   "evidence": [
-    { "type": "call", "phoneNumber": "+8618739081234", "contactName": "李秀英", "datetime": "2025-01-15 12:13:00" }
+    { "type": "call", "phoneNumber": "+8618739081234", "contactName": "Li Xiuying", "datetime": "2025-01-15 12:13:00" }
   ]
 }
 ```
 
-### 💬 locomo_format（LoCoMo 对话格式）
+### 💬 locomo_format (LoCoMo conversational format)
 
 ```json
 {
-  "sample_id": "于晓薇",
+  "sample_id": "Yu Xiaowei",
   "conversation": {
-    "speaker_a": "于晓薇",
-    "speaker_b": "于晓薇的Assistant",
+    "speaker_a": "Yu Xiaowei",
+    "speaker_b": "Yu Xiaowei's Assistant",
     "session_1": [
-      { "speaker": "于晓薇", "dia_id": "2025-01-01_agent_chat0", "text": "..." }
+      { "speaker": "Yu Xiaowei", "dia_id": "2025-01-01_agent_chat0", "text": "..." }
     ]
   },
   "qa": [ ... ]
 }
 ```
 
-## 📥 Loading · 加载方式
+## 📥 Loading
 
 ```python
 from datasets import load_dataset
 
-# 加载整个数据集（含 data/ 与 data_en/ 下的 JSON 文件）
+# Load the entire dataset (including the JSON files under data/ and data_en/)
 ds = load_dataset("C1754955896/Lifebenchv2.0")
 
-# 或直接读取单个 JSON 文件
+# Or read a single JSON file directly
 import json
 with open("data/yuxiaowen/persona.json", encoding="utf-8") as f:
     persona = json.load(f)
 ```
 
-## 📌 注意事项 · Notes
+## 📌 Notes
 
-- **问答对的两份表示**：`QA_all/QA.json`（逐用户）与 `locomo_format/`（合并后的对话格式）均为 **3,380** 条问答，前者为原始标注格式，后者为 LoCoMo 对话格式。
-- **许可证**：Apache-2.0。
+- **Two QA representations**: `QA_all/QA.json` (per user) and `locomo_format/` (merged conversational format) both contain **3,380** QA pairs — the former is the original annotated format, the latter is the LoCoMo conversational format.
+- **License**: Apache-2.0.

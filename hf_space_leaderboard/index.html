@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LifeBench 2.0 Leaderboard</title>
+<style>
+  :root {
+    --accent: #4f46e5; --accent2: #3b82f6; --gold: #f59e0b;
+    --bg: #f8fafc; --card: #ffffff; --text: #111827; --muted: #6b7280;
+    --border: #e5e7eb;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: 26px; margin: 0 0 6px; }
+  .sub { color: var(--muted); font-size: 14px; margin: 0 0 20px; line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .toolbar { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+  .toolbar input { padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; width: 280px; outline: none; }
+  .toolbar input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,70,229,.12); }
+  .hint { color: var(--muted); font-size: 12px; }
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.06); min-width: 900px; }
+  thead th { background: #eef2ff; color: #3730a3; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; padding: 10px 8px; text-align: right; cursor: pointer; user-select: none; white-space: nowrap; }
+  thead th.left { text-align: left; }
+  thead th:hover { background: #e0e7ff; }
+  thead th .arr { font-size: 10px; margin-left: 2px; }
+  tbody td { padding: 9px 8px; text-align: right; font-size: 13px; border-top: 1px solid var(--border); white-space: nowrap; }
+  tbody td.left { text-align: left; }
+  tbody td.llm { color: var(--muted); font-size: 12px; }
+  tbody td.sys { font-weight: 600; }
+  tbody tr:hover td { background: #f5f7ff; }
+  tr.ref td { background: #f9fafb; color: var(--muted); font-style: italic; }
+  td.best { font-weight: 800; color: #b45309; background: #fef3c7; }
+  td.bar-cell { position: relative; }
+  td.bar-cell .bar { position: absolute; left: 0; top: 0; bottom: 0; background: linear-gradient(90deg, #818cf8, #4f46e5); opacity: .18; z-index: 0; }
+  td.bar-cell .val { position: relative; z-index: 1; }
+  td.bar-cell.best .bar { background: linear-gradient(90deg, #fcd34d, #f59e0b); opacity: .4; }
+  .legend { color: var(--muted); font-size: 12px; margin-top: 14px; line-height: 1.8; }
+  noscript { display: block; color: #b91c1c; margin: 16px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🏆 LifeBench 2.0 Memory-System Leaderboard</h1>
+  <p class="sub">
+    Accuracy (%) on <a href="https://huggingface.co/datasets/C1754955896/Lifebenchv2.0">LifeBench 2.0</a> and LoCoMo,
+    across three base LLMs. Click any column header to sort.
+    <br><a href="https://arxiv.org/abs/2603.03781">Paper</a> · <a href="https://huggingface.co/datasets/C1754955896/Lifebenchv2.0">Dataset</a>
+  </p>
+  <div class="toolbar">
+    <input id="q" type="text" placeholder="Filter by system / base LLM…" oninput="render()" aria-label="Filter">
+    <span class="hint">Bold cell = best among memory systems · <i>Gold Evidence†</i> = reference (perfect retrieval)</span>
+  </div>
+  <div class="table-scroll">
+    <table id="lb">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p class="legend">
+    <b>SH</b> Single-hop · <b>MH</b> Multi-hop · <b>TR</b> Temporal · <b>ND</b> Non-declarative · <b>KU</b> Knowledge update ·
+    <b>CR</b> Causal · <b>CD</b> Conflict detection · <b>HI</b> Hidden information · <b>UA</b> Unanswerable ·
+    <b>Micro</b> micro-average · <b>Macro</b> macro-average (mean of the 9 categories) · <b>LoCoMo</b> overall (excludes adversarial questions).
+    <br><code>—</code> = not reported. <i>Gold Evidence†</i> feeds the annotated evidence directly to the answer model (reader under perfect retrieval) and is excluded from the per-column best.
+  </p>
+  <noscript>This leaderboard requires JavaScript to sort and filter the table.</noscript>
+</div>
+
+<script>
+"use strict";
+
+var COLUMNS = [
+  ["llm", "Base LLM", "str"],
+  ["sys", "Memory System", "str"],
+  ["SH", "SH", "num"], ["MH", "MH", "num"], ["TR", "TR", "num"], ["ND", "ND", "num"],
+  ["KU", "KU", "num"], ["CR", "CR", "num"], ["CD", "CD", "num"], ["HI", "HI", "num"],
+  ["UA", "UA", "num"], ["Micro", "Micro", "num"], ["Macro", "Macro", "num"], ["LoCoMo", "LoCoMo", "num"]
+];
+
+var ROWS = [
+  {llm:"DeepSeek-V4-Flash", sys:"Mem0", SH:78.09, MH:41.41, TR:32.45, ND:48.48, KU:75.84, CR:52.55, CD:78.07, HI:32.47, UA:55.73, Micro:61.54, Macro:55.01, LoCoMo:85.32},
+  {llm:"DeepSeek-V4-Flash", sys:"Cognee", SH:71.69, MH:37.07, TR:27.36, ND:45.44, KU:72.49, CR:43.16, CD:68.63, HI:30.93, UA:92.14, Micro:63.17, Macro:54.32, LoCoMo:81.12},
+  {llm:"DeepSeek-V4-Flash", sys:"Hindsight", SH:83.43, MH:53.98, TR:44.34, ND:58.75, KU:85.09, CR:67.83, CD:80.66, HI:49.48, UA:75.56, Micro:71.98, Macro:66.57, LoCoMo:82.83},
+  {llm:"DeepSeek-V4-Flash", sys:"MemU", SH:60.34, MH:23.87, TR:17.92, ND:23.19, KU:47.30, CR:30.29, CD:62.26, HI:23.20, UA:90.77, Micro:52.75, Macro:42.13, LoCoMo:80.26},
+  {llm:"DeepSeek-V4-Flash", sys:"MemOS", SH:72.94, MH:32.91, TR:26.98, ND:33.65, KU:71.47, CR:40.21, CD:68.63, HI:35.57, UA:88.89, Micro:61.51, Macro:52.36, LoCoMo:79.40},
+  {llm:"DeepSeek-V4-Flash", sys:"EverMemOS", SH:71.76, MH:48.55, TR:38.30, ND:54.75, KU:81.23, CR:59.25, CD:67.45, HI:34.02, UA:85.30, Micro:66.04, Macro:60.07, LoCoMo:80.69},
+  {llm:"DeepSeek-V4-Flash", sys:"MindMemOS", SH:79.83, MH:42.04, TR:42.45, ND:35.36, KU:69.67, CR:38.07, CD:84.67, HI:26.80, UA:84.10, Micro:67.37, Macro:55.89, LoCoMo:86.70},
+  {llm:"DeepSeek-V4-Flash", sys:"Zep", SH:77.78, MH:49.46, TR:46.23, ND:43.92, KU:73.78, CR:53.89, CD:83.25, HI:39.69, UA:54.53, Micro:63.85, Macro:58.06, LoCoMo:88.84},
+  {llm:"DeepSeek-V4-Flash", sys:"GraphRAG", SH:22.10, MH:12.93, TR:12.83, ND:19.77, KU:16.97, CR:15.01, CD:11.08, HI:10.31, UA:88.38, Micro:30.50, Macro:23.26, LoCoMo:82.72},
+  {llm:"DeepSeek-V4-Flash", sys:"Gold Evidence†", SH:98.14, MH:94.85, TR:94.91, ND:93.73, KU:96.14, CR:94.10, CD:98.11, HI:93.30, UA:100.00, Micro:97.28, Macro:95.92, LoCoMo:null},
+  {llm:"GLM-5.2", sys:"Hindsight", SH:85.60, MH:53.62, TR:45.85, ND:56.65, KU:83.55, CR:66.76, CD:80.90, HI:40.72, UA:84.79, Micro:74.41, Macro:66.49, LoCoMo:null},
+  {llm:"GLM-5.2", sys:"EverMemOS", SH:79.64, MH:58.95, TR:59.25, ND:58.75, KU:84.83, CR:57.64, CD:78.54, HI:40.72, UA:71.45, Micro:70.95, Macro:65.53, LoCoMo:null},
+  {llm:"Qwen-3.8-MAX", sys:"Hindsight", SH:83.30, MH:50.72, TR:38.87, ND:54.94, KU:83.29, CR:64.88, CD:82.08, HI:44.85, UA:85.30, Micro:72.31, Macro:65.36, LoCoMo:null},
+  {llm:"Qwen-3.8-MAX", sys:"EverMemOS", SH:73.49, MH:55.06, TR:55.09, ND:54.37, KU:86.38, CR:55.50, CD:72.17, HI:43.81, UA:86.84, Micro:69.32, Macro:64.75, LoCoMo:null}
+];
+
+var NUMERIC = ["SH", "MH", "TR", "ND", "KU", "CR", "CD", "HI", "UA", "Micro", "Macro", "LoCoMo"];
+var REF = "Gold Evidence†";
+
+var best = {};
+NUMERIC.forEach(function (k) {
+  var m = -Infinity;
+  ROWS.forEach(function (r) { if (r.sys !== REF && r[k] != null && r[k] > m) m = r[k]; });
+  best[k] = m;
+});
+
+var sortKey = null, sortDir = 1;
+
+function renderHead() {
+  var thead = document.querySelector("#lb thead");
+  var tr = document.createElement("tr");
+  COLUMNS.forEach(function (col) {
+    var key = col[0], label = col[1], type = col[2];
+    var th = document.createElement("th");
+    th.textContent = label;
+    if (type === "str") th.classList.add("left");
+    th.addEventListener("click", function () {
+      if (sortKey === key) sortDir = -sortDir; else { sortKey = key; sortDir = 1; }
+      render();
+    });
+    tr.appendChild(th);
+  });
+  thead.appendChild(tr);
+}
+
+function text(r, k) {
+  var v = r[k];
+  if (v == null) return "—";
+  return NUMERIC.indexOf(k) >= 0 ? v.toFixed(2) : String(v);
+}
+
+function render() {
+  var q = (document.getElementById("q").value || "").trim().toLowerCase();
+  var list = ROWS.filter(function (r) { return (r.llm + " " + r.sys).toLowerCase().indexOf(q) >= 0; });
+
+  if (sortKey) {
+    var key = sortKey, dir = sortDir;
+    list = list.slice().sort(function (a, b) {
+      var va = a[key], vb = b[key];
+      if (va == null && vb == null) return 0;
+      if (va == null) return 1;
+      if (vb == null) return -1;
+      var cmp = (NUMERIC.indexOf(key) >= 0) ? (va - vb) : String(va).localeCompare(String(vb));
+      return cmp * dir;
+    });
+  }
+
+  var tbody = document.querySelector("#lb tbody");
+  tbody.innerHTML = "";
+
+  list.forEach(function (r) {
+    var tr = document.createElement("tr");
+    if (r.sys === REF) tr.classList.add("ref");
+
+    COLUMNS.forEach(function (col) {
+      var key = col[0], type = col[2];
+      var td = document.createElement("td");
+      var v = r[key];
+      var isNum = NUMERIC.indexOf(key) >= 0;
+
+      if (type === "str") td.classList.add("left");
+      if (key === "llm") td.classList.add("llm");
+      if (key === "sys") td.classList.add("sys");
+
+      td.textContent = text(r, key);
+
+      if (key === "Macro" && v != null) {
+        td.classList.add("bar-cell");
+        var bar = document.createElement("span");
+        bar.className = "bar";
+        bar.style.width = v + "%";
+        var val = document.createElement("span");
+        val.className = "val";
+        val.textContent = v.toFixed(2);
+        td.textContent = "";
+        td.appendChild(bar);
+        td.appendChild(val);
+      }
+
+      if (r.sys !== REF && isNum && v != null && v === best[key]) td.classList.add("best");
+
+      tr.appendChild(td);
+    });
+
+    tbody.appendChild(tr);
+  });
+}
+
+renderHead();
+render();
+</script>
+</body>
+</html>

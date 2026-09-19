@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 480" width="820" height="480" role="img" aria-label="LifeBench memory system leaderboard ranked by macro accuracy" font-family="-apple-system, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+  </defs>
+
+  <text x="0" y="34" font-size="20" font-weight="700" fill="#111827">Memory System Leaderboard — Macro Accuracy (%)</text>
+  <text x="0" y="58" font-size="13" fill="#6b7280">LifeBench · DeepSeek-V4-Flash · ranked by Macro average (%)</text>
+
+  <circle cx="36" cy="92" r="15" fill="#f59e0b"/>
+  <text x="36" y="97" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">1</text>
+  <text x="64" y="97" font-size="16" font-weight="600" fill="#1f2937">Hindsight</text>
+  <rect x="250" y="81" width="342" height="22" rx="6" fill="url(#gGold)"/>
+  <text x="604" y="97" font-size="15" font-weight="700" fill="#111827">66.57%</text>
+
+  <circle cx="36" cy="134" r="15" fill="#9ca3af"/>
+  <text x="36" y="139" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">2</text>
+  <text x="64" y="139" font-size="16" font-weight="600" fill="#1f2937">EverMemOS</text>
+  <rect x="250" y="123" width="309" height="22" rx="6" fill="url(#gGold)"/>
+  <text x="571" y="139" font-size="15" font-weight="700" fill="#111827">60.07%</text>
+
+  <circle cx="36" cy="176" r="15" fill="#cd7f32"/>
+  <text x="36" y="181" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">3</text>
+  <text x="64" y="181" font-size="16" font-weight="600" fill="#1f2937">Zep</text>
+  <rect x="250" y="165" width="299" height="22" rx="6" fill="url(#gGold)"/>
+  <text x="561" y="181" font-size="15" font-weight="700" fill="#111827">58.06%</text>
+
+  <circle cx="36" cy="218" r="15" fill="#64748b"/>
+  <text x="36" y="223" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">4</text>
+  <text x="64" y="223" font-size="16" font-weight="600" fill="#1f2937">MindMemOS</text>
+  <rect x="250" y="207" width="287" height="22" rx="6" fill="url(#gBlue)"/>
+  <text x="549" y="223" font-size="15" font-weight="700" fill="#111827">55.89%</text>
+
+  <circle cx="36" cy="260" r="15" fill="#64748b"/>
+  <text x="36" y="265" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">5</text>
+  <text x="64" y="265" font-size="16" font-weight="600" fill="#1f2937">Mem0</text>
+  <rect x="250" y="249" width="283" height="22" rx="6" fill="url(#gBlue)"/>
+  <text x="545" y="265" font-size="15" font-weight="700" fill="#111827">55.01%</text>
+
+  <circle cx="36" cy="302" r="15" fill="#64748b"/>
+  <text x="36" y="307" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">6</text>
+  <text x="64" y="307" font-size="16" font-weight="600" fill="#1f2937">Cognee</text>
+  <rect x="250" y="291" width="279" height="22" rx="6" fill="url(#gBlue)"/>
+  <text x="541" y="307" font-size="15" font-weight="700" fill="#111827">54.32%</text>
+
+  <circle cx="36" cy="344" r="15" fill="#64748b"/>
+  <text x="36" y="349" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">7</text>
+  <text x="64" y="349" font-size="16" font-weight="600" fill="#1f2937">MemOS</text>
+  <rect x="250" y="333" width="269" height="22" rx="6" fill="url(#gBlue)"/>
+  <text x="531" y="349" font-size="15" font-weight="700" fill="#111827">52.36%</text>
+
+  <circle cx="36" cy="386" r="15" fill="#64748b"/>
+  <text x="36" y="391" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">8</text>
+  <text x="64" y="391" font-size="16" font-weight="600" fill="#1f2937">MemU</text>
+  <rect x="250" y="375" width="217" height="22" rx="6" fill="url(#gBlue)"/>
+  <text x="479" y="391" font-size="15" font-weight="700" fill="#111827">42.13%</text>
+
+  <circle cx="36" cy="428" r="15" fill="#64748b"/>
+  <text x="36" y="433" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">9</text>
+  <text x="64" y="433" font-size="16" font-weight="600" fill="#1f2937">GraphRAG</text>
+  <rect x="250" y="417" width="120" height="22" rx="6" fill="url(#gBlue)"/>
+  <text x="382" y="433" font-size="15" font-weight="700" fill="#111827">23.26%</text>
+</svg>
