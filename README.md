@@ -2,6 +2,7 @@
 
 [![🤗 Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-orange?style=flat-square)](https://huggingface.co/datasets/C1754955896/Lifebenchv2.0)
 [![arXiv](https://img.shields.io/badge/arXiv-2603.03781-b31b1b?style=flat-square)](https://arxiv.org/abs/2603.03781)
+[![GitHub](https://img.shields.io/badge/GitHub-LifeBench__eval-181717?style=flat-square&logo=github)](https://github.com/1754955896/LifeBench_eval)
 
 LifeBench is a benchmark designed for evaluating personalized agent memory systems. It comprises:
 - Detailed character profile data
@@ -17,7 +18,7 @@ The main objectives of our dataset are as follows:
 
 ## 🌐 Overview
 ![LifeBench Overview](pic/PIC_INTRO.png)
-Existing benchmarks mainly focus on dialogue scenarios and lack diverse digital traces. Furthermore, current datasets do not cover continuous, long-term life sequences of an individual, but only concentrate on major events. In contrast, we model continuous data that covers an individual's entire life over the course of one year.
+Existing benchmarks mainly focus on dialogue scenarios and lack diverse digital traces. Furthermore, current datasets do not cover continuous, long-term life sequences of an individual, but only concentrate on major events. In contrast, we model continuous data that covers an individual's entire life over the course of one year. Existing datasets fail to realistically simulate humans and lack dynamically fluctuating personal preferences. Furthermore, they insufficiently model real-world information. Benchmarks such as LoCoMo and LongMemEval are nearing saturation, making it difficult to identify the strengths of memory systems.
 
 
 ### 🧩 Question Categories
@@ -292,6 +293,10 @@ python run/qa_gen.py --data-path output/fenghaoran/
 | `--dry-run` | Write placeholder files without generating | off |
 
 `run_all.py` additionally accepts `--persona-folder` (default `input/`), `--start-id`, `--end-id`, and `--dry-run`.
+
+### 🎯 Evaluation
+
+The evaluation script lives in a separate repository: [LifeBench_eval](https://github.com/1754955896/LifeBench_eval) — this is the entry point for running benchmark evaluations on memory systems.
 
 ## 📁 Directory Structure
 
