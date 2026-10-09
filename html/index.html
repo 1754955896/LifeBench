@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LifeBench · 生活数据观察室</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="./index.html"><span class="brand-icon">L<span>·</span></span><span>LifeBench<small>生活数据观察室</small></span></a>
+    <div class="eyebrow">YOUR PERSONAL TIMELINE</div>
+    <button id="folderButton" class="primary">＋ 选择人物文件夹</button>
+    <input id="folderInput" type="file" webkitdirectory directory multiple hidden>
+    <p class="hint">选择包含 daily_event.json 和 phone_data 的人物文件夹</p>
+    <section id="profile" class="profile"><div class="avatar">?</div><div><strong>尚未选择人物</strong><small>从一个人的日常开始</small></div></section>
+    <div class="calendar-head"><strong id="monthTitle">日期导航</strong><div><button id="prevMonth" class="icon" aria-label="上个月">‹</button><button id="nextMonth" class="icon" aria-label="下个月">›</button></div></div>
+    <div class="weekdays"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+    <div id="calendar" class="calendar"></div>
+    <div class="calendar-legend"><i></i> 有生活事件的日期</div>
+    <label class="date-label" for="dateInput">跳转日期</label><input id="dateInput" type="date" disabled>
+    <div id="datasetStats" class="dataset-stats">等待载入数据</div>
+    <footer><span class="local-dot"></span>本地读取 · 数据留在你的浏览器</footer>
+  </aside>
+  <main>
+    <header class="topbar"><span>WORKSPACE <b>/</b> Daily explorer</span><span class="pill">LifeBench Viewer</span></header>
+    <div id="status" role="status" aria-live="polite" hidden></div>
+    <section class="page-heading"><div><div class="eyebrow">A DAY IN LIFE</div><h1 id="dayTitle">把日常，串成故事。</h1><p id="daySubtitle">在一条时间线上，连接生活事件与手机里的数字足迹。</p></div><div class="day-controls"><button id="prevDay" class="icon" aria-label="上一个有数据的日期" disabled>←</button><button id="nextDay" class="icon" aria-label="下一个有数据的日期" disabled>→</button></div></section>
+    <section class="metrics"><div><span>当日生活事件</span><strong id="eventCount">—</strong><small>DAILY EVENTS</small></div><div><span>关联手机记录</span><strong id="phoneCount">—</strong><small>PHONE RECORDS</small></div><div><span>手机数据类型</span><strong id="typeCount">—</strong><small>DATA SOURCES</small></div><div><span>当日未关联记录</span><strong id="extraCount">—</strong><small>UNLINKED RECORDS</small></div></section>
+    <section class="timeline-panel"><div class="section-heading"><h2>生活时间线 <span id="visibleCount"></span></h2><button id="expandAll" class="text-button" disabled>展开全部手机记录</button></div><div class="toolbar"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="搜索事件、地点、人物或手机内容…" aria-label="搜索当日事件及手机记录" disabled></label><select id="typeFilter" aria-label="按手机类型筛选" disabled><option value="">全部手机类型</option></select></div><div id="timeline"><div class="welcome"><div class="welcome-art">◷<span>✦</span></div><h2>每一天，都有迹可循</h2><p>选择一个人物的数据文件夹，<br>查看日常事件，以及短信、日程、笔记和 AI 对话。</p><button id="welcomeButton" class="primary">选择人物文件夹 ↗</button><small>支持中文 / 英文数据 · 无需安装 · 无需联网</small></div></div></section>
+    <section id="extras" hidden></section>
+    <details id="diagnostics" class="diagnostics" hidden><summary>数据载入说明</summary><div id="diagnosticsBody"></div></details>
+    <div class="bottom-note">LIFEBENCH <span>生活事件 × 数字足迹</span></div>
+  </main>
+</body>
+</html>
