@@ -79,8 +79,8 @@ venv.bak/
 # Data & generated outputs
 tests/
 config/config.json
-# eval 目录整体不纳入版本控制
-eval/
+# Ignore only the repository-root evaluation directory.
+/eval/
 eval_traj/
 # persona_file（参考数据与生成结果，本地私有）
 src/lifebench/persona/persona_file/

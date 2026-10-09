@@ -1,76 +1,79 @@
-# life_bench_data 目录 — 基准数据集
+# LifeBench Benchmark Dataset
 
-存放 LifeBench 基准数据集，包含 10 位用户的一年生活数据，有中英文两个版本。
+This directory provides the LifeBench v2.0 benchmark: life events, phone records, and question-answer pairs for 10 virtual users over 2025, in Chinese and English. The current repository contains only `version2/`.
 
-## 子目录
+## Dataset Size
 
-| 目录 | 说明 |
-|------|------|
-| `version1/` | 旧版数据格式（单源格式） |
-| `version2/` | 新版数据格式（多源格式） |
+All counts below are for a single language version. The Chinese and English versions have the same record counts and are not added together.
 
-## version1 目录结构
+| Item | Count |
+|------|-------|
+| Virtual users | 10 |
+| Daily life events | 57,486 |
+| Phone records | 47,409 across 9 data sources |
+| Question-answer pairs | 3,380 |
 
-| 目录 | 说明 |
-|------|------|
-| `version1/data/` | 中文版数据（fenghaoran、yuxiaowen 等 10 位用户） |
-| `version1/data_en/` | 英文版数据（与 `data/` 结构相同） |
-| `version1/locomo_format/` | 转换为 locomo 格式的 QA 数据 |
+## Directory Structure
 
-### version1 各用户数据文件说明
+| Path | Description |
+|------|-------------|
+| [version2/data/](version2/data/) | Chinese multi-source data organized by user. |
+| [version2/data_en/](version2/data_en/) | English multi-source data with the same directory structure. |
+| [version2/locomo_format/](version2/locomo_format/) | Chinese and English LoCoMo conversational data. |
+| [version2/README.md](version2/README.md) | Detailed dataset documentation, field examples, and leaderboard. |
+| [version2/leaderboard.svg](version2/leaderboard.svg) | Leaderboard chart. |
 
-每位用户的数据包含以下文件：
+Both `data/` and `data_en/` contain these 10 user directories:
 
-| 文件 | 说明 |
-|------|------|
-| `phone_data/` | 手机操作轨迹数据 |
-| `QA/` | 问答对数据 |
-| `summary/` | 月度总结 |
-| `daily_event.json` | 每日生活事件 |
-| `location.json` | 真实城市地址 |
-| `persona.json` | 用户画像 |
-| `daily_draft.json` | 每日大纲 |
+```text
+fenghaoran/
+leimingxuan/
+lumingqiang/
+maxiulan/
+songyajing/
+sunyuwei/
+yemingxuan/
+yinhao/
+yuxiaowei/
+yuxiaowen/
+```
 
-### locomo 格式数据
+## Per-User Files
 
-| 文件 | 说明 |
-|------|------|
-| `our.json` | 中文版 locomo 格式 QA 数据 |
-| `our_en.json` | 英文版 locomo 格式 QA 数据 |
+Each `version2/data/{user}/` and `version2/data_en/{user}/` directory contains:
 
-## version2 目录结构
+| File | Description |
+|------|-------------|
+| `persona.json` | User profile. |
+| `daily_event.json` | Array of daily life events. |
+| `event_tree.json` | Event tree structure. |
+| `daily_draft.json` | Daily outlines. |
+| `QA_all/QA.json` | The user's question-answer pairs, including questions, answers, evidence, and scoring points. |
+| `phone_data/` | Phone records from the nine sources listed below. |
 
-| 目录 | 说明 |
-|------|------|
-| `version2/data/` | 中文版多源数据 |
-| `version2/data_en/` | 英文版多源数据 |
-| `version2/locomo_format/` | locomo 格式 QA 数据 |
+### Phone Records
 
-### version2 各用户数据文件说明
+| File | Description |
+|------|-------------|
+| `phone_data/agent_chat.json` | Conversations with an intelligent assistant. |
+| `phone_data/calendar.json` | Calendar entries and schedules. |
+| `phone_data/call.json` | Call records. |
+| `phone_data/contact.json` | Contacts. |
+| `phone_data/fitness_health.json` | Fitness and health records. |
+| `phone_data/note.json` | Notes. |
+| `phone_data/photo.json` | Photo-related records. |
+| `phone_data/push.json` | Push notifications. |
+| `phone_data/sms.json` | SMS messages. |
 
-每位用户的数据包含以下文件：
+## LoCoMo Conversational Format
 
-| 文件 | 说明 |
-|------|------|
-| `phone_data/` | 手机操作轨迹数据 |
-| `QA_all/` | 全部问答对数据 |
-| `daily_event.json` | 每日生活事件 |
-| `event_tree.json` | 事件树结构 |
-| `persona.json` | 用户画像 |
-| `daily_draft.json` | 每日大纲 |
+`version2/locomo_format/` contains two JSON files:
 
-### multi_source_format 说明
+| File | Description |
+|------|-------------|
+| [lifebench_locomo_conversation_format_v2.0_3380QA.json](version2/locomo_format/lifebench_locomo_conversation_format_v2.0_3380QA.json) | Chinese version. |
+| [lifebench_locomo_conversation_format_v2.0_3380QA_en.json](version2/locomo_format/lifebench_locomo_conversation_format_v2.0_3380QA_en.json) | English version. |
 
-多源格式数据将所有用户的 QA 数据合并为一个文件，包含完整的问答对、手机操作数据等。
+Each file is a top-level array containing 10 user samples and 3,380 question-answer pairs in total. Each sample contains `sample_id`, `conversation`, and `qa` fields.
 
-| 文件 | 说明 |
-|------|------|
-| `lifebench_multi_source_format_*.json` | 各用户多源格式 QA 数据汇总 |
-
-### locomo_format 说明
-
-locomo 格式数据是从多源格式数据转换而来的标准化 QA 数据格式。
-
-| 文件 | 说明 |
-|------|------|
-| `lifebench_locomo_format.json` | 所有用户 locomo 格式 QA 数据汇总 |
+The per-user `QA_all/QA.json` files and the LoCoMo files provide two representations of the QA data. Do not count them as additional question-answer pairs.

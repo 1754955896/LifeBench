@@ -1,10 +1,10 @@
-# baseline 子目录 — 无移动反馈（no-mobility）消融基线
+# No-Mobility Feedback Baseline
 
-在不动源码反馈逻辑的前提下，用只读开关包装新的消融过程。`no-mobility` 基线切断「地理移动 → 客观/主观思考」的全部移动考量。
+Wraps the ablation workflow with a read-only switch while leaving the source feedback logic intact. The `no-mobility` baseline removes mobility considerations from both subjective thought and objective event generation.
 
-## 文件
+## Files
 
-| 文件 | 说明 |
-|------|------|
-| `no_feedback.py` | `generate_subjective_thought_no_feedback` / `generate_objective_events_no_feedback` — 切断移动考量的主观/客观生成。 |
-| `templates_no_mobility.py` | no-mobility（无移动考量）版主观/客观提示词模板。 |
+| File | Description |
+|------|-------------|
+| `no_feedback.py` | `generate_subjective_thought_no_feedback` / `generate_objective_events_no_feedback`: subjective and objective generation without mobility feedback. |
+| `templates_no_mobility.py` | Subjective and objective prompt templates without mobility considerations. |

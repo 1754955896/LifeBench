@@ -1,20 +1,20 @@
-# edit 子目录 — 多 Agent 数据编辑管线
+# Data Editing Agents
 
-使用多个 LLM Agent 对生成的事件数据进行批评、规划、执行和反思，以提高数据质量。
+Uses multiple LLM agents to critique, plan, execute, and reflect on edits to generated event data.
 
-## Agent 角色
+## Agent Roles
 
-| 文件 | 说明 |
-|------|------|
-| `planning_agent.py` | 规划 Agent — 制定数据编辑计划 |
-| `execution_agent.py` | 执行 Agent — 执行具体编辑操作 |
-| `critic_agent.py` | 批评 Agent — 发现数据中的问题 |
-| `reflection_agent.py` | 反思 Agent — 评估编辑效果并提出改进 |
-| `writing_agent.py` | 写作 Agent — 负责具体文本生成 |
-| `data_query_tool.py` | 数据查询工具 |
+| File | Description |
+| --- | --- |
+| `planning_agent.py` | Planning agent: prepares data editing plans. |
+| `execution_agent.py` | Execution agent: performs editing operations. |
+| `critic_agent.py` | Critic agent: identifies data issues. |
+| `reflection_agent.py` | Reflection agent: evaluates edits and proposes improvements. |
+| `writing_agent.py` | Writing agent: generates text. |
+| `data_query_tool.py` | Data query utilities. |
 
-## 接口
+## Interfaces
 
-| 文件 | 说明 |
-|------|------|
-| `draft_edit_interface.py` / `phone_edit_interface.py` | 两条不同的编辑管线接口 |
+| File | Description |
+| --- | --- |
+| `draft_edit_interface.py` / `phone_edit_interface.py` | Interfaces for the two editing pipelines. |

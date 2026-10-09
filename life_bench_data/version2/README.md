@@ -149,18 +149,18 @@ version2/
 
 ## 👥 User List
 
-| # | User ID | Chinese Name | English Name |
-|---|---------|--------------|--------------|
-| 1 | `fenghaoran` | 冯浩然 | Feng Haoran |
-| 2 | `leimingxuan` | 雷铭轩 | Lei Mingxuan |
-| 3 | `lumingqiang` | 卢明强 | Lu Mingqiang |
-| 4 | `maxiulan` | 马秀兰 | Ma Xiulan |
-| 5 | `songyajing` | 宋雅静 | Song Yajing |
-| 6 | `sunyuwei` | 孙雨薇 | Sun Yuwei |
-| 7 | `yemingxuan` | 叶铭轩 | Ye Mingxuan |
-| 8 | `yinhao` | 尹浩 | Yin Hao |
-| 9 | `yuxiaowei` | 于晓薇 | Yu Xiaowei |
-| 10 | `yuxiaowen` | 于晓雯 | Yu Xiaowen |
+| # | User ID | Name |
+|---|---------|------|
+| 1 | `fenghaoran` | Feng Haoran |
+| 2 | `leimingxuan` | Lei Mingxuan |
+| 3 | `lumingqiang` | Lu Mingqiang |
+| 4 | `maxiulan` | Ma Xiulan |
+| 5 | `songyajing` | Song Yajing |
+| 6 | `sunyuwei` | Sun Yuwei |
+| 7 | `yemingxuan` | Ye Mingxuan |
+| 8 | `yinhao` | Yin Hao |
+| 9 | `yuxiaowei` | Yu Xiaowei |
+| 10 | `yuxiaowen` | Yu Xiaowen |
 
 ## 📄 File Descriptions
 

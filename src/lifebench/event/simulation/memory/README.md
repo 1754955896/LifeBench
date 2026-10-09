@@ -1,12 +1,12 @@
-# memory 子目录 — 结构化记忆存储 / 检索 / 巩固 / 嵌入
+# Structured Simulation Memory
 
-每日模拟使用的结构化记忆系统（区别于 `event/memory_structure/` 中的旧版 `MemoryModule`）。`MemoryStore` 去单例，每个日期分片独立实例。
+Structured memory storage, retrieval, consolidation, and embedding for daily simulation. This differs from the legacy `MemoryModule` in `event/memory_structure/`. `MemoryStore` is not a singleton: each date partition has its own instance.
 
-## 文件
+## Files
 
-| 文件 | 说明 |
-|------|------|
-| `store.py` | `MemoryStore` — 结构化记忆存储。 |
-| `embedding.py` | `EmbeddingModel` — 嵌入模型加载与编码。 |
-| `retrieval.py` | `build_short_memory` — 短期记忆检索：从 MemoryStore 构建唯一的结构化短期记忆上下文。 |
-| `consolidation.py` | `FuzzyMemoryBuilder` — 草稿派生的模糊记忆（冷启动）。 |
+| File | Description |
+|------|-------------|
+| `store.py` | `MemoryStore`: structured memory storage. |
+| `embedding.py` | `EmbeddingModel`: embedding model loading and encoding. |
+| `retrieval.py` | `build_short_memory`: retrieves short-term memories from MemoryStore to construct the single structured short-term memory context. |
+| `consolidation.py` | `FuzzyMemoryBuilder`: draft-derived fuzzy memory for cold starts. |

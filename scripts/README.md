@@ -1,16 +1,30 @@
-# scripts 目录 — 可执行脚本
+# Executable Scripts
 
-项目的主要可执行脚本目录。
+Main executable scripts for the project.
 
-## 文件
+## Running from the Repository
 
-| 文件 | 说明                         |
-|------|----------------------------|
-| `run.py` | 主运行脚本                      |
-| `run_all.py` | 全流程运行脚本（一次性执行所有人物全部数据生成流程） |
+Use a cloned repository with dependencies installed as described in the [main README](../README.md#-environment-configuration). Run commands from the repository root:
 
-## 子目录
+```bash
+# Process all personas in input/person.json
+python scripts/run_all.py
 
-| 目录 | 说明 |
-|------|------|
-| `run/` | 各模块独立运行脚本（QA 生成、人设生成、手机数据生成、模拟器等） |
+# Process a single prepared persona
+python scripts/run.py --base-path output/fenghaoran
+```
+
+The supported workflow uses these scripts directly. No installed console command or LifeBench package installation is required. See [run/README.md](run/README.md) for individual generation stages and their arguments.
+
+## Files
+
+| File | Description |
+| --- | --- |
+| `run.py` | Main pipeline runner. |
+| `run_all.py` | Batch runner for the complete data generation pipeline across all personas. |
+
+## Subdirectories
+
+| Directory | Description |
+| --- | --- |
+| `run/` | Standalone scripts for QA, persona and phone data generation, and simulation. |

@@ -1,12 +1,12 @@
-# generators 子目录 — 每日模拟各阶段生成器
+# Daily Simulation Generators
 
-将 `Mind` 中的 4 个生成方法迁出为独立模块，`Mind` 保留薄委托方法。各函数第一个参数 `mind` 为 `Mind` 实例（Duck-typed）。子包采用**惰性导出**，避免阶段间导入耦合。
+Four generation methods have been extracted from `Mind` into separate modules, with thin delegation methods retained in `Mind`. The first argument, `mind`, is a duck-typed `Mind` instance. The package uses lazy exports to avoid import coupling between stages.
 
-## 生成器
+## Files
 
-| 文件 | 说明 |
-|------|------|
-| `thought.py` | `generate_subjective_thought` — 主观思考生成器：生成拟人化的当日主观安排（计划如何执行、想安排什么活动）。 |
-| `objective.py` | `generate_objective_events` — 客观事件生成器：结合日程与合理性，对全天事件进行调整、补充与优化。 |
-| `trajectory.py` | `generate_poi_route` / `adjust_event_trajectory` — 轨迹生成器：真实 POI 定位与事件轨迹调整。 |
-| `reflection.py` | `generate_reflection` — 反思生成器：生成记忆摘要、活动统计与下一日上下文。 |
+| File | Description |
+|------|-------------|
+| `thought.py` | `generate_subjective_thought`: human-like daily intentions, including how to carry out plans and which activities to arrange. |
+| `objective.py` | `generate_objective_events`: adjusts, supplements, and refines daily events based on schedules and plausibility. |
+| `trajectory.py` | `generate_poi_route` / `adjust_event_trajectory`: real-world POI resolution and event trajectory adjustment. |
+| `reflection.py` | `generate_reflection`: memory summaries, activity statistics, and context for the following day. |

@@ -1,71 +1,71 @@
-# persona 模块 — 用户人设数据生成与管理
+# Persona Generation and Management
 
-负责生成用户画像（Persona）数据，包括基础信息、性格特征、日常习惯等。
+Generates user personas, including basic information, personality traits, and daily habits.
 
-## 核心文件
+## Core Files
 
-### 入口与编排
+### Entry Points and Orchestration
 
-| 文件 | 说明 |
-|------|------|
-| `persona_gen.py` | `PersonaGenerator` — Persona 数据生成主入口。 |
-| `pipeline.py` | `PersonaPipeline` — 分阶段生成与并发编排。 |
-| `stages.py` | 各生成阶段函数（基础画像、叙事、充实、一致性、关系槽、联系人分组、变体蓝图）。 |
-| `run_record.py` | `PersonaRunRecord` — 运行记录。 |
+| File | Description |
+|------|-------------|
+| `persona_gen.py` | `PersonaGenerator`: main persona generation entry point. |
+| `pipeline.py` | `PersonaPipeline`: staged generation and concurrent orchestration. |
+| `stages.py` | Stage functions for base profiles, narratives, enrichment, consistency, relationship slots, contact groups, and variant blueprints. |
+| `run_record.py` | `PersonaRunRecord`: generation run records. |
 
-### 数据模型
+### Data Models
 
-| 文件 | 说明 |
-|------|------|
-| `internal_models.py` | 内部数据结构（`InternalPersona`、`InternalContact`、`RelationSlot`、`CircleAnchor`、`PersonaResult`、`BatchResult`）。 |
-| `source_models.py` | 来源数据结构（`NormalizedSource`、`CanonicalSeed`）。 |
-| `variant_models.py` | `VariantBlueprint` — 差异化变体蓝图。 |
+| File | Description |
+|------|-------------|
+| `internal_models.py` | Internal structures: `InternalPersona`, `InternalContact`, `RelationSlot`, `CircleAnchor`, `PersonaResult`, and `BatchResult`. |
+| `source_models.py` | Source structures: `NormalizedSource` and `CanonicalSeed`. |
+| `variant_models.py` | `VariantBlueprint`: blueprint for a distinct persona variant. |
 
-### 来源处理
+### Source Processing
 
-| 文件 | 说明 |
-|------|------|
-| `source_io.py` | `load_source_records` — 读取任意输入来源。 |
-| `source_normalizer.py` | `SourceNormalizer` — 使用结构化 LLM 从任意字段或文本中抽取明确事实与软线索。 |
-| `canonicalizer.py` | 将稀疏事实转换为固定 27 字段画像骨架并锁定输入事实。 |
-| `normalization.py` | 结构化 LLM 响应归一化（联系人地址、关系分组、关系计划等）。 |
+| File | Description |
+|------|-------------|
+| `source_io.py` | `load_source_records`: reads arbitrary input sources. |
+| `source_normalizer.py` | `SourceNormalizer`: uses structured LLM calls to extract explicit facts and soft cues from arbitrary fields or text. |
+| `canonicalizer.py` | Converts sparse facts into a fixed 27-field profile skeleton and locks input facts. |
+| `normalization.py` | Normalizes structured LLM responses, including contact addresses, relationship groups, and relationship plans. |
 
-### 约束 / 差异化 / 采样
+### Constraints, Diversity, and Sampling
 
-| 文件 | 说明 |
-|------|------|
-| `constraints.py` | 年龄、BMI、MBTI 和亲属年龄约束。 |
-| `diversity.py` | 运行种子、结构化差异度和多样性门槛。 |
-| `sampling.py` | `PersonaReferenceSampler` — 参考池采样与派生种子。 |
+| File | Description |
+|------|-------------|
+| `constraints.py` | Age, BMI, MBTI, and relative-age constraints. |
+| `diversity.py` | Run seeds, structured distance measures, and diversity thresholds. |
+| `sampling.py` | `PersonaReferenceSampler`: reference-pool sampling and derived seeds. |
 
-### 落地 / 校验 / 输出
+### Grounding, Validation, and Output
 
-| 文件 | 说明 |
-|------|------|
-| `address_generation.py` | `PersonaAddressService` — 画像地址落地（住宅/工作地/常去地点/城市级地标）。 |
-| `grounding.py` | 落地上下文与一致性校验（移动画像、雇主锚点、关系圈/语义质量错误）。 |
-| `validation.py` | 画像键、内部画像、输出契约的校验。 |
-| `output_adapter.py` | 转换并锁定旧版 JSON 输出契约。 |
-| `local_io.py` | 原子写 JSON 与失败记录。 |
+| File | Description |
+|------|-------------|
+| `address_generation.py` | `PersonaAddressService`: grounds home, workplace, frequently visited places, and city landmarks. |
+| `grounding.py` | Grounding context and consistency checks, including mobility profiles, employer anchors, social circles, and semantic quality errors. |
+| `validation.py` | Validates profile keys, internal personas, and output contracts. |
+| `output_adapter.py` | Converts to and preserves the legacy JSON output contract. |
+| `local_io.py` | Atomic JSON writes and failure records. |
 
-### 数据文件
+### Data Files
 
-| 文件 | 说明 |
-|------|------|
-| `personas.json` | 生成的 personas 数据文件。 |
+| File | Description |
+|------|-------------|
+| `personas.json` | Generated persona data. |
 
-## 子目录
+## Subdirectories
 
-| 目录 | 说明 |
-|------|------|
-| `persona_file/` | Persona 参考文件与最终数据（`complete_profiles.json`、`final.json`、`refer.json` 等） |
-| `prompts/` | 按基础画像、叙事、关系计划和联系人拆分的提示词模板（详见 [prompts/README.md](prompts/README.md)） |
-| `eval/` | Persona 评估脚本（`eval.py`、`eval_circle.py`、`eval_relation.py`、`metrics.py`、`quality_gate.py`） |
-| `tests/` | Persona 单元测试（详见 [tests/README.md](tests/README.md)） |
+| Directory | Description |
+|-----------|-------------|
+| `persona_file/` | Persona reference files and final data, such as `complete_profiles.json`, `final.json`, and `refer.json`. |
+| `prompts/` | Templates for base profiles, narratives, relationship plans, and contacts; see [prompts/README.md](prompts/README.md). |
+| `eval/` | Persona evaluation scripts: `eval.py`, `eval_circle.py`, `eval_relation.py`, `metrics.py`, and `quality_gate.py`. |
+| `tests/` | Persona unit tests; see [tests/README.md](tests/README.md). |
 
-## 任意输入与差异化生成
+## Arbitrary Input and Diverse Variants
 
-任意输入模式先通过 LLM 将数据规范化为明确事实、软线索和原始描述，再补全固定画像结构。明确事实不会在后续阶段被修改；年龄和 BMI 仍由代码计算。
+Arbitrary-input mode first uses an LLM to normalize input into explicit facts, soft cues, and original descriptions, then fills the fixed profile structure. Later stages do not modify explicit facts. Age and BMI are still calculated in code.
 
 ```powershell
 python scripts/run/persona_gen.py `
@@ -78,59 +78,61 @@ python scripts/run/persona_gen.py `
   --diversity high
 ```
 
-支持 `json`、`jsonl`、`csv`、`tsv`、`txt` 和 `xlsx` 容器格式。Excel 读取需要环境中已有 `openpyxl`。最终仍输出标准画像列表，不包含抽取置信度、字段锁、variant id 或其他内部数据。
+Supported container formats are `json`, `jsonl`, `csv`, `tsv`, `txt`, and `xlsx`. Reading Excel requires `openpyxl` in the environment. The final output remains a standard list of personas, without extraction confidence, field locks, variant IDs, or other internal data.
 
-Python 调用：
+Python example:
 
 ```python
 outputs = generator.generate_from_any(
-    "住在杭州余杭，从事互联网工作并喜欢户外。",
+    "Lives in Yuhang, Hangzhou, works in the internet industry, and enjoys the outdoors.",
     variants_per_input=3,
     diversity="high",
     seed=None,
 )
 ```
 
-`seed=None` 会为每次调用创建新的运行种子；设置固定 seed 可复用同一套参考采样与变体提示。实际模型返回能否逐字复现还取决于模型服务端的采样实现。
+`seed=None` creates a new run seed for each call. A fixed seed reuses the same reference sampling and variant prompts. Exact reproduction of model responses also depends on the provider's sampling implementation.
 
-## 地址落地与 location 数据
+## Address Grounding and Location Data
 
-Persona CLI 默认在基础结构生成后调用地图服务，将居住地和日常工作地落到真实 POI。行政区和用户明确提供的地址事实不会被跨区域修改；地图返回的真实街道、门牌会回写画像，然后叙事和关系阶段继续使用这份冻结地址。
+By default, the persona CLI calls map services after generating the base structure to ground homes and regular workplaces in real POIs. It preserves administrative areas and explicit user-provided address facts. Real streets and building numbers returned by the map service are written back to the persona, and narrative and relationship stages continue with these frozen addresses.
 
-地址分配不是分别取搜索第一项，而是先建立住宅/工作地候选池，再按行政区匹配、地址完整度、批次复用惩罚和通勤合理性联合评分。直线距离用于廉价预筛，只对最优的 2 组候选调用路线 API；最终从高分候选中按 seed 加权抽样。因此固定 seed 可复现，同一模糊输入在不同运行 seed 下可以得到差异较大但仍合理的地点组合。
+Address assignment builds joint home/work candidate pools rather than independently selecting the first search result. Candidates are scored by administrative-area match, address completeness, batch reuse penalties, and commute plausibility. Straight-line distance provides a low-cost prefilter; route APIs are called only for the top two candidate pairs. Seeded weighted sampling then selects among high-scoring candidates. A fixed seed supports reproducibility, while different run seeds can produce substantially different but plausible location combinations from the same vague input.
 
-常去地点由画像先规划为 `daily`、`weekly`、`monthly` 三种频率，分别采用近距离、中距离和城市范围搜索半径。周边搜索直接使用 POI 返回的坐标和行政信息，不再对候选逐条地理编码；同一人物内禁止重复，批次内则按“住宅少共享、单位可适度共享、公共场所允许共享”的强度进行复用惩罚。
+Frequently visited places are first planned at `daily`, `weekly`, and `monthly` frequencies, using nearby, medium-range, and citywide search radii respectively. Nearby searches use POI coordinates and administrative information directly instead of geocoding every candidate again. Duplicate places are prohibited within one persona. Across a batch, reuse penalties discourage shared homes most strongly, allow moderate workplace sharing, and permit public-place sharing.
 
-地图工具默认在所有生成线程间统一控制为 3 QPS，并对 `10014/10015/10019/10020/10021/10029` 等短时限流错误进行指数退避重试。日额度错误不会反复重试。若最终成功落地的常去地点少于 3 个，本次人物生成会明确失败并留下失败记录，不再静默输出不完整 sidecar。
+The map tool limits requests to 3 QPS across all generation threads by default. It retries temporary rate-limit errors such as `10014/10015/10019/10020/10021/10029` with exponential backoff, but does not repeatedly retry daily-quota errors. If fewer than three frequently visited places are successfully grounded, persona generation fails explicitly and records the failure instead of silently emitting an incomplete sidecar.
 
-画像文件为 `person.json` 时，批量地址 sidecar 默认写为 `person_locations.json`，其外层数组与画像数组严格对齐：
+For a profile file named `person.json`, the batch location sidecar defaults to `person_locations.json`. Its outer array aligns exactly with the persona array. Illustrative record:
 
 ```json
 [
   [
     {
-      "name": "居住地·某小区",
+      "name": "Home at Example Residential Community",
       "location": "120.000000,30.000000",
-      "formatted_address": "浙江省杭州市余杭区某路1号",
-      "city": "杭州市",
-      "district": "余杭区",
-      "streetName": "某路",
-      "streetNumber": "1号",
-      "description": "人物的日常居住地"
+      "formatted_address": "No. 1 Example Road, Yuhang District, Hangzhou, Zhejiang",
+      "city": "Hangzhou",
+      "district": "Yuhang",
+      "streetName": "Example Road",
+      "streetNumber": "1",
+      "description": "The persona's regular home"
     }
   ]
 ]
 ```
 
-`scripts/run_all.py` 会把每项写入对应人物目录的 `location.json`。因此 simulator 检测到文件已存在后不会再次随机生成。旧数据没有 sidecar 时仍保留 simulator 的兼容兜底。
+`scripts/run_all.py` writes each entry to the corresponding persona directory as `location.json`. The simulator reuses an existing file instead of randomly generating addresses again. Legacy data without a sidecar still uses the simulator's compatibility fallback.
 
-如本地没有地图 API 或只需离线调试，可在 Persona CLI 使用 `--skip-location-generation`；也可用 `--location-output` 指定 sidecar 路径。
+Use `--skip-location-generation` in the persona CLI when no map API is available or for offline debugging. Use `--location-output` to specify the sidecar path.
 
-关系圈中的学校、体育场馆和有明确线下集合点的兴趣圈会在联系人生成前落到真实 POI，并作为 `关系圈固定地` 写入同一 location sidecar。体育、健身和线下兴趣地点必须从住宅坐标周边查询：每日活动使用约 3 km 半径，每周活动约 6 km，其他线下兴趣通常限制在 7～8 km；半径内没有合适 POI 时生成失败，不会降级成全城随机场馆。联系人住宅随后根据圈子类型、共享地点、工作地、原行政区线索和批次占用率从真实住宅候选池分配；出生地的省、市、区也会通过地图地理编码验证。非同住联系人不会优先复用同一住宅 POI。
+Schools, sports venues, and interest groups with a defined physical meeting place are grounded in real POIs before contact generation and written to the same location sidecar as fixed social-circle locations. The runtime label is represented by JSON escapes `\u5173\u7cfb\u5708\u56fa\u5b9a\u5730`. Sports, fitness, and offline interest locations must be searched around the home's coordinates: roughly 3 km for daily activities, 6 km for weekly activities, and typically 7-8 km for other offline interests. If no suitable POI is found within the radius, generation fails instead of falling back to a random venue elsewhere in the city.
 
-每个画像还会规划至少一个 `scope=city` 的城市级公共地点，例如与其兴趣匹配的博物馆、城市公园、图书馆、体育中心或历史地标。这类 monthly 低频地标是住宅生活半径规则的明确例外。城市级地点与住宅/工作地周边的 daily、weekly 场所一同写入 location sidecar；健身、球类、跑步、阅读和兴趣班等高频项目则强制以居住地为搜索基点。
+Contact homes are then assigned from real residential candidate pools based on circle type, shared places, workplaces, original administrative-area cues, and batch occupancy. Birthplace province, city, and district are also verified through map geocoding. Contacts who do not live together are not preferentially assigned the same residential POI.
 
-只需要住宅/工作分配时可以直接调用公开接口：
+Each persona also plans at least one `scope=city` public location, such as a museum, city park, library, sports center, or historic landmark matching their interests. These low-frequency `monthly` landmarks are an explicit exception to the home-radius rules. They are written to the sidecar alongside `daily` and `weekly` places near home or work. Frequent activities such as fitness, ball sports, running, reading, and classes must use the home as their search origin.
+
+For home/work assignment only, call the public API directly:
 
 ```python
 from src.lifebench.persona import PersonaAddressService
@@ -150,4 +152,4 @@ batch_results = service.allocate_persona_batch(
 )
 ```
 
-CLI 可通过 `--reserved-address-file` 读取已有画像或 location JSON，将其中主画像及 relation 住宅加入占用池，以减少不同运行批次之间的小区和办公地点重复。
+The CLI accepts `--reserved-address-file` to load existing persona or location JSON. It adds the primary personas' and their relations' homes to the occupied-address pool, reducing residential and workplace reuse across separate runs.

@@ -1,29 +1,29 @@
-# event 模块 — 事件与问答数据生成
+# Event and QA Generation
 
-负责生成用户日常生活事件、手机操作轨迹及对应的问答对。
+Generates daily life events, phone activity records, and associated question-answer pairs.
 
-## 核心文件
+## Core Files
 
-| 文件 | 说明 |
-|------|------|
-| `daily_simulator.py` | 每日生活事件模拟器（核心调度） |
-| `phone_data_gen.py` | 手机操作数据生成 |
-| `all_qa_generator.py` | 问答对生成器 |
-| `draft_gen.py` | 每日大纲（daily draft）生成 |
-| `data_edit.py` | 数据编辑与修正工具 |
-| `event_formatter.py` | 事件数据格式化 |
-| `event_schema.csv` | 事件数据 Schema 定义 |
+| File | Description |
+| --- | --- |
+| `daily_simulator.py` | Daily life simulator and main orchestration. |
+| `phone_data_gen.py` | Phone activity data generation. |
+| `all_qa_generator.py` | Question-answer pair generation. |
+| `draft_gen.py` | Daily draft generation. |
+| `data_edit.py` | Data editing and correction. |
+| `event_formatter.py` | Event data formatting. |
+| `event_schema.csv` | Event schema definition. |
 
-## 子目录
+## Subdirectories
 
-| 目录 | 说明 |
-|------|------|
-| `simulation/` | 每日生活模拟引擎（日期分片并行、地理分配、记忆、反思） |
-| `draft/` | 事件大纲生成相关脚本（Graph、Timeline、Refiner 等） |
-| `edit/` | 多 Agent 数据编辑管线（规划、执行、反思、批评等 Agent） |
-| `phone_generator/` | 手机各类型数据生成器（聊天、通话、健康、相册等） |
-| `qa_generator/` | 各类型 QA 生成器（单跳、多跳、时序、冲突等） |
-| `memory_structure/` | 记忆结构构建（模糊记忆、记忆类） |
-| `tools/` | 工具函数（事件匹配、地址生成、xlsx 转 csv 等） |
-| `templates/` | 提示词模板 |
-| `local_models/` | 本地 embedding 模型（all-MiniLM-L6-v2） |
+| Directory | Description |
+| --- | --- |
+| `simulation/` | Daily simulation engine with parallel date partitions, geolocation, memory, and reflection. |
+| `draft/` | Event outline generation, including graphs, timelines, and refinement. |
+| `edit/` | Data editing pipeline with planning, execution, reflection, and critic agents. |
+| `phone_generator/` | Phone data generators for chat, calls, health, photos, and other sources. |
+| `qa_generator/` | QA generators for single-hop, multi-hop, temporal, conflict, and other question types. |
+| `memory_structure/` | Legacy memory structures and memory module. |
+| `tools/` | Utilities for event matching, address generation, and Excel-to-CSV conversion. |
+| `templates/` | Prompt templates. |
+| `local_models/` | Local embedding models, such as all-MiniLM-L6-v2. |

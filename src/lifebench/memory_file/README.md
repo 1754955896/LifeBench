@@ -1,5 +1,5 @@
-# memory_file 目录
+# Memory Data Directory
 
-用于存放每日模拟过程中记忆数据库相关的文件（数据目录）。
+Reserved for memory database files used during daily simulation.
 
-> 目前该目录为占位目录，实际运行时的结构化记忆由 [`event/simulation/memory/`](../event/simulation/memory/README.md) 中的 `MemoryStore` 管理，模糊记忆摘要输出到各人物目录的 `sim/` 下。
+> This is currently a placeholder directory. Runtime structured memory is managed by `MemoryStore` in [`event/simulation/memory/`](../event/simulation/memory/README.md). Fuzzy memory summaries are written under each persona's `sim/` directory.

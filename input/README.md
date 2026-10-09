@@ -1,11 +1,11 @@
-# input 目录 — 输入数据
+# Input Data
 
-存放项目运行所需的输入数据文件。
+Input files used by the data generation pipeline.
 
-## 文件
+## Files
 
-| 文件 | 说明 |
-|------|------|
-| `person.json` | Persona 输入数据，用于驱动数据生成流程 |
+| File | Description |
+| --- | --- |
+| `person.json` | Persona input data for the generation pipeline. |
 
-> `person.json` 中定义的用户数组将作为 `run_all.py` 等脚本的输入，支持多用户和自定义格式。
+> The user array in `person.json` is consumed by scripts such as `run_all.py`, supporting multiple users and custom persona content.

@@ -21,9 +21,6 @@ dependencies = [
     "pyvis",
 ]
 
-[project.scripts]
-lifebench-generate = "run_all:main"
-
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["lifebench*"]

@@ -144,40 +144,39 @@ For the convenience of conducting memory benchmark tests on existing memory syst
 
 ### ⚙️ Environment Configuration
 
-1. **Install Dependencies**
+LifeBench runs directly from a cloned repository. Install the third-party dependencies and run the scripts from the repository root; installing LifeBench with `pip install .` or `pip install -e .` is not a supported workflow.
+
+1. **Clone the Repository**
    ```bash
-   pip install -r requirements.txt
+   git clone https://github.com/1754955896/user-personal-data-sys.git
+   cd user-personal-data-sys
    ```
 
-2. **Embedding Model Preparation** (Optional, for memory system)
-   Download embedding models to `src/lifebench/event/local_models/` for local similarity search:
+   All commands below assume this working directory, which contains `README.md`, `requirements.txt`, and `scripts/`.
+
+2. **Install Dependencies**
+   ```bash
+   python -m pip install -r requirements.txt
+   ```
+
+3. **Embedding Model Preparation** (Required for life simulation)
+   The simulator loads a local embedding model through `MemoryStore`. Download it before running `scripts/run/simulator.py` or a full generation pipeline. Reading the released JSON dataset or using the local data viewer does not require this model.
 
    ```bash
-   pip install huggingface-hub
+   python -m pip install huggingface-hub
    huggingface-cli download sentence-transformers/all-MiniLM-L6-v2 --local-dir src/lifebench/event/local_models/all-MiniLM-L6-v2
    ```
 
+   The model directory must include `config.json`, `pytorch_model.bin`, `tokenizer_config.json`, and `vocab.txt`; the loader raises an error if required files are missing.
 
-3. **Configuration File**
-   - Create `config/config.json` (copy from `config.example.json`)
-   - Configure LLM API and map API keys
+4. **Configuration File**
+   For a new setup, copy the complete [configuration template](config/config.example.json):
 
-   ```json
-   {
-     "llm": {
-       "api_key": "your_api_key_here",
-       "base_url": "https://api.deepseek.com",
-       "default_model": "deepseek-v4-flash",
-       "reason_model": "deepseek-v4-pro",
-       "strip_think": false
-     },
-     "simulation_asset_preparation": { "enabled": true, "...": "..." },
-     "trajectory_assignment": { "enabled": true, "...": "..." },
-     "map_tool": {
-       "api_key": "your_map_api_key_here"
-     }
-   }
+   ```bash
+   python -c "from shutil import copyfile; copyfile('config/config.example.json', 'config/config.json')"
    ```
+
+   If `config/config.json` already exists, edit it directly instead of copying over it. Set `llm.api_key`, `llm.base_url`, and the model names for your provider, and set `map_tool.api_key` for map-backed address generation. Keep the remaining template sections and adjust them as needed. The local configuration contains credentials and is excluded from Git.
 
    | Config Key | Description | Required |
    |------------|-------------|----------|
@@ -203,26 +202,20 @@ For the convenience of conducting memory benchmark tests on existing memory syst
 
 #### Batch Mode Data Preparation
 
-Merge all persona data into an array and save to `input/person.json`:
+The repository includes [input/person.json](input/person.json), a ready-to-use JSON array containing 10 complete personas. The default batch command reads this file directly.
 
-```json
-[
-  {
-    "name": "Zhang San",
-    "age": 30,
-    ...
-  },
-  {
-    "name": "Li Si",
-    "age": 25,
-    ...
-  }
-]
-```
+For custom input, keep the same array structure and provide complete persona objects, including their nested fields. Use a [released persona](life_bench_data/version2/data/fenghaoran/persona.json) as a full reference, or follow the [persona generation guide](src/lifebench/persona/README.md). To keep custom input separate, place a `person.json` file in another directory and pass that directory with `--persona-folder`.
 
 #### Single Persona Data Preparation
 
-Create a persona folder under `output` and place the persona data:
+For a new single-person run, create an output directory and copy the complete [Feng Haoran persona](life_bench_data/version2/data/fenghaoran/persona.json):
+
+```bash
+python -c "from pathlib import Path; Path('output/fenghaoran').mkdir(parents=True, exist_ok=True)"
+python -c "from shutil import copyfile; copyfile('life_bench_data/version2/data/fenghaoran/persona.json', 'output/fenghaoran/persona.json')"
+```
+
+For an existing run, keep its current `persona.json`. A new directory starts with:
 
 ```
 output/
@@ -232,50 +225,53 @@ output/
 
 ### ▶️ Running
 
+Run these commands from the repository root after configuring the APIs and preparing the persona data.
+
 #### Batch Mode
 
 ```bash
 # Run the complete generation pipeline (process all personas in input/person.json)
-python run_all.py
+python scripts/run_all.py
 
 # Specify persona ID range
-python run_all.py --start-id 1 --end-id 5
+python scripts/run_all.py --start-id 1 --end-id 5
 
 # Skip QA generation (phone data, monthly reports, etc. are still generated)
-python run_all.py --generate-qa 0
+python scripts/run_all.py --generate-qa 0
 ```
 
 #### Single Persona Mode
 
-**Run all at once with run.py:**
+**Run all at once with `scripts/run.py`:**
 
 ```bash
-cd scripts
-python run.py --base-path output/fenghaoran
+python scripts/run.py --base-path output/fenghaoran
 ```
 
-**Run step by step:**
+**Run step by step for the full year 2025:**
 
 ```bash
-cd scripts
-
 # 1. Generate daily event drafts
-python run/draft_gen.py --base-path output/fenghaoran
+python scripts/run/draft_gen.py --base-path output/fenghaoran
 
 # 2. Simulate daily activities
-python run/simulator.py --file-path output/fenghaoran/
+python scripts/run/simulator.py --file-path output/fenghaoran/
 
 # 3. Generate phone operation data
-python run/phone_gen.py --file-path output/fenghaoran/
+python scripts/run/phone_gen.py --file-path output/fenghaoran/ --start-time 2025-01-01 --end-time 2025-12-31
 
 # 4. Generate question-answer pairs
-python run/qa_gen.py --data-path output/fenghaoran/
+python scripts/run/qa_gen.py --data-path output/fenghaoran/
 ```
 
 > Each step accepts additional arguments — see [`scripts/run/README.md`](scripts/run/README.md) for the full list.
 
 
 ### 🎛️ Command Line Arguments
+
+#### Single-Person Pipeline: `scripts/run.py`
+
+The following options apply to the integrated single-person runner:
 
 | Argument | Description | Default |
 |----------|-------------|---------|
@@ -292,7 +288,24 @@ python run/qa_gen.py --data-path output/fenghaoran/
 | `--no-phone-sample` | Keep all generated phone data (skip sampling) | off |
 | `--dry-run` | Write placeholder files without generating | off |
 
-`run_all.py` additionally accepts `--persona-folder` (default `input/`), `--start-id`, `--end-id`, and `--dry-run`.
+#### Batch Pipeline: `scripts/run_all.py`
+
+The batch runner accepts the following options. It runs full years and does not accept `--base-path`, `--instance-id`, `--months`, `--interactive`, or `--no-phone-sample`.
+
+| Argument | Description | Default |
+|----------|-------------|---------|
+| `--persona-folder` | Directory containing `person.json`; relative paths resolve from the repository root | `input/` |
+| `--start-id` | First persona position to process (1-based, inclusive); `0` starts at the beginning | `0` |
+| `--end-id` | Last persona position to process (1-based, inclusive); `0` processes through the end | `0` |
+| `--process-path` | Intermediate data directory relative to each persona's output directory | `process/` |
+| `--max-workers` | Max worker threads passed to the single-person runner | auto (CPU cores × 2) |
+| `--generate-phone-data` | Generate phone data (0/1) | `1` |
+| `--generate-monthly-report` | Generate monthly reports (0/1) | `1` |
+| `--generate-qa` | Generate QA data (0/1) | `1` |
+| `--year` | Year for generated data | `2025` |
+| `--dry-run` | Write placeholder files without generating | off |
+
+For stage-specific arguments, see [`scripts/run/README.md`](scripts/run/README.md).
 
 ### 🎯 Evaluation
 
@@ -300,63 +313,36 @@ The evaluation script lives in a separate repository: [LifeBench_eval](https://g
 
 ## 📁 Directory Structure
 
-```
-lifebench/
-├── config/
-│   ├── config.example.json    # Config template (all options + defaults)
-│   └── config.json            # Actual config (create manually; not committed)
+Main directories and files included in the repository:
+
+```text
+user-personal-data-sys/
+├── config/                   # Configuration template and reference
 ├── input/
-│   └── person.json            # Input persona data (batch mode)
-├── output/                    # Generated data output
-│   └── {pinyin}_{id}/         # Per-person folder (e.g. feng_haoran_1)
-│       ├── persona.json       # User persona
-│       ├── daily_draft.json   # Daily drafts
-│       ├── daily_event.json   # Daily events
-│       ├── event_tree.json    # Event tree
-│       ├── location.json      # Location data
-│       ├── phone_data/        # Phone operation data
-│       │   ├── sms.json
-│       │   ├── call.json
-│       │   ├── calendar.json
-│       │   ├── contact.json
-│       │   ├── note.json
-│       │   ├── photo.json
-│       │   ├── push.json
-│       │   ├── agent_chat.json
-│       │   └── fitness_health.json
-│       ├── summary/           # Monthly health reports
-│       ├── QA_all/            # QA data aggregation
-│       │   └── QA.json
-│       └── process/           # Intermediate files
+│   └── person.json           # Complete sample personas for batch mode
+├── output/                   # Destination for locally generated results
 ├── scripts/
-│   ├── run_all.py             # Batch runner
-│   ├── run.py                 # Integrated generator
-│   └── run/                   # Step-by-step scripts
-│       ├── persona_gen.py
-│       ├── draft_gen.py
-│       ├── simulator.py
-│       ├── phone_gen.py
-│       └── qa_gen.py
-├── src/lifebench/
-│   ├── event/
-│   │   ├── draft/             # Draft generation
-│   │   ├── edit/              # Edit interface
-│   │   ├── local_models/      # Local embedding models
-│   │   ├── memory_structure/  # Memory structure
-│   │   ├── phone_generator/   # Phone data generator
-│   │   ├── qa_generator/      # QA generator
-│   │   ├── simulation/        # Life simulation engine
-│   │   ├── templates/         # Templates
-│   │   └── tools/             # Utilities
-│   ├── memory_file/           # Temporary memory files (cleaned after run)
-│   ├── persona/               # Persona module
-│   └── utils/                 # Helper functions
-├── life_bench_data/           # Released dataset (version1 / version2)
-├── tests/                     # Test data
+│   ├── run_all.py            # Batch runner
+│   ├── run.py                # Integrated single-person runner
+│   └── run/                  # Individual generation stages
+├── src/lifebench/            # Persona, event, memory, and utility modules
+├── life_bench_data/
+│   └── version2/
+│       ├── data/             # Chinese multi-source dataset
+│       ├── data_en/          # English multi-source dataset
+│       └── locomo_format/    # Chinese and English conversational exports
+├── html/                     # Local browser-based data viewer
+├── hf_space_leaderboard/     # Interactive leaderboard assets
+├── pic/                      # Documentation images
 ├── requirements.txt
 ├── pyproject.toml
+├── LICENSE
 └── README.md
 ```
+
+Generated persona directories and intermediate results appear under `output/` when the pipeline runs. See the [dataset layout](life_bench_data/README.md), [source module guide](src/lifebench/README.md), and [script reference](scripts/README.md) for details.
+
+To inspect the released data locally, open [`html/index.html`](html/index.html) in Chrome or Edge and select a persona directory such as `life_bench_data/version2/data/fenghaoran/`. No backend or generation API is needed; see the [viewer guide](html/README.md).
 
 ## 💾 Checkpoint
 

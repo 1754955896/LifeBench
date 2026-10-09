@@ -1,5 +1,5 @@
-# output 目录 — 输出数据
+# Output Data
 
-运行数据生成流程后的输出结果存放目录。
+This directory stores results produced by the data generation pipeline.
 
-运行 `run_all.py` 或各独立脚本后，生成的数据将输出到此目录。请注意实际的输出路径可能因配置而异，具体以脚本中的设置为准。
+Generated data from `run_all.py` and individual scripts is written here. Actual output paths may vary with configuration; refer to the settings in each script.

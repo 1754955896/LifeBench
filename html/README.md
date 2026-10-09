@@ -1,47 +1,47 @@
-# LifeBench 生活数据观察室
+# LifeBench Life Data Viewer
 
-直接使用 Chrome / Edge 打开本目录的 `index.html`，点击「选择人物文件夹」，选择例如：
+Open `index.html` in this directory directly in Chrome or Edge. Use the folder picker to select a persona directory, for example:
 
 ```text
-D:\pyCharmProjects\pythonProject4\life_bench_data\version2\data\sunyuwei
+life_bench_data/version2/data/sunyuwei/
 ```
 
-浏览器可能会将目录选择提示称为“上传”，这里仅通过 File API 在本地读取文件，没有服务器、网络请求、CDN 或数据上传。浏览器不允许网页自动读取任意磁盘路径，因此需要手动选择一次目录；刷新后重新选择。
+The browser may describe directory selection as an upload. The viewer only reads files locally through the File API: it has no server, network requests, CDN dependencies, or data uploads. Browsers do not allow pages to read arbitrary disk paths automatically, so select the directory manually and select it again after refreshing.
 
-目录结构：
+Expected directory structure:
 
 ```text
-人物文件夹/
-  daily_event.json       必需：事件数组
-  persona.json           可选：人物信息
-  phone_data/            可选
+persona-folder/
+  daily_event.json       Required: an array of events
+  persona.json           Optional: persona information
+  phone_data/            Optional
     sms.json
     calendar.json
     agent_chat.json
-    ...                  各类型 JSON 数组
+    ...                  JSON arrays for each data source
 ```
 
-## 页面功能
+## Features
 
-- 日历标记有生活事件的日期；支持日期输入、月份切换和上 / 下一个有数据日期。
-- 按时间展示当日事件、描述、人物、地点及所有时间段。跨日事件在覆盖的各天展示。
-- 按 `phone_data[].daily_event_id` → `daily_event[].event_id` 关联手机记录。字符串 / 数字 ID 统一比较，`0` 也作为有效 ID；不使用 phone data 的 `event_id` 来关联。
-- 一条事件可对应多条、多种手机记录；支持数组形式的关联 ID。仅展示记录自身日期等于当前所选日期的关联手机记录；日期不符或没有可识别日期的记录不展示，也不参与当日统计、搜索和类型筛选。
-- 展开查看短信、通话、日程、笔记、照片描述、通知、AI 对话等全部字段及原始 JSON。
-- 搜索当日事件和关联手机内容，并按手机数据类型筛选。命中手机内容后保留事件上下文；搜索不会删除同一事件下的其他同类型手机记录。
-- 缺少或无效关联 ID 的手机数据按自身日期显示在「当日未关联记录」中。日期优先级为 `datetime`、`date`、`日期`、`start_time`。没有日期且没有有效关联的记录（如通讯录）计入载入说明，不自动归入日期。
-- 顶部统计代表整天数据，不随搜索改变；关联记录去重统计。显示数量另列于事件标题旁。未关联记录的数量单独统计。
-- 单个手机文件损坏会提示并跳过；主事件文件损坏、缺少 ID / 日期或 ID 重复时拒绝载入，保留之前的数据。
-- 支持窄屏布局，无需构建、安装依赖或启动后端。
+- The calendar marks dates with life events and supports date entry, month navigation, and moving to the previous or next date with data.
+- Events are shown chronologically with descriptions, participants, locations, and all time intervals. Events spanning multiple days appear on each covered date.
+- Phone records are linked through `phone_data[].daily_event_id` to `daily_event[].event_id`. String and numeric IDs are compared consistently, including the valid ID `0`. The phone record's `event_id` is not used for this join.
+- An event can have multiple linked phone records from different sources; arrays of linked IDs are supported. Only linked phone records whose own date matches the selected date are displayed. Records with a different or unrecognized date are excluded from the day's display, counts, search, and type filtering.
+- Expand records to inspect all fields and raw JSON for SMS, calls, calendar entries, notes, photo descriptions, notifications, and assistant conversations.
+- Search daily events and linked phone content, and filter by phone data type. Matching phone content retains its event context; search does not remove other records of the same type under that event.
+- Records with missing or invalid association IDs appear as unlinked records on their own date. Date field priority is `datetime`, `date`, the legacy Chinese date key (JSON escape `\u65e5\u671f`), then `start_time`. Records with neither a date nor a valid association, such as contacts, are noted during loading and are not assigned a date automatically.
+- Top-level counts describe the entire day and do not change with search. Linked records are deduplicated for counting. Visible counts are shown separately beside the event heading, and unlinked records are counted separately.
+- Invalid individual phone files are reported and skipped. An invalid main event file, missing IDs or dates, or duplicate IDs prevents loading while preserving the previously loaded data.
+- The viewer supports narrow screens and requires no build step, dependency installation, or backend.
 
-## 文件与验证
+## Files and Validation
 
-`index.html` 为入口，`styles.css` 为样式，`app.js` 为读取、索引和渲染逻辑。三个文件需保留在同一目录。
+`index.html` is the entry point, `styles.css` defines the styles, and `app.js` handles loading, indexing, and rendering. Keep all three files in the same directory.
 
-从项目根目录运行：
+Run from the repository root:
 
 ```sh
 node --test html/viewer.test.cjs
 ```
 
-测试覆盖 ID 精确关联、跨日事件、未关联记录、恶意 HTML 转义、完整孙雨薇数据，以及通过浏览器 DOM 模拟进行的载入、切日、搜索和类型筛选。当前运行环境没有可连接的浏览器，尚未完成真实浏览器截图 / 视觉验收。
+Tests cover exact ID matching, events spanning multiple days, unlinked records, malicious HTML escaping, the full Sun Yuwei dataset, and loading, date navigation, search, and type filtering through a simulated browser DOM. Real-browser screenshot and visual validation have not yet been completed.

@@ -1,15 +1,15 @@
-# tools 子目录 — 事件工具函数
+# Event Utilities
 
-事件生成管线中使用的辅助工具。
+Supporting tools for the event generation pipeline.
 
-## 文件
+## Files
 
-| 文件 | 说明 |
-|------|------|
-| `check_event_matching.py` | 事件匹配校验工具 |
-| `event_tree_classify.py` | 事件树分类工具 |
-| `event_tree_optimizer.py` | 事件树优化工具 |
-| `location_opportunity_builder.py` | 地点机会（同城参考 POI）构建工具 |
-| `persona_address_generator.py` | Persona 地址生成工具 |
-| `xlsx_to_csv.py` | Excel 转 CSV 工具 |
-| `prob_model.py` | 概率模型相关工具 |
+| File | Description |
+| --- | --- |
+| `check_event_matching.py` | Event matching validation. |
+| `event_tree_classify.py` | Event tree classification. |
+| `event_tree_optimizer.py` | Event tree optimization. |
+| `location_opportunity_builder.py` | Location opportunity pool construction using reference POIs in the same city. |
+| `persona_address_generator.py` | Persona address generation. |
+| `xlsx_to_csv.py` | Excel-to-CSV conversion. |
+| `prob_model.py` | Probability model utilities. |
