@@ -17,7 +17,7 @@ def main():
     parser = argparse.ArgumentParser(description='问答生成器 - 生成各类问答对')
     
     # 添加参数，支持默认值
-    parser.add_argument('--data-path', type=str, default='D:\\pyCharmProjects\\pythonProject4\\tests/tests/data_output/yuxiaowen/', help='用户数据路径，包含persona.json、event_tree.json等文件')
+    parser.add_argument('--data-path', type=str, default='output/fenghaoran/', help='用户数据路径，包含persona.json、event_tree.json等文件')
     parser.add_argument('--year', type=int, default=2025, help='生成问答的年份，例如：2025')
     
     # 解析参数

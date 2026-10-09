@@ -4,7 +4,7 @@ These scripts run individual stages of data generation for debugging or targeted
 
 From the repository root, run `python scripts/run/<script>.py [arguments]`. Pass values as `--argument value` and enable boolean switches with `--flag`. Each script adds the repository root to `sys.path`; relative data paths still follow that script's path-handling rules.
 
-First install the dependencies and configure the APIs as described in the [main README](../../README.md#-environment-configuration). Use the scripts directly from the cloned repository; no LifeBench package installation is required. Pass your own data directory explicitly instead of relying on machine-specific defaults.
+First install the dependencies and configure the APIs as described in the [main README](../../README.md#a-environment-and-configuration). Use the scripts directly from the cloned repository; no LifeBench package installation is required. Pass your own data directory explicitly instead of relying on machine-specific defaults.
 
 ## Script Overview
 
@@ -53,7 +53,7 @@ Generates annual timeline drafts and daily outlines, with configurable month ran
 
 | Argument | Type | Default | Description |
 |----------|------|---------|-------------|
-| `--base-path` | string | `D:\pyCharmProjects\pythonProject4\tests/tests/data_output/yuxiaowen` | Base data directory, which must contain `persona.json`. |
+| `--base-path` | string | `output/fenghaoran/` | Base data directory, which must contain `persona.json`. |
 | `--process-path` | string | `process/` | Processing directory relative to `base-path`; also stores outputs other than daily state. |
 | `--instance-id` | int | `0` | Persona instance ID. |
 | `--max-workers` | int | `None` | Maximum worker threads; defaults to CPU cores multiplied by two. |
@@ -70,7 +70,7 @@ Generates calendar entries, SMS, photos, notes, push notifications, calls, fitne
 
 | Argument | Type | Default | Description |
 |----------|------|---------|-------------|
-| `--file-path` | string | `D:\pyCharmProjects\pythonProject4\tests/data_output/fenghaoran/fenghaoran/` | Data directory. |
+| `--file-path` | string | `output/fenghaoran/` | Data directory. |
 | `--start-time` | string | `2025-01-01` | Start date. |
 | `--end-time` | string | `2025-01-01` | End date. |
 | `--max-workers` | int | `40` | Maximum parallel threads. |
@@ -108,7 +108,7 @@ Generates different types of question-answer pairs from timeline data.
 
 | Argument | Type | Default | Description |
 |----------|------|---------|-------------|
-| `--data-path` | string | `D:\pyCharmProjects\pythonProject4\tests/tests/data_output/yuxiaowen/` | User data directory containing `persona.json`, `event_tree.json`, and other required files. |
+| `--data-path` | string | `output/fenghaoran/` | User data directory containing `persona.json`, `event_tree.json`, and other required files. |
 | `--year` | int | `2025` | Year for question generation. |
 
 > If `process/rich_timeline.json` exists, the script loads `same_theme_arr` (themes) and `frequency_id_groups` (event groups) for multi-hop and related questions.

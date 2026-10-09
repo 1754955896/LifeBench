@@ -4,7 +4,7 @@ Main executable scripts for the project.
 
 ## Running from the Repository
 
-Use a cloned repository with dependencies installed as described in the [main README](../README.md#-environment-configuration). Run commands from the repository root:
+Use a cloned repository with dependencies installed as described in the [main README](../README.md#a-environment-and-configuration). Run commands from the repository root:
 
 ```bash
 # Process all personas in input/person.json

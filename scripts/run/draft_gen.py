@@ -38,7 +38,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='年度时间线草稿生成系统')
 
     # 路径参数
-    parser.add_argument('--base-path', type=str, default='D:\\pyCharmProjects\\pythonProject4\\tests/tests/data_output/yuxiaowen',
+    parser.add_argument('--base-path', type=str, default='output/fenghaoran/',
                         help='基础数据路径')
     parser.add_argument('--process-path', type=str, default='process/',
                         help='处理文件路径（相对于base-path，同时作为除每日状态外的其他数据输出路径）')

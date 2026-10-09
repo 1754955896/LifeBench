@@ -4,46 +4,127 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2603.03781-b31b1b?style=flat-square)](https://arxiv.org/abs/2603.03781)
 [![GitHub](https://img.shields.io/badge/GitHub-LifeBench__eval-181717?style=flat-square&logo=github)](https://github.com/1754955896/LifeBench_eval)
 
-LifeBench is a benchmark designed for evaluating personalized agent memory systems. It comprises:
-- Detailed character profile data
-- A full-year dataset covering all daily life activities of individuals
-- Digital trace (mobile phone operation) data corresponding to real-life scenarios
-- Associated question-answering data
+LifeBench combines a life event simulator with a benchmark for personalized agent memory. It generates daily activities and digital traces for virtual users, then tests how well memory agents answer questions about those histories.
 
-The main objectives of our dataset are as follows:
+[Life Event Simulation](#1-life-event-simulation) | [LifeBench Data](#2-lifebench-data) | [Memory Agents Performance](#3-memory-agents-performance) | [Appendices](#appendices)
 
-1. **Challenging and comprehensive question-answering and online interaction tasks** (with interleaved memory augmentation, memory retrieval, and answering)
-2. **Long-term, realistic and rich personal life data and digital traces**
-3. **Automated pipeline** for data generation and question design, supporting large-scale applications
+## 1. Life Event Simulation
 
-## 🌐 Overview
-![LifeBench Overview](pic/PIC_INTRO.png)
-Existing benchmarks mainly focus on dialogue scenarios and lack diverse digital traces. Furthermore, current datasets do not cover continuous, long-term life sequences of an individual, but only concentrate on major events. In contrast, we model continuous data that covers an individual's entire life over the course of one year. Existing datasets fail to realistically simulate humans and lack dynamically fluctuating personal preferences. Furthermore, they insufficiently model real-world information. Benchmarks such as LoCoMo and LongMemEval are nearing saturation, making it difficult to identify the strengths of memory systems.
+The pipeline turns a persona into a year of connected life events, phone records, and evidence-based questions.
 
+![Life event simulation and data synthesis framework](pic/pic.png)
 
-### 🧩 Question Categories
+### Simulation Process
 
-LifeBench contains 9 categories of questions:
+| Stage | Output |
+|-------|--------|
+| Persona preparation | Background, relationships, habits, preferences, and grounded addresses. |
+| Daily planning | Event outlines and daily drafts for the selected period. |
+| Life simulation | Daily events informed by plans, geographic context, memory, and reflection. |
+| Digital trace generation | SMS, calls, calendar entries, notes, photos, notifications, health records, contacts, and assistant conversations. |
+| Question generation | Question-answer pairs with supporting evidence and scoring points. |
 
-| Question Category | English Name | Description |
-|-------------------|--------------|-------------|
-| **Single-hop Reasoning** | Single_hop | Direct information extraction questions based on a single event or mobile phone operation record |
-| **Multi-hop Reasoning** | Multi_hop | Complex questions requiring integration of multiple event information and multi-source data correlation analysis |
-| **Temporal Reasoning** | Temporal | Questions involving analysis of time dimensions such as event chronology, time intervals, and frequency |
-| **Non-declarative Memory** | Non-declarative | Questions identifying user behavior patterns, habit preferences, personality traits, and other patterned information |
-| **Knowledge Update Reasoning** | Knowledge_update | Questions tracking changes in user knowledge, hobbies, status, etc. over time, assessing memory update capability |
-| **Causal Reasoning** | Causal | Questions analyzing causal relationships between events, behavioral triggers, and chain reactions |
-| **Conflict Detection** | Conflict | Questions identifying logical contradictions and time conflicts in mobile data or information |
-| **Hidden Information Mining** | Hidden_info | Questions extracting implicit information through correlation analysis of multi-source data |
-| **Unanswerable** | Unanswerable | Questions that cannot be answered based on existing data, used for evaluating model refusal capability |
+### Environment Setup
 
-Each question contains: question content, answer, score points (for evaluation), required event IDs, ask time, and other fields.
+Run LifeBench directly from a cloned repository. All commands below assume the repository root; package installation with `pip install .` is not supported.
 
-## 🏆 Leaderboard
+```bash
+git clone https://github.com/1754955896/LifeBench.git
+cd LifeBench
+```
 
-Accuracy (%) on LifeBench and LoCoMo. **LifeBench Micro** is the accuracy over all questions, while **Macro** is the arithmetic mean of the nine category accuracies. **Gold Evidence†** feeds the annotated supporting evidence directly to the answer model (a reader under perfect retrieval) and is a reference upper bound — it is not a memory system and is excluded from the per-column best. **Bold** marks the best among memory systems in each column. LoCoMo excludes adversarial questions; `—` = not reported.
+Use Python 3.10 or 3.11 in a separate environment and install the dependencies as described in [Appendix A](#a-environment-and-configuration).
 
-![LifeBench memory-system leaderboard — Macro accuracy (DeepSeek-V4-Flash)](pic/leaderboard.svg)
+The simulator requires a local embedding model. Download it with the [Hugging Face Python API](https://huggingface.co/docs/huggingface_hub/package_reference/file_download#huggingface_hub.snapshot_download):
+
+```bash
+python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='sentence-transformers/all-MiniLM-L6-v2', local_dir='src/lifebench/event/local_models/all-MiniLM-L6-v2', allow_patterns=['*.json', '*.txt', 'pytorch_model.bin', '1_Pooling/*'])"
+```
+
+For a new setup, copy the complete configuration template:
+
+```bash
+python -c "from shutil import copyfile; copyfile('config/config.example.json', 'config/config.json')"
+```
+
+If `config/config.json` already exists, edit it instead. Set `llm.api_key`, `llm.base_url`, `llm.default_model`, `llm.reason_model`, and `map_tool.api_key` for your providers. Keep the remaining template sections. See the [configuration reference](config/README.md) for all options.
+
+### Run a Simulation
+
+After setup, create a new output directory, copy a complete sample persona, and generate a full year:
+
+```bash
+python -c "from pathlib import Path; Path('output/fenghaoran').mkdir(parents=True, exist_ok=True)"
+python -c "from shutil import copyfile; copyfile('life_bench_data/version2/data/fenghaoran/persona.json', 'output/fenghaoran/persona.json')"
+python scripts/run.py --base-path output/fenghaoran --year 2025 --months 12
+```
+
+For an existing run, retain its persona and rerun only the final command with the same time range. The output directory contains daily drafts, daily events, an event tree, phone records, and `QA_all/QA.json`. Choose a separate directory for a different persona or time range.
+
+### Generate New Data
+
+To create new personas, provide source descriptions and run `scripts/run/persona_gen.py` before the simulation. The generator expands each record into a complete profile with relationships and grounded locations.
+
+The example below creates one source description and generates three variants. Run the file preparation commands once in a new working directory:
+
+```bash
+python -c "from pathlib import Path; Path('input/generated').mkdir(parents=True, exist_ok=True)"
+python -c "from shutil import copyfile; copyfile('src/lifebench/persona/persona_file/refer.json', 'input/generated/refer.json')"
+python -c "import json; from pathlib import Path; Path('input/generated/descriptions.json').write_text(json.dumps(['Lives in Yuhang, Hangzhou, works in the internet industry, and enjoys the outdoors.'], indent=2), encoding='utf-8')"
+python scripts/run/persona_gen.py --file-path input/generated --ref-file refer.json --input-mode auto --input-format json --input-file descriptions.json --output-file person.json --start 0 --end 1 --variants-per-input 3 --diversity high --seed 42 --as-of-date 2025-01-01
+```
+
+This writes `input/generated/person.json` and its aligned `person_locations.json`. Run all generated personas with the batch runner:
+
+```bash
+python scripts/run_all.py --persona-folder input/generated --year 2025
+```
+
+## 2. LifeBench Data
+
+The released **LifeBench v2.0** dataset is available on Hugging Face: **[C1754955896/Lifebenchv2.0](https://huggingface.co/datasets/C1754955896/Lifebenchv2.0)**.
+
+It contains synthetic life histories for 10 virtual users across 2025, with Chinese and English versions. The statistics below are for **one language version**; translated copies are not counted twice.
+
+| Statistic | Value |
+|-----------|-------|
+| Virtual users | 10 |
+| Time span | January 1 to December 31, 2025 |
+| Languages | Chinese and English |
+| Daily life events | 57,486 |
+| Phone records | 47,409 |
+| Phone data sources | 9 |
+| Question-answer pairs | 3,380 |
+| Question categories | 9 |
+
+The same release is included in [`life_bench_data/version2/`](life_bench_data/version2/):
+
+| Representation | Location |
+|----------------|----------|
+| Chinese multi-source data | [`data/`](life_bench_data/version2/data/) |
+| English multi-source data | [`data_en/`](life_bench_data/version2/data_en/) |
+| Chinese and English LoCoMo conversational exports | [`locomo_format/`](life_bench_data/version2/locomo_format/) |
+
+Each multi-source user directory contains a persona, daily drafts and events, an event tree, nine phone data files, and `QA_all/QA.json`. Each LoCoMo export contains 10 user samples and the same 3,380 questions in a conversational representation, not additional QA pairs.
+
+See the [dataset guide](life_bench_data/README.md) for the file layout, [format reference](life_bench_data/version2/README.md) for examples, and [Appendix D](#d-reference-and-citation) for further reference. Reading the released JSON files does not require generation APIs or an embedding model.
+
+## 3. Memory Agents Performance
+
+Use **[LifeBench_eval](https://github.com/1754955896/LifeBench_eval)** to evaluate memory agents on LifeBench. That repository contains the evaluation workflow; this repository provides the simulation pipeline and released data. You can evaluate against the existing dataset without generating new life histories.
+
+Explore and sort results in the **[interactive leaderboard](https://huggingface.co/spaces/C1754955896/Lifebench-Leaderboard)**.
+
+### Leaderboard
+
+Accuracy (%) on LifeBench and LoCoMo. **Micro** is accuracy over all questions; **Macro** is the arithmetic mean across the nine question categories. **Gold Evidence** supplies annotated supporting evidence directly to the answer model and serves as a perfect-retrieval reference, not a memory system. LoCoMo results exclude adversarial questions.
+
+![LifeBench memory-system leaderboard: Macro accuracy with DeepSeek-V4-Flash](pic/leaderboard.svg)
+
+<details>
+<summary>Full results by base model, memory system, and question category</summary>
+
+**Bold** marks the best memory-system result in each column. Gold Evidence is excluded from these comparisons. A dash denotes an unreported result.
 
 <table>
   <thead>
@@ -116,260 +197,120 @@ Accuracy (%) on LifeBench and LoCoMo. **LifeBench Micro** is the accuracy over a
   </tbody>
 </table>
 
-> **SH** Single-hop · **MH** Multi-hop · **TR** Temporal · **ND** Non-declarative · **KU** Knowledge update · **CR** Causal · **CD** Conflict detection · **HI** Hidden information · **UA** Unanswerable · **Micro** micro-average · **Macro** macro-average (across the 9 categories). † = Gold Evidence reference (perfect retrieval).
->
-> 📊 **Interactive version** — sort and explore the full results at [C1754955896/Lifebench-Leaderboard](https://huggingface.co/spaces/C1754955896/Lifebench-Leaderboard).
+**SH**: Single-hop; **MH**: Multi-hop; **TR**: Temporal; **ND**: Non-declarative; **KU**: Knowledge update; **CR**: Causal; **CD**: Conflict detection; **HI**: Hidden information; **UA**: Unanswerable. The dagger marks Gold Evidence.
 
-## 📦 Dataset
+</details>
 
-The dataset is available on the Hugging Face Hub:
+## Appendices
 
-- 🤗 **LifeBench v2.0** — [https://huggingface.co/datasets/C1754955896/Lifebenchv2.0](https://huggingface.co/datasets/C1754955896/Lifebenchv2.0)
+- [A. Environment and Configuration](#a-environment-and-configuration)
+- [B. Batch Generation and Resuming](#b-batch-generation-and-resuming)
+- [C. Data Visualization](#c-data-visualization)
+- [D. Reference and Citation](#d-reference-and-citation)
 
-It is also included in this repository under [`life_bench_data/version2/`](life_bench_data/version2/), available in both Chinese (`data/`) and English (`data_en/`) versions. The dataset contains data from 10 users; each user has the following files:
+### A. Environment and Configuration
 
-- **`persona.json`**: User profile
-- **`daily_event.json`**: Daily activities
-- **`event_tree.json`**: Hierarchical event tree
-- **`daily_draft.json`**: Daily granular outline
-- **`phone_data/`**: Mobile phone operation data (9 sources: sms, call, calendar, note, photo, push, fitness_health, contact, agent_chat)
-- **`QA_all/QA.json`**: Question-answering data
-
-### 🧠 Memory Benchmark Support
-
-For the convenience of conducting memory benchmark tests on existing memory systems (primarily for locomo), we have converted the QA data into the locomo input format. 
-
-## 🚀 Usage
-![Data Synthesis Framework](pic/pic.png)
-
-### ⚙️ Environment Configuration
-
-LifeBench runs directly from a cloned repository. Install the third-party dependencies and run the scripts from the repository root; installing LifeBench with `pip install .` or `pip install -e .` is not a supported workflow.
-
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/1754955896/user-personal-data-sys.git
-   cd user-personal-data-sys
-   ```
-
-   All commands below assume this working directory, which contains `README.md`, `requirements.txt`, and `scripts/`.
-
-2. **Install Dependencies**
-   ```bash
-   python -m pip install -r requirements.txt
-   ```
-
-3. **Embedding Model Preparation** (Required for life simulation)
-   The simulator loads a local embedding model through `MemoryStore`. Download it before running `scripts/run/simulator.py` or a full generation pipeline. Reading the released JSON dataset or using the local data viewer does not require this model.
-
-   ```bash
-   python -m pip install huggingface-hub
-   huggingface-cli download sentence-transformers/all-MiniLM-L6-v2 --local-dir src/lifebench/event/local_models/all-MiniLM-L6-v2
-   ```
-
-   The model directory must include `config.json`, `pytorch_model.bin`, `tokenizer_config.json`, and `vocab.txt`; the loader raises an error if required files are missing.
-
-4. **Configuration File**
-   For a new setup, copy the complete [configuration template](config/config.example.json):
-
-   ```bash
-   python -c "from shutil import copyfile; copyfile('config/config.example.json', 'config/config.json')"
-   ```
-
-   If `config/config.json` already exists, edit it directly instead of copying over it. Set `llm.api_key`, `llm.base_url`, and the model names for your provider, and set `map_tool.api_key` for map-backed address generation. Keep the remaining template sections and adjust them as needed. The local configuration contains credentials and is excluded from Git.
-
-   | Config Key | Description | Required |
-   |------------|-------------|----------|
-   | `llm.api_key` | LLM API key | Yes |
-   | `llm.base_url` | LLM API endpoint (support OpenAI-compatible format) | Yes |
-   | `llm.default_model` | Default model for general generation | No |
-   | `llm.reason_model` | Reasoning model for complex tasks | No |
-   | `llm.strip_think` | Strip `<think>…</think>` from reasoning-model output | No |
-   | `simulation_asset_preparation` | Shared-asset preprocessing (fuzzy memory, POI pool) | No |
-   | `trajectory_assignment` | Location/trajectory generation parameters | No |
-   | `map_tool.api_key` | Map API key (for address generation) | No |
-
-   > **Full configuration reference**: see [`config/README.md`](config/README.md) for every option and its default.
-
-   **Supports any LLM provider compatible with the OpenAI API format** (e.g., DeepSeek, Claude, GPT-4) by configuring different `base_url` and `model` values.
-
-   **Model Selection Strategy**: `default_model` and `reason_model` are designed to **reduce generation costs**.
-   - Simple tasks (short context, non-complex reasoning): automatically call `default_model`
-   - Long-context tasks (complex reasoning, multi-step generation): automatically call `reason_model`
-   - If you do not want to differentiate, configure both fields as the **same model**
-
-### 🛠️ Data Preparation
-
-#### Batch Mode Data Preparation
-
-The repository includes [input/person.json](input/person.json), a ready-to-use JSON array containing 10 complete personas. The default batch command reads this file directly.
-
-For custom input, keep the same array structure and provide complete persona objects, including their nested fields. Use a [released persona](life_bench_data/version2/data/fenghaoran/persona.json) as a full reference, or follow the [persona generation guide](src/lifebench/persona/README.md). To keep custom input separate, place a `person.json` file in another directory and pass that directory with `--persona-folder`.
-
-#### Single Persona Data Preparation
-
-For a new single-person run, create an output directory and copy the complete [Feng Haoran persona](life_bench_data/version2/data/fenghaoran/persona.json):
+Use a separate Python 3.10 or 3.11 environment. For example, with Conda:
 
 ```bash
-python -c "from pathlib import Path; Path('output/fenghaoran').mkdir(parents=True, exist_ok=True)"
-python -c "from shutil import copyfile; copyfile('life_bench_data/version2/data/fenghaoran/persona.json', 'output/fenghaoran/persona.json')"
+conda create -n lifebench python=3.10
+conda activate lifebench
+python -m pip install -r requirements.txt
 ```
 
-For an existing run, keep its current `persona.json`. A new directory starts with:
+The embedding model loader checks for `config.json`, `pytorch_model.bin`, `tokenizer_config.json`, and `vocab.txt` in `src/lifebench/event/local_models/all-MiniLM-L6-v2/`.
 
-```
-output/
-└── fenghaoran/           # Persona folder
-    └── persona.json      # Persona data
-```
+LLM calls use an OpenAI-compatible endpoint. Set `default_model` and `reason_model` to the same model to use one throughout. Map-backed persona grounding requires a map API key. Keep credentials in the ignored `config/config.json`; full parameter definitions are in [config/README.md](config/README.md).
 
-### ▶️ Running
+#### Parameter Configuration
 
-Run these commands from the repository root after configuring the APIs and preparing the persona data.
+##### Simulation runner
 
-#### Batch Mode
+The following options control the integrated single-person runner, `scripts/run.py`:
+
+| Argument | Description | Default |
+|----------|-------------|---------|
+| `--base-path` | Directory containing `persona.json` | `fenghaoran/` |
+| `--process-path` | Intermediate output directory relative to `base-path`; retain the default for the documented workflow | `process/` |
+| `--instance-id` | Persona instance ID | `0` |
+| `--max-workers` | Worker limit passed to draft generation and simulation; phone generation uses its own setting | automatic |
+| `--year` | Simulation year | `2025` |
+| `--months` | Number of months, starting in January (1-12) | `12` |
+| `--generate-phone-data` | Generate phone data (0/1) | `1` |
+| `--generate-monthly-report` | Generate monthly reports (0/1) | `1` |
+| `--generate-qa` | Generate QA data (0/1) | `1` |
+| `--interactive` | Interactive draft refinement | off |
+| `--no-phone-sample` | Keep all generated phone records without sampling | off |
+| `--dry-run` | Write placeholder files without generating | off |
+
+To omit QA generation, add `--generate-qa 0`. Other stage switches assume that any data required by later stages is already available. The batch runner accepts a different set of arguments; see [Appendix B](#b-batch-generation-and-resuming).
+
+##### Persona generator
+
+The following options control `scripts/run/persona_gen.py`:
+
+| Argument | Description | Default |
+|----------|-------------|---------|
+| `--file-path` | Directory containing the input and reference files and receiving generated files | `data/persona/` |
+| `--ref-file` | Reference database filename, relative to `file-path`; required by both input modes | `profile_ref.json` |
+| `--input-file` | Source-record filename, relative to `file-path` | `processed_features.json` |
+| `--input-mode` | `canonical` expects structured feature records; `auto` normalizes natural-language descriptions or structured records and preserves explicit facts | `canonical` |
+| `--input-format` | Input container format: `auto`, `json`, `jsonl`, `csv`, `tsv`, `txt`, or `xlsx` | `auto` |
+| `--start`, `--end` | Zero-based, end-exclusive source-record range | `0`, `1` |
+| `--variants-per-input` | Number of persona variants generated from each source record in `auto` mode | `1` |
+| `--diversity` | Variant diversity in `auto` mode: `low`, `medium`, or `high` | `high` |
+| `--seed` | Seed for local reference sampling and weighted choices | unset |
+| `--as-of-date` | Reference date used to derive age and other date-dependent values | `2021-12-31` |
+| `--output-file` | Generated persona-list filename, relative to `file-path` | `persona_list.json` |
+| `--skip-location-generation` | Skip grounded address generation and the location sidecar | off |
+
+The default range processes only the first source record, so increase `--end` when supplying more records. A fixed `--seed` makes local sampling repeatable, but does not guarantee identical LLM responses, map results, or final profiles across runs. Excel input additionally requires `openpyxl`; a text file is treated as one source record. See the [persona guide](src/lifebench/persona/README.md) and [persona CLI reference](scripts/run/README.md#1-persona_genpy-persona-generation) for complete schemas and advanced options.
+
+### B. Batch Generation and Resuming
+
+The batch runner reads a `person.json` array and, when present, an aligned `person_locations.json` from the selected input directory:
 
 ```bash
-# Run the complete generation pipeline (process all personas in input/person.json)
+# Process the 10 sample personas in input/person.json
 python scripts/run_all.py
 
-# Specify persona ID range
+# Process positions 1 through 5, inclusive
 python scripts/run_all.py --start-id 1 --end-id 5
 
-# Skip QA generation (phone data, monthly reports, etc. are still generated)
+# Generate all stages except QA
 python scripts/run_all.py --generate-qa 0
 ```
 
-#### Single Persona Mode
+Batch-specific options are `--persona-folder` (default `input/`), `--start-id`, and `--end-id` (both default to `0`, meaning no bound at that end). It also accepts `--process-path`, `--max-workers`, the three `--generate-*` switches, `--year`, and `--dry-run`. It always processes full years and does not accept `--base-path`, `--instance-id`, `--months`, `--interactive`, or `--no-phone-sample`.
 
-**Run all at once with `scripts/run.py`:**
-
-```bash
-python scripts/run.py --base-path output/fenghaoran
-```
-
-**Run step by step for the full year 2025:**
+For selected stages, see the [standalone script reference](scripts/run/README.md). These scripts do not perform every orchestration step in `scripts/run.py`, which also handles event matching, intermediate-file organization, and monthly reports. When calling the phone stage separately, specify the full date range:
 
 ```bash
-# 1. Generate daily event drafts
-python scripts/run/draft_gen.py --base-path output/fenghaoran
-
-# 2. Simulate daily activities
-python scripts/run/simulator.py --file-path output/fenghaoran/
-
-# 3. Generate phone operation data
 python scripts/run/phone_gen.py --file-path output/fenghaoran/ --start-time 2025-01-01 --end-time 2025-12-31
-
-# 4. Generate question-answer pairs
-python scripts/run/qa_gen.py --data-path output/fenghaoran/
 ```
 
-> Each step accepts additional arguments — see [`scripts/run/README.md`](scripts/run/README.md) for the full list.
+To resume, rerun the original command with the same input, output directory, persona range, and time range. The integrated runner checks existing draft, event, and report files; other stages have their own reuse rules. File existence is not a completeness check. Use a new output directory for a fresh generation instead of selectively deleting dependent artifacts.
 
+### C. Data Visualization
 
-### 🎛️ Command Line Arguments
+The local viewer requires no Python dependencies, backend server, or generation API.
 
-#### Single-Person Pipeline: `scripts/run.py`
+1. Open the local `html/index.html` file in Chrome or Edge. Keep `index.html`, `app.js`, and `styles.css` together.
+2. Select one persona directory containing `daily_event.json`, such as `life_bench_data/version2/data/fenghaoran/`, its `data_en/` equivalent, or a generated directory under `output/`. `persona.json` and `phone_data/` are optional.
+3. Choose a date, search events and phone records, filter by record type, and expand entries to inspect their fields and raw JSON.
 
-The following options apply to the integrated single-person runner:
+Files are read locally and are not uploaded. Select the directory again after refreshing. See the [viewer guide](html/README.md) for formats and behavior.
 
-| Argument | Description | Default |
-|----------|-------------|---------|
-| `--base-path` | Base data path | `fenghaoran/` |
-| `--process-path` | Process file path (relative to `base-path`) | `process/` |
-| `--instance-id` | Persona instance ID | `0` |
-| `--max-workers` | Max worker threads | auto (CPU cores × 2) |
-| `--generate-phone-data` | Generate phone data (0/1) | `1` |
-| `--generate-monthly-report` | Generate monthly reports (0/1) | `1` |
-| `--generate-qa` | Generate QA data (0/1) | `1` |
-| `--year` | Year for generated data | `2025` |
-| `--months` | Number of months to generate | `12` |
-| `--interactive` | Interactive draft optimization | off |
-| `--no-phone-sample` | Keep all generated phone data (skip sampling) | off |
-| `--dry-run` | Write placeholder files without generating | off |
+### D. Reference and Citation
 
-#### Batch Pipeline: `scripts/run_all.py`
+| Topic | Reference |
+|-------|-----------|
+| Dataset layout and file names | [Dataset guide](life_bench_data/README.md) |
+| Data fields and examples | [LifeBench v2.0 reference](life_bench_data/version2/README.md) |
+| Generation arguments | [Standalone scripts](scripts/run/README.md) |
+| Source organization | [LifeBench modules](src/lifebench/README.md) |
+| Configuration options | [Configuration reference](config/README.md) |
 
-The batch runner accepts the following options. It runs full years and does not accept `--base-path`, `--instance-id`, `--months`, `--interactive`, or `--no-phone-sample`.
+The nine question categories are single-hop, multi-hop, temporal reasoning, non-declarative memory, knowledge update, causal reasoning, conflict detection, hidden information, and unanswerable questions. QA records include answers, evidence, scoring points, required event IDs, and ask times.
 
-| Argument | Description | Default |
-|----------|-------------|---------|
-| `--persona-folder` | Directory containing `person.json`; relative paths resolve from the repository root | `input/` |
-| `--start-id` | First persona position to process (1-based, inclusive); `0` starts at the beginning | `0` |
-| `--end-id` | Last persona position to process (1-based, inclusive); `0` processes through the end | `0` |
-| `--process-path` | Intermediate data directory relative to each persona's output directory | `process/` |
-| `--max-workers` | Max worker threads passed to the single-person runner | auto (CPU cores × 2) |
-| `--generate-phone-data` | Generate phone data (0/1) | `1` |
-| `--generate-monthly-report` | Generate monthly reports (0/1) | `1` |
-| `--generate-qa` | Generate QA data (0/1) | `1` |
-| `--year` | Year for generated data | `2025` |
-| `--dry-run` | Write placeholder files without generating | off |
-
-For stage-specific arguments, see [`scripts/run/README.md`](scripts/run/README.md).
-
-### 🎯 Evaluation
-
-The evaluation script lives in a separate repository: [LifeBench_eval](https://github.com/1754955896/LifeBench_eval) — this is the entry point for running benchmark evaluations on memory systems.
-
-## 📁 Directory Structure
-
-Main directories and files included in the repository:
-
-```text
-user-personal-data-sys/
-├── config/                   # Configuration template and reference
-├── input/
-│   └── person.json           # Complete sample personas for batch mode
-├── output/                   # Destination for locally generated results
-├── scripts/
-│   ├── run_all.py            # Batch runner
-│   ├── run.py                # Integrated single-person runner
-│   └── run/                  # Individual generation stages
-├── src/lifebench/            # Persona, event, memory, and utility modules
-├── life_bench_data/
-│   └── version2/
-│       ├── data/             # Chinese multi-source dataset
-│       ├── data_en/          # English multi-source dataset
-│       └── locomo_format/    # Chinese and English conversational exports
-├── html/                     # Local browser-based data viewer
-├── hf_space_leaderboard/     # Interactive leaderboard assets
-├── pic/                      # Documentation images
-├── requirements.txt
-├── pyproject.toml
-├── LICENSE
-└── README.md
-```
-
-Generated persona directories and intermediate results appear under `output/` when the pipeline runs. See the [dataset layout](life_bench_data/README.md), [source module guide](src/lifebench/README.md), and [script reference](scripts/README.md) for details.
-
-To inspect the released data locally, open [`html/index.html`](html/index.html) in Chrome or Edge and select a persona directory such as `life_bench_data/version2/data/fenghaoran/`. No backend or generation API is needed; see the [viewer guide](html/README.md).
-
-## 💾 Checkpoint
-
-The pipeline supports resumable execution. Intermediate results are saved to base_path directory.
-
-### 📋 Checkpoints by Stage
-
-| Stage | Check File | Description |
-|-------|-----------|-------------|
-| **1. draft_gen** | `{base_path}/daily_draft.json` | Daily draft data |
-| **2. simulator** | `{base_path}/daily_event.json` | Simulated daily events (also `event_tree.json`) |
-| **3. event_matching** | — (always runs) | Adds match fields to events |
-| **4. monthly_report** | `{base_path}/summary/all_monthly_health_reports.json` | Monthly health reports |
-| **5. phone_gen** | `{base_path}/phone_data/contact.json` | Phone operation data |
-| **6. qa_gen** | `{base_path}/QA_all/QA.json` | Merged QA data |
-
-> `persona_gen` is a separate pre-step that produces `input/person.json` for batch mode; it is not part of `run.py`'s per-person flow.
-
-### 🔁 Resume Mechanism
-
-- `run.py` automatically checks for existing files in `base_path/`
-- If critical files exist, the corresponding stage is skipped
-- To force regeneration, delete the files in the corresponding directory
-
-## 📖 Citation
-
-If you use LifeBench in your research, please cite our paper and dataset:
-
-- 📄 **Paper**: [arXiv:2603.03781](https://arxiv.org/abs/2603.03781)
-- 🤗 **Dataset**: [C1754955896/Lifebenchv2.0](https://huggingface.co/datasets/C1754955896/Lifebenchv2.0)
+If you use LifeBench in research, cite the [paper (arXiv:2603.03781)](https://arxiv.org/abs/2603.03781) and the [LifeBench v2.0 dataset](https://huggingface.co/datasets/C1754955896/Lifebenchv2.0). The repository includes the [Apache License 2.0](LICENSE).
