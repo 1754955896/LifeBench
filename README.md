@@ -4,7 +4,7 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2603.03781-b31b1b?style=flat-square)](https://arxiv.org/abs/2603.03781)
 [![GitHub](https://img.shields.io/badge/GitHub-LifeBench__eval-181717?style=flat-square&logo=github)](https://github.com/1754955896/LifeBench_eval)
 
-LifeBench combines a life event simulator with a benchmark for personalized agent memory. It generates daily activities and digital traces for virtual users, then tests how well memory agents answer questions about those histories.
+LifeBench combines a life event simulator with a benchmark for personalized agent memory. It generates daily activities and digital traces for virtual users, then tests how well memory agents answer questions about those histories. 
 
 [Life Event Simulation](#1-life-event-simulation) | [LifeBench Data](#2-lifebench-data) | [Memory Agents Performance](#3-memory-agents-performance) | [Appendices](#appendices)
 
