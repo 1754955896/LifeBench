@@ -1,0 +1,11 @@
+{
+  "country_code": "GB",
+  "version": "gb-persona-v1",
+  "local_language": "en",
+  "address_rules": "区分 city、borough 和 neighbourhood。London Borough of Camden 对应 borough=Camden；Hampstead 可以是 neighbourhood。不能把两级当作同一级 district。",
+  "employer_names": ["Northbridge", "Cedarwell", "Alderwick", "Westhaven", "Brookfield"],
+  "employer_suffix": "Ltd",
+  "employer_industries": {"technology": "Software", "education": "Learning", "health": "Health Services", "engineering": "Engineering", "creative": "Creative", "services": "Services"},
+  "life_rules": "依据具体人物选择当地教育和工作经历、英镑金额、当地可用服务及社交活动。学校经历不强制套用中国教育路径。养老金、税后收入等金额无依据时不精确编造。",
+  "community_rules": "工作团队、学校、家庭、社区和兴趣组织按实际经历规划；英国背景不意味着所有亲友都住在英国。当地人物与单位名称优先用英文，解释性文字使用 output_language。"
+}

@@ -8,6 +8,7 @@ import json
 project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, project_root)
 
+from src.lifebench.utils.locale_context import bind_persona_file
 from src.lifebench.utils.overseas_runtime import add_map_arguments, validate_map_arguments, configure_map_tool
 
 # 命令行参数解析
@@ -68,6 +69,7 @@ os.makedirs(os.path.join(file_path, "sim"), exist_ok=True)
 
 # 1. 读取基础数据
 persona = read_json_file(file_path + 'persona.json')
+bind_persona_file(file_path)
 log(f"成功读取人物画像数据")
 # 读取每日状态数据
 daily_state = None

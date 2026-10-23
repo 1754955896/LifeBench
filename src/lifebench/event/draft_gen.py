@@ -6,6 +6,7 @@ from src.lifebench.event.draft.scheduler import Scheduler
 from src.lifebench.utils.date_utils import TimeSpec, guard_time_spec_meta
 import os
 import json
+from src.lifebench.utils.locale_context import persona_task
 
 
 class DraftGen:
@@ -38,6 +39,7 @@ class DraftGen:
         )
 
 
+    @persona_task()
     def generate_draft(self, output_path="output/", meidan_path=None, interactive=False):
         """
         生成draft的主要方法

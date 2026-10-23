@@ -15,6 +15,8 @@ Common utilities reused throughout the project.
 | `maptool.py` | Map utilities, including address resolution and distance calculations. |
 | `overseas_maptool.py` | OSM-backed replacement for the map tool; supports Nominatim/Photon, Overpass/Photon, and optional Valhalla. See the implementation and usage below. |
 | `overseas_runtime.py` | Shared CLI map selection, child-process argument forwarding, and overseas WGS-84 export settings. |
+| `locale_context.py` | Per-person residence, timezone, currency, language, calendar and resumable context; propagates contexts into worker threads. |
+| `map_factory.py` | Explicit map construction and country-scoped query routing; canonical WGS-84 in international modes. |
 | `random_ref.py` | Random reference utilities. |
 
 ## 海外地图工具
@@ -54,11 +56,13 @@ if poi and nearby:
 
 ### 通过运行脚本选择地图工具
 
-`scripts/run/persona_gen.py`、`scripts/run/simulator.py`、`scripts/run.py` 和
-`scripts/run_all.py` 支持 `--map-tool amap|overseas`，默认 `amap`。选择海外地图时必须
+`scripts/run/` 下的画像、草稿、模拟、手机及 QA 脚本，以及 `scripts/run.py` 和
+`scripts/run_all.py` 支持 `--map-tool amap|overseas|auto`，默认 `amap`。选择海外或自动模式时必须
 同时传入 `--map-config` 指定 JSON 配置文件。批量和总流程脚本会显式向模拟器子进程传递
-这两个参数，不使用启动钩子、额外启动器或环境变量。海外运行会在进程内适配 WGS-84
-坐标转换和导出，防止重复偏移。
+这两个参数，不使用启动钩子、额外启动器或环境变量。`amap` 保留原地图对象及默认 GCJ-02
+流程；`overseas` 使用 OSM 服务；`auto` 对 CN 目标使用 Amap，其他国家使用 OSM。
+海外及自动模式内部使用 WGS-84；Amap 边界适配负责请求和结果的坐标转换。
+配置不再修改模块中的地图类，也不全局替换坐标转换函数。
 
 ```powershell
 # 默认使用高德，沿用原参数
@@ -74,6 +78,73 @@ python scripts/run/simulator.py --map-tool overseas --map-config your-map.json -
 python scripts/run.py --map-tool overseas --map-config your-map.json --base-path data/example/
 python scripts/run_all.py --map-tool overseas --map-config your-map.json --persona-folder input/
 ```
+
+### 人物国家与地区上下文
+
+服务配置中的国家不再绑定整批任务。优先读取每个人的 `home_address.country_code`，
+兼容 `country` 国家名称；旧配置顶层 `country_code` 仅作为缺失时的兜底。
+`config/overseas_map.demo.json` 已移除固定国家，按输入人物确定。
+
+```json
+{
+  "home_address": {
+    "country_code": "GB",
+    "province": "England",
+    "city": "London",
+    "district": "Camden",
+    "timezone": "Europe/London",
+    "currency": "GBP",
+    "salary_period": "annual",
+    "output_language": "zh-CN"
+  }
+}
+```
+
+此处是完整画像中的地址片段，或任意输入模式下的稀疏输入。顶层画像和联系人字段契约保持
+原样，国家、邮编及地区属性保存在地址对象中。输入规范化与生成提示会在国际模式下要求
+补全这些属性。`nationality` 不用于推断居住国家，国籍或民族旧值也不会自动重写。
+
+已知单一主时区国家有默认值；美国、加拿大、澳大利亚等必须提供明确 `timezone`。
+时区使用 IANA 名称，并依赖 `tzdata`；未知国家须明确提供时区、货币等上下文。
+缺失必要信息或国家名称与代码冲突时，生成失败而不会猜测国家。
+
+每个人的生成任务、关系圈和日期分片有独立上下文；线程池会继承调用者上下文。
+姓名、年龄、BMI 等原校验继续执行。基于地址国家，联系人出生地、跨国亲友和
+事件目标可查询其他国家；`auto` 能在同一任务中切换服务。国家加入地点去重、缓存和
+注册信息，避免同名城市混用。公共服务限流在同一进程的国家客户端间共享，多进程总配额
+仍需由托管服务或共享网关限制。
+
+### 整条合成链路
+
+画像国际模式现在使用 `persona/prompts/international/` 的阶段模板和
+`persona/locale_profiles/GB.json` 的英国规则，复用原 JSON 字段契约。默认 Amap 分支返回原提示词。
+
+按合成数据需求，国际模式默认允许虚构公司、学校、租赁关系和生活经历，
+由 `locale_defaults.allow_fictional_details=true` 表示。检查重点是背景与内部一致性；
+公司或学校无法在地图上检索，不作为失败理由。地图结果、合成实体和未验证关系分别记录。
+英国 borough 与 neighbourhood 分开规范化，保留原地址；行政覆盖缺失记为审计提示，
+国家冲突仍拦截；附近合成邻里可以跨 borough，记录行政区差异作为评估提示。
+联系人出生地不强制地图核验，住所无候选时可保留结构化合成地址，不编造精确坐标。
+混合办公不再被直接归为步行；明确的用户交通要求保留，
+后端不支持时记录路线未验证；允许合成时可提供标注方法和来源的粗略估算，
+`duration_source=estimate`、`route_verified=false`，叙述中必须写明估算，
+不用其他交通方式的结果冒充。新规则仅作用于国际分支。
+
+1. 画像基础信息补全后校验地区属性；每个人创建独立地址服务，复用带国家区分的地址占用池。
+2. 地点资产预处理、旧地址补齐和每日 `Mind` 都通过地图工厂构造实例。国际模式不以高德 Key
+   是否存在作为启用海外地点机会池的条件；`auto` 真正访问 CN 时仍需要高德 Key。
+3. 时间线和调度按人物国家及可选 `subdivision` 使用节假日日历。LLM 提示携带时区、货币、
+   收入周期及输出语言，手机数据与 QA 的嵌套线程同样继承，要求按实际背景选择应用和生活场景。
+4. 地点候选、停留点、地点目录与历史注册表保留国家和坐标系。WGS-84 点不会再次做 GCJ-02
+   转换；跨时区停留点要求带 UTC 偏移的 `start_timestamp` / `end_timestamp`，避免直接相减当地钟点。
+5. 人物目录写入 `persona_context.json`，日期 checkpoint 和地点机会池记录上下文指纹。
+   国家、语言或地图配置改变时拒绝混用旧产物，应选择新的输出目录。国际模式的地点文件须含
+   `country_code` 与 `coordinate_system="WGS-84"`；旧无标记数据需要显式迁移。
+
+海外模式不会用速度公式伪造地图查询失败的路线耗时。默认支持步行、驾车、骑行；实际公交、
+航班及跨境路线取决于后端数据与能力，不具备时会返回失败。当前验证覆盖英国/法国实时搜索、
+英国步行路线、模拟服务下的混合国家画像流水线，以及原地理流程回归；未执行付费 LLM 的
+全年端到端生成，地区生活真实性仍需抽样评估。
 
 `config/overseas_map.demo.json` 选择 Photon 公共实例进行地址/POI 检索，并用 Valhalla
 公共实例计算路线，仅适合人工小规模验证。它们不保证可用性或无上限配额；批量运行应
@@ -91,10 +162,10 @@ Photon POI 使用索引中的主要类别，支持的标签少于完整 Overpass
 Photon 的 API 使用类别 include 参数；reverse 不支持 countrycode/bbox 请求参数，所以
 国家和城市限制在返回后检查。行政层级、门牌完整度与高德不完全一致。
 
-配置错误会报错退出，不会静默使用国内服务。选择仅作用于本次运行；子进程通过命令行参数
+配置错误会报错退出，不会静默改用错误国家搜索。选择仅作用于本次运行；子进程通过命令行参数
 显式选择地图工具，不会修改已打开的 Python/Jupyter 进程。
-请勿将旧 GCJ-02 数据混入该海外运行。地图替换不改变原来的节假日、文化提示或人物字段，
-完整海外合成质量仍需单独验证。
+请勿将旧 GCJ-02 数据混入该海外运行。默认高德模式继续使用原来的节假日和提示；
+国际模式按人物地区适配，完整海外合成质量仍需单独验证。
 
 画像生成支持已有的依赖注入：
 
@@ -109,7 +180,8 @@ generator = PersonaGenerator(
 )
 ```
 
-直接导入新工具时使用上述依赖注入；使用运行脚本时由地图参数触发实例替换。
+直接导入新工具时使用上述依赖注入，该生成任务会自动启用国际上下文，
+以注入工具的国家作为缺失时的兜底；使用运行脚本时由地图参数触发实例替换。
 
 ### 方法和返回值
 
@@ -159,13 +231,13 @@ generator = PersonaGenerator(
 
 本工具输入、输出一律 WGS-84。已有画像地点或路线输入如明确标记 GCJ-02，将拒绝使用；
 未标记的坐标按 WGS-84 解释。旧管线有以 GCJ-02 为默认的坐标导出逻辑，完整海外模拟
-接入时需同步尊重坐标系标记，不能再次对 WGS-84 坐标执行 GCJ-02 转换；运行脚本选择海外工具时已做进程内适配。
+接入时需同步尊重坐标系标记，不能再次对 WGS-84 坐标执行 GCJ-02 转换；地图工厂、地点模型和导出已显式传递坐标系。
 
 ### 运行与使用政策
 
-HTTP 请求包含应用标识、超时和实例级全局节流；429/502/503/504 有有限次数退避重试。
+HTTP 请求包含应用标识、超时和进程内按服务主机共享的节流；429/502/503/504 有有限次数退避重试。
 异常日志不输出 URL、响应正文或凭据。结果在实例内存缓存，支持清理和复制隔离；
-多实例/多进程的总配额应由部署方的共享代理控制。缓存不跨进程持久化。
+多进程的总配额应由部署方的共享代理控制。缓存不跨进程持久化。
 
 持续批量合成建议部署目标区域的 Nominatim、Overpass 和可选 Valhalla 服务。
 Nominatim 的社区公共服务最高 1 请求/秒，批量及系统性查询受严格限制；

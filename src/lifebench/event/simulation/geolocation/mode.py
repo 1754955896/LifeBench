@@ -6,6 +6,7 @@ from typing import Any, List
 
 from .models import LocationCandidate, StopIntent
 from .selector import haversine_km
+from src.lifebench.utils.locale_context import international_run
 
 
 @dataclass
@@ -38,7 +39,7 @@ class ModePlanner:
             )
             if seconds is not None:
                 return RouteChoice(
-                    hint, max(1, int(round(seconds / 60.0))), distance, "amap",
+                    hint, max(1, int(round(seconds / 60.0))), distance, "map_route" if international_run() else "amap",
                     confidence=1.0, map_verified=True,
                 )
         modes = self._modes(distance, "")
@@ -50,7 +51,7 @@ class ModePlanner:
             )
             if seconds is not None:
                 choices.append(RouteChoice(
-                    mode, max(1, int(round(seconds / 60.0))), distance, "amap",
+                    mode, max(1, int(round(seconds / 60.0))), distance, "map_route" if international_run() else "amap",
                     confidence=1.0, map_verified=True,
                 ))
         if choices:
@@ -59,6 +60,8 @@ class ModePlanner:
                 item.duration_minutes + modes.index(item.mode) * 5,
                 modes.index(item.mode),
             ))
+        if international_run():
+            raise RuntimeError("No verified route for the overseas leg; estimated travel time is disabled")
         mode = modes[0]
         speeds = {"walking": 4.5, "bicycling": 12.0, "transit": 20.0, "driving": 28.0}
         overhead = {"walking": 0, "bicycling": 2, "transit": 8, "driving": 5}

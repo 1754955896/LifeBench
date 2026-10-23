@@ -7,6 +7,7 @@ the caller through a callback.
 import hashlib
 import json
 import re
+from .locale_context import localize_prompt
 from dataclasses import dataclass, field
 from typing import Any, Callable, List, Optional
 
@@ -82,6 +83,7 @@ class StructuredLLMCaller:
         ] = None,
     ) -> StructuredCallResult:
         errors = []
+        prompt = localize_prompt(prompt)
         current_prompt = prompt
         call = self.reason_object_call if use_reason_model else self.object_call
         prompt_hash = hashlib.sha256(prompt.encode("utf-8")).hexdigest()

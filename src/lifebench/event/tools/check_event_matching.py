@@ -1,3 +1,4 @@
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor
 import json
 import os
 import sys
@@ -561,7 +562,7 @@ def main(base_path=None, output_path=None, resume=True):
 
         # 使用24线程并行分析
         results = []
-        with concurrent.futures.ThreadPoolExecutor(max_workers=24) as executor:
+        with LocaleThreadPoolExecutor(max_workers=24) as executor:
             future_to_task = {executor.submit(analyze_single_task, *task): task for task in tasks}
 
             for future in concurrent.futures.as_completed(future_to_task):
@@ -839,7 +840,7 @@ def main(base_path=None, output_path=None, resume=True):
 
     # 使用24线程并行分析
     daily_event_results = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=24) as executor:
+    with LocaleThreadPoolExecutor(max_workers=24) as executor:
         future_to_task = {executor.submit(analyze_daily_event_single_task, *task): task for task in daily_event_tasks}
 
         for future in concurrent.futures.as_completed(future_to_task):

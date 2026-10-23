@@ -7,7 +7,8 @@
 import json
 import re
 from typing import Dict, List, Any
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import as_completed
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 from src.lifebench.utils.llm_call import llm_call
 
 

@@ -37,6 +37,7 @@ from .prompts import (
 )
 from .variant_models import VARIANT_BLUEPRINT_KEYS, VariantBlueprint
 from .validation import validate_profile_keys
+from src.lifebench.utils.locale_context import international_run
 
 
 @dataclass
@@ -204,7 +205,10 @@ def generate_enrich(profile: Dict[str, Any], context: GenerationContext):
 
     def validate(data):
         report = validate_profile_keys(data, list(ENRICH_FIELDS), "enrich")
-        return report.messages() + _placeholder_violations(data)
+        errors = report.messages() + _placeholder_violations(data)
+        if international_run():
+            errors.extend(narrative_grounding_errors(data, context.grounding_context))
+        return errors
 
     result = context.caller.call_json_object(build_prompt(), validator=validate, use_reason_model=True)
     enriched = normalize_profile_response(result.data, list(ENRICH_FIELDS))

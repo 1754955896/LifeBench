@@ -93,6 +93,8 @@ def _lifecycle(item: Dict[str, Any], date: str) -> None:
     location_id = str(item.get("location_id") or "")
     if source.startswith("amap_"):
         canonical_id = location_id if location_id.startswith("amap:") else "amap:" + location_id
+    elif source in {"openstreetmap", "valhalla"}:
+        canonical_id = location_id if location_id.startswith("osm:") else "osm:" + location_id
     elif source == "persona_catalog":
         canonical_id = "persona:" + location_id
     else:
@@ -185,6 +187,9 @@ def remember_location_records(
                     bucket: 1 for bucket in stop_buckets.get(str(stop.get("stop_id") or ""), set())
                 },
             })
+            for key in ("country_code", "coordinate_system", "timezone"):
+                if stop.get(key):
+                    result[-1][key] = stop[key]
             _lifecycle(result[-1], date)
             continue
         aliases = list(known.get("aliases") or [])

@@ -4,7 +4,8 @@ import json
 import os
 import sys
 from datetime import datetime, timedelta
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import as_completed
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 from collections import defaultdict
 
 # 添加项目根目录到 sys.path

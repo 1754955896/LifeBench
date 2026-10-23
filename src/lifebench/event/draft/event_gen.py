@@ -2,7 +2,8 @@
 """事件生成器，负责基于人物画像并行生成多种类型的随机事件"""
 import json
 from typing import List, Dict
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import as_completed
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 from src.lifebench.utils.llm_call import llm_call_j
 
 

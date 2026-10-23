@@ -88,6 +88,8 @@ class TrajectoryAllocator:
         visited_location_ids = set()
 
         for intent in sorted(intents, key=lambda item: item.order):
+            if previous_intent and previous_intent.timezone and intent.timezone and previous_intent.timezone != intent.timezone:
+                self._budget(previous_intent, intent)  # Validate absolute times even without budget-based selection.
             if (
                 intent.reuse_location_id
                 and self.catalog.by_location_id(intent.reuse_location_id) is None
@@ -396,7 +398,18 @@ class TrajectoryAllocator:
             default = max(5, int(round(default * {
                 "low": 0.80, "medium": 1.0, "high": 1.50,
             }[self.mobility_level])))
-        gap = self._time_gap(previous.end_time if previous else "", current.start_time)
+        if previous and previous.timezone and current.timezone and previous.timezone != current.timezone:
+            if not previous.end_timestamp or not current.start_timestamp:
+                raise ValueError("Cross-timezone itinerary requires offset-aware start_timestamp/end_timestamp")
+            departure = dt.datetime.fromisoformat(previous.end_timestamp)
+            arrival = dt.datetime.fromisoformat(current.start_timestamp)
+            if departure.utcoffset() is None or arrival.utcoffset() is None:
+                raise ValueError("Cross-timezone timestamps must include UTC offsets")
+            gap = int((arrival - departure).total_seconds() / 60)
+            if gap < 0:
+                raise ValueError("Cross-timezone itinerary arrives before departure")
+        else:
+            gap = self._time_gap(previous.end_time if previous else "", current.start_time)
         return min(default, gap) if gap is not None and gap > 0 else default
 
     @staticmethod
@@ -407,6 +420,11 @@ class TrajectoryAllocator:
             name=candidate.name, address=candidate.address,
             coordinates=candidate.coordinates, city=candidate.city,
             category=candidate.category, source=candidate.source,
+            country_code=candidate.country_code,
+            coordinate_system=candidate.coordinate_system,
+            timezone=intent.timezone,
+            start_timestamp=intent.start_timestamp,
+            end_timestamp=intent.end_timestamp,
             degraded=degraded, original_order=intent.order,
             parent_event_id=intent.parent_event_id,
             required=intent.required,

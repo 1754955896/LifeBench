@@ -6,7 +6,6 @@
 """
 import os
 
-from sentence_transformers import SentenceTransformer
 
 DEFAULT_MODEL_DIRNAME = "all-MiniLM-L6-v2"
 REQUIRED_MODEL_FILES = ["config.json", "pytorch_model.bin", "tokenizer_config.json", "vocab.txt"]
@@ -29,7 +28,8 @@ class EmbeddingModel:
         event_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         return os.path.join(event_dir, "local_models", DEFAULT_MODEL_DIRNAME)
 
-    def _load(self) -> SentenceTransformer:
+    def _load(self) -> "SentenceTransformer":
+        from sentence_transformers import SentenceTransformer
         if not os.path.exists(self.model_path):
             raise FileNotFoundError(
                 f"本地模型目录不存在: {self.model_path}\n"

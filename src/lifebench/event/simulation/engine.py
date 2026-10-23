@@ -1,3 +1,4 @@
+from src.lifebench.utils.locale_context import persona_task, context_fingerprint, international_run
 # -*- coding: utf-8 -*-
 """每日模拟引擎：日期分片并行驱动器 + 事务 checkpoint。
 
@@ -12,8 +13,7 @@ import os
 import glob
 import json
 
-from concurrent.futures import ThreadPoolExecutor
-
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 from src.lifebench.utils.date_utils import iterate_dates
 from src.lifebench.event.simulation.state import CognitiveState
 from src.lifebench.event.simulation.telemetry import save_manifest, MemoryTraceRecorder
@@ -57,6 +57,8 @@ class DailySimulationEngine:
             "completed_dates": completed_dates,
             "mind_state": mind.to_cognitive_state().to_dict(),
         }
+        if international_run():
+            state["locale_fingerprint"] = context_fingerprint(self.persona)
         path = self._checkpoint_path(interval_start)
         tmp = path + ".tmp"
         with open(tmp, "w", encoding="utf-8") as f:
@@ -68,11 +70,15 @@ class DailySimulationEngine:
         if not os.path.exists(path):
             return None
         with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
+            state = json.load(f)
+        if international_run() and state.get("locale_fingerprint") != context_fingerprint(self.persona):
+            raise ValueError("Checkpoint locale/map configuration differs")
+        return state
 
     # ------------------------------------------------------------------
     # 单分片处理
     # ------------------------------------------------------------------
+    @persona_task()
     def _process_interval(self, interval_dates):
         """处理单个日期区间：区间内逐日串行，带事务 checkpoint 与重试。"""
         interval_start = interval_dates[0]

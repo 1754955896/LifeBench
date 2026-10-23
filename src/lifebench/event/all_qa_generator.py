@@ -3,9 +3,10 @@ import os
 import copy
 import importlib
 from typing import List, Dict, Any
-from concurrent.futures import ThreadPoolExecutor
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 from src.lifebench.event.qa_generator.base_generator import BaseQAGenerator
 from src.lifebench.utils.llm_call import llm_call_j, llm_call_reason_j
+from src.lifebench.utils.locale_context import persona_task
 
 
 class QAGenerator:
@@ -268,7 +269,8 @@ class QAGenerator:
             generator.load_data_from_path(self.data_path)
             generator._data_updated = False
     
-    def generate_all_qa(self, year: int, themes: List[Dict[str, Any]] = None, 
+    @persona_task()
+    def generate_all_qa(self, year: int, themes: List[Dict[str, Any]] = None,
                        event_id_groups: List[List[int]] = None, 
                        generator_orders: List[str] = None):
         """

@@ -1,4 +1,6 @@
+from src.lifebench.utils.locale_context import country_holidays as locale_holidays, calendar_country, calendar_label, persona_task
 # -*- coding: utf-8 -*-
+from src.lifebench.utils.map_factory import create_map_tool
 import calendar
 import holidays
 import copy
@@ -103,7 +105,7 @@ class Mind:
         # 获取地图工具配置
         map_config = config.get('map_tool', {})
         map_api_key = map_config.get('api_key', '')
-        self.maptools = MapMaintenanceTool(map_api_key, persona_address_data=persona_address_data)
+        self.maptools = create_map_tool(map_api_key, persona=self.persona, persona_address_data=persona_address_data)
         self.env = ""
         self.file_path = file_path
         self.instance_id = instance_id
@@ -470,7 +472,7 @@ class Mind:
         
         return False
 
-    def get_date_string(self,date_str, country="CN"):
+    def get_date_string(self,date_str, country=None):
         """
         生成包含日期、周几和节日（如有）的字符串
         :param date_str: 公历日期字符串，格式"YYYY-MM-DD"
@@ -486,7 +488,7 @@ class Mind:
             weekday = weekday_map[date_obj.weekday()]
 
             # 获取节日（多个节日用顿号分隔）
-            country_holidays = holidays.CountryHoliday(country)
+            country_holidays = locale_holidays(country=country)
             holidays_list = []
             if date_obj in country_holidays:
                 raw_holidays = country_holidays.get(date_obj)
@@ -869,6 +871,7 @@ class Mind:
             return simple_gather_geo(self, pt, plan)
         return generate_poi_route(self, pt, plan)
 
+    @persona_task()
     def daily_event_gen1(self, date):
         """
         生成单日事件的核心方法

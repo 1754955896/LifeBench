@@ -1,3 +1,4 @@
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor
 import json
 import os
 import random
@@ -243,7 +244,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
         
         # 使用 ThreadPoolExecutor 并行调用 5 个 LLM
         results = {}
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             # 提交所有任务
             future_to_key = {
                 executor.submit(llm_call_j, prompt): key
@@ -323,7 +324,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
         monthly_summaries = []
         
         # 使用 ThreadPoolExecutor 并行处理
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             # 提交所有月份的任务
             future_to_month = {
                 executor.submit(self._generate_monthly_summary, year, month): month
@@ -371,7 +372,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
         
         # Step 2: 基于月份总结并行生成各月的问题
         all_questions = []
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             future_to_month = {
                 executor.submit(self._generate_monthly_questions, summary): summary.get('month', 'unknown')
                 for summary in yearly_summaries
@@ -626,7 +627,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                 return idx, question
 
         # 使用 ThreadPoolExecutor 并行处理，最多 20 个线程
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             futures = [
                 executor.submit(process_question, idx, question)
                 for idx, question in enumerate(questions)
@@ -675,7 +676,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                 return idx, question
         
         # 使用 ThreadPoolExecutor 并行处理，最多 20 个线程
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             futures = [
                 executor.submit(process_question, idx, question)
                 for idx, question in enumerate(questions)
@@ -1459,7 +1460,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                 return idx, question, True
         
         # 使用 ThreadPoolExecutor 并行处理，最多 20 个线程
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             futures = [
                 executor.submit(process_single_question, idx, question)
                 for idx, question in enumerate(questions)
@@ -1750,7 +1751,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                 }
         
         # 并行处理窗口
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             future_to_window = {
                 executor.submit(analyze_window, window, idx): idx
                 for idx, window in enumerate(windows)
@@ -2125,7 +2126,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                 return [], []
         
         # 使用 ThreadPoolExecutor 并行处理，最多 20 个线程
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             # 提交所有任务
             futures = [executor.submit(analyze_single_event, task) for task in analysis_tasks]
             
@@ -2269,7 +2270,7 @@ class QAPatternRecognitionGenerator(BaseQAGenerator):
                     return []
             
             # 使用 ThreadPoolExecutor 并行处理，最多 20 个线程
-            with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            with LocaleThreadPoolExecutor(max_workers=20) as executor:
                 # 提交所有任务
                 futures = [executor.submit(generate_single_task, task) for task in generation_tasks]
                 

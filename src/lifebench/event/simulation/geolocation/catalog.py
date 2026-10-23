@@ -4,6 +4,12 @@ import hashlib
 from typing import Any, Dict, Iterable, List, Optional
 
 from .models import LocationCandidate
+from src.lifebench.utils.locale_context import international_run, target_address, address_country
+
+
+def _in_target(item):
+    code = address_country(target_address())
+    return not international_run() or not code or item.country_code == code
 
 
 CATEGORY_TERMS = {
@@ -143,6 +149,8 @@ class LocationCatalog:
                 coordinates=coordinates,
                 province=_text(item.get("province")),
                 city=city,
+                country_code=_text(item.get("country_code")),
+                coordinate_system=_text(item.get("coordinate_system")),
                 district=_text(item.get("district")),
                 adcode=_text(item.get("adcode")),
                 category=category,
@@ -158,6 +166,8 @@ class LocationCatalog:
     def exact(self, name: str = "", coordinates: str = "",
               city: str = "") -> Optional[LocationCandidate]:
         for item in self.items:
+            if not _in_target(item):
+                continue
             if coordinates and item.coordinates == coordinates:
                 return item
             if (
@@ -173,16 +183,16 @@ class LocationCatalog:
         wanted = str(location_id or "").strip()
         if not wanted:
             return None
-        return next((item for item in self.items if item.location_id == wanted), None)
+        return next((item for item in self.items if item.location_id == wanted and _in_target(item)), None)
 
     def anchor(self, role: str, city: str = "") -> Optional[LocationCandidate]:
         return next((
             item for item in self.items
-            if item.role == role and city_matches(city, item.city)
+            if item.role == role and city_matches(city, item.city) and _in_target(item)
         ), None)
 
     def by_category(self, category: str, city: str = "") -> List[LocationCandidate]:
-        return [item for item in self.items if item.category == category and city_matches(city, item.city)]
+        return [item for item in self.items if item.category == category and city_matches(city, item.city) and _in_target(item)]
 
 
 def normalize_city(city: str) -> str:

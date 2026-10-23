@@ -7,6 +7,7 @@ import re
 from typing import Any, Dict, Iterable, List, Optional
 
 from .allocator import offset_coordinates
+from src.lifebench.utils.locale_context import international_run, address_country
 from .catalog import city_matches
 from .coordinates import attach_record_wgs84
 from .registry import find_registered_location, normalize_place_name, stable_location_id
@@ -77,7 +78,7 @@ def _district_hint(anchor: Dict[str, Any]) -> str:
 
 
 def _geocode_named_place(
-    maptools: Any, name: str, address: str, city: str, district: str = "",
+    maptools: Any, name: str, address: str, city: str, district: str = "", country_code: str = "",
 ) -> Optional[Dict[str, str]]:
     """只为具有可检索专名的 ``search_named`` 地点解析坐标。
 
@@ -86,13 +87,15 @@ def _geocode_named_place(
     """
     if maptools is None:
         return None
+    from src.lifebench.utils.locale_context import international_run
+    query_city = {"city": city, "country_code": country_code} if country_code and international_run() else city or None
     poi_search = getattr(maptools, "search_poi_candidates", None)
     if callable(poi_search):
         for query in (name, (district + " " + name).strip()):
             if not query:
                 continue
             try:
-                candidates = poi_search(keyword=query, city=city or None, limit=5)
+                candidates = poi_search(keyword=query, city=query_city, limit=5)
             except Exception:
                 candidates = []
             for candidate in candidates or []:
@@ -113,7 +116,8 @@ def _geocode_named_place(
                     "province": str(geocode_info.get("province") or candidate.get("pname") or ""),
                     "adcode": str(geocode_info.get("adcode") or candidate.get("adcode") or ""),
                     "poi_id": str(candidate.get("id") or ""),
-                    "resolution_source": "amap_poi_text",
+                    "resolution_source": candidate.get("source") or "amap_poi_text",
+                    **({"country_code": candidate.get("country_code", ""), "coordinate_system": candidate.get("coordinate_system", "WGS-84")} if international_run() else {}),
                 }
     geocode = getattr(maptools, "amap_geocode", None)
     if not callable(geocode):
@@ -131,7 +135,7 @@ def _geocode_named_place(
         if not query:
             continue
         try:
-            result = geocode(query, city)
+            result = geocode(query, query_city)
         except Exception:
             continue
         if not isinstance(result, dict):
@@ -153,7 +157,8 @@ def _geocode_named_place(
             "province": str(result.get("province") or ""),
             "adcode": str(result.get("adcode") or ""),
             "poi_id": "",
-            "resolution_source": "amap_geocode",
+            "resolution_source": result.get("source") or "amap_geocode",
+            **({"country_code": result.get("country_code", ""), "coordinate_system": result.get("coordinate_system", "WGS-84")} if international_run() else {}),
         }
     return None
 
@@ -216,6 +221,9 @@ def reconcile_estimated_locations(
 
         # 简称和表述润色不得产生第二个地点事实。只要 LLM 给出原 stop_id，
         # 直接建立 location_key 别名，不重新搜索、不移动坐标。
+        if international_run() and resolution_mode == "anchor_estimate" and address_country(raw) and address_country(default_anchor) and address_country(raw) != address_country(default_anchor):
+            issues.append("Cross-country relative location requires a real destination lookup")
+            continue
         source_stop_id = str(raw.get("source_stop_id") or "").strip()
         if source_stop_id:
             source_stop = by_id.get(source_stop_id)
@@ -290,7 +298,7 @@ def reconcile_estimated_locations(
         # 默认走 anchor_estimate，避免落到区县中心后造成假近距离。
         district_hint = _district_hint(anchor)
         geocoded = (
-            _geocode_named_place(maptools, name, address, requested_city, district_hint)
+            _geocode_named_place(maptools, name, address, requested_city, district_hint, str(raw.get("country_code") or ""))
             if resolution_mode == "search_named" else None
         )
         if geocoded is not None:
@@ -324,6 +332,7 @@ def reconcile_estimated_locations(
                 "parent_event_id": str(raw.get("parent_event_id") or ""),
                 "original_order": len(stops),
                 "city": resolved_city,
+                **({"country_code": geocoded.get("country_code") or raw.get("country_code", ""), "coordinate_system": geocoded.get("coordinate_system") or "WGS-84", "timezone": raw.get("timezone", "")} if international_run() else {}),
                 "district": geocoded.get("district") or "",
                 "generation_reason": str(
                     raw.get("generation_reason") or "轨迹调整后采用具名地点，经地理编码核验"

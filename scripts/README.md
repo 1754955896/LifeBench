@@ -18,9 +18,11 @@ The supported workflow uses these scripts directly. No installed console command
 
 ## Map Selection
 
-`run.py` and `run_all.py` accept `--map-tool amap|overseas` (default: `amap`).
-For overseas maps, also pass `--map-config <JSON file>`; these options are forwarded
-to the simulation subprocess. For example:
+`run.py` and `run_all.py` accept `--map-tool amap|overseas|auto` (default: `amap`).
+For overseas or automatic routing, also pass `--map-config <JSON file>`; these options
+are forwarded to draft, simulation, phone-data and QA subprocesses. Each persona's
+`home_address.country_code` determines residence; individual addresses may specify
+other destination countries. For example:
 
 ```powershell
 python scripts/run.py --base-path output/example --map-tool overseas --map-config config/overseas_map.demo.json

@@ -1,3 +1,4 @@
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor
 import json
 import os
 import random
@@ -2141,7 +2142,7 @@ sms, phonecall, photo, push, note, calendar
                     return []
 
             # 使用 ThreadPoolExecutor 并行处理，最多 20 个线程
-            with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            with LocaleThreadPoolExecutor(max_workers=20) as executor:
                 # 提交所有任务
                 futures = [executor.submit(generate_single_task, task) for task in generation_tasks]
 
@@ -2429,7 +2430,7 @@ sms, phonecall, photo, push, note, calendar
                 return idx, question
         
         # 使用 ThreadPoolExecutor 并行处理
-        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        with LocaleThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = [
                 executor.submit(filter_single_question, idx, question)
                 for idx, question in enumerate(questions)
@@ -3064,7 +3065,7 @@ sms, phonecall, photo, push, note, calendar
                 return month, []
         
         # 使用 ThreadPoolExecutor 并行处理12个月
-        with concurrent.futures.ThreadPoolExecutor(max_workers=12) as executor:
+        with LocaleThreadPoolExecutor(max_workers=12) as executor:
             # 提交所有月份任务
             futures = {
                 executor.submit(generate_monthly_task, month): month

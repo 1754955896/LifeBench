@@ -1,6 +1,8 @@
 """Stage-oriented persona generation pipeline."""
 
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import as_completed
+
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 from copy import deepcopy
 from datetime import date
 from typing import Any, Callable, Dict, List, Optional
@@ -28,6 +30,7 @@ from .stages import (
     group_relation_slots,
 )
 from .validation import validate_internal_persona
+from src.lifebench.utils.locale_context import persona_task, enrich_residence
 
 
 class PersonaPipeline:
@@ -47,6 +50,7 @@ class PersonaPipeline:
         self.max_contacts = max_contacts
         self.address_service = address_service
 
+    @persona_task("seed_person")
     def generate_one(
         self,
         seed_person: Dict[str, Any],
@@ -63,6 +67,7 @@ class PersonaPipeline:
     ) -> PersonaResult:
         stage = "input"
         try:
+            address_service = self.address_service.for_persona(seed_person) if hasattr(self.address_service, "for_persona") else self.address_service
             expected_keys = list(seed_person.keys())
             if "relation" not in expected_keys:
                 raise ValueError("输入画像缺少 relation 字段，无法保持现有输出契约")
@@ -84,6 +89,7 @@ class PersonaPipeline:
             stage = "base"
             base, _ = generate_base_profile(seed_person, context)
             persona = normalize_persona_input(base, source_index)
+            enrich_residence(persona.data)
             apply_derived_values(persona, self.as_of_date)
 
             stage = "profile_enrich"
@@ -93,13 +99,14 @@ class PersonaPipeline:
 
             context.mobility_profile = extract_mobility_profile(
                 persona.data, context.soft_clues, context.source_description,
+                source_profile=seed_person,
             )
             context.employer_anchor = build_employer_anchor(persona.data, context.run_seed)
 
             core_locations = []
-            if self.address_service is not None:
+            if address_service is not None:
                 stage = "address_grounding"
-                ground = self.address_service.ground_core_addresses
+                ground = address_service.ground_core_addresses
                 kwargs = {"seed": context.run_seed if context.run_seed is not None else source_index}
                 try:
                     import inspect
@@ -113,7 +120,7 @@ class PersonaPipeline:
 
             context.grounding_context = enrich_grounding_context(
                 core_locations,
-                getattr(self.address_service, "last_assignment_metrics", {}) if self.address_service else {},
+                getattr(address_service, "last_assignment_metrics", {}) if address_service else {},
                 context.employer_anchor,
                 context.mobility_profile,
             )
@@ -126,9 +133,9 @@ class PersonaPipeline:
             stage = "relation_plan"
             slots, _ = generate_relation_slots(persona, context)
             fixed_circle_pois = []
-            if self.address_service is not None and hasattr(self.address_service, "ground_circle_anchors"):
+            if address_service is not None and hasattr(address_service, "ground_circle_anchors"):
                 stage = "circle_address_grounding"
-                grounded_anchors, fixed_circle_pois = self.address_service.ground_circle_anchors(
+                grounded_anchors, fixed_circle_pois = address_service.ground_circle_anchors(
                     context.circle_anchors, persona.data, core_locations,
                     seed=context.run_seed if context.run_seed is not None else source_index,
                 )
@@ -158,18 +165,18 @@ class PersonaPipeline:
             for group_index, group_slots in enumerate(group_relation_slots(slots).values()):
                 stage = "contact_group_%d" % group_index
                 contacts, _ = generate_contact_group(persona, group_slots, context, group_index)
-                if self.address_service is not None and hasattr(self.address_service, "ground_contact_addresses"):
+                if address_service is not None and hasattr(address_service, "ground_contact_addresses"):
                     stage = "contact_address_grounding_%d" % group_index
                     anchor = next(
                         (item for item in context.circle_anchors if item.get("circle_id") == group_slots[0].circle_id),
                         {},
                     )
-                    contact_address_audit.extend(self.address_service.ground_contact_addresses(
+                    contact_address_audit.extend(address_service.ground_contact_addresses(
                         persona.data, contacts, anchor, core_locations, fixed_circle_pois,
                         seed=(context.run_seed if context.run_seed is not None else source_index) + group_index,
                     ))
                 persona.relation_groups.append(contacts)
-            if self.address_service is not None and hasattr(self.address_service, "ground_contact_addresses"):
+            if address_service is not None and hasattr(address_service, "ground_contact_addresses"):
                 context.grounding_context["contact_address_audit"] = contact_address_audit
 
             stage = "persona_consistency"
@@ -182,9 +189,9 @@ class PersonaPipeline:
                 raise ValueError("; ".join(report.messages()))
             output = to_legacy_output(persona, expected_keys)
             locations = []
-            if self.address_service is not None:
+            if address_service is not None:
                 stage = "address_surroundings"
-                surrounding = self.address_service.generate_surrounding_locations
+                surrounding = address_service.generate_surrounding_locations
                 surrounding_kwargs = {"seed": context.run_seed or source_index}
                 try:
                     import inspect
@@ -193,7 +200,7 @@ class PersonaPipeline:
                 except (TypeError, ValueError):
                     pass
                 locations = surrounding(output, core_locations, **surrounding_kwargs)
-                consistency_errors = self.address_service.consistency_errors(output, locations)
+                consistency_errors = address_service.consistency_errors(output, locations)
                 if consistency_errors:
                     raise ValueError("; ".join(consistency_errors))
             return PersonaResult(

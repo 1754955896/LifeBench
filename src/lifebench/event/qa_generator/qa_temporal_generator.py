@@ -7,6 +7,7 @@
 2. 次数统计问题生成 Agent (Frequency Count Agent)
 3. 知识更新问题生成 Agent (Knowledge Update Agent)
 """
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor
 
 import json
 import os
@@ -192,7 +193,7 @@ class QATemporalGenerator(BaseQAGenerator):
         monthly_summaries = []
         
         # 使用 ThreadPoolExecutor 并行处理
-        with concurrent.futures.ThreadPoolExecutor(max_workers=12) as executor:
+        with LocaleThreadPoolExecutor(max_workers=12) as executor:
             # 提交所有月份的任务
             future_to_month = {
                 executor.submit(self._generate_monthly_summary, year, month): month
@@ -255,7 +256,7 @@ class QATemporalGenerator(BaseQAGenerator):
         print(f"[Similar Events] 共有 {len(all_events_to_analyze)} 个事件需要分析")
 
         # 并行处理所有事件
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             future_to_event = {
                 executor.submit(self._find_similar_events_for_single_event, item, year): item
                 for item in all_events_to_analyze
@@ -527,7 +528,7 @@ class QATemporalGenerator(BaseQAGenerator):
                 return []
         
         # 使用 ThreadPoolExecutor 并行执行20次排序问题和20次时间差问题
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             # 提交所有任务（20个排序 + 20个时间差 = 40个任务）
             futures = []
             for i in range(30):
@@ -582,7 +583,7 @@ class QATemporalGenerator(BaseQAGenerator):
                 return idx, question
 
         # 使用 ThreadPoolExecutor 并行处理，最多20线程
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             futures = [
                 executor.submit(refine_single_question, idx, question)
                 for idx, question in enumerate(all_questions)
@@ -731,7 +732,7 @@ class QATemporalGenerator(BaseQAGenerator):
                 return idx, question
         
         # 使用 ThreadPoolExecutor 并行处理
-        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        with LocaleThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = [
                 executor.submit(filter_single_question, idx, question)
                 for idx, question in enumerate(questions)
@@ -916,7 +917,7 @@ class QATemporalGenerator(BaseQAGenerator):
             located_results.append([])  # 预分配，保持索引对应
 
         all_found_daily_events = []
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             # 提交所有任务，使用 (idx, event) 便于记录位置
             future_to_idx = {
                 executor.submit(search_single_event, idx, event): idx
@@ -1172,7 +1173,7 @@ class QATemporalGenerator(BaseQAGenerator):
                 return None
         
         # 使用 ThreadPoolExecutor 并行处理，最多12线程
-        with concurrent.futures.ThreadPoolExecutor(max_workers=12) as executor:
+        with LocaleThreadPoolExecutor(max_workers=12) as executor:
             # 提交所有任务
             future_to_event = {
                 executor.submit(process_single_event, event): event
@@ -2641,7 +2642,7 @@ class QATemporalGenerator(BaseQAGenerator):
                 return []
         
         # 使用 ThreadPoolExecutor 并行处理，最多20线程
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             # 提交所有任务
             future_to_group = {
                 executor.submit(process_single_group, group): group
@@ -3633,7 +3634,7 @@ class QATemporalGenerator(BaseQAGenerator):
                 return [], []
         
         # 使用 ThreadPoolExecutor 并行处理，最多 20 个线程
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             # 提交所有任务
             futures = [executor.submit(analyze_single_event, task) for task in analysis_tasks]
             
@@ -3759,7 +3760,7 @@ class QATemporalGenerator(BaseQAGenerator):
                     return []
             
             # 使用 ThreadPoolExecutor 并行生成
-            with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            with LocaleThreadPoolExecutor(max_workers=20) as executor:
                 futures = [executor.submit(generate_single_operation, task) for task in generation_tasks]
                 
                 for future in concurrent.futures.as_completed(futures):

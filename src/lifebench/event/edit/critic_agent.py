@@ -2,6 +2,7 @@
 评判家代理模块
 负责分析时间线质量，找出不足并给出修改建议
 """
+from src.lifebench.utils.locale_context import country_holidays as locale_holidays, calendar_country, calendar_label, persona_task
 
 import json
 import re
@@ -200,7 +201,7 @@ class CriticAgent:
             year = self.year
             
             # 获取中国节假日
-            cn_holidays = holidays.China(years=year)
+            cn_holidays = locale_holidays(years=year)
             
             # 构建节假日列表
             holiday_list = []
@@ -214,7 +215,7 @@ class CriticAgent:
             人物画像信息：
             {json.dumps(self.persona_data, ensure_ascii=False, indent=2)}
             
-            {year}年中国主要节假日：
+            {year}年{calendar_label()}主要节假日：
             {chr(10).join(holiday_list)}
             
             时间线数据：
@@ -226,7 +227,7 @@ class CriticAgent:
                - 分析这些事件的时间安排是否正确，是否符合实际节假日日期
                - 评估节假日事件的内容是否丰富、合理，是否符合人物身份特点
                - 识别时间线中缺失的重要节假日事件
-            2. 基于提供的{year}年中国主要节假日数据，系统分析时间线中是否充分体现了这些节假日
+            2. 基于提供的{year}年{calendar_label()}主要节假日数据，系统分析时间线中是否充分体现了这些节假日
             3. 结合人物身份特点，分析相关的特殊日期（如教师/学生的寒暑假，特定工种的特殊日期）在时间线中的体现情况
             4. 评估时间线中节假日内容的丰富性、合理性和时间准确性
             5. 提供具体、可操作的改进建议，包括增加缺失的节假日事件、调整现有节假日事件的时间安排，删除或修改时间上错误的事件等，同时建议中给出重要节假日的具体时间。
@@ -390,7 +391,7 @@ class CriticAgent:
         Returns:
             整合后的评估结果
         """
-        from concurrent.futures import ThreadPoolExecutor
+        from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
         import json
         
         print("\n=== 开始执行评估规划 ===")

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """事件图生成类，负责构建事件图谱"""
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor
 import json
 from typing import Dict, List, Any, Tuple
 import networkx as nx
@@ -486,7 +487,7 @@ class EventGraphGenerator:
         
         # 并行分析节点数前三多的子连通图
         print(f"\n开始并行分析前 3 个子连通图...")
-        with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+        with LocaleThreadPoolExecutor(max_workers=3) as executor:
             future_to_subgraph = {executor.submit(analyze_subgraph_theme, subgraph): subgraph 
                                  for subgraph in top_3_subgraphs}
             
@@ -609,7 +610,7 @@ class EventGraphGenerator:
                 return subgraph
             
         # 并行处理子连通图
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             future_to_subgraph = {executor.submit(analyze_subgraph, subgraph): subgraph for subgraph in subgraphs}
             for future in concurrent.futures.as_completed(future_to_subgraph):
                 optimized_subgraph = future.result()
@@ -683,7 +684,7 @@ class EventGraphGenerator:
             return subgraph
         
         # 并行处理所有多节点子图
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             future_to_subgraph = {executor.submit(process_subgraph, subgraph): subgraph 
                                  for subgraph in multi_node_subgraphs}
             

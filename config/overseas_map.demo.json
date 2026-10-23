@@ -1,5 +1,5 @@
 {
-  "country_code": "GB",
+  "locale_defaults": {"output_language": "zh-CN", "salary_period": "annual", "allow_fictional_details": true},
   "city_aliases": {"London": "Greater London", "伦敦": "Greater London"},
   "photon_url": "https://photon.komoot.io",
   "poi_backend": "photon",

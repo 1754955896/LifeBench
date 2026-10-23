@@ -20,6 +20,22 @@ import requests
 from .maptool import MapMaintenanceTool as _AMapMaintenanceTool
 
 logger = logging.getLogger(__name__)
+_HOST_GUARD = threading.Lock()
+_HOST_PACING = {}
+
+
+def wait_for_map_host(host, interval):
+    """Share pacing across country clients and persona workers in one process."""
+    if interval <= 0:
+        return
+    with _HOST_GUARD:
+        state = _HOST_PACING.setdefault(host, {"lock": threading.Lock(), "last": 0.0, "interval": interval})
+        state["interval"] = max(state["interval"], interval)
+    with state["lock"]:
+        delay = state["last"] + state["interval"] - time.monotonic()
+        if delay > 0:
+            time.sleep(delay)
+        state["last"] = time.monotonic()
 
 # Aliases are deliberately finite: unknown categories must not broaden to all POIs.
 # Explicit OSM tags can be supplied through types="amenity=cafe|shop=bakery".
@@ -158,7 +174,7 @@ class OverseasMapMaintenanceTool(_AMapMaintenanceTool):
         if cached is not None:
             return cached
         for attempt in range(self.rate_limit_retries + 1):
-            self._wait_for_request_slot()
+            wait_for_map_host(urlparse(url).netloc, self._request_interval)
             try:
                 response = requests.request(method, url, timeout=self.timeout_seconds,
                                             headers={"User-Agent": self.user_agent, "Accept-Language": self.language,
@@ -365,7 +381,8 @@ class OverseasMapMaintenanceTool(_AMapMaintenanceTool):
             for value in (text, query):
                 if any(value.casefold() == a.casefold() or (
                     re.search(r"[\u4e00-\u9fff]", a) and value.endswith(a)
-                    and re.fullmatch(r".+[市区县]", value[:-len(a)].strip())
+                    and (re.fullmatch(r".+[市区县]", value[:-len(a)].strip())
+                         or value[:-len(a)].endswith(" "))
                 ) for a in aliases):
                     result.extend(selectors)
                     break

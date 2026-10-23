@@ -10,7 +10,7 @@
 import json
 import os
 import threading
-from concurrent.futures import ThreadPoolExecutor
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 from datetime import datetime
 from typing import List, Dict
 

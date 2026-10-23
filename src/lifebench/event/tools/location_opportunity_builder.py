@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Build a reusable persona_locations_v2 asset before daily simulation shards start."""
 from __future__ import annotations
+from src.lifebench.utils.map_factory import create_map_tool
+from src.lifebench.utils.locale_context import international_run, context_fingerprint, destination_scope
 
 import argparse
 import copy
@@ -78,6 +80,7 @@ def location_asset_is_current(document: Any, persona: Any) -> bool:
         manifest.get("generator_version") == GENERATOR_VERSION
         and manifest.get("persona_hash") == _hash(persona)
         and manifest.get("base_location_hash") == _base_fingerprint(document)
+        and (not international_run() or manifest.get("locale_fingerprint") == context_fingerprint(persona))
     )
 
 
@@ -146,6 +149,8 @@ def normalize_location_document(location_data: Any, persona: Any = None) -> Dict
             if not isinstance(raw, dict) or not _valid_coordinate(raw.get("location")):
                 continue
             row = dict(raw)
+            if international_run() and (row.get("coordinate_system") != "WGS-84" or not row.get("country_code")):
+                raise ValueError("International location assets require country_code and WGS-84 metadata")
             row["location_role"] = role
             row.setdefault("location_id", _stable_id(
                 "loc", row.get("name"), row.get("formatted_address"), row.get("location")
@@ -267,6 +272,9 @@ class LocationOpportunityBuilder:
                     "return_eligible": False, "source": "map_preseed", "map_verified": True,
                     "query_reason": str(query.get("reason") or ""),
                 }
+                for key in ("country_code", "coordinate_system", "source"):
+                    if candidate.get(key):
+                        row[key] = candidate[key]
                 if home and _valid_coordinate(home.get("location")):
                     row["distance_from_home_km"] = round(haversine_km(str(home["location"]), coordinates), 2)
                 if work and _valid_coordinate(work.get("location")):
@@ -282,13 +290,15 @@ class LocationOpportunityBuilder:
             "base_location_hash": _base_fingerprint(document),
             "generator_version": GENERATOR_VERSION,
             "prompt_hash": _hash(_QUERY_PROMPT),
-            "map_provider": "amap" if self.maptool is not None else "none",
+            "map_provider": ("international" if international_run() else "amap") if self.maptool is not None else "none",
             "home_city": document.get("home_city", ""),
             "simulation_start": simulation_start,
             "poi_count_by_category": self._counts(document["city_reference_pois"], "category"),
             "poi_count_by_distance_band": self._distance_counts(document["city_reference_pois"]),
             "partial_failures": failures,
         }
+        if international_run():
+            manifest["locale_fingerprint"] = context_fingerprint(persona)
         document["asset_manifest"] = copy.deepcopy(manifest)
         return document, manifest
 
@@ -308,7 +318,7 @@ class LocationOpportunityBuilder:
             if not person or person in existing_people:
                 continue
             candidates = self.maptool.search_poi_candidates(
-                keyword=(district + " " + query).strip(), city=city or None, limit=8,
+                keyword=(district + " " + query).strip(), city=({"city": city, "country_code": spec["country_code"]} if spec.get("country_code") and international_run() else city or None), limit=8,
             )
             if not candidates:
                 failures.append("social_location_query_empty:%s" % person)
@@ -332,6 +342,8 @@ class LocationOpportunityBuilder:
                 "return_eligible": False, "source": "plausible_relation_address",
                 "map_verified": False,
             })
+            if international_run():
+                document["social_locations"][-1].update({key: candidate[key] for key in ("country_code", "coordinate_system") if candidate.get(key)})
             existing_people.add(person)
 
     @staticmethod
@@ -385,7 +397,7 @@ def main() -> None:
     root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
     with open(os.path.join(root, "config", "config.json"), "r", encoding="utf-8") as file:
         config = json.load(file)
-    maptool = MapMaintenanceTool(str(config.get("map_tool", {}).get("api_key") or ""))
+    maptool = create_map_tool(str(config.get("map_tool", {}).get("api_key") or ""))
     from src.lifebench.utils.llm_call import llm_call_j
     build_and_save(
         persona=persona, base_location_data=locations, output_path=args.output,

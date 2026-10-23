@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """时间线生成类，负责处理时间线相关的操作"""
+from src.lifebench.utils.locale_context import country_holidays as locale_holidays, calendar_country, calendar_label, persona_task
 import json
 import re
 from datetime import timedelta
@@ -144,7 +145,7 @@ class TimelineGen:
         :return: 列表，每个元素为{"date": "YYYY-MM-DD", "weekday": "星期X", "holiday": "节日名称或空"}
         """
         # 初始化中国节假日数据集
-        cn_holidays = holidays.China(years=year)
+        cn_holidays = locale_holidays(years=year)
 
         # 获取当月第一天和最后一天
         first_day = datetime(year, month, 1)
@@ -432,8 +433,7 @@ class TimelineGen:
         import json
 
         # 为所有类别生成额外重要事件（多线程版本）
-        from concurrent.futures import ThreadPoolExecutor
-
+        from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
         def generate_important_events_for_category(event_type, existing_events):
             """为单个事件类别生成额外重要事件"""
             print(f"\n开始为{event_type}类别生成额外重要事件...")
@@ -591,8 +591,7 @@ class TimelineGen:
             return all_timeline_data
 
         # 处理所有类别的事件，使用多线程并行处理
-        from concurrent.futures import ThreadPoolExecutor
-
+        from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
         def process_event_category(event_type, events):
             """处理单个事件类别的时间线生成"""
             print(f"\n开始处理{event_type}类别...")

@@ -4,7 +4,8 @@ import json
 import os
 import shutil
 import tempfile
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import as_completed
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 from copy import deepcopy
 
 from src.lifebench.utils.structured_llm import StructuredLLMCaller
@@ -48,6 +49,7 @@ from .stages import (
     group_relation_slots,
 )
 from .validation import validate_internal_persona, validate_profile_keys
+from src.lifebench.utils.locale_context import persona_task, persona_scope, enrich_residence, international_run
 
 
 class PersonaGenerator:
@@ -118,10 +120,12 @@ class PersonaGenerator:
             run_seed=stage_seed(run_seed, source_index, variant_index, "blueprint-attempt-%d" % attempt),
         )
 
+    @persona_task("source")
     def normalize_source(self, source):
         """Normalize one arbitrary source record into internal sparse facts."""
         return self.source_normalizer.normalize(source)
 
+    @persona_task("source")
     def generate_from_any(
         self, source, out_file_path=None, input_format="auto",
         variants_per_input=1, diversity="high", seed=None,
@@ -169,9 +173,10 @@ class PersonaGenerator:
                         diversity, accepted_blueprints + rejected_blueprints, attempt,
                     )
                     try:
-                        blueprint = generate_variant_blueprint(
-                            context, accepted_blueprints + rejected_blueprints,
-                        )
+                        with persona_scope(canonical.data):
+                            blueprint = generate_variant_blueprint(
+                                context, accepted_blueprints + rejected_blueprints,
+                            )
                         context.variant_blueprint = blueprint.to_dict()
                         result = self.pipeline.generate_one(
                             canonical.data,
@@ -260,6 +265,7 @@ class PersonaGenerator:
             indent=2,
         )
 
+    @persona_task("profile_str")
     def generate_profile(self, profile_str, variant_instruction=None, source_index=0):
         """Compatibility API: generate one base profile and return a JSON string."""
         raw = parse_json_response(profile_str)
@@ -277,6 +283,7 @@ class PersonaGenerator:
         normalized = normalize_profile_response(result.data, expected)
         return json.dumps(normalized, ensure_ascii=False)
 
+    @persona_task("profile")
     def generate_refine(self, profile, source_index=0):
         """Compatibility API: refine narratives without rewriting structure."""
         raw = parse_json_response(profile)
@@ -287,6 +294,7 @@ class PersonaGenerator:
         apply_derived_values(internal, self.as_of_date)
         return json.dumps(to_legacy_output(internal, list(raw.keys())), ensure_ascii=False)
 
+    @persona_task("profile")
     def generate_relation(self, profile, source_index=0):
         """Compatibility API: return the legacy relation-plan array JSON."""
         raw = parse_json_response(profile)
@@ -298,6 +306,7 @@ class PersonaGenerator:
         ]
         return json.dumps(result, ensure_ascii=False)
 
+    @persona_task("profile")
     def generate_people(self, profile, circle, source_index=0):
         """Compatibility API: fill one relation group and return an array JSON."""
         raw_profile = parse_json_response(profile)
@@ -315,6 +324,7 @@ class PersonaGenerator:
             groups.setdefault(circle, []).append(person)
         return groups
 
+    @persona_task("profile")
     def generate_person(self, profile, profile_rl, index):
         relation_list = parse_json_response(profile_rl)
         result = []
@@ -348,26 +358,29 @@ class PersonaGenerator:
             if isinstance(address, dict):
                 region = {
                     key: deepcopy(address[key])
-                    for key in ("province", "city", "district")
+                    for key in (("province", "city", "district", "country_code", "country") if international_run() else ("province", "city", "district"))
                     if address.get(key) not in (None, "")
                 }
                 if region:
                     result[field] = region
         return result
 
+    @persona_task("person")
     def _generate_basic_one(self, person, index, variant_strength=0.3):
+        address_service = self.address_service.for_persona(person) if hasattr(self.address_service, "for_persona") else self.address_service
         context = self._context(index, self._build_variant_instruction(variant_strength))
         base, _ = generate_base_profile(person, context)
         internal = normalize_persona_input(base, index)
+        enrich_residence(internal.data)
         apply_derived_values(internal, self.as_of_date)
         enriched_profile, _ = generate_profile_enrich(internal.data, context)
         internal.data.update(enriched_profile)
         apply_derived_values(internal, self.as_of_date)
-        context.mobility_profile = extract_mobility_profile(internal.data)
+        context.mobility_profile = extract_mobility_profile(internal.data, source_profile=person)
         context.employer_anchor = build_employer_anchor(internal.data, self.seed)
         core_locations = []
-        if self.address_service is not None:
-            grounded, core_locations = self.address_service.ground_core_addresses(
+        if address_service is not None:
+            grounded, core_locations = address_service.ground_core_addresses(
                 internal.data, self._standard_address_locks(person),
                 seed=derived_variant_seed(self.seed, index, 0, "core_location") or index,
                 mobility_profile=context.mobility_profile,
@@ -376,7 +389,7 @@ class PersonaGenerator:
             apply_derived_values(internal, self.as_of_date)
         context.grounding_context = enrich_grounding_context(
             core_locations,
-            getattr(self.address_service, "last_assignment_metrics", {}) if self.address_service else {},
+            getattr(address_service, "last_assignment_metrics", {}) if address_service else {},
             context.employer_anchor, context.mobility_profile,
         )
         narratives, _ = generate_narratives(internal.data, context)
@@ -432,7 +445,9 @@ class PersonaGenerator:
         print("基础画像数据已保存到 %s" % basic_out_file_path)
         return results
 
+    @persona_task("basic_data")
     def _generate_relations_for_basic(self, basic_data, fallback_index=0):
+        address_service = self.address_service.for_persona(basic_data) if hasattr(self.address_service, "for_persona") else self.address_service
         index = int(basic_data.get("_index", fallback_index))
         core_locations = deepcopy(basic_data.get("_core_locations") or [])
         saved_quality_context = deepcopy(basic_data.get("_quality_context") or {})
@@ -452,8 +467,8 @@ class PersonaGenerator:
         )
         slots, _ = generate_relation_slots(internal, context)
         fixed_circle_pois = []
-        if self.address_service is not None and hasattr(self.address_service, "ground_circle_anchors"):
-            grounded_anchors, fixed_circle_pois = self.address_service.ground_circle_anchors(
+        if address_service is not None and hasattr(address_service, "ground_circle_anchors"):
+            grounded_anchors, fixed_circle_pois = address_service.ground_circle_anchors(
                 context.circle_anchors, internal.data, core_locations,
                 seed=derived_variant_seed(self.seed, index, 0, "circle_location") or index,
             )
@@ -482,17 +497,17 @@ class PersonaGenerator:
         contact_address_audit = []
         for group_index, slot_group in enumerate(group_relation_slots(slots).values()):
             contacts, _ = generate_contact_group(internal, slot_group, context, group_index)
-            if self.address_service is not None and hasattr(self.address_service, "ground_contact_addresses"):
+            if address_service is not None and hasattr(address_service, "ground_contact_addresses"):
                 anchor = next(
                     (item for item in context.circle_anchors if item.get("circle_id") == slot_group[0].circle_id),
                     {},
                 )
-                contact_address_audit.extend(self.address_service.ground_contact_addresses(
+                contact_address_audit.extend(address_service.ground_contact_addresses(
                     internal.data, contacts, anchor, core_locations, fixed_circle_pois,
                     seed=(derived_variant_seed(self.seed, index, 0, "contact_location") or index) + group_index,
                 ))
             internal.relation_groups.append(contacts)
-        if self.address_service is not None and hasattr(self.address_service, "ground_contact_addresses"):
+        if address_service is not None and hasattr(address_service, "ground_contact_addresses"):
             context.grounding_context["contact_address_audit"] = contact_address_audit
         generate_persona_consistency(internal, context)
         apply_derived_values(internal, self.as_of_date)
@@ -501,9 +516,9 @@ class PersonaGenerator:
             raise ValueError("; ".join(report.messages()))
         output = to_legacy_output(internal, expected_keys)
         locations = []
-        if self.address_service is not None:
+        if address_service is not None:
             if not core_locations:
-                grounded, core_locations = self.address_service.ground_core_addresses(
+                grounded, core_locations = address_service.ground_core_addresses(
                     output, self._standard_address_locks(output),
                     seed=derived_variant_seed(self.seed, index, 0, "core_location") or index,
                     mobility_profile=context.mobility_profile,
@@ -512,15 +527,15 @@ class PersonaGenerator:
                 apply_derived_values(internal, self.as_of_date)
                 output = to_legacy_output(internal, expected_keys)
                 context.grounding_context = enrich_grounding_context(
-                    core_locations, getattr(self.address_service, "last_assignment_metrics", {}),
+                    core_locations, getattr(address_service, "last_assignment_metrics", {}),
                     context.employer_anchor, context.mobility_profile,
                 )
-            locations = self.address_service.generate_surrounding_locations(
+            locations = address_service.generate_surrounding_locations(
                 output, core_locations,
                 seed=derived_variant_seed(self.seed, index, 0, "location") or index,
                 fixed_pois=fixed_circle_pois,
             )
-            consistency_errors = self.address_service.consistency_errors(output, locations)
+            consistency_errors = address_service.consistency_errors(output, locations)
             if consistency_errors:
                 raise ValueError("; ".join(consistency_errors))
         return index, output, locations, context.grounding_context

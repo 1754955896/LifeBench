@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """事件图谱优化器，负责事件的插入和优化"""
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor
 import json
 from typing import Dict, List, Any
 import concurrent.futures
@@ -355,7 +356,7 @@ class GraphRefiner:
                 return month, f"分析失败：{str(e)}"
         
         # 并行处理所有月份
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             future_to_month = {executor.submit(analyze_month, month, events): month 
                              for month, events in monthly_events.items()}
             

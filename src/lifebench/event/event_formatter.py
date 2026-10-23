@@ -4,7 +4,8 @@ import glob
 import re
 from typing import List, Dict
 from datetime import datetime
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import as_completed
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 
 from src.lifebench.event.templates.template_simulation import template_event_format_sequence
 from src.lifebench.utils.llm_call import llm_call_reason_j

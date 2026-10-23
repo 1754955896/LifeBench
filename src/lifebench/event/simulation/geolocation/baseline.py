@@ -26,6 +26,7 @@ import json
 
 from src.lifebench.utils.llm_call import llm_agent
 
+from src.lifebench.utils.locale_context import international_run, current_locale
 from .models import ResolvedStop, TrajectoryAssignment, TravelLeg
 from .export import build_location_records
 from .validator import validate_location_records
@@ -47,6 +48,7 @@ _TOOL_SCHEMAS = [
                 "type": "object",
                 "properties": {
                     "keyword": {"type": "string", "description": "店铺名或业态关键词，如“星巴克”“健身房”"},
+                    "country_code": {"type": "string", "description": "ISO alpha-2 destination country"},
                     "city": {"type": "string", "description": "城市名，如“北京”；可空表示全国"},
                 },
                 "required": ["keyword"],
@@ -63,6 +65,7 @@ _TOOL_SCHEMAS = [
                 "properties": {
                     "center": {"type": "string", "description": "中心点坐标“经度,纬度”"},
                     "keyword": {"type": "string", "description": "业态关键词，如“餐厅”"},
+                    "country_code": {"type": "string", "description": "ISO alpha-2 destination country"},
                     "city": {"type": "string", "description": "城市名，可空"},
                     "radius": {"type": "integer", "description": "搜索半径（米），默认3000"},
                 },
@@ -79,6 +82,7 @@ _TOOL_SCHEMAS = [
                 "type": "object",
                 "properties": {
                     "address": {"type": "string", "description": "地点名称或地址"},
+                    "country_code": {"type": "string", "description": "ISO alpha-2 destination country"},
                     "city": {"type": "string", "description": "城市名，可空"},
                 },
                 "required": ["address"],
@@ -110,6 +114,7 @@ def _candidate_public(candidate):
     return {
         "name": str(candidate.get("name") or ""),
         "location": str(candidate.get("location") or ""),
+        **({"country_code": candidate.get("country_code", ""), "coordinate_system": candidate.get("coordinate_system", "WGS-84")} if international_run() else {}),
         "address": str(candidate.get("structured_address") or candidate.get("address") or ""),
         "city": str(geo.get("city") or candidate.get("cityname") or candidate.get("city") or ""),
         "district": str(geo.get("district") or candidate.get("adname") or ""),
@@ -124,12 +129,16 @@ def _dispatch_tool(mind, name, args):
         if name == "search_place":
             keyword = str(args.get("keyword") or "").strip()
             city = str(args.get("city") or "").strip() or None
+            if international_run() and args.get("country_code"):
+                city = {"city": city, "country_code": args["country_code"]}
             candidates = mt.search_poi_candidates(keyword, city=city, limit=5) or []
             return {"results": [_candidate_public(c) for c in candidates]}
         if name == "search_around":
             center = str(args.get("center") or "").strip()
             keyword = str(args.get("keyword") or "").strip()
             city = str(args.get("city") or "").strip() or None
+            if international_run() and args.get("country_code"):
+                city = {"city": city, "country_code": args["country_code"]}
             radius = int(args.get("radius") or 3000)
             candidates = mt.search_around_candidates(
                 center, keywords=keyword, city=city, radius=radius, limit=5,
@@ -138,6 +147,8 @@ def _dispatch_tool(mind, name, args):
         if name == "geocode":
             address = str(args.get("address") or "").strip()
             city = str(args.get("city") or "").strip() or None
+            if international_run() and args.get("country_code"):
+                city = {"city": city, "country_code": args["country_code"]}
             geo = mt.amap_geocode(address, city)
             if not geo or not geo.get("location"):
                 return {"found": False, "result": None}
@@ -145,7 +156,8 @@ def _dispatch_tool(mind, name, args):
                 "name": address,
                 "location": str(geo.get("location") or ""),
                 "formatted_address": str(geo.get("formatted_address") or ""),
-                "city": str(geo.get("city") or city or ""),
+                "city": str(geo.get("city") or (city.get("city") if isinstance(city, dict) else city) or ""),
+            **({"country_code": geo.get("country_code", ""), "coordinate_system": "WGS-84"} if international_run() else {}),
                 "district": str(geo.get("district") or ""),
             }}
         if name == "route_between":
@@ -331,6 +343,7 @@ def simple_gather_geo(mind, events, plan=None):
             "location": location,
             "address": str(row.get("address") or "").strip(),
             "city": str(row.get("city") or "").strip(),
+            **({"country_code": row.get("country_code") or (current_locale().country_code if current_locale() else ""), "coordinate_system": "WGS-84", "timezone": row.get("timezone", "")} if international_run() else {}),
             "start_time": str(row.get("start_time") or "").strip(),
             "end_time": str(row.get("end_time") or "").strip(),
         })
@@ -354,7 +367,9 @@ def _match_ref(ref_stops, name):
     return None
 
 
-def _backfill_location(mind, name, city):
+def _backfill_location(mind, name, city, country_code=""):
+    if international_run() and country_code:
+        city = {"city": city, "country_code": country_code}
     """用工具正向搜索/地理编码回填一个编造地点的真实坐标；搜不到返回 None。"""
     if not name:
         return None
@@ -367,14 +382,16 @@ def _backfill_location(mind, name, city):
             "name": name,
             "location": str(geo.get("location") or ""),
             "address": str(geo.get("formatted_address") or ""),
-            "city": str(geo.get("city") or city or ""),
+            "city": str(geo.get("city") or (city.get("city") if isinstance(city, dict) else city) or ""),
+            **({"country_code": geo.get("country_code", ""), "coordinate_system": "WGS-84"} if international_run() else {}),
         }
     geo = poi.get("geocode") or {}
     return {
         "name": str(poi.get("name") or name),
         "location": str(poi.get("location") or ""),
         "address": str(poi.get("structured_address") or poi.get("address") or ""),
-        "city": str(geo.get("city") or poi.get("cityname") or city or ""),
+        "city": str(geo.get("city") or poi.get("cityname") or (city.get("city") if isinstance(city, dict) else city) or ""),
+        **({"country_code": poi.get("country_code", ""), "coordinate_system": "WGS-84"} if international_run() else {}),
     }
 
 
@@ -383,7 +400,8 @@ def _route_tool(mind, origin_coords, dest_coords, mode):
     if mode not in _VALID_MODES:
         mode = "driving"
     payload = mind.maptools.route_between_pois(
-        {"location": origin_coords}, {"location": dest_coords}, mode,
+        origin_coords if isinstance(origin_coords, dict) else {"location": origin_coords},
+        dest_coords if isinstance(dest_coords, dict) else {"location": dest_coords}, mode,
     )
     if not payload:
         return None
@@ -419,7 +437,8 @@ def _make_stop(index, info):
         coordinates=info["location"],
         city=info["city"],
         category="other",
-        source="amap",
+        source="map_route" if international_run() else "amap",
+        country_code=info.get("country_code", ""), coordinate_system=info.get("coordinate_system", ""), timezone=info.get("timezone", ""),
         degraded=False,
         original_order=index,
         required=False,
@@ -472,7 +491,8 @@ def simple_adjust_trajectory(mind, poi_data, event, daily_event_reference="", hi
         resolved = _match_ref(ref_stops, name)
         provenance = "reference"
         if resolved is None and name:
-            resolved = _backfill_location(mind, name, city)
+            resolved = (_backfill_location(mind, name, city, str(loc.get("country_code") or ""))
+                        if international_run() else _backfill_location(mind, name, city))
             provenance = "backfill"
             if resolved is not None:
                 backfilled.append(name)
@@ -497,6 +517,7 @@ def simple_adjust_trajectory(mind, poi_data, event, daily_event_reference="", hi
             "start_time": str(loc.get("start_time") or "").strip(),
             "end_time": str(loc.get("end_time") or "").strip(),
             "mode": str(loc.get("mode") or "").strip(),
+            **({"country_code": resolved.get("country_code") or loc.get("country_code") or (current_locale().country_code if current_locale() else ""), "coordinate_system": "WGS-84", "timezone": loc.get("timezone", "")} if international_run() else {}),
             "location_id": location_id,
             "provenance": provenance,
         })
@@ -528,7 +549,9 @@ def simple_adjust_trajectory(mind, poi_data, event, daily_event_reference="", hi
         if info["location_id"] == nxt["location_id"]:
             continue  # 同地点停留，无通行段
         mode = nxt.get("mode") or "driving"
-        route = _route_tool(mind, stops[i].coordinates, stops[i + 1].coordinates, mode)
+        route = _route_tool(mind, stops[i].as_poi() if international_run() else stops[i].coordinates, stops[i + 1].as_poi() if international_run() else stops[i + 1].coordinates, mode)
+        if route is None and international_run():
+            raise RuntimeError("No verified route for an international simulation leg")
         if route is None:
             duration, distance, source, verified, confidence = 0, 0.0, "unresolved", False, 0.5
         else:

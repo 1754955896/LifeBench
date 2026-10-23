@@ -11,6 +11,11 @@ from .profile_enrich import build_profile_enrich_prompt
 from .relation_plan import build_relation_plan_prompt
 from .repair import build_repair_prompt
 from .variant_blueprint import build_variant_blueprint_prompt
+from .international import international_builder
+
+# Preserve original builders and their output in the default mode.
+for _name in tuple(name for name in globals() if name.startswith('build_') and name.endswith('_prompt')):
+    globals()[_name] = international_builder(globals()[_name])
 
 __all__ = [
     "NARRATIVE_FIELDS",

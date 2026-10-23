@@ -4,7 +4,8 @@ from datetime import timedelta
 from src.lifebench.utils.llm_call import *
 from src.lifebench.event.memory_structure.memory import *
 from typing import List, Dict, Optional
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import as_completed
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 class Data_extract:
     def __init__(self):
         self.events = []

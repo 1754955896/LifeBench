@@ -9,6 +9,7 @@ import json
 import re
 from copy import deepcopy
 from typing import Any, Dict, List, Optional
+from src.lifebench.utils.locale_context import international_run
 
 
 def _all_text(*values: Any) -> str:
@@ -21,6 +22,7 @@ def _all_text(*values: Any) -> str:
 def extract_mobility_profile(
     profile: Dict[str, Any], soft_clues: Optional[Dict[str, Any]] = None,
     source_description: str = "",
+    source_profile: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     """Turn free-form travel clues into one stable internal preference."""
     text = _all_text(source_description, soft_clues or {}, {
@@ -47,16 +49,23 @@ def extract_mobility_profile(
         owns_car = False
     elif any(word in text for word in ("有车", "私家车", "自驾通勤", "开车上班", "驾车通勤")):
         owns_car = True
-    return {
+    result = {
         "primary_transport": primary,
         "owns_car": owns_car,
         "evidence": evidence,
         "explicit": bool(evidence),
     }
+    if international_run():
+        from .international_policy import mobility_profile
+        return mobility_profile(profile, result, source_profile, soft_clues, source_description)
+    return result
 
 
 def _is_daily_worker(profile: Dict[str, Any]) -> bool:
     text = _all_text(profile.get("job"), profile.get("occupation"), profile.get("work_desc"))
+    if international_run():
+        # Hybrid workers still have an employer and an office.
+        return not any(word in text for word in ('退休', '无业', '待业', '在校', '学生', 'retired', 'unemployed'))
     return not any(word in text for word in ("退休", "无业", "待业", "在校", "学生", "自由职业", "居家办公"))
 
 
@@ -64,6 +73,9 @@ def build_employer_anchor(profile: Dict[str, Any], seed: Optional[int] = None) -
     """Create a deterministic fictional current-employer identity."""
     if not _is_daily_worker(profile):
         return {}
+    if international_run():
+        from .international_policy import employer_anchor
+        return employer_anchor(profile, seed)
     address = profile.get("workplace") if isinstance(profile.get("workplace"), dict) else {}
     city = str(address.get("city") or address.get("province") or "本地").replace("市", "")
     job_text = _all_text(profile.get("job"), profile.get("occupation"))
@@ -102,16 +114,31 @@ def enrich_grounding_context(
             "structured_address": item.get("structured_address", ""),
             "description": item.get("description", ""),
         })
+        if international_run():
+            core[-1].update({key: item.get(key) for key in ('type', 'country_code', 'coordinate_system', 'source')})
     workplace = next((item for item in core if item["address_type"] == "工作地"), None)
     if workplace is not None and employer_anchor is not None:
         employer_anchor["workplace_poi"] = workplace["name"]
         employer_anchor["workplace_address_text"] = workplace["structured_address"]
-    return {
+    result = {
         "core_pois": core,
         "commute": deepcopy(assignment_metrics or {}),
         "employer_anchor": deepcopy(employer_anchor or {}),
         "mobility_profile": deepcopy(mobility_profile or {}),
     }
+    if international_run():
+        from .international_policy import validate_commute, allow_fictional_details
+        result['generation_policy'] = dict(allow_fictional_details=allow_fictional_details(),
+            entity_facts='synthetic', map_results='provider', unverified_relationships='synthetic')
+        result['review_notes'] = []
+        if (assignment_metrics or {}).get('status') in {'unverified', 'estimated'}:
+            result['review_notes'].append(dict(code='ROUTE_UNVERIFIED', message='交通偏好保留；后端未验证路线和耗时'))
+        if (employer_anchor or {}).get('fictional'):
+            result['review_notes'].append(dict(code='EMPLOYER_SYNTHETIC', message='雇主与入驻关系为合成设定，不要求真实可检索'))
+        errors = validate_commute(result)
+        if errors:
+            raise ValueError('; '.join(errors))
+    return result
 
 
 def is_current_work_contact(relation: Any, social_circle: Any) -> bool:
@@ -129,8 +156,27 @@ def is_current_work_contact(relation: Any, social_circle: Any) -> bool:
 def narrative_grounding_errors(narratives: Dict[str, Any], context: Dict[str, Any]) -> List[str]:
     errors = []
     workplace = next((item for item in context.get("core_pois", []) if item.get("address_type") == "工作地"), None)
-    if workplace and workplace.get("name") and workplace["name"] not in str(narratives.get("work_desc") or ""):
+    if workplace and workplace.get("name") and workplace["name"] not in str(narratives.get("work_desc") or "") and (not international_run() or 'work_desc' in narratives):
         errors.append("work_desc 必须提及已落地工作 POI：%s" % workplace["name"])
+    if international_run():
+        text = _all_text(narratives)
+        if (context.get('employer_anchor') or {}).get('relationship_verified') is False and not (context.get('employer_anchor') or {}).get('allow_fictional_relationship') and any(
+                word in text for word in ('租用楼层', '租用办公', '租赁办公', '租用楼', '入驻', 'leased floor', 'rented floor')):
+            errors.append('未验证的雇主与办公地点关系不得补造租赁或入驻事实')
+        commute = context.get('commute') or {}
+        lifestyle = str(narratives.get('lifestyle_desc') or '')
+        words = {'walking': ('步行', '走路', 'walk', 'on foot'), 'bicycling': ('骑行', '自行车', '骑车', 'cycl'),
+                 'driving': ('驾车', '开车', '自驾', 'driv'), 'transit': ('地铁', '公交', '公共交通', 'transit', 'underground')}
+        mode = commute.get('commute_transport')
+        if lifestyle and commute.get('status') != 'not_required' and mode in words and not any(w in lifestyle.casefold() for w in words[mode]):
+            # Lexical absence is uncertain (synonyms/output languages), not a proven contradiction.
+            note = dict(code='NARRATIVE_MODE_UNCONFIRMED', message='通勤叙述需语义复核，未通过关键词确认：%s' % mode)
+            notes = context.setdefault('review_notes', [])
+            if note not in notes:
+                notes.append(note)
+        if not commute.get('route_api_used') and re.search(r'(?:通勤|上班|到办公室)[^。\n]{0,40}\d+\s*分钟', lifestyle):
+            if commute.get('duration_source') != 'estimate' or not any(word in lifestyle for word in ('估算', '估计', 'estimated', 'estimate')):
+                errors.append('未验证通勤耗时必须明确标为估算，不能冒充地图结果')
     return errors
 
 
@@ -163,12 +209,17 @@ def circle_contact_errors(
             if expected and str(_contact_value(contact, "organization") or "") != expected:
                 errors.append("圈子 %s 联系人[%d]未继承当前雇主 %s" % (circle_name, index, expected))
     elif circle_type == "school":
+        if international_run():
+            # Shared anchors bind identity; prose need not repeat the institution's full name.
+            return errors
         institution = str(facts.get("institution_name") or "")
         for index, contact in enumerate(contacts):
             description = str(_contact_value(contact, "relation_description") or "")
             if institution and institution not in description:
                 errors.append("圈子 %s 联系人[%d]的关系描述未提及共同学校 %s" % (circle_name, index, institution))
     elif circle_type == "sports_club":
+        if international_run():
+            return errors
         venue = str(facts.get("venue_name") or "")
         for index, contact in enumerate(contacts):
             description = str(_contact_value(contact, "relation_description") or "")
@@ -192,11 +243,22 @@ def circle_contact_errors(
         region = str(facts.get("neighborhood_region") or "")
         for index, contact in enumerate(contacts):
             address = _contact_value(contact, "home_address") or {}
+            if international_run() and facts.get('_structured_plan') and region:
+                from .region_normalization import region_relationship
+                from .international_policy import allow_fictional_details
+                from src.lifebench.utils.locale_context import address_country
+                expected = dict((profile or {}).get('home_address') or {}, district=region, administrative_area=region)
+                country_conflict = isinstance(address, dict) and address_country(expected) != address_country(address)
+                if not isinstance(address, dict) or country_conflict or (not allow_fictional_details() and region_relationship(expected, address) == 'conflict'):
+                    errors.append('圈子 %s 联系人[%d]不在共同社区行政区 %s' % (circle_name, index, region))
+                continue
             if facts.get("_structured_plan") and region and (
                 not isinstance(address, dict) or str(address.get("district") or "") != region
             ):
                 errors.append("圈子 %s 联系人[%d]不在共同社区行政区 %s" % (circle_name, index, region))
     elif circle_type in {"professional_community", "hobby_group", "online_community"}:
+        if international_run():
+            return errors
         anchors = [
             str(facts.get(key) or "").strip()
             for key in ("group_name", "platform", "meeting_place")
@@ -260,20 +322,27 @@ def semantic_quality_errors(
             for item in circle_anchors
         }
         for audit in audits:
-            if not audit.get("home_address") or not audit.get("birth_place_verified"):
+            from .international_policy import allow_fictional_details
+            synthetic_allowed = international_run() and allow_fictional_details()
+            birth_ok = audit.get('birth_place_verified') or (synthetic_allowed and audit.get('birth_place_source') == 'synthetic')
+            if not audit.get("home_address") or not birth_ok:
                 errors.append("联系人 %s 的住宅或出生地未通过地图验证" % audit.get("contact_name", ""))
             if circle_types.get(str(audit.get("circle_id") or "")) != "household":
                 location = str(audit.get("home_location") or "")
-                if not location:
+                if not location and not (synthetic_allowed and audit.get('home_source') == 'synthetic'):
                     errors.append("联系人 %s 的真实住宅缺少坐标" % audit.get("contact_name", ""))
-                else:
+                elif location:
                     non_household_locations.append(location)
         duplicate_locations = {
             location for location in non_household_locations
             if non_household_locations.count(location) > 2
         }
         if duplicate_locations:
-            errors.append("非同住联系人过度复用同一住宅 POI: %s" % sorted(duplicate_locations))
+            if international_run():
+                context.setdefault('review_notes', []).append(dict(code='SHARED_BUILDING',
+                    message='多名联系人使用同一住宅坐标；可为不同单元的合成住户', locations=sorted(duplicate_locations)))
+            else:
+                errors.append("非同住联系人过度复用同一住宅 POI: %s" % sorted(duplicate_locations))
     if locations is not None:
         location_names = {str(item.get("name") or "") for item in locations}
         for fixed in context.get("circle_fixed_pois") or []:
@@ -282,7 +351,7 @@ def semantic_quality_errors(
                 errors.append("location sidecar 缺少关系圈固定地点 %s" % fixed.get("name", ""))
     commute = context.get("commute") or {}
     mobility = context.get("mobility_profile") or {}
-    if mobility.get("explicit") and commute.get("commute_transport") and commute["commute_transport"] != mobility.get("primary_transport"):
+    if mobility.get("explicit") and commute.get("commute_transport") and commute["commute_transport"] != mobility.get("primary_transport") and (not international_run() or commute.get('status') != 'not_required'):
         errors.append("地址分配交通方式与结构化交通偏好不一致")
     if locations is not None:
         common_count = sum(str(item.get("name") or "").startswith("常去地·") for item in locations)

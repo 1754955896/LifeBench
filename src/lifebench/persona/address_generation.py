@@ -10,6 +10,9 @@ from copy import deepcopy
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
 from src.lifebench.utils.maptool import MapMaintenanceTool
+from src.lifebench.utils.map_factory import create_map_tool
+from src.lifebench.utils.locale_context import (address_task, profile_address_task, address_country,
+    current_locale, international_run, coordinate_system)
 from src.lifebench.utils.structured_llm import StructuredLLMCaller
 
 from .canonicalizer import locked_fact_errors
@@ -57,7 +60,9 @@ class AddressAssignmentRegistry:
         fallback = "%s|%s" % (
             _text(poi.get("name")), _text(poi.get("structured_address")),
         )
-        return direct or (fallback if fallback != "|" else "")
+        result = direct or (fallback if fallback != "|" else "")
+        code = (address_country(poi) or address_country(poi.get("geocode") or {})) if international_run() else ''
+        return (code + "|" + result) if code and result else result
 
     @staticmethod
     def _aliases(poi: Dict[str, Any]) -> List[str]:
@@ -69,7 +74,8 @@ class AddressAssignmentRegistry:
             ("name", _text(poi.get("name"))),
         ):
             if value:
-                values.append("%s:%s" % (prefix, value))
+                code = (address_country(poi) or address_country(poi.get("geocode") or {})) if international_run() else ''
+                values.append("%s:%s%s" % (prefix, (code + "|") if code else "", value))
         return values
 
     def penalty(self, address_type: str, poi: Dict[str, Any]) -> float:
@@ -105,6 +111,10 @@ def _text(value: Any) -> str:
 
 
 def _address_text(address: Dict[str, Any]) -> str:
+    if international_run() and address_country(address) and address_country(address) != "CN":
+        return ", ".join(_text(address.get(key)) for key in (
+            "street_number", "street_name", "district", "city", "province", "country_code"
+        ) if address.get(key))
     province = _text(address.get("province"))
     city = _text(address.get("city"))
     parts = [province]
@@ -173,6 +183,10 @@ def _workplace_type(profile: Dict[str, Any]) -> str:
 
 
 def _has_daily_workplace(profile: Dict[str, Any]) -> bool:
+    if international_run():
+        from .international_policy import work_arrangement
+        if work_arrangement(profile) == 'remote':
+            return False
     text = "%s %s" % (profile.get("job", ""), profile.get("occupation", ""))
     return not any(word in text for word in ("无业", "退休", "家庭主妇", "无固定单位"))
 
@@ -185,13 +199,22 @@ class PersonaAddressService:
         map_api_key: Optional[str] = None,
     ):
         self.caller = caller
-        self.map_tool = map_tool or MapMaintenanceTool(api_key=map_api_key or self._load_api_key())
+        self.map_tool = map_tool or create_map_tool(api_key=map_api_key or self._load_api_key())
         self._map_lock = threading.RLock()
         self._assignment_lock = threading.RLock()
         self.assignment_registry = AddressAssignmentRegistry()
         self.last_assignment_metrics: Dict[str, Any] = {}
         self._contact_candidate_cache: Dict[Tuple[str, str, str, int], List[Dict[str, Any]]] = {}
         self._birthplace_cache: Dict[Tuple[str, str], Dict[str, Any]] = {}
+
+    def for_persona(self, profile):
+        if not international_run():
+            return self
+        service = PersonaAddressService(self.caller, map_tool=create_map_tool(
+            api_key=getattr(self.map_tool, "api_key", ""), persona=profile))
+        service.assignment_registry = self.assignment_registry
+        service._assignment_lock = self._assignment_lock
+        return service
 
     @staticmethod
     def _load_api_key() -> str:
@@ -258,6 +281,15 @@ class PersonaAddressService:
 
     @staticmethod
     def _region_matches(expected: Dict[str, Any], geocode: Dict[str, Any]) -> bool:
+        if international_run() and address_country(expected):
+            from .region_normalization import region_matches
+            return region_matches(expected, geocode)
+        if international_run() and address_country(expected) and address_country(expected) != "CN":
+            if address_country(geocode) and address_country(expected) != address_country(geocode):
+                return False
+            # OSM levels differ by country (e.g. a London borough may be city).
+            hierarchy = " ".join(_text(geocode.get(key)).casefold() for key in ("province", "city", "district", "formatted_address"))
+            return all(not expected.get(key) or _text(expected[key]).casefold() in hierarchy for key in ("province", "city", "district"))
         for expected_key, actual_key in (("province", "province"), ("city", "city"), ("district", "district")):
             wanted = _text(expected.get(expected_key))
             actual = _text(geocode.get(actual_key))
@@ -265,6 +297,7 @@ class PersonaAddressService:
                 return False
         return True
 
+    @profile_address_task
     def _core_poi(
         self,
         profile: Dict[str, Any],
@@ -292,7 +325,7 @@ class PersonaAddressService:
                 "description": "人物的日常%s" % address_type,
             }
 
-        region = "".join(_text(address.get(key)) for key in ("province", "city", "district"))
+        region = (" " if address_country(address) not in ("", "CN") else "").join(_text(address.get(key)) for key in ("province", "city", "district"))
         place_type = "住宅小区" if field == "home_address" else _workplace_type(profile)
         candidates = [
             "%s %s" % (region, place_type),
@@ -310,6 +343,7 @@ class PersonaAddressService:
                 return result
         raise AddressGenerationError("无法在画像行政区域内落地%s: %s" % (address_type, region))
 
+    @profile_address_task
     def _core_candidates(
         self,
         profile: Dict[str, Any],
@@ -326,7 +360,7 @@ class PersonaAddressService:
             return [self._core_poi(profile, field, address_type, locked_address)]
 
         city = _text(address.get("city"))
-        region = "".join(_text(address.get(key)) for key in ("province", "city", "district"))
+        region = (" " if address_country(address) not in ("", "CN") else "").join(_text(address.get(key)) for key in ("province", "city", "district"))
         place_type = "住宅小区" if field == "home_address" else _workplace_type(profile)
         queries = list(dict.fromkeys(filter(None, (
             ("%s %s" % (region, place_type)).strip(),
@@ -374,12 +408,21 @@ class PersonaAddressService:
         score += 0.20 if _text(geocode.get("street")) else 0.0
         score += 0.25 if self._region_matches(expected, geocode) else -2.0
         score -= self.assignment_registry.penalty(address_type, candidate)
+        if international_run() and address_type == '工作地' and str(candidate.get('type') or '') in {
+                'office=publisher', 'office=government', 'amenity=hospital', 'amenity=school'}:
+            # Prefer generic offices; a synthetic tenant is allowed when coverage is sparse.
+            score -= 0.75
         return score
 
     @staticmethod
     def _commute_preferences(
         profile: Dict[str, Any], mobility_profile: Optional[Dict[str, Any]] = None,
     ) -> Tuple[str, Tuple[float, float]]:
+        if international_run():
+            transport = str((mobility_profile or {}).get('primary_transport') or 'walking')
+            ranges = {'walking': (5.0, 35.0), 'bicycling': (10.0, 40.0),
+                      'transit': (15.0, 60.0), 'driving': (10.0, 50.0)}
+            return transport, ranges.get(transport, (5.0, 45.0))
         text = " ".join(_text(profile.get(key)) for key in (
             "job", "occupation", "description", "lifestyle_desc", "work_desc",
             "economic_desc", "economic_situation", "daily_routine",
@@ -426,6 +469,8 @@ class PersonaAddressService:
         mobility_profile: Optional[Dict[str, Any]] = None,
     ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
         transport, target_range = self._commute_preferences(profile, mobility_profile)
+        if international_run():
+            return self._select_international_pair(profile, homes, works, rng, mobility_profile or {}, transport, target_range)
         home_expected = profile.get("home_address") or {}
         work_expected = profile.get("workplace") or {}
         unused_homes = [item for item in homes if self.assignment_registry.usage_count(item) == 0]
@@ -475,6 +520,47 @@ class PersonaAddressService:
         }
         return home, work
 
+    def _select_international_pair(self, profile, homes, works, rng, mobility, transport, target_range):
+        from .international_policy import supported_modes, allow_fictional_details
+        candidates = []
+        for home in homes:
+            for work in works:
+                distance = _haversine_km(home, work)
+                if distance is not None:
+                    score = self._candidate_score(home, profile.get('home_address') or {}, '居住地')
+                    score += self._candidate_score(work, profile.get('workplace') or {}, '工作地')
+                    candidates.append((score - distance / 10.0, home, work, distance))
+        if not candidates:
+            raise AddressGenerationError('海外住所与办公地点没有合法坐标')
+        method = getattr(self.map_tool, 'get_duration_between_pois', None)
+        routed = []
+        for score, home, work, distance in sorted(candidates, key=lambda x: x[0], reverse=True)[:4]:
+            duration = None
+            if transport in supported_modes(profile) and callable(method):
+                with self._map_lock:
+                    duration = method(home, work, transport,
+                                      origin_city=(profile.get('home_address') or {}).get('city'),
+                                      dest_city=(profile.get('workplace') or {}).get('city'))
+            minutes = duration / 60.0 if duration is not None else None
+            if minutes is not None:
+                score += 2.2 * _range_score(minutes, *target_range) - max(0.0, minutes - target_range[1]) / 15.0
+            routed.append((score, (home, work, distance, minutes)))
+        verified = [item for item in routed if item[1][3] is not None]
+        home, work, distance, minutes = _weighted_choice(rng, verified or routed, top_n=3)
+        route_verified = minutes is not None
+        estimated = not route_verified and allow_fictional_details()
+        if estimated:
+            minutes = self._estimated_minutes(distance, transport)
+        self.last_assignment_metrics = dict(commute_transport=transport,
+            commute_minutes=round(minutes, 1) if minutes is not None else None,
+            straight_distance_km=round(distance, 2), route_api_used=route_verified,
+            route_verified=route_verified, status='verified' if route_verified else ('estimated' if estimated else 'unverified'),
+            duration_source='map' if route_verified else ('estimate' if estimated else 'unavailable'),
+            estimate_method='straight_line_speed_with_overhead' if estimated else '',
+            reason='' if route_verified else ('unsupported_transport' if transport not in supported_modes(profile) else 'route_unavailable'),
+            work_arrangement=mobility.get('work_arrangement', 'onsite'))
+        return home, work
+
     def _enrich_selected_candidate(self, poi: Dict[str, Any], city: str) -> Dict[str, Any]:
         """Spend at most one geocode request for a selected POI, never per candidate."""
         selected = deepcopy(poi)
@@ -511,21 +597,39 @@ class PersonaAddressService:
     ) -> None:
         original = deepcopy(profile.get(field) or {})
         geocode = poi.get("geocode") or {}
+        if international_run():
+            from .region_normalization import normalize_address
+            geocode = normalize_address(geocode)
+            original.update({key: deepcopy(geocode[key]) for key in ('administrative_area', 'administrative_area_source', 'neighbourhood', 'raw_provider_address') if key in geocode})
         for target_key, source_key in (
             ("province", "province"), ("city", "city"), ("district", "district"),
             ("street_name", "street"), ("street_number", "number"),
+            ("country_code", "country_code"), ("country", "country"), ("postcode", "postcode"),
         ):
+            if not international_run() and target_key in ('country_code', 'country', 'postcode'):
+                continue
             value = _text(geocode.get(source_key))
             if value:
                 original[target_key] = value
         for key, value in locked_address.items():
             original[key] = deepcopy(value)
+        if international_run() and locked_address.get('district') and geocode.get('administrative_area_source') != 'provider':
+            # Keep the requested synthetic region without claiming provider verification.
+            original['administrative_area'] = original['district']
+            original['administrative_area_source'] = 'synthetic'
         profile[field] = original
         geocode = dict(geocode)
+        if international_run():
+            for key in ('administrative_area', 'administrative_area_source', 'neighbourhood', 'raw_provider_address'):
+                if key in original:
+                    geocode[key] = deepcopy(original[key])
         for target_key, source_key in (
             ("province", "province"), ("city", "city"), ("district", "district"),
             ("street_name", "street"), ("street_number", "number"),
+            ("country_code", "country_code"), ("country", "country"), ("postcode", "postcode"),
         ):
+            if not international_run() and target_key in ('country_code', 'country', 'postcode'):
+                continue
             if original.get(target_key) not in (None, ""):
                 geocode[source_key] = _text(original[target_key])
         poi["geocode"] = geocode
@@ -546,7 +650,13 @@ class PersonaAddressService:
             "streetNumber": _text(geocode.get("number")),
             "description": _text(poi.get("description")),
         }
-        return {key: value[key] for key in LOCATION_KEYS}
+        result = {key: value[key] for key in LOCATION_KEYS}
+        if international_run():
+            for key in ("country_code", "country", "postcode", "coordinate_system", "source", "provider_location", "provider_coordinate_system", "position_kind", "attribution"):
+                entry = poi.get(key) or geocode.get(key)
+                if entry:
+                    result[key] = entry
+        return result
 
     def ground_core_addresses(
         self, profile: Dict[str, Any], locked_facts: Optional[Dict[str, Any]] = None,
@@ -568,6 +678,10 @@ class PersonaAddressService:
             work_candidates = self._core_candidates(
                 grounded, "workplace", "工作地", locked_facts.get("workplace") or {},
             )
+        elif international_run():
+            self.last_assignment_metrics = dict(status='not_required', commute_transport=None,
+                commute_minutes=0, route_api_used=False, route_verified=False,
+                reason='no_daily_office_commute')
         with self._assignment_lock:
             if has_work:
                 home_poi, work_poi = self._select_core_pair(
@@ -850,6 +964,12 @@ class PersonaAddressService:
                 fact_key = "shared_place"
             elif circle_type == "school":
                 fact_key = "institution_name"
+                if international_run():
+                    from .international_policy import allow_fictional_details
+                    if allow_fictional_details() and _text(facts.get(fact_key)):
+                        facts.update(institution_verified=False, institution_source='synthetic')
+                        anchor['parent_anchor_id'] = 'school:%s' % facts[fact_key]
+                        continue
                 if poi is None:
                     poi = self._resolve_named_place_with_llm(
                         _text(facts.get(fact_key)), city, "学校", circle_id,
@@ -910,21 +1030,33 @@ class PersonaAddressService:
     @staticmethod
     def _address_from_poi(poi: Dict[str, Any]) -> Dict[str, Any]:
         geocode = poi.get("geocode") or {}
-        return {
+        if international_run():
+            from .region_normalization import normalize_address
+            geocode = normalize_address(geocode)
+        result = {
             "province": _text(geocode.get("province")),
             "city": _text(geocode.get("city")),
             "district": _text(geocode.get("district")),
             "street_name": _text(geocode.get("street")) or _text(poi.get("address")) or _text(poi.get("name")),
             "street_number": _text(geocode.get("number")),
         }
+        if international_run():
+            result.update({key: geocode[key] for key in ("country_code", "country", "postcode") if geocode.get(key)})
+            result["street_name"] = _text(geocode.get("street"))
+            result.update({key: deepcopy(geocode[key]) for key in ('administrative_area', 'administrative_area_source', 'neighbourhood', 'raw_provider_address') if key in geocode})
+        return result
 
+    @address_task("expected")
     def _residential_candidates(
         self, expected: Dict[str, Any], anchor_poi: Optional[Dict[str, Any]], radius: int,
     ) -> List[Dict[str, Any]]:
         city = _text(expected.get("city") or expected.get("province"))
         district = _text(expected.get("district"))
         anchor_location = _text((anchor_poi or {}).get("location"))
-        cache_key = (city, district, anchor_location, radius)
+        anchor_country = address_country(anchor_poi or {}) or address_country((anchor_poi or {}).get("geocode") or {})
+        if address_country(expected) and anchor_country and address_country(expected) != anchor_country:
+            anchor_location = ""
+        cache_key = (address_country(expected), city, district, anchor_location, radius)
         if cache_key in self._contact_candidate_cache:
             return deepcopy(self._contact_candidate_cache[cache_key])
         candidates: List[Dict[str, Any]] = []
@@ -949,12 +1081,21 @@ class PersonaAddressService:
         self._contact_candidate_cache[cache_key] = deepcopy(candidates)
         return candidates
 
+    @address_task("value")
     def _ground_birth_place(self, value: Dict[str, Any]) -> Dict[str, Any]:
-        query = "".join(_text(value.get(key)) for key in ("province", "city", "district"))
+        if international_run():
+            from .international_policy import allow_fictional_details
+            if allow_fictional_details():
+                if not address_country(value):
+                    raise AddressGenerationError('合成出生地也必须明确国家')
+                result = deepcopy(value)
+                result.update(country_code=address_country(value), verification='synthetic')
+                return result
+        query = (" " if address_country(value) not in ("", "CN") else "").join(_text(value.get(key)) for key in ("province", "city", "district"))
         city = _text(value.get("city"))
         if not query:
             raise AddressGenerationError("联系人 birth_place 缺少行政区信息")
-        key = (query, city)
+        key = (address_country(value), query, city)
         geocode = self._birthplace_cache.get(key)
         if geocode is None:
             with self._map_lock:
@@ -962,11 +1103,14 @@ class PersonaAddressService:
             if not geocode:
                 raise AddressGenerationError("联系人出生地无法通过地图 API 验证: %s" % query)
             self._birthplace_cache[key] = deepcopy(geocode)
-        return {
+        result = {
             "province": _text(geocode.get("province")) or _text(value.get("province")),
             "city": _text(geocode.get("city")) or city,
             "district": _text(geocode.get("district")) or _text(value.get("district")),
         }
+        if international_run():
+            result.update({key: geocode.get(key) or value.get(key) for key in ("country_code", "country") if geocode.get(key) or value.get(key)})
+        return result
 
     def ground_contact_addresses(
         self, profile: Dict[str, Any], contacts: List[Any], circle_anchor: Dict[str, Any],
@@ -998,12 +1142,33 @@ class PersonaAddressService:
                 source_poi = home_poi or {"structured_address": _address_text(contact.home_address)}
             else:
                 expected = deepcopy(contact.home_address or {})
+                if international_run() and circle_type == 'neighborhood':
+                    from .region_normalization import normalize_address
+                    home_region = normalize_address(profile.get('home_address') or {})
+                    for key in ('country_code', 'province', 'city', 'district', 'administrative_area'):
+                        if home_region.get(key):
+                            expected[key] = home_region[key]
                 main_city = _text((profile.get("home_address") or {}).get("city"))
                 contact_city = _text(expected.get("city"))
                 usable_anchor = anchor_poi if anchor_poi and (not contact_city or contact_city == main_city) else None
                 candidates = self._residential_candidates(expected, usable_anchor, radius)
+                if international_run() and circle_type == 'neighborhood':
+                    from .region_normalization import region_relationship
+                    from .international_policy import allow_fictional_details
+                    candidates = [p for p in candidates
+                        if address_country(self._address_from_poi(p)) == address_country(expected)
+                        and (allow_fictional_details() or region_relationship(expected, self._address_from_poi(p)) != 'conflict')
+                        and (not usable_anchor or _haversine_km(p, usable_anchor) is None or _haversine_km(p, usable_anchor) <= radius / 1000.0)]
+                if not candidates and international_run():
+                    from .international_policy import allow_fictional_details
+                    if allow_fictional_details() and address_country(expected):
+                        # No fabricated precise coordinate: keep a declared synthetic contact address.
+                        candidates = [dict(id='synthetic:%s:%s' % (circle_id, contact.name),
+                            name='合成住所', location='', source='synthetic', position_kind='synthetic_address',
+                            country_code=address_country(expected), structured_address=_address_text(expected),
+                            geocode=dict(expected, street=expected.get('street_name',''), number=expected.get('street_number','')))]
                 if not candidates:
-                    raise AddressGenerationError("联系人 %s 没有真实住宅候选" % contact.name)
+                    raise AddressGenerationError("联系人 %s 没有住宅候选或可用的合成地址" % contact.name)
                 target_range = {
                     "neighborhood": (0.1, 2.5), "current_work": (2.0, 25.0),
                     "school": (1.0, 20.0), "sports_club": (0.5, 12.0),
@@ -1021,6 +1186,8 @@ class PersonaAddressService:
                 if source_poi is None:
                     raise AddressGenerationError("联系人 %s 的住宅候选无法分配" % contact.name)
                 contact.home_address = self._address_from_poi(source_poi)
+                if international_run() and source_poi.get('source') == 'synthetic':
+                    contact.home_address['verification'] = 'synthetic'
                 self.assignment_registry.reserve("联系人居住地", source_poi)
             contact.birth_place = self._ground_birth_place(contact.birth_place)
             audits.append({
@@ -1029,8 +1196,20 @@ class PersonaAddressService:
                 "home_poi_name": _text(source_poi.get("name")),
                 "home_location": _text(source_poi.get("location")),
                 "home_address": _address_text(contact.home_address),
-                "birth_place_verified": True,
+                "birth_place_verified": contact.birth_place.get('verification') != 'synthetic',
             })
+            if international_run():
+                from .region_normalization import region_relationship
+                relation = region_relationship(profile.get('home_address') or {}, contact.home_address) if circle_type == 'neighborhood' else 'not_applicable'
+                audits[-1].update(region_verification=relation,
+                    warnings=['行政区未确认或不同；按附近合成邻里保留'] if relation in {'unknown','conflict'} else [])
+                audits[-1].update(home_source=source_poi.get('source','map'),
+                                  birth_place_source='synthetic' if contact.birth_place.get('verification') == 'synthetic' else 'map')
+        if international_run():
+            from .grounding import circle_contact_errors
+            errors = circle_contact_errors(contacts, circle_anchor, profile)
+            if errors:
+                raise AddressGenerationError('; '.join(errors))
         return audits
 
     def _select_surrounding_poi(

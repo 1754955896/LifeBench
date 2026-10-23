@@ -1,3 +1,4 @@
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor
 import json
 import os
 import random
@@ -205,7 +206,7 @@ class QAConflictGenerator(BaseQAGenerator):
         
         # 使用 ThreadPoolExecutor 并行处理，最多20线程
         all_found_daily_events = []
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             # 提交所有任务
             future_to_event = {
                 executor.submit(search_single_event, event): event
@@ -805,7 +806,7 @@ class QAConflictGenerator(BaseQAGenerator):
         print("\n[Step 1] 生成各月份的主要事件总结...")
         monthly_summaries = []
         
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             futures = [executor.submit(self._generate_monthly_summary, year, month) 
                       for month in range(1, 13)]
             
@@ -876,7 +877,7 @@ class QAConflictGenerator(BaseQAGenerator):
                 return idx, None
         
         # 使用 ThreadPoolExecutor 并行处理，最多20线程
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             futures = [
                 executor.submit(generate_single_plot, idx, event)
                 for idx, event in enumerate(sampled_events)
@@ -1247,7 +1248,7 @@ class QAConflictGenerator(BaseQAGenerator):
 
         # 20线程并行验证
         filtered_results = [None] * len(qa_pairs)
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             futures = [
                 executor.submit(validate_single_qa, idx, qa)
                 for idx, qa in enumerate(qa_pairs)

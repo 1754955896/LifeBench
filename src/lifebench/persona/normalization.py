@@ -8,6 +8,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 from .internal_models import CircleAnchor, InternalContact, InternalPersona, RelationSlot
+from src.lifebench.utils.locale_context import international_run
 
 
 class NormalizationError(ValueError):
@@ -58,6 +59,8 @@ def normalize_contact_address(value: Any, path: str) -> Dict[str, Any]:
     """Normalize model address variants without changing the public field name."""
     if isinstance(value, dict):
         return deepcopy(value)
+    if international_run():
+        raise NormalizationError("海外联系人地址须为包含 country_code 的结构化对象")
     if not isinstance(value, str) or not value.strip():
         raise NormalizationError("%s 必须是非空地址对象或字符串" % path)
     text = re.sub(r"\s+", "", value.strip())

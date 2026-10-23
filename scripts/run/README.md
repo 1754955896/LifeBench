@@ -18,8 +18,10 @@ First install the dependencies and configure the APIs as described in the [main 
 
 > Typical pipeline order: `persona_gen` -> `draft_gen` -> `simulator` -> `phone_gen` -> `qa_gen`. Each script can run independently when its input data is available.
 
-`persona_gen.py` and `simulator.py` accept `--map-tool amap|overseas` (default:
-`amap`). With `overseas`, `--map-config <JSON file>` is required. For example:
+All generation entry points accept `--map-tool amap|overseas|auto` (default:
+`amap`). With `overseas` or `auto`, `--map-config <JSON file>` is required. Residence
+is taken from `home_address.country_code`; multi-zone countries need an explicit
+`home_address.timezone`. For example:
 
 ```powershell
 python scripts/run/persona_gen.py --map-tool overseas --map-config config/overseas_map.demo.json

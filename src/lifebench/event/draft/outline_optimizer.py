@@ -3,7 +3,8 @@
 import os
 import json
 from typing import Dict, List, Any, Optional
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import as_completed
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 from src.lifebench.utils.llm_call import llm_call_j, llm_call, llm_call_reason_j, llm_call_reason
 
 
@@ -392,7 +393,8 @@ class OutlineOptimizer:
         Returns:
             重新生成后的月份数据
         """
-        from concurrent.futures import ThreadPoolExecutor, as_completed
+        from concurrent.futures import as_completed
+        from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
         from src.lifebench.event.templates.template_mr import parse_modification_instructions_template
         
         # 使用传入的 prompt 构建函数生成 prompt

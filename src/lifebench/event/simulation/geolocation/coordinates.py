@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import math
 from typing import Any, Dict, Tuple
+from src.lifebench.utils.locale_context import coordinate_system
 
 
 _A = 6378245.0
@@ -52,8 +53,9 @@ def attach_wgs84(point: Dict[str, Any]) -> Dict[str, Any]:
         latitude = float(point["latitude"])
     except (KeyError, TypeError, ValueError):
         return point
-    canonical_longitude, canonical_latitude = gcj02_to_wgs84(longitude, latitude)
-    point["coordinate_system"] = str(point.get("coordinate_system") or "GCJ-02")
+    source_system = str(point.get("coordinate_system") or coordinate_system())
+    canonical_longitude, canonical_latitude = ((longitude, latitude) if source_system == "WGS-84" else gcj02_to_wgs84(longitude, latitude))
+    point["coordinate_system"] = source_system
     point["canonical_longitude"] = round(canonical_longitude, 7)
     point["canonical_latitude"] = round(canonical_latitude, 7)
     point["canonical_coordinate_system"] = "WGS-84"
@@ -64,15 +66,17 @@ def attach_record_wgs84(records: Dict[str, Any]) -> Dict[str, Any]:
     """Normalize every final stop/leg endpoint after narrative reconciliation."""
     if not isinstance(records, dict):
         return records
-    records.setdefault("coordinate_system", "GCJ-02")
+    records.setdefault("coordinate_system", coordinate_system())
     records["canonical_coordinate_system"] = "WGS-84"
     for stop in records.get("stops", []):
         if isinstance(stop, dict):
+            stop.setdefault("coordinate_system", records["coordinate_system"])
             attach_wgs84(stop)
     for leg in records.get("legs", []):
         if not isinstance(leg, dict):
             continue
         for key in ("origin", "destination"):
             if isinstance(leg.get(key), dict):
+                leg[key].setdefault("coordinate_system", records["coordinate_system"])
                 attach_wgs84(leg[key])
     return records

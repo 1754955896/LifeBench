@@ -63,6 +63,36 @@ Generates user personas, including basic information, personality traits, and da
 | `eval/` | Persona evaluation scripts: `eval.py`, `eval_circle.py`, `eval_relation.py`, `metrics.py`, and `quality_gate.py`. |
 | `tests/` | Persona unit tests; see [tests/README.md](tests/README.md). |
 
+## International personas
+
+The default Amap branch retains the existing prompt bodies and country rules. Overseas/auto tasks
+select stage templates in `prompts/international/`, reusing the existing JSON contracts. `locale_profiles/GB.json`
+supplies the first country profile; other countries use explicit locale metadata and generic rules.
+The main stage order and the public 27-field persona schema remain unchanged.
+
+International synthesis permits fictional employers, schools, tenancy arrangements and life details by default
+(`locale_defaults.allow_fictional_details=true`). Such entities need internal consistency, not proof of existence.
+Map coordinates and provider results remain distinct from synthetic relationships. A synthetic school is retained
+as a shared school anchor instead of being forcibly replaced with a different real school.
+
+Mobility records distinguish user input from model-added preferences and fully remote work from hybrid work.
+Only model-added preferences may adapt to backend capabilities. An explicit unsupported transit preference is
+retained with an unverified route. With fictional details enabled, a coarse time estimate may be recorded with
+`duration_source=estimate`, `estimate_method`, and `route_verified=false`; narratives must identify it as an estimate.
+It is never reported as a map duration. Commute consistency is checked before narratives.
+
+UK addresses normalize borough and neighbourhood separately, retaining provider address components. Country
+contradictions fail; missing administrative coverage is recorded in contact audit warnings. Nearby synthetic
+neighbours may span borough boundaries. Shared buildings and absent literal entity names are review signals,
+not proof of inconsistent identities. Contact birthplaces may remain synthetic; unavailable contact residences
+can retain structured synthetic addresses without fabricated precise coordinates.
+Employers use local names/forms, while geographic POIs only establish place existence. The country rules and
+prompt version participate in resume fingerprints.
+
+Offline checks and live fixtures are in `tests/persona_international_live/`. They compare default prompts,
+basic/relation stage traces and deterministic rules against commit `7f25d62`, plus exercise international rules.
+These comparisons cover recorded inputs and do not prove all default behavior is identical for every input.
+
 ## Arbitrary Input and Diverse Variants
 
 Arbitrary-input mode first uses an LLM to normalize input into explicit facts, soft cues, and original descriptions, then fills the fixed profile structure. Later stages do not modify explicit facts. Age and BMI are still calculated in code.

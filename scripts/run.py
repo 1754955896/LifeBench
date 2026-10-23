@@ -9,7 +9,8 @@ import json
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.lifebench.utils.date_utils import TimeSpec, guard_time_spec_meta
-from src.lifebench.utils.overseas_runtime import add_map_arguments, validate_map_arguments, map_cli_arguments
+from src.lifebench.utils.overseas_runtime import add_map_arguments, validate_map_arguments, map_cli_arguments, configure_map_tool
+from src.lifebench.utils.locale_context import bind_persona_file
 
 
 def parse_args():
@@ -91,6 +92,7 @@ def run_draft_gen(args):
         # 构建命令行参数
         script_dir = os.path.dirname(os.path.abspath(__file__))
         cmd = [sys.executable, os.path.join(script_dir, 'run', 'draft_gen.py')]
+        cmd.extend(map_cli_arguments(args))
         
         # 添加参数
         if args.base_path:
@@ -210,6 +212,7 @@ def run_qa_gen(args):
         print(f"执行命令: {' '.join(cmd)}")
 
         # 运行脚本
+        cmd.extend(map_cli_arguments(args))
         result = subprocess.run(cmd, check=True, stdout=None, stderr=None)
 
         print(f"\n{'='*60}")
@@ -263,6 +266,9 @@ if __name__ == '__main__':
         sys.path.insert(0, project_root)
 
     # DRY_RUN 模式：创建所有占位文件
+    if not args.dry_run:
+        configure_map_tool(args)
+        bind_persona_file(args.base_path)
     if args.dry_run:
         print(f"\n{'='*60}")
         print(f"[DRY RUN] 创建占位文件")
@@ -501,6 +507,7 @@ if __name__ == '__main__':
 
             # 执行phone_gen.py脚本
             try:
+                phone_gen_cmd.extend(map_cli_arguments(args))
                 result = subprocess.run(phone_gen_cmd, check=True, capture_output=True, encoding='utf-8', errors='ignore')
                 print(f"\n{'='*60}")
                 print(f"手机数据生成完成")

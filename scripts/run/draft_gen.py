@@ -9,6 +9,8 @@ from datetime import timedelta
 # 添加项目根目录到 Python 路径
 project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, project_root)
+from src.lifebench.utils.overseas_runtime import add_map_arguments, validate_map_arguments, configure_map_tool
+from src.lifebench.utils.locale_context import bind_persona_file
 
 from src.lifebench.event.draft_gen import DraftGen
 from src.lifebench.utils.date_utils import TimeSpec
@@ -36,6 +38,7 @@ def read_json_file(file_path):
 def parse_args():
     """解析命令行参数"""
     parser = argparse.ArgumentParser(description='年度时间线草稿生成系统')
+    add_map_arguments(parser)
 
     # 路径参数
     parser.add_argument('--base-path', type=str, default='output/fenghaoran/',
@@ -61,12 +64,13 @@ def parse_args():
     parser.add_argument('--months', type=int, default=12,
                         help='模拟的连续月数，从 start-month 起算，取值 1-12（默认：12）')
 
-    return parser.parse_args()
+    return validate_map_arguments(parser, parser.parse_args())
 
 
 def main():
     """主函数"""
     args = parse_args()
+    configure_map_tool(args)
 
     try:
         # 记录总开始时间
@@ -105,6 +109,7 @@ def main():
         # 读取人物画像
         persona_file = os.path.join(base_file_path, 'persona.json')
         persona = read_json_file(persona_file)
+        bind_persona_file(base_file_path)
 
         # 初始化 DraftGen
         draft_gen = DraftGen(persona, base_file_path, spec=spec)

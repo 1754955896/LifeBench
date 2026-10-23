@@ -11,7 +11,8 @@ import os
 import json
 import random
 from typing import List, Dict, Any
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import as_completed
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 from .base_generator import BaseQAGenerator
 from .phone_operation_generator import PhoneOperationGenerator
 from src.lifebench.utils.llm_call import llm_call_j
@@ -287,7 +288,8 @@ class QAHiddenInfoGenerator(BaseQAGenerator):
         print(f"[HiddenInfoGen] 需要使用 LLM 重写 {len(questions_to_convert)} 个选择题为问答题")
 
         # 使用 ThreadPoolExecutor 并行重写
-        from concurrent.futures import ThreadPoolExecutor, as_completed
+        from concurrent.futures import as_completed
+        from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 
         def rewrite_single_qa(qa: Dict) -> Dict:
             """使用 LLM 将选择题重写为问答题"""

@@ -2,6 +2,7 @@
 QA Single Generator Class
 基于标准化 Agentic 流程的单跳问答生成器
 """
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor
 
 import json
 import os
@@ -374,7 +375,7 @@ class QASingleGenerator(BaseQAGenerator):
 
         # 使用线程池并行处理
         all_similar_events = []
-        with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
+        with LocaleThreadPoolExecutor(max_workers=6) as executor:
             futures = {executor.submit(analyze_window, w): w for w in window_data}
             for future in concurrent.futures.as_completed(futures):
                 try:
@@ -1577,7 +1578,7 @@ class QASingleGenerator(BaseQAGenerator):
         print(f"[QAGen] 使用 20 线程并行生成...")
         
         # 使用 ThreadPoolExecutor 并行处理，最多 20 个线程
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             futures = [executor.submit(generate_single_question, month) for month in tasks]
             
             completed = 0
@@ -1828,7 +1829,7 @@ class QASingleGenerator(BaseQAGenerator):
                 return idx, question, True
         
         # 使用 ThreadPoolExecutor 并行处理，最多 20 个线程
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             futures = [
                 executor.submit(process_single_question, idx, question)
                 for idx, question in enumerate(questions)

@@ -55,6 +55,11 @@ class StopIntent:
     independent_trip: bool = False
     distance_tier_reason: str = ""
 
+    country_code: str = ""
+    timezone: str = ""
+    start_timestamp: str = ""
+    end_timestamp: str = ""
+
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
 
@@ -79,8 +84,16 @@ class LocationCandidate:
     confidence: float = 1.0
     map_verified: bool = False
 
+    country_code: str = ""
+    coordinate_system: str = ""
+
     def as_poi(self) -> Dict[str, Any]:
-        return {"name": self.name, "location": self.coordinates, "city": self.city}
+        result = {"name": self.name, "location": self.coordinates, "city": self.city}
+        if self.country_code:
+            result["country_code"] = self.country_code
+        if self.coordinate_system:
+            result["coordinate_system"] = self.coordinate_system
+        return result
 
 
 @dataclass
@@ -109,8 +122,18 @@ class ResolvedStop:
     anchor_location_id: str = ""
     estimate_method: str = ""
 
+    country_code: str = ""
+    coordinate_system: str = ""
+    timezone: str = ""
+    start_timestamp: str = ""
+    end_timestamp: str = ""
+
     def as_poi(self) -> Dict[str, Any]:
-        return {"name": self.name, "location": self.coordinates, "city": self.city}
+        result = {"name": self.name, "location": self.coordinates, "city": self.city}
+        for key in ("country_code", "coordinate_system"):
+            if getattr(self, key):
+                result[key] = getattr(self, key)
+        return result
 
 
 @dataclass

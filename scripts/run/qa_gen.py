@@ -8,6 +8,8 @@ import json
 # src.lifebench.event 在项目根目录下，所以项目根目录需要加入 sys.path
 project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, project_root)
+from src.lifebench.utils.overseas_runtime import add_map_arguments, validate_map_arguments, configure_map_tool
+from src.lifebench.utils.locale_context import bind_persona_file
 
 # 导入 qa_generator 模块（直接从 event 目录导入 QaGenerator.py 文件）
 from src.lifebench.event.all_qa_generator import QAGenerator
@@ -15,13 +17,15 @@ from src.lifebench.event.all_qa_generator import QAGenerator
 def main():
     # 创建参数解析器
     parser = argparse.ArgumentParser(description='问答生成器 - 生成各类问答对')
+    add_map_arguments(parser)
     
     # 添加参数，支持默认值
     parser.add_argument('--data-path', type=str, default='output/fenghaoran/', help='用户数据路径，包含persona.json、event_tree.json等文件')
     parser.add_argument('--year', type=int, default=2025, help='生成问答的年份，例如：2025')
     
     # 解析参数
-    args = parser.parse_args()
+    args = validate_map_arguments(parser, parser.parse_args())
+    configure_map_tool(args)
     
     try:
         # 转换 data_path 为绝对路径（相对于项目根目录）
@@ -36,6 +40,7 @@ def main():
 
         # 初始化问答生成器
         print(f"正在初始化问答生成器，数据路径：{data_path}")
+        bind_persona_file(data_path)
         qa_generator = QAGenerator(data_path=data_path, year=args.year)
 
         # 从rich_timeline.json文件中加载themes和event_id_groups数据

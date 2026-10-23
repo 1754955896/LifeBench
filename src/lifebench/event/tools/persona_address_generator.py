@@ -1,3 +1,5 @@
+from src.lifebench.utils.map_factory import create_map_tool
+from src.lifebench.utils.locale_context import international_run, persona_task
 import json
 import os
 from typing import List, Dict
@@ -125,7 +127,7 @@ class PersonaAddressGenerator:
         """初始化地图工具"""
         map_config = self.config.get('map_tool', {})
         api_key = map_config.get('api_key', '')
-        return MapMaintenanceTool(api_key=api_key)
+        return create_map_tool(api_key=api_key)
     
     def _load_persona_data(self, persona_path: str) -> Dict:
         """加载画像数据"""
@@ -291,6 +293,7 @@ class PersonaAddressGenerator:
         
         return results, error_summary
     
+    @persona_task("persona_data")
     def _build_persona_address_data(self, persona_data: Dict) -> List[Dict]:
         """构建画像地址数据"""
         print("\n=== 第一轮查询：获取核心地址 ===")
@@ -351,6 +354,10 @@ class PersonaAddressGenerator:
                 'description': poi.get('description', '')  # 添加描述字段
             }
 
+            if international_run():
+                for key in ("country_code", "coordinate_system", "source", "position_kind", "attribution"):
+                    if poi.get(key):
+                        address_data[key] = poi[key]
             persona_address_data.append(address_data)
 
         return persona_address_data

@@ -1,3 +1,5 @@
+from src.lifebench.utils.locale_context import country_holidays as locale_holidays, calendar_country, calendar_label, persona_task
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor
 # -*- coding: utf-8 -*-
 #1）调整日程使其合理  2）消解冲突  3）事件插入+后续调整  4）事件插入  5）事件粒度对齐
 import json
@@ -1374,7 +1376,7 @@ class Scheduler:
         :return: 列表，每个元素为{"date": "YYYY-MM-DD", "weekday": "星期X", "holiday": "节日名称或空"}
         """
         # 初始化中国节假日数据集
-        cn_holidays = holidays.China(years=year)
+        cn_holidays = locale_holidays(years=year)
 
         # 获取当月第一天和最后一天
         first_day = datetime(year, month, 1)
@@ -1619,7 +1621,8 @@ class Scheduler:
         max_workers = min(12, self.schedule_workers)
 
         # 使用ThreadPoolExecutor实现并行处理（避免pickling问题）
-        from concurrent.futures import ThreadPoolExecutor, as_completed
+        from concurrent.futures import as_completed
+        from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 
         # 定义每个线程要执行的函数
         def process_month(month):
@@ -1669,7 +1672,8 @@ class Scheduler:
         max_workers = min(12, self.schedule_workers)  # 最多12个线程
 
         # 使用ThreadPoolExecutor实现并行处理
-        from concurrent.futures import ThreadPoolExecutor, as_completed
+        from concurrent.futures import as_completed
+        from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
         
         # 定义每个线程要执行的函数
         def process_transition(month):
@@ -2391,7 +2395,7 @@ class Scheduler:
         all_operations = []
         
         print(f"开始并行处理{len(category_to_template)}个类别...")
-        with concurrent.futures.ThreadPoolExecutor(max_workers=len(category_to_template)) as executor:
+        with LocaleThreadPoolExecutor(max_workers=len(category_to_template)) as executor:
             # 提交所有任务
             future_to_category = {
                 executor.submit(process_category, category, template): category 
@@ -2709,7 +2713,8 @@ class Scheduler:
         import json
         import os
         from datetime import datetime
-        from concurrent.futures import ThreadPoolExecutor, as_completed
+        from concurrent.futures import as_completed
+        from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
         import src.lifebench.event.draft.event_refiner
 
         # 检查输入数据格式
@@ -3084,7 +3089,7 @@ class Scheduler:
         返回:
             包含每个月daily_event_refine结果的字典
         """
-        from concurrent.futures import ThreadPoolExecutor
+        from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
         import os
         import json
         from datetime import datetime, timedelta
@@ -3454,7 +3459,7 @@ impact:[影响分析]
         import re
 
         # 获取目标年份的中国节假日
-        cn_holidays = holidays.China(years=self.spec.year)
+        cn_holidays = locale_holidays(years=self.spec.year)
         holiday_lines = []
         for date, name in sorted(cn_holidays.items()):
             holiday_lines.append(f"- {name}: {date}")
@@ -3499,7 +3504,7 @@ impact:[影响分析]
    - 其他事件 → 在本月内合理安排
 
 【参考数据】
-{self.spec.year}年中国节假日（事件日期应与实际节假日对应）：
+{self.spec.year}年{calendar_label()}节假日（事件日期应与实际节假日对应）：
 {holiday_info}
 
 上月参考数据（用于保证事件连续性）：

@@ -2,6 +2,7 @@
 """
 知识更新问题生成器：基于月度大纲中的状态变化生成问答对
 """
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor
 import os
 import json
 import random
@@ -355,7 +356,8 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         """
         为全局状态记录中的所有变化节点搜索证据，并保存为 global_state_record_located
         """
-        from concurrent.futures import ThreadPoolExecutor, as_completed
+        from concurrent.futures import as_completed
+        from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
         
         if self.is_print:
             print("\n[KnowledgeGen] 开始为所有状态变化节点搜索证据...")
@@ -1931,7 +1933,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
                 return idx, question, True
 
         # 使用 ThreadPoolExecutor 并行处理，最多 20 个线程
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with LocaleThreadPoolExecutor(max_workers=20) as executor:
             futures = [
                 executor.submit(process_single_question, idx, question)
                 for idx, question in enumerate(questions)

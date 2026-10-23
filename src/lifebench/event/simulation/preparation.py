@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Single-process preparation of immutable assets used by all date shards."""
 from __future__ import annotations
+from src.lifebench.utils.map_factory import create_map_tool
+from src.lifebench.utils.locale_context import international_run, persona_task
 
 import hashlib
 import json
@@ -47,6 +49,7 @@ class SimulationAssetPreparer:
         self.simulation_start = simulation_start
         self.sim_dir = os.path.join(data_dir, "sim")
 
+    @persona_task()
     def prepare(self) -> Dict[str, Any]:
         settings = _dict(self.config.get("simulation_asset_preparation"))
         if settings.get("enabled", True) is False:
@@ -108,14 +111,14 @@ class SimulationAssetPreparer:
 
         map_api_key = str(_dict(self.config.get("map_tool")).get("api_key") or "")
         llm_api_key = str(_dict(self.config.get("llm")).get("api_key") or "")
-        if not map_api_key or not llm_api_key:
+        if (not map_api_key and not international_run()) or not llm_api_key:
             if self.location_path:
                 _atomic_json(self.location_path, normalized)
             return normalized, "normalized_missing_external_configuration"
 
         from src.lifebench.utils.llm_call import llm_call_j
         builder = LocationOpportunityBuilder(
-            maptool=MapMaintenanceTool(map_api_key, persona_address_data=normalized),
+            maptool=create_map_tool(map_api_key, persona=self.persona, persona_address_data=normalized),
             llm_callable=lambda prompt: llm_call_j(prompt),
             target_count=int(pool.get("preseed_target_count", 60) or 60),
             per_query_limit=int(pool.get("per_query_limit", 6) or 6),

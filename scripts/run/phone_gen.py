@@ -6,13 +6,10 @@ import random
 # 添加项目根目录到 Python 路径
 project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, project_root)
+from src.lifebench.utils.overseas_runtime import add_map_arguments, validate_map_arguments, configure_map_tool
+from src.lifebench.utils.locale_context import bind_persona_file
 
-from src.lifebench.event.phone_data_gen import (
-    PhoneEventMatcher,
-    extool,
-    remove_json_wrapper,
-    parallel_process_dates_dynamic
-)
+
 
 from src.lifebench.utils.utils_io import read_json_file
 
@@ -117,6 +114,7 @@ if __name__ == "__main__":
 
     # 命令行参数解析
     parser = argparse.ArgumentParser(description='手机操作生成模块')
+    add_map_arguments(parser)
     parser.add_argument('--file-path', type=str, default='output/fenghaoran/', help='数据文件路径')
     parser.add_argument('--start-time', type=str, default='2025-01-01', help='开始日期')
     parser.add_argument('--end-time', type=str, default='2025-01-01', help='结束日期')
@@ -126,7 +124,15 @@ if __name__ == "__main__":
     parser.add_argument('--phone-count-weekly-max', type=int, default=30, help='每周手机数据最大条数')
     parser.add_argument('--no-sample', action='store_true', help='不控制每日手机数据条数，保留全部生成的数据（跳过采样）')
     parser.add_argument('--process-only', action='store_true', help='仅执行数据后处理操作，不生成新数据')
-    args = parser.parse_args()
+    args = validate_map_arguments(parser, parser.parse_args())
+    configure_map_tool(args)
+    from src.lifebench.event.phone_data_gen import (
+        PhoneEventMatcher,
+        extool,
+        remove_json_wrapper,
+        parallel_process_dates_dynamic
+    )
+
 
     file_path = args.file_path
     # 确保 file_path 以 / 结尾
@@ -135,6 +141,7 @@ if __name__ == "__main__":
     start_time = args.start_time
     end_time = args.end_time
     persona = read_json_file(file_path + 'persona.json')
+    bind_persona_file(file_path)
 
     contact = {}
     if os.path.exists(file_path + "phone_data/contact.json"):

@@ -5,6 +5,7 @@ import math
 from typing import Any, Dict, List, Optional
 
 from .catalog import LocationCatalog, city_matches, infer_category
+from src.lifebench.utils.locale_context import address_task
 from .models import LocationCandidate, StopIntent
 
 
@@ -107,6 +108,8 @@ def _haversine_km(first: str, second: str) -> float:
 
 
 def _map_category(item: Dict[str, Any]) -> tuple[str, str]:
+    if item.get("lifebench_category"):
+        return item["lifebench_category"], _text(item.get("type"))
     """返回地图声明的宏观类别和原始细分类别，不借用活动意图。"""
     name = _text(item.get("name"))
     type_text = _text(item.get("type") or item.get("type_name"))
@@ -139,6 +142,7 @@ class CandidateProvider:
         self.limit = limit
         self.urban_candidate_share = max(0.15, min(0.70, float(urban_candidate_share)))
 
+    @address_task("intent")
     def get(self, intent: StopIntent, previous: Optional[LocationCandidate],
             search_only: bool = False) -> List[LocationCandidate]:
         # LLM 显式选择历史 location_id 时，该选择是确定性的：命中即复用同一
@@ -459,7 +463,8 @@ class CandidateProvider:
             coordinates=coordinates,
             province=_text(item.get("province")), city=city,
             district=_text(item.get("district")), adcode=_text(item.get("adcode")),
-            category="other", source="amap_geocode",
+            category="other", source=_text(item.get("source")) or "amap_geocode",
+            country_code=_text(item.get("country_code")), coordinate_system=_text(item.get("coordinate_system")),
             raw=raw, confidence=0.85, map_verified=True,
         )
 
@@ -472,6 +477,7 @@ class CandidateProvider:
             name=label,
             address=(parent.address + "（内部/附近）").strip(),
             coordinates=parent.coordinates,
+            country_code=parent.country_code, coordinate_system=parent.coordinate_system,
             province=parent.province,
             city=parent.city,
             district=parent.district,
@@ -512,7 +518,9 @@ class CandidateProvider:
             district=_text(geocode.get("district") or item.get("adname")),
             adcode=_text(item.get("adcode")),
             category=category,
-            source="amap_around" if item.get("distance_m") is not None else "amap_text",
+            source=_text(item.get("source")) or ("amap_around" if item.get("distance_m") is not None else "amap_text"),
+            country_code=_text(item.get("country_code") or geocode.get("country_code")),
+            coordinate_system=_text(item.get("coordinate_system")),
             distance_m=float(item.get("distance_m") or 0) or None,
             map_rank=rank,
             raw=raw,

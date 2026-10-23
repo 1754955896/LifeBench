@@ -8,6 +8,7 @@ from difflib import SequenceMatcher
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 from .coordinates import gcj02_to_wgs84
+from src.lifebench.utils.locale_context import coordinate_system, current_locale, international_run
 
 
 COORDINATE_SYSTEM = "GCJ-02"
@@ -38,15 +39,16 @@ def _point(stop: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     if coordinates is None:
         return None
     longitude, latitude = coordinates
-    canonical_longitude, canonical_latitude = gcj02_to_wgs84(longitude, latitude)
-    return {
+    system = str(stop.get("coordinate_system") or coordinate_system())
+    canonical_longitude, canonical_latitude = ((longitude, latitude) if system == "WGS-84" else gcj02_to_wgs84(longitude, latitude))
+    result = {
         "location_id": str(stop.get("location_id") or stop.get("id") or ""),
         "stop_id": str(stop.get("stop_id") or ""),
         "name": str(stop.get("name") or ""),
         "address": str(stop.get("address") or stop.get("formatted_address") or ""),
         "longitude": longitude,
         "latitude": latitude,
-        "coordinate_system": COORDINATE_SYSTEM,
+        "coordinate_system": coordinate_system(),
         "canonical_longitude": round(canonical_longitude, 7),
         "canonical_latitude": round(canonical_latitude, 7),
         "canonical_coordinate_system": "WGS-84",
@@ -60,6 +62,15 @@ def _point(stop: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         "anchor_location_id": str(stop.get("anchor_location_id") or ""),
         "estimate_method": str(stop.get("estimate_method") or ""),
     }
+    result["coordinate_system"] = system
+    if international_run():
+        locale = current_locale()
+        result["country_code"] = stop.get("country_code") or (locale.country_code if locale else "")
+        result["timezone"] = stop.get("timezone") or (locale.timezone if locale and result["country_code"] == locale.country_code else "")
+        for key in ("start_timestamp", "end_timestamp"):
+            if stop.get(key):
+                result[key] = stop[key]
+    return result
 
 
 def build_location_records(assignment: Any) -> Dict[str, Any]:
@@ -115,7 +126,7 @@ def build_location_records(assignment: Any) -> Dict[str, Any]:
     return {
         "schema_version": "simulation_location_v1",
         "date": str(data.get("date") or ""),
-        "coordinate_system": COORDINATE_SYSTEM,
+        "coordinate_system": coordinate_system(),
         "canonical_coordinate_system": "WGS-84",
         "stops": stops,
         "legs": legs,
@@ -130,7 +141,10 @@ def _public_point(point: Dict[str, Any]) -> Dict[str, Any]:
         "city",
         "fact_source", "override_reason", "anchor_location_id", "estimate_method",
     )
-    return {key: point.get(key) for key in keys}
+    result = {key: point.get(key) for key in keys}
+    if international_run():
+        result.update({key: point[key] for key in ("country_code", "timezone") if point.get(key)})
+    return result
 
 
 def _normalized(value: Any) -> str:

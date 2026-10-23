@@ -7,6 +7,7 @@ import atexit
 import time
 
 from openai import OpenAI
+from .locale_context import localize_prompt, locale_instructions
 
 # 读取配置文件
 # 获取项目根目录（src/lifebench/utils的三级上级目录）
@@ -179,7 +180,7 @@ def llm_call(prompt, context="你是一个人物分析师、故事创作者、�
     """
     messages = [
         {"role": "system", "content": context},
-        {"role": "user", "content": prompt}
+        {"role": "user", "content": localize_prompt(prompt)}
     ]
 
     client = _get_thread_client()
@@ -204,7 +205,7 @@ def llm_call_reason(prompt, context="你是一个人物分析师、故事创作�
     """
     messages = [
         {"role": "system", "content": context},
-        {"role": "user", "content": prompt}
+        {"role": "user", "content": localize_prompt(prompt)}
     ]
 
     client = _get_thread_client()
@@ -229,7 +230,7 @@ def llm_call_j(prompt, record=0):
     context = "你是一个人物分析师、故事创作者、数据补全与清洗专家。"
     messages = [
         {"role": "system", "content": context},
-        {"role": "user", "content": prompt}
+        {"role": "user", "content": localize_prompt(prompt)}
     ]
 
     client = _get_thread_client()
@@ -255,7 +256,7 @@ def llm_call_reason_j(prompt, record=0):
     context = "你是一个人物分析师、故事创作者、数据补全与清洗专家。"
     messages = [
         {"role": "system", "content": context},
-        {"role": "user", "content": prompt}
+        {"role": "user", "content": localize_prompt(prompt)}
     ]
 
     client = _get_thread_client()
@@ -281,7 +282,7 @@ def llm_call_skip(prompt, context="你是一个人物分析师、故事创作者
     """
     messages = [
         {"role": "system", "content": context},
-        {"role": "user", "content": prompt}
+        {"role": "user", "content": localize_prompt(prompt)}
     ]
 
     client = _get_thread_client()
@@ -309,6 +310,9 @@ def llm_agent(messages, tools, dispatch, model=None, max_turns=12):
     client = _get_thread_client()
     model = model or DEFAULT_MODEL
     transcript = list(messages)
+    instructions = locale_instructions()
+    if instructions:
+        transcript.insert(0, {"role": "system", "content": instructions})
     for _turn in range(max(int(max_turns), 1)):
         response = client.chat.completions.create(
             model=model,

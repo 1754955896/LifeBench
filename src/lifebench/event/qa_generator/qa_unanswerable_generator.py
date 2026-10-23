@@ -13,7 +13,8 @@ import random
 import threading
 from typing import List, Dict, Any, Tuple
 from datetime import datetime, timedelta
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import as_completed
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 from src.lifebench.event.templates.template_qa import UNANSWERABLE_QUESTION_TEMPLATE
 from src.lifebench.utils.llm_call import llm_call
 from .base_generator import BaseQAGenerator

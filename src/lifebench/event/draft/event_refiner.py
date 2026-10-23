@@ -1,3 +1,4 @@
+from src.lifebench.utils.locale_context import country_holidays as locale_holidays, calendar_country, calendar_label, persona_task
 # -*- coding: utf-8 -*-
 from datetime import datetime, timedelta
 import holidays
@@ -5,7 +6,8 @@ import json
 from typing import List, Dict, Optional
 from src.lifebench.event.templates.templates import template_event_update, template_biweekly_event_schedule_analysis
 from src.lifebench.event.templates.template_refiner import template_daily_event_refine, template_daily_diversity_optimization, template_format_validation, template_monthly_health_report, template_daily_date_refine, template_event_date_matching
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import as_completed
+from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 
 
 class EventRefiner:
@@ -31,7 +33,7 @@ class EventRefiner:
         # 初始化时更新底层事件
         self.update_bottom_events()
     
-    def get_date_string(self, date_str: str, country: str = "CN") -> str:
+    def get_date_string(self, date_str: str, country: str = None) -> str:
         """
         生成包含日期、周几和节日（如有）的字符串
         
@@ -51,7 +53,7 @@ class EventRefiner:
             weekday = weekday_map[date_obj.weekday()]
 
             # 获取节日（多个节日用顿号分隔）
-            country_holidays = holidays.CountryHoliday(country)
+            country_holidays = locale_holidays(country=country)
             holidays_list = []
             if date_obj in country_holidays:
                 raw_holidays = country_holidays.get(date_obj)
@@ -164,7 +166,7 @@ class EventRefiner:
     
 
 
-    def get_holidays_and_weekends_in_range(self, start_date: str, end_date: str, country: str = "CN") -> str:
+    def get_holidays_and_weekends_in_range(self, start_date: str, end_date: str, country: str = None) -> str:
         """
         获取指定日期范围内的节假日和周末日期
         
@@ -180,7 +182,7 @@ class EventRefiner:
         end_obj = datetime.strptime(end_date, "%Y-%m-%d").date()
         
         # 获取国家法定节假日
-        country_holidays = holidays.CountryHoliday(country)
+        country_holidays = locale_holidays(country=country)
         
         holidays_list = []
         weekends_list = []
@@ -941,8 +943,7 @@ class EventRefiner:
                 return optimization_data
 
             # 导入并行处理模块
-            from concurrent.futures import ThreadPoolExecutor
-
+            from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
             # 计算第二阶段的开始日期（split_date + 1）
             split_date_obj = datetime.strptime(split_date, "%Y-%m-%d")
             second_stage_start = (split_date_obj + timedelta(days=1)).strftime("%Y-%m-%d")
