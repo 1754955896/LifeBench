@@ -1,12 +1,12 @@
-# persona_file 子目录 — Persona 数据文件
+# Persona Data Files
 
-存放生成的用户画像（Persona）数据文件。
+This directory stores generated persona data files.
 
-## 文件
+## Files
 
-| 文件 | 说明 |
-|------|------|
-| `complete_profiles.json` | 完整的用户画像数据 |
-| `final.json` | 最终版 persona 数据 |
-| `refer.json` | persona 参考数据 |
-| `persona_ref.json` | persona 引用参考 |
+| File | Description |
+|------|-------------|
+| `complete_profiles.json` | Complete generated persona profiles |
+| `final.json` | Finalized persona data |
+| `refer.json` | Persona reference data |
+| `persona_ref.json` | Additional persona reference data |

@@ -16,6 +16,19 @@ python scripts/run.py --base-path output/fenghaoran
 
 The supported workflow uses these scripts directly. No installed console command or LifeBench package installation is required. See [run/README.md](run/README.md) for individual generation stages and their arguments.
 
+## Map Selection
+
+`run.py` and `run_all.py` accept `--map-tool amap|overseas` (default: `amap`).
+For overseas maps, also pass `--map-config <JSON file>`; these options are forwarded
+to the simulation subprocess. For example:
+
+```powershell
+python scripts/run.py --base-path output/example --map-tool overseas --map-config config/overseas_map.demo.json
+```
+
+The demo configuration uses public services for small manual checks. Configure your
+own service endpoints for batch generation; see [map configuration](../src/lifebench/utils/README.md).
+
 ## Files
 
 | File | Description |

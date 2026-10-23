@@ -9,6 +9,7 @@ import json
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.lifebench.utils.date_utils import TimeSpec, guard_time_spec_meta
+from src.lifebench.utils.overseas_runtime import add_map_arguments, validate_map_arguments, map_cli_arguments
 
 
 def parse_args():
@@ -17,6 +18,7 @@ def parse_args():
     :return: 解析后的参数对象
     """
     parser = argparse.ArgumentParser(description='年度时间线草稿生成系统')
+    add_map_arguments(parser)
     
     # 路径参数
     parser.add_argument('--base-path', type=str, default='fenghaoran/',
@@ -50,7 +52,7 @@ def parse_args():
     parser.add_argument('--dry-run', action='store_true',
                         help='仅创建占位文件，不实际生成数据（用于测试流程）')
 
-    return parser.parse_args()
+    return validate_map_arguments(parser, parser.parse_args())
 
 
 def _write_stage_stats(args, stage_times):
@@ -145,6 +147,7 @@ def run_simulator(args):
         # 构建命令行参数
         script_dir = os.path.dirname(os.path.abspath(__file__))
         cmd = [sys.executable, os.path.join(script_dir, 'run', 'simulator.py')]
+        cmd.extend(map_cli_arguments(args))
         
         # 添加参数（根据simulator.py的需求）
         if args.base_path:

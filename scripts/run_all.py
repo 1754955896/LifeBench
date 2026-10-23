@@ -3,12 +3,15 @@ import sys
 import time
 import os
 import json
-import pypinyin
 import shutil
 import argparse
 
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from src.lifebench.utils.overseas_runtime import add_map_arguments, validate_map_arguments, map_cli_arguments
+
 def parse_args():
     parser = argparse.ArgumentParser(description='批量运行人物数据生成')
+    add_map_arguments(parser)
     parser.add_argument('--persona-folder', type=str, default='input/',
                         help='人物数据文件夹路径')
     parser.add_argument('--start-id', type=int, default=0,
@@ -31,7 +34,7 @@ def parse_args():
                         help='生成数据的年份（默认：2025）')
     parser.add_argument('--dry-run', action='store_true',
                         help='仅打印将要执行的操作，不实际运行')
-    return parser.parse_args()
+    return validate_map_arguments(parser, parser.parse_args())
 
 def run_script(script_path, description, args=None):
     """
@@ -133,6 +136,8 @@ def run_for_persona(persona_data, persona_folder, instance_id, args, location_da
             "--year", str(args.year)
         ]
         
+        run_args.extend(map_cli_arguments(args))
+
         # 添加可选参数
         if args.max_workers is not None:
             run_args.extend(["--max-workers", str(args.max_workers)])
@@ -143,7 +148,7 @@ def run_for_persona(persona_data, persona_folder, instance_id, args, location_da
         
         # 调用集成好的run.py
         scripts = [{
-            "path": "run.py",
+            "path": os.path.join(os.path.dirname(os.path.abspath(__file__)), "run.py"),
             "description": "集成生成模块",
             "args": run_args
         }]
@@ -331,6 +336,7 @@ def main():
 
     # 解析命令行参数
     args = parse_args()
+    import pypinyin
 
     # 设置工作目录为脚本所在目录
     script_dir = os.path.dirname(os.path.abspath(__file__))

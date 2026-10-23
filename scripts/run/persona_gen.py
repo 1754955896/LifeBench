@@ -11,10 +11,12 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.lifebench.persona.persona_gen import PersonaGenerator
+from src.lifebench.utils.overseas_runtime import add_map_arguments, validate_map_arguments, configure_map_tool
 
 
 def build_parser():
     parser = argparse.ArgumentParser(description="人物画像生成模块")
+    add_map_arguments(parser)
     parser.add_argument("--file-path", type=str, default="data/persona/", help="数据文件路径")
     parser.add_argument("--start", type=int, default=0, help="开始生成的人物索引")
     parser.add_argument("--end", type=int, default=1, help="结束生成的人物索引")
@@ -37,7 +39,8 @@ def build_parser():
 
 
 def main(argv=None):
-    args = build_parser().parse_args(argv)
+    parser = build_parser()
+    args = validate_map_arguments(parser, parser.parse_args(argv))
     if args.max_workers is not None and args.max_workers < 1:
         print("错误：--max-workers 必须大于 0")
         return 2
@@ -49,6 +52,7 @@ def main(argv=None):
         return 2
     try:
         print(f"开始生成人物画像，索引范围 [{args.start}, {args.end})，输入文件：{args.input_file}，输出文件：{args.output_file}")
+        configure_map_tool(args)
         generator = PersonaGenerator(
             os.path.join(args.file_path, args.ref_file),
             as_of_date=args.as_of_date,

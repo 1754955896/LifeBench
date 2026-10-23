@@ -18,6 +18,16 @@ First install the dependencies and configure the APIs as described in the [main 
 
 > Typical pipeline order: `persona_gen` -> `draft_gen` -> `simulator` -> `phone_gen` -> `qa_gen`. Each script can run independently when its input data is available.
 
+`persona_gen.py` and `simulator.py` accept `--map-tool amap|overseas` (default:
+`amap`). With `overseas`, `--map-config <JSON file>` is required. For example:
+
+```powershell
+python scripts/run/persona_gen.py --map-tool overseas --map-config config/overseas_map.demo.json
+```
+
+Append the normal input/output arguments for your data. See [map configuration](../../src/lifebench/utils/README.md)
+for endpoints, coordinate conventions, and service limitations.
+
 ---
 
 ## 1. `persona_gen.py`: Persona Generation

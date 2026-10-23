@@ -1,0 +1,12 @@
+{
+  "country_code": "GB",
+  "city_aliases": {"London": "Greater London", "伦敦": "Greater London"},
+  "photon_url": "https://photon.komoot.io",
+  "poi_backend": "photon",
+  "valhalla_url": "https://valhalla1.openstreetmap.de",
+  "language": "en",
+  "user_agent": "LifeBench/1.0 (manual integration test)",
+  "requests_per_second": 0.5,
+  "rate_limit_retries": 1,
+  "timeout_seconds": 30
+}
