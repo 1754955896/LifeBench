@@ -140,6 +140,9 @@ if __name__ == "__main__":
         file_path += '/'
     start_time = args.start_time
     end_time = args.end_time
+    from src.lifebench.utils.locale_context import configure_generation_time_range
+    if (start_time, end_time) != ('2025-01-01', '2025-12-31'):
+        configure_generation_time_range(start_time, end_time)
     persona = read_json_file(file_path + 'persona.json')
     bind_persona_file(file_path)
 

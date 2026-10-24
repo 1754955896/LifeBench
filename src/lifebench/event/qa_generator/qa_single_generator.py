@@ -696,6 +696,9 @@ class QASingleGenerator(BaseQAGenerator):
         """
         # ask_time 要求：事件发生后两个月到当年12-31之间随机选取
         ask_time_description = '\n\n【用户提问时间】LLM 需根据 required_events_id 中所有事件的发生日期，选取最晚事件发生后两个月到 2025-12-31 之间的任意一天作为 ask_time（YYYY-MM-DD 格式）。例如若最晚事件在 3月15日，则 ask_time 可选 5月16日到 12月31日之间的任意一天。'
+        period_end = self.qa_period_end()
+        if period_end != datetime(2025, 12, 31):
+            ask_time_description = ask_time_description.replace('2025-12-31', f'{period_end:%Y-%m-%d}')
 
         return f"""
         你是 Design Agent（生成模式），需要模拟真实用户向手机智能体提问的场景。
@@ -982,13 +985,13 @@ class QASingleGenerator(BaseQAGenerator):
                 else:
                     base_dt = datetime.strptime(ask_time, "%Y-%m")
             except ValueError:
-                base_dt = datetime(2025, 12, 1)
+                base_dt = self.qa_period_end().replace(day=1)
         else:
             base_dt = latest_dt + timedelta(days=1)
 
-        max_dt = datetime(2025, 12, 31)
+        max_dt = self.qa_period_end()
         if base_dt > max_dt:
-            return "2025-12-31"
+            return max_dt.strftime('%Y-%m-%d')
 
         # 计算可选月份范围（从 base_dt 月到 2025-12）
         months_range = (max_dt.year - base_dt.year) * 12 + (max_dt.month - base_dt.month)
@@ -1004,6 +1007,8 @@ class QASingleGenerator(BaseQAGenerator):
         # 在该月内随机选一天
         _, last_day = calendar.monthrange(target_year, target_month)
         random_day = random.randint(1, last_day)
+        if (target_year, target_month) == (base_dt.year, base_dt.month):
+            random_day = max(random_day, base_dt.day)
 
         return f"{target_year}-{target_month:02d}-{random_day:02d}"
 
@@ -1569,7 +1574,7 @@ class QASingleGenerator(BaseQAGenerator):
         
         # 准备所有任务：1 月到 12 月，问题数从 2 到 24
         tasks = []
-        for month in range(1, 13):
+        for month in self.qa_month_numbers(year):
             num_questions_for_month = 7  # 1 月=2 个，2 月=4 个，...，12 月=24 个
             for _ in range(num_questions_for_month):
                 tasks.append(month)

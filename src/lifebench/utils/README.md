@@ -141,10 +141,16 @@ python scripts/run_all.py --map-tool overseas --map-config your-map.json --perso
    国家、语言或地图配置改变时拒绝混用旧产物，应选择新的输出目录。国际模式的地点文件须含
    `country_code` 与 `coordinate_system="WGS-84"`；旧无标记数据需要显式迁移。
 
-海外模式不会用速度公式伪造地图查询失败的路线耗时。默认支持步行、驾车、骑行；实际公交、
+海外地图服务在查询失败时返回 `None`。默认支持步行、驾车、骑行；实际公交、
 航班及跨境路线取决于后端数据与能力，不具备时会返回失败。当前验证覆盖英国/法国实时搜索、
-英国步行路线、模拟服务下的混合国家画像流水线，以及原地理流程回归；未执行付费 LLM 的
-全年端到端生成，地区生活真实性仍需抽样评估。
+英国步行路线、模拟服务下的混合国家画像流水线，以及原地理流程回归。国内和英国的付费
+LLM 画像测试已完成；一个月完整流程测试见
+[集成测试说明](../../../tests/persona_international_live/README.md)。全年生成尚未验证。
+
+国际生活合成的调用层可在路线不可用时使用 `route_estimation.py` 生成粗略的同国地面交通
+估算，保留原交通方式，标记 `source=synthetic_route_estimate`、`map_verified=false`、
+估算方法和低置信度。地图接口本身继续返回真实查询结果或 `None`；合成估算不提供已验证的
+公交班次、航班或跨境可行性。默认 Amap 的路线失败行为保持原样。
 
 `config/overseas_map.demo.json` 选择 Photon 公共实例进行地址/POI 检索，并用 Valhalla
 公共实例计算路线，仅适合人工小规模验证。它们不保证可用性或无上限配额；批量运行应

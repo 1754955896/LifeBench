@@ -590,6 +590,7 @@ class PhoneOperationGenerator:
             (valid_ops: List, invalid_data: List, invalid_reasons: Dict) - 有效数据列表、无效数据列表、无效数据的错误原因
         """
         from datetime import datetime
+        from src.lifebench.utils.locale_context import generation_year, generation_date_allowed
 
         valid_ops = []
         invalid_data = []  # [(index, op_dict), ...]
@@ -632,9 +633,14 @@ class PhoneOperationGenerator:
             # agent_chat 类型使用 date 字段而非 datetime
             datetime_field = "date" if operation_type == "agent_chat" else "datetime"
             try:
-                dt = datetime.strptime(op[datetime_field], "%Y-%m-%d %H:%M:%S")
-                if dt.year != 2025:
-                    invalid_reasons[idx] = f"{datetime_field} 年份不是 2025: {op[datetime_field]}"
+                time_format = '%Y-%m-%d' if operation_type=='agent_chat' and len(op[datetime_field])==10 else '%Y-%m-%d %H:%M:%S'
+                dt = datetime.strptime(op[datetime_field], time_format)
+                if dt.year != generation_year():
+                    invalid_reasons[idx] = f"{datetime_field} 年份不是 {generation_year()}: {op[datetime_field]}"
+                    invalid_data.append((idx, op))
+                    continue
+                if not generation_date_allowed(op[datetime_field]):
+                    invalid_reasons[idx] = f'{datetime_field} 超出本次生成范围'
                     invalid_data.append((idx, op))
                     continue
             except ValueError as e:

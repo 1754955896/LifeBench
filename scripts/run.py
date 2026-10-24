@@ -206,7 +206,8 @@ def run_qa_gen(args):
             '-u',  # 强制无缓冲输出
             os.path.join(os.path.dirname(__file__), 'run', 'qa_gen.py'),
             '--data-path', args.base_path,
-            '--year', str(args.year)
+            '--year', str(args.year),
+            '--months', str(args.months)
         ]
 
         print(f"执行命令: {' '.join(cmd)}")
@@ -352,6 +353,15 @@ if __name__ == '__main__':
     # 检查是否存在daily_event.json文件，如果存在则跳过simulator步骤
     daily_event_path = os.path.join(args.base_path, 'daily_event.json')
     if draft_gen_success:
+        # A child can exit successfully after catching generation errors. Never
+        # start expensive downstream stages with a missing or empty draft.
+        try:
+            with open(daily_draft_path, encoding='utf-8') as draft_file:
+                if not json.load(draft_file):
+                    raise ValueError('daily_draft.json is empty')
+        except (OSError, ValueError) as exc:
+            print(f'每日大纲未成功生成，停止后续流程: {exc}')
+            sys.exit(1)
         stage_start = time.time()
         if os.path.exists(daily_event_path):
             print(f"\n{'='*60}")
@@ -362,6 +372,13 @@ if __name__ == '__main__':
             simulator_success = run_simulator(args)
             if not simulator_success:
                 sys.exit(1)
+        try:
+            with open(daily_event_path, encoding='utf-8') as events_file:
+                if not json.load(events_file):
+                    raise ValueError('daily_event.json is empty')
+        except (OSError, ValueError) as exc:
+            print(f'每日事件未成功生成，停止后续流程: {exc}')
+            sys.exit(1)
         stage_times['simulator'] = time.time() - stage_start
         
         # 移动除daily_draft、daily_event、persona外的其他json文件到process文件夹
@@ -375,6 +392,8 @@ if __name__ == '__main__':
         
         # 要保留的文件名
         keep_files = {'daily_draft.json', 'daily_event.json', 'persona.json','event_tree.json'}
+        if args.map_tool != 'amap':
+            keep_files.add('persona_context.json')
         
         # 获取base_path下的所有json文件
         for filename in os.listdir(args.base_path):
@@ -406,7 +425,9 @@ if __name__ == '__main__':
 
             # 使用 process_folder 作为数据路径进行事件匹配
             # match_main 会更新 event_tree.json、daily_draft.json、daily_event.json
-            check_event_matching_main(base_path=args.base_path, output_path=args.base_path)
+            matching_spec = TimeSpec(year=args.year, months=args.months)
+            check_event_matching_main(base_path=args.base_path, output_path=args.base_path,
+                                      start_date=matching_spec.start_date, end_date=matching_spec.end_date)
 
             print(f"\n{'='*60}")
             print(f"事件匹配分析完成")

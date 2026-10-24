@@ -5,6 +5,7 @@ from typing import Any, Dict, List
 from .catalog import city_matches
 from .models import TrajectoryAssignment
 from .selector import haversine_km
+from src.lifebench.utils.locale_context import international_run
 
 
 MODE_MAX_SPEED_KMH = {
@@ -148,6 +149,7 @@ def validate_location_records(
         destination_city = str(destination.get("city") or "")
         if (
             accuracy_validation
+            and not international_run()
             and origin_city and destination_city
             and not city_matches(origin_city, destination_city)
             and coord_distance < 20.0
@@ -167,6 +169,12 @@ def validate_location_records(
         origin_id = str(segments[left].get("stop_id") or "")
         destination_id = str(segments[right].get("stop_id") or "")
         if not origin_id or not destination_id or origin_id == destination_id:
+            continue
+        # Distinct activity stop IDs can refer to the same building coordinates.
+        # The baseline deliberately emits no travel leg for such activities.
+        origin_point = _point_coordinates(by_id.get(origin_id, {}))
+        destination_point = _point_coordinates(by_id.get(destination_id, {}))
+        if origin_point and origin_point == destination_point:
             continue
         between = segments[left + 1:right]
         cursor = origin_id

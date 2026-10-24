@@ -197,7 +197,7 @@ class QATemporalGenerator(BaseQAGenerator):
             # 提交所有月份的任务
             future_to_month = {
                 executor.submit(self._generate_monthly_summary, year, month): month
-                for month in range(1, 13)
+                for month in self.qa_month_numbers(year)
             }
             
             # 收集结果

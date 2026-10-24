@@ -193,8 +193,12 @@ class NoteCalendarOperationGenerator:
                 return False, f"datetime 格式错误: {data['datetime']}，应为 'YYYY-MM-DD HH:MM:SS'"
             
             # 3. 校验年份是否为2025年
-            if dt.year != 2025:
-                return False, f"年份不是2025年: {data['datetime']}，实际年份为 {dt.year}"
+            from src.lifebench.utils.locale_context import generation_year, generation_date_allowed
+            expected_year = getattr(self, 'target_year', generation_year())
+            if dt.year != expected_year:
+                return False, f"年份不是{expected_year}年: {data['datetime']}，实际年份为 {dt.year}"
+            if not generation_date_allowed(data['datetime']):
+                return False, 'datetime 超出本次生成范围'
             
             # 4. 如果是日历，校验 start_time 和 end_time
             if data.get("type") == "calendar":
@@ -207,12 +211,12 @@ class NoteCalendarOperationGenerator:
                         return False, f"end_time 早于 start_time: {data['start_time']} -> {data['end_time']}"
                     
                     # 校验 start_time 年份
-                    if start_dt.year != 2025:
-                        return False, f"start_time 年份不是2025年: {data['start_time']}"
+                    if start_dt.year != expected_year:
+                        return False, f"start_time 年份不是{expected_year}年: {data['start_time']}"
                     
                     # 校验 end_time 年份
-                    if end_dt.year != 2025:
-                        return False, f"end_time 年份不是2025年: {data['end_time']}"
+                    if end_dt.year != expected_year:
+                        return False, f"end_time 年份不是{expected_year}年: {data['end_time']}"
                 except ValueError as e:
                     return False, f"start_time 或 end_time 格式错误: {str(e)}"
             

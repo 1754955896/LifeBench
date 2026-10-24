@@ -527,6 +527,8 @@ def run_generator_task(generator_name, generator_info, date, contact, file_path,
         else:
             generator = generator_class()
 
+        generator.target_year = int(date[:4])
+
         # 获取方法名和参数
         method_name = generator_info['method']
         method = getattr(generator, method_name)

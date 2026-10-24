@@ -9,6 +9,7 @@ import re
 from typing import Dict, List, Any
 from concurrent.futures import as_completed
 from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
+from src.lifebench.utils.locale_context import international_run
 from src.lifebench.utils.llm_call import llm_call
 
 
@@ -533,6 +534,13 @@ class EventTree:
         # 解析JSON
         try:
             raw_json = f"[{matches[0]}]"
+            if international_run():
+                # English apostrophes and URLs are valid inside JSON strings.
+                # Apply legacy repairs only if the original JSON is invalid.
+                try:
+                    return json.loads(raw_json)
+                except json.JSONDecodeError:
+                    pass
             # 修复1：补全字段间缺少的逗号（核心修复）
             # 修复2：去除多余的逗号（如最后一个字段后有逗号）
             raw_json = re.sub(r',\s*]', ']', raw_json)

@@ -189,7 +189,7 @@ if format_events:
     formatter = EventFormatter(data_dir=file_path)
 
     # 4.2 执行格式化
-    formatter.run(max_workers=max_workers)
+    formatter.run(max_workers=max_workers, start_date=start_date, end_date=end_date)
 
     end_time_format = time.time()
     execution_times['event_format'] = end_time_format - start_time_format

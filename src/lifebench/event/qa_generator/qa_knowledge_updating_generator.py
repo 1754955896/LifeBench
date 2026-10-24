@@ -953,7 +953,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         if latest_dt is not None and ask_dt <= latest_dt:
             adjusted_dt = latest_dt + timedelta(days=1)
             # 若超过 2025-12-31，则用 2025-12-31
-            max_dt = datetime(2025, 12, 31)
+            max_dt = self.qa_period_end(latest_dt.year)
             if adjusted_dt > max_dt:
                 adjusted_dt = max_dt
             print(f"[ask_time 调整] 原 ask_time {ask_time} 早于最晚事件日期 {latest_dt.strftime('%Y-%m-%d')}, 已调整为 {adjusted_dt.strftime('%Y-%m-%d')}")
@@ -1163,7 +1163,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         - **格式约束**：`ask_time` 必须是 "YYYY-MM-DD" 格式（如 "2025-01-10"、"2025-03-31"），具体到天
         - **时间顺序要求**：`ask_time` 必须在所引用节点的事件日期之后，或在第一个节点之前（询问"在此之前"状态）
         - **间隔约束**：ask_time 与节点日期之间**至少间隔 3 天**
-        - **上限约束**：`ask_time` 最晚不得超过 2025-12-31
+        - **上限约束**：`ask_time` 最晚不得超过 {self.qa_period_end():%Y-%m-%d}
 
         **输出格式**：
         请以 JSON 数组格式返回问题和答案：
@@ -1217,7 +1217,7 @@ class QAKnowledgeUpdatingGenerator(BaseQAGenerator):
         ```
 
         **注意**：
-        - `ask_time` 格式必须为 "YYYY-MM-DD"，且必须在所引用节点的所有事件日期之后，**与节点日期至少间隔3天**，最晚不得超过 2025-12-31
+        - `ask_time` 格式必须为 "YYYY-MM-DD"，且必须在所引用节点的所有事件日期之后，**与节点日期至少间隔3天**，最晚不得超过 {self.qa_period_end():%Y-%m-%d}
         - `node_ids` 必须引用输入中存在的节点 ID
         - 问题的答案应该反映在 `ask_time` 这个时间点的状态
         - 每对问题的核心问题应该相同或非常相似，但答案不同

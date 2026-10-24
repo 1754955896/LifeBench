@@ -301,4 +301,12 @@ def attach_event_geodata(events: Iterable[Dict[str, Any]], location_records: Any
             event["stop_id"] = best_stop.get("stop_id", "")
             event["geo"] = _public_point(best_stop)
         result.append(event)
+    if international_run():
+        for event in result:
+            if event.get('kind') in {'travel', 'local_loop'} and not event.get('mobility'):
+                event['mobility'] = {
+                    'source': 'narrative_unverified', 'map_verified': False,
+                    'confidence': 0.25, 'estimate_method': 'not_available',
+                    'override_reason': 'no_matching_sidecar_leg',
+                }
     return result

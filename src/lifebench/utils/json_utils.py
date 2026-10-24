@@ -7,6 +7,7 @@
 import re
 import json
 from typing import Any
+from .locale_context import international_run
 
 
 def remove_json_wrapper(input_str: str, json_type: str = 'object') -> str:
@@ -38,6 +39,11 @@ def remove_json_wrapper(input_str: str, json_type: str = 'object') -> str:
         last_brace = result.rfind('}')
         if first_brace != -1 and last_brace != -1 and first_brace < last_brace:
             result = result[first_brace:last_brace + 1]
+
+    if international_run():
+        # JSON accepts Unicode names in every language. The legacy character
+        # whitelist removes accented Latin, Arabic and other valid text.
+        return re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F]', '', result).strip()
 
     # 步骤3：清理 JSON 非法控制字符
     # 保留：JSON 允许的控制字符（\n换行、\r回车、\t制表符、\b退格、\f换页）+ 可见ASCII字符（0x20-0x7E）+ 中文/全角字符

@@ -9,7 +9,8 @@ import json
 project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, project_root)
 from src.lifebench.utils.overseas_runtime import add_map_arguments, validate_map_arguments, configure_map_tool
-from src.lifebench.utils.locale_context import bind_persona_file
+from src.lifebench.utils.locale_context import bind_persona_file, configure_generation_time_range
+from src.lifebench.utils.date_utils import TimeSpec
 
 # 导入 qa_generator 模块（直接从 event 目录导入 QaGenerator.py 文件）
 from src.lifebench.event.all_qa_generator import QAGenerator
@@ -22,12 +23,16 @@ def main():
     # 添加参数，支持默认值
     parser.add_argument('--data-path', type=str, default='output/fenghaoran/', help='用户数据路径，包含persona.json、event_tree.json等文件')
     parser.add_argument('--year', type=int, default=2025, help='生成问答的年份，例如：2025')
+    parser.add_argument('--months', type=int, default=12, choices=range(1,13), help='该年前几个月的生活范围')
     
     # 解析参数
     args = validate_map_arguments(parser, parser.parse_args())
     configure_map_tool(args)
     
     try:
+        spec = TimeSpec(year=args.year, months=args.months)
+        if args.year != 2025 or args.months != 12:
+            configure_generation_time_range(spec.start_date, spec.end_date)
         # 转换 data_path 为绝对路径（相对于项目根目录）
         if not os.path.isabs(args.data_path):
             data_path = os.path.join(project_root, args.data_path)

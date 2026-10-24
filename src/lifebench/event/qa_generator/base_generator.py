@@ -10,6 +10,7 @@ import os
 import random
 import copy
 import threading
+from datetime import datetime
 from typing import List, Dict, Any, Tuple
 from abc import ABC, abstractmethod
 
@@ -109,6 +110,19 @@ class BaseQAGenerator(ABC):
             self.load_phone_data_from_dir(phone_data_path)
             self.phone_data_dir = phone_data_path
     
+    def qa_month_numbers(self, year):
+        """Use populated life-data months; no-data direct callers keep the legacy range."""
+        if not self.draft_event:
+            return list(range(1, 13))
+        return [month for month in range(1, 13) if self.draft_event.get(f'{int(year)}-{month:02d}')]
+
+    def qa_period_end(self, year=None):
+        """Retrospective query deadline; facts remain limited to populated months."""
+        if year is None:
+            keys = sorted(key for key in self.draft_event if isinstance(key, str) and len(key)==7)
+            year = int(keys[-1][:4]) if keys else 2025
+        return datetime(int(year), 12, 31)
+
     def load_phone_data_from_dir(self, phone_data_dir: str):
         """从目录加载手机数据"""
         if not os.path.exists(phone_data_dir):

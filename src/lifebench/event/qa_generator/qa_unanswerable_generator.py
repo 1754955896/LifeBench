@@ -252,7 +252,7 @@ class QAUnanswerableGenerator(BaseQAGenerator):
         event_dt = datetime.strptime(event_date, "%Y-%m-%d")
 
         # 提问时间应该在事件日期之后，最大为 2025-12-31
-        max_date = datetime(2025, 12, 31)
+        max_date = self.qa_period_end(year)
 
         # 从事件日期的下一个月开始
         if event_dt.month == 12:
@@ -262,7 +262,7 @@ class QAUnanswerableGenerator(BaseQAGenerator):
 
         # 如果下一个月超过 2025-12，则使用 2025-12-31
         if next_month_dt > max_date:
-            return "2025-12-31"
+            return max_date.strftime('%Y-%m-%d')
 
         # 计算可选的月份范围（从 next_month 到 2025-12）
         months_diff = (max_date.year - next_month_dt.year) * 12 + (max_date.month - next_month_dt.month)
@@ -303,7 +303,7 @@ class QAUnanswerableGenerator(BaseQAGenerator):
         with ThreadPoolExecutor(max_workers=12) as executor:
             # 提交所有月份的任务
             future_to_month = {}
-            for month in range(1, 13):
+            for month in self.qa_month_numbers(year):
                 future = executor.submit(self._generate_unanswerable_for_month, year, month)
                 future_to_month[future] = month
             

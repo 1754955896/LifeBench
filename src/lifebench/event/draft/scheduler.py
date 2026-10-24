@@ -39,6 +39,7 @@ class Scheduler:
         self.file_path = file_path
         self.percentage = {}
         self.summary = ""
+        self.yearly_summary = ""
 
         # 线程数配置
         import multiprocessing
@@ -2909,6 +2910,7 @@ class Scheduler:
 
         # 保存全年总结到self属性
         self.yearly_summary = previous_next_month_summary
+        optimized_timeline["yearly_summary"] = self.yearly_summary
 
         return optimized_timeline
     def process_monthly_details(self, monthly_details_data, output_file_prefix):
@@ -3025,6 +3027,11 @@ class Scheduler:
                 print(f"✓ 最终时间线文件已存在，直接读取: {final_timeline_path}")
                 with open(final_timeline_path, 'r', encoding='utf-8') as f:
                     final_timeline = json.load(f)
+                # The planner normally sets this in memory. Restore it on resume;
+                # older checkpoints only persisted the comprehensive summary.
+                self.yearly_summary = final_timeline.get(
+                    'yearly_summary', final_timeline.get('comprehensive_summary', '')
+                )
             else:
                 final_timeline = self.monthly_event_planning(rich_timeline["updated_timeline"])
                 print(f"✓ 成功完成月度事件规划")

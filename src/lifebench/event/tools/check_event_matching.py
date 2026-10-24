@@ -20,10 +20,10 @@ END_DATE = datetime.strptime("2025-12-31", "%Y-%m-%d")
 
 
 # 判断日期是否在分析范围内
-def is_date_in_range(date_str):
+def is_date_in_range(date_str, start_date=None, end_date=None):
     try:
         date = datetime.strptime(date_str, "%Y-%m-%d")
-        return START_DATE <= date <= END_DATE
+        return (start_date or START_DATE) <= date <= (end_date or END_DATE)
     except ValueError:
         return False
 
@@ -459,7 +459,9 @@ def analyze_daily_event_single_task(daily_event, date, daily_event_list):
     }
 
 
-def main(base_path=None, output_path=None, resume=True):
+def main(base_path=None, output_path=None, resume=True, start_date=None, end_date=None):
+    analysis_start = datetime.strptime(start_date, '%Y-%m-%d') if start_date else START_DATE
+    analysis_end = datetime.strptime(end_date, '%Y-%m-%d') if end_date else END_DATE
     # 验证必要参数
     if base_path is None:
         print("错误: base_path 不能为 None")
@@ -543,7 +545,7 @@ def main(base_path=None, output_path=None, resume=True):
                 else:
                     date = date_str.strip()
 
-                if is_date_in_range(date):
+                if is_date_in_range(date, analysis_start, analysis_end):
                     tasks.append((event, date_str, daily_events_map))
                 else:
                     print(f"事件ID: {event_id} - {event['name']} 的日期 {date} 不在分析范围内，跳过")

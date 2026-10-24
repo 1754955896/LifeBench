@@ -2,6 +2,7 @@ import json
 import os
 import copy
 import importlib
+import hashlib
 from typing import List, Dict, Any
 from src.lifebench.utils.locale_context import LocaleThreadPoolExecutor as ThreadPoolExecutor
 from src.lifebench.event.qa_generator.base_generator import BaseQAGenerator
@@ -109,6 +110,60 @@ class QAGenerator:
             # 自动发现并初始化所有生成器
             self._discover_and_load_generators()
     
+    def _qa_input_signature(self, year):
+        from src.lifebench.utils.locale_context import context_fingerprint, current_generation_time_range
+        digest = hashlib.sha256(json.dumps(
+            {'version': 1, 'year': year, 'locale': context_fingerprint(),
+             'time_range': current_generation_time_range()}, sort_keys=True).encode())
+        files = [os.path.join(self.data_path, name) for name in (
+            'persona.json', 'event_tree.json', 'daily_draft.json', 'daily_event.json',
+            'special_event.json', 'process/meta.json', 'process/rich_timeline.json')]
+        if os.path.isdir(self.phone_data_dir):
+            files.extend(os.path.join(self.phone_data_dir, name) for name in sorted(os.listdir(self.phone_data_dir))
+                         if name.endswith('.json') and os.path.isfile(os.path.join(self.phone_data_dir, name)))
+        source_dir = os.path.join(os.path.dirname(__file__), 'qa_generator')
+        files.extend(os.path.join(source_dir, name) for name in sorted(os.listdir(source_dir)) if name.endswith('.py'))
+        files.extend([__file__, os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'locale_context.py')])
+        for path in files:
+            digest.update(os.path.normpath(path).encode('utf-8'))
+            if os.path.isfile(path):
+                with open(path, 'rb') as stream:
+                    digest.update(stream.read())
+        return digest.hexdigest()
+
+    @staticmethod
+    def _atomic_json(path, data):
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        temporary = path + '.tmp'
+        with open(temporary, 'w', encoding='utf-8') as stream:
+            json.dump(data, stream, ensure_ascii=False)
+        os.replace(temporary, path)
+
+    def _save_qa_checkpoint(self, name, generator, questions, parent_signature):
+        path = os.path.join(self.data_path, 'process', 'qa_checkpoints', name + '.json')
+        data = {'parent_signature': parent_signature, 'questions': questions,
+                'phonedata': generator.phonedata, 'phone_id_counters': generator.phone_id_counters}
+        self._atomic_json(path, data)
+        with open(path, 'rb') as stream:
+            return hashlib.sha256(stream.read()).hexdigest()
+
+    def _load_qa_checkpoint(self, name, generator, parent_signature):
+        path = os.path.join(self.data_path, 'process', 'qa_checkpoints', name + '.json')
+        try:
+            with open(path, 'rb') as stream:
+                raw = stream.read()
+            data = json.loads(raw)
+            if (data.get('parent_signature') != parent_signature or not isinstance(data.get('questions'), list)
+                    or not isinstance(data.get('phonedata'), dict) or not isinstance(data.get('phone_id_counters'), dict)):
+                return None
+        except (OSError, ValueError):
+            return None
+        generator.phonedata = data['phonedata']
+        generator.phone_id_counters = data['phone_id_counters']
+        generator._data_updated = True
+        self._share_phone_data()
+        return data['questions'], hashlib.sha256(raw).hexdigest()
+
     def _discover_and_load_generators(self):
         """
         自动发现 event.qa_generator 包下的所有生成器类并初始化
@@ -307,6 +362,7 @@ class QAGenerator:
         
         # 存储所有生成的问题
         all_questions = []
+        resume_chain = self._qa_input_signature(year)
         
         # 依次调用每个生成器
         for idx, (gen_name, gen_data) in enumerate(ordered_generators, 1):
@@ -315,24 +371,17 @@ class QAGenerator:
             
             # 检查对应的文件是否已存在
             single_output_path = os.path.join(qa_all_dir, f"{gen_name}.json")
-            if os.path.exists(single_output_path):
-                print(f"\n{idx}. 跳过 {gen_name}（文件已存在: {single_output_path}）")
-                # 加载已有文件并添加到总列表，后续会统一经过分类处理
-                try:
-                    with open(single_output_path, 'r', encoding='utf-8') as f:
-                        existing_questions = json.load(f)
-                    if isinstance(existing_questions, list):
-                        # 加载已有文件时也先过滤格式，只保留指定字段
-                        allowed_fields = ["question", "answer", "score_points", "required_events_id", "question_type", "evidence", "ask_time"]
-                        filtered_existing = []
-                        for item in existing_questions:
-                            filtered_item = {k: v for k, v in item.items() if k in allowed_fields}
-                            filtered_existing.append(filtered_item)
-                        all_questions.extend(filtered_existing)
-                        print(f"   ✓ 已加载 {len(filtered_existing)} 个已有问题（已过滤字段），将统一经过分类处理")
-                except Exception as e:
-                    print(f"   ⚠️ 加载已有文件失败: {e}")
+            cached = self._load_qa_checkpoint(gen_name, generator, resume_chain)
+            if cached is not None:
+                existing_questions, resume_chain = cached
+                print(f'\n{idx}. 恢复 {gen_name} 问题及配套手机证据，共 {len(existing_questions)} 个问题')
+                allowed_fields = ["question", "answer", "score_points", "required_events_id", "question_type", "evidence", "ask_time"]
+                all_questions.extend({k:v for k,v in item.items() if k in allowed_fields} for item in existing_questions)
+                if existing_questions:
+                    self._atomic_json(single_output_path, existing_questions)
                 continue
+            if os.path.exists(single_output_path):
+                print(f'{gen_name} 缓存缺少匹配的手机证据断点，重新生成')
             
             print(f"\n{idx}. 开始生成{gen_name}问题...")
             
@@ -362,6 +411,8 @@ class QAGenerator:
                 
                 # 共享数据
                 self._share_phone_data()
+                resume_chain = self._save_qa_checkpoint(
+                    gen_name, generator, result if isinstance(result, list) else [], resume_chain)
                 
                 # 单独保存该生成器的问题
                 if result and isinstance(result, list):
@@ -387,6 +438,11 @@ class QAGenerator:
         
         print("\n所有问答对生成完成！")
 
+        from src.lifebench.utils.locale_context import qa_ask_date_allowed
+        before_scope_filter = len(all_questions)
+        all_questions = [qa for qa in all_questions if qa_ask_date_allowed(qa.get('ask_time'))]
+        if len(all_questions) != before_scope_filter:
+            print(f'剔除超出本次时间范围的问题: {before_scope_filter-len(all_questions)}')
         # 整合所有问题到 QA.json
         if all_questions:
             # 先过滤不可回答的问题（并行 LLM 调用）

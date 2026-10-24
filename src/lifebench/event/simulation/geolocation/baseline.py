@@ -3,8 +3,9 @@
 
 与完整版 TrajectoryAllocator 完全独立，且本文件内不做任何数值计算或算法：
 无 haversine、无偏移、无速度表、无通行方式启发式、无按时间/距离排序、无预算、
-无候选分层、无 direct 索引匹配。所有坐标 / 通行时长 / 距离都来自高德工具
-（maptools）的返回值，或 LLM 自己的判断。代码只做三件事：
+无候选分层、无 direct 索引匹配。默认模式的坐标 / 通行时长 / 距离来自地图工具
+（maptools）的返回值，或 LLM 自己的判断。国际合成允许路线不可用时调用独立的
+粗略估算工具，保留原交通方式并明确标记未经地图核验。主要流程：
 
   1. 把 maptools 的高德方法暴露成 LLM 可调用的工具（function schema + 薄分发）；
   2. 跑一个 function-calling 循环，直到 LLM 不再请求工具；
@@ -27,6 +28,7 @@ import json
 from src.lifebench.utils.llm_call import llm_agent
 
 from src.lifebench.utils.locale_context import international_run, current_locale
+from src.lifebench.utils.route_estimation import estimate_surface_route
 from .models import ResolvedStop, TrajectoryAssignment, TravelLeg
 from .export import build_location_records
 from .validator import validate_location_records
@@ -398,6 +400,8 @@ def _backfill_location(mind, name, city, country_code=""):
 def _route_tool(mind, origin_coords, dest_coords, mode):
     """调 route_between 工具取真实通行时长(分)/距离(公里)；失败返回 None。"""
     if mode not in _VALID_MODES:
+        if international_run():
+            return None
         mode = "driving"
     payload = mind.maptools.route_between_pois(
         origin_coords if isinstance(origin_coords, dict) else {"location": origin_coords},
@@ -550,14 +554,20 @@ def simple_adjust_trajectory(mind, poi_data, event, daily_event_reference="", hi
             continue  # 同地点停留，无通行段
         mode = nxt.get("mode") or "driving"
         route = _route_tool(mind, stops[i].as_poi() if international_run() else stops[i].coordinates, stops[i + 1].as_poi() if international_run() else stops[i + 1].coordinates, mode)
+        estimated_route = None
         if route is None and international_run():
-            raise RuntimeError("No verified route for an international simulation leg")
+            estimated_route = estimate_surface_route(stops[i].as_poi(), stops[i + 1].as_poi(), mode)
+            if estimated_route is None:
+                raise RuntimeError("No route or supported synthetic estimate for mode %s" % mode)
+            route = estimated_route
         if route is None:
             duration, distance, source, verified, confidence = 0, 0.0, "unresolved", False, 0.5
         else:
             duration = route["duration_minutes"]
             distance = route["distance_km"]
-            source, verified, confidence = "amap", True, 1.0
+            source, verified, confidence = ("map_route" if international_run() else "amap"), True, 1.0
+            if estimated_route:
+                source, verified, confidence = estimated_route['source'], False, estimated_route['confidence']
         # 到达时刻 = 出发时刻 + 工具返回的通行时长（时间格式换算，非分配算法）。
         departure = info["end_time"]
         arrival = _hhmm_add_minutes(departure, duration) if duration > 0 else nxt["start_time"]
@@ -605,6 +615,10 @@ def simple_adjust_trajectory(mind, poi_data, event, daily_event_reference="", hi
         diagnostics={"allocation_mode": "simple_tool_agent"},
     )
     records = build_location_records(assignment)
+    if international_run():
+        for leg in records['legs']:
+            if leg['source'] == 'synthetic_route_estimate':
+                leg.update(estimate_method='straight_line_detour_speed', override_reason='route_unavailable_or_unsupported')
     records["event_segments"] = segments
     records["schema_version"] = "simulation_location_v2"
 
@@ -618,5 +632,7 @@ def simple_adjust_trajectory(mind, poi_data, event, daily_event_reference="", hi
         "stop_count": len(stops),
         "leg_count": len(legs),
         "issues": issues,
+        **({'estimated_leg_ids': [leg['leg_id'] for leg in records['legs'] if not leg['map_verified']]}
+           if international_run() else {}),
     }
     return events_narrative

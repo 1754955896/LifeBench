@@ -715,8 +715,12 @@ enhancement_type 取值说明：
                 return False, f"datetime 格式错误: {data['datetime']}，应为 'YYYY-MM-DD HH:MM:SS'"
             
             # 4. 校验年份是否为2025年
-            if dt.year != 2025:
-                return False, f"年份不是2025年: {data['datetime']}，实际年份为 {dt.year}"
+            from src.lifebench.utils.locale_context import generation_year, generation_date_allowed
+            expected_year = getattr(self, 'target_year', generation_year())
+            if dt.year != expected_year:
+                return False, f"年份不是{expected_year}年: {data['datetime']}，实际年份为 {dt.year}"
+            if not generation_date_allowed(data['datetime']):
+                return False, 'datetime 超出本次生成范围'
             
             return True, ""
             

@@ -7,6 +7,7 @@ from functools import wraps
 import hashlib
 import inspect
 import json
+import re
 from pathlib import Path
 
 
@@ -32,6 +33,38 @@ COUNTRIES = {
 _ALIASES = {name.casefold(): code for code, row in COUNTRIES.items() for name in row[:2]}
 _ALIASES.update({"uk": "GB", "usa": "US", "united states of america": "US", "中华人民共和国": "CN"})
 _SETTINGS = {"policy": "amap", "services": {}, "locale_defaults": {}}
+_TIME_RANGE = ContextVar('lifebench_generation_time_range', default=None)
+
+
+def configure_generation_time_range(start_date=None, end_date=None):
+    """Optional scope for partial-year evidence generation; legacy full 2025 stays unchanged."""
+    _TIME_RANGE.set({'start_date': start_date, 'end_date': end_date} if start_date and end_date else None)
+
+
+def generation_year(default=2025):
+    period = _TIME_RANGE.get()
+    return int(period['start_date'][:4]) if period else default
+
+
+def current_generation_time_range():
+    period = _TIME_RANGE.get()
+    return dict(period) if period else None
+
+
+def generation_date_allowed(value):
+    period = _TIME_RANGE.get()
+    if not period or not value or not isinstance(value, str):
+        return True
+    day = value[:10] if len(value) >= 10 else value + '-01'
+    return period['start_date'] <= day <= period['end_date']
+
+
+def qa_ask_date_allowed(value):
+    period = _TIME_RANGE.get()
+    if not period or not value or not isinstance(value, str):
+        return True
+    day = value[:10] if len(value) >= 10 else value + '-01'
+    return period['start_date'] <= day <= f'{generation_year()}-12-31'
 
 
 @dataclass(frozen=True)
@@ -273,15 +306,30 @@ def locale_instructions():
             "输出内容使用 output_language，JSON 字段名、类型枚举和格式契约保持原样。"
             "跨时区的 stops 还必须提供带 UTC 偏移的 ISO8601 start_timestamp/end_timestamp。"
             "跨国活动明确各站国家、当地时间与时区；没有资料不编造航班或公交时刻表。"
-            "地图路线默认只支持 walking/driving/bicycling；没有已验证的公交或航班数据时，"
-            "不要生成依赖这些路线的可执行行程，不得把公交或航班改写成驾车来凑时间。\n")
+            "地图路线默认只支持 walking/driving/bicycling；路线不可用时允许保留原交通方式的"
+            "粗略合成时距估算，明确是估算、未经地图核验；不据此声称具体公交班次或航班可用。"
+            "不得把公交或航班改写成驾车来凑时间。\n")
 
 
 def localize_prompt(prompt):
     instruction = locale_instructions()
-    if not instruction or "[LIFEBENCH_LOCALE]" in str(prompt):
-        return prompt
-    return str(prompt) + instruction
+    result = prompt
+    period = _TIME_RANGE.get()
+    if period and generation_year() != 2025:
+        # Update explicit legacy year constraints, never dates in the input data.
+        result = re.sub(r'(年份(?:必须为|是否为|不是)\s*)2025',
+                        lambda match: match[1] + str(generation_year()), str(result))
+        result = re.sub(r'(?m)^([ \t]*-[^\n]*(?:格式|datetime|start_time|end_time)[^\n]*年份为\s*)2025',
+                        lambda match: match[1] + str(generation_year()), str(result))
+        result = re.sub(r'(所有时间必须在\s*|当前年份[：:]\s*)2025',
+                        lambda match: match[1] + str(generation_year()), str(result))
+    if instruction and "[LIFEBENCH_LOCALE]" not in str(result):
+        result = str(result) + instruction
+    if period and '[LIFEBENCH_TIME_RANGE]' not in str(result):
+        result = (str(result) + '\n[LIFEBENCH_TIME_RANGE]\n' + json.dumps(period) +
+                  '\n本次生活数据与手机证据只在上述范围内生成。QA可在事实之后至当年12月31日回顾这些事实。模板中的其他年份日期是示例，'
+                  '不要为没有生活数据的月份补造已发生的证据。范围外的明确历史或未来计划可作为背景引用。\n')
+    return result
 
 
 def calendar_country(explicit=None):

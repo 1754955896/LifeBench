@@ -808,7 +808,7 @@ class QAConflictGenerator(BaseQAGenerator):
         
         with LocaleThreadPoolExecutor(max_workers=20) as executor:
             futures = [executor.submit(self._generate_monthly_summary, year, month) 
-                      for month in range(1, 13)]
+                      for month in self.qa_month_numbers(year)]
             
             for future in concurrent.futures.as_completed(futures):
                 try:

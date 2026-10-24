@@ -3069,7 +3069,7 @@ sms, phonecall, photo, push, note, calendar
             # 提交所有月份任务
             futures = {
                 executor.submit(generate_monthly_task, month): month
-                for month in range(1, 13)
+                for month in self.qa_month_numbers(year)
             }
             
             # 收集结果（按月份顺序）
@@ -3087,7 +3087,7 @@ sms, phonecall, photo, push, note, calendar
                     print(f"[QAGen] 结果收集失败：{e}")
         
         # 按月份顺序合并结果
-        for month in range(1, 13):
+        for month in self.qa_month_numbers(year):
             if month in monthly_results:
                 all_qa.extend(monthly_results[month])
         

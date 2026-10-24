@@ -497,6 +497,8 @@ class EventFormatter:
         
         # 处理所有文件
         self.process_all_files(max_workers=max_workers, start_date=start_date, end_date=end_date)
+        if not self.formatted_events:
+            raise RuntimeError('No events were formatted for the requested date range')
         
         # 保存结果
         self.save_to_event_json(os.path.join(self.data_dir, "daily_event.json"))
