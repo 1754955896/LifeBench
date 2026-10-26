@@ -27,6 +27,8 @@ LifeBench 2.0 collects a full year (2025-01-01 ~ 2025-12-31) of life data for **
 
 ## 📊 Dataset Statistics
 
+The statistics below are for **one language version**; translated copies are not counted twice.
+
 | Metric | Value |
 |--------|-------|
 | 👥 Users | 10 |
@@ -34,8 +36,10 @@ LifeBench 2.0 collects a full year (2025-01-01 ~ 2025-12-31) of life data for **
 | 📅 Time span | 2025-01-01 ~ 2025-12-31 (full year) |
 | 🗓️ Daily life events | 57,486 |
 | 📱 Phone data records | 47,409 (9 data sources) |
-| ❓ QA pairs (QA_all / locomo) | 3,380 |
-| 💾 Data size | ~423 MB |
+| ❓ Question-answer pairs | 3,380 |
+| 🏷️ Question categories | 9 |
+
+The LoCoMo exports contain the same 3,380 questions in a conversational representation, not additional QA pairs.
 
 ## 🏆 Leaderboard
 

@@ -19,7 +19,6 @@ sdist/
 var/
 wheels/
 *.whl
-docs/
 
 
 
@@ -78,12 +77,6 @@ venv.bak/
 
 # Data & generated outputs
 **/tests/
-!/tests/
-/tests/*
-!/tests/persona_international_live/
-/tests/persona_international_live/*
-!/tests/persona_international_live/*.py
-!/tests/persona_international_live/README.md
 config/config.json
 # Ignore only the repository-root evaluation directory.
 /eval/

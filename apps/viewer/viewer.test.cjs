@@ -32,7 +32,7 @@ test("all rendered data is escaped including nested conversations and raw JSON",
   assert.ok(!html.includes("<script>")); assert.ok(!html.includes("<img"));
   assert.ok(html.includes("&lt;script&gt;")); assert.ok(html.includes("&quot;"));
 });
-const dataDir = path.resolve(__dirname,"../life_bench_data/version2/data/sunyuwei");
+const dataDir = path.resolve(__dirname,"../../life_bench_data/version2/data/sunyuwei");
 test("full Sun Yuwei dataset agrees with an independent exact-ID lookup", {skip:!fs.existsSync(dataDir)}, () => {
   const events=JSON.parse(fs.readFileSync(path.join(dataDir,"daily_event.json"),"utf8"));
   const sources=fs.readdirSync(path.join(dataDir,"phone_data")).filter(f=>f.endsWith(".json")).map(file=>({file,type:file.slice(0,-5),data:JSON.parse(fs.readFileSync(path.join(dataDir,"phone_data",file),"utf8"))}));

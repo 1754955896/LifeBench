@@ -41,7 +41,7 @@ persona-folder/
 Run from the repository root:
 
 ```sh
-node --test html/viewer.test.cjs
+node --test apps/viewer/viewer.test.cjs
 ```
 
 Tests cover exact ID matching, events spanning multiple days, unlinked records, malicious HTML escaping, the full Sun Yuwei dataset, and loading, date navigation, search, and type filtering through a simulated browser DOM. Real-browser screenshot and visual validation have not yet been completed.

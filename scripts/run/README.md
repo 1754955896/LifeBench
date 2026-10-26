@@ -4,7 +4,7 @@ These scripts run individual stages of data generation for debugging or targeted
 
 From the repository root, run `python scripts/run/<script>.py [arguments]`. Pass values as `--argument value` and enable boolean switches with `--flag`. Each script adds the repository root to `sys.path`; relative data paths still follow that script's path-handling rules.
 
-First install the dependencies and configure the APIs as described in the [main README](../../README.md#a-environment-and-configuration). Use the scripts directly from the cloned repository; no LifeBench package installation is required. Pass your own data directory explicitly instead of relying on machine-specific defaults.
+First install the dependencies and configure the APIs as described in the [main README](../../docs/installation.md). Use the scripts directly from the cloned repository; no LifeBench package installation is required. Pass your own data directory explicitly instead of relying on machine-specific defaults.
 
 ## Script Overview
 
