@@ -11,9 +11,9 @@ Connected life histories and digital traces for evaluating personalized agent me
 [![Leaderboard](https://img.shields.io/badge/Hugging_Face-Leaderboard-536DFE?style=flat-square)](https://huggingface.co/spaces/C1754955896/Lifebench-Leaderboard)
 [![License](https://img.shields.io/badge/License-Apache_2.0-555555?style=flat-square)](LICENSE)
 
-**10 Users ? 1 Year ? 57,486 Events ? 47,409 Phone Records ? 3,380 QA Pairs**
+**10 Users · 1 Year · 57,486 Events · 47,409 Phone Records · 3,380 QA Pairs**
 
-[Dataset](#dataset) ? [Evaluation](#evaluation) ? [Data Generation](#data-generation) ? [Data Viewer](#data-viewer) ? [Documentation](#documentation)
+[Dataset](#dataset) · [Evaluation](#evaluation) · [Data Generation](#data-generation) · [Data Viewer](#data-viewer) · [Documentation](#documentation)
 
 </div>
 
@@ -32,7 +32,7 @@ LifeBench combines a life event simulator with a benchmark for personalized agen
 
 ![LifeBench data synthesis framework](docs/assets/synthesis_framework.webp)
 
-*Persona preparation ? daily planning ? life simulation ? digital traces ? evidence-based QA.* [Full-resolution diagram](docs/assets/synthesis_framework.png).
+*Persona preparation → daily planning → life simulation → digital traces → evidence-based QA.* [Full-resolution diagram](docs/assets/synthesis_framework.png).
 
 ## Dataset
 

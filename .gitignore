@@ -76,6 +76,7 @@ venv.bak/
 .LSOverride
 
 # Data & generated outputs
+# Entire tests/ directory stays local.
 **/tests/
 config/config.json
 # Ignore only the repository-root evaluation directory.

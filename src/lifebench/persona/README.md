@@ -89,10 +89,6 @@ can retain structured synthetic addresses without fabricated precise coordinates
 Employers use local names/forms, while geographic POIs only establish place existence. The country rules and
 prompt version participate in resume fingerprints.
 
-Offline checks and live fixtures are in `tests/persona_international_live/`. They compare default prompts,
-basic/relation stage traces and deterministic rules against commit `7f25d62`, plus exercise international rules.
-These comparisons cover recorded inputs and do not prove all default behavior is identical for every input.
-
 ## Arbitrary Input and Diverse Variants
 
 Arbitrary-input mode first uses an LLM to normalize input into explicit facts, soft cues, and original descriptions, then fills the fixed profile structure. Later stages do not modify explicit facts. Age and BMI are still calculated in code.

@@ -144,8 +144,7 @@ python scripts/run_all.py --map-tool overseas --map-config your-map.json --perso
 海外地图服务在查询失败时返回 `None`。默认支持步行、驾车、骑行；实际公交、
 航班及跨境路线取决于后端数据与能力，不具备时会返回失败。当前验证覆盖英国/法国实时搜索、
 英国步行路线、模拟服务下的混合国家画像流水线，以及原地理流程回归。国内和英国的付费
-LLM 画像测试已完成；一个月完整流程测试见
-[集成测试说明](../../../tests/persona_international_live/README.md)。全年生成尚未验证。
+LLM 画像测试已完成；全年生成尚未验证。
 
 国际生活合成的调用层可在路线不可用时使用 `route_estimation.py` 生成粗略的同国地面交通
 估算，保留原交通方式，标记 `source=synthetic_route_estimate`、`map_verified=false`、
